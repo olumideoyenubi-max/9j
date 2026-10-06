@@ -13,7 +13,7 @@ const { chromium, open } = require('./harness');
         if (Math.max(...pa) < Math.min(...pb) || Math.max(...pb) < Math.min(...pa)) return false; } return true; };
     const runs = []; const spots = [[300, 430], [1300, 700], [2300, 600], [990, 1250]];
     for (const extra of [0, 1, 2, 3, 4]) for (const [px, py] of spots) {
-      NH.seed(px * 7 + py + extra * 7919); NH.resetWorld(); NH.player.veh = null; NH.player.x = px; NH.player.y = py; NH.S.minutes = 12 * 60;
+      NH.seed(px * 7 + py + extra * 7919); NH.resetWorld(); NH.WORLD.noJams = true; NH.player.veh = null; NH.player.x = px; NH.player.y = py; NH.S.minutes = 12 * 60;
       if (NH.tileAt(px, py) === NH.T.ROAD) throw new Error('test spot is on the road: ' + px + ',' + py);
       const st = { frames: 0, overlapFrames: 0, pairsOverlapping: 0, aiCrashes: 0, junctionConflicts: 0, avgSpeed: 0, samples: 0, stuck: 0 };
       NH.stats.aiCrashes = 0;
@@ -31,7 +31,8 @@ const { chromium, open } = require('./harness');
       });
       st.aiCrashes = NH.stats.aiCrashes; st.avgSpeed = Math.round(st.avgSpeed / Math.max(1, st.samples));
       st.cars = NH.vehicles().filter(v => v.driver === 'ai').length;
-      st.stuck = NH.vehicles().filter(v => v.driver === 'ai' && (v.waitT || 0) > 8).length;
+      const stuckCars = NH.vehicles().filter(v => v.driver === 'ai' && (v.waitT || 0) > 8);
+      st.stuck = stuckCars.length;
       runs.push(st);
     }
     return runs;

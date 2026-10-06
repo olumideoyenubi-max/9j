@@ -106,6 +106,19 @@ button:focus-visible { outline: 2px solid var(--danfo); outline-offset: 2px; }
 #hustle { font-size: 12px; background: rgba(15,18,22,.86); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
 #hustle b { color: var(--danfo); }
 
+/* Conductor panel at a bus stop */
+#cpanel { position: fixed; z-index: 7; transform: translateX(-50%); box-sizing: border-box; display: grid; gap: 8px; padding: 10px 12px;
+  background: rgba(15,18,22,.94); border: 1px solid var(--danfo); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.5); transform-origin: 50% 100%; }
+#cpanel .cp-top { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; min-width: 0; }
+#cpanel .cp-top b { font-family: var(--display); font-size: 12px; color: var(--danfo); letter-spacing: .3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#cpanel .cp-top span { color: var(--muted); white-space: nowrap; font-family: var(--mono); font-size: 12px; }
+#cp-q { font-size: 13px; line-height: 1.35; display: block; margin-bottom: 6px; }
+.cp-opts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.cp-opts button, #cp-call { background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 4px; font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--ink); }
+.cp-opts button.nc { font-family: var(--body); color: var(--bad); border-color: rgba(240,90,80,.5); }
+#cp-call { background: var(--danfo); color: var(--danfo-ink); border-color: var(--danfo); font-family: var(--display); font-size: 13px; letter-spacing: .5px; padding: 10px; }
+#cp-call[disabled] { opacity: .5; }
+
 /* Context prompt: a tappable pill */
 #prompt { pointer-events: auto; z-index: 7; left: 0; right: 0; margin-inline: auto; width: fit-content; max-width: calc(100vw - 2 * 250px);
   bottom: var(--bot); background: rgba(15,18,22,.92); border: 1px solid var(--danfo); border-radius: 999px; padding: 8px 16px;
@@ -251,6 +264,11 @@ html:not(.touch) .touch-only { display: none !important; }
   <div class="stat" id="drow" hidden><span class="lbl">🔧 Body</span><div class="bar" id="vbar"><i></i></div><span class="val" id="dval">100%</span></div>
 </div>
 <button class="hud" id="prompt" type="button" hidden></button>
+<div id="cpanel" hidden>
+  <div class="cp-top"><b id="cp-stop"></b><span id="cp-info"></span></div>
+  <div id="cp-change" hidden><span id="cp-q"></span><div class="cp-opts" id="cp-opts"></div></div>
+  <button type="button" id="cp-call">CALL PASSENGERS</button>
+</div>
 <div id="card" hidden><h2></h2><p></p><div class="sub"></div></div>
 
 <div id="touch">
@@ -318,6 +336,7 @@ const lerp = (a, b, t) => a + (b - a) * t;
 const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 const wrapA = a => { while (a > Math.PI) a -= 2 * Math.PI; while (a < -Math.PI) a += 2 * Math.PI; return a; };
 const rnd = (a, b) => a + Math.random() * (b - a);
+let vseed = 1234567; const vrand = () => (vseed = (vseed * 16807) % 2147483647) / 2147483647; // visual-only randomness
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 const IS_TOUCH = ('ontouchstart' in window || navigator.maxTouchPoints > 0) && matchMedia('(pointer: coarse)').matches;
 document.documentElement.classList.toggle('touch', IS_TOUCH);
@@ -421,8 +440,32 @@ const PL = {
   buspark: { x: 256, y: 1600 },
   checkpoint: { x: 64 * CELL, y: 25 * CELL, w: 64, h: 64 },
 };
-const MISSION_STOPS = [{ x: cc(18), y: rc(14) }, { x: cc(30), y: rc(14) }, { x: rc(42), y: cc(19) }];
-const SHIFT_STOPS = [{ x: cc(8), y: rc(14) }, { x: cc(26), y: rc(14) }, { x: rc(32), y: cc(28) }, { x: cc(26), y: rc(34) }, { x: cc(8), y: rc(34) }, { x: rc(2), y: cc(20) }];
+// Named danfo bus stops. (x, y) is the kerb point the bus stops at; (wx, wy) is where passengers wait
+// on the pavement. 'agbero' = the "ticket" the park touts demand there (₦).
+const BUS_STOPS = {
+  oshoja:   { name: 'Oshoja Park',         x: cc(8),  y: rc(14), wx: cc(8),            wy: 13 * CELL + 14, agbero: 400 },
+  iya:      { name: 'Iya Basira Junction', x: cc(18), y: rc(14), wx: cc(18),           wy: 16 * CELL + 12 },
+  second:   { name: 'Second Gate',         x: cc(28), y: rc(14), wx: cc(28),           wy: 16 * CELL + 12 },
+  lagoon:   { name: 'Lagoon Drive',        x: rc(42), y: cc(19), wx: 44 * CELL + 12,   wy: cc(19) },
+  bridge:   { name: 'Bridge Foot',         x: cc(38), y: rc(24), wx: cc(38),           wy: 23 * CELL + 14, agbero: 500 },
+  eko:      { name: 'Eko Crest Terminus',  x: cc(70), y: rc(14), wx: cc(70),           wy: 16 * CELL + 12 },
+  marketrd: { name: 'Market Road',         x: rc(22), y: cc(30), wx: 21 * CELL + 14,   wy: cc(30) },
+  balogate: { name: 'Balo Gate',           x: cc(28), y: rc(34), wx: cc(28),           wy: 36 * CELL + 12, agbero: 600 },
+  marketsq: { name: 'Market Square',       x: cc(36), y: rc(44), wx: cc(36),           wy: 43 * CELL + 14 },
+  church:   { name: 'Mainland Church',     x: cc(8),  y: rc(34), wx: cc(8),            wy: 33 * CELL + 14 },
+  ebute:    { name: 'Ebute Corner',        x: rc(12), y: cc(28), wx: 11 * CELL + 14,   wy: cc(28) },
+};
+for (const [id, st] of Object.entries(BUS_STOPS)) st.id = id;
+const ROUTES = [
+  { id: 'osh-balo', name: 'Oshoja – Balo Market', stops: ['oshoja', 'iya', 'second', 'marketrd', 'balogate', 'marketsq'], fare: [200, 400], busy: 6,
+    blurb: 'Busy market run: plenty of passengers, agberos at Oshoja Park and Balo Gate.' },
+  { id: 'osh-eko', name: 'Oshoja – Eko Crest Express', stops: ['oshoja', 'second', 'lagoon', 'bridge', 'eko'], fare: [300, 500], busy: 5,
+    blurb: 'Long hops over Third Lagoon Bridge: higher fares, go-slow risk, agberos at Bridge Foot.' },
+  { id: 'mainland', name: 'Mainland Loop', stops: ['ebute', 'church', 'marketrd', 'iya'], fare: [200, 300], busy: 4,
+    blurb: 'Short and quiet back-street loop. No agberos, smaller fares.' },
+];
+const MISSION_STOPS = ['iya', 'second', 'lagoon'].map(k => BUS_STOPS[k]);
+const PAX_NAMES = ['Mama Ronke', 'Oga Tunde', 'Aunty Ngozi', 'Mallam Sani', 'Sister Blessing', 'Bros Emeka', 'Iya Bose', 'Uncle Femi', 'Madam Kike', 'Chinedu', 'Hauwa', 'Pastor Segun', 'Baba Rasheed', 'Ada'];
 const CALLS = ['"Oshoja! Oshoja! Enter with your change!"', '"Eko Crest, straight! No stopping!"', '"Owa! Owa! Hold your bag well!"', '"Driver, wait! One chance remain!"'];
 
 // ---------------------------------------------------------------- content (mirrors JSON)
@@ -455,7 +498,10 @@ const SOCIAL = {
   'checkpoint:WavedThrough': [['Road Warrior', '@InterstateIke', "Passed 4 checkpoints today. Each one had a different idea of what 'particulars' means.", 0, false]],
   'checkpoint:Delayed': [['Road Warrior', '@InterstateIke', 'Spent 40 minutes at a checkpoint explaining that a spare tyre is not contraband.', 0, false]],
   'escaped': [['Eko Task Force (Official)', '@EkoTaskForceOfficial', "Today's operation was a success. The suspect was not apprehended, which was part of the strategy.", 15, true]],
-  'goslow': [['Lagos Traffic Gist', '@ThirdLagoonLive', 'Third Lagoon Bridge is currently a car park. Bring snacks and a phone charger.', 0, false]],
+  'goslow': [['Lagos Traffic Gist', '@ThirdLagoonLive', '{road} is currently a car park. Bring snacks and a phone charger.', 0, false], ['Danfo Diaries', '@DanfoDiaries', 'Go-slow on {road}. Conductors are taking back streets nobody knew existed.', 0, false]],
+  'agbero': [['Oshoja Updates', '@OshojaUpdates', 'One danfo just zoomed past the agberos at {stop} without paying ticket. The boys are still running after it.', 20, true]],
+  'nochange': [['Danfo Diaries', '@DanfoDiaries', 'Conductor on a yellow danfo said "I no get change" with ₦5,000 in his hand. Lagos!', -15, true]],
+  'fullbus': [['Danfo Diaries', '@DanfoDiaries', 'Fourteen of us in one danfo and the conductor still shouting "one chance remain". Respect.', 5, false]],
   'busted': [['Oshoja Updates', '@OshojaUpdates', 'Task Force finally caught one runner today. He was smiling for the cameras. Na wa.', -25, true]],
 };
 
@@ -620,20 +666,24 @@ const ui = {
 };
 // The centre card (JOB DONE / BUSTED / mission title) sits in the free space between the HUD pieces
 // above and below it, and shrinks if that space is small, so it never covers the HUD on any screen.
-function placeCard() {
-  const c = $('#card'); if (c.hidden) return;
+function placeCard() { placeFree($('#card'), 'mid', 520); placeFree($('#cpanel'), 'bottom', 400); }
+// Put an overlay in the free vertical band between the HUD pieces above and below it (shrinking it if
+// the band is small). mode 'mid' centres it in the band, 'bottom' sits it at the bottom of the band.
+function placeFree(c, mode, maxW) {
+  if (c.hidden) return;
   const rect = sel => { const e = $(sel); if (!e || e.hidden || e.closest('[hidden]') || getComputedStyle(e).display === 'none') return null; const r = e.getBoundingClientRect(); return r.width ? r : null; };
-  let cx = innerWidth / 2, cw = Math.min(innerWidth - 32, 520);
+  let cx = innerWidth / 2, cw = Math.min(innerWidth - 32, maxW);
   const bl = rect('#hud-bl'), tb = rect('#tbtns');
   if (tb && bl && innerHeight < 520 && innerWidth > innerHeight) { cx = (bl.right + tb.left) / 2; cw = tb.left - bl.right - 16; } // short landscape: between stats and buttons
   c.style.width = cw + 'px'; c.style.left = cx + 'px'; c.style.transform = 'none';
   let top = 0, bot = innerHeight;
-  for (const sel of ['#hud-tl', '#hud-tr', '#hud-bl', '#prompt', '#tbtns', '#stick']) {
+  for (const sel of ['#hud-tl', '#hud-tr', '#hud-bl', '#prompt', '#tbtns', '#stick'].concat(c.id === 'card' && !$('#cpanel').hidden ? ['#cpanel'] : [])) {
     const r = rect(sel); if (!r || r.right <= cx - cw / 2 || r.left >= cx + cw / 2) continue;
     if (r.top + r.height / 2 < innerHeight / 2) top = Math.max(top, r.bottom); else bot = Math.min(bot, r.top);
   }
-  const h = c.offsetHeight, room = bot - top - 16, k = Math.min(1, room / h);
-  c.style.top = ((top + bot) / 2) + 'px'; c.style.transform = `translate(-50%, -50%) scale(${Math.max(.5, k)})`;
+  const h = c.offsetHeight, room = bot - top - 16, k = Math.max(.5, Math.min(1, room / h));
+  if (mode === 'bottom') { c.style.top = (bot - 8) + 'px'; c.style.transform = `translate(-50%, -100%) scale(${k})`; }
+  else { c.style.top = ((top + bot) / 2) + 'px'; c.style.transform = `translate(-50%, -50%) scale(${k})`; }
 }
 addEventListener('resize', placeCard);
 const NQ = { q: [], cur: null, t: 0, el: null };
@@ -650,9 +700,9 @@ function pumpToasts(dtMs) {
 let cashShown = S.cash, deltaT = 0;
 function earn(n, why) { if (!n) return; S.cash += n; S.log.unshift({ t: S.minutes, n, why }); S.log.length = Math.min(S.log.length, 20); $('#cash-delta').textContent = (n > 0 ? '+' : '') + naira(n); $('#cash-delta').style.color = n > 0 ? 'var(--good)' : 'var(--bad)'; deltaT = 2.5; }
 function spend(n, why) { if (S.cash < n) return false; earn(-n, why); return true; }
-function post(trigger) {
+function post(trigger, vars = {}) {
   const list = SOCIAL[trigger]; if (!list) return; const [author, handle, text, clout, me] = pick(list);
-  S.feed.unshift({ author, handle, text: text.replace('{player}', 'Lucky'), likes: Math.floor(rnd(40, 5000)) * (me ? 3 : 1), me, t: S.minutes });
+  S.feed.unshift({ author, handle, text: text.replace('{player}', 'Lucky').replace(/\{(\w+)\}/g, (m, k) => vars[k] || m), likes: Math.floor(rnd(40, 5000)) * (me ? 3 : 1), me, t: S.minutes });
   S.feed.length = Math.min(S.feed.length, 30); S.clout = Math.max(0, S.clout + clout);
   // one Yarns notification at a time; posts about heat only notify while they still make sense
   const heatPost = /^checkpoint:(Recorded|IntegrityUnitSting)$/.test(trigger), clearPost = trigger === 'escaped';
@@ -746,7 +796,7 @@ function onImpact(v, imp) {
   if (imp > 150) { player.hp -= (imp - 150) * .05; shake = Math.min(10, imp / 30); }
   const ms = MS.cur;
   if (ms && ms.id === 'lag_03' && ms.carry > 0 && imp > 140 && !ms.bonusFail) { ms.bonusFail = true; ui.toast('Crack! A screen don break. Bonus lost.', 'bad'); }
-  if (SHIFT.on) SHIFT.rough += .6;
+  if (SHIFT.on && v === SHIFT.bus && SHIFT.onboard.length) SHIFT.comfort = Math.max(0, SHIFT.comfort - imp / 8); // passengers hate crashes
 }
 
 // ---------------------------------------------------------------- AI drivers
@@ -837,7 +887,7 @@ function aiTraffic(v, dt) {
   const d = VT[v.type], L = d.len, look = 18 + Math.abs(v.v) * .18;
   let target = v.type === 'keke' ? 105 : 150, tx, ty;
   const onBridge = v.y > 23 * CELL && v.y < 27 * CELL && v.x > 47 * CELL && v.x < 64 * CELL;
-  if (onBridge && WORLD.goSlow) target = 38;
+  if (jammed(v.from, v.to) || (v.mode === 'turn' && jammed(v.to, v.next))) target = 24; // go-slow: crawl
 
   if (v.mode === 'turn') {
     // crossing the junction along the curve; progress by distance actually driven
@@ -933,14 +983,38 @@ let lastHonk = 0;
 function honk(v) { if (performance.now() - lastHonk < 1500 || dist(v, player.pos()) > 300) return; lastHonk = performance.now(); beep([392, 330], .1, .03); floaters.push({ x: v.x, y: v.y - 20, text: pick(['PAAAP!', 'Oga move!', 'Wetin be this?']), t: 1.2 }); }
 
 // ---------------------------------------------------------------- world sim
-const WORLD = { goSlow: 0, hour: -1, radio: 0, paused: true, started: false };
+const WORLD = { jams: [], hour: -1, radio: 0, paused: true, started: false };
+// Main roads that can jam. Each is a chain of road-graph nodes ("col,row" of the road's first cell).
+const MAIN_ROADS = [
+  { name: 'Third Lagoon Bridge', nodes: ['22,24', '32,24', '42,24', '66,24'] },
+  { name: 'Mainland Expressway', nodes: ['2,14', '12,14', '22,14', '32,14', '42,14'] },
+  { name: 'Market Road', nodes: ['22,4', '22,14', '22,24', '22,34', '22,44', '22,54'] },
+  { name: 'Lagoon Drive', nodes: ['42,4', '42,14', '42,24', '42,34', '42,44'] },
+  { name: 'Eko Crest Avenue', nodes: ['66,14', '74,14', '82,14', '90,14'] },
+];
+const JAMMED = new Set(); // "a-b" node-id pairs (both directions) currently in a go-slow
+function rebuildJams() { JAMMED.clear(); for (const j of WORLD.jams) { const ids = j.road.nodes.map(k => nodeKey[k]); for (let i = 0; i < ids.length - 1; i++) { JAMMED.add(ids[i] + '-' + ids[i + 1]); JAMMED.add(ids[i + 1] + '-' + ids[i]); } } }
+const jammed = (a, b) => JAMMED.has(a + '-' + b);
+function startJam(road, minutes) {
+  if (WORLD.jams.some(j => j.road === road)) return;
+  WORLD.jams.push({ road, until: S.minutes + minutes }); rebuildJams();
+  ui.toast(`Go-slow on ${road.name}! Try the back streets.`, 'bad', { key: 'jam:' + road.name }); post('goslow', { road: road.name });
+}
+function updateJams() {
+  const before = WORLD.jams.length; const h = Math.floor(S.minutes / 60) % 24;
+  for (const j of WORLD.jams.filter(j => S.minutes > j.until)) ui.toast(`${j.road.name} is moving again.`, 'good', { key: 'jam:' + j.road.name });
+  WORLD.jams = WORLD.jams.filter(j => S.minutes <= j.until);
+  if (!WORLD.noJams && WORLD.jams.length < 2 && h >= 6 && h < 21 && Math.random() < .3) startJam(pick(MAIN_ROADS.filter(r => !WORLD.jams.some(j => j.road === r))), rnd(90, 150));
+  if (WORLD.jams.length !== before) rebuildJams();
+}
 let shake = 0;
 function spawnTraffic(dt) {
-  const p = player.pos(); const want = (IS_TOUCH ? 16 : 24) + (WORLD.goSlow ? 10 : 0);
+  const p = player.pos(); const want = (IS_TOUCH ? 16 : 24) + WORLD.jams.length * 8;
   const traffic = vehicles.filter(v => v.driver === 'ai' && !v.mission);
   if (traffic.length < want) {
     let s;
-    if (WORLD.goSlow && Math.random() < .5) { const a = nodeKey['42,24'], b = nodeKey['66,24']; s = Math.random() < .5 ? Object.assign(laneSpot(a, b, rnd(.1, .9)), { from: a, to: b }) : Object.assign(laneSpot(b, a, rnd(.1, .9)), { from: b, to: a }); if (dist(s, p) < 420) s = null; }
+    if (JAMMED.size && Math.random() < .5) { // feed the jam: spawn onto a jammed stretch away from the player
+      const [a, b] = pick([...JAMMED]).split('-').map(Number); s = Object.assign(laneSpot(a, b, rnd(.2, .8)), { from: a, to: b }); if (dist(s, p) < 420 || dist(s, p) > 1100) s = null; }
     if (!s) s = roadSpotNear(p, 480, 1000);
     if (s && nodes.some(n => Math.abs(n.x - s.x) < JBOX + 30 && Math.abs(n.y - s.y) < JBOX + 30)) s = null;
     if (s && !vehicles.some(v => Math.hypot(v.x - s.x, v.y - s.y) < 75)) {
@@ -1043,7 +1117,7 @@ function announce() {
 }
 function canStart() { return !MS.cur && stars() === 0 && !SHIFT.on; }
 function startMission(id) {
-  if (!canStart() || !available(id)) { ui.toast(stars() > 0 ? 'Lose your heat first.' : SHIFT.on ? 'End your conductor shift first (E).' : 'Finish the job you\'re on first.', 'bad'); return false; }
+  if (!canStart() || !available(id)) { ui.toast(stars() > 0 ? 'Lose your heat first.' : SHIFT.on ? 'End your conductor shift first (shift menu).' : 'Finish the job you\'re on first.', 'bad'); return false; }
   const def = MISSIONS[id]; const ms = { id, def, oi: -1, prog: 0, timer: 0, items: [], carry: 0, bonusFail: false };
   MS.cur = ms; def.setup && def.setup(ms);
   ui.card(def.title.toUpperCase(), CONTACTS[def.giver], '', false, 2600); beep([523, 659, 784], .12, .05, 'triangle');
@@ -1053,7 +1127,7 @@ function nextObj() {
   const ms = MS.cur; ms.oi++; ms.prog = 0; ms.armed = 0;
   const o = ms.def.objs[ms.oi]; if (!o) return passMission();
   ms.timer = o.time || 0;
-  if (o.t === 'stops') ms.stops = MISSION_STOPS.map(s => ({ x: s.x, y: s.y, fares: 2, hold: 0 }));
+  if (o.t === 'stops') ms.stops = MISSION_STOPS.map(s => ({ id: s.id, x: s.x, y: s.y, fares: 2, hold: 0, pax: [makePax(s.id), makePax(s.id)] }));
   if (o.t === 'loseheat' && stars() === 0) addHeat(2);
   o.start && o.start(ms);
 }
@@ -1096,7 +1170,8 @@ function updateMission(dt) {
     case 'stops':
       for (const s of ms.stops) {
         if (!player.veh || dist(player.veh, s) > 44 || Math.abs(player.veh.v) > 40) { s.hold = 0; continue; }
-        s.hold += dt; if (s.hold > .7) { ms.prog += s.fares; floaters.push({ x: s.x, y: s.y - 20, text: '+2 fares', t: 1.4 }); beep([988], .06, .04, 'sine'); ms.stops = ms.stops.filter(x => x !== s); ui.toast(pick(CALLS), '', { key: 'call', ttl: 4000 }); break; }
+        s.hold += dt; if (s.hold > .7) { ms.prog += s.fares; floaters.push({ x: s.x, y: s.y - 20, text: '+2 fares', t: 1.4 }); beep([988], .06, .04, 'sine'); ms.stops = ms.stops.filter(x => x !== s);
+          for (const p of s.pax) { p.state = 'alight'; p.tx = player.veh.x; p.ty = player.veh.y; p.t = 1.2; } (SHIFT.alighting = SHIFT.alighting || []).push(...s.pax); ui.toast(pick(CALLS), '', { key: 'call', ttl: 4000 }); break; }
       }
       if (ms.prog >= o.count) nextObj(); break;
     case 'collect':
@@ -1108,31 +1183,187 @@ function updateMission(dt) {
 }
 
 // ---------------------------------------------------------------- conductor hustle (port of HustleShift.cs)
-const SHIFT = { on: false, next: 0, leg: 0, rough: 0, lastV: 0, streak: 0, earned: 0, hold: 0, call: '' };
-function startShift() {
-  SHIFT.on = true; SHIFT.streak = 0; SHIFT.earned = 0; SHIFT.leg = 0; SHIFT.rough = 0;
-  let b = 0, bd = 1e9; SHIFT_STOPS.forEach((s, i) => { const d = dist(s, player.veh); if (d < bd) { bd = d; b = i; } }); SHIFT.next = (b + 1) % SHIFT_STOPS.length;
-  SHIFT.call = pick(CALLS); ui.toast('Conductor shift started. Follow the yellow stops.', 'good');
+// Danfo conductor shift. Money collected goes in the conductor's bag and is settled at the end:
+// fares + tips + bonuses − refunds/penalties − agbero tickets − damage − the owner's cut.
+const CAP = 14, OWNER_CUT = .35, DAMAGE_COST = 40; // ₦ per point of body damage
+const SHIFT = { on: false };
+let paxId = 0;
+function makePax(stopId, route) {
+  const st = BUS_STOPS[stopId], i = route ? route.stops.indexOf(stopId) : -1;
+  let dest = null, fare = 200;
+  if (route) {
+    const hops = 1 + Math.floor(Math.random() * Math.min(4, route.stops.length - 1));
+    dest = route.stops[(i + hops) % route.stops.length];
+    const [lo, hi] = route.fare; fare = Math.round((lo + (hi - lo) * (hops - 1) / Math.max(1, Math.min(4, route.stops.length - 1) - 1)) / 50) * 50;
+  }
+  fare = clamp(fare, 200, 500);
+  const r = Math.random(), note = r < .35 ? fare : r < .7 ? (fare < 500 ? 500 : 1000) : 1000;
+  return { id: ++paxId, stop: stopId, dest, fare, note, name: pick(PAX_NAMES), col: pick(['#e2683c', '#2fa36b', '#d94f8a', '#3d7bd9', '#f5c400', '#8e44ad', '#16a085']),
+    tie: Math.random() < .5 ? pick(['#f5c400', '#e53935', '#43a047', '#1e88e5']) : null,
+    x: st.wx + rnd(-20, 20), y: st.wy + rnd(-5, 5), state: 'wait', phase: Math.random() * 6 };
 }
-function endShift() { if (!SHIFT.on) return; SHIFT.on = false; ui.toast(`Shift over: ${naira(SHIFT.earned)} earned`, 'good'); save(); }
-function updateShift(dt) {
-  if (!SHIFT.on) return; const v = player.veh; if (!v || v.type !== 'danfo') return endShift();
-  SHIFT.leg += dt; const acc = Math.abs(v.v - SHIFT.lastV) / Math.max(dt, 1e-4); if (acc > 260) SHIFT.rough += dt; SHIFT.lastV = v.v;
-  const s = SHIFT_STOPS[SHIFT.next];
-  if (dist(v, s) < 44 && Math.abs(v.v) < 30) {
-    SHIFT.hold += dt; if (SHIFT.hold < .7) return; SHIFT.hold = 0;
-    const prev = SHIFT_STOPS[(SHIFT.next + SHIFT_STOPS.length - 1) % SHIFT_STOPS.length];
-    const target = dist(prev, s) / 125 + 5;
-    const q = .5 * clamp(1.5 - SHIFT.leg / target, 0, 1) + .5 * clamp(1 - SHIFT.rough / 2.5, 0, 1);
-    let pay = 0;
-    if (q < .25) { SHIFT.streak = 0; ui.toast('Passengers vex: "Driver, you wan kill us?" No pay.', 'bad'); }
-    else {
-      SHIFT.streak++; const lvl = Math.min(5, 1 + Math.floor(S.jobs / 10));
-      pay = Math.round(1500 * q * (1 + .15 * (lvl - 1))) + 200 * (SHIFT.streak - 1);
-      earn(pay, 'Conductor shift'); SHIFT.earned += pay; floaters.push({ x: s.x, y: s.y - 20, text: '+' + naira(pay), t: 1.4 }); beep([988, 1318], .06, .04, 'sine');
+// Waiting passengers line up in an even row along the pavement beside the shelter.
+function queueSpot(stopId, i) {
+  const st = BUS_STOPS[stopId], horiz = Math.abs(st.wy - st.y) > Math.abs(st.wx - st.x), off = (i % 2 ? 1 : -1) * (Math.floor(i / 2) + .5) * 17;
+  return horiz ? { x: st.wx + off, y: st.wy + (i > 5 ? 10 : 0) } : { x: st.wx + (i > 5 ? 10 : 0), y: st.wy + off };
+}
+function lineUp(list, stopId, dt) { list.forEach((p, i) => { const q = queueSpot(stopId, i); p.x += (q.x - p.x) * Math.min(1, dt * 6); p.y += (q.y - p.y) * Math.min(1, dt * 6); p.slot = i; }); }
+function routeOf() { return SHIFT.on ? ROUTES.find(r => r.id === SHIFT.route) : null; }
+function openRoutePicker() {
+  const v = player.veh;
+  showSheet(`<h3>Pick a route</h3><p class="muted">Stop at each bus stop, tap <b>CALL</b> to load passengers, give the right change, drive gently. ${v.stolen ? 'This bus is stolen, so there is no owner to pay.' : `Baba Sule takes ${OWNER_CUT * 100}% of fares as the owner's cut.`}</p>
+    <div style="display:grid;gap:8px">${ROUTES.map(r => `<button class="btn" type="button" data-r="${r.id}">${r.name}<small>${r.stops.length} stops · fares ${naira(r.fare[0])}–${naira(r.fare[1])} · ${esc(r.blurb)}</small></button>`).join('')}</div>
+    <button class="btn" type="button" data-x>Not now</button>`, el => {
+    el.querySelectorAll('[data-r]').forEach(b => b.onclick = () => { closeOverlays(); startShift(b.dataset.r); });
+    el.querySelector('[data-x]').onclick = closeOverlays;
+  });
+}
+function startShift(routeId) {
+  const route = ROUTES.find(r => r.id === routeId) || ROUTES[0], v = player.veh; if (!v || v.type !== 'danfo') return false;
+  // start at the route stop nearest the bus
+  let idx = 0, bd = 1e9; route.stops.forEach((id, i) => { const d = dist(BUS_STOPS[id], v); if (d < bd) { bd = d; idx = i; } });
+  Object.assign(SHIFT, { on: true, route: route.id, idx, atStop: null, near: false, onboard: [], waiting: {}, alighting: [], changeQ: [],
+    fares: 0, tips: 0, bonus: 0, keep: 0, penalties: 0, agbero: 0, missed: 0, carried: 0, comfort: 100, hpStart: v.hp,
+    owner: v.stolen ? null : 'Baba Sule', lastV: v.v, lastA: v.a, refill: 10, demand: {}, call: pick(CALLS), bus: v });
+  for (const id of route.stops) SHIFT.waiting[id] = Array.from({ length: 2 + Math.floor(Math.random() * (route.busy - 1)) }, () => makePax(id, route));
+  ui.toast(`Route: ${route.name}. First stop ${BUS_STOPS[route.stops[idx]].name}.`, 'good', { key: 'shift' });
+  return true;
+}
+function arrive(sid) {
+  const route = routeOf(), st = BUS_STOPS[sid]; SHIFT.atStop = sid; SHIFT.near = false; SHIFT.idx = route.stops.indexOf(sid);
+  // passengers for this stop get down; happy passengers tip
+  for (const p of SHIFT.onboard.filter(p => p.dest === sid)) {
+    SHIFT.onboard = SHIFT.onboard.filter(q => q !== p); SHIFT.carried++; S.jobs++;
+    p.state = 'alight'; p.x = SHIFT.bus.x + rnd(-10, 10); p.y = SHIFT.bus.y + rnd(-10, 10); p.tx = st.wx + rnd(-40, 40); p.ty = st.wy + rnd(-8, 8); p.t = 3; SHIFT.alighting.push(p);
+    if (Math.random() < SHIFT.comfort / 200) { const tip = Math.round((50 + SHIFT.comfort * 1.5) / 50) * 50; SHIFT.tips += tip; floaters.push({ x: st.x, y: st.y - 28, text: `Tip ${naira(tip)}`, t: 1.6 }); }
+  }
+  // a rough ride: one passenger demands their money back and gets down here
+  if (SHIFT.comfort < 30 && SHIFT.onboard.length) {
+    const p = pick(SHIFT.onboard); SHIFT.onboard = SHIFT.onboard.filter(q => q !== p); SHIFT.penalties += p.fare;
+    floaters.push({ x: st.x, y: st.y - 40, text: '"Driver, you wan kill us? My money!"', t: 2.4 }); ui.toast(`${p.name} got down and took back ${naira(p.fare)}. Drive gently.`, 'bad', { key: 'shift' });
+  }
+  if (st.agbero) openAgbero(sid);
+  else ui.toast(`${st.name}: ${SHIFT.waiting[sid].length} waiting. ${IS_TOUCH ? 'Tap CALL' : 'Press E to call'}.`, '', { key: 'shift' });
+}
+function callPassengers() {
+  const sid = SHIFT.atStop; if (!sid) return; const route = routeOf(), wait = SHIFT.waiting[sid];
+  SHIFT.call = pick(CALLS); floaters.push({ x: SHIFT.bus.x, y: SHIFT.bus.y - 34, text: SHIFT.call.replace(/"/g, ''), t: 1.8 }); beep([523, 659], .08, .05, 'triangle');
+  if (Math.random() < .4) wait.push(makePax(sid, route)); // shouting the route pulls in one more
+  const n = Math.min(3, wait.length, CAP - SHIFT.onboard.length);
+  if (CAP - SHIFT.onboard.length <= 0) { ui.toast('Bus full! Move on.', 'good', { key: 'shift' }); return; }
+  if (!n) { ui.toast('Nobody else waiting here.', '', { key: 'shift' }); return; }
+  const st0 = BUS_STOPS[sid]; let k = 0;
+  for (const p of wait.splice(0, n)) {
+    p.state = 'board'; SHIFT.onboard.push(p); SHIFT.fares += p.fare; floaters.push({ x: st0.wx + 40, y: st0.wy - 18 - 15 * k++, text: '+' + naira(p.fare), t: 1.4 });
+    if (p.note > p.fare) {
+      const right = p.note - p.fare, opts = new Set([right]);
+      for (const d of [100, -100, 200, -200, 50]) { if (opts.size >= 3) break; if (right + d > 0) opts.add(right + d); }
+      SHIFT.changeQ.push({ p, right, opts: [...opts].sort(() => Math.random() - .5) });
     }
-    S.jobs++; SHIFT.next = (SHIFT.next + 1) % SHIFT_STOPS.length; SHIFT.leg = 0; SHIFT.rough = 0; SHIFT.call = pick(CALLS);
-  } else SHIFT.hold = 0;
+  }
+}
+function answerChange(choice) { // choice: amount given, or -1 for "No change"
+  const q = SHIFT.changeQ.shift(); if (!q) return;
+  if (choice === q.right) { if (Math.random() < .5) { SHIFT.tips += 50; floaters.push({ x: SHIFT.bus.x, y: SHIFT.bus.y - 40, text: '"Thank you o!" +₦50', t: 1.4 }); } }
+  else if (choice === -1) { SHIFT.keep += q.right; S.integ = clamp(S.integ - 3, -100, 100); SHIFT.comfort = Math.max(0, SHIFT.comfort - 15);
+    floaters.push({ x: SHIFT.bus.x, y: SHIFT.bus.y - 40, text: `"${q.p.name}: Conductor, where my change?!"`, t: 2 }); if (Math.random() < .2) post('nochange'); }
+  else if (choice > q.right) { SHIFT.penalties += choice - q.right; floaters.push({ x: SHIFT.bus.x, y: SHIFT.bus.y - 40, text: `Gave ${naira(choice - q.right)} too much`, t: 1.6 }); }
+  else { SHIFT.keep += q.right - choice; S.integ = clamp(S.integ - 2, -100, 100); SHIFT.comfort = Math.max(0, SHIFT.comfort - 10);
+    floaters.push({ x: SHIFT.bus.x, y: SHIFT.bus.y - 40, text: `"${q.p.name}: My change no complete!"`, t: 2 }); }
+}
+function depart() {
+  SHIFT.changeQ = []; // drove off mid-change: you paid out correctly, but nobody tips a rushed conductor
+  const route = routeOf();
+  if (SHIFT.onboard.length >= CAP) { SHIFT.bonus += 500; ui.toast('Full bus! +₦500 bonus.', 'good', { key: 'shift' }); if (Math.random() < .3) post('fullbus'); }
+  SHIFT.idx = (route.stops.indexOf(SHIFT.atStop) + 1) % route.stops.length; SHIFT.atStop = null; SHIFT.near = false;
+}
+function missStop(sid, why) {
+  const route = routeOf(), st = BUS_STOPS[sid], off = SHIFT.onboard.filter(p => p.dest === sid);
+  SHIFT.missed++; SHIFT.penalties += 100; // late / missed-stop fine from the owner
+  for (const p of off) { SHIFT.onboard = SHIFT.onboard.filter(q => q !== p); SHIFT.penalties += p.fare; SHIFT.comfort = Math.max(0, SHIFT.comfort - 10); }
+  ui.toast(`You ${why} ${st.name}! ${off.length ? `${off.length} passenger${off.length > 1 ? 's' : ''} took back their fare. ` : ''}-₦100 missed-stop fine.`, 'bad', { key: 'shift' });
+  SHIFT.idx = (route.stops.indexOf(sid) + 1) % route.stops.length; SHIFT.near = false;
+}
+function openAgbero(sid) {
+  const st = BUS_STOPS[sid], mult = SHIFT.demand[sid] || 1; let amt = st.agbero * mult;
+  const respect = OUTFITS.find(o => o.id === S.outfit).respect;
+  const view = (line, canHaggle) => showSheet(`<h3>Agbero at ${st.name}</h3><p>${line}</p><p class="muted">Park touts want their "ticket" before you load. ${mult > 1 ? 'They remember you drove off last time.' : ''}</p>
+    <div class="btns">
+      <button class="btn primary" type="button" data-a="pay">Pay ${naira(amt)}</button>
+      ${canHaggle ? `<button class="btn" type="button" data-a="haggle">Negotiate<small>Cred and a good outfit help</small></button>` : ''}
+      <button class="btn danger" type="button" data-a="off">Drive off<small>No ticket. Raises heat.</small></button>
+    </div>`, el => el.querySelectorAll('[data-a]').forEach(b => b.onclick = () => {
+      const a = b.dataset.a;
+      if (a === 'pay') { SHIFT.agbero += amt; SHIFT.demand[sid] = 1; closeOverlays(); ui.toast(`Paid ${naira(amt)} ticket. "Load well, driver!"`, '', { key: 'shift' }); }
+      else if (a === 'haggle') {
+        if (Math.random() < .35 + S.cred / 400 + respect / 100) { amt = Math.round(amt / 2 / 50) * 50; SHIFT.agbero += amt; closeOverlays(); ui.toast(`"Ok, ${naira(amt)}. Next time no story." Paid.`, 'good', { key: 'shift' }); }
+        else { amt = Math.round(amt * 1.5 / 50) * 50; view(`"You dey form big man? Now na ${naira(amt)}!"`, false); }
+      } else {
+        closeOverlays(); SHIFT.demand[sid] = mult * 2; SHIFT.comfort = Math.max(0, SHIFT.comfort - 10);
+        floaters.push({ x: st.x, y: st.y - 30, text: '"Driver! Come back here!"', t: 2 }); addHeat(1); post('agbero', { stop: st.name });
+        // no loading at a stop you just ran from
+        SHIFT.atStop = null; SHIFT.idx = (routeOf().stops.indexOf(sid) + 1) % routeOf().stops.length;
+      }
+    }));
+  view(`"Driver! Ticket. ${naira(amt)}. Na for the boys."`, true);
+}
+function shiftTotals() {
+  const v = SHIFT.bus, damage = Math.max(0, Math.round((SHIFT.hpStart - (v ? Math.max(0, v.hp) : SHIFT.hpStart)) * DAMAGE_COST));
+  const cut = SHIFT.owner ? Math.round(SHIFT.fares * OWNER_CUT) : 0;
+  const net = SHIFT.fares + SHIFT.tips + SHIFT.bonus + SHIFT.keep - SHIFT.penalties - SHIFT.agbero - damage - cut;
+  return { fares: SHIFT.fares, tips: SHIFT.tips, bonus: SHIFT.bonus, keep: SHIFT.keep, penalties: SHIFT.penalties, agbero: SHIFT.agbero, damage, cut, net };
+}
+function openShiftMenu() {
+  const t = shiftTotals();
+  showSheet(`<h3>${esc(routeOf().name)}</h3><p class="muted">Seats ${SHIFT.onboard.length}/${CAP} · bag ${naira(SHIFT.fares + SHIFT.tips + SHIFT.bonus + SHIFT.keep)} · comfort ${Math.round(SHIFT.comfort)}% · if you stopped now you'd take home <b style="color:var(--ink)">${naira(t.net)}</b>.</p>
+    <div class="btns"><button class="btn primary" type="button" data-a="go">Keep driving</button><button class="btn" type="button" data-a="end">End shift & settle up</button></div>`,
+    el => { el.querySelector('[data-a="go"]').onclick = closeOverlays; el.querySelector('[data-a="end"]').onclick = () => { closeOverlays(); endShift(); }; });
+}
+function endShift() {
+  if (!SHIFT.on) return; const t = shiftTotals(), routeName = routeOf().name; SHIFT.on = false;
+  // anyone still on board gets down; their fares were already collected
+  SHIFT.carried += SHIFT.onboard.length; S.jobs += SHIFT.onboard.length; SHIFT.onboard = [];
+  const paid = t.net >= 0 ? t.net : -Math.min(S.cash, -t.net); if (paid) earn(paid, 'Conductor shift');
+  const row = (k, val, cls = '') => `<div style="display:flex;justify-content:space-between;gap:12px" class="${cls}"><span>${k}</span><b style="font-family:var(--mono)">${val}</b></div>`;
+  const neg = n => n ? '−' + naira(n) : naira(0);
+  WORLD.lastSummary = Object.assign({ carried: SHIFT.carried, missed: SHIFT.missed, paid }, t);
+  showSheet(`<h3>Shift summary</h3><p class="muted">${esc(routeName)} · ${SHIFT.carried} passengers carried · ${SHIFT.missed} missed stop${SHIFT.missed === 1 ? '' : 's'}</p>
+    <div style="display:grid;gap:6px;font-size:14px">
+      ${row('Fares collected', naira(t.fares))}${row('Tips', naira(t.tips))}${row('Full-bus bonus', naira(t.bonus))}
+      ${t.keep ? row('Change you "forgot" to give', naira(t.keep)) : ''}
+      ${row('Refunds & missed-stop fines', neg(t.penalties))}${row('Agbero tickets', neg(t.agbero))}
+      ${row('Damage to the bus', neg(t.damage))}${row(SHIFT.owner ? `Owner's cut (${SHIFT.owner}, ${OWNER_CUT * 100}%)` : "Owner's cut (stolen bus)", neg(t.cut))}
+      <div style="border-top:1px solid var(--line);margin-top:4px;padding-top:8px">${row('Take-home', (t.net < 0 ? '−' : '') + naira(Math.abs(t.net)))}</div>
+    </div><button class="btn primary" type="button" data-x>Collect</button>`, el => el.querySelector('[data-x]').onclick = closeOverlays);
+  save();
+}
+function updateShift(dt) {
+  // passengers walking to / from the bus
+  for (const p of (SHIFT.alighting || [])) { p.t -= dt; const dx = p.tx - p.x, dy = p.ty - p.y, m = Math.hypot(dx, dy); if (m > 2) { p.x += dx / m * 45 * dt; p.y += dy / m * 45 * dt; } }
+  if (SHIFT.alighting) SHIFT.alighting = SHIFT.alighting.filter(p => p.t > 0);
+  if (MS.cur && MS.cur.stops) for (const st of MS.cur.stops) lineUp(st.pax, st.id, dt);
+  if (!SHIFT.on) return; const v = player.veh;
+  if (!v || v !== SHIFT.bus) return endShift();
+  for (const id of routeOf().stops) lineUp(SHIFT.waiting[id], id, dt);
+  for (const p of SHIFT.onboard) if (p.state === 'board') { const dx = v.x - p.x, dy = v.y - p.y, m = Math.hypot(dx, dy); if (m < 10) p.state = 'ride'; else { p.x += dx / m * 70 * dt; p.y += dy / m * 70 * dt; } }
+  // comfort: hard acceleration/braking and fast cornering upset passengers; smooth driving calms them
+  const acc = Math.abs(v.v - SHIFT.lastV) / Math.max(dt, 1e-4), lat = Math.abs(v.v * wrapA(v.a - SHIFT.lastA)) / Math.max(dt, 1e-4);
+  SHIFT.lastV = v.v; SHIFT.lastA = v.a;
+  const rough = Math.max(0, (acc - 280) / 280) + Math.max(0, (lat - 200) / 200); // 0 = smooth; 1 = a hard stop or a fast swerve
+  if (SHIFT.onboard.length) SHIFT.comfort = clamp(SHIFT.comfort + (rough > 0 ? -Math.min(3, rough) * 60 : 1.5) * dt, 0, 100);
+  // waiting passengers slowly build up again at the other stops
+  SHIFT.refill -= dt; const route = routeOf();
+  if (SHIFT.refill <= 0) { SHIFT.refill = 10; for (const id of route.stops) if (id !== SHIFT.atStop && SHIFT.waiting[id].length < route.busy) SHIFT.waiting[id].push(makePax(id, route)); }
+  if (SHIFT.atStop) { if (Math.abs(v.v) > 25 && dist(v, BUS_STOPS[SHIFT.atStop]) > 70) depart(); return; }
+  const sid = route.stops[SHIFT.idx], st = BUS_STOPS[sid], d = dist(v, st), slow = Math.abs(v.v) < 15;
+  if (d < 46 && slow) return arrive(sid);
+  // stopping at one of the next two stops on the route skips the one(s) in between
+  for (let k = 1; k <= Math.min(2, route.stops.length - 1); k++) {
+    const j = (SHIFT.idx + k) % route.stops.length, o = BUS_STOPS[route.stops[j]];
+    if (slow && dist(v, o) < 46) { for (let m = 0; m < k; m++) missStop(route.stops[(SHIFT.idx) % route.stops.length], 'skipped'); return arrive(o.id); }
+  }
+  if (d < 90) SHIFT.near = true;
+  else if (SHIFT.near && d > 170) missStop(sid, 'drove past');
 }
 
 // ---------------------------------------------------------------- player
@@ -1154,8 +1385,8 @@ function enterVehicle(v) {
     if (v.driver === 'flee') return;
     peds.push({ x: v.x + 20, y: v.y + 20, a: 0, tx: v.x, ty: v.y, spd: 40, col: '#f3eee4', state: 'flee', t: 5 });
     floaters.push({ x: v.x, y: v.y - 24, text: pick(['Thief! Thief!', 'Ah! My motor!', 'Somebody help!']), t: 1.6 });
-    report(v.driver === 'cop' ? 'AttackOnResponder' : 'VehicleTheft', v, 1);
-  } else if (!v.mission && v !== player.owned) report('VehicleTheft', v, .5);
+    report(v.driver === 'cop' ? 'AttackOnResponder' : 'VehicleTheft', v, 1); v.stolen = true;
+  } else if (!v.mission && v !== player.owned && !v.parkDanfo) { report('VehicleTheft', v, .5); v.stolen = true; }
   v.driver = 'player'; player.veh = v; player.owned = v;
 }
 function exitVehicle() {
@@ -1196,13 +1427,15 @@ function updatePlayer(dt) {
 // What E / ACTION / tapping the prompt would do right now, in priority order.
 function nearStation() { const v = player.veh; if (!v) return null; return STATIONS.find(st => dist(st, v) < 56) || null; }
 function actionContext() {
+  if (SHIFT.on && SHIFT.atStop && player.veh === SHIFT.bus) return { label: CAP - SHIFT.onboard.length ? `Call passengers (${SHIFT.waiting[SHIFT.atStop].length} waiting)` : 'Bus full: drive on', run: callPassengers };
   const giver = !MS.cur && worldMarkers().find(m => m.giver && dist(player.pos(), m) < 44);
   if (giver) return { label: `Start “${MISSIONS[giver.giver].title}”`, run: () => startMission(giver.giver) };
   const st = nearStation(), v = player.veh;
   if (st && v.fuel < 99) { const cost = Math.ceil((100 - v.fuel) * FUEL_PRICE); return { label: Math.abs(v.v) > 25 ? `Stop to refuel · ${naira(cost)}` : `Refuel · ${naira(cost)}`, run: () => refuel(v) }; }
   if (!v && nearPlace(PL.tailor, 30)) return { label: 'Balo Tailor', run: openTailor };
   if (!v && nearPlace(PL.carwash, 30)) return { label: 'Mainland Shine Car Wash', run: openCarWash };
-  if (v && v.type === 'danfo' && !MS.cur) return { label: SHIFT.on ? 'End conductor shift' : 'Start conductor shift', run: () => SHIFT.on ? endShift() : startShift() };
+  if (v && v.type === 'danfo' && !MS.cur && !SHIFT.on) return { label: 'Start conductor shift', run: openRoutePicker };
+  if (SHIFT.on && v === SHIFT.bus) return { label: 'Conductor shift menu', run: openShiftMenu };
   return null;
 }
 function refuel(v) {
@@ -1405,6 +1638,15 @@ function renderMap() {
   for (let x = 48 * CELL; x < 64 * CELL; x += 64) { L.fillStyle = 'rgba(255,200,120,.55)'; L.beginPath(); L.arc(x, 24 * CELL, 14, 0, 7); L.arc(x + 32, 26 * CELL, 14, 0, 7); L.fill(); }
   // street lamps
   for (let r = 0; r < ROWS; r += 3) for (let c = 0; c < COLS; c += 3) if (grid[I(c, r)] === T.SIDE && hash(c + 99, r) > .55) { const grd = L.createRadialGradient(cc(c), cc(r), 0, cc(c), cc(r), 40); grd.addColorStop(0, 'rgba(255,190,100,.45)'); grd.addColorStop(1, 'rgba(255,190,100,0)'); L.fillStyle = grd; L.fillRect(cc(c) - 40, cc(r) - 40, 80, 80); }
+  // bus stop shelters with a yellow BUS sign, on the pavement where passengers wait
+  for (const st of Object.values(BUS_STOPS)) {
+    const sx = st.wx, sy = st.wy, horiz = Math.abs(st.wy - st.y) > Math.abs(st.wx - st.x);
+    g.fillStyle = 'rgba(0,0,0,.3)'; g.fillRect(sx - (horiz ? 22 : 7) + 2, sy - (horiz ? 7 : 22) + 2, horiz ? 44 : 14, horiz ? 14 : 44);
+    g.fillStyle = '#3b4a57'; g.fillRect(sx - (horiz ? 22 : 7), sy - (horiz ? 7 : 22), horiz ? 44 : 14, horiz ? 14 : 44);
+    g.fillStyle = '#f5c400'; g.fillRect(sx + (horiz ? 24 : -5), sy + (horiz ? -5 : 24), 10, 10);
+    g.fillStyle = '#1b1600'; g.font = '700 6px sans-serif'; g.textAlign = 'center'; g.fillText('BUS', sx + (horiz ? 29 : 0), sy + (horiz ? 2 : 31));
+    L.fillStyle = 'rgba(255,240,200,.5)'; L.fillRect(sx - (horiz ? 20 : 5), sy - (horiz ? 5 : 20), horiz ? 40 : 10, horiz ? 10 : 40);
+  }
   // petrol stations: canopy, pumps, sign
   for (const st of STATIONS) {
     const x = st.c * CELL, y = st.r * CELL;
@@ -1463,6 +1705,35 @@ function drawPerson(x, y, col, down, me) {
   ctx.fillStyle = '#3b2418'; ctx.beginPath(); ctx.arc(x, y, me ? 3.5 : 2.5, 0, 7); ctx.fill();
   if (me) { ctx.strokeStyle = '#f5c400'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 10, 0, 7); ctx.stroke(); }
 }
+// Passengers waiting for a danfo: bigger than street pedestrians, bright wrappers, a raised hand that
+// waves, and a white fare bubble. Deliberately unlike crates, markers or other pickups.
+function drawPax(p, t, bubble = true) {
+  const wave = p.state === 'wait' ? Math.sin(t * 6 + p.phase) * .35 : 0;
+  ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.beginPath(); ctx.ellipse(p.x + 2, p.y + 4, 7, 5, 0, 0, 7); ctx.fill();
+  ctx.fillStyle = p.col; ctx.beginPath(); ctx.ellipse(p.x, p.y + 1, 7, 6, 0, 0, 7); ctx.fill();
+  ctx.fillStyle = '#3b2418'; ctx.beginPath(); ctx.arc(p.x, p.y - 2, 3.6, 0, 7); ctx.fill();
+  if (p.tie) { ctx.fillStyle = p.tie; ctx.beginPath(); ctx.arc(p.x, p.y - 3, 4, Math.PI, 2 * Math.PI); ctx.fill(); }
+  if (p.state === 'wait') { // raised arm + hand
+    const ax = p.x + 5 + Math.sin(wave) * 4, ay = p.y - 13 + Math.abs(wave) * 2;
+    ctx.strokeStyle = '#3b2418'; ctx.lineWidth = 2.2; ctx.beginPath(); ctx.moveTo(p.x + 4, p.y - 1); ctx.lineTo(ax, ay); ctx.stroke();
+    ctx.fillStyle = '#f5c400'; ctx.beginPath(); ctx.arc(ax, ay - 1, 2.8, 0, 7); ctx.fill();
+  }
+  if (bubble && p.state === 'wait') {
+    const txt = '₦' + p.fare, w = 30, x = p.x - w / 2, y = p.y - 28 - ((p.slot || 0) % 2) * 13;
+    ctx.fillStyle = '#fffdf5'; ctx.beginPath(); ctx.roundRect(x, y, w, 12, 6); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(p.x - 3, y + 12); ctx.lineTo(p.x, p.y - 12); ctx.lineTo(p.x + 3, y + 12); ctx.fill();
+    ctx.fillStyle = '#1b1600'; ctx.font = '700 9px "JetBrains Mono", monospace'; ctx.textAlign = 'center'; ctx.fillText(txt, p.x, y + 9);
+  }
+}
+function drawAgbero(st, t) {
+  const x = st.wx + (Math.abs(st.wy - st.y) > Math.abs(st.wx - st.x) ? 34 : 0), y = st.wy + (Math.abs(st.wy - st.y) > Math.abs(st.wx - st.x) ? 0 : 34);
+  ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.beginPath(); ctx.ellipse(x + 2, y + 4, 8, 5, 0, 0, 7); ctx.fill();
+  ctx.fillStyle = '#7f1d1d'; ctx.beginPath(); ctx.arc(x, y + 1, 7.5, 0, 7); ctx.fill();
+  ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(x, y - 2, 4, 0, 7); ctx.fill();
+  ctx.fillStyle = '#f5c400'; ctx.fillRect(x - 4, y - 7, 8, 3); // cap
+  ctx.strokeStyle = '#8d6e63'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(x + 6, y + 4); ctx.lineTo(x + 14, y - 8 + Math.sin(t * 3) * 2); ctx.stroke(); // stick
+  ctx.font = '700 9px "Bricolage Grotesque", sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#000'; ctx.fillText('AGBERO', x + 1, y + 19); ctx.fillStyle = '#ff8a80'; ctx.fillText('AGBERO', x, y + 18);
+}
 function drawMarker(x, y, r, color, t, label) {
   const pulse = 1 + Math.sin(t * 4) * .08;
   ctx.fillStyle = color.replace('1)', '.14)'); ctx.beginPath(); ctx.arc(x, y, r * pulse, 0, 7); ctx.fill();
@@ -1474,7 +1745,8 @@ function worldMarkers() {
   const Y = 'rgba(245,196,0,1)', B = 'rgba(53,179,181,1)', R = 'rgba(240,90,80,1)';
   if (MS.cur) for (const m of objTargets(MS.cur)) list.push({ x: m.x, y: m.y, r: m.r, color: m.enemy ? R : Y, obj: true, label: m.stop ? 'BUS' : '' });
   else for (const id of ORDER) if (available(id)) { const g = GIVER_AT[MISSIONS[id].giver]; if (!list.some(l => l.x === g.x && l.y === g.y)) list.push({ x: g.x, y: g.y, r: 26, color: Y, label: CONTACTS[MISSIONS[id].giver][0], giver: id }); }
-  if (SHIFT.on) { const s = SHIFT_STOPS[SHIFT.next]; list.push({ x: s.x, y: s.y, r: 44, color: Y, label: 'BUS', obj: true }); }
+  if (SHIFT.on) { const r = routeOf(); r.stops.forEach((id, i) => { const st = BUS_STOPS[id], next = i === SHIFT.idx && !SHIFT.atStop;
+    list.push({ x: st.x, y: st.y, r: next ? 46 : 22, color: next ? Y : 'rgba(245,196,0,.45)', label: next ? 'BUS' : '', obj: next, stop: true }); }); }
   list.push({ x: PL.tailor.x, y: PL.tailor.y, r: 18, color: B, label: 'T' }); list.push({ x: PL.carwash.x, y: PL.carwash.y, r: 18, color: B, label: '$' });
   return list;
 }
@@ -1485,7 +1757,8 @@ function render(t) {
   camX = lerp(camX, p.x + lookX, .12); camY = lerp(camY, p.y + lookY, .12);
   const hx = VW / zoom / 2, hy = VH / zoom / 2;
   camX = hx * 2 >= WW ? WW / 2 : clamp(camX, hx, WW - hx); camY = hy * 2 >= WH ? WH / 2 : clamp(camY, hy, WH - hy);
-  const s = DPR * zoom; const sx = (Math.random() - .5) * shake, sy = (Math.random() - .5) * shake; shake *= .85;
+  // screen shake uses its own generator so drawing never changes gameplay randomness
+  const s = DPR * zoom; const sx = (vrand() - .5) * shake, sy = (vrand() - .5) * shake; shake = shake > .05 ? shake * .85 : 0;
   ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = '#0f1216'; ctx.fillRect(0, 0, cv.width, cv.height);
   ctx.setTransform(s, 0, 0, s, cv.width / 2 - camX * s + sx, cv.height / 2 - camY * s + sy);
   const hw = VW / zoom / 2 + 60, hh = VH / zoom / 2 + 60, x0 = camX - hw, y0 = camY - hh, x1 = camX + hw, y1 = camY + hh;
@@ -1495,6 +1768,12 @@ function render(t) {
   const marks = worldMarkers(); for (const m of marks) if (vis(m)) drawMarker(m.x, m.y, m.r, m.color, t, m.label);
   for (const it of items) if (vis(it)) { ctx.fillStyle = it.kind === 'bag' ? '#2e7d32' : '#8d6e63'; ctx.fillRect(it.x - 7, it.y - 7, 14, 14); ctx.strokeStyle = '#f5c400'; ctx.lineWidth = 2; ctx.strokeRect(it.x - 7, it.y - 7, 14, 14); }
   for (const q of peds) if (vis(q)) drawPerson(q.x, q.y, q.col, q.state === 'down');
+  // passengers: waiting at shift stops / mission stops, walking to the bus, getting down
+  if (SHIFT.on) { for (const id of routeOf().stops) { const st = BUS_STOPS[id]; if (!vis({ x: st.wx, y: st.wy })) continue;
+      SHIFT.waiting[id].forEach((p, i) => drawPax(p, t, i < 4)); if (st.agbero) drawAgbero(st, t); }
+    for (const p of SHIFT.onboard) if (p.state === 'board' && vis(p)) drawPax(p, t, false); }
+  if (MS.cur && MS.cur.stops) for (const s of MS.cur.stops) for (const p of s.pax || []) if (vis(p)) drawPax(p, t);
+  for (const p of SHIFT.alighting || []) if (vis(p)) { ctx.globalAlpha = clamp(p.t, 0, 1); drawPax(p, t, false); ctx.globalAlpha = 1; }
   const night = darkness() > .2;
   for (const v of vehicles) if (vis(v)) drawVehicle(v, night);
   if (!player.veh) drawPerson(player.x, player.y, OUTFITS.find(o => o.id === S.outfit).color, false, true);
@@ -1554,6 +1833,8 @@ function drawMinimap(canvas, big) {
   if (darkness() > 0) { m.fillStyle = `rgba(4,8,26,${darkness() * .6})`; m.fillRect(0, 0, W2, H2); }
   const dot = (x, y, r, c) => { m.fillStyle = c; m.beginPath(); m.arc(x * k, y * k, r, 0, 7); m.fill(); };
   for (const mk of worldMarkers()) dot(mk.x, mk.y, big ? 8 : 6, mk.color.startsWith('rgba(53') ? '#35b3b5' : mk.color.startsWith('rgba(240') ? '#f05a50' : '#f5c400');
+  if (JAMMED.size) { m.strokeStyle = 'rgba(240,90,80,.9)'; m.lineWidth = big ? 4 : 3; m.beginPath();
+    for (const e of JAMMED) { const [a, b] = e.split('-').map(Number); if (a > b) continue; m.moveTo(nodes[a].x * k, nodes[a].y * k); m.lineTo(nodes[b].x * k, nodes[b].y * k); } m.stroke(); }
   for (const st of STATIONS) { m.fillStyle = '#2f8f5b'; m.fillRect(st.x * k - (big ? 6 : 4), st.y * k - (big ? 6 : 4), big ? 12 : 8, big ? 12 : 8); m.fillStyle = '#fff'; m.font = `700 ${big ? 10 : 7}px sans-serif`; m.textAlign = 'center'; m.fillText('F', st.x * k, st.y * k + (big ? 4 : 2.5)); }
   for (const v of vehicles) if (v.driver === 'cop') dot(v.x, v.y, big ? 5 : 4, (performance.now() / 200 | 0) % 2 ? '#4cc874' : '#2979ff');
   if (stars() > 0 && !WANT.seen) { m.strokeStyle = 'rgba(240,90,80,.8)'; m.lineWidth = 2; m.beginPath(); m.arc(WANT.last.x * k, WANT.last.y * k, 140 * k * 2, 0, 7); m.stroke(); }
@@ -1570,7 +1851,7 @@ function updateHud(dt) {
   $('#clock').textContent = clockStr() + '  ·  Day ' + (Math.floor(S.minutes / 1440) + 1);
   const d = districtAt(player.pos().x, player.pos().y); if (d !== lastDistrict) { lastDistrict = d; $('#district').textContent = d.toUpperCase(); }
   $('#radio').textContent = WORLD.radio >= 0 && player.veh ? '♫ ' + RADIO[WORLD.radio].name : player.veh ? '♫ Radio off' : '';
-  updateJobCard(); placeCard();
+  updateJobCard(); updateConductorPanel(); placeCard();
   const v = player.veh;
   $('#veh').textContent = v ? VT[v.type].name : 'On foot';
   $('#speed').hidden = !v; if (v) $('#speed').innerHTML = Math.round(Math.abs(v.v) * .42) + '<small>km/h</small>';
@@ -1580,18 +1861,41 @@ function updateHud(dt) {
     $('#fbar i').style.width = clamp(v.fuel, 0, 100) + '%'; $('#fbar i').style.background = v.fuel < 15 ? 'var(--bad)' : 'var(--danfo)'; $('#fval').textContent = Math.round(v.fuel) + '%';
     const body = clamp(v.hp / VT[v.type].hp * 100, 0, 100); $('#vbar i').style.width = body + '%'; $('#dval').textContent = Math.round(body) + '%';
   }
-  const hs = $('#hustle'); hs.hidden = !SHIFT.on; if (SHIFT.on) hs.innerHTML = `<b>Danfo Conductor</b> · streak ×${SHIFT.streak} · ${naira(SHIFT.earned)}<br>${esc(SHIFT.call)}`;
+  const hs = $('#hustle'); hs.hidden = !SHIFT.on;
+  if (SHIFT.on) { const c = Math.round(SHIFT.comfort);
+    hs.innerHTML = `<b>Seats ${SHIFT.onboard.length}/${CAP}</b> · bag ${naira(SHIFT.fares + SHIFT.tips + SHIFT.bonus + SHIFT.keep)}<br>Comfort <span style="color:${c < 30 ? 'var(--bad)' : c < 60 ? 'var(--danfo)' : 'var(--good)'}">${c}%</span>${SHIFT.missed ? ` · missed ${SHIFT.missed}` : ''}`; }
   // context prompt (a tappable pill)
   const pr = $('#prompt'), kb = !IS_TOUCH; let msg = ''; promptAct = null;
   const ctxA = actionContext();
   if (ctxA) { msg = kb ? `<kbd>E</kbd>${esc(ctxA.label)}` : `Tap · ${esc(ctxA.label)}`; promptAct = 'action'; }
   else if (!v) { const n = nearestVehicle(); if (n && n.driver !== 'flee') { const verb = (n.driver === 'ai' || n.driver === 'cop' ? 'Steal ' : 'Enter ') + VT[n.type].name; msg = kb ? `<kbd>E</kbd>${verb}` : `Tap · ${verb}`; promptAct = 'enter'; } }
+  if (SHIFT.on && SHIFT.atStop && player.veh === SHIFT.bus) msg = ''; // the conductor panel has its own CALL button
   pr.hidden = !msg; if (msg && pr.innerHTML !== msg) pr.innerHTML = msg;
   $('#tb-enter').textContent = v ? 'EXIT' : 'ENTER'; $('#tb-enter').classList.toggle('hot', !v && !!nearestVehicle());
   $('#tb-action').classList.toggle('hot', !!ctxA);
   $('#tb-gas').textContent = v ? 'GAS' : 'RUN'; $('#tb-brake').classList.toggle('off', !v);
   hudT -= dt; if (hudT <= 0) { hudT = .1; drawMinimap($('#minimap'), false); }
 }
+
+// Conductor panel: visible while the bus is stopped at a route stop.
+let cpSig = '';
+function updateConductorPanel() {
+  const show = SHIFT.on && !!SHIFT.atStop && player.veh === SHIFT.bus && !WORLD.paused, c = $('#cpanel');
+  c.hidden = !show; if (!show) { cpSig = ''; return; }
+  const st = BUS_STOPS[SHIFT.atStop], q = SHIFT.changeQ[0], free = CAP - SHIFT.onboard.length;
+  const sig = [st.id, SHIFT.waiting[st.id].length, SHIFT.onboard.length, q ? q.p.id : 0].join('|'); if (sig === cpSig) return; cpSig = sig;
+  $('#cp-stop').textContent = st.name.toUpperCase();
+  $('#cp-info').textContent = `${SHIFT.waiting[st.id].length} waiting · ${SHIFT.onboard.length}/${CAP}`;
+  $('#cp-change').hidden = !q;
+  if (q) {
+    $('#cp-q').innerHTML = `<b>${esc(q.p.name)}</b> pays ${naira(q.p.note)} for a ${naira(q.p.fare)} fare. How much change?`;
+    $('#cp-opts').innerHTML = q.opts.map((o, i) => `<button type="button" data-c="${o}">${IS_TOUCH ? '' : (i + 1) + ' · '}${naira(o)}</button>`).join('') + `<button type="button" class="nc" data-c="-1">${IS_TOUCH ? '' : '4 · '}No change</button>`;
+    $('#cp-opts').querySelectorAll('button').forEach(b => b.onclick = () => { answerChange(+b.dataset.c); cpSig = ''; });
+  }
+  const call = $('#cp-call'); call.disabled = !free || !SHIFT.waiting[st.id].length;
+  call.textContent = !free ? 'BUS FULL · DRIVE ON' : SHIFT.waiting[st.id].length ? (IS_TOUCH ? 'CALL PASSENGERS' : 'E · CALL PASSENGERS') : 'NOBODY WAITING · DRIVE ON';
+}
+$('#cp-call').addEventListener('click', () => { if (SHIFT.on && SHIFT.atStop) { callPassengers(); cpSig = ''; } });
 
 // Job card: compact (title + distance); tap to expand; auto-collapses after 4s. It also pops open for
 // 4s whenever the objective changes, so a new instruction is never missed.
@@ -1605,7 +1909,9 @@ function updateJobCard() {
     const ts = objTargets(ms); if (ts.length) target = ts.reduce((a, b) => dist(a, p) < dist(b, p) ? a : b);
     more = [o.sub, ms.def.bonus ? `Bonus: ${ms.def.bonus}${ms.bonusFail ? ' (missed)' : ''}` : ''].filter(Boolean).join(' · ');
     if (o.time) timer = Math.floor(ms.timer / 60) + ':' + String(Math.floor(ms.timer % 60)).padStart(2, '0');
-  } else if (SHIFT.on) { title = 'Conductor shift'; line = 'Drive to the next bus stop'; target = SHIFT_STOPS[SHIFT.next]; more = 'Smooth driving and being on time raise each fare.'; }
+  } else if (SHIFT.on) { const r = routeOf(), st = BUS_STOPS[SHIFT.atStop || r.stops[SHIFT.idx]];
+    title = r.name; line = SHIFT.atStop ? `At ${st.name}` : `Next stop: ${st.name}`; target = SHIFT.atStop ? null : st;
+    more = `Stop at each yellow BUS stop, ${IS_TOUCH ? 'tap CALL' : 'press E'} to load, give the right change. Full bus pays ₦500. Driving past a stop costs you.`; }
   else { const next = ORDER.find(available);
     if (next) { const m = MISSIONS[next]; title = 'Next job'; line = m.title; target = GIVER_AT[m.giver];
       more = `From <b>${CONTACTS[m.giver]}</b>. ${IS_TOUCH ? 'Go to the yellow marker and tap the prompt' : 'Go to the yellow marker and press E'}, or accept it in your phone.`; }
@@ -1638,13 +1944,13 @@ function update(dt) {
     const hr = Math.floor(S.minutes / 60);
     if (hr !== WORLD.hour) {
       WORLD.hour = hr; const h = hr % 24;
-      if (WORLD.goSlow && S.minutes > WORLD.goSlow) { WORLD.goSlow = 0; ui.toast('Go-slow on the bridge is clearing.'); }
-      if (!WORLD.goSlow && h >= 6 && h < 21 && Math.random() < .35) { WORLD.goSlow = S.minutes + 120; ui.toast('Go-slow on Third Lagoon Bridge!', 'bad'); post('goslow'); }
+      updateJams();
       if (S.biz.owned) S.biz.box = Math.min(60000, S.biz.box + 9000 / 24);
     }
     if (IN.phone()) openPhone();
     if (hit('KeyR', 'T_radio') && player.veh) { WORLD.radio = WORLD.radio + 1 >= RADIO.length ? -1 : WORLD.radio + 1; if (WORLD.radio >= 0) ui.toast(RADIO[WORLD.radio].name + ' — ' + pick(RADIO[WORLD.radio].bump), '', { key: 'radio' }); else ui.toast('Radio off', '', { key: 'radio' }); }
     if (IN.action()) { const c = actionContext(); if (c) { c.run(); pressed.delete('KeyE'); pressed.delete('T_action'); } }
+    if (SHIFT.on && SHIFT.changeQ.length) { const q = SHIFT.changeQ[0]; ['Digit1', 'Digit2', 'Digit3'].forEach((k, i) => { if (hit(k) && q.opts[i] != null && SHIFT.changeQ[0] === q) answerChange(q.opts[i]); }); if (hit('Digit4') && SHIFT.changeQ[0] === q) answerChange(-1); }
     if (!WORLD.paused) {
       updatePlayer(dt);
       for (const v of vehicles) { if (v === player.veh) continue; if (v.driver === 'ai') aiTraffic(v, dt); else if (v.driver === 'cop') aiCop(v, dt); else if (v.driver === 'flee') aiFlee(v, dt); else drive(v, 0, 0, true, dt); }
@@ -1672,18 +1978,18 @@ function boot(data) {
   $('#btn-play').onclick = () => begin(false); $('#btn-new').onclick = () => begin(true);
   // seed the city so the title screen shows a living street
   for (let i = 0; i < 6; i++) { const s = roadSpotNear(player, 80, 500); spawnVehicle(pick(['danfo', 'sedan', 'keke', 'okada']), s.x, s.y, s.a, { from: s.from, to: s.to }); }
-  spawnVehicle('danfo', 200, 240, Math.PI / 2, { parked: true }); spawnVehicle('danfo', 320, 380, -Math.PI / 2, { parked: true });
+  spawnVehicle('danfo', 200, 240, Math.PI / 2, { parked: true, parkDanfo: true }); spawnVehicle('danfo', 320, 380, -Math.PI / 2, { parked: true, parkDanfo: true });
   const draw = () => renderMap();
   (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]) : Promise.resolve()).then(draw);
   requestAnimationFrame(step);
   try { window.claude?.hot?.snapshot?.(() => ({ state: S })); } catch (e) {}
-  window.NH = { S, player, vehicles: () => vehicles, MS, startMission, keys, vehBlocked, solidAt, tileAt, T, VT, spawnVehicle, roadSpotNear, nodes, playerFree, exitVehicle, stats: STATS, ui, NQ, STATIONS, actionContext, touch, pressed, JOB, labelPlacements, clearHeat, ui_card: (...a) => ui.card(...a), startShift, goSlow: () => WORLD.goSlow, JUNC,
+  window.NH = { S, player, vehicles: () => vehicles, MS, startMission, keys, vehBlocked, solidAt, tileAt, T, VT, spawnVehicle, roadSpotNear, nodes, playerFree, exitVehicle, stats: STATS, ui, NQ, STATIONS, actionContext, touch, pressed, JOB, labelPlacements, clearHeat, ui_card: (...a) => ui.card(...a), startShift, closeOverlays, jams: () => WORLD.jams, startJam, MAIN_ROADS, jammed, BUS_STOPS, ROUTES, SHIFT, arrive, callPassengers, answerChange, endShift, openRoutePicker, shiftTotals, WORLD, CAP, JUNC,
     // Test hook: run the simulation faster than real time (no rendering).
     sim(sec, each) { for (let t = 0; t < sec; t += 1 / 60) { update(1 / 60); pressed.clear(); each && each(); } },
     // Test hooks: stop the live loop from advancing the world, and reseed Math.random.
     freeze() { WORLD.started = false; },
     seed(n) { let x = n >>> 0 || 1; Math.random = () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x / 4294967296; }; },
-    resetWorld() { vehicles = []; peds = []; items = []; floaters = []; heli = null; JUNC.clear(); JWAIT.clear(); WORLD.goSlow = 0; WORLD.hour = -1; WANT.heat = 0; WANT.timer = 0; player.veh = null; player.owned = null; },
+    resetWorld() { vehicles = []; peds = []; items = []; floaters = []; heli = null; JUNC.clear(); JWAIT.clear(); WORLD.jams = []; rebuildJams(); WORLD.hour = -1; WANT.heat = 0; WANT.timer = 0; player.veh = null; player.owned = null; },
     clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
 }
 const hot = window.claude?.hot;

@@ -10,6 +10,7 @@ node p1-collisions.js   # vehicles never end up inside buildings/stalls (80 rand
 node p1-onfoot.js       # player can't walk into walls, exits land on free ground, head-on crash bounces
 node p1-traffic.js      # 20 x 60s of traffic: no overlaps, no AI crashes, junction give-way, no gridlock
 node p1-ui.js           # HUD layout on 7 screen sizes, job card, notifications, fuel, labels, controls
+node p2-conductor.js    # passengers, routes, CALL, change, comfort, full bus, missed stops, agberos, summary, go-slow
 node regression.js      # missions 1-2, chase, police still work
 ```
 Requires Node with the `playwright` package available (`NODE_PATH=$(npm root -g)` if installed globally).
