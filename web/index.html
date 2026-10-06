@@ -22,6 +22,11 @@
   --body: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
   --gut: 16px;
+  --gutL: max(16px, env(safe-area-inset-left, 0px));
+  --gutR: max(16px, env(safe-area-inset-right, 0px));
+  --mapw: 172px;
+  --btn: 58px;
+  --stick: 116px;
   --top: calc(env(safe-area-inset-top, 0px) + 12px);
   --bot: calc(env(safe-area-inset-bottom, 0px) + 14px);
   color-scheme: dark;
@@ -35,59 +40,80 @@ body { margin: 0; background: var(--night); color: var(--ink); font-family: var(
 button { font: inherit; color: inherit; cursor: pointer; }
 button:focus-visible { outline: 2px solid var(--danfo); outline-offset: 2px; }
 
-/* ---------- HUD ---------- */
+/* ---------- HUD ----------
+   Layout: one top row split into two columns that can never overlap (left: money, heat, job card;
+   right: clock, minimap, district, radio, notifications), stats bottom-left, controls bottom-right.
+   Everything is anchored to the safe area so notches and rounded corners never clip it. */
 .hud { position: fixed; pointer-events: none; z-index: 5; }
-#hud-tl { top: var(--top); left: var(--gut); display: grid; gap: 4px; }
+#hud-row { top: var(--top); left: var(--gutL); right: var(--gutR); display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--mapw); gap: 12px; align-items: start; }
+#hud-tl { display: grid; gap: 3px; justify-items: start; min-width: 0; }
+#hud-tr { display: grid; justify-items: end; gap: 5px; width: var(--mapw); min-width: 0; }
 #cash { font-family: var(--mono); font-weight: 700; font-size: 26px; letter-spacing: -0.5px;
   text-shadow: 0 2px 0 #000, 0 0 12px rgba(0,0,0,.6); font-variant-numeric: tabular-nums; }
-#cash-delta { font-family: var(--mono); font-size: 14px; font-weight: 700; height: 18px; }
+#cash-delta { font-family: var(--mono); font-size: 13px; font-weight: 700; height: 16px; }
 #stars { display: flex; gap: 2px; font-size: 22px; line-height: 1; }
 #stars span { color: rgba(255,255,255,.18); text-shadow: 0 2px 0 #000; }
 #stars span.on { color: var(--danfo); }
 #stars.flash span.on { animation: blink .5s steps(1) infinite; }
 @keyframes blink { 50% { opacity: .25; } }
-#unit { font-size: 12px; color: var(--muted); text-shadow: 0 1px 0 #000; min-height: 15px; }
+#unit { font-size: 12px; color: var(--muted); text-shadow: 0 1px 0 #000; min-height: 15px; max-width: 100%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.clip { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
 
-#hud-tr { top: var(--top); right: var(--gut); display: grid; justify-items: end; gap: 6px; }
-#clock { font-family: var(--mono); font-weight: 700; font-size: 15px; text-shadow: 0 1px 0 #000; }
-#minimap { width: 172px; height: 115px; border-radius: 10px; border: 2px solid rgba(255,255,255,.14);
-  background: #0b0e12; box-shadow: 0 6px 20px rgba(0,0,0,.5); }
-#district { font-family: var(--display); font-size: 12px; letter-spacing: .5px; color: var(--danfo);
-  text-shadow: 0 1px 0 #000; text-align: right; }
-#radio { font-size: 12px; color: var(--muted); pointer-events: auto; background: none; border: 0; padding: 2px 0; text-shadow: 0 1px 0 #000; }
+/* Job card: compact (title + distance), tap to expand, auto-collapses */
+#job { pointer-events: auto; margin-top: 4px; display: grid; gap: 2px; width: min(100%, 290px); box-sizing: border-box;
+  text-align: left; background: rgba(15,18,22,.88); border: 1px solid var(--line); border-left: 4px solid var(--danfo);
+  border-radius: 8px; padding: 6px 10px; color: var(--ink); font: inherit; cursor: pointer; }
+#job .jt { display: flex; justify-content: space-between; gap: 8px; font-family: var(--display); font-size: 10.5px;
+  color: var(--danfo); letter-spacing: .4px; min-width: 0; }
+#job .jl { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-weight: 600; font-size: 13.5px; line-height: 1.25; min-width: 0; }
+#job .jl > span:first-child { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#job .jd { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; font-weight: 500; }
+#job .jtimer { font-family: var(--mono); font-size: 12px; }
+#job .jtimer.low { color: var(--bad); }
+#job .jx { font-size: 12px; color: var(--muted); line-height: 1.4; font-weight: 400; }
+#job .jx b { color: var(--ink); font-weight: 600; }
 
-#hud-top { top: var(--top); left: 50%; transform: translateX(-50%); width: min(460px, calc(100vw - 2 * var(--gut) - 360px));
-  min-width: 220px; display: grid; gap: 6px; justify-items: center; }
-#objective { background: rgba(15,18,22,.86); border: 1px solid var(--line); border-left: 4px solid var(--danfo);
-  border-radius: 8px; padding: 8px 12px; font-weight: 600; font-size: 15px; line-height: 1.3; width: 100%;
-  box-sizing: border-box; text-wrap: balance; }
-#objective small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; margin-top: 2px; }
-#objective .mt { font-family: var(--display); font-size: 11px; color: var(--danfo); letter-spacing: .5px; display: block; margin-bottom: 2px; }
-#timer { font-family: var(--mono); font-weight: 700; font-size: 22px; color: var(--danfo); text-shadow: 0 2px 0 #000; }
-#timer.low { color: var(--bad); }
-#toasts { display: grid; gap: 6px; justify-items: center; }
-.toast { background: rgba(15,18,22,.9); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px;
-  font-size: 13px; max-width: 420px; text-align: center; animation: tin .25s ease-out; }
-.toast.good { border-color: var(--good); }
-.toast.bad { border-color: var(--bad); }
-@keyframes tin { from { transform: translateY(-6px); opacity: 0; } }
+#clock { font-family: var(--mono); font-weight: 700; font-size: 14px; text-shadow: 0 1px 0 #000; }
+#minimap { width: var(--mapw); height: calc(var(--mapw) * 2 / 3); border-radius: 10px; border: 2px solid rgba(255,255,255,.14);
+  background: #0b0e12; box-shadow: 0 6px 20px rgba(0,0,0,.5); box-sizing: border-box; }
+#district { font-family: var(--display); font-size: 11px; letter-spacing: .4px; color: var(--danfo); text-shadow: 0 1px 0 #000; text-align: right; }
+#radio { font-size: 12px; color: var(--muted); pointer-events: auto; background: none; border: 0; padding: 0; text-shadow: 0 1px 0 #000; text-align: right; }
+#radio:empty { display: none; }
 
-#hud-bl { left: var(--gut); bottom: var(--bot); display: grid; gap: 6px; }
-#veh { font-family: var(--display); font-size: 12px; color: var(--danfo); text-shadow: 0 1px 0 #000; }
-#speed { font-family: var(--mono); font-weight: 700; font-size: 30px; text-shadow: 0 2px 0 #000; font-variant-numeric: tabular-nums; }
+/* Notifications: one at a time, in the right column under the minimap */
+#toasts { width: 100%; display: grid; }
+.toast { background: rgba(15,18,22,.93); border: 1px solid var(--line); border-left: 3px solid var(--muted); border-radius: 8px;
+  padding: 6px 9px; font-size: 12px; line-height: 1.3; width: 100%; box-sizing: border-box; overflow-wrap: anywhere; animation: tin .2s ease-out; }
+.toast.good { border-left-color: var(--good); }
+.toast.bad { border-left-color: var(--bad); }
+.toast.yarns { border-left-color: var(--lagoon); }
+@keyframes tin { from { transform: translateY(-4px); opacity: 0; } }
+
+/* Bottom-left stats */
+#hud-bl { left: var(--gutL); bottom: var(--bot); display: grid; gap: 4px; width: min(230px, 42vw); }
+#veh { font-family: var(--display); font-size: 11px; color: var(--danfo); text-shadow: 0 1px 0 #000; }
+#speed { font-family: var(--mono); font-weight: 700; font-size: 28px; line-height: 1; text-shadow: 0 2px 0 #000; font-variant-numeric: tabular-nums; }
 #speed small { font-size: 12px; color: var(--muted); margin-left: 4px; }
-.bar { width: 150px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.12); overflow: hidden; }
+.stat { display: grid; grid-template-columns: 5.2em minmax(0, 1fr) 2.8em; align-items: center; gap: 6px; font-size: 11px; text-shadow: 0 1px 0 #000; }
+.stat .lbl { white-space: nowrap; font-weight: 600; }
+.stat .val { font-family: var(--mono); text-align: right; color: var(--muted); }
+.bar { height: 6px; border-radius: 3px; background: rgba(255,255,255,.14); overflow: hidden; }
 .bar i { display: block; height: 100%; background: var(--good); width: 100%; }
+#fbar i { background: var(--danfo); }
 #vbar i { background: var(--lagoon); }
-#hustle { font-size: 13px; max-width: 280px; background: rgba(15,18,22,.86); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
+#hustle { font-size: 12px; background: rgba(15,18,22,.86); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
 #hustle b { color: var(--danfo); }
 
-#prompt { left: 50%; bottom: calc(var(--bot) + 4px); transform: translateX(-50%); background: rgba(15,18,22,.9);
-  border: 1px solid var(--danfo); border-radius: 999px; padding: 8px 16px; font-size: 14px; white-space: nowrap; }
+/* Context prompt: a tappable pill */
+#prompt { pointer-events: auto; z-index: 7; left: 0; right: 0; margin-inline: auto; width: fit-content; max-width: calc(100vw - 2 * 250px);
+  bottom: var(--bot); background: rgba(15,18,22,.92); border: 1px solid var(--danfo); border-radius: 999px; padding: 8px 16px;
+  font: inherit; font-size: 14px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
 #prompt kbd { font-family: var(--mono); background: var(--danfo); color: var(--danfo-ink); border-radius: 4px; padding: 1px 6px; font-weight: 700; margin-right: 6px; }
 
 /* ---------- Cards & overlays ---------- */
-#card { position: fixed; left: 50%; top: 32%; transform: translate(-50%,-50%); z-index: 8; pointer-events: none; text-align: center; }
+#card { position: fixed; left: 50%; top: 46%; box-sizing: border-box; transform-origin: 50% 50%; transform: translate(-50%,-50%); z-index: 8; pointer-events: none; text-align: center; }
 #card h2 { font-family: var(--display); font-size: clamp(34px, 7vw, 64px); margin: 0; color: var(--danfo);
   text-shadow: 0 4px 0 #000, 0 0 30px rgba(0,0,0,.7); letter-spacing: 1px; }
 #card.bad h2 { color: var(--bad); }
@@ -146,63 +172,95 @@ button.row:hover { border-color: var(--line); }
 .amt button { background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-family: var(--mono); font-size: 12px; }
 .amt button.on { border-color: var(--danfo); color: var(--danfo); }
 
-/* Touch controls */
+/* Touch controls: joystick bottom-left (steer / walk), buttons bottom-right */
 #touch { position: fixed; inset: 0; z-index: 6; pointer-events: none; }
-#stick-zone { position: absolute; left: 0; bottom: 0; width: 50%; height: 60%; pointer-events: auto; }
-#stick { position: absolute; width: 120px; height: 120px; border-radius: 50%; border: 2px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); transform: translate(-50%,-50%); display: none; }
-#knob { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px; border-radius: 50%; background: rgba(245,196,0,.75); }
-#tbtns { position: absolute; right: var(--gut); bottom: var(--bot); display: grid; grid-template-columns: repeat(2, 64px); gap: 10px; pointer-events: auto; }
-#tbtns button { width: 64px; height: 64px; border-radius: 50%; background: rgba(23,27,33,.82); border: 2px solid var(--line); font-size: 11px; font-weight: 800; letter-spacing: .3px; }
+#stick-zone { position: absolute; left: 0; bottom: 0; width: 40%; height: 55%; pointer-events: auto; }
+#stick { position: absolute; left: calc(var(--gutL) + var(--stick) / 2 + 4px); top: calc(100% - var(--bot) - var(--stick) / 2 - 4px);
+  width: var(--stick); height: var(--stick); border-radius: 50%; border: 2px solid rgba(255,255,255,.28);
+  background: rgba(255,255,255,.06); transform: translate(-50%,-50%); opacity: .6; }
+#stick.on { opacity: 1; }
+#knob { position: absolute; left: 50%; top: 50%; width: 48px; height: 48px; margin: -24px; border-radius: 50%; background: rgba(245,196,0,.8); }
+#tbtns { position: absolute; right: var(--gutR); bottom: var(--bot); display: grid; grid-template-columns: repeat(3, var(--btn)); gap: 8px; pointer-events: auto; }
+#tbtns button { width: var(--btn); height: var(--btn); border-radius: 50%; background: rgba(23,27,33,.85); border: 2px solid var(--line); font-size: 11px; font-weight: 800; letter-spacing: .3px; padding: 0; }
 #tbtns button.hot { border-color: var(--danfo); color: var(--danfo); }
-#tbtns button:active { background: var(--danfo); color: var(--danfo-ink); }
-.touch-only { display: none; }
+#tbtns button.off { opacity: .4; }
+#tbtns #tb-gas { grid-column: span 2; width: auto; border-radius: calc(var(--btn) / 2); border-color: var(--good); background: rgba(76,200,116,.18); font-size: 13px; }
+#tbtns #tb-brake { border-color: rgba(240,90,80,.65); }
+#tbtns button:active, #tbtns button.down { background: var(--danfo); color: var(--danfo-ink); }
+html:not(.touch) .touch-only { display: none !important; }
 .touch .touch-only { display: revert; } .touch .kb-only { display: none; } .touch #tbtns.touch-only { display: grid; } .touch #stick-zone.touch-only { display: block; }
-.touch #hud-bl { bottom: calc(var(--bot) + 150px); } .touch #prompt { bottom: calc(var(--bot) + 160px); }
+/* touch portrait: stats above the joystick, prompt above the buttons */
+.touch #hud-bl { bottom: calc(var(--bot) + var(--stick) + 18px); }
+.touch #prompt { left: auto; right: var(--gutR); margin: 0; bottom: calc(var(--bot) + 2 * var(--btn) + 20px);
+  max-width: calc(100vw - var(--gutL) - var(--gutR) - 42vw - 12px); }
 @media (max-width: 760px) {
-  #minimap { width: 120px; height: 80px; }
-  #hud-top { width: calc(100vw - 2 * var(--gut)); top: calc(var(--top) + 150px); }
+  :root { --mapw: 120px; }
   #cash { font-size: 21px; }
-  #card { top: 40%; }
+  #card h2 { font-size: clamp(24px, 7.2vw, 40px); }
+  #card p { font-size: 15px; }
+}
+/* short landscape phones: everything shrinks, stats sit beside the joystick, prompt between stats and buttons */
+@media (orientation: landscape) and (max-height: 520px) {
+  :root { --mapw: 112px; --btn: 50px; --stick: 104px; --top: calc(env(safe-area-inset-top, 0px) + 8px); --bot: calc(env(safe-area-inset-bottom, 0px) + 8px); }
+  #cash { font-size: 19px; } #stars { font-size: 17px; } #cash-delta { height: 13px; font-size: 11px; } #unit { min-height: 13px; font-size: 11px; }
+  #job { padding: 4px 8px; } #job .jl { font-size: 12.5px; } #clock { font-size: 12px; }
+  .toast { padding: 4px 8px; font-size: 11px; }
+  #card { top: 56%; } #card h2 { font-size: 30px; } #card p { font-size: 14px; } #card .sub { font-size: 13px; }
+  .touch #hud-bl { bottom: var(--bot); left: calc(var(--gutL) + var(--stick) + 16px); width: 160px; }
+  .touch #prompt { bottom: var(--bot); left: calc(var(--gutL) + var(--stick) + 16px + 160px + 10px); right: calc(var(--gutR) + 3 * var(--btn) + 26px);
+    margin-inline: auto; max-width: none; }
+  /* notifications sit beside the minimap instead of under it */
+  #hud-row { grid-template-columns: minmax(0, 1fr) calc(var(--mapw) + 178px); }
+  #hud-tr { width: calc(var(--mapw) + 178px); grid-template-columns: 170px var(--mapw); column-gap: 8px;
+    grid-template-areas: "toast clock" "toast map" "toast district" "toast radio"; }
+  #clock { grid-area: clock; } #minimap { grid-area: map; } #district { grid-area: district; } #radio { grid-area: radio; }
+  #toasts { grid-area: toast; align-self: start; }
+
 }
 @media (prefers-reduced-motion: reduce) { .toast { animation: none; } #stars.flash span.on { animation: none; } }
 </style>
 
 <div id="game"><canvas id="c" aria-label="Lagos city map"></canvas></div>
 
-<div class="hud" id="hud-tl">
-  <div id="cash">₦0</div>
-  <div id="cash-delta"></div>
-  <div id="stars" aria-label="Wanted level"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-  <div id="unit"></div>
-</div>
-<div class="hud" id="hud-tr">
-  <div id="clock">08:00</div>
-  <canvas id="minimap" width="344" height="230"></canvas>
-  <div id="district"></div>
-  <button id="radio" type="button"></button>
-</div>
-<div class="hud" id="hud-top">
-  <div id="objective" hidden></div>
-  <div id="timer" hidden></div>
-  <div id="toasts"></div>
+<div class="hud" id="hud-row">
+  <div id="hud-tl">
+    <div id="cash">₦0</div>
+    <div id="cash-delta"></div>
+    <div id="stars" aria-label="Wanted level"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    <div id="unit"></div>
+    <button id="job" type="button" aria-expanded="false">
+      <span class="jt"><span id="job-title" class="clip">Next job</span><span id="job-timer" class="jtimer"></span></span>
+      <span class="jl"><span id="job-line"></span><span class="jd" id="job-dist"></span></span>
+      <span class="jx" id="job-more" hidden></span>
+    </button>
+  </div>
+  <div id="hud-tr">
+    <div id="clock" class="clip">08:00</div>
+    <canvas id="minimap" width="344" height="230"></canvas>
+    <div id="district" class="clip"></div>
+    <button id="radio" type="button" class="clip"></button>
+    <div id="toasts" aria-live="polite"></div>
+  </div>
 </div>
 <div class="hud" id="hud-bl">
   <div id="hustle" hidden></div>
-  <div id="veh"></div>
+  <div id="veh" class="clip"></div>
   <div id="speed" hidden></div>
-  <div class="bar" id="vbar" hidden><i></i></div>
-  <div class="bar" id="hbar"><i></i></div>
+  <div class="stat"><span class="lbl">❤ Health</span><div class="bar" id="hbar"><i></i></div><span class="val" id="hval">100</span></div>
+  <div class="stat" id="frow" hidden><span class="lbl">⛽ Fuel</span><div class="bar" id="fbar"><i></i></div><span class="val" id="fval">100%</span></div>
+  <div class="stat" id="drow" hidden><span class="lbl">🔧 Body</span><div class="bar" id="vbar"><i></i></div><span class="val" id="dval">100%</span></div>
 </div>
-<div class="hud" id="prompt" hidden></div>
+<button class="hud" id="prompt" type="button" hidden></button>
 <div id="card" hidden><h2></h2><p></p><div class="sub"></div></div>
 
 <div id="touch">
   <div id="stick-zone" class="touch-only"><div id="stick"><div id="knob"></div></div></div>
   <div id="tbtns" class="touch-only">
-    <button type="button" data-b="action">ACTION</button>
-    <button type="button" data-b="enter" id="tb-enter">ENTER</button>
     <button type="button" data-b="phone">PHONE</button>
-    <button type="button" data-b="brake" id="tb-brake">SPRINT</button>
+    <button type="button" data-b="action" id="tb-action">ACTION</button>
+    <button type="button" data-b="enter" id="tb-enter">ENTER</button>
+    <button type="button" data-b="brake" id="tb-brake">BRAKE</button>
+    <button type="button" data-b="gas" id="tb-gas">GAS</button>
   </div>
 </div>
 
@@ -214,13 +272,13 @@ button.row:hover { border-color: var(--line); }
     <p>You are <b>Lucky</b>, a mainland boy with ₦5,000 and big plans. Baba Sule needs a conductor for his danfo. Start there, then hustle your way across Third Lagoon Bridge.</p>
     <div class="keys kb-only">
       <kbd>WASD / arrows</kbd><span>Walk · drive</span>
+      <kbd>E</kbd><span>Action: missions, conductor shift, refuel, shops (or get in/out)</span>
       <kbd>F</kbd><span>Enter or steal a vehicle · get out</span>
-      <kbd>E</kbd><span>Action: start missions, conductor shift, shops</span>
       <kbd>Space</kbd><span>Brake (sprint with Shift on foot)</span>
       <kbd>Tab / P</kbd><span>Phone: chats, KoboPay, Yarns, map</span>
       <kbd>R · H</kbd><span>Radio · horn</span>
     </div>
-    <p class="touch-only muted">Left thumb: drag to move or steer. Right: Action, Enter, Phone, Sprint or Brake.</p>
+    <p class="touch-only muted">Left thumb: joystick to walk or steer. Right: GAS, BRAKE, ACTION, ENTER/EXIT and PHONE. Tap any prompt to do it.</p>
     <div class="btns" id="start-btns">
       <button type="button" class="btn primary" id="btn-play">Start hustling</button>
       <button type="button" class="btn" id="btn-new" hidden>New game</button>
@@ -267,7 +325,7 @@ const naira = n => (n < 0 ? '-' : '') + '₦' + Math.abs(Math.round(n)).toLocale
 
 // ---------------------------------------------------------------- world grid
 const CELL = 32, COLS = 96, ROWS = 64, WW = COLS * CELL, WH = ROWS * CELL;
-const T = { GROUND: 0, ROAD: 1, BUILD: 2, WATER: 3, STALL: 4, PARK: 5, TOWER: 6, STILT: 7, SIDE: 8, GRASS: 9 };
+const T = { GROUND: 0, ROAD: 1, BUILD: 2, WATER: 3, STALL: 4, PARK: 5, TOWER: 6, STILT: 7, SIDE: 8, GRASS: 9, STATION: 10 };
 const SOLID = new Uint8Array(16); [T.BUILD, T.WATER, T.STALL, T.TOWER, T.STILT].forEach(t => SOLID[t] = 1);
 const SIGHT = new Uint8Array(16); [T.BUILD, T.STALL, T.TOWER].forEach(t => SIGHT[t] = 1);
 const VM = [2, 12, 22, 32, 42], VI = [66, 74, 82, 90], HR = [4, 14, 24, 34, 44, 54];
@@ -314,7 +372,14 @@ function buildGrid() {
     fill.push([I(c, r), t]);
   }
   for (const [i, t] of fill) grid[i] = t;
+  // petrol station forecourts (3x2 cells, opening onto the road above)
+  for (const st of STATIONS) for (let r = st.r; r < st.r + 2; r++) for (let c = st.c; c < st.c + 3; c++) grid[I(c, r)] = T.STATION;
 }
+// Gidi Fuel filling stations (fictional brand). Fuel is ₦25 per 1% of the tank.
+const STATIONS = [{ c: 14, r: 26, name: 'Gidi Fuel Mainland' }, { c: 34, r: 46, name: 'Gidi Fuel Balo' }, { c: 68, r: 46, name: 'Gidi Fuel Lekka' }]
+  .map(s => Object.assign(s, { x: (s.c + 1.5) * CELL, y: (s.r + 1) * CELL }));
+const FUEL_PRICE = 25, FUEL_PER_PX = 100 / 42000; // a full tank lasts ~42,000px (about 3.5 minutes of steady driving)
+const FUEL_USE = { danfo: 1.2, okada: .6, keke: .8, sedan: 1, suv: 1.3, tfpick: 1.2, tfbike: .6 };
 
 // ---------------------------------------------------------------- road graph
 const nodes = [], nodeKey = {};
@@ -466,12 +531,15 @@ const VT = {
 };
 const TRAFFIC_MIX = [['danfo', 4], ['okada', 3], ['keke', 3], ['sedan', 5], ['suv', 1]];
 let vehicles = [], peds = [], items = [], floaters = [], heli = null;
+const STATS = { aiCrashes: 0 };
 
 function spawnVehicle(type, x, y, a, o = {}) {
   const d = VT[type];
   const v = Object.assign({ type, x, y, a, v: 0, hp: d.hp, color: o.color || pick(d.colors), driver: d.cop ? 'cop' : 'ai', from: -1, to: -1,
+    fuel: o.mission ? 100 : Math.round(rnd(o.parked ? 45 : 35, 95)),
     stuck: 0, rev: 0, hold: 0, tune: 1, topSpeed: 1, hitCd: 0 }, o);
   if (o.parked) v.driver = null;
+  depenetrate(v);
   vehicles.push(v); return v;
 }
 function roadSpotNear(p, minD, maxD) {
@@ -501,24 +569,30 @@ const touch = { x: 0, y: 0, on: false, held: {} };
 const hit = (...c) => c.some(k => pressed.has(k));
 const held = (...c) => c.some(k => keys[k]);
 (function setupTouch() {
+  // Joystick rests bottom-left (always visible); touching anywhere in its zone re-centres it under the thumb.
   const zone = $('#stick-zone'), stick = $('#stick'), knob = $('#knob'); let id = null, ox = 0, oy = 0;
-  zone.addEventListener('pointerdown', e => { id = e.pointerId; zone.setPointerCapture(id); ox = e.clientX; oy = e.clientY; stick.style.display = 'block'; stick.style.left = ox + 'px'; stick.style.top = oy + 'px'; touch.on = true; move(e); });
-  const move = e => { if (e.pointerId !== id) return; let dx = e.clientX - ox, dy = e.clientY - oy; const m = Math.hypot(dx, dy), R = 55; if (m > R) { dx *= R / m; dy *= R / m; } knob.style.transform = `translate(${dx}px,${dy}px)`; const n = Math.hypot(dx, dy) / R; touch.x = n < .15 ? 0 : dx / R; touch.y = n < .15 ? 0 : dy / R; };
+  const rest = () => { stick.style.left = stick.style.top = ''; }; // resting spot comes from CSS (safe-area aware)
+  zone.addEventListener('pointerdown', e => { id = e.pointerId; zone.setPointerCapture(id); const r = zone.getBoundingClientRect(); ox = e.clientX; oy = e.clientY; stick.style.left = (ox - r.left) + 'px'; stick.style.top = (oy - r.top) + 'px'; stick.classList.add('on'); touch.on = true; move(e); });
+  const move = e => { if (e.pointerId !== id) return; let dx = e.clientX - ox, dy = e.clientY - oy; const m = Math.hypot(dx, dy), R = 50; if (m > R) { dx *= R / m; dy *= R / m; } knob.style.transform = `translate(${dx}px,${dy}px)`; const n = Math.hypot(dx, dy) / R; touch.x = n < .12 ? 0 : dx / R; touch.y = n < .12 ? 0 : dy / R; };
   zone.addEventListener('pointermove', move);
-  const up = e => { if (e.pointerId !== id) return; id = null; touch.on = false; touch.x = touch.y = 0; stick.style.display = 'none'; knob.style.transform = ''; };
+  const up = e => { if (e.pointerId !== id) return; id = null; touch.on = false; touch.x = touch.y = 0; stick.classList.remove('on'); knob.style.transform = ''; rest(); };
   zone.addEventListener('pointerup', up); zone.addEventListener('pointercancel', up);
   for (const b of document.querySelectorAll('#tbtns button')) {
     const name = b.dataset.b;
-    b.addEventListener('pointerdown', e => { e.preventDefault(); pressed.add('T_' + name); touch.held[name] = true; });
-    const rel = () => { touch.held[name] = false; }; b.addEventListener('pointerup', rel); b.addEventListener('pointerleave', rel); b.addEventListener('pointercancel', rel);
+    b.addEventListener('pointerdown', e => { e.preventDefault(); b.setPointerCapture(e.pointerId); pressed.add('T_' + name); touch.held[name] = true; b.classList.add('down'); });
+    const rel = () => { touch.held[name] = false; b.classList.remove('down'); }; b.addEventListener('pointerup', rel); b.addEventListener('pointercancel', rel); b.addEventListener('lostpointercapture', rel);
   }
+  // the context prompt is itself a button: tap it to do what it says
+  $('#prompt').addEventListener('click', () => { if (promptAct) pressed.add('T_' + promptAct); });
 })();
+let promptAct = null; // what tapping the prompt pill does: 'action' or 'enter'
 const IN = {
   enter: () => hit('KeyF', 'T_enter'),
   action: () => hit('KeyE', 'T_action'),
   phone: () => hit('Tab', 'KeyP', 'T_phone'),
-  brake: () => held('Space') || (player.veh && touch.held.brake),
-  sprint: () => held('ShiftLeft', 'ShiftRight') || (!player.veh && touch.held.brake),
+  brake: () => held('Space') || (!!player.veh && !!touch.held.brake),
+  gas: () => !!touch.held.gas,
+  sprint: () => held('ShiftLeft', 'ShiftRight') || (!player.veh && !!touch.held.gas),
   kx: () => (held('KeyD', 'ArrowRight') ? 1 : 0) - (held('KeyA', 'ArrowLeft') ? 1 : 0),
   ky: () => (held('KeyS', 'ArrowDown') ? 1 : 0) - (held('KeyW', 'ArrowUp') ? 1 : 0),
 };
@@ -532,9 +606,47 @@ function beep(freqs, dur = .18, vol = .08, type = 'square') {
 
 // ---------------------------------------------------------------- UI helpers
 const ui = {
-  toast(text, kind = '') { const d = document.createElement('div'); d.className = 'toast ' + kind; d.textContent = text; const box = $('#toasts'); box.prepend(d); while (box.children.length > 3) box.lastChild.remove(); setTimeout(() => d.remove(), 3800); },
-  card(title, line, sub = '', bad = false, ms = 3600) { const c = $('#card'); c.className = bad ? 'bad' : ''; c.querySelector('h2').textContent = title; c.querySelector('p').textContent = line; c.querySelector('.sub').textContent = sub; c.hidden = false; clearTimeout(ui._ct); ui._ct = setTimeout(() => c.hidden = true, ms); },
+  // Notifications go through one queue: one toast at a time (3s), oldest first. A newer message with
+  // the same key replaces a pending one (e.g. heat state), and 'valid' drops messages that no longer
+  // match the game state by the time they'd show (e.g. "they're coming" after you already lost them).
+  toast(text, kind = '', o = {}) {
+    const key = o.key || text, now = performance.now();
+    if (NQ.cur && NQ.cur.key === key && NQ.cur.text === text) return;
+    const item = { text, kind, key, valid: o.valid, at: now, ttl: o.ttl || 20000 };
+    const i = NQ.q.findIndex(n => n.key === key); if (i >= 0) NQ.q[i] = item; else NQ.q.push(item);
+    while (NQ.q.length > 6) NQ.q.shift(); // a backlog this long is already stale; drop the oldest
+  },
+  card(title, line, sub = '', bad = false, ms = 3600) { const c = $('#card'); c.className = bad ? 'bad' : ''; c.querySelector('h2').textContent = title; c.querySelector('p').textContent = line; c.querySelector('.sub').textContent = sub; c.hidden = false; placeCard(); clearTimeout(ui._ct); ui._ct = setTimeout(() => c.hidden = true, ms); },
 };
+// The centre card (JOB DONE / BUSTED / mission title) sits in the free space between the HUD pieces
+// above and below it, and shrinks if that space is small, so it never covers the HUD on any screen.
+function placeCard() {
+  const c = $('#card'); if (c.hidden) return;
+  const rect = sel => { const e = $(sel); if (!e || e.hidden || e.closest('[hidden]') || getComputedStyle(e).display === 'none') return null; const r = e.getBoundingClientRect(); return r.width ? r : null; };
+  let cx = innerWidth / 2, cw = Math.min(innerWidth - 32, 520);
+  const bl = rect('#hud-bl'), tb = rect('#tbtns');
+  if (tb && bl && innerHeight < 520 && innerWidth > innerHeight) { cx = (bl.right + tb.left) / 2; cw = tb.left - bl.right - 16; } // short landscape: between stats and buttons
+  c.style.width = cw + 'px'; c.style.left = cx + 'px'; c.style.transform = 'none';
+  let top = 0, bot = innerHeight;
+  for (const sel of ['#hud-tl', '#hud-tr', '#hud-bl', '#prompt', '#tbtns', '#stick']) {
+    const r = rect(sel); if (!r || r.right <= cx - cw / 2 || r.left >= cx + cw / 2) continue;
+    if (r.top + r.height / 2 < innerHeight / 2) top = Math.max(top, r.bottom); else bot = Math.min(bot, r.top);
+  }
+  const h = c.offsetHeight, room = bot - top - 16, k = Math.min(1, room / h);
+  c.style.top = ((top + bot) / 2) + 'px'; c.style.transform = `translate(-50%, -50%) scale(${Math.max(.5, k)})`;
+}
+addEventListener('resize', placeCard);
+const NQ = { q: [], cur: null, t: 0, el: null };
+function pumpToasts(dtMs) {
+  if (NQ.cur) { NQ.t -= dtMs; if (NQ.t > 0 && (!NQ.cur.valid || NQ.cur.valid())) return; NQ.el && NQ.el.remove(); NQ.cur = null; NQ.el = null; }
+  const now = performance.now();
+  while (NQ.q.length) {
+    const n = NQ.q.shift();
+    if (now - n.at > n.ttl || (n.valid && !n.valid())) continue;
+    NQ.cur = n; NQ.t = 3000;
+    const d = document.createElement('div'); d.className = 'toast ' + n.kind; d.textContent = n.text; $('#toasts').append(d); NQ.el = d; break;
+  }
+}
 let cashShown = S.cash, deltaT = 0;
 function earn(n, why) { if (!n) return; S.cash += n; S.log.unshift({ t: S.minutes, n, why }); S.log.length = Math.min(S.log.length, 20); $('#cash-delta').textContent = (n > 0 ? '+' : '') + naira(n); $('#cash-delta').style.color = n > 0 ? 'var(--good)' : 'var(--bad)'; deltaT = 2.5; }
 function spend(n, why) { if (S.cash < n) return false; earn(-n, why); return true; }
@@ -542,14 +654,19 @@ function post(trigger) {
   const list = SOCIAL[trigger]; if (!list) return; const [author, handle, text, clout, me] = pick(list);
   S.feed.unshift({ author, handle, text: text.replace('{player}', 'Lucky'), likes: Math.floor(rnd(40, 5000)) * (me ? 3 : 1), me, t: S.minutes });
   S.feed.length = Math.min(S.feed.length, 30); S.clout = Math.max(0, S.clout + clout);
-  ui.toast('Yarns: ' + handle + ' posted' + (me ? ' about you' : ''));
+  // one Yarns notification at a time; posts about heat only notify while they still make sense
+  const heatPost = /^checkpoint:(Recorded|IntegrityUnitSting)$/.test(trigger), clearPost = trigger === 'escaped';
+  const pending = NQ.q.find(n => n.key === 'yarns'); const count = pending ? (pending.count || 1) + 1 : 1;
+  ui.toast(count > 1 ? `Yarns: ${count} new posts` : `Yarns: ${handle} posted${me ? ' about you' : ''}`, 'yarns',
+    { key: 'yarns', ttl: 12000, valid: heatPost ? () => stars() > 0 : clearPost ? () => stars() === 0 : null });
+  const q = NQ.q.find(n => n.key === 'yarns'); if (q) q.count = count;
 }
-function chat(from, text, mission) { S.chats.push({ from, text, mission: mission || null, t: S.minutes, read: false }); ui.toast('New message from ' + CONTACTS[from]); beep([880, 1175], .07, .04, 'sine'); }
+function chat(from, text, mission) { S.chats.push({ from, text, mission: mission || null, t: S.minutes, read: false }); ui.toast('New message from ' + CONTACTS[from], '', { key: 'chat:' + from }); beep([880, 1175], .07, .04, 'sine'); }
 
 // ---------------------------------------------------------------- wanted system (port of WantedSystem.cs)
 const WANT = { heat: 0, timer: 0, seen: false, last: { x: 0, y: 0 }, bust: 0, perStar: 18 };
 const stars = () => Math.ceil(Math.min(WANT.heat, 5) - 1e-4);
-function addHeat(h) { const b = stars(); WANT.heat = Math.min(5, WANT.heat + h); WANT.timer = 0; WANT.last = { x: player.pos().x, y: player.pos().y }; if (stars() > b) { beep([660, 520, 660, 520], .12, .05, 'sawtooth'); ui.toast('Wanted: ' + UNITS[stars() - 1] + ' on the way', 'bad'); } }
+function addHeat(h) { const b = stars(); WANT.heat = Math.min(5, WANT.heat + h); WANT.timer = 0; WANT.last = { x: player.pos().x, y: player.pos().y }; if (stars() > b) { beep([660, 520, 660, 520], .12, .05, 'sawtooth'); ui.toast('Wanted: ' + UNITS[stars() - 1] + ' on the way', 'bad', { key: 'heat', valid: () => stars() > 0 }); } }
 function witnessed(p, bias = 1) {
   for (const q of peds) if (q.state !== 'down' && dist(q, p) < 240 && los(q, p) && Math.random() <= bias) return true;
   for (const v of vehicles) if (v.driver === 'cop' && dist(v, p) < 320 && los(v, p)) return true;
@@ -561,18 +678,40 @@ function los(a, b) {
   for (let i = 1; i < n; i++) { const t = i / n; if (SIGHT[tileAt(lerp(a.x, b.x, t), lerp(a.y, b.y, t))]) return false; }
   return true;
 }
-function clearHeat(escaped) { if (WANT.heat <= 0) return; WANT.heat = 0; WANT.timer = 0; if (escaped) { ui.toast('You lost them. Heat cleared.', 'good'); post('escaped'); } }
+function clearHeat(escaped) { if (WANT.heat <= 0) return; WANT.heat = 0; WANT.timer = 0; if (escaped) { ui.toast('You lost them. Heat cleared.', 'good', { key: 'heat', valid: () => stars() === 0 }); post('escaped'); } }
 
 // ---------------------------------------------------------------- physics
+// Collision outline: sample points every <=10px around the vehicle's rectangle, so no building
+// or single 32px market stall can slip between two sample points.
+const OUTLINE = {};
+function outline(type) {
+  if (OUTLINE[type]) return OUTLINE[type];
+  const d = VT[type], hl = d.len / 2 - 1, hw = d.wid / 2 - 1, pts = [];
+  const nl = Math.max(2, Math.ceil(d.len / 10)), nw = Math.max(1, Math.ceil(d.wid / 10));
+  for (let i = 0; i <= nl; i++) { const fx = -hl + 2 * hl * i / nl; pts.push([fx, -hw], [fx, hw]); }
+  for (let j = 1; j < nw; j++) { const sy = -hw + 2 * hw * j / nw; pts.push([hl, sy], [-hl, sy]); }
+  return (OUTLINE[type] = pts);
+}
 function vehBlocked(v, x, y, a) {
-  const d = VT[v.type], c = Math.cos(a), s = Math.sin(a), hl = d.len / 2 - 1, hw = d.wid / 2 - 1;
-  for (const fx of [-1, 0, 1]) for (const sy of [-1, 1]) {
-    const px = x + c * fx * hl - s * sy * hw, py = y + s * fx * hl + c * sy * hw;
+  const c = Math.cos(a), s = Math.sin(a);
+  for (const [fx, sy] of outline(v.type)) {
+    const px = x + c * fx - s * sy, py = y + s * fx + c * sy;
     if (px < 4 || py < 4 || px > WW - 4 || py > WH - 4 || solidAt(px, py)) return true;
   }
   return false;
 }
-function drive(v, throttle, steer, brake, dt) {
+// If a vehicle ends up overlapping a wall (spawned badly, shoved by another car), move it to the
+// nearest free spot instead of letting it drive through the building.
+function depenetrate(v) {
+  if (!vehBlocked(v, v.x, v.y, v.a)) return true;
+  for (let r = 4; r <= 40; r += 4) for (let k = 0; k < 16; k++) {
+    const a = k / 16 * Math.PI * 2, x = v.x + Math.cos(a) * r, y = v.y + Math.sin(a) * r;
+    if (!vehBlocked(v, x, y, v.a)) { v.x = x; v.y = y; return true; }
+  }
+  for (const da of [Math.PI / 2, -Math.PI / 2, Math.PI]) if (!vehBlocked(v, v.x, v.y, v.a + da)) { v.a = wrapA(v.a + da); return true; }
+  return false;
+}
+function drive(v, throttle, steer, brake, dt, agile = false) {
   const d = VT[v.type];
   if (v.hp <= 0) { throttle = 0; brake = true; }
   const tile = tileAt(v.x, v.y), off = !(tile === T.ROAD || tile === T.PARK);
@@ -583,16 +722,25 @@ function drive(v, throttle, steer, brake, dt) {
   v.v -= v.v * (off ? 1.4 : .42) * dt;
   if (!throttle && Math.abs(v.v) < 5) v.v = 0;
   v.v = clamp(v.v, -d.max * .3, maxF);
-  const sf = clamp(v.v / 80, -1, 1), sn = Math.abs(v.v) / d.max;
-  v.a = wrapA(v.a + steer * d.turn * (1 - .35 * sn) * sf * dt);
-  const nx = v.x + Math.cos(v.a) * v.v * dt, ny = v.y + Math.sin(v.a) * v.v * dt;
-  if (vehBlocked(v, v.x, v.y, v.a) || !vehBlocked(v, nx, ny, v.a)) { v.x = nx; v.y = ny; return; }
-  const imp = Math.abs(v.v);
-  if (!vehBlocked(v, nx, v.y, v.a)) { v.x = nx; v.v *= .75; wallHit(v, imp * .35); }
-  else if (!vehBlocked(v, v.x, ny, v.a)) { v.y = ny; v.v *= .75; wallHit(v, imp * .35); }
-  else { wallHit(v, imp); v.v = -v.v * .25; }
+  if (!depenetrate(v)) { v.v = 0; return; }
+  // Turn only if the new heading doesn't swing a corner into a wall.
+  const sf = clamp(v.v / (agile ? 40 : 80), -1, 1), sn = Math.abs(v.v) / d.max;
+  const na = wrapA(v.a + steer * d.turn * (1 - .35 * sn) * sf * dt);
+  if (!vehBlocked(v, v.x, v.y, na)) v.a = na;
+  // Sub-step the move so fast vehicles never skip past a wall in one frame.
+  const dist = Math.abs(v.v * dt), steps = Math.max(1, Math.ceil(dist / 6));
+  const sdt = dt / steps;
+  for (let i = 0; i < steps; i++) {
+    const nx = v.x + Math.cos(v.a) * v.v * sdt, ny = v.y + Math.sin(v.a) * v.v * sdt;
+    if (!vehBlocked(v, nx, ny, v.a)) { v.x = nx; v.y = ny; continue; }
+    const imp = Math.abs(v.v), ax = Math.abs(Math.cos(v.a)), ay = Math.abs(Math.sin(v.a));
+    // Glancing blow: slide along the wall, but only along an axis the car is really moving on.
+    if (ax > .3 && !vehBlocked(v, nx, v.y, v.a)) { v.x = nx; v.v *= .8; wallHit(v, imp * ay); }
+    else if (ay > .3 && !vehBlocked(v, v.x, ny, v.a)) { v.y = ny; v.v *= .8; wallHit(v, imp * ax); }
+    else { wallHit(v, imp); v.v = -v.v * .3; break; }                                        // head-on: bounce back
+  }
 }
-function wallHit(v, imp) { if (imp > 90) { v.hp -= (imp - 90) * .12; onImpact(v, imp); } }
+function wallHit(v, imp) { if (imp < 25) return; v.hp -= imp * .02; if (imp > 90) { v.hp -= (imp - 90) * .1; onImpact(v, imp); } } // minor damage on every real knock
 function onImpact(v, imp) {
   if (v !== player.veh) return;
   if (imp > 150) { player.hp -= (imp - 150) * .05; shake = Math.min(10, imp / 30); }
@@ -602,25 +750,151 @@ function onImpact(v, imp) {
 }
 
 // ---------------------------------------------------------------- AI drivers
-function aiTraffic(v, dt) {
-  if (v.from < 0 || v.to < 0) { const n = nearestNode(v.x, v.y); v.from = n; v.to = pick(nodes[n].nb); }
-  const tg = laneTarget(v.from, v.to);
-  if (Math.hypot(tg.x - v.x, tg.y - v.y) < 28) {
-    const opts = nodes[v.to].nb.filter(n => n !== v.from); const nx = opts.length ? pick(opts) : v.from;
-    v.from = v.to; v.to = nx; return aiTraffic(v, dt);
+// Junction reservations: an AI car may only enter a junction box when nobody else is in it and its
+// exit lane has room, so cars give way, never cross paths inside a junction, and never block it.
+const JUNC = new Map(); // node id -> [{ v, move }] cars currently cleared through that junction
+const JBOX = 32;        // half-size of a junction box (roads are 64px wide)
+const JWAIT = new Map(); // node id -> { v, since, move } the longest-waiting car at that junction
+let simClock = 0; const S_time = () => simClock;
+function chooseNext(from, to) { const opts = nodes[to].nb.filter(n => n !== from); return opts.length ? pick(opts) : from; }
+// A movement through a junction: which side we enter from (0..3) and whether we go straight/left/right.
+function movement(from, to, next) {
+  const A = nodes[from], B = nodes[to], C = nodes[next];
+  const ux = Math.sign(B.x - A.x), uy = Math.sign(B.y - A.y), wx = Math.sign(C.x - B.x), wy = Math.sign(C.y - B.y);
+  const cross = ux * wy - uy * wx, dot = ux * wx + uy * wy;
+  const entry = ux > 0 ? 0 : ux < 0 ? 2 : uy > 0 ? 1 : 3;
+  return { entry, kind: dot < 0 ? 'u' : cross > 0 ? 'right' : cross < 0 ? 'left' : 'straight' };
+}
+// Movements that never share road space inside the box can go at the same time:
+// any two right turns (each stays in its own corner), and opposite approaches going straight/right.
+// Long vehicles (danfo, SUV) swing wide on right turns, so they take the junction to themselves.
+function compatible(m1, m2) {
+  if ((m1.long && m1.kind === 'right') || (m2.long && m2.kind === 'right')) return false;
+  if (m1.kind === 'right' && m2.kind === 'right' && m1.entry !== m2.entry) return true;
+  const opposite = (m1.entry + 2) % 4 === m2.entry;
+  return opposite && m1.kind !== 'left' && m1.kind !== 'u' && m2.kind !== 'left' && m2.kind !== 'u';
+}
+function junctionFree(v, nId, nextId) {
+  const n = nodes[nId], mine = Object.assign(movement(v.from, nId, nextId), { long: VT[v.type].len > 40 }), list = JUNC.get(nId) || [];
+  for (const h of list) if (h.v !== v && !compatible(mine, h.move)) { v.jwhy = 'conflict'; return false; }
+  // fairness: a car that has waited 3s+ at this junction goes next; conflicting newcomers yield to it
+  const w = JWAIT.get(nId);
+  if (w && w.v !== v && w.v.waitJ === nId && vehicles.includes(w.v) && S_time() - w.since > 3 && (v.jwaitSince == null || v.jwaitSince > w.since) && !compatible(mine, w.move)) { v.jwhy = 'yield'; return false; }
+  // anything else physically in the box (player, cops, a car that isn't cleared) blocks it
+  for (const o of vehicles) if (o !== v && Math.abs(o.x - n.x) < JBOX + 6 && Math.abs(o.y - n.y) < JBOX + 6 && !list.some(h => h.v === o)) { v.jwhy = 'box'; return false; }
+  if (!player.veh && Math.abs(player.x - n.x) < JBOX && Math.abs(player.y - n.y) < JBOX) { v.jwhy = 'player'; return false; }
+  // keep the box clear: room on our exit lane just past the junction?
+  // (only cars in the exit lane itself count; cars waiting in the opposite lane don't)
+  const L = VT[v.type].len, ex = laneSpot(nId, nextId, 0), N = nodes[nextId], dl = Math.hypot(N.x - n.x, N.y - n.y) || 1;
+  const ux = (N.x - n.x) / dl, uy = (N.y - n.y) / dl;
+  for (const o of vehicles) {
+    if (o === v) continue; const rx = o.x - ex.x, ry = o.y - ex.y;
+    const along = rx * ux + ry * uy, lat = Math.abs(-rx * uy + ry * ux);
+    if (lat < 14 && along > 0 && along < JBOX + L + VT[o.type].len / 2 + 10) { v.jwhy = 'exit'; return false; }
   }
-  let target = v.type === 'keke' ? 105 : 150;
+  return true;
+}
+// Drop reservations whose car has despawned, been taken over, or wandered off (runs once per frame).
+function pruneJunctions() {
+  const live = new Set(vehicles);
+  for (const [id, list] of JUNC) {
+    const n = nodes[id], k = list.filter(h => live.has(h.v) && h.v.driver === 'ai' && h.v.held === id && dist(h.v, n) < 140);
+    for (const h of list) if (!k.includes(h)) h.v.held = h.v.held === id ? null : h.v.held;
+    if (k.length) JUNC.set(id, k); else JUNC.delete(id);
+  }
+}
+function holdJunction(v, nId) { releaseJunction(v); const list = JUNC.get(nId) || []; list.push({ v, move: Object.assign(movement(v.from, nId, v.next), { long: VT[v.type].len > 40 }) }); JUNC.set(nId, list); v.held = nId; }
+function releaseJunction(v) {
+  if (v.held == null) return; const list = JUNC.get(v.held);
+  if (list) { const k = list.filter(h => h.v !== v); if (k.length) JUNC.set(v.held, k); else JUNC.delete(v.held); }
+  v.held = null;
+}
+// Lane geometry for the segment from node A to node B: the lane runs 16px right of the centre line
+// (right-hand traffic) and stops at each junction box edge.
+function laneGeom(fromId, toId) {
+  const A = nodes[fromId], B = nodes[toId], L = Math.hypot(B.x - A.x, B.y - A.y) || 1;
+  const ux = (B.x - A.x) / L, uy = (B.y - A.y) / L, px = -uy * 16, py = ux * 16;
+  return { ux, uy, len: L - 2 * JBOX, sx: A.x + px + ux * JBOX, sy: A.y + py + uy * JBOX, ex: B.x + px - ux * JBOX, ey: B.y + py - uy * JBOX };
+}
+// Turn path through a junction: quadratic curve from our lane's box edge to the exit lane's box edge,
+// bending around the point where the two lane lines meet.
+function turnPath(from, to, next) {
+  const a = laneGeom(from, to), b = laneGeom(to, next);
+  const P0 = { x: a.ex, y: a.ey }, P2 = { x: b.sx, y: b.sy };
+  const cross = a.ux * b.uy - a.uy * b.ux, dot = a.ux * b.ux + a.uy * b.uy;
+  let P1;
+  if (Math.abs(cross) < .5 && dot > 0) P1 = { x: (P0.x + P2.x) / 2, y: (P0.y + P2.y) / 2 };               // straight on
+  else if (dot < -.5) P1 = { x: nodes[to].x + a.ux * JBOX, y: nodes[to].y + a.uy * JBOX };                 // U-turn (dead ends)
+  else { const t = ((P2.x - P0.x) * b.uy - (P2.y - P0.y) * b.ux) / (a.ux * b.uy - a.uy * b.ux); P1 = { x: P0.x + a.ux * t, y: P0.y + a.uy * t }; }
+  const pt = t => ({ x: (1 - t) * (1 - t) * P0.x + 2 * (1 - t) * t * P1.x + t * t * P2.x, y: (1 - t) * (1 - t) * P0.y + 2 * (1 - t) * t * P1.y + t * t * P2.y });
+  let len = 0, prev = P0; for (let i = 1; i <= 8; i++) { const q = pt(i / 8); len += Math.hypot(q.x - prev.x, q.y - prev.y); prev = q; }
+  return { pt, len, kind: dot < -.5 ? 'u' : cross > .5 ? 'right' : cross < -.5 ? 'left' : 'straight' };
+}
+function aiTraffic(v, dt) {
+  v.why = ''; v.waitJ = null;
+  if (v.from < 0 || v.to < 0) { const n = nearestNode(v.x, v.y); v.from = n; v.to = pick(nodes[n].nb); v.next = null; v.mode = 'lane'; }
+  if (v.next == null) v.next = chooseNext(v.from, v.to);
+  const d = VT[v.type], L = d.len, look = 18 + Math.abs(v.v) * .18;
+  let target = v.type === 'keke' ? 105 : 150, tx, ty;
   const onBridge = v.y > 23 * CELL && v.y < 27 * CELL && v.x > 47 * CELL && v.x < 64 * CELL;
   if (onBridge && WORLD.goSlow) target = 38;
+
+  if (v.mode === 'turn') {
+    // crossing the junction along the curve; progress by distance actually driven
+    const tp = v.path; v.t += Math.max(0, v.v) * dt / tp.len;
+    if (v.t >= 1) { v.from = v.to; v.to = v.next; v.next = chooseNext(v.from, v.to); v.mode = 'lane'; v.path = null; }
+    else {
+      const q = tp.pt(Math.min(1, v.t + look / tp.len)); tx = q.x; ty = q.y;
+      target = Math.min(target, tp.kind === 'right' ? 38 : tp.kind === 'left' ? 55 : tp.kind === 'u' ? 30 : 85);
+    }
+  }
+  if (v.mode !== 'turn') {
+    v.mode = 'lane';
+    const g = laneGeom(v.from, v.to);
+    const s2 = clamp((v.x - g.sx) * g.ux + (v.y - g.sy) * g.uy, -40, g.len);
+    const ahead = Math.min(g.len, s2 + look); tx = g.sx + g.ux * ahead; ty = g.sy + g.uy * ahead;
+    const nose = g.len - s2 - L / 2; // distance from our nose to the junction box edge
+    if (v.held === v.to) {
+      target = Math.min(target, 85);
+      if (s2 >= g.len - 1) { v.path = turnPath(v.from, v.to, v.next); v.t = 0; v.mode = 'turn'; }
+    } else if (nose < 80) {
+      target = Math.min(target, 30 + nose * 1.2);
+      if (nose < 14 && junctionFree(v, v.to, v.next)) { holdJunction(v, v.to); v.jwaitSince = null; const w = JWAIT.get(v.to); if (w && w.v === v) JWAIT.delete(v.to); }
+      else if (nose < 40) {
+        target = Math.min(target, Math.max(0, (nose - 2) * 2.5)); v.why = 'junction'; v.waitJ = v.to;
+        if (nose < 14) { if (v.jwaitSince == null) v.jwaitSince = S_time(); const w = JWAIT.get(v.to);
+          if (!w || w.v === v || !vehicles.includes(w.v) || w.v.waitJ !== v.to || w.since > v.jwaitSince) JWAIT.set(v.to, { v, since: v.jwaitSince, move: Object.assign(movement(v.from, v.to, v.next), { long: L > 40 }) }); }
+      }
+    }
+  }
+  // leave the junction we were holding once fully clear of the box
+  if (v.held != null && v.held !== v.to && v.mode === 'lane' && dist(v, nodes[v.held]) > JBOX + L / 2 + 6) releaseJunction(v);
+
+  // car-following: keep a speed-dependent gap to whatever is in our path ahead
   const fx = Math.cos(v.a), fy = Math.sin(v.a);
-  const others = vehicles.concat(player.veh ? [] : [player]);
-  for (const o of others) {
-    if (o === v) continue; const dx = o.x - v.x, dy = o.y - v.y; if (Math.abs(dx) > 80 || Math.abs(dy) > 80) continue;
-    const ahead = dx * fx + dy * fy, lat = Math.abs(-dx * fy + dy * fx);
-    if (ahead > 0 && ahead < 62 && lat < 15) { target = 0; if (o === player.veh && Math.random() < dt * .6) honk(v); break; }
+  let gap = 1e9, leadV = 0, leader = null;
+  const consider = (o, ol, ow, ov, oa) => {
+    const dx = o.x - v.x, dy = o.y - v.y; if (Math.abs(dx) > 160 || Math.abs(dy) > 160) return;
+    const ahead = dx * fx + dy * fy; if (ahead <= 0) return;
+    if (Math.abs(-dx * fy + dy * fx) > (d.wid + ow) / 2 + 2) return;
+    // while we're crossing a junction, cars queued at its stop lines are waiting for us — not in our way
+    if (o.waitJ != null && o.waitJ === v.held) return;
+    const g = ahead - (L + ol) / 2; if (g < gap) { gap = g; leadV = ov; leader = o; }
+  };
+  for (const o of vehicles) if (o !== v) consider(o, VT[o.type].len, VT[o.type].wid, Math.max(0, o.v * Math.cos(o.a - v.a)), o.a);
+  if (!player.veh) consider(player, 12, 12, 0, null);
+  if (gap < 1e8) {
+    const safe = 12 + Math.max(0, v.v) * .5;
+    target = Math.min(target, Math.max(0, leadV + (gap - safe) * 1.8));
+    if (gap < 6) target = 0;
+    if (target < 5) { v.why = 'leader'; v.leader = leader; }
+    if (leader === player.veh && gap < 30 && Math.random() < dt * .6) honk(v);
   }
   if (stars() > 0 && dist(v, player.pos()) < 160) target *= 1.2;
-  steerTo(v, tg.x, tg.y, target, dt);
+  v.waitT = target < 5 && Math.abs(v.v) < 5 ? (v.waitT || 0) + dt : 0;
+  const diff = wrapA(Math.atan2(ty - v.y, tx - v.x) - v.a);
+  const thr = clamp((target - v.v) / 25, -1, 1);
+  drive(v, thr, clamp(diff * 3, -1, 1), thr < -.3 && v.v > 0, dt, true);
 }
 function steerTo(v, tx, ty, targetSpeed, dt, mult = 2.6) {
   const want = Math.atan2(ty - v.y, tx - v.x), diff = wrapA(want - v.a);
@@ -668,13 +942,14 @@ function spawnTraffic(dt) {
     let s;
     if (WORLD.goSlow && Math.random() < .5) { const a = nodeKey['42,24'], b = nodeKey['66,24']; s = Math.random() < .5 ? Object.assign(laneSpot(a, b, rnd(.1, .9)), { from: a, to: b }) : Object.assign(laneSpot(b, a, rnd(.1, .9)), { from: b, to: a }); if (dist(s, p) < 420) s = null; }
     if (!s) s = roadSpotNear(p, 480, 1000);
-    if (s && !vehicles.some(v => Math.abs(v.x - s.x) < 40 && Math.abs(v.y - s.y) < 40)) {
+    if (s && nodes.some(n => Math.abs(n.x - s.x) < JBOX + 30 && Math.abs(n.y - s.y) < JBOX + 30)) s = null;
+    if (s && !vehicles.some(v => Math.hypot(v.x - s.x, v.y - s.y) < 75)) {
       let tot = 0; for (const [, w] of TRAFFIC_MIX) tot += w; let r = Math.random() * tot, type = 'sedan';
       for (const [t, w] of TRAFFIC_MIX) { r -= w; if (r <= 0) { type = t; break; } }
       const v = spawnVehicle(type, s.x, s.y, s.a, { from: s.from, to: s.to }); v.v = 60;
     }
   }
-  vehicles = vehicles.filter(v => v.mission || v === player.veh || v === player.owned || v.driver === 'cop' && stars() > 0 || dist(v, p) < 1300);
+  vehicles = vehicles.filter(v => { const keep = v.mission || v === player.veh || v === player.owned || v.driver === 'cop' && stars() > 0 || dist(v, p) < 1300; if (!keep) releaseJunction(v); return keep; });
   // pedestrians
   const pw = IS_TOUCH ? 26 : 40;
   peds = peds.filter(q => dist(q, p) < 1000);
@@ -713,10 +988,11 @@ function collide(dt) {
     const imp = Math.abs(rel);
     if (imp > 30) { A.v *= .55; B.v *= .55; }
     if (imp > 70) { A.hp -= imp * .06; B.hp -= imp * .06; onImpact(A, imp); onImpact(B, imp); }
+    if (imp > 30 && A.driver === 'ai' && B.driver === 'ai') { STATS.aiCrashes++; if (STATS.log && STATS.log.length < 12) { const n = nodes[nearestNode((A.x + B.x) / 2, (A.y + B.y) / 2)]; STATS.log.push({ imp: Math.round(imp), dNode: Math.round(Math.hypot(n.x - A.x, n.y - A.y)), A: [A.type, +A.a.toFixed(2), Math.round(A.v), A.why, A.held === n.id ? 'holds' : '', A.waitJ === n.id ? 'waits' : ''], B: [B.type, +B.a.toFixed(2), Math.round(B.v), B.why, B.held === n.id ? 'holds' : '', B.waitJ === n.id ? 'waits' : ''] }); } }
     const pv = player.veh;
     if (pv && (A === pv || B === pv) && imp > 55) {
       const other = A === pv ? B : A;
-      if (other.hits != null && other.hitCd <= 0) { other.hits--; other.hitCd = .6; shake = 6; ui.toast(other.hits > 0 ? `Hit! ${other.hits} more` : 'He\'s done!', 'good'); }
+      if (other.hits != null && other.hitCd <= 0) { other.hits--; other.hitCd = .6; shake = 6; ui.toast(other.hits > 0 ? `Hit! ${other.hits} more` : 'He\'s done!', 'good', { key: 'ram' }); }
       if (other.driver === 'cop') report('AttackOnResponder', pv, 1);
       else if (other.driver === 'ai' && imp > 110) report('PropertyDamage', pv, .7);
     }
@@ -820,7 +1096,7 @@ function updateMission(dt) {
     case 'stops':
       for (const s of ms.stops) {
         if (!player.veh || dist(player.veh, s) > 44 || Math.abs(player.veh.v) > 40) { s.hold = 0; continue; }
-        s.hold += dt; if (s.hold > .7) { ms.prog += s.fares; floaters.push({ x: s.x, y: s.y - 20, text: '+2 fares', t: 1.4 }); beep([988], .06, .04, 'sine'); ms.stops = ms.stops.filter(x => x !== s); ui.toast(pick(CALLS)); break; }
+        s.hold += dt; if (s.hold > .7) { ms.prog += s.fares; floaters.push({ x: s.x, y: s.y - 20, text: '+2 fares', t: 1.4 }); beep([988], .06, .04, 'sine'); ms.stops = ms.stops.filter(x => x !== s); ui.toast(pick(CALLS), '', { key: 'call', ttl: 4000 }); break; }
       }
       if (ms.prog >= o.count) nextObj(); break;
     case 'collect':
@@ -860,10 +1136,15 @@ function updateShift(dt) {
 }
 
 // ---------------------------------------------------------------- player
+const PR = 6; // player collision half-size
+const playerFree = (x, y) => !solidAt(x - PR, y - PR) && !solidAt(x + PR, y - PR) && !solidAt(x - PR, y + PR) && !solidAt(x + PR, y + PR) && !solidAt(x, y) && x > 8 && y > 8 && x < WW - 8 && y < WH - 8;
 function tryMovePlayer(dx, dy) {
-  const r = 6; const ok = (x, y) => !solidAt(x - r, y - r) && !solidAt(x + r, y - r) && !solidAt(x - r, y + r) && !solidAt(x + r, y + r) && x > 8 && y > 8 && x < WW - 8 && y < WH - 8;
-  if (ok(player.x + dx, player.y)) player.x += dx;
-  if (ok(player.x, player.y + dy)) player.y += dy;
+  // Sub-step so a big shove (knocked by a car) can't carry the player through a stall.
+  const steps = Math.max(1, Math.ceil(Math.max(Math.abs(dx), Math.abs(dy)) / 5));
+  for (let i = 0; i < steps; i++) {
+    if (playerFree(player.x + dx / steps, player.y)) player.x += dx / steps;
+    if (playerFree(player.x, player.y + dy / steps)) player.y += dy / steps;
+  }
 }
 function nearestVehicle() {
   let b = null, bd = 1e9; for (const v of vehicles) { const d = dist(v, player); if (d < VT[v.type].len / 2 + 22 && d < bd) { bd = d; b = v; } } return b;
@@ -879,27 +1160,58 @@ function enterVehicle(v) {
 }
 function exitVehicle() {
   const v = player.veh; if (!v || Math.abs(v.v) > 70) return;
+  // Step out on the left, right, behind or in front — whichever side isn't a wall.
+  const d = VT[v.type], c = Math.cos(v.a), sn = Math.sin(v.a), side = d.wid / 2 + 12, end = d.len / 2 + 12;
+  const spots = [[-sn * side, c * side], [sn * side, -c * side], [-c * end, -sn * end], [c * end, sn * end]].map(([dx, dy]) => ({ x: v.x + dx, y: v.y + dy }));
+  const spot = spots.find(p => playerFree(p.x, p.y));
+  if (!spot) { ui.toast('No room to get out here. Move the vehicle.', 'bad'); return; }
   v.driver = null; endShift();
-  for (const side of [1, -1]) { const x = v.x - Math.sin(v.a) * side * (VT[v.type].wid / 2 + 12), y = v.y + Math.cos(v.a) * side * (VT[v.type].wid / 2 + 12); if (!solidAt(x, y)) { player.x = x; player.y = y; break; } player.x = v.x; player.y = v.y; }
-  player.veh = null;
+  player.x = spot.x; player.y = spot.y; player.veh = null;
 }
 function updatePlayer(dt) {
   const v = player.veh;
-  if (IN.enter()) { if (v) exitVehicle(); else { const n = nearestVehicle(); if (n) enterVehicle(n); } }
+  if (IN.enter() || (IN.action() && !actionContext())) { if (v) exitVehicle(); else { const n = nearestVehicle(); if (n && n.driver !== 'flee') enterVehicle(n); } }
   if (hit('KeyH')) { beep([415, 349], .12, .06); for (const q of peds) if (dist(q, player.pos()) < 120) { q.state = 'flee'; q.t = 1.5; } }
   if (v) {
-    let thr = -IN.ky(), steer = IN.kx();
-    if (touch.on && (touch.x || touch.y)) {
-      const m = Math.min(1, Math.hypot(touch.x, touch.y)); const want = Math.atan2(touch.y, touch.x); const diff = wrapA(want - v.a);
-      if (Math.abs(diff) > 2.5) { thr = -m * .8; steer = 0; } else { thr = m * (Math.abs(diff) > 1.2 ? .5 : 1); steer = clamp(diff * 2.2, -1, 1); }
-    }
-    drive(v, thr, steer, IN.brake(), dt);
-    if (v.hp <= 0 && !v.smoked) { v.smoked = true; ui.toast('The engine is dead. Get out (F).', 'bad'); }
+    let thr = -IN.ky(), steer = IN.kx(), brake = IN.brake();
+    // touch: joystick steers, GAS accelerates, holding BRAKE once stopped reverses
+    if (touch.on) steer = clamp(touch.x * 1.25, -1, 1);
+    if (IN.gas()) thr = 1;
+    else if (touch.held.brake) { if (v.v < 8) { thr = -1; brake = false; } }
+    if (v.fuel <= 0 && thr > 0) thr = 0; // out of fuel: coasting only
+    drive(v, thr, steer, brake, dt);
+    // fuel burns with distance driven
+    const before = v.fuel;
+    v.fuel = Math.max(0, v.fuel - Math.abs(v.v) * dt * FUEL_PER_PX * (FUEL_USE[v.type] || 1));
+    if (before > 15 && v.fuel <= 15) ui.toast('Low fuel. Find a Gidi Fuel station (F on the map).', 'bad', { key: 'fuel' });
+    if (before > 0 && v.fuel <= 0) ui.toast('Out of fuel. Push on to a station or find another ride.', 'bad', { key: 'fuel' });
+    if (v.hp <= 0 && !v.smoked) { v.smoked = true; ui.toast(IS_TOUCH ? 'The engine is dead. Tap EXIT.' : 'The engine is dead. Press E to get out.', 'bad', { key: 'engine' }); }
   } else {
     let mx = IN.kx(), my = IN.ky(); if (touch.on) { mx = touch.x; my = touch.y; }
     const m = Math.hypot(mx, my); if (m > 0) { const sp = (IN.sprint() ? 190 : 120) * Math.min(1, m); tryMovePlayer(mx / Math.max(1, m) * sp * dt, my / Math.max(1, m) * sp * dt); player.a = Math.atan2(my, mx); }
   }
   if (player.hp <= 0) hospital();
+}
+
+// What E / ACTION / tapping the prompt would do right now, in priority order.
+function nearStation() { const v = player.veh; if (!v) return null; return STATIONS.find(st => dist(st, v) < 56) || null; }
+function actionContext() {
+  const giver = !MS.cur && worldMarkers().find(m => m.giver && dist(player.pos(), m) < 44);
+  if (giver) return { label: `Start “${MISSIONS[giver.giver].title}”`, run: () => startMission(giver.giver) };
+  const st = nearStation(), v = player.veh;
+  if (st && v.fuel < 99) { const cost = Math.ceil((100 - v.fuel) * FUEL_PRICE); return { label: Math.abs(v.v) > 25 ? `Stop to refuel · ${naira(cost)}` : `Refuel · ${naira(cost)}`, run: () => refuel(v) }; }
+  if (!v && nearPlace(PL.tailor, 30)) return { label: 'Balo Tailor', run: openTailor };
+  if (!v && nearPlace(PL.carwash, 30)) return { label: 'Mainland Shine Car Wash', run: openCarWash };
+  if (v && v.type === 'danfo' && !MS.cur) return { label: SHIFT.on ? 'End conductor shift' : 'Start conductor shift', run: () => SHIFT.on ? endShift() : startShift() };
+  return null;
+}
+function refuel(v) {
+  if (Math.abs(v.v) > 25) { ui.toast('Stop at the pump first.', '', { key: 'fuel' }); return; }
+  const want = 100 - v.fuel, afford = Math.min(want, Math.floor(S.cash / FUEL_PRICE));
+  if (afford <= 0) { ui.toast(`Not enough money for fuel (${naira(FUEL_PRICE)} per 1%).`, 'bad', { key: 'fuel' }); return; }
+  const cost = Math.ceil(afford * FUEL_PRICE); spend(cost, 'Fuel at Gidi Fuel'); v.fuel = Math.min(100, v.fuel + afford);
+  ui.toast(afford < want ? `Bought ${Math.round(afford)}% of a tank for ${naira(cost)}. That's all your money.` : `Tank full. ${naira(cost)} paid.`, 'good', { key: 'fuel' });
+  beep([660, 880], .08, .04, 'sine');
 }
 
 // ---------------------------------------------------------------- busted / hospital / checkpoint
@@ -1029,7 +1341,7 @@ function renderPhone() {
   } else if (phoneApp === 'yarns') {
     b.innerHTML = `<div class="app-h">Yarns</div>` + (S.feed.length ? S.feed.map(p => `<div class="post${p.me ? ' me' : ''}"><b>${esc(p.author)} <em>${esc(p.handle)}</em></b><p>${esc(p.text)}</p><span class="meta">♥ ${p.likes.toLocaleString('en-US')}</span></div>`).join('') : '<p class="muted">Your feed is quiet. Do something worth talking about.</p>');
   } else {
-    b.innerHTML = `<div class="app-h">MapAm</div><canvas id="phone-map" width="680" height="454"></canvas><p class="muted">Yellow: mission givers and stops · White: you · Green: Task Force · Blue: tailor and car wash.</p>`;
+    b.innerHTML = `<div class="app-h">MapAm</div><canvas id="phone-map" width="680" height="454"></canvas><p class="muted">Yellow: mission givers and stops · White: you · Green: Task Force · Blue: tailor and car wash · Green F: Gidi Fuel.</p>`;
     drawMinimap(b.querySelector('#phone-map'), true);
   }
   const un = S.chats.filter(c => !c.read && !c.me).length; $('#gist-badge').hidden = !un; $('#gist-badge').textContent = un;
@@ -1077,6 +1389,7 @@ function renderMap() {
         g.fillStyle = 'rgba(160,200,230,.18)'; g.fillRect(x + 4, y + 4, CELL - 8, 4);
         for (let wy = 6; wy < CELL - 4; wy += 7) for (let wx = 5; wx < CELL - 4; wx += 7) if (hash(c * 7 + wx, r * 5 + wy) > .45) { L.fillStyle = hash(wx + c, wy + r) > .3 ? 'rgba(255,225,150,.95)' : 'rgba(150,210,255,.9)'; L.fillRect(x + wx, y + wy, 3, 3); }
         break; }
+      case T.STATION: g.fillStyle = '#55524d'; g.fillRect(x, y, CELL, CELL); g.fillStyle = 'rgba(255,255,255,.06)'; g.fillRect(x, y + CELL - 2, CELL, 2); break;
       case T.STALL: g.fillStyle = '#4a3828'; g.fillRect(x, y, CELL, CELL); g.fillStyle = canopy[Math.floor(h * canopy.length)]; g.fillRect(x + 2, y + 2, CELL - 4, CELL - 4);
         g.fillStyle = 'rgba(255,255,255,.18)'; g.fillRect(x + 2, y + 2, CELL - 4, 5); if (h > .7) { L.fillStyle = 'rgba(255,210,120,.7)'; L.fillRect(x + 13, y + 13, 5, 5); } break;
     }
@@ -1092,11 +1405,21 @@ function renderMap() {
   for (let x = 48 * CELL; x < 64 * CELL; x += 64) { L.fillStyle = 'rgba(255,200,120,.55)'; L.beginPath(); L.arc(x, 24 * CELL, 14, 0, 7); L.arc(x + 32, 26 * CELL, 14, 0, 7); L.fill(); }
   // street lamps
   for (let r = 0; r < ROWS; r += 3) for (let c = 0; c < COLS; c += 3) if (grid[I(c, r)] === T.SIDE && hash(c + 99, r) > .55) { const grd = L.createRadialGradient(cc(c), cc(r), 0, cc(c), cc(r), 40); grd.addColorStop(0, 'rgba(255,190,100,.45)'); grd.addColorStop(1, 'rgba(255,190,100,0)'); L.fillStyle = grd; L.fillRect(cc(c) - 40, cc(r) - 40, 80, 80); }
-  // checkpoint booth + bus stops + painted district names
+  // petrol stations: canopy, pumps, sign
+  for (const st of STATIONS) {
+    const x = st.c * CELL, y = st.r * CELL;
+    g.fillStyle = 'rgba(0,0,0,.35)'; g.fillRect(x + 10, y + 12, 3 * CELL - 14, 2 * CELL - 18);
+    g.fillStyle = '#e8e2d4'; g.fillRect(x + 6, y + 8, 3 * CELL - 12, 2 * CELL - 18);
+    g.fillStyle = '#2f8f5b'; g.fillRect(x + 6, y + 8, 3 * CELL - 12, 6);
+    g.fillStyle = '#d94f3d'; for (let k = 0; k < 3; k++) g.fillRect(x + 18 + k * 28, y + 26, 8, 12);
+    g.fillStyle = '#2f8f5b'; g.fillRect(x + 3 * CELL - 18, y + 2 * CELL - 14, 14, 14);
+    g.fillStyle = '#fff'; g.font = '700 10px sans-serif'; g.textAlign = 'center'; g.fillText('F', x + 3 * CELL - 11, y + 2 * CELL - 3);
+    L.fillStyle = 'rgba(255,245,220,.6)'; L.fillRect(x + 6, y + 8, 3 * CELL - 12, 2 * CELL - 18);
+  }
+  // checkpoint booth + bus stops + small signage
   const cp = PL.checkpoint; g.fillStyle = 'rgba(240,90,80,.85)'; for (let i = 0; i < 4; i++) g.fillRect(cp.x + 22, cp.y - 32 + i * 16, 6, 8);
   g.fillStyle = '#ddd'; g.fillRect(cp.x + 30, cp.y - 44, 22, 12); g.fillStyle = '#222'; g.font = '700 8px sans-serif'; g.fillText('STOP', cp.x + 31, cp.y - 35);
-  g.textAlign = 'center'; g.font = "64px Bungee, 'Arial Black', sans-serif"; g.fillStyle = 'rgba(255,255,255,.07)';
-  [['OSHOJA', 520, 640], ['BALO MARKET', 1100, 1500], ['EKO CREST', 2560, 700], ['LEKKA STRIP', 2560, 1580], ['STILT TOWN', 1790, 1820], ['MAINLAND', 520, 1150]].forEach(([t, x, y]) => g.fillText(t, x, y));
+  g.textAlign = 'center';
   g.font = "26px Bungee, 'Arial Black', sans-serif"; g.fillStyle = 'rgba(255,255,255,.12)'; g.fillText('THIRD LAGOON BRIDGE', 1790, 24 * CELL - 18);
   g.fillText('LUXURY BUS PARK', 256, 46 * CELL - 10); g.fillText('OSHOJA MOTOR PARK', 256, 6 * CELL - 10);
   // parked luxury buses
@@ -1167,6 +1490,7 @@ function render(t) {
   ctx.setTransform(s, 0, 0, s, cv.width / 2 - camX * s + sx, cv.height / 2 - camY * s + sy);
   const hw = VW / zoom / 2 + 60, hh = VH / zoom / 2 + 60, x0 = camX - hw, y0 = camY - hh, x1 = camX + hw, y1 = camY + hh;
   if (mapC) { const sx0 = clamp(x0, 0, WW), sy0 = clamp(y0, 0, WH), sx1 = clamp(x1, 0, WW), sy1 = clamp(y1, 0, WH); if (sx1 > sx0 && sy1 > sy0) ctx.drawImage(mapC, sx0, sy0, sx1 - sx0, sy1 - sy0, sx0, sy0, sx1 - sx0, sy1 - sy0); }
+  drawDistrictLabels(x0 + 60, y0 + 60, x1 - 60, y1 - 60);
   const vis = o => o.x > x0 && o.x < x1 && o.y > y0 && o.y < y1;
   const marks = worldMarkers(); for (const m of marks) if (vis(m)) drawMarker(m.x, m.y, m.r, m.color, t, m.label);
   for (const it of items) if (vis(it)) { ctx.fillStyle = it.kind === 'bag' ? '#2e7d32' : '#8d6e63'; ctx.fillRect(it.x - 7, it.y - 7, 14, 14); ctx.strokeStyle = '#f5c400'; ctx.lineWidth = 2; ctx.strokeRect(it.x - 7, it.y - 7, 14, 14); }
@@ -1201,12 +1525,36 @@ function render(t) {
     ctx.font = '700 12px "JetBrains Mono", monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText(Math.round(dist(obj, p) / 10) + 'm', ax, ay + 26);
   }
 }
+// District name watermarks: sit at the district's centre, but slide (and shrink) so the whole word
+// always stays inside both the district and the visible screen — never "INLAND" for MAINLAND.
+const DLABELS = [['OSHOJA', 0, 0, 22, 24], ['MAINLAND', 22, 0, 48, 36], ['MAINLAND', 0, 24, 22, 44], ['BALO MARKET', 22, 36, 48, 64],
+  ['BUS PARK', 0, 44, 14, 64], ['THE LAGOON', 48, 0, 64, 23], ['STILT TOWN', 48, 46, 64, 64], ['EKO CREST', 64, 0, 96, 40], ['LEKKA STRIP', 64, 40, 96, 64]]
+  .map(([t, c0, r0, c1, r1]) => ({ t, x0: c0 * CELL, y0: r0 * CELL, x1: c1 * CELL, y1: r1 * CELL }));
+function labelPlacements(vx0, vy0, vx1, vy1) {
+  const out = []; ctx.save();
+  for (const d of DLABELS) {
+    const ix0 = Math.max(d.x0, vx0), iy0 = Math.max(d.y0, vy0), ix1 = Math.min(d.x1, vx1), iy1 = Math.min(d.y1, vy1);
+    const w = ix1 - ix0, h = iy1 - iy0; if (w < 160 || h < 70) continue;
+    ctx.font = "100px Bungee, 'Arial Black', sans-serif"; const per = ctx.measureText(d.t).width / 100; // measured live: the web font may load late
+    const size = Math.floor(Math.min(64, (w - 40) / per, h * .6)); if (size < 20) continue;
+    ctx.font = `${size}px Bungee, 'Arial Black', sans-serif`; const tw = ctx.measureText(d.t).width;
+    const cx = clamp((d.x0 + d.x1) / 2, ix0 + tw / 2 + 20, ix1 - tw / 2 - 20), cy = clamp((d.y0 + d.y1) / 2, iy0 + size, iy1 - size);
+    out.push({ t: d.t, cx, cy, size, tw, d });
+  }
+  ctx.restore(); return out;
+}
+function drawDistrictLabels(vx0, vy0, vx1, vy1) {
+  ctx.save(); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = 'rgba(255,255,255,.075)';
+  for (const l of labelPlacements(vx0, vy0, vx1, vy1)) { ctx.font = `${l.size}px Bungee, 'Arial Black', sans-serif`; ctx.fillText(l.t, l.cx, l.cy); }
+  ctx.restore();
+}
 function drawMinimap(canvas, big) {
   const m = canvas.getContext('2d'), W2 = canvas.width, H2 = canvas.height, k = W2 / WW;
   m.clearRect(0, 0, W2, H2); if (miniC) m.drawImage(miniC, 0, 0, W2, H2);
   if (darkness() > 0) { m.fillStyle = `rgba(4,8,26,${darkness() * .6})`; m.fillRect(0, 0, W2, H2); }
   const dot = (x, y, r, c) => { m.fillStyle = c; m.beginPath(); m.arc(x * k, y * k, r, 0, 7); m.fill(); };
   for (const mk of worldMarkers()) dot(mk.x, mk.y, big ? 8 : 6, mk.color.startsWith('rgba(53') ? '#35b3b5' : mk.color.startsWith('rgba(240') ? '#f05a50' : '#f5c400');
+  for (const st of STATIONS) { m.fillStyle = '#2f8f5b'; m.fillRect(st.x * k - (big ? 6 : 4), st.y * k - (big ? 6 : 4), big ? 12 : 8, big ? 12 : 8); m.fillStyle = '#fff'; m.font = `700 ${big ? 10 : 7}px sans-serif`; m.textAlign = 'center'; m.fillText('F', st.x * k, st.y * k + (big ? 4 : 2.5)); }
   for (const v of vehicles) if (v.driver === 'cop') dot(v.x, v.y, big ? 5 : 4, (performance.now() / 200 | 0) % 2 ? '#4cc874' : '#2979ff');
   if (stars() > 0 && !WANT.seen) { m.strokeStyle = 'rgba(240,90,80,.8)'; m.lineWidth = 2; m.beginPath(); m.arc(WANT.last.x * k, WANT.last.y * k, 140 * k * 2, 0, 7); m.stroke(); }
   const p = player.pos(); m.save(); m.translate(p.x * k, p.y * k); m.rotate(player.veh ? player.veh.a : player.a); m.fillStyle = '#fff'; m.strokeStyle = '#000'; m.lineWidth = 1.5; m.beginPath(); m.moveTo(big ? 10 : 8, 0); m.lineTo(big ? -6 : -5, big ? -6 : -5); m.lineTo(big ? -6 : -5, big ? 6 : 5); m.closePath(); m.fill(); m.stroke(); m.restore();
@@ -1222,42 +1570,70 @@ function updateHud(dt) {
   $('#clock').textContent = clockStr() + '  ·  Day ' + (Math.floor(S.minutes / 1440) + 1);
   const d = districtAt(player.pos().x, player.pos().y); if (d !== lastDistrict) { lastDistrict = d; $('#district').textContent = d.toUpperCase(); }
   $('#radio').textContent = WORLD.radio >= 0 && player.veh ? '♫ ' + RADIO[WORLD.radio].name : player.veh ? '♫ Radio off' : '';
-  const ms = MS.cur, ob = $('#objective'), tm = $('#timer');
-  if (ms && ms.def.objs[ms.oi]) {
-    const o = ms.def.objs[ms.oi]; const cnt = o.count > 1 ? ` (${ms.prog}/${o.count})` : '';
-    ob.innerHTML = `<span class="mt">${esc(ms.def.title)}</span>${esc(o.text + cnt)}${o.sub ? `<small>${esc(o.sub)}</small>` : ''}${ms.def.bonus ? `<small>Bonus: ${esc(ms.def.bonus)}${ms.bonusFail ? ' — missed' : ''}</small>` : ''}`; ob.hidden = false;
-    if (o.time) { tm.hidden = false; tm.textContent = Math.floor(ms.timer / 60) + ':' + String(Math.floor(ms.timer % 60)).padStart(2, '0'); tm.classList.toggle('low', ms.timer < 20); } else tm.hidden = true;
-  } else if (!ms) {
-    const next = ORDER.find(available);
-    ob.hidden = false; ob.innerHTML = next ? `<span class="mt">Next job</span>${esc(MISSIONS[next].title)}<small>Go to the yellow ${CONTACTS[MISSIONS[next].giver][0]} marker and press E · or accept in your phone</small>` : `<span class="mt">Free roam</span>Hustle on: conductor shifts, the car wash, the tailor`;
-    tm.hidden = true;
-  }
+  updateJobCard(); placeCard();
   const v = player.veh;
   $('#veh').textContent = v ? VT[v.type].name : 'On foot';
   $('#speed').hidden = !v; if (v) $('#speed').innerHTML = Math.round(Math.abs(v.v) * .42) + '<small>km/h</small>';
-  $('#vbar').hidden = !v; if (v) $('#vbar i').style.width = clamp(v.hp / VT[v.type].hp * 100, 0, 100) + '%';
-  $('#hbar i').style.width = clamp(player.hp, 0, 100) + '%'; $('#hbar i').style.background = player.hp < 35 ? 'var(--bad)' : 'var(--good)';
+  $('#hbar i').style.width = clamp(player.hp, 0, 100) + '%'; $('#hbar i').style.background = player.hp < 35 ? 'var(--bad)' : 'var(--good)'; $('#hval').textContent = Math.max(0, Math.round(player.hp));
+  $('#frow').hidden = $('#drow').hidden = !v;
+  if (v) {
+    $('#fbar i').style.width = clamp(v.fuel, 0, 100) + '%'; $('#fbar i').style.background = v.fuel < 15 ? 'var(--bad)' : 'var(--danfo)'; $('#fval').textContent = Math.round(v.fuel) + '%';
+    const body = clamp(v.hp / VT[v.type].hp * 100, 0, 100); $('#vbar i').style.width = body + '%'; $('#dval').textContent = Math.round(body) + '%';
+  }
   const hs = $('#hustle'); hs.hidden = !SHIFT.on; if (SHIFT.on) hs.innerHTML = `<b>Danfo Conductor</b> · streak ×${SHIFT.streak} · ${naira(SHIFT.earned)}<br>${esc(SHIFT.call)}`;
-  // context prompt
-  const pr = $('#prompt'); let msg = '';
-  const kb = !IS_TOUCH;
-  const giver = !MS.cur && worldMarkers().find(m => m.giver && dist(player.pos(), m) < 44);
-  if (giver) msg = `<kbd>${kb ? 'E' : 'ACTION'}</kbd>Start “${MISSIONS[giver.giver].title}”`;
-  else if (!player.veh && nearPlace(PL.tailor, 30)) msg = `<kbd>${kb ? 'E' : 'ACTION'}</kbd>Balo Tailor`;
-  else if (!player.veh && nearPlace(PL.carwash, 30)) msg = `<kbd>${kb ? 'E' : 'ACTION'}</kbd>Mainland Shine Car Wash`;
-  else if (player.veh && player.veh.type === 'danfo' && !MS.cur) msg = `<kbd>${kb ? 'E' : 'ACTION'}</kbd>${SHIFT.on ? 'End conductor shift' : 'Start conductor shift'}`;
-  else if (!player.veh) { const n = nearestVehicle(); if (n && n.driver !== 'flee') msg = `<kbd>${kb ? 'F' : 'ENTER'}</kbd>${n.driver === 'ai' || n.driver === 'cop' ? 'Steal' : 'Enter'} ${VT[n.type].name}`; }
-  pr.hidden = !msg; if (msg) pr.innerHTML = msg;
-  $('#tb-enter').textContent = player.veh ? 'EXIT' : 'ENTER'; $('#tb-enter').classList.toggle('hot', !player.veh && !!nearestVehicle());
-  $('#tb-brake').textContent = player.veh ? 'BRAKE' : 'SPRINT';
+  // context prompt (a tappable pill)
+  const pr = $('#prompt'), kb = !IS_TOUCH; let msg = ''; promptAct = null;
+  const ctxA = actionContext();
+  if (ctxA) { msg = kb ? `<kbd>E</kbd>${esc(ctxA.label)}` : `Tap · ${esc(ctxA.label)}`; promptAct = 'action'; }
+  else if (!v) { const n = nearestVehicle(); if (n && n.driver !== 'flee') { const verb = (n.driver === 'ai' || n.driver === 'cop' ? 'Steal ' : 'Enter ') + VT[n.type].name; msg = kb ? `<kbd>E</kbd>${verb}` : `Tap · ${verb}`; promptAct = 'enter'; } }
+  pr.hidden = !msg; if (msg && pr.innerHTML !== msg) pr.innerHTML = msg;
+  $('#tb-enter').textContent = v ? 'EXIT' : 'ENTER'; $('#tb-enter').classList.toggle('hot', !v && !!nearestVehicle());
+  $('#tb-action').classList.toggle('hot', !!ctxA);
+  $('#tb-gas').textContent = v ? 'GAS' : 'RUN'; $('#tb-brake').classList.toggle('off', !v);
   hudT -= dt; if (hudT <= 0) { hudT = .1; drawMinimap($('#minimap'), false); }
+}
+
+// Job card: compact (title + distance); tap to expand; auto-collapses after 4s. It also pops open for
+// 4s whenever the objective changes, so a new instruction is never missed.
+const JOB = { open: false, until: 0, sig: '' };
+$('#job').addEventListener('click', () => { JOB.open = !JOB.open; JOB.until = performance.now() + 4000; updateJobCard(); });
+const fmtDist = d => { const m = d / 10; return m < 1000 ? Math.max(10, Math.round(m / 10) * 10) + ' m' : (m / 1000).toFixed(1) + ' km'; };
+function updateJobCard() {
+  const ms = MS.cur, p = player.pos(); let title, line, more = '', target = null, timer = '';
+  if (ms && ms.def.objs[ms.oi]) {
+    const o = ms.def.objs[ms.oi]; title = ms.def.title; line = o.text + (o.count > 1 ? ` (${ms.prog}/${o.count})` : '');
+    const ts = objTargets(ms); if (ts.length) target = ts.reduce((a, b) => dist(a, p) < dist(b, p) ? a : b);
+    more = [o.sub, ms.def.bonus ? `Bonus: ${ms.def.bonus}${ms.bonusFail ? ' (missed)' : ''}` : ''].filter(Boolean).join(' · ');
+    if (o.time) timer = Math.floor(ms.timer / 60) + ':' + String(Math.floor(ms.timer % 60)).padStart(2, '0');
+  } else if (SHIFT.on) { title = 'Conductor shift'; line = 'Drive to the next bus stop'; target = SHIFT_STOPS[SHIFT.next]; more = 'Smooth driving and being on time raise each fare.'; }
+  else { const next = ORDER.find(available);
+    if (next) { const m = MISSIONS[next]; title = 'Next job'; line = m.title; target = GIVER_AT[m.giver];
+      more = `From <b>${CONTACTS[m.giver]}</b>. ${IS_TOUCH ? 'Go to the yellow marker and tap the prompt' : 'Go to the yellow marker and press E'}, or accept it in your phone.`; }
+    else { title = 'Free roam'; line = 'Conductor shifts, car wash, tailor'; }
+  }
+  const sig = title + '|' + line.replace(/\(\d+\/\d+\)/, '');
+  if (sig !== JOB.sig) { JOB.sig = sig; if (more) { JOB.open = true; JOB.until = performance.now() + 4000; } }
+  if (JOB.open && performance.now() > JOB.until) JOB.open = false;
+  $('#job-title').textContent = title; $('#job-line').textContent = line;
+  $('#job-dist').textContent = target ? fmtDist(dist(target, p)) : '';
+  const jt = $('#job-timer'); jt.textContent = timer; jt.classList.toggle('low', !!timer && ms && ms.timer < 20);
+  const jm = $('#job-more'); jm.hidden = !(JOB.open && more); if (!jm.hidden && jm.innerHTML !== more) jm.innerHTML = more;
+  $('#job').setAttribute('aria-expanded', String(!jm.hidden));
 }
 
 // ---------------------------------------------------------------- main loop
 let lastT = performance.now();
 function step(now) {
   const dt = Math.min(.05, (now - lastT) / 1000); lastT = now;
-  if (!WORLD.paused && WORLD.started) {
+  pumpToasts(dt * 1000);
+  if (!WORLD.paused && WORLD.started) update(dt);
+  pressed.clear();
+  render(now / 1000);
+  requestAnimationFrame(step);
+}
+function update(dt) {
+  simClock += dt;
+  {
     S.minutes += dt * 2;
     const hr = Math.floor(S.minutes / 60);
     if (hr !== WORLD.hour) {
@@ -1267,26 +1643,17 @@ function step(now) {
       if (S.biz.owned) S.biz.box = Math.min(60000, S.biz.box + 9000 / 24);
     }
     if (IN.phone()) openPhone();
-    if (hit('KeyR', 'T_radio') && player.veh) { WORLD.radio = WORLD.radio + 1 >= RADIO.length ? -1 : WORLD.radio + 1; if (WORLD.radio >= 0) ui.toast(RADIO[WORLD.radio].name + ' — ' + pick(RADIO[WORLD.radio].bump)); else ui.toast('Radio off'); }
-    if (IN.action()) {
-      const giver = !MS.cur && worldMarkers().find(m => m.giver && dist(player.pos(), m) < 44);
-      if (giver) startMission(giver.giver);
-      else if (!player.veh && nearPlace(PL.tailor, 30)) openTailor();
-      else if (!player.veh && nearPlace(PL.carwash, 30)) openCarWash();
-      else if (player.veh && player.veh.type === 'danfo' && !MS.cur) SHIFT.on ? endShift() : startShift();
-    }
+    if (hit('KeyR', 'T_radio') && player.veh) { WORLD.radio = WORLD.radio + 1 >= RADIO.length ? -1 : WORLD.radio + 1; if (WORLD.radio >= 0) ui.toast(RADIO[WORLD.radio].name + ' — ' + pick(RADIO[WORLD.radio].bump), '', { key: 'radio' }); else ui.toast('Radio off', '', { key: 'radio' }); }
+    if (IN.action()) { const c = actionContext(); if (c) { c.run(); pressed.delete('KeyE'); pressed.delete('T_action'); } }
     if (!WORLD.paused) {
       updatePlayer(dt);
       for (const v of vehicles) { if (v === player.veh) continue; if (v.driver === 'ai') aiTraffic(v, dt); else if (v.driver === 'cop') aiCop(v, dt); else if (v.driver === 'flee') aiFlee(v, dt); else drive(v, 0, 0, true, dt); }
-      collide(dt); updatePeds(dt); spawnTraffic(dt); manageCops(dt); updateMission(dt); updateShift(dt); checkCheckpoint(dt);
+      pruneJunctions(); collide(dt); updatePeds(dt); spawnTraffic(dt); manageCops(dt); updateMission(dt); updateShift(dt); checkCheckpoint(dt);
       for (const f of floaters) { f.t -= dt; f.y -= 18 * dt; } floaters = floaters.filter(f => f.t > 0);
       WORLD.saveT = (WORLD.saveT || 0) + dt; if (WORLD.saveT > 30) { WORLD.saveT = 0; if (!MS.cur) save(); }
     }
     updateHud(dt);
   }
-  pressed.clear();
-  render(now / 1000);
-  requestAnimationFrame(step);
 }
 $('#radio').addEventListener('click', () => pressed.add('T_radio'));
 
@@ -1310,7 +1677,14 @@ function boot(data) {
   (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]) : Promise.resolve()).then(draw);
   requestAnimationFrame(step);
   try { window.claude?.hot?.snapshot?.(() => ({ state: S })); } catch (e) {}
-  window.NH = { S, player, vehicles: () => vehicles, MS, startMission, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
+  window.NH = { S, player, vehicles: () => vehicles, MS, startMission, keys, vehBlocked, solidAt, tileAt, T, VT, spawnVehicle, roadSpotNear, nodes, playerFree, exitVehicle, stats: STATS, ui, NQ, STATIONS, actionContext, touch, pressed, JOB, labelPlacements, clearHeat, ui_card: (...a) => ui.card(...a), startShift, goSlow: () => WORLD.goSlow, JUNC,
+    // Test hook: run the simulation faster than real time (no rendering).
+    sim(sec, each) { for (let t = 0; t < sec; t += 1 / 60) { update(1 / 60); pressed.clear(); each && each(); } },
+    // Test hooks: stop the live loop from advancing the world, and reseed Math.random.
+    freeze() { WORLD.started = false; },
+    seed(n) { let x = n >>> 0 || 1; Math.random = () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x / 4294967296; }; },
+    resetWorld() { vehicles = []; peds = []; items = []; floaters = []; heli = null; JUNC.clear(); JWAIT.clear(); WORLD.goSlow = 0; WORLD.hour = -1; WANT.heat = 0; WANT.timer = 0; player.veh = null; player.owned = null; },
+    clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
 }
 const hot = window.claude?.hot;
 if (hot?.ready) hot.ready(boot); else boot(hot?.data ?? {});
