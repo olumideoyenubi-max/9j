@@ -1,0 +1,1318 @@
+<title>Naija Hustle Lagos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: full-bleed night-time Lagos canvas; HUD pinned to the four corners; overlays centred.
+   Single committed look (Lagos after dark, danfo-yellow signage), so no light theme. */
+:root {
+  --night: #0f1216;
+  --panel: #171b21;
+  --panel-2: #20262e;
+  --line: #313844;
+  --ink: #f3eee4;
+  --muted: #a8a194;
+  --danfo: #f5c400;
+  --danfo-ink: #1b1600;
+  --laterite: #c95c3d;
+  --lagoon: #35b3b5;
+  --good: #4cc874;
+  --bad: #f05a50;
+  --display: 'Bungee', 'Arial Black', Impact, sans-serif;
+  --body: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  --gut: 16px;
+  --top: calc(env(safe-area-inset-top, 0px) + 12px);
+  --bot: calc(env(safe-area-inset-bottom, 0px) + 14px);
+  color-scheme: dark;
+}
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--night); color: var(--ink); font-family: var(--body); overflow: hidden;
+  touch-action: none; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+#game { position: fixed; inset: 0; }
+#c { display: block; width: 100%; height: 100%; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--danfo); outline-offset: 2px; }
+
+/* ---------- HUD ---------- */
+.hud { position: fixed; pointer-events: none; z-index: 5; }
+#hud-tl { top: var(--top); left: var(--gut); display: grid; gap: 4px; }
+#cash { font-family: var(--mono); font-weight: 700; font-size: 26px; letter-spacing: -0.5px;
+  text-shadow: 0 2px 0 #000, 0 0 12px rgba(0,0,0,.6); font-variant-numeric: tabular-nums; }
+#cash-delta { font-family: var(--mono); font-size: 14px; font-weight: 700; height: 18px; }
+#stars { display: flex; gap: 2px; font-size: 22px; line-height: 1; }
+#stars span { color: rgba(255,255,255,.18); text-shadow: 0 2px 0 #000; }
+#stars span.on { color: var(--danfo); }
+#stars.flash span.on { animation: blink .5s steps(1) infinite; }
+@keyframes blink { 50% { opacity: .25; } }
+#unit { font-size: 12px; color: var(--muted); text-shadow: 0 1px 0 #000; min-height: 15px; }
+
+#hud-tr { top: var(--top); right: var(--gut); display: grid; justify-items: end; gap: 6px; }
+#clock { font-family: var(--mono); font-weight: 700; font-size: 15px; text-shadow: 0 1px 0 #000; }
+#minimap { width: 172px; height: 115px; border-radius: 10px; border: 2px solid rgba(255,255,255,.14);
+  background: #0b0e12; box-shadow: 0 6px 20px rgba(0,0,0,.5); }
+#district { font-family: var(--display); font-size: 12px; letter-spacing: .5px; color: var(--danfo);
+  text-shadow: 0 1px 0 #000; text-align: right; }
+#radio { font-size: 12px; color: var(--muted); pointer-events: auto; background: none; border: 0; padding: 2px 0; text-shadow: 0 1px 0 #000; }
+
+#hud-top { top: var(--top); left: 50%; transform: translateX(-50%); width: min(460px, calc(100vw - 2 * var(--gut) - 360px));
+  min-width: 220px; display: grid; gap: 6px; justify-items: center; }
+#objective { background: rgba(15,18,22,.86); border: 1px solid var(--line); border-left: 4px solid var(--danfo);
+  border-radius: 8px; padding: 8px 12px; font-weight: 600; font-size: 15px; line-height: 1.3; width: 100%;
+  box-sizing: border-box; text-wrap: balance; }
+#objective small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; margin-top: 2px; }
+#objective .mt { font-family: var(--display); font-size: 11px; color: var(--danfo); letter-spacing: .5px; display: block; margin-bottom: 2px; }
+#timer { font-family: var(--mono); font-weight: 700; font-size: 22px; color: var(--danfo); text-shadow: 0 2px 0 #000; }
+#timer.low { color: var(--bad); }
+#toasts { display: grid; gap: 6px; justify-items: center; }
+.toast { background: rgba(15,18,22,.9); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px;
+  font-size: 13px; max-width: 420px; text-align: center; animation: tin .25s ease-out; }
+.toast.good { border-color: var(--good); }
+.toast.bad { border-color: var(--bad); }
+@keyframes tin { from { transform: translateY(-6px); opacity: 0; } }
+
+#hud-bl { left: var(--gut); bottom: var(--bot); display: grid; gap: 6px; }
+#veh { font-family: var(--display); font-size: 12px; color: var(--danfo); text-shadow: 0 1px 0 #000; }
+#speed { font-family: var(--mono); font-weight: 700; font-size: 30px; text-shadow: 0 2px 0 #000; font-variant-numeric: tabular-nums; }
+#speed small { font-size: 12px; color: var(--muted); margin-left: 4px; }
+.bar { width: 150px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.12); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--good); width: 100%; }
+#vbar i { background: var(--lagoon); }
+#hustle { font-size: 13px; max-width: 280px; background: rgba(15,18,22,.86); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
+#hustle b { color: var(--danfo); }
+
+#prompt { left: 50%; bottom: calc(var(--bot) + 4px); transform: translateX(-50%); background: rgba(15,18,22,.9);
+  border: 1px solid var(--danfo); border-radius: 999px; padding: 8px 16px; font-size: 14px; white-space: nowrap; }
+#prompt kbd { font-family: var(--mono); background: var(--danfo); color: var(--danfo-ink); border-radius: 4px; padding: 1px 6px; font-weight: 700; margin-right: 6px; }
+
+/* ---------- Cards & overlays ---------- */
+#card { position: fixed; left: 50%; top: 32%; transform: translate(-50%,-50%); z-index: 8; pointer-events: none; text-align: center; }
+#card h2 { font-family: var(--display); font-size: clamp(34px, 7vw, 64px); margin: 0; color: var(--danfo);
+  text-shadow: 0 4px 0 #000, 0 0 30px rgba(0,0,0,.7); letter-spacing: 1px; }
+#card.bad h2 { color: var(--bad); }
+#card p { margin: 6px 0 0; font-size: 18px; font-weight: 600; text-shadow: 0 2px 0 #000; }
+#card .sub { font-family: var(--mono); font-size: 16px; color: var(--ink); }
+
+.overlay { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: var(--top) var(--gut) var(--bot);
+  background: rgba(8,10,13,.72); backdrop-filter: blur(3px); box-sizing: border-box; }
+.sheet { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; width: min(440px, 100%);
+  max-height: 100%; overflow: auto; box-sizing: border-box; padding: 20px; display: grid; gap: 14px; box-shadow: 0 20px 60px rgba(0,0,0,.6); }
+.sheet h3 { font-family: var(--display); font-size: 20px; margin: 0; color: var(--danfo); letter-spacing: .5px; }
+.sheet p { margin: 0; line-height: 1.45; color: var(--ink); }
+.sheet .muted { color: var(--muted); font-size: 13px; }
+.btns { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; }
+.btn { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; font-weight: 600; text-align: left; }
+.btn small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; margin-top: 2px; }
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--danfo); color: var(--danfo-ink); border-color: var(--danfo); text-align: center; font-weight: 800; }
+.btn.danger { border-color: rgba(240,90,80,.5); }
+.btn[disabled] { opacity: .45; cursor: default; }
+
+/* Start screen */
+#start .sheet { width: min(560px, 100%); gap: 16px; }
+#start h1 { font-family: var(--display); margin: 0; font-size: clamp(40px, 10vw, 68px); line-height: .95; color: var(--danfo);
+  text-shadow: 4px 4px 0 #000; letter-spacing: 1px; }
+#start .tag { font-family: var(--display); font-size: 13px; color: var(--lagoon); letter-spacing: 1px; }
+.keys { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13px; color: var(--muted); }
+.keys kbd { font-family: var(--mono); color: var(--ink); font-size: 12px; }
+.stripe { height: 10px; border-radius: 3px; background: repeating-linear-gradient(90deg, var(--danfo) 0 22px, #111 22px 30px); }
+
+/* Phone */
+#phone .sheet { width: min(380px, 100%); height: min(640px, 100%); padding: 0; gap: 0; grid-template-rows: auto 1fr auto; overflow: hidden; border-radius: 26px; border-width: 6px; border-color: #2a2f37; }
+.ph-top { display: flex; justify-content: space-between; padding: 12px 18px 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.ph-body { overflow: auto; padding: 4px 14px 14px; display: grid; align-content: start; gap: 8px; min-height: 0; }
+.ph-tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+.ph-tabs button { background: none; border: 0; padding: 10px 4px 12px; font-size: 12px; color: var(--muted); font-weight: 600; position: relative; }
+.ph-tabs button.on { color: var(--danfo); }
+.badge { position: absolute; top: 4px; right: calc(50% - 26px); background: var(--bad); color: #fff; border-radius: 999px; font-size: 10px; padding: 1px 5px; font-family: var(--mono); }
+.app-h { font-family: var(--display); font-size: 18px; color: var(--danfo); margin: 6px 0 2px; }
+.row { background: var(--panel-2); border-radius: 10px; padding: 10px 12px; text-align: left; border: 1px solid transparent; display: grid; gap: 3px; width: 100%; box-sizing: border-box; }
+button.row:hover { border-color: var(--line); }
+.row b { font-size: 14px; }
+.row span { font-size: 13px; color: var(--muted); line-height: 1.35; }
+.row .meta { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.row.unread b::after { content: ' •'; color: var(--danfo); }
+.bubble { background: var(--panel-2); border-radius: 14px 14px 14px 4px; padding: 10px 12px; font-size: 14px; line-height: 1.4; max-width: 88%; }
+.bubble.me { justify-self: end; background: #2d3a2a; border-radius: 14px 14px 4px 14px; }
+.post { border-bottom: 1px solid var(--line); padding: 10px 2px; display: grid; gap: 4px; }
+.post b { font-size: 13px; }
+.post b em { font-style: normal; color: var(--muted); font-weight: 400; }
+.post p { font-size: 14px; line-height: 1.4; }
+.post.me p { color: var(--danfo); }
+.big-money { font-family: var(--mono); font-size: 30px; font-weight: 700; }
+#phone-map { width: 100%; border-radius: 10px; background: #0b0e12; }
+.amt { display: flex; gap: 6px; flex-wrap: wrap; }
+.amt button { background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-family: var(--mono); font-size: 12px; }
+.amt button.on { border-color: var(--danfo); color: var(--danfo); }
+
+/* Touch controls */
+#touch { position: fixed; inset: 0; z-index: 6; pointer-events: none; }
+#stick-zone { position: absolute; left: 0; bottom: 0; width: 50%; height: 60%; pointer-events: auto; }
+#stick { position: absolute; width: 120px; height: 120px; border-radius: 50%; border: 2px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); transform: translate(-50%,-50%); display: none; }
+#knob { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px; border-radius: 50%; background: rgba(245,196,0,.75); }
+#tbtns { position: absolute; right: var(--gut); bottom: var(--bot); display: grid; grid-template-columns: repeat(2, 64px); gap: 10px; pointer-events: auto; }
+#tbtns button { width: 64px; height: 64px; border-radius: 50%; background: rgba(23,27,33,.82); border: 2px solid var(--line); font-size: 11px; font-weight: 800; letter-spacing: .3px; }
+#tbtns button.hot { border-color: var(--danfo); color: var(--danfo); }
+#tbtns button:active { background: var(--danfo); color: var(--danfo-ink); }
+.touch-only { display: none; }
+.touch .touch-only { display: revert; } .touch .kb-only { display: none; } .touch #tbtns.touch-only { display: grid; } .touch #stick-zone.touch-only { display: block; }
+.touch #hud-bl { bottom: calc(var(--bot) + 150px); } .touch #prompt { bottom: calc(var(--bot) + 160px); }
+@media (max-width: 760px) {
+  #minimap { width: 120px; height: 80px; }
+  #hud-top { width: calc(100vw - 2 * var(--gut)); top: calc(var(--top) + 150px); }
+  #cash { font-size: 21px; }
+  #card { top: 40%; }
+}
+@media (prefers-reduced-motion: reduce) { .toast { animation: none; } #stars.flash span.on { animation: none; } }
+</style>
+
+<div id="game"><canvas id="c" aria-label="Lagos city map"></canvas></div>
+
+<div class="hud" id="hud-tl">
+  <div id="cash">₦0</div>
+  <div id="cash-delta"></div>
+  <div id="stars" aria-label="Wanted level"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+  <div id="unit"></div>
+</div>
+<div class="hud" id="hud-tr">
+  <div id="clock">08:00</div>
+  <canvas id="minimap" width="344" height="230"></canvas>
+  <div id="district"></div>
+  <button id="radio" type="button"></button>
+</div>
+<div class="hud" id="hud-top">
+  <div id="objective" hidden></div>
+  <div id="timer" hidden></div>
+  <div id="toasts"></div>
+</div>
+<div class="hud" id="hud-bl">
+  <div id="hustle" hidden></div>
+  <div id="veh"></div>
+  <div id="speed" hidden></div>
+  <div class="bar" id="vbar" hidden><i></i></div>
+  <div class="bar" id="hbar"><i></i></div>
+</div>
+<div class="hud" id="prompt" hidden></div>
+<div id="card" hidden><h2></h2><p></p><div class="sub"></div></div>
+
+<div id="touch">
+  <div id="stick-zone" class="touch-only"><div id="stick"><div id="knob"></div></div></div>
+  <div id="tbtns" class="touch-only">
+    <button type="button" data-b="action">ACTION</button>
+    <button type="button" data-b="enter" id="tb-enter">ENTER</button>
+    <button type="button" data-b="phone">PHONE</button>
+    <button type="button" data-b="brake" id="tb-brake">SPRINT</button>
+  </div>
+</div>
+
+<div class="overlay" id="start">
+  <div class="sheet">
+    <div class="stripe"></div>
+    <div class="tag">Act 1 · Lagos · Browser demo</div>
+    <h1>NAIJA<br>HUSTLE</h1>
+    <p>You are <b>Lucky</b>, a mainland boy with ₦5,000 and big plans. Baba Sule needs a conductor for his danfo. Start there, then hustle your way across Third Lagoon Bridge.</p>
+    <div class="keys kb-only">
+      <kbd>WASD / arrows</kbd><span>Walk · drive</span>
+      <kbd>F</kbd><span>Enter or steal a vehicle · get out</span>
+      <kbd>E</kbd><span>Action: start missions, conductor shift, shops</span>
+      <kbd>Space</kbd><span>Brake (sprint with Shift on foot)</span>
+      <kbd>Tab / P</kbd><span>Phone: chats, KoboPay, Yarns, map</span>
+      <kbd>R · H</kbd><span>Radio · horn</span>
+    </div>
+    <p class="touch-only muted">Left thumb: drag to move or steer. Right: Action, Enter, Phone, Sprint or Brake.</p>
+    <div class="btns" id="start-btns">
+      <button type="button" class="btn primary" id="btn-play">Start hustling</button>
+      <button type="button" class="btn" id="btn-new" hidden>New game</button>
+    </div>
+    <p class="muted">Characters, brands and police units are fictional. Progress saves in this browser.</p>
+  </div>
+</div>
+
+<div class="overlay" id="phone" hidden>
+  <div class="sheet">
+    <div class="ph-top"><span id="ph-clock">08:00</span><span>MTM 4G ▂▄▆</span></div>
+    <div class="ph-body" id="ph-body"></div>
+    <div class="ph-tabs">
+      <button type="button" data-app="gist">Gist<span class="badge" id="gist-badge" hidden></span></button>
+      <button type="button" data-app="kobo">KoboPay</button>
+      <button type="button" data-app="yarns">Yarns</button>
+      <button type="button" data-app="map">MapAm</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="sheet" hidden><div class="sheet" id="sheet-body"></div></div>
+
+<script>
+(() => {
+'use strict';
+// =====================================================================================
+//  NAIJA HUSTLE — Lagos browser demo. Rules and content mirror the Unity project
+//  (Assets/_Project/Scripts/Core + Resources/Content/*.json): heat, checkpoints,
+//  conductor hustle pay, mission data, social posts.
+// =====================================================================================
+const $ = s => document.querySelector(s);
+const cv = $('#c'), ctx = cv.getContext('2d');
+if (!ctx.roundRect) ctx.roundRect = function (x, y, w, h) { this.rect(x, y, w, h); };
+const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+const lerp = (a, b, t) => a + (b - a) * t;
+const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+const wrapA = a => { while (a > Math.PI) a -= 2 * Math.PI; while (a < -Math.PI) a += 2 * Math.PI; return a; };
+const rnd = (a, b) => a + Math.random() * (b - a);
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+const IS_TOUCH = ('ontouchstart' in window || navigator.maxTouchPoints > 0) && matchMedia('(pointer: coarse)').matches;
+document.documentElement.classList.toggle('touch', IS_TOUCH);
+const naira = n => (n < 0 ? '-' : '') + '₦' + Math.abs(Math.round(n)).toLocaleString('en-US');
+
+// ---------------------------------------------------------------- world grid
+const CELL = 32, COLS = 96, ROWS = 64, WW = COLS * CELL, WH = ROWS * CELL;
+const T = { GROUND: 0, ROAD: 1, BUILD: 2, WATER: 3, STALL: 4, PARK: 5, TOWER: 6, STILT: 7, SIDE: 8, GRASS: 9 };
+const SOLID = new Uint8Array(16); [T.BUILD, T.WATER, T.STALL, T.TOWER, T.STILT].forEach(t => SOLID[t] = 1);
+const SIGHT = new Uint8Array(16); [T.BUILD, T.STALL, T.TOWER].forEach(t => SIGHT[t] = 1);
+const VM = [2, 12, 22, 32, 42], VI = [66, 74, 82, 90], HR = [4, 14, 24, 34, 44, 54];
+const grid = new Uint8Array(COLS * ROWS);
+const I = (c, r) => r * COLS + c;
+const rc = v => (v + 1) * CELL;          // centre line of a 2-cell road starting at v
+const cc = c => c * CELL + CELL / 2;     // centre of a cell
+const P = (c, r) => ({ x: cc(c), y: cc(r) });
+function hash(c, r) { let h = (c * 374761393 + r * 668265263) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967295; }
+const isLagoon = c => c >= 48 && c <= 63;
+const inPark = (c, r) => c >= 4 && c <= 11 && ((r >= 6 && r <= 13) || (r >= 46 && r <= 53));
+function tileAt(x, y) { const c = Math.floor(x / CELL), r = Math.floor(y / CELL); if (c < 0 || r < 0 || c >= COLS || r >= ROWS) return T.BUILD; return grid[I(c, r)]; }
+const solidAt = (x, y) => SOLID[tileAt(x, y)] === 1;
+
+function districtAt(x, y) {
+  const c = Math.floor(x / CELL), r = Math.floor(y / CELL);
+  if (isLagoon(c)) return r === 24 || r === 25 ? 'Third Lagoon Bridge' : r >= 46 ? 'Stilt Town Waters' : 'The Lagoon';
+  if (c >= 64) return r < 40 ? 'Eko Crest' : 'Lekka Strip';
+  if (c >= 22 && r >= 36) return 'Balo Market';
+  if (c < 22 && r < 24) return 'Oshoja Junction';
+  if (c < 14 && r >= 44) return 'Luxury Bus Park';
+  return 'Mainland';
+}
+
+function buildGrid() {
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    let t = T.GROUND;
+    if (isLagoon(c)) { t = T.WATER; if (r >= 47 && c >= 50 && c <= 61 && (c * 7 + r * 3) % 5 === 0) t = T.STILT; }
+    grid[I(c, r)] = t;
+  }
+  for (let r = 0; r < ROWS; r++) for (const v of VM.concat(VI)) { grid[I(v, r)] = T.ROAD; grid[I(v + 1, r)] = T.ROAD; }
+  for (const h of HR) for (let c = 0; c < COLS; c++) { if (isLagoon(c)) continue; grid[I(c, h)] = T.ROAD; grid[I(c, h + 1)] = T.ROAD; }
+  for (let c = 44; c <= 65; c++) { grid[I(c, 24)] = T.ROAD; grid[I(c, 25)] = T.ROAD; }
+  const nearRoad = (c, r) => { for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) { const cc2 = c + dc, rr = r + dr; if (cc2 >= 0 && rr >= 0 && cc2 < COLS && rr < ROWS && grid[I(cc2, rr)] === T.ROAD) return true; } return false; };
+  const fill = [];
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    if (isLagoon(c) || grid[I(c, r)] === T.ROAD) continue;
+    let t;
+    if (inPark(c, r)) t = T.PARK;
+    else if (nearRoad(c, r)) t = T.SIDE;
+    else if (c >= 64) t = r < 40 ? ((c % 8 === 5 && r % 10 === 9) ? T.GROUND : T.TOWER) : (((c + r) % 4 === 0 && hash(c, r) > .3) ? T.BUILD : T.GRASS);
+    else if (c >= 22 && r >= 36) t = (c % 2 === 0 && r % 3 !== 0) ? T.STALL : T.GROUND;
+    else t = hash(c, r) < 0.1 ? T.GROUND : T.BUILD;
+    fill.push([I(c, r), t]);
+  }
+  for (const [i, t] of fill) grid[i] = t;
+}
+
+// ---------------------------------------------------------------- road graph
+const nodes = [], nodeKey = {};
+function buildGraph() {
+  const add = (v, h) => { const n = { id: nodes.length, x: rc(v), y: rc(h), nb: [] }; nodes.push(n); nodeKey[v + ',' + h] = n.id; };
+  const link = (a, b) => { nodes[a].nb.push(b); nodes[b].nb.push(a); };
+  for (const set of [VM, VI]) {
+    for (const v of set) for (const h of HR) add(v, h);
+    for (const v of set) for (let i = 0; i < HR.length - 1; i++) link(nodeKey[v + ',' + HR[i]], nodeKey[v + ',' + HR[i + 1]]);
+    for (const h of HR) for (let i = 0; i < set.length - 1; i++) link(nodeKey[set[i] + ',' + h], nodeKey[set[i + 1] + ',' + h]);
+  }
+  link(nodeKey['42,24'], nodeKey['66,24']); // Third Lagoon Bridge
+}
+function nearestNode(x, y) { let b = 0, bd = 1e18; for (const n of nodes) { const d = (n.x - x) ** 2 + (n.y - y) ** 2; if (d < bd) { bd = d; b = n.id; } } return b; }
+function bfsNext(s, g) {
+  if (s === g) return g;
+  const prev = new Int16Array(nodes.length).fill(-1); prev[s] = s; const q = [s];
+  while (q.length) { const n = q.shift(); if (n === g) break; for (const m of nodes[n].nb) if (prev[m] < 0) { prev[m] = n; q.push(m); } }
+  if (prev[g] < 0) return s;
+  let cur = g; while (prev[cur] !== s) cur = prev[cur]; return cur;
+}
+function laneTarget(fromId, toId) {
+  const A = nodes[fromId], B = nodes[toId]; const L = Math.hypot(B.x - A.x, B.y - A.y) || 1;
+  const ux = (B.x - A.x) / L, uy = (B.y - A.y) / L; // right-hand traffic: lane is to the right of travel
+  return { x: B.x - uy * 16, y: B.y + ux * 16, ux, uy };
+}
+function laneSpot(fromId, toId, t) {
+  const A = nodes[fromId], B = nodes[toId]; const L = Math.hypot(B.x - A.x, B.y - A.y) || 1;
+  const ux = (B.x - A.x) / L, uy = (B.y - A.y) / L;
+  return { x: lerp(A.x, B.x, t) - uy * 16, y: lerp(A.y, B.y, t) + ux * 16, a: Math.atan2(uy, ux) };
+}
+
+// ---------------------------------------------------------------- places (from mission content)
+const PL = {
+  park: { x: 256, y: 330 }, home: { x: 210, y: 410 },
+  eko: { x: rc(74) + 30, y: rc(14) + 34 },
+  comfort: P(31, 28), warehouse: P(45, 38), amaka: P(29, 41), tailor: P(25, 51),
+  crates: [P(27, 39), P(37, 49), P(29, 59)], kemi: P(68, 10), carwash: P(11, 17),
+  buspark: { x: 256, y: 1600 },
+  checkpoint: { x: 64 * CELL, y: 25 * CELL, w: 64, h: 64 },
+};
+const MISSION_STOPS = [{ x: cc(18), y: rc(14) }, { x: cc(30), y: rc(14) }, { x: rc(42), y: cc(19) }];
+const SHIFT_STOPS = [{ x: cc(8), y: rc(14) }, { x: cc(26), y: rc(14) }, { x: rc(32), y: cc(28) }, { x: cc(26), y: rc(34) }, { x: cc(8), y: rc(34) }, { x: rc(2), y: cc(20) }];
+const CALLS = ['"Oshoja! Oshoja! Enter with your change!"', '"Eko Crest, straight! No stopping!"', '"Owa! Owa! Hold your bag well!"', '"Driver, wait! One chance remain!"'];
+
+// ---------------------------------------------------------------- content (mirrors JSON)
+const CONTACTS = { baba: 'Baba Sule', amaka: 'Amaka Nwosu', kemi: 'Kemi Lawson-Bright', shina: 'Shina Garage' };
+const GIVER_AT = { baba: PL.park, amaka: PL.amaka, kemi: PL.kemi };
+const OUTFITS = [
+  { id: 'fit_street_basic', name: 'Mainland basics', price: 0, respect: 0, color: '#d9d4c7' },
+  { id: 'fit_ankara_shirt', name: 'Ankara shirt & chinos', price: 25000, respect: 8, color: '#e2683c' },
+  { id: 'fit_kaftan_white', name: 'Crisp white kaftan', price: 45000, respect: 15, color: '#ffffff' },
+  { id: 'fit_ankara_full', name: 'Full ankara two-piece', price: 60000, respect: 14, color: '#2fa36b' },
+  { id: 'fit_street_drip', name: 'Island drip (designer-ish)', price: 85000, respect: 10, color: '#7e57c2' },
+  { id: 'fit_agbada_owambe', name: 'Owambe agbada with fila', price: 250000, respect: 28, color: '#f5c400' },
+];
+const RADIO = [
+  { name: 'Hustle FM 98.7', bump: ['Hustle FM — if you no dey hustle, you dey sleep!', 'Traffic update: Third Lagoon Bridge is... yes. Still.'] },
+  { name: 'Owambe Gold 101.5', bump: ['Owambe Gold: aso-ebi compulsory, invitation optional.'] },
+  { name: 'Eko Talk 88.1', bump: ['Caller, you are on air. Please hold your generator.'] },
+];
+const UNITS = ['Traffic Marshals', 'Eko Task Force bikes', 'Eko Task Force pickups', 'Rapid Response Squad', 'Joint Patrol + helicopter'];
+const CRIME = { TrafficOffence: .3, Assault: 1, VehicleTheft: 1, PropertyDamage: .5, CheckpointRunning: 2, AttackOnResponder: 1.5 };
+const CHECKPOINT = { settle: 1000, record: .2, sting: .03, delay: 25, talk: 45 };
+const SOCIAL = {
+  'mission_passed:lag_02': [['Madam Comfort', '@ComfortSellsPepper', 'One young man chased okada thief through go-slow and brought back my bag. {player} God bless you!!', 30, true]],
+  'mission_passed:lag_07': [['Lagos Traffic Gist', '@ThirdLagoonLive', "Who was racing on Third Lagoon Bridge at 1am?? Somebody's Kamsi flew past like it owed money.", 50, true]],
+  'mission_passed:lag_09': [['Oshoja Updates', '@OshojaUpdates', "Shina Garage's boys searching every bus park. Whoever they're looking for is long gone.", 10, false]],
+  'mission_passed:lag_03': [['Balo Phone Plug', '@AmakaFixAm', "Screens don land! Come and fix your cracked phone today. Thank you to my delivery boy {player} 🙏", 15, true]],
+  'mission_passed:lag_01': [['Danfo Diaries', '@DanfoDiaries', "New conductor on Baba Sule's bus actually gave everybody their change. Is this Lagos?", 10, true]],
+  'checkpoint:Recorded': [['Checkpoint Chronicles', '@CheckpointChron', "Another day, another 'happy weekend' on camera. We see you. #CheckpointChronicles", -40, true], ['Mr. Logic', '@EkoTalkMrLogic', "If you 'settle' at a checkpoint, you are not settling anything. You are unsettling everything. Caller, go ahead.", -20, true]],
+  'checkpoint:IntegrityUnitSting': [['Integrity Unit (Parody)', '@NotRealIntegrityNG', "Our undercover officer accepted ₦1,000 'for weekend'. The giver is now trending AND wanted.", -80, true]],
+  'checkpoint:WavedThrough': [['Road Warrior', '@InterstateIke', "Passed 4 checkpoints today. Each one had a different idea of what 'particulars' means.", 0, false]],
+  'checkpoint:Delayed': [['Road Warrior', '@InterstateIke', 'Spent 40 minutes at a checkpoint explaining that a spare tyre is not contraband.', 0, false]],
+  'escaped': [['Eko Task Force (Official)', '@EkoTaskForceOfficial', "Today's operation was a success. The suspect was not apprehended, which was part of the strategy.", 15, true]],
+  'goslow': [['Lagos Traffic Gist', '@ThirdLagoonLive', 'Third Lagoon Bridge is currently a car park. Bring snacks and a phone charger.', 0, false]],
+  'busted': [['Oshoja Updates', '@OshojaUpdates', 'Task Force finally caught one runner today. He was smiling for the cameras. Na wa.', -25, true]],
+};
+
+const MISSIONS = {
+  lag_01: { title: 'First Day on the Danfo', giver: 'baba', req: [], reward: 8000, cred: 20,
+    brief: "Baba Sule needs a conductor. Hang off the side of his yellow danfo, shout the route, collect the fares — and don't let anybody 'forget' their change.",
+    setup(ms) { ms.danfo = spawnVehicle('danfo', 300, 250, Math.PI / 2, { mission: true, tag: 'm_danfo', parked: true }); },
+    objs: [
+      { t: 'goto', text: 'Meet Baba Sule at Oshoja motor park', at: () => PL.park, r: 60 },
+      { t: 'enter', text: 'Hop on the danfo (F / Enter)', target: ms => ms.danfo },
+      { t: 'stops', text: 'Collect fares from 6 passengers', sub: 'Stop at each yellow bus stop', count: 6 },
+      { t: 'goto', text: 'Reach the Eko Crest bus stop', sub: 'Across Third Lagoon Bridge', at: () => PL.eko, r: 56, time: 240, vehicle: true },
+    ],
+    fail(ms) { if (ms.danfo.hp <= 0) return 'The danfo is wrecked'; } },
+  lag_02: { title: 'Go-Slow Getaway', giver: 'baba', req: ['lag_01'], reward: 12000, cred: 25, integ: 3,
+    brief: "A pickpocket on an okada snatched a passenger's bag in the go-slow. Weave through the traffic and get it back.",
+    setup(ms) { const s = roadSpotNear(player.pos(), 40, 220); ms.okada = spawnVehicle('okada', s.x, s.y, s.a, { mission: true, tag: 'm_okada', parked: true, color: '#c62828' }); },
+    objs: [
+      { t: 'enter', text: 'Commandeer the okada', target: ms => ms.okada },
+      { t: 'chase', text: 'Catch the pickpocket', sub: 'Get right up beside him', time: 150,
+        start(ms) { const s = roadSpotNear(player.pos(), 300, 520); ms.thief = spawnVehicle('okada', s.x, s.y, s.a, { mission: true, driver: 'flee', color: '#6a1b9a', label: 'Pickpocket', topSpeed: .86, from: s.from, to: s.to }); },
+        target: ms => ms.thief,
+        done(ms) { const p = player.pos(); if (dist(p, ms.thief) < 36) { ms.thief.driver = null; ms.thief.v = 0; ms.thief.label = 'Caught'; return true; } } },
+      { t: 'goto', text: 'Return the bag to Madam Comfort', at: () => PL.comfort, r: 46 },
+    ] },
+  lag_03: { title: 'Balo Market Run', giver: 'amaka', req: ['lag_01'], reward: 15000, cred: 25, bonus: "Don't crack a single screen",
+    brief: "Amaka's shipment of phone screens is stuck across Balo Market. Thread through alleys, wheelbarrows and Task Force raids before closing time.",
+    objs: [
+      { t: 'goto', text: 'Get to the warehouse', sub: 'Balo Market, east side', at: () => PL.warehouse, r: 44 },
+      { t: 'collect', text: 'Load 3 crates of screens', count: 3, start(ms) { ms.items = PL.crates.map(p => ({ x: p.x, y: p.y, kind: 'crate' })); items.push(...ms.items); } },
+      { t: 'goto', text: "Deliver to Amaka's stall before closing", at: () => PL.amaka, r: 40, time: 180 },
+    ] },
+  lag_07: { title: 'Third Lagoon Bridge', giver: 'kemi', req: ['lag_02', 'lag_03'], reward: 60000, cred: 40,
+    brief: "The rival promoter is running for the airport with Kemi's sound-system money. Ten kilometres of bridge. Run him off the road.",
+    setup(ms) { ms.sedan = spawnVehicle('sedan', PL.kemi.x - 50, PL.kemi.y + 10, Math.PI / 2, { mission: true, tag: 'm_sedan', parked: true, color: '#b71c1c', tune: 1.08 }); },
+    objs: [
+      { t: 'goto', text: 'Meet Kemi on Eko Crest', at: () => PL.kemi, r: 60 },
+      { t: 'enter', text: 'Take the red Kamsi', target: ms => ms.sedan },
+      { t: 'chase', text: 'Ram the rival SUV off the road', sub: 'Hit him 3 times', time: 200,
+        start(ms) { const a = nodeKey['82,4'], b = nodeKey['82,14']; const s = laneSpot(a, b, .3); ms.rival = spawnVehicle('suv', s.x, s.y, s.a, { mission: true, driver: 'flee', color: '#101010', label: 'Rival promoter', hits: 3, topSpeed: .9, from: a, to: b }); },
+        target: ms => ms.rival,
+        done(ms) { if (ms.rival.hits <= 0) { ms.rival.driver = null; ms.rival.hp = 0; ms.items = [{ x: ms.rival.x + 24, y: ms.rival.y, kind: 'bag' }]; items.push(...ms.items); return true; } } },
+      { t: 'collect', text: 'Grab the money bag', count: 1 },
+      { t: 'loseheat', text: 'Lose the Task Force' },
+    ],
+    fail(ms) { if (ms.sedan.hp <= 0 && player.veh === ms.sedan) return 'The Kamsi is wrecked'; } },
+  lag_09: { title: 'Night Bus East', giver: 'baba', req: ['lag_07'], reward: 50000, cred: 60,
+    brief: "Lagos is too hot. Shina's boys know your face. Baba Sule's cousin in Port Harcourt needs a driver — make the last bus.",
+    objs: [
+      { t: 'goto', text: 'Make the last bus at the Luxury Bus Park', at: () => PL.buspark, r: 70, time: 180, start() { addHeat(2); } },
+    ] },
+};
+const ORDER = ['lag_01', 'lag_02', 'lag_03', 'lag_07', 'lag_09'];
+
+// ---------------------------------------------------------------- state
+const S = {
+  cash: 5000, cred: 0, integ: 0, clout: 0, done: [], announced: [], outfits: ['fit_street_basic'], outfit: 'fit_street_basic',
+  biz: { owned: false, box: 0 }, minutes: 8 * 60, jobs: 0, chats: [], feed: [], log: [], actDone: false,
+};
+function save() { try { localStorage.setItem('naijahustle.v1', JSON.stringify(S)); } catch (e) {} }
+function loadSave() { try { const j = localStorage.getItem('naijahustle.v1'); if (j) return JSON.parse(j); } catch (e) {} return null; }
+function applyState(o) { if (o) Object.assign(S, o, { biz: Object.assign({ owned: false, box: 0 }, o.biz || {}) }); }
+
+// ---------------------------------------------------------------- entities
+const VT = {
+  danfo: { name: 'Kombi Danfo', len: 46, wid: 22, max: 230, acc: 150, turn: 2.1, colors: ['#f5c400'], hp: 140 },
+  okada: { name: 'Thunder 125 Okada', len: 22, wid: 9, max: 265, acc: 270, turn: 3.6, colors: ['#c62828', '#1565c0', '#222', '#00897b'], hp: 50, bike: true },
+  keke: { name: 'Keke Marwa-Max', len: 26, wid: 16, max: 150, acc: 120, turn: 2.9, colors: ['#f5c400', '#2e7d32'], hp: 70 },
+  sedan: { name: 'Kamsi LE', len: 38, wid: 18, max: 300, acc: 210, turn: 2.6, colors: ['#c9ccd1', '#1f3b57', '#7b1e1e', '#2c2c2c', '#d7c9a7', '#3f6e4f'], hp: 100 },
+  suv: { name: 'Pathmaster V8', len: 42, wid: 20, max: 285, acc: 200, turn: 2.3, colors: ['#151515', '#e8e8e8', '#4a4f57'], hp: 160 },
+  tfpick: { name: 'Task Force pickup', len: 42, wid: 20, max: 292, acc: 240, turn: 2.7, colors: ['#2f5d3a'], hp: 180, cop: true },
+  tfbike: { name: 'Task Force bike', len: 22, wid: 9, max: 280, acc: 280, turn: 3.6, colors: ['#2f5d3a'], hp: 60, bike: true, cop: true },
+};
+const TRAFFIC_MIX = [['danfo', 4], ['okada', 3], ['keke', 3], ['sedan', 5], ['suv', 1]];
+let vehicles = [], peds = [], items = [], floaters = [], heli = null;
+
+function spawnVehicle(type, x, y, a, o = {}) {
+  const d = VT[type];
+  const v = Object.assign({ type, x, y, a, v: 0, hp: d.hp, color: o.color || pick(d.colors), driver: d.cop ? 'cop' : 'ai', from: -1, to: -1,
+    stuck: 0, rev: 0, hold: 0, tune: 1, topSpeed: 1, hitCd: 0 }, o);
+  if (o.parked) v.driver = null;
+  vehicles.push(v); return v;
+}
+function roadSpotNear(p, minD, maxD) {
+  for (let i = 0; i < 80; i++) {
+    const A = nodes[Math.floor(Math.random() * nodes.length)]; if (Math.abs(A.x - p.x) > maxD + 400 || Math.abs(A.y - p.y) > maxD + 400) continue;
+    const B = pick(A.nb); const s = laneSpot(A.id, B, rnd(.15, .85)); const d = dist(s, p);
+    if (d >= minD && d <= maxD) return Object.assign(s, { from: A.id, to: B });
+  }
+  const n = nearestNode(p.x, p.y); const b = nodes[n].nb[0]; return Object.assign(laneSpot(n, b, .5), { from: n, to: b });
+}
+
+const player = {
+  x: PL.home.x, y: PL.home.y, a: 0, veh: null, hp: 100, owned: null,
+  pos() { return this.veh ? this.veh : this; },
+};
+
+// ---------------------------------------------------------------- input
+const keys = {}, pressed = new Set();
+addEventListener('keydown', e => {
+  if (['Tab', 'Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) e.preventDefault();
+  if (!keys[e.code]) pressed.add(e.code); keys[e.code] = true;
+  if (e.code === 'Escape' || (!$('#phone').hidden && (e.code === 'Tab' || e.code === 'KeyP'))) { closeOverlays(); pressed.clear(); }
+});
+addEventListener('keyup', e => { keys[e.code] = false; });
+addEventListener('blur', () => { for (const k in keys) keys[k] = false; });
+const touch = { x: 0, y: 0, on: false, held: {} };
+const hit = (...c) => c.some(k => pressed.has(k));
+const held = (...c) => c.some(k => keys[k]);
+(function setupTouch() {
+  const zone = $('#stick-zone'), stick = $('#stick'), knob = $('#knob'); let id = null, ox = 0, oy = 0;
+  zone.addEventListener('pointerdown', e => { id = e.pointerId; zone.setPointerCapture(id); ox = e.clientX; oy = e.clientY; stick.style.display = 'block'; stick.style.left = ox + 'px'; stick.style.top = oy + 'px'; touch.on = true; move(e); });
+  const move = e => { if (e.pointerId !== id) return; let dx = e.clientX - ox, dy = e.clientY - oy; const m = Math.hypot(dx, dy), R = 55; if (m > R) { dx *= R / m; dy *= R / m; } knob.style.transform = `translate(${dx}px,${dy}px)`; const n = Math.hypot(dx, dy) / R; touch.x = n < .15 ? 0 : dx / R; touch.y = n < .15 ? 0 : dy / R; };
+  zone.addEventListener('pointermove', move);
+  const up = e => { if (e.pointerId !== id) return; id = null; touch.on = false; touch.x = touch.y = 0; stick.style.display = 'none'; knob.style.transform = ''; };
+  zone.addEventListener('pointerup', up); zone.addEventListener('pointercancel', up);
+  for (const b of document.querySelectorAll('#tbtns button')) {
+    const name = b.dataset.b;
+    b.addEventListener('pointerdown', e => { e.preventDefault(); pressed.add('T_' + name); touch.held[name] = true; });
+    const rel = () => { touch.held[name] = false; }; b.addEventListener('pointerup', rel); b.addEventListener('pointerleave', rel); b.addEventListener('pointercancel', rel);
+  }
+})();
+const IN = {
+  enter: () => hit('KeyF', 'T_enter'),
+  action: () => hit('KeyE', 'T_action'),
+  phone: () => hit('Tab', 'KeyP', 'T_phone'),
+  brake: () => held('Space') || (player.veh && touch.held.brake),
+  sprint: () => held('ShiftLeft', 'ShiftRight') || (!player.veh && touch.held.brake),
+  kx: () => (held('KeyD', 'ArrowRight') ? 1 : 0) - (held('KeyA', 'ArrowLeft') ? 1 : 0),
+  ky: () => (held('KeyS', 'ArrowDown') ? 1 : 0) - (held('KeyW', 'ArrowUp') ? 1 : 0),
+};
+
+// ---------------------------------------------------------------- audio (horn, sting)
+let AC = null;
+function beep(freqs, dur = .18, vol = .08, type = 'square') {
+  if (!AC) return; const t = AC.currentTime;
+  freqs.forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(); o.type = type; o.frequency.value = f; g.gain.setValueAtTime(vol, t + i * dur); g.gain.exponentialRampToValueAtTime(.0001, t + (i + 1) * dur); o.connect(g).connect(AC.destination); o.start(t + i * dur); o.stop(t + (i + 1) * dur + .02); });
+}
+
+// ---------------------------------------------------------------- UI helpers
+const ui = {
+  toast(text, kind = '') { const d = document.createElement('div'); d.className = 'toast ' + kind; d.textContent = text; const box = $('#toasts'); box.prepend(d); while (box.children.length > 3) box.lastChild.remove(); setTimeout(() => d.remove(), 3800); },
+  card(title, line, sub = '', bad = false, ms = 3600) { const c = $('#card'); c.className = bad ? 'bad' : ''; c.querySelector('h2').textContent = title; c.querySelector('p').textContent = line; c.querySelector('.sub').textContent = sub; c.hidden = false; clearTimeout(ui._ct); ui._ct = setTimeout(() => c.hidden = true, ms); },
+};
+let cashShown = S.cash, deltaT = 0;
+function earn(n, why) { if (!n) return; S.cash += n; S.log.unshift({ t: S.minutes, n, why }); S.log.length = Math.min(S.log.length, 20); $('#cash-delta').textContent = (n > 0 ? '+' : '') + naira(n); $('#cash-delta').style.color = n > 0 ? 'var(--good)' : 'var(--bad)'; deltaT = 2.5; }
+function spend(n, why) { if (S.cash < n) return false; earn(-n, why); return true; }
+function post(trigger) {
+  const list = SOCIAL[trigger]; if (!list) return; const [author, handle, text, clout, me] = pick(list);
+  S.feed.unshift({ author, handle, text: text.replace('{player}', 'Lucky'), likes: Math.floor(rnd(40, 5000)) * (me ? 3 : 1), me, t: S.minutes });
+  S.feed.length = Math.min(S.feed.length, 30); S.clout = Math.max(0, S.clout + clout);
+  ui.toast('Yarns: ' + handle + ' posted' + (me ? ' about you' : ''));
+}
+function chat(from, text, mission) { S.chats.push({ from, text, mission: mission || null, t: S.minutes, read: false }); ui.toast('New message from ' + CONTACTS[from]); beep([880, 1175], .07, .04, 'sine'); }
+
+// ---------------------------------------------------------------- wanted system (port of WantedSystem.cs)
+const WANT = { heat: 0, timer: 0, seen: false, last: { x: 0, y: 0 }, bust: 0, perStar: 18 };
+const stars = () => Math.ceil(Math.min(WANT.heat, 5) - 1e-4);
+function addHeat(h) { const b = stars(); WANT.heat = Math.min(5, WANT.heat + h); WANT.timer = 0; WANT.last = { x: player.pos().x, y: player.pos().y }; if (stars() > b) { beep([660, 520, 660, 520], .12, .05, 'sawtooth'); ui.toast('Wanted: ' + UNITS[stars() - 1] + ' on the way', 'bad'); } }
+function witnessed(p, bias = 1) {
+  for (const q of peds) if (q.state !== 'down' && dist(q, p) < 240 && los(q, p) && Math.random() <= bias) return true;
+  for (const v of vehicles) if (v.driver === 'cop' && dist(v, p) < 320 && los(v, p)) return true;
+  return false;
+}
+function report(crime, at, bias = 1) { const w = witnessed(at, bias); if (!w && stars() === 0) return; addHeat(CRIME[crime]); }
+function los(a, b) {
+  const d = dist(a, b), n = Math.ceil(d / 14);
+  for (let i = 1; i < n; i++) { const t = i / n; if (SIGHT[tileAt(lerp(a.x, b.x, t), lerp(a.y, b.y, t))]) return false; }
+  return true;
+}
+function clearHeat(escaped) { if (WANT.heat <= 0) return; WANT.heat = 0; WANT.timer = 0; if (escaped) { ui.toast('You lost them. Heat cleared.', 'good'); post('escaped'); } }
+
+// ---------------------------------------------------------------- physics
+function vehBlocked(v, x, y, a) {
+  const d = VT[v.type], c = Math.cos(a), s = Math.sin(a), hl = d.len / 2 - 1, hw = d.wid / 2 - 1;
+  for (const fx of [-1, 0, 1]) for (const sy of [-1, 1]) {
+    const px = x + c * fx * hl - s * sy * hw, py = y + s * fx * hl + c * sy * hw;
+    if (px < 4 || py < 4 || px > WW - 4 || py > WH - 4 || solidAt(px, py)) return true;
+  }
+  return false;
+}
+function drive(v, throttle, steer, brake, dt) {
+  const d = VT[v.type];
+  if (v.hp <= 0) { throttle = 0; brake = true; }
+  const tile = tileAt(v.x, v.y), off = !(tile === T.ROAD || tile === T.PARK);
+  const maxF = d.max * (off ? .6 : 1) * v.tune * v.topSpeed;
+  if (throttle > 0) v.v += (v.v < 0 ? d.acc * 2.2 : d.acc * (1 - Math.max(0, v.v) / maxF * .55)) * throttle * dt;
+  else if (throttle < 0) v.v += (v.v > 0 ? d.acc * 2.4 : d.acc * .6) * throttle * dt;
+  if (brake) { const b = 560 * dt; v.v = Math.abs(v.v) < b ? 0 : v.v - Math.sign(v.v) * b; }
+  v.v -= v.v * (off ? 1.4 : .42) * dt;
+  if (!throttle && Math.abs(v.v) < 5) v.v = 0;
+  v.v = clamp(v.v, -d.max * .3, maxF);
+  const sf = clamp(v.v / 80, -1, 1), sn = Math.abs(v.v) / d.max;
+  v.a = wrapA(v.a + steer * d.turn * (1 - .35 * sn) * sf * dt);
+  const nx = v.x + Math.cos(v.a) * v.v * dt, ny = v.y + Math.sin(v.a) * v.v * dt;
+  if (vehBlocked(v, v.x, v.y, v.a) || !vehBlocked(v, nx, ny, v.a)) { v.x = nx; v.y = ny; return; }
+  const imp = Math.abs(v.v);
+  if (!vehBlocked(v, nx, v.y, v.a)) { v.x = nx; v.v *= .75; wallHit(v, imp * .35); }
+  else if (!vehBlocked(v, v.x, ny, v.a)) { v.y = ny; v.v *= .75; wallHit(v, imp * .35); }
+  else { wallHit(v, imp); v.v = -v.v * .25; }
+}
+function wallHit(v, imp) { if (imp > 90) { v.hp -= (imp - 90) * .12; onImpact(v, imp); } }
+function onImpact(v, imp) {
+  if (v !== player.veh) return;
+  if (imp > 150) { player.hp -= (imp - 150) * .05; shake = Math.min(10, imp / 30); }
+  const ms = MS.cur;
+  if (ms && ms.id === 'lag_03' && ms.carry > 0 && imp > 140 && !ms.bonusFail) { ms.bonusFail = true; ui.toast('Crack! A screen don break. Bonus lost.', 'bad'); }
+  if (SHIFT.on) SHIFT.rough += .6;
+}
+
+// ---------------------------------------------------------------- AI drivers
+function aiTraffic(v, dt) {
+  if (v.from < 0 || v.to < 0) { const n = nearestNode(v.x, v.y); v.from = n; v.to = pick(nodes[n].nb); }
+  const tg = laneTarget(v.from, v.to);
+  if (Math.hypot(tg.x - v.x, tg.y - v.y) < 28) {
+    const opts = nodes[v.to].nb.filter(n => n !== v.from); const nx = opts.length ? pick(opts) : v.from;
+    v.from = v.to; v.to = nx; return aiTraffic(v, dt);
+  }
+  let target = v.type === 'keke' ? 105 : 150;
+  const onBridge = v.y > 23 * CELL && v.y < 27 * CELL && v.x > 47 * CELL && v.x < 64 * CELL;
+  if (onBridge && WORLD.goSlow) target = 38;
+  const fx = Math.cos(v.a), fy = Math.sin(v.a);
+  const others = vehicles.concat(player.veh ? [] : [player]);
+  for (const o of others) {
+    if (o === v) continue; const dx = o.x - v.x, dy = o.y - v.y; if (Math.abs(dx) > 80 || Math.abs(dy) > 80) continue;
+    const ahead = dx * fx + dy * fy, lat = Math.abs(-dx * fy + dy * fx);
+    if (ahead > 0 && ahead < 62 && lat < 15) { target = 0; if (o === player.veh && Math.random() < dt * .6) honk(v); break; }
+  }
+  if (stars() > 0 && dist(v, player.pos()) < 160) target *= 1.2;
+  steerTo(v, tg.x, tg.y, target, dt);
+}
+function steerTo(v, tx, ty, targetSpeed, dt, mult = 2.6) {
+  const want = Math.atan2(ty - v.y, tx - v.x), diff = wrapA(want - v.a);
+  let steer = clamp(diff * mult, -1, 1);
+  let thr = clamp((targetSpeed * (Math.abs(diff) > 1.1 ? .45 : 1) - v.v) / 40, -1, 1);
+  if (v.rev > 0) { v.rev -= dt; thr = -1; steer = -steer; }
+  else if (thr > .3 && Math.abs(v.v) < 12) { v.stuck += dt; if (v.stuck > 1.1) { v.rev = .8; v.stuck = 0; } }
+  else v.stuck = Math.max(0, v.stuck - dt);
+  drive(v, thr, steer, thr < -.5 && v.v > 0, dt);
+}
+function aiCop(v, dt) {
+  const p = player.pos(); const d = dist(v, p);
+  if (stars() === 0) { v.driver = 'ai'; v.siren = false; return; }
+  v.siren = true;
+  if (d < 280 && los(v, p)) {
+    const lead = player.veh ? .35 : .1; const pvx = player.veh ? Math.cos(player.veh.a) * player.veh.v : 0, pvy = player.veh ? Math.sin(player.veh.a) * player.veh.v : 0;
+    steerTo(v, p.x + pvx * lead, p.y + pvy * lead, VT[v.type].max * (d < 70 ? .6 : 1), dt, 3);
+    return;
+  }
+  v.repath = (v.repath || 0) - dt;
+  if (v.repath <= 0 || v.nav == null) { v.repath = .7; const goal = nearestNode(WANT.seen ? p.x : WANT.last.x, WANT.seen ? p.y : WANT.last.y); const s = nearestNode(v.x, v.y); v.nav = dist(v, nodes[s]) > 60 ? s : bfsNext(s, goal); }
+  const n = nodes[v.nav]; if (dist(v, n) < 34) v.repath = 0;
+  steerTo(v, n.x, n.y, VT[v.type].max * .92, dt, 3);
+}
+function aiFlee(v, dt) {
+  if (v.from < 0) { const n = nearestNode(v.x, v.y); v.from = n; v.to = nodes[n].nb[0]; }
+  const tg = laneTarget(v.from, v.to);
+  if (Math.hypot(tg.x - v.x, tg.y - v.y) < 30) {
+    const p = player.pos(); let best = null, bs = -1e9;
+    for (const n of nodes[v.to].nb) { if (n === v.from && nodes[v.to].nb.length > 1) continue; const s = dist(nodes[n], p) + rnd(0, 260); if (s > bs) { bs = s; best = n; } }
+    v.from = v.to; v.to = best;
+  }
+  steerTo(v, tg.x, tg.y, VT[v.type].max * v.topSpeed, dt, 3);
+}
+let lastHonk = 0;
+function honk(v) { if (performance.now() - lastHonk < 1500 || dist(v, player.pos()) > 300) return; lastHonk = performance.now(); beep([392, 330], .1, .03); floaters.push({ x: v.x, y: v.y - 20, text: pick(['PAAAP!', 'Oga move!', 'Wetin be this?']), t: 1.2 }); }
+
+// ---------------------------------------------------------------- world sim
+const WORLD = { goSlow: 0, hour: -1, radio: 0, paused: true, started: false };
+let shake = 0;
+function spawnTraffic(dt) {
+  const p = player.pos(); const want = (IS_TOUCH ? 16 : 24) + (WORLD.goSlow ? 10 : 0);
+  const traffic = vehicles.filter(v => v.driver === 'ai' && !v.mission);
+  if (traffic.length < want) {
+    let s;
+    if (WORLD.goSlow && Math.random() < .5) { const a = nodeKey['42,24'], b = nodeKey['66,24']; s = Math.random() < .5 ? Object.assign(laneSpot(a, b, rnd(.1, .9)), { from: a, to: b }) : Object.assign(laneSpot(b, a, rnd(.1, .9)), { from: b, to: a }); if (dist(s, p) < 420) s = null; }
+    if (!s) s = roadSpotNear(p, 480, 1000);
+    if (s && !vehicles.some(v => Math.abs(v.x - s.x) < 40 && Math.abs(v.y - s.y) < 40)) {
+      let tot = 0; for (const [, w] of TRAFFIC_MIX) tot += w; let r = Math.random() * tot, type = 'sedan';
+      for (const [t, w] of TRAFFIC_MIX) { r -= w; if (r <= 0) { type = t; break; } }
+      const v = spawnVehicle(type, s.x, s.y, s.a, { from: s.from, to: s.to }); v.v = 60;
+    }
+  }
+  vehicles = vehicles.filter(v => v.mission || v === player.veh || v === player.owned || v.driver === 'cop' && stars() > 0 || dist(v, p) < 1300);
+  // pedestrians
+  const pw = IS_TOUCH ? 26 : 40;
+  peds = peds.filter(q => dist(q, p) < 1000);
+  for (let i = 0; i < 3 && peds.length < pw; i++) {
+    const a = rnd(0, Math.PI * 2), d = rnd(300, 800); const x = p.x + Math.cos(a) * d, y = p.y + Math.sin(a) * d; const t = tileAt(x, y);
+    if (t === T.SIDE || t === T.GROUND || t === T.PARK || t === T.GRASS) peds.push({ x, y, a: 0, tx: x, ty: y, spd: rnd(28, 44), col: pick(['#e2683c', '#2fa36b', '#f5c400', '#3d7bd9', '#d94f8a', '#f3eee4', '#8a5a3c']), state: 'walk', t: 0 });
+  }
+}
+function updatePeds(dt) {
+  const p = player.pos(); const wanted = stars() > 0;
+  for (const q of peds) {
+    if (q.state === 'down') { q.t -= dt; if (q.t <= 0) { q.state = 'flee'; q.t = 4; } continue; }
+    let tx = q.tx, ty = q.ty, spd = q.spd;
+    if (q.state === 'flee' || (wanted && dist(q, p) < 130)) { const dx = q.x - p.x, dy = q.y - p.y, m = Math.hypot(dx, dy) || 1; tx = q.x + dx / m * 60; ty = q.y + dy / m * 60; spd = 95; q.t -= dt; if (q.t <= 0) q.state = 'walk'; }
+    else if (Math.hypot(tx - q.x, ty - q.y) < 6) { q.tx = q.x + rnd(-120, 120); q.ty = q.y + rnd(-120, 120); continue; }
+    const dx = tx - q.x, dy = ty - q.y, m = Math.hypot(dx, dy) || 1; const nx = q.x + dx / m * spd * dt, ny = q.y + dy / m * spd * dt;
+    if (!solidAt(nx, ny)) { q.x = nx; q.y = ny; q.a = Math.atan2(dy, dx); } else { q.tx = q.x + rnd(-120, 120); q.ty = q.y + rnd(-120, 120); }
+    // hit by player's vehicle
+    const pv = player.veh;
+    if (pv && Math.abs(pv.v) > 55 && dist(q, pv) < VT[pv.type].len * .42 + 5) {
+      q.state = 'down'; q.t = 2.2; pv.v *= .8; floaters.push({ x: q.x, y: q.y - 12, text: 'Ouch!', t: 1 });
+      report('Assault', q, 1);
+    }
+  }
+}
+function collide(dt) {
+  for (let i = 0; i < vehicles.length; i++) for (let j = i + 1; j < vehicles.length; j++) {
+    const A = vehicles[i], B = vehicles[j]; const dx = B.x - A.x, dy = B.y - A.y;
+    if (Math.abs(dx) > 60 || Math.abs(dy) > 60) continue;
+    const R = (VT[A.type].len + VT[B.type].len) * .27 + 4, d = Math.hypot(dx, dy);
+    if (d >= R || d === 0) continue;
+    const nx = dx / d, ny = dy / d, ov = (R - d) / 2;
+    if (!vehBlocked(A, A.x - nx * ov, A.y - ny * ov, A.a)) { A.x -= nx * ov; A.y -= ny * ov; }
+    if (!vehBlocked(B, B.x + nx * ov, B.y + ny * ov, B.a)) { B.x += nx * ov; B.y += ny * ov; }
+    const rel = (Math.cos(A.a) * A.v - Math.cos(B.a) * B.v) * nx + (Math.sin(A.a) * A.v - Math.sin(B.a) * B.v) * ny;
+    const imp = Math.abs(rel);
+    if (imp > 30) { A.v *= .55; B.v *= .55; }
+    if (imp > 70) { A.hp -= imp * .06; B.hp -= imp * .06; onImpact(A, imp); onImpact(B, imp); }
+    const pv = player.veh;
+    if (pv && (A === pv || B === pv) && imp > 55) {
+      const other = A === pv ? B : A;
+      if (other.hits != null && other.hitCd <= 0) { other.hits--; other.hitCd = .6; shake = 6; ui.toast(other.hits > 0 ? `Hit! ${other.hits} more` : 'He\'s done!', 'good'); }
+      if (other.driver === 'cop') report('AttackOnResponder', pv, 1);
+      else if (other.driver === 'ai' && imp > 110) report('PropertyDamage', pv, .7);
+    }
+  }
+  for (const v of vehicles) if (v.hitCd > 0) v.hitCd -= dt;
+  // player on foot vs vehicles
+  if (!player.veh) for (const v of vehicles) {
+    if (Math.abs(v.v) > 85 && dist(v, player) < VT[v.type].len * .4 + 6) { player.hp -= Math.abs(v.v) * .06; shake = 8; const a = v.a; tryMovePlayer(Math.cos(a) * 26, Math.sin(a) * 26); v.v *= .5; ui.toast('You got knocked down!', 'bad'); }
+  }
+}
+
+// ---------------------------------------------------------------- cops
+function manageCops(dt) {
+  const st = stars(); const cops = vehicles.filter(v => v.driver === 'cop');
+  const want = [[0, 0], [1, 0], [1, 1], [1, 2], [2, 3], [2, 3]][st];
+  const nb = cops.filter(c => c.type === 'tfbike').length, np = cops.length - nb;
+  const p = player.pos();
+  WORLD.copSpawnT = (WORLD.copSpawnT || 0) - dt;
+  if (WORLD.copSpawnT <= 0 && (nb < want[0] || np < want[1])) {
+    WORLD.copSpawnT = 1.2; const s = roadSpotNear(p, 520, 900);
+    const v = spawnVehicle(nb < want[0] ? 'tfbike' : 'tfpick', s.x, s.y, s.a, { from: s.from, to: s.to }); v.v = 120;
+  }
+  if (st >= 5 && !heli) heli = { x: p.x + 600, y: p.y - 500, a: 0 };
+  if (st < 5 && heli) heli = null;
+  if (heli) { const dx = p.x - heli.x, dy = p.y - heli.y, m = Math.hypot(dx, dy) || 1; const sp = Math.min(230, m * 2); heli.x += dx / m * sp * dt; heli.y += dy / m * sp * dt; heli.a += dt * 25; }
+  // seen?
+  let seen = false;
+  for (const c of cops) if (dist(c, p) < 320 && los(c, p)) { seen = true; break; }
+  if (heli && dist(heli, p) < 230) seen = true;
+  WANT.seen = seen;
+  if (st > 0) {
+    if (seen) { WANT.timer = 0; WANT.last = { x: p.x, y: p.y }; }
+    else { WANT.timer += dt; if (WANT.timer >= WANT.perStar) { WANT.timer = 0; const nh = Math.max(0, Math.ceil(WANT.heat - 1e-4) - 1); if (nh === 0) clearHeat(true); else WANT.heat = nh; } }
+    // bust
+    const slow = !player.veh || Math.abs(player.veh.v) < 35 || player.veh.hp <= 0;
+    const close = cops.some(c => dist(c, p) < (player.veh ? 52 : 44));
+    WANT.bust = close && slow ? WANT.bust + dt : Math.max(0, WANT.bust - dt * 2);
+    if (WANT.bust > (player.veh ? 2.2 : 1.4)) busted();
+  } else WANT.bust = 0;
+}
+
+// ---------------------------------------------------------------- missions
+const MS = { cur: null };
+const isDone = id => S.done.includes(id);
+const available = id => !isDone(id) && MISSIONS[id].req.every(isDone);
+function announce() {
+  for (const id of ORDER) if (available(id) && !S.announced.includes(id)) { S.announced.push(id); chat(MISSIONS[id].giver, MISSIONS[id].brief, id); }
+}
+function canStart() { return !MS.cur && stars() === 0 && !SHIFT.on; }
+function startMission(id) {
+  if (!canStart() || !available(id)) { ui.toast(stars() > 0 ? 'Lose your heat first.' : SHIFT.on ? 'End your conductor shift first (E).' : 'Finish the job you\'re on first.', 'bad'); return false; }
+  const def = MISSIONS[id]; const ms = { id, def, oi: -1, prog: 0, timer: 0, items: [], carry: 0, bonusFail: false };
+  MS.cur = ms; def.setup && def.setup(ms);
+  ui.card(def.title.toUpperCase(), CONTACTS[def.giver], '', false, 2600); beep([523, 659, 784], .12, .05, 'triangle');
+  nextObj(); return true;
+}
+function nextObj() {
+  const ms = MS.cur; ms.oi++; ms.prog = 0; ms.armed = 0;
+  const o = ms.def.objs[ms.oi]; if (!o) return passMission();
+  ms.timer = o.time || 0;
+  if (o.t === 'stops') ms.stops = MISSION_STOPS.map(s => ({ x: s.x, y: s.y, fares: 2, hold: 0 }));
+  if (o.t === 'loseheat' && stars() === 0) addHeat(2);
+  o.start && o.start(ms);
+}
+function passMission() {
+  const ms = MS.cur, def = ms.def; MS.cur = null;
+  const pay = Math.round(def.reward * (ms.bonusFail ? .9 : 1));
+  earn(pay, def.title); S.cred += def.cred; S.integ += def.integ || 0; S.done.push(ms.id);
+  ui.card('JOB DONE!', def.title, `+${naira(pay)}   +${def.cred} cred${ms.bonusFail ? '   (bonus missed)' : def.bonus ? '   (bonus earned)' : ''}`);
+  beep([523, 659, 784, 1046], .14, .06, 'triangle');
+  post('mission_passed:' + ms.id); cleanupMission(ms);
+  if (ms.id === 'lag_09') { S.actDone = true; setTimeout(showActEnd, 3200); }
+  announce(); save();
+}
+function failMission(reason) {
+  const ms = MS.cur; if (!ms) return; MS.cur = null;
+  ui.card('WAHALA!', ms.def.title, reason, true); beep([392, 330, 262], .2, .06, 'sawtooth');
+  cleanupMission(ms); S.announced = S.announced.filter(x => x !== ms.id); setTimeout(announce, 4000);
+}
+function cleanupMission(ms) {
+  items = items.filter(i => !ms.items.includes(i));
+  for (const v of vehicles) if (v.mission) { if (v === player.veh) { v.mission = false; player.owned = v; } else v.dead = true; }
+  vehicles = vehicles.filter(v => !v.dead);
+}
+function objTargets(ms) {
+  const o = ms.def.objs[ms.oi]; if (!o) return [];
+  if (o.t === 'goto') return [Object.assign({ r: o.r }, o.at())];
+  if (o.t === 'enter') { const v = o.target(ms); return v ? [{ x: v.x, y: v.y, r: 30, veh: true }] : []; }
+  if (o.t === 'stops') return ms.stops.map(s => ({ x: s.x, y: s.y, r: 44, stop: true }));
+  if (o.t === 'collect') return items.filter(i => ms.items.includes(i)).map(i => ({ x: i.x, y: i.y, r: 20 }));
+  if (o.t === 'chase') { const v = o.target(ms); return v ? [{ x: v.x, y: v.y, r: 26, enemy: true }] : []; }
+  return [];
+}
+function updateMission(dt) {
+  const ms = MS.cur; if (!ms) return; const o = ms.def.objs[ms.oi]; const p = player.pos();
+  if (o.time) { ms.timer -= dt; if (ms.timer <= 0) return failMission('Time up'); }
+  const f = ms.def.fail && ms.def.fail(ms); if (f) return failMission(f);
+  switch (o.t) {
+    case 'goto': { const at = o.at(); if (dist(p, at) < o.r && (!o.vehicle || player.veh)) nextObj(); break; }
+    case 'enter': if (player.veh && player.veh === o.target(ms)) nextObj(); break;
+    case 'stops':
+      for (const s of ms.stops) {
+        if (!player.veh || dist(player.veh, s) > 44 || Math.abs(player.veh.v) > 40) { s.hold = 0; continue; }
+        s.hold += dt; if (s.hold > .7) { ms.prog += s.fares; floaters.push({ x: s.x, y: s.y - 20, text: '+2 fares', t: 1.4 }); beep([988], .06, .04, 'sine'); ms.stops = ms.stops.filter(x => x !== s); ui.toast(pick(CALLS)); break; }
+      }
+      if (ms.prog >= o.count) nextObj(); break;
+    case 'collect':
+      for (const it of items.filter(i => ms.items.includes(i))) if (dist(p, it) < (player.veh ? 30 : 20)) { items = items.filter(i => i !== it); ms.prog++; ms.carry++; floaters.push({ x: it.x, y: it.y - 16, text: it.kind === 'bag' ? '₦₦₦' : 'Crate loaded', t: 1.2 }); beep([784], .07, .04, 'sine'); }
+      if (ms.prog >= o.count) nextObj(); break;
+    case 'chase': if (o.done(ms)) nextObj(); break;
+    case 'loseheat': ms.armed += dt; if (ms.armed > .5 && stars() === 0) nextObj(); break;
+  }
+}
+
+// ---------------------------------------------------------------- conductor hustle (port of HustleShift.cs)
+const SHIFT = { on: false, next: 0, leg: 0, rough: 0, lastV: 0, streak: 0, earned: 0, hold: 0, call: '' };
+function startShift() {
+  SHIFT.on = true; SHIFT.streak = 0; SHIFT.earned = 0; SHIFT.leg = 0; SHIFT.rough = 0;
+  let b = 0, bd = 1e9; SHIFT_STOPS.forEach((s, i) => { const d = dist(s, player.veh); if (d < bd) { bd = d; b = i; } }); SHIFT.next = (b + 1) % SHIFT_STOPS.length;
+  SHIFT.call = pick(CALLS); ui.toast('Conductor shift started. Follow the yellow stops.', 'good');
+}
+function endShift() { if (!SHIFT.on) return; SHIFT.on = false; ui.toast(`Shift over: ${naira(SHIFT.earned)} earned`, 'good'); save(); }
+function updateShift(dt) {
+  if (!SHIFT.on) return; const v = player.veh; if (!v || v.type !== 'danfo') return endShift();
+  SHIFT.leg += dt; const acc = Math.abs(v.v - SHIFT.lastV) / Math.max(dt, 1e-4); if (acc > 260) SHIFT.rough += dt; SHIFT.lastV = v.v;
+  const s = SHIFT_STOPS[SHIFT.next];
+  if (dist(v, s) < 44 && Math.abs(v.v) < 30) {
+    SHIFT.hold += dt; if (SHIFT.hold < .7) return; SHIFT.hold = 0;
+    const prev = SHIFT_STOPS[(SHIFT.next + SHIFT_STOPS.length - 1) % SHIFT_STOPS.length];
+    const target = dist(prev, s) / 125 + 5;
+    const q = .5 * clamp(1.5 - SHIFT.leg / target, 0, 1) + .5 * clamp(1 - SHIFT.rough / 2.5, 0, 1);
+    let pay = 0;
+    if (q < .25) { SHIFT.streak = 0; ui.toast('Passengers vex: "Driver, you wan kill us?" No pay.', 'bad'); }
+    else {
+      SHIFT.streak++; const lvl = Math.min(5, 1 + Math.floor(S.jobs / 10));
+      pay = Math.round(1500 * q * (1 + .15 * (lvl - 1))) + 200 * (SHIFT.streak - 1);
+      earn(pay, 'Conductor shift'); SHIFT.earned += pay; floaters.push({ x: s.x, y: s.y - 20, text: '+' + naira(pay), t: 1.4 }); beep([988, 1318], .06, .04, 'sine');
+    }
+    S.jobs++; SHIFT.next = (SHIFT.next + 1) % SHIFT_STOPS.length; SHIFT.leg = 0; SHIFT.rough = 0; SHIFT.call = pick(CALLS);
+  } else SHIFT.hold = 0;
+}
+
+// ---------------------------------------------------------------- player
+function tryMovePlayer(dx, dy) {
+  const r = 6; const ok = (x, y) => !solidAt(x - r, y - r) && !solidAt(x + r, y - r) && !solidAt(x - r, y + r) && !solidAt(x + r, y + r) && x > 8 && y > 8 && x < WW - 8 && y < WH - 8;
+  if (ok(player.x + dx, player.y)) player.x += dx;
+  if (ok(player.x, player.y + dy)) player.y += dy;
+}
+function nearestVehicle() {
+  let b = null, bd = 1e9; for (const v of vehicles) { const d = dist(v, player); if (d < VT[v.type].len / 2 + 22 && d < bd) { bd = d; b = v; } } return b;
+}
+function enterVehicle(v) {
+  if (v.driver === 'ai' || v.driver === 'cop' || v.driver === 'flee') {
+    if (v.driver === 'flee') return;
+    peds.push({ x: v.x + 20, y: v.y + 20, a: 0, tx: v.x, ty: v.y, spd: 40, col: '#f3eee4', state: 'flee', t: 5 });
+    floaters.push({ x: v.x, y: v.y - 24, text: pick(['Thief! Thief!', 'Ah! My motor!', 'Somebody help!']), t: 1.6 });
+    report(v.driver === 'cop' ? 'AttackOnResponder' : 'VehicleTheft', v, 1);
+  } else if (!v.mission && v !== player.owned) report('VehicleTheft', v, .5);
+  v.driver = 'player'; player.veh = v; player.owned = v;
+}
+function exitVehicle() {
+  const v = player.veh; if (!v || Math.abs(v.v) > 70) return;
+  v.driver = null; endShift();
+  for (const side of [1, -1]) { const x = v.x - Math.sin(v.a) * side * (VT[v.type].wid / 2 + 12), y = v.y + Math.cos(v.a) * side * (VT[v.type].wid / 2 + 12); if (!solidAt(x, y)) { player.x = x; player.y = y; break; } player.x = v.x; player.y = v.y; }
+  player.veh = null;
+}
+function updatePlayer(dt) {
+  const v = player.veh;
+  if (IN.enter()) { if (v) exitVehicle(); else { const n = nearestVehicle(); if (n) enterVehicle(n); } }
+  if (hit('KeyH')) { beep([415, 349], .12, .06); for (const q of peds) if (dist(q, player.pos()) < 120) { q.state = 'flee'; q.t = 1.5; } }
+  if (v) {
+    let thr = -IN.ky(), steer = IN.kx();
+    if (touch.on && (touch.x || touch.y)) {
+      const m = Math.min(1, Math.hypot(touch.x, touch.y)); const want = Math.atan2(touch.y, touch.x); const diff = wrapA(want - v.a);
+      if (Math.abs(diff) > 2.5) { thr = -m * .8; steer = 0; } else { thr = m * (Math.abs(diff) > 1.2 ? .5 : 1); steer = clamp(diff * 2.2, -1, 1); }
+    }
+    drive(v, thr, steer, IN.brake(), dt);
+    if (v.hp <= 0 && !v.smoked) { v.smoked = true; ui.toast('The engine is dead. Get out (F).', 'bad'); }
+  } else {
+    let mx = IN.kx(), my = IN.ky(); if (touch.on) { mx = touch.x; my = touch.y; }
+    const m = Math.hypot(mx, my); if (m > 0) { const sp = (IN.sprint() ? 190 : 120) * Math.min(1, m); tryMovePlayer(mx / Math.max(1, m) * sp * dt, my / Math.max(1, m) * sp * dt); player.a = Math.atan2(my, mx); }
+  }
+  if (player.hp <= 0) hospital();
+}
+
+// ---------------------------------------------------------------- busted / hospital / checkpoint
+function respawn() {
+  if (player.veh) { player.veh.driver = null; player.veh = null; }
+  player.x = PL.home.x; player.y = PL.home.y; player.hp = 100; WANT.heat = 0; WANT.timer = 0; WANT.bust = 0;
+  vehicles = vehicles.filter(v => v.driver !== 'cop'); heli = null; endShift();
+}
+function busted() {
+  const lost = Math.floor(S.cash * .08); earn(-lost, 'Busted'); S.cred = Math.max(0, S.cred - 10);
+  if (MS.cur) failMission('Busted');
+  ui.card('BUSTED', 'Eko Task Force picked you up', `-${naira(lost)} · -10 cred`, true, 4000); post('busted'); respawn(); save();
+}
+function hospital() {
+  const bill = Math.min(S.cash, 1500); earn(-bill, 'Hospital bill');
+  if (MS.cur) failMission('You ended up in hospital');
+  ui.card('WAHALA!', 'Patched up at the general hospital', `-${naira(bill)} hospital bill`, true, 4000); respawn(); save();
+}
+const CP = { cool: 0 };
+function checkCheckpoint(dt) {
+  CP.cool -= dt; const v = player.veh; if (!v || CP.cool > 0) return;
+  const c = PL.checkpoint; if (v.x < c.x || v.x > c.x + c.w || v.y < c.y - c.h / 2 || v.y > c.y + c.h / 2) return;
+  const o = MS.cur && MS.cur.def.objs[MS.cur.oi];
+  if (o && (o.t === 'chase' || o.t === 'loseheat')) return; // chases blow straight through
+  CP.cool = 90; v.v = 0; openCheckpoint();
+}
+function openCheckpoint() {
+  const opener = pick(['"Oga, good afternoon. Particulars."', '"Where you dey go? Wetin dey that boot?"', '"Na you get this motor? Park well."', '"Anything for the boys?"']);
+  const respect = OUTFITS.find(o => o.id === S.outfit).respect;
+  showSheet(`<h3>Checkpoint</h3><p>${opener}</p><p class="muted">Eko Task Force · Third Lagoon Bridge east end. Somebody on the bus behind is holding up a phone.</p>
+  <div class="btns">
+    <button class="btn" data-c="Comply" type="button">Comply<small>Show papers. Slow but clean.</small></button>
+    <button class="btn danger" data-c="Settle" type="button">Settle (${naira(CHECKPOINT.settle)})<small>Fast. Costs integrity.</small></button>
+    <button class="btn" data-c="Talk" type="button">Talk your way<small>Outfit respect +${respect}, cred helps</small></button>
+    <button class="btn danger" data-c="Floor" type="button">Floor it<small>Instant heat</small></button>
+  </div><p id="cp-out" class="muted" aria-live="polite"></p>`, el => {
+    el.querySelectorAll('[data-c]').forEach(b => b.onclick = () => {
+      const out = resolveCheckpoint(b.dataset.c, respect); el.querySelectorAll('[data-c]').forEach(x => x.disabled = true);
+      el.querySelector('#cp-out').textContent = out.text; el.querySelector('#cp-out').style.color = 'var(--ink)';
+      setTimeout(closeOverlays, 2200);
+    });
+  });
+}
+function resolveCheckpoint(choice, respect) {
+  let kind, text, heat = 0, integ = 0, clout = 0, delay = 0;
+  if (choice === 'Comply') { kind = 'Delayed'; delay = CHECKPOINT.delay; integ = 1; text = "Papers checked, boot checked, patience checked. You're clear."; }
+  else if (choice === 'Talk') { const score = respect + S.cred / 20 + rnd(0, 60); if (score >= CHECKPOINT.talk) { kind = 'WavedThrough'; text = '"Ah, big boy! Correct outfit. Go well."'; } else { kind = 'Delayed'; delay = CHECKPOINT.delay * 1.5; text = 'Your story did not land. Park well.'; } }
+  else if (choice === 'Floor') { kind = 'Escalated'; heat = 2; text = 'You floored it. Spikes, sirens, wahala.'; }
+  else {
+    if (!spend(CHECKPOINT.settle, 'Checkpoint')) { kind = 'Delayed'; delay = CHECKPOINT.delay * 2; text = '"You no get money? Park there."'; }
+    else { const r = Math.random();
+      if (r < CHECKPOINT.sting) { kind = 'IntegrityUnitSting'; heat = 3; integ = -10; text = 'Surprise: Integrity Unit sting operation. Smile for the camera, then run.'; }
+      else if (r < CHECKPOINT.sting + CHECKPOINT.record) { kind = 'Recorded'; heat = 1; integ = -5; text = 'Someone on the bus filmed it. #CheckpointChronicles is trending.'; }
+      else { kind = 'WavedThrough'; integ = -3; text = '"Happy weekend!" ...it\'s Tuesday.'; } }
+  }
+  S.integ = clamp(S.integ + integ, -100, 100); S.clout = Math.max(0, S.clout + clout); if (delay) S.minutes += delay;
+  if (heat) { if (choice === 'Floor') report('CheckpointRunning', player.pos(), 1); else addHeat(heat); }
+  post('checkpoint:' + kind); return { kind, text };
+}
+
+// ---------------------------------------------------------------- shops & business
+function nearPlace(p, r = 40) { return dist(player.pos(), p) < r; }
+function openTailor() {
+  const rows = OUTFITS.map(o => { const own = S.outfits.includes(o.id), on = S.outfit === o.id;
+    return `<button class="btn" type="button" data-o="${o.id}" ${on ? 'disabled' : ''}><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${o.color};margin-right:6px"></span>${o.name}<small>${on ? 'Wearing' : own ? 'Owned · tap to wear' : naira(o.price)} · respect +${o.respect}</small></button>`; }).join('');
+  showSheet(`<h3>Balo Tailor</h3><p class="muted">Respect helps you talk past checkpoints. Agbada opens doors.</p><div class="btns">${rows}</div><button class="btn" type="button" data-x>Close</button>`, el => {
+    el.querySelectorAll('[data-o]').forEach(b => b.onclick = () => { const o = OUTFITS.find(x => x.id === b.dataset.o);
+      if (!S.outfits.includes(o.id)) { if (!spend(o.price, o.name)) { ui.toast('Not enough money.', 'bad'); return; } S.outfits.push(o.id); }
+      S.outfit = o.id; save(); ui.toast('Now wearing: ' + o.name, 'good'); openTailor(); });
+    el.querySelector('[data-x]').onclick = closeOverlays;
+  });
+}
+function openCarWash() {
+  const b = S.biz;
+  showSheet(`<h3>Mainland Shine Car Wash</h3><p>Buckets, foam and gist. Every danfo in Oshoja passes through.</p>
+    <p class="muted">${b.owned ? `Earns ${naira(9000)} per game day. Cash box: <b style="color:var(--ink)">${naira(Math.floor(b.box))}</b> of ${naira(60000)}.` : `Price ${naira(150000)} · earns ${naira(9000)}/day · unlocks after Balo Market Run.`}</p>
+    <div class="btns">${b.owned ? `<button class="btn primary" type="button" data-a="collect">Collect ${naira(Math.floor(b.box))}</button>` : `<button class="btn primary" type="button" data-a="buy" ${isDone('lag_03') ? '' : 'disabled'}>Buy for ${naira(150000)}</button>`}<button class="btn" type="button" data-x>Close</button></div>`, el => {
+    const a = el.querySelector('[data-a]');
+    if (a) a.onclick = () => { if (a.dataset.a === 'buy') { if (spend(150000, 'Bought car wash')) { b.owned = true; ui.toast('You own Mainland Shine Car Wash!', 'good'); save(); } else ui.toast('Not enough money.', 'bad'); } else { const n = Math.floor(b.box); b.box -= n; earn(n, 'Car wash income'); save(); } openCarWash(); };
+    el.querySelector('[data-x]').onclick = closeOverlays;
+  });
+}
+
+// ---------------------------------------------------------------- overlays & phone
+function showSheet(html, bind) { const o = $('#sheet'); $('#sheet-body').innerHTML = html; o.hidden = false; WORLD.paused = true; bind && bind($('#sheet-body')); const f = $('#sheet-body').querySelector('button:not([disabled])'); f && f.focus(); }
+function closeOverlays() {
+  if (!$('#start').hidden) return;
+  $('#sheet').hidden = true; $('#phone').hidden = true; WORLD.paused = false;
+  for (const k in keys) keys[k] = false;
+}
+let phoneApp = 'gist', thread = null, koboTo = 'amaka', koboAmt = 1000, koboMsg = '';
+function openPhone(app) { phoneApp = app || phoneApp; $('#phone').hidden = false; WORLD.paused = true; renderPhone(); }
+function renderPhone() {
+  const b = $('#ph-body'); $('#ph-clock').textContent = clockStr();
+  document.querySelectorAll('.ph-tabs button').forEach(x => x.classList.toggle('on', x.dataset.app === phoneApp));
+  if (phoneApp === 'gist') {
+    if (thread) {
+      const msgs = S.chats.filter(c => c.from === thread); msgs.forEach(m => m.read = true);
+      const pending = msgs.map(m => m.mission).filter(id => id && available(id) && (!MS.cur || MS.cur.id !== id)).pop();
+      b.innerHTML = `<button class="row" type="button" data-back><span>‹ Chats</span></button><div class="app-h">${CONTACTS[thread]}</div>` +
+        msgs.map(m => `<div class="bubble${m.me ? ' me' : ''}">${esc(m.text)}</div>`).join('') +
+        (pending ? `<button class="btn primary" type="button" data-accept="${pending}">Accept: ${MISSIONS[pending].title}</button>` : '');
+      b.querySelector('[data-back]').onclick = () => { thread = null; renderPhone(); };
+      const acc = b.querySelector('[data-accept]');
+      if (acc) acc.onclick = () => { const id = acc.dataset.accept; if (startMission(id)) { S.chats.push({ from: thread, text: 'I dey come. On my way.', me: true, t: S.minutes, read: true }); closeOverlays(); } else { S.chats.push({ from: thread, text: stars() > 0 ? 'Wait, police dey my back. Give me small time.' : 'Not now, I\'m on something.', me: true, t: S.minutes, read: true }); renderPhone(); } };
+    } else {
+      const by = {}; for (const c of S.chats) by[c.from] = by[c.from] || []; for (const c of S.chats) by[c.from].push(c);
+      const threads = Object.keys(by).sort((a, b2) => by[b2][by[b2].length - 1].t - by[a][by[a].length - 1].t);
+      b.innerHTML = `<div class="app-h">Gist</div>` + (threads.length ? threads.map(f => { const last = by[f][by[f].length - 1], un = by[f].some(m => !m.read && !m.me);
+        return `<button class="row${un ? ' unread' : ''}" type="button" data-t="${f}"><b>${CONTACTS[f]}</b><span>${esc(last.text.slice(0, 90))}${last.text.length > 90 ? '…' : ''}</span></button>`; }).join('') : '<p class="muted">No messages yet.</p>');
+      b.querySelectorAll('[data-t]').forEach(x => x.onclick = () => { thread = x.dataset.t; renderPhone(); });
+    }
+  } else if (phoneApp === 'kobo') {
+    b.innerHTML = `<div class="app-h">KoboPay</div><div class="row"><span>Balance</span><div class="big-money">${naira(S.cash)}</div><span class="meta">Integrity ${S.integ} · Cred ${S.cred} · Clout ${S.clout}</span></div>
+      <div class="row"><b>Send money</b><div class="amt">${Object.keys(CONTACTS).filter(k => k !== 'shina').map(k => `<button type="button" data-to="${k}" class="${koboTo === k ? 'on' : ''}">${CONTACTS[k].split(' ')[0]}</button>`).join('')}</div>
+      <div class="amt">${[1000, 5000, 20000].map(a => `<button type="button" data-amt="${a}" class="${koboAmt === a ? 'on' : ''}">${naira(a)}</button>`).join('')}</div>
+      <button class="btn primary" type="button" data-send>Send ${naira(koboAmt)} (+₦50 fee)</button><span>${esc(koboMsg)}</span></div>
+      <div class="app-h" style="font-size:14px">History</div>` + (S.log.length ? S.log.map(l => `<div class="row"><b style="color:${l.n > 0 ? 'var(--good)' : 'var(--bad)'}">${l.n > 0 ? '+' : ''}${naira(l.n)}</b><span>${esc(l.why)}</span></div>`).join('') : '<p class="muted">No transactions yet.</p>');
+    b.querySelectorAll('[data-to]').forEach(x => x.onclick = () => { koboTo = x.dataset.to; renderPhone(); });
+    b.querySelectorAll('[data-amt]').forEach(x => x.onclick = () => { koboAmt = +x.dataset.amt; renderPhone(); });
+    b.querySelector('[data-send]').onclick = () => {
+      if (S.cash < koboAmt + 50) koboMsg = 'Insufficient funds. Hustle harder.';
+      else if (Math.random() < .05) { spend(50, 'Transfer fee'); koboMsg = 'Transaction pending… Reversed. Network wahala. Fee still charged 😑'; }
+      else { spend(koboAmt + 50, 'Sent to ' + CONTACTS[koboTo]); koboMsg = `Sent ${naira(koboAmt)} to ${CONTACTS[koboTo]}.`; S.integ = clamp(S.integ + 1, -100, 100); }
+      renderPhone();
+    };
+  } else if (phoneApp === 'yarns') {
+    b.innerHTML = `<div class="app-h">Yarns</div>` + (S.feed.length ? S.feed.map(p => `<div class="post${p.me ? ' me' : ''}"><b>${esc(p.author)} <em>${esc(p.handle)}</em></b><p>${esc(p.text)}</p><span class="meta">♥ ${p.likes.toLocaleString('en-US')}</span></div>`).join('') : '<p class="muted">Your feed is quiet. Do something worth talking about.</p>');
+  } else {
+    b.innerHTML = `<div class="app-h">MapAm</div><canvas id="phone-map" width="680" height="454"></canvas><p class="muted">Yellow: mission givers and stops · White: you · Green: Task Force · Blue: tailor and car wash.</p>`;
+    drawMinimap(b.querySelector('#phone-map'), true);
+  }
+  const un = S.chats.filter(c => !c.read && !c.me).length; $('#gist-badge').hidden = !un; $('#gist-badge').textContent = un;
+}
+document.querySelectorAll('.ph-tabs button').forEach(b => b.onclick = () => { phoneApp = b.dataset.app; thread = null; renderPhone(); });
+$('#phone').addEventListener('click', e => { if (e.target.id === 'phone') closeOverlays(); });
+$('#sheet').addEventListener('click', e => { if (e.target.id === 'sheet' && !$('#cp-out')) closeOverlays(); });
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function showActEnd() {
+  showSheet(`<div class="stripe"></div><h3>Act 1 complete</h3><p>The night bus pulls out of Lagos with Lucky and Baba Sule on board. Next stop: <b>Port Harcourt, the Garden City</b> — creek boats, crane jobs and oil money.</p>
+  <p class="muted">Port Harcourt and Abuja are in the full game. Keep hustling in Lagos: conductor shifts, the car wash, the tailor and the checkpoint are all still open.</p>
+  <p class="mono" style="font-family:var(--mono)">${naira(S.cash)} · cred ${S.cred} · integrity ${S.integ} · clout ${S.clout}</p>
+  <button class="btn primary" type="button" data-x>Keep hustling</button>`, el => el.querySelector('[data-x]').onclick = closeOverlays);
+}
+
+// ---------------------------------------------------------------- map prerender
+let mapC, lightC, miniC;
+function renderMap() {
+  mapC = document.createElement('canvas'); mapC.width = WW; mapC.height = WH; const g = mapC.getContext('2d');
+  lightC = document.createElement('canvas'); lightC.width = WW / 2; lightC.height = WH / 2; const L = lightC.getContext('2d'); L.scale(.5, .5);
+  const roofs = ['#8a4b38', '#7a6a58', '#9c8f7a', '#5f6f73', '#a0573f', '#6d4c41', '#8d8d86'];
+  const canopy = ['#d94f3d', '#f2b632', '#2f8fbf', '#3fa66a', '#e07b39', '#7e57c2', '#e8e1d0'];
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    const t = grid[I(c, r)], x = c * CELL, y = r * CELL, h = hash(c, r), isl = c >= 64, balo = c >= 22 && r >= 36 && c < 48;
+    switch (t) {
+      case T.ROAD: g.fillStyle = isLagoon(c) ? '#33373e' : '#2a2d33'; g.fillRect(x, y, CELL, CELL); break;
+      case T.SIDE: g.fillStyle = isl ? '#5c6168' : balo ? '#6a5038' : `hsl(28,10%,${30 + h * 5}%)`; g.fillRect(x, y, CELL, CELL); break;
+      case T.GROUND: g.fillStyle = isl ? '#4f5d55' : `hsl(18,${28 + h * 10}%,${24 + h * 5}%)`; g.fillRect(x, y, CELL, CELL); break;
+      case T.GRASS: g.fillStyle = `hsl(105,${22 + h * 10}%,${20 + h * 6}%)`; g.fillRect(x, y, CELL, CELL); break;
+      case T.PARK: g.fillStyle = '#3e3d3a'; g.fillRect(x, y, CELL, CELL); g.strokeStyle = 'rgba(245,196,0,.35)'; g.lineWidth = 1; g.strokeRect(x + 2, y + 2, CELL - 4, CELL - 4); break;
+      case T.WATER: case T.STILT: g.fillStyle = `hsl(188,${50 + h * 10}%,${15 + h * 3}%)`; g.fillRect(x, y, CELL, CELL);
+        if (t === T.STILT) { g.fillStyle = '#5a3f2a'; g.fillRect(x + 5, y + 5, CELL - 10, CELL - 10); g.fillStyle = '#8c7a62'; g.fillRect(x + 7, y + 7, CELL - 14, CELL - 14); if (h > .5) { L.fillStyle = 'rgba(255,190,90,.9)'; L.fillRect(x + 14, y + 14, 4, 4); } }
+        break;
+      case T.BUILD: {
+        const gi = hash(c >> 1, r >> 1); g.fillStyle = roofs[Math.floor(gi * roofs.length)]; g.fillRect(x, y, CELL, CELL);
+        g.fillStyle = 'rgba(0,0,0,.12)'; for (let k = 4; k < CELL; k += 6) g.fillRect(x, y + k, CELL, 2); // corrugated zinc
+        const same = (cc2, rr) => cc2 >= 0 && rr >= 0 && cc2 < COLS && rr < ROWS && grid[I(cc2, rr)] === T.BUILD && hash(cc2 >> 1, rr >> 1) === gi;
+        g.fillStyle = 'rgba(0,0,0,.45)';
+        if (!same(c + 1, r)) g.fillRect(x + CELL - 3, y, 3, CELL); if (!same(c, r + 1)) g.fillRect(x, y + CELL - 3, CELL, 3);
+        if (!same(c - 1, r)) g.fillRect(x, y, 1, CELL); if (!same(c, r - 1)) g.fillRect(x, y, CELL, 1);
+        if (h > .82) { L.fillStyle = 'rgba(255,200,110,.8)'; L.fillRect(x + 10, y + 12, 5, 5); }
+        break; }
+      case T.TOWER: {
+        g.fillStyle = '#26323d'; g.fillRect(x, y, CELL, CELL); g.fillStyle = '#34485a'; g.fillRect(x + 2, y + 2, CELL - 4, CELL - 4);
+        g.fillStyle = 'rgba(160,200,230,.18)'; g.fillRect(x + 4, y + 4, CELL - 8, 4);
+        for (let wy = 6; wy < CELL - 4; wy += 7) for (let wx = 5; wx < CELL - 4; wx += 7) if (hash(c * 7 + wx, r * 5 + wy) > .45) { L.fillStyle = hash(wx + c, wy + r) > .3 ? 'rgba(255,225,150,.95)' : 'rgba(150,210,255,.9)'; L.fillRect(x + wx, y + wy, 3, 3); }
+        break; }
+      case T.STALL: g.fillStyle = '#4a3828'; g.fillRect(x, y, CELL, CELL); g.fillStyle = canopy[Math.floor(h * canopy.length)]; g.fillRect(x + 2, y + 2, CELL - 4, CELL - 4);
+        g.fillStyle = 'rgba(255,255,255,.18)'; g.fillRect(x + 2, y + 2, CELL - 4, 5); if (h > .7) { L.fillStyle = 'rgba(255,210,120,.7)'; L.fillRect(x + 13, y + 13, 5, 5); } break;
+    }
+  }
+  // lane markings
+  g.strokeStyle = 'rgba(240,215,140,.42)'; g.lineWidth = 2; g.setLineDash([14, 14]);
+  const seg = (x1, y1, x2, y2) => { g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke(); };
+  for (const v of VM) seg(rc(v), 0, rc(v), WH); for (const v of VI) seg(rc(v), 0, rc(v), WH);
+  for (const h of HR) { seg(0, rc(h), 48 * CELL, rc(h)); seg(64 * CELL, rc(h), WW, rc(h)); }
+  seg(48 * CELL, rc(24), 64 * CELL, rc(24)); g.setLineDash([]);
+  // bridge rails + lamps
+  g.fillStyle = '#a7b0ba'; g.fillRect(48 * CELL, 24 * CELL - 3, 16 * CELL, 3); g.fillRect(48 * CELL, 26 * CELL, 16 * CELL, 3);
+  for (let x = 48 * CELL; x < 64 * CELL; x += 64) { L.fillStyle = 'rgba(255,200,120,.55)'; L.beginPath(); L.arc(x, 24 * CELL, 14, 0, 7); L.arc(x + 32, 26 * CELL, 14, 0, 7); L.fill(); }
+  // street lamps
+  for (let r = 0; r < ROWS; r += 3) for (let c = 0; c < COLS; c += 3) if (grid[I(c, r)] === T.SIDE && hash(c + 99, r) > .55) { const grd = L.createRadialGradient(cc(c), cc(r), 0, cc(c), cc(r), 40); grd.addColorStop(0, 'rgba(255,190,100,.45)'); grd.addColorStop(1, 'rgba(255,190,100,0)'); L.fillStyle = grd; L.fillRect(cc(c) - 40, cc(r) - 40, 80, 80); }
+  // checkpoint booth + bus stops + painted district names
+  const cp = PL.checkpoint; g.fillStyle = 'rgba(240,90,80,.85)'; for (let i = 0; i < 4; i++) g.fillRect(cp.x + 22, cp.y - 32 + i * 16, 6, 8);
+  g.fillStyle = '#ddd'; g.fillRect(cp.x + 30, cp.y - 44, 22, 12); g.fillStyle = '#222'; g.font = '700 8px sans-serif'; g.fillText('STOP', cp.x + 31, cp.y - 35);
+  g.textAlign = 'center'; g.font = "64px Bungee, 'Arial Black', sans-serif"; g.fillStyle = 'rgba(255,255,255,.07)';
+  [['OSHOJA', 520, 640], ['BALO MARKET', 1100, 1500], ['EKO CREST', 2560, 700], ['LEKKA STRIP', 2560, 1580], ['STILT TOWN', 1790, 1820], ['MAINLAND', 520, 1150]].forEach(([t, x, y]) => g.fillText(t, x, y));
+  g.font = "26px Bungee, 'Arial Black', sans-serif"; g.fillStyle = 'rgba(255,255,255,.12)'; g.fillText('THIRD LAGOON BRIDGE', 1790, 24 * CELL - 18);
+  g.fillText('LUXURY BUS PARK', 256, 46 * CELL - 10); g.fillText('OSHOJA MOTOR PARK', 256, 6 * CELL - 10);
+  // parked luxury buses
+  for (let i = 0; i < 3; i++) { g.fillStyle = '#e8e8e8'; g.fillRect(150 + i * 70, 1520, 40, 120); g.fillStyle = '#1565c0'; g.fillRect(150 + i * 70, 1520, 40, 14); g.fillStyle = '#90caf9'; g.fillRect(154 + i * 70, 1540, 32, 8); }
+  miniC = document.createElement('canvas'); miniC.width = 344; miniC.height = 230; const m = miniC.getContext('2d'); m.imageSmoothingQuality = 'high'; m.drawImage(mapC, 0, 0, 344, 230);
+}
+
+// ---------------------------------------------------------------- rendering
+let camX = PL.home.x, camY = PL.home.y, zoom = 1, DPR = 1, VW = 0, VH = 0;
+function resize() { DPR = Math.min(devicePixelRatio || 1, 2); VW = innerWidth; VH = innerHeight; cv.width = Math.round(VW * DPR); cv.height = Math.round(VH * DPR); }
+addEventListener('resize', resize);
+function darkness() { const h = (S.minutes % 1440) / 60; if (h >= 21 || h < 5) return .62; if (h >= 19) return (h - 19) / 2 * .62; if (h < 7) return (7 - h) / 2 * .62; return 0; }
+function clockStr() { const m = Math.floor(S.minutes % 1440); return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
+
+function drawVehicle(v, night) {
+  const d = VT[v.type], L = d.len, Wd = d.wid;
+  ctx.save(); ctx.translate(v.x, v.y); ctx.rotate(v.a);
+  ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.fillRect(-L / 2 + 3, -Wd / 2 + 3, L, Wd);
+  if (d.bike) {
+    ctx.fillStyle = '#111'; ctx.fillRect(-L / 2, -2, L, 4); ctx.fillStyle = v.color; ctx.fillRect(-L / 2 + 4, -Wd / 2, L - 8, Wd);
+    if (v.driver) { ctx.fillStyle = v.driver === 'player' ? OUTFITS.find(o => o.id === S.outfit).color : v.driver === 'cop' ? '#c8e6c9' : '#5d4037'; ctx.beginPath(); ctx.arc(-1, 0, 5, 0, 7); ctx.fill(); ctx.fillStyle = '#1d1d1d'; ctx.beginPath(); ctx.arc(0, 0, 3, 0, 7); ctx.fill(); }
+  } else {
+    ctx.fillStyle = v.color; ctx.beginPath(); ctx.roundRect(-L / 2, -Wd / 2, L, Wd, 4); ctx.fill();
+    if (v.type === 'danfo') { ctx.fillStyle = '#111'; ctx.fillRect(-L / 2 + 3, -Wd / 2 + 1, L - 6, 2); ctx.fillRect(-L / 2 + 3, Wd / 2 - 3, L - 6, 2); ctx.fillStyle = 'rgba(0,0,0,.25)'; for (let k = -L / 2 + 10; k < L / 2 - 12; k += 7) ctx.fillRect(k, -Wd / 2 + 5, 2, Wd - 10); }
+    if (v.type === 'tfpick') { ctx.fillStyle = '#f3eee4'; ctx.fillRect(-L / 2 + 2, -2, L - 4, 4); }
+    if (v.type === 'keke') { ctx.fillStyle = '#222'; ctx.fillRect(-L / 2 + 3, -Wd / 2 + 2, L - 10, Wd - 4); }
+    ctx.fillStyle = 'rgba(20,30,40,.85)'; ctx.fillRect(L / 2 - 13, -Wd / 2 + 2, 6, Wd - 4); ctx.fillRect(-L / 2 + 3, -Wd / 2 + 3, 4, Wd - 6);
+    ctx.fillStyle = 'rgba(255,255,255,.14)'; ctx.fillRect(-L / 2 + 8, -Wd / 2 + 3, L - 22, Wd - 6);
+    if (v.siren) { const on = (performance.now() / 160 | 0) % 2; ctx.fillStyle = on ? '#ff3b30' : '#2979ff'; ctx.fillRect(-2, -Wd / 2 + 1, 5, Wd / 2 - 1); ctx.fillStyle = on ? '#2979ff' : '#ff3b30'; ctx.fillRect(-2, 0, 5, Wd / 2 - 1); }
+    ctx.fillStyle = night ? '#fff6c8' : '#d8d2bf'; ctx.fillRect(L / 2 - 2, -Wd / 2 + 2, 2, 4); ctx.fillRect(L / 2 - 2, Wd / 2 - 6, 2, 4);
+    ctx.fillStyle = '#b71c1c'; ctx.fillRect(-L / 2, -Wd / 2 + 2, 2, 4); ctx.fillRect(-L / 2, Wd / 2 - 6, 2, 4);
+  }
+  ctx.restore();
+  if (v.hp < VT[v.type].hp * .3) { ctx.fillStyle = `rgba(90,90,90,${.35 + Math.sin(performance.now() / 200 + v.x) * .15})`; ctx.beginPath(); ctx.arc(v.x + Math.cos(v.a) * L * .35, v.y + Math.sin(v.a) * L * .35 - 6, 8, 0, 7); ctx.fill(); }
+  if (v.label) { ctx.font = '700 11px "Bricolage Grotesque", sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#000'; ctx.fillText(v.label, v.x + 1, v.y - 25); ctx.fillStyle = '#ff8a80'; ctx.fillText(v.label, v.x, v.y - 26); }
+}
+function drawPerson(x, y, col, down, me) {
+  ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.beginPath(); ctx.ellipse(x + 2, y + 3, 6, 5, 0, 0, 7); ctx.fill();
+  if (down) { ctx.fillStyle = col; ctx.fillRect(x - 8, y - 3, 16, 6); return; }
+  ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, me ? 7 : 5, 0, 7); ctx.fill();
+  ctx.fillStyle = '#3b2418'; ctx.beginPath(); ctx.arc(x, y, me ? 3.5 : 2.5, 0, 7); ctx.fill();
+  if (me) { ctx.strokeStyle = '#f5c400'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 10, 0, 7); ctx.stroke(); }
+}
+function drawMarker(x, y, r, color, t, label) {
+  const pulse = 1 + Math.sin(t * 4) * .08;
+  ctx.fillStyle = color.replace('1)', '.14)'); ctx.beginPath(); ctx.arc(x, y, r * pulse, 0, 7); ctx.fill();
+  ctx.strokeStyle = color; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(x, y, r * pulse, 0, 7); ctx.stroke();
+  if (label) { ctx.font = '16px Bungee, sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#000'; ctx.fillText(label, x + 1, y + 7); ctx.fillStyle = color; ctx.fillText(label, x, y + 6); }
+}
+function worldMarkers() {
+  const list = []; // {x,y,r,color,label}
+  const Y = 'rgba(245,196,0,1)', B = 'rgba(53,179,181,1)', R = 'rgba(240,90,80,1)';
+  if (MS.cur) for (const m of objTargets(MS.cur)) list.push({ x: m.x, y: m.y, r: m.r, color: m.enemy ? R : Y, obj: true, label: m.stop ? 'BUS' : '' });
+  else for (const id of ORDER) if (available(id)) { const g = GIVER_AT[MISSIONS[id].giver]; if (!list.some(l => l.x === g.x && l.y === g.y)) list.push({ x: g.x, y: g.y, r: 26, color: Y, label: CONTACTS[MISSIONS[id].giver][0], giver: id }); }
+  if (SHIFT.on) { const s = SHIFT_STOPS[SHIFT.next]; list.push({ x: s.x, y: s.y, r: 44, color: Y, label: 'BUS', obj: true }); }
+  list.push({ x: PL.tailor.x, y: PL.tailor.y, r: 18, color: B, label: 'T' }); list.push({ x: PL.carwash.x, y: PL.carwash.y, r: 18, color: B, label: '$' });
+  return list;
+}
+function render(t) {
+  const p = player.pos(); const base = VW < 760 ? .74 : 1; const sp = player.veh ? Math.abs(player.veh.v) / 300 : 0;
+  zoom = lerp(zoom, base * (1 - sp * .22), .05);
+  const lookX = player.veh ? Math.cos(player.veh.a) * player.veh.v * .35 : 0, lookY = player.veh ? Math.sin(player.veh.a) * player.veh.v * .35 : 0;
+  camX = lerp(camX, p.x + lookX, .12); camY = lerp(camY, p.y + lookY, .12);
+  const hx = VW / zoom / 2, hy = VH / zoom / 2;
+  camX = hx * 2 >= WW ? WW / 2 : clamp(camX, hx, WW - hx); camY = hy * 2 >= WH ? WH / 2 : clamp(camY, hy, WH - hy);
+  const s = DPR * zoom; const sx = (Math.random() - .5) * shake, sy = (Math.random() - .5) * shake; shake *= .85;
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = '#0f1216'; ctx.fillRect(0, 0, cv.width, cv.height);
+  ctx.setTransform(s, 0, 0, s, cv.width / 2 - camX * s + sx, cv.height / 2 - camY * s + sy);
+  const hw = VW / zoom / 2 + 60, hh = VH / zoom / 2 + 60, x0 = camX - hw, y0 = camY - hh, x1 = camX + hw, y1 = camY + hh;
+  if (mapC) { const sx0 = clamp(x0, 0, WW), sy0 = clamp(y0, 0, WH), sx1 = clamp(x1, 0, WW), sy1 = clamp(y1, 0, WH); if (sx1 > sx0 && sy1 > sy0) ctx.drawImage(mapC, sx0, sy0, sx1 - sx0, sy1 - sy0, sx0, sy0, sx1 - sx0, sy1 - sy0); }
+  const vis = o => o.x > x0 && o.x < x1 && o.y > y0 && o.y < y1;
+  const marks = worldMarkers(); for (const m of marks) if (vis(m)) drawMarker(m.x, m.y, m.r, m.color, t, m.label);
+  for (const it of items) if (vis(it)) { ctx.fillStyle = it.kind === 'bag' ? '#2e7d32' : '#8d6e63'; ctx.fillRect(it.x - 7, it.y - 7, 14, 14); ctx.strokeStyle = '#f5c400'; ctx.lineWidth = 2; ctx.strokeRect(it.x - 7, it.y - 7, 14, 14); }
+  for (const q of peds) if (vis(q)) drawPerson(q.x, q.y, q.col, q.state === 'down');
+  const night = darkness() > .2;
+  for (const v of vehicles) if (vis(v)) drawVehicle(v, night);
+  if (!player.veh) drawPerson(player.x, player.y, OUTFITS.find(o => o.id === S.outfit).color, false, true);
+  for (const f of floaters) { ctx.font = '700 13px "Bricolage Grotesque", sans-serif'; ctx.textAlign = 'center'; ctx.globalAlpha = clamp(f.t, 0, 1); ctx.fillStyle = '#000'; ctx.fillText(f.text, f.x + 1, f.y + 1); ctx.fillStyle = '#fff'; ctx.fillText(f.text, f.x, f.y); ctx.globalAlpha = 1; }
+  // night lighting
+  const dk = darkness();
+  if (dk > 0) {
+    ctx.fillStyle = `rgba(4,8,26,${dk})`; ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+    ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = Math.min(1, dk * 1.6);
+    if (lightC) { const lx0 = clamp(x0, 0, WW), ly0 = clamp(y0, 0, WH), lx1 = clamp(x1, 0, WW), ly1 = clamp(y1, 0, WH); if (lx1 > lx0 && ly1 > ly0) ctx.drawImage(lightC, lx0 / 2, ly0 / 2, (lx1 - lx0) / 2, (ly1 - ly0) / 2, lx0, ly0, lx1 - lx0, ly1 - ly0); }
+    for (const v of vehicles) if (vis(v)) { const L = VT[v.type].len; ctx.save(); ctx.translate(v.x, v.y); ctx.rotate(v.a); const gr = ctx.createLinearGradient(L / 2, 0, L / 2 + 110, 0); gr.addColorStop(0, 'rgba(255,240,190,.35)'); gr.addColorStop(1, 'rgba(255,240,190,0)'); ctx.fillStyle = gr; ctx.beginPath(); ctx.moveTo(L / 2, -6); ctx.lineTo(L / 2 + 110, -34); ctx.lineTo(L / 2 + 110, 34); ctx.lineTo(L / 2, 6); ctx.fill(); ctx.restore();
+      if (v.siren) { ctx.fillStyle = (performance.now() / 160 | 0) % 2 ? 'rgba(255,59,48,.25)' : 'rgba(41,121,255,.25)'; ctx.beginPath(); ctx.arc(v.x, v.y, 46, 0, 7); ctx.fill(); } }
+    ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+  }
+  if (heli) {
+    ctx.fillStyle = 'rgba(255,255,220,.13)'; ctx.beginPath(); ctx.arc(heli.x, heli.y + 10, 230, 0, 7); ctx.fill();
+    ctx.save(); ctx.translate(heli.x, heli.y - 40); ctx.fillStyle = 'rgba(0,0,0,.3)'; ctx.beginPath(); ctx.ellipse(18, 50, 26, 12, 0, 0, 7); ctx.fill();
+    ctx.fillStyle = '#2f5d3a'; ctx.beginPath(); ctx.ellipse(0, 0, 22, 11, 0, 0, 7); ctx.fill(); ctx.fillRect(-42, -3, 26, 6);
+    ctx.rotate(heli.a); ctx.strokeStyle = 'rgba(220,220,220,.7)'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(-40, 0); ctx.lineTo(40, 0); ctx.moveTo(0, -40); ctx.lineTo(0, 40); ctx.stroke(); ctx.restore();
+  }
+  // off-screen objective arrow
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  const obj = marks.find(m => m.obj) || marks.find(m => m.giver);
+  if (obj && !vis({ x: obj.x, y: obj.y })) {
+    const a = Math.atan2(obj.y - camY, obj.x - camX); const R = Math.min(VW, VH) / 2 - 60;
+    const ax = VW / 2 + Math.cos(a) * R, ay = VH / 2 + Math.sin(a) * R;
+    ctx.save(); ctx.translate(ax, ay); ctx.rotate(a); ctx.fillStyle = obj.color; ctx.strokeStyle = '#000'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(16, 0); ctx.lineTo(-10, -11); ctx.lineTo(-5, 0); ctx.lineTo(-10, 11); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore();
+    ctx.font = '700 12px "JetBrains Mono", monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText(Math.round(dist(obj, p) / 10) + 'm', ax, ay + 26);
+  }
+}
+function drawMinimap(canvas, big) {
+  const m = canvas.getContext('2d'), W2 = canvas.width, H2 = canvas.height, k = W2 / WW;
+  m.clearRect(0, 0, W2, H2); if (miniC) m.drawImage(miniC, 0, 0, W2, H2);
+  if (darkness() > 0) { m.fillStyle = `rgba(4,8,26,${darkness() * .6})`; m.fillRect(0, 0, W2, H2); }
+  const dot = (x, y, r, c) => { m.fillStyle = c; m.beginPath(); m.arc(x * k, y * k, r, 0, 7); m.fill(); };
+  for (const mk of worldMarkers()) dot(mk.x, mk.y, big ? 8 : 6, mk.color.startsWith('rgba(53') ? '#35b3b5' : mk.color.startsWith('rgba(240') ? '#f05a50' : '#f5c400');
+  for (const v of vehicles) if (v.driver === 'cop') dot(v.x, v.y, big ? 5 : 4, (performance.now() / 200 | 0) % 2 ? '#4cc874' : '#2979ff');
+  if (stars() > 0 && !WANT.seen) { m.strokeStyle = 'rgba(240,90,80,.8)'; m.lineWidth = 2; m.beginPath(); m.arc(WANT.last.x * k, WANT.last.y * k, 140 * k * 2, 0, 7); m.stroke(); }
+  const p = player.pos(); m.save(); m.translate(p.x * k, p.y * k); m.rotate(player.veh ? player.veh.a : player.a); m.fillStyle = '#fff'; m.strokeStyle = '#000'; m.lineWidth = 1.5; m.beginPath(); m.moveTo(big ? 10 : 8, 0); m.lineTo(big ? -6 : -5, big ? -6 : -5); m.lineTo(big ? -6 : -5, big ? 6 : 5); m.closePath(); m.fill(); m.stroke(); m.restore();
+}
+
+// ---------------------------------------------------------------- HUD
+let hudT = 0, lastDistrict = '';
+function updateHud(dt) {
+  cashShown = lerp(cashShown, S.cash, .2); if (Math.abs(cashShown - S.cash) < 1) cashShown = S.cash; $('#cash').textContent = naira(cashShown);
+  deltaT -= dt; if (deltaT <= 0) $('#cash-delta').textContent = '';
+  const st = stars(); document.querySelectorAll('#stars span').forEach((x, i) => x.classList.toggle('on', i < st));
+  $('#stars').classList.toggle('flash', st > 0 && !WANT.seen); $('#unit').textContent = st ? UNITS[st - 1] + (WANT.seen ? ' · they see you' : ' · searching') : '';
+  $('#clock').textContent = clockStr() + '  ·  Day ' + (Math.floor(S.minutes / 1440) + 1);
+  const d = districtAt(player.pos().x, player.pos().y); if (d !== lastDistrict) { lastDistrict = d; $('#district').textContent = d.toUpperCase(); }
+  $('#radio').textContent = WORLD.radio >= 0 && player.veh ? '♫ ' + RADIO[WORLD.radio].name : player.veh ? '♫ Radio off' : '';
+  const ms = MS.cur, ob = $('#objective'), tm = $('#timer');
+  if (ms && ms.def.objs[ms.oi]) {
+    const o = ms.def.objs[ms.oi]; const cnt = o.count > 1 ? ` (${ms.prog}/${o.count})` : '';
+    ob.innerHTML = `<span class="mt">${esc(ms.def.title)}</span>${esc(o.text + cnt)}${o.sub ? `<small>${esc(o.sub)}</small>` : ''}${ms.def.bonus ? `<small>Bonus: ${esc(ms.def.bonus)}${ms.bonusFail ? ' — missed' : ''}</small>` : ''}`; ob.hidden = false;
+    if (o.time) { tm.hidden = false; tm.textContent = Math.floor(ms.timer / 60) + ':' + String(Math.floor(ms.timer % 60)).padStart(2, '0'); tm.classList.toggle('low', ms.timer < 20); } else tm.hidden = true;
+  } else if (!ms) {
+    const next = ORDER.find(available);
+    ob.hidden = false; ob.innerHTML = next ? `<span class="mt">Next job</span>${esc(MISSIONS[next].title)}<small>Go to the yellow ${CONTACTS[MISSIONS[next].giver][0]} marker and press E · or accept in your phone</small>` : `<span class="mt">Free roam</span>Hustle on: conductor shifts, the car wash, the tailor`;
+    tm.hidden = true;
+  }
+  const v = player.veh;
+  $('#veh').textContent = v ? VT[v.type].name : 'On foot';
+  $('#speed').hidden = !v; if (v) $('#speed').innerHTML = Math.round(Math.abs(v.v) * .42) + '<small>km/h</small>';
+  $('#vbar').hidden = !v; if (v) $('#vbar i').style.width = clamp(v.hp / VT[v.type].hp * 100, 0, 100) + '%';
+  $('#hbar i').style.width = clamp(player.hp, 0, 100) + '%'; $('#hbar i').style.background = player.hp < 35 ? 'var(--bad)' : 'var(--good)';
+  const hs = $('#hustle'); hs.hidden = !SHIFT.on; if (SHIFT.on) hs.innerHTML = `<b>Danfo Conductor</b> · streak ×${SHIFT.streak} · ${naira(SHIFT.earned)}<br>${esc(SHIFT.call)}`;
+  // context prompt
+  const pr = $('#prompt'); let msg = '';
+  const kb = !IS_TOUCH;
+  const giver = !MS.cur && worldMarkers().find(m => m.giver && dist(player.pos(), m) < 44);
+  if (giver) msg = `<kbd>${kb ? 'E' : 'ACTION'}</kbd>Start “${MISSIONS[giver.giver].title}”`;
+  else if (!player.veh && nearPlace(PL.tailor, 30)) msg = `<kbd>${kb ? 'E' : 'ACTION'}</kbd>Balo Tailor`;
+  else if (!player.veh && nearPlace(PL.carwash, 30)) msg = `<kbd>${kb ? 'E' : 'ACTION'}</kbd>Mainland Shine Car Wash`;
+  else if (player.veh && player.veh.type === 'danfo' && !MS.cur) msg = `<kbd>${kb ? 'E' : 'ACTION'}</kbd>${SHIFT.on ? 'End conductor shift' : 'Start conductor shift'}`;
+  else if (!player.veh) { const n = nearestVehicle(); if (n && n.driver !== 'flee') msg = `<kbd>${kb ? 'F' : 'ENTER'}</kbd>${n.driver === 'ai' || n.driver === 'cop' ? 'Steal' : 'Enter'} ${VT[n.type].name}`; }
+  pr.hidden = !msg; if (msg) pr.innerHTML = msg;
+  $('#tb-enter').textContent = player.veh ? 'EXIT' : 'ENTER'; $('#tb-enter').classList.toggle('hot', !player.veh && !!nearestVehicle());
+  $('#tb-brake').textContent = player.veh ? 'BRAKE' : 'SPRINT';
+  hudT -= dt; if (hudT <= 0) { hudT = .1; drawMinimap($('#minimap'), false); }
+}
+
+// ---------------------------------------------------------------- main loop
+let lastT = performance.now();
+function step(now) {
+  const dt = Math.min(.05, (now - lastT) / 1000); lastT = now;
+  if (!WORLD.paused && WORLD.started) {
+    S.minutes += dt * 2;
+    const hr = Math.floor(S.minutes / 60);
+    if (hr !== WORLD.hour) {
+      WORLD.hour = hr; const h = hr % 24;
+      if (WORLD.goSlow && S.minutes > WORLD.goSlow) { WORLD.goSlow = 0; ui.toast('Go-slow on the bridge is clearing.'); }
+      if (!WORLD.goSlow && h >= 6 && h < 21 && Math.random() < .35) { WORLD.goSlow = S.minutes + 120; ui.toast('Go-slow on Third Lagoon Bridge!', 'bad'); post('goslow'); }
+      if (S.biz.owned) S.biz.box = Math.min(60000, S.biz.box + 9000 / 24);
+    }
+    if (IN.phone()) openPhone();
+    if (hit('KeyR', 'T_radio') && player.veh) { WORLD.radio = WORLD.radio + 1 >= RADIO.length ? -1 : WORLD.radio + 1; if (WORLD.radio >= 0) ui.toast(RADIO[WORLD.radio].name + ' — ' + pick(RADIO[WORLD.radio].bump)); else ui.toast('Radio off'); }
+    if (IN.action()) {
+      const giver = !MS.cur && worldMarkers().find(m => m.giver && dist(player.pos(), m) < 44);
+      if (giver) startMission(giver.giver);
+      else if (!player.veh && nearPlace(PL.tailor, 30)) openTailor();
+      else if (!player.veh && nearPlace(PL.carwash, 30)) openCarWash();
+      else if (player.veh && player.veh.type === 'danfo' && !MS.cur) SHIFT.on ? endShift() : startShift();
+    }
+    if (!WORLD.paused) {
+      updatePlayer(dt);
+      for (const v of vehicles) { if (v === player.veh) continue; if (v.driver === 'ai') aiTraffic(v, dt); else if (v.driver === 'cop') aiCop(v, dt); else if (v.driver === 'flee') aiFlee(v, dt); else drive(v, 0, 0, true, dt); }
+      collide(dt); updatePeds(dt); spawnTraffic(dt); manageCops(dt); updateMission(dt); updateShift(dt); checkCheckpoint(dt);
+      for (const f of floaters) { f.t -= dt; f.y -= 18 * dt; } floaters = floaters.filter(f => f.t > 0);
+      WORLD.saveT = (WORLD.saveT || 0) + dt; if (WORLD.saveT > 30) { WORLD.saveT = 0; if (!MS.cur) save(); }
+    }
+    updateHud(dt);
+  }
+  pressed.clear();
+  render(now / 1000);
+  requestAnimationFrame(step);
+}
+$('#radio').addEventListener('click', () => pressed.add('T_radio'));
+
+// ---------------------------------------------------------------- boot
+function begin(fresh) {
+  if (fresh) { try { localStorage.removeItem('naijahustle.v1'); } catch (e) {} location.reload(); return; }
+  try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
+  $('#start').hidden = true; WORLD.paused = false; WORLD.started = true; cashShown = S.cash;
+  if (!S.chats.length) setTimeout(announce, 900); else announce();
+  if (S.actDone) ui.toast('Act 1 complete. Free roam Lagos.');
+}
+function boot(data) {
+  buildGrid(); buildGraph(); resize();
+  applyState((data && data.state) || loadSave());
+  if (S.done.length || S.cash !== 5000) { $('#btn-play').textContent = 'Continue'; $('#btn-new').hidden = false; }
+  $('#btn-play').onclick = () => begin(false); $('#btn-new').onclick = () => begin(true);
+  // seed the city so the title screen shows a living street
+  for (let i = 0; i < 6; i++) { const s = roadSpotNear(player, 80, 500); spawnVehicle(pick(['danfo', 'sedan', 'keke', 'okada']), s.x, s.y, s.a, { from: s.from, to: s.to }); }
+  spawnVehicle('danfo', 200, 240, Math.PI / 2, { parked: true }); spawnVehicle('danfo', 320, 380, -Math.PI / 2, { parked: true });
+  const draw = () => renderMap();
+  (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]) : Promise.resolve()).then(draw);
+  requestAnimationFrame(step);
+  try { window.claude?.hot?.snapshot?.(() => ({ state: S })); } catch (e) {}
+  window.NH = { S, player, vehicles: () => vehicles, MS, startMission, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
+}
+const hot = window.claude?.hot;
+if (hot?.ready) hot.ready(boot); else boot(hot?.data ?? {});
+})();
+</script>

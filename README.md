@@ -20,6 +20,13 @@ and **Abuja**. Built in Unity 6 for Android first (3 GB phones), then PC.
 | Unity runtime (`Scripts/Runtime`) | Written, not yet compiled in the Unity editor (no editor in the authoring environment). Covers city streaming (Addressables), touch and PC/gamepad input, third-person camera, car/okada, boat, helicopter and crane physics, traffic, responders, mission hooks, phone UI, radio, HUD, checkpoints, travel flow, device tiers |
 | Scenes, art, audio | Not started. Needs greyboxed city scenes and prefabs wired to the scripts |
 
+## Play the browser demo
+
+`web/index.html` is a self-contained, top-down playable demo of **Act 1: Lagos**. It has the danfo
+conductor hustle, 5 story missions, Task Force chases with search and decay, the checkpoint
+"settle" choice, a tailor, a car wash business, day and night, and the phone (Gist, KoboPay, Yarns,
+MapAm). Open it in any modern browser on a desktop or phone. Its rules mirror `Scripts/Core`.
+
 ## Getting started
 
 1. Install **Unity 6000.0 LTS** with Android Build Support, then open this folder. Unity generates
