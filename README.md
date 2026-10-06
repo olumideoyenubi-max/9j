@@ -39,6 +39,13 @@ dotnet test Tools/CoreTests     # 37 tests: rules, content validation, full-stor
 
 The same tests run in Unity's Test Runner (EditMode), and CI runs them on every push.
 
+For a narrated "test run" of the whole story using the real game rules (missions, hustles,
+checkpoints, travel, wanted levels, social posts, save/reload):
+
+```bash
+dotnet run --project Tools/Playthrough [seed]
+```
+
 ## Originality
 
 All characters, brands, organisations, police units, apps and landmarks are fictional. The
