@@ -1,0 +1,128 @@
+{
+  "contacts": [
+    { "id": "c_baba_sule", "name": "Baba Sule", "role": "Danfo driver & mentor", "city": "Lagos", "bio": "Thirty years on the Oshoja–Eko Crest route. Knows every pothole by name. Calls Lucky 'my pikin' and means it." },
+    { "id": "c_amaka", "name": "Amaka Nwosu", "role": "Market trader & phone repair genius", "city": "Lagos", "bio": "Runs a stall in Balo Market. Can unlock any phone and outtalk any customer. Lucky's oldest friend." },
+    { "id": "c_kemi", "name": "Kemi Lawson-Bright", "role": "Island party promoter", "city": "Lagos", "bio": "If there is an owambe on Eko Crest, Kemi planned it, crashed it or is suing it." },
+    { "id": "c_shina", "name": "Shina Garage", "role": "Motor park strongman", "city": "Lagos", "bio": "Controls the Oshoja park 'levies'. Smiles a lot. Never with his eyes." }
+  ],
+  "safehouses": [
+    { "id": "sh_lag_oshoja", "name": "Face-me-I-face-you room, Oshoja", "city": "Lagos", "districtId": "lag_oshoja", "price": 0, "garageSlots": 1 },
+    { "id": "sh_lag_stilt", "name": "Stilt House, Stilt Town", "city": "Lagos", "districtId": "lag_stilt", "price": 350000, "garageSlots": 1, "hasBoatDock": true },
+    { "id": "sh_lag_island", "name": "Eko Crest Penthouse", "city": "Lagos", "districtId": "lag_island", "price": 25000000, "garageSlots": 4, "hasHelipad": true }
+  ],
+  "missions": [
+    {
+      "id": "lag_01", "city": "Lagos", "order": 1, "title": "First Day on the Danfo", "giver": "c_baba_sule",
+      "summary": "Baba Sule needs a conductor. Hang off the side of his yellow danfo, shout the route, collect the fares — and don't let anybody 'forget' their change.",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_oshoja_park", "text": "Meet Baba Sule at Oshoja motor park" },
+        { "type": "EnterVehicle", "targetId": "danfo", "text": "Hop on the danfo" },
+        { "type": "Collect", "targetId": "fare", "count": 6, "text": "Collect fares from 6 passengers" },
+        { "type": "GoTo", "targetId": "mk_eko_crest_stop", "timeLimit": 240, "text": "Reach the Eko Crest bus stop" }
+      ],
+      "reward": 8000, "credReward": 20, "assetKey": "mission_lag_01"
+    },
+    {
+      "id": "lag_02", "city": "Lagos", "order": 2, "title": "Go-Slow Getaway", "giver": "c_baba_sule", "requires": ["lag_01"],
+      "summary": "A pickpocket on an okada snatched a passenger's bag in the go-slow. Weave through the traffic and get it back.",
+      "objectives": [
+        { "type": "EnterVehicle", "targetId": "okada", "text": "Commandeer an okada" },
+        { "type": "Chase", "targetId": "npc_pickpocket", "timeLimit": 150, "text": "Catch the pickpocket" },
+        { "type": "Deliver", "targetId": "item_handbag", "text": "Return the bag to Madam Comfort" }
+      ],
+      "reward": 12000, "credReward": 25, "integrityDelta": 3, "assetKey": "mission_lag_02"
+    },
+    {
+      "id": "lag_03", "city": "Lagos", "order": 3, "title": "Balo Market Run", "giver": "c_amaka", "requires": ["lag_01"],
+      "summary": "Amaka's shipment of phone screens is stuck across Balo Market. Thread an okada through alleys, wheelbarrows and Task Force raids before closing time.",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_balo_warehouse", "text": "Get to the warehouse" },
+        { "type": "Collect", "targetId": "crate_screens", "count": 3, "text": "Load 3 crates of screens" },
+        { "type": "Deliver", "targetId": "mk_amaka_stall", "timeLimit": 180, "text": "Deliver to Amaka's stall before closing" },
+        { "type": "Deliver", "targetId": "mk_amaka_stall_nocrack", "optional": true, "text": "Bonus: don't crack a single screen" }
+      ],
+      "reward": 15000, "credReward": 25, "assetKey": "mission_lag_03"
+    },
+    {
+      "id": "lag_04", "city": "Lagos", "order": 4, "title": "Owambe Crasher", "giver": "c_kemi", "requires": ["lag_02", "lag_03"],
+      "summary": "Kemi needs proof a rival promoter is passing off fake aso-ebi as designer. Get into the VIP canopy, take the photos and leave before the MC calls your name.",
+      "objectives": [
+        { "type": "Talk", "targetId": "npc_gate_aunty", "text": "Charm your way past the gate aunty" },
+        { "type": "Stealth", "targetId": "zone_vip_canopy", "text": "Slip into the VIP canopy unnoticed" },
+        { "type": "Photograph", "targetId": "evidence_fake_asoebi", "count": 3, "text": "Photograph 3 fake labels" },
+        { "type": "GoTo", "targetId": "mk_owambe_exit", "timeLimit": 90, "text": "Leave before the bouncers find you" }
+      ],
+      "reward": 30000, "credReward": 30, "assetKey": "mission_lag_04"
+    },
+    {
+      "id": "lag_05", "city": "Lagos", "order": 5, "title": "Area Toll", "giver": "c_shina", "requires": ["lag_04"],
+      "summary": "Shina Garage wants you to collect his 'levies' from danfo drivers — including Baba Sule. Collect, or walk away and make an enemy.",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_oshoja_park", "text": "Go to the motor park" },
+        { "type": "Choose", "targetId": "choice_area_toll", "text": "Collect the levy... or refuse" },
+        { "type": "LoseHeat", "text": "Get away from Shina's boys" }
+      ],
+      "reward": 20000, "credReward": 30, "integrityDelta": -2, "setsFlags": ["shina_enemy"], "assetKey": "mission_lag_05"
+    },
+    {
+      "id": "lag_06", "city": "Lagos", "order": 6, "title": "Stilt Town Waters", "giver": "c_amaka", "requires": ["lag_05"],
+      "summary": "Shina's boys are blocking medicine canoes into Stilt Town. Take a speedboat, escort the canoe, and lose the Lagoon Wardens in the stilt maze.",
+      "objectives": [
+        { "type": "EnterVehicle", "targetId": "speedboat", "text": "Take the speedboat at the jetty" },
+        { "type": "Escort", "targetId": "npc_medicine_canoe", "text": "Escort the medicine canoe" },
+        { "type": "LoseHeat", "text": "Lose the Lagoon Wardens" }
+      ],
+      "reward": 35000, "credReward": 35, "integrityDelta": 5, "assetKey": "mission_lag_06"
+    },
+    {
+      "id": "lag_07", "city": "Lagos", "order": 7, "title": "Third Lagoon Bridge", "giver": "c_kemi", "requires": ["lag_06"],
+      "summary": "The rival promoter is fleeing to the airport with Kemi's sound system money. Midnight. Ten kilometres of bridge. No go-slow to hide in.",
+      "objectives": [
+        { "type": "EnterVehicle", "targetId": "sedan", "text": "Get a fast car" },
+        { "type": "Chase", "targetId": "npc_rival_suv", "timeLimit": 200, "text": "Run the rival off the bridge road" },
+        { "type": "Collect", "targetId": "bag_cash", "text": "Grab the money bag" },
+        { "type": "LoseHeat", "text": "Lose the Task Force" }
+      ],
+      "reward": 60000, "credReward": 40, "assetKey": "mission_lag_07"
+    },
+    {
+      "id": "lag_08", "city": "Lagos", "order": 8, "title": "Shina's Garage", "giver": "c_baba_sule", "requires": ["lag_07"],
+      "summary": "Shina seized Baba Sule's danfo and its papers. Sneak into the garage at night, take them back, and hold the gate while Baba drives out.",
+      "objectives": [
+        { "type": "Stealth", "targetId": "zone_shina_garage", "text": "Sneak into Shina's garage" },
+        { "type": "Collect", "targetId": "item_danfo_papers", "text": "Find the danfo papers" },
+        { "type": "Defend", "targetId": "zone_garage_gate", "timeLimit": 60, "text": "Hold the gate for Baba Sule" },
+        { "type": "LoseHeat", "text": "Get clear" }
+      ],
+      "reward": 45000, "credReward": 50, "integrityDelta": 3, "assetKey": "mission_lag_08"
+    },
+    {
+      "id": "lag_09", "city": "Lagos", "order": 9, "title": "Night Bus East", "giver": "c_baba_sule", "requires": ["lag_08"],
+      "summary": "Lagos is too hot. Baba Sule has a cousin in Port Harcourt who needs a driver. Get to the luxury bus park before Shina's boys find you.",
+      "objectives": [
+        { "type": "Escort", "targetId": "npc_baba_sule", "text": "Get Baba Sule to the bus park" },
+        { "type": "GoTo", "targetId": "mk_luxury_bus_park", "timeLimit": 180, "text": "Make the last bus" },
+        { "type": "Wait", "timeLimit": 8, "text": "Night bus to Garden City..." }
+      ],
+      "reward": 50000, "credReward": 60, "unlocksCity": "PortHarcourt", "assetKey": "mission_lag_09"
+    },
+    {
+      "id": "lag_side_suya", "city": "Lagos", "order": 0, "isStory": false, "title": "Suya Rush Hour", "giver": "c_kemi", "requires": ["lag_04"],
+      "summary": "Kemi's VIP guests want suya from a specific mainland spot. Hot. Now.",
+      "objectives": [
+        { "type": "Collect", "targetId": "item_suya", "text": "Pick up the suya" },
+        { "type": "Deliver", "targetId": "mk_kemi_lounge", "timeLimit": 150, "text": "Deliver it hot to Eko Crest" }
+      ],
+      "reward": 10000, "credReward": 10, "assetKey": "mission_lag_side_suya"
+    }
+  ],
+  "hustles": [
+    { "id": "hus_lag_conductor", "kind": "DanfoConductor", "city": "Lagos", "name": "Danfo Conductor", "description": "Shout the route, pack passengers, collect fares, give change (or 'no change'). Comfort and speed raise your cut.", "requiredVehicle": "danfo", "payPerJob": 1500, "streakBonus": 200, "jobsPerLevel": 10, "maxLevel": 5, "unlockedBy": "lag_01" },
+    { "id": "hus_lag_okada", "kind": "OkadaDelivery", "city": "Lagos", "name": "Okada Dispatch", "description": "Deliver food and parcels through traffic on an okada. Don't drop the jollof.", "requiredVehicle": "okada", "payPerJob": 1200, "streakBonus": 150, "jobsPerLevel": 12, "maxLevel": 5, "unlockedBy": "lag_03" }
+  ],
+  "businesses": [
+    { "id": "biz_lag_carwash", "name": "Mainland Shine Car Wash", "city": "Lagos", "description": "Buckets, foam and gist. Every danfo in Oshoja passes through.", "price": 150000, "incomePerDay": 9000, "storageCap": 60000, "requiresMission": "lag_03" },
+    { "id": "biz_lag_suya", "name": "Island Suya Spot", "city": "Lagos", "description": "Late-night suya on Eko Crest. Big boys queue here after the club.", "price": 600000, "incomePerDay": 30000, "storageCap": 200000, "requiresMission": "lag_side_suya" },
+    { "id": "biz_lag_danfo_fleet", "name": "Lucky Line Danfos", "city": "Lagos", "description": "Your own fleet of yellow buses. Baba Sule is head driver.", "price": 2500000, "incomePerDay": 120000, "storageCap": 800000, "requiresMission": "lag_08" }
+  ]
+}

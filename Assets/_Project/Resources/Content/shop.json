@@ -1,0 +1,46 @@
+{
+  "vehicles": [
+    { "id": "okada", "name": "Thunder 125 Okada", "class": "Okada", "price": 350000, "topSpeedKph": 95, "acceleration": 1.3, "handling": 1.4, "seats": 2, "durability": 40, "trafficCities": ["Lagos", "PortHarcourt"], "trafficWeight": 3, "assetKey": "veh_okada" },
+    { "id": "keke", "name": "Keke Marwa-Max", "class": "Keke", "price": 900000, "topSpeedKph": 60, "acceleration": 0.7, "handling": 1.1, "seats": 4, "durability": 55, "trafficCities": ["Lagos", "PortHarcourt", "Abuja"], "trafficWeight": 3, "assetKey": "veh_keke" },
+    { "id": "danfo", "name": "Kombi Danfo", "class": "Danfo", "price": 2500000, "topSpeedKph": 110, "acceleration": 0.6, "handling": 0.7, "seats": 14, "durability": 120, "trafficCities": ["Lagos"], "trafficWeight": 4, "assetKey": "veh_danfo" },
+    { "id": "sedan_kamsi", "name": "Kamsi LE 'Big Daddy'", "class": "Sedan", "price": 3500000, "topSpeedKph": 180, "acceleration": 1.0, "handling": 1.0, "seats": 4, "durability": 100, "trafficCities": ["Lagos", "PortHarcourt", "Abuja"], "trafficWeight": 5, "assetKey": "veh_sedan_kamsi" },
+    { "id": "sedan_capital", "name": "Capital Coupe S", "class": "Sedan", "price": 28000000, "topSpeedKph": 250, "acceleration": 1.5, "handling": 1.3, "seats": 2, "durability": 90, "trafficCities": ["Abuja"], "trafficWeight": 1, "assetKey": "veh_sedan_capital" },
+    { "id": "suv_pathmaster", "name": "Pathmaster V8", "class": "Suv", "price": 18000000, "topSpeedKph": 200, "acceleration": 1.1, "handling": 0.9, "seats": 7, "durability": 160, "trafficCities": ["Lagos", "Abuja"], "trafficWeight": 2, "assetKey": "veh_suv_pathmaster" },
+    { "id": "suv_convoy", "name": "Convoy Lancer Armored", "class": "Suv", "price": 60000000, "topSpeedKph": 190, "acceleration": 0.9, "handling": 0.8, "seats": 5, "durability": 300, "trafficCities": ["Abuja"], "trafficWeight": 0.5, "assetKey": "veh_suv_convoy" },
+    { "id": "pickup_highload", "name": "Highload Pickup", "class": "Pickup", "price": 7000000, "topSpeedKph": 170, "acceleration": 0.9, "handling": 0.9, "seats": 5, "durability": 150, "trafficCities": ["Lagos", "PortHarcourt", "Abuja"], "trafficWeight": 2, "assetKey": "veh_pickup" },
+    { "id": "truck_cargo", "name": "Sapele Cargo Truck", "class": "Truck", "price": 15000000, "topSpeedKph": 110, "acceleration": 0.4, "handling": 0.5, "seats": 2, "durability": 250, "trafficCities": ["PortHarcourt", "Lagos"], "trafficWeight": 1.5, "customizable": false, "assetKey": "veh_truck_cargo" },
+    { "id": "tanker", "name": "Delta 33k Tanker", "class": "Tanker", "price": 25000000, "topSpeedKph": 100, "acceleration": 0.35, "handling": 0.4, "seats": 2, "durability": 220, "trafficCities": ["PortHarcourt"], "trafficWeight": 1.5, "customizable": false, "assetKey": "veh_tanker" },
+    { "id": "speedboat", "name": "Creek Runner Speedboat", "class": "Boat", "price": 5000000, "topSpeedKph": 90, "acceleration": 1.2, "handling": 1.1, "seats": 6, "durability": 80, "trafficCities": ["Lagos", "PortHarcourt"], "trafficWeight": 1, "assetKey": "veh_speedboat" },
+    { "id": "boat_taxi", "name": "Waterfront Boat Taxi", "class": "Boat", "price": 2000000, "topSpeedKph": 60, "acceleration": 0.7, "handling": 0.9, "seats": 12, "durability": 90, "trafficCities": ["PortHarcourt", "Lagos"], "trafficWeight": 2, "assetKey": "veh_boat_taxi" },
+    { "id": "supply_vessel", "name": "Ekpe Supply Vessel", "class": "Ship", "price": 0, "topSpeedKph": 30, "acceleration": 0.2, "handling": 0.2, "seats": 10, "durability": 1000, "customizable": false, "assetKey": "veh_supply_vessel" },
+    { "id": "crane", "name": "Delta Basin Gantry Crane", "class": "Crane", "price": 0, "topSpeedKph": 8, "seats": 1, "durability": 1000, "customizable": false, "assetKey": "veh_crane" },
+    { "id": "forklift", "name": "Yard Forklift", "class": "Forklift", "price": 0, "topSpeedKph": 20, "seats": 1, "durability": 200, "customizable": false, "assetKey": "veh_forklift" },
+    { "id": "helicopter", "name": "Kite H-2 Helicopter", "class": "Helicopter", "price": 90000000, "topSpeedKph": 260, "acceleration": 1.0, "handling": 1.0, "seats": 4, "durability": 120, "customizable": false, "assetKey": "veh_helicopter" },
+    { "id": "jet", "name": "Skylord Private Jet", "class": "Jet", "price": 500000000, "topSpeedKph": 800, "seats": 8, "durability": 200, "customizable": false, "assetKey": "veh_jet" }
+  ],
+  "vehicleMods": [
+    { "id": "mod_paint_basic", "name": "Respray", "slot": "Paint", "price": 20000 },
+    { "id": "mod_sticker_danfo", "name": "'No Food For Lazy Man' sticker", "slot": "Sticker", "price": 2000, "allowedClasses": ["Danfo", "Keke", "Okada"] },
+    { "id": "mod_sticker_godsgift", "name": "'God's Gift' windscreen banner", "slot": "Sticker", "price": 3000, "allowedClasses": ["Danfo", "Keke", "Sedan"] },
+    { "id": "mod_horn_trumpet", "name": "Trumpet horn", "slot": "Horn", "price": 15000 },
+    { "id": "mod_horn_siren", "name": "'Convoy' siren (cosmetic)", "slot": "Horn", "price": 250000, "allowedClasses": ["Suv", "Sedan"] },
+    { "id": "mod_rims_chrome", "name": "Chrome rims", "slot": "Rims", "price": 180000, "handlingBonus": 0.05 },
+    { "id": "mod_engine_1", "name": "Mechanic Village tune-up", "slot": "Engine", "price": 120000, "speedBonus": 10 },
+    { "id": "mod_engine_2", "name": "Imported turbo kit", "slot": "Engine", "price": 900000, "speedBonus": 25 },
+    { "id": "mod_brakes_1", "name": "Performance brakes", "slot": "Brakes", "price": 200000, "handlingBonus": 0.1 },
+    { "id": "mod_armor_1", "name": "Reinforced panels", "slot": "Armor", "price": 1500000, "durabilityBonus": 60 },
+    { "id": "mod_tint_dark", "name": "Dark tint", "slot": "Tint", "price": 60000 }
+  ],
+  "outfits": [
+    { "id": "fit_street_basic", "name": "Mainland basics (tee & joggers)", "style": "Streetwear", "price": 0, "respect": 0, "assetKey": "fit_street_basic" },
+    { "id": "fit_street_drip", "name": "Island drip (designer-ish)", "style": "Streetwear", "price": 85000, "soldIn": "Lagos", "respect": 10, "assetKey": "fit_street_drip" },
+    { "id": "fit_ankara_shirt", "name": "Ankara shirt & chinos", "style": "Ankara", "price": 25000, "respect": 8, "assetKey": "fit_ankara_shirt" },
+    { "id": "fit_ankara_full", "name": "Full ankara two-piece", "style": "Ankara", "price": 60000, "respect": 14, "assetKey": "fit_ankara_full" },
+    { "id": "fit_kaftan_white", "name": "Crisp white kaftan", "style": "Kaftan", "price": 45000, "respect": 15, "assetKey": "fit_kaftan_white" },
+    { "id": "fit_kaftan_royal", "name": "Royal-blue embroidered kaftan", "style": "Kaftan", "price": 150000, "soldIn": "Abuja", "respect": 22, "assetKey": "fit_kaftan_royal" },
+    { "id": "fit_agbada_owambe", "name": "Owambe agbada with fila", "style": "Agbada", "price": 250000, "soldIn": "Lagos", "respect": 28, "assetKey": "fit_agbada_owambe" },
+    { "id": "fit_agbada_grand", "name": "Grand agbada (three-piece, hand-woven)", "style": "Agbada", "price": 1200000, "soldIn": "Abuja", "respect": 40, "assetKey": "fit_agbada_grand" },
+    { "id": "fit_suit_capital", "name": "Capital power suit", "style": "Suit", "price": 900000, "soldIn": "Abuja", "respect": 35, "assetKey": "fit_suit_capital" },
+    { "id": "fit_work_coverall", "name": "Yard coverall & hard hat", "style": "Workwear", "price": 15000, "soldIn": "PortHarcourt", "respect": 5, "assetKey": "fit_work_coverall" }
+  ]
+}

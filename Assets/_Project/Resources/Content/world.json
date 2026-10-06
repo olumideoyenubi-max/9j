@@ -1,0 +1,143 @@
+{
+  "cities": [
+    {
+      "id": "Lagos",
+      "tagline": "The Hustle",
+      "sceneKey": "city_lagos",
+      "downloadLabel": "city-lagos",
+      "approxDownloadMb": 0,
+      "startSafehouse": "sh_lag_oshoja",
+      "districts": [
+        { "id": "lag_island", "name": "Eko Crest", "inspiredBy": "Victoria Island / Ikoyi", "vibe": "Glass towers, beach clubs, rooftop lounges, nightlife till dawn.", "density": 0.6 },
+        { "id": "lag_lekka", "name": "Lekka Strip", "inspiredBy": "Lekki", "vibe": "New estates, toll gate, long straight roads made for racing.", "density": 0.45 },
+        { "id": "lag_balo", "name": "Balo Market", "inspiredBy": "Balogun market", "vibe": "Wall-to-wall stalls, wheelbarrows, hawkers, impossible alleys.", "density": 1.0 },
+        { "id": "lag_oshoja", "name": "Oshoja Junction", "inspiredBy": "Oshodi", "vibe": "Motor park chaos, danfo routes, area boys, under-bridge markets.", "density": 0.95 },
+        { "id": "lag_stilt", "name": "Stilt Town Waters", "inspiredBy": "Makoko waterfront", "vibe": "Houses on stilts, canoe traffic, sawmill smoke over the lagoon.", "density": 0.5, "isWater": true },
+        { "id": "lag_bridge", "name": "Third Lagoon Bridge", "inspiredBy": "Third Mainland Bridge", "vibe": "A 10km ribbon over the lagoon. Go-slow by day, racetrack by night.", "density": 0.7 }
+      ],
+      "weather": [
+        { "season": "dry", "weights": { "Clear": 5, "Cloudy": 2, "HarmattanHaze": 2 } },
+        { "season": "rainy", "weights": { "Clear": 2, "Cloudy": 3, "Rain": 4, "Thunderstorm": 1 } }
+      ],
+      "radio": [
+        { "id": "rad_hustle_fm", "name": "Hustle FM", "frequency": "98.7", "genre": "Afrobeats & street-pop", "host": "DJ Fela-Fela", "playlistKey": "radio-lagos-hustle", "bumpers": ["Hustle FM — if you no dey hustle, you dey sleep!", "Traffic update: Third Lagoon Bridge is... yes. Still."] },
+        { "id": "rad_owambe_gold", "name": "Owambe Gold", "frequency": "101.5", "genre": "Juju, fuji & highlife", "host": "Aunty Bisi Spray", "playlistKey": "radio-lagos-owambe", "bumpers": ["Owambe Gold: aso-ebi compulsory, invitation optional."] },
+        { "id": "rad_eko_talk", "name": "Eko Talk 88.1", "frequency": "88.1", "genre": "Satirical call-in talk", "host": "Mr. Logic", "playlistKey": "radio-lagos-talk", "bumpers": ["Caller, you are on air. Please hold your generator."] }
+      ],
+      "response": {
+        "city": "Lagos",
+        "unitsByStar": ["Traffic Marshals", "Eko Task Force bikes", "Eko Task Force pickups", "Rapid Response Squad", "Joint Patrol + helicopter"],
+        "waterUnitsByStar": ["Lagoon Wardens canoe", "Lagoon Wardens canoe", "Marine Task Force boat", "Marine Task Force boats", "Marine Task Force + helicopter"],
+        "heatMultiplier": 1.0,
+        "searchSecondsPerStar": 18,
+        "searchRadius": 140,
+        "bustedCashPenalty": 0.08
+      },
+      "checkpoints": { "city": "Lagos", "baseSettleAmount": 1000, "recordChance": 0.2, "stingChance": 0.03, "complyDelayMinutes": 25, "talkDifficulty": 45 }
+    },
+    {
+      "id": "PortHarcourt",
+      "tagline": "Garden City",
+      "sceneKey": "city_portharcourt",
+      "downloadLabel": "city-portharcourt",
+      "approxDownloadMb": 420,
+      "startSafehouse": "sh_ph_mile3",
+      "districts": [
+        { "id": "ph_gra", "name": "Garden Reserve", "inspiredBy": "Old/New GRA", "vibe": "Leafy avenues, expat clubs, oil-money mansions behind high gates.", "density": 0.35 },
+        { "id": "ph_mile1", "name": "Mile One Market", "inspiredBy": "Mile 1 market", "vibe": "Covered market, fish and pepper, floods fast in the rains.", "density": 0.9 },
+        { "id": "ph_mile3", "name": "Mile Three Motor Park", "inspiredBy": "Mile 3 park", "vibe": "Buses to everywhere, touts, mechanic village.", "density": 0.85 },
+        { "id": "ph_waterfront", "name": "Silverline Waterfront", "inspiredBy": "PH waterfront and creeks", "vibe": "Jetties, boat taxis, mangrove channels that go on forever.", "density": 0.5, "isWater": true },
+        { "id": "ph_yard", "name": "Delta Basin Industrial Yard", "inspiredBy": "Onne/Trans-Amadi industrial areas", "vibe": "Pipelines, tank farms, gantry cranes, flare stacks lighting the night.", "density": 0.4 },
+        { "id": "ph_offshore", "name": "Platform Ekene-9", "inspiredBy": "Offshore platforms", "vibe": "A steel island at sea, reached only by supply vessel or helicopter.", "density": 0.1, "isWater": true }
+      ],
+      "weather": [
+        { "season": "dry", "weights": { "Clear": 3, "Cloudy": 2, "HarmattanHaze": 2, "SootHaze": 3 } },
+        { "season": "rainy", "weights": { "Cloudy": 2, "Rain": 5, "Thunderstorm": 3, "SootHaze": 1 } }
+      ],
+      "radio": [
+        { "id": "rad_garden_groove", "name": "Garden Groove", "frequency": "101.1", "genre": "Afro-fusion & highlife", "host": "Sister Tamuno", "playlistKey": "radio-ph-groove", "bumpers": ["Garden Groove — the only thing in PH smoother than the creek at dawn."] },
+        { "id": "rad_creek_talk", "name": "Creek Talk Radio", "frequency": "95.3", "genre": "Talk, oil gossip & gospel", "host": "Pastor-Engineer Boma", "playlistKey": "radio-ph-talk", "bumpers": ["If you see soot on your windscreen, that is not prophecy. That is pollution."] }
+      ],
+      "response": {
+        "city": "PortHarcourt",
+        "unitsByStar": ["Garden City Patrol", "Garden City Patrol pickups", "Yard Security + Patrol", "Rapid Response Squad", "Joint Patrol + helicopter"],
+        "waterUnitsByStar": ["Marine Patrol skiff", "Marine Patrol gunboat", "Marine Patrol gunboats", "Marine Patrol flotilla", "Marine Patrol + helicopter"],
+        "heatMultiplier": 1.15,
+        "searchSecondsPerStar": 20,
+        "searchRadius": 170,
+        "bustedCashPenalty": 0.1
+      },
+      "checkpoints": { "city": "PortHarcourt", "baseSettleAmount": 2000, "recordChance": 0.15, "stingChance": 0.05, "complyDelayMinutes": 20, "talkDifficulty": 50 }
+    },
+    {
+      "id": "Abuja",
+      "tagline": "The Capital",
+      "sceneKey": "city_abuja",
+      "downloadLabel": "city-abuja",
+      "approxDownloadMb": 400,
+      "startSafehouse": "sh_abj_wuze",
+      "districts": [
+        { "id": "abj_central", "name": "Central Axis", "inspiredBy": "Central Business District / Three Arms Zone", "vibe": "Monumental fictional government buildings: Grand Unity Hall, Federal Unity Secretariat, the Assembly Dome.", "density": 0.4 },
+        { "id": "abj_maiden", "name": "Maiden Hills Estates", "inspiredBy": "Maitama", "vibe": "Embassies, gated mansions, more security guards than residents.", "density": 0.2 },
+        { "id": "abj_asoro", "name": "Asoro Gardens", "inspiredBy": "Asokoro", "vibe": "Hill-side villas of the powerful. Convoys at all hours.", "density": 0.2 },
+        { "id": "abj_wuze", "name": "Wuze Market", "inspiredBy": "Wuse market", "vibe": "Ordered chaos: the capital's most honest place.", "density": 0.8 },
+        { "id": "abj_outskirts", "name": "Iron Crown Outskirts", "inspiredBy": "Outskirts with Aso Rock / Zuma Rock-style landmarks", "vibe": "Granite hills, the Iron Crown Rock monolith, empty highways for convoy chases.", "density": 0.15 }
+      ],
+      "weather": [
+        { "season": "dry", "weights": { "Clear": 3, "HarmattanHaze": 6, "Cloudy": 1 } },
+        { "season": "rainy", "weights": { "Clear": 3, "Cloudy": 3, "Rain": 3, "Thunderstorm": 1 } }
+      ],
+      "radio": [
+        { "id": "rad_capital_calm", "name": "Capital Calm FM", "frequency": "92.9", "genre": "Smooth R&B & jazz", "host": "Hajiya Smooth", "playlistKey": "radio-abuja-calm", "bumpers": ["Capital Calm: wide roads, soft music, no wahala. Officially."] },
+        { "id": "rad_protocol_am", "name": "Protocol AM", "frequency": "720 AM", "genre": "Political satire talk", "host": "Hon. Commentator", "playlistKey": "radio-abuja-protocol", "bumpers": ["Protocol AM: where every press release is 'misquoted'."] }
+      ],
+      "response": {
+        "city": "Abuja",
+        "unitsByStar": ["Estate guards", "Capital Guard patrol", "Capital Guard armored SUVs", "Capital Guard tactical unit", "Capital Guard + helicopters"],
+        "waterUnitsByStar": ["Capital Guard patrol", "Capital Guard patrol", "Capital Guard armored SUVs", "Capital Guard tactical unit", "Capital Guard + helicopters"],
+        "heatMultiplier": 1.4,
+        "searchSecondsPerStar": 25,
+        "searchRadius": 220,
+        "bustedCashPenalty": 0.15
+      },
+      "checkpoints": { "city": "Abuja", "baseSettleAmount": 10000, "recordChance": 0.1, "stingChance": 0.2, "complyDelayMinutes": 15, "talkDifficulty": 60 }
+    }
+  ],
+  "crimes": [
+    { "crime": "TrafficOffence", "heat": 0.3 },
+    { "crime": "Assault", "heat": 1.0 },
+    { "crime": "VehicleTheft", "heat": 1.0 },
+    { "crime": "PropertyDamage", "heat": 0.5 },
+    { "crime": "Trespass", "heat": 1.0 },
+    { "crime": "CheckpointRunning", "heat": 2.0 },
+    { "crime": "AttackOnResponder", "heat": 1.5 },
+    { "crime": "Sabotage", "heat": 2.0 },
+    { "crime": "WeaponDischarge", "heat": 2.0 }
+  ],
+  "routes": [
+    { "from": "Lagos", "to": "PortHarcourt", "busFare": 25000, "busHours": 10, "roadHours": 9, "roadCheckpoints": 4, "flightFare": 150000, "flightHours": 1.2 },
+    { "from": "Lagos", "to": "Abuja", "busFare": 30000, "busHours": 11, "roadHours": 10, "roadCheckpoints": 5, "flightFare": 180000, "flightHours": 1.2 },
+    { "from": "PortHarcourt", "to": "Abuja", "busFare": 28000, "busHours": 10, "roadHours": 9, "roadCheckpoints": 5, "flightFare": 170000, "flightHours": 1.2 }
+  ],
+  "busEvents": [
+    { "id": "bus_preacher", "text": "A travelling preacher stands up at the front: 'Before this bus moves, we shall pray for one hour.'", "choiceA": "Drop an offering", "choiceB": "Put in earphones", "costA": 500, "integrityA": 1, "weight": 2 },
+    { "id": "bus_medicine", "text": "A medicine seller produces one bottle that cures malaria, heartbreak and bad network.", "choiceA": "Buy one (for the content)", "choiceB": "Ignore", "costA": 1500, "cloutA": 15, "weight": 2 },
+    { "id": "bus_tyre", "text": "BOOM. Tyre burst. Everyone out while the driver and three volunteers argue with a jack.", "choiceA": "Help change it", "choiceB": "Buy roadside corn", "costA": 0, "integrityA": 2, "weight": 1.5 },
+    { "id": "bus_suya", "text": "Rest stop. The suya man swears his spice is 'imported from Kano, via London'.", "choiceA": "Buy a round for the row", "choiceB": "Eat your own snacks", "costA": 3000, "cloutA": 10, "weight": 1.5 },
+    { "id": "bus_armrest", "text": "Two passengers are in a cold war over the shared armrest.", "choiceA": "Mediate like a senator", "choiceB": "Stay out of it", "costA": 0, "cloutA": 5, "weight": 1 },
+    { "id": "bus_movie", "text": "The bus TV plays a Nollywood epic at full volume. The ending is ... a 'Part 2' title card.", "choiceA": "Start a debate", "choiceB": "Sleep", "costA": 0, "cloutA": 5, "weight": 1 },
+    { "id": "bus_checkpoint", "text": "Checkpoint. An officer walks the aisle looking at everyone's 'particulars'.", "choiceA": "Show ID, stay calm", "choiceB": "Pretend to sleep", "costA": 0, "integrityA": 1, "weight": 1.5 }
+  ],
+  "ambientEvents": [
+    { "id": "amb_lag_goslow", "city": "Lagos", "name": "Go-Slow", "description": "Bumper-to-bumper. Hawkers sell everything from plantain chips to wall clocks between the cars.", "chancePerHour": 0.35, "startHour": 6, "endHour": 21, "durationMinutes": 120, "trafficMultiplier": 3.0, "districtId": "lag_bridge" },
+    { "id": "amb_lag_owambe", "city": "Lagos", "name": "Owambe Street Party", "description": "A canopy has closed the street. Aso-ebi everywhere, money spraying, jollof flowing.", "chancePerHour": 0.15, "startHour": 14, "endHour": 3, "durationMinutes": 300, "trafficMultiplier": 1.5, "districtId": "lag_island" },
+    { "id": "amb_lag_areaboys", "city": "Lagos", "name": "Area Boy Toll", "description": "Area boys have set up an 'unofficial' road levy at the junction.", "chancePerHour": 0.2, "startHour": 8, "endHour": 22, "durationMinutes": 60, "trafficMultiplier": 1.3, "districtId": "lag_oshoja" },
+    { "id": "amb_lag_raid", "city": "Lagos", "name": "Task Force Raid", "description": "Task Force is clearing street traders. Everybody running, including people who did nothing.", "chancePerHour": 0.08, "startHour": 9, "endHour": 18, "durationMinutes": 30, "trafficMultiplier": 1.2, "districtId": "lag_balo" },
+    { "id": "amb_ph_flood", "city": "PortHarcourt", "name": "Flash Flood", "description": "The rains came. Mile One is now a lake with fish stalls floating past.", "chancePerHour": 0.15, "startHour": 0, "endHour": 24, "durationMinutes": 90, "trafficMultiplier": 2.0, "districtId": "ph_mile1" },
+    { "id": "amb_ph_flare", "city": "PortHarcourt", "name": "Flare Night", "description": "The yard flares light the clouds orange. Soot falls like black snow.", "chancePerHour": 0.2, "startHour": 19, "endHour": 5, "durationMinutes": 240, "trafficMultiplier": 1.0, "districtId": "ph_yard" },
+    { "id": "amb_ph_regatta", "city": "PortHarcourt", "name": "Waterfront Regatta", "description": "Decorated canoes, drums and dancers on the waterfront.", "chancePerHour": 0.05, "startHour": 10, "endHour": 18, "durationMinutes": 180, "trafficMultiplier": 1.2, "districtId": "ph_waterfront" },
+    { "id": "amb_abj_convoy", "city": "Abuja", "name": "Convoy Road Block", "description": "Sirens. Everyone pull over. Seventeen SUVs pass. Nobody knows who was inside.", "chancePerHour": 0.3, "startHour": 6, "endHour": 23, "durationMinutes": 15, "trafficMultiplier": 2.5, "districtId": "abj_central" },
+    { "id": "amb_abj_protest", "city": "Abuja", "name": "Peaceful Protest", "description": "Placards and songs outside the Federal Unity Secretariat. Capital Guard watching closely.", "chancePerHour": 0.07, "startHour": 9, "endHour": 17, "durationMinutes": 120, "trafficMultiplier": 1.5, "districtId": "abj_central" },
+    { "id": "amb_abj_gala", "city": "Abuja", "name": "Gala Night", "description": "Red carpets at Grand Unity Hall. Valets parking cars worth more than the hall.", "chancePerHour": 0.1, "startHour": 19, "endHour": 2, "durationMinutes": 300, "trafficMultiplier": 1.3, "districtId": "abj_maiden" }
+  ]
+}

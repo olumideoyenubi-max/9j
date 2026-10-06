@@ -1,0 +1,45 @@
+# NAIJA HUSTLE
+
+An original open-world action-adventure set across fictionalized **Lagos**, **Port Harcourt**
+and **Abuja**. Built in Unity 6 for Android first (3 GB phones), then PC.
+
+> Rise from danfo conductor on the Lagos mainland, through Port Harcourt's oil money and creeks,
+> to the power circles of the capital. Hustle, chase, scheme, and decide who you become.
+
+- **Design:** [`docs/GDD.md`](docs/GDD.md): cities, cast, all 27 story missions, hustles, wanted
+  system, checkpoint satire, economy, phone, travel, radio.
+- **Tech:** [`docs/TECH.md`](docs/TECH.md): streaming one city at a time, the <200 MB base
+  install, memory budgets, device tiers, layers, saves, build settings.
+
+## What's in the repo
+
+| Area | Status |
+|---|---|
+| Game rules (`Scripts/Core`, engine-free C#) | Done and unit-tested: economy, businesses, garage & mods, outfits, 5-star wanted with city-specific responses, checkpoints, missions, side-hustle shifts, interstate travel, phone apps (chat / transfers / social), weather, ambient events, saves |
+| Content (`Resources/Content/*.json`) | 17 districts across 3 cities, 27 story + 3 side missions, 7 hustles, 17 vehicles, 11 mods, 10 outfits, 9 businesses, 8 safehouses, 12 contacts, 7 radio stations, bus mini-events, social posts |
+| Unity runtime (`Scripts/Runtime`) | Written, not yet compiled in the Unity editor (no editor in the authoring environment). Covers city streaming (Addressables), touch and PC/gamepad input, third-person camera, car/okada, boat, helicopter and crane physics, traffic, responders, mission hooks, phone UI, radio, HUD, checkpoints, travel flow, device tiers |
+| Scenes, art, audio | Not started. Needs greyboxed city scenes and prefabs wired to the scripts |
+
+## Getting started
+
+1. Install **Unity 6000.0 LTS** with Android Build Support, then open this folder. Unity generates
+   `ProjectSettings` and resolves the packages in `Packages/manifest.json`.
+2. Run **Naija Hustle → Validate Content**, then **Naija Hustle → Setup Addressables Groups**.
+3. Create the `Boot` scene with `GameBootstrap`, `CityStreamer`, `PlayerInputHub`, the player rig
+   (`PlayerMotor`, `VehicleInteractor`, `ThirdPersonCamera`), HUD and phone canvases. Create a
+   `city_lagos` scene in the `City_Lagos` group with `DistrictZone`s, `TrafficLane`s,
+   `TrafficSpawner`, `ResponseDirector`, `AtmosphereController` and `MissionMarker`s.
+4. Set up the layers and tags listed in `docs/TECH.md §6`.
+
+## Tests
+
+```bash
+dotnet test Tools/CoreTests     # 37 tests: rules, content validation, full-story playthrough
+```
+
+The same tests run in Unity's Test Runner (EditMode), and CI runs them on every push.
+
+## Originality
+
+All characters, brands, organisations, police units, apps and landmarks are fictional. The
+content test fails on known real-world brand names. See `docs/GDD.md §9`.

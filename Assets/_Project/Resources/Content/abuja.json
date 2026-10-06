@@ -1,0 +1,131 @@
+{
+  "contacts": [
+    { "id": "c_haruna", "name": "Haruna 'Protocol' Bello", "role": "Political fixer", "city": "Abuja", "bio": "Knows which door, which gate, which aide and which aunty. Charges by the introduction. Loyal to whoever paid last — usually." },
+    { "id": "c_zainab", "name": "Zainab Yusuf-Cole", "role": "Investigative journalist", "city": "Abuja", "bio": "Runs an independent news channel from a Wuze Market back office. Has been sued eleven times. Won eleven times." },
+    { "id": "c_big_bar", "name": "Chief Barnabas 'Big Bar' Okon", "role": "The fictional Big Man", "city": "Abuja", "bio": "Chairman of committees nobody has heard of. Owns three foundations named after himself. Entirely fictional, entirely too familiar." },
+    { "id": "c_pilot_dayo", "name": "Capt. Dayo Ige", "role": "Charter pilot", "city": "Abuja", "bio": "Flies anyone, anywhere, for cash and good music. Unlocks helicopter and jet charters." }
+  ],
+  "safehouses": [
+    { "id": "sh_abj_wuze", "name": "Boys' Quarters, Wuze", "city": "Abuja", "districtId": "abj_wuze", "price": 0, "garageSlots": 1 },
+    { "id": "sh_abj_maiden", "name": "Maiden Hills Mansion", "city": "Abuja", "districtId": "abj_maiden", "price": 120000000, "garageSlots": 6, "hasHelipad": true }
+  ],
+  "missions": [
+    {
+      "id": "abj_01", "city": "Abuja", "order": 1, "title": "Welcome to the Capital", "giver": "c_haruna",
+      "summary": "Haruna meets you at arrivals. 'In Abuja, you are who drives you. Today, you drive someone important.' Chauffeur a nervous aide without scratching the sedan.",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_abj_arrivals", "text": "Meet Haruna at arrivals" },
+        { "type": "EnterVehicle", "targetId": "sedan", "text": "Take the wheel of the black sedan" },
+        { "type": "Deliver", "targetId": "mk_unity_secretariat", "timeLimit": 240, "text": "Get the aide to the Federal Unity Secretariat on time" },
+        { "type": "Deliver", "targetId": "mk_unity_secretariat_clean", "optional": true, "text": "Bonus: no scratches" }
+      ],
+      "reward": 60000, "credReward": 20, "assetKey": "mission_abj_01"
+    },
+    {
+      "id": "abj_02", "city": "Abuja", "order": 2, "title": "Estate Rounds", "giver": "c_haruna", "requires": ["abj_01"],
+      "summary": "A night shift as estate security in Maiden Hills. Check the gates, catch the 'generator thief', and notice who visits Big Bar's neighbour at 2am.",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_estate_post", "text": "Clock in at the gatehouse" },
+        { "type": "Collect", "targetId": "checkpoint_patrol", "count": 5, "text": "Check 5 patrol points" },
+        { "type": "Chase", "targetId": "npc_generator_thief", "text": "Catch the generator thief" },
+        { "type": "Photograph", "targetId": "evidence_night_visitor", "text": "Photograph the 2am visitor" }
+      ],
+      "reward": 50000, "credReward": 20, "integrityDelta": 2, "assetKey": "mission_abj_02"
+    },
+    {
+      "id": "abj_03", "city": "Abuja", "order": 3, "title": "Wuze Market Whispers", "giver": "c_zainab", "requires": ["abj_01"],
+      "summary": "Zainab has the other half of the Port Harcourt story. Meet her in Wuze Market — and don't lead Big Bar's people to her.",
+      "objectives": [
+        { "type": "LoseHeat", "text": "Make sure you're clean" },
+        { "type": "Talk", "targetId": "npc_zainab", "text": "Find Zainab in the market" },
+        { "type": "Collect", "targetId": "item_documents", "count": 3, "text": "Collect 3 documents from her sources" },
+        { "type": "Chase", "targetId": "npc_tail", "optional": true, "text": "Bonus: catch the man following you" }
+      ],
+      "reward": 40000, "credReward": 25, "integrityDelta": 3, "assetKey": "mission_abj_03"
+    },
+    {
+      "id": "abj_04", "city": "Abuja", "order": 4, "title": "Black Tie, Big Lies", "giver": "c_haruna", "requires": ["abj_02", "abj_03"],
+      "summary": "Big Bar's 'Foundation for Transparency' gala at Grand Unity Hall. Dress the part — agbada or a sharp suit — work the room and photograph the donor list.",
+      "objectives": [
+        { "type": "Talk", "targetId": "npc_gala_protocol", "text": "Get past protocol (dress code matters)" },
+        { "type": "Talk", "targetId": "npc_big_bar", "text": "Shake hands with Big Bar" },
+        { "type": "Stealth", "targetId": "zone_gala_office", "text": "Slip into the back office" },
+        { "type": "Photograph", "targetId": "evidence_donor_list", "count": 3, "text": "Photograph the donor list" },
+        { "type": "GoTo", "targetId": "mk_gala_valet", "timeLimit": 120, "text": "Leave with the crowd" }
+      ],
+      "reward": 120000, "credReward": 40, "assetKey": "mission_abj_04"
+    },
+    {
+      "id": "abj_05", "city": "Abuja", "order": 5, "title": "Siren Season", "giver": "c_zainab", "requires": ["abj_04"],
+      "summary": "Big Bar's convoy is moving the real files out of the city. Seventeen SUVs, one has the hard drives. Find the right one at 160 km/h.",
+      "objectives": [
+        { "type": "EnterVehicle", "targetId": "suv", "text": "Get something that can keep up" },
+        { "type": "Chase", "targetId": "npc_convoy_suv", "timeLimit": 240, "text": "Box in the right SUV" },
+        { "type": "Collect", "targetId": "item_hard_drives", "text": "Grab the hard drives" },
+        { "type": "LoseHeat", "text": "Lose the Capital Guard" }
+      ],
+      "reward": 150000, "credReward": 45, "assetKey": "mission_abj_05"
+    },
+    {
+      "id": "abj_06", "city": "Abuja", "order": 6, "title": "Rock and a Hard Place", "giver": "c_haruna", "requires": ["abj_05"],
+      "summary": "Haruna set up a 'meeting' at Iron Crown Rock. It's an ambush. Survive, and find out who Haruna is really working for.",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_iron_crown", "text": "Drive to Iron Crown Rock" },
+        { "type": "Defend", "targetId": "zone_iron_crown", "timeLimit": 90, "text": "Survive the ambush" },
+        { "type": "Choose", "targetId": "choice_haruna", "text": "Spare Haruna... or cut him off" },
+        { "type": "LoseHeat", "text": "Escape the armored units" }
+      ],
+      "reward": 100000, "credReward": 50, "assetKey": "mission_abj_06"
+    },
+    {
+      "id": "abj_07", "city": "Abuja", "order": 7, "title": "The Ledger", "giver": "c_zainab", "requires": ["abj_06"],
+      "summary": "The original ledger is in Big Bar's Asoro Gardens villa. Cameras, dogs, and a guard who only watches football. Wait for the match.",
+      "objectives": [
+        { "type": "Stealth", "targetId": "zone_big_bar_villa", "text": "Get into the villa unseen" },
+        { "type": "Photograph", "targetId": "evidence_original_ledger", "count": 3, "text": "Photograph 3 ledger pages" },
+        { "type": "Stealth", "targetId": "zone_villa_exit", "text": "Get out without tripping alarms" }
+      ],
+      "reward": 150000, "credReward": 50, "integrityDelta": 5, "assetKey": "mission_abj_07"
+    },
+    {
+      "id": "abj_08", "city": "Abuja", "order": 8, "title": "Rotor Wash", "giver": "c_pilot_dayo", "requires": ["abj_07"],
+      "summary": "Big Bar has locked down the city. Every road has a checkpoint. Capt. Dayo has a helicopter on a Maiden Hills roof — get there and fly out.",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_maiden_helipad", "timeLimit": 180, "text": "Reach the helipad" },
+        { "type": "EnterVehicle", "targetId": "helicopter", "text": "Take off" },
+        { "type": "LoseHeat", "text": "Lose the police helicopters" },
+        { "type": "GoTo", "targetId": "mk_outskirts_strip", "text": "Land at the outskirts airstrip" }
+      ],
+      "reward": 200000, "credReward": 60, "setsFlags": ["air_unlocked"], "assetKey": "mission_abj_08"
+    },
+    {
+      "id": "abj_09", "city": "Abuja", "order": 9, "title": "Big Man Down", "giver": "c_zainab", "requires": ["abj_08"],
+      "summary": "Zainab goes live from the Central Axis with everything you've gathered across three cities. Big Bar will throw everything at the broadcast van. Hold the line — then decide who you've become.",
+      "objectives": [
+        { "type": "Escort", "targetId": "npc_broadcast_van", "text": "Escort the broadcast van to the Central Axis" },
+        { "type": "Defend", "targetId": "zone_broadcast", "timeLimit": 120, "text": "Protect the live broadcast" },
+        { "type": "Chase", "targetId": "npc_big_bar_convoy", "text": "Stop Big Bar's escape convoy" },
+        { "type": "Choose", "targetId": "choice_ending", "text": "Choose your ending" }
+      ],
+      "reward": 500000, "credReward": 100, "setsFlags": ["story_complete"], "assetKey": "mission_abj_09"
+    },
+    {
+      "id": "abj_side_charter", "city": "Abuja", "order": 0, "isStory": false, "title": "Charter Flight", "giver": "c_pilot_dayo", "requiresFlags": ["air_unlocked"], "requires": ["abj_08"],
+      "summary": "A nervous diplomat needs a quiet helicopter ride to the outskirts. No questions, no turbulence.",
+      "objectives": [
+        { "type": "EnterVehicle", "targetId": "helicopter", "text": "Board the helicopter" },
+        { "type": "Deliver", "targetId": "mk_outskirts_strip", "timeLimit": 200, "text": "Deliver the diplomat" }
+      ],
+      "reward": 80000, "credReward": 15, "assetKey": "mission_abj_side_charter"
+    }
+  ],
+  "hustles": [
+    { "id": "hus_abj_chauffeur", "kind": "VipChauffeur", "city": "Abuja", "name": "VIP Chauffeur", "description": "Drive the important and the self-important. Smooth driving, punctuality and silence are tipped.", "requiredVehicle": "sedan", "payPerJob": 8000, "streakBonus": 1000, "jobsPerLevel": 8, "maxLevel": 5, "unlockedBy": "abj_01" },
+    { "id": "hus_abj_security", "kind": "EstateSecurity", "city": "Abuja", "name": "Estate Security", "description": "Night patrols in Maiden Hills. Catch intruders, log visitors, overhear secrets.", "payPerJob": 6000, "streakBonus": 800, "jobsPerLevel": 8, "maxLevel": 5, "unlockedBy": "abj_02" }
+  ],
+  "businesses": [
+    { "id": "biz_abj_car_hire", "name": "Protocol Car Hire", "city": "Abuja", "description": "Black sedans for people who need to look important.", "price": 5000000, "incomePerDay": 220000, "storageCap": 1500000, "requiresMission": "abj_01" },
+    { "id": "biz_abj_security", "name": "Shield Estate Security", "city": "Abuja", "description": "Uniforms, radios, very serious faces.", "price": 12000000, "incomePerDay": 480000, "storageCap": 3000000, "requiresMission": "abj_02" },
+    { "id": "biz_abj_lounge", "name": "Capital Lounge", "city": "Abuja", "description": "Where deals are made over small chops. You hear everything.", "price": 30000000, "incomePerDay": 1100000, "storageCap": 7000000, "requiresMission": "abj_04" }
+  ]
+}

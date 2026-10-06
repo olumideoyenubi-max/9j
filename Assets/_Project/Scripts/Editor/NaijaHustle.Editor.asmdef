@@ -1,0 +1,23 @@
+{
+    "name": "NaijaHustle.Editor",
+    "rootNamespace": "NaijaHustle.Editor",
+    "references": [
+        "NaijaHustle.Core",
+        "NaijaHustle.Runtime",
+        "Unity.Addressables",
+        "Unity.Addressables.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

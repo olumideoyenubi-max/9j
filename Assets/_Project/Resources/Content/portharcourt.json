@@ -1,0 +1,130 @@
+{
+  "contacts": [
+    { "id": "c_captain_ebi", "name": "Captain Ebi Tamuno", "role": "Creek boatman", "city": "PortHarcourt", "bio": "Has piloted every channel in the Silverline creeks since he was twelve. Sings to his outboard engine. It sings back." },
+    { "id": "c_engr_nkechi", "name": "Engr. Nkechi Amadi", "role": "Oil-yard engineer", "city": "PortHarcourt", "bio": "The only person at Deltacrest Petroleum who reads the safety reports. Tough, dry, allergic to nonsense." },
+    { "id": "c_mr_pius", "name": "Mr. Pius Okorie", "role": "Deltacrest Petroleum 'logistics' manager", "city": "PortHarcourt", "bio": "Gold watch, soft voice, endless contracts. Believes everything is negotiable, including the truth." },
+    { "id": "c_commodore", "name": "'Commodore' Dakoru", "role": "Boss of the Silverline Boys smuggling crew", "city": "PortHarcourt", "bio": "Self-promoted commodore of a navy of one stolen gunboat. Fictional menace of the creeks." }
+  ],
+  "safehouses": [
+    { "id": "sh_ph_mile3", "name": "Room above the mechanic shop, Mile Three", "city": "PortHarcourt", "districtId": "ph_mile3", "price": 0, "garageSlots": 1 },
+    { "id": "sh_ph_jetty", "name": "Waterfront Jetty House", "city": "PortHarcourt", "districtId": "ph_waterfront", "price": 900000, "garageSlots": 1, "hasBoatDock": true },
+    { "id": "sh_ph_gra", "name": "Garden Reserve Villa", "city": "PortHarcourt", "districtId": "ph_gra", "price": 40000000, "garageSlots": 5, "hasBoatDock": true, "hasHelipad": true }
+  ],
+  "missions": [
+    {
+      "id": "ph_01", "city": "PortHarcourt", "order": 1, "title": "Garden City Welcome", "giver": "c_captain_ebi",
+      "summary": "Fresh off the night bus at Mile Three. Baba Sule's cousin, Captain Ebi, runs boat taxis and needs a deckhand who can steer.",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_mile3_park", "text": "Find Captain Ebi at Mile Three" },
+        { "type": "GoTo", "targetId": "mk_waterfront_jetty", "text": "Ride to the waterfront jetty" },
+        { "type": "EnterVehicle", "targetId": "boat", "text": "Take the wheel of Ebi's boat taxi" },
+        { "type": "Deliver", "targetId": "mk_creek_village", "count": 2, "text": "Ferry 2 groups of passengers" }
+      ],
+      "reward": 30000, "credReward": 25, "assetKey": "mission_ph_01"
+    },
+    {
+      "id": "ph_02", "city": "PortHarcourt", "order": 2, "title": "Rain on Mile One", "giver": "c_captain_ebi", "requires": ["ph_01"],
+      "summary": "The rains have flooded Mile One. Ebi's sister's fish stall is floating away. Get a pickup through the flood before the stock spoils.",
+      "objectives": [
+        { "type": "EnterVehicle", "targetId": "pickup", "text": "Get a pickup truck" },
+        { "type": "Collect", "targetId": "crate_fish", "count": 4, "timeLimit": 200, "text": "Rescue 4 crates of stock" },
+        { "type": "Deliver", "targetId": "mk_cold_room", "text": "Get them to the cold room" }
+      ],
+      "reward": 35000, "credReward": 25, "integrityDelta": 2, "assetKey": "mission_ph_02"
+    },
+    {
+      "id": "ph_03", "city": "PortHarcourt", "order": 3, "title": "Crane School", "giver": "c_engr_nkechi", "requires": ["ph_01"],
+      "summary": "Engr. Nkechi is short a crane operator at the Delta Basin yard. 'You drive danfo in Lagos? Then this is easy. It's not. Listen.'",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_yard_gate", "text": "Report to the yard gate" },
+        { "type": "EnterVehicle", "targetId": "crane", "text": "Climb into the gantry crane" },
+        { "type": "OperateCrane", "targetId": "container", "count": 5, "timeLimit": 300, "text": "Stack 5 containers on the barge" }
+      ],
+      "reward": 40000, "credReward": 30, "setsFlags": ["yard_access"], "assetKey": "mission_ph_03"
+    },
+    {
+      "id": "ph_04", "city": "PortHarcourt", "order": 4, "title": "Convoy of Tankers", "giver": "c_mr_pius", "requires": ["ph_02", "ph_03"],
+      "summary": "Mr. Pius pays well to keep his tanker convoy safe on the creek road. The Silverline Boys disagree.",
+      "objectives": [
+        { "type": "EnterVehicle", "targetId": "pickup", "text": "Take the escort pickup" },
+        { "type": "Escort", "targetId": "npc_tanker_convoy", "text": "Escort the 3 tankers to the depot" },
+        { "type": "Defend", "targetId": "zone_creek_road", "timeLimit": 75, "text": "Fight off the hijack" }
+      ],
+      "reward": 80000, "credReward": 35, "assetKey": "mission_ph_04"
+    },
+    {
+      "id": "ph_05", "city": "PortHarcourt", "order": 5, "title": "Soot and Secrets", "giver": "c_engr_nkechi", "requires": ["ph_04"],
+      "summary": "Nkechi suspects the 'tank cleaning' contract is dumping waste into the creeks. Under cover of soot haze, sneak in and take photos.",
+      "objectives": [
+        { "type": "Stealth", "targetId": "zone_tank_farm", "text": "Enter the tank farm unseen" },
+        { "type": "Photograph", "targetId": "evidence_dumping", "count": 4, "text": "Photograph 4 dumping points" },
+        { "type": "GoTo", "targetId": "mk_nkechi_car", "text": "Get back to Nkechi" }
+      ],
+      "reward": 50000, "credReward": 30, "integrityDelta": 5, "assetKey": "mission_ph_05"
+    },
+    {
+      "id": "ph_06", "city": "PortHarcourt", "order": 6, "title": "Creek Chase", "giver": "c_captain_ebi", "requires": ["ph_05"],
+      "summary": "The Silverline Boys grabbed Ebi's best boat — with Nkechi's photos on board. Chase them through the mangroves; Marine Patrol joins the party.",
+      "objectives": [
+        { "type": "EnterVehicle", "targetId": "speedboat", "text": "Grab a speedboat" },
+        { "type": "Chase", "targetId": "npc_silverline_boat", "timeLimit": 240, "text": "Catch the stolen boat" },
+        { "type": "Collect", "targetId": "item_camera_card", "text": "Recover the memory card" },
+        { "type": "LoseHeat", "text": "Lose the Marine Patrol" }
+      ],
+      "reward": 70000, "credReward": 40, "assetKey": "mission_ph_06"
+    },
+    {
+      "id": "ph_07", "city": "PortHarcourt", "order": 7, "title": "Yard on Fire", "giver": "c_engr_nkechi", "requires": ["ph_06"],
+      "summary": "Someone sabotaged the yard's valves to cover their tracks. Fire is spreading and workers are trapped. Rescue them, then shut the master valve.",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_yard_gate", "timeLimit": 120, "text": "Race to the yard" },
+        { "type": "Collect", "targetId": "npc_trapped_worker", "count": 4, "text": "Guide 4 trapped workers to safety" },
+        { "type": "OperateCrane", "targetId": "valve_master", "text": "Use the crane to clear debris from the master valve" },
+        { "type": "Defend", "targetId": "zone_valve", "timeLimit": 45, "text": "Hold off the saboteurs while Nkechi shuts it" }
+      ],
+      "reward": 90000, "credReward": 50, "integrityDelta": 8, "assetKey": "mission_ph_07"
+    },
+    {
+      "id": "ph_08", "city": "PortHarcourt", "order": 8, "title": "Platform Ekene-9", "giver": "c_captain_ebi", "requires": ["ph_07"],
+      "summary": "The trail leads offshore. Stow away on a supply vessel to Platform Ekene-9 and find who's been signing the dumping contracts.",
+      "objectives": [
+        { "type": "EnterVehicle", "targetId": "supply_vessel", "text": "Board the supply vessel" },
+        { "type": "Wait", "timeLimit": 6, "text": "Ride out to the platform" },
+        { "type": "Stealth", "targetId": "zone_platform", "text": "Infiltrate the platform" },
+        { "type": "Photograph", "targetId": "evidence_ledger", "count": 2, "text": "Photograph the contract ledger" },
+        { "type": "Chase", "targetId": "npc_platform_launch", "text": "Escape on the crew launch" }
+      ],
+      "reward": 120000, "credReward": 60, "assetKey": "mission_ph_08"
+    },
+    {
+      "id": "ph_09", "city": "PortHarcourt", "order": 9, "title": "Oil Money", "giver": "c_mr_pius", "requires": ["ph_08"],
+      "summary": "The ledger is signed by Mr. Pius — and above him, an Abuja 'Big Man'. Pius offers a fortune and a plane ticket to make it go away. Take the money... or the evidence.",
+      "objectives": [
+        { "type": "GoTo", "targetId": "mk_gra_club", "text": "Meet Mr. Pius at the Garden Reserve club" },
+        { "type": "Choose", "targetId": "choice_oil_money", "text": "Take the deal, or keep the evidence" },
+        { "type": "LoseHeat", "text": "Either way, someone wants you gone. Get out." },
+        { "type": "GoTo", "targetId": "mk_ph_airport", "text": "Get to the airport" }
+      ],
+      "reward": 250000, "credReward": 60, "setsFlags": ["flight_unlocked"], "unlocksCity": "Abuja", "assetKey": "mission_ph_09"
+    },
+    {
+      "id": "ph_side_regatta", "city": "PortHarcourt", "order": 0, "isStory": false, "title": "Regatta Racer", "giver": "c_captain_ebi", "requires": ["ph_01"],
+      "summary": "Ebi entered you in the waterfront regatta. Don't embarrass him.",
+      "objectives": [
+        { "type": "EnterVehicle", "targetId": "speedboat", "text": "Board your racing boat" },
+        { "type": "GoTo", "targetId": "mk_regatta_finish", "timeLimit": 150, "text": "Finish the creek course" }
+      ],
+      "reward": 25000, "credReward": 15, "assetKey": "mission_ph_side_regatta"
+    }
+  ],
+  "hustles": [
+    { "id": "hus_ph_boat_taxi", "kind": "BoatTaxi", "city": "PortHarcourt", "name": "Creek Boat Taxi", "description": "Ferry passengers between the waterfront and creek villages. Smooth rides, big tips.", "requiredVehicle": "boat", "payPerJob": 3000, "streakBonus": 400, "jobsPerLevel": 10, "maxLevel": 5, "unlockedBy": "ph_01" },
+    { "id": "hus_ph_crane", "kind": "CraneJob", "city": "PortHarcourt", "name": "Yard Crane Shift", "description": "Stack containers at Delta Basin. Precision pays; dropped containers come out of your wages.", "requiredVehicle": "crane", "payPerJob": 4500, "streakBonus": 500, "jobsPerLevel": 8, "maxLevel": 5, "unlockedBy": "ph_03" },
+    { "id": "hus_ph_forklift", "kind": "ForkliftJob", "city": "PortHarcourt", "name": "Warehouse Forklift", "description": "Move pallets of pipe fittings against the clock.", "requiredVehicle": "forklift", "payPerJob": 2500, "streakBonus": 300, "jobsPerLevel": 10, "maxLevel": 5, "unlockedBy": "ph_03" }
+  ],
+  "businesses": [
+    { "id": "biz_ph_bukka", "name": "Garden Bukka", "city": "PortHarcourt", "description": "Fisherman soup and starch. Yard workers' lunch spot.", "price": 400000, "incomePerDay": 25000, "storageCap": 150000, "requiresMission": "ph_02" },
+    { "id": "biz_ph_boat_taxi", "name": "Creek Express Boats", "city": "PortHarcourt", "description": "A fleet of boat taxis running Ebi's routes.", "price": 1800000, "incomePerDay": 90000, "storageCap": 600000, "requiresMission": "ph_06" },
+    { "id": "biz_ph_yard_supply", "name": "Yard Supply Co.", "city": "PortHarcourt", "description": "Honest parts and PPE for the oil yards. Nkechi approves.", "price": 6000000, "incomePerDay": 260000, "storageCap": 1800000, "requiresMission": "ph_07" }
+  ]
+}

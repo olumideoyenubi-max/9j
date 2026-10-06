@@ -1,0 +1,21 @@
+{
+  "social": [
+    { "trigger": "mission_passed:lag_02", "author": "Madam Comfort", "handle": "@ComfortSellsPepper", "text": "One young man chased okada thief through go-slow and brought back my bag. {player} God bless you!!", "aboutPlayer": true, "cloutDelta": 30 },
+    { "trigger": "mission_passed:lag_04", "author": "Owambe Police", "handle": "@AsoEbiInspector", "text": "BREAKING: Designer aso-ebi at last night's party was from Balo Market. We have receipts. Literally.", "cloutDelta": 20 },
+    { "trigger": "mission_passed:lag_07", "author": "Lagos Traffic Gist", "handle": "@ThirdLagoonLive", "text": "Who was racing on Third Lagoon Bridge at 1am?? Somebody's Kamsi flew past like it owed money.", "aboutPlayer": true, "cloutDelta": 50 },
+    { "trigger": "mission_passed:lag_09", "author": "Oshoja Updates", "handle": "@OshojaUpdates", "text": "Shina Garage's boys searching every bus park. Whoever they're looking for is long gone.", "cloutDelta": 10 },
+    { "trigger": "mission_passed:ph_02", "author": "Mile One Massive", "handle": "@MileOneMassive", "text": "Flood carried half the market but one guy in a pickup saved the fish. Hero of the rains.", "aboutPlayer": true, "cloutDelta": 30 },
+    { "trigger": "mission_passed:ph_06", "author": "Creek Watch", "handle": "@CreekWatchNG", "text": "Speedboat chase in the mangroves today. Marine Patrol 'regrets to inform' they lost him.", "aboutPlayer": true, "cloutDelta": 60 },
+    { "trigger": "mission_passed:ph_07", "author": "Deltacrest Petroleum (Official)", "handle": "@DeltacrestPR", "text": "Yesterday's incident was a routine drill. All workers are safe thanks to our world-class safety culture.", "cloutDelta": 0 },
+    { "trigger": "mission_passed:abj_04", "author": "Capital Society", "handle": "@CapitalSociety", "text": "Big Bar's transparency gala was SO transparent someone photographed the donor list. Iconic.", "cloutDelta": 40 },
+    { "trigger": "mission_passed:abj_05", "author": "Abuja Roads", "handle": "@AbujaRoads", "text": "17-car convoy reduced to 16-car convoy on the expressway. Investigations ongoing. Nobody saw anything.", "aboutPlayer": true, "cloutDelta": 70 },
+    { "trigger": "mission_passed:abj_09", "author": "Zainab Yusuf-Cole", "handle": "@ZainabReports", "text": "LIVE NOW: The Big Bar files. Three cities, one ledger. Thank you to a source who wants to stay anonymous (you know yourself).", "aboutPlayer": true, "cloutDelta": 200 },
+    { "trigger": "checkpoint:Recorded", "author": "Checkpoint Chronicles", "handle": "@CheckpointChron", "text": "Another day, another 'happy weekend' on camera. Driver of the Kamsi, we see you. #CheckpointChronicles", "aboutPlayer": true, "cloutDelta": -40 },
+    { "trigger": "checkpoint:Recorded", "author": "Mr. Logic", "handle": "@EkoTalkMrLogic", "text": "If you 'settle' at a checkpoint, you are not settling anything. You are unsettling everything. Caller, go ahead.", "aboutPlayer": true, "cloutDelta": -20 },
+    { "trigger": "checkpoint:IntegrityUnitSting", "author": "Integrity Unit (Parody)", "handle": "@NotRealIntegrityNG", "text": "Our undercover officer accepted ₦10,000 'for weekend'. The giver is now trending AND wanted.", "aboutPlayer": true, "cloutDelta": -80 },
+    { "trigger": "checkpoint:WavedThrough", "author": "Road Warrior", "handle": "@InterstateIke", "text": "Passed 4 checkpoints today. Each one had a different idea of what 'particulars' means.", "cloutDelta": 0 },
+    { "trigger": "checkpoint:Delayed", "author": "Road Warrior", "handle": "@InterstateIke", "text": "Spent 40 minutes at a checkpoint explaining that a spare tyre is not contraband.", "cloutDelta": 0 },
+    { "trigger": "city_unlocked:PortHarcourt", "author": "Garden City Vibes", "handle": "@GardenCityVibes", "text": "New face in Mile Three. Lagos accent, Lagos hustle. Let's see if he can handle the creeks.", "aboutPlayer": true, "cloutDelta": 25 },
+    { "trigger": "city_unlocked:Abuja", "author": "Protocol AM", "handle": "@ProtocolAM720", "text": "Sources say a 'Lagos boy with Port Harcourt connections' just landed in the capital. Big men, lock your files.", "aboutPlayer": true, "cloutDelta": 50 }
+  ]
+}
