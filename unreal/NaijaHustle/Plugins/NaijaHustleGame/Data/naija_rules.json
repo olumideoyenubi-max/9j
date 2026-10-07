@@ -1,0 +1,535 @@
+{
+ "start": {
+  "cash": 5000,
+  "minutes": 480,
+  "outfit": "fit_street_basic"
+ },
+ "clockMinutesPerSecond": 2,
+ "conductor": {
+  "capacity": 14,
+  "ownerCut": 0.35,
+  "damageCost": 40,
+  "firstCut": 0.4,
+  "firstTicket": 500,
+  "fullBusBonus": 500,
+  "missedStopFine": 100,
+  "arriveRadius": 575,
+  "slowSpeed": 188,
+  "nearRadius": 1125,
+  "passRadius": 2125,
+  "departSpeed": 313,
+  "departRadius": 875,
+  "roughAccel": 3500,
+  "roughLateral": 2500,
+  "smoothTipAfter": 20,
+  "refill": 10
+ },
+ "wanted": {
+  "perStar": 18,
+  "crimes": {
+   "TrafficOffence": 0.3,
+   "Assault": 1,
+   "VehicleTheft": 1,
+   "PropertyDamage": 0.5,
+   "CheckpointRunning": 2,
+   "AttackOnResponder": 1.5
+  },
+  "units": [
+   "Traffic Marshals",
+   "Eko Task Force bikes",
+   "Eko Task Force pickups",
+   "Rapid Response Squad",
+   "Joint Patrol + helicopter"
+  ]
+ },
+ "routes": [
+  {
+   "id": "osh-balo",
+   "name": "Oshoja – Balo Market",
+   "stops": [
+    "oshoja",
+    "iya",
+    "second",
+    "marketrd",
+    "balogate",
+    "marketsq"
+   ],
+   "fare": [
+    200,
+    400
+   ],
+   "busy": 6,
+   "blurb": "Busy market run: plenty of passengers, agberos at Oshoja Park and Balo Gate."
+  },
+  {
+   "id": "osh-eko",
+   "name": "Oshoja – Eko Crest Express",
+   "stops": [
+    "oshoja",
+    "second",
+    "lagoon",
+    "bridge",
+    "eko"
+   ],
+   "fare": [
+    300,
+    500
+   ],
+   "busy": 5,
+   "blurb": "Long hops over Third Lagoon Bridge: higher fares, go-slow risk, agberos at Bridge Foot."
+  },
+  {
+   "id": "mainland",
+   "name": "Mainland Loop",
+   "stops": [
+    "ebute",
+    "church",
+    "marketrd",
+    "iya"
+   ],
+   "fare": [
+    200,
+    300
+   ],
+   "busy": 4,
+   "blurb": "Short and quiet back-street loop. No agberos, smaller fares."
+  }
+ ],
+ "firstRoute": {
+  "id": "m_first",
+  "name": "First Day: Oshoja – Balo Market – Mainland Junction",
+  "stops": [
+   "oshoja",
+   "balogate",
+   "iya"
+  ],
+  "fare": [
+   200,
+   400
+  ],
+  "busy": 5,
+  "linear": true,
+  "label": {
+   "oshoja": "Oshoja Park",
+   "balogate": "Balo Market (Balo Gate)",
+   "iya": "Mainland Junction (Iya Basira)"
+  }
+ },
+ "paxNames": [
+  "Mama Ronke",
+  "Oga Tunde",
+  "Aunty Ngozi",
+  "Mallam Sani",
+  "Sister Blessing",
+  "Bros Emeka",
+  "Iya Bose",
+  "Uncle Femi",
+  "Madam Kike",
+  "Chinedu",
+  "Hauwa",
+  "Pastor Segun",
+  "Baba Rasheed",
+  "Ada"
+ ],
+ "calls": [
+  "\"Oshoja! Oshoja! Enter with your change!\"",
+  "\"Eko Crest, straight! No stopping!\"",
+  "\"Owa! Owa! Hold your bag well!\"",
+  "\"Driver, wait! One chance remain!\""
+ ],
+ "babaLines": {
+  "intro": [
+   "Ehen! You don come. Na you be the new conductor?",
+   "You don ready? Na today you go learn work. No spoil my motor o!",
+   "Danfo dey bay one. Oshoja, Balo Market, Mainland Junction, then come back here. Two hours. No dull yourself.",
+   "Stop for the ring, shout your route, collect correct money. If agbero hold you for Balo, use sense."
+  ],
+  "retry": [
+   "Oya, try am again. Motor dey bay one. This time, use your head."
+  ],
+  "done": [
+   "Ah, my conductor! You try today o. Make we count the money."
+  ],
+  "wrecked": [
+   "Wetin you do my motor?! You wan finish me? Na so dem dey learn work?",
+   "Go and rest. Come back when sense don enter your head."
+  ],
+  "late": [
+   "Two hours and you never reach back? Passengers don waka, my money don waka!",
+   "Na so dem dey do this work? Try again when you ready."
+  ]
+ },
+ "outfits": [
+  {
+   "id": "fit_street_basic",
+   "name": "Mainland basics",
+   "price": 0,
+   "respect": 0,
+   "color": "#d9d4c7"
+  },
+  {
+   "id": "fit_ankara_shirt",
+   "name": "Ankara shirt & chinos",
+   "price": 25000,
+   "respect": 8,
+   "color": "#e2683c"
+  },
+  {
+   "id": "fit_kaftan_white",
+   "name": "Crisp white kaftan",
+   "price": 45000,
+   "respect": 15,
+   "color": "#ffffff"
+  },
+  {
+   "id": "fit_ankara_full",
+   "name": "Full ankara two-piece",
+   "price": 60000,
+   "respect": 14,
+   "color": "#2fa36b"
+  },
+  {
+   "id": "fit_street_drip",
+   "name": "Island drip (designer-ish)",
+   "price": 85000,
+   "respect": 10,
+   "color": "#7e57c2"
+  },
+  {
+   "id": "fit_singlet_cargo",
+   "name": "Singlet & cargo trousers",
+   "price": 12000,
+   "respect": 3,
+   "color": "#ece9e0"
+  },
+  {
+   "id": "fit_agbada_owambe",
+   "name": "Owambe agbada with fila",
+   "price": 250000,
+   "respect": 28,
+   "color": "#f5c400"
+  }
+ ],
+ "contacts": {
+  "baba": "Baba Sule",
+  "amaka": "Amaka Nwosu",
+  "kemi": "Kemi Lawson-Bright",
+  "shina": "Shina Garage"
+ },
+ "vehicles": {
+  "danfo": {
+   "name": "Kombi Danfo",
+   "len": 575,
+   "wid": 275,
+   "max": 2875,
+   "acc": 1875,
+   "turn": 2.1,
+   "colors": [
+    "#f5c400"
+   ],
+   "hp": 140,
+   "bike": false,
+   "cop": false
+  },
+  "okada": {
+   "name": "Thunder 125 Okada",
+   "len": 275,
+   "wid": 113,
+   "max": 3313,
+   "acc": 3375,
+   "turn": 3.6,
+   "colors": [
+    "#c62828",
+    "#1565c0",
+    "#222",
+    "#00897b"
+   ],
+   "hp": 50,
+   "bike": true,
+   "cop": false
+  },
+  "keke": {
+   "name": "Keke Marwa-Max",
+   "len": 325,
+   "wid": 200,
+   "max": 1875,
+   "acc": 1500,
+   "turn": 2.9,
+   "colors": [
+    "#f5c400",
+    "#2e7d32"
+   ],
+   "hp": 70,
+   "bike": false,
+   "cop": false
+  },
+  "sedan": {
+   "name": "Kamsi LE",
+   "len": 475,
+   "wid": 225,
+   "max": 3750,
+   "acc": 2625,
+   "turn": 2.6,
+   "colors": [
+    "#c9ccd1",
+    "#1f3b57",
+    "#7b1e1e",
+    "#2c2c2c",
+    "#d7c9a7",
+    "#3f6e4f"
+   ],
+   "hp": 100,
+   "bike": false,
+   "cop": false
+  },
+  "suv": {
+   "name": "Pathmaster V8",
+   "len": 525,
+   "wid": 250,
+   "max": 3563,
+   "acc": 2500,
+   "turn": 2.3,
+   "colors": [
+    "#151515",
+    "#e8e8e8",
+    "#4a4f57"
+   ],
+   "hp": 160,
+   "bike": false,
+   "cop": false
+  },
+  "tfpick": {
+   "name": "Task Force pickup",
+   "len": 525,
+   "wid": 250,
+   "max": 3650,
+   "acc": 3000,
+   "turn": 2.7,
+   "colors": [
+    "#2f5d3a"
+   ],
+   "hp": 180,
+   "cop": true,
+   "bike": false
+  },
+  "truck": {
+   "name": "Iron Horse Tipper",
+   "len": 575,
+   "wid": 275,
+   "max": 2750,
+   "acc": 1875,
+   "turn": 2.1,
+   "colors": [
+    "#c62828",
+    "#1565c0",
+    "#e8e8e8",
+    "#2e7d32"
+   ],
+   "hp": 220,
+   "bike": false,
+   "cop": false
+  },
+  "tfbike": {
+   "name": "Task Force bike",
+   "len": 275,
+   "wid": 113,
+   "max": 3500,
+   "acc": 3500,
+   "turn": 3.6,
+   "colors": [
+    "#2f5d3a"
+   ],
+   "hp": 60,
+   "bike": true,
+   "cop": true
+  }
+ },
+ "places": {
+  "park": {
+   "x": 3200,
+   "y": 4125
+  },
+  "home": {
+   "x": 2200,
+   "y": 4125
+  },
+  "buspark": {
+   "x": 3200,
+   "y": 20000
+  }
+ },
+ "missions": {
+  "lag_01": {
+   "title": "First Day on the Danfo",
+   "giver": "baba",
+   "req": [],
+   "reward": 0,
+   "cred": 20,
+   "brief": "Baba Sule, Baba Driver to everybody at the park, needs a conductor. One round trip in his danfo: Oshoja, Balo Market, Mainland Junction and back to the park. Shout well, collect correct money, and no spoil his motor.",
+   "objectives": [
+    {
+     "type": "goto",
+     "text": "Meet Baba Driver at Oshoja Motor Park",
+     "sub": "",
+     "clock": 0,
+     "r": 750
+    },
+    {
+     "type": "enter",
+     "text": "Get in the danfo at bay 1",
+     "sub": "The yellow bus with BALO on its board",
+     "clock": 0,
+     "r": 0
+    },
+    {
+     "type": "route",
+     "text": "Run the route",
+     "sub": "",
+     "clock": 120,
+     "r": 0
+    },
+    {
+     "type": "goto",
+     "text": "Bring the danfo back to Oshoja Motor Park",
+     "sub": "Baba Driver is waiting by the bays",
+     "clock": 0,
+     "r": 875
+    }
+   ]
+  },
+  "lag_02": {
+   "title": "Go-Slow Getaway",
+   "giver": "baba",
+   "req": [
+    "lag_01"
+   ],
+   "reward": 12000,
+   "cred": 25,
+   "brief": "A pickpocket on an okada snatched a passenger's bag in the go-slow. Weave through the traffic and get it back.",
+   "objectives": [
+    {
+     "type": "enter",
+     "text": "Commandeer the okada",
+     "sub": "",
+     "clock": 0,
+     "r": 0
+    },
+    {
+     "type": "chase",
+     "text": "Catch the pickpocket",
+     "sub": "Get right up beside him",
+     "clock": 0,
+     "r": 0
+    },
+    {
+     "type": "goto",
+     "text": "Return the bag to Madam Comfort",
+     "sub": "",
+     "clock": 0,
+     "r": 575
+    }
+   ]
+  },
+  "lag_03": {
+   "title": "Balo Market Run",
+   "giver": "amaka",
+   "req": [
+    "lag_01"
+   ],
+   "reward": 15000,
+   "cred": 25,
+   "brief": "Amaka's shipment of phone screens is stuck across Balo Market. Thread through alleys, wheelbarrows and Task Force raids before closing time.",
+   "objectives": [
+    {
+     "type": "goto",
+     "text": "Get to the warehouse",
+     "sub": "Balo Market, east side",
+     "clock": 0,
+     "r": 550
+    },
+    {
+     "type": "collect",
+     "text": "Load 3 crates of screens",
+     "sub": "",
+     "clock": 0,
+     "r": 0
+    },
+    {
+     "type": "goto",
+     "text": "Deliver to Amaka's stall before closing",
+     "sub": "",
+     "clock": 0,
+     "r": 500
+    }
+   ]
+  },
+  "lag_07": {
+   "title": "Third Lagoon Bridge",
+   "giver": "kemi",
+   "req": [
+    "lag_02",
+    "lag_03"
+   ],
+   "reward": 60000,
+   "cred": 40,
+   "brief": "The rival promoter is running for the airport with Kemi's sound-system money. Ten kilometres of bridge. Run him off the road.",
+   "objectives": [
+    {
+     "type": "goto",
+     "text": "Meet Kemi on Eko Crest",
+     "sub": "",
+     "clock": 0,
+     "r": 750
+    },
+    {
+     "type": "enter",
+     "text": "Take the red Kamsi",
+     "sub": "",
+     "clock": 0,
+     "r": 0
+    },
+    {
+     "type": "chase",
+     "text": "Ram the rival SUV off the road",
+     "sub": "Hit him 3 times",
+     "clock": 0,
+     "r": 0
+    },
+    {
+     "type": "collect",
+     "text": "Grab the money bag",
+     "sub": "",
+     "clock": 0,
+     "r": 0
+    },
+    {
+     "type": "loseheat",
+     "text": "Lose the Task Force",
+     "sub": "",
+     "clock": 0,
+     "r": 0
+    }
+   ]
+  },
+  "lag_09": {
+   "title": "Night Bus East",
+   "giver": "baba",
+   "req": [
+    "lag_07"
+   ],
+   "reward": 50000,
+   "cred": 60,
+   "brief": "Lagos is too hot. Shina's boys know your face. Baba Sule's cousin in Port Harcourt needs a driver — make the last bus.",
+   "objectives": [
+    {
+     "type": "goto",
+     "text": "Make the last bus at the Luxury Bus Park",
+     "sub": "",
+     "clock": 0,
+     "r": 875
+    }
+   ]
+  }
+ },
+ "units": "cm, cm/s, cm/s², rad/s; minutes are in-game minutes"
+}

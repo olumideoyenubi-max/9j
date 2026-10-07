@@ -10,7 +10,8 @@ repo and are untouched.
 | Step | Status |
 |---|---|
 | 1. Project setup: rendering, folders, input, source control | Done |
-| 2. Street block blockout and lighting (night rain + day), from the browser demo's map | **This step** |
+| 2. Street block blockout and lighting (night rain + day), from the browser demo's map | Done |
+| Gameplay port: vehicles, First Day on the Danfo, conductor shifts, money, clock, save, HUD | **This step** (in the NaijaHustleGame plugin) |
 | 3. Player MetaHuman, third-person controller and camera | |
 | 4. Danfo and okada (Chaos Vehicles), enter and exit | |
 | 5. Mass AI crowds and traffic | |
@@ -18,20 +19,26 @@ repo and are untouched.
 | 7. Polish: rain FX, puddles, wet shaders, grading, sound | |
 | 8. Performance: 60 fps at 1440p on an RTX 3060 with TSR | |
 
+## The game is a plugin
+
+Everything (the city, lighting and the gameplay) lives in [`Plugins/NaijaHustleGame`](Plugins/NaijaHustleGame/README.md),
+so it can be dropped into any Unreal C++ project. That README covers installing it into your own project and how to play.
+This project is a thin shell that loads the plugin.
+
 ## Step 2: the street block (blockout and lighting)
 
 The Unreal slice and the browser demo (`web/index.html`) share one Lagos. The browser game's city (streets,
 buildings, shop fronts, signs, street lamps, props, road markings, bus stops, fuel stations, park bays, the
-road graph) is exported to `Data/lagos_city.json`, and two editor scripts turn that file into a playable
+road graph) is exported to `Plugins/NaijaHustleGame/Data/lagos_city.json`, and two editor scripts turn that file into a playable
 blockout level with day, dusty-noon, sunset and night-rain lighting.
 
 ### Build the level
 
 After the first build and first open (sections 1 and 2 below):
 
-1. **Tools > Execute Python Script…** > `Scripts/nh_blockout_materials.py`. It creates
+1. **Tools > Execute Python Script…** > `Plugins/NaijaHustleGame/Scripts/nh_blockout_materials.py`. It creates
    `MPC_NHWeather` (Wetness, Puddles, Rain, NightLights) and `M_NHBlockout`, the one material the blockout uses.
-2. **Tools > Execute Python Script…** > `Scripts/build_street_block.py`. It creates
+2. **Tools > Execute Python Script…** > `Plugins/NaijaHustleGame/Scripts/build_street_block.py`. It creates
    `/Game/NaijaHustle/Maps/L_Slice_Street` (World Partition) and places the city. That takes a minute or two
    and asks nothing. Running it again replaces what it made before.
 3. Press **Play**. You start at home beside Oshoja Motor Park at night in the rain. Press **L** to cycle the lighting presets, or type
@@ -74,7 +81,8 @@ Rain particles, ripples and splashes are step 7; step 2 does the wet surfaces an
 node web/tools/export-unreal.js   # needs Node + Playwright, like the browser tests
 ```
 Then run `build_street_block.py` again. The scripts are checked without the editor by
-`python3 Scripts/tests/test_build_street_block.py` and `python3 Scripts/tests/test_blockout_materials.py`. They use a
+`python3 Plugins/NaijaHustleGame/Scripts/tests/test_build_street_block.py` and
+`python3 Plugins/NaijaHustleGame/Scripts/tests/test_blockout_materials.py`. They use a
 stand-in `unreal` module that also checks every property name against the C++ headers.
 
 ### Notes
@@ -139,14 +147,20 @@ All in `Config/DefaultEngine.ini`. You can see each setting in **Edit > Project 
 ## 4. Code layout
 
 ```
-Source/NaijaHustle/
-  Public|Private/Core/      NHGameMode: default pawn + player controller
-  Public|Private/Input/     NHInputSet: every input action and mapping context, built in C++
-  Public|Private/Player/    NHPlayerController (switches contexts, NHLighting command), NHCharacter (step-1 test pawn)
-  Public|Private/World/     NHBlockoutActor (instanced shapes + surface data), NHCityTile, NHBlockoutBuilding
-  Public|Private/Lighting/  NHLightingRig: presets, weather parameters, street lamps
-Scripts/                    editor Python: content folders, blockout materials, street block builder (+ tests/)
-Data/lagos_city.json        the shared city, exported from the browser demo
+Source/NaijaHustle/                 the project module (a shell)
+Plugins/NaijaHustleGame/            the game, as a drop-in plugin
+  Source/NaijaHustleGame/
+    Core/       NHGameMode, NHGameData (reads Data/*.json), NHHustleSubsystem (money, clock, heat, save)
+    Gameplay/   NHGameDirector (First Day on the Danfo, conductor shifts), NHPerson
+    Vehicles/   NHVehicle (arcade handling, damage, blockout bodies, chase camera)
+    Player/     NHPlayerController (get in/out, E, choices, NHLighting), NHCharacter
+    Input/      NHInputSet: every input action and mapping context, built in C++
+    World/      NHBlockoutActor, NHCityTile, NHBlockoutBuilding, NHShapes
+    Lighting/   NHLightingRig
+    UI/         NHHUD (canvas HUD and minimap)
+  Scripts/      editor Python: blockout materials, street block builder (+ tests/)
+  Data/         lagos_city.json and naija_rules.json, exported from the browser demo
+Scripts/create_content_folders.py
 ```
 
 Gameplay systems go into C++ (vehicles, Mass processors, the wanted system, inventory data). Blueprints
@@ -179,6 +193,7 @@ not "pause".
 | Quick wheel (hold) | Q | LB | Global |
 | Map | M | D-pad down | Global |
 | Next lighting preset (look development) | L | | Global |
+| Answer a choice (change, agbero, route) | 1 2 3 4 | D-pad left / right (1, 2) | Global |
 | Pause | Esc | Menu | Global |
 | Back | Esc or Backspace | B | Menu |
 

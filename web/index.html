@@ -3273,6 +3273,17 @@ function makeSignAtlas() {
   });
   signT.wrapS = signT.wrapT = THREE.ClampToEdgeWrapping;
 }
+// gameplay rules for the Unreal export (web/tools/export-unreal.js → Data/naija_rules.json)
+const RULES = () => ({
+  start: { cash: 5000, minutes: 8 * 60, outfit: 'fit_street_basic' }, clockMinutesPerSecond: 2,
+  conductor: { capacity: CAP, ownerCut: OWNER_CUT, damageCost: DAMAGE_COST, firstCut: FIRST_CUT, firstTicket: FIRST_TICKET, fullBusBonus: 500, missedStopFine: 100,
+    arriveRadius: 46, slowSpeed: 15, nearRadius: 90, passRadius: 170, departSpeed: 25, departRadius: 70, roughAccel: 280, roughLateral: 200, smoothTipAfter: 20, refill: 10 },
+  wanted: { perStar: WANT.perStar, crimes: CRIME, units: UNITS },
+  routes: ROUTES, firstRoute: FIRST_ROUTE, paxNames: PAX_NAMES, calls: CALLS, babaLines: BABA_LINES, outfits: OUTFITS, contacts: CONTACTS,
+  vehicles: VT, places: { park: PL.park, home: PL.home, buspark: PL.buspark },
+  missions: Object.fromEntries(ORDER.map(id => [id, { title: MISSIONS[id].title, giver: MISSIONS[id].giver, req: MISSIONS[id].req, reward: MISSIONS[id].reward, cred: MISSIONS[id].cred, brief: MISSIONS[id].brief,
+    objectives: MISSIONS[id].objs.map(o => ({ type: o.t, text: o.text, sub: o.sub || '', clock: o.clock || 0, r: o.r || 0 })) }])),
+});
 // sign slot → text, for the Unreal export (slots 0–15 are SHOP_SIGNS)
 const SIGN_TEXT = () => Object.assign({ [SIGN.park]: { title: 'OSHOJA MOTOR PARK', sub: 'Danfo · Keke · Interstate', bg: '#f5c400', fg: '#1b1600' }, [SIGN.tickets]: { title: 'TICKETS', sub: 'Pay before you load', bg: '#1565c0', fg: '#ffffff' },
   [SIGN.fuel]: { title: 'GIDI FUEL', sub: `Petrol ₦${FUEL_PRICE} per 1%`, bg: '#2f8f5b', fg: '#ffffff' }, [SIGN.luxury]: { title: 'LUXURY BUS PARK', sub: 'Night buses to the east', bg: '#1565c0', fg: '#ffffff' }, [SIGN.heli]: { title: 'H', sub: '', bg: '#2b3036', fg: '#f5c400' } },
@@ -5181,7 +5192,7 @@ function boot(data) {
     renderOnce(t) { render(t); if (R3) { const g = R3.getContext(); g.readPixels(0, 0, 1, 1, g.RGBA, g.UNSIGNED_BYTE, new Uint8Array(4)); } }, // read a pixel so the GPU actually finishes the frame
     seed(n) { let x = n >>> 0 || 1; Math.random = () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x / 4294967296; }; },
     resetWorld() { vehicles = []; peds = []; items = []; floaters = []; heli = null; JUNC.clear(); JWAIT.clear(); WORLD.jams = []; rebuildJams(); WORLD.hour = -1; WANT.heat = 0; WANT.timer = 0; player.veh = null; player.owned = null; },
-    clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, peds: () => peds, lookOf, SEATS, timeScale, PROP, MAT: () => MAT, LAMPS, SHOP_SIGNS, get SIGN_TEXT() { return SIGN_TEXT(); }, WALLU, TERRU, INTU, TEXK, buildGroundDecals, groundT, PROPM, TEXR, MODELS, MB, ASSET, DUSTP, isDusty, startAssets, STALLS, PASS, camera: () => camera, scene: () => scene, heliState: () => heli, LIVE, SND, STATICS, GENS, isRush, isWeekend, owambeOn, pedTarget, liveSpots, updateJams, hawkerAtWindow, setSound, Q: () => Q, INV, ITEMS, BAGS, BUFF, KIOSKS, MED_SHOPS, BOOTH, invOpen, invClose, invToggle, invKeyDown, invKeyUp, invWheelOpen, invWheelClose, invRender, wheelRender, useItem, addItem, takeItem, dropItem, invCount, slotsUsed, bagSlots, buyItem, openShop, nearShop, openCheckpoint, resolveCheckpoint, papersOk, garageSync, garageRestore, trackVehicle, items: () => items, waypoint: () => WAYPOINT, save, loadSave, applyState, simClock: () => simClock, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
+    clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, peds: () => peds, lookOf, SEATS, timeScale, PROP, MAT: () => MAT, get RULES() { return RULES(); }, LAMPS, SHOP_SIGNS, get SIGN_TEXT() { return SIGN_TEXT(); }, WALLU, TERRU, INTU, TEXK, buildGroundDecals, groundT, PROPM, TEXR, MODELS, MB, ASSET, DUSTP, isDusty, startAssets, STALLS, PASS, camera: () => camera, scene: () => scene, heliState: () => heli, LIVE, SND, STATICS, GENS, isRush, isWeekend, owambeOn, pedTarget, liveSpots, updateJams, hawkerAtWindow, setSound, Q: () => Q, INV, ITEMS, BAGS, BUFF, KIOSKS, MED_SHOPS, BOOTH, invOpen, invClose, invToggle, invKeyDown, invKeyUp, invWheelOpen, invWheelClose, invRender, wheelRender, useItem, addItem, takeItem, dropItem, invCount, slotsUsed, bagSlots, buyItem, openShop, nearShop, openCheckpoint, resolveCheckpoint, papersOk, garageSync, garageRestore, trackVehicle, items: () => items, waypoint: () => WAYPOINT, save, loadSave, applyState, simClock: () => simClock, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
 }
 const hot = window.claude?.hot;
 if (hot?.ready) hot.ready(boot); else boot(hot?.data ?? {});

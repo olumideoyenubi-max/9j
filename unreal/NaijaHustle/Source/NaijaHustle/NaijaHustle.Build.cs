@@ -6,7 +6,7 @@ public class NaijaHustle : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		// Later steps add: ChaosVehicles (step 4), MassEntity/MassAI/ZoneGraph (step 5), UMG/CommonUI (step 6).
+		// Gameplay is in the NaijaHustleGame plugin; this module is the project shell.
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
 			"Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput"

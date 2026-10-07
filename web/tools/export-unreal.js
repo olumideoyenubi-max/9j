@@ -1,6 +1,7 @@
 // Exports the browser demo's Lagos (tile map, buildings, shop fronts, signs, street lamps, props, road markings,
 // road graph, bus stops, fuel stations, park bays) as JSON for the Unreal project, so both versions share one city.
-//   node web/tools/export-unreal.js [out.json]     (default: unreal/NaijaHustle/Data/lagos_city.json)
+//   node web/tools/export-unreal.js [data dir]   (default: unreal/NaijaHustle/Plugins/NaijaHustleGame/Data)
+// Writes lagos_city.json (the map) and naija_rules.json (routes, fares, vehicles, missions, dialogue).
 // Runs the real game headless (same harness as the tests) and reads the city it generates.
 //
 // Units and axes in the file are Unreal's: centimetres, X = east (the map's x), Y = south (the map's y), Z = up.
@@ -9,7 +10,8 @@
 // A rotation quaternion (x, y, z, w) maps to (X = -x, Y = -z, Z = -y, W = w): a yaw of θ in the browser is -θ in Unreal.
 const path = require('path'), fs = require('fs');
 const { chromium, open } = require('../tests/harness');
-const OUT = process.argv[2] || path.join(__dirname, '..', '..', 'unreal', 'NaijaHustle', 'Data', 'lagos_city.json');
+const DIR = process.argv[2] || path.join(__dirname, '..', '..', 'unreal', 'NaijaHustle', 'Plugins', 'NaijaHustleGame', 'Data');
+const OUT = path.join(DIR, 'lagos_city.json'), RULES_OUT = path.join(DIR, 'naija_rules.json');
 
 (async () => {
   const b = await chromium.launch();
@@ -85,10 +87,21 @@ const OUT = process.argv[2] || path.join(__dirname, '..', '..', 'unreal', 'Naija
       playerStart: { x: pxcm(176), y: pxcm(330), z: 120, yaw: 0, note: 'home, next to Oshoja Motor Park' },
     };
   });
+  // gameplay rules, with every distance, speed and acceleration converted from map pixels to cm (1 px = 12.5 cm)
+  const rules = await page.evaluate(() => {
+    const R = JSON.parse(JSON.stringify(NH.RULES)), K = 12.5, cm = v => Math.round(v * K);
+    const c = R.conductor; for (const k of ['arriveRadius', 'slowSpeed', 'nearRadius', 'passRadius', 'departSpeed', 'departRadius', 'roughAccel', 'roughLateral']) c[k] = cm(c[k]);
+    for (const v of Object.values(R.vehicles)) { v.len = cm(v.len); v.wid = cm(v.wid); v.max = cm(v.max); v.acc = cm(v.acc); v.bike = !!v.bike; v.cop = !!v.cop; }
+    for (const p of Object.values(R.places)) { p.x = cm(p.x); p.y = cm(p.y); }
+    for (const m of Object.values(R.missions)) for (const o of m.objectives) o.r = cm(o.r);
+    R.units = 'cm, cm/s, cm/s², rad/s; minutes are in-game minutes';
+    return R; });
   if (errors.length) { console.error('page errors:', errors); process.exit(1); }
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, JSON.stringify(data));
+  fs.writeFileSync(RULES_OUT, JSON.stringify(rules, null, 1));
   const n = Object.values(data.props).reduce((a, p) => a + p.items.length, 0);
+  console.log(`wrote ${RULES_OUT}: ${Object.keys(rules.routes).length} routes, ${Object.keys(rules.vehicles).length} vehicle types, ${Object.keys(rules.missions).length} missions`);
   console.log(`wrote ${OUT}: ${(fs.statSync(OUT).size / 1024).toFixed(0)} KB, ${data.buildings.length} buildings, ${data.shopfronts.length} shop fronts, ${data.signs.length} signs, ${data.lamps.length} lamps, ${n} props in ${Object.keys(data.props).length} kinds, ${data.markings.length} road markings`);
   await b.close();
 })().catch(e => { console.error(e); process.exit(1); });

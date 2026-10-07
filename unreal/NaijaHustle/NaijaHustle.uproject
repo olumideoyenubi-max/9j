@@ -19,7 +19,8 @@
 		{ "Name": "ModelingToolsEditorMode", "Enabled": true, "TargetAllowList": [ "Editor" ] },
 		{ "Name": "PythonScriptPlugin", "Enabled": true },
 		{ "Name": "EditorScriptingUtilities", "Enabled": true },
-		{ "Name": "ChaosVehiclesPlugin", "Enabled": true }
+		{ "Name": "ChaosVehiclesPlugin", "Enabled": true },
+		{ "Name": "NaijaHustleGame", "Enabled": true }
 	],
 	"TargetPlatforms": [
 		"Windows"

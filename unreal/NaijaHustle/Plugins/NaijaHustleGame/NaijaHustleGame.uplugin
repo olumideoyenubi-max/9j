@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.2",
+	"FriendlyName": "NAIJA HUSTLE Game",
+	"Description": "NAIJA HUSTLE gameplay and the shared Lagos city: blockout street block, lighting presets, drivable danfo/okada/keke, the conductor job and 'First Day on the Danfo', money, clock, save and HUD.",
+	"Category": "Gameplay",
+	"CreatedBy": "NAIJA HUSTLE",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "NaijaHustleGame",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{ "Name": "EnhancedInput", "Enabled": true },
+		{ "Name": "PythonScriptPlugin", "Enabled": true },
+		{ "Name": "EditorScriptingUtilities", "Enabled": true }
+	]
+}

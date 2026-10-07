@@ -36,5 +36,5 @@ Set `SRC=/path/to/other.html` to run any test against another build (for before/
 
 Unreal export (shares the city with the UE5 slice; not a test):
 ```bash
-node ../tools/export-unreal.js   # writes unreal/NaijaHustle/Data/lagos_city.json
+node ../tools/export-unreal.js   # writes lagos_city.json + naija_rules.json into unreal/NaijaHustle/Plugins/NaijaHustleGame/Data
 ```
