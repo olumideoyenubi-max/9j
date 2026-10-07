@@ -84,8 +84,9 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
     // agbero negotiate: seeded success and failure
     const r3 = await page.evaluate(() => {
       const out = {};
-      for (const [seed, cred] of [[3, 400], [4, 0]]) {
-        T2.bus(); NH.S.cred = cred; NH.startShift('osh-balo'); NH.seed(seed); T2.at('oshoja'); T2.click('#sheet [data-a="haggle"]');
+      // seeded just before the roll, so how much the drive to the stop draws from the dice doesn't matter (4e9's first roll is .9: a failed haggle)
+      for (const [seed, cred] of [[3, 400], [4000000000, 0]]) {
+        T2.bus(); NH.S.cred = cred; NH.startShift('osh-balo'); T2.at('oshoja'); NH.seed(seed); T2.click('#sheet [data-a="haggle"]');
         const s = T2.sheet(); if (/Pay/.test(s) && document.querySelector('#sheet [data-a="pay"]')) { out[cred ? 'hi' : 'lo'] = { text: s.slice(0, 120), paid: NH.SHIFT.agbero }; T2.click('#sheet [data-a="pay"]'); }
         else out[cred ? 'hi' : 'lo'] = { text: 'closed', paid: NH.SHIFT.agbero };
         out[(cred ? 'hi' : 'lo') + 'Final'] = NH.SHIFT.agbero; NH.closeOverlays(); NH.endShift(); NH.closeOverlays(); NH.S.cred = 0;

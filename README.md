@@ -57,8 +57,17 @@ the title screen, in the phone's MapAm app, or with G:
 
 Controls: WASD or arrows to walk or drive (on foot, movement is relative to the camera), drag the
 screen to look around (the camera recentres behind you after 2 seconds), E for actions, F to get in or
-out, Space to brake, Tab or I for the inventory (hold Tab for the quick wheel), P for the phone, G for
-graphics quality. On a phone, use the joystick and buttons (tap BAG for the inventory, hold it for the wheel).
+out, Space to brake, Tab or I for the inventory (hold Tab for the quick wheel), P for the phone, M for
+sound, G for graphics quality. On a phone, use the joystick and buttons (tap BAG for the inventory, hold it for the wheel).
+
+Street life: crowds three to five times denser (thinning with distance, sized by the graphics setting),
+hawkers working stopped traffic and coming to your window, danfos stopping anywhere to load, okadas
+squeezing between lanes, kekes everywhere, overloaded trucks, honking, and a go-slow on the main roads at
+rush hour (7–10am and 4–8pm). Agberos collect "ticket" at Oshoja Park, a preacher works the Balo Gate bus
+stop with a megaphone, kids play football in a market alley, a traffic warden runs a junction, and at
+weekends there's an owambe under canopies. Recharge-card stands, roadside mechanics, sand and block piles,
+clothes lines and running generators fill the pavements. All sound is synthesised in the browser: horns,
+conductor and hawker shouts, generator hum, shop music, crowd chatter and traffic rumble (M toggles it).
 
 Inventory: a GTA-style bag with six tabs (Items, Cash, Documents, Clothing, Vehicles, Mission) and an
 8-slot quick wheel; the game slows to 30% while either is open. You start with pure water, gala,
