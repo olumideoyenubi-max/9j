@@ -1,0 +1,58 @@
+name: Browser demo tests
+
+# The safety net for web/index.html. Runs no model, so it costs Actions minutes and nothing else.
+on:
+  push:
+    paths: ['web/**', '.github/workflows/web-tests.yml']
+  pull_request:
+    paths: ['web/**', '.github/workflows/web-tests.yml']
+  schedule:
+    - cron: '41 2 * * *'   # 03:41 Lagos — the slow suites, nightly
+  workflow_dispatch:
+
+concurrency:
+  group: web-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright and a local copy of Three.js
+        run: |
+          npm install --no-save playwright@1.49.0
+          npx playwright install --with-deps chromium
+          mkdir -p "$RUNNER_TEMP/three-pkg"
+          cd "$RUNNER_TEMP/three-pkg"
+          npm pack three@0.170.0
+          tar xzf three-0.170.0.tgz
+
+      - name: Fast suites
+        working-directory: web/tests
+        env:
+          THREE_DIR: ${{ runner.temp }}/three-pkg/package
+        run: |
+          for t in p1-onfoot p1-ui p2-conductor p3-first-day p4-inventory regression; do
+            echo "::group::$t"
+            node "$t.js"
+            echo "::endgroup::"
+          done
+
+      - name: Slow suites (nightly and manual runs only)
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        working-directory: web/tests
+        env:
+          THREE_DIR: ${{ runner.temp }}/three-pkg/package
+        run: |
+          for t in p1-collisions p1-traffic perf; do
+            echo "::group::$t"
+            node "$t.js"
+            echo "::endgroup::"
+          done

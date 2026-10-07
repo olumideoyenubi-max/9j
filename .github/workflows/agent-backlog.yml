@@ -1,0 +1,86 @@
+name: Backlog agent
+
+# Picks the top item off BACKLOG.md, does it, opens a pull request. Never pushes to the
+# default branch. This is the one workflow here that spends model tokens, so it runs weekly
+# by default — change the cron, or run it by hand, to go faster.
+on:
+  schedule:
+    - cron: '7 5 * * 1'   # Monday 06:07 Lagos
+  workflow_dispatch:
+    inputs:
+      item:
+        description: 'Backlog item to do instead of the top one (leave blank for the top one)'
+        required: false
+        type: string
+
+concurrency:
+  group: backlog-agent
+  cancel-in-progress: false
+
+jobs:
+  work:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright and a local copy of Three.js
+        run: |
+          npm install --no-save playwright@1.49.0
+          npx playwright install --with-deps chromium
+          mkdir -p "$RUNNER_TEMP/three-pkg"
+          cd "$RUNNER_TEMP/three-pkg"
+          npm pack three@0.170.0
+          tar xzf three-0.170.0.tgz
+
+      - uses: anthropics/claude-code-action@v1
+        env:
+          THREE_DIR: ${{ runner.temp }}/three-pkg/package
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: '--max-turns 60'
+          prompt: |
+            You are the backlog agent for Naija Hustle. Read CLAUDE.md first and follow it.
+
+            ${{ inputs.item && format('Work on this item: {0}', inputs.item) || 'Open BACKLOG.md and take the FIRST unticked item under "## Ready". If there are none, stop and do nothing — do not invent work.' }}
+
+            Do exactly one item. Then:
+
+            1. Make the change on a new branch named agent/<area>-<short-name>, where <area> is the
+               bracketed tag on the backlog item.
+            2. Run the tests that cover what you touched:
+               - always: dotnet test Tools/CoreTests/CoreTests.csproj
+               - if web/index.html changed: cd web/tests && node p1-onfoot.js && node regression.js
+                 (and node p4-inventory.js if you touched the inventory, p2-conductor.js if you
+                 touched the conductor hustle)
+               Fix what you break. Do not weaken, skip or delete a test to make it pass — if a test
+               is genuinely wrong, say so in the PR body and leave it failing.
+            3. Move the item from "## Ready" to "## In progress" in BACKLOG.md with the PR number.
+            4. Open a pull request against the default branch. In the body, write:
+               - what the item was, in one line
+               - what you changed and why, in plain prose
+               - which test commands you ran and what they said
+               - anything you were unsure about, or decided to leave alone
+
+            Keep the change small and reviewable. If the item turns out to be bigger than one PR,
+            do the first useful slice, say so in the PR body, and add the remainder to BACKLOG.md
+            as new items rather than doing it all.
+
+            Never push to the default branch, never force-push, never touch .github/workflows,
+            and never add a secret or key to the repository.
