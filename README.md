@@ -51,6 +51,11 @@ out, Space to brake, Tab for the phone, G for graphics quality. On a phone, use 
 
 `web/legacy-2d.html` keeps the earlier top-down 2D version.
 
+## Unreal Engine 5 vertical slice
+
+`unreal/NaijaHustle/` is the UE5 project for a photoreal vertical slice: one Lagos street block at night in the
+rain, with the danfo conductor mission. See [`unreal/NaijaHustle/README.md`](unreal/NaijaHustle/README.md) for setup.
+
 ## Getting started
 
 1. Install **Unity 6000.0 LTS** with Android Build Support, then open this folder. Unity generates
