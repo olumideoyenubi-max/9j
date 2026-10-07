@@ -12,6 +12,7 @@ node p1-traffic.js      # 20 x 60s of traffic: no overlaps, no AI crashes, junct
 node p1-ui.js           # HUD layout on 7 screen sizes, job card, notifications, fuel, labels, controls
 node p2-conductor.js    # passengers, routes, CALL, change, comfort, full bus, missed stops, agberos, summary, go-slow
 node p3-first-day.js    # "First Day on the Danfo" end to end: dialogue, route, agbero, summary, fail + retry, unlock
+node p4-inventory.js    # inventory: Tab tap/hold, bag button, wheel, items, capacity, shops, documents, checkpoint, cash, clothing, vehicles, save
 node regression.js      # missions 1-2, chase, police still work
 ```
 Requires Node with the `playwright` package available (`NODE_PATH=$(npm root -g)` if installed globally).
@@ -21,6 +22,7 @@ folder; default `/tmp/claude-0/three-pkg/package`). Chromium renders WebGL with 
 
 ```bash
 node perf.js            # average frame time (software WebGL, so numbers are pessimistic)
+node shots-inv.js       # screenshots of the inventory tabs, quick wheel, a shop and the checkpoint (desktop, portrait, landscape)
 node shots-vis.js       # screenshots of the danfo, keke and a line-up of characters into $OUT (look at them, not pass/fail)
 ```
 

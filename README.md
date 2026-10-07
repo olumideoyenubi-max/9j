@@ -57,7 +57,16 @@ the title screen, in the phone's MapAm app, or with G:
 
 Controls: WASD or arrows to walk or drive (on foot, movement is relative to the camera), drag the
 screen to look around (the camera recentres behind you after 2 seconds), E for actions, F to get in or
-out, Space to brake, Tab for the phone, G for graphics quality. On a phone, use the joystick and buttons.
+out, Space to brake, Tab or I for the inventory (hold Tab for the quick wheel), P for the phone, G for
+graphics quality. On a phone, use the joystick and buttons (tap BAG for the inventory, hold it for the wheel).
+
+Inventory: a GTA-style bag with six tabs (Items, Cash, Documents, Clothing, Vehicles, Mission) and an
+8-slot quick wheel; the game slows to 30% while either is open. You start with pure water, gala,
+puff-puff, an energy drink, a first-aid kit, a toolkit, a jerrycan and your phone, in a 12-slot nylon
+bag (a backpack holds 20, a Ghana-Must-Go bag 30). Kiosks, market stalls and Trust In God Medicine Store
+sell supplies; the Oshoja Motor Park ticket booth sells a driver's licence and vehicle papers, which Task
+Force checkpoints now ask for. Cash on hand, the bank, documents, outfits and the vehicles you've driven
+all save with the game.
 
 `web/legacy-2d.html` keeps the earlier top-down 2D version.
 

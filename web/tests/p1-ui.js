@@ -69,8 +69,10 @@ const { VIEWPORTS, layout } = require('./layout');
       NH.resetWorld(); const st = NH.STATIONS[0];
       const v = NH.spawnVehicle('sedan', 300, 480, 0, { parked: true }); v.driver = 'player'; NH.player.veh = v; v.fuel = 40; NH.sim(.1);
       const labels = [...document.querySelectorAll('#hud-bl .stat')].filter(e => !e.hidden).map(e => e.querySelector('.lbl').textContent);
-      const f0 = v.fuel; NH.keys.KeyW = true; NH.sim(6); NH.keys.KeyW = false; NH.sim(2); const f1 = v.fuel;
-      v.fuel = 0; v.v = 0; NH.keys.KeyW = true; NH.sim(2); const movedEmpty = Math.abs(v.v); NH.keys.KeyW = false;
+      // a blind drive through random traffic can hit someone and get the player busted mid-test; this check is about fuel, so keep the police out of it
+      const calm = () => { if (NH.stars()) NH.clearHeat(false); };
+      const f0 = v.fuel; NH.keys.KeyW = true; NH.sim(6, calm); NH.keys.KeyW = false; NH.sim(2, calm); const f1 = v.fuel;
+      v.fuel = 0; v.v = 0; NH.keys.KeyW = true; NH.sim(2, calm); const movedEmpty = Math.abs(v.v); NH.keys.KeyW = false;
       v.x = st.x; v.y = st.y; v.v = 0; v.fuel = 10; NH.sim(.05);
       const ctxLabel = NH.actionContext() && NH.actionContext().label; const cash0 = NH.S.cash;
       NH.pressed.add('KeyE'); NH.sim(1 / 60);

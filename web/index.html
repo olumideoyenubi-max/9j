@@ -259,6 +259,146 @@ html:not(.touch) .touch-only { display: none !important; }
 
 }
 @media (prefers-reduced-motion: reduce) { .toast { animation: none; } #stars.flash span.on { animation: none; } }
+
+/* ---------- Inventory: full screen (tabs) and the quick wheel ----------
+   Opens over a blurred, darkened game that keeps running at 30% speed. Dark translucent panels and
+   the danfo-yellow accent, like the rest of the HUD; big tap targets; portrait and landscape. */
+#inv, #wheel { position: fixed; inset: 0; z-index: 11; box-sizing: border-box; padding: var(--top) var(--gutR) var(--bot) var(--gutL);
+  background: rgba(8,10,13,.5); backdrop-filter: blur(7px) brightness(.62); -webkit-backdrop-filter: blur(7px) brightness(.62); animation: invFade .18s ease-out; }
+#inv { display: grid; place-items: center; }
+@keyframes invFade { from { opacity: 0; } }
+.inv-panel { width: min(940px, 100%); height: min(640px, 100%); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto minmax(0, 1fr); overflow: hidden;
+  background: rgba(17,20,25,.94); border: 1px solid var(--line); border-top: 3px solid var(--danfo); border-radius: 16px; box-shadow: 0 24px 70px rgba(0,0,0,.65);
+  animation: invIn .22s cubic-bezier(.2,.8,.3,1); }
+@keyframes invIn { from { transform: translateY(14px) scale(.98); opacity: 0; } }
+.inv-head { display: flex; align-items: center; gap: 12px; padding: 12px 14px 8px 18px; }
+.inv-head h2 { font-family: var(--display); font-size: 20px; letter-spacing: .6px; color: var(--danfo); margin: 0; }
+.inv-head .inv-money { margin-left: auto; font-family: var(--mono); font-weight: 700; font-size: 15px; text-align: right; min-width: 0; }
+.inv-x { width: 44px; height: 44px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--line); font-size: 18px; flex: none; }
+.inv-tabs { display: flex; gap: 4px; padding: 0 12px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--line); }
+.inv-tabs::-webkit-scrollbar { display: none; }
+.inv-tabs button { flex: none; background: none; border: 0; border-bottom: 3px solid transparent; padding: 10px 12px 9px; min-height: 44px;
+  font-family: var(--display); font-size: 12px; letter-spacing: .5px; color: var(--muted); }
+.inv-tabs button.on { color: var(--danfo); border-bottom-color: var(--danfo); }
+.inv-body { overflow: auto; padding: 14px; min-height: 0; animation: invTab .18s ease-out; }
+@keyframes invTab { from { opacity: 0; transform: translateX(8px); } }
+.inv-split { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 14px; align-items: start; min-height: 100%; }
+.inv-cap { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.inv-cap .bar { flex: 1; max-width: 220px; }
+.inv-cap b { color: var(--ink); font-weight: 600; }
+.inv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+.icard { position: relative; display: grid; justify-items: center; gap: 4px; padding: 10px 6px 8px; min-height: 112px; border-radius: 12px;
+  background: var(--panel-2); border: 1px solid var(--line); text-align: center; font-size: 12px; font-weight: 600; line-height: 1.2; }
+.icard img { width: 56px; height: 56px; }
+.icard .q { position: absolute; top: 6px; right: 8px; font-family: var(--mono); font-size: 12px; color: var(--danfo); }
+.icard .wk { position: absolute; top: 6px; left: 8px; font-family: var(--mono); font-size: 10px; color: var(--muted); }
+.icard.on { border-color: var(--danfo); box-shadow: 0 0 0 1px var(--danfo) inset; }
+.icard.empty { border-style: dashed; opacity: .35; }
+.idetail { position: sticky; top: 0; display: grid; gap: 10px; padding: 14px; border-radius: 14px; background: var(--panel-2); border: 1px solid var(--line); }
+.idetail img { width: 84px; height: 84px; }
+.idetail h3 { font-family: var(--display); color: var(--danfo); font-size: 16px; margin: 0; letter-spacing: .3px; }
+.idetail p { margin: 0; font-size: 13px; line-height: 1.45; color: var(--muted); }
+.idetail .fx { color: var(--good); font-weight: 600; font-size: 13px; }
+.ibtns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.ibtns .btn { text-align: center; padding: 11px 6px; min-height: 44px; font-family: var(--display); font-size: 11px; letter-spacing: .4px; }
+.wslots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.wslots button { min-height: 52px; border-radius: 10px; background: #12161b; border: 1px solid var(--line); display: grid; place-items: center; padding: 4px; font-family: var(--mono); font-size: 10px; color: var(--muted); }
+.wslots button img { width: 30px; height: 30px; }
+.inv-note { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.inv-empty { padding: 30px 10px; text-align: center; color: var(--muted); font-size: 14px; }
+/* cash */
+.money-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.money { padding: 14px; border-radius: 14px; background: var(--panel-2); border: 1px solid var(--line); display: grid; gap: 6px; }
+.money span { font-size: 12px; color: var(--muted); font-family: var(--display); letter-spacing: .4px; }
+.money b { font-family: var(--mono); font-size: 26px; }
+.money .amt button { min-height: 36px; }
+.tx { display: grid; grid-template-columns: 4.5em minmax(0, 1fr) auto; gap: 10px; padding: 9px 4px; border-bottom: 1px solid var(--line); font-size: 13px; align-items: baseline; }
+.tx .t { font-family: var(--mono); color: var(--muted); font-size: 11px; }
+.tx .w { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tx .n { font-family: var(--mono); font-weight: 700; }
+.tx .n.p { color: var(--good); } .tx .n.m { color: var(--bad); }
+/* documents */
+.docs { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.doc { position: relative; border-radius: 14px; padding: 14px; min-height: 150px; display: grid; gap: 6px; align-content: start; overflow: hidden;
+  background: linear-gradient(135deg, #24412f, #18261d); border: 1px solid #3c6b4c; }
+.doc.union { background: linear-gradient(135deg, #4a3a08, #241c05); border-color: #8a6d12; }
+.doc.papers { background: linear-gradient(135deg, #1d3550, #121f2f); border-color: #33597f; }
+.doc h4 { margin: 0; font-family: var(--display); font-size: 13px; letter-spacing: .5px; color: var(--danfo); }
+.doc .dl { font-size: 12px; color: #d8d2c6; line-height: 1.45; }
+.doc .dl b { font-family: var(--mono); color: var(--ink); }
+.doc img { position: absolute; right: 12px; bottom: 12px; width: 52px; height: 52px; opacity: .85; }
+.doc.miss { background: #1a1d22; border: 1px dashed var(--line); filter: grayscale(1); }
+.doc.miss h4 { color: var(--muted); }
+.doc .how { font-size: 12px; color: var(--ink); background: rgba(255,255,255,.06); border-radius: 8px; padding: 8px 10px; line-height: 1.4; filter: none; }
+/* clothing */
+.cloth { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 14px; align-items: start; }
+.fits { display: grid; gap: 8px; }
+.fit { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 10px; align-items: center; text-align: left; padding: 10px 12px; min-height: 52px;
+  border-radius: 12px; background: var(--panel-2); border: 1px solid var(--line); }
+.fit i { width: 30px; height: 30px; border-radius: 50%; border: 2px solid rgba(255,255,255,.2); }
+.fit small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
+.fit em { font-style: normal; font-family: var(--display); font-size: 10px; color: var(--danfo); letter-spacing: .4px; }
+.fit.on { border-color: var(--danfo); }
+.fit.locked { opacity: .45; }
+.stage { display: grid; gap: 8px; position: sticky; top: 0; }
+#inv-prev { width: 100%; aspect-ratio: 2 / 3; border-radius: 14px; background: radial-gradient(ellipse at 50% 85%, #3a3324 0%, #1a1d22 55%, #121418 100%); border: 1px solid var(--line); }
+/* vehicles */
+.garage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 340px); gap: 14px; align-items: start; }
+.vrow { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--line); margin-bottom: 8px; text-align: left; width: 100%; box-sizing: border-box; }
+.vrow img { width: 48px; height: 48px; }
+.vrow small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
+.vrow.on { border-color: var(--danfo); }
+.vrow .btn { min-height: 44px; padding: 8px 12px; font-family: var(--display); font-size: 11px; }
+#inv-map { width: 100%; border-radius: 12px; background: #0b0e12; border: 1px solid var(--line); }
+/* the quick wheel */
+#wheel { display: grid; place-items: center; touch-action: none; }
+.wring { position: relative; width: min(380px, 92vw, 92vh); aspect-ratio: 1; border-radius: 50%; animation: invIn .16s ease-out;
+  background: radial-gradient(circle, rgba(17,20,25,.2) 0 24%, rgba(17,20,25,.92) 25% 70%, rgba(17,20,25,.0) 71%); }
+.wslot { position: absolute; width: 23%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; display: grid; place-items: center; align-content: center; gap: 0;
+  background: var(--panel-2); border: 2px solid var(--line); padding: 0; transition: transform .08s, border-color .08s; }
+.wslot img { width: 56%; height: 56%; }
+.wslot .q { font-family: var(--mono); font-size: 11px; color: var(--danfo); line-height: 1; }
+.wslot.on { border-color: var(--danfo); background: #2c2a1c; transform: translate(-50%, -50%) scale(1.12); }
+.wslot.none { opacity: .4; }
+.wcenter { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 44%; text-align: center; pointer-events: none; display: grid; gap: 3px; }
+.wcenter b { font-family: var(--display); color: var(--danfo); font-size: 13px; letter-spacing: .3px; }
+.wcenter span { font-size: 11px; color: var(--muted); line-height: 1.3; }
+/* shop rows */
+.shop { display: grid; gap: 8px; }
+.srow { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 10px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--line); }
+.srow img { width: 42px; height: 42px; }
+.srow small { display: block; color: var(--muted); font-size: 12px; }
+.srow .btn { min-height: 44px; min-width: 92px; padding: 8px 10px; font-family: var(--mono); font-size: 13px; }
+#buff[hidden] { display: none; }
+#bbar i { background: #ffb300; }
+/* touch bag button */
+#tbtns #tb-bag { position: absolute; right: 0; bottom: calc(100% + 8px); display: grid; place-items: center; align-content: center; gap: 1px; font-size: 9px; border-color: var(--danfo); } /* sits just above the cluster */
+#tbtns #tb-bag svg { width: 22px; height: 22px; }
+.touch #prompt { bottom: calc(var(--bot) + 3 * var(--btn) + 28px); }
+@media (max-width: 700px) {
+  .inv-split, .cloth, .garage { grid-template-columns: minmax(0, 1fr); }
+  .idetail { position: static; }
+  .stage { position: static; grid-row: 1; max-width: 240px; justify-self: center; width: 100%; }
+  .inv-head h2 { font-size: 16px; }
+  .inv-head .inv-money { font-size: 12px; line-height: 1.3; }
+  .inv-grid { grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); }
+}
+@media (orientation: landscape) and (max-height: 520px) {
+  .inv-panel { height: 100%; }
+  .inv-head { padding: 6px 10px 4px 14px; } .inv-tabs button { padding: 8px 10px 7px; min-height: 40px; }
+  .inv-split { grid-template-columns: minmax(0, 1fr) 260px; } .cloth { grid-template-columns: minmax(0, 1fr) 170px; } .garage { grid-template-columns: minmax(0, 1fr) 240px; }
+  .stage { grid-row: auto; }
+  .touch #prompt { bottom: var(--bot); right: calc(var(--gutR) + 4 * var(--btn) + 34px); }
+  #tbtns #tb-bag { position: static; }
+  #tbtns { grid-template-columns: repeat(4, var(--btn)); }
+}
+/* on touch the bag button stays above the open inventory (bottom-right), so the same button closes it */
+html.inv-open #touch { z-index: 12; }
+html.inv-open #tbtns > :not(#tb-bag), html.inv-open #stick-zone { visibility: hidden; }
+html.inv-open #tbtns #tb-bag { position: fixed; right: var(--gutR); bottom: var(--bot); background: var(--danfo); color: var(--danfo-ink); }
+.touch #inv { padding-bottom: calc(var(--bot) + var(--btn) + 12px); }
+@media (orientation: landscape) and (max-height: 520px) { .touch #inv { padding-bottom: var(--bot); padding-right: calc(var(--gutR) + var(--btn) + 12px); } }
+@media (prefers-reduced-motion: reduce) { #inv, #wheel, .inv-panel, .inv-body, .wring { animation: none; } }
 </style>
 
 <div id="game"><canvas id="gl" aria-label="3D Lagos city"></canvas><canvas id="c" aria-hidden="true"></canvas></div>
@@ -289,6 +429,7 @@ html:not(.touch) .touch-only { display: none !important; }
   <div id="speed" hidden></div>
   <div class="stat"><span class="lbl">❤ Health</span><div class="bar" id="hbar"><i></i></div><span class="val" id="hval">100</span></div>
   <div class="stat" id="frow" hidden><span class="lbl">⛽ Fuel</span><div class="bar" id="fbar"><i></i></div><span class="val" id="fval">100%</span></div>
+  <div class="stat" id="buff" hidden><span class="lbl">⚡ Energy</span><div class="bar" id="bbar"><i></i></div><span class="val" id="bval"></span></div>
   <div class="stat" id="drow" hidden><span class="lbl">🔧 Body</span><div class="bar" id="vbar"><i></i></div><span class="val" id="dval">100%</span></div>
 </div>
 <button class="hud" id="prompt" type="button" hidden></button>
@@ -304,6 +445,7 @@ html:not(.touch) .touch-only { display: none !important; }
 <div id="touch">
   <div id="stick-zone" class="touch-only"><div id="stick"><div id="knob"></div></div></div>
   <div id="tbtns" class="touch-only">
+    <button type="button" data-b="bag" id="tb-bag" aria-label="Inventory. Hold for the quick wheel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2"/></svg>BAG</button>
     <button type="button" data-b="phone">PHONE</button>
     <button type="button" data-b="action" id="tb-action">ACTION</button>
     <button type="button" data-b="enter" id="tb-enter">ENTER</button>
@@ -311,6 +453,11 @@ html:not(.touch) .touch-only { display: none !important; }
     <button type="button" data-b="gas" id="tb-gas">GAS</button>
   </div>
 </div>
+
+<div id="inv" hidden><div class="inv-panel" role="dialog" aria-modal="true" aria-label="Inventory">
+  <div class="inv-head"><h2>INVENTORY</h2><span class="inv-money" id="inv-money"></span><button class="inv-x" id="inv-x" type="button" aria-label="Close inventory">✕</button></div>
+  <div class="inv-tabs" id="inv-tabs" role="tablist"></div><div class="inv-body" id="inv-body"></div></div></div>
+<div id="wheel" hidden aria-label="Quick wheel"><div class="wring" id="wring"></div></div>
 
 <div class="overlay" id="start">
   <div class="sheet">
@@ -323,7 +470,8 @@ html:not(.touch) .touch-only { display: none !important; }
       <kbd>E</kbd><span>Action: missions, conductor shift, refuel, shops (or get in/out)</span>
       <kbd>F</kbd><span>Enter or steal a vehicle · get out</span>
       <kbd>Space</kbd><span>Brake (sprint with Shift on foot)</span>
-      <kbd>Tab / P</kbd><span>Phone: chats, KoboPay, Yarns, map</span>
+      <kbd>Tab / I</kbd><span>Inventory (hold Tab for the quick wheel, 1–8 to pick)</span>
+      <kbd>P</kbd><span>Phone: chats, KoboPay, Yarns, map</span>
       <kbd>R · H</kbd><span>Radio · horn</span>
       <kbd>Drag · G</kbd><span>Look around · graphics quality</span>
     </div>
@@ -644,9 +792,9 @@ const S = {
   cash: 5000, cred: 0, integ: 0, clout: 0, done: [], announced: [], outfits: ['fit_street_basic'], outfit: 'fit_street_basic',
   biz: { owned: false, box: 0 }, minutes: 8 * 60, jobs: 0, chats: [], feed: [], log: [], actDone: false,
 };
-function save() { try { localStorage.setItem('naijahustle.v1', JSON.stringify(S)); } catch (e) {} }
+function save() { try { garageSync(); localStorage.setItem('naijahustle.v1', JSON.stringify(S)); } catch (e) {} }
 function loadSave() { try { const j = localStorage.getItem('naijahustle.v1'); if (j) return JSON.parse(j); } catch (e) {} return null; }
-function applyState(o) { if (o) Object.assign(S, o, { biz: Object.assign({ owned: false, box: 0 }, o.biz || {}) }); }
+function applyState(o) { if (o) Object.assign(S, o, { biz: Object.assign({ owned: false, box: 0 }, o.biz || {}) }); invInit(); }
 
 // ---------------------------------------------------------------- entities
 const VT = {
@@ -694,9 +842,12 @@ addEventListener('keydown', e => {
   if (['Tab', 'Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) e.preventDefault();
   if (!keys[e.code]) pressed.add(e.code); keys[e.code] = true;
   if (DLG.open) { if (['KeyE', 'Space', 'Enter', 'NumpadEnter'].includes(e.code)) { e.preventDefault(); if (!e.repeat) dlgAdvance(); return; } if (e.code === 'Escape') { dlgSkip(); return; } }
-  if (e.code === 'Escape' || (!$('#phone').hidden && (e.code === 'Tab' || e.code === 'KeyP'))) { closeOverlays(); pressed.clear(); }
+  if ((e.code === 'Tab' || e.code === 'KeyI') && $('#phone').hidden && $('#sheet').hidden) { pressed.delete(e.code); if (!e.repeat) invKeyDown(e.code); return; }
+  if (INV.wheel && /^Digit[1-8]$/.test(e.code)) { pressed.delete(e.code); INV.wsel = +e.code.slice(5) - 1; invWheelClose(true); return; }
+  if (e.code === 'Escape' && (INV.open || INV.wheel)) { invClose(); return; }
+  if (e.code === 'Escape' || (!$('#phone').hidden && e.code === 'KeyP')) { closeOverlays(); pressed.clear(); }
 });
-addEventListener('keyup', e => { keys[e.code] = false; });
+addEventListener('keyup', e => { keys[e.code] = false; if (e.code === 'Tab') invKeyUp(); });
 addEventListener('blur', () => { for (const k in keys) keys[k] = false; });
 const touch = { x: 0, y: 0, on: false, held: {} };
 const hit = (...c) => c.some(k => pressed.has(k));
@@ -711,7 +862,7 @@ const held = (...c) => c.some(k => keys[k]);
   const up = e => { if (e.pointerId !== id) return; id = null; touch.on = false; touch.x = touch.y = 0; stick.classList.remove('on'); knob.style.transform = ''; rest(); };
   zone.addEventListener('pointerup', up); zone.addEventListener('pointercancel', up);
   for (const b of document.querySelectorAll('#tbtns button')) {
-    const name = b.dataset.b;
+    const name = b.dataset.b; if (name === 'bag') continue; // the bag button has its own tap / long-press handling
     b.addEventListener('pointerdown', e => { e.preventDefault(); if (DLG.open) { if (name === 'action') dlgAdvance(); return; } b.setPointerCapture(e.pointerId); pressed.add('T_' + name); touch.held[name] = true; b.classList.add('down'); });
     const rel = () => { touch.held[name] = false; b.classList.remove('down'); }; b.addEventListener('pointerup', rel); b.addEventListener('pointercancel', rel); b.addEventListener('lostpointercapture', rel);
   }
@@ -720,14 +871,15 @@ const held = (...c) => c.some(k => keys[k]);
 })();
 let promptAct = null; // what tapping the prompt pill does: 'action' or 'enter'
 const IN = {
-  enter: () => hit('KeyF', 'T_enter'),
-  action: () => hit('KeyE', 'T_action'),
-  phone: () => hit('Tab', 'KeyP', 'T_phone'),
-  brake: () => held('Space') || (!!player.veh && !!touch.held.brake),
-  gas: () => !!touch.held.gas,
-  sprint: () => held('ShiftLeft', 'ShiftRight') || (!player.veh && !!touch.held.gas),
-  kx: () => (held('KeyD', 'ArrowRight') ? 1 : 0) - (held('KeyA', 'ArrowLeft') ? 1 : 0),
-  ky: () => (held('KeyS', 'ArrowDown') ? 1 : 0) - (held('KeyW', 'ArrowUp') ? 1 : 0),
+  // while the inventory or the quick wheel is open the world runs slowly and ignores driving / walking input
+  enter: () => !invLock() && hit('KeyF', 'T_enter'),
+  action: () => !invLock() && hit('KeyE', 'T_action'),
+  phone: () => !invLock() && hit('KeyP', 'T_phone'),
+  brake: () => !invLock() && (held('Space') || (!!player.veh && !!touch.held.brake)),
+  gas: () => !invLock() && !!touch.held.gas,
+  sprint: () => !invLock() && (held('ShiftLeft', 'ShiftRight') || (!player.veh && !!touch.held.gas)),
+  kx: () => invLock() ? 0 : (held('KeyD', 'ArrowRight') ? 1 : 0) - (held('KeyA', 'ArrowLeft') ? 1 : 0),
+  ky: () => invLock() ? 0 : (held('KeyS', 'ArrowDown') ? 1 : 0) - (held('KeyW', 'ArrowUp') ? 1 : 0),
 };
 
 // ---------------------------------------------------------------- audio (horn, sting)
@@ -768,7 +920,7 @@ function placeBanner() {
   placeFree(c, 'top', 420); c.dataset.spot = 'band';
   // no clean spot: skip it rather than overlap any HUD piece
   const r = c.getBoundingClientRect();
-  for (const q of ['#hud-tl', '#hud-tr', '#hud-bl', '#prompt', '#tbtns', '#stick', '#cpanel', '#card', '#toasts']) {
+  for (const q of ['#hud-tl', '#hud-tr', '#hud-bl', '#prompt', '#tbtns', '#tb-bag', '#stick', '#cpanel', '#card', '#toasts']) {
     const e = $(q); if (!e || e.hidden || e.closest('[hidden]') || getComputedStyle(e).display === 'none') continue;
     for (const o of q === '#hud-tl' || q === '#hud-tr' ? [...e.children] : [e]) { if (o.hidden || !o.offsetWidth) continue; const b = o.getBoundingClientRect();
       if (r.left < b.right && b.left < r.right && r.top < b.bottom && b.top < r.bottom) { c.hidden = true; return; } }
@@ -784,7 +936,7 @@ function placeFree(c, mode, maxW) {
   if (tb && bl && innerHeight < 520 && innerWidth > innerHeight) { cx = (bl.right + tb.left) / 2; cw = tb.left - bl.right - 16; } // short landscape: between stats and buttons
   c.style.width = cw + 'px'; c.style.left = cx + 'px'; c.style.transform = 'none';
   let top = 0, bot = innerHeight;
-  for (const sel of ['#hud-tl', '#hud-tr', '#hud-bl', '#prompt', '#tbtns', '#stick'].concat(c.id !== 'cpanel' && !$('#cpanel').hidden ? ['#cpanel'] : [], c.id !== 'banner' && !$('#banner').hidden ? ['#banner'] : [])) {
+  for (const sel of ['#hud-tl', '#hud-tr', '#hud-bl', '#prompt', '#tbtns', '#tb-bag', '#stick'].concat(c.id !== 'cpanel' && !$('#cpanel').hidden ? ['#cpanel'] : [], c.id !== 'banner' && !$('#banner').hidden ? ['#banner'] : [])) {
     const r = rect(sel); if (!r || r.right <= cx - cw / 2 || r.left >= cx + cw / 2) continue;
     if (r.top + r.height / 2 < innerHeight / 2) top = Math.max(top, r.bottom); else bot = Math.min(bot, r.top);
   }
@@ -1135,7 +1287,7 @@ function spawnTraffic(dt) {
       const v = spawnVehicle(type, s.x, s.y, s.a, { from: s.from, to: s.to }); v.v = 60;
     }
   }
-  vehicles = vehicles.filter(v => { const keep = v.mission || v === player.veh || v === player.owned || v.driver === 'cop' && stars() > 0 || dist(v, p) < 1300; if (!keep) releaseJunction(v); return keep; });
+  vehicles = vehicles.filter(v => { const keep = v.mission || v === player.veh || v === player.owned || !!v.gid || v.driver === 'cop' && stars() > 0 || dist(v, p) < 1300; if (!keep) releaseJunction(v); return keep; });
   // pedestrians
   const pw = IS_TOUCH ? 26 : 40;
   peds = peds.filter(q => dist(q, p) < 1000);
@@ -1250,6 +1402,7 @@ function passMission() {
   const ms = MS.cur, def = ms.def; MS.cur = null;
   const pay = Math.round(def.reward * (ms.bonusFail ? .9 : 1)); ms.slowClock = false;
   earn(pay, def.title); S.cred += def.cred; S.integ += def.integ || 0; S.done.push(ms.id);
+  if (ms.id === 'lag_01') { S.docs.union = S.docs.papers = true; ui.toast('Baba Driver gave you a danfo union card and the vehicle papers. See DOCUMENTS in your bag.', 'good', { key: 'docs' }); }
   ui.card('JOB DONE!', def.title, `${pay ? `+${naira(pay)}   ` : ''}+${def.cred} cred${ms.bonusFail ? '   (bonus missed)' : def.bonus ? '   (bonus earned)' : ''}`);
   if (ms.id === 'lag_01') setTimeout(() => ui.toast(`New side job: Conductor Shift. Get in any danfo and ${IS_TOUCH ? 'tap ACTION' : 'press E'}.`, 'good', { key: 'sidejob' }), 2800);
   beep([523, 659, 784, 1046], .14, .06, 'triangle');
@@ -1488,7 +1641,11 @@ function endShift(opts = {}) {
   if (!SHIFT.on) return; const t = shiftTotals(), routeName = routeOf().name, cutPct = Math.round((SHIFT.cut ?? OWNER_CUT) * 100); SHIFT.on = false;
   // anyone still on board gets down; their fares were already collected
   SHIFT.carried += SHIFT.onboard.length; S.jobs += SHIFT.onboard.length; SHIFT.onboard = [];
-  const paid = t.net >= 0 ? t.net : -Math.min(S.cash, -t.net); if (paid) earn(paid, 'Conductor shift');
+  const paid = t.net >= 0 ? t.net : -Math.min(S.cash, -t.net);
+  if (paid === t.net) { // the transactions list shows each part of the settle-up; the total is the same
+    earn(t.fares + t.tips + t.bonus + t.keep, 'Fares & tips (conductor shift)'); if (t.cut) earn(-t.cut, `${SHIFT.owner}'s cut`);
+    if (t.agbero) earn(-t.agbero, 'Agbero tickets'); if (t.penalties + t.damage) earn(-(t.penalties + t.damage), 'Shift penalties & damage');
+  } else if (paid) earn(paid, 'Conductor shift');
   const row = (k, val, cls = '') => `<div style="display:flex;justify-content:space-between;gap:12px" class="${cls}"><span>${k}</span><b style="font-family:var(--mono)">${val}</b></div>`;
   const neg = n => n ? '−' + naira(n) : naira(0);
   WORLD.lastSummary = Object.assign({ carried: SHIFT.carried, missed: SHIFT.missed, paid }, t);
@@ -1556,7 +1713,8 @@ function enterVehicle(v) {
     floaters.push({ x: v.x, y: v.y - 24, text: pick(['Thief! Thief!', 'Ah! My motor!', 'Somebody help!']), t: 1.6 });
     report(v.driver === 'cop' ? 'AttackOnResponder' : 'VehicleTheft', v, 1); v.stolen = true;
   } else if (!v.mission && v !== player.owned && !v.parkDanfo) { report('VehicleTheft', v, .5); v.stolen = true; }
-  v.driver = 'player'; player.veh = v; player.owned = v;
+  v.driver = 'player'; player.veh = v; player.owned = v; garageAdd(v);
+  if (WAYPOINT && WAYPOINT.gid === v.gid) WAYPOINT = null;
 }
 function exitVehicle() {
   const v = player.veh; if (!v || Math.abs(v.v) > 70) return;
@@ -1575,7 +1733,7 @@ function updatePlayer(dt) {
   if (v) {
     let thr = -IN.ky(), steer = IN.kx(), brake = IN.brake();
     // touch: joystick steers, GAS accelerates, holding BRAKE once stopped reverses
-    if (touch.on) steer = clamp(touch.x * 1.25, -1, 1);
+    if (touch.on && !invLock()) steer = clamp(touch.x * 1.25, -1, 1);
     if (IN.gas()) thr = 1;
     else if (touch.held.brake) { if (v.v < 8) { thr = -1; brake = false; } }
     if (v.fuel <= 0 && thr > 0) thr = 0; // out of fuel: coasting only
@@ -1588,9 +1746,9 @@ function updatePlayer(dt) {
     if (before > 0 && v.fuel <= 0) ui.toast('Out of fuel. Push on to a station or find another ride.', 'bad', { key: 'fuel' });
     if (v.hp <= 0 && !v.smoked) { v.smoked = true; ui.toast(IS_TOUCH ? 'The engine is dead. Tap EXIT.' : 'The engine is dead. Press E to get out.', 'bad', { key: 'engine' }); }
   } else {
-    let mx = IN.kx(), my = IN.ky(); if (touch.on) { mx = touch.x; my = touch.y; }
+    let mx = IN.kx(), my = IN.ky(); if (touch.on && !invLock()) { mx = touch.x; my = touch.y; }
     const m = Math.hypot(mx, my); if (m > 0) { // camera-relative: up/W walks away from the camera
-      const sp = (IN.sprint() ? 190 : 120) * Math.min(1, m), fx = Math.cos(CAMS.yaw), fy = Math.sin(CAMS.yaw), wx = -my * fx - mx * fy, wy = -my * fy + mx * fx;
+      const sp = (IN.sprint() ? (simClock < BUFF.sprintUntil ? 245 : 190) : 120) * Math.min(1, m), fx = Math.cos(CAMS.yaw), fy = Math.sin(CAMS.yaw), wx = -my * fx - mx * fy, wy = -my * fy + mx * fx;
       tryMovePlayer(wx / Math.max(1, m) * sp * dt, wy / Math.max(1, m) * sp * dt); player.a = Math.atan2(wy, wx); }
   }
   if (player.hp <= 0) hospital();
@@ -1617,6 +1775,7 @@ function actionContext() {
   if (st && v.fuel < 99) { const cost = Math.ceil((100 - v.fuel) * FUEL_PRICE); return { label: Math.abs(v.v) > 25 ? `Stop to refuel · ${naira(cost)}` : `Refuel · ${naira(cost)}`, run: () => refuel(v) }; }
   if (!v && nearPlace(PL.tailor, 30)) return { label: 'Balo Tailor', run: openTailor };
   if (!v && nearPlace(PL.carwash, 30)) return { label: 'Mainland Shine Car Wash', run: openCarWash };
+  const shop = !v && nearShop(); if (shop) return { label: shop === 'booth' ? 'Ticket booth: licence & papers' : SHOPS[shop].name, run: () => openShop(shop) };
   if (v && v.type === 'danfo' && !MS.cur && !SHIFT.on) return isDone('lag_01') ? { label: 'Conductor Shift (side job)', run: openRoutePicker } : { label: 'Conductor shifts unlock after “First Day on the Danfo”', run: () => ui.toast('Finish “First Day on the Danfo” with Baba Driver first.', '', { key: 'shift' }) };
   if (SHIFT.on && v === SHIFT.bus) return { label: 'Conductor shift menu', run: openShiftMenu };
   return null;
@@ -1654,13 +1813,17 @@ function checkCheckpoint(dt) {
   if (o && (o.t === 'chase' || o.t === 'loseheat')) return; // chases blow straight through
   CP.cool = 90; v.v = 0; openCheckpoint();
 }
+function papersOk() { const v = player.veh; return { lic: !!S.docs.licence, pap: !!S.docs.papers && !(v && v.stolen), stolen: !!(v && v.stolen && S.docs.papers) }; }
 function openCheckpoint() {
-  const opener = pick(['"Oga, good afternoon. Particulars."', '"Where you dey go? Wetin dey that boot?"', '"Na you get this motor? Park well."', '"Anything for the boys?"']);
-  const respect = OUTFITS.find(o => o.id === S.outfit).respect;
+  const opener = pick(['"Oga, good afternoon. Licence and vehicle papers."', '"Particulars! Licence, papers, everything."', '"Na you get this motor? Show me your papers."']);
+  const respect = OUTFITS.find(o => o.id === S.outfit).respect, d = papersOk(), ok = d.lic && d.pap;
+  const tick = (b, s) => `<span style="color:${b ? 'var(--good)' : 'var(--bad)'};white-space:nowrap">${b ? '✔' : '✘'} ${s}</span>`;
   showSheet(`<h3>Checkpoint</h3><p>${opener}</p><p class="muted">Eko Task Force · Third Lagoon Bridge east end. Somebody on the bus behind is holding up a phone.</p>
+  <p style="font-size:14px">${tick(d.lic, "Driver's licence")} &nbsp; ${tick(d.pap, d.stolen ? 'Vehicle papers (not for this motor!)' : 'Vehicle papers')}</p>
   <div class="btns">
-    <button class="btn" data-c="Comply" type="button">Comply<small>Show papers. Slow but clean.</small></button>
-    <button class="btn danger" data-c="Settle" type="button">Settle (${naira(CHECKPOINT.settle)})<small>Fast. Costs integrity.</small></button>
+    ${ok ? `<button class="btn primary" data-c="Papers" type="button">Show papers<small style="color:inherit">Everything in order</small></button>`
+      : `<button class="btn danger" data-c="Settle" type="button">Settle (${naira(CHECKPOINT.settle)})<small>"Something for the boys." Costs integrity.</small></button>
+    <button class="btn danger" data-c="Refuse" type="button">No papers, no settlement<small>They radio ahead: 1 wanted star</small></button>`}
     <button class="btn" data-c="Talk" type="button">Talk your way<small>Outfit respect +${respect}, cred helps</small></button>
     <button class="btn danger" data-c="Floor" type="button">Floor it<small>Instant heat</small></button>
   </div><p id="cp-out" class="muted" aria-live="polite"></p>`, el => {
@@ -1673,7 +1836,9 @@ function openCheckpoint() {
 }
 function resolveCheckpoint(choice, respect) {
   let kind, text, heat = 0, integ = 0, clout = 0, delay = 0;
-  if (choice === 'Comply') { kind = 'Delayed'; delay = CHECKPOINT.delay; integ = 1; text = "Papers checked, boot checked, patience checked. You're clear."; }
+  if (choice === 'Papers') { kind = 'WavedThrough'; integ = 1; text = '"Everything correct… Nothing for the boys? Oya, go."'; }
+  else if (choice === 'Refuse') { kind = 'Escalated'; heat = 1; integ = 2; text = '"No papers and you no wan settle? Oya, my oga go hear this." He radios ahead. One wanted star.'; }
+  else if (choice === 'Comply') { kind = 'Delayed'; delay = CHECKPOINT.delay; integ = 1; text = "Papers checked, boot checked, patience checked. You're clear."; }
   else if (choice === 'Talk') { const score = respect + S.cred / 20 + rnd(0, 60); if (score >= CHECKPOINT.talk) { kind = 'WavedThrough'; text = '"Ah, big boy! Correct outfit. Go well."'; } else { kind = 'Delayed'; delay = CHECKPOINT.delay * 1.5; text = 'Your story did not land. Park well.'; } }
   else if (choice === 'Floor') { kind = 'Escalated'; heat = 2; text = 'You floored it. Spikes, sirens, wahala.'; }
   else {
@@ -1711,11 +1876,403 @@ function openCarWash() {
   });
 }
 
+// ---------------------------------------------------------------- inventory
+// Items live in S.inv as stacks ({ id, n }); each started stack takes one slot of the bag. The quick
+// wheel holds 8 item ids. Everything here is part of S, so it saves and loads with the game.
+const ITEMS = {
+  water:    { name: 'Pure water', desc: 'A cold 50cl sachet. Bite the corner, squeeze, enjoy.', fx: '+10 health', hp: 10, price: 50, stack: 10, anim: 'drink', col: '#9fd3ff' },
+  gala:     { name: 'Gala', desc: 'Sausage roll from the go-slow hawker. Breakfast of champions.', fx: '+15 health', hp: 15, price: 200, stack: 10, anim: 'eat', col: '#e53935' },
+  puff:     { name: 'Puff-puff', desc: 'Five hot, sugary dough balls in a paper wrap.', fx: '+20 health', hp: 20, price: 100, stack: 10, anim: 'eat', col: '#b0702c' },
+  energy:   { name: 'Zoom Zoom energy drink', desc: 'Tastes like battery and ambition. Your legs will thank you, your heart maybe not.', fx: '+10 health · faster sprint for 60s', hp: 10, sprint: 60, price: 500, stack: 5, anim: 'drink', col: '#00c853' },
+  firstaid: { name: 'First-aid kit', desc: 'Plasters, gauze, spirit and a small prayer.', fx: '+50 health', hp: 50, price: 3000, stack: 3, anim: 'heal', col: '#ffffff' },
+  toolkit:  { name: 'Toolkit', desc: 'Spanners, a hammer and a roll of masking tape. Stand next to the vehicle.', fx: 'Repairs 40% of vehicle damage', repair: .4, price: 5000, stack: 2, anim: 'tool', col: '#c62828' },
+  jerrycan: { name: 'Jerrycan of fuel', desc: 'Black-market petrol in a 25-litre jerrycan. Smells like trouble.', fx: 'Refuels your vehicle by 50%', fuel: 50, price: 2500, stack: 2, anim: 'tool', col: '#fbc02d' },
+  phone:    { name: 'Phone', desc: 'Cracked screen, 14% battery, 63 unread messages.', fx: 'Opens your phone', phone: true, stack: 1, noDrop: true, col: '#263238' },
+};
+const BAGS = {
+  nylon:    { name: 'Nylon bag', slots: 12, desc: 'Black nylon. Holds more than it should.' },
+  backpack: { name: 'Backpack', slots: 20, price: 8000, desc: 'Fake designer, real zips. 20 slots.' },
+  gmg:      { name: 'Ghana-Must-Go bag', slots: 30, price: 15000, desc: 'The legendary checked bag. 30 slots.' },
+};
+const DOCS = {
+  licence: { name: "Driver's licence", how: 'Buy one at the Oshoja Motor Park ticket booth (₦6,000). Driving test is "optional".' },
+  union:   { name: 'Danfo union card', how: 'Finish “First Day on the Danfo”. Baba Driver registers you with the union.' },
+  papers:  { name: 'Vehicle papers', how: 'Baba Driver hands them over after your first day, or an agent at the park ticket booth sells them (₦4,000).' },
+};
+const BOOTH = { x: 368, y: 300 }; // park ticket booth: licence and papers
+const DOC_PRICE = { licence: 6000, papers: 4000 };
+const SHOPS = {
+  kiosk: { name: 'Roadside kiosk', line: 'Mama Chidi leans out of the hatch. "What you want, my pikin?"', items: ['water', 'gala', 'puff', 'energy'] },
+  stall: { name: 'Market stall', line: '"Customer! Come and buy. Everything original… mostly."', items: ['water', 'gala', 'puff', 'jerrycan', 'toolkit', 'bag:backpack', 'bag:gmg'] },
+  medicine: { name: 'Trust In God Medicine Store', line: 'The pharmacist peers over his glasses. "No prescription? No problem."', items: ['firstaid', 'energy', 'water'] },
+};
+const WHEEL_DEFAULT = ['water', 'gala', 'puff', 'energy', 'firstaid', 'toolkit', 'jerrycan', 'phone'];
+const INV_START = [['water', 3], ['gala', 2], ['puff', 1], ['energy', 1], ['firstaid', 1], ['toolkit', 1], ['jerrycan', 1], ['phone', 1]];
+const KIOSKS = [], MED_SHOPS = [];
+const BUFF = { sprintUntil: 0 };
+const INV = { open: false, tab: 'items', sel: null, assign: false, wheel: false, wsel: -1, tabAt: 0, holdT: null, pv: 0, pvFit: null, gsel: 0 };
+let WAYPOINT = null;
+
+function invInit() { // fills in anything an older save is missing
+  if (!Array.isArray(S.inv)) S.inv = INV_START.map(([id, n]) => ({ id, n }));
+  S.inv = S.inv.filter(e => ITEMS[e.id] && e.n > 0);
+  if (!BAGS[S.bag]) S.bag = 'nylon';
+  if (!Array.isArray(S.wheel) || S.wheel.length !== 8) S.wheel = WHEEL_DEFAULT.slice();
+  if (typeof S.bank !== 'number') S.bank = 12500;
+  S.docs = Object.assign({ licence: false, union: false, papers: false }, S.docs || {});
+  if (isDone('lag_01')) S.docs.union = S.docs.papers = true;
+  if (!Array.isArray(S.garage)) S.garage = [];
+}
+const invCount = id => { const e = S.inv.find(x => x.id === id); return e ? e.n : 0; };
+const bagSlots = () => BAGS[S.bag].slots;
+const slotsUsed = (inv = S.inv) => inv.reduce((a, e) => a + Math.ceil(e.n / ITEMS[e.id].stack), 0);
+function canAdd(id, n = 1) { const after = S.inv.map(e => ({ id: e.id, n: e.n + (e.id === id ? n : 0) })); if (!after.some(e => e.id === id)) after.push({ id, n }); return slotsUsed(after) <= bagSlots(); }
+function addItem(id, n = 1) { if (!canAdd(id, n)) return false; const e = S.inv.find(x => x.id === id); if (e) e.n += n; else S.inv.push({ id, n }); invRefresh(); return true; }
+function takeItem(id, n = 1) { const e = S.inv.find(x => x.id === id); if (!e || e.n < n) return false; e.n -= n; if (e.n <= 0) S.inv = S.inv.filter(x => x !== e); invRefresh(); return true; }
+
+// ---- icons: drawn once on a canvas per id, used as <img> everywhere
+const ICONS = {};
+function icon(id) {
+  if (ICONS[id]) return ICONS[id];
+  const c = document.createElement('canvas'); c.width = c.height = 96; const g = c.getContext('2d');
+  const rr = (x, y, w, h, r, fill, stroke) => { g.beginPath(); g.roundRect ? g.roundRect(x, y, w, h, r) : g.rect(x, y, w, h); if (fill) { g.fillStyle = fill; g.fill(); } if (stroke) { g.strokeStyle = stroke; g.lineWidth = 3; g.stroke(); } };
+  const txt = (s, x, y, sz, col, w = 800) => { g.fillStyle = col; g.font = `${w} ${sz}px "Bricolage Grotesque", sans-serif`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, x, y); };
+  g.lineJoin = 'round';
+  switch (id) {
+    case 'water': g.save(); g.translate(48, 50); g.rotate(-.18); rr(-26, -32, 52, 64, 14, 'rgba(200,230,255,.85)', '#e8f6ff'); g.fillStyle = '#1e88e5'; g.beginPath(); g.moveTo(-26, 6); g.quadraticCurveTo(-8, -4, 8, 6); g.quadraticCurveTo(18, 12, 26, 4); g.lineTo(26, 18); g.lineTo(-26, 18); g.fill();
+      txt('PURE', 0, -14, 12, '#0d47a1'); txt('WATER', 0, -2, 11, '#0d47a1'); g.restore(); break;
+    case 'gala': g.save(); g.translate(48, 48); g.rotate(-.5); rr(-38, -15, 76, 30, 8, '#f5c400', '#b71c1c'); g.fillStyle = '#c62828'; g.fillRect(-20, -15, 40, 30); txt('GALA', 0, 1, 14, '#ffeb3b'); g.restore(); break;
+    case 'puff': rr(14, 50, 68, 30, 6, '#f3eee4'); for (const [x, y, r] of [[34, 50, 14], [58, 48, 15], [46, 34, 14], [70, 36, 11], [24, 36, 11]]) { const gr = g.createRadialGradient(x - 4, y - 5, 2, x, y, r); gr.addColorStop(0, '#e8a65a'); gr.addColorStop(1, '#8a4b17'); g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); } break;
+    case 'energy': rr(28, 12, 40, 74, 10, '#111', '#00c853'); g.fillStyle = '#00c853'; g.beginPath(); g.moveTo(52, 26); g.lineTo(38, 52); g.lineTo(48, 52); g.lineTo(42, 72); g.lineTo(60, 44); g.lineTo(50, 44); g.lineTo(56, 26); g.fill(); rr(32, 8, 32, 7, 3, '#bdbdbd'); break;
+    case 'firstaid': rr(12, 24, 72, 56, 10, '#f5f5f5', '#c62828'); rr(38, 16, 20, 10, 4, null, '#9e9e9e'); g.fillStyle = '#d32f2f'; g.fillRect(41, 34, 14, 36); g.fillRect(30, 45, 36, 14); break;
+    case 'toolkit': rr(12, 38, 72, 42, 6, '#c62828', '#7f0000'); rr(34, 26, 28, 14, 5, null, '#424242'); g.fillStyle = '#7f0000'; g.fillRect(12, 52, 72, 4);
+      g.save(); g.translate(48, 66); g.rotate(-.6); rr(-24, -4, 40, 8, 3, '#cfd8dc'); g.beginPath(); g.arc(20, 0, 8, 0, 7); g.fillStyle = '#cfd8dc'; g.fill(); g.fillStyle = '#c62828'; g.fillRect(20, -3, 10, 6); g.restore(); break;
+    case 'jerrycan': g.fillStyle = '#fbc02d'; g.beginPath(); g.moveTo(18, 30); g.lineTo(58, 16); g.lineTo(78, 16); g.lineTo(78, 86); g.lineTo(18, 86); g.closePath(); g.fill(); g.strokeStyle = '#8d6e00'; g.lineWidth = 3; g.stroke();
+      rr(56, 22, 16, 12, 3, null, '#8d6e00'); g.fillStyle = '#2e7d32'; g.fillRect(26, 50, 44, 10); rr(14, 22, 12, 10, 3, '#424242'); break;
+    case 'phone': rr(28, 8, 40, 80, 9, '#263238', '#90a4ae'); rr(32, 16, 32, 60, 3, '#4fc3f7'); g.strokeStyle = 'rgba(255,255,255,.8)'; g.lineWidth = 1.5; g.beginPath(); g.moveTo(36, 22); g.lineTo(58, 60); g.moveTo(58, 34); g.lineTo(40, 70); g.stroke(); break;
+    case 'bag:backpack': case 'backpack': rr(22, 20, 52, 66, 16, '#3949ab', '#1a237e'); rr(30, 52, 36, 24, 6, '#5c6bc0', '#1a237e'); rr(36, 10, 24, 14, 6, null, '#1a237e'); break;
+    case 'bag:gmg': case 'gmg': rr(10, 26, 76, 56, 6, '#fff'); g.save(); g.beginPath(); g.rect(10, 26, 76, 56); g.clip(); for (let x = 10; x < 86; x += 12) { g.fillStyle = 'rgba(21,101,192,.75)'; g.fillRect(x, 26, 6, 56); } for (let y = 26; y < 82; y += 12) { g.fillStyle = 'rgba(198,40,40,.6)'; g.fillRect(10, y, 76, 6); } g.restore();
+      g.strokeStyle = '#333'; g.lineWidth = 3; g.strokeRect(10, 26, 76, 56); rr(28, 14, 40, 16, 6, null, '#333'); break;
+    case 'nylon': g.fillStyle = '#212121'; g.beginPath(); g.moveTo(18, 34); g.lineTo(78, 34); g.lineTo(84, 88); g.lineTo(12, 88); g.closePath(); g.fill(); g.strokeStyle = '#212121'; g.lineWidth = 6; g.beginPath(); g.arc(34, 34, 10, Math.PI, 0); g.stroke(); g.beginPath(); g.arc(62, 34, 10, Math.PI, 0); g.stroke(); break;
+    case 'key': g.strokeStyle = '#f5c400'; g.lineWidth = 7; g.beginPath(); g.arc(30, 48, 14, 0, 7); g.stroke(); g.beginPath(); g.moveTo(44, 48); g.lineTo(84, 48); g.moveTo(72, 48); g.lineTo(72, 60); g.moveTo(82, 48); g.lineTo(82, 58); g.stroke(); rr(10, 64, 30, 18, 4, '#c62828'); txt('BABA', 25, 73, 8, '#fff'); break;
+    case 'crate': rr(14, 22, 68, 58, 4, '#8d6e63', '#4e342e'); g.strokeStyle = '#4e342e'; g.lineWidth = 3; g.beginPath(); g.moveTo(14, 22); g.lineTo(82, 80); g.moveTo(82, 22); g.lineTo(14, 80); g.stroke(); break;
+    case 'cashbag': g.fillStyle = '#6d4c41'; g.beginPath(); g.ellipse(48, 58, 32, 28, 0, 0, 7); g.fill(); rr(36, 16, 24, 18, 6, '#6d4c41'); txt('₦', 48, 60, 30, '#f5c400'); break;
+    case 'licence': rr(8, 20, 80, 56, 8, '#2e7d32', '#a5d6a7'); rr(14, 30, 22, 28, 4, '#c8e6c9'); g.fillStyle = '#a5d6a7'; for (let k = 0; k < 3; k++) g.fillRect(42, 32 + k * 10, 38 - k * 8, 4); break;
+    case 'union': rr(8, 20, 80, 56, 8, '#f5c400', '#5d4300'); rr(14, 30, 22, 28, 4, '#fff8e1'); txt('UNION', 62, 38, 11, '#5d4300'); txt('DANFO', 62, 54, 12, '#5d4300'); break;
+    case 'papers': rr(18, 10, 56, 76, 4, '#eceff1', '#90a4ae'); g.fillStyle = '#90a4ae'; for (let k = 0; k < 6; k++) g.fillRect(26, 22 + k * 9, 40 - (k % 3) * 8, 3); g.fillStyle = '#1565c0'; g.beginPath(); g.arc(60, 72, 8, 0, 7); g.fill(); break;
+    default: { const v = VT[id]; if (v) { rr(10, 34, 76, 30, 10, v.colors[0], '#111'); rr(22, 24, 44, 16, 6, '#24323d'); g.fillStyle = '#111'; g.beginPath(); g.arc(28, 66, 9, 0, 7); g.arc(68, 66, 9, 0, 7); g.fill(); } }
+  }
+  return (ICONS[id] = c.toDataURL());
+}
+
+// ---- using items
+function nearVehicleForWork() { if (player.veh) return player.veh; let b = null, bd = 1e9; for (const v of vehicles) { const d = dist(v, player); if (d < VT[v.type].len / 2 + 30 && d < bd && (v.driver === null || v.driver === 'player')) { bd = d; b = v; } } return b; }
+function useItem(id) {
+  const it = ITEMS[id]; if (!it) return false;
+  if (!invCount(id)) { ui.toast(`No ${it.name.toLowerCase()} left.`, 'bad', { key: 'inv' }); return false; }
+  if (it.phone) { invClose(); openPhone(); return true; }
+  if (it.repair) {
+    if (player.veh) { ui.toast('Get out first. You need to stand next to the vehicle to fix it.', 'bad', { key: 'inv' }); return false; }
+    const v = nearVehicleForWork(); if (!v) { ui.toast('Stand next to a vehicle to use the toolkit.', 'bad', { key: 'inv' }); return false; }
+    const mx = VT[v.type].hp; if (v.hp >= mx) { ui.toast('This vehicle has no damage to fix.', '', { key: 'inv' }); return false; }
+    const before = v.hp; v.hp = Math.min(mx, v.hp + mx * it.repair); if (v.hp > 0) v.smoked = false; takeItem(id);
+    ui.toast(`Fixed ${Math.round((v.hp - before) / mx * 100)}% of the damage on the ${VT[v.type].name}.`, 'good', { key: 'inv' }); useAnim(it.anim); return true;
+  }
+  if (it.fuel) {
+    const v = nearVehicleForWork(); if (!v) { ui.toast('Get in or stand next to a vehicle to pour the fuel.', 'bad', { key: 'inv' }); return false; }
+    if (v.fuel >= 99) { ui.toast('The tank is already full.', '', { key: 'inv' }); return false; }
+    const before = v.fuel; v.fuel = Math.min(100, v.fuel + it.fuel); takeItem(id);
+    ui.toast(`Poured in the jerrycan: fuel ${Math.round(before)}% → ${Math.round(v.fuel)}%.`, 'good', { key: 'inv' }); useAnim(it.anim); return true;
+  }
+  if (it.hp) {
+    if (player.hp >= 100 && !it.sprint) { ui.toast("You're already at full health.", '', { key: 'inv' }); return false; }
+    const before = player.hp; player.hp = Math.min(100, player.hp + it.hp); takeItem(id);
+    if (it.sprint) BUFF.sprintUntil = simClock + it.sprint;
+    const gained = Math.round(player.hp - before);
+    ui.toast(`${it.name}: +${gained} health${it.sprint ? ' · sprint boost 60s' : ''}`, 'good', { key: 'inv' }); useAnim(it.anim); beep([523, 659], .06, .03, 'sine'); return true;
+  }
+  return false;
+}
+function useAnim(kind) { const l = lookOf(player); l.use = { k: kind, until: performance.now() + 1500 }; }
+function dropItem(id) {
+  const it = ITEMS[id]; if (!it || it.noDrop) { ui.toast("You can't drop that.", 'bad', { key: 'inv' }); return false; }
+  if (player.veh) { ui.toast('Get out of the vehicle to drop things.', 'bad', { key: 'inv' }); return false; }
+  if (!takeItem(id)) return false;
+  items.push({ x: player.x + Math.cos(player.a) * 14, y: player.y + Math.sin(player.a) * 14, kind: 'loot', item: id, n: 1, armed: false });
+  ui.toast(`Dropped ${it.name}.`, '', { key: 'inv' }); return true;
+}
+// pickups on the ground: things you dropped, and the odd thing people leave behind
+const LOOT_SPAWN = { t: 20 };
+function updateLoot(dt) {
+  const p = player; LOOT_SPAWN.t -= dt;
+  if (LOOT_SPAWN.t <= 0) { LOOT_SPAWN.t = 45; const near = items.filter(i => i.kind === 'loot' && dist(i, p) < 900).length;
+    // its own random stream (vrand), so pickups never shift the traffic and pedestrian dice
+    if (near < 3) for (let k = 0; k < 20; k++) { const a = vrand() * 6.283, r = 160 + vrand() * 360, x = p.x + Math.cos(a) * r, y = p.y + Math.sin(a) * r;
+      const t = tileAt(x, y); if ((t === T.SIDE || t === T.GROUND || t === T.PARK) && playerFree(x, y)) { items.push({ x, y, kind: 'loot', item: pick2(vrand, ['water', 'water', 'gala', 'puff', 'puff', 'energy', 'firstaid']), n: 1, armed: true }); break; } } }
+  if (player.veh) return;
+  for (const it of items) { if (it.kind !== 'loot') continue; const d = dist(it, p);
+    if (!it.armed) { if (d > 30) it.armed = true; continue; }
+    if (d > 16) continue;
+    if (addItem(it.item, it.n)) { it.gone = true; ui.toast(`Picked up ${ITEMS[it.item].name}${it.n > 1 ? ' ×' + it.n : ''}.`, 'good', { key: 'pick' }); beep([784], .05, .03, 'sine'); }
+    else if ((it.fullT || 0) < simClock) { it.fullT = simClock + 4; ui.toast(`Bag full (${slotsUsed()}/${bagSlots()} slots). Drop something or buy a bigger bag.`, 'bad', { key: 'bagfull' }); } }
+  if (items.some(i => i.gone)) items = items.filter(i => !i.gone);
+}
+
+// ---- garage: vehicles you have keys for (or hotwired), remembered across saves
+let garageId = 0;
+function garageAdd(v) {
+  if (VT[v.type].cop) return;
+  if (!v.gid) v.gid = 'g' + Date.now().toString(36) + (garageId++);
+  let e = S.garage.find(g => g.gid === v.gid);
+  if (!e) { e = { gid: v.gid, type: v.type, color: v.color, how: v.mission || v.parkDanfo || v.babaDanfo ? 'Keys from Baba Driver' : v.stolen ? 'Hotwired' : 'Keys' }; S.garage.unshift(e); }
+  S.garage = S.garage.slice(0, 6); garageSync();
+}
+function garageSync() {
+  for (const e of S.garage) { const v = vehicles.find(x => x.gid === e.gid);
+    if (v) Object.assign(e, { x: Math.round(v.x), y: Math.round(v.y), a: +v.a.toFixed(3), fuel: Math.round(v.fuel), hp: Math.round(v.hp), color: v.color, dest: v.dest || null }); }
+}
+function garageRestore() { // after loading a save: park every remembered vehicle where it was left
+  for (const e of S.garage) { if (e.x == null || vehicles.some(v => v.gid === e.gid)) continue;
+    const v = spawnVehicle(e.type, e.x, e.y, e.a || 0, { parked: true, color: e.color, dest: e.dest || undefined }); v.gid = e.gid; v.fuel = e.fuel ?? v.fuel; v.hp = e.hp ?? v.hp; if (/Hotwired/.test(e.how)) v.stolen = true; }
+}
+function trackVehicle(e) {
+  const v = vehicles.find(x => x.gid === e.gid), at = v || e; if (at.x == null) return;
+  WAYPOINT = { x: at.x, y: at.y, label: VT[e.type].name, gid: e.gid }; ui.toast(`Waypoint set: your ${VT[e.type].name} (${fmtDist(dist(at, player.pos()))}).`, 'good', { key: 'wp' });
+}
+
+// ---- opening and closing
+const invAllowed = () => !DLG.open && $('#sheet').hidden && $('#phone').hidden && $('#start').hidden;
+const invLock = () => INV.open || INV.wheel;
+const timeScale = () => invLock() ? .3 : 1; // the world keeps moving, slowly, while you rummage in the bag
+function invOpen(tab) {
+  if (!invAllowed()) return false; invWheelClose(false);
+  if (tab) INV.tab = tab; INV.open = true; INV.assign = false; garageSync(); $('#inv').hidden = false; document.documentElement.classList.add('inv-open'); for (const k in keys) keys[k] = false; invRender(); return true;
+}
+function invClose() { if (!INV.open && !INV.wheel) return; INV.open = false; $('#inv').hidden = true; document.documentElement.classList.remove('inv-open'); invWheelClose(false); INV.pvFit = null; pressed.clear(); for (const k in keys) keys[k] = false; }
+function invToggle(tab) { if (INV.open) invClose(); else invOpen(tab); }
+function invRefresh() { if (INV.open) invRender(); if (INV.wheel) wheelRender(); }
+
+// ---- the quick wheel (hold Tab, or long-press the bag button)
+function invWheelOpen() {
+  if (!invAllowed() || INV.open) return false; INV.wheel = true; INV.tabAt = 0; INV.wsel = -1; $('#wheel').hidden = false; for (const k in keys) keys[k] = false; wheelRender(); return true;
+}
+function invWheelClose(use) {
+  if (!INV.wheel) return; const sel = INV.wsel; INV.wheel = false; $('#wheel').hidden = true; INV.wsel = -1;
+  if (use && sel >= 0 && S.wheel[sel]) useItem(S.wheel[sel]);
+}
+function wheelRender() {
+  const ring = $('#wring'), R = 38; let html = '';
+  S.wheel.forEach((id, i) => { const a = -Math.PI / 2 + i * Math.PI / 4, x = 50 + Math.cos(a) * R, y = 50 + Math.sin(a) * R, n = id ? invCount(id) : 0;
+    html += `<button type="button" class="wslot${i === INV.wsel ? ' on' : ''}${!id || !n ? ' none' : ''}" data-w="${i}" style="left:${x}%;top:${y}%" aria-label="${id ? esc(ITEMS[id].name) + ', ' + n : 'Empty slot'}">${id ? `<img src="${icon(id)}" alt=""><span class="q">${ITEMS[id].phone ? '' : '×' + n}</span>` : '<span class="q">—</span>'}</button>`; });
+  const s = INV.wsel >= 0 && S.wheel[INV.wsel] ? ITEMS[S.wheel[INV.wsel]] : null;
+  html += `<div class="wcenter">${s ? `<b>${esc(s.name)}</b><span>${esc(s.fx)}</span>` : `<b>QUICK USE</b><span>${IS_TOUCH ? 'Slide to an item and let go' : 'Point at an item and release Tab, or press 1–8'}</span>`}</div>`;
+  ring.innerHTML = html;
+}
+function wheelPick(clientX, clientY, fromX, fromY) {
+  const el = document.elementFromPoint(clientX, clientY), b = el && el.closest && el.closest('.wslot');
+  let i = b ? +b.dataset.w : -1;
+  if (i < 0) { const r = $('#wring').getBoundingClientRect(), cx = fromX ?? r.left + r.width / 2, cy = fromY ?? r.top + r.height / 2, dx = clientX - cx, dy = clientY - cy;
+    if (Math.hypot(dx, dy) > 30) i = ((Math.round((Math.atan2(dy, dx) + Math.PI / 2) / (Math.PI / 4)) % 8) + 8) % 8; }
+  if (i !== INV.wsel) { INV.wsel = i; wheelRender(); }
+}
+
+// ---- the full screen
+const INV_TABS = [['items', 'Items'], ['cash', 'Cash'], ['docs', 'Documents'], ['clothing', 'Clothing'], ['vehicles', 'Vehicles'], ['mission', 'Mission']];
+const hhmm = t => `D${Math.floor(t / 1440) + 1} ${String(Math.floor(t / 60) % 24).padStart(2, '0')}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
+function missionItems() {
+  const out = [];
+  if (SHIFT.on && SHIFT.bus) out.push({ ic: 'key', name: SHIFT.mission ? "Baba Driver's danfo keys" : 'Danfo keys', desc: SHIFT.mission ? 'Bring the danfo back to Oshoja Motor Park in one piece.' : 'Hand them back when you settle up.' });
+  if (SHIFT.on) out.push({ ic: 'cashbag', name: "Conductor's money bag", desc: `${naira(SHIFT.fares + SHIFT.tips)} collected so far. Settled at the end of the shift.` });
+  if (MS.cur && MS.cur.carry) out.push({ ic: 'crate', name: `Mission cargo ×${MS.cur.carry}`, desc: `For “${MS.cur.def.title}”. Deliver it.` });
+  if (MS.cur && player.veh && player.veh.mission) out.push({ ic: 'key', name: 'Mission vehicle keys', desc: `For “${MS.cur.def.title}”.` });
+  return out;
+}
+function invRender() {
+  if (!INV.open) return;
+  $('#inv-money').textContent = `${naira(S.cash)} · Bank ${naira(S.bank)}`;
+  $('#inv-tabs').innerHTML = INV_TABS.map(([k, n]) => `<button type="button" role="tab" aria-selected="${INV.tab === k}" class="${INV.tab === k ? 'on' : ''}" data-tab="${k}">${n}</button>`).join('');
+  const b = $('#inv-body'); let h = '';
+  if (INV.tab === 'items') {
+    const used = slotsUsed(), cap = bagSlots(), bag = BAGS[S.bag];
+    if (INV.sel && !invCount(INV.sel)) INV.sel = null; if (!INV.sel && S.inv.length) INV.sel = S.inv[0].id;
+    const cards = S.inv.map(e => { const it = ITEMS[e.id], w = S.wheel.indexOf(e.id);
+      return `<button type="button" class="icard${INV.sel === e.id ? ' on' : ''}" data-item="${e.id}">${w >= 0 ? `<span class="wk">◎${w + 1}</span>` : ''}<span class="q">${it.phone ? '' : '×' + e.n}</span><img src="${icon(e.id)}" alt=""><span>${esc(it.name)}</span></button>`; }).join('');
+    const free = Math.max(0, cap - used), ghosts = Array.from({ length: Math.min(free, 4) }, () => '<div class="icard empty" aria-hidden="true"></div>').join('');
+    const it = INV.sel && ITEMS[INV.sel];
+    const detail = it ? `<div class="idetail"><img src="${icon(INV.sel)}" alt=""><h3>${esc(it.name)}</h3><p>${esc(it.desc)}</p><div class="fx">${esc(it.fx)}</div><p>Carrying ${invCount(INV.sel)} · ${it.stack} per slot</p>
+      <div class="ibtns"><button class="btn primary" type="button" data-act="use">Use</button><button class="btn" type="button" data-act="drop" ${it.noDrop ? 'disabled' : ''}>Drop</button><button class="btn" type="button" data-act="assign">Assign to wheel</button></div>
+      ${INV.assign ? `<p>Pick a wheel slot:</p><div class="wslots">${S.wheel.map((w, i) => `<button type="button" data-slot="${i}" aria-label="Slot ${i + 1}">${w ? `<img src="${icon(w)}" alt="">` : ''}${i + 1}</button>`).join('')}</div>` : ''}</div>`
+      : `<div class="idetail"><p>Your bag is empty. Kiosks, market stalls and the medicine store sell food, drink and tools.</p></div>`;
+    h = `<div class="inv-split"><div><div class="inv-cap"><img src="${icon(S.bag)}" alt="" width="28" height="28"><b>${bag.name}</b><div class="bar"><i style="width:${used / cap * 100}%;background:${used >= cap ? 'var(--bad)' : 'var(--danfo)'}"></i></div><span>${used}/${cap} slots</span></div>
+      <div class="inv-grid">${cards}${ghosts}</div><p class="inv-note">${IS_TOUCH ? 'Long-press the bag button' : 'Hold Tab'} for the quick wheel. Bigger bags at market stalls: Backpack 20 slots, Ghana-Must-Go 30.</p></div>${detail}</div>`;
+  } else if (INV.tab === 'cash') {
+    const tx = S.log.slice(0, 10).map(l => `<div class="tx"><span class="t">${hhmm(l.t)}</span><span class="w">${esc(l.why)}</span><span class="n ${l.n >= 0 ? 'p' : 'm'}">${l.n >= 0 ? '+' : '−'}${naira(Math.abs(l.n))}</span></div>`).join('');
+    h = `<div class="money-row"><div class="money"><span>CASH ON HAND</span><b>${naira(S.cash)}</b><div class="amt">${[1000, 5000].map(a => `<button type="button" data-dep="${a}">Deposit ${naira(a)}</button>`).join('')}<button type="button" data-dep="all">Deposit all</button></div></div>
+      <div class="money"><span>BANK · KOBOPAY SAVINGS</span><b>${naira(S.bank)}</b><div class="amt">${[1000, 5000].map(a => `<button type="button" data-wd="${a}">Withdraw ${naira(a)}</button>`).join('')}<button type="button" data-wd="all">Withdraw all</button></div></div></div>
+      <div class="app-h" style="font-size:14px">Last 10 transactions</div>${tx || '<div class="inv-empty">No transactions yet.</div>'}
+      <p class="inv-note">Cash on hand is what you lose when you're busted or hospitalised. The bank keeps it safe.</p>`;
+  } else if (INV.tab === 'docs') {
+    const card = (k, cls, lines) => { const d = DOCS[k], has = S.docs[k];
+      return `<div class="doc ${cls}${has ? '' : ' miss'}"><h4>${d.name}</h4>${has ? `<div class="dl">${lines}</div><img src="${icon(k)}" alt="">` : `<div class="dl">Missing</div><div class="how">${esc(d.how)}</div>`}</div>`; };
+    h = `<div class="docs">${card('licence', '', 'EKO STATE · CLASS E<br>Name: <b>LUCKY O.</b><br>No: <b>EKO-77 41 902</b><br>Expires: <b>when they remember</b>')}
+      ${card('union', 'union', 'Oshoja Motor Park branch<br>Member: <b>LUCKY O.</b><br>Rank: <b>Conductor (probation)</b><br>Dues: <b>"we go talk"</b>')}
+      ${card('papers', 'papers', 'Proof of ownership, road worthiness, insurance<br>Vehicle: <b>Kombi Danfo (Baba Sule)</b><br>Stamps: <b>11, all different colours</b>')}</div>
+      <p class="inv-note" style="margin-top:12px">Task Force checkpoints ask for your licence and vehicle papers. Papers don't cover a vehicle you stole.</p>`;
+  } else if (INV.tab === 'clothing') {
+    const sel = INV.pvFit || S.outfit, f = OUTFITS.find(o => o.id === sel);
+    const rows = OUTFITS.map(o => { const own = S.outfits.includes(o.id), on = S.outfit === o.id;
+      return `<button type="button" class="fit${sel === o.id ? ' on' : ''}${own ? '' : ' locked'}" data-fit="${o.id}"><i style="background:${o.color}"></i><span>${esc(o.name)}<small>${own ? 'Owned' : 'Balo Tailor · ' + naira(o.price)} · respect +${o.respect}</small></span>${on ? '<em>WEARING</em>' : ''}</button>`; }).join('');
+    const own = S.outfits.includes(sel);
+    h = `<div class="cloth"><div class="fits">${rows}</div><div class="stage"><div id="inv-prev-slot" aria-label="Preview of ${esc(f.name)}" role="img"></div>
+      <button class="btn primary" type="button" data-equip ${own && S.outfit !== sel ? '' : 'disabled'}>${S.outfit === sel ? 'Wearing' : own ? 'Equip' : 'Not owned'}</button></div></div>`;
+  } else if (INV.tab === 'vehicles') {
+    garageSync();
+    const rows = S.garage.map((e, i) => { const v = vehicles.find(x => x.gid === e.gid), here = v === player.veh, at = v || e, d = at.x != null ? fmtDist(dist(at, player.pos())) : '?';
+      return `<div class="vrow${INV.gsel === i ? ' on' : ''}" data-g="${i}"><img src="${icon(e.type)}" alt=""><span><b>${esc(VT[e.type].name)}</b><small>${esc(e.how)} · ${here ? 'you are in it' : d + ' away'} · fuel ${Math.round(v ? v.fuel : e.fuel ?? 0)}% · body ${Math.round(((v ? v.hp : e.hp) ?? 0) / VT[e.type].hp * 100)}%</small></span>
+        <button class="btn" type="button" data-track="${i}" ${here ? 'disabled' : ''}>${WAYPOINT && WAYPOINT.gid === e.gid ? 'Tracking' : 'Track'}</button></div>`; }).join('');
+    h = `<div class="garage"><div>${rows || '<div class="inv-empty">No vehicles yet. Any vehicle you drive goes on this list; hotwired ones too.</div>'}</div><canvas id="inv-map" width="340" height="227" aria-label="Map of your vehicles"></canvas></div>`;
+  } else {
+    const list = missionItems();
+    h = (list.length ? `<div class="inv-grid">${list.map(m => `<div class="icard" title="${esc(m.desc)}"><img src="${icon(m.ic)}" alt=""><span>${esc(m.name)}</span></div>`).join('')}</div><div style="display:grid;gap:6px;margin-top:12px">${list.map(m => `<p class="inv-note"><b style="color:var(--ink)">${esc(m.name)}</b>: ${esc(m.desc)}</p>`).join('')}</div>`
+      : '<div class="inv-empty">No mission items right now.</div>') + '<p class="inv-note" style="margin-top:12px">Mission items and keys can’t be dropped or sold.</p>';
+  }
+  b.innerHTML = h; b.dataset.tab = INV.tab;
+  if (INV.tab === 'vehicles') drawInvMap();
+  if (INV.tab === 'clothing') previewStart();
+}
+function drawInvMap() {
+  const c = $('#inv-map'); if (!c) return; const m = c.getContext('2d'), k = c.width / WW;
+  m.clearRect(0, 0, c.width, c.height); if (miniC) m.drawImage(miniC, 0, 0, c.width, c.height);
+  S.garage.forEach((e, i) => { const v = vehicles.find(x => x.gid === e.gid), at = v || e; if (at.x == null) return;
+    m.fillStyle = i === INV.gsel ? '#f5c400' : '#35b3b5'; m.strokeStyle = '#000'; m.lineWidth = 2; m.beginPath(); m.arc(at.x * k, at.y * k, i === INV.gsel ? 7 : 5, 0, 7); m.fill(); m.stroke(); });
+  const p = player.pos(); m.fillStyle = '#fff'; m.beginPath(); m.arc(p.x * k, p.y * k, 4, 0, 7); m.fill();
+  if (WAYPOINT) { m.strokeStyle = '#fff'; m.lineWidth = 2; m.beginPath(); m.arc(WAYPOINT.x * k, WAYPOINT.y * k, 10, 0, 7); m.stroke(); }
+}
+function invClick(e) {
+  const t = e.target.closest('button,[data-g]'); if (!t) return;
+  if (t.dataset.tab) { INV.tab = t.dataset.tab; INV.assign = false; INV.pvFit = null; invRender(); return; }
+  if (t.dataset.item) { INV.sel = t.dataset.item; INV.assign = false; invRender(); return; }
+  if (t.dataset.act === 'use') { useItem(INV.sel); invRender(); return; }
+  if (t.dataset.act === 'drop') { dropItem(INV.sel); invRender(); return; }
+  if (t.dataset.act === 'assign') { INV.assign = !INV.assign; invRender(); return; }
+  if (t.dataset.slot != null) { const i = +t.dataset.slot, j = S.wheel.indexOf(INV.sel); if (j >= 0) S.wheel[j] = S.wheel[i]; S.wheel[i] = INV.sel; INV.assign = false; ui.toast(`${ITEMS[INV.sel].name} → wheel slot ${i + 1}`, '', { key: 'inv' }); invRender(); return; }
+  const money = (k, a) => a === 'all' ? Math.floor(k === 'dep' ? S.cash : S.bank) : +a;
+  if (t.dataset.dep) { const n = Math.min(S.cash, money('dep', t.dataset.dep)); if (n > 0) { earn(-n, 'Deposit to bank'); S.bank += n; } else ui.toast('No cash to deposit.', 'bad', { key: 'inv' }); invRender(); return; }
+  if (t.dataset.wd) { const n = Math.min(S.bank, money('wd', t.dataset.wd)); if (n > 0) { S.bank -= n; earn(n, 'Withdrawal from bank'); } else ui.toast('Nothing in the bank.', 'bad', { key: 'inv' }); invRender(); return; }
+  if (t.dataset.fit) { INV.pvFit = t.dataset.fit; invRender(); return; }
+  if (t.dataset.equip != null) { const id = INV.pvFit || S.outfit; if (S.outfits.includes(id)) { S.outfit = id; save(); ui.toast('Now wearing: ' + OUTFITS.find(o => o.id === id).name, 'good', { key: 'inv' }); } invRender(); return; }
+  if (t.dataset.track != null) { trackVehicle(S.garage[+t.dataset.track]); INV.gsel = +t.dataset.track; invRender(); return; }
+  if (t.dataset.g != null) { INV.gsel = +t.dataset.g; invRender(); return; }
+}
+
+// ---- clothing preview: the player model on a small turntable, drawn by its own little renderer
+const PREV = { r: null, canvas: null, scene: null, cam: null, B: null, PB: null, look: null, raf: 0 };
+function previewInit(canvas) {
+  if (PREV.r) return true;
+  try { PREV.r = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'low-power' }); } catch (e) { PREV.r = null; return false; }
+  const r = PREV.r; r.setPixelRatio(Math.min(2, devicePixelRatio || 1)); r.outputColorSpace = THREE.SRGBColorSpace; r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.05;
+  if (!PREV.scene) {
+    const sc = PREV.scene = new THREE.Scene();
+    sc.add(new THREE.HemisphereLight(0xfff1dc, 0x3a2c20, 1.6)); const key = new THREE.DirectionalLight(0xffffff, 2.4); key.position.set(4, 6, 3); sc.add(key);
+    const rim = new THREE.DirectionalLight(0xffc56b, 1.4); rim.position.set(-4, 3, -4); sc.add(rim);
+    const floor = new THREE.Mesh(new THREE.CircleGeometry(.9, 32).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0x2a2620, roughness: .9 })); sc.add(floor);
+    PREV.cam = new THREE.PerspectiveCamera(17, 2 / 3, .5, 40); PREV.cam.position.set(7.5, 1.55, 0); PREV.cam.lookAt(0, .92, 0);
+    const mk = b => { const g = b.m.geometry.clone(); let pat = null; if (b.pat) { pat = new THREE.InstancedBufferAttribute(new Float32Array(80), 1); pat.setUsage(THREE.DynamicDrawUsage); g.setAttribute('iPat', pat); }
+      const m = new THREE.InstancedMesh(g, b.m.material, 80); m.count = 0; m.frustumCulled = false; m.setColorAt(0, WHITE); sc.add(m); return { m, n: 0, max: 80, pat }; };
+    PREV.PB = {}; for (const k in PB) PREV.PB[k] = mk(PB[k]); PREV.B = {}; for (const k of ['solid', 'disc', 'ball']) PREV.B[k] = mk(B[k]);
+  }
+  return true;
+}
+function previewStart() {
+  const slot = $('#inv-prev-slot'); if (!slot) return;
+  if (!PREV.canvas) { PREV.canvas = document.createElement('canvas'); PREV.canvas.id = 'inv-prev'; PREV.canvas.width = 300; PREV.canvas.height = 450; }
+  slot.replaceWith(PREV.canvas); const c = PREV.canvas; if (!R3 || !previewInit(c)) { const g = c.getContext('2d'); if (g) { g.fillStyle = OUTFITS.find(o => o.id === (INV.pvFit || S.outfit)).color; g.fillRect(110, 120, 80, 200); } return; }
+  cancelAnimationFrame(PREV.raf); const loop = () => { if (!INV.open || INV.tab !== 'clothing' || !$('#inv-prev')) return; previewDraw(); PREV.raf = requestAnimationFrame(loop); }; loop();
+}
+const PREVB = new THREE.Matrix4();
+function previewDraw() {
+  const fit = INV.pvFit || S.outfit, base = lookOf(player);
+  if (!PREV.look) PREV.look = Object.assign({}, base);
+  const l = Object.assign(PREV.look, { kind: 'preview', amp: 0, run: 0, use: null, rw: 0, seed: base.seed }); playerLook(l, fit);
+  const sb = {}, sp = {}; for (const k in PREV.B) { sb[k] = B[k]; B[k] = PREV.B[k]; } for (const k in PREV.PB) { sp[k] = PB[k]; PB[k] = PREV.PB[k]; }
+  try { for (const k in PREV.B) PREV.B[k].n = 0; for (const k in PREV.PB) PREV.PB[k].n = 0;
+    _e.set(0, performance.now() / 1600, 0); _q.setFromEuler(_e); _p.set(0, 0, 0); _s.set(1, 1, 1); PREVB.compose(_p, _q, _s);
+    person3(PREVB, { look: l, lod: 0 });
+  } finally { Object.assign(B, sb); Object.assign(PB, sp); }
+  for (const b of [...Object.values(PREV.B), ...Object.values(PREV.PB)]) { b.m.count = b.n; b.m.visible = b.n > 0; b.m.instanceMatrix.needsUpdate = true; if (b.m.instanceColor) b.m.instanceColor.needsUpdate = true; if (b.pat) b.pat.needsUpdate = true; }
+  const c = PREV.r.domElement, w = c.clientWidth || 300, h = c.clientHeight || 450; if (c.width !== Math.round(w * PREV.r.getPixelRatio())) { PREV.r.setSize(w, h, false); PREV.cam.aspect = w / h; PREV.cam.updateProjectionMatrix(); }
+  PREV.r.render(PREV.scene, PREV.cam);
+}
+
+// ---- shops: kiosks, market stalls, Trust In God Medicine Store, and the park ticket booth
+function nearShop() {
+  if (player.veh || nearestVehicle()) return null; const p = player;
+  if (dist(p, BOOTH) < 34) return 'booth';
+  if (MED_SHOPS.some(s => dist(s, p) < 26)) return 'medicine';
+  if (KIOSKS.some(s => dist(s, p) < 24)) return 'kiosk';
+  for (const [dx, dy] of [[0, 0], [12, 0], [-12, 0], [0, 12], [0, -12]]) if (tileAt(p.x + dx, p.y + dy) === T.STALL) return 'stall';
+  return null;
+}
+function openShop(kind) {
+  if (kind === 'booth') return openBooth();
+  const sh = SHOPS[kind];
+  const rows = sh.items.map(k => { const bag = k.startsWith('bag:') ? k.slice(4) : null, it = bag ? BAGS[bag] : ITEMS[k], price = it.price, have = bag ? BAGS[S.bag].slots >= it.slots : false;
+    return `<div class="srow"><img src="${icon(k)}" alt=""><span><b>${esc(it.name)}</b><small>${esc(bag ? it.desc : it.fx)}${bag ? '' : ` · you have ${invCount(k)}`}</small></span>
+      <button class="btn ${have ? '' : 'primary'}" type="button" data-buy="${k}" ${have ? 'disabled' : ''}>${have ? 'Owned' : naira(price)}</button></div>`; }).join('');
+  showSheet(`<h3>${esc(sh.name)}</h3><p class="muted">${esc(sh.line)}</p><div style="display:flex;justify-content:space-between;font-size:13px"><span>Your cash: <b style="font-family:var(--mono)">${naira(S.cash)}</b></span><span class="muted">Bag ${slotsUsed()}/${bagSlots()}</span></div>
+    <div class="shop">${rows}</div><p id="shop-out" class="muted" aria-live="polite"></p><button class="btn" type="button" data-x>Close</button>`, el => {
+    el.querySelectorAll('[data-buy]').forEach(b => b.onclick = () => { const out = buyItem(b.dataset.buy); openShop(kind); $('#shop-out').textContent = out; });
+    el.querySelector('[data-x]').onclick = closeOverlays;
+  });
+}
+function buyItem(k) {
+  if (k.startsWith('bag:')) { const id = k.slice(4), bg = BAGS[id]; if (BAGS[S.bag].slots >= bg.slots) return 'You already have a bag that big.';
+    if (!spend(bg.price, 'Bought ' + bg.name)) return 'Not enough cash.'; S.bag = id; save(); ui.toast(`New ${bg.name}: ${bg.slots} slots.`, 'good', { key: 'inv' }); return `Bought the ${bg.name}. ${bg.slots} slots now.`; }
+  const it = ITEMS[k]; if (!canAdd(k)) { ui.toast('Bag full', 'bad', { key: 'bagfull' }); return `Bag full (${slotsUsed()}/${bagSlots()} slots).`; }
+  if (!spend(it.price, 'Bought ' + it.name)) return 'Not enough cash.'; addItem(k); return `Bought ${it.name} for ${naira(it.price)}.`;
+}
+function openBooth() {
+  const row = k => { const has = S.docs[k];
+    return `<div class="srow"><img src="${icon(k)}" alt=""><span><b>${DOCS[k].name}</b><small>${has ? 'You have this' : k === 'licence' ? 'Express service. No test, no wahala.' : '"Original" papers for the danfo, with all the stamps.'}</small></span>
+      <button class="btn ${has ? '' : 'primary'}" type="button" data-doc="${k}" ${has ? 'disabled' : ''}>${has ? 'Owned' : naira(DOC_PRICE[k])}</button></div>`; };
+  showSheet(`<h3>Park ticket booth</h3><p class="muted">The agent behind the glass slides a form across without looking up. "Passport photo dey? No? Add ₦500."</p>
+    <div class="shop">${row('licence')}${row('papers')}</div><p id="shop-out" class="muted" aria-live="polite"></p><button class="btn" type="button" data-x>Close</button>`, el => {
+    el.querySelectorAll('[data-doc]').forEach(b => b.onclick = () => { const k = b.dataset.doc;
+      if (spend(DOC_PRICE[k], DOCS[k].name)) { S.docs[k] = true; save(); ui.toast(`Got your ${DOCS[k].name.toLowerCase()}.`, 'good', { key: 'inv' }); openBooth(); } else $('#shop-out').textContent = 'Not enough cash.'; });
+    el.querySelector('[data-x]').onclick = closeOverlays;
+  });
+}
+
+// ---- input: Tab / I on the keyboard, the bag button on touch
+function invKeyDown(code) {
+  if (code === 'KeyI') { if (INV.wheel) return; invToggle(); return; }
+  if (INV.open) { invClose(); INV.tabAt = 0; return; } // Tab again closes
+  INV.tabAt = performance.now(); clearTimeout(INV.holdT); INV.holdT = setTimeout(() => { if (INV.tabAt) invWheelOpen(); }, 260);
+}
+function invKeyUp() {
+  clearTimeout(INV.holdT); const was = INV.tabAt; INV.tabAt = 0;
+  if (INV.wheel) { invWheelClose(true); return; }
+  if (was) invOpen();
+}
+addEventListener('mousemove', e => { if (INV.wheel && !IS_TOUCH) wheelPick(e.clientX, e.clientY); });
+(function setupInvUI() {
+  $('#inv').addEventListener('click', e => { if (e.target.id === 'inv') { invClose(); return; } invClick(e); });
+  $('#inv-x').addEventListener('click', invClose);
+  $('#wheel').addEventListener('click', e => { const s = e.target.closest('.wslot'); if (s) { INV.wsel = +s.dataset.w; invWheelClose(true); } else if (e.target.id === 'wheel') invWheelClose(false); });
+  const bag = $('#tb-bag'); let id = null, sx = 0, sy = 0, timer = null;
+  bag.addEventListener('pointerdown', e => { e.preventDefault(); if (DLG.open) return; id = e.pointerId; sx = e.clientX; sy = e.clientY; bag.setPointerCapture(id); bag.classList.add('down');
+    clearTimeout(timer); timer = setTimeout(() => { if (id !== null && !INV.open) invWheelOpen(); }, 380); });
+  bag.addEventListener('pointermove', e => { if (e.pointerId === id && INV.wheel) wheelPick(e.clientX, e.clientY, sx, sy); });
+  const up = e => { if (e.pointerId !== id) return; id = null; clearTimeout(timer); bag.classList.remove('down');
+    if (INV.wheel) { if (e.type === 'pointerup') wheelPick(e.clientX, e.clientY, sx, sy); invWheelClose(e.type === 'pointerup'); } else if (e.type === 'pointerup') invToggle(); };
+  bag.addEventListener('pointerup', up); bag.addEventListener('pointercancel', up);
+})();
+
 // ---------------------------------------------------------------- overlays & phone
 function showSheet(html, bind) { const o = $('#sheet'); $('#sheet-body').innerHTML = html; o.hidden = false; WORLD.paused = true; bind && bind($('#sheet-body')); const f = $('#sheet-body').querySelector('button:not([disabled])'); f && f.focus(); }
 function closeOverlays() {
   if (!$('#start').hidden) return;
-  $('#sheet').hidden = true; $('#phone').hidden = true; WORLD.paused = DLG.open;
+  invClose(); $('#sheet').hidden = true; $('#phone').hidden = true; WORLD.paused = DLG.open;
   for (const k in keys) keys[k] = false;
 }
 let phoneApp = 'gist', thread = null, koboTo = 'amaka', koboAmt = 1000, koboMsg = '';
@@ -2524,7 +3081,8 @@ function buildBuilding(b, G) {
       if (len >= 3 && R() < .62) {
         const w = Math.min(len - .7, 3.8), [fx, fz] = at(.03); atlasQuad(G(ch, 'front'), fx, fz, s.nx, s.nz, w, base + .02, 2.3, atlasUV(R() * 4 | 0, 2, 2));
         awning(G(ch, 'detail'), fx, fz, s.nx, s.nz, w + .4, base + 2.52, R);
-        if (R() < .85) { const sw = Math.min(len - .5, 4.8), [sx, sz] = at(.08); signQuad(G(ch, 'sign'), sx, sz, s.nx, s.nz, sw, base + 2.66, sw / 4.2, R() * SHOP_SIGNS.length | 0); }
+        if (R() < .85) { const sw = Math.min(len - .5, 4.8), [sx, sz] = at(.08), si = R() * SHOP_SIGNS.length | 0; signQuad(G(ch, 'sign'), sx, sz, s.nx, s.nz, sw, base + 2.66, sw / 4.2, si);
+          if (SHOP_SIGNS[si][0] === 'TRUST IN GOD MEDICINE STORE') MED_SHOPS.push({ x: (sx + s.nx * 1.6) / M, y: (sz + s.nz * 1.6) / M }); }
       } else {
         const q = R(), [dx, dz] = at(.04), u = (R() - .5) * Math.max(0, len - 2.2);
         if (q < .5) { const sz2 = 1.5 + R() * .6; atlasQuad(G(ch, 'decal'), dx + tx * u, dz + tz * u, s.nx, s.nz, sz2, base + .45 + R() * .5, sz2, atlasUV(R() * 8 | 0, 4, 4)); }
@@ -2696,6 +3254,7 @@ function clutterAt(ch, G, q, X, Z, d, R, market = false) {
   else { prop('stool', mtx(X, y, Z, 1, 1, 1, yaw), '#8d6e63'); klamp(X, y + .44, Z); }
 }
 function kiosk(g, X, Z, d, R) { // a small painted kiosk facing the road: counter hatch, overhanging roof
+  KIOSKS.push({ x: X / M, y: Z / M });
   const c = colr(pick2(R, ['#1565c0', '#2e7d32', '#f9a825', '#c62828', '#00838f'])), along = d[0] ? 'z' : 'x', hx = along === 'x' ? .9 : .65, hz = along === 'x' ? .65 : .9;
   box(g, X - hx, KERB, Z - hz, X + hx, KERB + 2.1, Z + hz, c); box(g, X - hx - .2, KERB + 2.1, Z - hz - .2, X + hx + .2, KERB + 2.2, Z + hz + .2, colr('#e8e2d4'));
   const fx = X + d[0] * (hx + .005), fz = Z + d[1] * (hz + .005); box(g, fx - (d[1] ? .6 : .01), KERB + 1, fz - (d[0] ? .6 : .01), fx + (d[1] ? .6 : .01), KERB + 1.75, fz + (d[0] ? .6 : .01), colr('#17120d'));
@@ -3300,9 +3859,9 @@ const PLAYER_FITS = {
   fit_street_drip: { top: { t: 'shirt', c: '#7e57c2', p: 1 }, legs: { t: 'jeans', c: '#151515', p: 1 }, hair: 'cap', capC: '#151515', glasses: true, shoe: '#ffffff' },
   fit_agbada_owambe: { top: { t: 'robe', c: '#f5c400', p: 3 }, legs: { t: 'trousers', c: '#f5c400', p: 1 }, hair: 'fila', capC: '#b8860b', shoe: '#4e342e' },
 };
-function playerLook(l) {
-  if (l._fit === S.outfit) return; l._fit = S.outfit;
-  Object.assign(l, { H: 1.78, build: 1.02, skin: '#5a3622', hairC: '#141010', glasses: false, phone: null, bag: null, load: null, capC: '#222222', f: false, kid: false }, PLAYER_FITS[S.outfit] || PLAYER_FITS.fit_street_basic);
+function playerLook(l, fit = S.outfit) {
+  if (l._fit === fit) return; l._fit = fit;
+  Object.assign(l, { H: 1.78, build: 1.02, skin: '#5a3622', hairC: '#141010', glasses: false, phone: null, bag: null, load: null, capC: '#222222', f: false, kid: false }, PLAYER_FITS[fit] || PLAYER_FITS.fit_street_basic);
 }
 
 // ---- the rig. o: { x, z (local offsets), look, sit, seat (hip height), bike, pose: 'drive'|'bar'|'hang', raise: 'one'|'both', wave, tray, lod }
@@ -3354,7 +3913,7 @@ function person3(base, o) {
   // arms
   const uaL = .182 * H, faL = .15 * H, aW = .085 * k * Math.sqrt(bw), sleeve = top.t === 'shirt' || top.t === 'kaftan' || top.t === 'dress' || l.kind === 'uniform', short = top.t === 'tee' || top.t === 'pinafore';
   const rwT = o.raise ? 1 : 0; l.rw = lerp(l.rw || 0, rwT, .15);
-  const armC = sleeve ? (top.sc || topC) : skin, sleeveC = top.sc || topC;
+  const armC = sleeve ? (top.sc || topC) : skin, sleeveC = top.sc || topC, U = l.use && performance.now() < l.use.until ? l.use.k : null;
   for (const s of [1, -1]) {
     const phi = ph + (s > 0 ? 0 : Math.PI);
     let az = -Math.sin(phi) * (.35 + .45 * rn) * w + Math.sin(T * 1.6) * .015, ax = -s * (.07 + .04 * bw), el = .12 + .15 * w + 1.25 * rn;
@@ -3369,6 +3928,9 @@ function person3(base, o) {
     else if (l.phone === 'call' && s < 0 && !sit && !rn) { az = .55; ax = -s * .2; el = 2.35; }
     else if (l.phone === 'text' && s < 0 && !sit && w < .7 && !rn) { az = .3; ax = s * .08; el = 1.35; }
     if (robe && !up) { ax = -s * .2; } // arms rest on the robe's wide sleeves
+    if (U && !sit && (s > 0 || U === 'heal')) { // using an item: drink or eat (hand to mouth), patch up (both hands at the chest), work on a vehicle
+      if (U === 'heal') { az = .75; el = 1.5 + Math.sin(T * 10) * .1; ax = s * .22; } else if (U === 'tool') { az = 1.1; el = .35 + Math.sin(T * 12) * .25; ax = s * .05; }
+      else { az = .6; el = 2.3 + Math.sin(T * (U === 'eat' ? 11 : 4)) * .12; ax = s * .14; } }
     const sj = J(chest, 0, cH * .84, s * (cW * .5 - aW * .45), ax, 0, az);
     if (robe) pp(PB.seg, sj, topPat, 0, 0, 0, aW * 2.2, uaL + faL * .7, aW * 3.6, topC); // wide sleeve wing
     else pp(PB.seg, sj, sleeve ? topPat : 0, 0, 0, 0, aW, uaL + .01, aW, armC);
@@ -3377,6 +3939,7 @@ function person3(base, o) {
     pp(PB.seg, ej, sleeve ? topPat : 0, 0, 0, 0, aW * .86, faL, aW * .86, sleeve ? armC : skin);
     if (lod === 0) put(PB.ball, ej, 0, -faL - .035 * k, 0, .04 * k, .06 * k, .018 * k, skin);
     if (lod === 0 && l.phone && s < 0 && (l.phone === 'call' ? !sit && !rn : !sit && w < .7 && !rn)) put(B.solid, ej, .01, -faL - .03 * k, 0, .016, .13 * k, .07 * k, '#111111');
+    if (U && s > 0 && !sit && lod === 0) put(B.solid, ej, .02, -faL - .05 * k, 0, .05, .1 * k, .05, U === 'drink' ? '#cfe8ff' : U === 'eat' ? '#d32f2f' : U === 'tool' ? '#9e9e9e' : '#f5f5f5');
     if (l.bag === 'hand' && s > 0 && !sit && lod === 0) put(B.solid, ej, 0, -faL - .17 * k, 0, .1 * k, .22 * k, .3 * k, '#3b2a20');
   }
   if (top.t === 'tank' || short) for (const s of [1, -1]) if (lod === 0) put(PB.ball, chest, 0, cH * .87, s * (cW * .5 - aW * .6), aW * .55, aW * .5, aW * .55, short ? topC : skin); // round shoulder, no pad
@@ -3586,6 +4149,7 @@ function worldMarkers() {
   else for (const id of ORDER) if (available(id)) { const g = GIVER_AT[MISSIONS[id].giver]; if (!list.some(l => l.x === g.x && l.y === g.y)) list.push({ x: g.x, y: g.y, r: 26, color: Y, label: CONTACTS[MISSIONS[id].giver][0], giver: id }); }
   if (SHIFT.on && !SHIFT.routeDone) { const r = routeOf(); r.stops.forEach((id, i) => { const st = BUS_STOPS[id], next = i === SHIFT.idx && !SHIFT.atStop && !MS.cur;
     list.push({ x: st.x, y: st.y, r: next ? 46 : 22, color: next ? Y : 'rgba(245,196,0,.45)', label: next ? 'BUS' : '', obj: next, stop: true }); }); }
+  if (WAYPOINT) list.push({ x: WAYPOINT.x, y: WAYPOINT.y, r: 26, color: 'rgba(255,255,255,1)', label: 'W', waypoint: true });
   list.push({ x: PL.tailor.x, y: PL.tailor.y, r: 18, color: B, label: 'T' }); list.push({ x: PL.carwash.x, y: PL.carwash.y, r: 18, color: B, label: '$' });
   return list;
 }
@@ -3633,7 +4197,7 @@ function render(t) {
   for (const m of marks) { const pulse = 1 + Math.sin(t * 4) * .06, r = Math.min(m.r * M, 4) * pulse, y = heightAt(m.x, m.y) + .05, c = colr(m.color.replace(/,[\d.]+\)$/, ',1)'));
     put(B.ring, IDM, m.x * M, y, m.y * M, r * 2, 1, r * 2, RINGC.copy(c).multiplyScalar(m.obj || m.giver ? .42 : .3)); if ((m.obj || m.giver || m.label) && dist(m, p) > m.r * 1.6) put(B.beam, IDM, m.x * M, y + (m.obj || m.giver ? 14 : 3), m.y * M, r * .55, m.obj || m.giver ? 28 : 6, r * .55, c); }
   for (const it of items) if (near(it)) { const yy = heightAt(it.x, it.y) + .55 + Math.sin(t * 3 + it.x) * .12, b2 = baseInto(it.x * M, yy, it.y * M, t * 1.5);
-    put(B.solid, b2, 0, 0, 0, .8, .7, .8, it.kind === 'bag' ? '#2e7d32' : '#8d6e63'); put(B.lamp, b2, 0, .36, 0, .82, .04, .82, '#f5c400'); put(B.ring, IDM, it.x * M, yy - .5, it.y * M, 2.4, 1, 2.4, colr('#f5c400')); }
+    if (it.kind === 'loot') put(B.solid, b2, 0, -.15, 0, .45, .4, .45, ITEMS[it.item].col); else put(B.solid, b2, 0, 0, 0, .8, .7, .8, it.kind === 'bag' ? '#2e7d32' : '#8d6e63'); put(B.lamp, b2, 0, .36, 0, .82, .04, .82, '#f5c400'); put(B.ring, IDM, it.x * M, yy - .5, it.y * M, 2.4, 1, 2.4, colr('#f5c400')); }
   for (const q of peds) if (near(q)) walker(q, q.a || 0, dt, { down: q.state === 'down', tray: q.tray });
   for (const q of TOUTS) if (near(q)) { const l = lookOf(q), b2 = baseInto(q.x * M, heightAt(q.x, q.y), q.y * M, Math.PI / 2 * (q.x > 200 ? -1 : 1)); person3(b2, { look: l, raise: 'both', wave: Math.sin(t * 6 + q.x) * .35 }); }
   if (SHIFT.on) for (const id of routeOf().stops) { const st = BUS_STOPS[id]; if (!near({ x: st.wx, y: st.wy })) continue;
@@ -3667,7 +4231,7 @@ function drawMinimap(canvas, big) {
   m.clearRect(0, 0, W2, H2); if (miniC) m.drawImage(miniC, 0, 0, W2, H2);
   if (darkness() > 0) { m.fillStyle = `rgba(4,8,26,${darkness() * .6})`; m.fillRect(0, 0, W2, H2); }
   const dot = (x, y, r, c) => { m.fillStyle = c; m.beginPath(); m.arc(x * k, y * k, r, 0, 7); m.fill(); };
-  for (const mk of worldMarkers()) dot(mk.x, mk.y, big ? 8 : 6, mk.color.startsWith('rgba(53') ? '#35b3b5' : mk.color.startsWith('rgba(240') ? '#f05a50' : '#f5c400');
+  for (const mk of worldMarkers()) dot(mk.x, mk.y, big ? 8 : 6, mk.color.startsWith('rgba(255') ? '#ffffff' : mk.color.startsWith('rgba(53') ? '#35b3b5' : mk.color.startsWith('rgba(240') ? '#f05a50' : '#f5c400');
   if (JAMMED.size) { m.strokeStyle = 'rgba(240,90,80,.9)'; m.lineWidth = big ? 4 : 3; m.beginPath();
     for (const e of JAMMED) { const [a, b] = e.split('-').map(Number); if (a > b) continue; m.moveTo(nodes[a].x * k, nodes[a].y * k); m.lineTo(nodes[b].x * k, nodes[b].y * k); } m.stroke(); }
   for (const st of STATIONS) { m.fillStyle = '#2f8f5b'; m.fillRect(st.x * k - (big ? 6 : 4), st.y * k - (big ? 6 : 4), big ? 12 : 8, big ? 12 : 8); m.fillStyle = '#fff'; m.font = `700 ${big ? 10 : 7}px sans-serif`; m.textAlign = 'center'; m.fillText('F', st.x * k, st.y * k + (big ? 4 : 2.5)); }
@@ -3692,6 +4256,7 @@ function updateHud(dt) {
   $('#speed').hidden = !v; if (v) $('#speed').innerHTML = Math.round(Math.abs(v.v) * .42) + '<small>km/h</small>';
   $('#hbar i').style.width = clamp(player.hp, 0, 100) + '%'; $('#hbar i').style.background = player.hp < 35 ? 'var(--bad)' : 'var(--good)'; $('#hval').textContent = Math.max(0, Math.round(player.hp));
   $('#frow').hidden = $('#drow').hidden = !v;
+  { const left = BUFF.sprintUntil - simClock; $('#buff').hidden = left <= 0; if (left > 0) { $('#bbar i').style.width = clamp(left / 60 * 100, 0, 100) + '%'; $('#bval').textContent = Math.ceil(left) + 's'; } }
   if (v) {
     $('#fbar i').style.width = clamp(v.fuel, 0, 100) + '%'; $('#fbar i').style.background = v.fuel < 15 ? 'var(--bad)' : 'var(--danfo)'; $('#fval').textContent = Math.round(v.fuel) + '%';
     const body = clamp(v.hp / VT[v.type].hp * 100, 0, 100); $('#vbar i').style.width = body + '%'; $('#dval').textContent = Math.round(body) + '%';
@@ -3769,6 +4334,7 @@ function updateJobCard() {
   } else if (SHIFT.on) { const r = routeOf(), st = BUS_STOPS[SHIFT.atStop || r.stops[SHIFT.idx]];
     title = r.name; line = SHIFT.atStop ? `At ${st.name}` : `Next stop: ${st.name}`; target = SHIFT.atStop ? null : st;
     more = `Stop at each yellow BUS stop, ${IS_TOUCH ? 'tap CALL' : 'press E'} to load, give the right change. Full bus pays ₦500. Driving past a stop costs you.`; }
+  else if (WAYPOINT) { title = 'Waypoint'; line = WAYPOINT.label; target = WAYPOINT; more = ''; }
   else { const next = ORDER.find(available);
     if (next) { const m = MISSIONS[next]; title = 'Next job'; line = m.title; target = GIVER_AT[m.giver];
       more = `From <b>${CONTACTS[m.giver]}</b>: <i>${esc(m.brief.split('. ')[0])}.</i> ${IS_TOUCH ? 'Go to the yellow marker and tap the prompt' : 'Go to the yellow marker and press E'}, or accept it in your phone.${isDone('lag_01') ? ' Side job: Conductor Shift in any danfo.' : ''}`; }
@@ -3792,7 +4358,7 @@ function step(now) {
   pumpToasts(dt * 1000); dlgTick(dt);
   // presses are discarded only once a game update has consumed them (or while paused), never by a
   // bare render frame, so a tap can't be lost between frames
-  if (WORLD.started) { if (!WORLD.paused) update(dt); pressed.clear(); }
+  if (WORLD.started) { if (!WORLD.paused) update(dt * timeScale()); pressed.clear(); }
   render(now / 1000);
   requestAnimationFrame(step);
 }
@@ -3814,7 +4380,8 @@ function update(dt) {
     if (!WORLD.paused) {
       updatePlayer(dt);
       for (const v of vehicles) { if (v === player.veh) continue; if (v.driver === 'ai') aiTraffic(v, dt); else if (v.driver === 'cop') aiCop(v, dt); else if (v.driver === 'flee') aiFlee(v, dt); else drive(v, 0, 0, true, dt); }
-      pruneJunctions(); collide(dt); updatePeds(dt); spawnTraffic(dt); manageCops(dt); updateMission(dt); updateShift(dt); checkCheckpoint(dt);
+      pruneJunctions(); collide(dt); updatePeds(dt); spawnTraffic(dt); manageCops(dt); updateMission(dt); updateShift(dt); checkCheckpoint(dt); updateLoot(dt);
+      if (WAYPOINT && dist(player.pos(), WAYPOINT) < 50) { ui.toast(`You've reached your ${WAYPOINT.label}.`, 'good', { key: 'wp' }); WAYPOINT = null; }
       for (const f of floaters) { f.t -= dt; f.y -= 18 * dt; } floaters = floaters.filter(f => f.t > 0);
       WORLD.saveT = (WORLD.saveT || 0) + dt; if (WORLD.saveT > 30) { WORLD.saveT = 0; if (!MS.cur) save(); }
     }
@@ -3833,7 +4400,7 @@ function begin(fresh) {
 }
 function boot(data) {
   buildGrid(); buildGraph(); buildBuildings(); resize(); updateGfxUI();
-  applyState((data && data.state) || loadSave());
+  applyState((data && data.state) || loadSave()); garageRestore();
   if (S.done.length || S.cash !== 5000) { $('#btn-play').textContent = 'Continue'; $('#btn-new').hidden = false; }
   $('#btn-play').onclick = () => begin(false); $('#btn-new').onclick = () => begin(true);
   // seed the city so the title screen shows a living street
@@ -3851,7 +4418,7 @@ function boot(data) {
     renderOnce(t) { render(t); if (R3) { const g = R3.getContext(); g.readPixels(0, 0, 1, 1, g.RGBA, g.UNSIGNED_BYTE, new Uint8Array(4)); } }, // read a pixel so the GPU actually finishes the frame
     seed(n) { let x = n >>> 0 || 1; Math.random = () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x / 4294967296; }; },
     resetWorld() { vehicles = []; peds = []; items = []; floaters = []; heli = null; JUNC.clear(); JWAIT.clear(); WORLD.jams = []; rebuildJams(); WORLD.hour = -1; WANT.heat = 0; WANT.timer = 0; player.veh = null; player.owned = null; },
-    clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, peds: () => peds, lookOf, SEATS, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
+    clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, peds: () => peds, lookOf, SEATS, timeScale, INV, ITEMS, BAGS, BUFF, KIOSKS, MED_SHOPS, BOOTH, invOpen, invClose, invToggle, invKeyDown, invKeyUp, invWheelOpen, invWheelClose, invRender, wheelRender, useItem, addItem, takeItem, dropItem, invCount, slotsUsed, bagSlots, buyItem, openShop, nearShop, openCheckpoint, resolveCheckpoint, papersOk, garageSync, garageRestore, trackVehicle, items: () => items, waypoint: () => WAYPOINT, save, loadSave, applyState, simClock: () => simClock, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
 }
 const hot = window.claude?.hot;
 if (hot?.ready) hot.ready(boot); else boot(hot?.data ?? {});
