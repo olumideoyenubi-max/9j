@@ -84,12 +84,12 @@ const { VIEWPORTS, layout } = require('./layout');
   // ---------- 1.7 / 3.1 place names: a fade-in banner on entering an area, never over the player ----------
   for (const vp of [VIEWPORTS[0], VIEWPORTS[2], VIEWPORTS[4]]) {
     const { page } = await open(b, vp);
-    const seen = [];
+    const seen = []; await page.evaluate(() => { NH.BANNER.cur = ''; NH.BANNER.shown = {}; }); // judge entering each area from a fresh state
     for (const [x, y, want] of [[176, 330, 'OSHOJA MOTOR PARK'], [900, 1300, 'BALO MARKET'], [2350, 560, 'EKO CREST'], [176, 330, 'OSHOJA MOTOR PARK']]) {
       await page.evaluate(([x, y]) => { NH.player.veh = null; NH.player.x = x; NH.player.y = y; NH.teleport(x, y); for (let i = 0; i < 30; i++) NH.renderOnce(i / 60); NH.sim(1 / 60); }, [x, y]);
       await page.evaluate(() => NH.sim(1 / 60));
       const st = await page.evaluate(() => { const b = document.querySelector('#banner'), r = b.getBoundingClientRect();
-        const p = { x: innerWidth / 2 + (NH.player.x - NH.cam().x) * NH.cam().zoom, y: innerHeight / 2 + (NH.player.y - NH.cam().y) * NH.cam().zoom };
+        const p = NH.screenOf(NH.player.x, NH.player.y, NH.heightAt(NH.player.x, NH.player.y) + 1);
         return { shown: !b.hidden, text: b.querySelector('b').textContent, coversPlayer: !b.hidden && p.x > r.left - 6 && p.x < r.right + 6 && p.y > r.top - 6 && p.y < r.bottom + 6 }; });
       seen.push(Object.assign({ want }, st));
     }

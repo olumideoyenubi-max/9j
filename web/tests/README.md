@@ -14,3 +14,10 @@ node p2-conductor.js    # passengers, routes, CALL, change, comfort, full bus, m
 node regression.js      # missions 1-2, chase, police still work
 ```
 Requires Node with the `playwright` package available (`NODE_PATH=$(npm root -g)` if installed globally).
+The page loads Three.js from jsDelivr; the harness serves those requests from a local copy of the
+npm package instead (`npm pack three@0.170.0`, extract it, and point `THREE_DIR` at the `package`
+folder; default `/tmp/claude-0/three-pkg/package`). Chromium renders WebGL with SwiftShader.
+
+```bash
+node perf.js            # average frame time (software WebGL, so numbers are pessimistic)
+```

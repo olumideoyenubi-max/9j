@@ -4,7 +4,7 @@ const { chromium, open } = require('./harness');
 (async () => {
   const b = await chromium.launch();
   for (const vp of [{ name: 'desktop', width: 1280, height: 760 }, { name: 'phone', width: 390, height: 844, touch: true }]) {
-    const { page } = await open(b, vp);
+    const { page } = await open(b, vp, { render3d: true });
     const r = await page.evaluate(() => {
       NH.resetWorld(); NH.seed(3); NH.WORLD.noJams = true; NH.S.minutes = 13 * 60; NH.player.x = 900; NH.player.y = 560; NH.sim(8);
       const out = {};

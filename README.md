@@ -22,10 +22,20 @@ and **Abuja**. Built in Unity 6 for Android first (3 GB phones), then PC.
 
 ## Play the browser demo
 
-`web/index.html` is a self-contained, top-down playable demo of **Act 1: Lagos**. It has the danfo
-conductor hustle, 5 story missions, Task Force chases with search and decay, the checkpoint
-"settle" choice, a tailor, a car wash business, day and night, and the phone (Gist, KoboPay, Yarns,
-MapAm). Open it in any modern browser on a desktop or phone. Its rules mirror `Scripts/Core`.
+`web/index.html` is a self-contained, playable **3D** demo of **Act 1: Lagos**, built with Three.js
+(loaded from jsDelivr, so it needs a connection the first time). The whole city is generated in code
+from the same grid the game logic uses: no model files. It has the danfo conductor hustle ("First Day
+on the Danfo" and conductor shifts), Oshoja Motor Park with numbered bays and destination danfos, bus
+stops, Gidi Fuel stations, 5 story missions, Task Force chases with search and decay, the checkpoint
+"settle" choice, a tailor, a car wash business, day and night with real-time sun shadows, and the
+phone (Gist, KoboPay, Yarns, MapAm). Open it in any modern browser on a desktop or phone. Its rules
+mirror `Scripts/Core`.
+
+Controls: WASD or arrows to walk or drive (on foot, movement is relative to the camera), drag the
+screen to look around, E for actions, F to get in or out, Space to brake, Tab for the phone. On a
+phone, use the joystick and buttons.
+
+`web/legacy-2d.html` keeps the earlier top-down 2D version.
 
 ## Getting started
 
