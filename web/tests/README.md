@@ -11,6 +11,7 @@ node p1-onfoot.js       # player can't walk into walls, exits land on free groun
 node p1-traffic.js      # 20 x 60s of traffic: no overlaps, no AI crashes, junction give-way, no gridlock
 node p1-ui.js           # HUD layout on 7 screen sizes, job card, notifications, fuel, labels, controls
 node p2-conductor.js    # passengers, routes, CALL, change, comfort, full bus, missed stops, agberos, summary, go-slow
+node p3-first-day.js    # "First Day on the Danfo" end to end: dialogue, route, agbero, summary, fail + retry, unlock
 node regression.js      # missions 1-2, chase, police still work
 ```
 Requires Node with the `playwright` package available (`NODE_PATH=$(npm root -g)` if installed globally).

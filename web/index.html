@@ -123,6 +123,18 @@ button:focus-visible { outline: 2px solid var(--danfo); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { #banner { animation: none; } }
 
 /* Conductor panel at a bus stop */
+/* Dialogue: portrait + typewriter line, docked low in the centre */
+#dialog { position: fixed; z-index: 9; left: 50%; transform: translateX(-50%); bottom: calc(var(--bot) + 10px); width: min(640px, calc(100vw - 32px)); box-sizing: border-box;
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start; padding: 12px 14px; cursor: pointer;
+  background: rgba(14,17,21,.95); border: 1px solid var(--line); border-top: 3px solid var(--danfo); border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,.6); }
+html.touch #dialog { bottom: calc(var(--bot) + var(--stick) + 34px); }
+#dlg-face { width: 72px; height: 72px; border-radius: 10px; background: var(--panel-2); }
+.dlg-who { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+#dlg-name { font-family: var(--display); color: var(--danfo); font-size: 15px; letter-spacing: .5px; }
+#dlg-role { font-size: 12px; color: var(--muted); }
+#dlg-text { margin: 6px 0 4px; font-size: 17px; line-height: 1.4; min-height: 2.8em; text-wrap: pretty; }
+.dlg-next { font-size: 12px; color: var(--muted); }
+.mood { font-size: 15px; }
 #cpanel { position: fixed; z-index: 7; transform: translateX(-50%); box-sizing: border-box; display: grid; gap: 8px; padding: 10px 12px;
   background: rgba(15,18,22,.94); border: 1px solid var(--danfo); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.5); transform-origin: 50% 100%; }
 #cpanel .cp-top { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; min-width: 0; }
@@ -287,6 +299,7 @@ html:not(.touch) .touch-only { display: none !important; }
 </div>
 <div id="card" hidden><h2></h2><p></p><div class="sub"></div></div>
 <div id="banner" hidden><b></b><span></span></div>
+<div id="dialog" hidden role="dialog" aria-label="Conversation"><canvas id="dlg-face" width="144" height="144" aria-hidden="true"></canvas><div class="dlg-body"><div class="dlg-who"><b id="dlg-name"></b><span id="dlg-role"></span></div><p id="dlg-text" aria-live="polite"></p><span class="dlg-next" id="dlg-next"></span></div></div>
 
 <div id="touch">
   <div id="stick-zone" class="touch-only"><div id="stick"><div id="knob"></div></div></div>
@@ -540,16 +553,19 @@ const SOCIAL = {
 };
 
 const MISSIONS = {
-  lag_01: { title: 'First Day on the Danfo', giver: 'baba', req: [], reward: 8000, cred: 20,
-    brief: "Baba Sule needs a conductor. Hang off the side of his yellow danfo, shout the route, collect the fares — and don't let anybody 'forget' their change.",
-    setup(ms) { ms.danfo = spawnVehicle('danfo', 300, 250, Math.PI / 2, { mission: true, tag: 'm_danfo', parked: true }); },
+  lag_01: { title: 'First Day on the Danfo', giver: 'baba', req: [], reward: 0, cred: 20,
+    brief: "Baba Sule, Baba Driver to everybody at the park, needs a conductor. One round trip in his danfo: Oshoja, Balo Market, Mainland Junction and back to the park. Shout well, collect correct money, and no spoil his motor.",
+    setup(ms) { // the mission danfo replaces whatever was parked in bay 1
+      const bay = PARK_BAYS[0]; vehicles = vehicles.filter(v => { const keep = v === player.veh || Math.hypot(v.x - bay.x, v.y - bay.y) > 24; if (!keep) releaseJunction(v); return keep; });
+      ms.danfo = spawnVehicle('danfo', bay.x, bay.y, bay.a, { mission: true, tag: 'm_danfo', parked: true, dest: 'BALO' }); ms.danfo.fuel = 100; },
     objs: [
-      { t: 'goto', text: 'Meet Baba Sule at Oshoja motor park', at: () => PL.park, r: 60 },
-      { t: 'enter', text: 'Hop on the danfo (F / Enter)', target: ms => ms.danfo },
-      { t: 'stops', text: 'Collect fares from 6 passengers', sub: 'Stop at each yellow bus stop', count: 6 },
-      { t: 'goto', text: 'Reach the Eko Crest bus stop', sub: 'Across Third Lagoon Bridge', at: () => PL.eko, r: 56, time: 240, vehicle: true },
+      { t: 'goto', text: 'Meet Baba Driver at Oshoja Motor Park', at: () => PL.park, r: 60, then: firstDayIntro },
+      { t: 'enter', text: 'Get in the danfo at bay 1', sub: 'The yellow bus with BALO on its board', target: ms => ms.danfo },
+      { t: 'route', text: 'Run the route', clock: 120 },
+      { t: 'goto', text: 'Bring the danfo back to Oshoja Motor Park', sub: 'Baba Driver is waiting by the bays', at: () => PL.park, r: 70, inVeh: ms => ms.danfo, then: firstDayFinish },
     ],
-    fail(ms) { if (ms.danfo.hp <= 0) return 'The danfo is wrecked'; } },
+    fail(ms) { if (ms.danfo.hp <= 0) return 'wrecked'; if (ms.deadline && S.minutes > ms.deadline) return 'late'; },
+    onFail: firstDayFailed },
   lag_02: { title: 'Go-Slow Getaway', giver: 'baba', req: ['lag_01'], reward: 12000, cred: 25, integ: 3,
     brief: "A pickpocket on an okada snatched a passenger's bag in the go-slow. Weave through the traffic and get it back.",
     setup(ms) { const s = roadSpotNear(player.pos(), 40, 220); ms.okada = spawnVehicle('okada', s.x, s.y, s.a, { mission: true, tag: 'm_okada', parked: true, color: '#c62828' }); },
@@ -589,6 +605,39 @@ const MISSIONS = {
     ] },
 };
 const ORDER = ['lag_01', 'lag_02', 'lag_03', 'lag_07', 'lag_09'];
+// "First Day on the Danfo": a fixed, one-way route (no looping back), then home to the park.
+const FIRST_ROUTE = { id: 'm_first', name: 'First Day: Oshoja – Balo Market – Mainland Junction', stops: ['oshoja', 'balogate', 'iya'], fare: [200, 400], busy: 5, linear: true,
+  label: { oshoja: 'Oshoja Park', balogate: 'Balo Market (Balo Gate)', iya: 'Mainland Junction (Iya Basira)' } };
+const FIRST_CUT = .4, FIRST_TICKET = 500;
+const BABA_LINES = {
+  intro: ['Ehen! You don come. Na you be the new conductor?', 'You don ready? Na today you go learn work. No spoil my motor o!',
+    'Danfo dey bay one. Oshoja, Balo Market, Mainland Junction, then come back here. Two hours. No dull yourself.',
+    'Stop for the ring, shout your route, collect correct money. If agbero hold you for Balo, use sense.'],
+  retry: ['Oya, try am again. Motor dey bay one. This time, use your head.'],
+  done: ['Ah, my conductor! You try today o. Make we count the money.'],
+  wrecked: ['Wetin you do my motor?! You wan finish me? Na so dem dey learn work?', 'Go and rest. Come back when sense don enter your head.'],
+  late: ['Two hours and you never reach back? Passengers don waka, my money don waka!', 'Na so dem dey do this work? Try again when you ready.'],
+};
+function firstDayIntro(ms) {
+  sayLines('baba', ms.retry ? BABA_LINES.retry : BABA_LINES.intro, () => { if (MS.cur === ms) nextObj(); });
+}
+function firstDayFinish(ms) {
+  const v = player.veh; if (v) { v.v = 0; }
+  sayLines('baba', BABA_LINES.done, () => endShift({ title: 'First Day on the Danfo', onClose: () => { if (MS.cur === ms) passMission(); } }));
+}
+function firstDayFailed(ms, reason) {
+  SHIFT.on = false; SHIFT.onboard = []; SHIFT.waiting = {};
+  sayLines('baba', BABA_LINES[reason] || BABA_LINES.wrecked, () => showSheet(`<h3>WAHALA!</h3><p>${reason === 'late' ? 'You ran out of time.' : 'The danfo is wrecked.'} Baba Driver is not happy.</p>
+    <div class="btns"><button class="btn primary" type="button" data-a="retry">Try again</button><button class="btn" type="button" data-a="later">Not now</button></div>`,
+    el => { el.querySelector('[data-a="retry"]').onclick = () => { closeOverlays(); retryFirstDay(); }; el.querySelector('[data-a="later"]').onclick = closeOverlays; }));
+}
+function retryFirstDay() {
+  if (stars() > 0) clearHeat(false);
+  if (player.veh) { player.veh.driver = null; player.veh.v = 0; player.veh = null; }
+  player.x = PL.park.x; player.y = PL.park.y + 20; player.hp = Math.max(player.hp, 60); CAMS.init = false;
+  startMission('lag_01', { retry: true });
+}
+
 
 // ---------------------------------------------------------------- state
 const S = {
@@ -644,6 +693,7 @@ const keys = {}, pressed = new Set();
 addEventListener('keydown', e => {
   if (['Tab', 'Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) e.preventDefault();
   if (!keys[e.code]) pressed.add(e.code); keys[e.code] = true;
+  if (DLG.open) { if (['KeyE', 'Space', 'Enter', 'NumpadEnter'].includes(e.code)) { e.preventDefault(); if (!e.repeat) dlgAdvance(); return; } if (e.code === 'Escape') { dlgSkip(); return; } }
   if (e.code === 'Escape' || (!$('#phone').hidden && (e.code === 'Tab' || e.code === 'KeyP'))) { closeOverlays(); pressed.clear(); }
 });
 addEventListener('keyup', e => { keys[e.code] = false; });
@@ -662,7 +712,7 @@ const held = (...c) => c.some(k => keys[k]);
   zone.addEventListener('pointerup', up); zone.addEventListener('pointercancel', up);
   for (const b of document.querySelectorAll('#tbtns button')) {
     const name = b.dataset.b;
-    b.addEventListener('pointerdown', e => { e.preventDefault(); b.setPointerCapture(e.pointerId); pressed.add('T_' + name); touch.held[name] = true; b.classList.add('down'); });
+    b.addEventListener('pointerdown', e => { e.preventDefault(); if (DLG.open) { if (name === 'action') dlgAdvance(); return; } b.setPointerCapture(e.pointerId); pressed.add('T_' + name); touch.held[name] = true; b.classList.add('down'); });
     const rel = () => { touch.held[name] = false; b.classList.remove('down'); }; b.addEventListener('pointerup', rel); b.addEventListener('pointercancel', rel); b.addEventListener('lostpointercapture', rel);
   }
   // the context prompt is itself a button: tap it to do what it says
@@ -858,7 +908,7 @@ function onImpact(v, imp) {
   if (imp > 150) { player.hp -= (imp - 150) * .05; shake = Math.min(10, imp / 30); }
   const ms = MS.cur;
   if (ms && ms.id === 'lag_03' && ms.carry > 0 && imp > 140 && !ms.bonusFail) { ms.bonusFail = true; ui.toast('Crack! A screen don break. Bonus lost.', 'bad'); }
-  if (SHIFT.on && v === SHIFT.bus && SHIFT.onboard.length) SHIFT.comfort = Math.max(0, SHIFT.comfort - imp / 8); // passengers hate crashes
+  if (SHIFT.on && v === SHIFT.bus && SHIFT.onboard.length) { SHIFT.comfort = Math.max(0, SHIFT.comfort - imp / 8); if (imp > 60) floaters.push({ x: v.x, y: v.y - 36, text: pick(['"Ehn! Driver!"', '"You wan kill us?"', '"Jesus!"']), t: 1.6 }); } // passengers hate crashes
 }
 
 // ---------------------------------------------------------------- AI drivers
@@ -1179,26 +1229,29 @@ function announce() {
   for (const id of ORDER) if (available(id) && !S.announced.includes(id)) { S.announced.push(id); chat(MISSIONS[id].giver, MISSIONS[id].brief, id); }
 }
 function canStart() { return !MS.cur && stars() === 0 && !SHIFT.on; }
-function startMission(id) {
+function startMission(id, opts = {}) {
   if (!canStart() || !available(id)) { ui.toast(stars() > 0 ? 'Lose your heat first.' : SHIFT.on ? 'End your conductor shift first (shift menu).' : 'Finish the job you\'re on first.', 'bad'); return false; }
-  const def = MISSIONS[id]; const ms = { id, def, oi: -1, prog: 0, timer: 0, items: [], carry: 0, bonusFail: false };
+  const def = MISSIONS[id]; const ms = { id, def, oi: -1, prog: 0, timer: 0, items: [], carry: 0, bonusFail: false, retry: !!opts.retry };
   MS.cur = ms; def.setup && def.setup(ms);
   ui.card(def.title.toUpperCase(), CONTACTS[def.giver], '', false, 2600); beep([523, 659, 784], .12, .05, 'triangle');
   nextObj(); return true;
 }
 function nextObj() {
-  const ms = MS.cur; ms.oi++; ms.prog = 0; ms.armed = 0;
+  const ms = MS.cur; ms.oi++; ms.prog = 0; ms.armed = 0; ms.thenFired = false;
   const o = ms.def.objs[ms.oi]; if (!o) return passMission();
   ms.timer = o.time || 0;
   if (o.t === 'stops') ms.stops = MISSION_STOPS.map(s => ({ id: s.id, x: s.x, y: s.y, fares: 2, hold: 0, pax: [makePax(s.id), makePax(s.id)] }));
   if (o.t === 'loseheat' && stars() === 0) addHeat(2);
+  if (o.clock) { ms.deadline = S.minutes + o.clock; ms.slowClock = true; } // in-game deadline; the clock runs at half speed while it counts
+  if (o.t === 'route') startShift(FIRST_ROUTE.id, { route: FIRST_ROUTE, mission: true, cut: FIRST_CUT, owner: 'Baba Driver' });
   o.start && o.start(ms);
 }
 function passMission() {
   const ms = MS.cur, def = ms.def; MS.cur = null;
-  const pay = Math.round(def.reward * (ms.bonusFail ? .9 : 1));
+  const pay = Math.round(def.reward * (ms.bonusFail ? .9 : 1)); ms.slowClock = false;
   earn(pay, def.title); S.cred += def.cred; S.integ += def.integ || 0; S.done.push(ms.id);
-  ui.card('JOB DONE!', def.title, `+${naira(pay)}   +${def.cred} cred${ms.bonusFail ? '   (bonus missed)' : def.bonus ? '   (bonus earned)' : ''}`);
+  ui.card('JOB DONE!', def.title, `${pay ? `+${naira(pay)}   ` : ''}+${def.cred} cred${ms.bonusFail ? '   (bonus missed)' : def.bonus ? '   (bonus earned)' : ''}`);
+  if (ms.id === 'lag_01') setTimeout(() => ui.toast(`New side job: Conductor Shift. Get in any danfo and ${IS_TOUCH ? 'tap ACTION' : 'press E'}.`, 'good', { key: 'sidejob' }), 2800);
   beep([523, 659, 784, 1046], .14, .06, 'triangle');
   post('mission_passed:' + ms.id); cleanupMission(ms);
   if (ms.id === 'lag_09') { S.actDone = true; setTimeout(showActEnd, 3200); }
@@ -1206,6 +1259,7 @@ function passMission() {
 }
 function failMission(reason) {
   const ms = MS.cur; if (!ms) return; MS.cur = null;
+  if (ms.def.onFail) { beep([392, 330, 262], .2, .06, 'sawtooth'); cleanupMission(ms); ms.def.onFail(ms, reason); S.announced = S.announced.filter(x => x !== ms.id); return; }
   ui.card('WAHALA!', ms.def.title, reason, true); beep([392, 330, 262], .2, .06, 'sawtooth');
   cleanupMission(ms); S.announced = S.announced.filter(x => x !== ms.id); setTimeout(announce, 4000);
 }
@@ -1221,6 +1275,8 @@ function objTargets(ms) {
   if (o.t === 'stops') return ms.stops.map(s => ({ x: s.x, y: s.y, r: 44, stop: true }));
   if (o.t === 'collect') return items.filter(i => ms.items.includes(i)).map(i => ({ x: i.x, y: i.y, r: 20 }));
   if (o.t === 'chase') { const v = o.target(ms); return v ? [{ x: v.x, y: v.y, r: 26, enemy: true }] : []; }
+  if (o.t === 'route') { if (!SHIFT.on || SHIFT.routeDone) return []; const bus = SHIFT.bus; if (player.veh !== bus) return bus ? [{ x: bus.x, y: bus.y, r: 30, veh: true }] : [];
+    if (SHIFT.atStop) return []; const st = BUS_STOPS[routeOf().stops[SHIFT.idx]]; return [{ x: st.x, y: st.y, r: 46, stop: true }]; }
   return [];
 }
 function updateMission(dt) {
@@ -1228,7 +1284,8 @@ function updateMission(dt) {
   if (o.time) { ms.timer -= dt; if (ms.timer <= 0) return failMission('Time up'); }
   const f = ms.def.fail && ms.def.fail(ms); if (f) return failMission(f);
   switch (o.t) {
-    case 'goto': { const at = o.at(); if (dist(p, at) < o.r && (!o.vehicle || player.veh)) nextObj(); break; }
+    case 'goto': { const at = o.at(); if (dist(p, at) < o.r && (!o.vehicle || player.veh) && (!o.inVeh || player.veh === o.inVeh(ms))) { if (!o.then) nextObj(); else if (!ms.thenFired) { ms.thenFired = true; o.then(ms); } } break; }
+    case 'route': if (SHIFT.routeDone) nextObj(); break;
     case 'enter': if (player.veh && player.veh === o.target(ms)) nextObj(); break;
     case 'stops':
       for (const s of ms.stops) {
@@ -1248,19 +1305,61 @@ function updateMission(dt) {
 // ---------------------------------------------------------------- conductor hustle (port of HustleShift.cs)
 // Danfo conductor shift. Money collected goes in the conductor's bag and is settled at the end:
 // fares + tips + bonuses − refunds/penalties − agbero tickets − damage − the owner's cut.
+// ---------------------------------------------------------------- dialogue: portrait + typewriter text
+const SPEAKERS = { baba: { name: 'Baba Driver', role: 'Baba Sule · danfo owner, Oshoja Motor Park' } };
+const DLG = { lines: [], i: 0, shown: 0, done: null, open: false };
+function sayLines(who, lines, done) {
+  const s = SPEAKERS[who] || { name: CONTACTS[who] || who, role: '' };
+  Object.assign(DLG, { who, lines, i: 0, shown: 0, done, open: true });
+  $('#dlg-name').textContent = s.name; $('#dlg-role').textContent = s.role; drawPortrait($('#dlg-face'), who);
+  $('#dlg-text').textContent = ''; $('#dialog').hidden = false; WORLD.paused = true; dlgHint(); beep([330, 392], .06, .04, 'triangle');
+}
+function dlgHint() { $('#dlg-next').textContent = (DLG.i < DLG.lines.length - 1 ? 'Next ▸' : 'OK ▸') + (IS_TOUCH ? '  tap here or ACTION' : '  E · Space · click   (Esc skips)'); }
+function dlgTick(dt) { if (!DLG.open) return; const line = DLG.lines[DLG.i]; if (DLG.shown < line.length) { DLG.shown = Math.min(line.length, DLG.shown + dt * 40); $('#dlg-text').textContent = line.slice(0, Math.floor(DLG.shown)); } }
+function dlgAdvance() {
+  if (!DLG.open) return; const line = DLG.lines[DLG.i];
+  if (DLG.shown < line.length) { DLG.shown = line.length; $('#dlg-text').textContent = line; return; } // first press finishes the line
+  if (++DLG.i < DLG.lines.length) { DLG.shown = 0; $('#dlg-text').textContent = ''; dlgHint(); return; }
+  DLG.open = false; $('#dialog').hidden = true; WORLD.paused = false; pressed.clear(); const d = DLG.done; DLG.done = null; if (d) d();
+}
+function dlgSkip() { if (!DLG.open) return; DLG.i = DLG.lines.length - 1; DLG.shown = DLG.lines[DLG.i].length; dlgAdvance(); }
+$('#dialog').addEventListener('click', dlgAdvance);
+// Baba Driver: grey beard, fila cap, brown agbada (drawn, so there are no image files)
+function drawPortrait(c, who) {
+  const g = c.getContext('2d'), W = c.width; g.clearRect(0, 0, W, W);
+  const bg = g.createLinearGradient(0, 0, 0, W); bg.addColorStop(0, '#f5c400'); bg.addColorStop(1, '#c79a00'); g.fillStyle = bg; g.fillRect(0, 0, W, W);
+  g.fillStyle = 'rgba(0,0,0,.18)'; for (let k = -W; k < W; k += 18) { g.fillRect(k, 0, 6, W); } // danfo stripes
+  g.fillStyle = '#5d4037'; g.beginPath(); g.ellipse(W / 2, W * 1.02, W * .48, W * .34, 0, 0, 7); g.fill(); // agbada shoulders
+  g.strokeStyle = '#d7b46a'; g.lineWidth = 3; g.beginPath(); g.arc(W / 2, W * .78, W * .14, .15 * Math.PI, .85 * Math.PI); g.stroke(); // embroidery
+  g.fillStyle = '#4a2f20'; g.fillRect(W * .42, W * .58, W * .16, W * .14); // neck
+  g.fillStyle = '#5a3a26'; g.beginPath(); g.ellipse(W / 2, W * .46, W * .2, W * .24, 0, 0, 7); g.fill(); // face
+  g.fillStyle = '#4a2f20'; g.beginPath(); g.ellipse(W * .3, W * .47, W * .035, W * .06, 0, 0, 7); g.ellipse(W * .7, W * .47, W * .035, W * .06, 0, 0, 7); g.fill(); // ears
+  g.fillStyle = '#d9d4cc'; g.beginPath(); g.moveTo(W * .3, W * .5); g.quadraticCurveTo(W * .33, W * .78, W / 2, W * .79); g.quadraticCurveTo(W * .67, W * .78, W * .7, W * .5); // grey beard
+  g.quadraticCurveTo(W * .62, W * .62, W / 2, W * .6); g.quadraticCurveTo(W * .38, W * .62, W * .3, W * .5); g.fill();
+  g.fillStyle = '#3b2418'; g.beginPath(); g.ellipse(W / 2, W * .6, W * .06, W * .018, 0, 0, 7); g.fill(); // mouth
+  g.fillStyle = '#fff'; g.beginPath(); g.ellipse(W * .42, W * .44, W * .035, W * .022, 0, 0, 7); g.ellipse(W * .58, W * .44, W * .035, W * .022, 0, 0, 7); g.fill();
+  g.fillStyle = '#1a0f0a'; g.beginPath(); g.arc(W * .425, W * .445, W * .016, 0, 7); g.arc(W * .585, W * .445, W * .016, 0, 7); g.fill();
+  g.strokeStyle = '#cfc9bf'; g.lineWidth = W * .022; g.lineCap = 'round'; g.beginPath(); g.moveTo(W * .37, W * .395); g.lineTo(W * .46, W * .405); g.moveTo(W * .54, W * .405); g.lineTo(W * .63, W * .395); g.stroke(); // brows
+  g.fillStyle = '#7b1e1e'; g.beginPath(); g.moveTo(W * .29, W * .33); g.quadraticCurveTo(W * .3, W * .14, W * .52, W * .13); g.quadraticCurveTo(W * .76, W * .14, W * .72, W * .36); // fila
+  g.quadraticCurveTo(W * .5, W * .29, W * .29, W * .33); g.fill(); g.fillStyle = 'rgba(255,255,255,.18)'; g.fillRect(W * .32, W * .29, W * .38, W * .025);
+}
+const BABA = { x: PL.park.x + 22, y: PL.park.y - 12, col: '#5d4037', _baba: 1 };
+
 const CAP = 14, OWNER_CUT = .35, DAMAGE_COST = 40; // ₦ per point of body damage
 const SHIFT = { on: false };
 let paxId = 0;
 function makePax(stopId, route) {
   const st = BUS_STOPS[stopId], i = route ? route.stops.indexOf(stopId) : -1;
   let dest = null, fare = 200;
-  if (route) {
+  if (route && route.linear) { const later = route.stops.slice(i + 1); dest = later.length ? pick(later) : null; // null: rides to the park at the end
+    fare = clamp(100 + (dest ? later.indexOf(dest) + 1 : 1) * 100 + (Math.random() < .5 ? 50 : 0), route.fare[0], route.fare[1]); }
+  else if (route) {
     const hops = 1 + Math.floor(Math.random() * Math.min(4, route.stops.length - 1));
     dest = route.stops[(i + hops) % route.stops.length];
     const [lo, hi] = route.fare; fare = Math.round((lo + (hi - lo) * (hops - 1) / Math.max(1, Math.min(4, route.stops.length - 1) - 1)) / 50) * 50;
   }
   fare = clamp(fare, 200, 500);
-  const r = Math.random(), note = r < .35 ? fare : r < .7 ? (fare < 500 ? 500 : 1000) : 1000;
+  const r = Math.random(), note = route && route.linear ? fare : r < .35 ? fare : r < .7 ? (fare < 500 ? 500 : 1000) : 1000; // first-day passengers pay exact
   return { id: ++paxId, stop: stopId, dest, fare, note, name: pick(PAX_NAMES), col: pick(['#e2683c', '#2fa36b', '#d94f8a', '#3d7bd9', '#f5c400', '#8e44ad', '#16a085']),
     tie: Math.random() < .5 ? pick(['#f5c400', '#e53935', '#43a047', '#1e88e5']) : null,
     x: st.wx + rnd(-20, 20), y: st.wy + rnd(-5, 5), state: 'wait', phase: Math.random() * 6 };
@@ -1271,25 +1370,26 @@ function queueSpot(stopId, i) {
   return horiz ? { x: st.wx + off, y: st.wy + (i > 5 ? 10 : 0) } : { x: st.wx + (i > 5 ? 10 : 0), y: st.wy + off };
 }
 function lineUp(list, stopId, dt) { list.forEach((p, i) => { const q = queueSpot(stopId, i); p.x += (q.x - p.x) * Math.min(1, dt * 6); p.y += (q.y - p.y) * Math.min(1, dt * 6); p.slot = i; }); }
-function routeOf() { return SHIFT.on ? ROUTES.find(r => r.id === SHIFT.route) : null; }
+function routeOf() { return SHIFT.on ? (SHIFT.routeDef || ROUTES.find(r => r.id === SHIFT.route)) : null; }
 function openRoutePicker() {
   const v = player.veh;
   showSheet(`<h3>Pick a route</h3><p class="muted">Stop at each bus stop, tap <b>CALL</b> to load passengers, give the right change, drive gently. ${v.stolen ? 'This bus is stolen, so there is no owner to pay.' : `Baba Sule takes ${OWNER_CUT * 100}% of fares as the owner's cut.`}</p>
-    <div style="display:grid;gap:8px">${ROUTES.map(r => `<button class="btn" type="button" data-r="${r.id}">${r.name}<small>${r.stops.length} stops · fares ${naira(r.fare[0])}–${naira(r.fare[1])} · ${esc(r.blurb)}</small></button>`).join('')}</div>
+    <div style="display:grid;gap:8px"><button class="btn primary" type="button" data-random data-r="${pick(ROUTES).id}">Random route<small>Take whatever the park gives you</small></button>${ROUTES.map(r => `<button class="btn" type="button" data-r="${r.id}">${r.name}<small>${r.stops.length} stops · fares ${naira(r.fare[0])}–${naira(r.fare[1])} · ${esc(r.blurb)}</small></button>`).join('')}</div>
     <button class="btn" type="button" data-x>Not now</button>`, el => {
     el.querySelectorAll('[data-r]').forEach(b => b.onclick = () => { closeOverlays(); startShift(b.dataset.r); });
     el.querySelector('[data-x]').onclick = closeOverlays;
   });
 }
-function startShift(routeId) {
-  const route = ROUTES.find(r => r.id === routeId) || ROUTES[0], v = player.veh; if (!v || v.type !== 'danfo') return false;
+function startShift(routeId, opts = {}) {
+  const route = opts.route || ROUTES.find(r => r.id === routeId) || ROUTES[0], v = player.veh; if (!v || v.type !== 'danfo') return false;
   // start at the route stop nearest the bus
-  let idx = 0, bd = 1e9; route.stops.forEach((id, i) => { const d = dist(BUS_STOPS[id], v); if (d < bd) { bd = d; idx = i; } });
+  let idx = 0, bd = 1e9; if (!opts.mission) route.stops.forEach((id, i) => { const d = dist(BUS_STOPS[id], v); if (d < bd) { bd = d; idx = i; } });
   Object.assign(SHIFT, { on: true, route: route.id, idx, atStop: null, near: false, onboard: [], waiting: {}, alighting: [], changeQ: [],
     fares: 0, tips: 0, bonus: 0, keep: 0, penalties: 0, agbero: 0, missed: 0, carried: 0, comfort: 100, hpStart: v.hp,
-    owner: v.stolen ? null : 'Baba Sule', lastV: v.v, lastA: v.a, refill: 10, demand: {}, call: pick(CALLS), bus: v });
+    owner: v.stolen ? null : (opts.owner || 'Baba Sule'), lastV: v.v, lastA: v.a, refill: 10, demand: {}, call: pick(CALLS), bus: v,
+    mission: !!opts.mission, routeDef: opts.route || null, cut: opts.cut ?? OWNER_CUT, routeDone: false, smoothT: 0 });
   for (const id of route.stops) SHIFT.waiting[id] = Array.from({ length: 2 + Math.floor(Math.random() * (route.busy - 1)) }, () => makePax(id, route));
-  ui.toast(`Route: ${route.name}. First stop ${BUS_STOPS[route.stops[idx]].name}.`, 'good', { key: 'shift' });
+  ui.toast(`Route: ${route.name}. First stop ${(route.label && route.label[route.stops[idx]]) || BUS_STOPS[route.stops[idx]].name}.`, 'good', { key: 'shift' });
   return true;
 }
 function arrive(sid) {
@@ -1305,14 +1405,14 @@ function arrive(sid) {
     const p = pick(SHIFT.onboard); SHIFT.onboard = SHIFT.onboard.filter(q => q !== p); SHIFT.penalties += p.fare;
     floaters.push({ x: st.x, y: st.y - 40, text: '"Driver, you wan kill us? My money!"', t: 2.4 }); ui.toast(`${p.name} got down and took back ${naira(p.fare)}. Drive gently.`, 'bad', { key: 'shift' });
   }
-  if (st.agbero) openAgbero(sid);
+  if (st.agbero && (!SHIFT.mission || sid === 'balogate')) openAgbero(sid);
   else ui.toast(`${st.name}: ${SHIFT.waiting[sid].length} waiting. ${IS_TOUCH ? 'Tap CALL' : 'Press E to call'}.`, '', { key: 'shift' });
 }
 function callPassengers() {
   const sid = SHIFT.atStop; if (!sid) return; const route = routeOf(), wait = SHIFT.waiting[sid];
   SHIFT.call = pick(CALLS); floaters.push({ x: SHIFT.bus.x, y: SHIFT.bus.y - 34, text: SHIFT.call.replace(/"/g, ''), t: 1.8 }); beep([523, 659], .08, .05, 'triangle');
-  if (Math.random() < .4) wait.push(makePax(sid, route)); // shouting the route pulls in one more
-  const n = Math.min(3, wait.length, CAP - SHIFT.onboard.length);
+  if (!SHIFT.mission && Math.random() < .4) wait.push(makePax(sid, route)); // shouting the route pulls in one more
+  const n = Math.min(SHIFT.mission ? 99 : 3, wait.length, CAP - SHIFT.onboard.length);
   if (CAP - SHIFT.onboard.length <= 0) { ui.toast('Bus full! Move on.', 'good', { key: 'shift' }); return; }
   if (!n) { ui.toast('Nobody else waiting here.', '', { key: 'shift' }); return; }
   const st0 = BUS_STOPS[sid]; let k = 0;
@@ -1338,6 +1438,7 @@ function depart() {
   SHIFT.changeQ = []; // drove off mid-change: you paid out correctly, but nobody tips a rushed conductor
   const route = routeOf();
   if (SHIFT.onboard.length >= CAP) { SHIFT.bonus += 500; ui.toast('Full bus! +₦500 bonus.', 'good', { key: 'shift' }); if (Math.random() < .3) post('fullbus'); }
+  if (route.linear && route.stops.indexOf(SHIFT.atStop) === route.stops.length - 1) SHIFT.routeDone = true;
   SHIFT.idx = (route.stops.indexOf(SHIFT.atStop) + 1) % route.stops.length; SHIFT.atStop = null; SHIFT.near = false;
 }
 function missStop(sid, why) {
@@ -1345,16 +1446,17 @@ function missStop(sid, why) {
   SHIFT.missed++; SHIFT.penalties += 100; // late / missed-stop fine from the owner
   for (const p of off) { SHIFT.onboard = SHIFT.onboard.filter(q => q !== p); SHIFT.penalties += p.fare; SHIFT.comfort = Math.max(0, SHIFT.comfort - 10); }
   ui.toast(`You ${why} ${st.name}! ${off.length ? `${off.length} passenger${off.length > 1 ? 's' : ''} took back their fare. ` : ''}-₦100 missed-stop fine.`, 'bad', { key: 'shift' });
+  if (route.linear && route.stops.indexOf(sid) === route.stops.length - 1) SHIFT.routeDone = true;
   SHIFT.idx = (route.stops.indexOf(sid) + 1) % route.stops.length; SHIFT.near = false;
 }
 function openAgbero(sid) {
-  const st = BUS_STOPS[sid], mult = SHIFT.demand[sid] || 1; let amt = st.agbero * mult;
+  const st = BUS_STOPS[sid], mult = SHIFT.demand[sid] || 1; let amt = SHIFT.mission ? FIRST_TICKET : st.agbero * mult;
   const respect = OUTFITS.find(o => o.id === S.outfit).respect;
   const view = (line, canHaggle) => showSheet(`<h3>Agbero at ${st.name}</h3><p>${line}</p><p class="muted">Park touts want their "ticket" before you load. ${mult > 1 ? 'They remember you drove off last time.' : ''}</p>
     <div class="btns">
       <button class="btn primary" type="button" data-a="pay">Pay ${naira(amt)}</button>
-      ${canHaggle ? `<button class="btn" type="button" data-a="haggle">Negotiate<small>Cred and a good outfit help</small></button>` : ''}
-      <button class="btn danger" type="button" data-a="off">Drive off<small>No ticket. Raises heat.</small></button>
+      ${canHaggle ? `<button class="btn" type="button" data-a="haggle">Beg<small>"Abeg, na my first day." Cred and a good outfit help</small></button>` : ''}
+      <button class="btn danger" type="button" data-a="off">Drive off<small>No ticket. 1 wanted star.</small></button>
     </div>`, el => el.querySelectorAll('[data-a]').forEach(b => b.onclick = () => {
       const a = b.dataset.a;
       if (a === 'pay') { SHIFT.agbero += amt; SHIFT.demand[sid] = 1; closeOverlays(); ui.toast(`Paid ${naira(amt)} ticket. "Load well, driver!"`, '', { key: 'shift' }); }
@@ -1365,14 +1467,14 @@ function openAgbero(sid) {
         closeOverlays(); SHIFT.demand[sid] = mult * 2; SHIFT.comfort = Math.max(0, SHIFT.comfort - 10);
         floaters.push({ x: st.x, y: st.y - 30, text: '"Driver! Come back here!"', t: 2 }); addHeat(1); post('agbero', { stop: st.name });
         // no loading at a stop you just ran from
-        SHIFT.atStop = null; SHIFT.idx = (routeOf().stops.indexOf(sid) + 1) % routeOf().stops.length;
+        SHIFT.atStop = null; if (routeOf().linear && routeOf().stops.indexOf(sid) === routeOf().stops.length - 1) SHIFT.routeDone = true; SHIFT.idx = (routeOf().stops.indexOf(sid) + 1) % routeOf().stops.length;
       }
     }));
   view(`"Driver! Ticket. ${naira(amt)}. Na for the boys."`, true);
 }
 function shiftTotals() {
   const v = SHIFT.bus, damage = Math.max(0, Math.round((SHIFT.hpStart - (v ? Math.max(0, v.hp) : SHIFT.hpStart)) * DAMAGE_COST));
-  const cut = SHIFT.owner ? Math.round(SHIFT.fares * OWNER_CUT) : 0;
+  const cut = SHIFT.owner ? Math.round(SHIFT.fares * (SHIFT.cut ?? OWNER_CUT)) : 0;
   const net = SHIFT.fares + SHIFT.tips + SHIFT.bonus + SHIFT.keep - SHIFT.penalties - SHIFT.agbero - damage - cut;
   return { fares: SHIFT.fares, tips: SHIFT.tips, bonus: SHIFT.bonus, keep: SHIFT.keep, penalties: SHIFT.penalties, agbero: SHIFT.agbero, damage, cut, net };
 }
@@ -1382,22 +1484,22 @@ function openShiftMenu() {
     <div class="btns"><button class="btn primary" type="button" data-a="go">Keep driving</button><button class="btn" type="button" data-a="end">End shift & settle up</button></div>`,
     el => { el.querySelector('[data-a="go"]').onclick = closeOverlays; el.querySelector('[data-a="end"]').onclick = () => { closeOverlays(); endShift(); }; });
 }
-function endShift() {
-  if (!SHIFT.on) return; const t = shiftTotals(), routeName = routeOf().name; SHIFT.on = false;
+function endShift(opts = {}) {
+  if (!SHIFT.on) return; const t = shiftTotals(), routeName = routeOf().name, cutPct = Math.round((SHIFT.cut ?? OWNER_CUT) * 100); SHIFT.on = false;
   // anyone still on board gets down; their fares were already collected
   SHIFT.carried += SHIFT.onboard.length; S.jobs += SHIFT.onboard.length; SHIFT.onboard = [];
   const paid = t.net >= 0 ? t.net : -Math.min(S.cash, -t.net); if (paid) earn(paid, 'Conductor shift');
   const row = (k, val, cls = '') => `<div style="display:flex;justify-content:space-between;gap:12px" class="${cls}"><span>${k}</span><b style="font-family:var(--mono)">${val}</b></div>`;
   const neg = n => n ? '−' + naira(n) : naira(0);
   WORLD.lastSummary = Object.assign({ carried: SHIFT.carried, missed: SHIFT.missed, paid }, t);
-  showSheet(`<h3>Shift summary</h3><p class="muted">${esc(routeName)} · ${SHIFT.carried} passengers carried · ${SHIFT.missed} missed stop${SHIFT.missed === 1 ? '' : 's'}</p>
+  showSheet(`<h3>${esc(opts.title || 'Shift summary')}</h3><p class="muted">${esc(routeName)} · ${SHIFT.missed} missed stop${SHIFT.missed === 1 ? '' : 's'}</p>
     <div style="display:grid;gap:6px;font-size:14px">
-      ${row('Fares collected', naira(t.fares))}${row('Tips', naira(t.tips))}${row('Full-bus bonus', naira(t.bonus))}
+      ${row('Passengers carried', SHIFT.carried)}${row('Fares collected', naira(t.fares))}${row('Tips', naira(t.tips))}${row('Full-bus bonus', naira(t.bonus))}
       ${t.keep ? row('Change you "forgot" to give', naira(t.keep)) : ''}
       ${row('Refunds & missed-stop fines', neg(t.penalties))}${row('Agbero tickets', neg(t.agbero))}
-      ${row('Damage to the bus', neg(t.damage))}${row(SHIFT.owner ? `Owner's cut (${SHIFT.owner}, ${OWNER_CUT * 100}%)` : "Owner's cut (stolen bus)", neg(t.cut))}
-      <div style="border-top:1px solid var(--line);margin-top:4px;padding-top:8px">${row('Take-home', (t.net < 0 ? '−' : '') + naira(Math.abs(t.net)))}</div>
-    </div><button class="btn primary" type="button" data-x>Collect</button>`, el => el.querySelector('[data-x]').onclick = closeOverlays);
+      ${row('Damage to the bus', neg(t.damage))}${row(SHIFT.owner ? `${SHIFT.owner}'s cut (${cutPct}%)` : "Owner's cut (stolen bus)", neg(t.cut))}
+      <div style="border-top:1px solid var(--line);margin-top:4px;padding-top:8px">${row('Your earnings', (t.net < 0 ? '−' : '') + naira(Math.abs(t.net)))}</div>
+    </div><button class="btn primary" type="button" data-x>Collect</button>`, el => el.querySelector('[data-x]').onclick = () => { closeOverlays(); if (opts.onClose) opts.onClose(); });
   save();
 }
 function updateShift(dt) {
@@ -1406,7 +1508,7 @@ function updateShift(dt) {
   if (SHIFT.alighting) SHIFT.alighting = SHIFT.alighting.filter(p => p.t > 0);
   if (MS.cur && MS.cur.stops) for (const st of MS.cur.stops) lineUp(st.pax, st.id, dt);
   if (!SHIFT.on) return; const v = player.veh;
-  if (!v || v !== SHIFT.bus) return endShift();
+  if (!v || v !== SHIFT.bus) { if (SHIFT.mission) return; return endShift(); } // first day: step out and back in, the route waits
   for (const id of routeOf().stops) lineUp(SHIFT.waiting[id], id, dt);
   for (const p of SHIFT.onboard) if (p.state === 'board') { const dx = v.x - p.x, dy = v.y - p.y, m = Math.hypot(dx, dy); if (m < 10) p.state = 'ride'; else { p.x += dx / m * 70 * dt; p.y += dy / m * 70 * dt; } }
   // comfort: hard acceleration/braking and fast cornering upset passengers; smooth driving calms them
@@ -1414,15 +1516,19 @@ function updateShift(dt) {
   SHIFT.lastV = v.v; SHIFT.lastA = v.a;
   const rough = Math.max(0, (acc - 280) / 280) + Math.max(0, (lat - 200) / 200); // 0 = smooth; 1 = a hard stop or a fast swerve
   if (SHIFT.onboard.length) SHIFT.comfort = clamp(SHIFT.comfort + (rough > 0 ? -Math.min(3, rough) * 60 : 1.5) * dt, 0, 100);
+  if (SHIFT.onboard.length && rough === 0 && Math.abs(v.v) > 40 && SHIFT.comfort > 80) { SHIFT.smoothT += dt; // a smooth stretch: somebody tips the driver
+    if (SHIFT.smoothT > 20) { SHIFT.smoothT = 0; SHIFT.tips += 50; floaters.push({ x: v.x, y: v.y - 34, text: pick(['"Driver, you try!" +₦50', '"Smooth like butter" +₦50', '"God bless you, driver" +₦50']), t: 1.8 }); } }
+  else if (rough > 0) SHIFT.smoothT = 0;
+  if (SHIFT.routeDone) return;
   // waiting passengers slowly build up again at the other stops
   SHIFT.refill -= dt; const route = routeOf();
-  if (SHIFT.refill <= 0) { SHIFT.refill = 10; for (const id of route.stops) if (id !== SHIFT.atStop && SHIFT.waiting[id].length < route.busy) SHIFT.waiting[id].push(makePax(id, route)); }
+  if (SHIFT.refill <= 0 && !SHIFT.mission) { SHIFT.refill = 10; for (const id of route.stops) if (id !== SHIFT.atStop && SHIFT.waiting[id].length < route.busy) SHIFT.waiting[id].push(makePax(id, route)); }
   if (SHIFT.atStop) { if (Math.abs(v.v) > 25 && dist(v, BUS_STOPS[SHIFT.atStop]) > 70) depart(); return; }
   const sid = route.stops[SHIFT.idx], st = BUS_STOPS[sid], d = dist(v, st), slow = Math.abs(v.v) < 15;
   if (d < 46 && slow) return arrive(sid);
   // stopping at one of the next two stops on the route skips the one(s) in between
   for (let k = 1; k <= Math.min(2, route.stops.length - 1); k++) {
-    const j = (SHIFT.idx + k) % route.stops.length, o = BUS_STOPS[route.stops[j]];
+    const j = (SHIFT.idx + k) % route.stops.length, o = BUS_STOPS[route.stops[j]]; if (route.linear && j <= SHIFT.idx) break; // a one-way route never loops back
     if (slow && dist(v, o) < 46) { for (let m = 0; m < k; m++) missStop(route.stops[(SHIFT.idx) % route.stops.length], 'skipped'); return arrive(o.id); }
   }
   if (d < 90) SHIFT.near = true;
@@ -1511,7 +1617,7 @@ function actionContext() {
   if (st && v.fuel < 99) { const cost = Math.ceil((100 - v.fuel) * FUEL_PRICE); return { label: Math.abs(v.v) > 25 ? `Stop to refuel · ${naira(cost)}` : `Refuel · ${naira(cost)}`, run: () => refuel(v) }; }
   if (!v && nearPlace(PL.tailor, 30)) return { label: 'Balo Tailor', run: openTailor };
   if (!v && nearPlace(PL.carwash, 30)) return { label: 'Mainland Shine Car Wash', run: openCarWash };
-  if (v && v.type === 'danfo' && !MS.cur && !SHIFT.on) return { label: 'Start conductor shift', run: openRoutePicker };
+  if (v && v.type === 'danfo' && !MS.cur && !SHIFT.on) return isDone('lag_01') ? { label: 'Conductor Shift (side job)', run: openRoutePicker } : { label: 'Conductor shifts unlock after “First Day on the Danfo”', run: () => ui.toast('Finish “First Day on the Danfo” with Baba Driver first.', '', { key: 'shift' }) };
   if (SHIFT.on && v === SHIFT.bus) return { label: 'Conductor shift menu', run: openShiftMenu };
   return null;
 }
@@ -1609,7 +1715,7 @@ function openCarWash() {
 function showSheet(html, bind) { const o = $('#sheet'); $('#sheet-body').innerHTML = html; o.hidden = false; WORLD.paused = true; bind && bind($('#sheet-body')); const f = $('#sheet-body').querySelector('button:not([disabled])'); f && f.focus(); }
 function closeOverlays() {
   if (!$('#start').hidden) return;
-  $('#sheet').hidden = true; $('#phone').hidden = true; WORLD.paused = false;
+  $('#sheet').hidden = true; $('#phone').hidden = true; WORLD.paused = DLG.open;
   for (const k in keys) keys[k] = false;
 }
 let phoneApp = 'gist', thread = null, koboTo = 'amaka', koboAmt = 1000, koboMsg = '';
@@ -2080,7 +2186,7 @@ const tileT = tex(256, 256, g => { g.fillStyle = '#e8e8e8'; g.fillRect(0, 0, 256
   for (let y = 0; y < 256; y += 21) { g.beginPath(); for (let x = (y / 21 % 2) * 16; x < 272; x += 32) g.arc(x, y + 4, 16, 0, Math.PI); g.stroke(); } });
 const glowT = tex(128, 128, g => { const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.4, 'rgba(255,255,255,.45)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
 const coneT = tex(256, 128, g => { const gr = g.createLinearGradient(0, 0, 256, 0); gr.addColorStop(0, 'rgba(255,255,255,.9)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.beginPath(); g.moveTo(0, 56); g.lineTo(256, 0); g.lineTo(256, 128); g.lineTo(0, 72); g.fill(); });
-const ringT = tex(128, 128, g => { const gr = g.createRadialGradient(64, 64, 30, 64, 64, 64); gr.addColorStop(0, 'rgba(255,255,255,.12)'); gr.addColorStop(.8, 'rgba(255,255,255,1)'); gr.addColorStop(.9, 'rgba(255,255,255,.6)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
+const ringT = tex(128, 128, g => { const gr = g.createRadialGradient(64, 64, 30, 64, 64, 64); gr.addColorStop(0, 'rgba(255,255,255,.04)'); gr.addColorStop(.72, 'rgba(255,255,255,.06)'); gr.addColorStop(.86, 'rgba(255,255,255,1)'); gr.addColorStop(.93, 'rgba(255,255,255,.5)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
 const beamT = tex(16, 128, g => { const gr = g.createLinearGradient(0, 0, 0, 128); gr.addColorStop(0, 'rgba(255,255,255,0)'); gr.addColorStop(1, 'rgba(255,255,255,.4)'); g.fillStyle = gr; g.fillRect(0, 0, 16, 128); });
 const rippleT = tex(256, 256, g => { const R = prng(9); g.fillStyle = '#808080'; g.fillRect(0, 0, 256, 256);
   for (let k = 0; k < 300; k++) { const x = R() * 256, y = R() * 256, w = 8 + R() * 30; g.strokeStyle = `rgba(${R() < .5 ? '255,255,255' : '0,0,0'},${.2 + R() * .3})`; g.lineWidth = 1 + R() * 2; g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + w / 2, y - 3, x + w, y); g.stroke(); } }, true);
@@ -2856,7 +2962,7 @@ const PV = new WeakMap();
 function lookOf(o) {
   let l = PV.get(o); if (l) return l;
   const r = () => vrand();
-  const kind = o === player ? 'player' : o.driver === 'cop' ? 'uniform' : o.driver === 'player' ? 'player' : o._tout ? 'tout' : o._agbero ? 'agbero' : (() => { const q = r(); return o.tie ? 'wrapper' : q < .34 ? 'tee' : q < .58 ? 'ankara' : q < .7 ? 'agbada' : q < .9 ? 'wrapper' : 'uniform'; })();
+  const kind = o === player ? 'player' : o._baba ? 'agbada' : o.driver === 'cop' ? 'uniform' : o.driver === 'player' ? 'player' : o._tout ? 'tout' : o._agbero ? 'agbero' : (() => { const q = r(); return o.tie ? 'wrapper' : q < .34 ? 'tee' : q < .58 ? 'ankara' : q < .7 ? 'agbada' : q < .9 ? 'wrapper' : 'uniform'; })();
   const main = o.col || pick2(r, ['#e2683c', '#2fa36b', '#f5c400', '#3d7bd9', '#d94f8a', '#f3eee4', '#8a5a3c']);
   l = { kind, main, skin: pick2(r, SKINS), pants: pick2(r, ['#26324a', '#2b2b2b', '#4a3b2a', '#3c5a7a', '#5b5b5b']), head: o.tie ? 'gele' : kind === 'agbada' ? 'fila' : r() < .3 ? 'cap' : 'hair',
     capC: pick2(r, ['#d32f2f', '#1565c0', '#f5c400', '#222', '#fff', '#8e24aa', '#00897b']), cur: r(), ph: r() * 6, px: null, py: null, load: o === player || o._tout || o._agbero ? null : o.tray ? 'tray' : r() < .12 ? 'sack' : r() < .1 ? 'bag' : null };
@@ -3027,9 +3133,10 @@ function drawOverlay(t, marks) {
   { const a = $('#minimap').getBoundingClientRect(), b = $('#district').getBoundingClientRect(); hudBox = { left: Math.min(a.left, b.left || a.left), right: Math.max(a.right, b.right), top: a.top, bottom: Math.max(a.bottom, b.bottom) }; }
   for (const m of marks) if (m.label) label(m.x, m.y, (m.obj || m.giver ? 7 : 3.2), m.label, m.color, '16px Bungee, sans-serif', 120);
   if (SHIFT.on) for (const id of routeOf().stops) { const st = BUS_STOPS[id]; SHIFT.waiting[id].forEach((p, i) => { if (i < 4) paxBubble(p); });
-    if (st.agbero) { const [ax, ay] = agberoSpot(st); label(ax, ay, 2.4, 'AGBERO', '#ff8a80', '700 11px "Bricolage Grotesque", sans-serif', 70); } }
+    if (agberoHere(st, id)) { const [ax, ay] = agberoSpot(st); label(ax, ay, 2.4, 'AGBERO', '#ff8a80', '700 11px "Bricolage Grotesque", sans-serif', 70); } }
   if (MS.cur && MS.cur.stops) for (const s of MS.cur.stops) for (const p of s.pax || []) if (p.state === 'wait') paxBubble(p);
   for (const v of vehicles) if (v.label) label(v.x, v.y, 3.4, v.label, '#ff8a80', '700 12px "Bricolage Grotesque", sans-serif', 120);
+  if (!DLG.open) label(BABA.x, BABA.y, 2.35, 'BABA DRIVER', '#f5c400', '700 12px "Bricolage Grotesque", sans-serif', 45);
   for (const f of floaters) { if (f._y0 == null) f._y0 = f.y; ctx.globalAlpha = clamp(f.t, 0, 1); label(f.x, f._y0, 2.6 + (f._y0 - f.y) * M, f.text, '#fff', '700 14px "Bricolage Grotesque", sans-serif', 100); ctx.globalAlpha = 1; }
   const tg = JOB.target, p = player.pos(), mk = tg && marks.find(m => Math.abs(m.x - tg.x) < 2 && Math.abs(m.y - tg.y) < 2);
   const obj = tg && { x: tg.x, y: tg.y, color: mk ? mk.color.replace(/,[\d.]+\)$/, ',1)') : 'rgba(245,196,0,1)' };
@@ -3039,6 +3146,8 @@ function drawOverlay(t, marks) {
       ctx.save(); ctx.translate(ax, ay); ctx.rotate(a); ctx.fillStyle = obj.color; ctx.strokeStyle = '#000'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(16, 0); ctx.lineTo(-10, -11); ctx.lineTo(-5, 0); ctx.lineTo(-10, 11); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore();
       ctx.font = '700 12px "JetBrains Mono", monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText(fmtDist(dist(obj, p)), ax, ay + 26); } }
 }
+const RINGC = new THREE.Color(); // objective rings stay subtle on the ground; the beam does the guiding
+const agberoHere = (st, id) => st.agbero && (!SHIFT.mission || id === 'balogate'); // first day: only Balo Market's agbero is working
 const agberoSpot = st => { const hz = Math.abs(st.wy - st.y) > Math.abs(st.wx - st.x); return [st.wx + (hz ? 34 : 0), st.wy + (hz ? 0 : 34)]; };
 
 // Motor-park touts call out destinations at the bays.
@@ -3051,7 +3160,7 @@ function worldMarkers() {
   const Y = 'rgba(245,196,0,1)', B = 'rgba(53,179,181,1)', R = 'rgba(240,90,80,1)';
   if (MS.cur) for (const m of objTargets(MS.cur)) list.push({ x: m.x, y: m.y, r: m.r, color: m.enemy ? R : Y, obj: true, label: m.stop ? 'BUS' : '' });
   else for (const id of ORDER) if (available(id)) { const g = GIVER_AT[MISSIONS[id].giver]; if (!list.some(l => l.x === g.x && l.y === g.y)) list.push({ x: g.x, y: g.y, r: 26, color: Y, label: CONTACTS[MISSIONS[id].giver][0], giver: id }); }
-  if (SHIFT.on) { const r = routeOf(); r.stops.forEach((id, i) => { const st = BUS_STOPS[id], next = i === SHIFT.idx && !SHIFT.atStop;
+  if (SHIFT.on && !SHIFT.routeDone) { const r = routeOf(); r.stops.forEach((id, i) => { const st = BUS_STOPS[id], next = i === SHIFT.idx && !SHIFT.atStop && !MS.cur;
     list.push({ x: st.x, y: st.y, r: next ? 46 : 22, color: next ? Y : 'rgba(245,196,0,.45)', label: next ? 'BUS' : '', obj: next, stop: true }); }); }
   list.push({ x: PL.tailor.x, y: PL.tailor.y, r: 18, color: B, label: 'T' }); list.push({ x: PL.carwash.x, y: PL.carwash.y, r: 18, color: B, label: '$' });
   return list;
@@ -3097,8 +3206,8 @@ function render(t) {
   for (const k in B) B[k].n = 0; for (const k in DEST_B) DEST_B[k].n = 0;
   const p = player.pos(), RAD = (Q.far * .8) / M, near = o => Math.abs(o.x - p.x) < RAD && Math.abs(o.y - p.y) < RAD;
   const marks = worldMarkers(); // rings on the ground + light beams to steer by (hidden once you're inside)
-  for (const m of marks) { const pulse = 1 + Math.sin(t * 4) * .06, r = m.r * M * pulse, y = heightAt(m.x, m.y) + .05, c = colr(m.color.replace(/,[\d.]+\)$/, ',1)'));
-    put(B.ring, IDM, m.x * M, y, m.y * M, r * 2, 1, r * 2, c); if ((m.obj || m.giver || m.label) && dist(m, p) > m.r * 1.6) put(B.beam, IDM, m.x * M, y + (m.obj || m.giver ? 14 : 3), m.y * M, r * .55, m.obj || m.giver ? 28 : 6, r * .55, c); }
+  for (const m of marks) { const pulse = 1 + Math.sin(t * 4) * .06, r = Math.min(m.r * M, 4) * pulse, y = heightAt(m.x, m.y) + .05, c = colr(m.color.replace(/,[\d.]+\)$/, ',1)'));
+    put(B.ring, IDM, m.x * M, y, m.y * M, r * 2, 1, r * 2, RINGC.copy(c).multiplyScalar(m.obj || m.giver ? .42 : .3)); if ((m.obj || m.giver || m.label) && dist(m, p) > m.r * 1.6) put(B.beam, IDM, m.x * M, y + (m.obj || m.giver ? 14 : 3), m.y * M, r * .55, m.obj || m.giver ? 28 : 6, r * .55, c); }
   for (const it of items) if (near(it)) { const yy = heightAt(it.x, it.y) + .55 + Math.sin(t * 3 + it.x) * .12, b2 = baseInto(it.x * M, yy, it.y * M, t * 1.5);
     put(B.solid, b2, 0, 0, 0, .8, .7, .8, it.kind === 'bag' ? '#2e7d32' : '#8d6e63'); put(B.lamp, b2, 0, .36, 0, .82, .04, .82, '#f5c400'); put(B.ring, IDM, it.x * M, yy - .5, it.y * M, 2.4, 1, 2.4, colr('#f5c400')); }
   for (const q of peds) if (near(q)) walker(q, q.a || 0, dt, { down: q.state === 'down', tray: q.tray });
@@ -3106,12 +3215,13 @@ function render(t) {
   if (SHIFT.on) for (const id of routeOf().stops) { const st = BUS_STOPS[id]; if (!near({ x: st.wx, y: st.wy })) continue;
     const face = Math.atan2(st.y - st.wy, st.x - st.wx);
     for (const q of SHIFT.waiting[id]) walker(q, face, dt, { raise: q.state === 'wait' ? 'one' : null, wave: Math.sin(t * 6 + (q.phase || 0)) * .4 });
-    if (st.agbero) { let a = AGB.get(st); if (!a) AGB.set(st, a = { _agbero: 1, col: '#7f1d1d' }); const [ax, ay] = agberoSpot(st); a.x = ax; a.y = ay; walker(a, face, dt); } }
+    if (agberoHere(st, id)) { let a = AGB.get(st); if (!a) AGB.set(st, a = { _agbero: 1, col: '#7f1d1d' }); const [ax, ay] = agberoSpot(st); a.x = ax; a.y = ay; walker(a, face, dt); } }
   if (SHIFT.on) for (const q of SHIFT.onboard) if (q.state === 'board' && near(q)) walker(q, Math.atan2(SHIFT.bus.y - q.y, SHIFT.bus.x - q.x), dt);
   if (MS.cur && MS.cur.stops) for (const s of MS.cur.stops) for (const q of s.pax || []) if (near(q)) walker(q, Math.atan2(s.y - q.y, s.x - q.x), dt, { raise: q.state === 'wait' ? 'one' : null, wave: Math.sin(t * 6 + (q.phase || 0)) * .4 });
   for (const q of SHIFT.alighting || []) if (near(q)) walker(q, 0, dt);
   for (const v of vehicles) if (near(v)) vehicle3(v, dt);
   if (!player.veh) walker(player, player.a, dt);
+  if (near(BABA)) walker(BABA, Math.atan2(player.pos().y - BABA.y, player.pos().x - BABA.x), dt); // Baba Driver keeps an eye on you
   if (heli) { const hb = baseInto(heli.x * M, 34, heli.y * M, 0);
     put(B.paint, hb, 0, 0, 0, 4.2, 1.6, 1.8, '#2f5d3a'); put(B.glass, hb, 1.7, .1, 0, 1, 1.1, 1.5, '#24323d'); put(B.paint, hb, -3.5, .3, 0, 3.4, .4, .4, '#2f5d3a'); for (const s of [1, -1]) put(B.solid, hb, 0, -1.1, s * .8, 3.6, .1, .1, '#222');
     for (const r of [0, Math.PI / 2]) put(B.solid, hb, 0, 1.05, 0, 9, .05, .3, '#cfcfcf', 0, heli.a + r, 0);
@@ -3160,8 +3270,8 @@ function updateHud(dt) {
     const body = clamp(v.hp / VT[v.type].hp * 100, 0, 100); $('#vbar i').style.width = body + '%'; $('#dval').textContent = Math.round(body) + '%';
   }
   const hs = $('#hustle'); hs.hidden = !SHIFT.on;
-  if (SHIFT.on) { const c = Math.round(SHIFT.comfort);
-    hs.innerHTML = `<b>Seats ${SHIFT.onboard.length}/${CAP}</b> · bag ${naira(SHIFT.fares + SHIFT.tips + SHIFT.bonus + SHIFT.keep)}<br>Comfort <span style="color:${c < 30 ? 'var(--bad)' : c < 60 ? 'var(--danfo)' : 'var(--good)'}">${c}%</span>${SHIFT.missed ? ` · missed ${SHIFT.missed}` : ''}`; }
+  if (SHIFT.on) { const c = Math.round(SHIFT.comfort), face = c > 80 ? '😄' : c > 60 ? '🙂' : c > 40 ? '😐' : c > 20 ? '😟' : '😠';
+    hs.innerHTML = `<b>Seats ${SHIFT.onboard.length}/${CAP}</b> · bag ${naira(SHIFT.fares + SHIFT.tips + SHIFT.bonus + SHIFT.keep)}<br>Mood <span class="mood" aria-label="Passenger mood ${c}%">${face}</span> <span style="color:${c < 30 ? 'var(--bad)' : c < 60 ? 'var(--danfo)' : 'var(--good)'}">${c}%</span>${SHIFT.missed ? ` · missed ${SHIFT.missed}` : ''}`; }
   // context prompt (a tappable pill)
   const pr = $('#prompt'), kb = !IS_TOUCH; let msg = ''; promptAct = null;
   const ctxA = actionContext();
@@ -3225,12 +3335,16 @@ function updateJobCard() {
     const ts = objTargets(ms); if (ts.length) target = ts.reduce((a, b) => dist(a, p) < dist(b, p) ? a : b);
     more = [o.sub, ms.def.bonus ? `Bonus: ${ms.def.bonus}${ms.bonusFail ? ' (missed)' : ''}` : ''].filter(Boolean).join(' · ');
     if (o.time) timer = Math.floor(ms.timer / 60) + ':' + String(Math.floor(ms.timer % 60)).padStart(2, '0');
+    if (ms.deadline) { const rem = Math.max(0, ms.deadline - S.minutes); timer = Math.floor(rem / 60) + 'h ' + String(Math.floor(rem % 60)).padStart(2, '0') + 'm'; }
+    if (o.t === 'route' && SHIFT.on) { const r = routeOf(), sid = SHIFT.atStop || r.stops[SHIFT.idx], k = r.stops.indexOf(sid) + 1, nm = r.label[sid] || BUS_STOPS[sid].name;
+      line = player.veh !== SHIFT.bus ? 'Get back in the danfo' : SHIFT.atStop ? `At ${nm}: ${IS_TOUCH ? 'tap ACTION' : 'press E'} to call passengers` : `Stop ${k} of ${r.stops.length}: ${nm}`;
+      more = `Stop inside the ring and ${IS_TOUCH ? 'tap ACTION' : 'press E'} to call passengers. They pay ₦200–₦400 and get down at later stops. Smooth driving earns tips; crashes and hard braking upset them.`; }
   } else if (SHIFT.on) { const r = routeOf(), st = BUS_STOPS[SHIFT.atStop || r.stops[SHIFT.idx]];
     title = r.name; line = SHIFT.atStop ? `At ${st.name}` : `Next stop: ${st.name}`; target = SHIFT.atStop ? null : st;
     more = `Stop at each yellow BUS stop, ${IS_TOUCH ? 'tap CALL' : 'press E'} to load, give the right change. Full bus pays ₦500. Driving past a stop costs you.`; }
   else { const next = ORDER.find(available);
     if (next) { const m = MISSIONS[next]; title = 'Next job'; line = m.title; target = GIVER_AT[m.giver];
-      more = `From <b>${CONTACTS[m.giver]}</b>. ${IS_TOUCH ? 'Go to the yellow marker and tap the prompt' : 'Go to the yellow marker and press E'}, or accept it in your phone.`; }
+      more = `From <b>${CONTACTS[m.giver]}</b>: <i>${esc(m.brief.split('. ')[0])}.</i> ${IS_TOUCH ? 'Go to the yellow marker and tap the prompt' : 'Go to the yellow marker and press E'}, or accept it in your phone.${isDone('lag_01') ? ' Side job: Conductor Shift in any danfo.' : ''}`; }
     else { title = 'Free roam'; line = 'Conductor shifts, car wash, tailor'; }
   }
   JOB.target = target; // the off-screen arrow points at (and measures to) this same spot
@@ -3239,7 +3353,7 @@ function updateJobCard() {
   if (JOB.open && performance.now() > JOB.until) JOB.open = false;
   $('#job-title').textContent = title; $('#job-line').textContent = line;
   $('#job-dist').textContent = target ? fmtDist(dist(target, p)) : '';
-  const jt = $('#job-timer'); jt.textContent = timer; jt.classList.toggle('low', !!timer && ms && ms.timer < 20);
+  const jt = $('#job-timer'); jt.textContent = timer; jt.classList.toggle('low', !!timer && ms && (ms.deadline ? ms.deadline - S.minutes < 20 : ms.timer < 20));
   const jm = $('#job-more'); jm.hidden = !(JOB.open && more); if (!jm.hidden && jm.innerHTML !== more) jm.innerHTML = more;
   $('#job').setAttribute('aria-expanded', String(!jm.hidden));
 }
@@ -3248,7 +3362,7 @@ function updateJobCard() {
 let lastT = performance.now();
 function step(now) {
   const dt = Math.min(.05, (now - lastT) / 1000); lastT = now;
-  pumpToasts(dt * 1000);
+  pumpToasts(dt * 1000); dlgTick(dt);
   // presses are discarded only once a game update has consumed them (or while paused), never by a
   // bare render frame, so a tap can't be lost between frames
   if (WORLD.started) { if (!WORLD.paused) update(dt); pressed.clear(); }
@@ -3258,7 +3372,7 @@ function step(now) {
 function update(dt) {
   simClock += dt;
   {
-    S.minutes += dt * 2;
+    S.minutes += dt * 2 * (MS.cur && MS.cur.slowClock ? .5 : 1);
     const hr = Math.floor(S.minutes / 60);
     if (hr !== WORLD.hour) {
       WORLD.hour = hr; const h = hr % 24;
@@ -3302,7 +3416,7 @@ function boot(data) {
   (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]) : Promise.resolve()).then(draw);
   requestAnimationFrame(step);
   try { window.claude?.hot?.snapshot?.(() => ({ state: S })); } catch (e) {}
-  window.NH = { S, player, vehicles: () => vehicles, MS, startMission, keys, vehBlocked, solidAt, tileAt, T, VT, spawnVehicle, roadSpotNear, nodes, playerFree, exitVehicle, stats: STATS, ui, NQ, STATIONS, actionContext, touch, pressed, JOB, BANNER, placeName, BUILDINGS, sunState, cam: () => ({ x: camX, y: camY, zoom }), screenOf, CAMS, heightAt, applyGfx, gfx: () => GFX, skip3D(on) { SKIP3D = !!on; }, three: () => ({ ready: cityBuilt, gl: !!R3, info: R3 && R3.info.render, calls: R3 && R3.info.render.calls }), clearHeat, ui_card: (...a) => ui.card(...a), startShift, closeOverlays, jams: () => WORLD.jams, startJam, MAIN_ROADS, jammed, BUS_STOPS, ROUTES, SHIFT, arrive, callPassengers, answerChange, endShift, openRoutePicker, shiftTotals, WORLD, CAP, JUNC,
+  window.NH = { S, player, vehicles: () => vehicles, MS, startMission, keys, vehBlocked, solidAt, tileAt, T, VT, spawnVehicle, roadSpotNear, nodes, playerFree, exitVehicle, stats: STATS, ui, NQ, STATIONS, actionContext, touch, pressed, JOB, BANNER, placeName, BUILDINGS, sunState, cam: () => ({ x: camX, y: camY, zoom }), screenOf, CAMS, heightAt, applyGfx, gfx: () => GFX, DLG, dlgAdvance, dlgSkip, sayLines, FIRST_ROUTE, isDone, retryFirstDay, PARK_BAYS, depart, updateJobCard, skip3D(on) { SKIP3D = !!on; }, three: () => ({ ready: cityBuilt, gl: !!R3, info: R3 && R3.info.render, calls: R3 && R3.info.render.calls }), clearHeat, ui_card: (...a) => ui.card(...a), startShift, closeOverlays, jams: () => WORLD.jams, startJam, MAIN_ROADS, jammed, BUS_STOPS, ROUTES, SHIFT, arrive, callPassengers, answerChange, endShift, openRoutePicker, shiftTotals, WORLD, CAP, JUNC,
     // Test hook: run the simulation faster than real time (no rendering).
     sim(sec, each) { for (let t = 0; t < sec; t += 1 / 60) { update(1 / 60); pressed.clear(); each && each(); } },
     // Test hooks: stop the live loop from advancing the world, and reseed Math.random.

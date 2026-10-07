@@ -9,7 +9,7 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
     // setup helper inside the page: player in Baba Sule's danfo at Oshoja Park
     await page.evaluate(() => {
       window.T2 = {
-        bus() { NH.resetWorld(); NH.WORLD.noJams = true; NH.seed(11); const v = NH.spawnVehicle('danfo', 256, 520, 0, { parked: true, parkDanfo: true }); v.driver = 'player'; NH.player.veh = v; return v; },
+        bus() { NH.resetWorld(); NH.WORLD.noJams = true; NH.seed(11); if (!NH.S.done.includes('lag_01')) NH.S.done.push('lag_01'); const v = NH.spawnVehicle('danfo', 256, 520, 0, { parked: true, parkDanfo: true }); v.driver = 'player'; NH.player.veh = v; return v; },
         at(id, speed = 0) { const st = NH.BUS_STOPS[id], v = NH.player.veh; v.x = st.x; v.y = st.y; v.v = speed; NH.sim(.05); },
         leave() { const v = NH.player.veh; v.x = 66 * 32 + 200; v.y = 55 * 32; v.a = 0; v.v = 120; NH.sim(.05); v.v = 0; }, // drive off onto an open road
         sheet() { const s = document.querySelector('#sheet'); return s.hidden ? '' : s.textContent; },
@@ -17,8 +17,8 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
       };
     });
     // route picker
-    const picker = await page.evaluate(() => { T2.bus(); NH.pressed.add('KeyE'); NH.sim(1 / 60); return { text: T2.sheet(), routes: [...document.querySelectorAll('#sheet [data-r]')].map(b => b.dataset.r) }; });
-    ok('route picker: E in a danfo offers the 3 routes', picker.routes.length === 3 && /Pick a route/.test(picker.text), picker);
+    const picker = await page.evaluate(() => { T2.bus(); NH.pressed.add('KeyE'); NH.sim(1 / 60); return { text: T2.sheet(), routes: [...document.querySelectorAll('#sheet [data-r]:not([data-random])')].map(b => b.dataset.r), random: !!document.querySelector('#sheet [data-random]') }; });
+    ok('route picker: E in a danfo offers the 3 routes plus a random one', picker.routes.length === 3 && picker.random && /Pick a route/.test(picker.text), picker);
     const r = await page.evaluate(() => {
       T2.click('#sheet [data-r="osh-balo"]');
       const S = NH.SHIFT, out = { on: S.on, route: S.route };
@@ -80,7 +80,7 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
     ok('full bus (14/14) pays the ₦500 bonus on departure', r2.full === 14 && r2.bonus === 500, r2);
     ok('driving off from agberos raises heat and doubles their next demand', r2.sheet && r2.stars === 1 && r2.demand === 2, r2);
     ok('shift summary: fares, tips, bonus, agbero, damage, owner\'s cut, take-home', r2.sumOk && r2.paid === Math.max(r2.totals.net, -Infinity) &&
-      ['Fares collected', 'Tips', 'Full-bus bonus', 'Agbero tickets', 'Damage to the bus', "Owner's cut", 'Take-home'].every(k => r2.summary.includes(k)) && r2.shiftOff, r2);
+      ['Fares collected', 'Tips', 'Full-bus bonus', 'Agbero tickets', 'Damage to the bus', "'s cut (35%)", 'Your earnings', 'Passengers carried'].every(k => r2.summary.includes(k)) && r2.shiftOff, r2);
     // agbero negotiate: seeded success and failure
     const r3 = await page.evaluate(() => {
       const out = {};
