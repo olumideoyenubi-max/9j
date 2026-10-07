@@ -24,7 +24,8 @@ and **Abuja**. Built in Unity 6 for Android first (3 GB phones), then PC.
 
 `web/index.html` is a self-contained, playable **3D** demo of **Act 1: Lagos**, built with Three.js
 (loaded from jsDelivr, so it needs a connection the first time). The whole city is generated in code
-from the same grid the game logic uses: no model files. It has the danfo conductor hustle ("First Day
+from the same grid the game logic uses. Photo textures and GLB models are optional extras (see
+`web/textures/README.md` and `web/models/README.md`); without them everything is procedural. It has the danfo conductor hustle ("First Day
 on the Danfo" and conductor shifts), Oshoja Motor Park with numbered bays and destination danfos, bus
 stops, Gidi Fuel stations, 5 story missions, Task Force chases with search and decay, the checkpoint
 "settle" choice, a tailor, a car wash business, day and night with real-time sun shadows, and the
@@ -54,6 +55,21 @@ the title screen, in the phone's MapAm app, or with G:
 | Reflections | none | studio light | live sky |
 | Bloom | no | yes | yes |
 | Ambient occlusion (GTAO) | no | no | yes |
+| Photo textures | 512 px | 1024 px | 2048 px |
+| Motion blur, chromatic aberration, film grain | no | no | yes |
+
+The look aims for footage of a dusty Lagos street at midday: a harsh sun with sharp shadows, a blue sky
+with drifting clouds, warm beige haze that settles low and thickens with distance, and a warm,
+desaturated, high-contrast grade with subtle bloom. Oke-Erupe, in the north-west, is the dusty district.
+It has unpaved laterite streets with ruts, puddles, weeds, rubble and trash, and two- and three-storey houses of
+raw or faded concrete with exposed rebar. The houses have balconies of drying laundry and rusty zinc
+roofs. Stalls sit under blue tarps, with blue drums, buckets and vendors sitting in the shade, and
+wires sag overhead. Every wall carries a concrete or peeling-plaster detail layer and large-scale grime, so no two
+buildings look the same. Wheels, running feet and the rotor wash kick up dust, and motes float in the
+sun. Sprinting drops the camera to a low, over-the-shoulder view with a wider field of view and
+handheld shake. At three stars a police helicopter circles overhead, with a searchlight at night and
+a loud rotor. The player wears a singlet and cargo trousers (sold by the tailor), with a beard and a
+more muscular build.
 
 Controls: WASD or arrows to walk or drive (on foot, movement is relative to the camera), drag the
 screen to look around (the camera recentres behind you after 2 seconds), E for actions, F to get in or

@@ -26,7 +26,8 @@ async function open(browser, vp = { width: 1280, height: 760 }, opts = {}) {
   // deterministic runs: seeded Math.random
   await page.addInitScript(seed => { let s = seed >>> 0 || 1; Math.random = () => { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; }; }, opts.seed || 12345);
   page.on('pageerror', e => errors.push(e.message)); page.on('console', m => m.type() === 'error' && !/ERR_FAILED|net::/.test(m.text()) && errors.push(m.text()));
-  await page.goto(build()); await page.waitForFunction(() => window.NH && NH.three().ready, null, { timeout: 30000 }).catch(() => {}); await page.waitForTimeout(opts.wait || 600);
+  if (opts.init) await page.addInitScript(opts.init);
+  await page.goto(opts.url || build()); await page.waitForFunction(() => window.NH && NH.three().ready, null, { timeout: 30000 }).catch(() => {}); await page.waitForTimeout(opts.wait || 600);
   // software WebGL is slow; logic/UI tests skip drawing the city so real-time timers keep up
   // (and let the GPU process drain the 3D frames the title screen already queued)
   if (!opts.render3d) await page.evaluate(() => window.NH && NH.skip3D(true));

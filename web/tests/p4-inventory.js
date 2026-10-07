@@ -143,7 +143,7 @@ let fails = 0; const ok = (name, cond, info) => { console.log((cond ? 'PASS ' : 
     await new Promise(r => setTimeout(r, 300)); const cv = document.querySelector('#inv-prev'); const prev = !!cv && cv.width > 0;
     const stillWearing = NH.S.outfit; T4.click('[data-equip]'); const wearing = NH.S.outfit; T4.click('[data-fit="fit_kaftan_white"]'); const locked = document.querySelector('#inv [data-equip]').disabled; NH.invClose();
     return { rows, prev, stillWearing, wearing, locked }; });
-  ok('CLOTHING: tapping an outfit previews it on a turning model; EQUIP wears it in the world', r12.rows === 6 && r12.prev && r12.stillWearing === 'fit_street_basic' && r12.wearing === 'fit_agbada_owambe' && r12.locked, r12);
+  ok('CLOTHING: tapping an outfit previews it on a turning model; EQUIP wears it in the world', r12.rows === 7 && r12.prev && r12.stillWearing === 'fit_street_basic' && r12.wearing === 'fit_agbada_owambe' && r12.locked, r12);
 
   // ---- vehicles + waypoint, mission items
   const r13 = await run(() => { T4.fresh(); const v = NH.spawnVehicle('keke', 700, 480, 0, { parked: true }); NH.player.x = v.x - 20; NH.player.y = v.y; NH.pressed.add('KeyF'); NH.sim(.1); const inK = NH.player.veh === v;
