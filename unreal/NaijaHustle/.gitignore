@@ -18,3 +18,5 @@ Plugins/*/Intermediate/
 # Cooked builds
 Build/
 Packaged/
+# Python
+__pycache__/

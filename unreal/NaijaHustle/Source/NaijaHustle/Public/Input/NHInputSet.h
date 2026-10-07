@@ -55,6 +55,7 @@ public:
 	UPROPERTY() TObjectPtr<UInputAction> QuickWheel;  // hold Q / hold LB
 	UPROPERTY() TObjectPtr<UInputAction> Map;         // M / D-pad down
 	UPROPERTY() TObjectPtr<UInputAction> Pause;       // Esc / Menu (Start)
+	UPROPERTY() TObjectPtr<UInputAction> CycleLighting; // L: next lighting preset (look development; remove for release)
 
 	// ---- menus (phone, inventory, pause)
 	UPROPERTY() TObjectPtr<UInputAction> UIBack;      // Esc or Backspace / B

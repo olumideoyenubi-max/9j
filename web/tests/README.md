@@ -33,3 +33,8 @@ node shots-vis.js       # screenshots of the danfo, keke and a line-up of charac
 ```
 
 Set `SRC=/path/to/other.html` to run any test against another build (for before/after comparisons).
+
+Unreal export (shares the city with the UE5 slice; not a test):
+```bash
+node ../tools/export-unreal.js   # writes unreal/NaijaHustle/Data/lagos_city.json
+```

@@ -124,6 +124,7 @@ void UNHInputSet::Build()
 	QuickWheel = MakeAction(this, TEXT("IA_QuickWheel")); // bind Started (open) / Completed (pick + close)
 	Map = MakeAction(this, TEXT("IA_Map"));
 	Pause = MakeAction(this, TEXT("IA_Pause"));
+	CycleLighting = MakeAction(this, TEXT("IA_CycleLighting"));
 
 	Global->MapKey(Phone, EKeys::P);
 	Global->MapKey(Phone, EKeys::Gamepad_DPad_Up);
@@ -136,6 +137,7 @@ void UNHInputSet::Build()
 	Global->MapKey(Map, EKeys::Gamepad_DPad_Down);
 	Global->MapKey(Pause, EKeys::Escape);
 	Global->MapKey(Pause, EKeys::Gamepad_Special_Right);
+	Global->MapKey(CycleLighting, EKeys::L);
 
 	// ---------------------------------------------------------------- menus
 	UIBack = MakeAction(this, TEXT("IA_UIBack"));

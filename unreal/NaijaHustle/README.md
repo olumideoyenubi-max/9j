@@ -9,14 +9,82 @@ repo and are untouched.
 
 | Step | Status |
 |---|---|
-| 1. Project setup: rendering, folders, input, source control | **This step** |
-| 2. Street block blockout and lighting (night rain + day) | Next |
+| 1. Project setup: rendering, folders, input, source control | Done |
+| 2. Street block blockout and lighting (night rain + day), from the browser demo's map | **This step** |
 | 3. Player MetaHuman, third-person controller and camera | |
 | 4. Danfo and okada (Chaos Vehicles), enter and exit | |
 | 5. Mass AI crowds and traffic | |
 | 6. Mission, wanted system, HUD, inventory, phone | |
 | 7. Polish: rain FX, puddles, wet shaders, grading, sound | |
 | 8. Performance: 60 fps at 1440p on an RTX 3060 with TSR | |
+
+## Step 2: the street block (blockout and lighting)
+
+The Unreal slice and the browser demo (`web/index.html`) share one Lagos. The browser game's city (streets,
+buildings, shop fronts, signs, street lamps, props, road markings, bus stops, fuel stations, park bays, the
+road graph) is exported to `Data/lagos_city.json`, and two editor scripts turn that file into a playable
+blockout level with day, dusty-noon, sunset and night-rain lighting.
+
+### Build the level
+
+After the first build and first open (sections 1 and 2 below):
+
+1. **Tools > Execute Python Script…** > `Scripts/nh_blockout_materials.py`. It creates
+   `MPC_NHWeather` (Wetness, Puddles, Rain, NightLights) and `M_NHBlockout`, the one material the blockout uses.
+2. **Tools > Execute Python Script…** > `Scripts/build_street_block.py`. It creates
+   `/Game/NaijaHustle/Maps/L_Slice_Street` (World Partition) and places the city. That takes a minute or two
+   and asks nothing. Running it again replaces what it made before.
+3. Press **Play**. You start at home beside Oshoja Motor Park at night in the rain. Press **L** to cycle the lighting presets, or type
+   `NHLighting Day` (or `DustyNoon`, `Sunset`, `NightRain`) in the console (the backtick key). In the editor, select
+   **LightingRig** in the Outliner and use the **Set Day / Set Dusty Noon / Set Sunset / Set Night Rain** buttons in
+   its Details panel.
+
+### What gets placed
+
+| Actor | Count | What it is |
+|---|---|---|
+| `NHCityTile` | 24 | 64 m × 64 m pieces of the 384 m × 256 m map: asphalt roads (laterite in Oke-Erupe), pavements with kerbs and gutters, open ground, grass, the motor park, fuel forecourts, the lagoon with embankments, Third Lagoon Bridge on piers, 1,852 road markings, 4,872 props (poles, transformers, water tanks, AC units, generators, chairs, umbrellas, drums, trees...), 295 shop fronts (roller shutters, half-open, open with counters, painted), 299 signs with their shop names, and 63 street lamps with spot lights |
+| `NHBlockoutBuilding` | 545 | 530 buildings (houses with windows, burglar bars, balconies with laundry, flat roofs or rusty zinc gables, rebar stubs in Oke-Erupe; glass towers on Eko Crest; market stalls; stilt houses), 3 fuel stations, 11 bus shelters and a pedestrian footbridge |
+| Walk-in shops | 6 | The open shops nearest the start have a hollow ground floor: a doorway, a tiled floor, shelves of goods, a counter and a strip light that glows at night |
+| `NHLightingRig` | 1 | Sun or moon, sky atmosphere, real-time sky light, height fog, volumetric clouds, an unbound post-process volume and the weather parameters |
+| `PlayerStart` | 1 | Home, next to Oshoja Motor Park |
+
+Everything is drawn with instanced engine shapes (box, cylinder, sphere, cone) and one material, using
+per-instance colour, roughness, metal, night glow and wetness. A building costs about six draw calls. Each actor
+rebuilds itself from the data it holds (select one and click **Rebuild**), so edits in the Details panel show
+up straight away. Swapping these shapes for the real modular kit and Megascans materials later keeps the layout.
+
+### Lighting presets
+
+Physical units throughout: sun in lux, lamps in lumens, auto exposure in EV100.
+
+| Preset | Sun | Exposure | Weather |
+|---|---|---|---|
+| Day | 50° up, 75,000 lux | EV 13–15 | dry |
+| Dusty noon | 78° up, 95,000 lux, warm beige haze | EV 14–16 | dry, desaturated and warm |
+| Sunset | 7° up over the west, 6,000 lux, orange | EV 9–12 | lamps coming on (30%) |
+| Night rain | moonlight through cloud (0.3 lux) | EV 1.5–5.5 | wet roads, puddles, street lamps (9,000 lm), lit windows, signs and shops |
+
+Every value is editable on the rig (Details > Lighting > Presets). These are starting points for look development.
+Rain particles, ripples and splashes are step 7; step 2 does the wet surfaces and the light.
+
+### Re-export after changing the browser map
+
+```bash
+node web/tools/export-unreal.js   # needs Node + Playwright, like the browser tests
+```
+Then run `build_street_block.py` again. The scripts are checked without the editor by
+`python3 Scripts/tests/test_build_street_block.py` and `python3 Scripts/tests/test_blockout_materials.py`. They use a
+stand-in `unreal` module that also checks every property name against the C++ headers.
+
+### Notes
+
+- The overpass in the slice brief is a **pedestrian footbridge** over a north–south road near the start, with ramps
+  down the pavements. The shared map has no vehicle flyover. One can be added here later without changing the
+  browser game.
+- 63 street lamps cast light but no shadows. Step 8 decides which lights earn shadows.
+- Coordinates: 1 map cell = 4 m = 400 uu. X is east and Y is south. The browser's metres map to centimetres, with
+  axes swapped so nothing is mirrored (see the header of `web/tools/export-unreal.js`).
 
 ---
 
@@ -72,9 +140,13 @@ All in `Config/DefaultEngine.ini`. You can see each setting in **Edit > Project 
 
 ```
 Source/NaijaHustle/
-  Public|Private/Core/    NHGameMode: default pawn + player controller
-  Public|Private/Input/   NHInputSet: every input action and mapping context, built in C++
-  Public|Private/Player/  NHPlayerController (switches contexts), NHCharacter (step-1 test pawn)
+  Public|Private/Core/      NHGameMode: default pawn + player controller
+  Public|Private/Input/     NHInputSet: every input action and mapping context, built in C++
+  Public|Private/Player/    NHPlayerController (switches contexts, NHLighting command), NHCharacter (step-1 test pawn)
+  Public|Private/World/     NHBlockoutActor (instanced shapes + surface data), NHCityTile, NHBlockoutBuilding
+  Public|Private/Lighting/  NHLightingRig: presets, weather parameters, street lamps
+Scripts/                    editor Python: content folders, blockout materials, street block builder (+ tests/)
+Data/lagos_city.json        the shared city, exported from the browser demo
 ```
 
 Gameplay systems go into C++ (vehicles, Mass processors, the wanted system, inventory data). Blueprints
@@ -106,6 +178,7 @@ not "pause".
 | Inventory | I or Tab | View | Global |
 | Quick wheel (hold) | Q | LB | Global |
 | Map | M | D-pad down | Global |
+| Next lighting preset (look development) | L | | Global |
 | Pause | Esc | Menu | Global |
 | Back | Esc or Backspace | B | Menu |
 

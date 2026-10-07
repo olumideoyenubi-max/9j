@@ -31,10 +31,17 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Naija|Input")
 	ENHInputMode GetNHInputMode() const { return InputMode; }
 
+	/** Console: NHLighting Day | DustyNoon | Sunset | NightRain (or no argument for the next one) */
+	UFUNCTION(Exec)
+	void NHLighting(const FString& PresetName);
+
 protected:
 	virtual void BeginPlay() override;
+	virtual void SetupInputComponent() override;
 
 private:
+	void OnCycleLighting();
+
 	UPROPERTY(Transient)
 	TObjectPtr<UNHInputSet> InputSet;
 

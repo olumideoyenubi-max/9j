@@ -106,6 +106,9 @@ all save with the game.
 
 `unreal/NaijaHustle/` is the UE5 project for a photoreal vertical slice: one Lagos street block at night in the
 rain, with the danfo conductor mission. See [`unreal/NaijaHustle/README.md`](unreal/NaijaHustle/README.md) for setup.
+It shares the browser demo's city: `node web/tools/export-unreal.js` writes `unreal/NaijaHustle/Data/lagos_city.json`,
+and `Scripts/build_street_block.py` turns it into the blockout level `L_Slice_Street`, with day, dusty-noon, sunset
+and night-rain lighting.
 
 ## Getting started
 
