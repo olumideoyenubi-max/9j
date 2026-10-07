@@ -83,7 +83,10 @@ button:focus-visible { outline: 2px solid var(--danfo); outline-offset: 2px; }
 #clock { font-family: var(--mono); font-weight: 700; font-size: 14px; text-shadow: 0 1px 0 #000; }
 #minimap { width: var(--mapw); height: calc(var(--mapw) * 2 / 3); border-radius: 10px; border: 2px solid rgba(255,255,255,.14);
   background: #0b0e12; box-shadow: 0 6px 20px rgba(0,0,0,.5); box-sizing: border-box; }
-#district { font-family: var(--display); font-size: 11px; letter-spacing: .4px; color: var(--danfo); text-shadow: 0 1px 0 #000; text-align: right; }
+#district { font-family: var(--display); font-size: 11px; letter-spacing: .4px; color: var(--danfo); text-align: center; justify-self: stretch;
+  background: rgba(10,12,15,.82); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 4px 8px; line-height: 1.2; }
+#district:empty { display: none; }
+@media (max-width: 480px) { #district { font-size: 9px; letter-spacing: 0; padding: 3px 4px; } }
 #radio { font-size: 12px; color: var(--muted); pointer-events: auto; background: none; border: 0; padding: 0; text-shadow: 0 1px 0 #000; text-align: right; }
 #radio:empty { display: none; }
 
@@ -2751,6 +2754,7 @@ const B = {
   beam: batch(new THREE.CylinderGeometry(1, 1, 1, 16, 1, true), addGlow(beamT, { side: THREE.DoubleSide }), 60, false),
 };
 B.blob.m.renderOrder = 1;
+for (const k of ['solid', 'paint', 'glass', 'wheel', 'limb', 'sleeve', 'torso', 'torsoCloth', 'robe', 'skin', 'hair', 'gele', 'ball', 'disc']) nearFade(B[k].m.material); // a camera squeezed in close sees through the player
 for (const k of ['cone', 'glow', 'ring', 'beam']) B[k].m.renderOrder = 3;
 const DEST_B = {};
 function destBatch(name) {
@@ -2921,7 +2925,7 @@ const CAMS = { yaw: -Math.PI / 2, dragT: -1e9, pos: new THREE.Vector3(), look: n
   const up = e => { if (e.pointerId === id) id = null; }; glc.addEventListener('pointerup', up); glc.addEventListener('pointercancel', up);
 })();
 // Anything solid between the player and the camera: buildings (roof-height grid) and registered props.
-function camBlocked(x, y, z) { const c = Math.floor(x / 4), r = Math.floor(z / 4); if (c >= 0 && r >= 0 && c < COLS && r < ROWS && TOPH[I(c, r)] > y - .35) return true; return !!occAt(x, y, z, .35, .5); } // thin poles don't push the camera in; they fade near the lens instead
+function camBlocked(x, y, z, overHead = 99) { const c = Math.floor(x / 4), r = Math.floor(z / 4); if (c >= 0 && r >= 0 && c < COLS && r < ROWS && TOPH[I(c, r)] > y - .35) return true; const o = occAt(x, y, z, .35, .5); return !!o && o.y0 < overHead; } // thin poles don't push the camera in; they fade near the lens instead
 // Lowest canopy (umbrella, awning, shelter roof) over the player's head, if any
 function canopyOver(x, z, head) { let lo = 99; for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) { const L = OCC.get(I(clamp(Math.floor(x / 4) + dx, 0, COLS - 1), clamp(Math.floor(z / 4) + dz, 0, ROWS - 1))); if (!L) continue;
   for (const o of L) if (o.y0 > head && o.r > .6 && Math.hypot(x - o.x, z - o.z) < o.r + 1.2) lo = Math.min(lo, o.y0); } return lo; }
@@ -2943,7 +2947,9 @@ function updateCamera(dt) {
   let wy = ty + hgt;
   const roof = canopyOver(tx, tz, ty + .1); if (roof < wy + .4) wy = Math.max(ty + .25, roof - .45); // under an umbrella or awning: stay under it
   // march out from the player; stop just short of the first thing in the way so props never fill the lens
-  let f = 1; for (let s = .45; s <= dist; s += .3) { const t = s / dist; if (camBlocked(tx - cx * s, lerp(ty, wy, t), tz - cz * s)) { f = Math.max(.1, (s - .5) / dist); break; } }
+  const clear = (top, overHead) => { for (let s = .45; s <= dist; s += .3) { const t = s / dist; if (camBlocked(tx - cx * s, lerp(ty, top, t), tz - cz * s, overHead)) return Math.max(.1, (s - .5) / dist); } return 1; };
+  let f = clear(wy);
+  if (f < .5) { const hi = ty + hgt + 3.2, f2 = clear(hi, roof < 90 ? ty + .1 : 99); if (f2 > f + .15) { f = f2; wy = hi; } } // blocked low: rise and look over it instead of hugging the player's head
   const snap = f < CAMS.d - .04; CAMS.d = snap ? f : lerp(CAMS.d, f, Math.min(1, dt * 1.6));
   const wx = tx - cx * dist * CAMS.d, wz = tz - cz * dist * CAMS.d; wy = Math.max(gy + .5, lerp(ty, wy, Math.max(.22, CAMS.d))); // pulled in: keep roughly the same angle, not a top-down view
   const k = !CAMS.init || snap ? 1 : 1 - Math.exp(-dt * 7.5); CAMS.init = true; // critically damped follow
@@ -3005,8 +3011,9 @@ function screenOf(x, y, h = 0) {
   _pr.set(x * M, h, y * M).applyMatrix4(camera.matrixWorldInverse); const behind = _pr.z > -.2;
   _pr.applyMatrix4(camera.projectionMatrix); return { x: (_pr.x * .5 + .5) * VW, y: (-_pr.y * .5 + .5) * VH, behind, on: !behind && Math.abs(_pr.x) < 1 && Math.abs(_pr.y) < 1 };
 }
+let hudBox = null; // right-hand HUD column, refreshed each frame; world labels skip anything under it
 function label(x, y, h, text, col, font, maxD = 90) {
-  const s = screenOf(x, y, h); if (!s.on) return; const d = Math.hypot(x * M - camera.position.x, y * M - camera.position.z); if (d > maxD) return;
+  const s = screenOf(x, y, h); if (!s.on) return; if (hudBox && s.x > hudBox.left - 30 && s.x < hudBox.right + 30 && s.y > hudBox.top - 12 && s.y < hudBox.bottom + 12) return; const d = Math.hypot(x * M - camera.position.x, y * M - camera.position.z); if (d > maxD) return;
   ctx.font = font; ctx.textAlign = 'center'; ctx.fillStyle = '#000'; ctx.fillText(text, s.x + 1, s.y + 1); ctx.fillStyle = col; ctx.fillText(text, s.x, s.y);
 }
 function paxBubble(p) {
@@ -3017,18 +3024,20 @@ function paxBubble(p) {
 }
 function drawOverlay(t, marks) {
   ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, VW, VH);
+  { const a = $('#minimap').getBoundingClientRect(), b = $('#district').getBoundingClientRect(); hudBox = { left: Math.min(a.left, b.left || a.left), right: Math.max(a.right, b.right), top: a.top, bottom: Math.max(a.bottom, b.bottom) }; }
   for (const m of marks) if (m.label) label(m.x, m.y, (m.obj || m.giver ? 7 : 3.2), m.label, m.color, '16px Bungee, sans-serif', 120);
   if (SHIFT.on) for (const id of routeOf().stops) { const st = BUS_STOPS[id]; SHIFT.waiting[id].forEach((p, i) => { if (i < 4) paxBubble(p); });
     if (st.agbero) { const [ax, ay] = agberoSpot(st); label(ax, ay, 2.4, 'AGBERO', '#ff8a80', '700 11px "Bricolage Grotesque", sans-serif', 70); } }
   if (MS.cur && MS.cur.stops) for (const s of MS.cur.stops) for (const p of s.pax || []) if (p.state === 'wait') paxBubble(p);
   for (const v of vehicles) if (v.label) label(v.x, v.y, 3.4, v.label, '#ff8a80', '700 12px "Bricolage Grotesque", sans-serif', 120);
   for (const f of floaters) { if (f._y0 == null) f._y0 = f.y; ctx.globalAlpha = clamp(f.t, 0, 1); label(f.x, f._y0, 2.6 + (f._y0 - f.y) * M, f.text, '#fff', '700 14px "Bricolage Grotesque", sans-serif', 100); ctx.globalAlpha = 1; }
-  const obj = marks.find(m => m.obj) || marks.find(m => m.giver), p = player.pos();
+  const tg = JOB.target, p = player.pos(), mk = tg && marks.find(m => Math.abs(m.x - tg.x) < 2 && Math.abs(m.y - tg.y) < 2);
+  const obj = tg && { x: tg.x, y: tg.y, color: mk ? mk.color.replace(/,[\d.]+\)$/, ',1)') : 'rgba(245,196,0,1)' };
   if (obj) { const s = screenOf(obj.x, obj.y, 1.5);
     if (!s.on) { let dx = s.x - VW / 2, dy = s.y - VH / 2; if (s.behind) { dx = -dx; dy = -dy; if (Math.abs(dy) < 1) dy = 1; dy = Math.abs(dy) + VH * .2; } // behind: point down/back
       const a = Math.atan2(dy, dx), Rr = Math.min(VW, VH) / 2 - 64, ax = VW / 2 + Math.cos(a) * Rr, ay = VH / 2 + Math.sin(a) * Rr;
       ctx.save(); ctx.translate(ax, ay); ctx.rotate(a); ctx.fillStyle = obj.color; ctx.strokeStyle = '#000'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(16, 0); ctx.lineTo(-10, -11); ctx.lineTo(-5, 0); ctx.lineTo(-10, 11); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore();
-      ctx.font = '700 12px "JetBrains Mono", monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText(Math.round(dist(obj, p) / 10) + 'm', ax, ay + 26); } }
+      ctx.font = '700 12px "JetBrains Mono", monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText(fmtDist(dist(obj, p)), ax, ay + 26); } }
 }
 const agberoSpot = st => { const hz = Math.abs(st.wy - st.y) > Math.abs(st.wx - st.x); return [st.wx + (hz ? 34 : 0), st.wy + (hz ? 0 : 34)]; };
 
@@ -3224,6 +3233,7 @@ function updateJobCard() {
       more = `From <b>${CONTACTS[m.giver]}</b>. ${IS_TOUCH ? 'Go to the yellow marker and tap the prompt' : 'Go to the yellow marker and press E'}, or accept it in your phone.`; }
     else { title = 'Free roam'; line = 'Conductor shifts, car wash, tailor'; }
   }
+  JOB.target = target; // the off-screen arrow points at (and measures to) this same spot
   const sig = title + '|' + line.replace(/\(\d+\/\d+\)/, '');
   if (sig !== JOB.sig) { JOB.sig = sig; if (more) { JOB.open = true; JOB.until = performance.now() + 4000; } }
   if (JOB.open && performance.now() > JOB.until) JOB.open = false;
