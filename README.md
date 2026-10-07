@@ -31,9 +31,23 @@ stops, Gidi Fuel stations, 5 story missions, Task Force chases with search and d
 phone (Gist, KoboPay, Yarns, MapAm). Open it in any modern browser on a desktop or phone. Its rules
 mirror `Scripts/Core`.
 
+Rendering: physically based materials, a sky that follows the in-game clock, fog that shifts from
+afternoon haze to sunset orange to night blue, soft sun shadows, contact shadows, and street detail
+(shop fronts, awnings, graffiti and posters, gutters, puddles, street clutter, banners, birds). A
+**Graphics** setting (Low / Medium / High) is picked automatically for the device and can be changed on
+the title screen, in the phone's MapAm app, or with G:
+
+| | Low | Medium | High |
+|---|---|---|---|
+| Draw distance | 150 m | 190 m | 240 m |
+| Anti-aliasing | FXAA | FXAA | 4× MSAA |
+| Reflections | none | studio light | live sky |
+| Bloom | no | yes | yes |
+| Ambient occlusion (GTAO) | no | no | yes |
+
 Controls: WASD or arrows to walk or drive (on foot, movement is relative to the camera), drag the
-screen to look around, E for actions, F to get in or out, Space to brake, Tab for the phone. On a
-phone, use the joystick and buttons.
+screen to look around (the camera recentres behind you after 2 seconds), E for actions, F to get in or
+out, Space to brake, Tab for the phone, G for graphics quality. On a phone, use the joystick and buttons.
 
 `web/legacy-2d.html` keeps the earlier top-down 2D version.
 
