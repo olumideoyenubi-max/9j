@@ -15,6 +15,7 @@ node p3-first-day.js    # "First Day on the Danfo" end to end: dialogue, route, 
 node p4-inventory.js    # inventory: Tab tap/hold, bag button, wheel, items, capacity, shops, documents, checkpoint, cash, clothing, vehicles, save
 node p5-live.js         # crowds, rush hour, hawkers, kerb stops, lane splitting, honks, scenes, clutter, sound
 node p6-look.js         # photo textures + GLB models over HTTP (generated fixtures), fallbacks, helicopter, sprint camera, dust
+node p7-hd.js           # 2x atlases on High, normal maps, glass, shop interiors, ground decals, god rays, heat shimmer
 node regression.js      # missions 1-2, chase, police still work
 ```
 Requires Node with the `playwright` package available (`NODE_PATH=$(npm root -g)` if installed globally).
@@ -25,6 +26,7 @@ folder; default `/tmp/claude-0/three-pkg/package`). Chromium renders WebGL with 
 ```bash
 node perf.js            # average frame time (software WebGL, so numbers are pessimistic)
 node shots-inv.js       # screenshots of the inventory tabs, quick wheel, a shop and the checkpoint (desktop, portrait, landscape)
+node shots-hd.js        # screenshots of shop interiors (day/night), ground decals, sunset/sunrise and noon roads
 node shots-aaa.js       # screenshots of the dusty street, a sprint, wheel dust and the helicopter (GFX=high|medium|low)
 node shots-live.js      # screenshots of the crowd, rush hour with hawkers, and each street scene
 node shots-vis.js       # screenshots of the danfo, keke and a line-up of characters into $OUT (look at them, not pass/fail)

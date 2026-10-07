@@ -34,7 +34,12 @@ mirror `Scripts/Core`.
 
 Rendering: physically based materials, a sky that follows the in-game clock, fog that shifts from
 afternoon haze to sunset orange to night blue, soft sun shadows, contact shadows, and street detail
-(shop fronts, awnings, graffiti and posters, gutters, puddles, street clutter, banners, birds).
+(shop fronts, awnings, graffiti and posters, gutters, puddles, street clutter, banners, birds). Walls,
+concrete, tiles, roads and zinc have normal maps. Window glass is smooth and reflects the sky. Through
+half-open and glass shop fronts you see the room inside (shelves of goods, side walls, a tiled floor
+and a strip light), which shifts as you walk past and lights up at night. Roads, pavements, fuel
+stations and the motor park carry oil spills, tyre marks, cracks and stains. Low sun at sunrise and
+sunset throws god rays past buildings and poles, and the far road shimmers in the midday heat.
 
 Vehicles and people are procedural too. The danfo is a rounded bus shell with real window openings, wheel
 arches, its sliding door open, a conductor hanging from the doorway, a loaded roof rack, a destination board
@@ -56,6 +61,8 @@ the title screen, in the phone's MapAm app, or with G:
 | Bloom | no | yes | yes |
 | Ambient occlusion (GTAO) | no | no | yes |
 | Photo textures | 512 px | 1024 px | 2048 px |
+| Procedural atlases (facades, shop fronts, decals) | 1× | 1× | 2× |
+| God rays, heat shimmer | no | yes | yes |
 | Motion blur, chromatic aberration, film grain | no | no | yes |
 
 The look aims for footage of a dusty Lagos street at midday: a harsh sun with sharp shadows, a blue sky

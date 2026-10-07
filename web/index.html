@@ -1749,7 +1749,7 @@ function applyPhotoTex(key) {
   const set = (m, rep) => { if (!m) return; m.map = T2.map; if (T2.normal) { m.normalMap = T2.normal; m.normalScale = new THREE.Vector2(1, 1); } if (T2.rough) { m.roughnessMap = T2.rough; m.roughness = 1; }
     for (const t of [T2.map, T2.normal, T2.rough]) if (t && rep) t.repeat.set(rep, rep); m.needsUpdate = true; };
   if (key === 'concrete' || key === 'plaster') { WALLU[key === 'concrete' ? 'uConc' : 'uPlas'].value = T2.map; WALLU.uPhoto.value = 1; }
-  if (key === 'asphalt') TERRU.uDetail.value = T2.map;
+  if (key === 'asphalt') { TERRU.uDetail.value = T2.map; if (T2.normal) { T2.normal.channel = 1; MAT.terrain.normalMap = T2.normal; MAT.terrain.needsUpdate = true; } }
   if (key === 'laterite') TERRU.uLat.value = T2.map;
   if (key === 'zinc') set(MAT.zinc);
   if (key === 'tarp') set(MAT.tarp);
@@ -3071,6 +3071,7 @@ function buildComposer() {
   composer = new EffectComposer(R3, rt); composer.addPass(new RenderPass(scene, camera)); PASS.ao = PASS.bloom = PASS.fxaa = null;
   if (Q.ao) { const ao = new GTAOPass(scene, camera, Math.max(1, VW), Math.max(1, VH), undefined, { radius: .9, distanceExponent: 1.4, thickness: 1.5, scale: 1, samples: 12, distanceFallOff: 1 }, { radius: 6, rings: 2, samples: 12 });
     ao.blendIntensity = .85; composer.addPass(ao); PASS.ao = ao; } // ground-truth AO in metres: darkens corners, eaves, under awnings and cars
+  PASS.atmos = null; if (Q.bloom) { PASS.atmos = new ShaderPass(AtmosShader); PASS.atmos.material.defines.RAYS = Q.ao ? 24 : 12; PASS.atmos.enabled = false; composer.addPass(PASS.atmos); } // god rays, heat shimmer
   if (Q.bloom) { PASS.bloom = new UnrealBloomPass(new THREE.Vector2(Math.max(1, VW >> 1), Math.max(1, VH >> 1)), .32, .45, .92); composer.addPass(PASS.bloom); }
   PASS.mblur = null; if (Q.ao) { PASS.mblur = new ShaderPass(MotionBlurShader); PASS.mblur.enabled = false; composer.addPass(PASS.mblur); } // High: motion blur
   PASS.grade = new ShaderPass(GradeShader); composer.addPass(PASS.grade);
@@ -3104,10 +3105,21 @@ function clockStr() { const m = Math.floor(S.minutes % 1440); return String(Math
 const COLC = new Map();
 function colr(s) { let c = COLC.get(s); if (!c) { c = new THREE.Color(); const m = /rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(s); if (m) c.setRGB(m[1] / 255, m[2] / 255, m[3] / 255, THREE.SRGBColorSpace); else c.setStyle(s); COLC.set(s, c); } return c; }
 const tint = (s, k) => colr(s).clone().multiplyScalar(k);
-function tex(w, h, draw, data = false) {
-  const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h);
+const TEXK = GFX === 'high' ? 2 : 1; // procedural atlases (facades, shop fronts, decals) are drawn at twice the resolution on High
+function tex(w, h, draw, data = false, hd = false) {
+  const k = hd ? TEXK : 1, c = document.createElement('canvas'); c.width = w * k; c.height = h * k; const g = c.getContext('2d'); if (k !== 1) g.scale(k, k); draw(g, w, h);
   const t = new THREE.CanvasTexture(c); t.colorSpace = data ? THREE.NoColorSpace : THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping;
   t.anisotropy = R3 ? Math.min(LOWQ ? 2 : 8, R3.capabilities.getMaxAnisotropy()) : 1; return t;
+}
+// a tangent-space normal map from a texture's brightness: dark reads as recessed (window reveals, grout, cracks)
+function normalFrom(src, strength = 2.5, height = (r, g, b, a) => (r * .3 + g * .59 + b * .11) / 255) {
+  const c = src.image, w = c.width, h = c.height, d = c.getContext('2d').getImageData(0, 0, w, h).data, L = new Float32Array(w * h);
+  for (let i = 0; i < w * h; i++) L[i] = height(d[i * 4], d[i * 4 + 1], d[i * 4 + 2], d[i * 4 + 3]);
+  const o = document.createElement('canvas'); o.width = w; o.height = h; const og = o.getContext('2d'), id = og.createImageData(w, h), q = id.data;
+  for (let y = 0; y < h; y++) { const yu = (y - 1 + h) % h, yd = (y + 1) % h;
+    for (let x = 0; x < w; x++) { const xl = (x - 1 + w) % w, xr = (x + 1) % w, nx = -(L[y * w + xr] - L[y * w + xl]) * strength, ny = (L[yd * w + x] - L[yu * w + x]) * strength, l = Math.hypot(nx, ny, 1), i = (y * w + x) * 4;
+      q[i] = (nx / l * .5 + .5) * 255; q[i + 1] = (ny / l * .5 + .5) * 255; q[i + 2] = (1 / l * .5 + .5) * 255; q[i + 3] = 255; } }
+  og.putImageData(id, 0, 0); const t = new THREE.CanvasTexture(o); t.colorSpace = THREE.NoColorSpace; t.wrapS = src.wrapS; t.wrapT = src.wrapT; t.anisotropy = src.anisotropy; t.channel = src.channel; return t;
 }
 function fitText(g, txt, maxW, size, weight = 800, fam = '"Bricolage Grotesque", "Arial Black", sans-serif') {
   let s = size; do { g.font = `${weight} ${s}px ${fam}`; s -= 2; } while (g.measureText(txt).width > maxW && s > 10);
@@ -3164,7 +3176,16 @@ function houseFacade(style, lit) {
         g.lineWidth = 2; g.beginPath(); g.arc(wx + ww / 2, wy + 9, 6, 0, 7); g.stroke(); }
     }
     if (!lit) { g.fillStyle = 'rgba(0,0,0,.12)'; for (let s = 0; s < 4; s++) g.fillRect(0, s * 128 + 121, 512, 7); }
-  });
+  }, false, true);
+}
+// glass is smooth and reflects the sky; walls, curtains and burglar bars stay rough (green channel = roughness)
+function houseRough(style) {
+  return tex(512, 512, g => { g.fillStyle = 'rgb(0,235,0)'; g.fillRect(0, 0, 512, 512);
+    for (const w of LAYOUTS[style]) { if (w.type === 'vent') continue; const wx = w.x + 30, wy = w.y + 30, ww = 68, wh = 60;
+      g.fillStyle = 'rgb(0,22,0)'; g.fillRect(wx, wy, ww, wh); if (w.cur < .55) { g.fillStyle = 'rgb(0,200,0)'; g.fillRect(wx + 2, wy + 2, ww * .38, wh - 4); }
+      if (w.type === 'louvre') { g.fillStyle = 'rgb(0,150,0)'; g.fillRect(wx + ww / 2 - 2, wy, 4, wh); }
+      if (w.type === 'bars' || w.barsToo) { g.strokeStyle = 'rgb(0,170,0)'; g.lineWidth = 3.2; g.beginPath(); for (let k = 7; k < ww; k += 10) { g.moveTo(wx + k, wy - 4); g.lineTo(wx + k, wy + wh + 4); } for (const f of [.33, .66]) { g.moveTo(wx - 4, wy + wh * f); g.lineTo(wx + ww + 4, wy + wh * f); } g.stroke(); } }
+  }, true, true);
 }
 // Towers: glass curtain wall, 4 bays (3 m) × 4 floors (3.5 m).
 function towerFacade(lit) {
@@ -3178,13 +3199,14 @@ function towerFacade(lit) {
       else if (on) { g.fillStyle = warm ? '#ffdca0' : '#e4efff'; g.fillRect(x + 2, y + 2, 60, 48); }
     }
     if (!lit) { g.fillStyle = '#b9c3c9'; for (let s = 0; s < 4; s++) g.fillRect(0, s * 64 + 50, 256, 14); }
-  });
+  }, false, true);
 }
-const HOUSE_T = [0, 1, 2].map(s => [houseFacade(s, false), houseFacade(s, true)]), towerT = towerFacade(false), towerLitT = towerFacade(true);
+const HOUSE_T = [0, 1, 2].map(s => { const m = houseFacade(s, false); return [m, houseFacade(s, true), normalFrom(m, 3), houseRough(s)]; }), towerT = towerFacade(false), towerLitT = towerFacade(true);
 const concT = tex(256, 256, g => { const R = prng(41); g.fillStyle = '#c4beb2'; g.fillRect(0, 0, 256, 256);
   for (let k = 0; k < 900; k++) { g.fillStyle = `rgba(${R() < .7 ? '40,35,30' : '255,255,255'},${R() * .08})`; g.fillRect(R() * 256, R() * 256, 2 + R() * 10, 2 + R() * 10); }
   for (let k = 0; k < 9; k++) { g.fillStyle = `rgba(60,55,45,${.08 + R() * .12})`; g.beginPath(); g.ellipse(R() * 256, R() * 256, 10 + R() * 30, 6 + R() * 20, R() * 3, 0, 7); g.fill(); }
-  g.strokeStyle = 'rgba(0,0,0,.18)'; g.lineWidth = 1; for (let k = 0; k < 6; k++) { g.beginPath(); let x = R() * 256, y = R() * 256; g.moveTo(x, y); for (let j = 0; j < 5; j++) { x += R() * 30 - 15; y += R() * 30 - 15; g.lineTo(x, y); } g.stroke(); } });
+  g.strokeStyle = 'rgba(0,0,0,.18)'; g.lineWidth = 1; for (let k = 0; k < 6; k++) { g.beginPath(); let x = R() * 256, y = R() * 256; g.moveTo(x, y); for (let j = 0; j < 5; j++) { x += R() * 30 - 15; y += R() * 30 - 15; g.lineTo(x, y); } g.stroke(); } }, false, true);
+const concNT = normalFrom(concT, 3);
 function drawZinc(g, mode) { // mode: 'col' | 'rough'
   const R = prng(42);
   if (mode === 'col') for (let x = 0; x < 256; x += 8) { const gr = g.createLinearGradient(x, 0, x + 8, 0); gr.addColorStop(0, '#8c8c8c'); gr.addColorStop(.45, '#ffffff'); gr.addColorStop(1, '#7a7a7a'); g.fillStyle = gr; g.fillRect(x, 0, 8, 256); }
@@ -3195,7 +3217,7 @@ function drawZinc(g, mode) { // mode: 'col' | 'rough'
     gr.addColorStop(0, mode === 'col' ? 'rgba(120,52,18,.45)' : 'rgba(0,230,0,.7)'); gr.addColorStop(1, mode === 'col' ? 'rgba(120,52,18,0)' : 'rgba(0,230,0,0)'); g.fillStyle = gr; g.fillRect(x, y, w, len); }
   if (mode === 'col') { g.fillStyle = 'rgba(0,0,0,.25)'; g.fillRect(0, 126, 256, 3); }
 }
-const zincT = tex(256, 256, g => drawZinc(g, 'col')), zincRT = tex(256, 256, g => drawZinc(g, 'rough'), true);
+const zincT = tex(256, 256, g => drawZinc(g, 'col'), false, true), zincRT = tex(256, 256, g => drawZinc(g, 'rough'), true, true);
 const zincNT = tex(256, 256, g => { for (let x = 0; x < 256; x++) { const nx = Math.sin(x / 8 * Math.PI * 2) * .6, nz = Math.sqrt(1 - nx * nx); g.fillStyle = `rgb(${(nx * .5 + .5) * 255 | 0},128,${(nz * .5 + .5) * 255 | 0})`; g.fillRect(x, 0, 1, 256); } }, true);
 // Asphalt and paving grain, tiled every 4 m on top of the painted map (mean ≈ 0.77, scaled back up in the shader)
 const asphaltT = tex(256, 256, g => { const id = g.createImageData(256, 256), R = prng(17);
@@ -3205,7 +3227,8 @@ const asphaltT = tex(256, 256, g => { const id = g.createImageData(256, 256), R 
 const blobT = tex(128, 128, g => { const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, 'rgba(255,255,255,.75)'); gr.addColorStop(.55, 'rgba(255,255,255,.4)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
 blobT.wrapS = blobT.wrapT = THREE.ClampToEdgeWrapping;
 const tileT = tex(256, 256, g => { g.fillStyle = '#e8e8e8'; g.fillRect(0, 0, 256, 256); g.strokeStyle = 'rgba(0,0,0,.35)'; g.lineWidth = 3;
-  for (let y = 0; y < 256; y += 21) { g.beginPath(); for (let x = (y / 21 % 2) * 16; x < 272; x += 32) g.arc(x, y + 4, 16, 0, Math.PI); g.stroke(); } });
+  for (let y = 0; y < 256; y += 21) { g.beginPath(); for (let x = (y / 21 % 2) * 16; x < 272; x += 32) g.arc(x, y + 4, 16, 0, Math.PI); g.stroke(); } }, false, true);
+const tileNT = normalFrom(tileT, 4), asphaltNT = normalFrom(asphaltT, 1.6);
 const glowT = tex(128, 128, g => { const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.4, 'rgba(255,255,255,.45)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
 const coneT = tex(256, 128, g => { const gr = g.createLinearGradient(0, 0, 256, 0); gr.addColorStop(0, 'rgba(255,255,255,.9)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.beginPath(); g.moveTo(0, 56); g.lineTo(256, 0); g.lineTo(256, 128); g.lineTo(0, 72); g.fill(); });
 const ringT = tex(128, 128, g => { const gr = g.createRadialGradient(64, 64, 30, 64, 64, 64); gr.addColorStop(0, 'rgba(255,255,255,.04)'); gr.addColorStop(.72, 'rgba(255,255,255,.06)'); gr.addColorStop(.86, 'rgba(255,255,255,1)'); gr.addColorStop(.93, 'rgba(255,255,255,.5)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
@@ -3284,7 +3307,7 @@ function makeDecalAtlas() {
       fitText(g, t, w - 20, 40, 800); g.fillText(t, 0, -40); fitText(g, sub, w - 24, 20, 600); g.fillText(sub, 0, 10);
       g.globalAlpha = .5; for (let r = 0; r < 4; r++) g.fillRect(-w / 2 + 20, 40 + r * 14, w - 40 - R() * 50, 5); g.globalAlpha = 1;
       g.fillStyle = 'rgba(80,60,30,.18)'; g.fillRect(-w / 2, -h / 2, w, h); g.restore(); });
-  });
+  }, false, true);
   decalT.wrapS = decalT.wrapT = THREE.ClampToEdgeWrapping;
   // Shop fronts, 2 × 2 slots of 512 × 256: closed roller shutter, half-open, open shop, painted shutter
   const front = lit => tex(1024, 512, g => {
@@ -3302,7 +3325,7 @@ function makeDecalAtlas() {
       else { shutter(y, y + 256); if (!lit) { g.fillStyle = '#b71c1c'; g.font = '800 44px "Bricolage Grotesque", sans-serif'; g.textAlign = 'center'; g.fillText('NO PARKING', x + 256, y + 110); g.font = '700 30px "JetBrains Mono", monospace'; g.fillText('0803 555 0147', x + 256, y + 160); } }
       if (!lit) { g.fillStyle = '#2b2b2b'; g.fillRect(x, y, 10, 256); g.fillRect(x + 502, y, 10, 256); }
     }
-  });
+  }, false, true);
   frontT = front(false); frontLitT = front(true); frontT.wrapS = frontT.wrapT = frontLitT.wrapS = frontLitT.wrapT = THREE.ClampToEdgeWrapping;
   // Street banners, 4 rows of 1024 × 128
   bannerT = tex(1024, 512, g => [['WELCOME TO BALO MARKET', 'Buy and sell · no wahala', '#1b5e20', '#ffeb3b'], ['HAPPY NEW MONTH', 'From Alhaji Lawal & Sons Cement', '#0d47a1', '#ffffff'],
@@ -3323,8 +3346,8 @@ const concDetailT = tex(256, 256, g => { const R = prng(41); g.fillStyle = '#8e8
 });
 const plasterT = tex(256, 256, g => { const R = prng(43); g.fillStyle = '#c4beb2'; g.fillRect(0, 0, 256, 256);
   for (let k = 0; k < 1800; k++) { const v = 170 + R() * 50 | 0; g.fillStyle = `rgba(${v},${v - 5},${v - 12},.4)`; g.fillRect(R() * 256, R() * 256, 1 + R() * 2, 1 + R() * 2); }
-  for (let k = 0; k < 10; k++) { const x = R() * 256, y = R() * 256, w = 10 + R() * 40, h = 8 + R() * 26; g.fillStyle = 'rgba(105,98,88,.75)'; g.beginPath(); g.ellipse(x, y, w, h, R() * 3, 0, 7); g.fill(); // peeled patches
-    g.strokeStyle = 'rgba(235,230,220,.6)'; g.lineWidth = 2; g.stroke(); }
+  for (let k = 0; k < 6; k++) { const x = R() * 256, y = R() * 256, w = 8 + R() * 30, h = 6 + R() * 18; g.beginPath(); // peeled patches: ragged, low contrast
+    for (let a = 0; a < 14; a++) { const t = a / 14 * Math.PI * 2, rr = .55 + R() * .45; g.lineTo(x + Math.cos(t) * w * rr, y + Math.sin(t) * h * rr); } g.closePath(); g.fillStyle = 'rgba(140,132,120,.4)'; g.fill(); g.strokeStyle = 'rgba(230,225,215,.35)'; g.lineWidth = 1.5; g.stroke(); }
   for (let k = 0; k < 30; k++) { const x = R() * 256, y = R() * 256; const gr = g.createLinearGradient(x, y, x, y + 60 + R() * 80); gr.addColorStop(0, 'rgba(60,52,40,.35)'); gr.addColorStop(1, 'rgba(60,52,40,0)'); g.fillStyle = gr; g.fillRect(x, y, 2 + R() * 5, 140); } // rain streaks
 });
 const grimeT = tex(256, 256, g => { const R = prng(47); g.imageSmoothingEnabled = true; // smooth value noise: two octaves of tiny random grids, scaled up
@@ -3364,6 +3387,110 @@ function wallDetail(mat) {
   mat.customProgramCacheKey = () => 'wall'; return mat;
 }
 
+// ---- shop interiors: the half-open and glass-fronted shop slots of the shop-front atlas show a room behind the
+// facade (interior mapping: the view ray is traced into a box, so shelves, side walls, floor and ceiling move
+// with parallax). Lit from inside and brighter at night; the glass fronts reflect the sky.
+const INTU = { uNight: { value: 0 } };
+function shopInterior(mat) {
+  mat.onBeforeCompile = sh => { Object.assign(sh.uniforms, INTU);
+    sh.vertexShader = 'varying vec3 vWp; varying vec3 vWn;\n' + sh.vertexShader.replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\n vWp = (modelMatrix * vec4(transformed, 1.0)).xyz; vWn = normalize(mat3(modelMatrix) * objectNormal);');
+    sh.fragmentShader = 'uniform float uNight; varying vec3 vWp; varying vec3 vWn;\n' + sh.fragmentShader
+      .replace('#include <map_fragment>', `#include <map_fragment>
+      float intM = 0., glassM = 0.; vec3 intC = vec3(0.);
+      { vec2 a = vMapUv * 2.; float slot = floor(a.x) + 2. * (1. - floor(a.y)); vec2 s = fract(a);
+        float topY = slot == 1. ? .52 : slot == 2. ? .99 : 0.;
+        if (s.y < topY && s.x > .021 && s.x < .979) {
+          vec3 N = normalize(vWn), Tg = normalize(vec3(N.z, 0., -N.x)), V = normalize(vWp - cameraPosition);
+          vec3 d = vec3(dot(V, Tg), V.y, max(-dot(V, N), .04)), Rm = vec3(3.6, 2.3, 2.8), p = vec3(s.x * Rm.x, s.y * Rm.y, 0.);
+          vec3 tt = vec3(d.x > 0. ? (Rm.x - p.x) / d.x : p.x / max(-d.x, 1e-4), d.y > 0. ? (Rm.y - p.y) / d.y : p.y / max(-d.y, 1e-4), Rm.z / d.z);
+          float t = min(tt.x, min(tt.y, tt.z)); vec3 h = p + d * t;
+          float id = floor(vWp.x * .27) * 7.1 + floor(vWp.z * .27) * 3.7, hs = fract(sin(id * 12.9898) * 43758.5453);
+          vec3 wall = mix(vec3(.72, .66, .55), vec3(.5, .62, .66), hs);
+          float along = t == tt.z ? h.x : h.z * 1.3; // shelves run along the back and side walls
+          float row = floor(h.y / .46), fy = fract(h.y / .46), bx = floor(along / .17), gq = fract(sin(bx * 78.233 + row * 12.97 + id) * 43758.5453);
+          vec3 good = .3 + .6 * cos(6.2832 * (gq + vec3(0., .33, .67))); float gh = .3 + .55 * fract(gq * 7.31);
+          vec3 shelf = h.y < .3 ? wall * .5 : fy < .07 ? vec3(.4, .3, .2) : (fy < .07 + gh * .85 && fract(along / .17) > .14) ? good : wall * .75;
+          if (t == tt.y) intC = d.y > 0. ? vec3(.8) + vec3(2.2, 2.1, 1.8) * (1. - smoothstep(.04, .09, abs(h.z - 1.2))) * step(.6, h.x) * step(h.x, 3.) // ceiling with a strip light
+            : mix(vec3(.32, .3, .27), vec3(.42, .4, .36), step(.5, fract(floor(h.x / .4) * .5 + floor(h.z / .4) * .5))); // tiled floor
+          else intC = t == tt.z ? shelf : shelf * .8;
+          intC *= mix(1., .62, h.z / Rm.z); intM = 1.; glassM = slot == 2. ? 1. : 0.;
+          diffuseColor.rgb = mix(diffuseColor.rgb, vec3(.015), intM); } }`)
+      .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\n roughnessFactor = mix(roughnessFactor, .05, glassM);')
+      .replace('#include <metalnessmap_fragment>', '#include <metalnessmap_fragment>\n metalnessFactor = mix(metalnessFactor, 0., intM);')
+      .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\n totalEmissiveRadiance = mix(totalEmissiveRadiance, intC * mix(.38, .95, uNight), intM);'); };
+  mat.customProgramCacheKey = () => 'interior'; return mat;
+}
+// ---- ground decals: oil spills, tyre marks, cracks and stains as flat quads on roads, pavements, fuel stations
+// and the motor park (4 × 4 atlas: 0–3 oil, 4–7 tyre marks, 8–11 cracks, 12–15 stains), with roughness (oil is
+// glossy) and a normal map (cracks are sunk in)
+const groundAtlas = mode => tex(1024, 1024, g => { const R = prng(777); if (mode === 'rough') { g.fillStyle = 'rgb(0,225,0)'; g.fillRect(0, 0, 1024, 1024); } else g.clearRect(0, 0, 1024, 1024);
+  for (let i = 0; i < 16; i++) { const cx = (i % 4) * 256 + 128, cy = (i / 4 | 0) * 256 + 128; g.save(); g.beginPath(); g.rect(cx - 128, cy - 128, 256, 256); g.clip(); g.translate(cx, cy);
+    if (i < 4) { // oil: overlapping blotches with a rainbow sheen at the rim
+      const blobs = []; for (let k = 0; k < 5 + i; k++) blobs.push([(R() - .5) * 110, (R() - .5) * 80, 18 + R() * 45, 12 + R() * 30, R() * 3]);
+      for (const [x, y, rx, ry, a] of blobs) { if (mode === 'rough') g.fillStyle = 'rgb(0,40,0)'; else { const gr = g.createRadialGradient(x, y, 0, x, y, Math.max(rx, ry)); gr.addColorStop(0, 'rgba(10,9,8,.78)'); gr.addColorStop(.75, 'rgba(14,12,10,.6)'); gr.addColorStop(1, 'rgba(14,12,10,0)'); g.fillStyle = gr; }
+        g.beginPath(); g.ellipse(x, y, rx, ry, a, 0, 7); g.fill(); }
+      if (mode !== 'rough') for (const [x, y, rx, ry, a] of blobs.slice(0, 3)) { g.lineWidth = 3; for (const [k, col] of [[.8, 'rgba(160,60,200,.18)'], [.86, 'rgba(60,170,200,.18)'], [.92, 'rgba(200,180,60,.16)']]) { g.strokeStyle = col; g.beginPath(); g.ellipse(x, y, rx * k, ry * k, a, 0, 7); g.stroke(); } }
+    } else if (i < 8) { // tyre marks: a pair of curved treads
+      const bend = (R() - .5) * 120, gap = 34 + R() * 10; if (mode !== 'rough') for (const o of [-gap, gap]) { const path = () => { g.beginPath(); g.moveTo(-128, o); g.quadraticCurveTo(0, o + bend, 128, o + bend * .3); };
+        for (let w = 0; w < 3; w++) { g.strokeStyle = `rgba(12,12,12,${.22 - w * .05})`; g.lineWidth = 14 + w * 6; path(); g.stroke(); }
+        g.strokeStyle = 'rgba(0,0,0,.2)'; g.lineWidth = 2; g.setLineDash([4, 6]); path(); g.stroke(); g.setLineDash([]); }
+    } else if (i < 12) { // cracks: branching lines with a lighter broken edge
+      const crack = (x, y, a, len, wd, depth) => { let qx = x, qy = y; g.beginPath(); g.moveTo(qx, qy); const pts = [[qx, qy]];
+        for (let s = 0; s < 8; s++) { a += (R() - .5) * .9; qx += Math.cos(a) * len / 8; qy += Math.sin(a) * len / 8; g.lineTo(qx, qy); pts.push([qx, qy]); }
+        if (mode !== 'rough') { g.strokeStyle = 'rgba(210,200,185,.35)'; g.lineWidth = wd + 2.5; g.stroke(); g.strokeStyle = 'rgba(8,8,8,.85)'; g.lineWidth = wd; g.stroke(); }
+        if (depth < 2) for (let k = 0; k < 2; k++) { const p = pts[2 + (R() * 5 | 0)]; crack(p[0], p[1], a + (R() < .5 ? 1 : -1) * (.6 + R() * .8), len * .5, wd * .6, depth + 1); } };
+      for (let k = 0; k < 3; k++) crack((R() - .5) * 60, (R() - .5) * 60, R() * 6.3, 110 + R() * 40, 2.6, 0);
+    } else if (mode !== 'rough') { // stains: a dried puddle ring, spilled palm oil, ash from a roadside fire, damp
+      const kind = i - 12, col = ['60,52,40', '150,80,20', '30,30,30', '70,60,45'][kind];
+      for (let k = 0; k < 5; k++) { const x = (R() - .5) * 120, y = (R() - .5) * 120, r = 20 + R() * 50, gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, `rgba(${col},${kind === 2 ? .45 : .28})`); gr.addColorStop(1, `rgba(${col},0)`); g.fillStyle = gr; g.fillRect(x - r, y - r, r * 2, r * 2); }
+      if (kind === 0) { g.strokeStyle = 'rgba(60,52,40,.25)'; g.lineWidth = 3; g.beginPath(); g.ellipse(0, 0, 80, 60, R(), 0, 7); g.stroke(); } }
+    g.restore(); }
+}, mode === 'rough', true);
+const groundT = groundAtlas('col'), groundRT = groundAtlas('rough'), groundNT = normalFrom(groundT, 4, (r, g, b, a) => 1 - a / 255 * (1 - (r * .3 + g * .59 + b * .11) / 255));
+for (const t of [groundT, groundRT, groundNT]) t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
+function flatQuad(g, x, y, z, w, l, yaw, uv) { const c = Math.cos(yaw), s = Math.sin(yaw), P = (a, b) => [x + a * c - b * s, y, z + a * s + b * c], [u0, v0, u1, v1] = uv, hw = w / 2, hl = l / 2;
+  g.quad([P(-hw, -hl), P(hw, -hl), P(hw, hl), P(-hw, hl)], [0, 1, 0], [u0, v0, u1, v0, u1, v1, u0, v1], WHITE); }
+function buildGroundDecals(G) {
+  const R = prng(9090), nearNode = (x, y, d) => nodes.some(n => Math.abs(n.x - x) < d && Math.abs(n.y - y) < d); let n = 0;
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) { const t = grid[I(c, r)]; if (isLagoon(c) && t === T.ROAD) continue;
+    const px = c * CELL + 16, py = r * CELL + 16, X = c * 4 + 2, Z = r * 4 + 2, y = cellH(c, r) + .02, g = G(chunks[Math.floor(r / CH) * CHX + Math.floor(c / CH)], 'gdecal'), h = hash(c * 3 + 11, r * 7 + 5);
+    const dec = (slot, w, l, yaw, jit = 1.2) => { n++; flatQuad(g, X + (R() - .5) * jit * 2, y + R() * .004, Z + (R() - .5) * jit * 2, w, l, yaw, atlasUV(slot, 4, 4)); };
+    if (t === T.ROAD) { const along = isRoad(c - 1, r) || isRoad(c + 1, r) ? 0 : Math.PI / 2;
+      if (h < .4 && nearNode(px, py, 44)) dec(4 + (R() * 4 | 0), 4 + R() * 2, 2.2, along + (R() - .5) * .5); // braking and turning at junctions
+      if (h > .86) dec(R() * 4 | 0, 1 + R() * 1.2, 1 + R() * 1.2, R() * 6.3);
+      else if (h > .74 && h < .8) dec(8 + (R() * 4 | 0), 2.4 + R() * 1.4, 2.4 + R() * 1.4, R() * 6.3, .8);
+    } else if (t === T.STATION) { if (h < .55) dec(R() * 4 | 0, 1.2 + R(), 1.2 + R(), R() * 6.3); if (h > .7) dec(4 + (R() * 4 | 0), 3.5, 2, R() * 6.3); }
+    else if (t === T.PARK) { if (h < .3) dec(R() * 4 | 0, 1.4 + R(), 1.4 + R(), R() * 6.3); else if (h > .75) dec(4 + (R() * 4 | 0), 4, 2.2, R() < .5 ? 0 : Math.PI / 2); }
+    else if (t === T.SIDE || t === T.GROUND) { if (h < .14) dec(12 + (R() * 4 | 0), 1.2 + R() * 1.5, 1.2 + R() * 1.5, R() * 6.3); else if (h > .93) dec(8 + (R() * 4 | 0), 1.8, 1.8, R() * 6.3, .6); }
+  }
+  return n;
+}
+// ---- god rays at sunrise and sunset (bright sky smeared towards the sun, so buildings and poles cut shafts
+// through it) and heat shimmer over the far road at midday. One full-screen pass, Medium and High.
+const AtmosShader = {
+  defines: { RAYS: 12 },
+  uniforms: { tDiffuse: { value: null }, uSun: { value: new THREE.Vector2(.5, .5) }, uRay: { value: 0 }, uRayCol: { value: new THREE.Color() }, uHeat: { value: 0 }, uHorizon: { value: .5 }, uTime: { value: 0 }, uAspect: { value: 1 } },
+  vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+  fragmentShader: `uniform sampler2D tDiffuse; uniform vec2 uSun; uniform float uRay, uHeat, uHorizon, uTime, uAspect; uniform vec3 uRayCol; varying vec2 vUv;
+    void main() { vec2 uv = vUv;
+      if (uHeat > 0.) { float b = smoothstep(uHorizon - .17, uHorizon - .02, uv.y) * (1. - smoothstep(uHorizon - .005, uHorizon + .03, uv.y)) * uHeat;
+        uv.x += (sin(uv.y * 230. + uTime * 7.) * .0011 + sin(uv.y * 97. - uTime * 4.3) * .0007) * b; uv.y += sin(uv.x * 160. + uTime * 5.) * .0005 * b; }
+      vec3 c = texture2D(tDiffuse, uv).rgb;
+      if (uRay > 0.) { vec2 dl = (uSun - vUv) / float(RAYS) * .9, p = vUv + dl * fract(sin(dot(vUv, vec2(12.9898, 78.233))) * 43758.5453); float acc = 0., w = 1.;
+        for (int i = 0; i < RAYS; i++) { vec3 s = texture2D(tDiffuse, clamp(p, 0., 1.)).rgb; acc += smoothstep(.7, 1.4, dot(s, vec3(.3, .59, .11))) * w; w *= .93; p += dl; }
+        vec2 dd = (vUv - uSun) * vec2(uAspect, 1.); c += uRayCol * acc / float(RAYS) * uRay / (1. + dot(dd, dd) * 5.); }
+      gl_FragColor = vec4(c, 1.); }`,
+};
+const _sunS = new THREE.Vector3(), _fw = new THREE.Vector3();
+function updateAtmosFX(up, el, night, noon) {
+  const p = PASS.atmos; if (!p) return; const u = p.uniforms; camera.getWorldDirection(_fw);
+  const low = up ? clamp(1 - el / .5, 0, 1) * (1 - night) : 0, face = clamp((_fw.dot(_sv) - .15) / .6, 0, 1);
+  _sunS.copy(camera.position).addScaledVector(_sv, 500).project(camera); u.uSun.value.set(_sunS.x * .5 + .5, _sunS.y * .5 + .5);
+  u.uRay.value = 1.4 * low * face * face; u.uRayCol.value.copy(sunL.color);
+  _fw.y = 0; _fw.normalize(); _sunS.copy(camera.position).addScaledVector(_fw, 800).project(camera); u.uHorizon.value = _sunS.y * .5 + .5;
+  u.uHeat.value = up ? sstep(.88, .97, el) * (1 - night) : 0; // only around midday (about 10:30–14:00) u.uTime.value = performance.now() / 1000 % 100; u.uAspect.value = VW / Math.max(1, VH);
+  p.enabled = u.uRay.value > .01 || u.uHeat.value > .01;
+}
 // ---- geometry builder (non-indexed, vertex colours, uv + world-scale uv1)
 const Z8 = [0, 0, 0, 0, 0, 0, 0, 0];
 class Geo {
@@ -3476,7 +3603,7 @@ function build3D() {
   if (!R3 || cityBuilt) return; cityBuilt = true;
   makeSignAtlas(); makeDestAtlas(); makeDecalAtlas();
   mapTex = new THREE.CanvasTexture(mapC); mapTex.colorSpace = THREE.SRGBColorSpace; mapTex.anisotropy = Math.min(LOWQ ? 4 : 8, R3.capabilities.getMaxAnisotropy());
-  const terrain = std({ map: mapTex, vertexColors: true, roughness: .92, bumpMap: grainT, bumpScale: 1.2 });
+  asphaltNT.channel = 1; const terrain = std({ map: mapTex, vertexColors: true, roughness: .92, normalMap: asphaltNT, normalScale: new THREE.Vector2(.7, .7) }); // world-tiled (uv1) asphalt grain
   terrain.onBeforeCompile = sh => { // tiled asphalt/paving grain on top of the painted map
     Object.assign(sh.uniforms, TERRU);
     sh.vertexShader = 'varying vec3 vWp;\n' + sh.vertexShader.replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\n vWp = (modelMatrix * vec4(transformed, 1.0)).xyz;');
@@ -3485,29 +3612,30 @@ function build3D() {
         vec3 asp = texture2D(uDetail, vWp.xz * .25).rgb / max(vec3(.05), textureLod(uDetail, vec2(.5), 12.0).rgb);
         vec3 lat = texture2D(uLat, vWp.xz * .18).rgb / max(vec3(.05), textureLod(uLat, vec2(.5), 12.0).rgb);
         diffuseColor.rgb *= mix(mix(vec3(dot(asp, vec3(.333))), asp, .4), mix(vec3(dot(lat, vec3(.333))), lat, .5), dm); }`); };
-  const house = ([m, lit]) => wallDetail(std({ map: m, emissiveMap: lit, emissive: 0xffffff, emissiveIntensity: 0, vertexColors: true, roughness: .9 }));
+  const house = ([m, lit, nrm, rgh]) => wallDetail(std({ map: m, emissiveMap: lit, emissive: 0xffffff, emissiveIntensity: 0, vertexColors: true, roughness: 1, roughnessMap: rgh, normalMap: nrm, normalScale: new THREE.Vector2(.8, .8) })); // glass panes are smooth
   MAT = {
     terrain, house0: house(HOUSE_T[0]), house1: house(HOUSE_T[1]), house2: house(HOUSE_T[2]),
     tower: std({ map: towerT, emissiveMap: towerLitT, emissive: 0xffffff, emissiveIntensity: 0, vertexColors: true, roughness: .12, metalness: .55 }),
-    conc: wallDetail(std({ map: concT, vertexColors: true, roughness: .95 })),
+    conc: wallDetail(std({ map: concT, vertexColors: true, roughness: .95, normalMap: concNT })),
     zinc: std({ map: zincT, vertexColors: true, roughnessMap: zincRT, roughness: 1, metalness: .55, normalMap: zincNT, normalScale: new THREE.Vector2(.9, .9) }),
-    tile: std({ map: tileT, vertexColors: true, roughness: .8 }), detail: std({ vertexColors: true, roughness: .82 }),
+    tile: std({ map: tileT, vertexColors: true, roughness: .8, normalMap: tileNT }), detail: std({ vertexColors: true, roughness: .82 }),
     sign: std({ map: signT, emissiveMap: signT, emissive: 0xffffff, emissiveIntensity: 0, roughness: .7 }),
-    front: std({ map: frontT, emissiveMap: frontLitT, emissive: 0xffffff, emissiveIntensity: 0, roughness: .6, metalness: .2 }),
+    front: shopInterior(std({ map: frontT, emissiveMap: frontLitT, emissive: 0xffffff, emissiveIntensity: 0, roughness: .6, metalness: .2 })),
     decal: std({ map: decalT, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2, roughness: .9 }),
     gutter: std({ vertexColors: true, roughness: .12, metalness: .2, polygonOffset: true, polygonOffsetFactor: -1 }),
     laundry: flutter(std({ vertexColors: true, roughness: .9, side: THREE.DoubleSide }), 'hang'),
     tarp: std({ map: tarpT, roughness: .62, side: THREE.DoubleSide }),
+    gdecal: std({ map: groundT, normalMap: groundNT, roughnessMap: groundRT, roughness: 1, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -3, polygonOffsetUnits: -3 }),
   };
   for (let j = 0; j < CHY; j++) for (let i = 0; i < CHX; i++) chunks.push({ i, j, cx: (i + .5) * CH * CELL * M, cz: (j + .5) * CH * CELL * M, G: {}, group: new THREE.Group() });
   const G = (ch, k) => ch.G[k] || (ch.G[k] = new Geo());
   buildTerrain(G); buildBridgeAndWater(G);
   for (const b of BUILDINGS) buildBuilding(b, G);
-  buildStreets(G); buildLandmarks(G); buildClutter(G); buildBanners();
+  buildStreets(G); buildGroundDecals(G); buildLandmarks(G); buildClutter(G); buildBanners();
   for (const k of ['house0', 'house1', 'house2', 'tower', 'conc', 'zinc', 'tile', 'detail', 'sign', 'front', 'laundry', 'tarp']) nearFade(MAT[k]);
   MAT.stallD = MAT.detail;
-  const NOSHADOW = ['terrain', 'sign', 'front', 'decal', 'gutter'];
-  for (const ch of chunks) { for (const [k, g] of Object.entries(ch.G)) if (!g.empty) { const m = new THREE.Mesh(g.build(), MAT[k]); m.castShadow = !NOSHADOW.includes(k); m.receiveShadow = true; if (k === 'decal') m.renderOrder = 1; m.userData.stall = k === 'stallD'; ch.group.add(m); } scene.add(ch.group); ch.G = null; }
+  const NOSHADOW = ['terrain', 'sign', 'front', 'decal', 'gutter', 'gdecal'];
+  for (const ch of chunks) { for (const [k, g] of Object.entries(ch.G)) if (!g.empty) { const m = new THREE.Mesh(g.build(), MAT[k]); m.castShadow = !NOSHADOW.includes(k); m.receiveShadow = true; if (k === 'decal' || k === 'gdecal') m.renderOrder = 1; m.userData.stall = k === 'stallD'; ch.group.add(m); } scene.add(ch.group); ch.G = null; }
   buildProps();
   for (const k of Object.keys(TEXR)) applyPhotoTex(k); for (const k of Object.keys(MODELS)) applyModel(k);
   startAssets();
@@ -4709,6 +4837,7 @@ function setAtmosphere(dk) { // the shadow-casting sun never drops below ~18°, 
   scene.fog.near = Q.far * lerp(.3, .16, noon); SKYU.uTime.value = performance.now() / 1000;
   if (PASS.grade) { const u = PASS.grade.uniforms; u.warm.value = lerp(.06, -.02, night) + aft * .035 + dusk * .03; u.sat.value = lerp(.93, 1, night); u.contrast.value = lerp(1.14, 1.04, night); u.exposure.value = lerp(1, 1.5, night);
     u.ca.value = Q.ao ? .0022 : 0; u.grain.value = Q.ao ? .035 : 0; u.time.value = performance.now() / 1000 % 100; }
+  updateAtmosFX(up, el, night, noon); INTU.uNight.value = night;
   NIGHT.on = night > .3; NIGHT.k = night; NIGHT.cone = colr('#ffe8b0').clone().multiplyScalar(.6 * night);
   if (MAT) { for (const k of ['house0', 'house1', 'house2']) MAT[k].emissiveIntensity = night * 1.8; MAT.tower.emissiveIntensity = night * 1.6; MAT.sign.emissiveIntensity = night * .55; MAT.front.emissiveIntensity = night * 1.4; }
   if (poolMesh) { poolMesh.material.opacity = night * .75; poolMesh.userData.head.material.color.copy(night > .3 ? LAMPN : colr('#8c8c80'));
@@ -5048,7 +5177,7 @@ function boot(data) {
     renderOnce(t) { render(t); if (R3) { const g = R3.getContext(); g.readPixels(0, 0, 1, 1, g.RGBA, g.UNSIGNED_BYTE, new Uint8Array(4)); } }, // read a pixel so the GPU actually finishes the frame
     seed(n) { let x = n >>> 0 || 1; Math.random = () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x / 4294967296; }; },
     resetWorld() { vehicles = []; peds = []; items = []; floaters = []; heli = null; JUNC.clear(); JWAIT.clear(); WORLD.jams = []; rebuildJams(); WORLD.hour = -1; WANT.heat = 0; WANT.timer = 0; player.veh = null; player.owned = null; },
-    clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, peds: () => peds, lookOf, SEATS, timeScale, PROP, MAT: () => MAT, WALLU, TERRU, PROPM, TEXR, MODELS, MB, ASSET, DUSTP, isDusty, startAssets, STALLS, PASS, camera: () => camera, scene: () => scene, heliState: () => heli, LIVE, SND, STATICS, GENS, isRush, isWeekend, owambeOn, pedTarget, liveSpots, updateJams, hawkerAtWindow, setSound, Q: () => Q, INV, ITEMS, BAGS, BUFF, KIOSKS, MED_SHOPS, BOOTH, invOpen, invClose, invToggle, invKeyDown, invKeyUp, invWheelOpen, invWheelClose, invRender, wheelRender, useItem, addItem, takeItem, dropItem, invCount, slotsUsed, bagSlots, buyItem, openShop, nearShop, openCheckpoint, resolveCheckpoint, papersOk, garageSync, garageRestore, trackVehicle, items: () => items, waypoint: () => WAYPOINT, save, loadSave, applyState, simClock: () => simClock, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
+    clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, peds: () => peds, lookOf, SEATS, timeScale, PROP, MAT: () => MAT, WALLU, TERRU, INTU, TEXK, buildGroundDecals, groundT, PROPM, TEXR, MODELS, MB, ASSET, DUSTP, isDusty, startAssets, STALLS, PASS, camera: () => camera, scene: () => scene, heliState: () => heli, LIVE, SND, STATICS, GENS, isRush, isWeekend, owambeOn, pedTarget, liveSpots, updateJams, hawkerAtWindow, setSound, Q: () => Q, INV, ITEMS, BAGS, BUFF, KIOSKS, MED_SHOPS, BOOTH, invOpen, invClose, invToggle, invKeyDown, invKeyUp, invWheelOpen, invWheelClose, invRender, wheelRender, useItem, addItem, takeItem, dropItem, invCount, slotsUsed, bagSlots, buyItem, openShop, nearShop, openCheckpoint, resolveCheckpoint, papersOk, garageSync, garageRestore, trackVehicle, items: () => items, waypoint: () => WAYPOINT, save, loadSave, applyState, simClock: () => simClock, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
 }
 const hot = window.claude?.hot;
 if (hot?.ready) hot.ready(boot); else boot(hot?.data ?? {});
