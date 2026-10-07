@@ -4,7 +4,7 @@
 // don't need the CDN; Chromium runs WebGL through SwiftShader.
 const { chromium: pw } = require('playwright');
 const fs = require('fs'), path = require('path'), os = require('os');
-const SRC = path.join(__dirname, '..', 'index.html');
+const SRC = process.env.SRC || path.join(__dirname, '..', 'index.html');
 const THREE_DIR = process.env.THREE_DIR || '/tmp/claude-0/three-pkg/package';
 const chromium = { launch: (o = {}) => pw.launch(Object.assign({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] }, o)) };
 function build() {

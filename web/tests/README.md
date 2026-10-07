@@ -21,4 +21,7 @@ folder; default `/tmp/claude-0/three-pkg/package`). Chromium renders WebGL with 
 
 ```bash
 node perf.js            # average frame time (software WebGL, so numbers are pessimistic)
+node shots-vis.js       # screenshots of the danfo, keke and a line-up of characters into $OUT (look at them, not pass/fail)
 ```
+
+Set `SRC=/path/to/other.html` to run any test against another build (for before/after comparisons).

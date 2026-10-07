@@ -33,7 +33,17 @@ mirror `Scripts/Core`.
 
 Rendering: physically based materials, a sky that follows the in-game clock, fog that shifts from
 afternoon haze to sunset orange to night blue, soft sun shadows, contact shadows, and street detail
-(shop fronts, awnings, graffiti and posters, gutters, puddles, street clutter, banners, birds). A
+(shop fronts, awnings, graffiti and posters, gutters, puddles, street clutter, banners, birds).
+
+Vehicles and people are procedural too. The danfo is a rounded bus shell with real window openings, wheel
+arches, its sliding door open, a conductor hanging from the doorway, a loaded roof rack, a destination board
+behind the windscreen and a painted slogan on the back. The keke has one steering front wheel with its fork
+and handlebar, an arched canopy with rolled-up curtains, a rear bench, and stickers and a plate on the back;
+both carry dents, rust and grime. People are jointed rigs (hips, knees, ankles, shoulders, elbows) with
+lathe-turned bodies, faces that blink, a range of skin tones, heights and builds, and clothes from tees,
+jeans and school uniforms to wrappers, ankara, aso-oke agbada with fila, hijab and gele. They walk, jog,
+sprint, idle, sit on the plastic chairs along the streets, wave down danfos and carry trays on their heads.
+Near the camera they get the full rig, further out a simpler one, and in the distance a flat sprite. A
 **Graphics** setting (Low / Medium / High) is picked automatically for the device and can be changed on
 the title screen, in the phone's MapAm app, or with G:
 

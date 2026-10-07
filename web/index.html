@@ -2653,7 +2653,7 @@ function palm(X, Z, h) { const H = 6 + h * 4, lean = (h - .8) * .6; addOcc(X, Z,
 function tree(X, Z, h) { const H = 3 + h * 3; addOcc(X, Z, .3, 0, H); addOcc(X, Z, 2.3 + h, KERB + H - .5, KERB + H + 2.6); prop('trunk', mtx(X, KERB + H / 2, Z, .22, H, .22), '#6b4f3a'); prop('crown', mtx(X, KERB + H + 1, Z, 2.2 + h, 1.8 + h * .6, 2.2 + h, h * 7), `hsl(${95 + h * 25 | 0},${35 + h * 15 | 0}%,${24 + h * 6 | 0}%)`); }
 // Shared "keep clear" test: bus stops, fuel forecourts and junction mouths stay free of props.
 function busyAt(x, y, r) { return Object.values(BUS_STOPS).some(s => Math.hypot(s.wx - x, s.wy - y) < r + 20) || STATIONS.some(s => Math.abs(s.c * CELL + 48 - x) < 70 && Math.abs(s.r * CELL + 32 - y) < 50) || (x > 120 && x < 392 && y > 184 && y < 456); }
-const GENS = [], KLAMPS = [];
+const GENS = [], KLAMPS = [], SEATS = [];
 function roadDirAt(c, r) { for (const [dc, dr] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const c2 = c + dc, r2 = r + dr; if (c2 >= 0 && r2 >= 0 && c2 < COLS && r2 < ROWS && grid[I(c2, r2)] === T.ROAD) return [dc, dr]; } return null; }
 function buildClutter(G) {
   const R = prng(808), GUT = colr('#2a2e27'), LIP = colr('#9c968a');
@@ -2684,7 +2684,7 @@ function klamp(X, y, Z) { prop('klbase', mtx(X, y + .07, Z, .07, .14, .07), '#3b
 function clutterAt(ch, G, q, X, Z, d, R, market = false) {
   const y = KERB, yaw = -Math.atan2(d[1], d[0]), pk = a => a[R() * a.length | 0], blob = (sx, sz = sx) => prop('blob', mtx(X, y + .015, Z, sx, 1, sz));
   if (q < .16) { for (let k = 0; k < 2 + (R() * 3 | 0); k++) prop('trash', mtx(X + (R() - .5) * .9, y + .12, Z + (R() - .5) * .9, .22 + R() * .14, .15 + R() * .1, .22 + R() * .14, R() * 6), pk(['#1b1b1b', '#1f4e8c', '#ececec', '#2e7d32', '#111111', '#c62828'])); } // nylon bags and rubbish
-  else if (q < .3) { const c = pk(['#f3f3f0', '#d32f2f', '#1e63b8', '#2e7d32']); for (let k = 0; k < 2; k++) prop('chair', mtx(X - d[1] * (k - .5) * .9, y, Z + d[0] * (k - .5) * .9, 1, 1, 1, yaw + (R() - .5) * .9), c); blob(1.8); }
+  else if (q < .3) { const c = pk(['#f3f3f0', '#d32f2f', '#1e63b8', '#2e7d32']); for (let k = 0; k < 2; k++) { const cx = X - d[1] * (k - .5) * .9, cz = Z + d[0] * (k - .5) * .9, cy = yaw + (R() - .5) * .9; prop('chair', mtx(cx, y, cz, 1, 1, 1, cy), c); SEATS.push({ x: cx, y, z: cz, yaw: cy }); } blob(1.8); }
   else if (q < .4) { prop('gen', mtx(X, y, Z, 1, 1, 1, yaw + Math.PI / 2), pk(['#d84315', '#f9a825', '#2e7d32', '#c62828'])); GENS.push({ x: X, y: y + .66, z: Z, on: R() }); blob(1.3); }
   else if (q < .48) { for (let k = 0; k < 1 + (R() * 3 | 0); k++) prop('gascyl', mtx(X - d[1] * (k - 1) * .42, y, Z + d[0] * (k - 1) * .42, 1, 1, 1, R() * 6), pk(['#2e7d32', '#1565c0', '#9e9e9e', '#c62828'])); blob(1.2); }
   else if (q < .55) { prop('barrow', mtx(X, y, Z, 1, 1, 1, yaw + R() * 1.2 - .6), pk(['#5d6b73', '#2e7d32', '#455a64'])); blob(1.5); }
@@ -2692,7 +2692,7 @@ function clutterAt(ch, G, q, X, Z, d, R, market = false) {
   else if (q < .73) { const n = 1 + (R() * 4 | 0), c = pk(['#c62828', '#f9a825', '#2e7d32', '#1565c0']); for (let k = 0; k < n; k++) prop('crate', mtx(X - d[1] * ((k % 2) * .5 - .25), y + (k / 2 | 0) * .3, Z + d[0] * ((k % 2) * .5 - .25), 1, 1, 1, yaw + (R() - .5) * .15), c); blob(1.3); } // crates of minerals
   else if (q < .83 && !market) { kiosk(G(ch, 'detail'), X, Z, d, R); blob(2.6); }
   else if (q < .93) { const c1 = pk(['#e53935', '#1e88e5', '#43a047', '#fdd835', '#8e24aa', '#fb8c00', '#00acc1']); // umbrella over a seller's stool
-    prop('umb', mtx(X, y + 2.05, Z, 1.45, 1, 1.45, R() * 6), c1); prop('pole', mtx(X, y + 1.02, Z, .025, 2.05, .025), '#dddddd'); prop('chair', mtx(X + .4, y, Z + .3, 1, 1, 1, yaw), '#f3f3f0'); addOcc(X, Z, 1.6, y + 1.55, y + 2.6); blob(2.6); }
+    prop('umb', mtx(X, y + 2.05, Z, 1.45, 1, 1.45, R() * 6), c1); prop('pole', mtx(X, y + 1.02, Z, .025, 2.05, .025), '#dddddd'); prop('chair', mtx(X + .4, y, Z + .3, 1, 1, 1, yaw), '#f3f3f0'); SEATS.push({ x: X + .4, y, z: Z + .3, yaw }); addOcc(X, Z, 1.6, y + 1.55, y + 2.6); blob(2.6); }
   else { prop('stool', mtx(X, y, Z, 1, 1, 1, yaw), '#8d6e63'); klamp(X, y + .44, Z); }
 }
 function kiosk(g, X, Z, d, R) { // a small painted kiosk facing the road: counter hatch, overhanging roof
@@ -2829,8 +2829,6 @@ function batch(geom, mat, max, shadow = true) {
 // ones pile up into a bright band on the horizon).
 function fadeGlow(mat) { mat.onBeforeCompile = sh => { sh.fragmentShader = sh.fragmentShader.replace('#include <fog_fragment>', '#ifdef USE_FOG\n gl_FragColor.rgb *= 1.0 - smoothstep(fogNear, fogFar, vFogDepth);\n#endif'); }; return mat; }
 const addGlow = (tx, extra = {}) => fadeGlow(new THREE.MeshBasicMaterial(Object.assign({ map: tx, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, color: 0xffffff }, extra)));
-const CAPSULE = new THREE.CapsuleGeometry(.5, .6, 3, 10).scale(1, 1 / 1.6, 1); // unit-height limb
-const TORSO = new THREE.CylinderGeometry(.5, .42, 1, 12); // shoulders wider than the waist
 function geleGeo() { // a tall, stiff headtie: crown, a fan swept back, and the knot at the side
   return mergeGeometries([new THREE.SphereGeometry(1, 14, 8).scale(1.12, .62, 1.08).translate(-.05, .25, 0),
     new THREE.CylinderGeometry(1.55, .95, .55, 16, 1, true).rotateZ(.5).translate(-.35, .62, 0),
@@ -2842,14 +2840,6 @@ const B = {
   glass: batch(UNIT, std({ roughness: .05, metalness: .75 }), 1200),
   wheel: batch(new THREE.CylinderGeometry(1, 1, 1, 14).rotateX(Math.PI / 2), std({ roughness: .9 }), 900),
   lamp: batch(UNIT, new THREE.MeshBasicMaterial({ color: 0xffffff }), 900, false),
-  limb: batch(CAPSULE, std({ roughness: .7 }), 1600),
-  sleeve: batch(CAPSULE, std({ map: ankaraT, roughness: .85 }), 500),
-  torso: batch(TORSO, std({ roughness: .8 }), 500),
-  torsoCloth: batch(TORSO, std({ map: ankaraT, roughness: .85 }), 500),
-  robe: batch(new THREE.CylinderGeometry(.36, .52, 1, 14), std({ roughness: .55, metalness: .08 }), 200),
-  skin: batch(new THREE.SphereGeometry(1, 16, 12), std({ roughness: .55 }), 600),
-  hair: batch(new THREE.SphereGeometry(1, 14, 7, 0, Math.PI * 2, 0, Math.PI * .56), std({ roughness: .95 }), 600),
-  gele: batch(geleGeo(), std({ map: ankaraT, roughness: .6, side: THREE.DoubleSide }), 200),
   ball: batch(new THREE.IcosahedronGeometry(1, 1), std({ roughness: .7 }), 900),
   disc: batch(new THREE.CylinderGeometry(1, 1, 1, 14), std({ roughness: .7 }), 500),
   smoke: batch(new THREE.IcosahedronGeometry(1, 1), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: .38, depthWrite: false }), 300, false),
@@ -2860,7 +2850,7 @@ const B = {
   beam: batch(new THREE.CylinderGeometry(1, 1, 1, 16, 1, true), addGlow(beamT, { side: THREE.DoubleSide }), 60, false),
 };
 B.blob.m.renderOrder = 1;
-for (const k of ['solid', 'paint', 'glass', 'wheel', 'limb', 'sleeve', 'torso', 'torsoCloth', 'robe', 'skin', 'hair', 'gele', 'ball', 'disc']) nearFade(B[k].m.material); // a camera squeezed in close sees through the player
+for (const k of ['solid', 'paint', 'glass', 'wheel', 'ball', 'disc']) nearFade(B[k].m.material); // a camera squeezed in close sees through the player
 for (const k of ['cone', 'glow', 'ring', 'beam']) B[k].m.renderOrder = 3;
 const DEST_B = {};
 function destBatch(name) {
@@ -2868,31 +2858,216 @@ function destBatch(name) {
   const i = Math.max(0, DEST_NAMES.indexOf(name)), t = destT.clone(); t.needsUpdate = true; t.repeat.set(1, 1 / DEST_NAMES.length); t.offset.set(0, 1 - (i + 1) / DEST_NAMES.length); t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
   return (DEST_B[name] = batch(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: t }), 40, false));
 }
+let PAT = 0; // cloth pattern written with the next instance of a patterned batch: 0 smooth, 1 plain weave, 2 ankara, 3 aso-oke
 const _m = new THREE.Matrix4(), _l = new THREE.Matrix4(), _q = new THREE.Quaternion(), _e = new THREE.Euler(0, 0, 0, 'YXZ'), _p = new THREE.Vector3(), _s = new THREE.Vector3(), _v = new THREE.Vector3();
 function put(b, base, x, y, z, sx, sy, sz, col, rx = 0, ry = 0, rz = 0) {
   if (!b || b.n >= b.max) return; _p.set(x, y, z); _s.set(sx, sy, sz);
   if (rx || ry || rz) { _e.set(rx, ry, rz); _q.setFromEuler(_e); } else _q.identity();
-  _l.compose(_p, _q, _s); _m.multiplyMatrices(base, _l); b.m.setMatrixAt(b.n, _m); b.m.setColorAt(b.n, typeof col === 'string' ? colr(col) : col); b.n++;
+  _l.compose(_p, _q, _s); _m.multiplyMatrices(base, _l); b.m.setMatrixAt(b.n, _m); b.m.setColorAt(b.n, typeof col === 'string' ? colr(col) : col); if (b.pat) b.pat.array[b.n] = PAT; b.n++;
 }
 // A limb hanging from a pivot, rotated about the pivot (rx: sideways, rz: forward swing)
 function limb(b, base, px, py, pz, len, w, d, col, rx, rz) {
   _e.set(rx, 0, rz); _q.setFromEuler(_e); _v.set(0, -len / 2, 0).applyQuaternion(_q);
   _p.set(px + _v.x, py + _v.y, pz + _v.z); _s.set(d, len, w); _l.compose(_p, _q, _s); _m.multiplyMatrices(base, _l);
-  if (b.n >= b.max) return; b.m.setMatrixAt(b.n, _m); b.m.setColorAt(b.n, typeof col === 'string' ? colr(col) : col); b.n++;
+  if (b.n >= b.max) return; b.m.setMatrixAt(b.n, _m); b.m.setColorAt(b.n, typeof col === 'string' ? colr(col) : col); if (b.pat) b.pat.array[b.n] = PAT; b.n++;
 }
 function baseAt(x, y, z, yaw, roll = 0, pitch = 0) { _e.set(roll, yaw, pitch); _q.setFromEuler(_e); _p.set(x, y, z); _s.set(1, 1, 1); return new THREE.Matrix4().compose(_p, _q, _s); }
 const BASE = new THREE.Matrix4();
 function baseInto(x, y, z, yaw, roll = 0, pitch = 0) { _e.set(roll, yaw, pitch); _q.setFromEuler(_e); _p.set(x, y, z); _s.set(1, 1, 1); return BASE.compose(_p, _q, _s); }
 const IDM = new THREE.Matrix4();
 
+// ---- vehicle art: procedural bodies built once, drawn as one InstancedMesh per type.
+// Paint is tinted per vehicle (instance colour); stripes, trim, seats and canopies keep their own colour
+// (a per-vertex aTint of 0). Bodies sample a shared atlas for dirt, rust specks and dents; plates,
+// stickers and painted slogans are small decal quads from the same atlas.
+const XB = []; // extra instanced batches, reset and flushed with B each frame
+const VEH_PLATES = ['EKO 482 KK', 'EKO 117 BD', 'EKO 905 MJ', 'EKO 360 TT'];
+const KEKE_STICKERS = ['NO FOOD FOR LAZY MAN', 'FEAR WOMEN', 'GOD DEY'];
+const DANFO_SLOGANS = ['NO CONDITION IS PERMANENT', 'EKO O NI BAJE', 'JESUS IS MY DRIVER', 'SMALL SMALL', 'MONEY NO BE EVERYTHING', "GOD'S TIME IS THE BEST"];
+const VCELL = { plate: 0, sticker: 4, slogan: 7 };
+const vehT = tex(1024, 512, g => {
+  const R = prng(2024);
+  // left half: paint grime (white = clean paint). Bottom of the canvas = bottom of the vehicle.
+  g.fillStyle = '#ffffff'; g.fillRect(0, 0, 512, 512);
+  const dirt = g.createLinearGradient(0, 300, 0, 512); dirt.addColorStop(0, 'rgba(110,90,60,0)'); dirt.addColorStop(1, 'rgba(110,90,60,.45)'); g.fillStyle = dirt; g.fillRect(0, 300, 512, 212);
+  for (let k = 0; k < 900; k++) { const y = 512 - Math.pow(R(), 2.2) * 512; g.fillStyle = `rgba(${110 + R() * 40 | 0},${55 + R() * 25 | 0},${20 + R() * 15 | 0},${.25 + R() * .45})`; g.fillRect(R() * 512, y, 1 + R() * 3, 1 + R() * 3); } // rust specks, mostly low down
+  for (let k = 0; k < 14; k++) { const x = R() * 512, y = 80 + R() * 400, rx = 10 + R() * 26, ry = 6 + R() * 14; // dents: a dark crescent and a light edge
+    let gr = g.createRadialGradient(x, y, 1, x, y, rx); gr.addColorStop(0, 'rgba(0,0,0,.22)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.beginPath(); g.ellipse(x, y, rx, ry, R() * 3, 0, 7); g.fill();
+    g.strokeStyle = 'rgba(255,255,255,.35)'; g.lineWidth = 2; g.beginPath(); g.ellipse(x - 2, y - 2, rx * .8, ry * .7, 0, Math.PI * 1.1, Math.PI * 1.7); g.stroke(); }
+  g.strokeStyle = 'rgba(40,30,20,.35)'; g.lineWidth = 1; for (let k = 0; k < 40; k++) { const x = R() * 512, y = R() * 512; g.beginPath(); g.moveTo(x, y); g.lineTo(x + (R() - .5) * 60, y + (R() - .5) * 8); g.stroke(); } // scratches
+  g.fillStyle = 'rgba(255,255,255,.0)';
+  // right half: decal cells, 2 × 8 of 256 × 64
+  const cell = i => [512 + (i % 2) * 256, (i / 2 | 0) * 64];
+  VEH_PLATES.forEach((p, i) => { const [x, y] = cell(VCELL.plate + i); g.fillStyle = '#f4f4ef'; g.fillRect(x + 8, y + 6, 240, 52); g.strokeStyle = '#1b5e20'; g.lineWidth = 4; g.strokeRect(x + 10, y + 8, 236, 48);
+    g.fillStyle = '#1b5e20'; g.font = '800 12px "JetBrains Mono", monospace'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('EKO STATE · CENTRE OF HUSTLE', x + 128, y + 18); g.fillStyle = '#b71c1c'; g.font = '800 26px "JetBrains Mono", monospace'; g.fillText(p, x + 128, y + 40); });
+  KEKE_STICKERS.forEach((s, i) => { const [x, y] = cell(VCELL.sticker + i), bg = ['#c62828', '#111111', '#1565c0'][i];
+    g.fillStyle = bg; g.beginPath(); g.roundRect ? g.roundRect(x + 6, y + 8, 244, 48, 10) : g.rect(x + 6, y + 8, 244, 48); g.fill(); g.fillStyle = i === 1 ? '#f5c400' : '#ffffff'; g.textAlign = 'center'; g.textBaseline = 'middle'; fitText(g, s, 228, 30, 800); g.fillText(s, x + 128, y + 33); });
+  DANFO_SLOGANS.forEach((s, i) => { const [x, y] = cell(VCELL.slogan + i); g.clearRect(x, y, 256, 64); // hand-painted straight onto the paint: transparent background
+    g.save(); g.translate(x + 128, y + 34); g.rotate((R() - .5) * .05); g.fillStyle = i % 2 ? '#b71c1c' : '#111111'; g.textAlign = 'center'; g.textBaseline = 'middle'; fitText(g, s, 236, 30, 800, '"Bungee", "Arial Black", sans-serif'); g.fillText(s, 0, 0); g.restore(); });
+});
+vehT.wrapS = vehT.wrapT = THREE.ClampToEdgeWrapping;
+
+class VGeo extends Geo { // Geo plus a per-vertex paint flag
+  constructor() { super(); this.t = []; this.tint = 1; }
+  quad(P, out, UV, col) { const n0 = this.p.length; super.quad(P, out, UV, col); for (let k = (this.p.length - n0) / 3; k > 0; k--) this.t.push(this.tint); }
+  tri(a, b, c, out, col, UV) { super.tri(a, b, c, out, col, UV); this.t.length -= 3; }
+  build(L = 5, H = 2.4) {
+    const g = super.build(), p = g.attributes.position.array, n = g.attributes.normal.array, uv = g.attributes.uv.array;
+    for (let i = 0, j = 0; i < p.length; i += 3, j += 2) { // grime atlas: side projection, top faces from above
+      const top = Math.abs(n[i + 1]) > .7; uv[j] = clamp(.5 * (p[i] / L + .5), .002, .498); uv[j + 1] = clamp(top ? .5 + p[i + 2] / L : p[i + 1] / H, .002, .998); }
+    g.setAttribute('aTint', new THREE.Float32BufferAttribute(this.t, 1)); return g;
+  }
+}
+// Paint tint per vertex: aTint 1 takes the vehicle's colour, 0 keeps the vertex colour as it is.
+function tintMat(o) {
+  const m = std(Object.assign({ map: vehT, vertexColors: true }, o));
+  m.onBeforeCompile = sh => { sh.vertexShader = 'attribute float aTint;\n' + sh.vertexShader.replace('#include <color_vertex>', `vColor = vec3(1.0);
+    #ifdef USE_COLOR
+      vColor *= color;
+    #endif
+    #ifdef USE_INSTANCING_COLOR
+      vColor *= mix(vec3(1.0), instanceColor.xyz, aTint);
+    #endif`); };
+  m.customProgramCacheKey = () => 'vehtint'; return nearFade(m);
+}
+// convex polygon clipping against a half-plane a*y + b*z + c >= 0 (points are [y, z])
+function clipHalf(poly, a, b, c) {
+  const out = [], f = q => a * q[0] + b * q[1] + c;
+  for (let i = 0; i < poly.length; i++) { const P = poly[i], Q = poly[(i + 1) % poly.length], fp = f(P), fq = f(Q);
+    if (fp >= 0) out.push(P); if ((fp >= 0) !== (fq >= 0)) { const t = fp / (fp - fq); out.push([P[0] + (Q[0] - P[0]) * t, P[1] + (Q[1] - P[1]) * t]); } }
+  return out;
+}
+function capFan(g, x, poly, nx, col) { if (poly.length < 3) return; for (let i = 1; i < poly.length - 1; i++) g.tri([x, poly[0][0], poly[0][1]], [x, poly[i][0], poly[i][1]], [x, poly[i + 1][0], poly[i + 1][1]], [nx, 0, 0], col); }
+function cylX(g, x0, x1, y, z, r, segs, col) { for (let k = 0; k < segs; k++) { const a0 = k / segs * Math.PI * 2, a1 = (k + 1) / segs * Math.PI * 2, c0 = Math.cos(a0), s0 = Math.sin(a0), c1 = Math.cos(a1), s1 = Math.sin(a1);
+  g.quad([[x0, y + c0 * r, z + s0 * r], [x1, y + c0 * r, z + s0 * r], [x1, y + c1 * r, z + s1 * r], [x0, y + c1 * r, z + s1 * r]], [0, (c0 + c1) / 2, (s0 + s1) / 2], Z8, col); } }
+
+// ---------------- danfo: rounded VW-bus shell with real window openings, the sliding door open
+const DANFO = { L: 5.52, W: 2.36, y0: .36, y1: 2.16 };
+function buildDanfo() {
+  const g = new VGeo(), gl = new VGeo(), { L, W, y0, y1 } = DANFO, hl = L / 2, hw = W / 2, rb = .14, rt = .44, yc = (y0 + y1) / 2;
+  const BLACK2 = colr('#141414'), DARK = colr('#17120e'), SEAT = colr('#3b2a20'), CHROME = colr('#c9cdd1'), RACK = colr('#2a2a2a');
+  // cross-section (y, z), going round: bottom, right side, roof, left side
+  const arc = (cy, cz, r, a0, a1) => { const o = []; for (let k = 1; k < 4; k++) { const a = a0 + (a1 - a0) * k / 4; o.push([cy + Math.sin(a) * r, cz + Math.cos(a) * r]); } return o; };
+  const SIDE_Y = [.55, 1.33, 1.93];
+  const prof = [[y0, -hw + rb], [y0, hw - rb], ...arc(y0 + rb, hw - rb, rb, -Math.PI / 2, 0), [y0 + rb, hw], ...SIDE_Y.map(y => [y, hw]), [y1 - rt, hw], ...arc(y1 - rt, hw - rt, rt, 0, Math.PI / 2),
+    [y1, hw - rt], [y1, -hw + rt], ...arc(y1 - rt, -hw + rt, rt, Math.PI / 2, Math.PI), [y1 - rt, -hw], ...SIDE_Y.slice().reverse().map(y => [y, -hw]), [y0 + rb, -hw], ...arc(y0 + rb, -hw + rb, rb, Math.PI, Math.PI * 1.5)];
+  const shrink = (k) => prof.map(([y, z]) => [yc + (y - yc) * (1 - (1 - k) * .55), z * k]);
+  const wins = [], w0 = -hl + .55, w1 = hl - 1.05, nW = 4, pil = .12, ww = (w1 - w0 - pil * (nW - 1)) / nW;
+  for (let i = 0; i < nW; i++) wins.push([w0 + i * (ww + pil), w0 + i * (ww + pil) + ww]);
+  const drv = [hl - .9, hl - .32], door = [.15, 1.2], arches = [hl * .64, -hl * .62].map(x => [x - .46, x + .46]);
+  const xs = new Set([-hl, -hl + .12, -hl + .3, hl - .3, hl - .12, hl, ...wins.flat(), ...drv, ...door, ...arches.flat()]);
+  const secs = [...xs].sort((a, b) => a - b).map(x => ({ x, k: x <= -hl + .001 ? .86 : x <= -hl + .121 ? .96 : x >= hl - .001 ? .86 : x >= hl - .121 ? .96 : 1 }));
+  const inR = (x0, x1, r) => x0 >= r[0] - 1e-4 && x1 <= r[1] + 1e-4;
+  const hole = (side, x0, x1, ya, yb) => { const lo = Math.min(ya, yb), hi = Math.max(ya, yb);
+    if (Math.abs(lo - 1.33) < .01 && Math.abs(hi - 1.93) < .01 && (wins.some(r => inR(x0, x1, r)) || inR(x0, x1, drv))) return true; // window band
+    if (side > 0 && lo >= .55 - .01 && hi <= 1.93 + .01 && inR(x0, x1, door)) return true; // sliding-door opening
+    return false; };
+  g.tint = 1;
+  for (let i = 0; i < secs.length - 1; i++) { const A = secs[i], Bq = secs[i + 1], pa = shrink(A.k), pb = shrink(Bq.k);
+    for (let j = 0; j < prof.length; j++) { const j2 = (j + 1) % prof.length, side = prof[j][1] > hw - .01 && prof[j2][1] > hw - .01 ? 1 : prof[j][1] < -hw + .01 && prof[j2][1] < -hw + .01 ? -1 : 0;
+      if (side && hole(side, A.x, Bq.x, prof[j][0], prof[j2][0])) continue;
+      if (prof[j][0] <= .56 && prof[j2][0] <= .56 && Math.min(Math.abs(prof[j][1]), Math.abs(prof[j2][1])) >= hw - rb - .01 && prof[j][1] * prof[j2][1] > 0 && arches.some(r => inR(A.x, Bq.x, r))) continue; // wheel arch
+      const my = (prof[j][0] + prof[j2][0]) / 2 - yc, mz = (prof[j][1] + prof[j2][1]) / 2;
+      g.quad([[A.x, pa[j][0], pa[j][1]], [A.x, pa[j2][0], pa[j2][1]], [Bq.x, pb[j2][0], pb[j2][1]], [Bq.x, pb[j][0], pb[j][1]]], [0, my, mz], Z8, WHITE); } }
+  // front cap: split windscreen; back cap: rear window
+  const capSplit = (x, nx, poly, bandLo, bandHi, holes) => {
+    capFan(g, x, clipHalf(poly, -1, 0, bandLo), nx, WHITE); capFan(g, x, clipHalf(poly, 1, 0, -bandHi), nx, WHITE);
+    const band = clipHalf(clipHalf(poly, 1, 0, -bandLo), -1, 0, bandHi); let edges = [-9, ...holes.flat(), 9];
+    for (let k = 0; k < edges.length; k += 2) capFan(g, x, clipHalf(clipHalf(band, 0, 1, -edges[k]), 0, -1, edges[k + 1]), nx, WHITE);
+  };
+  const fq = shrink(.86), wsH = hw * .86 - .14;
+  capSplit(hl, 1, fq.slice().reverse(), 1.36, 1.9, [[-wsH, -.05], [.05, wsH]]);
+  capSplit(-hl, -1, fq, 1.45, 1.86, [[-.72, .72]]);
+  // stripes, front V band, sliding door panel, step, bumpers, roof rack (fixed colours)
+  g.tint = 0;
+  for (const s of [1, -1]) { const z = s * (hw + .006), segs = s > 0 ? [[-hl + .3, door[0]], [door[1], hl - .3]] : [[-hl + .3, hl - .3]];
+    for (const [a, b] of segs) for (const [ya, yb] of [[1.16, 1.27], [1.62, 1.7]]) g.quad([[a, ya, z], [b, ya, z], [b, yb, z], [a, yb, z]], [0, 0, s], Z8, BLACK2); }
+  for (const [ya, yb] of [[1.16, 1.27]]) g.quad([[hl + .006, ya, -hw * .82], [hl + .006, ya, hw * .82], [hl + .006, yb, hw * .82], [hl + .006, yb, -hw * .82]], [1, 0, 0], Z8, BLACK2);
+  g.tint = 1; box(g, -.95, .58, hw + .03, door[0] + .02, 1.92, hw + .09, WHITE); g.tint = 0; // the door, slid back along its rail
+  box(g, -.95, 1.94, hw + .02, door[1] + .05, 1.98, hw + .07, BLACK2); box(g, door[0], .34, hw - .02, door[1], .44, hw + .14, BLACK2);
+  box(g, hl - .02, .4, -hw + .05, hl + .1, .6, hw - .05, BLACK2); box(g, -hl - .1, .4, -hw + .05, -hl + .02, .6, hw - .05, BLACK2);
+  box(g, hl + .04, .9, -.16, hl + .07, 1.1, .16, CHROME);
+  for (const z of [-hw + .25, hw - .25]) box(g, -hl + .55, y1 + .02, z - .03, hl - 1, y1 + .12, z + .03, RACK);
+  for (let x = -hl + .7; x < hl - 1; x += .7) box(g, x - .03, y1 + .02, -hw + .25, x + .03, y1 + .1, hw - .25, RACK);
+  for (const [a, b] of arches) for (const s of [1, -1]) { const zi = s * (hw - .34), zo = s * hw; // wheel wells
+    g.quad([[a, .2, zi], [b, .2, zi], [b, .56, zi], [a, .56, zi]], [0, 0, s], Z8, DARK); g.quad([[a, .56, zi], [b, .56, zi], [b, .56, zo], [a, .56, zo]], [0, -1, 0], Z8, DARK);
+    g.quad([[a, .3, zi], [a, .3, zo], [a, .56, zo], [a, .56, zi]], [1, 0, 0], Z8, DARK); g.quad([[b, .3, zi], [b, .3, zo], [b, .56, zo], [b, .56, zi]], [-1, 0, 0], Z8, DARK); }
+  // a dark interior seen through the openings, with seat rows
+  const ix0 = -hl + .2, ix1 = hl - .25, iy0 = .52, iy1 = y1 - .1, iz = hw - .04;
+  g.quad([[ix0, iy0, -iz], [ix1, iy0, -iz], [ix1, iy1, -iz], [ix0, iy1, -iz]], [0, 0, 1], Z8, DARK); g.quad([[ix0, iy0, iz], [ix1, iy0, iz], [ix1, iy1, iz], [ix0, iy1, iz]], [0, 0, -1], Z8, DARK);
+  g.quad([[ix0, iy1, -iz], [ix1, iy1, -iz], [ix1, iy1, iz], [ix0, iy1, iz]], [0, -1, 0], Z8, DARK); g.quad([[ix0, iy0, -iz], [ix1, iy0, -iz], [ix1, iy0, iz], [ix0, iy0, iz]], [0, 1, 0], Z8, DARK);
+  g.quad([[ix0, iy0, -iz], [ix0, iy0, iz], [ix0, iy1, iz], [ix0, iy1, -iz]], [1, 0, 0], Z8, DARK); g.quad([[ix1, iy0, -iz], [ix1, iy0, iz], [ix1, iy1, iz], [ix1, iy1, -iz]], [-1, 0, 0], Z8, DARK);
+  for (const x of [-hl + .5, -hl + 1.4, -.1, .95]) { box(g, x - .25, .52, -hw + .1, x + .2, .95, hw - .5, SEAT); box(g, x - .32, .95, -hw + .1, x - .25, 1.45, hw - .5, SEAT); }
+  box(g, hl - 1.35, .52, -hw + .15, hl - .95, .98, -.15, SEAT); box(g, hl - 1.42, .98, -hw + .15, hl - 1.35, 1.5, -.15, SEAT); // driver's seat (left-hand drive)
+  box(g, hl - .62, 1.05, -hw + .45, hl - .55, 1.4, -hw + .9, BLACK2); // steering column
+  // glass: side windows, split windscreen, rear window (separate transparent mesh)
+  gl.tint = 0; const GL = WHITE;
+  for (const s of [1, -1]) { const z = s * (hw - .005); for (const [a, b] of wins.concat([drv])) gl.quad([[a, 1.33, z], [b, 1.33, z], [b, 1.93, z], [a, 1.93, z]], [0, 0, s], Z8, GL); }
+  for (const [a, b] of [[-wsH, -.05], [.05, wsH]]) gl.quad([[hl - .012, 1.36, a], [hl - .012, 1.36, b], [hl - .012, 1.9, b], [hl - .012, 1.9, a]], [1, 0, 0], Z8, GL);
+  gl.quad([[-hl + .012, 1.45, -.72], [-hl + .012, 1.45, .72], [-hl + .012, 1.86, .72], [-hl + .012, 1.86, -.72]], [-1, 0, 0], Z8, GL);
+  gl.quad([[-.9, 1.33, hw + .095], [door[0] - .03, 1.33, hw + .095], [door[0] - .03, 1.85, hw + .095], [-.9, 1.85, hw + .095]], [0, 0, 1], Z8, GL); // door window
+  return { body: g.build(L, 2.4), glass: gl.build(L, 2.4) };
+}
+
+// ---------------- keke napep: one front wheel, tapered nose, arched canopy, open sides, curtains rolled up
+const KEKE = { L: 3.1, W: 1.32 };
+function buildKeke() {
+  const g = new VGeo(), gl = new VGeo(), hw = .62, GREEN = colr('#2e7d32'), BLACK2 = colr('#151515'), SEAT = colr('#3b2a20'), CAN = colr('#1c1c1c'), CAN2 = colr('#0c0c0c'), CURT = colr('#1f3d2a'), POLE = colr('#262626');
+  g.tint = 1;
+  box(g, -1.38, .3, -hw, .58, .38, hw, WHITE); // floor pan
+  for (const s of [1, -1]) { box(g, -1.38, .38, s > 0 ? hw - .04 : -hw, -.2, 1.0, s > 0 ? hw : -hw + .04, WHITE); box(g, -.2, .38, s > 0 ? hw - .04 : -hw, .58, .78, s > 0 ? hw : -hw + .04, WHITE); }
+  box(g, -1.42, .3, -hw, -1.38, 1.06, hw, WHITE); // back panel (plate and stickers go here)
+  // nose: lofted from a wide section at the cabin to a narrow one at the front, then capped
+  const A = [[.32, .55], [.76, .6], [1.18, .45]], Bn = [[.42, .22], [.72, .26], [1.0, .18]], xa = .58, xb = 1.3;
+  const P = (x, q, s) => [x, q[0], s * q[1]];
+  for (const s of [1, -1]) for (let k = 0; k < 2; k++) g.quad([P(xa, A[k], s), P(xb, Bn[k], s), P(xb, Bn[k + 1], s), P(xa, A[k + 1], s)], [0, 0, s], Z8, WHITE);
+  g.quad([P(xa, A[2], 1), P(xb, Bn[2], 1), P(xb, Bn[2], -1), P(xa, A[2], -1)], [.3, 1, 0], Z8, WHITE); g.quad([P(xa, A[0], 1), P(xb, Bn[0], 1), P(xb, Bn[0], -1), P(xa, A[0], -1)], [0, -1, 0], Z8, WHITE);
+  g.quad([P(xb, Bn[0], -1), P(xb, Bn[0], 1), P(xb, Bn[1], 1), P(xb, Bn[1], -1)], [1, 0, 0], Z8, WHITE); g.quad([P(xb, Bn[1], -1), P(xb, Bn[1], 1), P(xb, Bn[2], 1), P(xb, Bn[2], -1)], [1, .3, 0], Z8, WHITE);
+  // green stripe along the tub and cabin
+  g.tint = 0;
+  for (const s of [1, -1]) { const z = s * (hw + .006); g.quad([[-1.38, .62, z], [.58, .62, z], [.58, .7, z], [-1.38, .7, z]], [0, 0, s], Z8, GREEN); }
+  g.quad([[-1.425, .62, -hw], [-1.425, .62, hw], [-1.425, .7, hw], [-1.425, .7, -hw]], [-1, 0, 0], Z8, GREEN);
+  // seats: driver up front, a bench for three at the back
+  box(g, .08, .62, -.24, .42, .72, .24, SEAT); box(g, .03, .72, -.24, .09, 1.02, .24, SEAT);
+  box(g, -1.25, .62, -hw + .06, -.62, .75, hw - .06, SEAT); box(g, -1.36, .75, -hw + .06, -1.27, 1.25, hw - .06, SEAT);
+  // poles up to the canopy
+  for (const [x, z] of [[.52, .5], [-.2, hw - .03], [-1.38, hw - .03]]) for (const s of [1, -1]) box(g, x - .02, x === .52 ? 1.12 : .95, s * z - .02, x + .02, 1.72, s * z + .02, POLE);
+  // arched canopy with a slight overhang, darker underside and edge trim
+  const N = 10, cy = z => 1.74 + .16 * Math.cos(Math.PI * z / 1.52);
+  for (let k = 0; k < N; k++) { const za = -.76 + 1.52 * k / N, zb = -.76 + 1.52 * (k + 1) / N;
+    g.quad([[-1.5, cy(za), za], [.8, cy(za), za], [.8, cy(zb), zb], [-1.5, cy(zb), zb]], [0, 1, (za + zb) * .3], Z8, CAN);
+    g.quad([[-1.5, cy(za) - .035, za], [.8, cy(za) - .035, za], [.8, cy(zb) - .035, zb], [-1.5, cy(zb) - .035, zb]], [0, -1, 0], Z8, CAN2);
+    for (const x of [.8, -1.5]) g.quad([[x, cy(za) - .1, za], [x, cy(za), za], [x, cy(zb), zb], [x, cy(zb) - .1, zb]], [Math.sign(x), 0, 0], Z8, CAN2); }
+  // curtains rolled up under the canopy edge, with the darker strip they hang from
+  for (const s of [1, -1]) { cylX(g, -1.42, .5, 1.6, s * .73, .065, 8, CURT); g.quad([[-1.45, 1.66, s * .755], [.55, 1.66, s * .755], [.55, 1.73, s * .755], [-1.45, 1.73, s * .755]], [0, 0, s], Z8, CAN2); }
+  // rear mudguards
+  for (const s of [1, -1]) box(g, -1.22, .58, s > 0 ? hw + .02 : -hw - .2, -.7, .62, s > 0 ? hw + .2 : -hw - .02, BLACK2);
+  // windscreen
+  gl.tint = 0; gl.quad([[.62, 1.15, -.42], [.62, 1.15, .42], [.5, 1.58, .42], [.5, 1.58, -.42]], [1, .3, 0], Z8, WHITE);
+  return { body: g.build(KEKE.L, 2.0), glass: gl.build(KEKE.L, 2.0) };
+}
+const VB = {};
+{ const dg = buildDanfo(), kg = buildKeke(), body = tintMat({ roughness: .42, metalness: .25 }), glass = nearFade(std({ color: 0x1b2730, roughness: .05, metalness: .6, transparent: true, opacity: .5 }));
+  VB.danfo = batch(dg.body, body, 60); VB.danfoGlass = batch(dg.glass, glass, 60, false); VB.keke = batch(kg.body, body, 60); VB.kekeGlass = batch(kg.glass, glass, 60, false);
+  VB.danfoGlass.m.renderOrder = VB.kekeGlass.m.renderOrder = 2; XB.push(VB.danfo, VB.danfoGlass, VB.keke, VB.kekeGlass); }
+// Plates, stickers and slogans: one instanced quad for all of them; each instance picks its atlas cell (iPat) in the shader.
+const VDEC = (() => { const g = new THREE.PlaneGeometry(1, 1), cell = new THREE.InstancedBufferAttribute(new Float32Array(200), 1); cell.setUsage(THREE.DynamicDrawUsage); g.setAttribute('iPat', cell);
+  const m = std({ map: vehT, transparent: true, alphaTest: .35, roughness: .6, polygonOffset: true, polygonOffsetFactor: -2 });
+  m.onBeforeCompile = sh => { sh.vertexShader = 'attribute float iPat;\n' + sh.vertexShader.replace('#include <uv_vertex>', `#include <uv_vertex>
+    vMapUv = vec2(.502 + mod(iPat, 2.0) * .25 + uv.x * .246, 1.0 - floor(iPat / 2.0) / 8.0 - .121 + uv.y * .117);`); };
+  m.customProgramCacheKey = () => 'vdecal'; const b = batch(g, nearFade(m), 200, false); b.pat = cell; XB.push(b); return b; })();
+function decal(i, base, x, y, z, w, h, ry) { PAT = i; put(VDEC, base, x, y, z, w, h, 1, WHITE, 0, ry, 0); PAT = 0; }
+
 // ---- vehicles
+const VMB = new THREE.Matrix4(), VMC = new THREE.Matrix4(); // vehicle body (with bounce) and conductor frames
 const SIRR = new THREE.Color(1, .15, .1).multiplyScalar(3), SIRB = new THREE.Color(.1, .35, 1).multiplyScalar(3), HEADN = new THREE.Color(1, .93, .72).multiplyScalar(4), TAILN = new THREE.Color(1, .05, .02).multiplyScalar(3), BLACK = new THREE.Color(0, 0, 0);
 const NIGHT = { on: false, k: 0 };
 function vehicle3(v, dt) {
   const d = VT[v.type], L = d.len * M * .96, W = d.wid * M * (d.bike ? 1 : .86), hl = L / 2, hw = W / 2;
   const gy = heightAt(v.x, v.y); v._vy = v._vy == null ? gy : lerp(v._vy, gy, Math.min(1, dt * 10));
   const yawRate = v._pa == null ? 0 : wrapA(v.a - v._pa) / Math.max(dt, 1e-3); v._pa = v.a;
-  v._roll = lerp(v._roll || 0, clamp(yawRate * v.v * (d.bike ? -.004 : .0011), d.bike ? -.6 : -.08, d.bike ? .6 : .08), Math.min(1, dt * 6));
+  const kk = v.type === 'keke', rl = d.bike ? .6 : kk ? .12 : .08; v._roll = lerp(v._roll || 0, clamp(yawRate * v.v * (d.bike ? -.004 : kk ? .0025 : .0011), -rl, rl), Math.min(1, dt * 6));
+  const sp = v.v * M; v._steer = lerp(v._steer || 0, Math.abs(sp) < .5 ? v._steer || 0 : clamp(-Math.atan(yawRate * L * .62 / sp), -.55, .55), Math.min(1, dt * 8));
   v._wd = (v._wd || 0) + v.v * dt * M; if (v._seed == null) v._seed = vrand();
   const base = baseAt(v.x * M, v._vy, v.y * M, -v.a, v._roll, 0), spin = -v._wd / .36, sd = v._seed, body = colr(v.color);
   const dark = '#1d1d1d', glassC = '#24323d', head = NIGHT.on ? HEADN : '#e9e4d2', tail = NIGHT.on ? TAILN : '#9e1c14';
@@ -2902,19 +3077,22 @@ function vehicle3(v, dt) {
     put(B.lamp, base, -hl - .02, ty, hz + .05, .05, .2, .22, tail); put(B.lamp, base, -hl - .02, ty, -hz - .05, .05, .2, .22, tail);
     if (NIGHT.on) put(B.cone, base, hl + 7, .06 - (v._vy - gy), 0, 14, 1, 7, NIGHT.cone); };
   if (v.type === 'danfo') {
-    wheels([hl * .64, -hl * .62], .36, [hw - .2, -hw + .2]);
-    put(B.paint, base, 0, .8, 0, L, .9, W, body); put(B.paint, base, -.12, 1.68, 0, L - .32, .86, W - .06, body);
-    put(B.glass, base, -.35, 1.68, hw - .02, L - 1.7, .5, .06, glassC); put(B.glass, base, -.35, 1.68, -hw + .02, L - 1.7, .5, .06, glassC);
-    put(B.glass, base, hl - .27, 1.63, 0, .06, .58, W - .36, glassC); put(B.glass, base, -hl + .03, 1.7, 0, .06, .44, W - .5, glassC);
-    for (const s of [1, -1]) { put(B.solid, base, 0, 1.12, s * (hw + .005), L + .01, .1, .03, '#111'); put(B.solid, base, -.12, 2.04, s * (hw - .025), L - .3, .07, .03, '#111'); }
-    put(B.solid, base, hl + .005, 1.12, 0, .03, .1, W, '#111'); put(B.solid, base, -hl - .005, 1.12, 0, .03, .1, W, '#111');
-    put(B.solid, base, hl * .28, 1.25, hw + .003, 1.05, 1.62, .03, '#16110c'); put(B.paint, base, -hl * .2, 1.28, hw + .06, 1.05, 1.66, .05, body); // the sliding door, open
-    put(B.solid, base, -.3, 2.18, 0, L - 1.3, .06, W - .35, '#4e3a2a'); for (const s of [1, -1]) put(B.solid, base, -.3, 2.26, s * (hw - .2), L - 1.3, .1, .05, '#3a2b20');
-    if (sd > .35) put(B.solid, base, -.8, 2.42, .2, 1.1, .4, .9, ['#6b4f3a', '#1e88e5', '#7b1e1e', '#c9b38a'][sd * 4 | 0]);
-    if (sd > .7) put(B.solid, base, .4, 2.38, -.3, .7, .32, .7, '#2e7d32');
-    put(B.solid, base, hl + .05, .48, 0, .1, .2, W + .04, '#2b2b2b'); put(B.solid, base, -hl - .05, .48, 0, .1, .2, W + .04, '#2b2b2b');
+    const st = v._steer, bob = Math.sin(v._wd * 1.7) * .012 * Math.min(1, Math.abs(v.v) / 40), db = J(base, 0, bob, 0, 0, 0, 0, VMB);
+    put(VB.danfo, db, 0, 0, 0, 1, 1, 1, body); put(VB.danfoGlass, db, 0, 0, 0, 1, 1, 1, WHITE);
+    for (const [wx, ws] of [[hl * .64, st], [-hl * .62, 0]]) for (const s of [1, -1]) { put(B.wheel, base, wx, .36, s * (hw - .2), .36, .36, .26, dark, 0, ws, spin); put(B.disc, base, wx, .36, s * (hw - .06), .16, .02, .16, '#a9adb1', Math.PI / 2, ws, 0); }
+    const sl = VCELL.slogan + ((sd * 60) | 0) % 6, pl = VCELL.plate + ((sd * 1000) | 0) % 4;
+    decal(sl, db, -hl - .012, 1.18, 0, 1.7, .42, -Math.PI / 2);
+    decal(pl, db, -hl - .105, .5, 0, .52, .115, -Math.PI / 2); decal(pl, db, hl + .105, .5, 0, .52, .115, Math.PI / 2);
+    if (sd > .2) { const n = 1 + ((sd * 7) | 0) % 4; for (let i = 0; i < n; i++) { const q = (sd * 97 + i * .37) % 1, lx = -hl + 1 + i * .85, c = ['#6b4f3a', '#1e88e5', '#7b1e1e', '#c9b38a', '#2e7d32', '#d8cba8'][(q * 6) | 0];
+      if (q < .5) put(B.solid, db, lx, 2.42 + q * .1, (q - .25) * 1.2, .7, .32 + q * .2, .6, c, 0, q, 0); else put(B.ball, db, lx, 2.42, (q - .75) * 1.2, .42, .22, .32, c); } }
+    put(B.disc, db, hl - .66, 1.42, -.66, .19, .03, .19, '#151515', 0, 0, -1.1); // steering wheel
     lights(.82, .95, hw - .38);
-    if (v.dest) { const db = destBatch(v.dest); put(db, base, hl - .23, 2.02, 0, W * .62, .22, 1, WHITE, 0, Math.PI / 2, 0); put(db, base, -hl - .01, 2.02, 0, W * .62, .22, 1, WHITE, 0, -Math.PI / 2, 0); }
+    if (v.dest) { const dbb = destBatch(v.dest); put(dbb, db, hl - .035, 1.8, .3, 1.1, .17, 1, WHITE, 0, Math.PI / 2, 0); }
+    if (v.driver) { const dc = Math.hypot(v.x * M - camera.position.x, v.y * M - camera.position.z);
+      if (v.driver === 'player' || sd > .25) { v._cond = v._cond || { _cond: 1 }; person3(J(db, .72, .44, hw + .06, .22, 0, 0, VMC), { look: lookOf(v._cond), pose: 'hang', wave: Math.sin(performance.now() / 180 + sd * 9) * .3 }); }
+      if (v.driver === 'ai' && dc < 30) { v._pax = v._pax || Array.from({ length: 2 + ((sd * 4) | 0) }, (_, i) => ({ i }));
+        for (const q of v._pax) person3(db, { x: [-2.26, -1.36, -.1, .95][q.i % 4] - .02, z: [-.75, -.15, .4][(q.i * 7 + ((sd * 10) | 0)) % 3], seat: 1.02, sit: true, look: lookOf(q), lod: 1 }); }
+      person3(db, { x: hl - 1.2, z: -.66, seat: 1.04, sit: true, pose: 'drive', look: driverLook(v) }); }
   } else if (v.type === 'sedan' || v.type === 'suv') {
     const suv = v.type === 'suv', lo = suv ? .42 : .32, mid = suv ? 1.1 : .95, topY = suv ? 1.82 : 1.42, cab = suv ? .66 : .5, cabX = suv ? -.25 : -.3;
     wheels([hl * .62, -hl * .62], suv ? .4 : .33, [hw - .17, -hw + .17], suv ? .3 : .24);
@@ -2937,12 +3115,19 @@ function vehicle3(v, dt) {
     put(B.solid, base, -.3, .75, 0, L - .2, .3, W - .5, '#2a2a2a'); put(B.solid, base, -1.1, 1.8, 0, L - 2.6, 1.6, W, '#c9a227');
     put(B.solid, base, -1.1, 2.62, 0, L - 2.9, .1, W - .25, '#8d6e4a'); lights(1, 1.1, hw - .35);
   } else if (v.type === 'keke') {
-    wheels([hl * .7], .28, [0], .16); wheels([-hl * .55], .28, [hw - .15, -hw + .15], .18);
-    put(B.paint, base, -.15, .78, 0, L * .75, .7, W * .9, body); put(B.paint, base, hl * .62, .95, 0, .5, 1, W * .45, body);
-    put(B.glass, base, hl * .55, 1.55, 0, .06, .55, W * .7, glassC); put(B.solid, base, -.1, 2.02, 0, L * .9, .08, W, sd > .5 ? '#1a1a1a' : body);
-    for (const sx of [hl * .5, -hl * .7]) for (const s of [1, -1]) put(B.solid, base, sx, 1.55, s * (hw - .08), .06, .95, .06, '#222');
-    put(B.solid, base, -hl * .45, .9, 0, .5, .4, W * .8, '#3b2a20'); lights(.95, .85, .12);
-    if (v.driver) person3(base, { x: .35, z: 0, seat: .78, look: driverLook(v), sit: true });
+    const st = v._steer, bob = Math.sin(v._wd * 2.1) * .015 * Math.min(1, Math.abs(v.v) / 30), kb = J(base, 0, bob, 0, 0, 0, 0, VMB), ks = spin * .36 / .26;
+    put(VB.keke, kb, 0, 0, 0, 1, 1, 1, body); put(VB.kekeGlass, kb, 0, 0, 0, 1, 1, 1, WHITE);
+    put(B.wheel, base, 1.02, .26, 0, .26, .26, .15, dark, 0, st, ks); for (const s of [1, -1]) put(B.wheel, base, -.95, .26, s * .73, .26, .26, .17, dark, 0, 0, ks);
+    const pl = VCELL.plate + ((sd * 1000) | 0) % 4;
+    decal(pl, kb, -1.425, .48, 0, .44, .1, -Math.PI / 2); decal(VCELL.sticker, kb, -1.425, .96, 0, .9, .16, -Math.PI / 2);
+    decal(VCELL.sticker + 1, kb, -1.425, .8, .3, .5, .1, -Math.PI / 2); decal(VCELL.sticker + 2, kb, -1.425, .8, -.3, .5, .1, -Math.PI / 2);
+    put(B.lamp, kb, 1.31, .84, 0, .04, .13, .17, head); for (const s of [1, -1]) put(B.lamp, kb, -1.43, .56, s * .48, .03, .08, .1, tail);
+    if (NIGHT.on) put(B.cone, base, hl + 6, .06 - (v._vy - gy), 0, 11, 1, 5, NIGHT.cone);
+    put(B.solid, kb, .7, .92, 0, .04, .28, .04, '#1a1a1a'); // steering column up from the nose
+    const fj = J(kb, 1.02, .26, 0, 0, st, 0); for (const s of [1, -1]) put(B.solid, fj, .03, .2, s * .1, .035, .42, .03, '#2a2a2a', 0, 0, .18); put(B.solid, fj, -.02, .44, 0, .06, .08, .26, '#2a2a2a'); // fork turns with the wheel
+    const hb = J(kb, .68, 1.06, 0, 0, st, 0); put(B.solid, hb, 0, 0, 0, .035, .035, .66, '#1a1a1a'); for (const s of [1, -1]) put(B.solid, hb, -.02, 0, s * .3, .05, .05, .1, '#0d0d0d'); // handlebar
+    if (v.driver) { if (v.driver === 'ai') { v._kp = v._kp || Array.from({ length: (sd * 4) | 0 }, (_, i) => ({ i })); for (const q of v._kp) person3(kb, { x: -.93, z: [-.36, .36, 0][q.i], seat: .83, sit: true, look: lookOf(q) }); }
+      person3(kb, { x: .2, z: 0, seat: .8, sit: true, pose: 'bar', look: driverLook(v) }); }
   } else if (d.bike) {
     wheels([hl * .62, -hl * .62], .33, [0], .12);
     put(B.solid, base, 0, .6, 0, L * .62, .2, .14, '#222'); put(B.paint, base, .12, .82, 0, .55, .22, .3, body); put(B.solid, base, -.32, .88, 0, .7, .1, .28, '#1a1a1a');
@@ -2956,60 +3141,299 @@ function vehicle3(v, dt) {
 }
 
 // ---- people
+// ---- people: a procedural rig. Tapered limbs hang on joint chains (hip, knee, ankle; shoulder, elbow,
+// wrist), lathe-turned chest and hips, a face-textured head. Clothes reuse the same shapes in cloth
+// colours, and each instance picks a weave from the cloth atlas (plain, ankara, aso-oke). Full rig near
+// the camera, fewer parts further out, a flat sprite in the distance.
+const clothT = tex(1024, 256, g => {
+  const R = prng(77), col = (i, f) => { g.save(); g.beginPath(); g.rect(i * 256, 0, 256, 256); g.clip(); g.translate(i * 256, 0); g.fillStyle = '#ffffff'; g.fillRect(0, 0, 256, 256); f(); g.restore(); };
+  col(0, () => {});
+  col(1, () => { for (let k = 0; k < 2200; k++) { g.fillStyle = `rgba(0,0,0,${R() * .07})`; g.fillRect(R() * 256, R() * 256, 1 + R() * 4, 1); }
+    g.strokeStyle = 'rgba(0,0,0,.05)'; for (let y = 0; y < 256; y += 4) { g.beginPath(); g.moveTo(0, y); g.lineTo(256, y + 2); g.stroke(); } });
+  col(2, () => { // ankara: wax-print medallions, leaves and diamonds in greys (tinted by the instance colour)
+    for (let y = 0; y < 256 + 64; y += 64) for (let x = -32; x < 256 + 64; x += 64) { const ox = (y / 64 % 2) * 32, cx = x + ox, cy = y;
+      g.fillStyle = '#4a4a4a'; g.beginPath(); g.arc(cx, cy, 22, 0, 7); g.fill(); g.fillStyle = '#f2f2f2'; g.beginPath(); g.arc(cx, cy, 15, 0, 7); g.fill();
+      g.fillStyle = '#7a7a7a'; for (let a = 0; a < 8; a++) { g.beginPath(); g.ellipse(cx + Math.cos(a * .785) * 10, cy + Math.sin(a * .785) * 10, 4, 2, a * .785, 0, 7); g.fill(); }
+      g.fillStyle = '#1e1e1e'; g.beginPath(); g.arc(cx, cy, 4, 0, 7); g.fill();
+      g.fillStyle = '#9a9a9a'; g.beginPath(); g.moveTo(cx + 32, cy - 12); g.lineTo(cx + 40, cy); g.lineTo(cx + 32, cy + 12); g.lineTo(cx + 24, cy); g.fill(); } });
+  col(3, () => { // aso-oke: hand-woven strips with metallic threads
+    for (let x = 0; x < 256; x += 32) { g.fillStyle = (x / 32) % 2 ? '#d8d8d8' : '#ffffff'; g.fillRect(x, 0, 32, 256);
+      g.fillStyle = 'rgba(0,0,0,.35)'; g.fillRect(x + 4, 0, 2, 256); g.fillRect(x + 26, 0, 2, 256);
+      g.fillStyle = 'rgba(255,255,255,.9)'; g.fillRect(x + 14, 0, 3, 256);
+      for (let y = 0; y < 256; y += 8) { g.fillStyle = 'rgba(0,0,0,.12)'; g.fillRect(x, y, 32, 2); } } });
+});
+// Cloth material: the pattern column comes from a per-instance attribute; textureGrad keeps mipmaps working across the wrap.
+function clothMat(o = {}) {
+  const m = std(Object.assign({ map: clothT, roughness: .82 }, o));
+  m.onBeforeCompile = sh => {
+    sh.vertexShader = 'attribute float iPat;\nvarying float vPat;\n' + sh.vertexShader.replace('#include <uv_vertex>', '#include <uv_vertex>\n vPat = iPat;');
+    sh.fragmentShader = 'varying float vPat;\n' + sh.fragmentShader.replace('#include <map_fragment>', `{ vec2 u0 = vMapUv * vec2(3.0, 2.0), s = vec2(.25, 1.0);
+      diffuseColor *= textureGrad(map, vec2((fract(u0.x) + vPat) * .25, fract(u0.y)), dFdx(u0) * s, dFdy(u0) * s); }`);
+  };
+  m.customProgramCacheKey = () => 'cloth'; return nearFade(m);
+}
+// Face: RGB is detail multiplied over the skin colour; alpha 0 marks eye whites and irises, which keep their own colour.
+const faceT = (() => {
+  const W = 256, H = 128, mk = () => { const c = document.createElement('canvas'); c.width = W; c.height = H; return c; }, cr = mk(), cm = mk(), g = cr.getContext('2d'), m = cm.getContext('2d');
+  g.fillStyle = '#ffffff'; g.fillRect(0, 0, W, H); m.fillStyle = '#ffffff'; m.fillRect(0, 0, W, H);
+  const cx = 128, ey = 61;
+  // soft shading: temples, under the brow, nose sides, under the lip, chin
+  const shade = (x, y, rx, ry, a) => { const gr = g.createRadialGradient(x, y, 0, x, y, rx); gr.addColorStop(0, `rgba(60,40,30,${a})`); gr.addColorStop(1, 'rgba(60,40,30,0)'); g.fillStyle = gr; g.save(); g.translate(x, y); g.scale(1, ry / rx); g.translate(-x, -y); g.beginPath(); g.arc(x, y, rx, 0, 7); g.fill(); g.restore(); };
+  for (const s of [1, -1]) { shade(cx + s * 16, ey - 3, 10, 5, .35); shade(cx + s * 4, ey + 12, 4, 8, .28); shade(cx + s * 30, ey + 6, 12, 18, .18); }
+  shade(cx, ey + 30, 9, 4, .3); shade(cx, ey + 44, 16, 6, .2);
+  for (const s of [1, -1]) {
+    const x = cx + s * 16;
+    // eye white and iris (untinted), lid line and lashes above, brow
+    m.fillStyle = '#000'; m.beginPath(); m.ellipse(x, ey, 6.5, 3, 0, 0, 7); m.fill();
+    g.fillStyle = '#ece7df'; g.beginPath(); g.ellipse(x, ey, 6.5, 3, 0, 0, 7); g.fill();
+    g.fillStyle = '#2a1810'; g.beginPath(); g.arc(x - s * .5, ey + .2, 2.8, 0, 7); g.fill(); g.fillStyle = '#0a0605'; g.beginPath(); g.arc(x - s * .5, ey + .2, 1.3, 0, 7); g.fill();
+    g.strokeStyle = 'rgba(25,15,10,.95)'; g.lineWidth = 1.6; g.beginPath(); g.ellipse(x, ey + .6, 7, 3.6, 0, Math.PI * 1.05, Math.PI * 1.95); g.stroke();
+    g.strokeStyle = 'rgba(30,20,14,.85)'; g.lineWidth = 2.4; g.beginPath(); g.moveTo(x - s * 7, ey - 6); g.quadraticCurveTo(x, ey - 10, x + s * 8, ey - 6.5); g.stroke();
+    g.fillStyle = 'rgba(40,25,18,.8)'; g.beginPath(); g.ellipse(cx + s * 3.6, ey + 18, 2, 1.2, 0, 0, 7); g.fill(); // nostril
+  }
+  g.fillStyle = 'rgba(80,50,40,.35)'; g.beginPath(); g.ellipse(cx, ey + 16, 6, 3.5, 0, 0, 7); g.fill(); // nose tip shadow
+  g.fillStyle = 'rgba(120,70,65,.85)'; g.beginPath(); g.ellipse(cx, ey + 27, 9, 2.4, 0, Math.PI, 0); g.fill(); // upper lip
+  g.fillStyle = 'rgba(150,95,88,.8)'; g.beginPath(); g.ellipse(cx, ey + 27.5, 8, 3, 0, 0, Math.PI); g.fill(); // lower lip
+  g.strokeStyle = 'rgba(40,20,16,.9)'; g.lineWidth = 1.2; g.beginPath(); g.moveTo(cx - 9, ey + 27); g.quadraticCurveTo(cx, ey + 28.5, cx + 9, ey + 27); g.stroke();
+  const a = g.getImageData(0, 0, W, H).data, b = m.getImageData(0, 0, W, H).data, out = new Uint8Array(W * H * 4);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { const i = (y * W + x) * 4, o = ((H - 1 - y) * W + x) * 4; out[o] = a[i]; out[o + 1] = a[i + 1]; out[o + 2] = a[i + 2]; out[o + 3] = b[i]; }
+  const t = new THREE.DataTexture(out, W, H, THREE.RGBAFormat); t.colorSpace = THREE.SRGBColorSpace; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter; t.needsUpdate = true; return t;
+})();
+function faceMat() {
+  const m = std({ map: faceT, roughness: .5 });
+  m.onBeforeCompile = sh => { sh.fragmentShader = sh.fragmentShader.replace('#include <map_fragment>', 'vec4 ft = texture2D(map, vMapUv);').replace('#include <color_fragment>', `#if defined( USE_COLOR ) || defined( USE_INSTANCING_COLOR )
+      diffuseColor.rgb *= mix(vec3(1.0), vColor, ft.a);
+    #endif
+    diffuseColor.rgb *= ft.rgb;`); };
+  m.customProgramCacheKey = () => 'face'; return nearFade(m);
+}
+// far-away people: a flat silhouette, torso white (tinted by the shirt colour), legs and head darker
+const personSpriteT = tex(64, 128, g => { g.clearRect(0, 0, 64, 128);
+  g.fillStyle = '#5a5a5a'; g.fillRect(22, 74, 9, 50); g.fillRect(33, 74, 9, 50); g.fillStyle = '#ffffff'; g.beginPath(); g.roundRect ? g.roundRect(17, 26, 30, 52, 8) : g.rect(17, 26, 30, 52); g.fill();
+  g.fillRect(12, 30, 7, 38); g.fillRect(45, 30, 7, 38); g.fillStyle = '#3a3a3a'; g.beginPath(); g.ellipse(32, 14, 9, 11, 0, 0, 7); g.fill(); });
+personSpriteT.wrapS = personSpriteT.wrapT = THREE.ClampToEdgeWrapping;
+
+// shapes: all unit-sized, posed and scaled per instance
+const lathe = (pts, n = 12) => new THREE.LatheGeometry(pts.map(([r, y]) => new THREE.Vector2(r, y)), n);
+const SEG = lathe([[0, -1], [.3, -.97], [.38, -.92], [.42, -.72], [.5, -.32], [.47, -.1], [.36, -.04], [0, 0]], 10); // limb, pivot at the top
+const CHEST = lathe([[.4, 0], [.42, .25], [.49, .55], [.5, .76], [.46, .88], [.33, .96], [.16, 1], [0, 1]]);
+const PELVIS = lathe([[0, 0], [.3, .03], [.44, .16], [.5, .5], [.47, .85], [.43, 1], [0, 1]]);
+const SKIRT = lathe([[.56, -1], [.53, -.6], [.5, -.3], [.45, -.06], [.42, 0]], 14);
+const ROBE = lathe([[.62, -1], [.6, -.7], [.55, -.4], [.45, -.15], [.36, -.05], [.2, 0], [0, .01]], 16);
+const HEADG = (() => { const g = new THREE.SphereGeometry(1, 22, 16), p = g.attributes.position;
+  for (let i = 0; i < p.count; i++) { let x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+    if (y < 0) { x *= 1 + y * .16; z *= 1 + y * .32; if (x > 0) x += -y * .1 * x; } // jaw narrows, chin forward
+    if (x < 0 && y > -.2) x *= 1.07; // back of the skull
+    p.setXYZ(i, x, y, z); }
+  g.computeVertexNormals(); return g; })();
+// hair cap: the front stops at the hairline, sides and back come down to the nape
+const CAPG = mergeGeometries([new THREE.SphereGeometry(1, 14, 6, Math.PI - 1.1, 2.2, 0, .95), new THREE.SphereGeometry(1, 18, 8, Math.PI + 1.1, Math.PI * 2 - 2.2, 0, 1.95)]);
+const HIJABG = mergeGeometries([new THREE.SphereGeometry(1, 18, 10, Math.PI + 1, Math.PI * 2 - 2, 0, Math.PI * .78), new THREE.SphereGeometry(1, 8, 4, Math.PI - 1, 2, 0, .75),
+  new THREE.SphereGeometry(1, 8, 4, Math.PI - 1, 2, 2.15, Math.PI * .78 - 2.15), new THREE.CylinderGeometry(.82, 2.1, 1.5, 18, 1, true).translate(-.1, -1.4, 0)]);
+const FILAG = new THREE.CylinderGeometry(.96, 1.04, .8, 14).translate(0, .4, 0);
+const PB = {};
+function batchP(geom, mat, max, shadow = true) { // a batch whose instances carry a cloth pattern index
+  const g = geom.clone(), pat = new THREE.InstancedBufferAttribute(new Float32Array(max), 1); pat.setUsage(THREE.DynamicDrawUsage); g.setAttribute('iPat', pat);
+  const b = batch(g, mat, max, shadow); b.pat = pat; XB.push(b); return b;
+}
+{ const cm = clothMat(), cds = clothMat({ side: THREE.DoubleSide });
+  Object.assign(PB, { seg: batchP(SEG, cm, 4200), chest: batchP(CHEST, cm, 500), pelvis: batchP(PELVIS, cm, 500), skirt: batchP(SKIRT, cds, 300), robe: batchP(ROBE, cds, 120),
+    ball: batchP(new THREE.SphereGeometry(1, 12, 8), cm, 4200), cap: batchP(CAPG, cm, 500), gele: batchP(geleGeo(), cds, 150), hijab: batchP(HIJABG, cds, 150), fila: batchP(FILAG, cm, 150),
+    disc: batchP(new THREE.CylinderGeometry(1, 1, 1, 14), cm, 500) });
+  PB.head = batch(HEADG, faceMat(), 500); XB.push(PB.head);
+  PB.sprite = batch(new THREE.PlaneGeometry(1, 1).translate(0, .5, 0), std({ map: personSpriteT, alphaTest: .5, side: THREE.DoubleSide, roughness: .9 }), 900, false); XB.push(PB.sprite);
+}
+// joint chains: a small pool of matrices, reused per person
+const JM = Array.from({ length: 48 }, () => new THREE.Matrix4()); let jmi = 0;
+function J(parent, x, y, z, rx = 0, ry = 0, rz = 0, out = null) {
+  const o = out || JM[jmi++ % 48]; _e.set(rx, ry, rz); _q.setFromEuler(_e); _p.set(x, y, z); _s.set(1, 1, 1); _l.compose(_p, _q, _s); return o.multiplyMatrices(parent, _l);
+}
+const pp = (b, Jm, pat, x, y, z, sx, sy, sz, col, rx = 0, ry = 0, rz = 0) => { PAT = pat; put(b, Jm, x, y, z, sx, sy, sz, col, rx, ry, rz); PAT = 0; };
+
+// ---- looks: who someone is (build, skin, clothes, hair, what they carry)
+const SKINS = ['#3a2216', '#4a2b1b', '#583421', '#673d27', '#76472d', '#855235', '#975f3d'];
+const HAIRC = ['#141010', '#1b1412', '#0e0b0a', '#2a1d16'];
+const BRIGHT = ['#e2683c', '#2fa36b', '#f5c400', '#3d7bd9', '#d94f8a', '#f3eee4', '#7b1fa2', '#00897b', '#c62828', '#1565c0'];
 const driverLook = v => lookOf(v.driver === 'player' ? player : v);
-const SKINS = ['#5a3a26', '#6b4430', '#4a2f20', '#7a4e34', '#3d271b'];
 const PV = new WeakMap();
 function lookOf(o) {
   let l = PV.get(o); if (l) return l;
-  const r = () => vrand();
-  const kind = o === player ? 'player' : o._baba ? 'agbada' : o.driver === 'cop' ? 'uniform' : o.driver === 'player' ? 'player' : o._tout ? 'tout' : o._agbero ? 'agbero' : (() => { const q = r(); return o.tie ? 'wrapper' : q < .34 ? 'tee' : q < .58 ? 'ankara' : q < .7 ? 'agbada' : q < .9 ? 'wrapper' : 'uniform'; })();
-  const main = o.col || pick2(r, ['#e2683c', '#2fa36b', '#f5c400', '#3d7bd9', '#d94f8a', '#f3eee4', '#8a5a3c']);
-  l = { kind, main, skin: pick2(r, SKINS), pants: pick2(r, ['#26324a', '#2b2b2b', '#4a3b2a', '#3c5a7a', '#5b5b5b']), head: o.tie ? 'gele' : kind === 'agbada' ? 'fila' : r() < .3 ? 'cap' : 'hair',
-    capC: pick2(r, ['#d32f2f', '#1565c0', '#f5c400', '#222', '#fff', '#8e24aa', '#00897b']), cur: r(), ph: r() * 6, px: null, py: null, load: o === player || o._tout || o._agbero ? null : o.tray ? 'tray' : r() < .12 ? 'sack' : r() < .1 ? 'bag' : null };
-  if (o.driver === 'cop') { l.main = '#2f5d3a'; l.pants = '#1f3a26'; l.head = 'helmet'; }
+  const r = () => vrand(), pk = a => pick2(r, a), main = o.col || pk(BRIGHT);
+  let kind = o === player || o.driver === 'player' ? 'player' : o._baba ? 'agbada' : o.driver === 'cop' ? 'uniform' : o._tout ? 'tout' : o._agbero ? 'agbero' : o._cond ? 'conductor' : null;
+  if (!kind) kind = o._kind; // tests can ask for a kind
+  if (!kind) { const q = r(); kind = o.tie ? 'wrapper' : q < .2 ? 'tee' : q < .32 ? 'shirt' : q < .46 ? 'ankara' : q < .53 ? 'agbada' : q < .58 ? 'kaftan' : q < .73 ? 'wrapper' : q < .79 ? 'hijab' : q < .88 ? 'lady' : q < .95 ? 'school' : 'uniform'; }
+  if (o.driver && kind === 'school') kind = 'tee';
+  const f = /wrapper|hijab|lady/.test(kind) || ((kind === 'ankara' || kind === 'school') && r() < .5), kid = kind === 'school';
+  l = { kind, f, kid, H: kid ? 1.3 + r() * .22 : f ? 1.56 + r() * .16 : 1.66 + r() * .2, build: .86 + r() * .36, skin: pk(SKINS), hairC: pk(HAIRC), hair: 'low', capC: pk(['#d32f2f', '#1565c0', '#f5c400', '#222222', '#ffffff', '#8e24aa', '#00897b']),
+    top: { t: 'tee', c: main, p: 1 }, legs: { t: 'jeans', c: pk(['#2b3a55', '#1f2a3d', '#3c5a7a']), p: 1 }, shoe: pk(['#1c1714', '#2b2420', '#4e342e', '#e0e0e0']),
+    glasses: false, phone: null, bag: null, load: null, seed: r(), ph: r() * 6, px: null, py: null, amp: 0, run: 0, rw: 0 };
+  const dark = ['#26324a', '#2b2b2b', '#4a3b2a', '#5b5b5b'];
+  switch (kind) {
+    case 'tee': case 'conductor': case 'tout':
+      if (r() < .35 || kind === 'tout') l.legs = { t: 'shorts', c: pk(['#c8b48a', '#3e4a3a', '#2b3a55', '#5b5b5b']), p: 1 };
+      l.hair = pk(['low', 'low', 'dreads', 'cap', 'afro']); l.glasses = r() < .18; if (kind === 'tee' && r() < .3) l.phone = r() < .5 ? 'text' : 'call'; break;
+    case 'shirt': l.top = { t: 'shirt', c: pk(['#f3eee4', '#bcd4f0', '#ffffff', '#e8d9c0', '#d7ccc8']), p: 1 }; l.legs = { t: 'trousers', c: pk(dark), p: 1 }; l.bag = r() < .4 ? 'hand' : null; l.glasses = r() < .25; if (r() < .2) l.phone = 'call'; break;
+    case 'ankara': if (f) { l.top = { t: 'tee', c: main, p: 2 }; l.legs = { t: 'skirt', c: main, p: 2 }; l.hair = pk(['braids', 'afro', 'gele', 'low']); l.bag = r() < .5 ? 'shoulder' : null; }
+      else { l.top = { t: 'shirt', c: main, p: 2 }; l.legs = { t: 'trousers', c: pk(dark), p: 1 }; l.hair = pk(['low', 'cap', 'low']); } break;
+    case 'agbada': l.top = { t: 'robe', c: o._baba ? '#6d4c41' : pk(['#f3eee4', '#5d4037', '#1a237e', '#004d40', '#7b1fa2', main]), p: 3 }; l.top.ic = l.top.c; l.legs = { t: 'trousers', c: l.top.c, p: 1 };
+      l.hair = 'fila'; l.capC = l.top.c; l.build += .12; l.H = Math.max(l.H, 1.7); if (o._baba) { l.H = 1.74; l.build = 1.2; l.glasses = true; l.hairC = '#8d8d8d'; } break;
+    case 'kaftan': l.top = { t: 'kaftan', c: pk(['#ffffff', '#f3eee4', '#bcaaa4', '#90a4ae', main]), p: 1 }; l.legs = { t: 'trousers', c: l.top.c, p: 1 }; l.hair = pk(['fila', 'low', 'cap']); l.capC = pk(['#5d4037', '#1a237e', '#7b1fa2']); break;
+    case 'wrapper': l.top = { t: 'tee', c: pk(BRIGHT), p: r() < .5 ? 2 : 1 }; l.legs = { t: 'wrapper', c: o.tie || main, p: 2 }; l.hair = o.tie ? 'gele' : pk(['gele', 'scarf', 'braids', 'low']); l.capC = o.tie || pk(BRIGHT); l.build += .1;
+      if (!o.tray && r() < .15) l.load = 'basin'; break;
+    case 'hijab': l.top = { t: 'dress', c: pk(['#1b1b1b', '#3e2723', '#1a237e', '#4a148c', '#004d40', '#37474f']), p: 1 }; l.legs = { t: 'none', c: l.top.c, p: 1 }; l.hair = 'hijab'; l.capC = pk(['#1b1b1b', '#6d4c41', '#c2185b', '#00695c', '#f3eee4']); l.bag = r() < .3 ? 'hand' : null; break;
+    case 'lady': l.top = { t: r() < .4 ? 'tank' : 'tee', c: main, p: 1 }; if (r() < .45) l.legs = { t: 'skirt', c: pk(['#1b1b1b', '#5d4037', '#3c5a7a', '#880e4f']), p: 1 };
+      l.hair = pk(['braids', 'afro', 'braids', 'low']); l.bag = r() < .6 ? 'shoulder' : null; l.glasses = r() < .25; if (r() < .35) l.phone = r() < .6 ? 'text' : 'call'; break;
+    case 'school': { const pin = pk(['#1b5e20', '#0d47a1', '#880e4f', '#6d4c41']); l.top = { t: f ? 'pinafore' : 'tee', c: f ? pin : pk(['#f3f3f0', '#bcd4f0']), p: 1, sc: '#f3f3f0' };
+      l.legs = f ? { t: 'skirt', c: pin, p: 1 } : { t: 'shorts', c: pk(['#1a237e', '#6d4c41', '#37474f']), p: 1 }; l.hair = f ? pk(['braids', 'low']) : 'low'; l.bag = 'back'; l.shoe = '#1a1a1a'; l.build = .85 + r() * .15; break; }
+    case 'uniform': l.top = { t: 'shirt', c: '#4b5320', p: 1 }; l.legs = { t: 'trousers', c: '#3b4220', p: 1 }; l.hair = 'beret'; l.capC = '#151515'; l.shoe = '#111111'; l.boots = true; break;
+    case 'agbero': l.top = { t: 'tank', c: o.col || '#7f1d1d', p: 1 }; l.legs = { t: 'trousers', c: '#2b2b2b', p: 1 }; l.hair = 'cap'; l.capC = '#f5c400'; l.build = 1.2; break;
+  }
+  if (o.tray) l.load = 'tray';
   PV.set(o, l); return l;
 }
-// o: { x, z (local offsets), look, swing, raise: 'one'|'both', sit, down, tray }
-const HAIRC = ['#1a1311', '#120d0b', '#2a1c14'];
-function person3(base, o) {
-  const l = o.look, k = l.kind, sit = o.sit, sw = o.swing || 0, x = o.x || 0, z = o.z || 0, y0 = sit ? o.seat - .9 : 0;
-  const skin = colr(l.skin), main = colr(k === 'player' ? OUTFITS.find(f => f.id === S.outfit).color : l.main);
-  const isAgbada = k === 'agbada' || (k === 'player' && S.outfit === 'fit_agbada_owambe'), isAnkara = k === 'ankara' || k === 'wrapper' || (k === 'player' && /ankara/.test(S.outfit));
-  const legC = k === 'wrapper' ? skin : colr(k === 'uniform' ? l.pants : k === 'player' ? '#2c3440' : l.pants);
-  const legSw = sit ? 1.45 : sw, armSw = sit ? (o.bike ? 1.1 : .9) : -sw * .8;
-  for (const s of [1, -1]) { limb(B.limb, base, x, y0 + .9, z + s * .1, .9, .15, .17, legC, 0, sit ? legSw : s * legSw);
-    if (!sit) { const fa = s * legSw; put(B.ball, base, x + Math.sin(fa) * .9 + .05, y0 + .9 - Math.cos(fa) * .9 + .04, z + s * .1, .13, .06, .08, '#1c1714'); } } // shoes
-  if (k === 'wrapper') put(B.torsoCloth, base, x, y0 + .58, z, .32, .7, .46, main);
-  if (isAgbada) put(B.robe, base, x, y0 + .97, z, .4, 1.02, .78, main);
-  else put(isAnkara ? B.torsoCloth : B.torso, base, x, y0 + 1.16, z, .27, .58, .45, main);
-  const raise = o.raise, wave = o.wave || 0, bare = k === 'tee' || k === 'player' || k === 'uniform' || k === 'tout' || k === 'agbero';
-  for (const s of [1, -1]) {
-    const up = raise === 'both' || (raise === 'one' && s === 1) ? (s > 0 ? -2.55 - wave : 2.55 + wave) : 0, rz = up ? 0 : sit ? armSw : s * armSw;
-    limb(isAgbada ? B.robe : bare ? B.limb : isAnkara ? B.sleeve : B.limb, base, x, y0 + 1.42, z + s * (isAgbada ? .36 : .26), .62, isAgbada ? .2 : .1, isAgbada ? .2 : .11, isAgbada ? main : bare ? skin : main, up, rz);
-    if (bare && k !== 'uniform') limb(B.limb, base, x, y0 + 1.43, z + s * .27, .26, .14, .15, main, up, rz); // short sleeve
-    else if (k === 'uniform') limb(B.limb, base, x, y0 + 1.43, z + s * .27, .6, .125, .135, main, up, rz);
-  }
-  put(B.limb, base, x, y0 + 1.47, z, .1, .1, .1, skin); // neck
-  const hc = y0 + 1.62; put(B.skin, base, x, hc, z, .118, .136, .118, skin);
-  const hairC = HAIRC[(l.ph * 10 | 0) % 3];
-  if (l.head === 'gele') put(B.gele, base, x - .015, hc + .07, z, .155, .155, .155, colr(o.tie || l.capC));
-  else if (l.head === 'fila') put(B.disc, base, x - .015, hc + .1, z, .118, .1, .118, main, 0, 0, .28);
-  else if (l.head === 'cap' || k === 'agbero') { const cc2 = k === 'agbero' ? '#f5c400' : l.capC; put(B.hair, base, x - .005, hc + .012, z, .126, .12, .126, cc2); put(B.disc, base, x + .11, hc + .045, z, .1, .012, .12, cc2); }
-  else if (l.head === 'helmet') put(B.hair, base, x, hc + .005, z, .15, .15, .15, '#f3eee4');
-  else { put(B.hair, base, x - .012, hc + .008, z, .125, .124, .125, hairC); if (l.cur > .7 && (k === 'wrapper' || k === 'ankara')) put(B.ball, base, x - .12, hc + .05, z, .06, .06, .06, hairC); } // bun
-  const hy = hc + .13;
-  if (o.tray) { put(B.disc, base, x, hy + .07, z, .36, .05, .36, o.tray === 'water' ? '#1e88e5' : '#c9a66b');
-    const gc = { water: '#e8f4ff', puff: '#8d5524', orange: '#fb8c00', suya: '#6d2f1a' }[o.tray]; for (let k2 = 0; k2 < 5; k2++) put(B.ball, base, x + Math.cos(k2 * 1.3) * .17, hy + .16, z + Math.sin(k2 * 1.3) * .17, .07, .07, .07, gc); }
-  else if (l.load === 'sack' && !sit) put(B.solid, base, x, hy + .12, z, .4, .26, .5, '#d8cba8');
-  else if (l.load === 'bag' && !sit) put(B.solid, base, x + .05, y0 + .55, z + .34, .32, .26, .12, '#3b2a20');
-  if (k === 'agbero') limb(B.solid, base, x + .1, y0 + 1.1, z + .3, 1.1, .05, .05, '#8d6e63', 0, 2.2 + Math.sin(performance.now() / 300) * .2);
+// the player's look follows the outfit they're wearing
+const PLAYER_FITS = {
+  fit_street_basic: { top: { t: 'tee', c: '#d9d4c7', p: 1 }, legs: { t: 'jeans', c: '#2b3a55', p: 1 }, hair: 'low', shoe: '#ececec' },
+  fit_ankara_shirt: { top: { t: 'shirt', c: '#e2683c', p: 2 }, legs: { t: 'trousers', c: '#c8b48a', p: 1 }, hair: 'low', shoe: '#4e342e' },
+  fit_kaftan_white: { top: { t: 'kaftan', c: '#ffffff', p: 1 }, legs: { t: 'trousers', c: '#ffffff', p: 1 }, hair: 'low', shoe: '#4e342e' },
+  fit_ankara_full: { top: { t: 'shirt', c: '#2fa36b', p: 2 }, legs: { t: 'trousers', c: '#2fa36b', p: 2 }, hair: 'low', shoe: '#1c1714' },
+  fit_street_drip: { top: { t: 'shirt', c: '#7e57c2', p: 1 }, legs: { t: 'jeans', c: '#151515', p: 1 }, hair: 'cap', capC: '#151515', glasses: true, shoe: '#ffffff' },
+  fit_agbada_owambe: { top: { t: 'robe', c: '#f5c400', p: 3 }, legs: { t: 'trousers', c: '#f5c400', p: 1 }, hair: 'fila', capC: '#b8860b', shoe: '#4e342e' },
+};
+function playerLook(l) {
+  if (l._fit === S.outfit) return; l._fit = S.outfit;
+  Object.assign(l, { H: 1.78, build: 1.02, skin: '#5a3622', hairC: '#141010', glasses: false, phone: null, bag: null, load: null, capC: '#222222', f: false, kid: false }, PLAYER_FITS[S.outfit] || PLAYER_FITS.fit_street_basic);
 }
-function walker(o, a, dt, opts = {}) { // feet on the ground at (o.x, o.y) facing a; animated by distance walked
+
+// ---- the rig. o: { x, z (local offsets), look, sit, seat (hip height), bike, pose: 'drive'|'bar'|'hang', raise: 'one'|'both', wave, tray, lod }
+const _cam = new THREE.Vector3();
+function person3(base, o) {
+  const l = o.look; if (l.kind === 'player') playerLook(l);
+  const x = o.x || 0, z = o.z || 0, e = base.elements, wx = e[12] + e[0] * x + e[8] * z, wy = e[13] + e[1] * x + e[9] * z, wz = e[14] + e[2] * x + e[10] * z;
+  const dc = Math.hypot(wx - camera.position.x, wy - camera.position.y, wz - camera.position.z), lod = o.lod != null ? o.lod : l.kind === 'player' ? 0 : dc < 22 ? 0 : dc < 55 ? 1 : 2;
+  const H = l.H, sit = !!o.sit, top = l.top, legs = l.legs;
+  if (lod === 2) { if (!sit && !o.down) put(PB.sprite, IDM, wx, wy, wz, H * .5, H, 1, top.c, 0, Math.atan2(camera.position.x - wx, camera.position.z - wz), 0); return; }
+  jmi = 0;
+  const k = H / 1.75, bw = l.build, skin = l.skin, T = performance.now() / 1000 + l.seed * 31, w = sit ? 0 : l.amp || 0, rn = sit ? 0 : l.run || 0, ph = l.ph || 0;
+  const robe = top.t === 'robe', long = legs.t === 'wrapper' || legs.t === 'none' || top.t === 'dress', sway = l.f ? 1.7 : 1, stride = long || robe ? .6 : 1;
+  const breathe = Math.sin(T * 1.6) * .012, bob = -H * (.012 + .022 * rn) * Math.abs(Math.sin(ph)) * w;
+  const yawP = .1 * sway * w * Math.sin(ph), rollP = .035 * sway * w * Math.cos(ph), lat = -.018 * sway * w * Math.cos(ph) * k;
+  const hipY = sit ? o.seat : .52 * H + bob, hipHalf = H * (l.f ? .061 : .054) * Math.sqrt(bw), thW = .15 * k * Math.sqrt(bw), shW = .11 * k * Math.sqrt(bw);
+  const root = J(base, x, 0, z), pelvis = J(root, 0, hipY, lat, rollP, yawP, 0);
+  const pose = o.pose, hang = pose === 'hang';
+  // legs: thigh, shin, shoe kept level with the ground
+  const legC = legs.t === 'jeans' || legs.t === 'trousers' ? legs.c : skin, shinC = legs.t === 'jeans' || legs.t === 'trousers' ? legs.c : skin, shorts = legs.t === 'shorts';
+  const thL = .24 * H, shL = .235 * H;
+  for (const s of [1, -1]) {
+    const phi = ph + (s > 0 ? 0 : Math.PI);
+    let ta, ka, rx = -s * .035, fp = 0;
+    if (sit) { ta = o.bike ? 1.15 : 1.42; ka = o.bike ? -1.5 : -1.42; rx = -s * (o.bike ? .26 : .07); }
+    else if (hang) { ta = s > 0 ? .4 : 0; ka = s > 0 ? -.7 : -.05; rx = s > 0 ? -.35 : -s * .03; }
+    else { ta = Math.sin(phi) * (.4 + .35 * rn) * w * stride; ka = -(.04 + w * ((.65 + .8 * rn) * Math.pow(Math.max(0, Math.cos(phi)), 1.5) + .05) * stride); fp = -.45 * w * Math.max(0, -Math.cos(phi)) * Math.max(0, -Math.sin(phi)); }
+    const hj = J(pelvis, 0, 0, s * hipHalf, rx, 0, ta);
+    pp(PB.seg, hj, legC === skin && !shorts ? 0 : legs.p, 0, 0, 0, thW * .92, thL + .02, thW, shorts ? legs.c : legC);
+    const kj = J(hj, 0, -thL, 0, 0, 0, ka);
+    pp(PB.seg, kj, shinC === skin ? 0 : legs.p, 0, 0, 0, shW * .95, shL, shW, shinC);
+    if (shorts && lod === 0) pp(PB.seg, hj, legs.p, 0, -thL * .55, 0, thW * 1.08, thL * .5, thW * 1.1, legs.c); // hem a touch wider than the thigh
+    const aj = J(kj, 0, -shL, 0, 0, 0, -(ta + ka) + fp);
+    put(PB.ball, aj, .045 * k, -.045 * k, 0, .13 * k, l.boots ? .07 * k : .05 * k, .052 * k, l.shoe);
+  }
+  // hips, then the chest leaning into the walk and twisting against the hips
+  const lean = sit ? (pose === 'drive' || pose === 'bar' ? -.08 : .02) : -(.03 + .22 * rn) * w;
+  const chest = J(pelvis, 0, .08 * H, 0, -rollP * .8, -yawP * 1.8, lean), cH = .235 * H, cW = (l.f ? .225 : .255) * H * Math.pow(bw, .6), cD = cW * (l.f ? .6 : .56) * Math.pow(bw, .4);
+  const topPat = top.p, topC = top.c, skirtLike = legs.t === 'skirt' || legs.t === 'wrapper';
+  pp(PB.pelvis, pelvis, legs.t === 'none' ? topPat : legs.p, 0, -.07 * H, 0, cD * .95, .155 * H, hipHalf * 2 + thW * .9, legs.t === 'none' ? topC : legs.c);
+  pp(PB.chest, chest, topPat, 0, 0, 0, cD, cH * (1 + breathe), cW, topC);
+  if (l.f && !l.kid && lod === 0) for (const s of [1, -1]) pp(PB.ball, chest, topPat, cD * .3, cH * .64, s * cW * .17, .055 * k * bw, .062 * k, .06 * k, topC);
+  if (legs.t === 'skirt') pp(PB.skirt, pelvis, legs.p, 0, .08 * H, 0, cD * 1.25, .31 * H, hipHalf * 2 + thW * 1.25, legs.c);
+  else if (legs.t === 'wrapper') pp(PB.skirt, pelvis, legs.p, 0, .08 * H, 0, cD * 1.2, .5 * H, hipHalf * 2 + thW * 1.15, legs.c);
+  if (top.t === 'kaftan') pp(PB.skirt, pelvis, topPat, 0, .08 * H, 0, cD * 1.25, .33 * H, hipHalf * 2 + thW * 1.3, topC);
+  else if (top.t === 'dress') pp(PB.skirt, pelvis, topPat, 0, .08 * H, 0, cD * 1.3, .53 * H, hipHalf * 2 + thW * 1.4, topC);
+  if (robe) pp(PB.robe, chest, topPat, 0, cH * .97, 0, cD * 1.15, (sit ? .42 : .64) * H, .82 * k * Math.sqrt(bw), topC);
+  if (lod === 0 && (legs.t === 'jeans' || legs.t === 'trousers') && !robe && top.t !== 'kaftan') put(PB.disc, pelvis, 0, .075 * H, 0, cD * .5, .025, hipHalf + thW * .5, '#1a1410'); // belt
+  // arms
+  const uaL = .182 * H, faL = .15 * H, aW = .085 * k * Math.sqrt(bw), sleeve = top.t === 'shirt' || top.t === 'kaftan' || top.t === 'dress' || l.kind === 'uniform', short = top.t === 'tee' || top.t === 'pinafore';
+  const rwT = o.raise ? 1 : 0; l.rw = lerp(l.rw || 0, rwT, .15);
+  const armC = sleeve ? (top.sc || topC) : skin, sleeveC = top.sc || topC;
+  for (const s of [1, -1]) {
+    const phi = ph + (s > 0 ? 0 : Math.PI);
+    let az = -Math.sin(phi) * (.35 + .45 * rn) * w + Math.sin(T * 1.6) * .015, ax = -s * (.07 + .04 * bw), el = .12 + .15 * w + 1.25 * rn;
+    if (sit) { az = .4; el = .8; ax = -s * .14; }
+    if (pose === 'drive') { az = 1.0; el = .55; ax = -s * .06; }
+    else if (pose === 'bar') { az = 1.15; el = .4; ax = -s * .3; }
+    else if (hang) { if (s < 0) { az = 2.6; el = .55; ax = .45; } else { az = .35; el = .4 + (o.wave || 0); ax = -1.15; } }
+    const rw = l.rw, up = o.raise === 'both' || (o.raise === 'one' && s > 0);
+    if (up && rw > .01) { az = lerp(az, o.raise === 'both' ? .5 : 2.55, rw); ax = lerp(ax, -s * (o.raise === 'both' ? 2.3 : .35), rw); el = lerp(el, .25 + (o.wave || 0), rw); }
+    else if (o.tray && s > 0 && !sit) { az = 2.85; ax = -s * .28; el = 1.05; }
+    else if (l.load && l.load !== 'tray' && s > 0 && !sit) { az = 2.8; ax = -s * .3; el = 1.0; }
+    else if (l.phone === 'call' && s < 0 && !sit && !rn) { az = .55; ax = -s * .2; el = 2.35; }
+    else if (l.phone === 'text' && s < 0 && !sit && w < .7 && !rn) { az = .3; ax = s * .08; el = 1.35; }
+    if (robe && !up) { ax = -s * .2; } // arms rest on the robe's wide sleeves
+    const sj = J(chest, 0, cH * .84, s * (cW * .5 - aW * .45), ax, 0, az);
+    if (robe) pp(PB.seg, sj, topPat, 0, 0, 0, aW * 2.2, uaL + faL * .7, aW * 3.6, topC); // wide sleeve wing
+    else pp(PB.seg, sj, sleeve ? topPat : 0, 0, 0, 0, aW, uaL + .01, aW, armC);
+    if (short && lod === 0) pp(PB.seg, sj, top.t === 'pinafore' ? 1 : topPat, 0, .02, 0, aW * 1.4, uaL * .5, aW * 1.4, sleeveC);
+    const ej = J(sj, 0, -uaL, 0, 0, 0, el);
+    pp(PB.seg, ej, sleeve ? topPat : 0, 0, 0, 0, aW * .86, faL, aW * .86, sleeve ? armC : skin);
+    if (lod === 0) put(PB.ball, ej, 0, -faL - .035 * k, 0, .04 * k, .06 * k, .018 * k, skin);
+    if (lod === 0 && l.phone && s < 0 && (l.phone === 'call' ? !sit && !rn : !sit && w < .7 && !rn)) put(B.solid, ej, .01, -faL - .03 * k, 0, .016, .13 * k, .07 * k, '#111111');
+    if (l.bag === 'hand' && s > 0 && !sit && lod === 0) put(B.solid, ej, 0, -faL - .17 * k, 0, .1 * k, .22 * k, .3 * k, '#3b2a20');
+  }
+  if (top.t === 'tank' || short) for (const s of [1, -1]) if (lod === 0) put(PB.ball, chest, 0, cH * .87, s * (cW * .5 - aW * .6), aW * .55, aW * .5, aW * .55, short ? topC : skin); // round shoulder, no pad
+  if (lod === 0) { if (l.bag === 'shoulder') { put(B.solid, chest, .02, -.02 * k, cW * .58, .2 * k, .18 * k, .08 * k, '#5d4037'); put(B.solid, chest, 0, cH * .45, 0, cD * 1.06, .02, cW * .9, '#3e2723', .7, 0, 0); }
+    else if (l.bag === 'back') put(B.solid, chest, -cD * .62, cH * .5, 0, .14 * k, .32 * k, .28 * k, pick2(() => l.seed, ['#c62828', '#1565c0', '#2e7d32', '#212121'])); }
+  // neck and head; the head steadies itself against the hip sway and glances around when idle
+  const nL = .045 * H, hH = H / 7.5, hr = [hH * .43, hH * .5, hH * .37];
+  const head = J(chest, .012 * k, cH + nL, 0, 0, yawP * .8 + Math.sin(T * .37) * .3 * (1 - w) * (sit ? .4 : 1), Math.sin(ph * 2) * .02 * w + (sit ? 0 : -.03));
+  put(PB.seg, head, 0, .02, 0, .085 * k * Math.sqrt(bw), nL + .06 * k, .08 * k * Math.sqrt(bw), skin);
+  const hy = hr[1] * .82, hx = .01;
+  put(PB.head, head, hx, hy, 0, hr[0], hr[1], hr[2], skin);
+  if (lod === 0) {
+    if (l.hair !== 'hijab') for (const s of [1, -1]) put(PB.ball, head, hx - hr[0] * .05, hy - hr[1] * .05, s * hr[2] * .98, .022 * k, .036 * k, .014 * k, skin); // ears
+    if ((T * 1000 | 0) % 4200 < 130) for (const s of [1, -1]) put(PB.ball, head, hx + hr[0] * .9, hy + hr[1] * .03, s * hr[2] * .36, .012 * k, .016 * k, .028 * k, skin); // blink
+    if (l.glasses) { put(B.solid, head, hx + hr[0] * .97, hy + hr[1] * .06, 0, .012, .04 * k, hr[2] * 1.6, '#0d0d0d'); for (const s of [1, -1]) put(B.solid, head, hx + hr[0] * .3, hy + hr[1] * .1, s * hr[2] * .98, hr[0] * 1.3, .01, .01, '#0d0d0d'); }
+  }
+  const hairCap = (sc, col, pat = 0) => pp(PB.cap, head, pat, hx, hy, 0, hr[0] * sc, hr[1] * sc, hr[2] * sc, col);
+  switch (l.hair) {
+    case 'low': hairCap(1.04, l.hairC); break;
+    case 'afro': hairCap(1.05, l.hairC); put(PB.ball, head, hx - hr[0] * .18, hy + hr[1] * .38, 0, hr[0] * 1.25, hr[1] * .95, hr[2] * 1.35, l.hairC); break;
+    case 'braids': case 'dreads': { hairCap(1.05, l.hairC); if (lod > 0) break; const dr = l.hair === 'dreads', n = dr ? 9 : 7;
+      for (let i = 0; i < n; i++) { const a = Math.PI * (.6 + .8 * i / (n - 1)), cx = Math.cos(a), sz = Math.sin(a);
+        const sj = J(head, hx + cx * hr[0] * .9, hy + hr[1] * (dr ? .1 : -.05), sz * hr[2] * .95, -sz * .25, 0, -cx * .2 + .1);
+        put(PB.seg, sj, 0, 0, 0, dr ? .035 * k : .022 * k, (dr ? .17 : .3) * k, dr ? .035 * k : .022 * k, l.hairC); } break; }
+    case 'cap': hairCap(1.08, l.capC, 1); put(PB.disc, head, hx + hr[0] * 1.02, hy + hr[1] * .32, 0, hr[0] * .75, .012, hr[2] * .85, l.capC, 0, 0, -.12); break;
+    case 'beret': hairCap(1.03, l.hairC); put(PB.ball, head, hx - hr[0] * .1, hy + hr[1] * .62, -hr[2] * .2, hr[0] * 1.08, hr[1] * .32, hr[2] * 1.12, l.capC, .25, 0, 0); break;
+    case 'fila': hairCap(1.02, l.hairC); pp(PB.fila, head, 3, hx - hr[0] * .05, hy + hr[1] * .55, 0, hr[0] * 1.02, hr[1] * .55, hr[2] * 1.06, l.capC, .22, 0, -.1); break;
+    case 'gele': pp(PB.gele, head, 3, hx - hr[0] * .12, hy + hr[1] * .5, 0, hr[1] * 1.3, hr[1] * 1.3, hr[1] * 1.3, l.capC); break;
+    case 'scarf': hairCap(1.08, l.capC, 2); put(PB.ball, head, hx - hr[0] * 1.02, hy + hr[1] * .3, 0, .05 * k, .04 * k, .06 * k, l.capC); break;
+    case 'hijab': pp(PB.hijab, head, 1, hx, hy, 0, hr[0] * 1.12, hr[1] * 1.08, hr[2] * 1.18, l.capC); break;
+  }
+  // loads carried on the head (trays of goods, a basin, a sack)
+  const topY = hy + hr[1] * (l.hair === 'gele' ? 1.6 : 1.05);
+  if (o.tray) { put(B.disc, head, 0, topY + .03, 0, .36, .05, .36, o.tray === 'water' ? '#1e88e5' : '#c9a66b');
+    if (lod === 0) { const gc = { water: '#e8f4ff', puff: '#8d5524', orange: '#fb8c00', suya: '#6d2f1a' }[o.tray]; for (let k2 = 0; k2 < 6; k2++) put(B.ball, head, Math.cos(k2 * 1.05) * .17, topY + .11, Math.sin(k2 * 1.05) * .17, .07, .07, .07, gc); } }
+  else if (l.load === 'basin' && !sit) put(B.disc, head, 0, topY + .08, 0, .3, .16, .3, '#9e9e9e');
+  else if (l.load === 'sack' && !sit) put(B.solid, head, 0, topY + .12, 0, .4, .26, .5, '#d8cba8');
+  if (l.kind === 'agbero') limb(B.solid, root, .1, 1.1 * k, .3, 1.1, .05, .05, '#8d6e63', 0, 2.2 + Math.sin(T * 3) * .2);
+}
+function walker(o, a, dt, opts = {}) { // feet on the ground at (o.x, o.y) facing a; the gait follows the speed actually moved
   const l = lookOf(o), moved = l.px == null ? 0 : Math.hypot(o.x - l.px, o.y - l.py); l.px = o.x; l.py = o.y;
-  l.ph += moved * M * 2.6; l.amp = lerp(l.amp || 0, moved > .05 ? .6 : 0, Math.min(1, dt * 8));
+  // the city runs at arcade speed (pedestrians cover 30-45 px/s, the player 120, sprinting 190), so the
+  // cadence follows speed loosely instead of planting feet: a stroll, a jog, a sprint
+  const pxs = dt > 0 && moved < 40 ? moved / dt : 0;
+  l.amp = lerp(l.amp || 0, clamp(pxs / 22, 0, 1), Math.min(1, dt * 8)); l.run = lerp(l.run || 0, clamp((pxs - 60) / 110, 0, 1), Math.min(1, dt * 6));
+  if (pxs > 1) l.ph += dt * Math.PI * 2 * (.95 + pxs / 190 * .75) * (1.75 / (l.H || 1.7));
   const down = opts.down, gy = heightAt(o.x, o.y), base = baseInto(o.x * M, gy, o.y * M, -a, 0, down ? Math.PI / 2 : 0);
   put(B.blob, IDM, o.x * M + (down ? Math.cos(a) * .6 : 0), gy + .02, o.y * M + (down ? Math.sin(a) * .6 : 0), down ? 1.9 : .95, 1, down ? .9 : .95, BLACK); // contact shadow
-  person3(base, Object.assign({ look: l, swing: Math.sin(l.ph) * l.amp }, opts));
+  person3(base, Object.assign({ look: l }, opts));
+}
+// people sitting out on the plastic chairs along the streets
+const SEATB = new THREE.Matrix4();
+function seatedPeople(tgt) {
+  for (let i = 0; i < SEATS.length; i++) { const s = SEATS[i]; if (s.busy === undefined) s.busy = hash(i * 13 + 5, 77) < .45; if (!s.busy) continue;
+    const dx = s.x - tgt.x, dz = s.z - tgt.z; if (dx * dx + dz * dz > 1600) continue;
+    s.o = s.o || {}; _e.set(0, s.yaw, 0); _q.setFromEuler(_e); _p.set(s.x, s.y, s.z); _s.set(1, 1, 1); SEATB.compose(_p, _q, _s);
+    put(B.blob, IDM, s.x, s.y + .02, s.z, .9, 1, .9, BLACK); person3(SEATB, { x: -.06, look: lookOf(s.o), sit: true, seat: .5 }); }
 }
 
 // ---- skid marks (a ring buffer of dark strips on the road)
@@ -3203,7 +3627,7 @@ function render(t) {
   _sv.set(Math.round(tgt.x / texel) * texel, tgt.y, Math.round(tgt.z / texel) * texel); sunL.target.position.copy(_sv); sunL.position.copy(_sv).addScaledVector(sunDir, 120);
   for (const ch of chunks) ch.group.visible = Math.hypot(ch.cx - tgt.x, ch.cz - tgt.z) < Q.far + 50;
   if (waterMesh) { rippleT.offset.x = t * .01; rippleT.offset.y = t * .02; }
-  for (const k in B) B[k].n = 0; for (const k in DEST_B) DEST_B[k].n = 0;
+  for (const k in B) B[k].n = 0; for (const k in DEST_B) DEST_B[k].n = 0; for (const b of XB) b.n = 0;
   const p = player.pos(), RAD = (Q.far * .8) / M, near = o => Math.abs(o.x - p.x) < RAD && Math.abs(o.y - p.y) < RAD;
   const marks = worldMarkers(); // rings on the ground + light beams to steer by (hidden once you're inside)
   for (const m of marks) { const pulse = 1 + Math.sin(t * 4) * .06, r = Math.min(m.r * M, 4) * pulse, y = heightAt(m.x, m.y) + .05, c = colr(m.color.replace(/,[\d.]+\)$/, ',1)'));
@@ -3221,6 +3645,7 @@ function render(t) {
   for (const q of SHIFT.alighting || []) if (near(q)) walker(q, 0, dt);
   for (const v of vehicles) if (near(v)) vehicle3(v, dt);
   if (!player.veh) walker(player, player.a, dt);
+  seatedPeople(tgt);
   if (near(BABA)) walker(BABA, Math.atan2(player.pos().y - BABA.y, player.pos().x - BABA.x), dt); // Baba Driver keeps an eye on you
   if (heli) { const hb = baseInto(heli.x * M, 34, heli.y * M, 0);
     put(B.paint, hb, 0, 0, 0, 4.2, 1.6, 1.8, '#2f5d3a'); put(B.glass, hb, 1.7, .1, 0, 1, 1.1, 1.5, '#24323d'); put(B.paint, hb, -3.5, .3, 0, 3.4, .4, .4, '#2f5d3a'); for (const s of [1, -1]) put(B.solid, hb, 0, -1.1, s * .8, 3.6, .1, .1, '#222');
@@ -3229,8 +3654,10 @@ function render(t) {
   for (const g of GENS) { const dx = g.x - tgt.x, dz = g.z - tgt.z; if (dx * dx + dz * dz > 1600 || !(NIGHT.on || g.on > .55)) continue; // generator exhaust
     for (let k = 0; k < 3; k++) { const f = (t * .7 + k / 3 + g.on) % 1, s = .12 + f * .45; put(B.smoke, IDM, g.x + .3 + f * .5, g.y + f * 2.4, g.z + Math.sin(t + k) * .2, s, s, s, '#6f6f6f'); } }
   updateDust(t, dt, tgt, dk); updateBirds(t, dt, tgt);
-  for (const k in B) { const b = B[k]; b.m.count = b.n; b.m.instanceMatrix.needsUpdate = true; if (b.m.instanceColor) b.m.instanceColor.needsUpdate = true; }
-  for (const k in DEST_B) { const b = DEST_B[k]; b.m.count = b.n; b.m.instanceMatrix.needsUpdate = true; b.m.instanceColor.needsUpdate = true; }
+  // batches with nothing to draw this frame are hidden: three.js would still issue a zero-instance draw call per pass
+  for (const k in B) { const b = B[k]; b.m.count = b.n; b.m.visible = b.n > 0; b.m.instanceMatrix.needsUpdate = true; if (b.m.instanceColor) b.m.instanceColor.needsUpdate = true; }
+  for (const k in DEST_B) { const b = DEST_B[k]; b.m.count = b.n; b.m.visible = b.n > 0; b.m.instanceMatrix.needsUpdate = true; b.m.instanceColor.needsUpdate = true; }
+  for (const b of XB) { b.m.count = b.n; b.m.visible = b.n > 0; b.m.instanceMatrix.needsUpdate = true; b.m.instanceColor.needsUpdate = true; if (b.pat) b.pat.needsUpdate = true; }
   composer.render(dt);
   drawOverlay(t, marks);
 }
@@ -3424,7 +3851,7 @@ function boot(data) {
     renderOnce(t) { render(t); if (R3) { const g = R3.getContext(); g.readPixels(0, 0, 1, 1, g.RGBA, g.UNSIGNED_BYTE, new Uint8Array(4)); } }, // read a pixel so the GPU actually finishes the frame
     seed(n) { let x = n >>> 0 || 1; Math.random = () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x / 4294967296; }; },
     resetWorld() { vehicles = []; peds = []; items = []; floaters = []; heli = null; JUNC.clear(); JWAIT.clear(); WORLD.jams = []; rebuildJams(); WORLD.hour = -1; WANT.heat = 0; WANT.timer = 0; player.veh = null; player.owned = null; },
-    clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
+    clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, peds: () => peds, lookOf, SEATS, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };
 }
 const hot = window.claude?.hot;
 if (hot?.ready) hot.ready(boot); else boot(hot?.data ?? {});
