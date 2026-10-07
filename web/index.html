@@ -106,6 +106,14 @@ button:focus-visible { outline: 2px solid var(--danfo); outline-offset: 2px; }
 #hustle { font-size: 12px; background: rgba(15,18,22,.86); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
 #hustle b { color: var(--danfo); }
 
+/* Place banner: fades in when you enter a district or a named place */
+#banner { position: fixed; z-index: 5; pointer-events: none; text-align: center; display: grid; gap: 2px; padding: 6px 16px;
+  transform-origin: 50% 0; animation: bannerIn 2.6s ease-out forwards; }
+#banner b { font-family: var(--display); font-size: clamp(18px, 4.6vw, 30px); color: var(--danfo); letter-spacing: 1px; text-shadow: 0 3px 0 #000, 0 0 18px rgba(0,0,0,.7); white-space: nowrap; }
+#banner span { font-size: 13px; color: var(--ink); text-shadow: 0 1px 0 #000, 0 0 10px rgba(0,0,0,.8); }
+@keyframes bannerIn { 0% { opacity: 0; } 12% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { #banner { animation: none; } }
+
 /* Conductor panel at a bus stop */
 #cpanel { position: fixed; z-index: 7; transform: translateX(-50%); box-sizing: border-box; display: grid; gap: 8px; padding: 10px 12px;
   background: rgba(15,18,22,.94); border: 1px solid var(--danfo); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.5); transform-origin: 50% 100%; }
@@ -270,6 +278,7 @@ html:not(.touch) .touch-only { display: none !important; }
   <button type="button" id="cp-call">CALL PASSENGERS</button>
 </div>
 <div id="card" hidden><h2></h2><p></p><div class="sub"></div></div>
+<div id="banner" hidden><b></b><span></span></div>
 
 <div id="touch">
   <div id="stick-zone" class="touch-only"><div id="stick"><div id="knob"></div></div></div>
@@ -433,7 +442,7 @@ function laneSpot(fromId, toId, t) {
 
 // ---------------------------------------------------------------- places (from mission content)
 const PL = {
-  park: { x: 256, y: 330 }, home: { x: 210, y: 410 },
+  park: { x: 256, y: 330 }, home: { x: 176, y: 330 },
   eko: { x: rc(74) + 30, y: rc(14) + 34 },
   comfort: P(31, 28), warehouse: P(45, 38), amaka: P(29, 41), tailor: P(25, 51),
   crates: [P(27, 39), P(37, 49), P(29, 59)], kemi: P(68, 10), carwash: P(11, 17),
@@ -575,6 +584,7 @@ const VT = {
   tfpick: { name: 'Task Force pickup', len: 42, wid: 20, max: 292, acc: 240, turn: 2.7, colors: ['#2f5d3a'], hp: 180, cop: true },
   tfbike: { name: 'Task Force bike', len: 22, wid: 9, max: 280, acc: 280, turn: 3.6, colors: ['#2f5d3a'], hp: 60, bike: true, cop: true },
 };
+const DESTS = ['OSHOJA', 'BALO', 'EKO', 'IYA B.', '2ND GATE', 'CHURCH', 'EBUTE', 'LEKKA'];
 const TRAFFIC_MIX = [['danfo', 4], ['okada', 3], ['keke', 3], ['sedan', 5], ['suv', 1]];
 let vehicles = [], peds = [], items = [], floaters = [], heli = null;
 const STATS = { aiCrashes: 0 };
@@ -585,6 +595,7 @@ function spawnVehicle(type, x, y, a, o = {}) {
     fuel: o.mission ? 100 : Math.round(rnd(o.parked ? 45 : 35, 95)),
     stuck: 0, rev: 0, hold: 0, tune: 1, topSpeed: 1, hitCd: 0 }, o);
   if (o.parked) v.driver = null;
+  if (type === 'danfo' && !v.dest) v.dest = pick(DESTS);
   depenetrate(v);
   vehicles.push(v); return v;
 }
@@ -666,7 +677,27 @@ const ui = {
 };
 // The centre card (JOB DONE / BUSTED / mission title) sits in the free space between the HUD pieces
 // above and below it, and shrinks if that space is small, so it never covers the HUD on any screen.
-function placeCard() { placeFree($('#card'), 'mid', 520); placeFree($('#cpanel'), 'bottom', 400); }
+function placeCard() { placeBanner(); placeFree($('#card'), 'mid', 520); placeFree($('#cpanel'), 'bottom', 400); if (!$('#banner').hidden && $('#banner').dataset.spot === 'band') placeBanner(); }
+// Place banner: first choice is the strip at the very top between the two HUD columns; if that's
+// too narrow (portrait phones) it goes just below the HUD, clear of the player; with no room, it skips.
+function placeBanner() {
+  const c = $('#banner'); if (c.hidden) return;
+  c.style.width = 'auto'; c.style.transform = 'none'; const natural = c.offsetWidth, h = c.offsetHeight;
+  const leftEdge = Math.max(...['#cash', '#stars', '#unit', '#job'].map(q => { const e = $(q); return e && !e.hidden ? e.getBoundingClientRect().right : 0; }));
+  const rightEdge = $('#hud-tr').getBoundingClientRect().left, gap = rightEdge - leftEdge - 24;
+  if (gap >= Math.min(natural, 260)) {
+    const k = Math.min(1, gap / natural); c.style.left = ((leftEdge + rightEdge) / 2) + 'px'; c.style.top = $('#hud-row').getBoundingClientRect().top + 'px';
+    c.style.transform = `translate(-50%, 0) scale(${k})`; c.dataset.spot = 'strip'; return;
+  }
+  placeFree(c, 'top', 420); c.dataset.spot = 'band';
+  // no clean spot: skip it rather than overlap any HUD piece
+  const r = c.getBoundingClientRect();
+  for (const q of ['#hud-tl', '#hud-tr', '#hud-bl', '#prompt', '#tbtns', '#stick', '#cpanel', '#card', '#toasts']) {
+    const e = $(q); if (!e || e.hidden || e.closest('[hidden]') || getComputedStyle(e).display === 'none') continue;
+    for (const o of q === '#hud-tl' || q === '#hud-tr' ? [...e.children] : [e]) { if (o.hidden || !o.offsetWidth) continue; const b = o.getBoundingClientRect();
+      if (r.left < b.right && b.left < r.right && r.top < b.bottom && b.top < r.bottom) { c.hidden = true; return; } }
+  }
+}
 // Put an overlay in the free vertical band between the HUD pieces above and below it (shrinking it if
 // the band is small). mode 'mid' centres it in the band, 'bottom' sits it at the bottom of the band.
 function placeFree(c, mode, maxW) {
@@ -677,12 +708,17 @@ function placeFree(c, mode, maxW) {
   if (tb && bl && innerHeight < 520 && innerWidth > innerHeight) { cx = (bl.right + tb.left) / 2; cw = tb.left - bl.right - 16; } // short landscape: between stats and buttons
   c.style.width = cw + 'px'; c.style.left = cx + 'px'; c.style.transform = 'none';
   let top = 0, bot = innerHeight;
-  for (const sel of ['#hud-tl', '#hud-tr', '#hud-bl', '#prompt', '#tbtns', '#stick'].concat(c.id === 'card' && !$('#cpanel').hidden ? ['#cpanel'] : [])) {
+  for (const sel of ['#hud-tl', '#hud-tr', '#hud-bl', '#prompt', '#tbtns', '#stick'].concat(c.id !== 'cpanel' && !$('#cpanel').hidden ? ['#cpanel'] : [], c.id !== 'banner' && !$('#banner').hidden ? ['#banner'] : [])) {
     const r = rect(sel); if (!r || r.right <= cx - cw / 2 || r.left >= cx + cw / 2) continue;
     if (r.top + r.height / 2 < innerHeight / 2) top = Math.max(top, r.bottom); else bot = Math.min(bot, r.top);
   }
-  const h = c.offsetHeight, room = bot - top - 16, k = Math.max(.5, Math.min(1, room / h));
+  const h = c.offsetHeight, room = bot - top - 16, k = Math.max(.5, Math.min(1, room / h, cw / Math.max(cw, c.scrollWidth))); // fit height and any unwrappable width
   if (mode === 'bottom') { c.style.top = (bot - 8) + 'px'; c.style.transform = `translate(-50%, -100%) scale(${k})`; }
+  else if (mode === 'top') {
+    // the place banner must never sit over the player: drop it below them if it would
+    const p = player.pos(), py = innerHeight / 2 + (p.y - camY) * zoom, px = innerWidth / 2 + (p.x - camX) * zoom;
+    let ty = top + 10; if (Math.abs(px - cx) < cw / 2 + 20 && py > ty - 24 && py < ty + h * k + 24) ty = Math.min(bot - h * k - 8, py + 34);
+    c.style.top = ty + 'px'; c.style.transform = `translate(-50%, 0) scale(${k})`; }
   else { c.style.top = ((top + bot) / 2) + 'px'; c.style.transform = `translate(-50%, -50%) scale(${k})`; }
 }
 addEventListener('resize', placeCard);
@@ -1029,7 +1065,8 @@ function spawnTraffic(dt) {
   peds = peds.filter(q => dist(q, p) < 1000);
   for (let i = 0; i < 3 && peds.length < pw; i++) {
     const a = rnd(0, Math.PI * 2), d = rnd(300, 800); const x = p.x + Math.cos(a) * d, y = p.y + Math.sin(a) * d; const t = tileAt(x, y);
-    if (t === T.SIDE || t === T.GROUND || t === T.PARK || t === T.GRASS) peds.push({ x, y, a: 0, tx: x, ty: y, spd: rnd(28, 44), col: pick(['#e2683c', '#2fa36b', '#f5c400', '#3d7bd9', '#d94f8a', '#f3eee4', '#8a5a3c']), state: 'walk', t: 0 });
+    if (t === T.SIDE || t === T.GROUND || t === T.PARK || t === T.GRASS) { const market = districtAt(x, y) === 'Balo Market';
+      peds.push({ x, y, a: 0, tx: x, ty: y, spd: rnd(28, 44), col: pick(['#e2683c', '#2fa36b', '#f5c400', '#3d7bd9', '#d94f8a', '#f3eee4', '#8a5a3c']), state: 'walk', t: 0, tray: Math.random() < (market ? .35 : .08) ? pick(TRAYS) : null }); }
   }
 }
 function updatePeds(dt) {
@@ -1411,6 +1448,7 @@ function updatePlayer(dt) {
     else if (touch.held.brake) { if (v.v < 8) { thr = -1; brake = false; } }
     if (v.fuel <= 0 && thr > 0) thr = 0; // out of fuel: coasting only
     drive(v, thr, steer, brake, dt);
+    skidMarks(v, brake, steer);
     // fuel burns with distance driven
     const before = v.fuel;
     v.fuel = Math.max(0, v.fuel - Math.abs(v.v) * dt * FUEL_PER_PX * (FUEL_USE[v.type] || 1));
@@ -1422,6 +1460,20 @@ function updatePlayer(dt) {
     const m = Math.hypot(mx, my); if (m > 0) { const sp = (IN.sprint() ? 190 : 120) * Math.min(1, m); tryMovePlayer(mx / Math.max(1, m) * sp * dt, my / Math.max(1, m) * sp * dt); player.a = Math.atan2(my, mx); }
   }
   if (player.hp <= 0) hospital();
+}
+
+// Tyre marks: hard braking or cornering fast lays rubber from the rear wheels. They're painted
+// straight into the ground layer, so they stay for the rest of the session at no per-frame cost.
+function skidMarks(v, brake, steer) {
+  const sp = Math.abs(v.v), d = VT[v.type];
+  const skidding = (brake && sp > 110) || (sp > 170 && Math.abs(steer) > .7);
+  const c = Math.cos(v.a), s2 = Math.sin(v.a), rx = -d.len / 2 + 6, w = d.wid / 2 - 3;
+  const wheels = d.bike ? [[v.x + c * rx, v.y + s2 * rx]] : [[v.x + c * rx - s2 * w, v.y + s2 * rx + c * w], [v.x + c * rx + s2 * w, v.y + s2 * rx - c * w]];
+  if (skidding && v.lastWheels && mapC) {
+    const g = mapC.getContext('2d'); g.strokeStyle = 'rgba(12,12,12,.28)'; g.lineWidth = d.bike ? 2 : 3; g.lineCap = 'round'; g.beginPath();
+    wheels.forEach((p, i) => { const q = v.lastWheels[i]; if (q) { g.moveTo(q[0], q[1]); g.lineTo(p[0], p[1]); } }); g.stroke();
+  }
+  v.lastWheels = skidding ? wheels : null;
 }
 
 // What E / ACTION / tapping the prompt would do right now, in priority order.
@@ -1591,48 +1643,119 @@ function showActEnd() {
 }
 
 // ---------------------------------------------------------------- map prerender
-let mapC, lightC, miniC;
+let mapC, lightC, miniC, roofC;
+// ---------------------------------------------------------------- 2.5D buildings
+// Solid cells are merged into building blocks, each with a height. At draw time a block's roof is
+// pushed away from the screen centre (and scaled up a touch) in proportion to its height, and the
+// walls facing the camera are filled in, so tall buildings lean outward as the camera moves.
+const BUILDINGS = [];
+const LEAN = .002, LEAN_MAX = 70; // roof offset per (px from screen centre × unit of height), capped
+const prng = seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const shade = (hsl, dl) => { const m = hsl.match(/hsl\((\d+),(\d+)%,(\d+)%\)/); return `hsl(${m[1]},${m[2]}%,${clamp(+m[3] + dl, 4, 96)}%)`; };
+function buildBuildings() {
+  BUILDINGS.length = 0; const used = new Uint8Array(COLS * ROWS);
+  const KIND = { [T.BUILD]: 1, [T.TOWER]: 1, [T.STALL]: 1, [T.STILT]: 1 };
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    const t = grid[I(c, r)]; if (!KIND[t] || used[I(c, r)]) continue;
+    const R = prng(c * 7919 + r * 104729);
+    const kind = t === T.TOWER ? 'tower' : t === T.STALL ? 'stall' : t === T.STILT ? 'stilt' : c >= 64 ? 'estate' : 'house';
+    const [mw, mh] = kind === 'tower' ? [2 + (R() * 3 | 0), 2 + (R() * 3 | 0)] : kind === 'stall' ? [1, 2] : kind === 'stilt' ? [1, 1] : kind === 'estate' ? [1 + (R() * 2 | 0), 1 + (R() * 2 | 0)] : [1 + (R() * 3 | 0), 1 + (R() * 3 | 0)];
+    let w = 1, h = 1;
+    while (w < mw && c + w < COLS && grid[I(c + w, r)] === t && !used[I(c + w, r)]) w++;
+    grow: while (h < mh && r + h < ROWS) { for (let k = 0; k < w; k++) if (grid[I(c + k, r + h)] !== t || used[I(c + k, r + h)]) break grow; h++; }
+    for (let rr = r; rr < r + h; rr++) for (let k = c; k < c + w; k++) used[I(k, rr)] = 1;
+    const ht = kind === 'tower' ? 50 + R() * 75 : kind === 'stall' ? 5 : kind === 'stilt' ? 8 : kind === 'estate' ? 14 + R() * 8 : (R() < .18 ? 26 + R() * 12 : 10 + R() * 12);
+    const wallHsl = kind === 'tower' ? `hsl(${200 + (R() * 20 | 0)},${14 + (R() * 10 | 0)}%,${30 + (R() * 10 | 0)}%)`
+      : kind === 'stall' ? 'hsl(25,30%,22%)' : kind === 'stilt' ? 'hsl(25,35%,28%)'
+      : pick2(R, ['hsl(42,45%,72%)', 'hsl(190,30%,62%)', 'hsl(120,20%,58%)', 'hsl(12,40%,62%)', 'hsl(50,55%,66%)', 'hsl(30,20%,64%)', 'hsl(330,25%,66%)']);
+    const b = { x0: c * CELL, y0: r * CELL, w: w * CELL, h: h * CELL, ht, kind, seed: (c * 31 + r * 17) | 0,
+      style: kind === 'house' ? (R() < .55 ? 'zinc' : 'flat') : kind };
+    b.x1 = b.x0 + b.w; b.y1 = b.y0 + b.h; b.cx = b.x0 + b.w / 2; b.cy = b.y0 + b.h / 2;
+    b.wall = [shade(wallHsl, 10), wallHsl, shade(wallHsl, -12), shade(wallHsl, -26)]; // lit, mid, shaded, night
+    BUILDINGS.push(b);
+  }
+  BUILDINGS.sort((a, b) => a.ht - b.ht); // painter's order: low roofs first, tall ones over them
+}
+function pick2(R, arr) { return arr[Math.floor(R() * arr.length)]; }
+// Roof artwork, painted once into an atlas the size of the map.
+function roofArt(g, b) {
+  const R = prng(b.seed * 9973 + 1), { x0, y0, w, h } = b;
+  const dot = (x, y, r, col) => { g.fillStyle = col; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); };
+  const tank = (x, y) => { dot(x + 1, y + 1, 6, 'rgba(0,0,0,.35)'); dot(x, y, 6, R() < .6 ? '#1c1c1c' : '#1f4e8c'); dot(x - 2, y - 2, 2, 'rgba(255,255,255,.35)'); g.strokeStyle = 'rgba(255,255,255,.15)'; g.lineWidth = 1; g.beginPath(); g.arc(x, y, 4, 0, 7); g.stroke(); };
+  const dish = (x, y) => { g.fillStyle = '#e8e6e0'; g.beginPath(); g.ellipse(x, y, 5, 4, R() * 3, 0, 7); g.fill(); dot(x, y, 1.5, '#666'); };
+  const solar = (x, y, sw, sh) => { g.fillStyle = '#1a2a4f'; g.fillRect(x, y, sw, sh); g.strokeStyle = 'rgba(150,180,255,.35)'; g.lineWidth = .7; for (let k = 3; k < sw; k += 3) { g.beginPath(); g.moveTo(x + k, y); g.lineTo(x + k, y + sh); g.stroke(); } g.beginPath(); g.moveTo(x, y + sh / 2); g.lineTo(x + sw, y + sh / 2); g.stroke(); };
+  const gen = (x, y) => { g.fillStyle = '#2e4a35'; g.fillRect(x, y, 9, 6); g.fillStyle = '#5b7a62'; g.fillRect(x + 1, y + 1, 4, 4); g.fillStyle = '#111'; g.fillRect(x + 6, y + 2, 2, 2); };
+  const spot = () => [x0 + 6 + R() * (w - 12), y0 + 6 + R() * (h - 12)];
+  if (b.kind === 'house' && b.style === 'zinc') {
+    const rust = R() < .5; g.fillStyle = rust ? `hsl(${18 + R() * 10},${40 + R() * 15}%,${36 + R() * 8}%)` : `hsl(200,${6 + R() * 6}%,${52 + R() * 10}%)`; g.fillRect(x0, y0, w, h);
+    const alongX = w >= h; g.fillStyle = 'rgba(0,0,0,.16)';
+    if (alongX) for (let k = 1; k < h; k += 3) g.fillRect(x0, y0 + k, w, 1); else for (let k = 1; k < w; k += 3) g.fillRect(x0 + k, y0, 1, h);
+    for (let k = 0; k < 3; k++) { const [x, y] = spot(); g.fillStyle = `rgba(${120 + R() * 40},${50 + R() * 20},20,.35)`; g.beginPath(); g.ellipse(x, y, 4 + R() * 6, 3 + R() * 4, R() * 3, 0, 7); g.fill(); }
+    g.fillStyle = 'rgba(255,255,255,.12)'; if (alongX) g.fillRect(x0, y0 + h / 2 - 1, w, 2); else g.fillRect(x0 + w / 2 - 1, y0, 2, h);
+    if (R() < .3) { const [x, y] = spot(); tank(x, y); }
+  } else if (b.kind === 'house') {
+    g.fillStyle = `hsl(40,${6 + R() * 6}%,${58 + R() * 10}%)`; g.fillRect(x0, y0, w, h);
+    g.strokeStyle = 'rgba(0,0,0,.22)'; g.lineWidth = 3; g.strokeRect(x0 + 1.5, y0 + 1.5, w - 3, h - 3);
+    const n = 1 + (R() * 3 | 0);
+    for (let k = 0; k < n; k++) { const [x, y] = spot(), q = R(); if (q < .35) tank(x, y); else if (q < .55) dish(x, y); else if (q < .75) solar(x - 6, y - 4, 12, 8); else gen(x - 4, y - 3); }
+    if (R() < .3) { const ly = y0 + 6 + R() * (h - 12); g.strokeStyle = 'rgba(40,40,40,.6)'; g.lineWidth = .6; g.beginPath(); g.moveTo(x0 + 4, ly); g.lineTo(x0 + w - 4, ly); g.stroke();
+      for (let xx = x0 + 6; xx < x0 + w - 6; xx += 5) { g.fillStyle = pick2(R, ['#e53935', '#fdd835', '#1e88e5', '#43a047', '#fff']); g.fillRect(xx, ly, 3, 4); } } // washing line
+  } else if (b.kind === 'estate') {
+    g.fillStyle = `hsl(${12 + R() * 10},${45 + R() * 10}%,${38 + R() * 8}%)`; g.fillRect(x0, y0, w, h);
+    g.strokeStyle = 'rgba(0,0,0,.18)'; g.lineWidth = 1; for (let k = 2; k < h; k += 4) { g.beginPath(); for (let xx = x0; xx < x0 + w; xx += 4) g.arc(xx + 2, y0 + k, 2, 0, Math.PI); g.stroke(); }
+    g.fillStyle = 'rgba(0,0,0,.2)'; g.fillRect(x0, y0 + h / 2 - 1, w, 2);
+    if (R() < .5) solar(x0 + 4, y0 + 4, Math.min(16, w - 8), 9);
+  } else if (b.kind === 'tower') {
+    g.fillStyle = `hsl(205,${10 + R() * 8}%,${32 + R() * 8}%)`; g.fillRect(x0, y0, w, h);
+    g.strokeStyle = 'rgba(200,220,235,.35)'; g.lineWidth = 3; g.strokeRect(x0 + 1.5, y0 + 1.5, w - 3, h - 3);
+    if (w >= 64 && h >= 64 && R() < .35) { const x = x0 + w / 2, y = y0 + h / 2; g.strokeStyle = '#f5c400'; g.lineWidth = 2; g.beginPath(); g.arc(x, y, 18, 0, 7); g.stroke(); g.fillStyle = '#f5c400'; g.font = '700 18px sans-serif'; g.textAlign = 'center'; g.fillText('H', x, y + 6); }
+    else for (let k = 0; k < 2 + (R() * 4 | 0); k++) { const [x, y] = spot(); g.fillStyle = '#8e979e'; g.fillRect(x - 5, y - 5, 10, 10); dot(x, y, 3, '#5c656c'); }
+    if (R() < .5) { const [x, y] = spot(); tank(x, y); }
+    if (R() < .4) { const [x, y] = spot(); g.strokeStyle = '#ddd'; g.lineWidth = 1; g.beginPath(); g.moveTo(x, y); g.lineTo(x + 8, y - 8); g.stroke(); dot(x + 8, y - 8, 1.5, '#e53935'); }
+  } else if (b.kind === 'stall') {
+    const c1 = pick2(R, ['#d94f3d', '#f2b632', '#2f8fbf', '#3fa66a', '#e07b39', '#7e57c2', '#e91e63']), c2 = R() < .5 ? '#f3eee4' : pick2(R, ['#f2b632', '#2f8fbf', '#d94f3d']);
+    if (R() < .6) { // striped tarp with a scalloped hem
+      for (let k = 0; k < w; k += 5) { g.fillStyle = (k / 5) % 2 ? c1 : c2; g.fillRect(x0 + 2 + k, y0 + 2, Math.min(5, w - 4 - k), h - 6); }
+      g.fillStyle = c1; for (let xx = x0 + 4; xx < x0 + w - 2; xx += 6) { g.beginPath(); g.arc(xx, y0 + h - 4, 3, 0, Math.PI); g.fill(); }
+    } else { // market umbrellas
+      for (const [ux, uy] of [[x0 + w / 2, y0 + h * .3], [x0 + w / 2, y0 + h * .72]]) for (let k = 0; k < 8; k++) { g.fillStyle = k % 2 ? c1 : c2; g.beginPath(); g.moveTo(ux, uy); g.arc(ux, uy, 14, k * Math.PI / 4, (k + 1) * Math.PI / 4); g.fill(); }
+    }
+  } else if (b.kind === 'stilt') {
+    g.fillStyle = `hsl(${16 + R() * 10},40%,${34 + R() * 8}%)`; g.fillRect(x0 + 4, y0 + 4, w - 8, h - 8);
+    g.fillStyle = 'rgba(0,0,0,.18)'; for (let k = 6; k < h - 4; k += 3) g.fillRect(x0 + 4, y0 + k, w - 8, 1);
+  }
+  if (b.kind !== 'stall') { g.strokeStyle = 'rgba(0,0,0,.5)'; g.lineWidth = 1; g.strokeRect(x0 + .5, y0 + .5, w - 1, h - 1); }
+}
+// Sun: direction + length of shadows per unit of height, and shadow strength, across the day.
+function sunState() {
+  const h = (S.minutes % 1440) / 60;
+  if (h < 6 || h > 18.75) return { dx: .22, dy: -.3, a: .14, nx: 0, ny: 0 }; // faint moonlight
+  const tt = (h - 6) / 12.75, az = Math.PI * tt, elev = Math.sin(Math.PI * tt);
+  const len = clamp(.32 / Math.max(.12, elev), .3, 2.4), sx = Math.cos(az), sy = Math.sin(az) * .35;
+  const dx = -sx * len, dy = (-sy - .15) * len, m = Math.hypot(dx, dy) || 1;
+  return { dx, dy, a: .34 * Math.min(1, elev * 3 + .25), nx: -dx / m, ny: -dy / m }; // (nx, ny) points toward the sun
+}
 function renderMap() {
   mapC = document.createElement('canvas'); mapC.width = WW; mapC.height = WH; const g = mapC.getContext('2d');
   lightC = document.createElement('canvas'); lightC.width = WW / 2; lightC.height = WH / 2; const L = lightC.getContext('2d'); L.scale(.5, .5);
-  const roofs = ['#8a4b38', '#7a6a58', '#9c8f7a', '#5f6f73', '#a0573f', '#6d4c41', '#8d8d86'];
-  const canopy = ['#d94f3d', '#f2b632', '#2f8fbf', '#3fa66a', '#e07b39', '#7e57c2', '#e8e1d0'];
   for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
     const t = grid[I(c, r)], x = c * CELL, y = r * CELL, h = hash(c, r), isl = c >= 64, balo = c >= 22 && r >= 36 && c < 48;
     switch (t) {
       case T.ROAD: g.fillStyle = isLagoon(c) ? '#33373e' : '#2a2d33'; g.fillRect(x, y, CELL, CELL); break;
-      case T.SIDE: g.fillStyle = isl ? '#5c6168' : balo ? '#6a5038' : `hsl(28,10%,${30 + h * 5}%)`; g.fillRect(x, y, CELL, CELL); break;
+      case T.SIDE: g.fillStyle = isl ? '#5c6168' : balo ? '#6a5038' : `hsl(28,10%,${30 + h * 5}%)`; g.fillRect(x, y, CELL, CELL);
+        g.fillStyle = 'rgba(0,0,0,.08)'; for (let k = 0; k < CELL; k += 8) { g.fillRect(x + k, y, 1, CELL); g.fillRect(x, y + k, CELL, 1); } break; // paving slabs
       case T.GROUND: g.fillStyle = isl ? '#4f5d55' : `hsl(18,${28 + h * 10}%,${24 + h * 5}%)`; g.fillRect(x, y, CELL, CELL); break;
       case T.GRASS: g.fillStyle = `hsl(105,${22 + h * 10}%,${20 + h * 6}%)`; g.fillRect(x, y, CELL, CELL); break;
-      case T.PARK: g.fillStyle = '#3e3d3a'; g.fillRect(x, y, CELL, CELL); g.strokeStyle = 'rgba(245,196,0,.35)'; g.lineWidth = 1; g.strokeRect(x + 2, y + 2, CELL - 4, CELL - 4); break;
+      case T.PARK: g.fillStyle = `hsl(30,4%,${22 + h * 3}%)`; g.fillRect(x, y, CELL, CELL); if (h > .6) { g.fillStyle = 'rgba(0,0,0,.25)'; g.beginPath(); g.ellipse(x + 8 + h * 16, y + 10 + h * 10, 6, 4, h * 3, 0, 7); g.fill(); } break;
       case T.WATER: case T.STILT: g.fillStyle = `hsl(188,${50 + h * 10}%,${15 + h * 3}%)`; g.fillRect(x, y, CELL, CELL);
-        if (t === T.STILT) { g.fillStyle = '#5a3f2a'; g.fillRect(x + 5, y + 5, CELL - 10, CELL - 10); g.fillStyle = '#8c7a62'; g.fillRect(x + 7, y + 7, CELL - 14, CELL - 14); if (h > .5) { L.fillStyle = 'rgba(255,190,90,.9)'; L.fillRect(x + 14, y + 14, 4, 4); } }
+        if (t === T.STILT) { g.fillStyle = '#4a3322'; for (const [px, py] of [[6, 6], [24, 6], [6, 24], [24, 24]]) g.fillRect(x + px, y + py, 3, 3); if (h > .5) { L.fillStyle = 'rgba(255,190,90,.9)'; L.fillRect(x + 14, y + 14, 4, 4); } }
         break;
-      case T.BUILD: {
-        const gi = hash(c >> 1, r >> 1); g.fillStyle = roofs[Math.floor(gi * roofs.length)]; g.fillRect(x, y, CELL, CELL);
-        g.fillStyle = 'rgba(0,0,0,.12)'; for (let k = 4; k < CELL; k += 6) g.fillRect(x, y + k, CELL, 2); // corrugated zinc
-        const same = (cc2, rr) => cc2 >= 0 && rr >= 0 && cc2 < COLS && rr < ROWS && grid[I(cc2, rr)] === T.BUILD && hash(cc2 >> 1, rr >> 1) === gi;
-        g.fillStyle = 'rgba(0,0,0,.45)';
-        if (!same(c + 1, r)) g.fillRect(x + CELL - 3, y, 3, CELL); if (!same(c, r + 1)) g.fillRect(x, y + CELL - 3, CELL, 3);
-        if (!same(c - 1, r)) g.fillRect(x, y, 1, CELL); if (!same(c, r - 1)) g.fillRect(x, y, CELL, 1);
-        if (h > .82) { L.fillStyle = 'rgba(255,200,110,.8)'; L.fillRect(x + 10, y + 12, 5, 5); }
-        break; }
-      case T.TOWER: {
-        g.fillStyle = '#26323d'; g.fillRect(x, y, CELL, CELL); g.fillStyle = '#34485a'; g.fillRect(x + 2, y + 2, CELL - 4, CELL - 4);
-        g.fillStyle = 'rgba(160,200,230,.18)'; g.fillRect(x + 4, y + 4, CELL - 8, 4);
-        for (let wy = 6; wy < CELL - 4; wy += 7) for (let wx = 5; wx < CELL - 4; wx += 7) if (hash(c * 7 + wx, r * 5 + wy) > .45) { L.fillStyle = hash(wx + c, wy + r) > .3 ? 'rgba(255,225,150,.95)' : 'rgba(150,210,255,.9)'; L.fillRect(x + wx, y + wy, 3, 3); }
-        break; }
+      case T.BUILD: case T.TOWER: g.fillStyle = '#2a2420'; g.fillRect(x, y, CELL, CELL); break; // footprint; the building itself is drawn live
       case T.STATION: g.fillStyle = '#55524d'; g.fillRect(x, y, CELL, CELL); g.fillStyle = 'rgba(255,255,255,.06)'; g.fillRect(x, y + CELL - 2, CELL, 2); break;
-      case T.STALL: g.fillStyle = '#4a3828'; g.fillRect(x, y, CELL, CELL); g.fillStyle = canopy[Math.floor(h * canopy.length)]; g.fillRect(x + 2, y + 2, CELL - 4, CELL - 4);
-        g.fillStyle = 'rgba(255,255,255,.18)'; g.fillRect(x + 2, y + 2, CELL - 4, 5); if (h > .7) { L.fillStyle = 'rgba(255,210,120,.7)'; L.fillRect(x + 13, y + 13, 5, 5); } break;
+      case T.STALL: g.fillStyle = '#4a3828'; g.fillRect(x, y, CELL, CELL); if (h > .55) { L.fillStyle = 'rgba(255,200,110,.85)'; L.beginPath(); L.arc(x + 16, y + 16, 5, 0, 7); L.fill(); } break; // kerosene lamp glow
     }
   }
-  // lane markings
-  g.strokeStyle = 'rgba(240,215,140,.42)'; g.lineWidth = 2; g.setLineDash([14, 14]);
-  const seg = (x1, y1, x2, y2) => { g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke(); };
-  for (const v of VM) seg(rc(v), 0, rc(v), WH); for (const v of VI) seg(rc(v), 0, rc(v), WH);
-  for (const h of HR) { seg(0, rc(h), 48 * CELL, rc(h)); seg(64 * CELL, rc(h), WW, rc(h)); }
-  seg(48 * CELL, rc(24), 64 * CELL, rc(24)); g.setLineDash([]);
+  roadDetails(g);
   // bridge rails + lamps
   g.fillStyle = '#a7b0ba'; g.fillRect(48 * CELL, 24 * CELL - 3, 16 * CELL, 3); g.fillRect(48 * CELL, 26 * CELL, 16 * CELL, 3);
   for (let x = 48 * CELL; x < 64 * CELL; x += 64) { L.fillStyle = 'rgba(255,200,120,.55)'; L.beginPath(); L.arc(x, 24 * CELL, 14, 0, 7); L.arc(x + 32, 26 * CELL, 14, 0, 7); L.fill(); }
@@ -1662,11 +1785,70 @@ function renderMap() {
   const cp = PL.checkpoint; g.fillStyle = 'rgba(240,90,80,.85)'; for (let i = 0; i < 4; i++) g.fillRect(cp.x + 22, cp.y - 32 + i * 16, 6, 8);
   g.fillStyle = '#ddd'; g.fillRect(cp.x + 30, cp.y - 44, 22, 12); g.fillStyle = '#222'; g.font = '700 8px sans-serif'; g.fillText('STOP', cp.x + 31, cp.y - 35);
   g.textAlign = 'center';
-  g.font = "26px Bungee, 'Arial Black', sans-serif"; g.fillStyle = 'rgba(255,255,255,.12)'; g.fillText('THIRD LAGOON BRIDGE', 1790, 24 * CELL - 18);
-  g.fillText('LUXURY BUS PARK', 256, 46 * CELL - 10); g.fillText('OSHOJA MOTOR PARK', 256, 6 * CELL - 10);
+  parkPaint(g); marketGoods(g);
   // parked luxury buses
   for (let i = 0; i < 3; i++) { g.fillStyle = '#e8e8e8'; g.fillRect(150 + i * 70, 1520, 40, 120); g.fillStyle = '#1565c0'; g.fillRect(150 + i * 70, 1520, 40, 14); g.fillStyle = '#90caf9'; g.fillRect(154 + i * 70, 1540, 32, 8); }
-  miniC = document.createElement('canvas'); miniC.width = 344; miniC.height = 230; const m = miniC.getContext('2d'); m.imageSmoothingQuality = 'high'; m.drawImage(mapC, 0, 0, 344, 230);
+  // roof atlas
+  roofC = document.createElement('canvas'); roofC.width = WW; roofC.height = WH; const rg = roofC.getContext('2d');
+  for (const b of BUILDINGS) roofArt(rg, b);
+  miniC = document.createElement('canvas'); miniC.width = 344; miniC.height = 230; const m = miniC.getContext('2d'); m.imageSmoothingQuality = 'high'; m.drawImage(mapC, 0, 0, 344, 230); m.drawImage(roofC, 0, 0, 344, 230);
+}
+const isRoad = (c, r) => c >= 0 && r >= 0 && c < COLS && r < ROWS && grid[I(c, r)] === T.ROAD;
+const isLand = (c, r) => c >= 0 && r >= 0 && c < COLS && r < ROWS && !isLagoon(c) && grid[I(c, r)] !== T.ROAD;
+// Kerbs, gutters, potholes, oil stains, faded lane paint and zebra crossings.
+function roadDetails(g) {
+  const R = prng(4242);
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    if (!isRoad(c, r)) continue; const x = c * CELL, y = r * CELL, h = hash(c + 7, r + 3);
+    // asphalt wear
+    if (h > .78) { g.fillStyle = `rgba(0,0,0,${.04 + R() * .05})`; g.fillRect(x + R() * 16, y + R() * 16, 8 + R() * 14, 6 + R() * 10); }
+    if (h < .02 && !isLagoon(c)) { g.fillStyle = 'rgba(0,0,0,.2)'; g.beginPath(); g.ellipse(x + 10 + R() * 12, y + 10 + R() * 12, 6 + R() * 6, 3 + R() * 3, R() * 3, 0, 7); g.fill(); } // oil
+    if (h > .975 && !nodes.some(n => Math.abs(n.x - x - 16) < 48 && Math.abs(n.y - y - 16) < 48)) { // pothole (never in a junction)
+      const px = x + 8 + R() * 16, py = y + 8 + R() * 16, rx = 4 + R() * 4, ry = 3 + R() * 3;
+      g.fillStyle = '#151619'; g.beginPath(); g.ellipse(px, py, rx, ry, R() * 3, 0, 7); g.fill(); g.strokeStyle = 'rgba(160,150,130,.35)'; g.lineWidth = 1; g.stroke(); }
+    // kerb (light stone) on the pavement side + gutter (dark) on the road side
+    for (const [dc, dr] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) if (isLand(c + dc, r + dr)) {
+      const gx = dc === 1 ? x + CELL - 3 : dc === -1 ? x : x, gy = dr === 1 ? y + CELL - 3 : dr === -1 ? y : y;
+      g.fillStyle = 'rgba(10,10,10,.45)'; if (dc) g.fillRect(gx, y, 3, CELL); else g.fillRect(x, gy, CELL, 3);
+      g.fillStyle = '#9b958a'; if (dc === 1) g.fillRect(x + CELL, y, 3, CELL); else if (dc === -1) g.fillRect(x - 3, y, 3, CELL); else if (dr === 1) g.fillRect(x, y + CELL, CELL, 3); else g.fillRect(x, y - 3, CELL, 3);
+    }
+  }
+  // faded lane paint: centre dashes with uneven wear, skipping junction boxes
+  const inJunction = (x, y) => nodes.some(n => Math.abs(n.x - x) < 34 && Math.abs(n.y - y) < 34);
+  const dashes = (x1, y1, x2, y2) => { const L = Math.hypot(x2 - x1, y2 - y1), ux = (x2 - x1) / L, uy = (y2 - y1) / L;
+    for (let d = 0; d < L; d += 28) { const ax = x1 + ux * d, ay = y1 + uy * d; if (inJunction(ax, ay)) continue; g.strokeStyle = `rgba(240,215,140,${.18 + R() * .3})`; g.lineWidth = 2; g.beginPath(); g.moveTo(ax, ay); g.lineTo(ax + ux * 14, ay + uy * 14); g.stroke(); } };
+  for (const v of VM.concat(VI)) dashes(rc(v), 0, rc(v), WH);
+  for (const h of HR) { dashes(0, rc(h), 48 * CELL, rc(h)); dashes(64 * CELL, rc(h), WW, rc(h)); }
+  dashes(48 * CELL, rc(24), 64 * CELL, rc(24));
+  // zebra crossings on most junction arms
+  for (const n of nodes) for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+    if (hash(n.x + dx * 3, n.y + dy * 5) > .55) continue;
+    const ax = n.x + dx * 40, ay = n.y + dy * 40; if (!isRoad(Math.floor(ax / CELL), Math.floor(ay / CELL))) continue;
+    g.fillStyle = 'rgba(235,232,220,.55)';
+    for (let k = -26; k <= 22; k += 8) { if (dx) g.fillRect(ax - 5, ay + k, 10, 5); else g.fillRect(ax + k, ay - 5, 5, 10); }
+  }
+}
+// Oshoja Motor Park: painted bays with numbers; the Luxury Bus Park gets wide coach bays.
+// 8 bays along the top, 3 along the bottom (the rest of the bottom edge is the Oshoja bus stop).
+const PARK_BAYS = [];
+for (const [y, dir] of [[196, 1], [384, -1]]) for (let i = 0; i < (dir > 0 ? 8 : 3); i++) PARK_BAYS.push({ x: 136 + i * 30 + 15, y: y + 30, a: dir > 0 ? Math.PI / 2 : -Math.PI / 2, top: y });
+function parkPaint(g) {
+  g.strokeStyle = 'rgba(245,196,0,.75)'; g.lineWidth = 2; g.fillStyle = 'rgba(245,196,0,.7)'; g.font = '700 8px "JetBrains Mono", monospace'; g.textAlign = 'center';
+  PARK_BAYS.forEach((b, i) => { g.strokeRect(b.x - 15, b.top, 30, 60); g.fillText(String(i + 1), b.x, b.a > 0 ? b.top + 56 : b.top + 10); });
+  g.setLineDash([10, 8]); g.beginPath(); g.moveTo(136, 320); g.lineTo(376, 320); g.stroke(); g.setLineDash([]); // aisle line
+  g.strokeStyle = 'rgba(255,255,255,.55)'; for (let i = 0; i < 4; i++) g.strokeRect(140 + i * 64, 46 * CELL + 14, 56, 132); // coach bays
+}
+// Goods piles in the market alleys: tomatoes, peppers, yams, basins, fabric bolts.
+function marketGoods(g) {
+  const R = prng(777);
+  for (let r = 36; r < ROWS; r++) for (let c = 22; c < 48; c++) {
+    if (grid[I(c, r)] !== T.GROUND) continue; const near = [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dc, dr]) => grid[I(c + dc, r + dr)] === T.STALL); if (!near || R() > .55) continue;
+    const x = c * CELL + 6 + R() * 14, y = r * CELL + 6 + R() * 14, q = R();
+    if (q < .3) { for (let k = 0; k < 9; k++) { g.fillStyle = R() < .5 ? '#d32f2f' : '#e53935'; g.beginPath(); g.arc(x + (k % 3) * 4, y + (k / 3 | 0) * 4, 2.2, 0, 7); g.fill(); } }
+    else if (q < .5) { g.fillStyle = '#6d4c41'; for (let k = 0; k < 4; k++) { g.beginPath(); g.ellipse(x + k * 3, y + (k % 2) * 4, 5, 2.5, .4, 0, 7); g.fill(); } }
+    else if (q < .7) { g.strokeStyle = '#1e88e5'; g.lineWidth = 2; g.beginPath(); g.arc(x + 4, y + 4, 6, 0, 7); g.stroke(); g.fillStyle = R() < .5 ? '#fb8c00' : '#43a047'; g.beginPath(); g.arc(x + 4, y + 4, 4, 0, 7); g.fill(); }
+    else { for (let k = 0; k < 3; k++) { g.fillStyle = pick2(R, ['#7e57c2', '#e91e63', '#00897b', '#fdd835', '#ff7043']); g.fillRect(x, y + k * 4, 12, 3); } }
+  }
 }
 
 // ---------------------------------------------------------------- rendering
@@ -1679,16 +1861,19 @@ function clockStr() { const m = Math.floor(S.minutes % 1440); return String(Math
 function drawVehicle(v, night) {
   const d = VT[v.type], L = d.len, Wd = d.wid;
   ctx.save(); ctx.translate(v.x, v.y); ctx.rotate(v.a);
-  ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.fillRect(-L / 2 + 3, -Wd / 2 + 3, L, Wd);
   if (d.bike) {
     ctx.fillStyle = '#111'; ctx.fillRect(-L / 2, -2, L, 4); ctx.fillStyle = v.color; ctx.fillRect(-L / 2 + 4, -Wd / 2, L - 8, Wd);
     if (v.driver) { ctx.fillStyle = v.driver === 'player' ? OUTFITS.find(o => o.id === S.outfit).color : v.driver === 'cop' ? '#c8e6c9' : '#5d4037'; ctx.beginPath(); ctx.arc(-1, 0, 5, 0, 7); ctx.fill(); ctx.fillStyle = '#1d1d1d'; ctx.beginPath(); ctx.arc(0, 0, 3, 0, 7); ctx.fill(); }
   } else {
     ctx.fillStyle = v.color; ctx.beginPath(); ctx.roundRect(-L / 2, -Wd / 2, L, Wd, 4); ctx.fill();
-    if (v.type === 'danfo') { ctx.fillStyle = '#111'; ctx.fillRect(-L / 2 + 3, -Wd / 2 + 1, L - 6, 2); ctx.fillRect(-L / 2 + 3, Wd / 2 - 3, L - 6, 2); ctx.fillStyle = 'rgba(0,0,0,.25)'; for (let k = -L / 2 + 10; k < L / 2 - 12; k += 7) ctx.fillRect(k, -Wd / 2 + 5, 2, Wd - 10); }
+    if (v.type === 'danfo') { ctx.fillStyle = '#111'; ctx.fillRect(-L / 2 + 3, -Wd / 2 + 1, L - 6, 2); ctx.fillRect(-L / 2 + 3, Wd / 2 - 3, L - 6, 2); ctx.fillStyle = 'rgba(0,0,0,.25)'; for (let k = -L / 2 + 10; k < L / 2 - 12; k += 7) ctx.fillRect(k, -Wd / 2 + 5, 2, Wd - 10);
+      ctx.fillStyle = '#5d4037'; ctx.fillRect(-L / 2 + 10, -Wd / 2 + 4, L - 26, Wd - 8); ctx.fillStyle = 'rgba(0,0,0,.25)'; ctx.fillRect(-L / 2 + 12, -2, L - 30, 4); } // roof rack
     if (v.type === 'tfpick') { ctx.fillStyle = '#f3eee4'; ctx.fillRect(-L / 2 + 2, -2, L - 4, 4); }
     if (v.type === 'keke') { ctx.fillStyle = '#222'; ctx.fillRect(-L / 2 + 3, -Wd / 2 + 2, L - 10, Wd - 4); }
     ctx.fillStyle = 'rgba(20,30,40,.85)'; ctx.fillRect(L / 2 - 13, -Wd / 2 + 2, 6, Wd - 4); ctx.fillRect(-L / 2 + 3, -Wd / 2 + 3, 4, Wd - 6);
+    if (v.dest) { // destination board in the windscreen, readable from above
+      ctx.save(); ctx.translate(L / 2 - 10, 0); ctx.rotate(Math.PI / 2); ctx.fillStyle = '#fffdf2'; ctx.fillRect(-Wd / 2 + 2, -3, Wd - 4, 6);
+      ctx.fillStyle = '#b71c1c'; ctx.font = '700 4.6px "JetBrains Mono", monospace'; ctx.textAlign = 'center'; ctx.fillText(v.dest, 0, 1.6); ctx.restore(); }
     ctx.fillStyle = 'rgba(255,255,255,.14)'; ctx.fillRect(-L / 2 + 8, -Wd / 2 + 3, L - 22, Wd - 6);
     if (v.siren) { const on = (performance.now() / 160 | 0) % 2; ctx.fillStyle = on ? '#ff3b30' : '#2979ff'; ctx.fillRect(-2, -Wd / 2 + 1, 5, Wd / 2 - 1); ctx.fillStyle = on ? '#2979ff' : '#ff3b30'; ctx.fillRect(-2, 0, 5, Wd / 2 - 1); }
     ctx.fillStyle = night ? '#fff6c8' : '#d8d2bf'; ctx.fillRect(L / 2 - 2, -Wd / 2 + 2, 2, 4); ctx.fillRect(L / 2 - 2, Wd / 2 - 6, 2, 4);
@@ -1698,18 +1883,27 @@ function drawVehicle(v, night) {
   if (v.hp < VT[v.type].hp * .3) { ctx.fillStyle = `rgba(90,90,90,${.35 + Math.sin(performance.now() / 200 + v.x) * .15})`; ctx.beginPath(); ctx.arc(v.x + Math.cos(v.a) * L * .35, v.y + Math.sin(v.a) * L * .35 - 6, 8, 0, 7); ctx.fill(); }
   if (v.label) { ctx.font = '700 11px "Bricolage Grotesque", sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#000'; ctx.fillText(v.label, v.x + 1, v.y - 25); ctx.fillStyle = '#ff8a80'; ctx.fillText(v.label, v.x, v.y - 26); }
 }
-function drawPerson(x, y, col, down, me) {
-  ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.beginPath(); ctx.ellipse(x + 2, y + 3, 6, 5, 0, 0, 7); ctx.fill();
+function drawPerson(x, y, col, down, me, tray) {
   if (down) { ctx.fillStyle = col; ctx.fillRect(x - 8, y - 3, 16, 6); return; }
   ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, me ? 7 : 5, 0, 7); ctx.fill();
   ctx.fillStyle = '#3b2418'; ctx.beginPath(); ctx.arc(x, y, me ? 3.5 : 2.5, 0, 7); ctx.fill();
   if (me) { ctx.strokeStyle = '#f5c400'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 10, 0, 7); ctx.stroke(); }
+  if (tray) drawTray(x, y - 3, tray);
+}
+// Hawkers balance trays of goods on their heads: pure water, puff-puff, oranges, suya.
+const TRAYS = ['water', 'puff', 'orange', 'suya'];
+function drawTray(x, y, kind) {
+  ctx.fillStyle = kind === 'water' ? '#1e88e5' : '#c9a66b'; ctx.beginPath(); ctx.arc(x, y, 7.5, 0, 7); ctx.fill();
+  ctx.strokeStyle = 'rgba(0,0,0,.35)'; ctx.lineWidth = 1; ctx.stroke();
+  if (kind === 'water') { ctx.fillStyle = '#f5f9ff'; for (const [dx, dy] of [[-3, -3], [2, -3], [-3, 2], [2, 2], [0, -1]]) ctx.fillRect(x + dx - 1.5, y + dy - 1.5, 3, 3); }
+  else if (kind === 'puff') { ctx.fillStyle = '#8d5524'; for (const [dx, dy] of [[-3, -2], [2, -3], [-2, 3], [3, 2], [0, 0]]) { ctx.beginPath(); ctx.arc(x + dx, y + dy, 1.8, 0, 7); ctx.fill(); } }
+  else if (kind === 'orange') { ctx.fillStyle = '#fb8c00'; for (const [dx, dy] of [[-3, -2], [2, -3], [-2, 3], [3, 2], [0, 0]]) { ctx.beginPath(); ctx.arc(x + dx, y + dy, 2, 0, 7); ctx.fill(); } }
+  else { ctx.strokeStyle = '#6d2f1a'; ctx.lineWidth = 1.6; for (let k = -3; k <= 3; k += 2) { ctx.beginPath(); ctx.moveTo(x - 5, y + k); ctx.lineTo(x + 5, y + k); ctx.stroke(); } }
 }
 // Passengers waiting for a danfo: bigger than street pedestrians, bright wrappers, a raised hand that
 // waves, and a white fare bubble. Deliberately unlike crates, markers or other pickups.
 function drawPax(p, t, bubble = true) {
   const wave = p.state === 'wait' ? Math.sin(t * 6 + p.phase) * .35 : 0;
-  ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.beginPath(); ctx.ellipse(p.x + 2, p.y + 4, 7, 5, 0, 0, 7); ctx.fill();
   ctx.fillStyle = p.col; ctx.beginPath(); ctx.ellipse(p.x, p.y + 1, 7, 6, 0, 0, 7); ctx.fill();
   ctx.fillStyle = '#3b2418'; ctx.beginPath(); ctx.arc(p.x, p.y - 2, 3.6, 0, 7); ctx.fill();
   if (p.tie) { ctx.fillStyle = p.tie; ctx.beginPath(); ctx.arc(p.x, p.y - 3, 4, Math.PI, 2 * Math.PI); ctx.fill(); }
@@ -1724,6 +1918,14 @@ function drawPax(p, t, bubble = true) {
     ctx.beginPath(); ctx.moveTo(p.x - 3, y + 12); ctx.lineTo(p.x, p.y - 12); ctx.lineTo(p.x + 3, y + 12); ctx.fill();
     ctx.fillStyle = '#1b1600'; ctx.font = '700 9px "JetBrains Mono", monospace'; ctx.textAlign = 'center'; ctx.fillText(txt, p.x, y + 9);
   }
+}
+// Motor-park touts call out destinations at the bays.
+const TOUTS = [{ x: 150, y: 300, col: '#c62828', call: 'Balo! Balo! Market straight!' }, { x: 300, y: 340, col: '#2e7d32', call: 'Eko! Eko! One chance!' }, { x: 230, y: 300, col: '#f57c00', call: 'Iya Basira! Enter!' }];
+function drawTout(q, t) {
+  ctx.fillStyle = q.col; ctx.beginPath(); ctx.arc(q.x, q.y + 1, 6.5, 0, 7); ctx.fill();
+  ctx.fillStyle = '#2b1a12'; ctx.beginPath(); ctx.arc(q.x, q.y - 2, 3.4, 0, 7); ctx.fill();
+  const ax = q.x + 8 + Math.sin(t * 5 + q.x) * 2, ay = q.y - 12; ctx.strokeStyle = '#2b1a12'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(q.x + 4, q.y - 1); ctx.lineTo(ax, ay); ctx.stroke();
+  ctx.fillStyle = '#fff'; ctx.fillRect(ax - 2, ay - 4, 4, 4); // waving a ticket
 }
 function drawAgbero(st, t) {
   const x = st.wx + (Math.abs(st.wy - st.y) > Math.abs(st.wx - st.x) ? 34 : 0), y = st.wy + (Math.abs(st.wy - st.y) > Math.abs(st.wx - st.x) ? 0 : 34);
@@ -1763,11 +1965,13 @@ function render(t) {
   ctx.setTransform(s, 0, 0, s, cv.width / 2 - camX * s + sx, cv.height / 2 - camY * s + sy);
   const hw = VW / zoom / 2 + 60, hh = VH / zoom / 2 + 60, x0 = camX - hw, y0 = camY - hh, x1 = camX + hw, y1 = camY + hh;
   if (mapC) { const sx0 = clamp(x0, 0, WW), sy0 = clamp(y0, 0, WH), sx1 = clamp(x1, 0, WW), sy1 = clamp(y1, 0, WH); if (sx1 > sx0 && sy1 > sy0) ctx.drawImage(mapC, sx0, sy0, sx1 - sx0, sy1 - sy0, sx0, sy0, sx1 - sx0, sy1 - sy0); }
-  drawDistrictLabels(x0 + 60, y0 + 60, x1 - 60, y1 - 60);
   const vis = o => o.x > x0 && o.x < x1 && o.y > y0 && o.y < y1;
+  const sun = sunState();
+  drawShadows(s, sx, sy, x0, y0, x1, y1, sun, vis);
   const marks = worldMarkers(); for (const m of marks) if (vis(m)) drawMarker(m.x, m.y, m.r, m.color, t, m.label);
   for (const it of items) if (vis(it)) { ctx.fillStyle = it.kind === 'bag' ? '#2e7d32' : '#8d6e63'; ctx.fillRect(it.x - 7, it.y - 7, 14, 14); ctx.strokeStyle = '#f5c400'; ctx.lineWidth = 2; ctx.strokeRect(it.x - 7, it.y - 7, 14, 14); }
-  for (const q of peds) if (vis(q)) drawPerson(q.x, q.y, q.col, q.state === 'down');
+  for (const q of peds) if (vis(q)) drawPerson(q.x, q.y, q.col, q.state === 'down', false, q.tray);
+  for (const q of TOUTS) if (vis(q)) drawTout(q, t);
   // passengers: waiting at shift stops / mission stops, walking to the bus, getting down
   if (SHIFT.on) { for (const id of routeOf().stops) { const st = BUS_STOPS[id]; if (!vis({ x: st.wx, y: st.wy })) continue;
       SHIFT.waiting[id].forEach((p, i) => drawPax(p, t, i < 4)); if (st.agbero) drawAgbero(st, t); }
@@ -1777,6 +1981,7 @@ function render(t) {
   const night = darkness() > .2;
   for (const v of vehicles) if (vis(v)) drawVehicle(v, night);
   if (!player.veh) drawPerson(player.x, player.y, OUTFITS.find(o => o.id === S.outfit).color, false, true);
+  drawBuildings(x0, y0, x1, y1, sun, darkness());
   for (const f of floaters) { ctx.font = '700 13px "Bricolage Grotesque", sans-serif'; ctx.textAlign = 'center'; ctx.globalAlpha = clamp(f.t, 0, 1); ctx.fillStyle = '#000'; ctx.fillText(f.text, f.x + 1, f.y + 1); ctx.fillStyle = '#fff'; ctx.fillText(f.text, f.x, f.y); ctx.globalAlpha = 1; }
   // night lighting
   const dk = darkness();
@@ -1804,28 +2009,84 @@ function render(t) {
     ctx.font = '700 12px "JetBrains Mono", monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText(Math.round(dist(obj, p) / 10) + 'm', ax, ay + 26);
   }
 }
-// District name watermarks: sit at the district's centre, but slide (and shrink) so the whole word
-// always stays inside both the district and the visible screen — never "INLAND" for MAINLAND.
-const DLABELS = [['OSHOJA', 0, 0, 22, 24], ['MAINLAND', 22, 0, 48, 36], ['MAINLAND', 0, 24, 22, 44], ['BALO MARKET', 22, 36, 48, 64],
-  ['BUS PARK', 0, 44, 14, 64], ['THE LAGOON', 48, 0, 64, 23], ['STILT TOWN', 48, 46, 64, 64], ['EKO CREST', 64, 0, 96, 40], ['LEKKA STRIP', 64, 40, 96, 64]]
-  .map(([t, c0, r0, c1, r1]) => ({ t, x0: c0 * CELL, y0: r0 * CELL, x1: c1 * CELL, y1: r1 * CELL }));
-function labelPlacements(vx0, vy0, vx1, vy1) {
-  const out = []; ctx.save();
-  for (const d of DLABELS) {
-    const ix0 = Math.max(d.x0, vx0), iy0 = Math.max(d.y0, vy0), ix1 = Math.min(d.x1, vx1), iy1 = Math.min(d.y1, vy1);
-    const w = ix1 - ix0, h = iy1 - iy0; if (w < 160 || h < 70) continue;
-    ctx.font = "100px Bungee, 'Arial Black', sans-serif"; const per = ctx.measureText(d.t).width / 100; // measured live: the web font may load late
-    const size = Math.floor(Math.min(64, (w - 40) / per, h * .6)); if (size < 20) continue;
-    ctx.font = `${size}px Bungee, 'Arial Black', sans-serif`; const tw = ctx.measureText(d.t).width;
-    const cx = clamp((d.x0 + d.x1) / 2, ix0 + tw / 2 + 20, ix1 - tw / 2 - 20), cy = clamp((d.y0 + d.y1) / 2, iy0 + size, iy1 - size);
-    out.push({ t: d.t, cx, cy, size, tw, d });
-  }
-  ctx.restore(); return out;
+// Soft shadows: everything casts onto a half-resolution layer in solid black (so overlaps never
+// double up), which is then laid over the ground once at the sun's strength. Upscaling the half-res
+// layer blurs the edges for free.
+function hull(P) { // monotone chain, counter-clockwise
+  P.sort((a, b) => a[0] - b[0] || a[1] - b[1]); const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const lo = [], up = []; for (const p of P) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+  for (let i = P.length - 1; i >= 0; i--) { const p = P[i]; while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+  return lo.slice(0, -1).concat(up.slice(0, -1));
 }
-function drawDistrictLabels(vx0, vy0, vx1, vy1) {
-  ctx.save(); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = 'rgba(255,255,255,.075)';
-  for (const l of labelPlacements(vx0, vy0, vx1, vy1)) { ctx.font = `${l.size}px Bungee, 'Arial Black', sans-serif`; ctx.fillText(l.t, l.cx, l.cy); }
-  ctx.restore();
+// Building shadows depend only on the sun, not the camera: they're painted into a world-sized
+// half-resolution layer, rebuilt in slices across frames (double-buffered) whenever the sun has
+// moved enough, and each frame just copies the visible part. Upscaling the half-res layer softens
+// the edges for free. Vehicles and people (small, moving) cast their shadows directly.
+const SHB = { front: null, back: null, sun: null, i: 0, building: false, perFrame: 220 };
+function shadowLayer(sun) {
+  const key = Math.round(S.minutes / 6); // re-cast every ~6 game minutes
+  if (!SHB.front) { SHB.front = document.createElement('canvas'); SHB.back = document.createElement('canvas'); for (const c of [SHB.front, SHB.back]) { c.width = WW / 2; c.height = WH / 2; } SHB.key = null; }
+  if (!SHB.building && SHB.key !== key) { SHB.building = true; SHB.i = 0; SHB.sun = sun; SHB.pendingKey = key; const g = SHB.back.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, WW / 2, WH / 2); }
+  if (SHB.building) {
+    const g = SHB.back.getContext('2d'); g.setTransform(.5, 0, 0, .5, 0, 0); g.fillStyle = '#000'; g.beginPath();
+    const end = Math.min(BUILDINGS.length, SHB.i + (SHB.front.ready ? SHB.perFrame : BUILDINGS.length)); // first build happens all at once
+    for (; SHB.i < end; SHB.i++) {
+      const b = BUILDINGS[SHB.i], dx = SHB.sun.dx * b.ht, dy = SHB.sun.dy * b.ht;
+      const hp = hull([[b.x0, b.y0], [b.x1, b.y0], [b.x1, b.y1], [b.x0, b.y1], [b.x0 + dx, b.y0 + dy], [b.x1 + dx, b.y0 + dy], [b.x1 + dx, b.y1 + dy], [b.x0 + dx, b.y1 + dy]]);
+      g.moveTo(hp[0][0], hp[0][1]); for (let k = 1; k < hp.length; k++) g.lineTo(hp[k][0], hp[k][1]); g.closePath();
+    }
+    g.fill();
+    if (SHB.i >= BUILDINGS.length) { const t = SHB.front; SHB.front = SHB.back; SHB.back = t; SHB.front.ready = true; SHB.key = SHB.pendingKey; SHB.alpha = SHB.sun.a; SHB.building = false; }
+  }
+  return SHB.front.ready ? SHB.front : null;
+}
+function drawShadows(s, sx, sy, x0, y0, x1, y1, sun, vis) {
+  const layer = shadowLayer(sun);
+  if (layer) { const ax = clamp(x0, 0, WW), ay = clamp(y0, 0, WH), bx = clamp(x1, 0, WW), by = clamp(y1, 0, WH);
+    if (bx > ax && by > ay) { ctx.globalAlpha = sun.a; ctx.drawImage(layer, ax / 2, ay / 2, (bx - ax) / 2, (by - ay) / 2, ax, ay, bx - ax, by - ay); ctx.globalAlpha = 1; } }
+  // vehicles and people: one translucent path, offset along the sun
+  ctx.fillStyle = `rgba(0,0,0,${(sun.a * .9).toFixed(3)})`; ctx.beginPath();
+  for (const v of vehicles) if (vis(v)) {
+    const d = VT[v.type], hgt = v.type === 'danfo' ? 14 : d.bike ? 7 : 10, c = Math.cos(v.a), sn = Math.sin(v.a), cx = v.x + sun.dx * hgt, cy = v.y + sun.dy * hgt, hl = d.len / 2, hw = d.wid / 2;
+    ctx.moveTo(cx + c * hl - sn * hw, cy + sn * hl + c * hw); ctx.lineTo(cx + c * hl + sn * hw, cy + sn * hl - c * hw); ctx.lineTo(cx - c * hl + sn * hw, cy - sn * hl - c * hw); ctx.lineTo(cx - c * hl - sn * hw, cy - sn * hl + c * hw); ctx.closePath();
+  }
+  const person = (x, y) => { const px = x + sun.dx * 8, py = y + sun.dy * 8; ctx.moveTo(px + 5, py); ctx.ellipse(px, py, 5, 4, 0, 0, 7); };
+  for (const q of peds) if (vis(q)) person(q.x, q.y);
+  if (!player.veh) person(player.x, player.y);
+  if (SHIFT.on) for (const id of routeOf().stops) for (const q of SHIFT.waiting[id]) if (vis(q)) person(q.x, q.y);
+  for (const q of TOUTS) if (vis(q)) person(q.x, q.y);
+  ctx.fill();
+}
+// Extruded buildings: roofs pushed away from the screen centre by height, camera-facing walls filled
+// in (lit or shaded by the sun), window bands on the walls (lit at night), roof art from the atlas.
+function drawBuildings(x0, y0, x1, y1, sun, dk) {
+  if (!roofC) return;
+  const m = LEAN_MAX + 20, night = dk > .25;
+  ctx.lineWidth = 2;
+  const winCol = night ? 'rgba(255,214,130,.9)' : 'rgba(25,32,40,.45)';
+  for (const b of BUILDINGS) {
+    if (b.x1 < x0 - m || b.x0 > x1 + m || b.y1 < y0 - m || b.y0 > y1 + m) continue;
+    let ox = (b.cx - camX) * b.ht * LEAN, oy = (b.cy - camY) * b.ht * LEAN; const om = Math.hypot(ox, oy); if (om > LEAN_MAX) { ox *= LEAN_MAX / om; oy *= LEAN_MAX / om; }
+    const sc = 1 + b.ht * .0016;
+    const hw = b.w * sc / 2, hh = b.h * sc / 2, rx0 = b.cx + ox - hw, ry0 = b.cy + oy - hh, rx1 = b.cx + ox + hw, ry1 = b.cy + oy + hh;
+    const wall = (ax, ay, bx, by, cx2, cy2, dx2, dy2, nx, ny) => {
+      const lit = nx * sun.nx + ny * sun.ny;
+      ctx.fillStyle = night ? b.wall[3] : lit > .35 ? b.wall[0] : lit < -.35 ? b.wall[2] : b.wall[1];
+      ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.lineTo(cx2, cy2); ctx.lineTo(dx2, dy2); ctx.closePath(); ctx.fill();
+      // window bands between the base edge (a-b) and the roof edge (d-c)
+      const depth = Math.hypot(dx2 - ax, dy2 - ay); if (b.ht < 12 || depth < 5 || b.kind === 'stall') return;
+      const tower = b.kind === 'tower'; if (tower) ctx.setLineDash([4, 5]); else if (depth < 9) return;
+      ctx.strokeStyle = winCol; ctx.beginPath();
+      const bands = b.kind === 'tower' ? Math.min(6, Math.floor(b.ht / 16)) : b.ht > 24 ? 2 : 1;
+      for (let k = 1; k <= bands; k++) { const t = k / (bands + 1); ctx.moveTo(lerp(ax, dx2, t), lerp(ay, dy2, t)); ctx.lineTo(lerp(bx, cx2, t), lerp(by, cy2, t)); }
+      ctx.stroke(); if (tower) ctx.setLineDash([]);
+    };
+    if (rx0 > b.x0 + .5) wall(b.x0, b.y0, b.x0, b.y1, rx0, ry1, rx0, ry0, -1, 0);
+    if (rx1 < b.x1 - .5) wall(b.x1, b.y0, b.x1, b.y1, rx1, ry1, rx1, ry0, 1, 0);
+    if (ry0 > b.y0 + .5) wall(b.x0, b.y0, b.x1, b.y0, rx1, ry0, rx0, ry0, 0, -1);
+    if (ry1 < b.y1 - .5) wall(b.x0, b.y1, b.x1, b.y1, rx1, ry1, rx0, ry1, 0, 1);
+    ctx.drawImage(roofC, b.x0, b.y0, b.w, b.h, rx0, ry0, rx1 - rx0, ry1 - ry0);
+  }
 }
 function drawMinimap(canvas, big) {
   const m = canvas.getContext('2d'), W2 = canvas.width, H2 = canvas.height, k = W2 / WW;
@@ -1851,7 +2112,7 @@ function updateHud(dt) {
   $('#clock').textContent = clockStr() + '  ·  Day ' + (Math.floor(S.minutes / 1440) + 1);
   const d = districtAt(player.pos().x, player.pos().y); if (d !== lastDistrict) { lastDistrict = d; $('#district').textContent = d.toUpperCase(); }
   $('#radio').textContent = WORLD.radio >= 0 && player.veh ? '♫ ' + RADIO[WORLD.radio].name : player.veh ? '♫ Radio off' : '';
-  updateJobCard(); updateConductorPanel(); placeCard();
+  updateJobCard(); updateConductorPanel(); updateBanner(); placeCard();
   const v = player.veh;
   $('#veh').textContent = v ? VT[v.type].name : 'On foot';
   $('#speed').hidden = !v; if (v) $('#speed').innerHTML = Math.round(Math.abs(v.v) * .42) + '<small>km/h</small>';
@@ -1875,6 +2136,24 @@ function updateHud(dt) {
   $('#tb-action').classList.toggle('hot', !!ctxA);
   $('#tb-gas').textContent = v ? 'GAS' : 'RUN'; $('#tb-brake').classList.toggle('off', !v);
   hudT -= dt; if (hudT <= 0) { hudT = .1; drawMinimap($('#minimap'), false); }
+}
+
+// Place names: a short fade-in banner when you enter a district or a named place.
+const TAGLINES = { 'Oshoja Junction': 'Motor-park chaos and danfo routes', 'Mainland': 'Where the hustle starts', 'Balo Market': 'Wall-to-wall stalls. Hold your bag well.',
+  'Third Lagoon Bridge': 'Ten kilometres of go-slow or glory', 'The Lagoon': 'Canoes, sawmill smoke and open water', 'Stilt Town Waters': 'Houses on stilts over the lagoon',
+  'Eko Crest': 'Glass towers and big money', 'Lekka Strip': 'Estates, toll gates and long straights', 'Luxury Bus Park': 'Night buses to the east' };
+const PLACES = [
+  { name: 'Oshoja Motor Park', sub: 'Danfos to everywhere. Touts included.', x0: 128, y0: 192, x1: 384, y1: 448 },
+  ...STATIONS.map(st => ({ name: st.name, sub: `Fuel ${naira(FUEL_PRICE)} per 1% of the tank`, x0: st.c * CELL - 16, y0: st.r * CELL - 16, x1: (st.c + 3) * CELL + 16, y1: (st.r + 2) * CELL + 16 })),
+];
+const BANNER = { cur: '', shown: {} };
+function placeName(p) { const pl = PLACES.find(q => p.x >= q.x0 && p.x <= q.x1 && p.y >= q.y0 && p.y <= q.y1); return pl ? [pl.name, pl.sub] : [districtAt(p.x, p.y), TAGLINES[districtAt(p.x, p.y)] || '']; }
+function updateBanner() {
+  const [name, sub] = placeName(player.pos()); if (name === BANNER.cur) return; BANNER.cur = name;
+  const now = performance.now(); if (now - (BANNER.shown[name] || -1e9) < 15000) return; // no flicker on borders
+  BANNER.shown[name] = now; const b = $('#banner');
+  b.querySelector('b').textContent = name.toUpperCase(); b.querySelector('span').textContent = sub;
+  b.hidden = false; b.style.animation = 'none'; void b.offsetWidth; b.style.animation = ''; clearTimeout(BANNER.t); BANNER.t = setTimeout(() => b.hidden = true, 2600);
 }
 
 // Conductor panel: visible while the bus is stopped at a route stop.
@@ -1932,8 +2211,9 @@ let lastT = performance.now();
 function step(now) {
   const dt = Math.min(.05, (now - lastT) / 1000); lastT = now;
   pumpToasts(dt * 1000);
-  if (!WORLD.paused && WORLD.started) update(dt);
-  pressed.clear();
+  // presses are discarded only once a game update has consumed them (or while paused), never by a
+  // bare render frame, so a tap can't be lost between frames
+  if (WORLD.started) { if (!WORLD.paused) update(dt); pressed.clear(); }
   render(now / 1000);
   requestAnimationFrame(step);
 }
@@ -1967,27 +2247,28 @@ $('#radio').addEventListener('click', () => pressed.add('T_radio'));
 function begin(fresh) {
   if (fresh) { try { localStorage.removeItem('naijahustle.v1'); } catch (e) {} location.reload(); return; }
   try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
-  $('#start').hidden = true; WORLD.paused = false; WORLD.started = true; cashShown = S.cash;
+  $('#start').hidden = true; WORLD.paused = false; WORLD.started = true; cashShown = S.cash; pressed.clear();
   if (!S.chats.length) setTimeout(announce, 900); else announce();
   if (S.actDone) ui.toast('Act 1 complete. Free roam Lagos.');
 }
 function boot(data) {
-  buildGrid(); buildGraph(); resize();
+  buildGrid(); buildGraph(); buildBuildings(); resize();
   applyState((data && data.state) || loadSave());
   if (S.done.length || S.cash !== 5000) { $('#btn-play').textContent = 'Continue'; $('#btn-new').hidden = false; }
   $('#btn-play').onclick = () => begin(false); $('#btn-new').onclick = () => begin(true);
   // seed the city so the title screen shows a living street
   for (let i = 0; i < 6; i++) { const s = roadSpotNear(player, 80, 500); spawnVehicle(pick(['danfo', 'sedan', 'keke', 'okada']), s.x, s.y, s.a, { from: s.from, to: s.to }); }
-  spawnVehicle('danfo', 200, 240, Math.PI / 2, { parked: true, parkDanfo: true }); spawnVehicle('danfo', 320, 380, -Math.PI / 2, { parked: true, parkDanfo: true });
+  for (const i of [0, 1, 3, 7, 8, 9]) { const bay = PARK_BAYS[i]; if (bay) spawnVehicle('danfo', bay.x, bay.y, bay.a, { parked: true, parkDanfo: true }); }
   const draw = () => renderMap();
   (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]) : Promise.resolve()).then(draw);
   requestAnimationFrame(step);
   try { window.claude?.hot?.snapshot?.(() => ({ state: S })); } catch (e) {}
-  window.NH = { S, player, vehicles: () => vehicles, MS, startMission, keys, vehBlocked, solidAt, tileAt, T, VT, spawnVehicle, roadSpotNear, nodes, playerFree, exitVehicle, stats: STATS, ui, NQ, STATIONS, actionContext, touch, pressed, JOB, labelPlacements, clearHeat, ui_card: (...a) => ui.card(...a), startShift, closeOverlays, jams: () => WORLD.jams, startJam, MAIN_ROADS, jammed, BUS_STOPS, ROUTES, SHIFT, arrive, callPassengers, answerChange, endShift, openRoutePicker, shiftTotals, WORLD, CAP, JUNC,
+  window.NH = { S, player, vehicles: () => vehicles, MS, startMission, keys, vehBlocked, solidAt, tileAt, T, VT, spawnVehicle, roadSpotNear, nodes, playerFree, exitVehicle, stats: STATS, ui, NQ, STATIONS, actionContext, touch, pressed, JOB, BANNER, placeName, BUILDINGS, sunState, SHB, cam: () => ({ x: camX, y: camY, zoom }), clearHeat, ui_card: (...a) => ui.card(...a), startShift, closeOverlays, jams: () => WORLD.jams, startJam, MAIN_ROADS, jammed, BUS_STOPS, ROUTES, SHIFT, arrive, callPassengers, answerChange, endShift, openRoutePicker, shiftTotals, WORLD, CAP, JUNC,
     // Test hook: run the simulation faster than real time (no rendering).
     sim(sec, each) { for (let t = 0; t < sec; t += 1 / 60) { update(1 / 60); pressed.clear(); each && each(); } },
     // Test hooks: stop the live loop from advancing the world, and reseed Math.random.
     freeze() { WORLD.started = false; },
+    renderOnce(t) { render(t); ctx.getImageData(0, 0, 1, 1); }, // read a pixel so the GPU/rasteriser actually finishes the frame
     seed(n) { let x = n >>> 0 || 1; Math.random = () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x / 4294967296; }; },
     resetWorld() { vehicles = []; peds = []; items = []; floaters = []; heli = null; JUNC.clear(); JWAIT.clear(); WORLD.jams = []; rebuildJams(); WORLD.hour = -1; WANT.heat = 0; WANT.timer = 0; player.veh = null; player.owned = null; },
     clearVehicles() { vehicles.length = 0; }, setVehicles(v) { vehicles = v; JUNC.clear(); JWAIT.clear(); }, teleport(x, y) { const o = player.pos(); o.x = x; o.y = y; camX = x; camY = y; }, addHeat, stars };

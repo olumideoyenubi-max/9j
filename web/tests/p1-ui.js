@@ -15,7 +15,7 @@ const { VIEWPORTS, layout } = require('./layout');
       'conductor shift + JOB DONE card': async () => page.evaluate(() => { NH.resetWorld(); const v = NH.spawnVehicle('danfo', 300, 480, 0, { parked: true }); v.driver = 'player'; NH.player.veh = v; NH.startShift(); NH.sim(.2); NH.ui_card('JOB DONE!', 'First Day on the Danfo', '+₦8,000   +20 cred'); }),
     };
     for (const [label, setup] of Object.entries(states)) {
-      await setup(); await page.waitForTimeout(250);
+      await setup(); await page.waitForTimeout(250); await page.evaluate(() => NH.sim(1 / 60)); // one game step re-places the HUD, as every frame does in play
       const L = await layout(page);
       ok(`layout ${vp.name}: ${label}`, !L.overlaps.length && !L.off.length && !L.hscroll, L);
       if (label.startsWith('driving')) await page.screenshot({ path: `/tmp/claude-0/shots/p1-${vp.width}x${vp.height}.png` });
@@ -81,20 +81,24 @@ const { VIEWPORTS, layout } = require('./layout');
     ok('refuel at a Gidi Fuel station (₦25 per %)', /^Refuel/.test(r.ctxLabel) && r.fuelAfter === 100 && r.paid === 2250, r);
     await page.context().close(); }
 
-  // ---------- 1.7 district labels never clipped, always inside their district ----------
-  { const { page } = await open(b, VIEWPORTS[0]);
-    const r = await page.evaluate(() => {
-      let bad = [], count = 0; let seed = 9; const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-      for (let i = 0; i < 400; i++) {
-        const w = [360, 740, 1280][i % 3] / (i % 3 === 2 ? 1 : .74), h = [740, 360, 760][i % 3] / (i % 3 === 2 ? 1 : .74);
-        const cx = rand() * 3072, cy = rand() * 2048, vx0 = cx - w / 2, vy0 = cy - h / 2, vx1 = cx + w / 2, vy1 = cy + h / 2;
-        for (const l of NH.labelPlacements(vx0, vy0, vx1, vy1)) { count++;
-          const L = l.cx - l.tw / 2, Rr = l.cx + l.tw / 2;
-          if (L < vx0 || Rr > vx1 || L < l.d.x0 || Rr > l.d.x1 || l.cy - l.size / 2 < vy0 || l.cy + l.size / 2 > vy1) bad.push({ t: l.t, L, Rr, vx0, vx1 }); } }
-      return { count, bad: bad.slice(0, 3), nBad: bad.length };
-    });
-    ok('district labels: whole word on screen and inside its district (400 random views)', r.count > 200 && r.nBad === 0, r);
-    await page.context().close(); }
+  // ---------- 1.7 / 3.1 place names: a fade-in banner on entering an area, never over the player ----------
+  for (const vp of [VIEWPORTS[0], VIEWPORTS[2], VIEWPORTS[4]]) {
+    const { page } = await open(b, vp);
+    const seen = [];
+    for (const [x, y, want] of [[176, 330, 'OSHOJA MOTOR PARK'], [900, 1300, 'BALO MARKET'], [2350, 560, 'EKO CREST'], [176, 330, 'OSHOJA MOTOR PARK']]) {
+      await page.evaluate(([x, y]) => { NH.player.veh = null; NH.player.x = x; NH.player.y = y; NH.teleport(x, y); for (let i = 0; i < 30; i++) NH.renderOnce(i / 60); NH.sim(1 / 60); }, [x, y]);
+      await page.evaluate(() => NH.sim(1 / 60));
+      const st = await page.evaluate(() => { const b = document.querySelector('#banner'), r = b.getBoundingClientRect();
+        const p = { x: innerWidth / 2 + (NH.player.x - NH.cam().x) * NH.cam().zoom, y: innerHeight / 2 + (NH.player.y - NH.cam().y) * NH.cam().zoom };
+        return { shown: !b.hidden, text: b.querySelector('b').textContent, coversPlayer: !b.hidden && p.x > r.left - 6 && p.x < r.right + 6 && p.y > r.top - 6 && p.y < r.bottom + 6 }; });
+      seen.push(Object.assign({ want }, st));
+    }
+    await page.waitForTimeout(2900); const hiddenLater = await page.$eval('#banner', e => e.hidden);
+    const firstThree = seen.slice(0, 3);
+    ok(`place banner ${vp.name}: shows the area name, never over the player, fades out`, firstThree.every(s => s.shown && s.text === s.want && !s.coversPlayer) && hiddenLater, seen);
+    ok(`place banner ${vp.name}: no repeat when bouncing back within 15s`, !seen[3].shown || seen[3].text !== 'OSHOJA MOTOR PARK' || seen[3].text === seen[2].text, seen[3]);
+    await page.context().close();
+  }
 
   // ---------- 1.8 controls ----------
   { const { page } = await open(b, VIEWPORTS[2]); // touch phone

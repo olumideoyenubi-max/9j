@@ -121,7 +121,7 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
       NH.startShift('mainland'); const st = NH.BUS_STOPS.ebute; v.x = st.x; v.y = st.y; v.v = 0; NH.sim(.1);
       for (let i = 0; i < 3 && !NH.SHIFT.changeQ.length; i++) { NH.SHIFT.waiting.ebute.push(...NH.SHIFT.waiting.church.splice(0, 2).map(p => Object.assign(p, { note: 1000 }))); NH.callPassengers(); }
       NH.sim(.1); NH.ui.toast('Ebute Corner: 4 waiting.'); });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(300); await page.evaluate(() => NH.sim(1 / 60));
     const L = await layout(page); const vis = await page.evaluate(() => ({ panel: !document.querySelector('#cpanel').hidden, q: !document.querySelector('#cp-change').hidden }));
     ok(`layout ${vp.name}: conductor panel + change question`, vis.panel && vis.q && !L.overlaps.length && !L.off.length && !L.hscroll, Object.assign(L, vis));
     await page.screenshot({ path: `/tmp/claude-0/shots/p2-${vp.width}x${vp.height}.png` });

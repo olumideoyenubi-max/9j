@@ -5,7 +5,7 @@ const VIEWPORTS = [
   { name: 'phone landscape 740x360', width: 740, height: 360, touch: true }, { name: 'phone landscape 844x390', width: 844, height: 390, touch: true },
   { name: 'tablet 820x1180', width: 820, height: 1180, touch: true },
 ];
-const PIECES = ['#cash', '#stars', '#unit', '#job', '#clock', '#minimap', '#district', '#radio', '#toasts .toast', '#hud-bl', '#prompt', '#cpanel', '#tbtns', '#stick', '#card'];
+const PIECES = ['#cash', '#stars', '#unit', '#job', '#clock', '#minimap', '#district', '#radio', '#toasts .toast', '#hud-bl', '#prompt', '#cpanel', '#tbtns', '#stick', '#card', '#banner'];
 async function layout(page) {
   return page.evaluate(PIECES => {
     const R = []; for (const sel of PIECES) { const el = document.querySelector(sel); if (!el) continue;
