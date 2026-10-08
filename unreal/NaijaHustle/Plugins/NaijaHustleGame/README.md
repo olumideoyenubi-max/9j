@@ -177,3 +177,27 @@ values (select **LightingRig** > Details > Lighting > Presets > Grade):
 The lookup table is made by `Scripts/nh_grade_lut.py`. To change it, edit `GRADE` at the top of that script and run it
 again, or grade the PNG it writes (`Saved/NaijaHustle/T_NHGrade_LUT.png`) in an image editor and import it over the
 asset. Harsh morning and golden evening use the full grade; the other presets keep neutral values for now.
+
+## Character effects (ready for when characters arrive)
+
+`UNHCharacterEffectsComponent` (`Source/NaijaHustleGame/Public/Characters`) gives a character sweat, rain wetness,
+bruises and bullet wounds. Nothing uses it yet: the player is still a capsule. To use it, add the component to a
+character whose skeletal-mesh materials have these parameters:
+
+| Parameter | Type | Meaning |
+|---|---|---|
+| `SweatIntensity` | scalar, 0 to 1 | sweat sheen, from effort, stamina, heat and humidity |
+| `Wetness` | scalar, 0 to 1 | rain wetness; a roof or canopy overhead keeps the character dry |
+| `DamageHit_0_Sphere` … `DamageHit_7_Sphere` | vector | wound centre in reference-pose space (xyz) and radius in cm (w) |
+| `DamageHit_0_Data` … `DamageHit_7_Data` | vector | bullet strength, bruise strength, age and a random seed |
+
+Material slots without these parameters (eyes, teeth) are left alone. The material work is still to do: the header
+describes the mask to build from `PreSkinnedPosition`.
+
+- **Weather:** it reads `Temperature`, `Humidity` and `Rain` from `MPC_NHWeather`. Each lighting preset now sets the
+  first two (a dusty noon is 34 °C and dry, a rainy night 25 °C and saturated), so sweat follows the time of day.
+- **Damage:** it listens for point damage on its owner, or call `ApplyHit`. Bruises darken and then heal; bullet
+  wounds stay.
+- **Cost:** dynamic materials come from a per-world pool (`UNHCharacterEffectsMIDPool`), so crowds can spawn and
+  despawn without creating materials mid-game. Call `PrewarmPool` while loading. Far-away and off-screen
+  characters update less often.

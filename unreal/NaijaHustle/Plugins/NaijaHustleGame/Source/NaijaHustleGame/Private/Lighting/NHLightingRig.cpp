@@ -73,6 +73,13 @@ ANHLightingRig::ANHLightingRig()
 	NightRain.Saturation = 0.95f; NightRain.Contrast = 1.1f; NightRain.WhiteTemp = 7000.f; NightRain.Bloom = 1.f; NightRain.Vignette = 0.45f;
 	NightRain.Wetness = 1.f; NightRain.Puddles = 1.f; NightRain.Rain = 1.f; NightRain.NightLights = 1.f;
 
+	// the air: harmattan noon is hot and dry, a rainy night cool and saturated
+	DustyNoon.Temperature = 34.f; DustyNoon.Humidity = 0.35f;
+	Sunset.Temperature = 29.f; Sunset.Humidity = 0.8f;
+	NightRain.Temperature = 25.f; NightRain.Humidity = 0.95f;
+	HarshMorning.Temperature = 28.f; HarshMorning.Humidity = 0.8f;
+	GoldenEvening.Temperature = 31.f; GoldenEvening.Humidity = 0.7f;
+
 	// sun 40 degrees up in the east-south-east, raking across the streets; exposure stays physical (EV100 for full sun)
 	HarshMorning.SunPitch = -40.f; HarshMorning.SunYaw = 160.f; HarshMorning.SunLux = 100000.f; HarshMorning.SunColor = FLinearColor(1.f, 0.95f, 0.86f);
 	HarshMorning.SkyLightIntensity = 1.3f;
@@ -207,6 +214,8 @@ void ANHLightingRig::ApplyPreset(ENHLightingPreset NewPreset)
 			UKismetMaterialLibrary::SetScalarParameterValue(this, MPC, TEXT("Puddles"), S.Puddles);
 			UKismetMaterialLibrary::SetScalarParameterValue(this, MPC, TEXT("Rain"), S.Rain);
 			UKismetMaterialLibrary::SetScalarParameterValue(this, MPC, TEXT("NightLights"), S.NightLights);
+			UKismetMaterialLibrary::SetScalarParameterValue(this, MPC, TEXT("Temperature"), S.Temperature);
+			UKismetMaterialLibrary::SetScalarParameterValue(this, MPC, TEXT("Humidity"), S.Humidity);
 		}
 		else
 		{

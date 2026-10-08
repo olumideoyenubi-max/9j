@@ -91,6 +91,9 @@ struct FNHLightingSettings
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weather", meta = (ClampMin = "0", ClampMax = "1")) float Puddles = 0.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weather", meta = (ClampMin = "0", ClampMax = "1")) float Rain = 0.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weather", meta = (ClampMin = "0", ClampMax = "1")) float NightLights = 0.f;
+	/** Air temperature in degrees C and relative humidity: characters sweat more and dry slower when it is hot and humid (UNHCharacterEffectsComponent) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weather") float Temperature = 30.f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weather", meta = (ClampMin = "0", ClampMax = "1")) float Humidity = 0.75f;
 };
 
 /**

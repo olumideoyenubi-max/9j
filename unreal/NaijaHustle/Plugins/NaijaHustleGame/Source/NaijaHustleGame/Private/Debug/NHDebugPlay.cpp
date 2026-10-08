@@ -1,5 +1,6 @@
 #include "Debug/NHDebugPlay.h"
 
+#include "Characters/NHCharacterEffectsComponent.h"
 #include "Components/BoxComponent.h"
 #include "Core/NHGameData.h"
 #include "Core/NHHustleSubsystem.h"
@@ -9,6 +10,9 @@
 #include "Gameplay/NHPerson.h"
 #include "Kismet/GameplayStatics.h"
 #include "Lighting/NHLightingRig.h"
+#include "Materials/MaterialInstanceDynamic.h"
+#include "Materials/MaterialParameterCollection.h"
+#include "Materials/MaterialParameterCollectionInstance.h"
 #include "NaijaHustleGame.h"
 #include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
@@ -894,5 +898,38 @@ void UNHDebugPlay::SelfTest(bool bQuitWhenDone)
 		const float H = Hustle()->HourOfDay();
 		Check(TEXT("Follow the clock gives the light back to the time of day (harsh morning from 8:00 to 11:30)"), !Dir()->bManualLighting && (H < 8.f || H >= 11.5f || Rig->Preset == ENHLightingPreset::HarshMorning),
 			FString::Printf(TEXT("%s, preset %d"), *Hustle()->ClockText(), static_cast<int32>(Rig->Preset)));
+	});
+
+	// ---- character effects: the material pool and the weather it reads (no character meshes exist yet)
+	Do(TEXT("character effects: material pool and weather"), [this]()
+	{
+		UNHCharacterEffectsMIDPool* Pool = PC->GetWorld()->GetSubsystem<UNHCharacterEffectsMIDPool>();
+		UMaterialInterface* Parent = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/NaijaHustle/Environment/Materials/M_NHSurface.M_NHSurface"));
+		if (!Check(TEXT("the character effects pool exists in the world and has a material to pool"), Pool && Parent))
+		{
+			return;
+		}
+		Pool->PrewarmPool(Parent, 3);
+		UMaterialInstanceDynamic* A = Pool->AcquireMID(Parent);
+		const int32 FreeAfterAcquire = Pool->GetFreeCount(Parent);
+		A->SetScalarParameterValue(TEXT("Grime"), 0.123f);
+		Pool->ReleaseMID(A);
+		UMaterialInstanceDynamic* B = Pool->AcquireMID(Parent);
+		float Grime = 0.f, ParentGrime = 0.f;
+		B->GetScalarParameterValue(FHashedMaterialParameterInfo(FMaterialParameterInfo(TEXT("Grime"))), Grime);
+		Parent->GetScalarParameterValue(FHashedMaterialParameterInfo(FMaterialParameterInfo(TEXT("Grime"))), ParentGrime);
+		Check(TEXT("pre-warming makes materials ahead of time, and a released one is handed out again with its overrides wiped"),
+			FreeAfterAcquire == 2 && B == A && FMath::IsNearlyEqual(Grime, ParentGrime) && Pool->GetFreeCount(Parent) == 2,
+			FString::Printf(TEXT("free %d, reused %d, grime %.3f vs %.3f"), FreeAfterAcquire, B == A ? 1 : 0, Grime, ParentGrime));
+		Pool->ReleaseMID(B);
+
+		const ANHLightingRig* Rig = ANHLightingRig::Find(PC);
+		UMaterialParameterCollection* MPC = Rig ? Rig->Weather.LoadSynchronous() : nullptr;
+		UMaterialParameterCollectionInstance* Weather = MPC ? PC->GetWorld()->GetParameterCollectionInstance(MPC) : nullptr;
+		float Temp = -1.f, Hum = -1.f;
+		const bool bRead = Weather && Weather->GetScalarParameterValue(TEXT("Temperature"), Temp) && Weather->GetScalarParameterValue(TEXT("Humidity"), Hum);
+		const FNHLightingSettings Now = Rig ? Rig->SettingsFor(Rig->Preset) : FNHLightingSettings();
+		Check(TEXT("the weather carries the lighting preset's temperature and humidity for sweat and drying"), bRead && FMath::IsNearlyEqual(Temp, Now.Temperature) && FMath::IsNearlyEqual(Hum, Now.Humidity),
+			FString::Printf(TEXT("%.1f C, humidity %.2f"), Temp, Hum));
 	});
 }

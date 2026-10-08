@@ -196,6 +196,7 @@ Plugins/NaijaHustleGame/            the game, as a drop-in plugin
     Gameplay/   NHGameDirector (First Day on the Danfo, conductor shifts), NHPerson
     Vehicles/   NHVehicle (arcade handling, damage, blockout bodies, chase camera)
     Player/     NHPlayerController (get in/out, E, choices, NHLighting, debug commands), NHCharacter
+    Characters/ NHCharacterEffectsComponent (sweat, wetness, bruises and wounds; pooled dynamic materials)
     Debug/      NHDebugPlay (scripted NHAutoplay and NHSelfTest)
     Input/      NHInputSet: every input action and mapping context, built in C++
     World/      NHBlockoutActor, NHCityTile, NHBlockoutBuilding, NHCables, NHShapes

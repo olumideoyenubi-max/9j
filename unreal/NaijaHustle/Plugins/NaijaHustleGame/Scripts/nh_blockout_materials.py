@@ -4,7 +4,7 @@ Run once inside the Unreal Editor (Tools > Execute Python Script...), before bui
 Safe to run again: it rebuilds the material graphs in place and keeps the textures and values already set
 on the material instances.
 
-  /Game/NaijaHustle/Lighting/Presets/MPC_NHWeather            Wetness, Puddles, Rain, NightLights (0..1)
+  /Game/NaijaHustle/Lighting/Presets/MPC_NHWeather            Wetness, Puddles, Rain, NightLights (0..1), Temperature (deg C), Humidity (0..1)
   /Game/NaijaHustle/Environment/Materials/M_NHSurface         master material for the city's instanced pieces
   /Game/NaijaHustle/Environment/Materials/MI_NHSurface_<Type> one instance per surface type (ENHSurfaceType)
   /Game/NaijaHustle/Environment/Materials/M_NHBlockout        the plain colour-only material (fallback)
@@ -34,7 +34,8 @@ MAT_DIR = "/Game/NaijaHustle/Environment/Materials"
 MAT_NAME = "M_NHBlockout"
 MPC_DIR = "/Game/NaijaHustle/Lighting/Presets"
 MPC_NAME = "MPC_NHWeather"
-WEATHER_PARAMS = ["Wetness", "Puddles", "Rain", "NightLights"]
+WEATHER_PARAMS = ["Wetness", "Puddles", "Rain", "NightLights", "Temperature", "Humidity"]
+WEATHER_DEFAULTS = {"Temperature": 30.0, "Humidity": 0.75}  # degrees C and 0..1, read by the character effects; the rest start at 0
 SURFACE_NAME = "M_NHSurface"
 TEX_DIR = "/Game/NaijaHustle/Environment/Textures"
 GROUND_Z = 16.0  # pavement height: the splash band starts here
@@ -76,7 +77,7 @@ if set(WEATHER_PARAMS) - existing:
         if name not in existing:
             p = unreal.CollectionScalarParameter()  # the C++ constructor gives each parameter a fresh id
             p.set_editor_property("parameter_name", name)
-            p.set_editor_property("default_value", 0.0)
+            p.set_editor_property("default_value", WEATHER_DEFAULTS.get(name, 0.0))
             params.append(p)
     mpc.set_editor_property("scalar_parameters", params)
 eal.save_asset(f"{MPC_DIR}/{MPC_NAME}")
