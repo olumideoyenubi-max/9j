@@ -60,3 +60,6 @@ unreal/NaijaHustle/Content/NaijaHustle/Environment/Materials/
 unreal/NaijaHustle/Content/NaijaHustle/Environment/Textures/T_NHFlat_*
 unreal/NaijaHustle/Content/NaijaHustle/Lighting/Presets/MPC_NHWeather*
 unreal/NaijaHustle/Content/NaijaHustle/Lighting/Presets/T_NHGrade_LUT*
+
+# Written per machine by assign_vehicle_meshes.py; points at third-party car models that are not in the repo
+/unreal/NaijaHustle/Plugins/NaijaHustleGame/Data/vehicle_meshes.json

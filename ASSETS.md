@@ -33,9 +33,20 @@ After adding, run `unreal/NaijaHustle/Plugins/NaijaHustleGame/Scripts/assign_meg
 
 ## Car models (Fab)
 
-None added yet. All 16 vehicle types use blockout bodies.
-After adding, run `unreal/NaijaHustle/Plugins/NaijaHustleGame/Scripts/assign_vehicle_meshes.py`.
+One test model is in the Mac project (from Sketchfab, not Fab). The other 15 vehicle types use blockout bodies.
+A downloaded FBX is imported with `Scripts/import_car_fbx.py` (run twice), then
+`unreal/NaijaHustle/Plugins/NaijaHustleGame/Scripts/assign_vehicle_meshes.py` fits it to its vehicle type.
 
-| Game vehicle type | Fab asset name | Notes |
+| Game vehicle type | Asset | Notes |
 |---|---|---|
+| supersuv (Lekki Fury) | "Urus Absolut" (https://skfb.ly/osAMo) by SDC PERFORMANCE, CC Attribution-NonCommercial 4.0 | **Test only: non-commercial licence and a real make, so it cannot ship.** 1,257,573 triangles, 36 material slots, 4 levels of detail. Folder `Content/Vehicles/SuperSuv_Absolut/`. Too heavy for the M1: see `PROGRESS.md`. |
+| sports (Eko Veloce) | "Porsche 911 GT3" (https://skfb.ly/o6Kp9) by ChevroletSS, CC Attribution 4.0 | Not imported: the download is a `.blend` file; needs a glTF or FBX download. Credit required. |
+
+## Clothing (test)
+
+| Item | Asset | Notes |
+|---|---|---|
+| Trainers | "Air Jordan 1 Low Dior" (https://skfb.ly/pMODv) by VTX, CC Attribution-NonCommercial-ShareAlike 4.0 | **Test only: non-commercial licence and real brands.** Two static meshes, one 2K texture. Folder `Content/Wardrobe/Trainers_LowTop/`. Not rigged or fitted to a character. |
+| Two pairs of jeans, two hoodies | Sketchfab and others; sources and licences not recorded yet | Not imported. Unrigged meshes. |
+
 | not added yet | | |

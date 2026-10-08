@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-08 (vehicle dynamics and paint; real Lagos names; player stand-in body; visual brief section 2 awaiting review)
+**Last updated:** 2026-10-08 (first real car model imported as a test; clean playtests; visual brief section 2 awaiting review)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -38,8 +38,12 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Real Lagos map names:** the stops, routes, districts and main roads now use real Lagos places (Oshodi, Charity, Anthony, Gbagada, Iyana Oworo, CMS, Fadeyi, Yaba, Tejuosho Market, Olosha, Idi-Oro; Third Mainland Bridge, Makoko, Lagos Island, Lekki, Mushin). Stop ids are unchanged. Applied to the Unreal data, level signs, code and the browser demo; mapping in `docs/LAGOS_MAP.md`.
 - **Vehicle paint system:** `UNHVehicleMaterialComponent` on every vehicle (rain wetness with ripples, clear coat paint, up to six crash marks that scrape paint to primer or crack glass) and the matching textureless material `M_NHCarPaint` from `nh_car_paint.py`. Crashes and `Repair()` are wired in. Self-test now 62 checks, including impacts in mesh space, respray, rain and pooling.
 - **Vehicle weight, suspension and grip:** `UNHVehicleDynamicsComponent` on every vehicle: slides past the grip limit (speed, handbrake, dirt, wet road) with recovery, sprung body that dives, squats and rolls, wheels traced to the ground, kerb and landing compression, all in fixed sub-steps. Self-test grew to 74 checks.
+- **Clean playtests on the final build (2026-10-08, after a restart):** self-test 74 of 74 and autoplay 26 of 26, at normal speed, with no freeze and with GPU occlusion queries left on.
+- **Car import route:** `Scripts/import_car_fbx.py` brings a downloaded FBX in as one static mesh and, on a second run, makes three lower levels of detail. Used on a 1.26 million triangle test SUV, which `assign_vehicle_meshes.py` then fitted to the super SUV type.
 
 ## In progress
+
+- **Real car models:** the one test model is far too heavy for this Mac. Standing next to it on Lagos Island (36250, 7950, facing -40) the game ran at 18.6 fps; with the blockout body in the same spot, 29.9 fps (one 15-second run each, 1280×720). It also cannot ship (non-commercial licence, real make). Lighter game-ready models are needed, roughly 50,000 to 150,000 triangles each.
 
 - **Player character (MetaHuman):** to be created on a rented cloud PC, because MetaHuman Creator recommends 32 GB of memory and the Mac has 8 GB. Plan: assemble with the UE Optimized pipeline at Low, bring the result to the Mac, force card hair, and measure. No assets will be bought; clothing starts from free items and tinting.
 
@@ -77,8 +81,9 @@ Deferred: NPCs and storyline.
 - The map is still the small compressed grid: many real stops and areas are missing (see `docs/LAGOS_MAP.md`).
 - The car paint is not on any of the game's cars yet: the blockout bodies use the surface materials, so paint, wetness and crash marks only show on bodies given `MI_NHCarPaint_Body` / `MI_NHCarPaint_Glass` (planned for the real car models).
 - The look of the car paint is only partly checked: clean and wet paint were seen on a test body in an earlier, costlier version of the material; the current version's scratches, cracks and ripples have not been seen on screen. Frame-rate cost on a real car is not measured.
-- **No clean full self-test on the final build yet.** With the vehicle dynamics in, autoplay passed 26 of 26. The self-test's 12 new dynamics checks all pass, but the last full runs were made while the Mac was overloaded (about one frame a second), and under that load one unrelated timing check (the sprint-and-stop test) fails. It passed on every run at normal speed before. Needs a rerun on a quiet machine.
-- **Engine freeze seen twice on 2026-10-08:** the standalone game stopped inside Unreal's Metal renderer waiting for a GPU occlusion-query result (`FGPUOcclusion::WaitForLastOcclusionQuery`), once before any vehicle moved. Cause not found; it coincided with the Mac being overloaded. Running with `-dpcvars=r.AllowOcclusionQueries=0` avoided it.
+- The test SUV's paint is wrong: the roof and bonnet come out white on a gold body, and it does not use the game's car paint material yet (36 material slots from the download).
+- `NHLookShots` with a relative folder name saves into the engine's `Binaries/Mac` folder; pass a full path.
+- **Engine freeze seen twice on 2026-10-08 (not seen in six runs after a restart):** the standalone game stopped inside Unreal's Metal renderer waiting for a GPU occlusion-query result (`FGPUOcclusion::WaitForLastOcclusionQuery`), once before any vehicle moved. Cause not found; it coincided with the Mac being overloaded. Running with `-dpcvars=r.AllowOcclusionQueries=0` avoided it.
 - Vehicle dynamics are untested by hand: how the slides, the handbrake and the body movement feel when driving has not been judged, and Chaos Vehicles is not used (the cars are kinematic blockouts with no physics body).
 - Not covered by the scripted playtests: change prompts, free conductor shifts, agbero beg/drive-off, real driving between stops.
 - All vehicles are blockout shapes; all surfaces use flat placeholder textures.
