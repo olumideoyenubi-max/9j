@@ -1,7 +1,7 @@
 # NAIJA HUSTLE
 
 An original open-world action-adventure set across fictionalized **Lagos**, **Port Harcourt**
-and **Abuja**. Built in Unity 6 for Android first (3 GB phones), then PC.
+and **Abuja**. The game now runs in **Unreal Engine 5.8** (`unreal/`), with a playable browser demo in `web/`.
 
 > Rise from danfo conductor on the Lagos mainland, through Port Harcourt's oil money and creeks,
 > to the power circles of the capital. Hustle, chase, scheme, and decide who you become.
@@ -11,11 +11,25 @@ and **Abuja**. Built in Unity 6 for Android first (3 GB phones), then PC.
 - **Tech:** [`docs/TECH.md`](docs/TECH.md): streaming one city at a time, the <200 MB base
   install, memory budgets, device tiers, layers, saves, build settings.
 
+- **Progress:** [`PROGRESS.md`](PROGRESS.md): what's done, in progress and next, known bugs, the latest
+  frame rate, and screenshots.
+- **Third-party assets:** [`ASSETS.md`](ASSETS.md): what to re-add from Fab. None of it is in this repo.
+
 ## What's in the repo
+
+| Folder | What it is |
+|---|---|
+| [`unreal/NaijaHustle/`](unreal/NaijaHustle/README.md) | **The game.** Unreal Engine 5.8 project; everything lives in the drop-in plugin `Plugins/NaijaHustleGame`. Builds and runs on macOS (Apple Silicon); the Windows steps are written but not yet tried on 5.8 |
+| `web/` | The browser demo (Three.js). It shares its city and rules with the Unreal game |
+| `legacy/unity/` | **Archived.** The original Unity 6 project (`Assets/`, `Packages/`, `ProjectSettings/`). No longer developed; its engine-free C# rules and content JSON are still unit-tested by `Tools/CoreTests` |
+| `Tools/` | dotnet test harness and a narrated playthrough for the archived rules |
+| `docs/` | Design and tech documents (written for the Unity version), and `docs/screenshots/` |
+
+### Archived Unity project (`legacy/unity/`)
 
 | Area | Status |
 |---|---|
-| Game rules (`Scripts/Core`, engine-free C#) | Done and unit-tested: economy, businesses, garage & mods, outfits, 5-star wanted with city-specific responses, checkpoints, missions, side-hustle shifts, interstate travel, phone apps (chat / transfers / social), weather, ambient events, saves |
+| Game rules (`Assets/_Project/Scripts/Core`, engine-free C#) | Done and unit-tested: economy, businesses, garage & mods, outfits, 5-star wanted with city-specific responses, checkpoints, missions, side-hustle shifts, interstate travel, phone apps (chat / transfers / social), weather, ambient events, saves |
 | Content (`Resources/Content/*.json`) | 17 districts across 3 cities, 27 story + 3 side missions, 7 hustles, 17 vehicles, 11 mods, 10 outfits, 9 businesses, 8 safehouses, 12 contacts, 7 radio stations, bus mini-events, social posts |
 | Unity runtime (`Scripts/Runtime`) | Written, not yet compiled in the Unity editor (no editor in the authoring environment). Covers city streaming (Addressables), touch and PC/gamepad input, third-person camera, car/okada, boat, helicopter and crane physics, traffic, responders, mission hooks, phone UI, radio, HUD, checkpoints, travel flow, device tiers |
 | Scenes, art, audio | Not started. Needs greyboxed city scenes and prefabs wired to the scripts |
@@ -30,7 +44,7 @@ on the Danfo" and conductor shifts), Oshoja Motor Park with numbered bays and de
 stops, Gidi Fuel stations, 5 story missions, Task Force chases with search and decay, the checkpoint
 "settle" choice, a tailor, a car wash business, day and night with real-time sun shadows, and the
 phone (Gist, KoboPay, Yarns, MapAm). Open it in any modern browser on a desktop or phone. Its rules
-mirror `Scripts/Core`.
+mirror `legacy/unity/Assets/_Project/Scripts/Core`.
 
 Rendering: physically based materials, a sky that follows the in-game clock, fog that shifts from
 afternoon haze to sunset orange to night blue, soft sun shadows, contact shadows, and street detail
@@ -102,27 +116,24 @@ all save with the game.
 
 `web/legacy-2d.html` keeps the earlier top-down 2D version.
 
-## Unreal Engine 5 vertical slice
+## The Unreal Engine 5.8 game
 
-`unreal/NaijaHustle/` is the UE5 project for a photoreal vertical slice: one Lagos street block at night in the
-rain, with the danfo conductor mission. See [`unreal/NaijaHustle/README.md`](unreal/NaijaHustle/README.md) for setup.
+`unreal/NaijaHustle/` is the Unreal project: the browser demo's Lagos as a playable level, with the danfo
+conductor mission. It runs on an Apple M1 with 8 GB of memory (about 22 fps at 1280×720 so far, see
+[`PROGRESS.md`](PROGRESS.md)) and keeps a Windows + RTX profile for stronger machines. See [`unreal/NaijaHustle/README.md`](unreal/NaijaHustle/README.md) for setup.
 The game itself is the drop-in plugin [`unreal/NaijaHustle/Plugins/NaijaHustleGame`](unreal/NaijaHustle/Plugins/NaijaHustleGame/README.md)
 (copy it into your own UE5 C++ project's `Plugins` folder). It shares the browser demo's city and rules:
 `node web/tools/export-unreal.js` writes `lagos_city.json` and `naija_rules.json` into the plugin's `Data` folder, and
-`build_street_block.py` turns the city into the level `L_Slice_Street`, with day, dusty-noon, sunset and night-rain
-lighting. Ported so far: drivable danfo, keke, okada and cars, "First Day on the Danfo" with Baba Driver, conductor
+`build_street_block.py` turns the city into the level `L_Slice_Street`, with harsh-morning, day, dusty-noon,
+golden-evening, sunset and night-rain lighting that follows the in-game clock. Ported so far: drivable danfo, keke, okada and cars, "First Day on the Danfo" with Baba Driver, conductor
 shifts (fares, change, agbero, tips, settle-up), money, the clock, saving and the HUD with a minimap.
 
 ## Getting started
 
-1. Install **Unity 6000.0 LTS** with Android Build Support, then open this folder. Unity generates
-   `ProjectSettings` and resolves the packages in `Packages/manifest.json`.
-2. Run **Naija Hustle → Validate Content**, then **Naija Hustle → Setup Addressables Groups**.
-3. Create the `Boot` scene with `GameBootstrap`, `CityStreamer`, `PlayerInputHub`, the player rig
-   (`PlayerMotor`, `VehicleInteractor`, `ThirdPersonCamera`), HUD and phone canvases. Create a
-   `city_lagos` scene in the `City_Lagos` group with `DistrictZone`s, `TrafficLane`s,
-   `TrafficSpawner`, `ResponseDirector`, `AtmosphereController` and `MissionMarker`s.
-4. Set up the layers and tags listed in `docs/TECH.md §6`.
+- **Unreal game:** follow [`unreal/NaijaHustle/README.md`](unreal/NaijaHustle/README.md) (Mac and Windows steps).
+- **Browser demo:** open `web/index.html`.
+- **Archived Unity project:** open `legacy/unity/` in Unity 6000.0 LTS. It was never compiled in the Unity editor
+  and is kept for reference only.
 
 ## Tests
 
@@ -130,7 +141,9 @@ shifts (fares, change, agbero, tips, settle-up), money, the clock, saving and th
 dotnet test Tools/CoreTests     # 37 tests: rules, content validation, full-story playthrough
 ```
 
-The same tests run in Unity's Test Runner (EditMode), and CI runs them on every push.
+They test the archived Unity rules in `legacy/unity/`, and CI runs them on every push. The Unreal plugin has its own
+checks: `python3 unreal/NaijaHustle/Plugins/NaijaHustleGame/Scripts/tests/test_*.py` for the editor scripts, and the
+in-game `NHAutoplay` and `NHSelfTest` commands.
 
 For a narrated "test run" of the whole story using the real game rules (missions, hustles,
 checkpoints, travel, wanted levels, social posts, save/reload):

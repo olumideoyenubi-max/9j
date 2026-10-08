@@ -1,23 +1,26 @@
-# NAIJA HUSTLE: Unreal Engine 5 vertical slice
+# NAIJA HUSTLE: the Unreal Engine 5.8 game
 
-One dense Lagos street block at night in the rain: a market street, a motor park, a junction under an
-overpass, a bus stop and a few shops. One protagonist, a drivable danfo and okada, and the mission
+The browser demo's Lagos as a playable Unreal level: a market street, a motor park, a dusty district, a bus stop
+and shops, lit by a day cycle. One protagonist, drivable danfo, keke, okada and cars, and the mission
 "First Day on the Danfo". All names, brands and characters are original.
 
-This folder is the Unreal project. The Unity rules project and the browser demo live elsewhere in the
-repo and are untouched.
+This folder is the Unreal project. The browser demo is in `web/` and the archived Unity project is in
+`legacy/unity/`. Current status, frame rate and screenshots are in [`PROGRESS.md`](../../PROGRESS.md).
+
+| Platform | Status |
+|---|---|
+| macOS, Apple Silicon (M1, 8 GB) | The plugin builds against UE 5.8 and the game runs: about 22 fps at 1280×720. It was built and played inside a UE 5.8 Third Person template project; this shell project and `Config/Mac/MacEngine.ini` have not been built on the Mac yet |
+| Windows + RTX | Steps and config written for it; not yet built against UE 5.8 |
 
 | Step | Status |
 |---|---|
 | 1. Project setup: rendering, folders, input, source control | Done |
-| 2. Street block blockout and lighting (night rain + day), from the browser demo's map | Done |
-| Gameplay port: vehicles, First Day on the Danfo, conductor shifts, money, clock, save, HUD | **This step** (in the NaijaHustleGame plugin) |
-| 3. Player MetaHuman, third-person controller and camera | |
-| 4. Danfo and okada (Chaos Vehicles), enter and exit | |
-| 5. Mass AI crowds and traffic | |
-| 6. Mission, wanted system, HUD, inventory, phone | |
-| 7. Polish: rain FX, puddles, wet shaders, grading, sound | |
-| 8. Performance: 60 fps at 1440p on an RTX 3060 with TSR | |
+| 2. Street block blockout and lighting, from the browser demo's map | Done |
+| Gameplay port: vehicles, First Day on the Danfo, conductor shifts, money, clock, save, HUD | Done (in the NaijaHustleGame plugin) |
+| Look pass 1: per-surface materials, procedural wear, harsh-morning light, dusty-street detail, sprint camera | Done |
+| Visual brief: lighting, post-process, set dressing, decals, materials, effects, camera, showcase, performance | Lighting done; the rest in order |
+| Real surfaces (Megascans) and real car models from Fab | Waiting on assets, see [`ASSETS.md`](../../ASSETS.md) |
+| Player character, NPCs, crowds, story | Deferred |
 
 ## The game is a plugin
 
@@ -41,7 +44,8 @@ After the first build and first open (sections 1 and 2 below):
 2. **Tools > Execute Python Script…** > `Plugins/NaijaHustleGame/Scripts/build_street_block.py`. It creates
    `/Game/NaijaHustle/Maps/L_Slice_Street` (World Partition) and places the city. That takes a minute or two
    and asks nothing. Running it again replaces what it made before.
-3. Press **Play**. You start at home beside Oshoja Motor Park at night in the rain. Press **L** to cycle the lighting presets, or type
+3. Press **Play**. You start at home beside Oshoja Motor Park; the light follows the in-game clock. Press **F1** for the
+   lighting menu, **L** to cycle the lighting presets, or type
    `NHLighting Day` (or `DustyNoon`, `Sunset`, `NightRain`) in the console (the backtick key). In the editor, select
    **LightingRig** in the Outliner and use the **Set Day / Set Dusty Noon / Set Sunset / Set Night Rain** buttons in
    its Details panel.
@@ -98,8 +102,16 @@ stand-in `unreal` module that also checks every property name against the C++ he
 
 ## 1. Install (once per machine)
 
-1. **Unreal Engine 5.4** from the Epic Games Launcher (Library > Engine Versions > +). 5.5 also works:
-   it offers to convert the project the first time you open it.
+### Mac (Apple Silicon)
+
+1. **Unreal Engine 5.8** from the Epic Games Launcher (Library > Engine Versions > +).
+2. **Xcode** from the App Store, opened once so it installs its command-line tools. There is no Visual Studio
+   on Mac; Unreal compiles C++ with Xcode's compiler. You don't need to open Xcode to build.
+3. **Git LFS** (only needed once binary content is committed): `brew install git-lfs`, then `git lfs install`.
+
+### Windows
+
+1. **Unreal Engine 5.8** from the Epic Games Launcher (Library > Engine Versions > +).
 2. **Visual Studio 2022** (Community is fine) with these workloads: *Game development with C++*
    (tick *Unreal Engine installer* and a *Windows 10/11 SDK*), *Desktop development with C++* and
    *.NET desktop development*. JetBrains Rider works too.
@@ -107,42 +119,72 @@ stand-in `unreal` module that also checks every property name against the C++ he
 
 ## 2. First open
 
+### Mac
+
+`Scripts/mac.sh` wraps the engine's own build and run commands. It expects the engine at
+`/Users/Shared/Epic Games/UE_5.8` (the Launcher's default); set `UE_ROOT` if yours is elsewhere.
+
+```bash
+cd unreal/NaijaHustle
+Scripts/mac.sh build                                                       # compile (several minutes the first time)
+Scripts/mac.sh script "$PWD/Plugins/NaijaHustleGame/Scripts/nh_blockout_materials.py"   # make the materials
+Scripts/mac.sh script "$PWD/Plugins/NaijaHustleGame/Scripts/build_street_block.py"      # build L_Slice_Street
+Scripts/mac.sh play                                                        # run the game in a 1280x720 window
+```
+
+- `Scripts/mac.sh editor` opens the project in the Unreal Editor instead. Double-clicking `NaijaHustle.uproject`
+  also works, and offers to compile if the build is out of date.
+- `Scripts/mac.sh play` is the launcher: it runs the street level as a standalone game, which uses less memory
+  than Play inside the editor. Extra arguments are passed on, for example `Scripts/mac.sh play -NHRun=autoplay`.
+- The first launch compiles shaders and can take a long while. Later launches are quick.
+- The level and materials are generated by the two scripts, so they are not stored in the repo.
+- On macOS the editor log is `~/Library/Logs/Unreal Engine/NaijaHustleEditor/NaijaHustle.log`.
+
+### Windows
+
 1. Right-click `NaijaHustle.uproject` > **Generate Visual Studio project files**.
 2. Open `NaijaHustle.sln`, choose **Development Editor** and **Win64**, and build the `NaijaHustle` project
    (Ctrl+Shift+B). The first build takes several minutes.
 3. Double-click `NaijaHustle.uproject`. The first launch compiles shaders for Lumen, Nanite and ray tracing,
    which can take 10–30 minutes. Later launches are quick.
-4. **Tools > Execute Python Script…** and pick `Scripts/create_content_folders.py`. It creates the folder tree
-   under `Content/NaijaHustle` (listed below).
-5. Make a test level: **File > New Level > Basic**, then save it as `/Game/NaijaHustle/Maps/L_Sandbox`.
-6. Press **Play**. You get a visible capsule with an over-the-shoulder camera. Check that WASD and the mouse
-   work, and the left and right sticks on a gamepad. Space jumps, Shift sprints, and F / E print to the
-   Output Log (Window > Output Log).
+4. Run the two scripts under **Build the level** above, then press **Play**.
 
 If Play gives you a default spectator instead of the capsule, open **World Settings** (Window > World Settings)
 and set *GameMode Override* to `NHGameMode`, or to None so the project default is used.
 
 ## 3. What's configured and why
 
-All in `Config/DefaultEngine.ini`. You can see each setting in **Edit > Project Settings**.
+Rendering settings are split into three files. Unreal reads the shared file first and then the one for the
+platform it is running on, so the platform file wins.
 
-| Setting (Project Settings path) | Value | Why |
+| File | Used on | What it sets |
 |---|---|---|
-| Engine > Rendering > Global Illumination | Lumen | Fully dynamic bounce light: night and day presets swap instantly, and signs and neon light the street |
-| Engine > Rendering > Reflections | Lumen | Wet roads and shop glass reflect signs and headlights |
-| Engine > Rendering > Hardware Ray Tracing, plus Lumen "Use Hardware Ray Tracing when available" | On | Sharper reflections on wet surfaces. Needs DX12, SM6 and an RTX or RX 6000+ GPU; otherwise Lumen falls back to software tracing |
-| Engine > Rendering > Shadow Map Method | Virtual Shadow Maps | Crisp shadows from many lights (signs, street lamps) on Nanite geometry |
-| Engine > Rendering > Nanite | On | Millions of polygons for the building kit and Megascans with no manual LODs |
-| Engine > Rendering > Generate Mesh Distance Fields | On | Required by software Lumen |
-| Engine > Rendering > Anti-Aliasing Method | TSR | Temporal Super Resolution: render below 1440p and upscale (tuned in step 8) |
-| Engine > Rendering > Allow Static Lighting | Off | No lightmap baking; everything is Lumen |
-| Engine > Rendering > Support Compute Skin Cache | On | MetaHumans in ray tracing |
-| Engine > Rendering > Virtual Textures | On | Large Megascans textures stream instead of filling VRAM |
-| Engine > Rendering > Custom Depth-Stencil Pass | Enabled with Stencil | Interaction highlights and minimap masks |
-| Platforms > Windows > Default RHI / Shader formats | DirectX 12 / SM6 | Needed by Nanite, VSM and hardware ray tracing |
+| `Config/DefaultEngine.ini` | every platform | The shared baseline: Lumen, Virtual Shadow Maps, Nanite, TSR, virtual textures, no baked lighting |
+| `Config/Windows/WindowsEngine.ini` | Windows | The RTX profile: DirectX 12, SM6, hardware ray-traced Lumen, GPU skin cache |
+| `Config/Mac/MacEngine.ini` | macOS | The M1 8 GB profile: no ray tracing, no Lumen, screen-space reflections, cascaded shadow maps, no mesh distance fields, no volumetric fog, texture pool capped at 800 MB |
 
-**World Partition** is set per level, not per project: in step 2 we create `L_Slice_Street` from the
-**Open World** template, which has World Partition streaming switched on.
+| Setting | Shared / Windows | Mac | Why |
+|---|---|---|---|
+| Global illumination | Lumen | Off (the sky light fakes ground bounce) | Lumen's caches ran the 8 GB M1 out of GPU memory |
+| Reflections | Lumen | Screen space | Same |
+| Hardware ray tracing | On (Windows only) | Off | Needs DX12, SM6 and an RTX or RX 6000+ GPU |
+| Shadows | Virtual Shadow Maps | Cascaded shadow maps | Virtual Shadow Maps need SM6; the M1 falls back to Metal SM5 |
+| Nanite | On | Not active | Needs SM6; on Metal SM5 the engine draws fallback meshes |
+| Mesh distance fields | On | Off | Only Lumen needs them |
+| Volumetric fog | Per lighting preset | Off | Memory; the height fog stays |
+| Texture streaming pool | Engine default | 800 MB | CPU and GPU share memory on Apple Silicon |
+| Anti-aliasing | TSR | TSR | Render below the window size and upscale |
+| Allow static lighting | Off | Off | No lightmap baking; the day cycle is fully dynamic |
+| Virtual textures | On | On | Large Megascans textures stream instead of filling memory |
+| Custom depth-stencil | Enabled with stencil | same | Interaction highlights and minimap masks |
+| RHI / shader format | DirectX 12 / SM6 | Metal (SM5 on the M1) | |
+
+Separately from these files, the lighting rig checks the machine at run time: with 8 GB of memory or less it
+turns off Lumen, volumetric fog and the clouds whatever the config says. That check is what fixed the crash on
+the M1, and it protects any project the plugin is dropped into.
+
+**World Partition** is set per level, not per project: `build_street_block.py` creates `L_Slice_Street` with
+World Partition streaming switched on.
 
 ## 4. Code layout
 
@@ -153,14 +195,16 @@ Plugins/NaijaHustleGame/            the game, as a drop-in plugin
     Core/       NHGameMode, NHGameData (reads Data/*.json), NHHustleSubsystem (money, clock, heat, save)
     Gameplay/   NHGameDirector (First Day on the Danfo, conductor shifts), NHPerson
     Vehicles/   NHVehicle (arcade handling, damage, blockout bodies, chase camera)
-    Player/     NHPlayerController (get in/out, E, choices, NHLighting), NHCharacter
+    Player/     NHPlayerController (get in/out, E, choices, NHLighting, debug commands), NHCharacter
+    Debug/      NHDebugPlay (scripted NHAutoplay and NHSelfTest)
     Input/      NHInputSet: every input action and mapping context, built in C++
-    World/      NHBlockoutActor, NHCityTile, NHBlockoutBuilding, NHShapes
+    World/      NHBlockoutActor, NHCityTile, NHBlockoutBuilding, NHCables, NHShapes
     Lighting/   NHLightingRig
     UI/         NHHUD (canvas HUD and minimap)
-  Scripts/      editor Python: blockout materials, street block builder (+ tests/)
+  Scripts/      editor Python: materials, street block builder, Megascans and car-model assignment (+ tests/)
   Data/         lagos_city.json and naija_rules.json, exported from the browser demo
 Scripts/create_content_folders.py
+Scripts/mac.sh                      build, open and play on a Mac
 ```
 
 Gameplay systems go into C++ (vehicles, Mass processors, the wanted system, inventory data). Blueprints
@@ -239,6 +283,7 @@ GitHub's included LFS storage and bandwidth are small; check your plan before pu
 - Use **Perforce (Helix Core)**, the industry standard for Unreal, with exclusive checkout built into the
   editor. Perforce offers a free tier for small teams; check the current limits.
 
-Before step 2 brings in real content, move this folder into its own repository so Unity and Unreal
-assets don't share one LFS quota. `.gitignore` already excludes `Binaries/`, `Intermediate/`, `Saved/` and
-`DerivedDataCache/`.
+This repo is public, so third-party content (Megascans, Fab, MetaHumans, engine template packs) must never be
+committed: their licences forbid redistribution. Those folders are in the root `.gitignore`, and
+[`ASSETS.md`](../../ASSETS.md) lists what to re-add. `.gitignore` also excludes `Binaries/`, `Intermediate/`,
+`Saved/` and `DerivedDataCache/`.

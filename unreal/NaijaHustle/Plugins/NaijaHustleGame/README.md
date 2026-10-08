@@ -4,15 +4,16 @@ This folder is the whole game so far, packaged so it can go into **any Unreal C+
 It holds:
 
 - **The city:** the same Lagos as the browser demo (`web/index.html`), built as a blockout level.
-- **Lighting:** day, dusty noon, sunset and night rain, switched by the in-game clock.
+- **Lighting:** harsh morning, day, dusty noon, golden evening, sunset and night rain, switched by the in-game clock.
 - **The game:**
-  - drivable danfo, keke, okada and cars, with the browser game's handling
+  - drivable danfo, keke, okada and cars, with the browser game's handling, plus eight luxury cars (Unreal only)
   - "First Day on the Danfo" with Baba Driver
   - free conductor shifts on three routes
   - money, the clock, the save game and the HUD
 
-It was written for Unreal Engine 5.4+ and only uses APIs that still exist in later 5.x versions. It has not yet been
-compiled against 5.8; if the first build fails, the error list tells us exactly what to adjust.
+It was written for Unreal Engine 5.4+ and is **compiled and played against 5.8 on macOS** (Apple M1). It has not been
+built on Windows against 5.8 yet. On a machine with 8 GB of memory or less the
+lighting rig leaves out Lumen, volumetric fog and the clouds, which together run such a machine out of GPU memory.
 
 ## Put it in your project
 
@@ -37,18 +38,49 @@ compiled against 5.8; if the first build fails, the error list tells us exactly 
    ```
    It turns on what it needs by itself: Enhanced Input, Python Editor Script Plugin and Editor Scripting Utilities.
 4. **Build.**
-   1. Right-click `YourProject.uproject` > **Generate Visual Studio project files**.
-   2. Open the `.sln` and build **Development Editor | Win64**.
-   3. Open the project.
-   If the build stops with errors, copy the first few from Visual Studio's **Error List** and send them over.
+   - **Mac:** there is no Visual Studio on Mac; Unreal compiles with Xcode's compiler, so install Xcode from the
+     App Store and open it once. Then either double-click `YourProject.uproject` and answer **Yes** when it offers
+     to rebuild the missing modules, or build from Terminal:
+     ```bash
+     "/Users/Shared/Epic Games/UE_5.8/Engine/Build/BatchFiles/Mac/Build.sh" YourProjectEditor Mac Development \
+         -project="/full/path/to/YourProject.uproject"
+     ```
+     If the build stops with errors, they are printed in Terminal; copy the first few and send them over. The editor
+     log is `~/Library/Logs/Unreal Engine/YourProjectEditor/YourProject.log`.
+   - **Windows:**
+     1. Right-click `YourProject.uproject` > **Generate Visual Studio project files**.
+     2. Open the `.sln` and build **Development Editor | Win64**.
+     3. Open the project.
+
+     If the build stops with errors, copy the first few from Visual Studio's **Error List** and send them over.
 5. **Make the materials.** **Tools > Execute Python Script…** >
-   `Plugins/NaijaHustleGame/Scripts/nh_blockout_materials.py`. It creates the weather parameters and the blockout
-   materials under `Content/NaijaHustle`.
+   `Plugins/NaijaHustleGame/Scripts/nh_blockout_materials.py`. It creates the weather parameters, the surface
+   material `M_NHSurface` and one instance per surface type (`MI_NHSurface_Plaster`, `_Concrete`, `_Dirt`, `_Asphalt`,
+   `_Zinc`, `_Tarp`, `_Wood`, `_Fabric`, `_Metal`, `_Glass`, `_Generic`) under `Content/NaijaHustle`.
 6. **Build the level.** **Tools > Execute Python Script…** > `Plugins/NaijaHustleGame/Scripts/build_street_block.py`.
-   - It creates `Content/NaijaHustle/Maps/L_Slice_Street` and places the city (about 570 actors; it takes a minute or two).
+   - It creates `Content/NaijaHustle/Maps/L_Slice_Street` and places the city (about 580 actors, with 250 overhead
+     cables; it takes a minute or two).
    - It sets that level's **GameMode Override** to `NHGameMode`, so your project's default game mode and your
      other levels are untouched.
 7. **Play.** Open `L_Slice_Street` and press **Play**.
+   - **Mac launcher:** to play without the editor's overhead (worth it on an 8 GB Mac), run the level as a
+     standalone game:
+     ```bash
+     "/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealEditor.app/Contents/MacOS/UnrealEditor" \
+         "/full/path/to/YourProject.uproject" /Game/NaijaHustle/Maps/L_Slice_Street -game -windowed -ResX=1280 -ResY=720
+     ```
+     In this repo's own project, `Scripts/mac.sh play` does the same, and `Scripts/mac.sh build` builds it.
+8. **Real car models (optional).** Add car models from Fab (static meshes; they land under `/Game/Fab`), then run
+   `Plugins/NaijaHustleGame/Scripts/assign_vehicle_meshes.py`. It matches models to vehicle types by name (hypercar,
+   sports, luxury, limo, royal, coupe suv, super suv, sedan, suv, minibus, tricycle, motorcycle, truck, pickup), scales each to its type's length and writes
+   `Data/vehicle_meshes.json`. A type with no model keeps its blockout body. If a car drives backwards, add 180 to its
+   `yaw` in that file.
+9. **Real textures (optional).** Add surfaces from Fab or Quixel Bridge (they land under `/Game/Fab` or
+   `/Game/Megascans`), then run `Plugins/NaijaHustleGame/Scripts/assign_megascans.py`. It matches texture sets to
+   surface types by name (dirt, concrete, plaster, corrugated, tarp, wood, asphalt...) and plugs their BaseColor,
+   Normal and ORM maps into the matching `MI_NHSurface_<Type>`. Until then the instances use flat textures plus
+   procedural wear: grime patches, a dirt splash band low on walls and a slight tint per building. Each instance has
+   `Tiling`, `Grime`, `Splash` and `Variation` values to tune.
 
 ## How to play
 
@@ -64,6 +96,7 @@ You start at home beside Oshoja Motor Park, at 8:00 on day 1, with N5,000.
 | 1–4 | | answer a choice: change, agbero, route, summary |
 | H | | horn |
 | L | next lighting preset (stops following the clock) | |
+| F1 | lighting menu: harsh morning, golden evening, follow the clock | |
 
 1. Walk to **Baba Driver** at the motor park and hear him out.
 2. Get in the yellow danfo in **bay 1** (the board says BALO).
@@ -84,7 +117,19 @@ You start at home beside Oshoja Motor Park, at 8:00 on day 1, with N5,000.
 Progress (cash, cred, integrity, the clock and finished jobs) saves to the `NaijaHustle` slot after every job.
 
 **Console commands** (open the console with the backtick key):
-- `NHLighting Day|DustyNoon|Sunset|NightRain` sets the lighting.
+- `NHLighting Day|DustyNoon|Sunset|NightRain|HarshMorning|GoldenEvening` sets the lighting; `NHLightMenu` (or **F1**)
+  opens a small menu: harsh morning, golden evening, or follow the clock.
+- `NHTime 9.5` sets the clock (here to 9:30).
+- `NHLookShots X Y Yaw [Folder]` measures the frame rate standing still at that spot at 9:30 (logged), then saves two
+  look-development screenshots: the street, then a sprint.
+
+**Playtest commands** (not available in Shipping builds; every step is logged with the `NAIJA HUSTLE:` prefix):
+- `NHAutoplay` plays "First Day on the Danfo" by script and checks the money, the summary and the save. It starts the
+  story again first if the job is already done, which wipes the save.
+- `NHSelfTest` checks getting in and out of every parked vehicle, a missed stop, a wrecked bus and the deadline.
+- `NHGoto <stop id|park|bay1>`, `NHBoard`, `NHAgbero pay|beg|drive` and `NHFinish` do one step each.
+- To run one without the editor, add `-ExecCmds="NHAutoplay"` to the game's command line, or `-NHRun=autoplay` /
+  `-NHRun=selftest` to also quit when it finishes.
 - `NHCash 50000` adds money.
 - `NHReset` starts the story again; reload the level afterwards.
 
@@ -94,15 +139,17 @@ Progress (cash, cred, integrity, the clock and finished jobs) saves to the `Naij
 |---|---|
 | `Data/lagos_city.json` | The map: tiles, 530 buildings, shop fronts, signs, lamps, props, road markings, road graph, stops, bays |
 | `Data/naija_rules.json` | Routes, fares, conductor numbers, vehicle handling, Baba Driver's lines, missions, outfits |
+| `Data/unreal_vehicles.json` | Unreal-only vehicles: eight luxury types with made-up names (Oba Royale saloon, Oba Mirage grand coupe, Oba Monarch and Zuma GX luxury SUVs, Maitama CX Coupe, Lekki Fury super SUV, Eko Veloce sports car, Zaki W16 hypercar) and where they are parked: four at Oshoja Motor Park (bays 8 to 11), eleven on Eko Crest |
 | `Source/.../Core` | `NHGameMode`, `NHGameData` (loads the JSON), `NHHustleSubsystem` (money, clock, heat, save) |
 | `Source/.../Gameplay` | `NHGameDirector` (the mission and conductor shifts), `NHPerson` (passengers, Baba Driver) |
 | `Source/.../Vehicles` | `NHVehicle` (arcade handling, crashes and damage, blockout bodies per type, chase camera) |
 | `Source/.../Player`, `Input` | `NHPlayerController` (get in and out, E and choices, prompts), `NHCharacter`, Enhanced Input built in code |
-| `Source/.../World`, `Lighting` | City tiles, buildings, `NHShapes`, `NHLightingRig` |
+| `Source/.../World`, `Lighting` | City tiles, buildings, `NHCables` (overhead cables), `NHShapes`, `NHLightingRig` |
 | `Source/.../UI` | `NHHUD`: money, stars, clock, minimap, job card, shift status, prompts, dialogue, choices |
-| `Scripts/` | Editor scripts (materials, level), with tests that run without the editor |
+| `Source/.../Debug` | `NHDebugPlay`: the scripted playtests behind the `NH` console commands |
+| `Scripts/` | Editor scripts (materials, level, Megascans textures), with tests that run without the editor |
 
-Both JSON files are exported from the browser game with `node web/tools/export-unreal.js` (in the main repo), so
+The first two JSON files are exported from the browser game with `node web/tools/export-unreal.js` (in the main repo), so
 rule changes there carry over. They're staged as loose files when you package the game.
 
 ## Fitting it to your project
