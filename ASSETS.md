@@ -46,7 +46,7 @@ A downloaded FBX is imported with `Scripts/import_car_fbx.py` (run twice), then
 
 | Item | Asset | Notes |
 |---|---|---|
-| Trainers | "Air Jordan 1 Low Dior" (https://skfb.ly/pMODv) by VTX, CC Attribution-NonCommercial-ShareAlike 4.0 | **Test only: non-commercial licence and real brands.** Two static meshes, one 2K texture. Folder `Content/Wardrobe/Trainers_LowTop/`. Not rigged or fitted to a character. |
+| Trainers | "Air Jordan 1 Low Dior" (https://skfb.ly/pMODv) by VTX, CC Attribution-NonCommercial-ShareAlike 4.0 | **Test only: non-commercial licence and real brands.** Two static meshes, one 2K texture. Folder `Content/Wardrobe/Trainers_LowTop/`. Not rigged. The flat shoe of the pair is worn on both of the player's feet. |
 | Two pairs of jeans, two hoodies | Sketchfab and others; sources and licences not recorded yet | Not imported. Unrigged meshes. |
 
 | not added yet | | |

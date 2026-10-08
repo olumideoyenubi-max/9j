@@ -9,6 +9,7 @@ class USpringArmComponent;
 class UCameraComponent;
 class USkeletalMesh;
 class UAnimInstance;
+class UStaticMesh;
 
 /**
  * The player on foot, with a low, close over-the-shoulder camera. Sprinting pulls the camera in, widens the view
@@ -39,6 +40,15 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Body") TSoftObjectPtr<USkeletalMesh> BodyMesh;
 	UPROPERTY(EditAnywhere, Category = "Body") TSoftClassPtr<UAnimInstance> BodyAnimClass;
 
+	/**
+	 * One shoe, as an unrigged static mesh lying flat with its toe toward +X. It is worn on both feet (mirrored for
+	 * the left) over the body's own feet, each fixed to its foot bone. Nothing is worn if the mesh is not in the project.
+	 */
+	UPROPERTY(EditAnywhere, Category = "Body|Wardrobe") TSoftObjectPtr<UStaticMesh> ShoeMesh;
+	/** Turns the shoe about its heel (degrees), for a model that was not saved pointing straight along +X */
+	UPROPERTY(EditAnywhere, Category = "Body|Wardrobe") float ShoeYaw = -9.f;
+	UPROPERTY(EditAnywhere, Category = "Body|Wardrobe") float ShoeScale = 1.f;
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -68,6 +78,7 @@ private:
 	void OnLookStick(const FInputActionValue& Value);
 	void OnSprintStart();
 	void OnSprintStop();
+	void PutOnShoes();
 
 	bool bHasBody = false;
 	bool bSprinting = false;

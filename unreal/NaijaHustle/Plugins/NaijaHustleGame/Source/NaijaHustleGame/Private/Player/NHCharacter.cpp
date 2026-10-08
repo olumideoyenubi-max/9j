@@ -1,10 +1,13 @@
 #include "Player/NHCharacter.h"
 
 #include "Animation/AnimInstance.h"
+#include "AnimationRuntime.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
+#include "Engine/StaticMesh.h"
 #include "EnhancedInputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -24,6 +27,7 @@ ANHCharacter::ANHCharacter()
 	// Stand-in body: the Third Person template's mannequin, if the project has it
 	BodyMesh = TSoftObjectPtr<USkeletalMesh>(FSoftObjectPath(TEXT("/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple")));
 	BodyAnimClass = TSoftClassPtr<UAnimInstance>(FSoftObjectPath(TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed.ABP_Unarmed_C")));
+	ShoeMesh = TSoftObjectPtr<UStaticMesh>(FSoftObjectPath(TEXT("/Game/Wardrobe/Trainers_LowTop/Untsssho00215ed/StaticMeshes/hash_CF7B2BF4_model_001.hash_CF7B2BF4_model_001")));
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.f, 0.f, -92.f), FRotator(0.f, -90.f, 0.f)); // feet on the ground, facing forward
 
 	// The body turns toward where it's moving; the camera is free
@@ -70,6 +74,48 @@ void ANHCharacter::BeginPlay()
 	}
 	GetCapsuleComponent()->SetHiddenInGame(true);
 	bHasBody = true;
+	PutOnShoes();
+}
+
+void ANHCharacter::PutOnShoes()
+{
+	const FSoftObjectPath Path = ShoeMesh.ToSoftObjectPath();
+	UStaticMesh* Shoe = Path.IsValid() && FPackageName::DoesPackageExist(Path.GetLongPackageName()) ? ShoeMesh.LoadSynchronous() : nullptr;
+	if (!Shoe)
+	{
+		return;
+	}
+	// Worked out in the body's reference pose, where it stands flat on z = 0 facing +Y, so it does not matter
+	// which way a skeleton's foot bones happen to point.
+	const FReferenceSkeleton& Skeleton = GetMesh()->GetSkeletalMeshAsset()->GetRefSkeleton();
+	const FBox Box = Shoe->GetBoundingBox();
+	const FVector Ankle(Box.Min.X + 0.25f * (Box.Max.X - Box.Min.X), 0.5f * (Box.Min.Y + Box.Max.Y), Box.Min.Z); // under the ankle, on the sole
+	int32 Worn = 0;
+	for (int32 Side = 0; Side < 2; ++Side)
+	{
+		const FName Bone(Side == 0 ? TEXT("foot_r") : TEXT("foot_l"));
+		const int32 Index = Skeleton.FindBoneIndex(Bone);
+		if (Index == INDEX_NONE)
+		{
+			continue;
+		}
+		const FTransform Foot = FAnimationRuntime::GetComponentSpaceTransformRefPose(Skeleton, Index);
+		const float Mirror = Side == 0 ? 1.f : -1.f;
+		const FVector Scale(ShoeScale, ShoeScale * Mirror, ShoeScale);
+		const FQuat Turn(FRotator(0.f, 90.f + ShoeYaw * Mirror, 0.f)); // toe to +Y
+		const FVector Ground(Foot.GetLocation().X, Foot.GetLocation().Y, 0.f);
+		const FTransform Placed(Turn, Ground - Turn.RotateVector(Ankle * Scale), Scale);
+
+		UStaticMeshComponent* Part = NewObject<UStaticMeshComponent>(this);
+		Part->SetStaticMesh(Shoe);
+		Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		Part->SetCanEverAffectNavigation(false);
+		Part->SetupAttachment(GetMesh(), Bone);
+		Part->SetRelativeTransform(Placed.GetRelativeTransform(Foot));
+		Part->RegisterComponent();
+		++Worn;
+	}
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: the player is wearing %s on %d feet"), *Shoe->GetName(), Worn);
 }
 
 void ANHCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

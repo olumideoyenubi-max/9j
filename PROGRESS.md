@@ -40,6 +40,7 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Vehicle weight, suspension and grip:** `UNHVehicleDynamicsComponent` on every vehicle: slides past the grip limit (speed, handbrake, dirt, wet road) with recovery, sprung body that dives, squats and rolls, wheels traced to the ground, kerb and landing compression, all in fixed sub-steps. Self-test grew to 74 checks.
 - **Clean playtests on the final build (2026-10-08, after a restart):** self-test 74 of 74 and autoplay 26 of 26, at normal speed, with no freeze and with GPU occlusion queries left on.
 - **Car import route:** `Scripts/import_car_fbx.py` brings a downloaded FBX in as one static mesh and, on a second run, makes three lower levels of detail. Used on a 1.26 million triangle test SUV, which `assign_vehicle_meshes.py` then fitted to the super SUV type.
+- **Shoes on the player:** `ANHCharacter` wears one unrigged shoe mesh on both feet (mirrored for the left), fixed to the foot bones from the skeleton's reference pose. In the Mac project it is the test trainers (see `ASSETS.md`); without that mesh nothing is worn. 22.3 fps at the usual spot, self-test 74 and autoplay 26 pass. No screenshot here because the test shoe is a real brand.
 
 ## In progress
 
@@ -82,6 +83,7 @@ Deferred: NPCs and storyline.
 - The car paint is not on any of the game's cars yet: the blockout bodies use the surface materials, so paint, wetness and crash marks only show on bodies given `MI_NHCarPaint_Body` / `MI_NHCarPaint_Glass` (planned for the real car models).
 - The look of the car paint is only partly checked: clean and wet paint were seen on a test body in an earlier, costlier version of the material; the current version's scratches, cracks and ripples have not been seen on screen. Frame-rate cost on a real car is not measured.
 - The test SUV's paint is wrong: the roof and bonnet come out white on a gold body, and it does not use the game's car paint material yet (36 material slots from the download).
+- The shoes sit over the stand-in body's own feet, which can poke through; it is not known which foot the shoe model was made for. Trousers and tops cannot be worn this way: they need rigging to the skeleton.
 - `NHLookShots` with a relative folder name saves into the engine's `Binaries/Mac` folder; pass a full path.
 - **Engine freeze seen twice on 2026-10-08 (not seen in five runs after a restart):** the standalone game stopped inside Unreal's Metal renderer waiting for a GPU occlusion-query result (`FGPUOcclusion::WaitForLastOcclusionQuery`), once before any vehicle moved. Cause not found; it coincided with the Mac being overloaded. Running with `-dpcvars=r.AllowOcclusionQueries=0` avoided it.
 - Vehicle dynamics are untested by hand: how the slides, the handbrake and the body movement feel when driving has not been judged, and Chaos Vehicles is not used (the cars are kinematic blockouts with no physics body).
