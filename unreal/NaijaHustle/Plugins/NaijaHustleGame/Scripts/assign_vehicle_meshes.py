@@ -23,15 +23,20 @@ game reads at start. A type with no model keeps its blockout body.
 
 A model is all the static meshes in one folder (a body and its wheels, say), drawn together. The script turns
 the model so its long side runs front to back, but cannot tell the front from the back: if a car drives
-backwards, add 180 to its "yaw" in Data/vehicle_meshes.json (or list the type in FLIP below and run again).
+backwards, add 180 to its "yaw" in Data/vehicle_meshes.json, or run again with the type listed in FLIP below or
+in NH_CAR_FLIP. The console command NHCarShow lines every type up facing east to check.
 Skeletal (rigged) car models are reported but not used yet.
+
+Models under /Game/Vehicles (from import_car_gltf.py or import_car_fbx.py) take their type from the name of
+their folder there, whatever their meshes are called.
 """
 import json
 import os
 import re
 
 ROOTS = ["/Game/Fab", "/Game/Megascans", "/Game/Quixel", "/Game/Vehicles"]
-FLIP = set()  # vehicle types whose model came out facing backwards
+# vehicle types whose model came out facing backwards: list them here, or in the NH_CAR_FLIP environment variable (comma-separated)
+FLIP = set(t for t in os.environ.get("NH_CAR_FLIP", "").split(",") if t)
 # checked in this order: the luxury and sports words first, so "luxury suv" is not just an suv
 KEYWORDS = [
     ("hypercar", ("hypercar", "hyper_car", "hyper")),
@@ -88,7 +93,8 @@ def plan(meshes, lengths, flip=()):
     best = {}
     for folder, items in sorted(folders.items()):
         bodies = [i for i in items if not is_part(i[0])]
-        kind = None
+        # a model imported by import_car_gltf.py or import_car_fbx.py is named by its folder under /Game/Vehicles
+        kind = vehicle_type(folder.split("/")[3]) if folder.startswith("/Game/Vehicles/") else None
         for name, _, _ in bodies:
             kind = kind or vehicle_type(name)
         kind = kind or vehicle_type(folder.rsplit("/", 1)[-1])

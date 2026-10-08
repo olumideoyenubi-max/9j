@@ -31,16 +31,43 @@ Fill in the exact Fab name when each is added.
 Expected folders, under `unreal/NaijaHustle/`: `Content/Megascans/`, `Content/MSPresets/`, `Content/Fab/` or `Content/Quixel/`.
 After adding, run `unreal/NaijaHustle/Plugins/NaijaHustleGame/Scripts/assign_megascans.py`.
 
-## Car models (Fab)
+## Vehicle models (Sketchfab)
 
-One test model is in the Mac project (from Sketchfab, not Fab). The other 15 vehicle types use blockout bodies.
-A downloaded FBX is imported with `Scripts/import_car_fbx.py` (run twice), then
-`unreal/NaijaHustle/Plugins/NaijaHustleGame/Scripts/assign_vehicle_meshes.py` fits it to its vehicle type.
+Downloaded on 2026-10-08 as glTF through the Sketchfab API with the owner's account. All are licensed
+**CC Attribution 4.0**: free to use, commercial use allowed, and the author must be credited (this table is the
+credit list; the game will need a credits screen before release). Most are real makes, so badges and names need
+removing or replacing before a commercial release. The game keeps its own made-up vehicle names.
 
-| Game vehicle type | Asset | Notes |
-|---|---|---|
-| supersuv (Lekki Fury) | "Urus Absolut" (https://skfb.ly/osAMo) by SDC PERFORMANCE, CC Attribution-NonCommercial 4.0 | **Test only: non-commercial licence and a real make, so it cannot ship.** 1,257,573 triangles, 36 material slots, 4 levels of detail. Folder `Content/Vehicles/SuperSuv_Absolut/`. Too heavy for the M1: see `PROGRESS.md`. |
-| sports (Eko Veloce) | "Porsche 911 GT3" (https://skfb.ly/o6Kp9) by ChevroletSS, CC Attribution 4.0 | Not imported: the download is a `.blend` file; needs a glTF or FBX download. Credit required. |
+To add them on another machine: download each as glTF into one folder, one sub-folder per model named as in the
+Folder column, then run `Scripts/import_car_gltf.py` and `Scripts/assign_vehicle_meshes.py`
+(with `NH_CAR_FLIP=coupesuv,hypercar,luxcoupe,luxsuv,sedan,royalsuv,supersuv,sports,suv`, the types whose
+models face backwards). Textures wider than 2048 were shrunk to 2048 first. The floor slab was removed from the
+Executive Sedan's glTF before import.
+
+| Game vehicle type | Model | Triangles | Folder | Source |
+|---|---|---|---|---|
+| coupesuv (Maitama CX Coupe) | "Low Poly BMW X6M Competition" by sharkycat109 | 6,688 | `Content/Vehicles/Coupe_Suv_X6/` | https://sketchfab.com/3d-models/low-poly-bmw-x6m-competition-dbc45a151624413aac9a378b570ddd02 |
+| danfo | "Lagos Danfo Bus" by arcoma330 | 40,922 | `Content/Vehicles/Minibus_Danfo/` | https://sketchfab.com/3d-models/lagos-danfo-bus-41b71827dcc94339b627fb79d9a7adb7 |
+| hypercar (Zaki W16) | "Koenigsegg One:1" by OneSteven | 25,682 | `Content/Vehicles/Hypercar_One1/` | https://sketchfab.com/3d-models/koenigsegg-one1-b4e5a4c5fa5d4d45acd6715d3325254f |
+| keke | "Autorikshaw - Indian Tuk Tuk" by bhagathartworks | 8,128 | `Content/Vehicles/Tricycle_Keke/` | https://sketchfab.com/3d-models/autorikshaw-indian-tuk-tuk-5775d012693741008acff9dad410e92d |
+| luxcoupe (Oba Mirage) | "Bentley Continental Supersports" by JUSTGAME | 30,283 | `Content/Vehicles/Grand_Coupe_Supersports/` | https://sketchfab.com/3d-models/bentley-continental-supersports-c68a3f04b76c46c4bf9a06261b16a5d2 |
+| luxsedan (Oba Royale) | "Executive Sedan" by rccdesign | 20,568 | `Content/Vehicles/Executive_Sedan/` | https://sketchfab.com/3d-models/executive-sedan-eadf0e3171d74e4999e37898f95578c8 |
+| luxsuv (Zuma GX) | "Mercedes Benz G-class W263" by Lexyc16 | 12,518 | `Content/Vehicles/Luxury_Suv_GClass/` | https://sketchfab.com/3d-models/mercedes-benz-g-class-w263-1a2a52b16cad4e618af347461817895c |
+| okada | "Honda CB 125 1972ish (Custom Engine)" by drcrazzie | 53,754 | `Content/Vehicles/Motorcycle_Okada/` | https://sketchfab.com/3d-models/honda-cb-125-1972ish-custom-engine-f3b98e8cac7c4480b053f20160341fc7 |
+| royalsuv (Oba Monarch) | "Rolls Royce Cullinan" by newvistudios | 8,360 | `Content/Vehicles/Royal_Cullinan/` | https://sketchfab.com/3d-models/rolls-royce-cullinan-61f16a1d5be2403abcdd8fa552f730f7 |
+| sedan (Kamsi LE) | "Toyota Camry 40" by tnikita | 18,410 | `Content/Vehicles/Sedan_Camry/` | https://sketchfab.com/3d-models/toyota-camry-40-560c174d073f4a10bb153ded41ada8c9 |
+| sports (Eko Veloce) | "Porsche 911 GT3" by ChevroletSS | 239,145 | `Content/Vehicles/Sports_911GT3/` | https://sketchfab.com/3d-models/porsche-911-gt3-78d5c47ab2554c2592b7e499179a0792 |
+| supersuv (Lekki Fury) | "Low Poly Lamborghini Urus" by sharkycat109 | 10,348 | `Content/Vehicles/Super_Suv_Urus/` | https://sketchfab.com/3d-models/low-poly-lamborghini-urus-f53a9e268c144aec9cc4b1a7b3f0fe27 |
+| suv (Pathmaster V8) | "2009 Toyota Rav4" by niev | 13,748 | `Content/Vehicles/Suv_Rav4/` | https://sketchfab.com/3d-models/2009-toyota-rav4-1ea8ca4618dc4742b60dc0a69022bcc3 |
+| tfpick (task force pickup) | "Toyota Hilux Low Poly" by sebodeweb | 6,646 | `Content/Vehicles/Pickup_Hilux/` | https://sketchfab.com/3d-models/toyota-hilux-low-poly-87dc5e8d45724fe6b4b68b1f432976fc |
+| truck | "LCT 3000 '95 - Low poly model" by DanielZhabotinsky | 18,947 | `Content/Vehicles/Truck_LCT/` | https://sketchfab.com/3d-models/lct-3000-95-low-poly-model-663a0953c038434a918cb85725c88ffa |
+
+The task force bike (`tfbike`) is still a blockout.
+
+Tried and dropped: "Urus Absolut" by SDC PERFORMANCE (1.26 million triangles, non-commercial licence), a Bugatti
+Chiron and a Bentley Continental GT V8 by amogusstrikesback2 (stray parts), "Mercedes W126 Limousine" by fishermans
+(a stretch limousine with no materials), "Tata Signa Cargo Truck" by kevin_k_5124 (an articulated lorry, too long
+for the truck type), "1996 Toyota 4Runner" by gamegenjason (flat pink, very coarse).
 
 ## Clothing (test)
 

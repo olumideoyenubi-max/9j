@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-08 (first real car model imported as a test; clean playtests; visual brief section 2 awaiting review)
+**Last updated:** 2026-10-08 (real models on 15 of 16 vehicle types; shoes on the player; visual brief section 2 awaiting review)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -41,10 +41,10 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Clean playtests on the final build (2026-10-08, after a restart):** self-test 74 of 74 and autoplay 26 of 26, at normal speed, with no freeze and with GPU occlusion queries left on.
 - **Car import route:** `Scripts/import_car_fbx.py` brings a downloaded FBX in as one static mesh and, on a second run, makes three lower levels of detail. Used on a 1.26 million triangle test SUV, which `assign_vehicle_meshes.py` then fitted to the super SUV type.
 - **Shoes on the player:** `ANHCharacter` wears one unrigged shoe mesh on both feet (mirrored for the left), fixed to the foot bones from the skeleton's reference pose. In the Mac project it is the test trainers (see `ASSETS.md`); without that mesh nothing is worn. 22.3 fps at the usual spot, self-test 74 and autoplay 26 pass. No screenshot here because the test shoe is a real brand.
+- **Real vehicle models (2026-10-08):** 15 of the 16 vehicle types now use downloaded models (danfo, keke, okada, sedan, SUV, pickup, truck and the eight luxury types); only the task force bike is a blockout. `Scripts/import_car_gltf.py` imports a folder of glTF downloads, one combined mesh per car; `assign_vehicle_meshes.py` fits them, taking the type from the import folder's name and the backwards ones from `NH_CAR_FLIP`. The console command `NHCarShow X Y [Folder]` lines up one of every type and photographs them. Real-model vehicles get unseen wheel hubs so suspension and road-surface grip still work. Self-test 75 and autoplay 26 pass. Credits in `ASSETS.md`.
 
 ## In progress
 
-- **Real car models:** the one test model is far too heavy for this Mac. Standing next to it on Lagos Island (36250, 7950, facing -40) the game ran at 18.6 fps; with the blockout body in the same spot, 29.9 fps (one 15-second run each, 1280×720). It also cannot ship (non-commercial licence, real make). Lighter game-ready models are needed, roughly 50,000 to 150,000 triangles each.
 
 - **Player character (MetaHuman):** to be created on a rented cloud PC, because MetaHuman Creator recommends 32 GB of memory and the Mac has 8 GB. Plan: assemble with the UE Optimized pipeline at Low, bring the result to the Mac, force card hair, and measure. No assets will be bought; clothing starts from free items and tinting.
 
@@ -64,6 +64,10 @@ Deferred: NPCs and storyline.
 
 ## Known bugs and gaps
 
+- **Frame rate fell with the real models:** 14.9 fps at Oshodi Motor Park (2650, 4600), 17.8 fps on the dusty street (was 22.3), 20.1 fps on Lagos Island (was 29.9 with blockouts), one 15-second run each at 1280×720 while the Mac was still busy. The models have one level of detail and up to 56 material slots each (the sports car is 239,000 triangles); levels of detail and merged materials are the next step.
+- Real-model cars keep their own colours and materials: the game's paint colours, wetness and crash marks do not show on them, the wheels do not turn, and no driver is shown.
+- The models' sizes come from fitting each to its type's length, so a few are too tall (SUV 258 cm, danfo 257 cm, luxury 4x4 226 cm).
+
 - Opening the editor adds an `AndroidFileServer` block with a generated `SecurityToken` to `Config/DefaultEngine.ini`. Discard that change before committing (`git checkout unreal/NaijaHustle/Config/DefaultEngine.ini`).
 - Nothing has been built on Windows against UE 5.8.
 - Frame rate is about 22 fps at 1280×720, under the 30 fps target.
@@ -82,13 +86,12 @@ Deferred: NPCs and storyline.
 - The map is still the small compressed grid: many real stops and areas are missing (see `docs/LAGOS_MAP.md`).
 - The car paint is not on any of the game's cars yet: the blockout bodies use the surface materials, so paint, wetness and crash marks only show on bodies given `MI_NHCarPaint_Body` / `MI_NHCarPaint_Glass` (planned for the real car models).
 - The look of the car paint is only partly checked: clean and wet paint were seen on a test body in an earlier, costlier version of the material; the current version's scratches, cracks and ripples have not been seen on screen. Frame-rate cost on a real car is not measured.
-- The test SUV's paint is wrong: the roof and bonnet come out white on a gold body, and it does not use the game's car paint material yet (36 material slots from the download).
 - The shoes sit over the stand-in body's own feet, which can poke through; it is not known which foot the shoe model was made for. Trousers and tops cannot be worn this way: they need rigging to the skeleton.
 - `NHLookShots` with a relative folder name saves into the engine's `Binaries/Mac` folder; pass a full path.
 - **Engine freeze seen twice on 2026-10-08 (not seen in five runs after a restart):** the standalone game stopped inside Unreal's Metal renderer waiting for a GPU occlusion-query result (`FGPUOcclusion::WaitForLastOcclusionQuery`), once before any vehicle moved. Cause not found; it coincided with the Mac being overloaded. Running with `-dpcvars=r.AllowOcclusionQueries=0` avoided it.
 - Vehicle dynamics are untested by hand: how the slides, the handbrake and the body movement feel when driving has not been judged, and Chaos Vehicles is not used (the cars are kinematic blockouts with no physics body).
 - Not covered by the scripted playtests: change prompts, free conductor shifts, agbero beg/drive-off, real driving between stops.
-- All vehicles are blockout shapes; all surfaces use flat placeholder textures.
+- All surfaces use flat placeholder textures.
 
 ## Screenshots
 

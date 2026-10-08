@@ -46,6 +46,8 @@ public:
 	void Autoplay(bool bQuitWhenDone);
 	void SelfTest(bool bQuitWhenDone);
 	void PaintDemo(const FVector& At);
+	/** One of every vehicle type in two rows along +X from At, all facing +X; with a folder, pictures are saved there: two from above, then each pair from in front */
+	void CarShow(const FVector& At, const FString& Folder);
 
 	/** A run that has to restart the level first (to start the story again) carries on from here */
 	static FString PendingRun;

@@ -123,7 +123,13 @@ void ANHVehicle::BuildBody()
 	float Height = 150.f;
 	if (AddModel(Height))
 	{
-		// a real model: no blockout pieces
+		// A real model: no blockout pieces. Its wheels are part of the one mesh, so unseen hubs stand where they
+		// would be, to keep the suspension and the feel for the road surface working.
+		const float Radius = Spec.bBike ? 30.f : 34.f;
+		for (int32 i = 0; i < (Spec.bBike ? 2 : 4); ++i)
+		{
+			Wheels.Add(NHShapes::AddPivot(this, Body, FVector((Spec.bBike ? (i == 0) : (i < 2)) ? 0.31f * L : -0.31f * L, Spec.bBike ? 0.f : (i % 2 ? 0.5f : -0.5f) * (W - 50.f), Radius)));
+		}
 	}
 	else if (VehicleType == TEXT("danfo"))
 	{

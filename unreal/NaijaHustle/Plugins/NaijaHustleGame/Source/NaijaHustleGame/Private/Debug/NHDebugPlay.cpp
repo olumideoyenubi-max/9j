@@ -1,12 +1,15 @@
 #include "Debug/NHDebugPlay.h"
 
 #include "Characters/NHAdvancedMovementComponent.h"
+#include "Camera/CameraActor.h"
+#include "Camera/CameraComponent.h"
 #include "Characters/NHCharacterEffectsComponent.h"
 #include "Components/BoxComponent.h"
 #include "Core/NHGameData.h"
 #include "Core/NHHustleSubsystem.h"
 #include "EngineUtils.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/HUD.h"
 #include "Gameplay/NHGameDirector.h"
 #include "Gameplay/NHPerson.h"
 #include "Kismet/GameplayStatics.h"
@@ -458,6 +461,79 @@ void UNHDebugPlay::AddMomentumChecks()
 		MoveDummy = nullptr;
 		return true;
 	}, 5.f);
+}
+
+void UNHDebugPlay::CarShow(const FVector& At, const FString& Folder)
+{
+	const UNHGameData* D = UNHGameData::Get(PC);
+	ANHGameDirector* Director = Dir();
+	if (!D || !Director)
+	{
+		return;
+	}
+	const float Along = 750.f, Across = 260.f;
+	TArray<FName> Types;
+	D->Vehicles.GetKeys(Types);
+	Types.Sort(FNameLexicalLess());
+	FString List;
+	for (int32 i = 0; i < Types.Num(); ++i)
+	{
+		const FNHVehicleSpec& Spec = D->Spec(Types[i]);
+		Director->SpawnVehicle(Types[i], FVector2D(At.X + (i / 2) * Along, At.Y + (i % 2 ? Across : -Across)), 0.f, Spec.Colors.Num() ? Spec.Colors[0] : FLinearColor::White, FString());
+		List += (i ? TEXT(", ") : TEXT("")) + Types[i].ToString();
+	}
+	Note(FString::Printf(TEXT("NHCarShow: from %.0f, %.0f going east, near row then far row in each pair: %s"), At.X, At.Y, *List));
+	if (Folder.IsEmpty())
+	{
+		return;
+	}
+
+	// pictures: two from above and to one side, each of half the line, then each pair from in front at head height
+	ACameraActor* Cam = PC->GetWorld()->SpawnActor<ACameraActor>(ACameraActor::StaticClass(), FTransform(At));
+	Cam->GetCameraComponent()->SetConstraintAspectRatio(false);
+	Cam->GetCameraComponent()->SetFieldOfView(70.f);
+	if (AHUD* Hud = PC->GetHUD())
+	{
+		Hud->bShowHUD = false;
+	}
+	const int32 Columns = (Types.Num() + 1) / 2;
+	struct FShot { FVector From, At; FString Name; };
+	TArray<FShot> Shots;
+	for (int32 Half = 0; Half < 2; ++Half)
+	{
+		const FVector Middle(At.X + (Half ? 0.75f : 0.25f) * (Columns - 1) * Along, At.Y, At.Z);
+		Shots.Add({ Middle + FVector(0.f, -1100.f, 2400.f), Middle, FString::Printf(TEXT("above%d"), Half + 1) });
+	}
+	for (int32 Column = 0; Column < Columns; ++Column)
+	{
+		const FVector Pair(At.X + Column * Along, At.Y, At.Z + 90.f);
+		Shots.Add({ Pair + FVector(880.f, 0.f, 170.f), Pair, FString::Printf(TEXT("front%d_%s_%s"), Column + 1, *Types[Column * 2].ToString(), Types.IsValidIndex(Column * 2 + 1) ? *Types[Column * 2 + 1].ToString() : TEXT("")) });
+	}
+	TWeakObjectPtr<ANHPlayerController> Player(PC);
+	TWeakObjectPtr<ACameraActor> Camera(Cam);
+	for (int32 i = 0; i < Shots.Num(); ++i)
+	{
+		const FShot Shot = Shots[i];
+		const FString File = Folder / Shot.Name + TEXT(".png");
+		const bool bLast = i == Shots.Num() - 1;
+		FTimerHandle Aim, Take;
+		PC->GetWorldTimerManager().SetTimer(Aim, FTimerDelegate::CreateWeakLambda(PC, [Player, Camera, Shot]()
+		{
+			if (Player.IsValid() && Camera.IsValid())
+			{
+				Camera->SetActorLocationAndRotation(Shot.From, (Shot.At - Shot.From).Rotation());
+				Player->SetViewTarget(Camera.Get());
+			}
+		}), 2.f + i * 5.f, false);
+		PC->GetWorldTimerManager().SetTimer(Take, FTimerDelegate::CreateWeakLambda(PC, [Player, File, bLast]()
+		{
+			if (Player.IsValid())
+			{
+				Player->ConsoleCommand(FString::Printf(TEXT("HighResShot 1920x1080 filename=\"%s\""), *File));
+				UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: car show picture %s%s"), *File, bLast ? TEXT(" RESULT: car show done") : TEXT(""));
+			}
+		}), 5.f + i * 5.f, false);
+	}
 }
 
 void UNHDebugPlay::PaintDemo(const FVector& At)

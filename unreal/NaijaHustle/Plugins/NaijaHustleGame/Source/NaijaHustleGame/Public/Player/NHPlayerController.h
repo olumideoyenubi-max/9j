@@ -90,6 +90,9 @@ public:
 	/** Console: NHPaintDemo X Y stands four test bodies there wearing the car paint: clean, crashed, wet in the rain, and cracked glass */
 	UFUNCTION(Exec)
 	void NHPaintDemo(float X, float Y);
+	/** Console: NHCarShow X Y [Folder] lines up one of every vehicle type there, facing +X (east on the map), to check real models; with a full folder path it saves pictures from above and from in front of each pair */
+	UFUNCTION(Exec)
+	void NHCarShow(float X, float Y, const FString& Folder);
 
 	UFUNCTION(BlueprintCallable, Category = "Naija|Vehicle") bool EnterVehicle(ANHVehicle* Vehicle);
 	/** Steps out beside the vehicle. Refuses above walking pace unless bForce. */
