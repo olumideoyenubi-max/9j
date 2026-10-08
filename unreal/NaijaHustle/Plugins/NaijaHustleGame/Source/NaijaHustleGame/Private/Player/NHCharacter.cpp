@@ -24,6 +24,8 @@ ANHCharacter::ANHCharacter()
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 92.f);
 	GetCapsuleComponent()->SetHiddenInGame(false);
 
+	CharacterMesh = TSoftObjectPtr<USkeletalMesh>(FSoftObjectPath(TEXT("/Game/Characters/Player/Hustler/scene/SkeletalMeshes/Hustler.Hustler")));
+	CharacterAnimClass = TSoftClassPtr<UAnimInstance>(FSoftObjectPath(TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed_Hustler.ABP_Unarmed_Hustler_C")));
 	// Stand-in body: the Third Person template's mannequin, if the project has it
 	BodyMesh = TSoftObjectPtr<USkeletalMesh>(FSoftObjectPath(TEXT("/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple")));
 	BodyAnimClass = TSoftClassPtr<UAnimInstance>(FSoftObjectPath(TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed.ABP_Unarmed_C")));
@@ -61,20 +63,47 @@ void ANHCharacter::BeginPlay()
 
 	// asking for a package that is not there logs a warning, so look first
 	const auto Exists = [](const FSoftObjectPath& Path) { return Path.IsValid() && FPackageName::DoesPackageExist(Path.GetLongPackageName()); };
-	USkeletalMesh* Mesh = Exists(BodyMesh.ToSoftObjectPath()) ? BodyMesh.LoadSynchronous() : nullptr;
+	const bool bOwn = Exists(CharacterMesh.ToSoftObjectPath()) && Exists(CharacterAnimClass.ToSoftObjectPath());
+	const TSoftObjectPtr<USkeletalMesh>& WantMesh = bOwn ? CharacterMesh : BodyMesh;
+	const TSoftClassPtr<UAnimInstance>& WantAnim = bOwn ? CharacterAnimClass : BodyAnimClass;
+	USkeletalMesh* Mesh = Exists(WantMesh.ToSoftObjectPath()) ? WantMesh.LoadSynchronous() : nullptr;
 	if (!Mesh)
 	{
 		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: no body mesh at %s; the player stays a capsule"), *BodyMesh.ToString());
 		return;
 	}
 	GetMesh()->SetSkeletalMesh(Mesh);
-	if (UClass* Anim = Exists(BodyAnimClass.ToSoftObjectPath()) ? BodyAnimClass.LoadSynchronous() : nullptr)
+	if (UClass* Anim = Exists(WantAnim.ToSoftObjectPath()) ? WantAnim.LoadSynchronous() : nullptr)
 	{
 		GetMesh()->SetAnimInstanceClass(Anim);
+	}
+	if (bOwn)
+	{
+		// a downloaded character can be any size and face any way: stand it at CharacterHeight, facing forward
+		const float Tall = Mesh->GetBounds().BoxExtent.Z * 2.f;
+		GetMesh()->SetRelativeScale3D(FVector(Tall > 1.f ? CharacterHeight / Tall : 1.f));
+		GetMesh()->SetRelativeRotation(FRotator(0.f, -BodyFacingYaw(), 0.f));
+		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: the player is %s, %.0f cm tall scaled to %.0f"), *Mesh->GetName(), Tall, CharacterHeight);
 	}
 	GetCapsuleComponent()->SetHiddenInGame(true);
 	bHasBody = true;
 	PutOnShoes();
+}
+
+float ANHCharacter::BodyFacingYaw() const
+{
+	const FReferenceSkeleton& Skeleton = GetMesh()->GetSkeletalMeshAsset()->GetRefSkeleton();
+	FVector Toes = FVector::ZeroVector;
+	for (const TCHAR* Side : { TEXT("r"), TEXT("l") })
+	{
+		const int32 Foot = Skeleton.FindBoneIndex(FName(*FString::Printf(TEXT("foot_%s"), Side)));
+		const int32 Ball = Skeleton.FindBoneIndex(FName(*FString::Printf(TEXT("ball_%s"), Side)));
+		if (Foot != INDEX_NONE && Ball != INDEX_NONE)
+		{
+			Toes += FAnimationRuntime::GetComponentSpaceTransformRefPose(Skeleton, Ball).GetLocation() - FAnimationRuntime::GetComponentSpaceTransformRefPose(Skeleton, Foot).GetLocation();
+		}
+	}
+	return Toes.SizeSquared2D() > 1.f ? FMath::RadiansToDegrees(FMath::Atan2(Toes.Y, Toes.X)) : 90.f;
 }
 
 void ANHCharacter::PutOnShoes()
@@ -85,8 +114,10 @@ void ANHCharacter::PutOnShoes()
 	{
 		return;
 	}
-	// Worked out in the body's reference pose, where it stands flat on z = 0 facing +Y, so it does not matter
-	// which way a skeleton's foot bones happen to point.
+	// Worked out in the body's reference pose, where it stands flat on z = 0, so it does not matter which way a
+	// skeleton's foot bones happen to point. The shoes keep their own size whatever the body is scaled by.
+	const float Facing = BodyFacingYaw();
+	const float BodyScale = FMath::Max(GetMesh()->GetRelativeScale3D().X, 0.01f);
 	const FReferenceSkeleton& Skeleton = GetMesh()->GetSkeletalMeshAsset()->GetRefSkeleton();
 	const FBox Box = Shoe->GetBoundingBox();
 	const FVector Ankle(Box.Min.X + 0.25f * (Box.Max.X - Box.Min.X), 0.5f * (Box.Min.Y + Box.Max.Y), Box.Min.Z); // under the ankle, on the sole
@@ -101,8 +132,8 @@ void ANHCharacter::PutOnShoes()
 		}
 		const FTransform Foot = FAnimationRuntime::GetComponentSpaceTransformRefPose(Skeleton, Index);
 		const float Mirror = Side == 0 ? 1.f : -1.f;
-		const FVector Scale(ShoeScale, ShoeScale * Mirror, ShoeScale);
-		const FQuat Turn(FRotator(0.f, 90.f + ShoeYaw * Mirror, 0.f)); // toe to +Y
+		const FVector Scale(ShoeScale / BodyScale, ShoeScale * Mirror / BodyScale, ShoeScale / BodyScale);
+		const FQuat Turn(FRotator(0.f, Facing + ShoeYaw * Mirror, 0.f)); // toe to the front
 		const FVector Ground(Foot.GetLocation().X, Foot.GetLocation().Y, 0.f);
 		const FTransform Placed(Turn, Ground - Turn.RotateVector(Ankle * Scale), Scale);
 

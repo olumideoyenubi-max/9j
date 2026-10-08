@@ -15,9 +15,9 @@ class UStaticMesh;
  * The player on foot, with a low, close over-the-shoulder camera. Sprinting pulls the camera in, widens the view
  * and adds a slight handheld sway; it eases back when you walk.
  *
- * The body is whatever BodyMesh and BodyAnimClass point at. They default to the Unreal Third Person template's
- * mannequin as a stand-in until the real character is made; in a project without that content the player is the
- * visible capsule, as before.
+ * The body is CharacterMesh with CharacterAnimClass if the project has them (a character brought in by
+ * Scripts/import_player_gltf.py). Otherwise it is BodyMesh and BodyAnimClass, which default to the Unreal Third
+ * Person template's mannequin. In a project with neither, the player is the visible capsule.
  */
 UCLASS()
 class NAIJAHUSTLEGAME_API ANHCharacter : public ACharacter
@@ -36,7 +36,12 @@ public:
 	/** True when a body mesh was found and put on; false when the player is still the capsule */
 	UFUNCTION(BlueprintPure, Category = "Body") bool HasBody() const { return bHasBody; }
 
-	/** The body and its animation Blueprint. Point these at the real character when it exists. */
+	/** The player's own character and its animation Blueprint, used when the project has them */
+	UPROPERTY(EditAnywhere, Category = "Body") TSoftObjectPtr<USkeletalMesh> CharacterMesh;
+	UPROPERTY(EditAnywhere, Category = "Body") TSoftClassPtr<UAnimInstance> CharacterAnimClass;
+	/** How tall CharacterMesh should stand, cm: it is scaled to this from its own height */
+	UPROPERTY(EditAnywhere, Category = "Body") float CharacterHeight = 180.f;
+	/** The stand-in body and its animation Blueprint */
 	UPROPERTY(EditAnywhere, Category = "Body") TSoftObjectPtr<USkeletalMesh> BodyMesh;
 	UPROPERTY(EditAnywhere, Category = "Body") TSoftClassPtr<UAnimInstance> BodyAnimClass;
 
@@ -79,6 +84,8 @@ private:
 	void OnSprintStart();
 	void OnSprintStop();
 	void PutOnShoes();
+	/** Which way the body faces in its own space, from where its feet point in the reference pose (degrees; 90 if unknown) */
+	float BodyFacingYaw() const;
 
 	bool bHasBody = false;
 	bool bSprinting = false;

@@ -69,6 +69,14 @@ Chiron and a Bentley Continental GT V8 by amogusstrikesback2 (stray parts), "Mer
 (a stretch limousine with no materials), "Tata Signa Cargo Truck" by kevin_k_5124 (an articulated lorry, too long
 for the truck type), "1996 Toyota 4Runner" by gamegenjason (flat pink, very coarse).
 
+## Player character (Sketchfab)
+
+| Asset | Licence | Folder | Notes |
+|---|---|---|---|
+| "Black Boy Rigged Ready For Ue4" by MotionStudioArts, https://sketchfab.com/3d-models/black-boy-rigged-ready-for-ue4-c9ded09156c244a6b0c3a29820e7f42a | CC Attribution 4.0 (credit required, commercial use allowed) | `Content/Characters/Player/Hustler/` | 18,376 triangles, 5 materials, Unreal 4 mannequin bone names. Stand-in for the player until the real character is made: a young man in a white T-shirt and dark trousers, not the bearded man in a singlet and cargo trousers from the brief. |
+
+Before import the glTF download was edited: bone names had Sketchfab's number suffixes removed, the six parts were merged into one mesh, the upright rotation was moved off the root bone, and vertices, bone offsets and bind matrices were resized so no node carries a scale; textures wider than 2048 were shrunk. Then `Scripts/import_player_gltf.py` imported it and retargeted the mannequin's 21 animation assets onto it (the copies sit beside the originals in `Content/Characters/Mannequins/Anims/Unarmed/`, named `*_Hustler`).
+
 ## Clothing (test)
 
 | Item | Asset | Notes |
