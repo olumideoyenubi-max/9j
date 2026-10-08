@@ -10,7 +10,10 @@ previous run made (actors tagged NHBlockout), then places:
     signs, street lamps)
   - one NHBlockoutBuilding per building, plus fuel stations, bus shelters and a pedestrian footbridge
   - a few enterable shops near the start (hollow ground floor with shelves and a counter)
-  - the NHLightingRig (night rain to start with) and a PlayerStart at home by Oshoja Motor Park
+  - one NHCables per tile that has any: three sagging power lines between utility poles 8 to 16 m apart on the
+    same street and a service drop from each pole to the nearest wall (five lines and two drops in the dusty quarter)
+  - a sphere reflection capture over every road junction, so shiny surfaces mirror the street they stand in
+  - the NHLightingRig (harsh morning to start with) and a PlayerStart at home by Oshoja Motor Park
   - NHGameMode as this level's GameMode Override, so the game runs here without changing your
     project's default game mode
 Safe to run again after re-exporting the data.
@@ -34,6 +37,11 @@ QUIET = unreal.PropertyAccessChangeNotifyMode.NEVER  # set everything, then rebu
 # per-prop look: roughness, metallic, and whether the player bumps into it
 PROP_ROUGH = {"tank": 0.45, "trash": 0.3, "gascyl": 0.35, "drum": 0.5, "plank": 0.9, "crown": 0.85, "frond": 0.85, "solar": 0.18}
 PROP_METAL = {"gascyl": 0.3, "arm": 0.3, "trafo": 0.4, "solar": 0.6, "ac": 0.2}
+# what each prop is made of (unreal.NHSurfaceType); anything not listed is GENERIC (plastic, plants, goods)
+PROP_TYPE = {"pole": "CONCRETE", "klbase": "CONCRETE", "blocks": "CONCRETE", "rubble": "CONCRETE", "sand": "DIRT",
+             "stand": "WOOD", "trunk": "WOOD", "stool": "WOOD", "plank": "WOOD", "crate": "WOOD", "umb": "FABRIC", "solar": "GLASS",
+             "ac": "METAL", "dish": "METAL", "arm": "METAL", "trafo": "METAL", "busSign": "METAL", "drum": "METAL", "rcstand": "METAL",
+             "gen": "METAL", "gascyl": "METAL", "barrow": "METAL"}
 PROP_SOLID = {"pole", "trunk", "drum", "gen", "gascyl", "tyres", "sand", "blocks", "stand", "crate", "cooler", "barrow", "rubble", "basin", "rcstand", "goodsBox"}
 SHAPES = {"box": "BOX", "cyl": "CYLINDER", "sphere": "SPHERE", "cone": "CONE"}
 KINDS = {"house": "HOUSE", "estate": "ESTATE", "tower": "TOWER", "stall": "STALL", "stilt": "STILT"}
@@ -60,8 +68,9 @@ def qrot(q, v):
     return (v[0] + w * tx + (y * tz - z * ty), v[1] + w * ty + (z * tx - x * tz), v[2] + w * tz + (x * ty - y * tx))
 
 
-def surface(colour, rough, wet=0.7, metal=0.0, glow=0.0, warm=0.0):
+def surface(colour, rough, wet=0.7, metal=0.0, glow=0.0, warm=0.0, kind="GENERIC"):
     s = unreal.NHSurface()
+    s.set_editor_property("type", getattr(unreal.NHSurfaceType, kind))
     s.set_editor_property("color", colour if isinstance(colour, unreal.LinearColor) else linear(colour))
     s.set_editor_property("roughness", rough)
     s.set_editor_property("metallic", metal)
@@ -152,6 +161,97 @@ def footbridge_site(city, start):
     return best
 
 
+# ------------------------------------------------------------------------------------------------ reflection captures
+def junctions(city):
+    """The centre of every road junction (cells where the road runs on both ways), world cm."""
+    def run(c, r, dc, dr):
+        n = 0
+        while city.at(c + dc * (n + 1), r + dr * (n + 1)) == "R":
+            n += 1
+        return n
+
+    def crossing(c, r):  # roads are two cells wide, so "runs on both ways" means at least three cells each way
+        return city.at(c, r) == "R" and run(c, r, 1, 0) + run(c, r, -1, 0) >= 2 and run(c, r, 0, 1) + run(c, r, 0, -1) >= 2
+    seen, out = set(), []
+    for r in range(city.rows):
+        for c in range(city.cols):
+            if (c, r) in seen or not crossing(c, r):
+                continue
+            group, todo = [], [(c, r)]
+            seen.add((c, r))
+            while todo:
+                cc, rr = todo.pop()
+                group.append((cc, rr))
+                for n in ((cc + 1, rr), (cc - 1, rr), (cc, rr + 1), (cc, rr - 1)):
+                    if n not in seen and crossing(*n):
+                        seen.add(n)
+                        todo.append(n)
+            out.append(((sum(g[0] for g in group) / len(group) + 0.5) * city.cell, (sum(g[1] for g in group) / len(group) + 0.5) * city.cell))
+    return out
+
+
+# ------------------------------------------------------------------------------------------------ overhead cables
+POLE_HEIGHT = (850, 1000)   # utility poles; the 'pole' props also hold lamp posts, masts and table legs
+SPAN_RANGE = (800, 1600)    # consecutive poles this far apart on the same street are wired together
+DROP_RANGE = (150, 2000)    # a service drop reaches a wall this far from its pole
+
+
+def utility_poles(d):
+    """Upright utility poles from the 'pole' props: (x, y, top z)."""
+    spec = d["props"]["pole"]
+    out = []
+    for x, y, z, qx, qy, qz, qw, sx, sy, sz, colour in spec["items"]:
+        h = spec["size"][2] * sz
+        if POLE_HEIGHT[0] <= h <= POLE_HEIGHT[1] and abs(qx) + abs(qy) < 0.05 and z - h / 2 < 100:
+            out.append((x, y, z + h / 2))
+    return sorted(out)
+
+
+def _hash01(*n):
+    h = 0
+    for v in n:
+        h = (h * 374761393 + int(v) * 668265263 + 12345) & 0xFFFFFFFF
+        h = ((h ^ (h >> 13)) * 1274126177) & 0xFFFFFFFF
+    return ((h ^ (h >> 16)) & 0xFFFFFF) / 16777216.0
+
+
+def _wall_point(b, x, y):
+    """The nearest point to (x, y) on a building's footprint, and how far it is."""
+    px, py = min(max(x, b["x"]), b["x"] + b["w"]), min(max(y, b["y"]), b["y"] + b["d"])
+    return px, py, math.hypot(px - x, py - y)
+
+
+def cable_spans(city, d):
+    """Every overhead cable as (start, end, slack, width), each end an (x, y, z) in world cm."""
+    poles = utility_poles(d)
+    spans = []
+    for i, (x, y, top) in enumerate(poles):
+        dusty = city.is_dusty(int(x // city.cell), int(y // city.cell))
+        # the next pole along the street, east and south of this one
+        for along_x in (True, False):
+            best = None
+            for ox, oy, otop in poles:
+                run, off = (ox - x, oy - y) if along_x else (oy - y, ox - x)
+                if run > 0 and abs(off) < 150 and (best is None or run < best[0]):
+                    best = (run, ox, oy, otop)
+            if best is None or not SPAN_RANGE[0] <= best[0] <= SPAN_RANGE[1]:
+                continue
+            _, ox, oy, otop = best
+            lines = 5 if dusty else 3
+            for k in range(lines):  # spread across the crossarm, on two levels
+                side = (k - (lines - 1) / 2) * 35.0
+                dx, dy = (0.0, side) if along_x else (side, 0.0)
+                drop = 30.0 + 25.0 * (k % 2)
+                spans.append(((x + dx, y + dy, top - drop), (ox + dx, oy + dy, otop - drop), 0.03 + 0.04 * _hash01(i, k, along_x), 3.0))
+        # service drops to the nearest walls
+        walls = sorted((_wall_point(b, x, y) + (b,) for b in d["buildings"] if b["kind"] in ("house", "estate")), key=lambda w: w[2])
+        walls = [w for w in walls if DROP_RANGE[0] <= w[2] <= DROP_RANGE[1]][: 2 if dusty else 1]
+        for k, (px, py, dist, b) in enumerate(walls):
+            z = max(250.0, min(d["heights"]["kerb"] + b["h"] - 40.0, top - 120.0))
+            spans.append(((x, y, top - 60.0), (px, py, z), 0.06 + 0.05 * _hash01(i, k, 7), 2.0))
+    return spans
+
+
 # ------------------------------------------------------------------------------------------------ editor side
 class Builder:
     def __init__(self, city):
@@ -172,6 +272,12 @@ class Builder:
             return "created (convert it with Tools > Convert Level for World Partition)"
 
     def clear(self):
+        # a World Partition level opens with its actors unloaded: load them all, or the old blockout stays in the level
+        try:
+            descs = unreal.WorldPartitionBlueprintLibrary.get_actor_descs() or []
+            unreal.WorldPartitionBlueprintLibrary.load_actors([d.get_editor_property("guid") for d in descs])
+        except Exception as err:  # not a World Partition level
+            unreal.log(f"NAIJA HUSTLE: actors not loaded through World Partition ({err})")
         n = 0
         for a in self.eas.get_all_level_actors():
             if a.actor_has_tag(TAG):
@@ -223,7 +329,7 @@ class Builder:
                 p.set_editor_property("kind", kind)
                 p.set_editor_property("shape", shape)
                 p.set_editor_property("transform", t)
-                p.set_editor_property("surface", surface(colour, PROP_ROUGH.get(kind, 0.75), 0.7, PROP_METAL.get(kind, 0.0)))
+                p.set_editor_property("surface", surface(colour, PROP_ROUGH.get(kind, 0.75), 0.7, PROP_METAL.get(kind, 0.0), kind=PROP_TYPE.get(kind, "GENERIC")))
                 p.set_editor_property("solid", kind in PROP_SOLID)
                 bucket(x, y)["props"].append(p)
 
@@ -279,6 +385,31 @@ class Builder:
                 values.update({"enterable_shop": True, "shop_face": face, "shop_door_offset": offset, "shop_door_width": width})
             self.props(a, values)
 
+    # ---- overhead cables
+    def cables(self):
+        city = self.city
+        buckets = {}
+        for start, end, slack, width in cable_spans(city, city.d):
+            c = unreal.NHCableSpan()
+            c.set_editor_property("start", unreal.Vector(*start))
+            c.set_editor_property("end", unreal.Vector(*end))
+            c.set_editor_property("slack", slack)
+            c.set_editor_property("width", width)
+            buckets.setdefault(city.tile_of((start[0] + end[0]) / 2, (start[1] + end[1]) / 2), []).append(c)
+        for (tx, ty), spans in sorted(buckets.items()):
+            cx, cy = (tx * TILE + TILE / 2) * city.cell, (ty * TILE + TILE / 2) * city.cell
+            a = self.spawn(unreal.NHCables, cx, cy, 0.0, label=f"Cables_{tx}_{ty}", folder="NaijaHustle/Cables")
+            self.props(a, {"spans": spans})
+        return sum(len(v) for v in buckets.values())
+
+    # ---- reflection captures
+    def captures(self):
+        spots = junctions(self.city)
+        for i, (x, y) in enumerate(spots):
+            a = self.spawn(unreal.SphereReflectionCapture, x, y, 350.0, label=f"Reflection_{i:02d}", folder="NaijaHustle/Reflections")
+            a.get_editor_property("capture_component").set_editor_property("influence_radius", 3200.0)
+        return len(spots)
+
     def landmarks(self):
         city, d = self.city, self.city.d
         kerb = d["heights"]["kerb"]
@@ -300,8 +431,8 @@ class Builder:
     def rig_and_start(self):
         d, city = self.city.d, self.city
         rig = self.spawn(unreal.NHLightingRig, city.cols * city.cell / 2, city.rows * city.cell / 2, 0.0, label="LightingRig", folder="NaijaHustle")
-        rig.set_editor_property("preset", unreal.NHLightingPreset.NIGHT_RAIN)
-        rig.apply_preset(unreal.NHLightingPreset.NIGHT_RAIN)
+        rig.set_editor_property("preset", unreal.NHLightingPreset.HARSH_MORNING)  # the game follows the clock; this is the editor's view
+        rig.apply_preset(unreal.NHLightingPreset.HARSH_MORNING)
         ps = d["playerStart"]
         self.spawn(unreal.PlayerStart, ps["x"], ps["y"], ps["z"] + 100.0, yaw=ps["yaw"], label="PlayerStart_Home", folder="NaijaHustle")
         world = unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
@@ -331,7 +462,7 @@ def main():
     b = Builder(city)
     how = b.open_level()
     removed = b.clear()
-    with unreal.ScopedSlowTask(4, "Building the NAIJA HUSTLE street block") as task:
+    with unreal.ScopedSlowTask(6, "Building the NAIJA HUSTLE street block") as task:
         task.make_dialog(True)
         task.enter_progress_frame(1, "City tiles")
         b.tiles()
@@ -339,11 +470,19 @@ def main():
         b.buildings(enterable)
         task.enter_progress_frame(1, "Landmarks")
         site = b.landmarks()
+        task.enter_progress_frame(1, "Cables")
+        cables = b.cables()
+        task.enter_progress_frame(1, "Reflection captures")
+        captures = b.captures()
         task.enter_progress_frame(1, "Lighting")
         b.rig_and_start()
     b.les.save_current_level()
+    try:  # also writes out the removal of the old actors' own files
+        unreal.EditorLoadingAndSavingUtils.save_dirty_packages(True, True)
+    except Exception as err:
+        unreal.log_warning(f"NAIJA HUSTLE: could not save every changed file ({err}); use File > Save All")
     unreal.log(f"NAIJA HUSTLE: {LEVEL} {how}; removed {removed} old actors; placed {b.count}; "
-               f"{len(enterable)} walk-in shops; footbridge {'at %.0f, %.0f' % site[1:] if site else 'not placed'}")
+               f"{cables} cables; {captures} reflection captures; {len(enterable)} walk-in shops; footbridge {'at %.0f, %.0f' % site[1:] if site else 'not placed'}")
     return b.count
 
 

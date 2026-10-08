@@ -90,7 +90,59 @@ ok("poles are solid cylinders; chairs are not solid", p.get_editor_property("sha
 ok("sign text avoids characters the default font lacks", all("₦" not in s.get_editor_property("sub") and "·" not in s.get_editor_property("sub") for t in tiles for s in t.get_editor_property("signs")))
 rig = next(a for a in actors if isinstance(a, unreal.NHLightingRig))
 ok("the level's GameMode Override is NHGameMode", "NHGameMode" in str(unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).world.settings.get_editor_property("default_game_mode")))
-ok("lighting rig starts on night rain; player starts at home by the motor park", rig.get_editor_property("_applied") == "NHLightingPreset.NIGHT_RAIN" and (ps.loc.x, ps.loc.y) == (sx, sy))
+ok("lighting rig starts on the harsh morning; player starts at home by the motor park", rig.get_editor_property("_applied") == "NHLightingPreset.HARSH_MORNING" and (ps.loc.x, ps.loc.y) == (sx, sy))
+
+# surface types: every prop says what it is made of
+kinds_of = {}
+for t in tiles:
+    for q in t.get_editor_property("props"):
+        kinds_of.setdefault(q.get_editor_property("kind"), set()).add(q.get_editor_property("surface").get_editor_property("type"))
+ok("every prop's surface has one type per kind; planks are wood, generators metal, sand heaps dirt, goods generic",
+   all(len(v) == 1 for v in kinds_of.values()) and kinds_of["plank"] == {"NHSurfaceType.WOOD"} and kinds_of["gen"] == {"NHSurfaceType.METAL"}
+   and kinds_of["sand"] == {"NHSurfaceType.DIRT"} and kinds_of["goods"] == {"NHSurfaceType.GENERIC"}, {k: v for k, v in kinds_of.items() if len(v) != 1})
+ok("every prop kind with a type is a real prop kind", set(bsb.PROP_TYPE) <= set(data["props"]), set(bsb.PROP_TYPE) - set(data["props"]))
+
+# overhead cables
+city = bsb.City(data)
+poles = bsb.utility_poles(data)
+spans = bsb.cable_spans(city, data)
+cable_actors = [a for a in actors if isinstance(a, unreal.NHCables)]
+placed = [c for a in cable_actors for c in a.get_editor_property("spans")]
+ok("utility poles are picked out of the 'pole' props (not lamp posts, masts or table legs)", 60 <= len(poles) <= 140 and all(880 <= p[2] <= 1000 for p in poles), len(poles))
+ok("every cable lands in exactly one NHCables actor, rebuilt once", len(placed) == len(spans) > 100 and all(a.rebuilt == 1 for a in cable_actors), (len(placed), len(spans)))
+lines = [s_ for s_ in spans if s_[3] == 3.0]
+drops = [s_ for s_ in spans if s_[3] == 2.0]
+runs = [math.hypot(a[0] - b[0], a[1] - b[1]) for a, b, _, _ in lines]
+ok("power lines join poles 8 to 16 m apart along one street, with slack", lines and all(790 <= r <= 1610 for r in runs)
+   and all(abs(a[0] - b[0]) < 151 or abs(a[1] - b[1]) < 151 for a, b, _, _ in lines) and all(0.02 < s_[2] < 0.12 for s_ in spans), (min(runs), max(runs)))
+def per_pole(pred):
+    out = {}
+    for a, b, _, _ in drops:
+        key = (a[0], a[1])
+        if pred(key):
+            out[key] = out.get(key, 0) + 1
+    return out
+in_dusty = lambda k: city.is_dusty(int(k[0] // 400), int(k[1] // 400))
+ok("service drops reach a nearby wall below the pole top: up to 2 per pole in the dusty quarter, 1 elsewhere",
+   drops and all(a[2] > b[2] >= 250 for a, b, _, _ in drops) and max(per_pole(in_dusty).values(), default=0) == 2
+   and max(per_pole(lambda k: not in_dusty(k)).values(), default=0) == 1, (len(drops), per_pole(in_dusty)))
+def bundle(pred):
+    nearest = lambda q: min(poles, key=lambda p_: math.hypot(p_[0] - q[0], p_[1] - q[1]))[:2]
+    pairs = {}
+    for a, b, _, _ in lines:
+        if pred(nearest(a)):
+            key = (nearest(a), nearest(b))
+            pairs[key] = pairs.get(key, 0) + 1
+    return set(pairs.values())
+ok("three lines per span, five in the dusty quarter", bundle(lambda k: not in_dusty(k)) == {3} and bundle(in_dusty) == {5}, (bundle(lambda k: not in_dusty(k)), bundle(in_dusty)))
+
+ok("loads the level's World Partition actors before clearing, and saves every changed file after", len(unreal.WorldPartitionBlueprintLibrary.loaded) == 1 and unreal.EditorLoadingAndSavingUtils.saves == 1)
+
+# reflection captures
+caps = [a for a in actors if isinstance(a, unreal.SphereReflectionCapture)]
+js = bsb.junctions(city)
+ok("one reflection capture over every road junction, above head height, reaching the next junction's", 20 <= len(js) == len(caps) <= 120 and all(a.loc.z == 350 and data["tiles"][int(a.loc.y // 400)][int(a.loc.x // 400)] == "R"
+   and a.get_editor_property("capture_component").get_editor_property("influence_radius") >= 3000 for a in caps), (len(js), len(caps)))
 
 # second run: removes its own actors first
 before = len(actors)
