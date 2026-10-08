@@ -13,12 +13,12 @@ Engine: **Unity 6 LTS (6000.0)**, URP, IL2CPP, ARM64, Vulkan with GLES3 fallback
 ## 2. Code architecture
 
 ```
-Assets/_Project/Scripts/
+legacy/unity/Assets/_Project/Scripts/
   Core/      NaijaHustle.Core     — pure C#, noEngineReferences. All rules & state.
   Runtime/   NaijaHustle.Runtime  — MonoBehaviours: input, physics, streaming, UI.
   Editor/    NaijaHustle.Editor   — content validation, Addressables setup, debug menu.
-Assets/_Project/Resources/Content/*.json — all game data (cities, missions, vehicles…)
-Assets/_Project/Tests/EditMode/        — NUnit tests (run in Unity *and* via dotnet)
+legacy/unity/Assets/_Project/Resources/Content/*.json — all game data (cities, missions, vehicles…)
+legacy/unity/Assets/_Project/Tests/EditMode/        — NUnit tests (run in Unity *and* via dotnet)
 Tools/CoreTests/                       — dotnet harness compiling Core + tests outside Unity
 ```
 

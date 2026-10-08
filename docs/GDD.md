@@ -5,7 +5,7 @@
 > politicians, companies or gangs. Every character, brand, unit and organisation below is invented.
 
 All numbers here (prices, rewards, heat values) are live data in
-`Assets/_Project/Resources/Content/*.json`. That data is the source of truth, and this document describes it.
+`legacy/unity/Assets/_Project/Resources/Content/*.json`. That data is the source of truth, and this document describes it.
 
 ---
 

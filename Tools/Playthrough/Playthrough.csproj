@@ -8,9 +8,9 @@
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="../../Assets/_Project/Scripts/Core/**/*.cs" />
+    <Compile Include="../../legacy/unity/Assets/_Project/Scripts/Core/**/*.cs" />
     <Compile Include="Program.cs" />
-    <None Include="../../Assets/_Project/Resources/Content/*.json" Link="Content/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../legacy/unity/Assets/_Project/Resources/Content/*.json" Link="Content/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />

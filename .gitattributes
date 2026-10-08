@@ -16,3 +16,6 @@
 *.ogg  filter=lfs diff=lfs merge=lfs -text
 *.mp3  filter=lfs diff=lfs merge=lfs -text
 *.mp4  filter=lfs diff=lfs merge=lfs -text
+
+# Small review screenshots stay in plain git so they show in PROGRESS.md
+docs/screenshots/*.jpg -filter -diff -merge

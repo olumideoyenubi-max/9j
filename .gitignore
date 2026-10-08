@@ -1,16 +1,16 @@
-# Unity
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
-/[Mm]emoryCaptures/
-/[Rr]ecordings/
-/ServerData/
-/Assets/AddressableAssetsData/*/*.bin*
-/Assets/StreamingAssets/aa*
+# Unity (archived in legacy/unity)
+/legacy/unity/[Ll]ibrary/
+/legacy/unity/[Tt]emp/
+/legacy/unity/[Oo]bj/
+/legacy/unity/[Bb]uild/
+/legacy/unity/[Bb]uilds/
+/legacy/unity/[Ll]ogs/
+/legacy/unity/[Uu]ser[Ss]ettings/
+/legacy/unity/[Mm]emoryCaptures/
+/legacy/unity/[Rr]ecordings/
+/legacy/unity/ServerData/
+/legacy/unity/Assets/AddressableAssetsData/*/*.bin*
+/legacy/unity/Assets/StreamingAssets/aa*
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
@@ -34,3 +34,16 @@ crashlytics-build.properties
 Tools/**/bin/
 Tools/**/obj/
 TestResults/
+
+# macOS
+.DS_Store
+
+# Third-party asset packs are never committed (their licences forbid redistribution).
+# Re-add them from Fab or the engine; see ASSETS.md.
+unreal/**/Content/Megascans/
+unreal/**/Content/MSPresets/
+unreal/**/Content/Fab/
+unreal/**/Content/Quixel/
+unreal/**/Content/MetaHumans/
+unreal/**/Content/StarterContent/
+unreal/**/Content/Characters/Mannequins/

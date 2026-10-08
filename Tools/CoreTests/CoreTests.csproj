@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <!--
     Compiles the engine-free NaijaHustle.Core scripts outside Unity and runs the same NUnit
-    tests that live in Assets/_Project/Tests/EditMode. LangVersion 9 matches Unity's C# level.
+    tests that live in legacy/unity/Assets/_Project/Tests/EditMode. LangVersion 9 matches Unity's C# level.
   -->
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -12,9 +12,9 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="../../Assets/_Project/Scripts/Core/**/*.cs" />
-    <Compile Include="../../Assets/_Project/Tests/EditMode/**/*.cs" />
-    <None Include="../../Assets/_Project/Resources/Content/*.json" Link="Content/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Compile Include="../../legacy/unity/Assets/_Project/Scripts/Core/**/*.cs" />
+    <Compile Include="../../legacy/unity/Assets/_Project/Tests/EditMode/**/*.cs" />
+    <None Include="../../legacy/unity/Assets/_Project/Resources/Content/*.json" Link="Content/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
