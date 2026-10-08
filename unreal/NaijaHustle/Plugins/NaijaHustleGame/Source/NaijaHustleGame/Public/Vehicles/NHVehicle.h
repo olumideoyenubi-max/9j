@@ -15,8 +15,8 @@ class UTextRenderComponent;
 /**
  * A drivable vehicle with the browser demo's arcade handling (same top speed, acceleration and turn
  * rate per type): danfo, okada, keke, cars. Moves by sweeping its box through the world, so it stops on
- * buildings, rides up kerbs and loses health in crashes. The body is a blockout built from the type's
- * size; step 4 swaps in Chaos Vehicles and real meshes.
+ * buildings, rides up kerbs and loses health in crashes. The body is the type's real model when one is
+ * assigned (Scripts/assign_vehicle_meshes.py), or else a blockout built from the type's size.
  */
 UCLASS()
 class NAIJAHUSTLEGAME_API ANHVehicle : public APawn
@@ -47,6 +47,10 @@ public:
 	void SetOccupied(bool bOn);
 	/** Puts it back on its wheels with full health (mission retries) */
 	void Repair() { Health = MaxHealth; Speed = 0.f; }
+	/** Held: it stands still whatever the driver presses (Baba Driver counting the money) */
+	void SetHeld(bool bOn) { bHeld = bOn; if (bOn) { Speed = 0.f; } }
+	/** Sets the pedals and wheel directly, as the input bindings do (scripted driving) */
+	void SetDriveInput(float InThrottle, float InBrake, float InSteer) { Throttle = InThrottle; BrakeIn = InBrake; Steer = InSteer; }
 
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
@@ -63,6 +67,7 @@ private:
 	FNHVehicleSpec Spec;
 	float Throttle = 0.f, BrakeIn = 0.f, Steer = 0.f;
 	bool bHandbrake = false;
+	bool bHeld = false;
 	bool bBuilt = false;
 	float Clearance = 30.f, HalfHeight = 60.f;
 	float WheelSpin = 0.f, Lean = 0.f, LookIdle = 0.f;
@@ -72,6 +77,8 @@ private:
 	UPROPERTY() TObjectPtr<UTextRenderComponent> BoardText;
 
 	void BuildBody();
+	/** Uses the type's real model if one is assigned and loads; sets its height */
+	bool AddModel(float& OutHeight);
 	void Drive(float DeltaSeconds);
 	float GroundZ(const FVector& At) const;
 

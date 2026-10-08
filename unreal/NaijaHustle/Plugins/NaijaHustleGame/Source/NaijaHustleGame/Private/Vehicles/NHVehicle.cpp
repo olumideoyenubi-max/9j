@@ -109,7 +109,11 @@ void ANHVehicle::BuildBody()
 	};
 
 	float Height = 150.f;
-	if (VehicleType == TEXT("danfo"))
+	if (AddModel(Height))
+	{
+		// a real model: no blockout pieces
+	}
+	else if (VehicleType == TEXT("danfo"))
 	{
 		Height = 230.f;
 		Piece(ENHShape::Box, FVector(0, 0, 115.f), FVector(L - 20.f, W - 12.f, 150.f), PaintS);                   // body
@@ -184,11 +188,34 @@ void ANHVehicle::BuildBody()
 	}
 	else // cars, SUVs, trucks
 	{
-		const bool bTall = VehicleType == TEXT("truck") || VehicleType == TEXT("suv");
-		Height = bTall ? 230.f : 150.f;
-		Piece(ENHShape::Box, FVector(0, 0, bTall ? 90.f : 62.f), FVector(L - 10.f, W - 8.f, bTall ? 100.f : 62.f), PaintS);
-		Piece(ENHShape::Box, FVector(bTall ? L * 0.28f : -L * 0.05f, 0, bTall ? 185.f : 118.f), FVector(bTall ? L * 0.36f : L * 0.52f, W - 22.f, bTall ? 90.f : 52.f), Glass);
-		Piece(ENHShape::Box, FVector(bTall ? L * 0.28f : -L * 0.05f, 0, bTall ? 232.f : 146.f), FVector(bTall ? L * 0.34f : L * 0.48f, W - 26.f, 6.f), PaintS);
+		// the browser game's types keep their shapes; the Unreal-only luxury types pick theirs with "body"
+		const bool bLuxSuv = Spec.Body == TEXT("suv"), bLow = Spec.Body == TEXT("sports");
+		const bool bTall = VehicleType == TEXT("truck") || VehicleType == TEXT("suv") || bLuxSuv;
+		Height = bTall ? 230.f : bLow ? 122.f : 150.f;
+		if (bLuxSuv) // one long glasshouse rather than a cab, and a chrome grille
+		{
+			Piece(ENHShape::Box, FVector(0, 0, 90.f), FVector(L - 10.f, W - 8.f, 100.f), PaintS);
+			Piece(ENHShape::Box, FVector(-L * 0.06f, 0, 178.f), FVector(L * 0.66f, W - 22.f, 76.f), Glass);
+			Piece(ENHShape::Box, FVector(-L * 0.06f, 0, 219.f), FVector(L * 0.64f, W - 26.f, 6.f), PaintS);
+			Piece(ENHShape::Box, FVector(L * 0.5f - 3.f, 0, 96.f), FVector(4.f, W * 0.5f, 44.f), Chrome);
+		}
+		else if (bLow) // a sports car: long nose, a small cabin set back, a wing
+		{
+			Piece(ENHShape::Box, FVector(0, 0, 50.f), FVector(L - 10.f, W - 8.f, 44.f), PaintS);
+			Piece(ENHShape::Box, FVector(-L * 0.1f, 0, 92.f), FVector(L * 0.36f, W - 34.f, 40.f), Glass);
+			Piece(ENHShape::Box, FVector(-L * 0.1f, 0, 114.f), FVector(L * 0.3f, W - 40.f, 5.f), PaintS);
+			Piece(ENHShape::Box, FVector(-L * 0.5f + 16.f, 0, 96.f), FVector(22.f, W - 16.f, 4.f), Black);
+			for (float Y : { -W * 0.36f, W * 0.36f })
+			{
+				Piece(ENHShape::Box, FVector(-L * 0.5f + 16.f, Y, 84.f), FVector(6.f, 6.f, 22.f), Black);
+			}
+		}
+		else
+		{
+			Piece(ENHShape::Box, FVector(0, 0, bTall ? 90.f : 62.f), FVector(L - 10.f, W - 8.f, bTall ? 100.f : 62.f), PaintS);
+			Piece(ENHShape::Box, FVector(bTall ? L * 0.28f : -L * 0.05f, 0, bTall ? 185.f : 118.f), FVector(bTall ? L * 0.36f : L * 0.52f, W - 22.f, bTall ? 90.f : 52.f), Glass);
+			Piece(ENHShape::Box, FVector(bTall ? L * 0.28f : -L * 0.05f, 0, bTall ? 232.f : 146.f), FVector(bTall ? L * 0.34f : L * 0.48f, W - 26.f, 6.f), PaintS);
+		}
 		if (VehicleType == TEXT("truck")) // an overloaded tipper: sand piled over the sides
 		{
 			Piece(ENHShape::Box, FVector(-L * 0.18f, 0, 175.f), FVector(L * 0.6f, W - 6.f, 70.f), FNHSurface(FLinearColor(0.25f, 0.13f, 0.06f), 0.9f, 0.6f));
@@ -196,8 +223,8 @@ void ANHVehicle::BuildBody()
 		}
 		for (float Y : { -W * 0.32f, W * 0.32f })
 		{
-			Piece(ENHShape::Box, FVector(L * 0.5f - 2.f, Y, bTall ? 90.f : 66.f), FVector(4.f, 30.f, 14.f), HeadLamp);
-			Piece(ENHShape::Box, FVector(-L * 0.5f + 2.f, Y, bTall ? 90.f : 70.f), FVector(4.f, 24.f, 14.f), TailLamp);
+			Piece(ENHShape::Box, FVector(L * 0.5f - 2.f, Y, bTall ? 90.f : bLow ? 56.f : 66.f), FVector(4.f, 30.f, bLow ? 8.f : 14.f), HeadLamp);
+			Piece(ENHShape::Box, FVector(-L * 0.5f + 2.f, Y, bTall ? 90.f : bLow ? 58.f : 70.f), FVector(4.f, bLow ? 40.f : 24.f, bLow ? 8.f : 14.f), TailLamp);
 		}
 		const float R = bTall ? 42.f : 33.f;
 		for (float X : { L * 0.5f - R * 2.2f, -L * 0.5f + R * 2.4f })
@@ -205,7 +232,7 @@ void ANHVehicle::BuildBody()
 			Wheel(X, -W * 0.5f + 18.f, R, 22.f);
 			Wheel(X, W * 0.5f - 18.f, R, 22.f);
 		}
-		Seated(FVector(bTall ? L * 0.3f : L * 0.05f, -W * 0.25f, bTall ? 120.f : 55.f), 1.f);
+		Seated(bLuxSuv ? FVector(L * 0.1f, -W * 0.25f, 110.f) : bLow ? FVector(-L * 0.06f, -W * 0.22f, 40.f) : FVector(bTall ? L * 0.3f : L * 0.05f, -W * 0.25f, bTall ? 120.f : 55.f), bLow ? 0.85f : 1.f);
 	}
 
 	// collision: the box from the ground clearance up, so kerbs pass underneath and the vehicle rides up them
@@ -215,6 +242,40 @@ void ANHVehicle::BuildBody()
 	Body->SetRelativeLocation(FVector(0, 0, -(Clearance + HalfHeight)));
 	Arm->TargetArmLength = L * 1.2f + 420.f;
 	SetOccupied(false);
+}
+
+bool ANHVehicle::AddModel(float& OutHeight)
+{
+	const UNHGameData* Data = UNHGameData::Get(this);
+	const FNHVehicleMesh* Model = Data ? Data->VehicleMeshes.Find(VehicleType) : nullptr;
+	if (!Model)
+	{
+		return false;
+	}
+	int32 Added = 0;
+	for (const FString& Path : Model->Meshes)
+	{
+		UStaticMesh* Mesh = LoadObject<UStaticMesh>(nullptr, *Path);
+		if (!Mesh)
+		{
+			UE_LOG(LogNHGame, Warning, TEXT("NHVehicle: %s's model %s is missing; run Scripts/assign_vehicle_meshes.py again"), *VehicleType.ToString(), *Path);
+			continue;
+		}
+		UStaticMeshComponent* C = NewObject<UStaticMeshComponent>(this);
+		C->SetStaticMesh(Mesh);
+		C->SetCollisionEnabled(ECollisionEnabled::NoCollision); // the vehicle's box does the colliding
+		C->SetCanEverAffectNavigation(false);
+		C->SetupAttachment(Body);
+		C->SetRelativeTransform(FTransform(FRotator(0.f, Model->Yaw, 0.f), Model->Offset, FVector(Model->Scale)));
+		C->RegisterComponent();
+		++Added;
+	}
+	if (Added == 0)
+	{
+		return false; // nothing loaded: keep the blockout
+	}
+	OutHeight = FMath::Clamp(Model->Height, 60.f, 400.f);
+	return true;
 }
 
 void ANHVehicle::SetOccupied(bool bOn)
@@ -281,7 +342,7 @@ void ANHVehicle::Tick(float DeltaSeconds)
 void ANHVehicle::Drive(float DeltaSeconds)
 {
 	const float A = Spec.Accel, V = Spec.MaxSpeed;
-	const bool bDriven = Controller != nullptr && !IsWrecked();
+	const bool bDriven = Controller != nullptr && !IsWrecked() && !bHeld;
 	const float T = bDriven ? Throttle : 0.f, B = bDriven ? BrakeIn : 0.f, S = bDriven ? Steer : 0.f;
 
 	if (T > 0.f)
