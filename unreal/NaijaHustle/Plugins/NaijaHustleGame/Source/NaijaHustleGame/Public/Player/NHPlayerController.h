@@ -138,6 +138,8 @@ private:
 	FString LookShotFolder;
 	FTimerHandle LookShotTimer;
 	bool bLookShotSprint = false;
+	/** How far one foot gets ahead of and behind the other during the look-shot sprint, cm: a body whose legs do not move shows next to nothing */
+	float LookStrideMin = 0.f, LookStrideMax = 0.f;
 	/** While the shots run the view is held on this yaw, whatever the mouse does */
 	bool bLookShotActive = false;
 	bool bLookFps = false;

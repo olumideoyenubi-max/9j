@@ -83,6 +83,18 @@ else:
                 unreal.log_warning(f"NAIJA HUSTLE: {step}: {error}")
     controller.auto_map_chains(unreal.AutoMapChainType.FUZZY, True)
     controller.auto_align_all_bones(side.TARGET)  # the mannequin stands in an A-pose; most downloads are in a T-pose
+    # The mannequin's animation Blueprint plants the feet on the IK bones, which no retarget chain moves: left where
+    # they are, they hold the feet still and the legs do not move. Pin each IK bone to the bone it shadows.
+    pin = controller.get_op_controller(controller.add_retarget_op("/Script/IKRig.IKRetargetPinBoneOp"))
+    settings = pin.get_settings()
+    which = type(settings.get_editor_property("skeleton_to_copy_from"))
+    settings.set_editor_property("skeleton_to_copy_from", next(getattr(which, m) for m in dir(which) if m.isupper() and "TARGET" in m))
+    pin.set_settings(settings)
+    names = [str(n) for n in body.get_editor_property("skeleton").get_reference_pose().get_bone_names()]
+    for ik_bone, bone in (("ik_foot_l", "foot_l"), ("ik_foot_r", "foot_r"), ("ik_hand_l", "hand_l"), ("ik_hand_r", "hand_r"), ("ik_hand_gun", "hand_r")):
+        if ik_bone in names and bone in names:
+            pin.set_bone_pair(bone, ik_bone)  # copy from, copy to
+    unreal.log(f"NAIJA HUSTLE: pinned IK bones to {[str(x) for x in pin.get_all_bone_pairs()]}")
 library.save_directory(rigs, only_if_is_dirty=False, recursive=True)
 
 # the copies land beside the originals, with the character's name on the end

@@ -335,6 +335,13 @@ void ANHPlayerController::PlayerTick(float DeltaTime)
 		if (APawn* P = GetPawn())
 		{
 			P->AddMovementInput(FRotator(0.f, GetControlRotation().Yaw, 0.f).Vector(), 1.f);
+			const ACharacter* Body = Cast<ACharacter>(P);
+			if (Body && Body->GetMesh() && Body->GetMesh()->DoesSocketExist(TEXT("foot_l")) && Body->GetMesh()->DoesSocketExist(TEXT("foot_r")))
+			{
+				const float Ahead = FVector::DotProduct(Body->GetMesh()->GetSocketLocation(TEXT("foot_l")) - Body->GetMesh()->GetSocketLocation(TEXT("foot_r")), P->GetActorForwardVector());
+				LookStrideMin = FMath::Min(LookStrideMin, Ahead);
+				LookStrideMax = FMath::Max(LookStrideMax, Ahead);
+			}
 		}
 	}
 }
@@ -393,6 +400,7 @@ void ANHPlayerController::LookShotsSprint()
 			Char->SetSprinting(true);
 		}
 		bLookShotSprint = true;
+		LookStrideMin = LookStrideMax = 0.f;
 		GetWorldTimerManager().SetTimer(LookShotTimer, FTimerDelegate::CreateWeakLambda(this, [this]()
 		{
 			LookShot(TEXT("sprint"));
@@ -404,6 +412,7 @@ void ANHPlayerController::LookShotsSprint()
 void ANHPlayerController::LookShotsDone()
 {
 	bLookShotSprint = false;
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: running stride: the left foot got %.0f cm ahead of the right and %.0f cm behind it"), LookStrideMax, -LookStrideMin);
 	bLookShotActive = false;
 	if (AHUD* Hud = GetHUD())
 	{

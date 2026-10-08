@@ -42,7 +42,7 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Car import route:** `Scripts/import_car_fbx.py` brings a downloaded FBX in as one static mesh and, on a second run, makes three lower levels of detail. Used on a 1.26 million triangle test SUV, which `assign_vehicle_meshes.py` then fitted to the super SUV type.
 - **Shoes on the player:** `ANHCharacter` wears one unrigged shoe mesh on both feet (mirrored for the left), fixed to the foot bones from the skeleton's reference pose. In the Mac project it is the test trainers (see `ASSETS.md`); without that mesh nothing is worn. 22.3 fps at the usual spot, self-test 74 and autoplay 26 pass. No screenshot here because the test shoe is a real brand.
 - **Real vehicle models (2026-10-08):** 15 of the 16 vehicle types now use downloaded models (danfo, keke, okada, sedan, SUV, pickup, truck and the eight luxury types); only the task force bike is a blockout. `Scripts/import_car_gltf.py` imports a folder of glTF downloads, one combined mesh per car; `assign_vehicle_meshes.py` fits them, taking the type from the import folder's name and the backwards ones from `NH_CAR_FLIP`. The console command `NHCarShow X Y [Folder]` lines up one of every type and photographs them. Real-model vehicles get unseen wheel hubs so suspension and road-surface grip still work. Self-test 75 and autoplay 26 pass. Credits in `ASSETS.md`.
-- **Player character (stand-in, 2026-10-08):** the player is now a downloaded rigged character instead of the mannequin, where the project has it: scaled to 180 cm, turned to face forward from where its feet point, wearing the test trainers, and moving with the mannequin's walk, jog and jump animations retargeted by `Scripts/import_player_gltf.py` (automatic IK rigs and retargeter). 22.2 fps on the dusty street. Self-test 75 and autoplay 26 pass. Credit in `ASSETS.md`.
+- **Player character (stand-in, 2026-10-08):** the player is now a downloaded rigged character instead of the mannequin, where the project has it: scaled to 180 cm, turned to face forward from where its feet point, wearing the test trainers, and moving with the mannequin's walk, jog and jump animations retargeted by `Scripts/import_player_gltf.py` (automatic IK rigs and retargeter, with the foot and hand IK bones pinned to the feet and hands: without that the legs did not move). `NHLookShots` now logs the running stride (104 cm each way). 21.0 fps on the dusty street. Self-test 75 and autoplay 26 pass. Credit in `ASSETS.md`.
 
 ## In progress
 
@@ -81,7 +81,7 @@ Deferred: NPCs and storyline.
 - Light-shaft cards in alleys are not done.
 - Fog glow toward the sun was removed because it washed out the picture.
 - Play-in-Editor has not been retested since the memory fix; testing has been in the standalone game.
-- The player character is a stand-in that does not match the brief (no beard, T-shirt and plain trousers, a slightly cartoon face), and its legs look close together when running. Its trainers sit over the model's own shoes.
+- The player character is a stand-in that does not match the brief (no beard, T-shirt and plain trousers, a slightly cartoon face). Its trainers sit over the model's own shoes.
 - Character effects are untested on a real character: the stand-in's materials have no sweat, wetness and damage parameters. Only the material pool and the weather values are checked by the self-test.
 - The momentum movement component is not on the player yet (the player moves as before), and its lean, turning grip and network prediction are untested. Motion Matching itself needs a skeletal character and an animation database.
 - The browser demo's own tests were not run after the place renames (Playwright is not installed on the Mac); its script was only syntax-checked. The Unreal playtests were run and pass.
@@ -99,7 +99,7 @@ Deferred: NPCs and storyline.
 
 Player character stand-in, walking.
 
-![player](docs/screenshots/player-character-walk.jpg)
+![player](docs/screenshots/player-character-run.jpg)
 
 Player stand-in body (template mannequin), sprint camera.
 
