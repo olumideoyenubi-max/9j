@@ -23,8 +23,8 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Plugin on UE 5.8:** `NaijaHustleGame` compiles and runs on the Mac, inside a UE 5.8 Third Person template project. One API fix (JSON map keys).
 - **8 GB memory fix:** on machines with 8 GB or less the lighting rig turns off Lumen GI, volumetric fog and clouds, and uses screen-space reflections. This stopped a Metal out-of-memory crash on Play.
 - **Look pass 1:** surface-type material pipeline (`M_NHSurface` and one `MI_NHSurface_<Type>` per surface), overhead cables, ruts and rubbish on dusty streets, harsh-morning preset, over-the-shoulder sprint camera.
-- **Playtest tooling:** debug commands `NHGoto`, `NHBoard`, `NHAgbero`, `NHFinish`, `NHAutoplay`, `NHSelfTest`. Autoplay passes 26 checks and the self-test has 74 checks, with no plugin warnings.
-- **Luxury cars (blockouts):** eight Unreal-only vehicle types with made-up names and 15 parked spots. Loader for real models is in place (`assign_vehicle_meshes.py`).
+- **Playtest tooling:** debug commands `NHGoto`, `NHBoard`, `NHAgbero`, `NHFinish`, `NHAutoplay`, `NHSelfTest`. Autoplay passes 26 checks and the self-test has 75 checks, with no plugin warnings.
+- **Luxury cars (blockouts):** eight Unreal-only vehicle types with made-up names and 16 parked spots (a second super SUV at Oshodi Motor Park, bay 12). Loader for real models is in place (`assign_vehicle_meshes.py`).
 - **Road look:** worn grey asphalt, faded markings, black-and-white kerb stones.
 - **Visual brief, section 1 (lighting):** dynamic lighting with faked bounce from the sky light, ambient occlusion, a second haze layer, sun light-shaft bloom, a golden-evening preset (16:00–17:30), an F1 lighting menu, and 54 reflection captures over road junctions.
 

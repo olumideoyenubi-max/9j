@@ -248,6 +248,14 @@
    "yaw": 90,
    "color": "#f2f0ea",
    "where": "Lagos Island"
+  },
+  {
+   "type": "supersuv",
+   "x": 3013,
+   "y": 5175,
+   "yaw": -90,
+   "color": "#f5c400",
+   "where": "Oshodi Motor Park, bay 12"
   }
  ]
 }
