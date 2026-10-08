@@ -436,6 +436,7 @@ void ANHPlayerController::NHBoard() { if (UNHDebugPlay* P = DebugPlay()) { P->Bo
 void ANHPlayerController::NHAgbero(const FString& What) { if (UNHDebugPlay* P = DebugPlay()) { P->Agbero(What); } }
 void ANHPlayerController::NHFinish() { if (UNHDebugPlay* P = DebugPlay()) { P->Finish(); } }
 void ANHPlayerController::NHAutoplay() { if (UNHDebugPlay* P = DebugPlay(); P && !P->IsRunning()) { P->Autoplay(false); } }
+void ANHPlayerController::NHPaintDemo(float X, float Y) { if (UNHDebugPlay* P = DebugPlay()) { P->PaintDemo(FVector(X, Y, 0.f)); } }
 void ANHPlayerController::NHSelfTest() { if (UNHDebugPlay* P = DebugPlay(); P && !P->IsRunning()) { P->SelfTest(false); } }
 
 void ANHPlayerController::NHCash(int32 Amount)

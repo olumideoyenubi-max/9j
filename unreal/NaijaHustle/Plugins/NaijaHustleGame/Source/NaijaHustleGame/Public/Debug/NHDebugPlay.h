@@ -45,6 +45,7 @@ public:
 	void Finish();
 	void Autoplay(bool bQuitWhenDone);
 	void SelfTest(bool bQuitWhenDone);
+	void PaintDemo(const FVector& At);
 
 	/** A run that has to restart the level first (to start the story again) carries on from here */
 	static FString PendingRun;
@@ -73,6 +74,11 @@ private:
 	bool bMoveSawHeavyStop = false, bMoveHadPrediction = false;
 	FVector MoveStopPredicted = FVector::ZeroVector, MoveStopFrom = FVector::ZeroVector;
 	void AddMomentumChecks();
+
+	// the vehicle paint check
+	UPROPERTY() TObjectPtr<AActor> PaintBody;
+	float PaintT = 0.f;
+	void AddVehiclePaintChecks();
 
 	// ---- the script
 	void Begin(const FString& Name, bool bQuitWhenDone);

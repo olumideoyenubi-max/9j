@@ -232,3 +232,27 @@ heavy stop and the predicted stop location. Lean, turning grip and network play 
 Unreal Third Person template's mannequin (`/Game/Characters/Mannequins`), as a stand-in until the real character is
 made. A project that has that content gets an animated body; a project without it, such as this repo's own, keeps
 the visible capsule and logs one line saying so. When the real character exists, point the two properties at it.
+
+## Vehicle paint, wetness and crash marks
+
+`UNHVehicleMaterialComponent` (`Source/NaijaHustleGame/Public/Vehicles`) is on every `ANHVehicle`. It drives any
+body material that has the parameters below, through pooled dynamic materials, and leaves other materials alone.
+The blockout vehicle bodies do not have these parameters, so today's cars look the same as before; the component
+starts working on a body as soon as its paint and glass use the car paint material.
+
+1. **Make the material.** Run `Scripts/nh_car_paint.py`. It creates `M_NHCarPaint` (Clear Coat shading model, no
+   textures) and two instances, `MI_NHCarPaint_Body` and `MI_NHCarPaint_Glass`.
+2. **Put it on a car.** Assign `MI_NHCarPaint_Body` to the paint slots and `MI_NHCarPaint_Glass` to the windows.
+
+| What | How it works |
+|---|---|
+| Wetness | Reads `Rain` from `MPC_NHWeather`. Rain soaks the paint (`Wetness`) and switches on moving ripples (`RainIntensity`). A roof or bridge overhead keeps the car dry; a wet car dries faster at speed |
+| Clear coat paint | `SetPaint` sets colour, metal flake, base roughness, clear coat strength and clear coat roughness |
+| Crash marks | A crash calls `ApplyImpact` at the point of contact. Up to six marks are kept in the vehicle's own space: paint scrapes to grey primer, and glass cracks if the hit was hard enough. Hits close together merge. `Repair()` clears them |
+| Cost | Writes only when a value changes and the car is on screen; ticks twice a second when dry and undamaged |
+
+`NHPaintDemo X Y` in the console stands four test bodies at that spot: clean, crashed, wet and cracked glass.
+
+On the 8 GB Mac there is no Lumen, so the clear coat reflects the sky light, reflection captures and screen-space
+reflections, not ray-traced surroundings. Physics-driven vehicles can set **Auto Bind Actor Hit** to turn collision
+impulses into marks; the game's own vehicles call `ApplyImpact` from their crash code.

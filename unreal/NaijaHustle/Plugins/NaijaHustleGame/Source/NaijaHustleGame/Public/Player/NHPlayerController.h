@@ -87,6 +87,9 @@ public:
 	/** Console: NHSelfTest checks getting in and out of every vehicle, a missed stop, a wrecked bus and the deadline */
 	UFUNCTION(Exec)
 	void NHSelfTest();
+	/** Console: NHPaintDemo X Y stands four test bodies there wearing the car paint: clean, crashed, wet in the rain, and cracked glass */
+	UFUNCTION(Exec)
+	void NHPaintDemo(float X, float Y);
 
 	UFUNCTION(BlueprintCallable, Category = "Naija|Vehicle") bool EnterVehicle(ANHVehicle* Vehicle);
 	/** Steps out beside the vehicle. Refuses above walking pace unless bForce. */

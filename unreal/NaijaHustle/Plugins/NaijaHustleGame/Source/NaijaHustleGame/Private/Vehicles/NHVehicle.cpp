@@ -13,6 +13,7 @@
 #include "NaijaHustleGame.h"
 #include "Player/NHPlayerController.h"
 #include "UI/NHHUD.h"
+#include "Vehicles/NHVehicleMaterialComponent.h"
 #include "World/NHShapes.h"
 
 namespace NHCar
@@ -50,6 +51,7 @@ ANHVehicle::ANHVehicle()
 	Arm->CameraRotationLagSpeed = 5.f;
 	Arm->bDoCollisionTest = true;
 
+	PaintFx = CreateDefaultSubobject<UNHVehicleMaterialComponent>(TEXT("PaintFx"));
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(Arm, USpringArmComponent::SocketName);
 	Camera->FieldOfView = 75.f;
@@ -64,6 +66,7 @@ void ANHVehicle::BeginPlay()
 	}
 	MaxHealth = Health = Spec.Hp;
 	BuildBody();
+	PaintFx->InitializeEffects(); // the body exists now: pick up any paint and glass materials on it
 	// settle onto the ground
 	const FVector P = GetActorLocation();
 	SetActorLocation(FVector(P.X, P.Y, GroundZ(P) + Clearance + HalfHeight));
@@ -289,6 +292,13 @@ void ANHVehicle::SetOccupied(bool bOn)
 	}
 }
 
+void ANHVehicle::Repair()
+{
+	Health = MaxHealth;
+	Speed = 0.f;
+	PaintFx->ClearDamage();
+}
+
 FVector ANHVehicle::ExitPoint() const
 {
 	const FVector C = GetActorLocation();
@@ -385,6 +395,7 @@ void ANHVehicle::Drive(float DeltaSeconds)
 		{
 			Health = FMath::Max(0.f, Health - (Impact - 350.f) / 45.f);
 			ANHHUD::Floater(this, Hit.ImpactPoint + FVector(0, 0, 150.f), TEXT("CRASH!"));
+			PaintFx->ApplyImpact(Hit.ImpactPoint, FMath::GetMappedRangeValueClamped(FVector2D(350.f, 1800.f), FVector2D(0.25f, 1.f), Impact));
 		}
 		Speed *= Impact > 600.f ? -0.25f : 0.6f;
 		const FVector Slide = FVector::VectorPlaneProject(Delta, N) * (1.f - Hit.Time);

@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-08 (real Lagos stop and place names; player stand-in body; visual brief section 2 awaiting review)
+**Last updated:** 2026-10-08 (vehicle paint system; real Lagos names; player stand-in body; visual brief section 2 awaiting review)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -23,7 +23,7 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Plugin on UE 5.8:** `NaijaHustleGame` compiles and runs on the Mac, inside a UE 5.8 Third Person template project. One API fix (JSON map keys).
 - **8 GB memory fix:** on machines with 8 GB or less the lighting rig turns off Lumen GI, volumetric fog and clouds, and uses screen-space reflections. This stopped a Metal out-of-memory crash on Play.
 - **Look pass 1:** surface-type material pipeline (`M_NHSurface` and one `MI_NHSurface_<Type>` per surface), overhead cables, ruts and rubbish on dusty streets, harsh-morning preset, over-the-shoulder sprint camera.
-- **Playtest tooling:** debug commands `NHGoto`, `NHBoard`, `NHAgbero`, `NHFinish`, `NHAutoplay`, `NHSelfTest`. Autoplay passes 26 checks and the self-test passes 55, with no plugin warnings.
+- **Playtest tooling:** debug commands `NHGoto`, `NHBoard`, `NHAgbero`, `NHFinish`, `NHAutoplay`, `NHSelfTest`. Autoplay passes 26 checks and the self-test passes 62, with no plugin warnings.
 - **Luxury cars (blockouts):** eight Unreal-only vehicle types with made-up names and 15 parked spots. Loader for real models is in place (`assign_vehicle_meshes.py`).
 - **Road look:** worn grey asphalt, faded markings, black-and-white kerb stones.
 - **Visual brief, section 1 (lighting):** dynamic lighting with faked bounce from the sky light, ambient occlusion, a second haze layer, sun light-shaft bloom, a golden-evening preset (16:00–17:30), an F1 lighting menu, and 54 reflection captures over road junctions.
@@ -36,6 +36,7 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Momentum movement (code only):** `UNHAdvancedMovementComponent` is in the plugin: weighted sprint, heavy stop, lean, and a Motion Matching trajectory, with client prediction. Ported to the UE 5.8 trajectory type (`FTransformTrajectory`), so no Pose Search dependency. The self-test sprints and stops a test character on it (top speed 650 cm/s, stop in 0.8 s over 2.8 m, predicted stop location within 1 cm). Self-test now 55 checks.
 - **Player stand-in body:** the player now wears the Third Person template mannequin with its walk and run animation, where a project has that content (22.6 fps at the usual spot, no change). Without it the player is still the capsule; the repo's own project was checked running that way. Both playtests pass either way.
 - **Real Lagos map names:** the stops, routes, districts and main roads now use real Lagos places (Oshodi, Charity, Anthony, Gbagada, Iyana Oworo, CMS, Fadeyi, Yaba, Tejuosho Market, Olosha, Idi-Oro; Third Mainland Bridge, Makoko, Lagos Island, Lekki, Mushin). Stop ids are unchanged. Applied to the Unreal data, level signs, code and the browser demo; mapping in `docs/LAGOS_MAP.md`.
+- **Vehicle paint system:** `UNHVehicleMaterialComponent` on every vehicle (rain wetness with ripples, clear coat paint, up to six crash marks that scrape paint to primer or crack glass) and the matching textureless material `M_NHCarPaint` from `nh_car_paint.py`. Crashes and `Repair()` are wired in. Self-test now 62 checks, including impacts in mesh space, respray, rain and pooling.
 
 ## In progress
 
@@ -73,6 +74,8 @@ Deferred: NPCs and storyline.
 - The momentum movement component is not on the player yet (the player moves as before), and its lean, turning grip and network prediction are untested. Motion Matching itself needs a skeletal character and an animation database.
 - The browser demo's own tests were not run after the place renames (Playwright is not installed on the Mac); its script was only syntax-checked. The Unreal playtests were run and pass.
 - The map is still the small compressed grid: many real stops and areas are missing (see `docs/LAGOS_MAP.md`).
+- The car paint is not on any of the game's cars yet: the blockout bodies use the surface materials, so paint, wetness and crash marks only show on bodies given `MI_NHCarPaint_Body` / `MI_NHCarPaint_Glass` (planned for the real car models).
+- The look of the car paint is only partly checked: clean and wet paint were seen on a test body in an earlier, costlier version of the material; the current version's scratches, cracks and ripples have not been seen on screen. Frame-rate cost on a real car is not measured.
 - Not covered by the scripted playtests: change prompts, free conductor shifts, agbero beg/drive-off, real driving between stops.
 - All vehicles are blockout shapes; all surfaces use flat placeholder textures.
 

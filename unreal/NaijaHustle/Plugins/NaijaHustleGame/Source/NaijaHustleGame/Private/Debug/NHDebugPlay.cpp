@@ -17,7 +17,11 @@
 #include "NaijaHustleGame.h"
 #include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
+#include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
+#include "Kismet/KismetMaterialLibrary.h"
 #include "Vehicles/NHVehicle.h"
+#include "Vehicles/NHVehicleMaterialComponent.h"
 
 FString UNHDebugPlay::PendingRun;
 bool UNHDebugPlay::bPendingQuit = false;
@@ -453,6 +457,162 @@ void UNHDebugPlay::AddMomentumChecks()
 		MoveDummy = nullptr;
 		return true;
 	}, 5.f);
+}
+
+void UNHDebugPlay::PaintDemo(const FVector& At)
+{
+	UMaterialInterface* BodyMat = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/NaijaHustle/Environment/Materials/MI_NHCarPaint_Body.MI_NHCarPaint_Body"));
+	UMaterialInterface* GlassMat = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/NaijaHustle/Environment/Materials/MI_NHCarPaint_Glass.MI_NHCarPaint_Glass"));
+	UStaticMesh* Sphere = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Sphere.Sphere"));
+	if (!BodyMat || !GlassMat || !Sphere)
+	{
+		Note(TEXT("NHPaintDemo: run Scripts/nh_car_paint.py first"));
+		return;
+	}
+	FHitResult Ground;
+	const float Z = PC->GetWorld()->LineTraceSingleByChannel(Ground, At + FVector(0, 0, 2000.f), At - FVector(0, 0, 2000.f), ECC_Visibility) ? Ground.ImpactPoint.Z : At.Z;
+	for (int32 i = 0; i < 4; ++i)
+	{
+		const FVector P(At.X, At.Y + (i - 1.5f) * 170.f, Z + 75.f);
+		AActor* Body = PC->GetWorld()->SpawnActor<AActor>(AActor::StaticClass(), FTransform(P));
+		UStaticMeshComponent* Mesh = NewObject<UStaticMeshComponent>(Body);
+		Mesh->SetMobility(EComponentMobility::Movable);
+		Mesh->SetStaticMesh(Sphere);
+		Mesh->SetMaterial(0, i == 3 ? GlassMat : BodyMat);
+		Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		Body->SetRootComponent(Mesh);
+		Mesh->RegisterComponent();
+		Body->SetActorLocation(P);
+		Body->SetActorScale3D(FVector(1.3f));
+
+		UNHVehicleMaterialComponent* Fx = NewObject<UNHVehicleMaterialComponent>(Body);
+		Fx->bCheckRainShelter = false;
+		Fx->bOnlyUpdateWhenRendered = false;
+		Fx->RegisterComponent();
+		Fx->InitializeEffects();
+		FNHVehiclePaint Paint;
+		Paint.Color = i == 1 ? FLinearColor(0.02f, 0.06f, 0.35f) : i == 2 ? FLinearColor(0.02f, 0.02f, 0.02f) : Paint.Color;
+		if (i != 3)
+		{
+			Fx->SetPaint(Paint);
+		}
+		const FVector ToViewer = PC->GetPawn() ? (PC->GetPawn()->GetActorLocation() - P).GetSafeNormal2D() : FVector(1.f, 0.f, 0.f);
+		if (i == 1 || i == 3) // crashed paint, cracked glass: marks on the side facing the player
+		{
+			Fx->ApplyImpact(P + ToViewer * 62.f + FVector(0, 18.f, 8.f), 1.f);
+			Fx->ApplyImpact(P + ToViewer * 50.f + FVector(0, -30.f, 35.f), 0.6f);
+		}
+		if (i == 2) // wet: as if it had been standing in the rain
+		{
+			if (UMaterialInstanceDynamic* MID = Cast<UMaterialInstanceDynamic>(Mesh->GetMaterial(0)))
+			{
+				Fx->SetComponentTickEnabled(false);
+				MID->SetScalarParameterValue(TEXT("Wetness"), 1.f);
+				MID->SetScalarParameterValue(TEXT("RainIntensity"), 1.f);
+			}
+		}
+	}
+	Note(FString::Printf(TEXT("NHPaintDemo: clean, crashed, wet and glass test bodies at %.0f, %.0f"), At.X, At.Y));
+}
+
+void UNHDebugPlay::AddVehiclePaintChecks()
+{
+	// a test body: a cube twice life size, wearing the car paint material
+	Do(TEXT("vehicle paint: a test body takes impacts"), [this]()
+	{
+		UMaterialInterface* PaintMat = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/NaijaHustle/Environment/Materials/M_NHCarPaint.M_NHCarPaint"));
+		UStaticMesh* Cube = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cube.Cube"));
+		if (!Check(TEXT("the car paint material exists (Scripts/nh_car_paint.py makes it)"), PaintMat && Cube))
+		{
+			return;
+		}
+		const FVector At = PC->GetPawn()->GetActorLocation() + FVector(0.f, 600.f, 100.f);
+		PaintBody = PC->GetWorld()->SpawnActor<AActor>(AActor::StaticClass(), FTransform(At));
+		UStaticMeshComponent* Mesh = NewObject<UStaticMeshComponent>(PaintBody);
+		Mesh->SetMobility(EComponentMobility::Movable);
+		Mesh->SetStaticMesh(Cube);
+		Mesh->SetMaterial(0, PaintMat);
+		Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		PaintBody->SetRootComponent(Mesh);
+		Mesh->RegisterComponent();
+		PaintBody->SetActorLocation(At);
+		PaintBody->SetActorScale3D(FVector(2.f));
+
+		UNHVehicleMaterialComponent* Fx = NewObject<UNHVehicleMaterialComponent>(PaintBody);
+		Fx->bOnlyUpdateWhenRendered = false; // the camera may be looking elsewhere
+		Fx->bCheckRainShelter = false;
+		Fx->RegisterComponent();
+		Fx->InitializeEffects();
+		UMaterialInstanceDynamic* MID = Cast<UMaterialInstanceDynamic>(Mesh->GetMaterial(0));
+		Check(TEXT("the component finds the paint slot and puts a pooled dynamic material on it"), Fx->GetDrivenSlotCount() == 1 && MID && MID->Parent == PaintMat);
+		if (!MID)
+		{
+			return;
+		}
+
+		Fx->ApplyImpact(At + FVector(50.f, 0.f, 0.f), 1.f);
+		FLinearColor Sphere, Data;
+		MID->GetVectorParameterValue(FHashedMaterialParameterInfo(FMaterialParameterInfo(TEXT("DamageHit_0_Sphere"))), Sphere);
+		MID->GetVectorParameterValue(FHashedMaterialParameterInfo(FMaterialParameterInfo(TEXT("DamageHit_0_Data"))), Data);
+		Check(TEXT("an impact is passed to the material in the mesh's own space: 50 cm out on a body at double scale is 25 units, with the radius halved too"),
+			Fx->GetActiveHits().Num() == 1 && FMath::IsNearlyEqual(Sphere.R, 25.f, 0.5f) && FMath::Abs(Sphere.G) < 0.5f && FMath::IsNearlyEqual(Sphere.A, Fx->ImpactRadius * 0.5f, 0.5f) && Data.R > 0.99f && Data.G > 0.99f,
+			FString::Printf(TEXT("centre %.1f %.1f %.1f, radius %.1f, scratch %.2f, crack %.2f"), Sphere.R, Sphere.G, Sphere.B, Sphere.A, Data.R, Data.G));
+
+		Fx->ApplyImpact(At + FVector(60.f, 0.f, 0.f), 0.5f);
+		Fx->ApplyImpact(At + FVector(-90.f, 0.f, 0.f), 0.2f);
+		MID->GetVectorParameterValue(FHashedMaterialParameterInfo(FMaterialParameterInfo(TEXT("DamageHit_1_Data"))), Data);
+		Check(TEXT("a second knock on the same spot deepens the mark; a light knock elsewhere makes a new one that scratches paint but does not crack glass"),
+			Fx->GetActiveHits().Num() == 2 && Data.R > 0.15f && Data.R < 0.25f && Data.G == 0.f, FString::Printf(TEXT("%d marks, light one: scratch %.2f, crack %.2f"), Fx->GetActiveHits().Num(), Data.R, Data.G));
+
+		FNHVehiclePaint Blue;
+		Blue.Color = FLinearColor(0.02f, 0.08f, 0.4f);
+		Blue.ClearCoatRoughness = 0.2f;
+		Fx->SetPaint(Blue);
+		FLinearColor Colour;
+		float CoatRough = 0.f;
+		MID->GetVectorParameterValue(FHashedMaterialParameterInfo(FMaterialParameterInfo(TEXT("PaintColor"))), Colour);
+		MID->GetScalarParameterValue(FHashedMaterialParameterInfo(FMaterialParameterInfo(TEXT("ClearCoatRoughness"))), CoatRough);
+		Check(TEXT("a respray reaches the material: colour and clear coat"), Colour.Equals(Blue.Color, 0.001f) && FMath::IsNearlyEqual(CoatRough, 0.2f, 0.001f));
+
+		// make it rain on the test body
+		if (const ANHLightingRig* Rig = ANHLightingRig::Find(PC))
+		{
+			UKismetMaterialLibrary::SetScalarParameterValue(PC, Rig->Weather.LoadSynchronous(), TEXT("Rain"), 1.f);
+		}
+		PaintT = 0.f;
+	});
+	Until(TEXT("vehicle paint: two seconds of rain"), [this](float Dt) { PaintT += Dt; return !PaintBody || PaintT >= 2.f; }, 6.f);
+	Do(TEXT("vehicle paint: wet, then repaired"), [this]()
+	{
+		UNHVehicleMaterialComponent* Fx = PaintBody ? PaintBody->FindComponentByClass<UNHVehicleMaterialComponent>() : nullptr;
+		UStaticMeshComponent* Mesh = PaintBody ? PaintBody->FindComponentByClass<UStaticMeshComponent>() : nullptr;
+		UMaterialInstanceDynamic* MID = Mesh ? Cast<UMaterialInstanceDynamic>(Mesh->GetMaterial(0)) : nullptr;
+		if (ANHLightingRig* Rig = ANHLightingRig::Find(PC))
+		{
+			Rig->ApplyPreset(Rig->Preset); // the weather back to what the preset says
+		}
+		if (!Fx || !MID)
+		{
+			return;
+		}
+		float Wet = 0.f, Rain = 0.f;
+		MID->GetScalarParameterValue(FHashedMaterialParameterInfo(FMaterialParameterInfo(TEXT("Wetness"))), Wet);
+		MID->GetScalarParameterValue(FHashedMaterialParameterInfo(FMaterialParameterInfo(TEXT("RainIntensity"))), Rain);
+		Check(TEXT("rain from the game's weather soaks the paint and switches on the ripples"), Fx->GetWetness() > 0.5f && FMath::IsNearlyEqual(Wet, Fx->GetWetness(), 0.02f) && Rain > 0.99f,
+			FString::Printf(TEXT("wetness %.2f (material %.2f), rain %.2f"), Fx->GetWetness(), Wet, Rain));
+
+		Fx->ClearDamage();
+		FLinearColor Sphere;
+		MID->GetVectorParameterValue(FHashedMaterialParameterInfo(FMaterialParameterInfo(TEXT("DamageHit_0_Sphere"))), Sphere);
+		UMaterialInterface* Parent = MID->Parent;
+		UNHCharacterEffectsMIDPool* Pool = PC->GetWorld()->GetSubsystem<UNHCharacterEffectsMIDPool>();
+		const int32 FreeBefore = Pool->GetFreeCount(Parent);
+		Fx->ReleaseEffects(true);
+		Check(TEXT("a repair clears the marks, and releasing gives the material back to the pool and the mesh its own paint"),
+			Fx->GetActiveHits().Num() == 0 && Sphere.A == 0.f && Pool->GetFreeCount(Parent) == FreeBefore + 1 && Mesh->GetMaterial(0) == Parent);
+		PaintBody->Destroy();
+		PaintBody = nullptr;
+	});
 }
 
 void UNHDebugPlay::Do(const FString& Name, TFunction<void()> Fn)
@@ -1020,4 +1180,5 @@ void UNHDebugPlay::SelfTest(bool bQuitWhenDone)
 	});
 
 	AddMomentumChecks();
+	AddVehiclePaintChecks();
 }
