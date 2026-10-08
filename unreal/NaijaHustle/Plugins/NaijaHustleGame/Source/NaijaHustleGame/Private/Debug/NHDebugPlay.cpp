@@ -21,6 +21,7 @@
 #include "Engine/StaticMesh.h"
 #include "Kismet/KismetMaterialLibrary.h"
 #include "Vehicles/NHVehicle.h"
+#include "Vehicles/NHVehicleDynamicsComponent.h"
 #include "Vehicles/NHVehicleMaterialComponent.h"
 
 FString UNHDebugPlay::PendingRun;
@@ -513,6 +514,148 @@ void UNHDebugPlay::PaintDemo(const FVector& At)
 		}
 	}
 	Note(FString::Printf(TEXT("NHPaintDemo: clean, crashed, wet and glass test bodies at %.0f, %.0f"), At.X, At.Y));
+}
+
+void UNHDebugPlay::AddVehicleDynamicsChecks()
+{
+	Do(TEXT("vehicle dynamics: grip and slides"), [this]()
+	{
+		// the grip model on its own, fed speeds and turn rates directly
+		AActor* Rig = PC->GetWorld()->SpawnActor<AActor>(AActor::StaticClass(), FTransform(PC->GetPawn()->GetActorLocation() + FVector(0.f, 0.f, 500.f)));
+		UNHVehicleDynamicsComponent* Dyn = NewObject<UNHVehicleDynamicsComponent>(Rig);
+		Dyn->RegisterComponent();
+		const float Dt = 1.f / 60.f;
+
+		float Speed = 900.f, Slid = 0.f;
+		for (int32 i = 0; i < 60; ++i) { Slid += FMath::Abs(Dyn->StepTraction(Dt, Speed, 0.6f, false)); }
+		Check(TEXT("an ordinary corner stays inside the grip: no slide and no speed lost"), Slid == 0.f && !Dyn->IsSliding() && Speed == 900.f, FString::Printf(TEXT("slid %.1f cm"), Slid));
+
+		Speed = 2400.f;
+		for (int32 i = 0; i < 30; ++i) { Dyn->StepTraction(Dt, Speed, 2.4f, false); }
+		const float SlipAtLimit = Dyn->GetSlipAngle();
+		Check(TEXT("full lock at speed breaks traction: the car slides outwards (left, in a right turn) and scrubs speed"),
+			Dyn->IsSliding() && Dyn->GetSideSpeed() < -100.f && SlipAtLimit < -5.f && Speed < 2400.f, FString::Printf(TEXT("slip %.1f degrees, side %.0f cm/s, speed %.0f"), SlipAtLimit, Dyn->GetSideSpeed(), Speed));
+
+		float Recover = 0.f;
+		while (Dyn->IsSliding() && Recover < 5.f) { Dyn->StepTraction(Dt, Speed, 0.f, false); Recover += Dt; }
+		Check(TEXT("straightening the wheel catches the slide in well under two seconds"), !Dyn->IsSliding() && Recover > 0.05f && Recover < 2.f && FMath::Abs(Dyn->GetSideSpeed()) <= Dyn->SlideEndSpeed, FString::Printf(TEXT("%.2f s"), Recover));
+
+		Dyn->ResetDynamics();
+		Speed = 1200.f;
+		for (int32 i = 0; i < 30; ++i) { Dyn->StepTraction(Dt, Speed, 1.5f, false); }
+		const bool bGripped = !Dyn->IsSliding();
+		for (int32 i = 0; i < 30; ++i) { Dyn->StepTraction(Dt, Speed, 1.5f, true); }
+		Check(TEXT("the same corner holds without the handbrake and slides with it"), bGripped && Dyn->IsSliding(), FString::Printf(TEXT("slip %.1f degrees"), Dyn->GetSlipAngle()));
+
+		// wet roads
+		Dyn->ResetDynamics();
+		Speed = 500.f;
+		Dyn->StepTraction(Dt, Speed, 0.f, false);
+		const float DryGrip = Dyn->GetCurrentGrip();
+		ANHLightingRig* Lights = ANHLightingRig::Find(PC);
+		UMaterialParameterCollection* MPC = Lights ? Lights->Weather.LoadSynchronous() : nullptr;
+		if (MPC)
+		{
+			UKismetMaterialLibrary::SetScalarParameterValue(PC, MPC, TEXT("Wetness"), 1.f);
+		}
+		Dyn->StepTraction(Dt, Speed, 0.f, false);
+		const float WetGrip = Dyn->GetCurrentGrip();
+		if (Lights)
+		{
+			Lights->ApplyPreset(Lights->Preset);
+		}
+		Check(TEXT("a wet road from the game's weather cuts the grip"), MPC && FMath::IsNearlyEqual(WetGrip, DryGrip * Dyn->WetGripRatio, 1.f), FString::Printf(TEXT("%.0f dry, %.0f wet"), DryGrip, WetGrip));
+
+		// the same slide at 20 and at 120 frames a second
+		float Distance[2] = { 0.f, 0.f };
+		const float Rates[2] = { 20.f, 120.f };
+		for (int32 r = 0; r < 2; ++r)
+		{
+			Dyn->ResetDynamics();
+			float V = 2400.f;
+			const int32 Half = FMath::RoundToInt(0.5f * Rates[r]);
+			for (int32 i = 0; i < Half * 2; ++i) { Distance[r] += Dyn->StepTraction(1.f / Rates[r], V, i < Half ? 2.4f : 0.f, false); }
+		}
+		Check(TEXT("a slide covers the same ground at 20 and at 120 frames a second (fixed sub-steps)"), Distance[0] < -50.f && FMath::Abs(Distance[0] - Distance[1]) < FMath::Abs(Distance[1]) * 0.06f,
+			FString::Printf(TEXT("%.0f cm and %.0f cm"), Distance[0], Distance[1]));
+		Rig->Destroy();
+	});
+
+	Do(TEXT("vehicle dynamics: weight transfer and suspension"), [this]()
+	{
+		// a real car on the dusty street, moved by hand so the body's answer can be read off
+		FActorSpawnParameters Params;
+		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		const FRotator West(0.f, 180.f, 0.f);
+		ANHVehicle* Car = PC->GetWorld()->SpawnActorDeferred<ANHVehicle>(ANHVehicle::StaticClass(), FTransform(West, FVector(7900.f, 14000.f, 200.f)), nullptr, nullptr, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+		if (!Check(TEXT("a test car spawns"), Car != nullptr))
+		{
+			return;
+		}
+		Car->VehicleType = TEXT("sedan");
+		Car->FinishSpawning(FTransform(West, FVector(7900.f, 14000.f, 200.f)));
+		UNHVehicleDynamicsComponent* Dyn = Car->GetDynamics();
+		const float Dt = 1.f / 60.f;
+		FVector At = Car->GetActorLocation();
+		float Yaw = 180.f;
+		auto Move = [&](float Speed, float TurnRate, int32 Steps, TFunctionRef<void()> Each)
+		{
+			for (int32 i = 0; i < Steps; ++i)
+			{
+				Yaw += FMath::RadiansToDegrees(TurnRate) * Dt;
+				At += FRotator(0.f, Yaw, 0.f).Vector() * Speed * Dt;
+				Car->SetActorLocationAndRotation(At, FRotator(0.f, Yaw, 0.f));
+				Dyn->StepChassis(Dt);
+				Each();
+			}
+		};
+		Dyn->ResetDynamics();
+		Move(1000.f, 0.f, 90, []() {}); // up to a steady 36 km/h, body settled
+		Check(TEXT("the car has four sprung wheels and knows it is on a dirt road (less grip than asphalt)"), Dyn->GetWheelCount() == 4 && Dyn->GetSurfaceGrip() < 0.8f, FString::Printf(TEXT("%d wheels, surface grip %.2f"), Dyn->GetWheelCount(), Dyn->GetSurfaceGrip()));
+
+		// brake hard
+		float MinPitch = 0.f, FrontPressed = 0.f, RearPressed = 0.f, Speed = 1000.f;
+		for (int32 i = 0; i < 50 && Speed > 0.f; ++i)
+		{
+			Speed = FMath::Max(0.f, Speed - 1200.f * Dt);
+			Move(Speed, 0.f, 1, [&]()
+			{
+				if (Dyn->GetBodyPitch() < MinPitch)
+				{
+					MinPitch = Dyn->GetBodyPitch();
+					FrontPressed = Dyn->GetWheelCompression(0);
+					RearPressed = Dyn->GetWheelCompression(2);
+				}
+			});
+		}
+		Check(TEXT("hard braking pitches the nose down, pressing the front wheels up into the arches and unloading the rear"), MinPitch < -1.5f && FrontPressed > 0.5f && RearPressed < -0.5f,
+			FString::Printf(TEXT("pitch %.1f degrees, front %+.1f cm, rear %+.1f cm"), MinPitch, FrontPressed, RearPressed));
+
+		// a right-hand bend at a steady speed
+		Move(1000.f, 0.f, 90, []() {});
+		float MinRoll = 0.f;
+		Move(1000.f, 1.2f, 60, [&]() { MinRoll = FMath::Min(MinRoll, Dyn->GetBodyRoll()); });
+		Check(TEXT("a right-hand bend rolls the body outwards, to the left"), MinRoll < -1.5f, FString::Printf(TEXT("roll %.1f degrees"), MinRoll));
+
+		// stop and let it settle (on whatever slope the ground under the wheels has: the test car is not following it)
+		Move(0.f, 0.f, 200, []() {});
+		const float RestPitch = Dyn->GetBodyPitch(), RestRoll = Dyn->GetBodyRoll(), RestHeave = Dyn->GetBodyHeave();
+		Move(0.f, 0.f, 40, []() {});
+		Check(TEXT("standing still, the body comes to rest"), FMath::Abs(Dyn->GetBodyPitch() - RestPitch) < 0.02f && FMath::Abs(Dyn->GetBodyRoll() - RestRoll) < 0.02f && FMath::Abs(Dyn->GetBodyHeave() - RestHeave) < 0.02f,
+			FString::Printf(TEXT("pitch %.2f, roll %.2f, heave %.2f"), Dyn->GetBodyPitch(), Dyn->GetBodyRoll(), Dyn->GetBodyHeave()));
+
+		// a kerb: the car is lifted 12 cm at once
+		const float Before = Dyn->GetBodyHeave();
+		At.Z += 12.f;
+		float Lowest = Before;
+		Move(0.f, 0.f, 45, [&]() { Lowest = FMath::Min(Lowest, Dyn->GetBodyHeave()); });
+		Move(0.f, 0.f, 200, []() {});
+		const float Late = Dyn->GetBodyHeave();
+		Move(0.f, 0.f, 40, []() {});
+		Check(TEXT("hitting a kerb compresses the suspension within its travel, and it comes to rest again"), Lowest - Before < -2.f && Lowest >= -Dyn->SuspensionTravel && FMath::Abs(Dyn->GetBodyHeave() - Late) < 0.02f,
+			FString::Printf(TEXT("compressed %.1f cm, at rest %.2f cm"), Lowest - Before, Dyn->GetBodyHeave()));
+		Car->Destroy();
+	});
 }
 
 void UNHDebugPlay::AddVehiclePaintChecks()
@@ -1181,4 +1324,5 @@ void UNHDebugPlay::SelfTest(bool bQuitWhenDone)
 
 	AddMomentumChecks();
 	AddVehiclePaintChecks();
+	AddVehicleDynamicsChecks();
 }

@@ -79,6 +79,7 @@ private:
 	UPROPERTY() TObjectPtr<AActor> PaintBody;
 	float PaintT = 0.f;
 	void AddVehiclePaintChecks();
+	void AddVehicleDynamicsChecks();
 
 	// ---- the script
 	void Begin(const FString& Name, bool bQuitWhenDone);

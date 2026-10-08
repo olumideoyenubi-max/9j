@@ -13,6 +13,7 @@
 #include "NaijaHustleGame.h"
 #include "Player/NHPlayerController.h"
 #include "UI/NHHUD.h"
+#include "Vehicles/NHVehicleDynamicsComponent.h"
 #include "Vehicles/NHVehicleMaterialComponent.h"
 #include "World/NHShapes.h"
 
@@ -52,6 +53,7 @@ ANHVehicle::ANHVehicle()
 	Arm->bDoCollisionTest = true;
 
 	PaintFx = CreateDefaultSubobject<UNHVehicleMaterialComponent>(TEXT("PaintFx"));
+	Dynamics = CreateDefaultSubobject<UNHVehicleDynamicsComponent>(TEXT("Dynamics"));
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(Arm, USpringArmComponent::SocketName);
 	Camera->FieldOfView = 75.f;
@@ -70,6 +72,13 @@ void ANHVehicle::BeginPlay()
 	// settle onto the ground
 	const FVector P = GetActorLocation();
 	SetActorLocation(FVector(P.X, P.Y, GroundZ(P) + Clearance + HalfHeight));
+
+	TArray<USceneComponent*> Hubs;
+	for (USceneComponent* Hub : Wheels)
+	{
+		Hubs.Add(Hub);
+	}
+	Dynamics->Setup(Body, Hubs, Clearance + HalfHeight, Spec.bBike);
 }
 
 float ANHVehicle::GroundZ(const FVector& At) const
@@ -297,6 +306,7 @@ void ANHVehicle::Repair()
 	Health = MaxHealth;
 	Speed = 0.f;
 	PaintFx->ClearDamage();
+	Dynamics->ResetDynamics();
 }
 
 FVector ANHVehicle::ExitPoint() const
@@ -337,8 +347,9 @@ void ANHVehicle::Tick(float DeltaSeconds)
 	{
 		const float Want = -Steer * FMath::Clamp(FMath::Abs(Speed) / Spec.MaxSpeed, 0.f, 1.f) * 25.f;
 		Lean = FMath::FInterpTo(Lean, Want, DeltaSeconds, 5.f);
-		Body->SetRelativeRotation(FRotator(0.f, 0.f, Lean));
 	}
+	// the sprung body: dive, squat, roll, and the suspension over kerbs (a bike's lean is added on top)
+	Dynamics->StepChassis(DeltaSeconds, Spec.bBike ? Lean : 0.f);
 
 	// free look while driving, easing back behind the vehicle after two seconds
 	LookIdle += DeltaSeconds;
@@ -372,7 +383,7 @@ void ANHVehicle::Drive(float DeltaSeconds)
 		Speed *= FMath::Max(0.f, 1.f - 3.f * DeltaSeconds);
 	}
 	Speed = FMath::Clamp(Speed, -V * 0.3f, V);
-	if (FMath::Abs(Speed) < 1.f && T <= 0.f && B <= 0.f)
+	if (FMath::Abs(Speed) < 1.f && T <= 0.f && B <= 0.f && FMath::Abs(Dynamics->GetSideSpeed()) < 1.f)
 	{
 		Speed = 0.f;
 		return;
@@ -380,7 +391,9 @@ void ANHVehicle::Drive(float DeltaSeconds)
 
 	const float TurnRate = FMath::RadiansToDegrees(Spec.Turn) * S * FMath::Clamp(FMath::Abs(Speed) / (V * 0.2f), 0.f, 1.f) * (Speed >= 0.f ? 1.f : -1.f);
 	const FRotator Rot(0.f, GetActorRotation().Yaw + TurnRate * DeltaSeconds, 0.f);
-	const FVector From = GetActorLocation(), Delta = Rot.Vector() * Speed * DeltaSeconds;
+	// grip: past the limit (speed, handbrake, dirt, rain) the car slides sideways as well as going where it points
+	const float Slid = Dynamics->StepTraction(DeltaSeconds, Speed, FMath::DegreesToRadians(TurnRate), bHandbrake && bDriven);
+	const FVector From = GetActorLocation(), Delta = Rot.Vector() * Speed * DeltaSeconds + FRotationMatrix(Rot).GetUnitAxis(EAxis::Y) * Slid;
 	FVector To = From + Delta;
 	const float WantZ = GroundZ(To) + Clearance + HalfHeight;
 	To.Z = WantZ > From.Z ? WantZ : FMath::FInterpTo(From.Z, WantZ, DeltaSeconds, 10.f); // up kerbs at once, down gently
@@ -398,6 +411,7 @@ void ANHVehicle::Drive(float DeltaSeconds)
 			PaintFx->ApplyImpact(Hit.ImpactPoint, FMath::GetMappedRangeValueClamped(FVector2D(350.f, 1800.f), FVector2D(0.25f, 1.f), Impact));
 		}
 		Speed *= Impact > 600.f ? -0.25f : 0.6f;
+		Dynamics->DampSlide(0.3f);
 		const FVector Slide = FVector::VectorPlaneProject(Delta, N) * (1.f - Hit.Time);
 		AddActorWorldOffset(FVector(Slide.X, Slide.Y, 0.f), true);
 	}

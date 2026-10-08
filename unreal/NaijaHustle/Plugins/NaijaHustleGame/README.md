@@ -256,3 +256,31 @@ starts working on a body as soon as its paint and glass use the car paint materi
 On the 8 GB Mac there is no Lumen, so the clear coat reflects the sky light, reflection captures and screen-space
 reflections, not ray-traced surroundings. Physics-driven vehicles can set **Auto Bind Actor Hit** to turn collision
 impulses into marks; the game's own vehicles call `ApplyImpact` from their crash code.
+
+## Vehicle weight, suspension and grip
+
+`UNHVehicleDynamicsComponent` (`Source/NaijaHustleGame/Public/Vehicles`) is on every `ANHVehicle`.
+
+The game's vehicles are kinematic: each works out its own speed and heading and is swept through the world. They
+have no physics body, so Chaos Vehicles (which needs a simulated, rigged skeletal mesh with wheel bones) cannot
+drive them. This component adds weight to that arcade model instead:
+
+| Part | What it does |
+|---|---|
+| Grip and slides | Turning asks the tyres for sideways force. Past the limit the car slides outwards, scrubs speed, and is caught by straightening up. The handbrake, a dirt road and a wet road all lower the limit. Inside the limit nothing changes, so ordinary driving is as before |
+| Weight transfer | The body is on springs: it dives under braking, squats on the throttle and rolls out of corners, from the acceleration the car actually achieved |
+| Suspension | Each wheel is traced to the ground and stays planted while the body moves over it. Kerbs and landings compress the springs, which rebound and settle |
+| Surface | Read from the material under the wheels (`Asphalt` 1.0, `Concrete` 0.95, `Wood` 0.8, `Dirt` 0.7, metal 0.65), and `Wetness` from `MPC_NHWeather` (a fully wet road keeps 60% of its grip) |
+
+- **Frame-rate independent:** both simulations run in fixed sub-steps of at most 1/120 s. The self-test runs the
+  same slide at 20 and at 120 frames a second and gets the same distance.
+- **Cost:** a parked car at rest does nothing: no traces, no springs, no transform updates. A moving car makes
+  four line traces a frame.
+- **Tuning:** select a vehicle > Dynamics. `Grip Acceleration` is the main number: the cars turn far harder than
+  real ones, so it is arcade-scaled (3400 cm/s², about 3.5 g).
+- **Networking:** body and wheel motion is worked out on each machine from how the vehicle is seen to move, so it
+  is never sent. Only the slide is replicated (3 bytes, not to the owner). The vehicle pawn itself does not yet
+  replicate its movement, so none of this has been run in multiplayer.
+
+When real, rigged car models arrive, Chaos Vehicles becomes possible; this component's grip numbers and body
+springs are the reference for how the cars should feel.

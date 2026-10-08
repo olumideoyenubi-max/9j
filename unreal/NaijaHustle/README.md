@@ -196,6 +196,7 @@ Plugins/NaijaHustleGame/            the game, as a drop-in plugin
     Gameplay/   NHGameDirector (First Day on the Danfo, conductor shifts), NHPerson
     Vehicles/   NHVehicle (arcade handling, damage, blockout bodies, chase camera)
                 NHVehicleMaterialComponent (wet paint, clear coat, crash marks)
+                NHVehicleDynamicsComponent (grip and slides, weight transfer, suspension)
     Player/     NHPlayerController (get in/out, E, choices, NHLighting, debug commands), NHCharacter
     Characters/ NHCharacterEffectsComponent (sweat, wetness, bruises and wounds; pooled dynamic materials)
                 NHAdvancedMovementComponent (weighted sprint, heavy stop, lean, Motion Matching trajectory)

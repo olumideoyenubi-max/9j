@@ -12,6 +12,7 @@ class UCameraComponent;
 class UStaticMeshComponent;
 class UTextRenderComponent;
 class UNHVehicleMaterialComponent;
+class UNHVehicleDynamicsComponent;
 
 /**
  * A drivable vehicle with the browser demo's arcade handling (same top speed, acceleration and turn
@@ -50,6 +51,8 @@ public:
 	void Repair();
 	/** Wet paint, clear coat and crash marks, on bodies whose materials support them (see NHVehicleMaterialComponent.h) */
 	UNHVehicleMaterialComponent* GetPaintFx() const { return PaintFx; }
+	/** Grip and slides, body roll and pitch, suspension (see NHVehicleDynamicsComponent.h) */
+	UNHVehicleDynamicsComponent* GetDynamics() const { return Dynamics; }
 	/** Held: it stands still whatever the driver presses (Baba Driver counting the money) */
 	void SetHeld(bool bOn) { bHeld = bOn; if (bOn) { Speed = 0.f; } }
 	/** Sets the pedals and wheel directly, as the input bindings do (scripted driving) */
@@ -66,6 +69,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "Vehicle") TObjectPtr<USpringArmComponent> Arm;
 	UPROPERTY(VisibleAnywhere, Category = "Vehicle") TObjectPtr<UCameraComponent> Camera;
 	UPROPERTY(VisibleAnywhere, Category = "Vehicle") TObjectPtr<UNHVehicleMaterialComponent> PaintFx;
+	UPROPERTY(VisibleAnywhere, Category = "Vehicle") TObjectPtr<UNHVehicleDynamicsComponent> Dynamics;
 
 private:
 	FNHVehicleSpec Spec;
