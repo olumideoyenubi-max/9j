@@ -12,6 +12,9 @@ Standalone game, 1280×720 window, standing on the dusty street (8000, 14000, fa
 |---|---|---|
 | Harsh morning, 9:30 | 22.7 fps | 44.0 ms |
 | Golden evening, 17:00 | 23.1 fps | 43.2 ms |
+| Harsh morning, 9:30, repo project with `Config/Mac/MacEngine.ini` | 24.8 fps | 40.3 ms |
+
+The first two rows were measured in a UE 5.8 template project with its default config (Lumen switched off at run time by the lighting rig). The third is this repo's own project with the Mac profile; the picture looks the same.
 
 The target is 30 fps at 720p–900p; the game is not there yet.
 
@@ -25,6 +28,7 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Road look:** worn grey asphalt, faded markings, black-and-white kerb stones.
 - **Visual brief, section 1 (lighting):** dynamic lighting with faked bounce from the sky light, ambient occlusion, a second haze layer, sun light-shaft bloom, a golden-evening preset (16:00–17:30), an F1 lighting menu, and 54 reflection captures over road junctions.
 
+- **Repo project verified on the Mac (2026-10-08):** `Scripts/mac.sh build` compiles `unreal/NaijaHustle`, the material and level scripts run, the Mac profile is applied (no ray tracing, screen-space reflections, cascaded shadows, 800 MB texture pool), and `NHAutoplay` passes all 26 checks.
 - **Repo:** Unity project archived under `legacy/unity/`; Mac and Windows config profiles split (`Config/Mac/MacEngine.ini`, `Config/Windows/WindowsEngine.ini`); Mac build-and-play script `unreal/NaijaHustle/Scripts/mac.sh`.
 
 ## In progress
@@ -45,7 +49,7 @@ Deferred: player character, NPCs and storyline.
 
 ## Known bugs and gaps
 
-- The repo's own shell project (`unreal/NaijaHustle/NaijaHustle.uproject`), `Config/Mac/MacEngine.ini` and `Scripts/mac.sh` have not been built or run on the Mac yet. All testing so far used the plugin inside a separate UE 5.8 template project with that project's default config.
+- Opening the editor adds an `AndroidFileServer` block with a generated `SecurityToken` to `Config/DefaultEngine.ini`. Discard that change before committing (`git checkout unreal/NaijaHustle/Config/DefaultEngine.ini`).
 - Nothing has been built on Windows against UE 5.8.
 - Frame rate is about 22 fps at 1280×720, under the 30 fps target.
 - Nanite and Virtual Shadow Maps are not active on this Mac (the engine falls back to Metal SM5), so shadows are cascaded shadow maps.

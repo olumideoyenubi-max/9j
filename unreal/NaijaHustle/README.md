@@ -9,7 +9,7 @@ This folder is the Unreal project. The browser demo is in `web/` and the archive
 
 | Platform | Status |
 |---|---|
-| macOS, Apple Silicon (M1, 8 GB) | The plugin builds against UE 5.8 and the game runs: about 22 fps at 1280×720. It was built and played inside a UE 5.8 Third Person template project; this shell project and `Config/Mac/MacEngine.ini` have not been built on the Mac yet |
+| macOS, Apple Silicon (M1, 8 GB) | This project builds against UE 5.8 with `Scripts/mac.sh build`, and the game runs with the Mac profile: about 25 fps at 1280×720, scripted playtest passing |
 | Windows + RTX | Steps and config written for it; not yet built against UE 5.8 |
 
 | Step | Status |

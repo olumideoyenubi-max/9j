@@ -119,7 +119,7 @@ all save with the game.
 ## The Unreal Engine 5.8 game
 
 `unreal/NaijaHustle/` is the Unreal project: the browser demo's Lagos as a playable level, with the danfo
-conductor mission. It runs on an Apple M1 with 8 GB of memory (about 22 fps at 1280×720 so far, see
+conductor mission. It runs on an Apple M1 with 8 GB of memory (about 25 fps at 1280×720 so far, see
 [`PROGRESS.md`](PROGRESS.md)) and keeps a Windows + RTX profile for stronger machines. See [`unreal/NaijaHustle/README.md`](unreal/NaijaHustle/README.md) for setup.
 The game itself is the drop-in plugin [`unreal/NaijaHustle/Plugins/NaijaHustleGame`](unreal/NaijaHustle/Plugins/NaijaHustleGame/README.md)
 (copy it into your own UE5 C++ project's `Plugins` folder). It shares the browser demo's city and rules:
