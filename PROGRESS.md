@@ -43,6 +43,9 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Shoes on the player:** `ANHCharacter` wears one unrigged shoe mesh on both feet (mirrored for the left), fixed to the foot bones from the skeleton's reference pose. In the Mac project it is the test trainers (see `ASSETS.md`); without that mesh nothing is worn. 22.3 fps at the usual spot, self-test 74 and autoplay 26 pass. No screenshot here because the test shoe is a real brand.
 - **Real vehicle models (2026-10-08):** 15 of the 16 vehicle types now use downloaded models (danfo, keke, okada, sedan, SUV, pickup, truck and the eight luxury types); only the task force bike is a blockout. `Scripts/import_car_gltf.py` imports a folder of glTF downloads, one combined mesh per car; `assign_vehicle_meshes.py` fits them, taking the type from the import folder's name and the backwards ones from `NH_CAR_FLIP`. The console command `NHCarShow X Y [Folder]` lines up one of every type and photographs them. Real-model vehicles get unseen wheel hubs so suspension and road-surface grip still work. Self-test 75 and autoplay 26 pass. Credits in `ASSETS.md`.
 - **Player character (stand-in, 2026-10-08):** the player is now a downloaded rigged character instead of the mannequin, where the project has it: scaled to 180 cm, turned to face forward from where its feet point, wearing the test trainers, and moving with the mannequin's walk, jog and jump animations retargeted by `Scripts/import_player_gltf.py` (automatic IK rigs and retargeter, with the foot and hand IK bones pinned to the feet and hands: without that the legs did not move). `NHLookShots` now logs the running stride (104 cm each way). 21.0 fps on the dusty street. Self-test 75 and autoplay 26 pass. Credit in `ASSETS.md`.
+- **Player skins:** the player's body is one of a list of skins (`ANHCharacter::Skins`: the young hustler, then the mannequin). The console command `NHSkin` goes to the next one the project has, `NHSkin <id>` picks one, and the choice is remembered.
+- **Driver in the seat:** getting into a vehicle now sits the player's own body in the driving seat, posed for driving by pointing each limb (works for any skeleton with the mannequin's bone names). Seen in the danfo, the keke and on the okada; the seat position for real models is a guess from the vehicle's size.
+- **Headlights:** the **K** key switches two headlight beams and a red tail light on the vehicle you drive (no shadows, to spare the Mac). `NHDriveShots <type> <folder>` photographs the driver by day and the lights at night.
 
 ## In progress
 
@@ -66,7 +69,9 @@ Deferred: NPCs and storyline.
 ## Known bugs and gaps
 
 - **Frame rate fell with the real models:** 14.9 fps at Oshodi Motor Park (2650, 4600), 17.8 fps on the dusty street (was 22.3), 20.1 fps on Lagos Island (was 29.9 with blockouts), one 15-second run each at 1280×720 while the Mac was still busy. The models have one level of detail and up to 56 material slots each (the sports car is 239,000 triangles); levels of detail and merged materials are the next step.
-- Real-model cars keep their own colours and materials: the game's paint colours, wetness and crash marks do not show on them, the wheels do not turn, and no driver is shown.
+- Real-model cars keep their own colours and materials: the game's paint colours, wetness and crash marks do not show on them, and the wheels do not turn.
+- The driver cannot be seen in cars whose models have solid dark glass (the super SUV and others), and his seat position has only been checked in the danfo, the keke and on the okada. He does not hold the wheel or wear the trainers while seated.
+- Headlights have no gamepad button (every button is taken) and the lamp models do not glow; other traffic has no lights.
 - The models' sizes come from fitting each to its type's length, so a few are too tall (SUV 258 cm, danfo 257 cm, luxury 4x4 226 cm).
 
 - Opening the editor adds an `AndroidFileServer` block with a generated `SecurityToken` to `Config/DefaultEngine.ini`. Discard that change before committing (`git checkout unreal/NaijaHustle/Config/DefaultEngine.ini`).
@@ -96,6 +101,10 @@ Deferred: NPCs and storyline.
 - All surfaces use flat placeholder textures.
 
 ## Screenshots
+
+| Driver in the danfo | Headlights at night |
+|---|---|
+| ![driver](docs/screenshots/driver-in-danfo.jpg) | ![headlights](docs/screenshots/headlights-night.jpg) |
 
 Player character stand-in, walking.
 

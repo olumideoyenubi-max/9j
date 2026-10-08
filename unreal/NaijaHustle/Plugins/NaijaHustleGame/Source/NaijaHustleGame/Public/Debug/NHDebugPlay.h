@@ -46,6 +46,8 @@ public:
 	void Autoplay(bool bQuitWhenDone);
 	void SelfTest(bool bQuitWhenDone);
 	void PaintDemo(const FVector& At);
+	/** Gets into the first vehicle of a type and saves two pictures: the driver by day from the front, then the headlights at night from behind */
+	void DriveShots(FName Type, const FString& Folder);
 	/** One of every vehicle type in two rows along +X from At, all facing +X; with a folder, pictures are saved there: two from above, then each pair from in front */
 	void CarShow(const FVector& At, const FString& Folder);
 

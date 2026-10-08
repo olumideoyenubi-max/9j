@@ -536,6 +536,58 @@ void UNHDebugPlay::CarShow(const FVector& At, const FString& Folder)
 	}
 }
 
+void UNHDebugPlay::DriveShots(FName Type, const FString& Folder)
+{
+	ANHVehicle* Car = nullptr;
+	for (TActorIterator<ANHVehicle> It(PC->GetWorld()); It; ++It)
+	{
+		// the last one of the type: the first danfo is the mission bus, which has its own driver
+		Car = It->VehicleType == Type && !It->GetController() ? *It : Car;
+	}
+	if (!Car || !PC->EnterVehicle(Car))
+	{
+		Note(FString::Printf(TEXT("NHDriveShots: could not get into a %s"), *Type.ToString()));
+		return;
+	}
+	if (AHUD* Hud = PC->GetHUD())
+	{
+		Hud->bShowHUD = false;
+	}
+	PC->NHTime(12.f);
+	ACameraActor* Cam = PC->GetWorld()->SpawnActor<ACameraActor>(ACameraActor::StaticClass(), FTransform(Car->GetActorLocation()));
+	Cam->GetCameraComponent()->SetConstraintAspectRatio(false);
+	Cam->GetCameraComponent()->SetFieldOfView(55.f);
+	const FVector Seat = Car->GetActorLocation() + FVector(0.f, 0.f, 30.f);
+	const FVector From = Seat + Car->GetActorForwardVector() * 520.f - Car->GetActorRightVector() * 330.f + FVector(0.f, 0.f, 90.f);
+	Cam->SetActorLocationAndRotation(From, (Seat - From).Rotation());
+	PC->SetViewTarget(Cam);
+	TWeakObjectPtr<ANHPlayerController> Player(PC);
+	TWeakObjectPtr<ANHVehicle> Vehicle(Car);
+	const auto After = [this](float Seconds, TFunction<void()> Do)
+	{
+		FTimerHandle Handle;
+		PC->GetWorldTimerManager().SetTimer(Handle, FTimerDelegate::CreateWeakLambda(PC, MoveTemp(Do)), Seconds, false);
+	};
+	After(4.f, [Player, Folder]() { if (Player.IsValid()) { Player->ConsoleCommand(FString::Printf(TEXT("HighResShot 1920x1080 filename=\"%s\""), *(Folder / TEXT("driver.png")))); } });
+	After(7.f, [Player, Vehicle]()
+	{
+		if (Player.IsValid() && Vehicle.IsValid())
+		{
+			Player->NHTime(21.5f);
+			Vehicle->SetHeadlights(true);
+			Player->SetViewTarget(Vehicle.Get());
+		}
+	});
+	After(13.f, [Player, Vehicle, Folder]()
+	{
+		if (Player.IsValid())
+		{
+			Player->ConsoleCommand(FString::Printf(TEXT("HighResShot 1920x1080 filename=\"%s\""), *(Folder / TEXT("headlights.png"))));
+			UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: drive shots saved, headlights %s. RESULT: drive shots done"), Vehicle.IsValid() && Vehicle->HeadlightsOn() ? TEXT("on") : TEXT("off"));
+		}
+	});
+}
+
 void UNHDebugPlay::PaintDemo(const FVector& At)
 {
 	UMaterialInterface* BodyMat = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/NaijaHustle/Environment/Materials/MI_NHCarPaint_Body.MI_NHCarPaint_Body"));

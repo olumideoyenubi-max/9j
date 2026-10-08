@@ -61,6 +61,10 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
+	/** Headlights and tail light on or off (K) */
+	UFUNCTION(BlueprintCallable, Category = "Vehicle") void SetHeadlights(bool bOn);
+	UFUNCTION(BlueprintPure, Category = "Vehicle") bool HeadlightsOn() const { return bHeadlights; }
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -83,6 +87,14 @@ private:
 	UPROPERTY() TArray<TObjectPtr<USceneComponent>> Wheels;
 	UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> DriverPieces;
 	UPROPERTY() TObjectPtr<UTextRenderComponent> BoardText;
+	/** The player's own body in the driving seat, made the first time someone gets in */
+	UPROPERTY() TObjectPtr<class UPoseableMeshComponent> DriverBody;
+	/** Two headlights and a tail light, made the first time they are switched on */
+	UPROPERTY() TArray<TObjectPtr<class ULocalLightComponent>> Lamps;
+	bool bHeadlights = false;
+	/** Where the driver's hips are, relative to Body, and how tall the body is */
+	FVector SeatAt = FVector::ZeroVector;
+	float BodyHeight = 150.f;
 
 	void BuildBody();
 	/** Uses the type's real model if one is assigned and loads; sets its height */
@@ -99,5 +111,8 @@ private:
 	void OnHandbrake() { bHandbrake = true; }
 	void OnHandbrakeEnd() { bHandbrake = false; }
 	void OnHorn();
+	void OnHeadlights() { SetHeadlights(!bHeadlights); }
+	/** Sits the player's current body in the seat, posed for driving; false if the player has no body to show */
+	bool SeatDriver();
 	void OnLook(const FInputActionValue& V);
 };

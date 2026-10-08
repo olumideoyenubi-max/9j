@@ -12,6 +12,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Input/NHInputSet.h"
+#include "Misc/ConfigCacheIni.h"
 #include "Misc/PackageName.h"
 #include "Player/NHPlayerController.h"
 #include "NaijaHustleGame.h"
@@ -24,11 +25,18 @@ ANHCharacter::ANHCharacter()
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 92.f);
 	GetCapsuleComponent()->SetHiddenInGame(false);
 
-	CharacterMesh = TSoftObjectPtr<USkeletalMesh>(FSoftObjectPath(TEXT("/Game/Characters/Player/Hustler/scene/SkeletalMeshes/Hustler.Hustler")));
-	CharacterAnimClass = TSoftClassPtr<UAnimInstance>(FSoftObjectPath(TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed_Hustler.ABP_Unarmed_Hustler_C")));
-	// Stand-in body: the Third Person template's mannequin, if the project has it
-	BodyMesh = TSoftObjectPtr<USkeletalMesh>(FSoftObjectPath(TEXT("/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple")));
-	BodyAnimClass = TSoftClassPtr<UAnimInstance>(FSoftObjectPath(TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed.ABP_Unarmed_C")));
+	const auto Skin = [this](const TCHAR* Id, const TCHAR* Name, const TCHAR* Mesh, const TCHAR* Anim, float Height)
+	{
+		FNHPlayerSkin S;
+		S.Id = Id;
+		S.Name = Name;
+		S.Mesh = TSoftObjectPtr<USkeletalMesh>(FSoftObjectPath(Mesh));
+		S.AnimClass = TSoftClassPtr<UAnimInstance>(FSoftObjectPath(Anim));
+		S.Height = Height;
+		Skins.Add(S);
+	};
+	Skin(TEXT("hustler"), TEXT("Young hustler"), TEXT("/Game/Characters/Player/Hustler/scene/SkeletalMeshes/Hustler.Hustler"), TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed_Hustler.ABP_Unarmed_Hustler_C"), 180.f);
+	Skin(TEXT("mannequin"), TEXT("Mannequin"), TEXT("/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple"), TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed.ABP_Unarmed_C"), 0.f);
 	ShoeMesh = TSoftObjectPtr<UStaticMesh>(FSoftObjectPath(TEXT("/Game/Wardrobe/Trainers_LowTop/Untsssho00215ed/StaticMeshes/hash_CF7B2BF4_model_001.hash_CF7B2BF4_model_001")));
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.f, 0.f, -92.f), FRotator(0.f, -90.f, 0.f)); // feet on the ground, facing forward
 
@@ -61,33 +69,67 @@ void ANHCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// asking for a package that is not there logs a warning, so look first
-	const auto Exists = [](const FSoftObjectPath& Path) { return Path.IsValid() && FPackageName::DoesPackageExist(Path.GetLongPackageName()); };
-	const bool bOwn = Exists(CharacterMesh.ToSoftObjectPath()) && Exists(CharacterAnimClass.ToSoftObjectPath());
-	const TSoftObjectPtr<USkeletalMesh>& WantMesh = bOwn ? CharacterMesh : BodyMesh;
-	const TSoftClassPtr<UAnimInstance>& WantAnim = bOwn ? CharacterAnimClass : BodyAnimClass;
-	USkeletalMesh* Mesh = Exists(WantMesh.ToSoftObjectPath()) ? WantMesh.LoadSynchronous() : nullptr;
-	if (!Mesh)
+	FString Saved;
+	GConfig->GetString(TEXT("NaijaHustle"), TEXT("PlayerSkin"), Saved, GGameUserSettingsIni);
+	if (!Saved.IsEmpty() && WearSkin(FName(*Saved)))
 	{
-		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: no body mesh at %s; the player stays a capsule"), *BodyMesh.ToString());
 		return;
 	}
+	for (const FNHPlayerSkin& Skin : Skins)
+	{
+		if (WearSkin(Skin.Id))
+		{
+			return;
+		}
+	}
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: the project has none of the player's %d skins; the player stays a capsule"), Skins.Num());
+}
+
+bool ANHCharacter::SkinAvailable(const FNHPlayerSkin& Skin)
+{
+	// asking for a package that is not there logs a warning, so look first
+	const auto Exists = [](const FSoftObjectPath& Path) { return Path.IsValid() && FPackageName::DoesPackageExist(Path.GetLongPackageName()); };
+	return Exists(Skin.Mesh.ToSoftObjectPath()) && Exists(Skin.AnimClass.ToSoftObjectPath());
+}
+
+bool ANHCharacter::WearSkin(FName Id)
+{
+	const FNHPlayerSkin* Skin = Skins.FindByPredicate([Id](const FNHPlayerSkin& S) { return S.Id == Id; });
+	USkeletalMesh* Mesh = Skin && SkinAvailable(*Skin) ? Skin->Mesh.LoadSynchronous() : nullptr;
+	UClass* Anim = Mesh ? Skin->AnimClass.LoadSynchronous() : nullptr;
+	if (!Mesh || !Anim)
+	{
+		return false;
+	}
+	GetMesh()->SetAnimInstanceClass(nullptr);
 	GetMesh()->SetSkeletalMesh(Mesh);
-	if (UClass* Anim = Exists(WantAnim.ToSoftObjectPath()) ? WantAnim.LoadSynchronous() : nullptr)
-	{
-		GetMesh()->SetAnimInstanceClass(Anim);
-	}
-	if (bOwn)
-	{
-		// a downloaded character can be any size and face any way: stand it at CharacterHeight, facing forward
-		const float Tall = Mesh->GetBounds().BoxExtent.Z * 2.f;
-		GetMesh()->SetRelativeScale3D(FVector(Tall > 1.f ? CharacterHeight / Tall : 1.f));
-		GetMesh()->SetRelativeRotation(FRotator(0.f, -BodyFacingYaw(), 0.f));
-		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: the player is %s, %.0f cm tall scaled to %.0f"), *Mesh->GetName(), Tall, CharacterHeight);
-	}
+	GetMesh()->SetAnimInstanceClass(Anim);
+	// a downloaded character can be any size and face any way: stand it at its height, facing forward
+	const float Tall = Mesh->GetBounds().BoxExtent.Z * 2.f;
+	GetMesh()->SetRelativeScale3D(FVector(Skin->Height > 0.f && Tall > 1.f ? Skin->Height / Tall : 1.f));
+	GetMesh()->SetRelativeRotation(FRotator(0.f, -BodyFacingYaw(), 0.f));
 	GetCapsuleComponent()->SetHiddenInGame(true);
 	bHasBody = true;
+	CurrentSkin = Id;
 	PutOnShoes();
+	GConfig->SetString(TEXT("NaijaHustle"), TEXT("PlayerSkin"), *Id.ToString(), GGameUserSettingsIni);
+	GConfig->Flush(false, GGameUserSettingsIni);
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: the player is %s (skin %s), %.0f cm tall as made"), *Skin->Name, *Id.ToString(), Tall);
+	return true;
+}
+
+FString ANHCharacter::WearNextSkin()
+{
+	const int32 Now = Skins.IndexOfByPredicate([this](const FNHPlayerSkin& S) { return S.Id == CurrentSkin; });
+	for (int32 Step = 1; Step <= Skins.Num(); ++Step)
+	{
+		const FNHPlayerSkin& Next = Skins[(FMath::Max(Now, 0) + Step) % Skins.Num()];
+		if (WearSkin(Next.Id))
+		{
+			return Next.Name;
+		}
+	}
+	return FString();
 }
 
 float ANHCharacter::BodyFacingYaw() const
@@ -108,6 +150,14 @@ float ANHCharacter::BodyFacingYaw() const
 
 void ANHCharacter::PutOnShoes()
 {
+	for (UStaticMeshComponent* Old : ShoeParts)
+	{
+		if (Old)
+		{
+			Old->DestroyComponent();
+		}
+	}
+	ShoeParts.Reset();
 	const FSoftObjectPath Path = ShoeMesh.ToSoftObjectPath();
 	UStaticMesh* Shoe = Path.IsValid() && FPackageName::DoesPackageExist(Path.GetLongPackageName()) ? ShoeMesh.LoadSynchronous() : nullptr;
 	if (!Shoe)
@@ -144,6 +194,7 @@ void ANHCharacter::PutOnShoes()
 		Part->SetupAttachment(GetMesh(), Bone);
 		Part->SetRelativeTransform(Placed.GetRelativeTransform(Foot));
 		Part->RegisterComponent();
+		ShoeParts.Add(Part);
 		++Worn;
 	}
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: the player is wearing %s on %d feet"), *Shoe->GetName(), Worn);

@@ -445,6 +445,40 @@ void ANHPlayerController::NHBoard() { if (UNHDebugPlay* P = DebugPlay()) { P->Bo
 void ANHPlayerController::NHAgbero(const FString& What) { if (UNHDebugPlay* P = DebugPlay()) { P->Agbero(What); } }
 void ANHPlayerController::NHFinish() { if (UNHDebugPlay* P = DebugPlay()) { P->Finish(); } }
 void ANHPlayerController::NHAutoplay() { if (UNHDebugPlay* P = DebugPlay(); P && !P->IsRunning()) { P->Autoplay(false); } }
+void ANHPlayerController::NHDriveShots(const FString& Type, const FString& Folder) { if (UNHDebugPlay* P = DebugPlay()) { P->DriveShots(FName(*Type), Folder); } }
+
+void ANHPlayerController::NHHeadlights()
+{
+	if (ANHVehicle* V = Cast<ANHVehicle>(GetPawn()))
+	{
+		V->SetHeadlights(!V->HeadlightsOn());
+	}
+}
+
+void ANHPlayerController::NHSkin(const FString& Id)
+{
+	ANHCharacter* Char = Cast<ANHCharacter>(GetPawn());
+	if (!Char)
+	{
+		UE_LOG(LogNHGame, Warning, TEXT("NHSkin: get out of the vehicle first"));
+		return;
+	}
+	if (Id.IsEmpty())
+	{
+		const FString Name = Char->WearNextSkin();
+		ANHHUD::Toast(this, Name.IsEmpty() ? FString(TEXT("No skins in this project")) : FString::Printf(TEXT("Skin: %s"), *Name), 1);
+	}
+	else if (!Char->WearSkin(FName(*Id)))
+	{
+		FString Known;
+		for (const FNHPlayerSkin& S : Char->Skins)
+		{
+			Known += (Known.IsEmpty() ? TEXT("") : TEXT(", ")) + S.Id.ToString();
+		}
+		UE_LOG(LogNHGame, Warning, TEXT("NHSkin: no skin '%s' in this project. Skins: %s"), *Id, *Known);
+	}
+}
+
 void ANHPlayerController::NHCarShow(float X, float Y, const FString& Folder) { if (UNHDebugPlay* P = DebugPlay()) { P->CarShow(FVector(X, Y, 0.f), Folder); } }
 void ANHPlayerController::NHPaintDemo(float X, float Y) { if (UNHDebugPlay* P = DebugPlay()) { P->PaintDemo(FVector(X, Y, 0.f)); } }
 void ANHPlayerController::NHSelfTest() { if (UNHDebugPlay* P = DebugPlay(); P && !P->IsRunning()) { P->SelfTest(false); } }

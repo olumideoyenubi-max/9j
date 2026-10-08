@@ -2,15 +2,21 @@
 
 #include "Camera/CameraComponent.h"
 #include "Components/BoxComponent.h"
+#include "Components/PointLightComponent.h"
+#include "Components/PoseableMeshComponent.h"
+#include "Components/SpotLightComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/TextRenderComponent.h"
 #include "Engine/CollisionProfile.h"
+#include "Engine/SkeletalMesh.h"
 #include "Engine/World.h"
 #include "EnhancedInputComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Input/NHInputSet.h"
+#include "Kismet/GameplayStatics.h"
 #include "NaijaHustleGame.h"
+#include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
 #include "UI/NHHUD.h"
 #include "Vehicles/NHVehicleDynamicsComponent.h"
@@ -116,6 +122,7 @@ void ANHVehicle::BuildBody()
 	auto Seated = [this](const FVector& At, float Scale)
 	{
 		const FNHSurface Skin(FLinearColor(0.08f, 0.04f, 0.025f), 0.55f), Shirt(FLinearColor(0.85f, 0.83f, 0.78f), 0.85f);
+		SeatAt = At;
 		DriverPieces.Add(NHShapes::AddPiece(this, Body, ENHShape::Box, At + FVector(0, 0, 30.f * Scale), FVector(24.f, 34.f, 52.f) * Scale, Shirt));
 		DriverPieces.Add(NHShapes::AddPiece(this, Body, ENHShape::Sphere, At + FVector(2.f, 0, 72.f * Scale), FVector(20.f, 18.f, 24.f) * Scale, Skin));
 	};
@@ -130,6 +137,9 @@ void ANHVehicle::BuildBody()
 		{
 			Wheels.Add(NHShapes::AddPivot(this, Body, FVector((Spec.bBike ? (i == 0) : (i < 2)) ? 0.31f * L : -0.31f * L, Spec.bBike ? 0.f : (i % 2 ? 0.5f : -0.5f) * (W - 50.f), Radius)));
 		}
+		// the driving seat is a guess from the size: left-hand drive, a little ahead of the middle, a third of the way up (over half in a van or truck cab)
+		const bool bCabOver = VehicleType == TEXT("danfo") || VehicleType == TEXT("truck");
+		SeatAt = Spec.bBike ? FVector(-L * 0.08f, 0.f, Height * 0.5f) : VehicleType == TEXT("keke") ? FVector(L * 0.12f, 0.f, Height * 0.36f) : FVector(bCabOver ? L * 0.5f - 90.f : L * 0.04f, -W * 0.2f, Height * (bCabOver ? 0.6f : 0.36f));
 	}
 	else if (VehicleType == TEXT("danfo"))
 	{
@@ -256,6 +266,7 @@ void ANHVehicle::BuildBody()
 	// collision: the box from the ground clearance up, so kerbs pass underneath and the vehicle rides up them
 	Clearance = Spec.bBike ? 22.f : 28.f;
 	HalfHeight = (Height - Clearance) * 0.5f;
+	BodyHeight = Height;
 	Box->SetBoxExtent(FVector(L * 0.5f, FMath::Max(W * 0.5f, 25.f), HalfHeight));
 	Body->SetRelativeLocation(FVector(0, 0, -(Clearance + HalfHeight)));
 	Arm->TargetArmLength = L * 1.2f + 420.f;
@@ -298,12 +309,134 @@ bool ANHVehicle::AddModel(float& OutHeight)
 
 void ANHVehicle::SetOccupied(bool bOn)
 {
+	// the player's own body if there is one to show, the blockout driver otherwise
+	const bool bBody = bOn && SeatDriver();
+	if (DriverBody)
+	{
+		DriverBody->SetVisibility(bBody);
+	}
 	for (UStaticMeshComponent* P : DriverPieces)
 	{
 		if (P)
 		{
-			P->SetVisibility(bOn);
+			P->SetVisibility(bOn && !bBody);
 		}
+	}
+}
+
+bool ANHVehicle::SeatDriver()
+{
+	const ANHCharacter* Player = Cast<ANHCharacter>(UGameplayStatics::GetActorOfClass(this, ANHCharacter::StaticClass()));
+	USkeletalMesh* Mesh = Player && Player->HasBody() ? Player->GetMesh()->GetSkeletalMeshAsset() : nullptr;
+	if (!Mesh)
+	{
+		return false;
+	}
+	if (!DriverBody)
+	{
+		DriverBody = NewObject<UPoseableMeshComponent>(this);
+		DriverBody->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		DriverBody->SetCanEverAffectNavigation(false);
+		DriverBody->SetupAttachment(Body);
+		DriverBody->RegisterComponent();
+	}
+	if (DriverBody->GetSkinnedAsset() == Mesh)
+	{
+		return true; // already seated and posed
+	}
+	DriverBody->SetSkinnedAssetAndUpdate(Mesh);
+	DriverBody->ResetBoneTransformByName(NAME_None);
+
+	// Posed by pointing each limb where a driver's would be, in the body's own space, so it works for any skeleton
+	// that uses the mannequin's bone names, whichever pose it was made in.
+	const float Scale = Player->GetMesh()->GetRelativeScale3D().X;
+	const float Facing = -Player->GetMesh()->GetRelativeRotation().Yaw; // the way the body faces in its own space
+	const FVector Fwd = FRotator(0.f, Facing, 0.f).Vector(), Up = FVector::UpVector, Right = FVector::CrossProduct(Up, Fwd);
+	const auto At = [this](const TCHAR* Bone) { return DriverBody->GetBoneLocationByName(FName(Bone), EBoneSpaces::ComponentSpace); };
+	const auto Aim = [this, &At](const FString& Bone, const FString& Child, const FVector& Toward)
+	{
+		if (DriverBody->GetBoneIndex(FName(*Bone)) == INDEX_NONE || DriverBody->GetBoneIndex(FName(*Child)) == INDEX_NONE)
+		{
+			return;
+		}
+		const FVector Now = (At(*Child) - At(*Bone)).GetSafeNormal();
+		const FQuat Turn = FQuat::FindBetweenNormals(Now, Toward.GetSafeNormal());
+		const FQuat Was = DriverBody->GetBoneRotationByName(FName(*Bone), EBoneSpaces::ComponentSpace).Quaternion();
+		DriverBody->SetBoneRotationByName(FName(*Bone), (Turn * Was).Rotator(), EBoneSpaces::ComponentSpace);
+	};
+	for (int32 Side = 0; Side < 2; ++Side)
+	{
+		const FString S = Side == 0 ? TEXT("_l") : TEXT("_r");
+		const FVector Out = Side == 0 ? -Right : Right;
+		if (Spec.bBike)
+		{
+			Aim(TEXT("thigh") + S, TEXT("calf") + S, Fwd * 0.75f - Up * 0.45f + Out * 0.45f);
+			Aim(TEXT("calf") + S, TEXT("foot") + S, -Up * 0.9f - Fwd * 0.3f);
+		}
+		else if (VehicleType == TEXT("danfo") || VehicleType == TEXT("truck"))
+		{
+			// sitting upright over the front axle: knees lower, shins straight down
+			Aim(TEXT("thigh") + S, TEXT("calf") + S, Fwd * 0.8f - Up * 0.5f + Out * 0.15f);
+			Aim(TEXT("calf") + S, TEXT("foot") + S, -Up);
+		}
+		else
+		{
+			Aim(TEXT("thigh") + S, TEXT("calf") + S, Fwd * 0.95f - Up * 0.12f + Out * 0.18f);
+			Aim(TEXT("calf") + S, TEXT("foot") + S, -Up * 0.8f + Fwd * 0.55f);
+		}
+		Aim(TEXT("upperarm") + S, TEXT("lowerarm") + S, Fwd * 0.75f - Up * 0.6f + Out * 0.12f);
+		Aim(TEXT("lowerarm") + S, TEXT("hand") + S, Fwd * 0.9f + Up * 0.25f - Out * 0.15f);
+	}
+	const float Hips = DriverBody->GetBoneIndex(TEXT("pelvis")) != INDEX_NONE ? At(TEXT("pelvis")).Z : 95.f;
+	DriverBody->SetRelativeScale3D(FVector(Scale));
+	DriverBody->SetRelativeRotation(FRotator(0.f, -Facing, 0.f));
+	DriverBody->SetRelativeLocation(SeatAt - FVector(0.f, 0.f, Hips * Scale));
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: driver seated in the %s at %s (hips %.0f cm up the body, scale %.2f, vehicle %.0f x %.0f x %.0f)"), *VehicleType.ToString(), *SeatAt.ToCompactString(), Hips, Scale, Spec.Length, Spec.Width, BodyHeight);
+	return true;
+}
+
+void ANHVehicle::SetHeadlights(bool bOn)
+{
+	bHeadlights = bOn;
+	if (bOn && Lamps.Num() == 0)
+	{
+		const float L = Spec.Length, W = Spec.Width;
+		for (int32 Side = 0; Side < (Spec.bBike ? 1 : 2); ++Side)
+		{
+			USpotLightComponent* Beam = NewObject<USpotLightComponent>(this);
+			Beam->SetupAttachment(Body);
+			Beam->SetRelativeLocationAndRotation(FVector(L * 0.5f - 8.f, Spec.bBike ? 0.f : (Side ? 0.3f : -0.3f) * W, BodyHeight * (Spec.bBike ? 0.6f : 0.42f)), FRotator(-6.f, 0.f, 0.f));
+			Beam->SetIntensityUnits(ELightUnits::Candelas);
+			Beam->SetIntensity(9000.f);
+			Beam->SetLightColor(FLinearColor(1.f, 0.93f, 0.8f));
+			Beam->SetInnerConeAngle(16.f);
+			Beam->SetOuterConeAngle(34.f);
+			Beam->SetAttenuationRadius(4500.f);
+			Beam->SetCastShadows(false); // two shadowed lights per car is too much for the 8 GB Mac
+			Beam->RegisterComponent();
+			Lamps.Add(Beam);
+		}
+		UPointLightComponent* Tail = NewObject<UPointLightComponent>(this);
+		Tail->SetupAttachment(Body);
+		Tail->SetRelativeLocation(FVector(-L * 0.5f - 12.f, 0.f, BodyHeight * 0.45f));
+		Tail->SetIntensityUnits(ELightUnits::Candelas);
+		Tail->SetIntensity(18.f);
+		Tail->SetLightColor(FLinearColor(1.f, 0.05f, 0.03f));
+		Tail->SetAttenuationRadius(350.f);
+		Tail->SetCastShadows(false);
+		Tail->RegisterComponent();
+		Lamps.Add(Tail);
+	}
+	for (ULocalLightComponent* Lamp : Lamps)
+	{
+		if (Lamp)
+		{
+			Lamp->SetVisibility(bOn);
+		}
+	}
+	if (IsPlayerControlled())
+	{
+		ANHHUD::Toast(this, bOn ? TEXT("Headlights on") : TEXT("Headlights off"), 0);
 	}
 }
 
@@ -442,6 +575,7 @@ void ANHVehicle::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	Input->BindAction(Set->Handbrake, ETriggerEvent::Started, this, &ANHVehicle::OnHandbrake);
 	Input->BindAction(Set->Handbrake, ETriggerEvent::Completed, this, &ANHVehicle::OnHandbrakeEnd);
 	Input->BindAction(Set->Horn, ETriggerEvent::Started, this, &ANHVehicle::OnHorn);
+	Input->BindAction(Set->Headlights, ETriggerEvent::Started, this, &ANHVehicle::OnHeadlights);
 	Input->BindAction(Set->Look, ETriggerEvent::Triggered, this, &ANHVehicle::OnLook);
 	Input->BindAction(Set->LookStick, ETriggerEvent::Triggered, this, &ANHVehicle::OnLook);
 }

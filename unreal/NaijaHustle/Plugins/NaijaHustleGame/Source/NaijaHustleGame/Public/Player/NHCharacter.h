@@ -11,13 +11,27 @@ class USkeletalMesh;
 class UAnimInstance;
 class UStaticMesh;
 
+/** One body the player can wear */
+USTRUCT()
+struct FNHPlayerSkin
+{
+	GENERATED_BODY()
+
+	/** Short name used by NHSkin and the saved choice */
+	UPROPERTY(EditAnywhere, Category = "Skin") FName Id;
+	UPROPERTY(EditAnywhere, Category = "Skin") FString Name;
+	UPROPERTY(EditAnywhere, Category = "Skin") TSoftObjectPtr<USkeletalMesh> Mesh;
+	UPROPERTY(EditAnywhere, Category = "Skin") TSoftClassPtr<UAnimInstance> AnimClass;
+	/** How tall it should stand, cm: it is scaled to this from its own height. 0 leaves it as made. */
+	UPROPERTY(EditAnywhere, Category = "Skin") float Height = 0.f;
+};
+
 /**
  * The player on foot, with a low, close over-the-shoulder camera. Sprinting pulls the camera in, widens the view
  * and adds a slight handheld sway; it eases back when you walk.
  *
- * The body is CharacterMesh with CharacterAnimClass if the project has them (a character brought in by
- * Scripts/import_player_gltf.py). Otherwise it is BodyMesh and BodyAnimClass, which default to the Unreal Third
- * Person template's mannequin. In a project with neither, the player is the visible capsule.
+ * The body is one of Skins: the saved choice if the project has it, otherwise the first one it does have. In a
+ * project with none of them the player is the visible capsule. Change it in play with the console command NHSkin.
  */
 UCLASS()
 class NAIJAHUSTLEGAME_API ANHCharacter : public ACharacter
@@ -36,14 +50,14 @@ public:
 	/** True when a body mesh was found and put on; false when the player is still the capsule */
 	UFUNCTION(BlueprintPure, Category = "Body") bool HasBody() const { return bHasBody; }
 
-	/** The player's own character and its animation Blueprint, used when the project has them */
-	UPROPERTY(EditAnywhere, Category = "Body") TSoftObjectPtr<USkeletalMesh> CharacterMesh;
-	UPROPERTY(EditAnywhere, Category = "Body") TSoftClassPtr<UAnimInstance> CharacterAnimClass;
-	/** How tall CharacterMesh should stand, cm: it is scaled to this from its own height */
-	UPROPERTY(EditAnywhere, Category = "Body") float CharacterHeight = 180.f;
-	/** The stand-in body and its animation Blueprint */
-	UPROPERTY(EditAnywhere, Category = "Body") TSoftObjectPtr<USkeletalMesh> BodyMesh;
-	UPROPERTY(EditAnywhere, Category = "Body") TSoftClassPtr<UAnimInstance> BodyAnimClass;
+	/** The bodies the player can wear, best first. Characters come from Scripts/import_player_gltf.py; the last is the Third Person template's mannequin. */
+	UPROPERTY(EditAnywhere, Category = "Body") TArray<FNHPlayerSkin> Skins;
+
+	/** Puts a skin on by id. False if there is no such skin or the project does not have its assets. */
+	bool WearSkin(FName Id);
+	/** Puts on the next skin the project has, going round the list; returns the name of what is now worn */
+	FString WearNextSkin();
+	FName GetSkin() const { return CurrentSkin; }
 
 	/**
 	 * One shoe, as an unrigged static mesh lying flat with its toe toward +X. It is worn on both feet (mirrored for
@@ -84,10 +98,13 @@ private:
 	void OnSprintStart();
 	void OnSprintStop();
 	void PutOnShoes();
+	static bool SkinAvailable(const FNHPlayerSkin& Skin);
 	/** Which way the body faces in its own space, from where its feet point in the reference pose (degrees; 90 if unknown) */
 	float BodyFacingYaw() const;
 
 	bool bHasBody = false;
+	FName CurrentSkin;
+	UPROPERTY() TArray<TObjectPtr<class UStaticMeshComponent>> ShoeParts;
 	bool bSprinting = false;
 	/** 0 walking .. 1 sprinting, eased */
 	float SprintAlpha = 0.f;

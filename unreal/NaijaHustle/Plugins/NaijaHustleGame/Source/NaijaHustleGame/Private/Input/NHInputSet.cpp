@@ -89,6 +89,7 @@ void UNHInputSet::Build()
 	ExitVehicle = MakeAction(this, TEXT("IA_ExitVehicle"));
 	Radio = MakeAction(this, TEXT("IA_Radio"));
 	LookBehind = MakeAction(this, TEXT("IA_LookBehind"));
+	Headlights = MakeAction(this, TEXT("IA_Headlights"));
 
 	Vehicle->MapKey(Throttle, EKeys::W);
 	Vehicle->MapKey(Throttle, EKeys::Up);
@@ -110,6 +111,7 @@ void UNHInputSet::Build()
 	Vehicle->MapKey(Radio, EKeys::R);
 	Vehicle->MapKey(Radio, EKeys::Gamepad_DPad_Right);
 	Vehicle->MapKey(LookBehind, EKeys::C);
+	Vehicle->MapKey(Headlights, EKeys::K); // every gamepad button is taken
 	Vehicle->MapKey(LookBehind, EKeys::Gamepad_RightThumbstick);
 	// Free look while driving uses the same actions as on foot
 	Vehicle->MapKey(Look, EKeys::Mouse2D).Modifiers.Add(Negate(Vehicle, false, true));
