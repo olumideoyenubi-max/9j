@@ -12,6 +12,7 @@ class UVolumetricCloudComponent;
 class UPostProcessComponent;
 class UMaterialParameterCollection;
 class UMaterialInterface;
+class UTexture;
 
 UENUM(BlueprintType)
 enum class ENHLightingPreset : uint8
@@ -72,6 +73,18 @@ struct FNHLightingSettings
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade") float Bloom = 0.5f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade") float Vignette = 0.3f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade", meta = (ClampMin = "0", ClampMax = "2")) float Sharpen = 0.f;
+	/** Film curve: Toe crushes or opens the darks, Shoulder rolls the highlights off (the engine's filmic tone mapper; 0.55 and 0.26 are its defaults) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade", meta = (ClampMin = "0", ClampMax = "1")) float FilmToe = 0.55f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade", meta = (ClampMin = "0", ClampMax = "1")) float FilmShoulder = 0.26f;
+	/** Split tone: shadows are lifted towards ShadowTint by ShadowLift (0 = untouched), highlights are multiplied by HighlightTint */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade") FLinearColor ShadowTint = FLinearColor(0.25f, 0.8f, 0.9f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade", meta = (ClampMin = "0", ClampMax = "0.1")) float ShadowLift = 0.f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade") FLinearColor HighlightTint = FLinearColor::White;
+	/** Film grain and lens colour fringing at the frame edges (0 = off) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade", meta = (ClampMin = "0", ClampMax = "1")) float FilmGrain = 0.f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade", meta = (ClampMin = "0", ClampMax = "5")) float ChromaticAberration = 0.f;
+	/** How much of the rig's GradeLUT is mixed in (0 = none) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grade", meta = (ClampMin = "0", ClampMax = "1")) float LutIntensity = 0.f;
 
 	/** MPC_NHWeather: how wet surfaces are, how much water stands in puddles, rain strength (FX in step 7), night lights (lamps, windows, signs) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weather", meta = (ClampMin = "0", ClampMax = "1")) float Wetness = 0.f;
@@ -82,7 +95,7 @@ struct FNHLightingSettings
 
 /**
  * The street block's whole lighting setup in one actor: sun (or moon), sky atmosphere, real-time sky light
- * (with a faked ground bounce), height fog, volumetric clouds and an unbound post-process volume, plus the weather parameters
+ * (with a faked ground bounce), height fog, volumetric clouds and the one unbound post-process volume that grades the whole game, plus the weather parameters
  * the blockout material reads (wet roads and puddles, night glow) and the street lamps on every city tile.
  * Switch presets with the buttons in the Details panel, `NHLighting <Day|DustyNoon|Sunset|NightRain|HarshMorning|GoldenEvening>`
  * in the console, or L in game.
@@ -109,6 +122,10 @@ public:
 	/** MPC_NHWeather, made by Scripts/nh_blockout_materials.py */
 	UPROPERTY(EditAnywhere, Category = "Lighting") TSoftObjectPtr<UMaterialParameterCollection> Weather;
 	UPROPERTY(EditAnywhere, Category = "Lighting") TSoftObjectPtr<UMaterialInterface> CloudMaterial;
+	/** T_NHGrade_LUT, a 256x16 colour lookup table made by Scripts/nh_grade_lut.py. Swap in any other LUT texture here. */
+	UPROPERTY(EditAnywhere, Category = "Lighting") TSoftObjectPtr<UTexture> GradeLUT;
+	/** How quickly auto exposure follows the scene, in stops a second. Low values stop the picture pumping when the camera swings from shade to sun. */
+	UPROPERTY(EditAnywhere, Category = "Lighting", meta = (ClampMin = "0.02", ClampMax = "20")) float ExposureSpeed = 1.5f;
 
 	UFUNCTION(BlueprintCallable, Category = "Lighting") void ApplyPreset(ENHLightingPreset NewPreset);
 	UFUNCTION(BlueprintCallable, Category = "Lighting") void CyclePreset();

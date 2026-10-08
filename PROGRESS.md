@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-08
+**Last updated:** 2026-10-08 (after visual brief section 2)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -10,8 +10,8 @@ Standalone game, 1280×720 window, standing on the dusty street (8000, 14000, fa
 
 | Lighting | Frame rate | Frame time |
 |---|---|---|
-| Harsh morning, 9:30 | 22.7 fps | 44.0 ms |
-| Golden evening, 17:00 | 23.1 fps | 43.2 ms |
+| Harsh morning, 9:30 | 22.9 fps | 43.7 ms |
+| Golden evening, 17:00 | 23.5 fps | 42.5 ms |
 | Harsh morning, 9:30, repo project with `Config/Mac/MacEngine.ini` | 24.8 fps | 40.3 ms |
 
 The first two rows were measured in a UE 5.8 template project with its default config (Lumen switched off at run time by the lighting rig). The third is this repo's own project with the Mac profile; the picture looks the same.
@@ -31,14 +31,16 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Repo project verified on the Mac (2026-10-08):** `Scripts/mac.sh build` compiles `unreal/NaijaHustle`, the material and level scripts run, the Mac profile is applied (no ray tracing, screen-space reflections, cascaded shadows, 800 MB texture pool), and `NHAutoplay` passes all 26 checks.
 - **Repo:** Unity project archived under `legacy/unity/`; Mac and Windows config profiles split (`Config/Mac/MacEngine.ini`, `Config/Windows/WindowsEngine.ini`); Mac build-and-play script `unreal/NaijaHustle/Scripts/mac.sh`.
 
+- **Visual brief, section 2 (post-process and colour):** one global post-process volume with a filmic curve, teal-lifted shadows, warm highlights, film grain, chromatic aberration, clamped slow-moving exposure, and a tweakable colour lookup table (`nh_grade_lut.py` makes `T_NHGrade_LUT`). No measurable frame-rate cost. Autoplay (26) and self-test (48) pass.
+
 ## In progress
 
-- **Visual brief, section 2 (post-process and colour):** waiting for the go-ahead after section 1.
+- Waiting for review of section 2 before section 5 (geometry and set dressing).
 
 ## Next
 
 Visual brief sections, in order, each reviewed before the next:
-2 post-process and colour, 5 geometry and set dressing, 4 decals, 3 material depth, 6 atmosphere effects, 7 camera feel, 8 showcase mode, 9 performance.
+5 geometry and set dressing, 4 decals, 3 material depth, 6 atmosphere effects, 7 camera feel, 8 showcase mode, 9 performance.
 
 Waiting on assets (see `ASSETS.md`):
 
@@ -53,6 +55,8 @@ Deferred: player character, NPCs and storyline.
 - Nothing has been built on Windows against UE 5.8.
 - Frame rate is about 22 fps at 1280×720, under the 30 fps target.
 - Nanite and Virtual Shadow Maps are not active on this Mac (the engine falls back to Metal SM5), so shadows are cascaded shadow maps.
+- The full grade is only on the harsh-morning and golden-evening presets; day, dusty noon, sunset and night rain keep neutral grade values.
+- Chromatic aberration shows as colour fringes on poles near the frame edge; it may want turning down.
 - Shaded areas are still dark; the faked bounce is a mild lift.
 - At golden evening the road ruts cast long shadows that read as holes.
 - Reflection captures are placed but their effect is unconfirmed; nothing in the blockout is shiny enough to show them.
@@ -63,6 +67,12 @@ Deferred: player character, NPCs and storyline.
 - All vehicles are blockout shapes; all surfaces use flat placeholder textures.
 
 ## Screenshots
+
+Section 2, post-process and colour. Before is the section 1 "after".
+
+| Harsh morning, graded | Golden evening, graded |
+|---|---|
+| ![morning](docs/screenshots/section2-after-morning.jpg) | ![evening](docs/screenshots/section2-after-golden-evening.jpg) |
 
 Section 1, lighting. Same camera spot on the dusty street.
 

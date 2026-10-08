@@ -11,8 +11,7 @@ It holds:
   - free conductor shifts on three routes
   - money, the clock, the save game and the HUD
 
-It was written for Unreal Engine 5.4+ and is **compiled and played against 5.8 on macOS** (Apple M1). It has not been
-built on Windows against 5.8 yet. On a machine with 8 GB of memory or less the
+It was written for Unreal Engine 5.4+ and builds against 5.8 on macOS. On a machine with 8 GB of memory or less the
 lighting rig leaves out Lumen, volumetric fog and the clouds, which together run such a machine out of GPU memory.
 
 ## Put it in your project
@@ -38,38 +37,22 @@ lighting rig leaves out Lumen, volumetric fog and the clouds, which together run
    ```
    It turns on what it needs by itself: Enhanced Input, Python Editor Script Plugin and Editor Scripting Utilities.
 4. **Build.**
-   - **Mac:** there is no Visual Studio on Mac; Unreal compiles with Xcode's compiler, so install Xcode from the
-     App Store and open it once. Then either double-click `YourProject.uproject` and answer **Yes** when it offers
-     to rebuild the missing modules, or build from Terminal:
-     ```bash
-     "/Users/Shared/Epic Games/UE_5.8/Engine/Build/BatchFiles/Mac/Build.sh" YourProjectEditor Mac Development \
-         -project="/full/path/to/YourProject.uproject"
-     ```
-     If the build stops with errors, they are printed in Terminal; copy the first few and send them over. The editor
-     log is `~/Library/Logs/Unreal Engine/YourProjectEditor/YourProject.log`.
-   - **Windows:**
-     1. Right-click `YourProject.uproject` > **Generate Visual Studio project files**.
-     2. Open the `.sln` and build **Development Editor | Win64**.
-     3. Open the project.
-
-     If the build stops with errors, copy the first few from Visual Studio's **Error List** and send them over.
+   1. Right-click `YourProject.uproject` > **Generate Visual Studio project files**.
+   2. Open the `.sln` and build **Development Editor | Win64**.
+   3. Open the project.
+   If the build stops with errors, copy the first few from Visual Studio's **Error List** and send them over.
 5. **Make the materials.** **Tools > Execute Python Script…** >
    `Plugins/NaijaHustleGame/Scripts/nh_blockout_materials.py`. It creates the weather parameters, the surface
    material `M_NHSurface` and one instance per surface type (`MI_NHSurface_Plaster`, `_Concrete`, `_Dirt`, `_Asphalt`,
    `_Zinc`, `_Tarp`, `_Wood`, `_Fabric`, `_Metal`, `_Glass`, `_Generic`) under `Content/NaijaHustle`.
+   Then run `Plugins/NaijaHustleGame/Scripts/nh_grade_lut.py` the same way. It makes `T_NHGrade_LUT`, the colour
+   lookup table for the film grade. Without it the game still runs, with the rest of the grade.
 6. **Build the level.** **Tools > Execute Python Script…** > `Plugins/NaijaHustleGame/Scripts/build_street_block.py`.
    - It creates `Content/NaijaHustle/Maps/L_Slice_Street` and places the city (about 580 actors, with 250 overhead
      cables; it takes a minute or two).
    - It sets that level's **GameMode Override** to `NHGameMode`, so your project's default game mode and your
      other levels are untouched.
 7. **Play.** Open `L_Slice_Street` and press **Play**.
-   - **Mac launcher:** to play without the editor's overhead (worth it on an 8 GB Mac), run the level as a
-     standalone game:
-     ```bash
-     "/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealEditor.app/Contents/MacOS/UnrealEditor" \
-         "/full/path/to/YourProject.uproject" /Game/NaijaHustle/Maps/L_Slice_Street -game -windowed -ResX=1280 -ResY=720
-     ```
-     In this repo's own project, `Scripts/mac.sh play` does the same, and `Scripts/mac.sh build` builds it.
 8. **Real car models (optional).** Add car models from Fab (static meshes; they land under `/Game/Fab`), then run
    `Plugins/NaijaHustleGame/Scripts/assign_vehicle_meshes.py`. It matches models to vehicle types by name (hypercar,
    sports, luxury, limo, royal, coupe suv, super suv, sedan, suv, minibus, tricycle, motorcycle, truck, pickup), scales each to its type's length and writes
@@ -175,3 +158,22 @@ comes over in these steps (each waits for your go-ahead):
 4. **Inventory and shops:** quick wheel, items, documents, outfits from the tailor, kiosks and the medicine store.
 5. **Phone:** Yarns, KoboPay, MapAm, and the radio.
 6. **Look:** MetaHumans, Chaos Vehicles with real meshes, rain FX, sound.
+
+## The colour grade
+
+One unbound post-process volume on the lighting rig grades the whole game. Each lighting preset carries its own
+values (select **LightingRig** > Details > Lighting > Presets > Grade):
+
+| Setting | What it does |
+|---|---|
+| Film Toe, Film Shoulder | The filmic curve: denser shadows, softer highlight roll-off |
+| Shadow Tint, Shadow Lift | Lifts the shadows towards a colour (teal by default) |
+| Highlight Tint | Tints the highlights (warm by default) |
+| Film Grain, Chromatic Aberration | Grain and colour fringing at the frame edges |
+| Lut Intensity | How much of the rig's **Grade LUT** is mixed in |
+| Saturation, Contrast, White Temp, Bloom, Vignette, Sharpen | As before |
+| Exposure Min/Max EV100, and **Exposure Speed** on the rig | The exposure clamp and how fast it adapts |
+
+The lookup table is made by `Scripts/nh_grade_lut.py`. To change it, edit `GRADE` at the top of that script and run it
+again, or grade the PNG it writes (`Saved/NaijaHustle/T_NHGrade_LUT.png`) in an image editor and import it over the
+asset. Harsh morning and golden evening use the full grade; the other presets keep neutral values for now.

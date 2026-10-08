@@ -6,6 +6,7 @@
 #include "Components/SkyAtmosphereComponent.h"
 #include "Components/SkyLightComponent.h"
 #include "Components/VolumetricCloudComponent.h"
+#include "Engine/Texture.h"
 #include "EngineUtils.h"
 #include "HAL/PlatformMemory.h"
 #include "Kismet/KismetMaterialLibrary.h"
@@ -48,6 +49,7 @@ ANHLightingRig::ANHLightingRig()
 	Post->bUnbound = true;
 
 	Weather = TSoftObjectPtr<UMaterialParameterCollection>(FSoftObjectPath(TEXT("/Game/NaijaHustle/Lighting/Presets/MPC_NHWeather.MPC_NHWeather")));
+	GradeLUT = TSoftObjectPtr<UTexture>(FSoftObjectPath(TEXT("/Game/NaijaHustle/Lighting/Presets/T_NHGrade_LUT.T_NHGrade_LUT")));
 	CloudMaterial = TSoftObjectPtr<UMaterialInterface>(FSoftObjectPath(TEXT("/Engine/EngineSky/VolumetricClouds/m_SimpleVolumetricCloud_Inst.m_SimpleVolumetricCloud_Inst")));
 
 	// ---- presets (see FNHLightingSettings for units)
@@ -79,6 +81,10 @@ ANHLightingRig::ANHLightingRig()
 	HarshMorning.FogDensity = 0.02f; HarshMorning.FogHeightFalloff = 0.6f; HarshMorning.FogColor = FLinearColor(0.78f, 0.66f, 0.48f); HarshMorning.FogLuminance = 5000.f; HarshMorning.bVolumetricFog = true;
 	HarshMorning.ExposureMinEV100 = 13.5f; HarshMorning.ExposureMaxEV100 = 15.5f;
 	HarshMorning.Saturation = 0.9f; HarshMorning.Contrast = 1.1f; HarshMorning.WhiteTemp = 5800.f; HarshMorning.Bloom = 0.4f; HarshMorning.Vignette = 0.3f; HarshMorning.Sharpen = 0.6f;
+	// the grade: a touch more toe for dense shadows, teal lifted into them, warm highlights, light grain and fringing
+	HarshMorning.FilmToe = 0.6f; HarshMorning.FilmShoulder = 0.3f;
+	HarshMorning.ShadowLift = 0.02f; HarshMorning.HighlightTint = FLinearColor(1.04f, 1.f, 0.94f);
+	HarshMorning.FilmGrain = 0.25f; HarshMorning.ChromaticAberration = 0.35f; HarshMorning.LutIntensity = 0.6f;
 
 	// sun 12 degrees up in the west: amber light along the east-west streets, shadows several houses long
 	GoldenEvening.SunPitch = -12.f; GoldenEvening.SunYaw = 15.f; GoldenEvening.SunLux = 24000.f; GoldenEvening.SunColor = FLinearColor(1.f, 0.7f, 0.4f);
@@ -88,6 +94,9 @@ ANHLightingRig::ANHLightingRig()
 	GoldenEvening.FogFarDensity = 0.005f; GoldenEvening.LightShafts = 0.35f; GoldenEvening.bVolumetricFog = true;
 	GoldenEvening.ExposureMinEV100 = 11.f; GoldenEvening.ExposureMaxEV100 = 13.5f;
 	GoldenEvening.Saturation = 1.f; GoldenEvening.Contrast = 1.08f; GoldenEvening.WhiteTemp = 6200.f; GoldenEvening.Bloom = 0.6f; GoldenEvening.Vignette = 0.35f; GoldenEvening.Sharpen = 0.4f;
+	GoldenEvening.FilmToe = 0.6f; GoldenEvening.FilmShoulder = 0.32f;
+	GoldenEvening.ShadowLift = 0.01f; GoldenEvening.ShadowTint = FLinearColor(0.2f, 0.7f, 0.95f); GoldenEvening.HighlightTint = FLinearColor(1.05f, 1.f, 0.92f);
+	GoldenEvening.FilmGrain = 0.3f; GoldenEvening.ChromaticAberration = 0.4f; GoldenEvening.LutIntensity = 0.6f;
 	GoldenEvening.NightLights = 0.12f;
 }
 
@@ -169,6 +178,19 @@ void ANHLightingRig::ApplyPreset(ENHLightingPreset NewPreset)
 	P.bOverride_BloomIntensity = true;          P.BloomIntensity = S.Bloom;
 	P.bOverride_VignetteIntensity = true;       P.VignetteIntensity = S.Vignette;
 	P.bOverride_Sharpen = true;                 P.Sharpen = S.Sharpen;
+	// clamped exposure: the EV100 range above is the clamp, and a slow, even speed keeps it from pumping
+	P.bOverride_AutoExposureSpeedUp = true;     P.AutoExposureSpeedUp = ExposureSpeed;
+	P.bOverride_AutoExposureSpeedDown = true;   P.AutoExposureSpeedDown = ExposureSpeed;
+	// filmic grade
+	P.bOverride_FilmToe = true;                 P.FilmToe = S.FilmToe;
+	P.bOverride_FilmShoulder = true;            P.FilmShoulder = S.FilmShoulder;
+	P.bOverride_ColorOffsetShadows = true;      P.ColorOffsetShadows = FVector4(S.ShadowTint.R * S.ShadowLift, S.ShadowTint.G * S.ShadowLift, S.ShadowTint.B * S.ShadowLift, 0.f);
+	P.bOverride_ColorGainHighlights = true;     P.ColorGainHighlights = FVector4(S.HighlightTint.R, S.HighlightTint.G, S.HighlightTint.B, 1.f);
+	P.bOverride_FilmGrainIntensity = true;      P.FilmGrainIntensity = S.FilmGrain;
+	P.bOverride_SceneFringeIntensity = true;    P.SceneFringeIntensity = S.ChromaticAberration;
+	UTexture* Lut = S.LutIntensity > 0.f ? GradeLUT.LoadSynchronous() : nullptr; // no LUT asset yet: the rest of the grade still applies
+	P.bOverride_ColorGradingLUT = true;         P.ColorGradingLUT = Lut;
+	P.bOverride_ColorGradingIntensity = true;   P.ColorGradingIntensity = Lut ? S.LutIntensity : 0.f;
 	P.bOverride_AmbientOcclusionIntensity = true; P.AmbientOcclusionIntensity = S.AmbientOcclusion;
 	P.bOverride_AmbientOcclusionRadius = true;  P.AmbientOcclusionRadius = 140.f;
 	if (bLowMemory)
