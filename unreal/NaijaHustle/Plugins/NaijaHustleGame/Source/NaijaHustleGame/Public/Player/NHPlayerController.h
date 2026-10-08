@@ -7,6 +7,7 @@
 class UNHInputSet;
 class ANHVehicle;
 class ANHCharacter;
+class UNHDebugPlay;
 
 UENUM(BlueprintType)
 enum class ENHInputMode : uint8
@@ -37,9 +38,13 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Naija|Input")
 	ENHInputMode GetNHInputMode() const { return InputMode; }
 
-	/** Console: NHLighting Day | DustyNoon | Sunset | NightRain (or no argument for the next one) */
+	/** Console: NHLighting Day | DustyNoon | Sunset | NightRain | HarshMorning | GoldenEvening (or no argument for the next one) */
 	UFUNCTION(Exec)
 	void NHLighting(const FString& PresetName);
+
+	/** Console: NHLightMenu (or F1) opens the lighting debug menu */
+	UFUNCTION(Exec)
+	void NHLightMenu();
 
 	/** Console: NHReset wipes the save and starts the story again (reload the level after) */
 	UFUNCTION(Exec)
@@ -48,6 +53,40 @@ public:
 	/** Console: NHCash 50000 */
 	UFUNCTION(Exec)
 	void NHCash(int32 Amount);
+
+	/** Console: NHTime 9.5 sets the clock to 9:30 today (the lighting follows) */
+	UFUNCTION(Exec)
+	void NHTime(float Hour);
+
+	/**
+	 * Console: NHLookShots X Y Yaw [Folder]. Look-development screenshots: puts you on foot at X, Y (cm) facing Yaw at
+	 * 9:30, stands still for 15 s to measure the frame rate (logged), saves street.png, then sprints forward and saves
+	 * sprint.png. Folder defaults to Saved/Screenshots/NaijaLook.
+	 * Also runs from the command line: -NHLookShots=X,Y,Yaw -NHLookDir=Folder (and quits when done); add -NHLookHour=17
+	 * for another time of day.
+	 */
+	UFUNCTION(Exec)
+	void NHLookShots(float X, float Y, float Yaw, const FString& Folder);
+
+	// ---- playtest commands (they do nothing in Shipping builds); see UNHDebugPlay
+	/** Console: NHGoto <stop id | park | bay1> puts you, or the vehicle you are driving, there, facing along the road */
+	UFUNCTION(Exec)
+	void NHGoto(const FString& Where);
+	/** Console: NHBoard calls passengers at the current stop until nobody waits, giving the right change every time */
+	UFUNCTION(Exec)
+	void NHBoard();
+	/** Console: NHAgbero pay | beg | drive answers the agbero if his panel is open */
+	UFUNCTION(Exec)
+	void NHAgbero(const FString& What);
+	/** Console: NHFinish completes the current mission objective */
+	UFUNCTION(Exec)
+	void NHFinish();
+	/** Console: NHAutoplay plays "First Day on the Danfo" by script and checks the money (starts the story again if it is done) */
+	UFUNCTION(Exec)
+	void NHAutoplay();
+	/** Console: NHSelfTest checks getting in and out of every vehicle, a missed stop, a wrecked bus and the deadline */
+	UFUNCTION(Exec)
+	void NHSelfTest();
 
 	UFUNCTION(BlueprintCallable, Category = "Naija|Vehicle") bool EnterVehicle(ANHVehicle* Vehicle);
 	/** Steps out beside the vehicle. Refuses above walking pace unless bForce. */
@@ -59,10 +98,16 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void PlayerTick(float DeltaTime) override;
 	virtual void SetupInputComponent() override;
 	virtual void OnPossess(APawn* InPawn) override;
 
 private:
+	friend class UNHDebugPlay;
+	UNHDebugPlay* DebugPlay();
+	UPROPERTY(Transient)
+	TObjectPtr<UNHDebugPlay> Debug;
+
 	void OnCycleLighting();
 	void OnInteract();
 	void OnAction();
@@ -80,4 +125,19 @@ private:
 	TObjectPtr<UNHInputSet> InputSet;
 
 	ENHInputMode InputMode = ENHInputMode::OnFoot;
+
+	void LookShot(const TCHAR* Name);
+	void LookShotsSprint();
+	void LookShotsDone();
+	FString LookShotFolder;
+	FTimerHandle LookShotTimer;
+	bool bLookShotSprint = false;
+	/** While the shots run the view is held on this yaw, whatever the mouse does */
+	bool bLookShotActive = false;
+	bool bLookFps = false;
+	float LookShotHour = 9.5f;
+	int32 LookFpsFrames = 0;
+	double LookFpsSeconds = 0.0;
+	float LookShotYaw = 0.f;
+	bool bLookShotQuit = false;
 };

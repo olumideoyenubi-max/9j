@@ -125,6 +125,7 @@ void UNHInputSet::Build()
 	Map = MakeAction(this, TEXT("IA_Map"));
 	Pause = MakeAction(this, TEXT("IA_Pause"));
 	CycleLighting = MakeAction(this, TEXT("IA_CycleLighting"));
+	LightingMenu = MakeAction(this, TEXT("IA_LightingMenu"));
 	Choice1 = MakeAction(this, TEXT("IA_Choice1"));
 	Choice2 = MakeAction(this, TEXT("IA_Choice2"));
 	Choice3 = MakeAction(this, TEXT("IA_Choice3"));
@@ -142,6 +143,7 @@ void UNHInputSet::Build()
 	Global->MapKey(Pause, EKeys::Escape);
 	Global->MapKey(Pause, EKeys::Gamepad_Special_Right);
 	Global->MapKey(CycleLighting, EKeys::L);
+	Global->MapKey(LightingMenu, EKeys::F1);
 	// choices: number keys, or the gamepad face buttons are taken, so the d-pad left/right and shoulders
 	Global->MapKey(Choice1, EKeys::One);
 	Global->MapKey(Choice2, EKeys::Two);

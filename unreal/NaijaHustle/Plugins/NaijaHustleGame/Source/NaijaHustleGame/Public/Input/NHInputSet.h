@@ -56,6 +56,7 @@ public:
 	UPROPERTY() TObjectPtr<UInputAction> Map;         // M / D-pad down
 	UPROPERTY() TObjectPtr<UInputAction> Pause;       // Esc / Menu (Start)
 	UPROPERTY() TObjectPtr<UInputAction> CycleLighting; // L: next lighting preset (look development; remove for release)
+	UPROPERTY() TObjectPtr<UInputAction> LightingMenu;  // F1: the lighting debug menu (look development; remove for release)
 	UPROPERTY() TObjectPtr<UInputAction> Choice1;     // 1..4: pick an option in a choice panel (change, agbero, routes)
 	UPROPERTY() TObjectPtr<UInputAction> Choice2;
 	UPROPERTY() TObjectPtr<UInputAction> Choice3;

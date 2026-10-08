@@ -91,6 +91,10 @@ void ANHGameDirector::BeginPlay()
 	{
 		SpawnVehicle(TEXT("sedan"), D->ParkBays[6].Pos, D->ParkBays[6].Yaw, FLinearColor(0.12f, 0.2f, 0.3f), FString());
 	}
+	for (const FNHParkedVehicle& P : D->Parked) // the luxury cars: two at the park, the rest on Eko Crest
+	{
+		SpawnVehicle(P.Type, P.Pos, P.Yaw, P.Color, FString());
+	}
 	ANHHUD::Toast(this, TEXT("NAIJA HUSTLE: welcome to Lagos. Find Baba Driver at Oshoja Motor Park."), 1);
 }
 
@@ -390,12 +394,36 @@ void ANHGameDirector::UpdateLighting(float DeltaSeconds)
 		return;
 	}
 	const float H = Hustle->HourOfDay();
-	const ENHLightingPreset Want = (H < 6.f || H >= 19.5f) ? ENHLightingPreset::NightRain : H >= 17.5f ? ENHLightingPreset::Sunset : (H >= 11.5f && H < 15.f) ? ENHLightingPreset::DustyNoon : ENHLightingPreset::Day;
+	const ENHLightingPreset Want = (H < 6.f || H >= 19.5f) ? ENHLightingPreset::NightRain : H >= 17.5f ? ENHLightingPreset::Sunset : H >= 16.f ? ENHLightingPreset::GoldenEvening : (H >= 11.5f && H < 15.f) ? ENHLightingPreset::DustyNoon : (H >= 8.f && H < 11.5f) ? ENHLightingPreset::HarshMorning : ENHLightingPreset::Day;
 	if (static_cast<int32>(Want) != LastPreset)
 	{
 		LastPreset = static_cast<int32>(Want);
 		Rig->ApplyPreset(Want);
 	}
+}
+
+void ANHGameDirector::OpenLightingMenu()
+{
+	if (IsBusy())
+	{
+		return;
+	}
+	OpenPanel(TEXT("Lighting (debug)"), { TEXT("Pick a time of day to look at, or let the clock decide."), TEXT("L steps through every preset.") },
+		{ TEXT("Harsh morning"), TEXT("Golden evening"), TEXT("Follow the clock"), TEXT("Close") }, [this](int32 Choice)
+		{
+			ANHLightingRig* Rig = ANHLightingRig::Find(this);
+			if (Choice == 2)
+			{
+				bManualLighting = false;
+				LastPreset = -1;
+				LightCheck = 0.f;
+			}
+			else if (Rig && Choice < 2)
+			{
+				bManualLighting = true;
+				Rig->ApplyPreset(Choice == 0 ? ENHLightingPreset::HarshMorning : ENHLightingPreset::GoldenEvening);
+			}
+		});
 }
 
 // ---------------------------------------------------------------------------------------------------- "First Day on the Danfo"
@@ -519,7 +547,7 @@ void ANHGameDirector::UpdateFirstDay(float DeltaSeconds)
 		Marker = Park;
 		if (PlayerVehicle() == Bus && FVector::Dist2D(Bus->GetActorLocation(), Park) < 875.f)
 		{
-			Bus->Speed = 0.f;
+			Bus->SetHeld(true); // no driving off while Baba Driver counts the money
 			Stage = EStage::Wrapping;
 			if (Baba.IsValid())
 			{
@@ -576,6 +604,10 @@ void ANHGameDirector::PassFirstDay()
 	Stage = EStage::Done;
 	Deadline = -1.f;
 	bSlowClock = false;
+	if (MissionBus.IsValid())
+	{
+		MissionBus->SetHeld(false);
+	}
 	if (Hustle && !Hustle->IsDone(NHDir::FirstDay))
 	{
 		Hustle->Cred += Data()->FirstDayCred;

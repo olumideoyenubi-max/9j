@@ -4,6 +4,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Core/NHHustleSubsystem.h"
+#include "Debug/NHDebugPlay.h"
 #include "Components/CapsuleComponent.h"
 #include "Gameplay/NHGameDirector.h"
 #include "Lighting/NHLightingRig.h"
@@ -11,6 +12,8 @@
 #include "UI/NHHUD.h"
 #include "Vehicles/NHVehicle.h"
 #include "EngineUtils.h"
+#include "Engine/Engine.h"
+#include "Engine/GameViewportClient.h"
 #include "Engine/LocalPlayer.h"
 #include "NaijaHustleGame.h"
 
@@ -28,6 +31,45 @@ void ANHPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	SetNHInputMode(ENHInputMode::OnFoot);
+
+#if !UE_BUILD_SHIPPING
+	// a scripted run: one carried over a level restart, or -NHRun=autoplay|selftest on the command line (quits when done)
+	FString Run = UNHDebugPlay::PendingRun;
+	bool bQuitAfter = UNHDebugPlay::bPendingQuit;
+	UNHDebugPlay::PendingRun.Reset();
+	if (Run.IsEmpty() && FParse::Value(FCommandLine::Get(), TEXT("NHRun="), Run))
+	{
+		bQuitAfter = true;
+	}
+	if (!Run.IsEmpty())
+	{
+		FTimerHandle Start; // once the pawn is in and the level has settled
+		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this, Run, bQuitAfter]()
+		{
+			if (UNHDebugPlay* Play = DebugPlay(); Play && !Play->IsRunning())
+			{
+				Run == TEXT("selftest") ? Play->SelfTest(bQuitAfter) : Play->Autoplay(bQuitAfter);
+			}
+		}), 4.f, false);
+	}
+#endif
+
+	FString Spot;
+	if (FParse::Value(FCommandLine::Get(), TEXT("NHLookShots="), Spot, false)) // false: keep the commas
+	{
+		TArray<FString> Parts;
+		Spot.ParseIntoArray(Parts, TEXT(","));
+		if (Parts.Num() >= 3)
+		{
+			FString Folder;
+			FParse::Value(FCommandLine::Get(), TEXT("NHLookDir="), Folder);
+			FParse::Value(FCommandLine::Get(), TEXT("NHLookHour="), LookShotHour);
+			bLookShotQuit = true;
+			const FVector Where(FCString::Atof(*Parts[0]), FCString::Atof(*Parts[1]), FCString::Atof(*Parts[2]));
+			FTimerHandle Start; // once the pawn is in and the level has settled
+			GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this, Where, Folder]() { NHLookShots(Where.X, Where.Y, Where.Z, Folder); }), 4.f, false);
+		}
+	}
 }
 
 void ANHPlayerController::SetNHInputMode(ENHInputMode NewMode)
@@ -60,6 +102,7 @@ void ANHPlayerController::SetupInputComponent()
 	{
 		UNHInputSet* Set = GetInputSet();
 		Input->BindAction(Set->CycleLighting, ETriggerEvent::Started, this, &ANHPlayerController::OnCycleLighting);
+		Input->BindAction(Set->LightingMenu, ETriggerEvent::Started, this, &ANHPlayerController::NHLightMenu);
 		Input->BindAction(Set->Interact, ETriggerEvent::Started, this, &ANHPlayerController::OnInteract);
 		Input->BindAction(Set->ExitVehicle, ETriggerEvent::Started, this, &ANHPlayerController::OnInteract);
 		Input->BindAction(Set->Action, ETriggerEvent::Started, this, &ANHPlayerController::OnAction);
@@ -88,12 +131,20 @@ void ANHPlayerController::NHLighting(const FString& PresetName)
 		const int64 Value = Enum->GetValueByNameString(PresetName);
 		if (Value == INDEX_NONE)
 		{
-			UE_LOG(LogNHGame, Warning, TEXT("NHLighting: unknown preset '%s' (Day, DustyNoon, Sunset, NightRain)"), *PresetName);
+			UE_LOG(LogNHGame, Warning, TEXT("NHLighting: unknown preset '%s' (Day, DustyNoon, Sunset, NightRain, HarshMorning, GoldenEvening)"), *PresetName);
 			return;
 		}
 		Rig->ApplyPreset(static_cast<ENHLightingPreset>(Value));
 	}
 	UE_LOG(LogNHGame, Log, TEXT("Lighting preset: %s"), *StaticEnum<ENHLightingPreset>()->GetNameStringByValue(static_cast<int64>(Rig->Preset)));
+}
+
+void ANHPlayerController::NHLightMenu()
+{
+	if (ANHGameDirector* Dir = ANHGameDirector::Get(this))
+	{
+		Dir->OpenLightingMenu();
+	}
 }
 
 void ANHPlayerController::OnCycleLighting()
@@ -122,15 +173,27 @@ ANHVehicle* ANHPlayerController::NearbyVehicle() const
 	{
 		return nullptr;
 	}
+	// Parked side by side, two vehicles can be equally near. Of those in reach, take the one whose body is closest,
+	// leaning towards the one you are looking at and the one the job is asking for.
+	const ANHGameDirector* Dir = ANHGameDirector::Get(this);
+	const ANHVehicle* Wanted = Dir ? Dir->WantedVehicle() : nullptr;
+	const FVector Look = FRotator(0.f, GetControlRotation().Yaw, 0.f).Vector();
 	ANHVehicle* Best = nullptr;
-	float BestD = TNumericLimits<float>::Max();
+	float BestScore = TNumericLimits<float>::Max();
 	for (TActorIterator<ANHVehicle> It(GetWorld()); It; ++It)
 	{
-		const float D = FVector::Dist2D(It->GetActorLocation(), P->GetActorLocation());
-		if (D < It->EnterRadius() && D < BestD && !It->IsWrecked() && !It->GetController())
+		const FVector To = (It->GetActorLocation() - P->GetActorLocation()) * FVector(1.f, 1.f, 0.f);
+		if (To.Size() >= It->EnterRadius() || It->IsWrecked() || It->GetController())
+		{
+			continue;
+		}
+		const FVector Local = It->GetActorTransform().InverseTransformPositionNoScale(P->GetActorLocation());
+		const float Gap = static_cast<float>(FVector2D(FMath::Max(0.f, FMath::Abs(Local.X) - It->GetSpec().Length * 0.5f), FMath::Max(0.f, FMath::Abs(Local.Y) - It->GetSpec().Width * 0.5f)).Size());
+		const float Score = Gap + (1.f - static_cast<float>(Look | To.GetSafeNormal())) * 150.f - (*It == Wanted ? 200.f : 0.f);
+		if (Score < BestScore)
 		{
 			Best = *It;
-			BestD = D;
+			BestScore = Score;
 		}
 	}
 	return Best;
@@ -241,6 +304,139 @@ void ANHPlayerController::NHReset()
 		ANHHUD::Toast(this, TEXT("Progress reset. Reload the level to start the story again."), 2);
 	}
 }
+
+void ANHPlayerController::NHTime(float Hour)
+{
+	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this))
+	{
+		Hustle->Minutes = FMath::FloorToFloat(Hustle->Minutes / 1440.f) * 1440.f + FMath::Clamp(Hour, 0.f, 23.99f) * 60.f;
+		UE_LOG(LogNHGame, Log, TEXT("Clock: %s"), *Hustle->ClockText());
+	}
+}
+
+void ANHPlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+	if (Debug)
+	{
+		Debug->Tick(DeltaTime);
+	}
+	if (bLookShotActive)
+	{
+		SetControlRotation(FRotator(-3.f, LookShotYaw, 0.f));
+	}
+	if (bLookFps)
+	{
+		++LookFpsFrames;
+		LookFpsSeconds += FApp::GetDeltaTime();
+	}
+	if (bLookShotSprint)
+	{
+		if (APawn* P = GetPawn())
+		{
+			P->AddMovementInput(FRotator(0.f, GetControlRotation().Yaw, 0.f).Vector(), 1.f);
+		}
+	}
+}
+
+void ANHPlayerController::NHLookShots(float X, float Y, float Yaw, const FString& Folder)
+{
+	ANHCharacter* Char = Cast<ANHCharacter>(GetPawn());
+	if (!Char)
+	{
+		UE_LOG(LogNHGame, Warning, TEXT("NHLookShots: get out of the vehicle first"));
+		return;
+	}
+	LookShotFolder = Folder.IsEmpty() ? FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir() / TEXT("Screenshots/NaijaLook")) : Folder;
+	NHTime(LookShotHour - 0.05f); // the clock runs on while the scene settles; each shot sets the hour again
+	if (AHUD* Hud = GetHUD())
+	{
+		Hud->bShowHUD = false;
+	}
+	Char->TeleportTo(FVector(X, Y, 130.f), FRotator(0.f, Yaw, 0.f));
+	LookShotYaw = Yaw;
+	bLookShotActive = true;
+	SetControlRotation(FRotator(-3.f, Yaw, 0.f));
+	// let the lighting, exposure and cables settle, then: the street, a sprint, the sprint shot
+	GetWorldTimerManager().SetTimer(LookShotTimer, FTimerDelegate::CreateWeakLambda(this, [this]()
+	{
+		bLookFps = true; // standing still, looking down the street
+		LookFpsFrames = 0;
+		LookFpsSeconds = 0.0;
+		GetWorldTimerManager().SetTimer(LookShotTimer, FTimerDelegate::CreateWeakLambda(this, [this]()
+		{
+			bLookFps = false;
+			const FIntPoint Size = GEngine && GEngine->GameViewport ? GEngine->GameViewport->Viewport->GetSizeXY() : FIntPoint::ZeroValue;
+			UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: frame rate standing still: %.1f fps average, %.1f ms a frame (%d frames in %.1f s at %dx%d)"),
+				LookFpsFrames / FMath::Max(LookFpsSeconds, 0.001), 1000.0 * LookFpsSeconds / FMath::Max(LookFpsFrames, 1), LookFpsFrames, LookFpsSeconds, Size.X, Size.Y);
+			LookShot(TEXT("street"));
+			LookShotsSprint();
+		}), 15.f, false);
+	}), 8.f, false);
+}
+
+void ANHPlayerController::LookShot(const TCHAR* Name)
+{
+	const FString File = LookShotFolder / FString(Name) + TEXT(".png");
+	NHTime(LookShotHour);
+	ConsoleCommand(FString::Printf(TEXT("HighResShot 2560x1440 filename=\"%s\""), *File));
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: look shot %s"), *File);
+}
+
+void ANHPlayerController::LookShotsSprint()
+{
+	// give the first shot a moment to be taken before anything moves
+	GetWorldTimerManager().SetTimer(LookShotTimer, FTimerDelegate::CreateWeakLambda(this, [this]()
+	{
+		if (ANHCharacter* Char = Cast<ANHCharacter>(GetPawn()))
+		{
+			Char->SetSprinting(true);
+		}
+		bLookShotSprint = true;
+		GetWorldTimerManager().SetTimer(LookShotTimer, FTimerDelegate::CreateWeakLambda(this, [this]()
+		{
+			LookShot(TEXT("sprint"));
+			GetWorldTimerManager().SetTimer(LookShotTimer, this, &ANHPlayerController::LookShotsDone, 1.5f, false);
+		}), 2.5f, false);
+	}), 2.f, false);
+}
+
+void ANHPlayerController::LookShotsDone()
+{
+	bLookShotSprint = false;
+	bLookShotActive = false;
+	if (AHUD* Hud = GetHUD())
+	{
+		Hud->bShowHUD = true;
+	}
+	if (ANHCharacter* Char = Cast<ANHCharacter>(GetPawn()))
+	{
+		Char->SetSprinting(false);
+	}
+	if (bLookShotQuit)
+	{
+		ConsoleCommand(TEXT("quit"));
+	}
+}
+
+UNHDebugPlay* ANHPlayerController::DebugPlay()
+{
+#if !UE_BUILD_SHIPPING
+	if (!Debug)
+	{
+		Debug = NewObject<UNHDebugPlay>(this);
+		Debug->Init(this);
+	}
+#endif
+	return Debug;
+}
+
+void ANHPlayerController::NHGoto(const FString& Where) { if (UNHDebugPlay* P = DebugPlay()) { P->Goto(Where); } }
+void ANHPlayerController::NHBoard() { if (UNHDebugPlay* P = DebugPlay()) { P->Board(); } }
+void ANHPlayerController::NHAgbero(const FString& What) { if (UNHDebugPlay* P = DebugPlay()) { P->Agbero(What); } }
+void ANHPlayerController::NHFinish() { if (UNHDebugPlay* P = DebugPlay()) { P->Finish(); } }
+void ANHPlayerController::NHAutoplay() { if (UNHDebugPlay* P = DebugPlay(); P && !P->IsRunning()) { P->Autoplay(false); } }
+void ANHPlayerController::NHSelfTest() { if (UNHDebugPlay* P = DebugPlay(); P && !P->IsRunning()) { P->SelfTest(false); } }
 
 void ANHPlayerController::NHCash(int32 Amount)
 {

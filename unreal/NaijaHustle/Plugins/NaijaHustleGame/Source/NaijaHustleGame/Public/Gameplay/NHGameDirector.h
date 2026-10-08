@@ -19,6 +19,14 @@ class NAIJAHUSTLEGAME_API ANHGameDirector : public AActor
 {
 	GENERATED_BODY()
 
+private:
+	friend class UNHDebugPlay; // scripted playtests read the mission state and press the same buttons
+
+	enum class EStage : uint8 { Meet, Talk, Board, Route, Return, Wrapping, Failed, Done };
+	EStage Stage = EStage::Meet;
+	TWeakObjectPtr<ANHPerson> Baba;
+	TWeakObjectPtr<ANHVehicle> MissionBus;
+
 public:
 	ANHGameDirector();
 	static ANHGameDirector* Get(const UObject* WorldContext);
@@ -57,9 +65,13 @@ public:
 	void OnChoice(int32 Index);
 	/** The player picked a lighting preset by hand: stop following the clock */
 	void SetManualLighting() { bManualLighting = true; }
+	/** The lighting debug menu: harsh morning, golden evening, or back to following the clock */
+	void OpenLightingMenu();
 	/** What E does right now, for the prompt ("" if nothing) */
 	FString ActionPrompt(const APawn* Pawn) const;
 	bool IsBusy() const { return Panel.bOpen || Dialogue.bOpen; }
+	/** The vehicle the current job wants you in, if any (the first day's danfo) */
+	const ANHVehicle* WantedVehicle() const { return Stage >= EStage::Board && Stage <= EStage::Return ? MissionBus.Get() : nullptr; }
 
 	ANHVehicle* SpawnVehicle(FName Type, const FVector2D& Pos, float Yaw, const FLinearColor& Paint, const FString& Board);
 
@@ -67,10 +79,6 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	enum class EStage : uint8 { Meet, Talk, Board, Route, Return, Wrapping, Failed, Done };
-	EStage Stage = EStage::Meet;
-	TWeakObjectPtr<ANHPerson> Baba;
-	TWeakObjectPtr<ANHVehicle> MissionBus;
 	float Deadline = -1.f;
 	bool bSlowClock = false;
 	bool bManualLighting = false;
