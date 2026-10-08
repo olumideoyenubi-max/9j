@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.4",
+	"EngineAssociation": "5.8",
 	"Category": "",
 	"Description": "NAIJA HUSTLE - vertical slice: one Lagos street block, night rain, danfo conductor mission.",
 	"Modules": [
@@ -23,6 +23,7 @@
 		{ "Name": "NaijaHustleGame", "Enabled": true }
 	],
 	"TargetPlatforms": [
-		"Windows"
+		"Windows",
+		"Mac"
 	]
 }
