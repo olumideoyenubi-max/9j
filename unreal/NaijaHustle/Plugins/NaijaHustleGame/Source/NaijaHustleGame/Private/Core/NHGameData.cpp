@@ -77,6 +77,27 @@ namespace NHJson
 		return FLinearColor(FColor::FromHex(H)); // sRGB -> linear
 	}
 
+	FNHVehicleSpec VehicleSpec(const TSharedPtr<FJsonObject>& J)
+	{
+		FNHVehicleSpec S;
+		S.Name = Str(J, TEXT("name"));
+		S.Length = static_cast<float>(Num(J, TEXT("len"), S.Length));
+		S.Width = static_cast<float>(Num(J, TEXT("wid"), S.Width));
+		S.MaxSpeed = static_cast<float>(Num(J, TEXT("max"), S.MaxSpeed));
+		S.Accel = static_cast<float>(Num(J, TEXT("acc"), S.Accel));
+		S.Turn = static_cast<float>(Num(J, TEXT("turn"), S.Turn));
+		S.Hp = static_cast<float>(Num(J, TEXT("hp"), S.Hp));
+		bool bBike = false;
+		J->TryGetBoolField(TEXT("bike"), bBike);
+		S.bBike = bBike;
+		for (const FString& C : Strings(J, TEXT("colors")))
+		{
+			S.Colors.Add(Color(C));
+		}
+		S.Body = FName(*Str(J, TEXT("body")));
+		return S;
+	}
+
 	FNHRoute Route(const TSharedPtr<FJsonObject>& O)
 	{
 		FNHRoute R;
@@ -129,13 +150,17 @@ void UNHGameData::Initialize(FSubsystemCollectionBase& Collection)
 	const bool bCity = LoadCity(FPaths::Combine(Dir, TEXT("lagos_city.json")));
 	const bool bRules = LoadRules(FPaths::Combine(Dir, TEXT("naija_rules.json")));
 	bLoaded = bCity && bRules;
+	if (bLoaded)
+	{
+		LoadVehicleExtras(FPaths::Combine(Dir, TEXT("unreal_vehicles.json")), FPaths::Combine(Dir, TEXT("vehicle_meshes.json")));
+	}
 	if (!bLoaded)
 	{
 		UE_LOG(LogNHGame, Error, TEXT("NAIJA HUSTLE: could not read the game data in %s (city %d, rules %d). Re-export with web/tools/export-unreal.js."), *Dir, bCity, bRules);
 	}
 	else
 	{
-		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: data loaded from %s: %d stops, %d routes, %d vehicle types"), *Dir, Stops.Num(), Routes.Num(), Vehicles.Num());
+		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: data loaded from %s: %d stops, %d routes, %d vehicle types (%d with a real model), %d extra parked vehicles"), *Dir, Stops.Num(), Routes.Num(), Vehicles.Num(), VehicleMeshes.Num(), Parked.Num());
 	}
 }
 
@@ -253,7 +278,7 @@ bool UNHGameData::LoadRules(const FString& Path)
 			{
 				Lines.Add(L->AsString());
 			}
-			Baba.Add(KV.Key, Lines);
+			Baba.Add(FString(*KV.Key), Lines); // JSON keys are not FString in UE 5.8
 		}
 	}
 	if (Root->TryGetArrayField(TEXT("outfits"), Arr))
@@ -268,22 +293,7 @@ bool UNHGameData::LoadRules(const FString& Path)
 		for (const auto& KV : (*O)->Values)
 		{
 			const TSharedPtr<FJsonObject> J = KV.Value->AsObject();
-			FNHVehicleSpec S;
-			S.Name = Str(J, TEXT("name"));
-			S.Length = static_cast<float>(Num(J, TEXT("len"), S.Length));
-			S.Width = static_cast<float>(Num(J, TEXT("wid"), S.Width));
-			S.MaxSpeed = static_cast<float>(Num(J, TEXT("max"), S.MaxSpeed));
-			S.Accel = static_cast<float>(Num(J, TEXT("acc"), S.Accel));
-			S.Turn = static_cast<float>(Num(J, TEXT("turn"), S.Turn));
-			S.Hp = static_cast<float>(Num(J, TEXT("hp"), S.Hp));
-			bool bBike = false;
-			J->TryGetBoolField(TEXT("bike"), bBike);
-			S.bBike = bBike;
-			for (const FString& C : Strings(J, TEXT("colors")))
-			{
-				S.Colors.Add(Color(C));
-			}
-			Vehicles.Add(FName(KV.Key), S);
+			Vehicles.Add(FName(*KV.Key), VehicleSpec(KV.Value->AsObject()));
 		}
 	}
 	if (Root->TryGetObjectField(TEXT("places"), O))
@@ -313,6 +323,68 @@ bool UNHGameData::LoadRules(const FString& Path)
 	}
 	DefaultSpec.Name = TEXT("Car");
 	return Routes.Num() > 0 && Vehicles.Num() > 0;
+}
+
+void UNHGameData::LoadVehicleExtras(const FString& TypesPath, const FString& MeshesPath)
+{
+	using namespace NHJson;
+	const TSharedPtr<FJsonObject>* O = nullptr;
+	const TArray<TSharedPtr<FJsonValue>>* Arr = nullptr;
+	if (const TSharedPtr<FJsonObject> Root = Load(TypesPath))
+	{
+		if (Root->TryGetObjectField(TEXT("types"), O))
+		{
+			for (const auto& KV : (*O)->Values)
+			{
+				Vehicles.Add(FName(*KV.Key), VehicleSpec(KV.Value->AsObject()));
+			}
+		}
+		if (Root->TryGetArrayField(TEXT("parked"), Arr))
+		{
+			for (const TSharedPtr<FJsonValue>& V : *Arr)
+			{
+				const TSharedPtr<FJsonObject> J = V->AsObject();
+				FNHParkedVehicle P;
+				P.Type = FName(*Str(J, TEXT("type")));
+				P.Pos = FVector2D(Num(J, TEXT("x")), Num(J, TEXT("y")));
+				P.Yaw = static_cast<float>(Num(J, TEXT("yaw")));
+				P.Color = Color(Str(J, TEXT("color")));
+				if (Vehicles.Contains(P.Type))
+				{
+					Parked.Add(P);
+				}
+				else
+				{
+					UE_LOG(LogNHGame, Warning, TEXT("unreal_vehicles.json: parked vehicle of unknown type '%s'"), *P.Type.ToString());
+				}
+			}
+		}
+	}
+	// written by Scripts/assign_vehicle_meshes.py; not there until real models are assigned
+	if (const TSharedPtr<FJsonObject> Root = Load(MeshesPath))
+	{
+		if (Root->TryGetObjectField(TEXT("meshes"), O))
+		{
+			for (const auto& KV : (*O)->Values)
+			{
+				const TSharedPtr<FJsonObject> J = KV.Value->AsObject();
+				FNHVehicleMesh M;
+				M.Meshes = Strings(J, TEXT("meshes"));
+				M.Yaw = static_cast<float>(Num(J, TEXT("yaw")));
+				M.Scale = static_cast<float>(Num(J, TEXT("scale"), 1.0));
+				M.Height = static_cast<float>(Num(J, TEXT("height"), 150.0));
+				const TArray<TSharedPtr<FJsonValue>>* Off = nullptr;
+				if (J->TryGetArrayField(TEXT("offset"), Off) && Off->Num() >= 3)
+				{
+					M.Offset = FVector((*Off)[0]->AsNumber(), (*Off)[1]->AsNumber(), (*Off)[2]->AsNumber());
+				}
+				if (M.Meshes.Num() && Vehicles.Contains(FName(*KV.Key)))
+				{
+					VehicleMeshes.Add(FName(*KV.Key), M);
+				}
+			}
+		}
+	}
 }
 
 TArray<FString> UNHGameData::BabaLines(const FString& Key) const

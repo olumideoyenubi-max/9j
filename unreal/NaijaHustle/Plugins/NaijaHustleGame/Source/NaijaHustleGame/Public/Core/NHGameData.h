@@ -48,6 +48,34 @@ struct FNHVehicleSpec
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Hp = 100.f;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") bool bBike = false;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FLinearColor> Colors;
+	/** Which blockout shape a car gets: sedan, suv or sports (empty: by type name) */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName Body;
+};
+
+/** A real model for a vehicle type, fitted by Scripts/assign_vehicle_meshes.py (Data/vehicle_meshes.json) */
+USTRUCT(BlueprintType)
+struct FNHVehicleMesh
+{
+	GENERATED_BODY()
+	/** Static meshes drawn together (a body, or a body and its parts), object paths */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FString> Meshes;
+	/** Turns the model to face +X, then scales it to the type's length, then moves it (cm, after scaling) so its wheels sit on the ground under the vehicle's centre */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Yaw = 0.f;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Scale = 1.f;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FVector Offset = FVector::ZeroVector;
+	/** The model's height in cm after scaling */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Height = 150.f;
+};
+
+/** A vehicle left parked in the city */
+USTRUCT(BlueprintType)
+struct FNHParkedVehicle
+{
+	GENERATED_BODY()
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName Type;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FVector2D Pos = FVector2D::ZeroVector;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Yaw = 0.f;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FLinearColor Color = FLinearColor::Black;
 };
 
 /** The conductor job's numbers (distances cm, speeds cm/s, accelerations cm/s², times s) */
@@ -121,6 +149,10 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FNHRoute> Routes;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") FNHRoute FirstRoute;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TMap<FName, FNHVehicleSpec> Vehicles;
+	/** Real models by vehicle type; a type without one keeps its blockout body */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") TMap<FName, FNHVehicleMesh> VehicleMeshes;
+	/** Extra parked vehicles (the luxury cars) from unreal_vehicles.json */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FNHParkedVehicle> Parked;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FString> PaxNames;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FString> Calls;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FString> WantedUnits;
@@ -150,4 +182,5 @@ private:
 	FNHVehicleSpec DefaultSpec;
 	bool LoadCity(const FString& Path);
 	bool LoadRules(const FString& Path);
+	void LoadVehicleExtras(const FString& TypesPath, const FString& MeshesPath);
 };

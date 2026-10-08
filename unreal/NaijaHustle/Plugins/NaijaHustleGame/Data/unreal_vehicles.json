@@ -1,0 +1,253 @@
+{
+ "format": "naija-hustle-unreal-vehicles",
+ "note": "Unreal-only additions to naija_rules.json's vehicles (which is exported from the browser game): luxury types and where extra vehicles are parked. Same units: cm, cm/s, cm/s², rad/s. 'body' picks the blockout shape (sedan, suv, sports) until a real model is assigned (Scripts/assign_vehicle_meshes.py). The names are made up: the cars are the kinds seen on Lagos roads (big luxury SUVs, boxy 4x4s, coupe SUVs, grand coupes, sports cars and hypercars), not real makes.",
+ "types": {
+  "luxsedan": {
+   "name": "Oba Royale",
+   "body": "sedan",
+   "len": 515,
+   "wid": 235,
+   "max": 4300,
+   "acc": 3000,
+   "turn": 2.5,
+   "hp": 110,
+   "colors": [
+    "#0b0b0c",
+    "#f2f0ea",
+    "#14213d",
+    "#5b0f1a"
+   ]
+  },
+  "luxsuv": {
+   "name": "Zuma GX",
+   "body": "suv",
+   "len": 540,
+   "wid": 255,
+   "max": 4000,
+   "acc": 2800,
+   "turn": 2.3,
+   "hp": 180,
+   "colors": [
+    "#0b0b0c",
+    "#f2f0ea",
+    "#3a3d42",
+    "#0f3d2e"
+   ]
+  },
+  "sports": {
+   "name": "Eko Veloce",
+   "body": "sports",
+   "len": 455,
+   "wid": 230,
+   "max": 5200,
+   "acc": 3900,
+   "turn": 2.9,
+   "hp": 80,
+   "colors": [
+    "#c1121f",
+    "#f5c400",
+    "#f77f00",
+    "#f2f0ea"
+   ]
+  },
+  "royalsuv": {
+   "name": "Oba Monarch",
+   "body": "suv",
+   "len": 535,
+   "wid": 260,
+   "max": 4100,
+   "acc": 2700,
+   "turn": 2.2,
+   "hp": 200,
+   "colors": [
+    "#0b0b0c",
+    "#f2f0ea",
+    "#0f3d2e",
+    "#3b1d5e"
+   ]
+  },
+  "coupesuv": {
+   "name": "Maitama CX Coupe",
+   "body": "suv",
+   "len": 500,
+   "wid": 250,
+   "max": 4500,
+   "acc": 3300,
+   "turn": 2.5,
+   "hp": 150,
+   "colors": [
+    "#f2f0ea",
+    "#0b0b0c",
+    "#4a4f57"
+   ]
+  },
+  "supersuv": {
+   "name": "Lekki Fury",
+   "body": "suv",
+   "len": 510,
+   "wid": 255,
+   "max": 4900,
+   "acc": 3700,
+   "turn": 2.6,
+   "hp": 150,
+   "colors": [
+    "#3a3d42",
+    "#f5c400",
+    "#0b0b0c",
+    "#f77f00"
+   ]
+  },
+  "luxcoupe": {
+   "name": "Oba Mirage",
+   "body": "sedan",
+   "len": 545,
+   "wid": 240,
+   "max": 4400,
+   "acc": 3100,
+   "turn": 2.4,
+   "hp": 110,
+   "colors": [
+    "#3f6f8f",
+    "#0b0b0c",
+    "#f2f0ea"
+   ]
+  },
+  "hypercar": {
+   "name": "Zaki W16",
+   "body": "sports",
+   "len": 455,
+   "wid": 240,
+   "max": 6200,
+   "acc": 4600,
+   "turn": 2.8,
+   "hp": 70,
+   "colors": [
+    "#1e88e5",
+    "#0b0b0c",
+    "#c1121f"
+   ]
+  }
+ },
+ "parked": [
+  {
+   "type": "sports",
+   "x": 4513,
+   "y": 2825,
+   "yaw": 90,
+   "color": "#c1121f",
+   "where": "Oshoja Motor Park, bay 8"
+  },
+  {
+   "type": "luxsuv",
+   "x": 1888,
+   "y": 5175,
+   "yaw": -90,
+   "color": "#0b0b0c",
+   "where": "Oshoja Motor Park, bay 9"
+  },
+  {
+   "type": "luxsedan",
+   "x": 26530,
+   "y": 4000,
+   "yaw": 90,
+   "color": "#0b0b0c",
+   "where": "Eko Crest"
+  },
+  {
+   "type": "luxsuv",
+   "x": 27070,
+   "y": 4800,
+   "yaw": -90,
+   "color": "#f2f0ea",
+   "where": "Eko Crest"
+  },
+  {
+   "type": "sports",
+   "x": 29730,
+   "y": 4200,
+   "yaw": 90,
+   "color": "#f5c400",
+   "where": "Eko Crest"
+  },
+  {
+   "type": "luxsedan",
+   "x": 30270,
+   "y": 7600,
+   "yaw": -90,
+   "color": "#14213d",
+   "where": "Eko Crest"
+  },
+  {
+   "type": "luxsuv",
+   "x": 32930,
+   "y": 7200,
+   "yaw": 90,
+   "color": "#3a3d42",
+   "where": "Eko Crest"
+  },
+  {
+   "type": "sports",
+   "x": 33470,
+   "y": 4400,
+   "yaw": -90,
+   "color": "#f77f00",
+   "where": "Eko Crest"
+  },
+  {
+   "type": "hypercar",
+   "x": 2263,
+   "y": 5175,
+   "yaw": -90,
+   "color": "#1e88e5",
+   "where": "Oshoja Motor Park, bay 10"
+  },
+  {
+   "type": "royalsuv",
+   "x": 2638,
+   "y": 5175,
+   "yaw": -90,
+   "color": "#0b0b0c",
+   "where": "Oshoja Motor Park, bay 11"
+  },
+  {
+   "type": "coupesuv",
+   "x": 36130,
+   "y": 4400,
+   "yaw": 90,
+   "color": "#f2f0ea",
+   "where": "Eko Crest"
+  },
+  {
+   "type": "supersuv",
+   "x": 36670,
+   "y": 7600,
+   "yaw": -90,
+   "color": "#3a3d42",
+   "where": "Eko Crest"
+  },
+  {
+   "type": "luxcoupe",
+   "x": 33470,
+   "y": 7600,
+   "yaw": -90,
+   "color": "#3f6f8f",
+   "where": "Eko Crest"
+  },
+  {
+   "type": "hypercar",
+   "x": 26530,
+   "y": 7200,
+   "yaw": 90,
+   "color": "#0b0b0c",
+   "where": "Eko Crest"
+  },
+  {
+   "type": "royalsuv",
+   "x": 29730,
+   "y": 7200,
+   "yaw": 90,
+   "color": "#f2f0ea",
+   "where": "Eko Crest"
+  }
+ ]
+}
