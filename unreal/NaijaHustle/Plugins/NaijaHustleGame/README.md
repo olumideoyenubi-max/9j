@@ -201,3 +201,27 @@ describes the mask to build from `PreSkinnedPosition`.
 - **Cost:** dynamic materials come from a per-world pool (`UNHCharacterEffectsMIDPool`), so crowds can spawn and
   despawn without creating materials mid-game. Call `PrewarmPool` while loading. Far-away and off-screen
   characters update less often.
+
+## Momentum movement (ready for when characters arrive)
+
+`UNHAdvancedMovementComponent` (`Source/NaijaHustleGame/Public/Characters`) is a heavier character movement for
+Motion Matching. The player does not use it yet and still moves as before. It gives:
+
+- **Sprint with weight:** acceleration tapers towards the sprint speed, and turns get wider and less grippy at speed.
+- **Heavy stop:** letting go or reversing at a sprint commits the character to a short carry and a hard plant
+  (about 2.8 m in 0.8 s from a full sprint). Pushing forward again late in the stop resumes the sprint.
+- **Lean:** roll into turns and pitch under acceleration and braking, from `GetLeanRoll` and `GetLeanPitch`.
+- **Trajectory:** past, present and predicted samples for the Motion Matching node from `GetPoseSearchTrajectory`,
+  plus `GetPredictedStopLocation` for distance matching.
+- **Networking:** sprint and the heavy stop are client-predicted; other players' characters get the input
+  direction and gait replicated for animation.
+
+To use it on a character, make the character class create it in place of the standard movement component (see
+`ANHMomentumDummy` in `Debug/NHDebugPlay` for the one-line constructor) and call `SetSprinting`.
+
+Ported to UE 5.8: the trajectory is an `FTransformTrajectory`, which replaced `FPoseSearchQueryTrajectory` in 5.6,
+so the plugin needs no Pose Search dependency. A Motion Matching animation graph still needs the Pose Search plugin
+enabled in the project, a skeletal character and an animation database, none of which exist yet.
+
+`NHSelfTest` sprints a bare test character along the dusty street and checks the top speed, the trajectory, the
+heavy stop and the predicted stop location. Lean, turning grip and network play are not covered by a test.

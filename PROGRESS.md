@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-08 (character effects code added; visual brief section 2 awaiting review)
+**Last updated:** 2026-10-08 (character effects and momentum movement code added; visual brief section 2 awaiting review)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -23,7 +23,7 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Plugin on UE 5.8:** `NaijaHustleGame` compiles and runs on the Mac, inside a UE 5.8 Third Person template project. One API fix (JSON map keys).
 - **8 GB memory fix:** on machines with 8 GB or less the lighting rig turns off Lumen GI, volumetric fog and clouds, and uses screen-space reflections. This stopped a Metal out-of-memory crash on Play.
 - **Look pass 1:** surface-type material pipeline (`M_NHSurface` and one `MI_NHSurface_<Type>` per surface), overhead cables, ruts and rubbish on dusty streets, harsh-morning preset, over-the-shoulder sprint camera.
-- **Playtest tooling:** debug commands `NHGoto`, `NHBoard`, `NHAgbero`, `NHFinish`, `NHAutoplay`, `NHSelfTest`. Autoplay passes 26 checks and the self-test passes 51, with no plugin warnings.
+- **Playtest tooling:** debug commands `NHGoto`, `NHBoard`, `NHAgbero`, `NHFinish`, `NHAutoplay`, `NHSelfTest`. Autoplay passes 26 checks and the self-test passes 55, with no plugin warnings.
 - **Luxury cars (blockouts):** eight Unreal-only vehicle types with made-up names and 15 parked spots. Loader for real models is in place (`assign_vehicle_meshes.py`).
 - **Road look:** worn grey asphalt, faded markings, black-and-white kerb stones.
 - **Visual brief, section 1 (lighting):** dynamic lighting with faked bounce from the sky light, ambient occlusion, a second haze layer, sun light-shaft bloom, a golden-evening preset (16:00–17:30), an F1 lighting menu, and 54 reflection captures over road junctions.
@@ -32,7 +32,8 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Repo:** Unity project archived under `legacy/unity/`; Mac and Windows config profiles split (`Config/Mac/MacEngine.ini`, `Config/Windows/WindowsEngine.ini`); Mac build-and-play script `unreal/NaijaHustle/Scripts/mac.sh`.
 
 - **Visual brief, section 2 (post-process and colour):** one global post-process volume with a filmic curve, teal-lifted shadows, warm highlights, film grain, chromatic aberration, clamped slow-moving exposure, and a tweakable colour lookup table (`nh_grade_lut.py` makes `T_NHGrade_LUT`). No measurable frame-rate cost. Autoplay (26) and self-test pass.
-- **Character effects (code only):** `UNHCharacterEffectsComponent` and its pooled dynamic materials are in the plugin: sweat, rain wetness, bruises and bullet wounds for skeletal-mesh characters. Lighting presets now set air temperature and humidity in `MPC_NHWeather` for it. Compiles on UE 5.8; self-test now 51 checks.
+- **Character effects (code only):** `UNHCharacterEffectsComponent` and its pooled dynamic materials are in the plugin: sweat, rain wetness, bruises and bullet wounds for skeletal-mesh characters. Lighting presets now set air temperature and humidity in `MPC_NHWeather` for it. Compiles on UE 5.8.
+- **Momentum movement (code only):** `UNHAdvancedMovementComponent` is in the plugin: weighted sprint, heavy stop, lean, and a Motion Matching trajectory, with client prediction. Ported to the UE 5.8 trajectory type (`FTransformTrajectory`), so no Pose Search dependency. The self-test sprints and stops a test character on it (top speed 650 cm/s, stop in 0.8 s over 2.8 m, predicted stop location within 1 cm). Self-test now 55 checks.
 
 ## In progress
 
@@ -65,6 +66,7 @@ Deferred: player character, NPCs and storyline.
 - Fog glow toward the sun was removed because it washed out the picture.
 - Play-in-Editor has not been retested since the memory fix; testing has been in the standalone game.
 - Character effects are untested on a real character: there is no skeletal-mesh character or material with the sweat, wetness and damage parameters yet. Only the material pool and the weather values are checked by the self-test.
+- The momentum movement component is not on the player yet (the player moves as before), and its lean, turning grip and network prediction are untested. Motion Matching itself needs a skeletal character and an animation database.
 - Not covered by the scripted playtests: change prompts, free conductor shifts, agbero beg/drive-off, real driving between stops.
 - All vehicles are blockout shapes; all surfaces use flat placeholder textures.
 

@@ -1,5 +1,6 @@
 #include "Debug/NHDebugPlay.h"
 
+#include "Characters/NHAdvancedMovementComponent.h"
 #include "Characters/NHCharacterEffectsComponent.h"
 #include "Components/BoxComponent.h"
 #include "Core/NHGameData.h"
@@ -367,6 +368,91 @@ bool UNHDebugPlay::NeedsFreshStory(const FString& Name, bool bQuitWhenDone)
 	bPendingQuit = bQuitWhenDone;
 	PC->ConsoleCommand(TEXT("RestartLevel"));
 	return true;
+}
+
+ANHMomentumDummy::ANHMomentumDummy(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer.SetDefaultSubobjectClass<UNHAdvancedMovementComponent>(ACharacter::CharacterMovementComponentName))
+{
+	AutoPossessAI = EAutoPossessAI::Disabled;
+	GetCharacterMovement()->bRunPhysicsWithNoController = true; // nobody possesses it: the script feeds it input
+}
+
+void UNHDebugPlay::AddMomentumChecks()
+{
+	// a long straight piece of the dusty street, heading west
+	static const FVector Start(7700.f, 14000.f, 300.f);
+	static const FVector West(-1.f, 0.f, 0.f);
+	Do(TEXT("momentum movement: stand on the dusty street"), [this]()
+	{
+		if (APawn* Pawn = PC->GetPawn())
+		{
+			Pawn->SetActorLocation(Start + FVector(300.f, 200.f, 0.f), false, nullptr, ETeleportType::TeleportPhysics);
+		}
+		FActorSpawnParameters Params;
+		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		MoveDummy = PC->GetWorld()->SpawnActor<ANHMomentumDummy>(ANHMomentumDummy::StaticClass(), Start, West.Rotation(), Params);
+		MoveT = MoveStopT = 0.f; bMoveSawHeavyStop = bMoveHadPrediction = false;
+	});
+	Until(TEXT("momentum movement: the test character lands"), [this](float) { return MoveDummy && MoveDummy->GetCharacterMovement()->IsMovingOnGround(); }, 6.f);
+	Until(TEXT("momentum movement: sprint for three seconds"), [this](float Dt)
+	{
+		UNHAdvancedMovementComponent* Move = MoveDummy ? Cast<UNHAdvancedMovementComponent>(MoveDummy->GetCharacterMovement()) : nullptr;
+		if (!Move)
+		{
+			return true;
+		}
+		Move->SetSprinting(true);
+		MoveDummy->AddMovementInput(West, 1.f);
+		MoveT += Dt;
+		if (MoveT < 3.f)
+		{
+			return false;
+		}
+		const float Speed = Move->Velocity.Size2D();
+		Check(TEXT("sprinting builds past the jog speed towards the sprint speed"), Move->IsSprinting() && Speed > Move->MaxWalkSpeed + 150.f && Speed <= Move->SprintSpeed + 1.f,
+			FString::Printf(TEXT("%.0f cm/s (jog %.0f, sprint %.0f)"), Speed, Move->MaxWalkSpeed, Move->SprintSpeed));
+		const TArray<FNHAdvancedTrajectorySample>& Samples = Move->GetTrajectorySamples();
+		bool bOrdered = Samples.Num() > 1;
+		for (int32 i = 1; i < Samples.Num(); ++i)
+		{
+			bOrdered &= Samples[i].Time > Samples[i - 1].Time;
+		}
+		const int32 Want = Move->HistoryOutputSamples + 1 + Move->PredictionOutputSamples;
+		const float Behind = Samples.Num() ? Samples[0].Position.X - MoveDummy->GetActorLocation().X : 0.f;
+		const float Ahead = Samples.Num() ? MoveDummy->GetActorLocation().X - Samples.Last().Position.X : 0.f;
+		Check(TEXT("the trajectory has past, present and predicted samples in time order, trailing behind and reaching ahead along the run"),
+			Samples.Num() == Want && bOrdered && Behind > 200.f && Ahead > 200.f && Move->GetPoseSearchTrajectory().Samples.Num() == Want,
+			FString::Printf(TEXT("%d samples, %.0f cm behind, %.0f cm ahead"), Samples.Num(), Behind, Ahead));
+		MoveStopFrom = MoveDummy->GetActorLocation();
+		return true;
+	}, 8.f);
+	Until(TEXT("momentum movement: let go and stop"), [this](float Dt)
+	{
+		UNHAdvancedMovementComponent* Move = MoveDummy ? Cast<UNHAdvancedMovementComponent>(MoveDummy->GetCharacterMovement()) : nullptr;
+		if (!Move)
+		{
+			return true;
+		}
+		MoveStopT += Dt;
+		bMoveSawHeavyStop |= Move->IsHeavyStopping();
+		if (!bMoveHadPrediction && Move->IsHeavyStopping())
+		{
+			bMoveHadPrediction = Move->GetPredictedStopLocation(MoveStopPredicted);
+		}
+		if (MoveStopT < 0.1f || Move->Velocity.Size2D() > 1.f || Move->IsHeavyStopping())
+		{
+			return false;
+		}
+		const FVector Rest = MoveDummy->GetActorLocation();
+		const float Carried = FVector::Dist2D(MoveStopFrom, Rest);
+		Check(TEXT("letting go at a sprint commits to a heavy stop that carries a little and plants within about a second"),
+			bMoveSawHeavyStop && Carried > 50.f && Carried < 400.f && MoveStopT > 0.25f && MoveStopT < 1.3f, FString::Printf(TEXT("carried %.0f cm in %.2f s"), Carried, MoveStopT));
+		Check(TEXT("the stop location predicted at the start of the stop is where the character comes to rest"), bMoveHadPrediction && FVector::Dist2D(MoveStopPredicted, Rest) < 40.f,
+			FString::Printf(TEXT("%.0f cm out"), FVector::Dist2D(MoveStopPredicted, Rest)));
+		MoveDummy->Destroy();
+		MoveDummy = nullptr;
+		return true;
+	}, 5.f);
 }
 
 void UNHDebugPlay::Do(const FString& Name, TFunction<void()> Fn)
@@ -932,4 +1018,6 @@ void UNHDebugPlay::SelfTest(bool bQuitWhenDone)
 		Check(TEXT("the weather carries the lighting preset's temperature and humidity for sweat and drying"), bRead && FMath::IsNearlyEqual(Temp, Now.Temperature) && FMath::IsNearlyEqual(Hum, Now.Humidity),
 			FString::Printf(TEXT("%.1f C, humidity %.2f"), Temp, Hum));
 	});
+
+	AddMomentumChecks();
 }

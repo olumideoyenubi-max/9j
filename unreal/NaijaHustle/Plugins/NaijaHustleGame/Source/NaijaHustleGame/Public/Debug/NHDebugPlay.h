@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameFramework/Character.h"
 #include "UObject/Object.h"
 #include "NHDebugPlay.generated.h"
 
@@ -9,6 +10,16 @@ class ANHGameDirector;
 class ANHVehicle;
 class ANHCharacter;
 class UNHHustleSubsystem;
+
+/** A bare character driven by UNHAdvancedMovementComponent, for the self-test to sprint and stop (the player does not use that component yet) */
+UCLASS(NotPlaceable)
+class NAIJAHUSTLEGAME_API ANHMomentumDummy : public ACharacter
+{
+	GENERATED_BODY()
+
+public:
+	ANHMomentumDummy(const FObjectInitializer& ObjectInitializer);
+};
 
 /**
  * Scripted play for testing, behind the NH console commands on ANHPlayerController (not made in Shipping builds):
@@ -55,6 +66,13 @@ private:
 	float Pace = 0.f;
 
 	UPROPERTY() TObjectPtr<ANHPlayerController> PC;
+
+	// the momentum movement check
+	UPROPERTY() TObjectPtr<ANHMomentumDummy> MoveDummy;
+	float MoveT = 0.f, MoveStopT = 0.f;
+	bool bMoveSawHeavyStop = false, bMoveHadPrediction = false;
+	FVector MoveStopPredicted = FVector::ZeroVector, MoveStopFrom = FVector::ZeroVector;
+	void AddMomentumChecks();
 
 	// ---- the script
 	void Begin(const FString& Name, bool bQuitWhenDone);
