@@ -53,8 +53,8 @@ public:
 	/** The bodies the player can wear, best first. Characters come from Scripts/import_player_gltf.py; the last is the Third Person template's mannequin. */
 	UPROPERTY(EditAnywhere, Category = "Body") TArray<FNHPlayerSkin> Skins;
 
-	/** Puts a skin on by id. False if there is no such skin or the project does not have its assets. */
-	bool WearSkin(FName Id);
+	/** Puts a skin on by id, and with bRemember saves it as the player's choice. False if there is no such skin or the project does not have its assets. */
+	bool WearSkin(FName Id, bool bRemember = false);
 	/** Puts on the next skin the project has, going round the list; returns the name of what is now worn */
 	FString WearNextSkin();
 	FName GetSkin() const { return CurrentSkin; }

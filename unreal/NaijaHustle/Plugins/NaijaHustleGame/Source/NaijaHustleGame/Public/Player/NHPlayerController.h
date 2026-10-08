@@ -93,10 +93,13 @@ public:
 	/** Console: NHDriveShots Type Folder gets into the first vehicle of that type and saves a picture of the driver by day and one of the headlights at night */
 	UFUNCTION(Exec)
 	void NHDriveShots(const FString& Type, const FString& Folder);
+	/** Console: NHSkinShots Folder saves a front picture of the player's body and one of the face */
+	UFUNCTION(Exec)
+	void NHSkinShots(const FString& Folder);
 	/** Console: NHHeadlights switches the headlights of the vehicle you are driving (the K key) */
 	UFUNCTION(Exec)
 	void NHHeadlights();
-	/** Console: NHSkin changes the player's body to the next skin the project has; NHSkin <id> picks one (hustler, mannequin...). The choice is remembered. */
+	/** Console: NHSkin changes the player's body to the next skin the project has; NHSkin <id> picks one (naija, hustler, mannequin). The choice is remembered. */
 	UFUNCTION(Exec)
 	void NHSkin(const FString& Id);
 	/** Console: NHCarShow X Y [Folder] lines up one of every vehicle type there, facing +X (east on the map), to check real models; with a full folder path it saves pictures from above and from in front of each pair */

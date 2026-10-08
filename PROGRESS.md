@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-08 (player character stand-in; real models on 15 of 16 vehicle types; visual brief section 2 awaiting review)
+**Last updated:** 2026-10-08 (player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -46,11 +46,12 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Player skins:** the player's body is one of a list of skins (`ANHCharacter::Skins`: the young hustler, then the mannequin). The console command `NHSkin` goes to the next one the project has, `NHSkin <id>` picks one, and the choice is remembered.
 - **Driver in the seat:** getting into a vehicle now sits the player's own body in the driving seat, posed for driving by pointing each limb (works for any skeleton with the mannequin's bone names). Seen in the danfo, the keke and on the okada; the seat position for real models is a guess from the vehicle's size.
 - **Headlights:** the **K** key switches two headlight beams and a red tail light on the vehicle you drive (no shadows, to spare the Mac). `NHDriveShots <type> <folder>` photographs the driver by day and the lights at night.
+- **Player character built to the brief (2026-10-08):** "Naija man" is now the default skin: an athletic dark-skinned man with low-cut black hair and a beard, in a white singlet and olive cargo trousers, wearing the test trainers. He is generated with MakeHuman (MPFB) in Blender by `Scripts/build_player_makehuman.py`, which also adds the IK bones the mannequin's animation Blueprint needs; `setup_player_materials.py` connects his textures. Running stride 109 cm each way, 22.7 fps on the dusty street, self-test 75 and autoplay 26 pass. The young hustler is the second skin and the mannequin the third (`NHSkin`). `NHSkinShots <folder>` photographs the player from the front.
 
 ## In progress
 
 
-- **Player character (MetaHuman):** to be created on a rented cloud PC, because MetaHuman Creator recommends 32 GB of memory and the Mac has 8 GB. Plan: assemble with the UE Optimized pipeline at Low, bring the result to the Mac, force card hair, and measure. No assets will be bought; clothing starts from free items and tinting.
+- **Player character quality:** the MakeHuman character is a step below MetaHuman. A MetaHuman made on a cloud PC remains the route to the highest quality.
 
 - Waiting for review of section 2 before section 5 (geometry and set dressing).
 
@@ -86,7 +87,7 @@ Deferred: NPCs and storyline.
 - Light-shaft cards in alleys are not done.
 - Fog glow toward the sun was removed because it washed out the picture.
 - Play-in-Editor has not been retested since the memory fix; testing has been in the standalone game.
-- The player character is a stand-in that does not match the brief (no beard, T-shirt and plain trousers, a slightly cartoon face). Its trainers sit over the model's own shoes.
+- The player has no wristwatch, his eyes look reddish close up, his hair is a simple cap, and the trainers sit over bare feet. He has no facial animation.
 - Character effects are untested on a real character: the stand-in's materials have no sweat, wetness and damage parameters. Only the material pool and the weather values are checked by the self-test.
 - The momentum movement component is not on the player yet (the player moves as before), and its lean, turning grip and network prediction are untested. Motion Matching itself needs a skeletal character and an animation database.
 - The browser demo's own tests were not run after the place renames (Playwright is not installed on the Mac); its script was only syntax-checked. The Unreal playtests were run and pass.
@@ -101,6 +102,10 @@ Deferred: NPCs and storyline.
 - All surfaces use flat placeholder textures.
 
 ## Screenshots
+
+| Player (Naija man) | Face |
+|---|---|
+| ![player](docs/screenshots/player-naija-walk.jpg) | ![face](docs/screenshots/player-naija-face.jpg) |
 
 | Driver in the danfo | Headlights at night |
 |---|---|

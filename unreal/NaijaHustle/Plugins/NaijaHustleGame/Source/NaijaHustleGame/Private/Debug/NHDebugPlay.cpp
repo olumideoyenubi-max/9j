@@ -588,6 +588,48 @@ void UNHDebugPlay::DriveShots(FName Type, const FString& Folder)
 	});
 }
 
+void UNHDebugPlay::SkinShots(const FString& Folder)
+{
+	APawn* Pawn = PC->GetPawn();
+	if (!Pawn)
+	{
+		return;
+	}
+	if (AHUD* Hud = PC->GetHUD())
+	{
+		Hud->bShowHUD = false;
+	}
+	PC->NHTime(10.f);
+	ACameraActor* Cam = PC->GetWorld()->SpawnActor<ACameraActor>(ACameraActor::StaticClass(), FTransform(Pawn->GetActorLocation()));
+	Cam->GetCameraComponent()->SetConstraintAspectRatio(false);
+	Cam->GetCameraComponent()->SetFieldOfView(40.f);
+	TWeakObjectPtr<ANHPlayerController> Player(PC);
+	TWeakObjectPtr<ACameraActor> Camera(Cam);
+	TWeakObjectPtr<APawn> Body(Pawn);
+	for (int32 i = 0; i < 2; ++i)
+	{
+		FTimerHandle Aim, Take;
+		PC->GetWorldTimerManager().SetTimer(Aim, FTimerDelegate::CreateWeakLambda(PC, [Player, Camera, Body, i]()
+		{
+			if (Player.IsValid() && Camera.IsValid() && Body.IsValid())
+			{
+				const FVector At = Body->GetActorLocation() + FVector(0.f, 0.f, i ? 72.f : 0.f);
+				const FVector From = At + Body->GetActorForwardVector() * (i ? 95.f : 330.f) + Body->GetActorRightVector() * (i ? 30.f : 90.f) + FVector(0.f, 0.f, i ? 4.f : 20.f);
+				Camera->SetActorLocationAndRotation(From, (At - From).Rotation());
+				Player->SetViewTarget(Camera.Get());
+			}
+		}), 3.f + i * 5.f, false);
+		PC->GetWorldTimerManager().SetTimer(Take, FTimerDelegate::CreateWeakLambda(PC, [Player, Folder, i]()
+		{
+			if (Player.IsValid())
+			{
+				Player->ConsoleCommand(FString::Printf(TEXT("HighResShot 1280x1280 filename=\"%s\""), *(Folder / (i ? TEXT("face.png") : TEXT("body.png")))));
+				UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: skin picture %d%s"), i + 1, i ? TEXT(" RESULT: skin shots done") : TEXT(""));
+			}
+		}), 6.f + i * 5.f, false);
+	}
+}
+
 void UNHDebugPlay::PaintDemo(const FVector& At)
 {
 	UMaterialInterface* BodyMat = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/NaijaHustle/Environment/Materials/MI_NHCarPaint_Body.MI_NHCarPaint_Body"));

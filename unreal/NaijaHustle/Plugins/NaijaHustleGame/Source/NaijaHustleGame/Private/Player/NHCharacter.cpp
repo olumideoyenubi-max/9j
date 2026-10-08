@@ -35,6 +35,7 @@ ANHCharacter::ANHCharacter()
 		S.Height = Height;
 		Skins.Add(S);
 	};
+	Skin(TEXT("naija"), TEXT("Naija man"), TEXT("/Game/Characters/Player/Naija/Naija.Naija"), TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed_Naija.ABP_Unarmed_Naija_C"), 0.f);
 	Skin(TEXT("hustler"), TEXT("Young hustler"), TEXT("/Game/Characters/Player/Hustler/scene/SkeletalMeshes/Hustler.Hustler"), TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed_Hustler.ABP_Unarmed_Hustler_C"), 180.f);
 	Skin(TEXT("mannequin"), TEXT("Mannequin"), TEXT("/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple"), TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed.ABP_Unarmed_C"), 0.f);
 	ShoeMesh = TSoftObjectPtr<UStaticMesh>(FSoftObjectPath(TEXT("/Game/Wardrobe/Trainers_LowTop/Untsssho00215ed/StaticMeshes/hash_CF7B2BF4_model_001.hash_CF7B2BF4_model_001")));
@@ -92,7 +93,7 @@ bool ANHCharacter::SkinAvailable(const FNHPlayerSkin& Skin)
 	return Exists(Skin.Mesh.ToSoftObjectPath()) && Exists(Skin.AnimClass.ToSoftObjectPath());
 }
 
-bool ANHCharacter::WearSkin(FName Id)
+bool ANHCharacter::WearSkin(FName Id, bool bRemember)
 {
 	const FNHPlayerSkin* Skin = Skins.FindByPredicate([Id](const FNHPlayerSkin& S) { return S.Id == Id; });
 	USkeletalMesh* Mesh = Skin && SkinAvailable(*Skin) ? Skin->Mesh.LoadSynchronous() : nullptr;
@@ -112,8 +113,11 @@ bool ANHCharacter::WearSkin(FName Id)
 	bHasBody = true;
 	CurrentSkin = Id;
 	PutOnShoes();
-	GConfig->SetString(TEXT("NaijaHustle"), TEXT("PlayerSkin"), *Id.ToString(), GGameUserSettingsIni);
-	GConfig->Flush(false, GGameUserSettingsIni);
+	if (bRemember)
+	{
+		GConfig->SetString(TEXT("NaijaHustle"), TEXT("PlayerSkin"), *Id.ToString(), GGameUserSettingsIni);
+		GConfig->Flush(false, GGameUserSettingsIni);
+	}
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: the player is %s (skin %s), %.0f cm tall as made"), *Skin->Name, *Id.ToString(), Tall);
 	return true;
 }
@@ -124,7 +128,7 @@ FString ANHCharacter::WearNextSkin()
 	for (int32 Step = 1; Step <= Skins.Num(); ++Step)
 	{
 		const FNHPlayerSkin& Next = Skins[(FMath::Max(Now, 0) + Step) % Skins.Num()];
-		if (WearSkin(Next.Id))
+		if (WearSkin(Next.Id, true))
 		{
 			return Next.Name;
 		}

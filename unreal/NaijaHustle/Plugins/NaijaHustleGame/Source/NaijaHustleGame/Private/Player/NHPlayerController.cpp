@@ -447,6 +447,8 @@ void ANHPlayerController::NHFinish() { if (UNHDebugPlay* P = DebugPlay()) { P->F
 void ANHPlayerController::NHAutoplay() { if (UNHDebugPlay* P = DebugPlay(); P && !P->IsRunning()) { P->Autoplay(false); } }
 void ANHPlayerController::NHDriveShots(const FString& Type, const FString& Folder) { if (UNHDebugPlay* P = DebugPlay()) { P->DriveShots(FName(*Type), Folder); } }
 
+void ANHPlayerController::NHSkinShots(const FString& Folder) { if (UNHDebugPlay* P = DebugPlay()) { P->SkinShots(Folder); } }
+
 void ANHPlayerController::NHHeadlights()
 {
 	if (ANHVehicle* V = Cast<ANHVehicle>(GetPawn()))
@@ -468,7 +470,7 @@ void ANHPlayerController::NHSkin(const FString& Id)
 		const FString Name = Char->WearNextSkin();
 		ANHHUD::Toast(this, Name.IsEmpty() ? FString(TEXT("No skins in this project")) : FString::Printf(TEXT("Skin: %s"), *Name), 1);
 	}
-	else if (!Char->WearSkin(FName(*Id)))
+	else if (!Char->WearSkin(FName(*Id), true))
 	{
 		FString Known;
 		for (const FNHPlayerSkin& S : Char->Skins)
