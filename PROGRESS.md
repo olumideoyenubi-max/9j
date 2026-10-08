@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-08 (character effects and momentum movement code added; visual brief section 2 awaiting review)
+**Last updated:** 2026-10-08 (player stand-in body; MetaHuman planned on a cloud PC; visual brief section 2 awaiting review)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -34,8 +34,11 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Visual brief, section 2 (post-process and colour):** one global post-process volume with a filmic curve, teal-lifted shadows, warm highlights, film grain, chromatic aberration, clamped slow-moving exposure, and a tweakable colour lookup table (`nh_grade_lut.py` makes `T_NHGrade_LUT`). No measurable frame-rate cost. Autoplay (26) and self-test pass.
 - **Character effects (code only):** `UNHCharacterEffectsComponent` and its pooled dynamic materials are in the plugin: sweat, rain wetness, bruises and bullet wounds for skeletal-mesh characters. Lighting presets now set air temperature and humidity in `MPC_NHWeather` for it. Compiles on UE 5.8.
 - **Momentum movement (code only):** `UNHAdvancedMovementComponent` is in the plugin: weighted sprint, heavy stop, lean, and a Motion Matching trajectory, with client prediction. Ported to the UE 5.8 trajectory type (`FTransformTrajectory`), so no Pose Search dependency. The self-test sprints and stops a test character on it (top speed 650 cm/s, stop in 0.8 s over 2.8 m, predicted stop location within 1 cm). Self-test now 55 checks.
+- **Player stand-in body:** the player now wears the Third Person template mannequin with its walk and run animation, where a project has that content (22.6 fps at the usual spot, no change). Without it the player is still the capsule; the repo's own project was checked running that way. Both playtests pass either way.
 
 ## In progress
+
+- **Player character (MetaHuman):** to be created on a rented cloud PC, because MetaHuman Creator recommends 32 GB of memory and the Mac has 8 GB. Plan: assemble with the UE Optimized pipeline at Low, bring the result to the Mac, force card hair, and measure. No assets will be bought; clothing starts from free items and tinting.
 
 - Waiting for review of section 2 before section 5 (geometry and set dressing).
 
@@ -49,7 +52,7 @@ Waiting on assets (see `ASSETS.md`):
 - Megascans surfaces from Fab, then the real-surface pass.
 - Car models from Fab, then real vehicle bodies.
 
-Deferred: player character, NPCs and storyline.
+Deferred: NPCs and storyline.
 
 ## Known bugs and gaps
 
@@ -71,6 +74,10 @@ Deferred: player character, NPCs and storyline.
 - All vehicles are blockout shapes; all surfaces use flat placeholder textures.
 
 ## Screenshots
+
+Player stand-in body (template mannequin), sprint camera.
+
+![stand-in](docs/screenshots/player-standin-sprint.jpg)
 
 Section 2, post-process and colour. Before is the section 1 "after".
 

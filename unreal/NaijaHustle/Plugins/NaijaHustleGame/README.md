@@ -225,3 +225,10 @@ enabled in the project, a skeletal character and an animation database, none of 
 
 `NHSelfTest` sprints a bare test character along the dusty street and checks the top speed, the trajectory, the
 heavy stop and the predicted stop location. Lean, turning grip and network play are not covered by a test.
+
+## The player's body
+
+`ANHCharacter` puts on whatever **Body Mesh** and **Body Anim Class** point at (Details > Body). They default to the
+Unreal Third Person template's mannequin (`/Game/Characters/Mannequins`), as a stand-in until the real character is
+made. A project that has that content gets an animated body; a project without it, such as this repo's own, keeps
+the visible capsule and logs one line saying so. When the real character exists, point the two properties at it.

@@ -1,11 +1,15 @@
 #include "Player/NHCharacter.h"
 
+#include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Engine/SkeletalMesh.h"
 #include "EnhancedInputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Input/NHInputSet.h"
+#include "Misc/PackageName.h"
 #include "Player/NHPlayerController.h"
 #include "NaijaHustleGame.h"
 
@@ -13,9 +17,14 @@ ANHCharacter::ANHCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true; // the camera eases between walking and sprinting
 
-	// Visible capsule until the MetaHuman arrives in step 3 (in your own project, swap the pawn class in NHGameMode)
+	// The capsule shows until BeginPlay finds a body to put on
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 92.f);
 	GetCapsuleComponent()->SetHiddenInGame(false);
+
+	// Stand-in body: the Third Person template's mannequin, if the project has it
+	BodyMesh = TSoftObjectPtr<USkeletalMesh>(FSoftObjectPath(TEXT("/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple")));
+	BodyAnimClass = TSoftClassPtr<UAnimInstance>(FSoftObjectPath(TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed.ABP_Unarmed_C")));
+	GetMesh()->SetRelativeLocationAndRotation(FVector(0.f, 0.f, -92.f), FRotator(0.f, -90.f, 0.f)); // feet on the ground, facing forward
 
 	// The body turns toward where it's moving; the camera is free
 	bUseControllerRotationPitch = false;
@@ -40,6 +49,27 @@ ANHCharacter::ANHCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
 	FollowCamera->SetFieldOfView(WalkFOV);
+}
+
+void ANHCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	// asking for a package that is not there logs a warning, so look first
+	const auto Exists = [](const FSoftObjectPath& Path) { return Path.IsValid() && FPackageName::DoesPackageExist(Path.GetLongPackageName()); };
+	USkeletalMesh* Mesh = Exists(BodyMesh.ToSoftObjectPath()) ? BodyMesh.LoadSynchronous() : nullptr;
+	if (!Mesh)
+	{
+		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: no body mesh at %s; the player stays a capsule"), *BodyMesh.ToString());
+		return;
+	}
+	GetMesh()->SetSkeletalMesh(Mesh);
+	if (UClass* Anim = Exists(BodyAnimClass.ToSoftObjectPath()) ? BodyAnimClass.LoadSynchronous() : nullptr)
+	{
+		GetMesh()->SetAnimInstanceClass(Anim);
+	}
+	GetCapsuleComponent()->SetHiddenInGame(true);
+	bHasBody = true;
 }
 
 void ANHCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

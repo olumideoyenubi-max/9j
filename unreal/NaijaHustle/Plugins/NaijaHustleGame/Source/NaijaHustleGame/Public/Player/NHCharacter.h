@@ -7,11 +7,16 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class USkeletalMesh;
+class UAnimInstance;
 
 /**
- * Step 1 test pawn: a capsule with a low, close over-the-shoulder camera. Sprinting pulls the camera in,
- * widens the view and adds a slight handheld sway; it eases back when you walk. Step 3 replaces the body
- * with the MetaHuman.
+ * The player on foot, with a low, close over-the-shoulder camera. Sprinting pulls the camera in, widens the view
+ * and adds a slight handheld sway; it eases back when you walk.
+ *
+ * The body is whatever BodyMesh and BodyAnimClass point at. They default to the Unreal Third Person template's
+ * mannequin as a stand-in until the real character is made; in a project without that content the player is the
+ * visible capsule, as before.
  */
 UCLASS()
 class NAIJAHUSTLEGAME_API ANHCharacter : public ACharacter
@@ -27,7 +32,16 @@ public:
 	/** Hold to run (the Sprint input calls this) */
 	void SetSprinting(bool bSprint);
 
+	/** True when a body mesh was found and put on; false when the player is still the capsule */
+	UFUNCTION(BlueprintPure, Category = "Body") bool HasBody() const { return bHasBody; }
+
+	/** The body and its animation Blueprint. Point these at the real character when it exists. */
+	UPROPERTY(EditAnywhere, Category = "Body") TSoftObjectPtr<USkeletalMesh> BodyMesh;
+	UPROPERTY(EditAnywhere, Category = "Body") TSoftClassPtr<UAnimInstance> BodyAnimClass;
+
 protected:
+	virtual void BeginPlay() override;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	TObjectPtr<USpringArmComponent> CameraBoom;
 
@@ -55,6 +69,7 @@ private:
 	void OnSprintStart();
 	void OnSprintStop();
 
+	bool bHasBody = false;
 	bool bSprinting = false;
 	/** 0 walking .. 1 sprinting, eased */
 	float SprintAlpha = 0.f;

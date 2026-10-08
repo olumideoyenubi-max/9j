@@ -8,6 +8,12 @@ After adding or removing a pack, update this file with its exact Fab name and re
 
 None. The game uses only engine basic shapes and its own generated materials.
 
+## Optional stand-in body
+
+| Asset | Source | Folder | Notes |
+|---|---|---|---|
+| Mannequins (Manny), with `ABP_Unarmed` | Unreal Engine 5.8 Third Person template | `Content/Characters/Mannequins/` | About 126 MB. The player wears it if it is there and is a capsule if not. To add it: create a Third Person project in UE 5.8 and copy that folder across. |
+
 ## Megascans surfaces (Fab)
 
 None added yet. The look pass expects one surface for each row below, at 2K.
