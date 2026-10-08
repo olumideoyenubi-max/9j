@@ -71,6 +71,9 @@ protected:
 	virtual void Build() override;
 
 private:
+	/** Walls are plaster, or bare concrete in the dusty quarter */
+	ENHSurfaceType WallType() const { return bDusty ? ENHSurfaceType::Concrete : ENHSurfaceType::Plaster; }
+
 	struct FFace { FVector Normal; FVector Tangent; float Length; float Depth; ENHFace Flag; };
 	TArray<FFace> Faces() const;
 

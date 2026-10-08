@@ -18,7 +18,27 @@ enum class ENHShape : uint8
 };
 
 /**
- * How one blockout piece looks. Written into the instance's custom data, which M_NHBlockout reads:
+ * What a blockout piece is made of. Pieces of one type share a material instance (MI_NHSurface_<Type>, made by
+ * Scripts/nh_blockout_materials.py), so real textures can be assigned per type (Scripts/assign_megascans.py).
+ */
+UENUM(BlueprintType)
+enum class ENHSurfaceType : uint8
+{
+	Generic,
+	Plaster,
+	Concrete,
+	Dirt,
+	Asphalt,
+	Zinc,
+	Tarp,
+	Wood,
+	Fabric,
+	Metal,
+	Glass
+};
+
+/**
+ * How one blockout piece looks. Written into the instance's custom data, which M_NHSurface reads:
  * [0..2] colour (linear), [3] roughness, [4] metallic, [5] night glow (nits, scaled by the weather
  * collection's NightLights), [6] how much it gets wet in the rain, [7] glow tint (0 = own colour, 1 = warm lamp light).
  */
@@ -33,17 +53,22 @@ struct FNHSurface
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Surface") float Glow = 0.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Surface") float Wet = 0.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Surface") float GlowWarm = 0.f;
+	/** Picks the material instance; not part of the custom data */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Surface") ENHSurfaceType Type = ENHSurfaceType::Generic;
 
 	FNHSurface() = default;
 	FNHSurface(const FLinearColor& InColor, float InRoughness, float InWet = 0.f, float InMetallic = 0.f, float InGlow = 0.f, float InGlowWarm = 0.f)
 		: Color(InColor), Roughness(InRoughness), Metallic(InMetallic), Glow(InGlow), Wet(InWet), GlowWarm(InGlowWarm) {}
 
+	/** The same surface as another material type */
+	FNHSurface As(ENHSurfaceType InType) const { FNHSurface S = *this; S.Type = InType; return S; }
 };
 
 /**
  * Base for the step-2 blockout: everything is drawn with instanced engine shapes (box, cylinder, sphere,
- * cone) and one material, so a whole building is a handful of draw calls and the layout can be rebuilt
- * from data at any time. "Solid" pieces collide; "detail" pieces (bars, frames, rails, markings) don't.
+ * cone), grouped by surface type, so a whole building is a handful of draw calls and the layout can be
+ * rebuilt from data at any time. "Solid" pieces collide; "detail" pieces (bars, frames, rails, markings) don't.
+ * The instanced components are made on demand, one per (shape, solid, surface type) that is actually used.
  * Subclasses override Build() and call AddBox / AddShape. Rebuild() runs from the construction script and
  * from the editor (Details panel button) after the build script fills in the data.
  */
@@ -61,7 +86,7 @@ public:
 	UFUNCTION(CallInEditor, BlueprintCallable, Category = "Blockout")
 	void Rebuild();
 
-	/** M_NHBlockout, made by Scripts/nh_blockout_materials.py. Falls back to the engine default material. */
+	/** M_NHBlockout, made by Scripts/nh_blockout_materials.py: used for a surface type whose MI_NHSurface_<Type> is missing. */
 	UPROPERTY(EditAnywhere, Category = "Blockout")
 	TSoftObjectPtr<UMaterialInterface> Material;
 
@@ -79,15 +104,12 @@ protected:
 	static float Hash01(int32 A, int32 B = 0, int32 C = 0);
 
 	UPROPERTY(VisibleAnywhere, Category = "Blockout") TObjectPtr<USceneComponent> Root;
-	UPROPERTY(VisibleAnywhere, Category = "Blockout") TObjectPtr<UInstancedStaticMeshComponent> BoxSolid;
-	UPROPERTY(VisibleAnywhere, Category = "Blockout") TObjectPtr<UInstancedStaticMeshComponent> BoxDetail;
-	UPROPERTY(VisibleAnywhere, Category = "Blockout") TObjectPtr<UInstancedStaticMeshComponent> CylinderSolid;
-	UPROPERTY(VisibleAnywhere, Category = "Blockout") TObjectPtr<UInstancedStaticMeshComponent> CylinderDetail;
-	UPROPERTY(VisibleAnywhere, Category = "Blockout") TObjectPtr<UInstancedStaticMeshComponent> SphereDetail;
-	UPROPERTY(VisibleAnywhere, Category = "Blockout") TObjectPtr<UInstancedStaticMeshComponent> ConeDetail;
 
 private:
-	UInstancedStaticMeshComponent* MakeISM(const TCHAR* Name, UStaticMesh* Mesh, bool bSolid);
-	UInstancedStaticMeshComponent* ISMFor(ENHShape Shape, bool bSolid) const;
-	TArray<UInstancedStaticMeshComponent*> AllISMs() const;
+	UInstancedStaticMeshComponent* ISMFor(ENHShape Shape, bool bSolid, ENHSurfaceType Type);
+	UMaterialInterface* MaterialFor(ENHSurfaceType Type);
+
+	/** The instanced components in use, by (shape, solid, surface type). They are saved with the actor and found again by tag. */
+	UPROPERTY(Transient) TMap<int32, TObjectPtr<UInstancedStaticMeshComponent>> ISMs;
+	UPROPERTY(Transient) TMap<ENHSurfaceType, TObjectPtr<UMaterialInterface>> TypeMaterials;
 };

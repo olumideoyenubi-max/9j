@@ -5,6 +5,7 @@ import math
 import os
 import re
 import sys
+import tempfile
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 SOURCE = os.path.join(ROOT, "Source", "NaijaHustleGame")  # ROOT is the plugin folder
@@ -106,6 +107,10 @@ class Paths:
     def project_plugins_dir():
         return os.path.dirname(ROOT) + os.sep
 
+    @staticmethod
+    def project_saved_dir():
+        return os.path.join(tempfile.gettempdir(), "nh_stub_saved") + os.sep
+
 
 def _struct(header, cls):
     allowed = _uprops(header, "F" + cls)
@@ -121,7 +126,19 @@ NHShape = type("NHShape", (_Enum,), {})("BOX", "CYLINDER", "SPHERE", "CONE")
 NHShopfrontState = type("NHShopfrontState", (_Enum,), {})("SHUTTER", "HALF", "OPEN", "PAINTED")
 NHBuildingKind = type("NHBuildingKind", (_Enum,), {})("HOUSE", "ESTATE", "TOWER", "STALL", "STILT", "FUEL_STATION", "BUS_SHELTER", "FOOTBRIDGE")
 NHRoofStyle = type("NHRoofStyle", (_Enum,), {})("FLAT", "ZINC")
-NHLightingPreset = type("NHLightingPreset", (_Enum,), {})("DAY", "DUSTY_NOON", "SUNSET", "NIGHT_RAIN")
+NHLightingPreset = type("NHLightingPreset", (_Enum,), {})("DAY", "DUSTY_NOON", "SUNSET", "NIGHT_RAIN", "HARSH_MORNING", "GOLDEN_EVENING")
+NHCableSpan = _struct("World/NHCables.h", "NHCableSpan")
+
+
+def _enum_from_header(header, name):
+    """An enum's values as the Python API names them (UPPER_SNAKE), read from the C++ so the two can't drift"""
+    text = open(os.path.join(SOURCE, "Public", header), encoding="utf-8").read()
+    body = re.search(r"enum class E" + name + r"\b[^{]*\{(.*?)\};", text, re.S).group(1)
+    values = [v for v in re.findall(r"^\s*(\w+)\s*(?:=[^,]*)?,?\s*(?://.*)?$", body, re.M)]
+    return type(name, (_Enum,), {})(*[_snake(v, False).upper() for v in values])
+
+
+NHSurfaceType = _enum_from_header("World/NHBlockoutActor.h", "NHSurfaceType")
 
 ACTOR_COMMON = {"tags"}
 
@@ -152,9 +169,22 @@ def _actor(header, cls, extra=()):
 _BLOCKOUT = _uprops("World/NHBlockoutActor.h", "ANHBlockoutActor")
 NHCityTile = _actor("World/NHCityTile.h", "NHCityTile", _BLOCKOUT)
 NHBlockoutBuilding = _actor("World/NHBlockoutBuilding.h", "NHBlockoutBuilding", _BLOCKOUT)
+NHCables = _actor("World/NHCables.h", "NHCables")
 NHLightingRig = _actor("Lighting/NHLightingRig.h", "NHLightingRig")
 NHLightingRig.apply_preset = lambda self, p: self._values.__setitem__("_applied", p)
 PlayerStart = type("PlayerStart", (_Actor,), {"_props": ACTOR_COMMON})
+
+
+class _CaptureComponent(_Obj):
+    _props = {"influence_radius", "brightness"}
+
+
+class SphereReflectionCapture(_Actor):
+    _props = ACTOR_COMMON | {"capture_component"}
+
+    def __init__(self, loc=None, rot=None):
+        super().__init__(loc, rot)
+        self._values["capture_component"] = _CaptureComponent()
 
 
 class _EAS:
@@ -207,6 +237,27 @@ class _UES:
         return self.world
 
 
+class WorldPartitionBlueprintLibrary:
+    loaded = []
+
+    @staticmethod
+    def get_actor_descs():
+        return []
+
+    @staticmethod
+    def load_actors(guids):
+        WorldPartitionBlueprintLibrary.loaded.append(list(guids))
+
+
+class EditorLoadingAndSavingUtils:
+    saves = 0
+
+    @staticmethod
+    def save_dirty_packages(maps, content):
+        EditorLoadingAndSavingUtils.saves += 1
+        return True
+
+
 class EditorActorSubsystem: pass
 class LevelEditorSubsystem: pass
 class UnrealEditorSubsystem: pass
@@ -227,10 +278,31 @@ def get_editor_subsystem(cls):
 
 class EditorAssetLibrary:
     existing = set()
+    assets = {}  # what the scripts created or imported, by package path
 
     @staticmethod
     def does_asset_exist(p):
-        return p in EditorAssetLibrary.existing
+        return p in EditorAssetLibrary.existing or p in EditorAssetLibrary.assets
+
+    @staticmethod
+    def load_asset(p):
+        p = p.split(".")[0]
+        if p not in EditorAssetLibrary.assets:
+            EditorAssetLibrary.assets[p] = Texture2D() if p.startswith("/Engine/") or "/Megascans/" in p or "/Fab/" in p else None
+        return EditorAssetLibrary.assets[p]
+
+
+class Texture2D(_Obj):
+    _props = {"srgb", "compression_settings"}
+
+
+class AssetImportTask(_Obj):
+    _props = {"filename", "destination_path", "destination_name", "automated", "replace_existing", "save"}
+
+
+TextureCompressionSettings = type("TextureCompressionSettings", (_Enum,), {})("TC_DEFAULT", "TC_NORMALMAP", "TC_MASKS")
+MaterialSamplerType = type("MaterialSamplerType", (_Enum,), {})("SAMPLERTYPE_COLOR", "SAMPLERTYPE_NORMAL", "SAMPLERTYPE_MASKS", "SAMPLERTYPE_LINEAR_COLOR")
+SamplerSourceMode = type("SamplerSourceMode", (_Enum,), {})("SSM_FROM_TEXTURE_ASSET", "SSM_WRAP_WORLD_GROUP_SETTINGS", "SSM_CLAMP_WORLD_GROUP_SETTINGS")
 
 
 class ScopedSlowTask:
@@ -258,6 +330,11 @@ def log(msg):
     print("[unreal.log]", msg)
 
 
+def log_warning(msg):
+    LOG.append(msg)
+    print("[unreal.log_warning]", msg)
+
+
 sys.modules["unreal"] = sys.modules[__name__]
 
 
@@ -276,13 +353,33 @@ EXPR_PROPS = {
     "MaterialExpressionSubtract": ({"const_a", "const_b"}, {"A", "B"}),
     "MaterialExpressionNoise": ({"scale", "levels", "output_min", "output_max", "quality", "noise_function", "turbulence"}, {"Position", "FilterWidth"}),
     "MaterialExpressionConstant3Vector": ({"constant"}, set()),
+    "MaterialExpressionConstant2Vector": ({"r", "g"}, set()),
+    "MaterialExpressionWorldPosition": ({"world_position_shader_offset"}, set()),
+    "MaterialExpressionActorPositionWS": ({"origin_type"}, set()),
+    "MaterialExpressionAbs": (set(), {""}),
+    "MaterialExpressionFrac": (set(), {""}),
+    "MaterialExpressionOneMinus": (set(), {""}),
+    "MaterialExpressionSine": ({"period"}, {""}),
+    "MaterialExpressionNormalize": (set(), {"VectorInput"}),
+    "MaterialExpressionDotProduct": (set(), {"A", "B"}),
+    "MaterialExpressionAdd": ({"const_a", "const_b"}, {"A", "B"}),
+    "MaterialExpressionDivide": ({"const_a", "const_b"}, {"A", "B"}),
+    "MaterialExpressionTextureSampleParameter2D": ({"parameter_name", "texture", "sampler_type", "sampler_source", "group"}, {"UVs"}),
 }
 for _n, (_p, _pins) in EXPR_PROPS.items():
     globals()[_n] = type(_n, (_Obj,), {"_props": _p, "_pins": _pins})
 
 
 class Material(_Obj):
-    _props = {"used_with_instanced_static_meshes"}
+    _props = {"used_with_instanced_static_meshes", "tangent_space_normal"}
+
+
+class MaterialInstanceConstant(_Obj):
+    _props = set()
+
+    def __init__(self):
+        super().__init__()
+        self.parent, self.scalars, self.textures, self.updated = None, {}, {}, 0
 
 
 class MaterialParameterCollection(_Obj):
@@ -298,16 +395,26 @@ class CollectionScalarParameter(_Obj):
 
 
 class MaterialFactoryNew: pass
+class MaterialInstanceConstantFactoryNew: pass
 class MaterialParameterCollectionFactoryNew: pass
 
 
 class MaterialProperty:
     MP_BASE_COLOR, MP_ROUGHNESS, MP_METALLIC, MP_EMISSIVE_COLOR = "base", "rough", "metal", "emissive"
+    MP_AMBIENT_OCCLUSION, MP_NORMAL = "ao", "normal"
 
 
 class _AssetTools:
     def create_asset(self, name, folder, cls, factory):
-        return cls()
+        a = cls()
+        a.asset_name = name
+        EditorAssetLibrary.assets[f"{folder}/{name}"] = a
+        return a
+
+    def import_asset_tasks(self, tasks):
+        for t in tasks:
+            assert os.path.isfile(t.get_editor_property("filename")), "the file to import was not written"
+            EditorAssetLibrary.assets[f"{t.get_editor_property('destination_path')}/{t.get_editor_property('destination_name')}"] = Texture2D()
 
 
 class AssetToolsHelpers:
@@ -348,6 +455,24 @@ class MaterialEditingLibrary:
     def connect_material_property(src, out, prop):
         MaterialEditingLibrary.outputs[prop] = src
         return True
+
+    @staticmethod
+    def set_material_instance_parent(mi, parent):
+        mi.parent = parent
+
+    @staticmethod
+    def set_material_instance_scalar_parameter_value(mi, name, value):
+        mi.scalars[str(name)] = value
+        return True
+
+    @staticmethod
+    def set_material_instance_texture_parameter_value(mi, name, value):
+        mi.textures[str(name)] = value
+        return True
+
+    @staticmethod
+    def update_material_instance(mi):
+        mi.updated += 1
 
     @staticmethod
     def recompile_material(m):

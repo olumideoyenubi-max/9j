@@ -7,18 +7,18 @@ namespace NHTile
 {
 	const FName GeneratedTag(TEXT("NHGenerated"));
 
-	FNHSurface Asphalt()   { return FNHSurface(FLinearColor(0.045f, 0.045f, 0.05f), 0.82f, 1.f); }
-	FNHSurface Laterite()  { return FNHSurface(FLinearColor(0.36f, 0.16f, 0.07f), 0.95f, 1.f); }
-	FNHSurface Pavement()  { return FNHSurface(FLinearColor(0.3f, 0.29f, 0.27f), 0.8f, 0.9f); }
-	FNHSurface Dirt()      { return FNHSurface(FLinearColor(0.27f, 0.15f, 0.08f), 0.95f, 0.9f); }
-	FNHSurface Earth()     { return FNHSurface(FLinearColor(0.2f, 0.14f, 0.09f), 0.95f, 0.9f); }
-	FNHSurface Plot()      { return FNHSurface(FLinearColor(0.24f, 0.23f, 0.22f), 0.9f, 0.9f); }
-	FNHSurface Yard()      { return FNHSurface(FLinearColor(0.28f, 0.27f, 0.26f), 0.85f, 0.9f); }
+	FNHSurface Asphalt()   { return FNHSurface(FLinearColor(0.085f, 0.085f, 0.09f), 0.85f, 1.f).As(ENHSurfaceType::Asphalt); } // sun-bleached, worn grey
+	FNHSurface Laterite()  { return FNHSurface(FLinearColor(0.36f, 0.16f, 0.07f), 0.95f, 1.f).As(ENHSurfaceType::Dirt); }
+	FNHSurface Pavement()  { return FNHSurface(FLinearColor(0.3f, 0.29f, 0.27f), 0.8f, 0.9f).As(ENHSurfaceType::Concrete); }
+	FNHSurface Dirt()      { return FNHSurface(FLinearColor(0.27f, 0.15f, 0.08f), 0.95f, 0.9f).As(ENHSurfaceType::Dirt); }
+	FNHSurface Earth()     { return FNHSurface(FLinearColor(0.2f, 0.14f, 0.09f), 0.95f, 0.9f).As(ENHSurfaceType::Dirt); }
+	FNHSurface Plot()      { return FNHSurface(FLinearColor(0.24f, 0.23f, 0.22f), 0.9f, 0.9f).As(ENHSurfaceType::Concrete); }
+	FNHSurface Yard()      { return FNHSurface(FLinearColor(0.28f, 0.27f, 0.26f), 0.85f, 0.9f).As(ENHSurfaceType::Concrete); }
 	FNHSurface Grass()     { return FNHSurface(FLinearColor(0.07f, 0.13f, 0.03f), 0.95f, 0.5f); }
-	FNHSurface Forecourt() { return FNHSurface(FLinearColor(0.38f, 0.38f, 0.36f), 0.6f, 0.9f); }
+	FNHSurface Forecourt() { return FNHSurface(FLinearColor(0.38f, 0.38f, 0.36f), 0.6f, 0.9f).As(ENHSurfaceType::Concrete); }
 	FNHSurface Water()     { return FNHSurface(FLinearColor(0.012f, 0.03f, 0.035f), 0.04f, 0.f); }
-	FNHSurface Kerb()      { return FNHSurface(FLinearColor(0.45f, 0.43f, 0.4f), 0.75f, 0.8f); }
-	FNHSurface Concrete()  { return FNHSurface(FLinearColor(0.3f, 0.3f, 0.29f), 0.85f, 0.6f); }
+	FNHSurface Kerb()      { return FNHSurface(FLinearColor(0.45f, 0.43f, 0.4f), 0.75f, 0.8f).As(ENHSurfaceType::Concrete); }
+	FNHSurface Concrete()  { return FNHSurface(FLinearColor(0.3f, 0.3f, 0.29f), 0.85f, 0.6f).As(ENHSurfaceType::Concrete); }
 
 	FVector Dir(float YawDeg) { const float A = FMath::DegreesToRadians(YawDeg); return FVector(FMath::Cos(A), FMath::Sin(A), 0.f); }
 }
@@ -51,6 +51,7 @@ void ANHCityTile::Build()
 {
 	ClearGenerated();
 	BuildGround();
+	BuildDustyStreet();
 	BuildMarkings();
 	BuildProps();
 	BuildShopfronts();
@@ -143,7 +144,22 @@ void ANHCityTile::BuildGround()
 				};
 				if (!bWet && !bRoad && N == TEXT('R'))
 				{
-					EdgeBox(0.f, 18.f, -2.f, KerbZ + 2.f, Kerb(), true); // kerb stone
+					if (DustyAt(C, R))
+					{
+						EdgeBox(0.f, 18.f, -2.f, KerbZ + 2.f, Kerb(), true); // bare kerb stone
+					}
+					else // tarred roads: kerb stones painted black and white, a metre each, as on Lagos roads
+					{
+						const FNHSurface White = FNHSurface(FLinearColor(0.62f, 0.61f, 0.57f), 0.75f, 0.8f).As(ENHSurfaceType::Concrete);
+						const FNHSurface Black = FNHSurface(FLinearColor(0.035f, 0.035f, 0.035f), 0.75f, 0.8f).As(ENHSurfaceType::Concrete);
+						const FVector Along = S.X != 0 ? FVector(0.f, 1.f, 0.f) : FVector(1.f, 0.f, 0.f);
+						for (int32 K = 0; K < 4; ++K)
+						{
+							const FVector P = Edge - Out * 9.f + Along * ((K - 1.5f) * 100.f) + FVector(0, 0, KerbZ * 0.5f);
+							const int32 Stripe = FMath::FloorToInt32((S.X != 0 ? P.Y : P.X) / 100.f); // by world position, so the pattern runs on from cell to cell
+							AddBox(P, S.X != 0 ? FVector(18.f, 100.f, KerbZ + 4.f) : FVector(100.f, 18.f, KerbZ + 4.f), (Stripe & 1) ? Black : White, true, FRotator::ZeroRotator, true);
+						}
+					}
 				}
 				if (bRoad && !bBridge && N != TEXT('R') && !bNWet)
 				{
@@ -166,15 +182,78 @@ void ANHCityTile::BuildGround()
 	}
 }
 
+// Oke-Erupe's dirt roads: long low rut mounds along the way the road runs, and rubbish heaps on the verges.
+// All of it is detail (no collision), so driving and walking are unchanged.
+void ANHCityTile::BuildDustyStreet()
+{
+	using namespace NHTile;
+	const float X0 = Col0 * CellSize, Y0 = Row0 * CellSize;
+	const FLinearColor Litter[] = { FLinearColor(0.02f, 0.02f, 0.022f), FLinearColor(0.03f, 0.1f, 0.35f), FLinearColor(0.6f, 0.6f, 0.58f),
+		FLinearColor(0.45f, 0.08f, 0.05f), FLinearColor(0.6f, 0.45f, 0.05f), FLinearColor(0.02f, 0.02f, 0.022f) };
+	for (int32 R = 0; R < Rows; ++R)
+	{
+		for (int32 C = 0; C < Cols; ++C)
+		{
+			if (!DustyAt(C, R))
+			{
+				continue;
+			}
+			const TCHAR Cell = CellAt(C, R);
+			const int32 GC = Col0 + C, GR = Row0 + R; // city cell: the same result whichever tile builds it
+			const FVector Center(X0 + (C + 0.5f) * CellSize, Y0 + (R + 0.5f) * CellSize, 0.f);
+			auto IsRoad = [&](int32 DC, int32 DR) { return CellAt(C + DC, R + DR) == TEXT('R'); };
+
+			if (Cell == TEXT('R') && !IsLagoon(C))
+			{
+				const bool bAlongX = IsRoad(-1, 0) && IsRoad(1, 0), bAlongY = IsRoad(0, -1) && IsRoad(0, 1);
+				const float Yaw = (bAlongX && !bAlongY) ? 0.f : (bAlongY && !bAlongX) ? 90.f : Hash01(GC, GR, 10) * 180.f;
+				const int32 Num = 1 + static_cast<int32>(Hash01(GC, GR, 11) * 2.f);
+				for (int32 K = 0; K < Num; ++K)
+				{
+					const FVector Size(280.f + 320.f * Hash01(GC, GR, 40 + K), 45.f + 40.f * Hash01(GC, GR, 50 + K), 20.f + 14.f * Hash01(GC, GR, 60 + K));
+					const FVector P = Center + FVector((Hash01(GC, GR, 20 + K) - 0.5f) * CellSize * 0.8f, (Hash01(GC, GR, 30 + K) - 0.5f) * CellSize * 0.8f, -0.3f * Size.Z);
+					FNHSurface Mound = Laterite();
+					Mound.Color *= 0.94f + 0.12f * Hash01(GC, GR, 70 + K);
+					// most of the flattened sphere is under the road: only its cap shows, a soft ridge 4 to 7 cm high and a few metres long
+					AddShapeTransform(ENHShape::Sphere, FTransform(FRotator(0.f, Yaw + (Hash01(GC, GR, 80 + K) - 0.5f) * 16.f, 0.f), P, Size / 100.f), Mound, false, true);
+				}
+			}
+			else if ((Cell == TEXT('K') || Cell == TEXT('G')) && (IsRoad(1, 0) || IsRoad(-1, 0) || IsRoad(0, 1) || IsRoad(0, -1)) && Hash01(GC, GR, 90) < 0.22f)
+			{
+				const FVector Base = Center + FVector((Hash01(GC, GR, 91) - 0.5f) * 220.f, (Hash01(GC, GR, 92) - 0.5f) * 220.f, KerbZ);
+				const float Wide = 150.f + 90.f * Hash01(GC, GR, 93), High = 50.f + 30.f * Hash01(GC, GR, 94);
+				AddShapeTransform(ENHShape::Sphere, FTransform(FRotator(0.f, Hash01(GC, GR, 95) * 180.f, 0.f), Base, FVector(Wide, Wide * 0.8f, High) / 100.f),
+					FNHSurface(FLinearColor(0.09f, 0.075f, 0.06f), 0.95f, 0.9f).As(ENHSurfaceType::Dirt), false, true);
+				const int32 Bags = 6 + static_cast<int32>(Hash01(GC, GR, 96) * 4.f);
+				for (int32 K = 0; K < Bags; ++K)
+				{
+					const float A = Hash01(GC, GR, 100 + K) * 2.f * PI, D = Hash01(GC, GR, 110 + K) * Wide * 0.42f;
+					const float S = 18.f + 24.f * Hash01(GC, GR, 120 + K);
+					const FVector P = Base + FVector(FMath::Cos(A) * D, FMath::Sin(A) * D * 0.8f, High * 0.5f * (1.f - D / Wide) + S * 0.2f);
+					const FNHSurface Bag = FNHSurface(Litter[static_cast<int32>(Hash01(GC, GR, 130 + K) * 6.f) % 6], 0.5f, 0.6f).As(ENHSurfaceType::Tarp);
+					AddShapeTransform(K % 2 ? ENHShape::Sphere : ENHShape::Box, FTransform(FRotator(Hash01(GC, GR, 140 + K) * 30.f, Hash01(GC, GR, 150 + K) * 360.f, 0.f), P, FVector(S, S * 0.8f, S * 0.6f) / 100.f), Bag, false, true);
+				}
+			}
+		}
+	}
+}
+
 void ANHCityTile::BuildMarkings()
 {
+	const float X0 = Col0 * CellSize, Y0 = Row0 * CellSize;
 	for (const FNHMarking& M : Markings)
 	{
+		// nobody paints lines on a dirt road
+		if (DustyAt(FMath::FloorToInt32(((M.A.X + M.B.X) * 0.5f - X0) / CellSize), FMath::FloorToInt32(((M.A.Y + M.B.Y) * 0.5f - Y0) / CellSize)))
+		{
+			continue;
+		}
 		const FVector2D D = M.B - M.A;
 		const float Len = FMath::Max(1.f, static_cast<float>(D.Size()));
 		const FVector Mid((M.A.X + M.B.X) * 0.5f, (M.A.Y + M.B.Y) * 0.5f, 0.6f);
 		const float Yaw = FMath::RadiansToDegrees(FMath::Atan2(D.Y, D.X));
-		AddBox(Mid, FVector(Len, M.Width, 1.f), FNHSurface(M.Color, 0.6f, 0.8f), false, FRotator(0.f, Yaw, 0.f), true);
+		// worn paint: duller than fresh, and on the asphalt's material so the road's grime runs across it
+		AddBox(Mid, FVector(Len, M.Width, 1.f), FNHSurface(M.Color * 0.7f, 0.7f, 0.8f).As(ENHSurfaceType::Asphalt), false, FRotator(0.f, Yaw, 0.f), true);
 	}
 }
 
@@ -191,8 +270,8 @@ void ANHCityTile::BuildShopfronts()
 {
 	using namespace NHTile;
 	const FLinearColor Bright[] = { FLinearColor(0.75f, 0.12f, 0.05f), FLinearColor(0.03f, 0.36f, 0.15f), FLinearColor(0.9f, 0.55f, 0.f), FLinearColor(0.05f, 0.2f, 0.7f), FLinearColor(0.7f, 0.08f, 0.26f), FLinearColor(0.2f, 0.03f, 0.37f) };
-	const FNHSurface Frame(FLinearColor(0.06f, 0.06f, 0.06f), 0.5f, 0.5f, 0.4f), Steel(FLinearColor(0.42f, 0.44f, 0.45f), 0.45f, 0.3f, 0.6f);
-	const FNHSurface Inside(FLinearColor(0.02f, 0.018f, 0.015f), 0.8f, 0.f, 0.f, 9.f, 1.f), Wood(FLinearColor(0.22f, 0.14f, 0.08f), 0.8f, 0.6f);
+	const FNHSurface Frame = FNHSurface(FLinearColor(0.06f, 0.06f, 0.06f), 0.5f, 0.5f, 0.4f).As(ENHSurfaceType::Metal), Steel = FNHSurface(FLinearColor(0.42f, 0.44f, 0.45f), 0.45f, 0.3f, 0.6f).As(ENHSurfaceType::Metal);
+	const FNHSurface Inside(FLinearColor(0.02f, 0.018f, 0.015f), 0.8f, 0.f, 0.f, 9.f, 1.f), Wood = FNHSurface(FLinearColor(0.22f, 0.14f, 0.08f), 0.8f, 0.6f).As(ENHSurfaceType::Wood);
 	for (int32 I = 0; I < Shopfronts.Num(); ++I)
 	{
 		const FNHShopfront& F = Shopfronts[I];
@@ -214,7 +293,7 @@ void ANHCityTile::BuildShopfronts()
 			Piece(3.f, 0.f, H * 0.5f, FVector(4.f, W - 8.f, H - 4.f), Steel);
 			break;
 		case ENHShopfrontState::Painted:
-			Piece(3.f, 0.f, H * 0.5f, FVector(4.f, W - 8.f, H - 4.f), FNHSurface(Bright[static_cast<int32>(Pick * 6.f) % 6], 0.6f, 0.3f, 0.2f));
+			Piece(3.f, 0.f, H * 0.5f, FVector(4.f, W - 8.f, H - 4.f), FNHSurface(Bright[static_cast<int32>(Pick * 6.f) % 6], 0.6f, 0.3f, 0.2f).As(ENHSurfaceType::Metal));
 			break;
 		case ENHShopfrontState::Half:
 			Piece(3.f, 0.f, H * 0.78f, FVector(4.f, W - 8.f, H * 0.44f), Steel);
@@ -230,7 +309,7 @@ void ANHCityTile::BuildShopfronts()
 		}
 		if (Pick < 0.55f) // a sloping awning over half the fronts
 		{
-			AddBox(F.Location + N * 60.f + FVector(0, 0, H + 40.f), FVector(120.f, W + 20.f, 4.f), FNHSurface(Bright[static_cast<int32>(Pick * 97.f) % 6], 0.7f, 1.f), false, FRotator(-14.f, F.Yaw, 0.f), true);
+			AddBox(F.Location + N * 60.f + FVector(0, 0, H + 40.f), FVector(120.f, W + 20.f, 4.f), FNHSurface(Bright[static_cast<int32>(Pick * 97.f) % 6], 0.7f, 1.f).As(ENHSurfaceType::Tarp), false, FRotator(-14.f, F.Yaw, 0.f), true);
 		}
 	}
 }
@@ -284,7 +363,7 @@ void ANHCityTile::BuildLamps()
 {
 	for (const FVector& Head : LampHeads)
 	{
-		AddBox(Head, FVector(70.f, 35.f, 16.f), FNHSurface(FLinearColor(0.5f, 0.5f, 0.48f), 0.4f, 0.3f, 0.3f, 400.f, 1.f), false, FRotator::ZeroRotator, true);
+		AddBox(Head, FVector(70.f, 35.f, 16.f), FNHSurface(FLinearColor(0.5f, 0.5f, 0.48f), 0.4f, 0.3f, 0.3f, 400.f, 1.f).As(ENHSurfaceType::Metal), false, FRotator::ZeroRotator, true);
 
 		USpotLightComponent* L = NewObject<USpotLightComponent>(this, NAME_None, RF_Transactional);
 		L->CreationMethod = EComponentCreationMethod::Instance;

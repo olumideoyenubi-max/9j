@@ -119,6 +119,7 @@ private:
 	float TopZ(TCHAR Cell) const;
 
 	void BuildGround();
+	void BuildDustyStreet();
 	void BuildMarkings();
 	void BuildProps();
 	void BuildShopfronts();
