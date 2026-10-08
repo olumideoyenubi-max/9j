@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-08 (player stand-in body; MetaHuman planned on a cloud PC; visual brief section 2 awaiting review)
+**Last updated:** 2026-10-08 (real Lagos stop and place names; player stand-in body; visual brief section 2 awaiting review)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -35,6 +35,7 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Character effects (code only):** `UNHCharacterEffectsComponent` and its pooled dynamic materials are in the plugin: sweat, rain wetness, bruises and bullet wounds for skeletal-mesh characters. Lighting presets now set air temperature and humidity in `MPC_NHWeather` for it. Compiles on UE 5.8.
 - **Momentum movement (code only):** `UNHAdvancedMovementComponent` is in the plugin: weighted sprint, heavy stop, lean, and a Motion Matching trajectory, with client prediction. Ported to the UE 5.8 trajectory type (`FTransformTrajectory`), so no Pose Search dependency. The self-test sprints and stops a test character on it (top speed 650 cm/s, stop in 0.8 s over 2.8 m, predicted stop location within 1 cm). Self-test now 55 checks.
 - **Player stand-in body:** the player now wears the Third Person template mannequin with its walk and run animation, where a project has that content (22.6 fps at the usual spot, no change). Without it the player is still the capsule; the repo's own project was checked running that way. Both playtests pass either way.
+- **Real Lagos map names:** the stops, routes, districts and main roads now use real Lagos places (Oshodi, Charity, Anthony, Gbagada, Iyana Oworo, CMS, Fadeyi, Yaba, Tejuosho Market, Olosha, Idi-Oro; Third Mainland Bridge, Makoko, Lagos Island, Lekki, Mushin). Stop ids are unchanged. Applied to the Unreal data, level signs, code and the browser demo; mapping in `docs/LAGOS_MAP.md`.
 
 ## In progress
 
@@ -70,6 +71,8 @@ Deferred: NPCs and storyline.
 - Play-in-Editor has not been retested since the memory fix; testing has been in the standalone game.
 - Character effects are untested on a real character: there is no skeletal-mesh character or material with the sweat, wetness and damage parameters yet. Only the material pool and the weather values are checked by the self-test.
 - The momentum movement component is not on the player yet (the player moves as before), and its lean, turning grip and network prediction are untested. Motion Matching itself needs a skeletal character and an animation database.
+- The browser demo's own tests were not run after the place renames (Playwright is not installed on the Mac); its script was only syntax-checked. The Unreal playtests were run and pass.
+- The map is still the small compressed grid: many real stops and areas are missing (see `docs/LAGOS_MAP.md`).
 - Not covered by the scripted playtests: change prompts, free conductor shifts, agbero beg/drive-off, real driving between stops.
 - All vehicles are blockout shapes; all surfaces use flat placeholder textures.
 

@@ -711,7 +711,7 @@ void UNHDebugPlay::AddStop(int32 Index, bool bBoard)
 			FString::Printf(TEXT("%.1f m from the kerb at %.0f cm/s; %d on board, %d waiting, comfort %.0f%%"), FVector2D::Distance(FVector2D(Bus()->GetActorLocation()), Kerb) / 100.f, Bus()->Speed,
 				D->Shift.Onboard.Num(), WaitingAt(Stop), D->Shift.Comfort));
 	});
-	if (S->Agbero > 0 && Stop == FName(TEXT("balogate"))) // on the first day only Balo Gate's agbero asks
+	if (S->Agbero > 0 && Stop == FName(TEXT("balogate"))) // on the first day only Yaba's agbero asks
 	{
 		Until(TEXT("the agbero comes for his ticket"), [this](float) { return Dir()->Panel.bOpen && Dir()->Panel.Title.StartsWith(TEXT("Agbero")); }, 5.f);
 		Do(TEXT("pay the agbero"), [this]()

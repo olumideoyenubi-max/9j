@@ -78,13 +78,13 @@ const OUT = path.join(DIR, 'lagos_city.json'), RULES_OUT = path.join(DIR, 'naija
       format: 'naija-hustle-city', version: 1, units: 'cm', axes: 'X east, Y south, Z up (Unreal); 1 map cell = 400 cm',
       cellSize: 400, cols, rows, heights: { road: 0, kerb: 16, water: -130 },
       legend: { G: 'ground', R: 'road', B: 'building plot', W: 'lagoon water', S: 'market stall', P: 'motor park', T: 'tower plot', L: 'stilt house', K: 'pavement', V: 'grass', F: 'fuel forecourt' },
-      dusty: { x: 0, y: 24 * 400, w: 22 * 400, d: 20 * 400, name: 'Oke-Erupe' },
+      dusty: { x: 0, y: 24 * 400, w: 22 * 400, d: 20 * 400, name: 'Mushin' },
       tiles, districts: { names: districtNames, grid: dgrid },
       buildings, shopfronts, signs, lamps, props, markings,
       roads: { nodes: nodes.map(n => [pxcm(n.x), pxcm(n.y)]), links: [].concat(...nodes.map(n => n.nb.filter(m => m > n.id).map(m => [n.id, m]))), laneOffset: 200, rightHandTraffic: true },
       busStops: stops, stations: STATIONS.map(s => ({ name: s.name, x: s.c * 400, y: s.r * 400, w: 1200, d: 800 })),
       parkBays: PARK_BAYS.map((b, i) => ({ n: i + 1, x: pxcm(b.x), y: pxcm(b.y), yaw: r1(b.a * 180 / Math.PI) })),
-      playerStart: { x: pxcm(176), y: pxcm(330), z: 120, yaw: 0, note: 'home, next to Oshoja Motor Park' },
+      playerStart: { x: pxcm(176), y: pxcm(330), z: 120, yaw: 0, note: 'home, next to Oshodi Motor Park' },
     };
   });
   // gameplay rules, with every distance, speed and acceleration converted from map pixels to cm (1 px = 12.5 cm)

@@ -87,7 +87,7 @@ const { VIEWPORTS, layout } = require('./layout');
   for (const vp of [VIEWPORTS[0], VIEWPORTS[2], VIEWPORTS[4]]) {
     const { page } = await open(b, vp);
     const seen = []; await page.evaluate(() => { NH.BANNER.cur = ''; NH.BANNER.shown = {}; }); // judge entering each area from a fresh state
-    for (const [x, y, want] of [[176, 330, 'OSHOJA MOTOR PARK'], [900, 1300, 'BALO MARKET'], [2350, 560, 'EKO CREST'], [176, 330, 'OSHOJA MOTOR PARK']]) {
+    for (const [x, y, want] of [[176, 330, 'OSHODI MOTOR PARK'], [900, 1300, 'YABA MARKET'], [2350, 560, 'EKO CREST'], [176, 330, 'OSHODI MOTOR PARK']]) {
       await page.evaluate(([x, y]) => { NH.player.veh = null; NH.player.x = x; NH.player.y = y; NH.teleport(x, y); for (let i = 0; i < 30; i++) NH.renderOnce(i / 60); NH.sim(1 / 60); }, [x, y]);
       await page.evaluate(() => NH.sim(1 / 60));
       const st = await page.evaluate(() => { const b = document.querySelector('#banner'), r = b.getBoundingClientRect();
@@ -98,7 +98,7 @@ const { VIEWPORTS, layout } = require('./layout');
     await page.waitForTimeout(2900); const hiddenLater = await page.$eval('#banner', e => e.hidden);
     const firstThree = seen.slice(0, 3);
     ok(`place banner ${vp.name}: shows the area name, never over the player, fades out`, firstThree.every(s => s.shown && s.text === s.want && !s.coversPlayer) && hiddenLater, seen);
-    ok(`place banner ${vp.name}: no repeat when bouncing back within 15s`, !seen[3].shown || seen[3].text !== 'OSHOJA MOTOR PARK' || seen[3].text === seen[2].text, seen[3]);
+    ok(`place banner ${vp.name}: no repeat when bouncing back within 15s`, !seen[3].shown || seen[3].text !== 'OSHODI MOTOR PARK' || seen[3].text === seen[2].text, seen[3]);
     await page.context().close();
   }
 

@@ -67,7 +67,7 @@ lighting rig leaves out Lumen, volumetric fog and the clouds, which together run
 
 ## How to play
 
-You start at home beside Oshoja Motor Park, at 8:00 on day 1, with N5,000.
+You start at home beside Oshodi Motor Park, at 8:00 on day 1, with N5,000.
 
 | Key | On foot | In a vehicle |
 |---|---|---|
@@ -82,18 +82,18 @@ You start at home beside Oshoja Motor Park, at 8:00 on day 1, with N5,000.
 | F1 | lighting menu: harsh morning, golden evening, follow the clock | |
 
 1. Walk to **Baba Driver** at the motor park and hear him out.
-2. Get in the yellow danfo in **bay 1** (the board says BALO).
-3. Drive the route **Oshoja Park → Balo Market (Balo Gate) → Mainland Junction (Iya Basira)**, stopping at each kerb
+2. Get in the yellow danfo in **bay 1** (the board says YABA).
+3. Drive the route **Oshodi → Yaba → Charity**, stopping at each kerb
    (the yellow squares on the minimap). Press **E** to call passengers, and give the right change with **1–3**.
-   - At Balo Gate the agbero wants N500: pay, beg, or drive off (one wanted star).
+   - At Yaba the agbero wants N500: pay, beg, or drive off (one wanted star).
    - Hard braking and fast corners upset passengers, and a smooth ride earns tips.
    - Drive past a stop and its passengers take their money back.
 4. Bring the danfo back to the park within two in-game hours (the clock runs at half speed while it counts).
    Baba takes his 40% and you settle up. Wreck the bus or run late and he lets you try again.
 5. After that, any danfo in the park is yours to work. Press **E** in one to pick a route:
-   - Oshoja – Balo Market
-   - Oshoja – Eko Crest Express
-   - Mainland Loop
+   - Oshodi – Yaba
+   - Oshodi – CMS Express
+   - Mushin Loop
 
    The owner takes 35%. Step out to end the shift.
 
@@ -122,7 +122,7 @@ Progress (cash, cred, integrity, the clock and finished jobs) saves to the `Naij
 |---|---|
 | `Data/lagos_city.json` | The map: tiles, 530 buildings, shop fronts, signs, lamps, props, road markings, road graph, stops, bays |
 | `Data/naija_rules.json` | Routes, fares, conductor numbers, vehicle handling, Baba Driver's lines, missions, outfits |
-| `Data/unreal_vehicles.json` | Unreal-only vehicles: eight luxury types with made-up names (Oba Royale saloon, Oba Mirage grand coupe, Oba Monarch and Zuma GX luxury SUVs, Maitama CX Coupe, Lekki Fury super SUV, Eko Veloce sports car, Zaki W16 hypercar) and where they are parked: four at Oshoja Motor Park (bays 8 to 11), eleven on Eko Crest |
+| `Data/unreal_vehicles.json` | Unreal-only vehicles: eight luxury types with made-up names (Oba Royale saloon, Oba Mirage grand coupe, Oba Monarch and Zuma GX luxury SUVs, Maitama CX Coupe, Lekki Fury super SUV, Eko Veloce sports car, Zaki W16 hypercar) and where they are parked: four at Oshodi Motor Park (bays 8 to 11), eleven on Lagos Island |
 | `Source/.../Core` | `NHGameMode`, `NHGameData` (loads the JSON), `NHHustleSubsystem` (money, clock, heat, save) |
 | `Source/.../Gameplay` | `NHGameDirector` (the mission and conductor shifts), `NHPerson` (passengers, Baba Driver) |
 | `Source/.../Vehicles` | `NHVehicle` (arcade handling, crashes and damage, blockout bodies per type, chase camera) |

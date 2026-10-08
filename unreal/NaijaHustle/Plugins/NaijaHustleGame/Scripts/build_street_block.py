@@ -13,7 +13,7 @@ previous run made (actors tagged NHBlockout), then places:
   - one NHCables per tile that has any: three sagging power lines between utility poles 8 to 16 m apart on the
     same street and a service drop from each pole to the nearest wall (five lines and two drops in the dusty quarter)
   - a sphere reflection capture over every road junction, so shiny surfaces mirror the street they stand in
-  - the NHLightingRig (harsh morning to start with) and a PlayerStart at home by Oshoja Motor Park
+  - the NHLightingRig (harsh morning to start with) and a PlayerStart at home by Oshodi Motor Park
   - NHGameMode as this level's GameMode Override, so the game runs here without changing your
     project's default game mode
 Safe to run again after re-exporting the data.

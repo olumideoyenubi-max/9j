@@ -44,7 +44,7 @@ After the first build and first open (sections 1 and 2 below):
 2. **Tools > Execute Python Script…** > `Plugins/NaijaHustleGame/Scripts/build_street_block.py`. It creates
    `/Game/NaijaHustle/Maps/L_Slice_Street` (World Partition) and places the city. That takes a minute or two
    and asks nothing. Running it again replaces what it made before.
-3. Press **Play**. You start at home beside Oshoja Motor Park; the light follows the in-game clock. Press **F1** for the
+3. Press **Play**. You start at home beside Oshodi Motor Park; the light follows the in-game clock. Press **F1** for the
    lighting menu, **L** to cycle the lighting presets, or type
    `NHLighting Day` (or `DustyNoon`, `Sunset`, `NightRain`) in the console (the backtick key). In the editor, select
    **LightingRig** in the Outliner and use the **Set Day / Set Dusty Noon / Set Sunset / Set Night Rain** buttons in
@@ -54,11 +54,11 @@ After the first build and first open (sections 1 and 2 below):
 
 | Actor | Count | What it is |
 |---|---|---|
-| `NHCityTile` | 24 | 64 m × 64 m pieces of the 384 m × 256 m map: asphalt roads (laterite in Oke-Erupe), pavements with kerbs and gutters, open ground, grass, the motor park, fuel forecourts, the lagoon with embankments, Third Lagoon Bridge on piers, 1,852 road markings, 4,872 props (poles, transformers, water tanks, AC units, generators, chairs, umbrellas, drums, trees...), 295 shop fronts (roller shutters, half-open, open with counters, painted), 299 signs with their shop names, and 63 street lamps with spot lights |
-| `NHBlockoutBuilding` | 545 | 530 buildings (houses with windows, burglar bars, balconies with laundry, flat roofs or rusty zinc gables, rebar stubs in Oke-Erupe; glass towers on Eko Crest; market stalls; stilt houses), 3 fuel stations, 11 bus shelters and a pedestrian footbridge |
+| `NHCityTile` | 24 | 64 m × 64 m pieces of the 384 m × 256 m map: asphalt roads (laterite in Mushin), pavements with kerbs and gutters, open ground, grass, the motor park, fuel forecourts, the lagoon with embankments, Third Mainland Bridge on piers, 1,852 road markings, 4,872 props (poles, transformers, water tanks, AC units, generators, chairs, umbrellas, drums, trees...), 295 shop fronts (roller shutters, half-open, open with counters, painted), 299 signs with their shop names, and 63 street lamps with spot lights |
+| `NHBlockoutBuilding` | 545 | 530 buildings (houses with windows, burglar bars, balconies with laundry, flat roofs or rusty zinc gables, rebar stubs in Mushin; glass towers on Lagos Island; market stalls; stilt houses), 3 fuel stations, 11 bus shelters and a pedestrian footbridge |
 | Walk-in shops | 6 | The open shops nearest the start have a hollow ground floor: a doorway, a tiled floor, shelves of goods, a counter and a strip light that glows at night |
 | `NHLightingRig` | 1 | Sun or moon, sky atmosphere, real-time sky light, height fog, volumetric clouds, an unbound post-process volume and the weather parameters |
-| `PlayerStart` | 1 | Home, next to Oshoja Motor Park |
+| `PlayerStart` | 1 | Home, next to Oshodi Motor Park |
 
 Everything is drawn with instanced engine shapes (box, cylinder, sphere, cone) and one material, using
 per-instance colour, roughness, metal, night glow and wetness. A building costs about six draw calls. Each actor

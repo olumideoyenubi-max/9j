@@ -1,5 +1,5 @@
 // "First Day on the Danfo", end to end: Baba Driver's dialogue, the bay-1 danfo, three stops with
-// passengers boarding and getting down, mood, the agbero at Balo Market, the summary with Baba's 40%
+// passengers boarding and getting down, mood, the agbero at Yaba, the summary with Baba's 40%
 // cut, fail + retry (wrecked, late), and the conductor-shift side job unlocking afterwards.
 const { chromium, open } = require('./harness');
 let fails = 0; const ok = (name, cond, info) => { console.log((cond ? 'PASS ' : 'FAIL ') + name + (cond ? '' : '  ' + JSON.stringify(info))); if (!cond) fails++; };
@@ -34,31 +34,31 @@ let fails = 0; const ok = (name, cond, info) => { console.log((cond ? 'PASS ' : 
     out.deadline = NH.MS.cur.deadline - NH.S.minutes;
     const m0 = NH.S.minutes; NH.sim(10); out.clock10s = +(NH.S.minutes - m0).toFixed(1); // half-speed clock while the deadline runs
     const st = NH.BUS_STOPS.oshoja; NH.updateJobCard(); out.target = NH.JOB.target && Math.hypot(NH.JOB.target.x - st.x, NH.JOB.target.y - st.y) < 1; // job card and arrow share this target
-    // stop 1: Oshoja (no agbero on the first day)
+    // stop 1: Oshodi (no agbero on the first day)
     out.agbero1 = T3.stop('oshoja'); out.ctx = NH.actionContext() && NH.actionContext().label;
     const waiting = NH.SHIFT.waiting.oshoja.length; out.waiting = waiting; NH.callPassengers();
     out.onboard1 = NH.SHIFT.onboard.length; out.fares = NH.SHIFT.onboard.map(p => p.fare); out.dests = NH.SHIFT.onboard.map(p => p.dest);
     out.noChange = !NH.SHIFT.changeQ.length; NH.sim(3); out.inside = NH.SHIFT.onboard.every(p => p.state === 'ride'); NH.depart();
-    // stop 2: Balo Market, the agbero wants ₦500; pay
+    // stop 2: Yaba, the agbero wants ₦500; pay
     const before = NH.SHIFT.carried; out.agbero2 = T3.stop('balogate', 'pay'); out.ticket = NH.SHIFT.agbero;
     out.droppedAt2 = NH.SHIFT.carried - before; out.noneFor2 = NH.SHIFT.onboard.every(p => p.dest !== 'balogate');
     NH.callPassengers(); NH.sim(3); NH.depart();
     // mood: a hard stop from speed upsets passengers
     const v = NH.player.veh; NH.SHIFT.comfort = 100; v.v = 260; NH.keys.Space = true; NH.sim(.6); NH.keys.Space = false; out.moodAfterBrake = Math.round(NH.SHIFT.comfort);
     out.hud = document.querySelector('#hustle').textContent;
-    // stop 3: Mainland Junction
+    // stop 3: Charity
     T3.stop('iya'); NH.callPassengers(); NH.sim(3); NH.depart(); NH.sim(.2);
     out.routeDone = NH.SHIFT.routeDone; out.oi3 = NH.MS.cur.oi; out.left = NH.SHIFT.onboard.length;
     return out; });
-  ok('the mission danfo waits in bay 1 with BALO on its board', r2.atBay && r2.dest === 'BALO', r2);
+  ok('the mission danfo waits in bay 1 with YABA on its board', r2.atBay && r2.dest === 'YABA', r2);
   ok('getting in starts the mission route with Baba Driver\'s 40% cut and a 2-hour in-game deadline', r2.inBus && r2.oi === 2 && r2.shift && r2.cut === .4 && Math.round(r2.deadline) === 120, r2);
   ok('the clock runs at half speed while the deadline counts', r2.clock10s === 10, r2.clock10s);
   ok('job card and arrow share one target: the next stop', r2.target, r2);
   ok('stop 1: ACTION calls passengers; 2–5 wait and all board, paying ₦200–₦400 exact', !r2.agbero1 && /^Call passengers/.test(r2.ctx) && r2.waiting >= 2 && r2.waiting <= 5 && r2.onboard1 === r2.waiting && r2.fares.every(f => f >= 200 && f <= 400) && r2.noChange, r2);
   ok('passengers walk to the danfo and disappear inside', r2.inside, r2);
   ok('passengers only ride forward (later stops, or home to the park)', r2.dests.every(d => d === 'balogate' || d === 'iya' || d === null), r2.dests);
-  ok('stop 2: the agbero at Balo Market takes a ₦500 ticket', r2.agbero2 && r2.ticket === 500, r2);
-  ok('passengers for Balo Market got down there automatically', r2.droppedAt2 === r2.dests.filter(d => d === 'balogate').length && r2.noneFor2, r2);
+  ok('stop 2: the agbero at Yaba takes a ₦500 ticket', r2.agbero2 && r2.ticket === 500, r2);
+  ok('passengers for Yaba got down there automatically', r2.droppedAt2 === r2.dests.filter(d => d === 'balogate').length && r2.noneFor2, r2);
   ok('hard braking lowers the mood meter (shown as a face on the HUD)', r2.moodAfterBrake < 100 && /Mood/.test(r2.hud), r2);
   ok('after stop 3 the objective is to bring the danfo back to the park', r2.routeDone && r2.oi3 === 3, r2);
 

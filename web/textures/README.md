@@ -13,7 +13,7 @@ There are eight sets. Each set has a required albedo (colour) map and optional n
 |---|---|---|---|---|
 | Weathered concrete | `concrete_wall_albedo.jpg` | `concrete_wall_normal.jpg` | `concrete_wall_rough.jpg` | building walls (detail layer over the painted facades) |
 | Peeling plaster | `peeling_plaster_albedo.jpg` | `peeling_plaster_normal.jpg` | `peeling_plaster_rough.jpg` | building walls (the other half of the buildings) |
-| Laterite dirt road | `laterite_road_albedo.jpg` | `laterite_road_normal.jpg` | `laterite_road_rough.jpg` | Oke-Erupe's unpaved streets and verges |
+| Laterite dirt road | `laterite_road_albedo.jpg` | `laterite_road_normal.jpg` | `laterite_road_rough.jpg` | Mushin's unpaved streets and verges |
 | Cracked asphalt | `cracked_asphalt_albedo.jpg` | `cracked_asphalt_normal.jpg` | `cracked_asphalt_rough.jpg` | paved roads |
 | Rusty corrugated zinc | `rusty_zinc_albedo.jpg` | `rusty_zinc_normal.jpg` | `rusty_zinc_rough.jpg` | zinc roofs and sheds |
 | Blue tarp | `blue_tarp_albedo.jpg` | `blue_tarp_normal.jpg` | `blue_tarp_rough.jpg` | tarp shades over stalls |

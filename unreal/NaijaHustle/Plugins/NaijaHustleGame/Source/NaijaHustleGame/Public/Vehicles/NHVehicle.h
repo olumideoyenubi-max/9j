@@ -30,7 +30,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Vehicle") FName VehicleType = TEXT("danfo");
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Vehicle") FLinearColor Paint = FLinearColor(0.9f, 0.55f, 0.f);
 	/** Destination board text on a danfo */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Vehicle") FString Board = TEXT("BALO");
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Vehicle") FString Board = TEXT("YABA");
 
 	UPROPERTY(BlueprintReadOnly, Category = "Vehicle") float Health = 100.f;
 	UPROPERTY(BlueprintReadOnly, Category = "Vehicle") float MaxHealth = 100.f;

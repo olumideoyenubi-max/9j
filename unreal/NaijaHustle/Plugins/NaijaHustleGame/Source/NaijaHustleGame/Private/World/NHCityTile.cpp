@@ -182,7 +182,7 @@ void ANHCityTile::BuildGround()
 	}
 }
 
-// Oke-Erupe's dirt roads: long low rut mounds along the way the road runs, and rubbish heaps on the verges.
+// Mushin's dirt roads: long low rut mounds along the way the road runs, and rubbish heaps on the verges.
 // All of it is detail (no collision), so driving and walking are unchanged.
 void ANHCityTile::BuildDustyStreet()
 {

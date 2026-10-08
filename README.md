@@ -11,6 +11,7 @@ and **Abuja**. The game now runs in **Unreal Engine 5.8** (`unreal/`), with a pl
 - **Tech:** [`docs/TECH.md`](docs/TECH.md): streaming one city at a time, the <200 MB base
   install, memory budgets, device tiers, layers, saves, build settings.
 
+- **Map:** [`docs/LAGOS_MAP.md`](docs/LAGOS_MAP.md): the real Lagos stops, routes and districts the game uses.
 - **Progress:** [`PROGRESS.md`](PROGRESS.md): what's done, in progress and next, known bugs, the latest
   frame rate, and screenshots.
 - **Third-party assets:** [`ASSETS.md`](ASSETS.md): what to re-add from Fab. None of it is in this repo.
@@ -40,7 +41,7 @@ and **Abuja**. The game now runs in **Unreal Engine 5.8** (`unreal/`), with a pl
 (loaded from jsDelivr, so it needs a connection the first time). The whole city is generated in code
 from the same grid the game logic uses. Photo textures and GLB models are optional extras (see
 `web/textures/README.md` and `web/models/README.md`); without them everything is procedural. It has the danfo conductor hustle ("First Day
-on the Danfo" and conductor shifts), Oshoja Motor Park with numbered bays and destination danfos, bus
+on the Danfo" and conductor shifts), Oshodi Motor Park with numbered bays and destination danfos, bus
 stops, Gidi Fuel stations, 5 story missions, Task Force chases with search and decay, the checkpoint
 "settle" choice, a tailor, a car wash business, day and night with real-time sun shadows, and the
 phone (Gist, KoboPay, Yarns, MapAm). Open it in any modern browser on a desktop or phone. Its rules
@@ -81,7 +82,7 @@ the title screen, in the phone's MapAm app, or with G:
 
 The look aims for footage of a dusty Lagos street at midday: a harsh sun with sharp shadows, a blue sky
 with drifting clouds, warm beige haze that settles low and thickens with distance, and a warm,
-desaturated, high-contrast grade with subtle bloom. Oke-Erupe, in the north-west, is the dusty district.
+desaturated, high-contrast grade with subtle bloom. Mushin, in the north-west, is the dusty district.
 It has unpaved laterite streets with ruts, puddles, weeds, rubble and trash, and two- and three-storey houses of
 raw or faded concrete with exposed rebar. The houses have balconies of drying laundry and rusty zinc
 roofs. Stalls sit under blue tarps, with blue drums, buckets and vendors sitting in the shade, and
@@ -100,7 +101,7 @@ sound, G for graphics quality. On a phone, use the joystick and buttons (tap BAG
 Street life: crowds three to five times denser (thinning with distance, sized by the graphics setting),
 hawkers working stopped traffic and coming to your window, danfos stopping anywhere to load, okadas
 squeezing between lanes, kekes everywhere, overloaded trucks, honking, and a go-slow on the main roads at
-rush hour (7–10am and 4–8pm). Agberos collect "ticket" at Oshoja Park, a preacher works the Balo Gate bus
+rush hour (7–10am and 4–8pm). Agberos collect "ticket" at Oshodi, a preacher works the Yaba bus
 stop with a megaphone, kids play football in a market alley, a traffic warden runs a junction, and at
 weekends there's an owambe under canopies. Recharge-card stands, roadside mechanics, sand and block piles,
 clothes lines and running generators fill the pavements. All sound is synthesised in the browser: horns,
@@ -110,7 +111,7 @@ Inventory: a GTA-style bag with six tabs (Items, Cash, Documents, Clothing, Vehi
 8-slot quick wheel; the game slows to 30% while either is open. You start with pure water, gala,
 puff-puff, an energy drink, a first-aid kit, a toolkit, a jerrycan and your phone, in a 12-slot nylon
 bag (a backpack holds 20, a Ghana-Must-Go bag 30). Kiosks, market stalls and Trust In God Medicine Store
-sell supplies; the Oshoja Motor Park ticket booth sells a driver's licence and vehicle papers, which Task
+sell supplies; the Oshodi Motor Park ticket booth sells a driver's licence and vehicle papers, which Task
 Force checkpoints now ask for. Cash on hand, the bank, documents, outfits and the vehicles you've driven
 all save with the game.
 
@@ -154,5 +155,7 @@ dotnet run --project Tools/Playthrough [seed]
 
 ## Originality
 
-All characters, brands, organisations, police units, apps and landmarks are fictional. The
-content test fails on known real-world brand names. See `docs/GDD.md §9`.
+All characters, brands, organisations, police units and apps are fictional, and the content test fails on
+known real-world brand names (see `docs/GDD.md §9`). Place names in the Unreal game and the browser demo are
+real Lagos places and danfo stops: see [`docs/LAGOS_MAP.md`](docs/LAGOS_MAP.md). The archived Unity project
+still uses invented place names.

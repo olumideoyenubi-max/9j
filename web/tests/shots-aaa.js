@@ -1,4 +1,4 @@
-// Screenshots of the dusty-street look: Oke-Erupe at noon, a sprint, wheel dust, the helicopter (manual look): OUT=dir node shots-aaa.js
+// Screenshots of the dusty-street look: Mushin at noon, a sprint, wheel dust, the helicopter (manual look): OUT=dir node shots-aaa.js
 const { chromium, open } = require('./harness');
 const OUT = process.env.OUT || '/tmp/claude-0/shots';
 (async () => {

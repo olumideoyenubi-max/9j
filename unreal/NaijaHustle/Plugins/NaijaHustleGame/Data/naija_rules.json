@@ -45,7 +45,7 @@
  "routes": [
   {
    "id": "osh-balo",
-   "name": "Oshoja – Balo Market",
+   "name": "Oshodi – Yaba",
    "stops": [
     "oshoja",
     "iya",
@@ -59,11 +59,11 @@
     400
    ],
    "busy": 6,
-   "blurb": "Busy market run: plenty of passengers, agberos at Oshoja Park and Balo Gate."
+   "blurb": "Busy market run: plenty of passengers, agberos at Oshodi and Yaba."
   },
   {
    "id": "osh-eko",
-   "name": "Oshoja – Eko Crest Express",
+   "name": "Oshodi – CMS Express",
    "stops": [
     "oshoja",
     "second",
@@ -76,11 +76,11 @@
     500
    ],
    "busy": 5,
-   "blurb": "Long hops over Third Lagoon Bridge: higher fares, go-slow risk, agberos at Bridge Foot."
+   "blurb": "Long hops over Third Mainland Bridge: higher fares, go-slow risk, agberos at Iyana Oworo."
   },
   {
    "id": "mainland",
-   "name": "Mainland Loop",
+   "name": "Mushin Loop",
    "stops": [
     "ebute",
     "church",
@@ -97,7 +97,7 @@
  ],
  "firstRoute": {
   "id": "m_first",
-  "name": "First Day: Oshoja – Balo Market – Mainland Junction",
+  "name": "First Day: Oshodi – Yaba – Charity",
   "stops": [
    "oshoja",
    "balogate",
@@ -110,9 +110,9 @@
   "busy": 5,
   "linear": true,
   "label": {
-   "oshoja": "Oshoja Park",
-   "balogate": "Balo Market (Balo Gate)",
-   "iya": "Mainland Junction (Iya Basira)"
+   "oshoja": "Oshodi",
+   "balogate": "Yaba",
+   "iya": "Charity"
   }
  },
  "paxNames": [
@@ -132,8 +132,8 @@
   "Ada"
  ],
  "calls": [
-  "\"Oshoja! Oshoja! Enter with your change!\"",
-  "\"Eko Crest, straight! No stopping!\"",
+  "\"Oshodi! Oshodi! Enter with your change!\"",
+  "\"CMS, straight! No stopping!\"",
   "\"Owa! Owa! Hold your bag well!\"",
   "\"Driver, wait! One chance remain!\""
  ],
@@ -141,7 +141,7 @@
   "intro": [
    "Ehen! You don come. Na you be the new conductor?",
    "You don ready? Na today you go learn work. No spoil my motor o!",
-   "Danfo dey bay one. Oshoja, Balo Market, Mainland Junction, then come back here. Two hours. No dull yourself.",
+   "Danfo dey bay one. Oshodi, Yaba, Charity, then come back here. Two hours. No dull yourself.",
    "Stop for the ring, shout your route, collect correct money. If agbero hold you for Balo, use sense."
   ],
   "retry": [
@@ -365,11 +365,11 @@
    "req": [],
    "reward": 0,
    "cred": 20,
-   "brief": "Baba Sule, Baba Driver to everybody at the park, needs a conductor. One round trip in his danfo: Oshoja, Balo Market, Mainland Junction and back to the park. Shout well, collect correct money, and no spoil his motor.",
+   "brief": "Baba Sule, Baba Driver to everybody at the park, needs a conductor. One round trip in his danfo: Oshodi, Yaba, Charity and back to the park. Shout well, collect correct money, and no spoil his motor.",
    "objectives": [
     {
      "type": "goto",
-     "text": "Meet Baba Driver at Oshoja Motor Park",
+     "text": "Meet Baba Driver at Oshodi Motor Park",
      "sub": "",
      "clock": 0,
      "r": 750
@@ -377,7 +377,7 @@
     {
      "type": "enter",
      "text": "Get in the danfo at bay 1",
-     "sub": "The yellow bus with BALO on its board",
+     "sub": "The yellow bus with YABA on its board",
      "clock": 0,
      "r": 0
     },
@@ -390,7 +390,7 @@
     },
     {
      "type": "goto",
-     "text": "Bring the danfo back to Oshoja Motor Park",
+     "text": "Bring the danfo back to Oshodi Motor Park",
      "sub": "Baba Driver is waiting by the bays",
      "clock": 0,
      "r": 875
@@ -431,19 +431,19 @@
    ]
   },
   "lag_03": {
-   "title": "Balo Market Run",
+   "title": "Yaba Market Run",
    "giver": "amaka",
    "req": [
     "lag_01"
    ],
    "reward": 15000,
    "cred": 25,
-   "brief": "Amaka's shipment of phone screens is stuck across Balo Market. Thread through alleys, wheelbarrows and Task Force raids before closing time.",
+   "brief": "Amaka's shipment of phone screens is stuck across Yaba. Thread through alleys, wheelbarrows and Task Force raids before closing time.",
    "objectives": [
     {
      "type": "goto",
      "text": "Get to the warehouse",
-     "sub": "Balo Market, east side",
+     "sub": "Yaba, east side",
      "clock": 0,
      "r": 550
     },
@@ -464,7 +464,7 @@
    ]
   },
   "lag_07": {
-   "title": "Third Lagoon Bridge",
+   "title": "Third Mainland Bridge",
    "giver": "kemi",
    "req": [
     "lag_02",
@@ -476,7 +476,7 @@
    "objectives": [
     {
      "type": "goto",
-     "text": "Meet Kemi on Eko Crest",
+     "text": "Meet Kemi on Lagos Island",
      "sub": "",
      "clock": 0,
      "r": 750
@@ -523,7 +523,7 @@
    "objectives": [
     {
      "type": "goto",
-     "text": "Make the last bus at the Luxury Bus Park",
+     "text": "Make the last bus at the Jibowu Luxury Bus Park",
      "sub": "",
      "clock": 0,
      "r": 875

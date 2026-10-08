@@ -74,10 +74,10 @@ void ANHGameDirector::BeginPlay()
 		Stage = EStage::Done;
 		if (D->ParkBays.Num() > 0)
 		{
-			SpawnVehicle(TEXT("danfo"), D->ParkBays[0].Pos, D->ParkBays[0].Yaw, D->Spec(TEXT("danfo")).Colors.Num() ? D->Spec(TEXT("danfo")).Colors[0] : FLinearColor(0.9f, 0.55f, 0.f), TEXT("BALO"));
+			SpawnVehicle(TEXT("danfo"), D->ParkBays[0].Pos, D->ParkBays[0].Yaw, D->Spec(TEXT("danfo")).Colors.Num() ? D->Spec(TEXT("danfo")).Colors[0] : FLinearColor(0.9f, 0.55f, 0.f), TEXT("YABA"));
 		}
 	}
-	const TCHAR* Boards[] = { TEXT("OSHOJA"), TEXT("EKO"), TEXT("IYA B.") };
+	const TCHAR* Boards[] = { TEXT("OSHODI"), TEXT("EKO"), TEXT("IYA B.") };
 	for (int32 I = 1; I <= 3 && I < D->ParkBays.Num(); ++I)
 	{
 		SpawnVehicle(TEXT("danfo"), D->ParkBays[I].Pos, D->ParkBays[I].Yaw, FLinearColor(0.9f, 0.55f, 0.f), Boards[I - 1]);
@@ -91,11 +91,11 @@ void ANHGameDirector::BeginPlay()
 	{
 		SpawnVehicle(TEXT("sedan"), D->ParkBays[6].Pos, D->ParkBays[6].Yaw, FLinearColor(0.12f, 0.2f, 0.3f), FString());
 	}
-	for (const FNHParkedVehicle& P : D->Parked) // the luxury cars: two at the park, the rest on Eko Crest
+	for (const FNHParkedVehicle& P : D->Parked) // the luxury cars: two at the park, the rest on Lagos Island
 	{
 		SpawnVehicle(P.Type, P.Pos, P.Yaw, P.Color, FString());
 	}
-	ANHHUD::Toast(this, TEXT("NAIJA HUSTLE: welcome to Lagos. Find Baba Driver at Oshoja Motor Park."), 1);
+	ANHHUD::Toast(this, TEXT("NAIJA HUSTLE: welcome to Lagos. Find Baba Driver at Oshodi Motor Park."), 1);
 }
 
 ANHVehicle* ANHGameDirector::SpawnVehicle(FName Type, const FVector2D& Pos, float Yaw, const FLinearColor& Paint, const FString& Board)
@@ -122,7 +122,7 @@ void ANHGameDirector::SpawnMissionBus()
 	}
 	if (D && D->ParkBays.Num() > 0)
 	{
-		MissionBus = SpawnVehicle(TEXT("danfo"), D->ParkBays[0].Pos, D->ParkBays[0].Yaw, FLinearColor(0.9f, 0.55f, 0.f), TEXT("BALO"));
+		MissionBus = SpawnVehicle(TEXT("danfo"), D->ParkBays[0].Pos, D->ParkBays[0].Yaw, FLinearColor(0.9f, 0.55f, 0.f), TEXT("YABA"));
 	}
 }
 
@@ -451,7 +451,7 @@ void ANHGameDirector::UpdateFirstDay(float DeltaSeconds)
 		if (!Shift.bOn)
 		{
 			ObjTitle = Stage == EStage::Done ? TEXT("FREE ROAM") : D->FirstDayTitle.ToUpper();
-			ObjText = Stage == EStage::Done ? TEXT("Hustle: take a danfo from Oshoja Motor Park") : TEXT("Talk to Baba Driver to try again");
+			ObjText = Stage == EStage::Done ? TEXT("Hustle: take a danfo from Oshodi Motor Park") : TEXT("Talk to Baba Driver to try again");
 			ObjSub = Stage == EStage::Done ? TEXT("Get in, press E to pick a route. More jobs come in the next update.") : FString();
 			bMarker = Stage == EStage::Failed;
 			Marker = Park;

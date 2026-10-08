@@ -6,7 +6,7 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
 (async () => {
   const b = await chromium.launch();
   { const { page, errors } = await open(b);
-    // setup helper inside the page: player in Baba Sule's danfo at Oshoja Park
+    // setup helper inside the page: player in Baba Sule's danfo at Oshodi
     await page.evaluate(() => {
       window.T2 = {
         bus() { NH.resetWorld(); NH.WORLD.noJams = true; NH.seed(11); if (!NH.S.done.includes('lag_01')) NH.S.done.push('lag_01'); const v = NH.spawnVehicle('danfo', 256, 520, 0, { parked: true, parkDanfo: true }); v.driver = 'player'; NH.player.veh = v; return v; },
@@ -24,8 +24,8 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
       const S = NH.SHIFT, out = { on: S.on, route: S.route };
       // passengers waiting at every stop, fares 200–500, raised hands (state 'wait')
       out.waiting = Object.entries(S.waiting).map(([k, l]) => [k, l.length, Math.min(...l.map(p => p.fare)), Math.max(...l.map(p => p.fare))]);
-      // arrive at Oshoja Park (agbero stop) -> agbero sheet, pay
-      T2.at('oshoja'); out.atStop = S.atStop; out.agberoSheet = /Agbero at Oshoja Park/.test(T2.sheet());
+      // arrive at Oshodi (agbero stop) -> agbero sheet, pay
+      T2.at('oshoja'); out.atStop = S.atStop; out.agberoSheet = /Agbero at Oshodi/.test(T2.sheet());
       T2.click('#sheet [data-a="pay"]'); out.agberoPaid = S.agbero;
       // panel + CALL
       NH.sim(.05); out.panel = !document.querySelector('#cpanel').hidden; const w0 = S.waiting.oshoja.length, f0 = S.fares;
@@ -39,20 +39,20 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
       // next stop: Iya Basira; passengers bound here get down (tips possible)
       const due = S.onboard.filter(p => p.dest === 'iya').length; T2.at('iya'); out.alighted = S.carried; out.dueIya = due;
       T2.leave();
-      // drive past Second Gate without stopping -> missed
+      // drive past Anthony without stopping -> missed
       const st = NH.BUS_STOPS.second, v = NH.player.veh; const pen0 = S.penalties;
       v.x = st.x - 60; v.y = st.y; v.v = 150; NH.sim(.05); v.x = st.x + 220; v.v = 150; NH.sim(.05);
       out.missed = S.missed; out.missPenalty = S.penalties - pen0; out.idxAfterMiss = S.idx;
       // rough driving drops comfort, smooth driving restores it
       if (!S.onboard.length) { S.onboard.push(...S.waiting.marketrd.splice(0, 2)); S.onboard.forEach(p => p.state = 'ride'); }
       NH.clearHeat(false); NH.setVehicles([v]); // just the bus on an empty road: no cops, no traffic to hit
-      S.comfort = 100; v.x = 66 * 32 + 200; v.y = 55 * 32; v.a = 0; S.atStop = null; // open road on Lekka Strip, far from any stop
+      S.comfort = 100; v.x = 66 * 32 + 200; v.y = 55 * 32; v.a = 0; S.atStop = null; // open road on Lekki, far from any stop
       for (let i = 0; i < 3; i++) { v.x = 66 * 32 + 200; v.y = 55 * 32; v.a = 0; NH.keys.KeyW = true; NH.sim(2.5); NH.keys.KeyW = false; NH.keys.Space = true; NH.sim(.8); NH.keys.Space = false; }
       out.comfortRough = Math.round(S.comfort); NH.sim(4); out.comfortCalm = Math.round(S.comfort);
       return out;
     });
     ok('passengers wait at every route stop with ₦200–₦500 fares', r.on && r.waiting.length === 6 && r.waiting.every(([, n, lo, hi]) => n >= 2 && lo >= 200 && hi <= 500), r.waiting);
-    ok('agbero at Oshoja Park demands a ticket; paying records it', r.atStop === 'oshoja' && r.agberoSheet && r.agberoPaid === 400, r);
+    ok('agbero at Oshodi demands a ticket; paying records it', r.atStop === 'oshoja' && r.agberoSheet && r.agberoPaid === 400, r);
     ok('CALL loads up to 3, collects fares; panel shows at the stop', r.panel && r.boarded > 0 && r.boarded <= 3 && r.faresUp > 0 && r.waitDrop >= r.boarded - 1, r);
     ok('change: "No change" keeps the money but costs integrity', r.changeQs === 0 || (r.noChangeKept === undefined || (r.noChangeKept > 0 && r.integDrop >= 3)), r);
     ok('leaving a stop moves on to the next one; due passengers get down', r.idxAfterLeave === 1 && r.atStopAfter === null && r.alighted >= r.dueIya, r);
@@ -63,12 +63,12 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
     const r2 = await page.evaluate(() => {
       const out = {};
       T2.bus(); NH.startShift('osh-balo'); const S = NH.SHIFT, v = NH.player.veh;
-      // full bus at Market Road
+      // full bus at Ikorodu Road
       S.idx = 3; const fill = []; while (S.waiting.marketrd.length < 20) S.waiting.marketrd.push(S.waiting.marketrd[0] ? Object.assign({}, S.waiting.marketrd[0], { id: Math.random(), dest: 'marketsq' }) : null);
       T2.at('marketrd'); for (let i = 0; i < 8 && S.onboard.length < NH.CAP; i++) { NH.callPassengers(); while (S.changeQ.length) NH.answerChange(S.changeQ[0].right); }
       out.full = S.onboard.length; const b0 = S.bonus; T2.leave(); out.bonus = S.bonus - b0;
-      // Balo Gate agbero: drive off -> heat + doubled demand
-      T2.at('balogate'); out.sheet = /Agbero at Balo Gate/.test(T2.sheet()); T2.click('#sheet [data-a="off"]');
+      // Yaba agbero: drive off -> heat + doubled demand
+      T2.at('balogate'); out.sheet = /Agbero at Yaba/.test(T2.sheet()); T2.click('#sheet [data-a="off"]');
       out.stars = NH.stars(); out.demand = S.demand.balogate; NH.clearHeat(false);
       // settle up
       const t = NH.shiftTotals(); const cash0 = NH.S.cash; NH.endShift();
@@ -102,7 +102,7 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
     const r = await page.evaluate(() => {
       NH.resetWorld(); NH.WORLD.noJams = true; NH.seed(21); NH.player.veh = null; NH.player.x = 700; NH.player.y = 700; NH.S.minutes = 600;
       NH.sim(20); // traffic fills in
-      const road = NH.MAIN_ROADS.find(r => r.name === 'Market Road'); NH.startJam(road, 120);
+      const road = NH.MAIN_ROADS.find(r => r.name === 'Ikorodu Road'); NH.startJam(road, 120);
       let jam = 0, jn = 0, free = 0, fn = 0;
       NH.sim(40, () => { for (const v of NH.vehicles()) if (v.driver === 'ai' && v.mode === 'lane') { if (NH.jammed(v.from, v.to)) { jam += Math.abs(v.v); jn++; } else { free += Math.abs(v.v); fn++; } } });
       const during = { jamSpeed: Math.round(jam / Math.max(1, jn)), freeSpeed: Math.round(free / Math.max(1, fn)), jamSamples: jn, onMinimap: NH.jams().length };
@@ -121,7 +121,7 @@ const results = []; const ok = (name, pass, info) => results.push({ name, pass, 
     await page.evaluate(() => { NH.resetWorld(); NH.WORLD.noJams = true; NH.seed(8); const v = NH.spawnVehicle('danfo', 256, 520, 0, { parked: true, parkDanfo: true }); v.driver = 'player'; NH.player.veh = v;
       NH.startShift('mainland'); const st = NH.BUS_STOPS.ebute; v.x = st.x; v.y = st.y; v.v = 0; NH.sim(.1);
       for (let i = 0; i < 3 && !NH.SHIFT.changeQ.length; i++) { NH.SHIFT.waiting.ebute.push(...NH.SHIFT.waiting.church.splice(0, 2).map(p => Object.assign(p, { note: 1000 }))); NH.callPassengers(); }
-      NH.sim(.1); NH.ui.toast('Ebute Corner: 4 waiting.'); });
+      NH.sim(.1); NH.ui.toast('Olosha: 4 waiting.'); });
     await page.waitForTimeout(300); await page.evaluate(() => NH.sim(1 / 60));
     const L = await layout(page); const vis = await page.evaluate(() => ({ panel: !document.querySelector('#cpanel').hidden, q: !document.querySelector('#cp-change').hidden }));
     ok(`layout ${vp.name}: conductor panel + change question`, vis.panel && vis.q && !L.overlaps.length && !L.off.length && !L.hscroll, Object.assign(L, vis));

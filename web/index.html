@@ -464,7 +464,7 @@ html.inv-open #tbtns #tb-bag { position: fixed; right: var(--gutR); bottom: var(
     <div class="stripe"></div>
     <div class="tag">Act 1 · Lagos · Browser demo</div>
     <h1>NAIJA<br>HUSTLE</h1>
-    <p>You are <b>Lucky</b>, a mainland boy with ₦5,000 and big plans. Baba Sule needs a conductor for his danfo. Start there, then hustle your way across Third Lagoon Bridge.</p>
+    <p>You are <b>Lucky</b>, a mainland boy with ₦5,000 and big plans. Baba Sule needs a conductor for his danfo. Start there, then hustle your way across Third Mainland Bridge.</p>
     <div class="keys kb-only">
       <kbd>WASD / arrows</kbd><span>Walk · drive</span>
       <kbd>E</kbd><span>Action: missions, conductor shift, refuel, shops (or get in/out)</span>
@@ -563,17 +563,17 @@ const inPark = (c, r) => c >= 4 && c <= 11 && ((r >= 6 && r <= 13) || (r >= 46 &
 function tileAt(x, y) { const c = Math.floor(x / CELL), r = Math.floor(y / CELL); if (c < 0 || r < 0 || c >= COLS || r >= ROWS) return T.BUILD; return grid[I(c, r)]; }
 const solidAt = (x, y) => SOLID[tileAt(x, y)] === 1;
 
-// Oke-Erupe: the dusty quarter west of Market Road: laterite streets, raw concrete, tarps and tangled wires
+// Mushin: the dusty quarter west of Ikorodu Road: laterite streets, raw concrete, tarps and tangled wires
 const DUSTY = { c0: 0, c1: 22, r0: 24, r1: 44 };
 const isDusty = (c, r) => c >= DUSTY.c0 && c < DUSTY.c1 && r >= DUSTY.r0 && r < DUSTY.r1;
 function districtAt(x, y) {
   const c = Math.floor(x / CELL), r = Math.floor(y / CELL);
-  if (isLagoon(c)) return r === 24 || r === 25 ? 'Third Lagoon Bridge' : r >= 46 ? 'Stilt Town Waters' : 'The Lagoon';
-  if (c >= 64) return r < 40 ? 'Eko Crest' : 'Lekka Strip';
-  if (c >= 22 && r >= 36) return 'Balo Market';
-  if (c < 22 && r < 24) return 'Oshoja Junction';
-  if (c < 14 && r >= 44) return 'Luxury Bus Park';
-  if (isDusty(c, r)) return 'Oke-Erupe';
+  if (isLagoon(c)) return r === 24 || r === 25 ? 'Third Mainland Bridge' : r >= 46 ? 'Makoko' : 'Lagos Lagoon';
+  if (c >= 64) return r < 40 ? 'Lagos Island' : 'Lekki';
+  if (c >= 22 && r >= 36) return 'Yaba';
+  if (c < 22 && r < 24) return 'Oshodi';
+  if (c < 14 && r >= 44) return 'Jibowu Luxury Bus Park';
+  if (isDusty(c, r)) return 'Mushin';
   return 'Mainland';
 }
 
@@ -603,7 +603,7 @@ function buildGrid() {
   for (const st of STATIONS) for (let r = st.r; r < st.r + 2; r++) for (let c = st.c; c < st.c + 3; c++) grid[I(c, r)] = T.STATION;
 }
 // Gidi Fuel filling stations (fictional brand). Fuel is ₦25 per 1% of the tank.
-const STATIONS = [{ c: 14, r: 26, name: 'Gidi Fuel Mainland' }, { c: 34, r: 46, name: 'Gidi Fuel Balo' }, { c: 68, r: 46, name: 'Gidi Fuel Lekka' }]
+const STATIONS = [{ c: 14, r: 26, name: 'Gidi Fuel Mushin' }, { c: 34, r: 46, name: 'Gidi Fuel Yaba' }, { c: 68, r: 46, name: 'Gidi Fuel Lekki' }]
   .map(s => Object.assign(s, { x: (s.c + 1.5) * CELL, y: (s.r + 1) * CELL }));
 const FUEL_PRICE = 25, FUEL_PER_PX = 100 / 42000; // a full tank lasts ~42,000px (about 3.5 minutes of steady driving)
 const FUEL_USE = { danfo: 1.2, okada: .6, keke: .8, sedan: 1, suv: 1.3, tfpick: 1.2, tfbike: .6, truck: 1.6 };
@@ -618,7 +618,7 @@ function buildGraph() {
     for (const v of set) for (let i = 0; i < HR.length - 1; i++) link(nodeKey[v + ',' + HR[i]], nodeKey[v + ',' + HR[i + 1]]);
     for (const h of HR) for (let i = 0; i < set.length - 1; i++) link(nodeKey[set[i] + ',' + h], nodeKey[set[i + 1] + ',' + h]);
   }
-  link(nodeKey['42,24'], nodeKey['66,24']); // Third Lagoon Bridge
+  link(nodeKey['42,24'], nodeKey['66,24']); // Third Mainland Bridge
 }
 function nearestNode(x, y) { let b = 0, bd = 1e18; for (const n of nodes) { const d = (n.x - x) ** 2 + (n.y - y) ** 2; if (d < bd) { bd = d; b = n.id; } } return b; }
 function bfsNext(s, g) {
@@ -651,30 +651,30 @@ const PL = {
 // Named danfo bus stops. (x, y) is the kerb point the bus stops at; (wx, wy) is where passengers wait
 // on the pavement. 'agbero' = the "ticket" the park touts demand there (₦).
 const BUS_STOPS = {
-  oshoja:   { name: 'Oshoja Park',         x: cc(8),  y: rc(14), wx: cc(8),            wy: 13 * CELL + 14, agbero: 400 },
-  iya:      { name: 'Iya Basira Junction', x: cc(18), y: rc(14), wx: cc(18),           wy: 16 * CELL + 12 },
-  second:   { name: 'Second Gate',         x: cc(28), y: rc(14), wx: cc(28),           wy: 16 * CELL + 12 },
-  lagoon:   { name: 'Lagoon Drive',        x: rc(42), y: cc(19), wx: 44 * CELL + 12,   wy: cc(19) },
-  bridge:   { name: 'Bridge Foot',         x: cc(38), y: rc(24), wx: cc(38),           wy: 23 * CELL + 14, agbero: 500 },
-  eko:      { name: 'Eko Crest Terminus',  x: cc(70), y: rc(14), wx: cc(70),           wy: 16 * CELL + 12 },
-  marketrd: { name: 'Market Road',         x: rc(22), y: cc(30), wx: 21 * CELL + 14,   wy: cc(30) },
-  balogate: { name: 'Balo Gate',           x: cc(28), y: rc(34), wx: cc(28),           wy: 36 * CELL + 12, agbero: 600 },
-  marketsq: { name: 'Market Square',       x: cc(36), y: rc(44), wx: cc(36),           wy: 43 * CELL + 14 },
-  church:   { name: 'Mainland Church',     x: cc(8),  y: rc(34), wx: cc(8),            wy: 33 * CELL + 14 },
-  ebute:    { name: 'Ebute Corner',        x: rc(12), y: cc(28), wx: 11 * CELL + 14,   wy: cc(28) },
+  oshoja:   { name: 'Oshodi',         x: cc(8),  y: rc(14), wx: cc(8),            wy: 13 * CELL + 14, agbero: 400 },
+  iya:      { name: 'Charity', x: cc(18), y: rc(14), wx: cc(18),           wy: 16 * CELL + 12 },
+  second:   { name: 'Anthony',         x: cc(28), y: rc(14), wx: cc(28),           wy: 16 * CELL + 12 },
+  lagoon:   { name: 'Gbagada',        x: rc(42), y: cc(19), wx: 44 * CELL + 12,   wy: cc(19) },
+  bridge:   { name: 'Iyana Oworo',         x: cc(38), y: rc(24), wx: cc(38),           wy: 23 * CELL + 14, agbero: 500 },
+  eko:      { name: 'CMS',  x: cc(70), y: rc(14), wx: cc(70),           wy: 16 * CELL + 12 },
+  marketrd: { name: 'Fadeyi',         x: rc(22), y: cc(30), wx: 21 * CELL + 14,   wy: cc(30) },
+  balogate: { name: 'Yaba',           x: cc(28), y: rc(34), wx: cc(28),           wy: 36 * CELL + 12, agbero: 600 },
+  marketsq: { name: 'Tejuosho Market',       x: cc(36), y: rc(44), wx: cc(36),           wy: 43 * CELL + 14 },
+  church:   { name: 'Idi-Oro',     x: cc(8),  y: rc(34), wx: cc(8),            wy: 33 * CELL + 14 },
+  ebute:    { name: 'Olosha',        x: rc(12), y: cc(28), wx: 11 * CELL + 14,   wy: cc(28) },
 };
 for (const [id, st] of Object.entries(BUS_STOPS)) st.id = id;
 const ROUTES = [
-  { id: 'osh-balo', name: 'Oshoja – Balo Market', stops: ['oshoja', 'iya', 'second', 'marketrd', 'balogate', 'marketsq'], fare: [200, 400], busy: 6,
-    blurb: 'Busy market run: plenty of passengers, agberos at Oshoja Park and Balo Gate.' },
-  { id: 'osh-eko', name: 'Oshoja – Eko Crest Express', stops: ['oshoja', 'second', 'lagoon', 'bridge', 'eko'], fare: [300, 500], busy: 5,
-    blurb: 'Long hops over Third Lagoon Bridge: higher fares, go-slow risk, agberos at Bridge Foot.' },
-  { id: 'mainland', name: 'Mainland Loop', stops: ['ebute', 'church', 'marketrd', 'iya'], fare: [200, 300], busy: 4,
+  { id: 'osh-balo', name: 'Oshodi – Yaba', stops: ['oshoja', 'iya', 'second', 'marketrd', 'balogate', 'marketsq'], fare: [200, 400], busy: 6,
+    blurb: 'Busy market run: plenty of passengers, agberos at Oshodi and Yaba.' },
+  { id: 'osh-eko', name: 'Oshodi – CMS Express', stops: ['oshoja', 'second', 'lagoon', 'bridge', 'eko'], fare: [300, 500], busy: 5,
+    blurb: 'Long hops over Third Mainland Bridge: higher fares, go-slow risk, agberos at Iyana Oworo.' },
+  { id: 'mainland', name: 'Mushin Loop', stops: ['ebute', 'church', 'marketrd', 'iya'], fare: [200, 300], busy: 4,
     blurb: 'Short and quiet back-street loop. No agberos, smaller fares.' },
 ];
 const MISSION_STOPS = ['iya', 'second', 'lagoon'].map(k => BUS_STOPS[k]);
 const PAX_NAMES = ['Mama Ronke', 'Oga Tunde', 'Aunty Ngozi', 'Mallam Sani', 'Sister Blessing', 'Bros Emeka', 'Iya Bose', 'Uncle Femi', 'Madam Kike', 'Chinedu', 'Hauwa', 'Pastor Segun', 'Baba Rasheed', 'Ada'];
-const CALLS = ['"Oshoja! Oshoja! Enter with your change!"', '"Eko Crest, straight! No stopping!"', '"Owa! Owa! Hold your bag well!"', '"Driver, wait! One chance remain!"'];
+const CALLS = ['"Oshodi! Oshodi! Enter with your change!"', '"CMS, straight! No stopping!"', '"Owa! Owa! Hold your bag well!"', '"Driver, wait! One chance remain!"'];
 
 // ---------------------------------------------------------------- content (mirrors JSON)
 const CONTACTS = { baba: 'Baba Sule', amaka: 'Amaka Nwosu', kemi: 'Kemi Lawson-Bright', shina: 'Shina Garage' };
@@ -689,7 +689,7 @@ const OUTFITS = [
   { id: 'fit_agbada_owambe', name: 'Owambe agbada with fila', price: 250000, respect: 28, color: '#f5c400' },
 ];
 const RADIO = [
-  { name: 'Hustle FM 98.7', bump: ['Hustle FM — if you no dey hustle, you dey sleep!', 'Traffic update: Third Lagoon Bridge is... yes. Still.'] },
+  { name: 'Hustle FM 98.7', bump: ['Hustle FM — if you no dey hustle, you dey sleep!', 'Traffic update: Third Mainland Bridge is... yes. Still.'] },
   { name: 'Owambe Gold 101.5', bump: ['Owambe Gold: aso-ebi compulsory, invitation optional.'] },
   { name: 'Eko Talk 88.1', bump: ['Caller, you are on air. Please hold your generator.'] },
 ];
@@ -698,33 +698,33 @@ const CRIME = { TrafficOffence: .3, Assault: 1, VehicleTheft: 1, PropertyDamage:
 const CHECKPOINT = { settle: 1000, record: .2, sting: .03, delay: 25, talk: 45 };
 const SOCIAL = {
   'mission_passed:lag_02': [['Madam Comfort', '@ComfortSellsPepper', 'One young man chased okada thief through go-slow and brought back my bag. {player} God bless you!!', 30, true]],
-  'mission_passed:lag_07': [['Lagos Traffic Gist', '@ThirdLagoonLive', "Who was racing on Third Lagoon Bridge at 1am?? Somebody's Kamsi flew past like it owed money.", 50, true]],
-  'mission_passed:lag_09': [['Oshoja Updates', '@OshojaUpdates', "Shina Garage's boys searching every bus park. Whoever they're looking for is long gone.", 10, false]],
-  'mission_passed:lag_03': [['Balo Phone Plug', '@AmakaFixAm', "Screens don land! Come and fix your cracked phone today. Thank you to my delivery boy {player} 🙏", 15, true]],
+  'mission_passed:lag_07': [['Lagos Traffic Gist', '@ThirdMainlandLive', "Who was racing on Third Mainland Bridge at 1am?? Somebody's Kamsi flew past like it owed money.", 50, true]],
+  'mission_passed:lag_09': [['Oshodi Updates', '@OshodiUpdates', "Shina Garage's boys searching every bus park. Whoever they're looking for is long gone.", 10, false]],
+  'mission_passed:lag_03': [['Yaba Phone Plug', '@AmakaFixAm', "Screens don land! Come and fix your cracked phone today. Thank you to my delivery boy {player} 🙏", 15, true]],
   'mission_passed:lag_01': [['Danfo Diaries', '@DanfoDiaries', "New conductor on Baba Sule's bus actually gave everybody their change. Is this Lagos?", 10, true]],
   'checkpoint:Recorded': [['Checkpoint Chronicles', '@CheckpointChron', "Another day, another 'happy weekend' on camera. We see you. #CheckpointChronicles", -40, true], ['Mr. Logic', '@EkoTalkMrLogic', "If you 'settle' at a checkpoint, you are not settling anything. You are unsettling everything. Caller, go ahead.", -20, true]],
   'checkpoint:IntegrityUnitSting': [['Integrity Unit (Parody)', '@NotRealIntegrityNG', "Our undercover officer accepted ₦1,000 'for weekend'. The giver is now trending AND wanted.", -80, true]],
   'checkpoint:WavedThrough': [['Road Warrior', '@InterstateIke', "Passed 4 checkpoints today. Each one had a different idea of what 'particulars' means.", 0, false]],
   'checkpoint:Delayed': [['Road Warrior', '@InterstateIke', 'Spent 40 minutes at a checkpoint explaining that a spare tyre is not contraband.', 0, false]],
   'escaped': [['Eko Task Force (Official)', '@EkoTaskForceOfficial', "Today's operation was a success. The suspect was not apprehended, which was part of the strategy.", 15, true]],
-  'goslow': [['Lagos Traffic Gist', '@ThirdLagoonLive', '{road} is currently a car park. Bring snacks and a phone charger.', 0, false], ['Danfo Diaries', '@DanfoDiaries', 'Go-slow on {road}. Conductors are taking back streets nobody knew existed.', 0, false]],
-  'agbero': [['Oshoja Updates', '@OshojaUpdates', 'One danfo just zoomed past the agberos at {stop} without paying ticket. The boys are still running after it.', 20, true]],
+  'goslow': [['Lagos Traffic Gist', '@ThirdMainlandLive', '{road} is currently a car park. Bring snacks and a phone charger.', 0, false], ['Danfo Diaries', '@DanfoDiaries', 'Go-slow on {road}. Conductors are taking back streets nobody knew existed.', 0, false]],
+  'agbero': [['Oshodi Updates', '@OshodiUpdates', 'One danfo just zoomed past the agberos at {stop} without paying ticket. The boys are still running after it.', 20, true]],
   'nochange': [['Danfo Diaries', '@DanfoDiaries', 'Conductor on a yellow danfo said "I no get change" with ₦5,000 in his hand. Lagos!', -15, true]],
   'fullbus': [['Danfo Diaries', '@DanfoDiaries', 'Fourteen of us in one danfo and the conductor still shouting "one chance remain". Respect.', 5, false]],
-  'busted': [['Oshoja Updates', '@OshojaUpdates', 'Task Force finally caught one runner today. He was smiling for the cameras. Na wa.', -25, true]],
+  'busted': [['Oshodi Updates', '@OshodiUpdates', 'Task Force finally caught one runner today. He was smiling for the cameras. Na wa.', -25, true]],
 };
 
 const MISSIONS = {
   lag_01: { title: 'First Day on the Danfo', giver: 'baba', req: [], reward: 0, cred: 20,
-    brief: "Baba Sule, Baba Driver to everybody at the park, needs a conductor. One round trip in his danfo: Oshoja, Balo Market, Mainland Junction and back to the park. Shout well, collect correct money, and no spoil his motor.",
+    brief: "Baba Sule, Baba Driver to everybody at the park, needs a conductor. One round trip in his danfo: Oshodi, Yaba, Charity and back to the park. Shout well, collect correct money, and no spoil his motor.",
     setup(ms) { // the mission danfo replaces whatever was parked in bay 1
       const bay = PARK_BAYS[0]; vehicles = vehicles.filter(v => { const keep = v === player.veh || Math.hypot(v.x - bay.x, v.y - bay.y) > 24; if (!keep) releaseJunction(v); return keep; });
-      ms.danfo = spawnVehicle('danfo', bay.x, bay.y, bay.a, { mission: true, tag: 'm_danfo', parked: true, dest: 'BALO' }); ms.danfo.fuel = 100; },
+      ms.danfo = spawnVehicle('danfo', bay.x, bay.y, bay.a, { mission: true, tag: 'm_danfo', parked: true, dest: 'YABA' }); ms.danfo.fuel = 100; },
     objs: [
-      { t: 'goto', text: 'Meet Baba Driver at Oshoja Motor Park', at: () => PL.park, r: 60, then: firstDayIntro },
-      { t: 'enter', text: 'Get in the danfo at bay 1', sub: 'The yellow bus with BALO on its board', target: ms => ms.danfo },
+      { t: 'goto', text: 'Meet Baba Driver at Oshodi Motor Park', at: () => PL.park, r: 60, then: firstDayIntro },
+      { t: 'enter', text: 'Get in the danfo at bay 1', sub: 'The yellow bus with YABA on its board', target: ms => ms.danfo },
       { t: 'route', text: 'Run the route', clock: 120 },
-      { t: 'goto', text: 'Bring the danfo back to Oshoja Motor Park', sub: 'Baba Driver is waiting by the bays', at: () => PL.park, r: 70, inVeh: ms => ms.danfo, then: firstDayFinish },
+      { t: 'goto', text: 'Bring the danfo back to Oshodi Motor Park', sub: 'Baba Driver is waiting by the bays', at: () => PL.park, r: 70, inVeh: ms => ms.danfo, then: firstDayFinish },
     ],
     fail(ms) { if (ms.danfo.hp <= 0) return 'wrecked'; if (ms.deadline && S.minutes > ms.deadline) return 'late'; },
     onFail: firstDayFailed },
@@ -739,18 +739,18 @@ const MISSIONS = {
         done(ms) { const p = player.pos(); if (dist(p, ms.thief) < 36) { ms.thief.driver = null; ms.thief.v = 0; ms.thief.label = 'Caught'; return true; } } },
       { t: 'goto', text: 'Return the bag to Madam Comfort', at: () => PL.comfort, r: 46 },
     ] },
-  lag_03: { title: 'Balo Market Run', giver: 'amaka', req: ['lag_01'], reward: 15000, cred: 25, bonus: "Don't crack a single screen",
-    brief: "Amaka's shipment of phone screens is stuck across Balo Market. Thread through alleys, wheelbarrows and Task Force raids before closing time.",
+  lag_03: { title: 'Yaba Market Run', giver: 'amaka', req: ['lag_01'], reward: 15000, cred: 25, bonus: "Don't crack a single screen",
+    brief: "Amaka's shipment of phone screens is stuck across Yaba. Thread through alleys, wheelbarrows and Task Force raids before closing time.",
     objs: [
-      { t: 'goto', text: 'Get to the warehouse', sub: 'Balo Market, east side', at: () => PL.warehouse, r: 44 },
+      { t: 'goto', text: 'Get to the warehouse', sub: 'Yaba, east side', at: () => PL.warehouse, r: 44 },
       { t: 'collect', text: 'Load 3 crates of screens', count: 3, start(ms) { ms.items = PL.crates.map(p => ({ x: p.x, y: p.y, kind: 'crate' })); items.push(...ms.items); } },
       { t: 'goto', text: "Deliver to Amaka's stall before closing", at: () => PL.amaka, r: 40, time: 180 },
     ] },
-  lag_07: { title: 'Third Lagoon Bridge', giver: 'kemi', req: ['lag_02', 'lag_03'], reward: 60000, cred: 40,
+  lag_07: { title: 'Third Mainland Bridge', giver: 'kemi', req: ['lag_02', 'lag_03'], reward: 60000, cred: 40,
     brief: "The rival promoter is running for the airport with Kemi's sound-system money. Ten kilometres of bridge. Run him off the road.",
     setup(ms) { ms.sedan = spawnVehicle('sedan', PL.kemi.x - 50, PL.kemi.y + 10, Math.PI / 2, { mission: true, tag: 'm_sedan', parked: true, color: '#b71c1c', tune: 1.08 }); },
     objs: [
-      { t: 'goto', text: 'Meet Kemi on Eko Crest', at: () => PL.kemi, r: 60 },
+      { t: 'goto', text: 'Meet Kemi on Lagos Island', at: () => PL.kemi, r: 60 },
       { t: 'enter', text: 'Take the red Kamsi', target: ms => ms.sedan },
       { t: 'chase', text: 'Ram the rival SUV off the road', sub: 'Hit him 3 times', time: 200,
         start(ms) { const a = nodeKey['82,4'], b = nodeKey['82,14']; const s = laneSpot(a, b, .3); ms.rival = spawnVehicle('suv', s.x, s.y, s.a, { mission: true, driver: 'flee', color: '#101010', label: 'Rival promoter', hits: 3, topSpeed: .9, from: a, to: b }); },
@@ -763,17 +763,17 @@ const MISSIONS = {
   lag_09: { title: 'Night Bus East', giver: 'baba', req: ['lag_07'], reward: 50000, cred: 60,
     brief: "Lagos is too hot. Shina's boys know your face. Baba Sule's cousin in Port Harcourt needs a driver — make the last bus.",
     objs: [
-      { t: 'goto', text: 'Make the last bus at the Luxury Bus Park', at: () => PL.buspark, r: 70, time: 180, start() { addHeat(2); } },
+      { t: 'goto', text: 'Make the last bus at the Jibowu Luxury Bus Park', at: () => PL.buspark, r: 70, time: 180, start() { addHeat(2); } },
     ] },
 };
 const ORDER = ['lag_01', 'lag_02', 'lag_03', 'lag_07', 'lag_09'];
 // "First Day on the Danfo": a fixed, one-way route (no looping back), then home to the park.
-const FIRST_ROUTE = { id: 'm_first', name: 'First Day: Oshoja – Balo Market – Mainland Junction', stops: ['oshoja', 'balogate', 'iya'], fare: [200, 400], busy: 5, linear: true,
-  label: { oshoja: 'Oshoja Park', balogate: 'Balo Market (Balo Gate)', iya: 'Mainland Junction (Iya Basira)' } };
+const FIRST_ROUTE = { id: 'm_first', name: 'First Day: Oshodi – Yaba – Charity', stops: ['oshoja', 'balogate', 'iya'], fare: [200, 400], busy: 5, linear: true,
+  label: { oshoja: 'Oshodi', balogate: 'Yaba', iya: 'Charity' } };
 const FIRST_CUT = .4, FIRST_TICKET = 500;
 const BABA_LINES = {
   intro: ['Ehen! You don come. Na you be the new conductor?', 'You don ready? Na today you go learn work. No spoil my motor o!',
-    'Danfo dey bay one. Oshoja, Balo Market, Mainland Junction, then come back here. Two hours. No dull yourself.',
+    'Danfo dey bay one. Oshodi, Yaba, Charity, then come back here. Two hours. No dull yourself.',
     'Stop for the ring, shout your route, collect correct money. If agbero hold you for Balo, use sense.'],
   retry: ['Oya, try am again. Motor dey bay one. This time, use your head.'],
   done: ['Ah, my conductor! You try today o. Make we count the money.'],
@@ -821,7 +821,7 @@ const VT = {
   truck: { name: 'Iron Horse Tipper', len: 46, wid: 22, max: 220, acc: 150, turn: 2.1, colors: ['#c62828', '#1565c0', '#e8e8e8', '#2e7d32'], hp: 220 },
   tfbike: { name: 'Task Force bike', len: 22, wid: 9, max: 280, acc: 280, turn: 3.6, colors: ['#2f5d3a'], hp: 60, bike: true, cop: true },
 };
-const DESTS = ['OSHOJA', 'BALO', 'EKO', 'IYA B.', '2ND GATE', 'CHURCH', 'EBUTE', 'LEKKA'];
+const DESTS = ['OSHODI', 'YABA', 'CMS', 'CHARITY', 'ANTHONY', 'IDI-ORO', 'OLOSHA', 'LEKKI'];
 const TRAFFIC_MIX = [['danfo', 5], ['okada', 5], ['keke', 5], ['sedan', 4], ['suv', 1], ['truck', 1]];
 let vehicles = [], peds = [], items = [], floaters = [], heli = null;
 const STATS = { aiCrashes: 0 };
@@ -1292,11 +1292,11 @@ function honk(v) { if (performance.now() - lastHonk < 1500 || dist(v, player.pos
 const WORLD = { jams: [], hour: -1, radio: 0, paused: true, started: false };
 // Main roads that can jam. Each is a chain of road-graph nodes ("col,row" of the road's first cell).
 const MAIN_ROADS = [
-  { name: 'Third Lagoon Bridge', nodes: ['22,24', '32,24', '42,24', '66,24'] },
-  { name: 'Mainland Expressway', nodes: ['2,14', '12,14', '22,14', '32,14', '42,14'] },
-  { name: 'Market Road', nodes: ['22,4', '22,14', '22,24', '22,34', '22,44', '22,54'] },
-  { name: 'Lagoon Drive', nodes: ['42,4', '42,14', '42,24', '42,34', '42,44'] },
-  { name: 'Eko Crest Avenue', nodes: ['66,14', '74,14', '82,14', '90,14'] },
+  { name: 'Third Mainland Bridge', nodes: ['22,24', '32,24', '42,24', '66,24'] },
+  { name: 'Oshodi–Oworonshoki Expressway', nodes: ['2,14', '12,14', '22,14', '32,14', '42,14'] },
+  { name: 'Ikorodu Road', nodes: ['22,4', '22,14', '22,24', '22,34', '22,44', '22,54'] },
+  { name: 'Gbagada Road', nodes: ['42,4', '42,14', '42,24', '42,34', '42,44'] },
+  { name: 'Marina', nodes: ['66,14', '74,14', '82,14', '90,14'] },
 ];
 const JAMMED = new Set(); // "a-b" node-id pairs (both directions) currently in a go-slow
 function rebuildJams() { JAMMED.clear(); for (const j of WORLD.jams) { const ids = j.road.nodes.map(k => nodeKey[k]); for (let i = 0; i < ids.length - 1; i++) { JAMMED.add(ids[i] + '-' + ids[i + 1]); JAMMED.add(ids[i + 1] + '-' + ids[i]); } } }
@@ -1370,7 +1370,7 @@ const HAWK_CALLS = {
   gala: ['Gala! Gala! Hot gala!', 'Buy gala for the road!'],
   chips: ['Plantain chips! Sweet and crunchy!', 'Chips, ₦150! Fresh today!'],
 };
-const CONDUCTOR_CALLS = ['Oshoja! Oshoja! Enter with your change!', 'Balo! Balo! One chance remain!', 'Eko! Eko! Shift, make person sit!', 'Second Gate! Wole, wole!', 'Iya Basira! No change, no enter!'];
+const CONDUCTOR_CALLS = ['Oshodi! Oshodi! Enter with your change!', 'Yaba! Yaba! One chance remain!', 'CMS! CMS! Shift, make person sit!', 'Anthony! Wole, wole!', 'Charity! No change, no enter!'];
 const PREACHER_LINES = ['Repent o! The end is nearer than the next bus stop!', 'Brothers and sisters, the go-slow is a test of faith!', 'Your hustle will not be in vain, say Amen!', 'Drop your burdens, not your pure water nylon!'];
 const AGB_LINES = ['Ticket! Oya, ₦500!', 'Driver, where my own?', 'Load well! Pay your ticket!'];
 const OWAMBE_LINES = ['Spray money! Spray!', 'Aso-ebi crew, enter the dance floor!', 'MC: "Make some noise for the celebrants!"'];
@@ -1412,7 +1412,7 @@ function spawnPeds(p) {
     const x = p.x + Math.cos(a) * d, y = p.y + Math.sin(a) * d, t = tileAt(x, y);
     if (!(t === T.SIDE || t === T.GROUND || t === T.PARK || t === T.GRASS) || solidAt(x, y)) continue;
     if (!fill && d < 420 && R3 && screenOf(x, y, 1).on) continue; // don't pop into view close by
-    const market = districtAt(x, y) === 'Balo Market';
+    const market = districtAt(x, y) === 'Yaba';
     peds.push({ x, y, a: 0, tx: x, ty: y, spd: rnd(28, 44), col: pick(['#e2683c', '#2fa36b', '#f5c400', '#3d7bd9', '#d94f8a', '#f3eee4', '#8a5a3c']), state: 'walk', t: 0, tray: Math.random() < (market ? .35 : .08) ? pick(TRAYS) : null });
   }
 }
@@ -1566,7 +1566,7 @@ function sndUpdate(dt) {
   SND.master.gain.setTargetAtTime(on ? (paused ? .25 : .7) : 0, now, .2);
   SND.t -= dt; if (SND.t <= 0) { SND.t = .12; const p = player.pos(), hr = (S.minutes / 60) % 24, day = hr > 6.5 && hr < 22, night = darkness() > .5;
     let np = 0; for (const q of peds) if (Math.abs(q.x - p.x) < 260 && Math.abs(q.y - p.y) < 260) np++;
-    const market = districtAt(p.x, p.y) === 'Balo Market', inV = player.veh ? .55 : 1;
+    const market = districtAt(p.x, p.y) === 'Yaba', inV = player.veh ? .55 : 1;
     SND.chat.gain.setTargetAtTime(Math.min(1, np / 28) * (market ? .32 : .2) * (night ? .5 : 1) * inV, now, .3);
     SND.chatMod.gain.setTargetAtTime(.35 + Math.random() * .5, now, .05);
     let gen = 0; const tm = { x: p.x * M, z: p.y * M }; for (const g of GENS) { if (!(NIGHT.on || g.on > .55)) continue; const d = Math.hypot(g.x - tm.x, g.z - tm.z); if (d < 26) gen = Math.max(gen, 1 - d / 26); }
@@ -1905,7 +1905,7 @@ function updateMission(dt) {
 // Danfo conductor shift. Money collected goes in the conductor's bag and is settled at the end:
 // fares + tips + bonuses − refunds/penalties − agbero tickets − damage − the owner's cut.
 // ---------------------------------------------------------------- dialogue: portrait + typewriter text
-const SPEAKERS = { baba: { name: 'Baba Driver', role: 'Baba Sule · danfo owner, Oshoja Motor Park' } };
+const SPEAKERS = { baba: { name: 'Baba Driver', role: 'Baba Sule · danfo owner, Oshodi Motor Park' } };
 const DLG = { lines: [], i: 0, shown: 0, done: null, open: false };
 function sayLines(who, lines, done) {
   const s = SPEAKERS[who] || { name: CONTACTS[who] || who, role: '' };
@@ -2220,7 +2220,7 @@ function actionContext() {
   const st = nearStation(), v = player.veh;
   const hk = hawkerAtWindow(); if (hk) return { label: `Buy from the hawker: pure water, gala, chips`, run: () => openShop('hawker') };
   if (st && v.fuel < 99) { const cost = Math.ceil((100 - v.fuel) * FUEL_PRICE); return { label: Math.abs(v.v) > 25 ? `Stop to refuel · ${naira(cost)}` : `Refuel · ${naira(cost)}`, run: () => refuel(v) }; }
-  if (!v && nearPlace(PL.tailor, 30)) return { label: 'Balo Tailor', run: openTailor };
+  if (!v && nearPlace(PL.tailor, 30)) return { label: 'Yaba Tailor', run: openTailor };
   if (!v && nearPlace(PL.carwash, 30)) return { label: 'Mainland Shine Car Wash', run: openCarWash };
   const shop = !v && nearShop(); if (shop) return { label: shop === 'booth' ? 'Ticket booth: licence & papers' : SHOPS[shop].name, run: () => openShop(shop) };
   if (v && v.type === 'danfo' && !MS.cur && !SHIFT.on) return isDone('lag_01') ? { label: 'Conductor Shift (side job)', run: openRoutePicker } : { label: 'Conductor shifts unlock after “First Day on the Danfo”', run: () => ui.toast('Finish “First Day on the Danfo” with Baba Driver first.', '', { key: 'shift' }) };
@@ -2265,7 +2265,7 @@ function openCheckpoint() {
   const opener = pick(['"Oga, good afternoon. Licence and vehicle papers."', '"Particulars! Licence, papers, everything."', '"Na you get this motor? Show me your papers."']);
   const respect = OUTFITS.find(o => o.id === S.outfit).respect, d = papersOk(), ok = d.lic && d.pap;
   const tick = (b, s) => `<span style="color:${b ? 'var(--good)' : 'var(--bad)'};white-space:nowrap">${b ? '✔' : '✘'} ${s}</span>`;
-  showSheet(`<h3>Checkpoint</h3><p>${opener}</p><p class="muted">Eko Task Force · Third Lagoon Bridge east end. Somebody on the bus behind is holding up a phone.</p>
+  showSheet(`<h3>Checkpoint</h3><p>${opener}</p><p class="muted">Eko Task Force · Third Mainland Bridge east end. Somebody on the bus behind is holding up a phone.</p>
   <p style="font-size:14px">${tick(d.lic, "Driver's licence")} &nbsp; ${tick(d.pap, d.stolen ? 'Vehicle papers (not for this motor!)' : 'Vehicle papers')}</p>
   <div class="btns">
     ${ok ? `<button class="btn primary" data-c="Papers" type="button">Show papers<small style="color:inherit">Everything in order</small></button>`
@@ -2305,7 +2305,7 @@ function nearPlace(p, r = 40) { return dist(player.pos(), p) < r; }
 function openTailor() {
   const rows = OUTFITS.map(o => { const own = S.outfits.includes(o.id), on = S.outfit === o.id;
     return `<button class="btn" type="button" data-o="${o.id}" ${on ? 'disabled' : ''}><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${o.color};margin-right:6px"></span>${o.name}<small>${on ? 'Wearing' : own ? 'Owned · tap to wear' : naira(o.price)} · respect +${o.respect}</small></button>`; }).join('');
-  showSheet(`<h3>Balo Tailor</h3><p class="muted">Respect helps you talk past checkpoints. Agbada opens doors.</p><div class="btns">${rows}</div><button class="btn" type="button" data-x>Close</button>`, el => {
+  showSheet(`<h3>Yaba Tailor</h3><p class="muted">Respect helps you talk past checkpoints. Agbada opens doors.</p><div class="btns">${rows}</div><button class="btn" type="button" data-x>Close</button>`, el => {
     el.querySelectorAll('[data-o]').forEach(b => b.onclick = () => { const o = OUTFITS.find(x => x.id === b.dataset.o);
       if (!S.outfits.includes(o.id)) { if (!spend(o.price, o.name)) { ui.toast('Not enough money.', 'bad'); return; } S.outfits.push(o.id); }
       S.outfit = o.id; save(); ui.toast('Now wearing: ' + o.name, 'good'); openTailor(); });
@@ -2314,8 +2314,8 @@ function openTailor() {
 }
 function openCarWash() {
   const b = S.biz;
-  showSheet(`<h3>Mainland Shine Car Wash</h3><p>Buckets, foam and gist. Every danfo in Oshoja passes through.</p>
-    <p class="muted">${b.owned ? `Earns ${naira(9000)} per game day. Cash box: <b style="color:var(--ink)">${naira(Math.floor(b.box))}</b> of ${naira(60000)}.` : `Price ${naira(150000)} · earns ${naira(9000)}/day · unlocks after Balo Market Run.`}</p>
+  showSheet(`<h3>Mainland Shine Car Wash</h3><p>Buckets, foam and gist. Every danfo in Oshodi passes through.</p>
+    <p class="muted">${b.owned ? `Earns ${naira(9000)} per game day. Cash box: <b style="color:var(--ink)">${naira(Math.floor(b.box))}</b> of ${naira(60000)}.` : `Price ${naira(150000)} · earns ${naira(9000)}/day · unlocks after Yaba Market Run.`}</p>
     <div class="btns">${b.owned ? `<button class="btn primary" type="button" data-a="collect">Collect ${naira(Math.floor(b.box))}</button>` : `<button class="btn primary" type="button" data-a="buy" ${isDone('lag_03') ? '' : 'disabled'}>Buy for ${naira(150000)}</button>`}<button class="btn" type="button" data-x>Close</button></div>`, el => {
     const a = el.querySelector('[data-a]');
     if (a) a.onclick = () => { if (a.dataset.a === 'buy') { if (spend(150000, 'Bought car wash')) { b.owned = true; ui.toast('You own Mainland Shine Car Wash!', 'good'); save(); } else ui.toast('Not enough money.', 'bad'); } else { const n = Math.floor(b.box); b.box -= n; earn(n, 'Car wash income'); save(); } openCarWash(); };
@@ -2343,7 +2343,7 @@ const BAGS = {
   gmg:      { name: 'Ghana-Must-Go bag', slots: 30, price: 15000, desc: 'The legendary checked bag. 30 slots.' },
 };
 const DOCS = {
-  licence: { name: "Driver's licence", how: 'Buy one at the Oshoja Motor Park ticket booth (₦6,000). Driving test is "optional".' },
+  licence: { name: "Driver's licence", how: 'Buy one at the Oshodi Motor Park ticket booth (₦6,000). Driving test is "optional".' },
   union:   { name: 'Danfo union card', how: 'Finish “First Day on the Danfo”. Baba Driver registers you with the union.' },
   papers:  { name: 'Vehicle papers', how: 'Baba Driver hands them over after your first day, or an agent at the park ticket booth sells them (₦4,000).' },
 };
@@ -2531,7 +2531,7 @@ const INV_TABS = [['items', 'Items'], ['cash', 'Cash'], ['docs', 'Documents'], [
 const hhmm = t => `D${Math.floor(t / 1440) + 1} ${String(Math.floor(t / 60) % 24).padStart(2, '0')}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
 function missionItems() {
   const out = [];
-  if (SHIFT.on && SHIFT.bus) out.push({ ic: 'key', name: SHIFT.mission ? "Baba Driver's danfo keys" : 'Danfo keys', desc: SHIFT.mission ? 'Bring the danfo back to Oshoja Motor Park in one piece.' : 'Hand them back when you settle up.' });
+  if (SHIFT.on && SHIFT.bus) out.push({ ic: 'key', name: SHIFT.mission ? "Baba Driver's danfo keys" : 'Danfo keys', desc: SHIFT.mission ? 'Bring the danfo back to Oshodi Motor Park in one piece.' : 'Hand them back when you settle up.' });
   if (SHIFT.on) out.push({ ic: 'cashbag', name: "Conductor's money bag", desc: `${naira(SHIFT.fares + SHIFT.tips)} collected so far. Settled at the end of the shift.` });
   if (MS.cur && MS.cur.carry) out.push({ ic: 'crate', name: `Mission cargo ×${MS.cur.carry}`, desc: `For “${MS.cur.def.title}”. Deliver it.` });
   if (MS.cur && player.veh && player.veh.mission) out.push({ ic: 'key', name: 'Mission vehicle keys', desc: `For “${MS.cur.def.title}”.` });
@@ -2565,13 +2565,13 @@ function invRender() {
     const card = (k, cls, lines) => { const d = DOCS[k], has = S.docs[k];
       return `<div class="doc ${cls}${has ? '' : ' miss'}"><h4>${d.name}</h4>${has ? `<div class="dl">${lines}</div><img src="${icon(k)}" alt="">` : `<div class="dl">Missing</div><div class="how">${esc(d.how)}</div>`}</div>`; };
     h = `<div class="docs">${card('licence', '', 'EKO STATE · CLASS E<br>Name: <b>LUCKY O.</b><br>No: <b>EKO-77 41 902</b><br>Expires: <b>when they remember</b>')}
-      ${card('union', 'union', 'Oshoja Motor Park branch<br>Member: <b>LUCKY O.</b><br>Rank: <b>Conductor (probation)</b><br>Dues: <b>"we go talk"</b>')}
+      ${card('union', 'union', 'Oshodi Motor Park branch<br>Member: <b>LUCKY O.</b><br>Rank: <b>Conductor (probation)</b><br>Dues: <b>"we go talk"</b>')}
       ${card('papers', 'papers', 'Proof of ownership, road worthiness, insurance<br>Vehicle: <b>Kombi Danfo (Baba Sule)</b><br>Stamps: <b>11, all different colours</b>')}</div>
       <p class="inv-note" style="margin-top:12px">Task Force checkpoints ask for your licence and vehicle papers. Papers don't cover a vehicle you stole.</p>`;
   } else if (INV.tab === 'clothing') {
     const sel = INV.pvFit || S.outfit, f = OUTFITS.find(o => o.id === sel);
     const rows = OUTFITS.map(o => { const own = S.outfits.includes(o.id), on = S.outfit === o.id;
-      return `<button type="button" class="fit${sel === o.id ? ' on' : ''}${own ? '' : ' locked'}" data-fit="${o.id}"><i style="background:${o.color}"></i><span>${esc(o.name)}<small>${own ? 'Owned' : 'Balo Tailor · ' + naira(o.price)} · respect +${o.respect}</small></span>${on ? '<em>WEARING</em>' : ''}</button>`; }).join('');
+      return `<button type="button" class="fit${sel === o.id ? ' on' : ''}${own ? '' : ' locked'}" data-fit="${o.id}"><i style="background:${o.color}"></i><span>${esc(o.name)}<small>${own ? 'Owned' : 'Yaba Tailor · ' + naira(o.price)} · respect +${o.respect}</small></span>${on ? '<em>WEARING</em>' : ''}</button>`; }).join('');
     const own = S.outfits.includes(sel);
     h = `<div class="cloth"><div class="fits">${rows}</div><div class="stage"><div id="inv-prev-slot" aria-label="Preview of ${esc(f.name)}" role="img"></div>
       <button class="btn primary" type="button" data-equip ${own && S.outfit !== sel ? '' : 'disabled'}>${S.outfit === sel ? 'Wearing' : own ? 'Equip' : 'Not owned'}</button></div></div>`;
@@ -2894,7 +2894,7 @@ function renderMap() {
     }
   }
   roadDetails(g);
-  // Oke-Erupe: the asphalt and the lane paint give way to laterite, with ruts, puddles and dirt verges
+  // Mushin: the asphalt and the lane paint give way to laterite, with ruts, puddles and dirt verges
   for (let r = DUSTY.r0; r < DUSTY.r1; r++) for (let c = DUSTY.c0; c < DUSTY.c1; c++) { const t = grid[I(c, r)], x = c * CELL, y = r * CELL, h = hash(c + 5, r + 9);
     if (t === T.ROAD) { g.fillStyle = `hsl(${17 + h * 6},${42 + h * 8}%,${31 + h * 4}%)`; g.fillRect(x, y, CELL, CELL);
       for (let k = 0; k < 40; k++) { const q = hash(c * 13 + k, r * 7 + k); g.fillStyle = `rgba(${q < .5 ? '60,34,20' : '190,140,100'},.25)`; g.fillRect(x + hash(k, c) * CELL, y + hash(r, k) * CELL, 2, 2); }
@@ -2982,8 +2982,8 @@ function roadDetails(g) {
     for (let k = -26; k <= 22; k += 8) { if (dx) g.fillRect(ax - 5, ay + k, 10, 5); else g.fillRect(ax + k, ay - 5, 5, 10); }
   }
 }
-// Oshoja Motor Park: painted bays with numbers; the Luxury Bus Park gets wide coach bays.
-// 8 bays along the top, 3 along the bottom (the rest of the bottom edge is the Oshoja bus stop).
+// Oshodi Motor Park: painted bays with numbers; the Jibowu Luxury Bus Park gets wide coach bays.
+// 8 bays along the top, 3 along the bottom (the rest of the bottom edge is the Oshodi bus stop).
 const PARK_BAYS = [];
 for (const [y, dir] of [[196, 1], [384, -1]]) for (let i = 0; i < (dir > 0 ? 8 : 3); i++) PARK_BAYS.push({ x: 136 + i * 30 + 15, y: y + 30, a: dir > 0 ? Math.PI / 2 : -Math.PI / 2, top: y });
 function parkPaint(g) {
@@ -3264,7 +3264,7 @@ function makeSignAtlas() {
       g.fillStyle = fg; g.textAlign = 'center'; g.textBaseline = 'middle'; fitText(g, title, 460, sub ? 50 : 64); g.fillText(title, x + 256, y + (sub ? 50 : 66));
       if (sub) { fitText(g, sub, 440, 26, 600); g.fillText(sub, x + 256, y + 94); } };
     SHOP_SIGNS.forEach((s, i) => board(i, s[0], s[1], s[2], s[3]));
-    board(SIGN.park, 'OSHOJA MOTOR PARK', 'Danfo · Keke · Interstate', '#f5c400', '#1b1600');
+    board(SIGN.park, 'OSHODI MOTOR PARK', 'Danfo · Keke · Interstate', '#f5c400', '#1b1600');
     board(SIGN.tickets, 'TICKETS', 'Pay before you load', '#1565c0', '#fff');
     board(SIGN.fuel, 'GIDI FUEL', `Petrol ₦${FUEL_PRICE} per 1%`, '#2f8f5b', '#fff');
     board(SIGN.luxury, 'LUXURY BUS PARK', 'Night buses to the east', '#1565c0', '#fff');
@@ -3285,12 +3285,12 @@ const RULES = () => ({
     objectives: MISSIONS[id].objs.map(o => ({ type: o.t, text: o.text, sub: o.sub || '', clock: o.clock || 0, r: o.r || 0 })) }])),
 });
 // sign slot → text, for the Unreal export (slots 0–15 are SHOP_SIGNS)
-const SIGN_TEXT = () => Object.assign({ [SIGN.park]: { title: 'OSHOJA MOTOR PARK', sub: 'Danfo · Keke · Interstate', bg: '#f5c400', fg: '#1b1600' }, [SIGN.tickets]: { title: 'TICKETS', sub: 'Pay before you load', bg: '#1565c0', fg: '#ffffff' },
+const SIGN_TEXT = () => Object.assign({ [SIGN.park]: { title: 'OSHODI MOTOR PARK', sub: 'Danfo · Keke · Interstate', bg: '#f5c400', fg: '#1b1600' }, [SIGN.tickets]: { title: 'TICKETS', sub: 'Pay before you load', bg: '#1565c0', fg: '#ffffff' },
   [SIGN.fuel]: { title: 'GIDI FUEL', sub: `Petrol ₦${FUEL_PRICE} per 1%`, bg: '#2f8f5b', fg: '#ffffff' }, [SIGN.luxury]: { title: 'LUXURY BUS PARK', sub: 'Night buses to the east', bg: '#1565c0', fg: '#ffffff' }, [SIGN.heli]: { title: 'H', sub: '', bg: '#2b3036', fg: '#f5c400' } },
   ...STOP_IDS.map((id, k) => ({ [SIGN.stop0 + k]: { title: BUS_STOPS[id].name.toUpperCase(), sub: 'BUS STOP', bg: '#f5c400', fg: '#1b1600' } })));
 const signUV = i => { const u0 = (i % 2) * .5, v1 = 1 - (i / 2 | 0) / 16; return [u0 + .004, v1 - 1 / 16 + .004, u0 + .496, v1 - .004]; };
 // Danfo destination boards
-const DEST_NAMES = [...new Set(DESTS.concat(['EKO', 'OSHOJA', 'LEKKA', 'BALO']))];
+const DEST_NAMES = [...new Set(DESTS.concat(['CMS', 'OSHODI', 'LEKKI', 'YABA']))];
 let destT = null;
 function makeDestAtlas() {
   destT = tex(256, 64 * DEST_NAMES.length, g => DEST_NAMES.forEach((d, i) => {
@@ -3343,8 +3343,8 @@ function makeDecalAtlas() {
   }, false, true);
   frontT = front(false); frontLitT = front(true); frontT.wrapS = frontT.wrapT = frontLitT.wrapS = frontLitT.wrapT = THREE.ClampToEdgeWrapping;
   // Street banners, 4 rows of 1024 × 128
-  bannerT = tex(1024, 512, g => [['WELCOME TO BALO MARKET', 'Buy and sell · no wahala', '#1b5e20', '#ffeb3b'], ['HAPPY NEW MONTH', 'From Alhaji Lawal & Sons Cement', '#0d47a1', '#ffffff'],
-    ['OWAMBE THIS SATURDAY', 'Ayo weds Tolu · all roads lead to Ebute', '#880e4f', '#ffe082'], ['OSHOJA MOTOR PARK', 'Load and go · drivers union welcomes you', '#f5c400', '#1b1600']].forEach(([t, sub, bg, fg], i) => {
+  bannerT = tex(1024, 512, g => [['WELCOME TO TEJUOSHO MARKET', 'Buy and sell · no wahala', '#1b5e20', '#ffeb3b'], ['HAPPY NEW MONTH', 'From Alhaji Lawal & Sons Cement', '#0d47a1', '#ffffff'],
+    ['OWAMBE THIS SATURDAY', 'Ayo weds Tolu · all roads lead to Mushin', '#880e4f', '#ffe082'], ['OSHODI MOTOR PARK', 'Load and go · drivers union welcomes you', '#f5c400', '#1b1600']].forEach(([t, sub, bg, fg], i) => {
       const y = i * 128; g.fillStyle = bg; g.fillRect(0, y, 1024, 128); g.fillStyle = fg; g.fillRect(0, y + 6, 1024, 4); g.fillRect(0, y + 118, 1024, 4);
       g.textAlign = 'center'; g.textBaseline = 'middle'; fitText(g, t, 960, 60); g.fillText(t, 512, y + 52); fitText(g, sub, 900, 28, 600); g.fillText(sub, 512, y + 96); }));
   bannerT.wrapS = bannerT.wrapT = THREE.ClampToEdgeWrapping;
@@ -3932,7 +3932,7 @@ function clutterAt(ch, G, q, X, Z, d, R, market = false) {
     prop('umb', mtx(X, y + 2.05, Z, 1.45, 1, 1.45, R() * 6), c1); prop('pole', mtx(X, y + 1.02, Z, .025, 2.05, .025), '#dddddd'); prop('chair', mtx(X + .4, y, Z + .3, 1, 1, 1, yaw), '#f3f3f0'); SEATS.push({ x: X + .4, y, z: Z + .3, yaw }); addOcc(X, Z, 1.6, y + 1.55, y + 2.6); blob(2.6); }
   else { prop('stool', mtx(X, y, Z, 1, 1, 1, yaw), '#8d6e63'); klamp(X, y + .44, Z); }
 }
-// Oke-Erupe pavements: blue-tarp stalls with someone minding them, drums and buckets, rubble and rubbish heaps, generators
+// Mushin pavements: blue-tarp stalls with someone minding them, drums and buckets, rubble and rubbish heaps, generators
 function dustyAt(ch, G, q, X, Z, d, R) {
   const y = KERB, yaw = -Math.atan2(d[1], d[0]), pk = a => a[R() * a.length | 0], blob = (sx, sz = sx) => prop('blob', mtx(X, y + .015, Z, sx, 1, sz)), tx = d[1], tz = -d[0];
   if (q < .34) { const w = 2.6, dp = 2.2, cx = X - d[0] * .4, cz = Z - d[1] * .4;
@@ -3982,7 +3982,7 @@ function buildBanners() {
     for (let z = z0 + 1; z < z1; z += 1.6) addOcc(X, z, .7, 4.9, 6.3);
   });
 }
-// Landmarks: BRT-style shelters, Gidi Fuel stations, Oshoja Motor Park, Luxury Bus Park, checkpoint, canoes.
+// Landmarks: BRT-style shelters, Gidi Fuel stations, Oshodi Motor Park, Jibowu Luxury Bus Park, checkpoint, canoes.
 function buildLandmarks(G) {
   const yel = colr('#f5c400'), blk = colr('#2a2a2a'), steel = colr('#9aa3ab'), glass = colr('#5f8098');
   STOP_IDS.forEach((id, k) => { const st = BUS_STOPS[id], horiz = Math.abs(st.wy - st.y) > Math.abs(st.wx - st.x), ch = chunkAt(st.wx, st.wy), d = G(ch, 'detail');
@@ -4004,7 +4004,7 @@ function buildLandmarks(G) {
     for (let k = 0; k < 3; k++) { const px = x + 2.75 + k * 3.5; box(d, px - .9, KERB, z + 3.2, px + .9, KERB + .2, z + 4.8, colr('#bdb6aa')); box(d, px - .35, KERB + .2, z + 3.7, px + .35, KERB + 1.7, z + 4.3, colr('#d94f3d')); box(d, px - .3, KERB + 1.2, z + 3.68, px + .3, KERB + 1.55, z + 3.7, colr('#1a1a1a')); }
     const sx = x + 11.6, sz = z + 7.2; box(d, sx - .12, KERB, sz - .12, sx + .12, KERB + 4.5, sz + .12, colr('#555'));
     signQuad(G(ch, 'sign'), sx, sz - .14, 0, -1, 3, KERB + 4.5, .75, SIGN.fuel); signQuad(G(ch, 'sign'), sx, sz + .14, 0, 1, 3, KERB + 4.5, .75, SIGN.fuel); }
-  { // Oshoja Motor Park: billboard, ticket booth, kiosks with umbrellas
+  { // Oshodi Motor Park: billboard, ticket booth, kiosks with umbrellas
     const ch = chunkAt(256, 320), d = G(ch, 'detail'), sg = G(ch, 'sign');
     for (const px of [290, 370]) box(d, px * M - .12, KERB, 193 * M, px * M + .12, KERB + 5.6, 193 * M + .24, colr('#3a3a3a'));
     for (let px = 290; px <= 370; px += 16) addOcc(px * M, 193 * M, 1.1, KERB + 4, KERB + 6.3); addOcc(368 * M, 300 * M, 1.6, 0, KERB + 2.5);
@@ -4014,7 +4014,7 @@ function buildLandmarks(G) {
     for (const [kx, kz, c1] of [[140, 330, '#d94f3d'], [368, 368, '#2f8fbf'], [368, 240, '#3fa66a']]) { const X = kx * M, Z = kz * M; addOcc(X, Z, 1.8, KERB + 1.6, KERB + 2.7); prop('blob', mtx(X, KERB + .02, Z, 3, 1, 3)); box(d, X - .7, KERB, Z - .5, X + .7, KERB + 1, Z + .5, colr('#8d6e63')); box(d, X - .04, KERB, Z - .04, X + .04, KERB + 2.2, Z + .04, colr('#ddd')); umbrella(d, X, KERB + 2.1, Z, 1.7, .5, colr(c1), colr('#f3eee4'));
       prop('goods', mtx(X - .3, KERB + 1.12, Z, .2, .15, .2), '#fb8c00'); prop('basin', mtx(X + .3, KERB + 1.06, Z, .28, .14, .28), '#1e88e5'); }
   }
-  { // Luxury Bus Park coaches and board
+  { // Jibowu Luxury Bus Park coaches and board
     const ch = chunkAt(256, 1580), d = G(ch, 'detail');
     for (let i = 0; i < 3; i++) { const x0 = (150 + i * 70) * M, z0 = 1520 * M, x1 = x0 + 40 * M, z1 = z0 + 120 * M;
       for (let zz = z0 + 2; zz < z1 - 1; zz += 2.6) addOcc((x0 + x1) / 2, zz, 2.6, 0, KERB + 3.5); prop('blob', mtx((x0 + x1) / 2, KERB + .02, (z0 + z1) / 2, 6.5, 1, 16.5));
@@ -4030,7 +4030,7 @@ function buildLandmarks(G) {
     for (let i = 0; i < 4; i++) { const X = (cp.x + 25) * M, Z = (cp.y - 28 + i * 16) * M; prop('drum', mtx(X, .45, Z, .32, .9, .32), i % 2 ? '#f05a50' : '#f3eee4'); }
     const X = (cp.x + 44) * M, Z = (cp.y - 44) * M, y0 = heightAt(cp.x + 44, cp.y - 44); walls(d, X - .9, y0, Z - .9, X + .9, y0 + 2.3, Z + .9, colr('#2f5d3a')); box(d, X - 1.1, y0 + 2.3, Z - 1.1, X + 1.1, y0 + 2.45, Z + 1.1, colr('#e0e0e0'));
   }
-  { // canoes by Stilt Town
+  { // canoes by Makoko
     const R = prng(66); for (let k = 0; k < 8; k++) { const X = (49.5 + R() * 13) * 4, Z = (40 + R() * 22) * 4; if (isBridge(Math.floor(X / 4), Math.floor(Z / 4)) || grid[I(Math.floor(X / 4), Math.floor(Z / 4))] === T.STILT) continue;
       const d = G(chunkAt(X / M, Z / M), 'detail'); rbox(d, X, WATER_Y - .1, Z, 5, WATER_Y + .35, .9, R() * 6, colr('#5d4128')); }
   }
@@ -4897,11 +4897,11 @@ function drawOverlay(t, marks) {
       ctx.font = '700 12px "JetBrains Mono", monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText(fmtDist(dist(obj, p)), ax, ay + 26); } }
 }
 const RINGC = new THREE.Color(); // objective rings stay subtle on the ground; the beam does the guiding
-const agberoHere = (st, id) => st.agbero && (!SHIFT.mission || id === 'balogate'); // first day: only Balo Market's agbero is working
+const agberoHere = (st, id) => st.agbero && (!SHIFT.mission || id === 'balogate'); // first day: only Yaba's agbero is working
 const agberoSpot = st => { const hz = Math.abs(st.wy - st.y) > Math.abs(st.wx - st.x); return [st.wx + (hz ? 34 : 0), st.wy + (hz ? 0 : 34)]; };
 
 // Motor-park touts call out destinations at the bays.
-const TOUTS = [{ x: 150, y: 300, col: '#c62828', call: 'Balo! Balo! Market straight!', _tout: 1 }, { x: 300, y: 340, col: '#2e7d32', call: 'Eko! Eko! One chance!', _tout: 1 }, { x: 230, y: 300, col: '#f57c00', call: 'Iya Basira! Enter!', _tout: 1 }];
+const TOUTS = [{ x: 150, y: 300, col: '#c62828', call: 'Yaba! Yaba! Market straight!', _tout: 1 }, { x: 300, y: 340, col: '#2e7d32', call: 'CMS! CMS! One chance!', _tout: 1 }, { x: 230, y: 300, col: '#f57c00', call: 'Iya Basira! Enter!', _tout: 1 }];
 const TRAYS = ['water', 'puff', 'orange', 'suya', 'gala', 'chips'];
 const AGB = new Map();
 
@@ -4919,7 +4919,7 @@ function worldMarkers() {
 // ---- ambient life: dust drifting in the afternoon light, birds crossing now and then
 const DUST = { pts: null, base: null, n: 240 };
 function updateDust(t, dt, tgt, dk) {
-  const on = Q.dust, h = (S.minutes % 1440) / 60, dz = isDusty(Math.floor(player.pos().x / CELL), Math.floor(player.pos().y / CELL)), k = on ? sstep(9, 11.5, h) * (1 - sstep(17.5, 18.8, h)) * (dz ? 1.6 : 1) : 0; // motes in the sunlight, thickest in Oke-Erupe
+  const on = Q.dust, h = (S.minutes % 1440) / 60, dz = isDusty(Math.floor(player.pos().x / CELL), Math.floor(player.pos().y / CELL)), k = on ? sstep(9, 11.5, h) * (1 - sstep(17.5, 18.8, h)) * (dz ? 1.6 : 1) : 0; // motes in the sunlight, thickest in Mushin
   if (!DUST.pts) { const g = new THREE.BufferGeometry(); DUST.base = new Float32Array(DUST.n * 4); for (let i = 0; i < DUST.n; i++) { DUST.base[i * 4] = vrand() * 36; DUST.base[i * 4 + 1] = vrand() * 7; DUST.base[i * 4 + 2] = vrand() * 36; DUST.base[i * 4 + 3] = vrand(); }
     g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(DUST.n * 3), 3));
     DUST.pts = new THREE.Points(g, fadeGlow(new THREE.PointsMaterial({ map: glowT, size: .08, color: 0xffe0a8, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending })));
@@ -5051,11 +5051,11 @@ function updateHud(dt) {
 }
 
 // Place names: a short fade-in banner when you enter a district or a named place.
-const TAGLINES = { 'Oshoja Junction': 'Motor-park chaos and danfo routes', 'Mainland': 'Where the hustle starts', 'Balo Market': 'Wall-to-wall stalls. Hold your bag well.',
-  'Third Lagoon Bridge': 'Ten kilometres of go-slow or glory', 'The Lagoon': 'Canoes, sawmill smoke and open water', 'Stilt Town Waters': 'Houses on stilts over the lagoon',
-  'Eko Crest': 'Glass towers and big money', 'Lekka Strip': 'Estates, toll gates and long straights', 'Luxury Bus Park': 'Night buses to the east' };
+const TAGLINES = { 'Oshodi': 'Motor-park chaos and danfo routes', 'Mainland': 'Where the hustle starts', 'Yaba': 'Wall-to-wall stalls. Hold your bag well.',
+  'Third Mainland Bridge': 'Ten kilometres of go-slow or glory', 'Lagos Lagoon': 'Canoes, sawmill smoke and open water', 'Makoko': 'Houses on stilts over the lagoon',
+  'Lagos Island': 'Glass towers and big money', 'Lekki': 'Estates, toll gates and long straights', 'Jibowu Luxury Bus Park': 'Night buses to the east' };
 const PLACES = [
-  { name: 'Oshoja Motor Park', sub: 'Danfos to everywhere. Touts included.', x0: 128, y0: 192, x1: 384, y1: 448 },
+  { name: 'Oshodi Motor Park', sub: 'Danfos to everywhere. Touts included.', x0: 128, y0: 192, x1: 384, y1: 448 },
   ...STATIONS.map(st => ({ name: st.name, sub: `Fuel ${naira(FUEL_PRICE)} per 1% of the tank`, x0: st.c * CELL - 16, y0: st.r * CELL - 16, x1: (st.c + 3) * CELL + 16, y1: (st.r + 2) * CELL + 16 })),
 ];
 const BANNER = { cur: '', shown: {} };
@@ -5179,7 +5179,7 @@ function boot(data) {
   $('#btn-play').onclick = () => begin(false); $('#btn-new').onclick = () => begin(true);
   // seed the city so the title screen shows a living street
   for (let i = 0; i < 6; i++) { const s = roadSpotNear(player, 80, 500); spawnVehicle(pick(['danfo', 'sedan', 'keke', 'okada']), s.x, s.y, s.a, { from: s.from, to: s.to }); }
-  [0, 1, 3, 7, 8, 9].forEach((i, k) => { const bay = PARK_BAYS[i]; if (bay) spawnVehicle('danfo', bay.x, bay.y, bay.a, { parked: true, parkDanfo: true, dest: ['EKO', 'OSHOJA', 'LEKKA', 'BALO'][k % 4] }); });
+  [0, 1, 3, 7, 8, 9].forEach((i, k) => { const bay = PARK_BAYS[i]; if (bay) spawnVehicle('danfo', bay.x, bay.y, bay.a, { parked: true, parkDanfo: true, dest: ['CMS', 'OSHODI', 'LEKKI', 'YABA'][k % 4] }); });
   const draw = () => { renderMap(); build3D(); };
   (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]) : Promise.resolve()).then(draw);
   requestAnimationFrame(step);

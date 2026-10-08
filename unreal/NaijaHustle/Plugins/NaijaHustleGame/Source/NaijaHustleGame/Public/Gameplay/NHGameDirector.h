@@ -10,7 +10,7 @@ class ANHPerson;
 
 /**
  * Runs the game in a level: the "First Day on the Danfo" mission, free conductor shifts on any danfo,
- * Baba Driver, the vehicles parked at Oshoja Motor Park, the clock, lighting by time of day and the
+ * Baba Driver, the vehicles parked at Oshodi Motor Park, the clock, lighting by time of day and the
  * wanted level's decay. A port of the browser demo's conductor and mission code, with the same rules
  * and numbers (read from naija_rules.json). The game mode spawns one; the HUD reads its state.
  */

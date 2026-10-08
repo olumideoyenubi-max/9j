@@ -20,7 +20,7 @@ enum class ENHBuildingKind : uint8
 UENUM(BlueprintType)
 enum class ENHRoofStyle : uint8
 {
-	Flat,  // parapet; in Oke-Erupe, rebar and column stubs waiting for the next floor
+	Flat,  // parapet; in Mushin, rebar and column stubs waiting for the next floor
 	Zinc   // low gable of corrugated zinc
 };
 
@@ -55,7 +55,7 @@ public:
 	/** Wall height in cm (to the roof) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Building", meta = (ClampMin = "200")) float Height = 1200.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Building") ENHRoofStyle Roof = ENHRoofStyle::Flat;
-	/** Oke-Erupe: raw or faded concrete, more bars, rusty zinc, unfinished roofs */
+	/** Mushin: raw or faded concrete, more bars, rusty zinc, unfinished roofs */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Building") bool bDusty = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Building") FLinearColor WallColor = FLinearColor(0.6f, 0.5f, 0.4f);
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Building") int32 Seed = 0;
