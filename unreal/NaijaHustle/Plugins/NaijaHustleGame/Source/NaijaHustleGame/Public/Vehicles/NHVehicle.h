@@ -64,6 +64,9 @@ public:
 	/** Headlights and tail light on or off (K) */
 	UFUNCTION(BlueprintCallable, Category = "Vehicle") void SetHeadlights(bool bOn);
 	UFUNCTION(BlueprintPure, Category = "Vehicle") bool HeadlightsOn() const { return bHeadlights; }
+	/** The view from the driver's eyes, over the dashboard (V), or the chase camera behind the vehicle */
+	UFUNCTION(BlueprintCallable, Category = "Vehicle") void SetCabinView(bool bOn);
+	UFUNCTION(BlueprintPure, Category = "Vehicle") bool CabinViewOn() const { return bCabinView; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -92,6 +95,7 @@ private:
 	/** Two headlights and a tail light, made the first time they are switched on */
 	UPROPERTY() TArray<TObjectPtr<class ULocalLightComponent>> Lamps;
 	bool bHeadlights = false;
+	bool bCabinView = false;
 	/** Where the driver's hips are, relative to Body, and how tall the body is */
 	FVector SeatAt = FVector::ZeroVector;
 	float BodyHeight = 150.f;
@@ -112,6 +116,7 @@ private:
 	void OnHandbrakeEnd() { bHandbrake = false; }
 	void OnHorn();
 	void OnHeadlights() { SetHeadlights(!bHeadlights); }
+	void OnCabinView() { SetCabinView(!bCabinView); }
 	/** Sits the player's current body in the seat, posed for driving; false if the player has no body to show */
 	bool SeatDriver();
 	void OnLook(const FInputActionValue& V);

@@ -313,7 +313,11 @@ void ANHVehicle::SetOccupied(bool bOn)
 	const bool bBody = bOn && SeatDriver();
 	if (DriverBody)
 	{
-		DriverBody->SetVisibility(bBody);
+		DriverBody->SetVisibility(bBody && !bCabinView);
+	}
+	if (!bOn && bCabinView)
+	{
+		SetCabinView(false); // the next driver starts from the chase camera
 	}
 	for (UStaticMeshComponent* P : DriverPieces)
 	{
@@ -393,6 +397,38 @@ bool ANHVehicle::SeatDriver()
 	DriverBody->SetRelativeLocation(SeatAt - FVector(0.f, 0.f, Hips * Scale));
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: driver seated in the %s at %s (hips %.0f cm up the body, scale %.2f, vehicle %.0f x %.0f x %.0f)"), *VehicleType.ToString(), *SeatAt.ToCompactString(), Hips, Scale, Spec.Length, Spec.Width, BodyHeight);
 	return true;
+}
+
+void ANHVehicle::SetCabinView(bool bOn)
+{
+	bCabinView = bOn;
+	if (bOn)
+	{
+		// at the driver's eyes: the seat is where the hips are, the eyes about 65 cm above, a little forward
+		Arm->TargetArmLength = 0.f;
+		Arm->SocketOffset = FVector::ZeroVector;
+		const bool bCabOver = VehicleType == TEXT("danfo") || VehicleType == TEXT("truck"); // sits close to the windscreen, high up
+		Arm->SetRelativeLocation(Body->GetRelativeLocation() + SeatAt + (bCabOver ? FVector(-20.f, 0.f, 48.f) : FVector(Spec.bBike ? 20.f : 10.f, 0.f, 65.f)));
+		Arm->bDoCollisionTest = false;
+		Arm->bEnableCameraLag = false;
+		Arm->bEnableCameraRotationLag = false;
+		Camera->SetFieldOfView(88.f);
+	}
+	else
+	{
+		Arm->TargetArmLength = Spec.Length * 1.2f + 420.f;
+		Arm->SocketOffset = FVector(0.f, 0.f, 160.f);
+		Arm->SetRelativeLocation(FVector::ZeroVector);
+		Arm->bDoCollisionTest = true;
+		Arm->bEnableCameraLag = true;
+		Arm->bEnableCameraRotationLag = true;
+		Camera->SetFieldOfView(75.f);
+	}
+	LookOffset = FVector2D::ZeroVector;
+	if (DriverBody)
+	{
+		DriverBody->SetVisibility(!bOn && IsPlayerControlled()); // his own head would fill the view
+	}
 }
 
 void ANHVehicle::SetHeadlights(bool bOn)
@@ -496,7 +532,7 @@ void ANHVehicle::Tick(float DeltaSeconds)
 	{
 		LookOffset = FMath::Vector2DInterpTo(LookOffset, FVector2D::ZeroVector, DeltaSeconds, 2.f);
 	}
-	Arm->SetRelativeRotation(FRotator(-12.f + LookOffset.Y, LookOffset.X, 0.f));
+	Arm->SetRelativeRotation(FRotator((bCabinView ? 0.f : -12.f) + LookOffset.Y, LookOffset.X, 0.f));
 }
 
 void ANHVehicle::Drive(float DeltaSeconds)
@@ -576,6 +612,7 @@ void ANHVehicle::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	Input->BindAction(Set->Handbrake, ETriggerEvent::Completed, this, &ANHVehicle::OnHandbrakeEnd);
 	Input->BindAction(Set->Horn, ETriggerEvent::Started, this, &ANHVehicle::OnHorn);
 	Input->BindAction(Set->Headlights, ETriggerEvent::Started, this, &ANHVehicle::OnHeadlights);
+	Input->BindAction(Set->CabinView, ETriggerEvent::Started, this, &ANHVehicle::OnCabinView);
 	Input->BindAction(Set->Look, ETriggerEvent::Triggered, this, &ANHVehicle::OnLook);
 	Input->BindAction(Set->LookStick, ETriggerEvent::Triggered, this, &ANHVehicle::OnLook);
 }

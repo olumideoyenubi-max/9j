@@ -569,16 +569,19 @@ void UNHDebugPlay::DriveShots(FName Type, const FString& Folder)
 		PC->GetWorldTimerManager().SetTimer(Handle, FTimerDelegate::CreateWeakLambda(PC, MoveTemp(Do)), Seconds, false);
 	};
 	After(4.f, [Player, Folder]() { if (Player.IsValid()) { Player->ConsoleCommand(FString::Printf(TEXT("HighResShot 1920x1080 filename=\"%s\""), *(Folder / TEXT("driver.png")))); } });
-	After(7.f, [Player, Vehicle]()
+	After(5.5f, [Player, Vehicle]() { if (Player.IsValid() && Vehicle.IsValid()) { Vehicle->SetCabinView(true); Player->SetViewTarget(Vehicle.Get()); } });
+	After(8.f, [Player, Folder]() { if (Player.IsValid()) { Player->ConsoleCommand(FString::Printf(TEXT("HighResShot 1920x1080 filename=\"%s\""), *(Folder / TEXT("cabin.png")))); } });
+	After(10.f, [Player, Vehicle]()
 	{
 		if (Player.IsValid() && Vehicle.IsValid())
 		{
+			Vehicle->SetCabinView(false);
 			Player->NHTime(21.5f);
 			Vehicle->SetHeadlights(true);
 			Player->SetViewTarget(Vehicle.Get());
 		}
 	});
-	After(13.f, [Player, Vehicle, Folder]()
+	After(16.f, [Player, Vehicle, Folder]()
 	{
 		if (Player.IsValid())
 		{

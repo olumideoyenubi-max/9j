@@ -90,6 +90,7 @@ void UNHInputSet::Build()
 	Radio = MakeAction(this, TEXT("IA_Radio"));
 	LookBehind = MakeAction(this, TEXT("IA_LookBehind"));
 	Headlights = MakeAction(this, TEXT("IA_Headlights"));
+	CabinView = MakeAction(this, TEXT("IA_CabinView"));
 
 	Vehicle->MapKey(Throttle, EKeys::W);
 	Vehicle->MapKey(Throttle, EKeys::Up);
@@ -111,6 +112,7 @@ void UNHInputSet::Build()
 	Vehicle->MapKey(Radio, EKeys::R);
 	Vehicle->MapKey(Radio, EKeys::Gamepad_DPad_Right);
 	Vehicle->MapKey(LookBehind, EKeys::C);
+	Vehicle->MapKey(CabinView, EKeys::V);
 	Vehicle->MapKey(Headlights, EKeys::K); // every gamepad button is taken
 	Vehicle->MapKey(LookBehind, EKeys::Gamepad_RightThumbstick);
 	// Free look while driving uses the same actions as on foot

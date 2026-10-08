@@ -49,6 +49,7 @@ public:
 	UPROPERTY() TObjectPtr<UInputAction> Radio;       // R / D-pad right
 	UPROPERTY() TObjectPtr<UInputAction> LookBehind;  // C / R3
 	UPROPERTY() TObjectPtr<UInputAction> Headlights;  // K
+	UPROPERTY() TObjectPtr<UInputAction> CabinView;   // V
 
 	// ---- always on
 	UPROPERTY() TObjectPtr<UInputAction> Phone;       // P or Up arrow / D-pad up

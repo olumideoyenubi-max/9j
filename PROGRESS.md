@@ -47,6 +47,8 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Driver in the seat:** getting into a vehicle now sits the player's own body in the driving seat, posed for driving by pointing each limb (works for any skeleton with the mannequin's bone names). Seen in the danfo, the keke and on the okada; the seat position for real models is a guess from the vehicle's size.
 - **Headlights:** the **K** key switches two headlight beams and a red tail light on the vehicle you drive (no shadows, to spare the Mac). `NHDriveShots <type> <folder>` photographs the driver by day and the lights at night.
 - **Player character built to the brief (2026-10-08):** "Naija man" is now the default skin: an athletic dark-skinned man with low-cut black hair and a beard, in a white singlet and olive cargo trousers, wearing the test trainers. He is generated with MakeHuman (MPFB) in Blender by `Scripts/build_player_makehuman.py`, which also adds the IK bones the mannequin's animation Blueprint needs; `setup_player_materials.py` connects his textures. Running stride 109 cm each way, 22.7 fps on the dusty street, self-test 75 and autoplay 26 pass. The young hustler is the second skin and the mannequin the third (`NHSkin`). `NHSkinShots <folder>` photographs the player from the front.
+- **Cabin view:** the **V** key switches between the chase camera and the view from the driver's eyes over the dashboard (the driver's body is hidden in that view). Checked in the danfo, the super SUV, the luxury 4x4, the royal SUV, the sports car, the sedan and on the okada. `NHDriveShots` now also saves a cabin picture.
+- **Vehicle model pass (`Scripts/optimise_vehicle_meshes.py`):** every downloaded model now has three lower levels of detail (the 239,000-triangle sports car drops to 25,000 at the first), and solid dark glass is replaced by one shared see-through glass material on ten models, so the driver shows from outside and can see out.
 
 ## In progress
 
@@ -69,9 +71,9 @@ Deferred: NPCs and storyline.
 
 ## Known bugs and gaps
 
-- **Frame rate fell with the real models:** 14.9 fps at Oshodi Motor Park (2650, 4600), 17.8 fps on the dusty street (was 22.3), 20.1 fps on Lagos Island (was 29.9 with blockouts), one 15-second run each at 1280×720 while the Mac was still busy. The models have one level of detail and up to 56 material slots each (the sports car is 239,000 triangles); levels of detail and merged materials are the next step.
+- **Frame rate with the real models (after the level-of-detail pass, 2026-10-08):** 16.5 fps at Oshodi Motor Park (was 14.9), 23.9 fps on Lagos Island (was 20.1; 29.9 with blockouts), 20 to 24 fps on the dusty street. One 15-second run each at 1280×720, on a busy Mac (load average 4 to 8), so treat differences of a few fps as noise. With every model switched back to a blockout the motor park ran at 20.0 fps, so the models now cost about 3 fps there and the rest is the scene itself: that belongs to visual brief section 9 (performance). Per-pixel lit glass was tried and dropped: it took Lagos Island down to 11 fps.
 - Real-model cars keep their own colours and materials: the game's paint colours, wetness and crash marks do not show on them, and the wheels do not turn.
-- The driver cannot be seen in cars whose models have solid dark glass (the super SUV and others), and his seat position has only been checked in the danfo, the keke and on the okada. He does not hold the wheel or wear the trainers while seated.
+- Glass could not be identified on the luxury coupe, so its driver cannot be seen; the cabin view shows whatever interior a model has, which on some is very little. The driver's seat position has only been checked in the danfo, the keke and on the okada. He does not hold the wheel or wear the trainers while seated.
 - Headlights have no gamepad button (every button is taken) and the lamp models do not glow; other traffic has no lights.
 - The models' sizes come from fitting each to its type's length, so a few are too tall (SUV 258 cm, danfo 257 cm, luxury 4x4 226 cm).
 
@@ -102,6 +104,10 @@ Deferred: NPCs and storyline.
 - All surfaces use flat placeholder textures.
 
 ## Screenshots
+
+Cabin view (V): danfo and royal SUV.
+
+![cabin](docs/screenshots/cabin-view.jpg)
 
 | Player (Naija man) | Face |
 |---|---|
