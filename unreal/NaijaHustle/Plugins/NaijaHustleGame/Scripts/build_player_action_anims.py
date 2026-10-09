@@ -17,7 +17,7 @@ frame is keyed. The machete, pistol, rifle, car seat and steering wheel are stan
 Blender and are not exported. Writes <out>/Naija_Anim_<Clip>.fbx and <out>/Naija_Actions.blend.
 """
 import bpy, bmesh, math, os, sys, time
-from mathutils import Vector, Matrix
+from mathutils import Vector, Matrix, Quaternion
 
 SOURCE = OUT = None
 if "--" in sys.argv:
@@ -58,6 +58,47 @@ def frame(y, h):
     m = Matrix((x, y, x.cross(y)))
     m.transpose()
     return m
+
+
+def hand_shape(side):
+    """Where the palm really faces, read from the finger bones, in the hand bone's own space: f along the hand to the
+    knuckles, t along the knuckles toward the thumb side, p out of the palm, and the middle of a closed fist."""
+    inv = REST["hand_" + side].inverted()
+    index, pinky = inv @ REST[f"index_01_{side}"].translation, inv @ REST[f"pinky_01_{side}"].translation
+    f = Vector((0, 1, 0))
+    t = index - pinky
+    t.y = 0
+    t.normalize()
+    p = t.cross(f)
+    thumb = inv @ rig.data.bones[f"thumb_03_{side}"].tail_local
+    if p.dot(thumb) < 0:
+        p = -p
+    mid = (index + pinky) / 2
+    fist = Vector((mid.x, 8.5, mid.z)) + p * 2.6      # a handle lies in the fold of the fingers, just off the palm
+    return {"f": f, "p": p, "t": t, "fist": (fist.dot(f), fist.dot(p), fist.dot(t)), "fist_local": fist}
+
+
+HAND = {side: hand_shape(side) for side in "rl"}
+
+
+def hand_axes(side, fwd, palm):
+    f = fwd.normalized()
+    p = (palm - f * palm.dot(f)).normalized()
+    return f, p, (f.cross(p) if side == "r" else p.cross(f))
+
+
+def fist_of(side, wrist, fwd, palm):
+    """The middle of the closed fist for a wrist there, knuckles toward fwd, palm facing palm."""
+    f, p, t = hand_axes(side, fwd, palm)
+    a, b, c = HAND[side]["fist"]
+    return wrist + f * a + p * b + t * c
+
+
+def wrist_for(side, fist, fwd, palm):
+    """Where the wrist goes for the fist to close round that point."""
+    f, p, t = hand_axes(side, fwd, palm)
+    a, b, c = HAND[side]["fist"]
+    return fist - f * a - p * b - t * c
 
 
 class Skeleton:
@@ -108,21 +149,34 @@ class Skeleton:
         self.set_rot(upper, frame(du, new_hinge) @ frame(rest_u, hinge).inverted() @ REST[upper].to_3x3())
         self.set_rot(lower, frame(dl, new_hinge) @ frame(rest_l, hinge).inverted() @ REST[lower].to_3x3())
 
+    def aim(self, n, direction, amount=1.0):
+        """Points the bone along direction by the shortest turn from where its parents carry it."""
+        c = self.carried(n).to_3x3()
+        turn_to = Quaternion().slerp(c.col[1].rotation_difference(direction.normalized()), amount)
+        self.set_rot(n, turn_to.to_matrix() @ c)
+
     def hand(self, side, forward, palm, grip, index=None):
         n = "hand_" + side
+        shape = HAND[side]
         r = REST[n].to_3x3()
-        self.set_rot(n, frame(forward, palm) @ frame(r.col[1], r.col[2]).inverted() @ r)
+        self.set_rot(n, frame(forward, palm) @ frame(r @ shape["f"], r @ shape["p"]).inverted() @ r)
         w = self.world(n).to_3x3()
-        axis = w.col[1].cross(w.col[2])   # turning about this curls a finger toward the palm
-        for f in FINGERS:
-            amount = index if (f == "index" and index is not None) else grip
-            for joint, most in (("01", 70.0), ("02", 95.0), ("03", 60.0)):
-                self.spin(f"{f}_{joint}_{side}", axis, amount * most)
-        # the thumb folds across the palm
-        for joint, most in (("01", 25.0), ("02", 35.0), ("03", 45.0)):
-            bone = f"thumb_{joint}_{side}"
-            t = self.carried(bone).to_3x3().col[1]
-            self.spin(bone, t.cross(w.col[2]), grip * most)
+        f, p, t = w @ shape["f"], w @ shape["p"], w @ shape["t"]
+        axis = f.cross(p)                 # turning about this curls a finger toward the palm
+        for finger, more in (("index", 0.94), ("middle", 1.0), ("ring", 1.04), ("pinky", 1.08)):
+            amount = index if (finger == "index" and index is not None) else grip * more
+            # straighten the splay of the fingers as they close, so they lie side by side round a handle
+            first = f"{finger}_01_{side}"
+            self.aim(first, f, min(amount, 1.0) * 0.8)
+            c = self.world(first).to_3x3()
+            self.set_rot(first, Matrix.Rotation(math.radians(amount * 78.0), 3, axis) @ c)
+            for joint, most in (("02", 92.0), ("03", 58.0)):
+                self.spin(f"{finger}_{joint}_{side}", axis, amount * most)
+        # the thumb comes across the palm and closes over the fingers from the other side
+        g = min(grip, 1.0)
+        self.aim(f"thumb_01_{side}", f * 0.62 + p * 0.72 + t * 0.3, g * 0.9)
+        self.aim(f"thumb_02_{side}", f * 0.74 + p * 0.62 - t * 0.25, g * 0.95)
+        self.aim(f"thumb_03_{side}", f * 0.62 + p * 0.3 - t * 0.72, g * 0.95)
 
 
 BALL_REACH = (REST["ball_r"].translation - REST["foot_r"].translation).length
@@ -187,14 +241,38 @@ EASE = {
 }
 
 
+def flat(v):
+    return tuple(v) if isinstance(v, (Vector, tuple)) else (v,)
+
+
 def sample(keys, f):
-    """keys: [(frame, pose, ease into this key)]"""
+    """keys: [(frame, pose, _)]. One smooth curve through every key, at rest only at the first and the last, so a
+    swing keeps its speed through the poses in the middle instead of stopping at each one."""
     if f <= keys[0][0]:
         return keys[0][1]
-    for (f0, p0, _), (f1, p1, ease) in zip(keys, keys[1:]):
-        if f <= f1:
-            return blend(p0, p1, EASE[ease]((f - f0) / (f1 - f0)))
-    return keys[-1][1]
+    if f >= keys[-1][0]:
+        return keys[-1][1]
+    i = max(k for k in range(len(keys) - 1) if keys[k][0] <= f)
+    (t0, p0, _), (t1, p1, _) = keys[i], keys[i + 1]
+    h, u = t1 - t0, (f - t0) / (t1 - t0)
+    out = {}
+    for name in p0:
+        a, b = p0[name], p1[name]
+        if a is None or b is None:
+            out[name] = a if u < 0.5 else b
+            continue
+
+        def slope(k):                      # the speed the curve passes key k at
+            if k == 0 or k == len(keys) - 1 or keys[k - 1][1][name] is None or keys[k + 1][1][name] is None:
+                return tuple(0.0 for _ in flat(keys[k][1][name]))
+            before, after = flat(keys[k - 1][1][name]), flat(keys[k + 1][1][name])
+            return tuple((y - x) / (keys[k + 1][0] - keys[k - 1][0]) for x, y in zip(before, after))
+        m0, m1 = slope(i), slope(i + 1)
+        u2, u3 = u * u, u * u * u
+        got = tuple((2 * u3 - 3 * u2 + 1) * x + (u3 - 2 * u2 + u) * h * s0 + (-2 * u3 + 3 * u2) * y + (u3 - u2) * h * s1
+                    for x, y, s0, s1 in zip(flat(a), flat(b), m0, m1))
+        out[name] = Vector(got) if isinstance(a, Vector) else got if isinstance(a, tuple) else got[0]
+    return out
 
 
 def bake(name, frames, pose_at):
@@ -238,7 +316,6 @@ def bake(name, frames, pose_at):
 
 
 # ==================================================================================================== the clips
-
 FPS = 30
 
 
@@ -335,26 +412,29 @@ GUN_PALM = V(-1, 0, 0)   # the right palm faces left round a grip
 
 def gun_frame(wrist, fwd):
     """The fist, and the gun's barrel, left and up directions, from the right wrist and where the barrel points."""
-    f = unit(fwd)
-    left = unit(GUN_PALM - f * GUN_PALM.dot(f))
-    return wrist + f * 8 + left * 3, f, left, f.cross(left)
+    f, left, up = hand_axes("r", fwd, GUN_PALM)
+    return fist_of("r", wrist, f, left), f, left, up
+
+
+def left_on(point, knuckles, palm, grip, elbow):
+    """The left hand closed round a point: which way its knuckles and palm face, and how far it closes."""
+    return dict(hand_l=wrist_for("l", point, knuckles, palm), l_fwd=unit(knuckles), l_palm=unit(palm), grip_l=grip, elb_l=elbow)
 
 
 def pistol(base, wrist, fwd, **over):
     fist, f, left, up = gun_frame(wrist, fwd)
-    p = P(base, hand_r=wrist, r_fwd=f, r_palm=left, grip_r=0.9, idx_r=0.4, elb_r=V(0.7, -0.2, -1),
-          hand_l=fist - f * 5.0 + left * 4.5 - up * 7.0, l_fwd=unit(f * 0.7 + up * 0.55 - left * 0.35), l_palm=unit(-left * 0.9 + f * 0.3 + up * 0.1),
-          grip_l=0.85, elb_l=V(-0.7, -0.2, -1))
+    # the left hand wraps the right hand's fingers from the left side, knuckles under the trigger guard
+    p = P(base, hand_r=wrist, r_fwd=f, r_palm=left, grip_r=0.95, idx_r=0.35, elb_r=V(0.7, -0.2, -1),
+          **left_on(fist + f * 2.2 - up * 2.6 + left * 1.6, f * 0.78 + up * 0.62, -left + f * 0.25, 0.62, V(-0.7, -0.2, -1)))
     p.update(over)
     return p
 
 
 def rifle(base, wrist, fwd, **over):
     fist, f, left, up = gun_frame(wrist, fwd)
-    guard = fist + f * 31 + up * 2.0     # the underside of the handguard
-    p = P(base, hand_r=wrist, r_fwd=f, r_palm=left, grip_r=0.9, idx_r=0.4, elb_r=V(1, -0.5, -0.6),
-          hand_l=guard - f * 5 + left * 6 - up * 4.5, l_fwd=unit(-left * 0.75 + f * 0.45 + up * 0.5), l_palm=unit(up - left * 0.2),
-          grip_l=0.75, elb_l=V(-0.35, 0, -1))
+    # the left hand cups the handguard from below, fingers up its far side
+    p = P(base, hand_r=wrist, r_fwd=f, r_palm=left, grip_r=0.95, idx_r=0.35, elb_r=V(1, -0.5, -0.6),
+          **left_on(fist + f * 29 + up * 2.4, -left * 0.82 + f * 0.5 + up * 0.25, up + left * 0.15, 0.8, V(-0.35, 0, -1)))
     p.update(over)
     return p
 
@@ -384,7 +464,7 @@ MACHETE_BODY = P(STAND, hip=V(0, 0, 87), hip_rot=(0, -22, 0), spine=(12, -6, 0),
 def machete(base, wrist, blade, edge, **over):
     """The right hand holds the machete: blade is where it points, edge the way its cutting edge faces."""
     b, e = unit(blade), unit(edge)
-    p = P(base, hand_r=wrist, r_fwd=e, r_palm=b.cross(e), grip_r=1.0, idx_r=None)
+    p = P(base, hand_r=wrist, r_fwd=e, r_palm=b.cross(e), grip_r=0.98, idx_r=None)
     p.update(over)
     return p
 
@@ -444,19 +524,20 @@ SEATED = P(STAND, hip=V(0, 0.7, 98.2), hip_rot=(-14, 0, 0), spine=(8, 0, 0), hea
            foot_l=V(-17, 55, 49), knee_l=V(-0.3, 0.4, 1), footrot_l=(-24, 6, 0), toe_l=-4)
 
 
-def on_wheel(angle):
-    """A hand holding the rim, angle in degrees clockwise from the top as the driver sees it."""
+def on_wheel(side, angle):
+    """A hand closed round the rim, angle in degrees clockwise from the top as the driver sees it."""
     a = math.radians(angle)
     out = WHEEL_RIGHT * math.sin(a) + WHEEL_UP * math.cos(a)
-    return WHEEL_AT + out * (WHEEL_RADIUS + 2.5) + WHEEL_AXIS * 6.5, -WHEEL_AXIS, -out
+    knuckles, palm = unit(-WHEEL_AXIS + out * 0.25), -out
+    return wrist_for(side, WHEEL_AT + out * WHEEL_RADIUS, knuckles, palm), knuckles, palm
 
 
 def drive(steer=0.0, right_at=62.0, left_at=-62.0, **over):
     """steer in degrees, positive to the right. A hand that would be carried past the bottom is kept from crossing."""
     p = P(SEATED, steer=steer)
-    p["hand_r"], p["r_fwd"], p["r_palm"] = on_wheel(right_at + steer)
-    p["hand_l"], p["l_fwd"], p["l_palm"] = on_wheel(left_at + steer)
-    p.update(grip_r=0.8, grip_l=0.8, elb_r=V(1, -0.2, -1), elb_l=V(-1, -0.2, -1),
+    p["hand_r"], p["r_fwd"], p["r_palm"] = on_wheel("r", right_at + steer)
+    p["hand_l"], p["l_fwd"], p["l_palm"] = on_wheel("l", left_at + steer)
+    p.update(grip_r=0.92, grip_l=0.92, elb_r=V(1, -0.2, -1), elb_l=V(-1, -0.2, -1),
              head=(5, -steer * 0.22, 0), spine=(8, -steer * 0.06, steer * 0.04))
     p.update(over)
     return p
@@ -506,8 +587,6 @@ CLIPS = {
 
 
 # ==================================================================================================== the props
-
-
 def material(name, colour, rough=0.5, metal=0.0):
     mat = bpy.data.materials.get(name) or bpy.data.materials.new(name)
     mat.use_nodes = True
@@ -556,10 +635,10 @@ def make(name, parts, mats):
 
 def in_hand(obj):
     """Held in the right fist: the prop's Y runs along the knuckles (a barrel, a cutting edge), its Z out of the thumb side."""
-    bone = rig.data.bones["hand_r"]
+    bone, shape = rig.data.bones["hand_r"], HAND["r"]
     obj.parent, obj.parent_type, obj.parent_bone = rig, "BONE", "hand_r"
-    grip = Matrix(((0, 0, 1), (0, 1, 0), (-1, 0, 0))).to_4x4()   # columns: X = -palm, Y = knuckles, Z = thumb side
-    grip.translation = Vector((0, 8 - bone.length, 3))           # bone children hang from the bone's tail
+    grip = Matrix((-shape["p"], shape["f"], shape["t"])).transposed().to_4x4()   # columns: X = -palm, Y = knuckles, Z = thumb side
+    grip.translation = shape["fist_local"] - Vector((0, bone.length, 0))         # bone children hang from the bone's tail
     obj.matrix_parent_inverse = Matrix.Identity(4)
     obj.matrix_basis = grip
     return obj
