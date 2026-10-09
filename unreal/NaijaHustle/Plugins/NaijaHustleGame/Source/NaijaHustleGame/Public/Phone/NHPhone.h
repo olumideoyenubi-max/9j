@@ -112,6 +112,8 @@ public:
 	/** What F does for the phone's ride right now ("" if nothing) */
 	FString InteractPrompt() const;
 	bool IsRiding() const { return Ride.Stage == ERide::Trip; }
+	/** A call is being spoken (not just ringing): the audio mix ducks everything else */
+	bool InCall() const { return Call.bActive && !Call.bIncoming; }
 
 	/** For scripted screenshots: "phone", "contacts", "call", "dropam" (orders a car to Yaba), "ride" (the same, and gets in when it comes), "driver" */
 	void DebugOpen(const FString& What);

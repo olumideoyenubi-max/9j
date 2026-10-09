@@ -1,5 +1,6 @@
 #include "UI/NHHUD.h"
 
+#include "Audio/NHAudioSubsystem.h"
 #include "Core/NHGameData.h"
 #include "Core/NHHustleSubsystem.h"
 #include "Engine/Canvas.h"
@@ -402,13 +403,21 @@ void ANHHUD::DrawHUD()
 	}
 
 	// ---- dialogue (bottom)
+	const UNHAudioSubsystem* AudioSet = UNHAudioSubsystem::Get(this);
+	const float SubK = AudioSet ? AudioSet->SubtitleScale() : 1.f;
 	if (Dir && Dir->Dialogue.bOpen && Dir->Dialogue.Lines.IsValidIndex(Dir->Dialogue.Index))
 	{
-		const float W = FMath::Min(1100.f * S, VW - 2.f * Pad), X = (VW - W) * 0.5f, Y = VH - 260.f * S;
-		Panel(X, Y, W, 150.f * S, FLinearColor(0.f, 0.f, 0.f, 0.78f));
-		Text(Dir->Dialogue.Speaker, X + 28.f * S, Y + 16.f * S, Yellow, Medium, 1.2f);
-		Text(Dir->Dialogue.Lines[Dir->Dialogue.Index], X + 28.f * S, Y + 56.f * S, Ink, Medium, 1.25f);
-		Text(TEXT("E  next"), X + W - 120.f * S, Y + 112.f * S, Muted, Medium, 1.f);
+		// the subtitle size setting scales the speaker and the line; the panel grows up from the same bottom edge
+		const float W = FMath::Min(1100.f * S, VW - 2.f * Pad), X = (VW - W) * 0.5f;
+		const TArray<FString> Lines = Wrap(Dir->Dialogue.Lines[Dir->Dialogue.Index], W - 56.f * S, Medium, 1.25f * SubK);
+		const float H = (116.f + 34.f * SubK * Lines.Num()) * S, Y = VH - 110.f * S - H;
+		Panel(X, Y, W, H, FLinearColor(0.f, 0.f, 0.f, 0.78f));
+		Text(Dir->Dialogue.Speaker, X + 28.f * S, Y + 16.f * S, Yellow, Medium, 1.2f * SubK);
+		for (int32 I = 0; I < Lines.Num(); ++I)
+		{
+			Text(Lines[I], X + 28.f * S, Y + (22.f + 34.f * SubK * (I + 1)) * S, Ink, Medium, 1.25f * SubK);
+		}
+		Text(TEXT("E  next"), X + W - 120.f * S, Y + H - 38.f * S, Muted, Medium, 1.f);
 	}
 
 	// ---- choice panel (centre)
@@ -483,16 +492,17 @@ void ANHHUD::DrawHUD()
 			Text(Who + TEXT(" is calling"), X + 26.f * S, Y + 12.f * S, Ink, Medium, 1.3f);
 			Text(TEXT("Enter: answer     Backspace: decline"), X + 26.f * S, Y + 48.f * S, Muted, Medium, 1.f);
 		}
-		if (!Phone->Subtitle.IsEmpty() && !(Dir && Dir->Dialogue.bOpen))
+		// calls have no recorded voices yet, so the line is shown whatever the Subtitles setting says (ShowSubtitle(false))
+		if (!Phone->Subtitle.IsEmpty() && !(Dir && Dir->Dialogue.bOpen) && (!AudioSet || AudioSet->ShowSubtitle(false)))
 		{
 			const float W = FMath::Min(1000.f * S, VW - 2.f * Pad), X = (VW - W) * 0.5f;
-			const TArray<FString> Lines = Wrap(Phone->Subtitle, W - 48.f * S, Medium, 1.2f);
-			const float H = (48.f + 32.f * Lines.Num()) * S, Y = VH - 170.f * S - H;
+			const TArray<FString> Lines = Wrap(Phone->Subtitle, W - 48.f * S, Medium, 1.2f * SubK);
+			const float H = (16.f + 32.f * SubK * (Lines.Num() + 1)) * S, Y = VH - 170.f * S - H;
 			Panel(X, Y, W, H, FLinearColor(0.f, 0.f, 0.f, 0.72f));
-			Text(Phone->SubtitleSpeaker, X + 24.f * S, Y + 8.f * S, Yellow, Medium, 1.f);
+			Text(Phone->SubtitleSpeaker, X + 24.f * S, Y + 8.f * S, Yellow, Medium, SubK);
 			for (int32 I = 0; I < Lines.Num(); ++I)
 			{
-				Text(Lines[I], X + 24.f * S, Y + (36.f + 32.f * I) * S, Ink, Medium, 1.2f);
+				Text(Lines[I], X + 24.f * S, Y + (8.f + 32.f * SubK * (I + 1) - 4.f) * S, Ink, Medium, 1.2f * SubK);
 			}
 		}
 		if (Screen == EScreen::None)
@@ -567,6 +577,11 @@ void ANHHUD::DrawHUD()
 			{
 				ToggleMenu();
 				bMenuCredits = true;
+			}
+			if (ShotOpen == TEXT("audio"))
+			{
+				ToggleMenu();
+				bMenuAudio = true;
 			}
 			if (ShotOpen == TEXT("controls"))
 			{

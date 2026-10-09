@@ -17,7 +17,7 @@ class UFont;
  *   the map (M): the whole city, zoomed with the mouse wheel and moved with the arrow keys. Click to pin a place; the
  *     pin shows on the minimap, in the world and as a distance, until you get there or right-click it away. The way
  *     there along the roads is drawn on both maps, with the next turn written under the minimap.
- *   the pause menu (Esc): character, lighting, traffic, look speed, resolution, minimap, a page of the controls, quit. Up and down pick a
+ *   the pause menu (Esc): character, lighting, traffic, look speed, resolution, minimap, a page of audio settings, a page of the controls, quit. Up and down pick a
  *     line, left and right change it. The settings are remembered.
  *   the inventory wheel (hold Tab, point with the mouse, let go): phone (the map), wardrobe (next character), car
  *     keys (pins the vehicle you last drove), torch (headlights when driving), wallet, and hail (the nearest passing
@@ -112,6 +112,12 @@ private:
 	int32 ClothesLine = 0;
 	void OpenClothes(bool bOpen);
 	void DrawClothes(float VW, float VH);
+	/** The Audio page of the pause menu (volumes, subtitles, mono), and the line on it */
+	bool bMenuAudio = false;
+	int32 AudioLine = 0;
+	void DrawAudio(float VW, float VH);
+	FString AudioValue(int32 Line) const;
+	void AudioChange(int32 Line, int32 Dir);
 	int32 MenuLine = 0;
 	int32 WheelSlot = -1;
 	FString MenuValue(int32 Line) const;

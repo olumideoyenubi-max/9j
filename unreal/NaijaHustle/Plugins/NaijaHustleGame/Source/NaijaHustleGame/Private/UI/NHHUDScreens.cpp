@@ -1,6 +1,7 @@
 // The HUD's own screens: the map with its pin, the pause menu and the inventory wheel (see NHHUD.h)
 #include "UI/NHHUD.h"
 
+#include "Audio/NHAudioSubsystem.h"
 #include "Core/NHGameData.h"
 #include "Core/NHHustleSubsystem.h"
 #include "Engine/Canvas.h"
@@ -29,8 +30,8 @@ namespace NHScreens
 	const FLinearColor Land(0.2f, 0.19f, 0.16f);
 	const TCHAR* Section = TEXT("NaijaHustle");
 
-	enum { Resume, Character, Clothes, Lighting, Traffic, Look, Resolution, Minimap, Controls, Credits, Quit, Lines };
-	const TCHAR* LineNames[] = { TEXT("Resume"), TEXT("Character"), TEXT("Clothes"), TEXT("Lighting"), TEXT("Traffic"), TEXT("Look speed"), TEXT("Resolution"), TEXT("Minimap"), TEXT("Controls"), TEXT("Credits"), TEXT("Quit game") };
+	enum { Resume, Character, Clothes, Lighting, Traffic, Look, Resolution, Minimap, AudioPage, Controls, Credits, Quit, Lines };
+	const TCHAR* LineNames[] = { TEXT("Resume"), TEXT("Character"), TEXT("Clothes"), TEXT("Lighting"), TEXT("Traffic"), TEXT("Look speed"), TEXT("Resolution"), TEXT("Minimap"), TEXT("Audio"), TEXT("Controls"), TEXT("Credits"), TEXT("Quit game") };
 	// the Controls page: a heading (no key) or a key and what it does
 	const TCHAR* ControlList[][2] = {
 		{ TEXT("ON FOOT"), nullptr }, { TEXT("W A S D"), TEXT("Move") }, { TEXT("Mouse"), TEXT("Look") }, { TEXT("Left Shift"), TEXT("Run while held") }, { TEXT("R"), TEXT("Run: stays on until pressed again") },
@@ -44,6 +45,9 @@ namespace NHScreens
 	struct FClothesLine { const TCHAR* Name; ENHOutfitSlot Slot; bool bColour; };
 	const FClothesLine ClothesLines[] = { { TEXT("Hair"), ENHOutfitSlot::Hair, false }, { TEXT("Top or outfit"), ENHOutfitSlot::Top, false }, { TEXT("Top colour"), ENHOutfitSlot::Top, true },
 		{ TEXT("Bottom"), ENHOutfitSlot::Bottom, false }, { TEXT("Bottom colour"), ENHOutfitSlot::Bottom, true }, { TEXT("Shoes"), ENHOutfitSlot::Shoes, false }, { TEXT("Shoe colour"), ENHOutfitSlot::Shoes, true } };
+	// the Audio page: the seven sliders (ENHVolume), then these
+	enum { AudioSubtitles = static_cast<int32>(ENHVolume::Count), AudioSubtitleSize, AudioMono, AudioLines };
+	const TCHAR* SubtitleSizes[] = { TEXT("Small"), TEXT("Medium"), TEXT("Large") };
 	const TCHAR* TrafficNames[] = { TEXT("None"), TEXT("Light"), TEXT("Normal"), TEXT("Heavy") };
 	const TCHAR* PresetNames[] = { TEXT("Day"), TEXT("Dusty noon"), TEXT("Sunset"), TEXT("Night rain"), TEXT("Harsh morning"), TEXT("Golden evening") };
 
@@ -79,6 +83,7 @@ void ANHHUD::Open(EScreen NewScreen)
 	if (Screen != EScreen::Menu)
 	{
 		OpenClothes(false);
+		bMenuAudio = false;
 	}
 	// the map and the menu stop the game; the wheel slows it to a quarter while you choose
 	PC->SetPause(Screen == EScreen::Map || Screen == EScreen::Menu);
@@ -130,9 +135,9 @@ void ANHHUD::ToggleMenu()
 		OpenClothes(false); // Esc on the Clothes page: back to the menu
 		return;
 	}
-	if (Screen == EScreen::Menu && (bMenuControls || bMenuCredits))
+	if (Screen == EScreen::Menu && (bMenuControls || bMenuCredits || bMenuAudio))
 	{
-		bMenuControls = bMenuCredits = false; // Esc on the Controls or Credits page: back to the menu
+		bMenuControls = bMenuCredits = bMenuAudio = false; // Esc on the Audio, Controls or Credits page: back to the menu
 		return;
 	}
 	if (ANHPhone* Phone = ANHPhone::Get(this); Phone && Phone->IsOpen() && Screen == EScreen::None)
@@ -191,6 +196,15 @@ void ANHHUD::Nav(int32 DX, int32 DY)
 		}
 		return;
 	}
+	if (Screen == EScreen::Menu && bMenuAudio)
+	{
+		AudioLine = (AudioLine + DY + NHScreens::AudioLines) % NHScreens::AudioLines;
+		if (DX != 0)
+		{
+			AudioChange(AudioLine, DX);
+		}
+		return;
+	}
 	if (Screen == EScreen::Menu && (bMenuControls || bMenuCredits))
 	{
 		return;
@@ -225,6 +239,15 @@ void ANHHUD::Accept()
 		if (bMenuClothes || MenuLine == NHScreens::Clothes)
 		{
 			OpenClothes(!bMenuClothes);
+		}
+		else if (bMenuAudio)
+		{
+			AudioChange(AudioLine, 1);
+		}
+		else if (!bMenuControls && !bMenuCredits && MenuLine == NHScreens::AudioPage)
+		{
+			bMenuAudio = true;
+			AudioLine = 0;
 		}
 		else if (bMenuCredits || (!bMenuControls && MenuLine == NHScreens::Credits))
 		{
@@ -559,6 +582,7 @@ FString ANHHUD::MenuValue(int32 Line) const
 	case Look: return FString::Printf(TEXT("%d%%"), FMath::RoundToInt((PC ? PC->LookScale : 1.f) * 100.f));
 	case Resolution: return FString::Printf(TEXT("%d%%"), ScreenPercent);
 	case Minimap: return bShowMinimap ? TEXT("On") : TEXT("Off");
+	case AudioPage: return TEXT("Volumes, subtitles, mono");
 	default: return FString();
 	}
 }
@@ -652,6 +676,11 @@ void ANHHUD::DrawMenu(float VW, float VH)
 		return;
 	}
 	DrawRect(FLinearColor(0.f, 0.f, 0.f, 0.6f), 0.f, 0.f, VW, VH);
+	if (bMenuAudio)
+	{
+		DrawAudio(VW, VH);
+		return;
+	}
 	if (bMenuCredits)
 	{
 		// what the map is made from, and what is and is not real in it
@@ -732,6 +761,86 @@ void ANHHUD::DrawMenu(float VW, float VH)
 		Yy += RowH;
 	}
 	Text(TEXT("Up / Down: choose     Left / Right: change     Enter: select     Esc: back to the game"), VW * 0.5f, Y + H - 40.f * S, Ink, Medium, 0.95f, true);
+}
+
+// ------------------------------------------------------------------------------------------- the Audio page
+FString ANHHUD::AudioValue(int32 Line) const
+{
+	using namespace NHScreens;
+	const UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	if (!Audio)
+	{
+		return FString();
+	}
+	switch (Line)
+	{
+	case AudioSubtitles: return Audio->SubtitlesOn() ? TEXT("On") : TEXT("Off");
+	case AudioSubtitleSize: return SubtitleSizes[Audio->GetSubtitleSize()];
+	case AudioMono: return Audio->MonoOn() ? TEXT("On") : TEXT("Off");
+	default: return FString::Printf(TEXT("%d%%"), Audio->GetVolume(static_cast<ENHVolume>(Line)));
+	}
+}
+
+void ANHHUD::AudioChange(int32 Line, int32 Dir)
+{
+	using namespace NHScreens;
+	UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	if (!Audio)
+	{
+		return;
+	}
+	switch (Line)
+	{
+	case AudioSubtitles: Audio->SetSubtitles(!Audio->SubtitlesOn()); break;
+	case AudioSubtitleSize: Audio->SetSubtitleSize((Audio->GetSubtitleSize() + Dir + 3) % 3); break;
+	case AudioMono: Audio->SetMono(!Audio->MonoOn()); break;
+	default: Audio->SetVolume(static_cast<ENHVolume>(Line), Audio->GetVolume(static_cast<ENHVolume>(Line)) + 10 * Dir); break;
+	}
+}
+
+void ANHHUD::DrawAudio(float VW, float VH)
+{
+	using namespace NHScreens;
+	UFont* Medium = GEngine->GetMediumFont();
+	UFont* Large = GEngine->GetLargeFont();
+	const UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	const float W = 860.f * S, RowH = 54.f * S, H = 190.f * S + RowH * AudioLines, X = (VW - W) * 0.5f, Y = (VH - H) * 0.5f;
+	Panel(X, Y, W, H, FLinearColor(0.05f, 0.05f, 0.05f, 0.95f));
+	DrawRect(Yellow, X, Y, W, 5.f * S);
+	Text(TEXT("AUDIO"), X + 30.f * S, Y + 22.f * S, Yellow, Large, 1.3f);
+	float Yy = Y + 92.f * S;
+	for (int32 Line = 0; Line < AudioLines; ++Line)
+	{
+		const bool bOn = Line == AudioLine;
+		const bool bSlider = Line < static_cast<int32>(ENHVolume::Count);
+		Panel(X + 22.f * S, Yy, W - 44.f * S, RowH - 8.f * S, bOn ? FLinearColor(1.f, 0.77f, 0.f, 0.22f) : FLinearColor(1.f, 1.f, 1.f, 0.06f));
+		if (bOn)
+		{
+			DrawRect(Yellow, X + 22.f * S, Yy, 5.f * S, RowH - 8.f * S);
+		}
+		const TCHAR* Name = bSlider ? UNHAudioSubsystem::VolumeName(static_cast<ENHVolume>(Line)) : Line == AudioSubtitles ? TEXT("Subtitles") : Line == AudioSubtitleSize ? TEXT("Subtitle size") : TEXT("Mono audio");
+		Text(Name, X + 44.f * S, Yy + 10.f * S, bOn ? Yellow : Ink, Medium, 1.2f);
+		if (bSlider && Audio)
+		{
+			// the slider as a bar, between the name and the number
+			const float BX = X + 300.f * S, BW = 330.f * S, K = Audio->GetVolume(static_cast<ENHVolume>(Line)) / 100.f;
+			Panel(BX, Yy + 18.f * S, BW, 10.f * S, FLinearColor(1.f, 1.f, 1.f, 0.15f));
+			DrawRect(bOn ? Yellow : Muted, BX, Yy + 18.f * S, BW * K, 10.f * S);
+		}
+		const FString Value = AudioValue(Line);
+		float TW = 0.f, TH = 0.f;
+		const FString Shown = bOn ? FString::Printf(TEXT("<   %s   >"), *Value) : Value;
+		GetTextSize(Shown, TW, TH, Medium, 1.2f * S);
+		Text(Shown, X + W - 44.f * S - TW, Yy + 10.f * S, bOn ? Ink : Muted, Medium, 1.2f);
+		Yy += RowH;
+	}
+	const TCHAR* Hint = !Audio || !Audio->IsBuilt() ? TEXT("No sound device: the settings are kept for when there is one.")
+		: AudioLine == AudioSubtitles ? TEXT("Lines with no recorded voice yet are always shown.")
+		: AudioLine == AudioMono ? TEXT("The same sound in both ears.")
+		: AudioLine == static_cast<int32>(ENHVolume::Master) ? TEXT("Everything.")
+		: AudioLine == static_cast<int32>(ENHVolume::SFX) ? TEXT("Vehicles, weapons, footsteps, the phone and menu sounds.") : TEXT("");
+	Text(Hint, VW * 0.5f, Y + H - 84.f * S, Muted, Medium, 0.95f, true);
+	Text(TEXT("Up / Down: choose     Left / Right: change     Esc: back"), VW * 0.5f, Y + H - 44.f * S, Ink, Medium, 0.95f, true);
 }
 
 void ANHHUD::OpenClothes(bool bOpen)

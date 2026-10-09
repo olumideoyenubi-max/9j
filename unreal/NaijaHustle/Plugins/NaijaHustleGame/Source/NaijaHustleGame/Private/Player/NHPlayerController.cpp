@@ -1,5 +1,7 @@
 #include "Player/NHPlayerController.h"
 
+#include "Audio/NHAudioSubsystem.h"
+#include "Audio/NHAudioTest.h"
 #include "Input/NHInputSet.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
@@ -445,6 +447,36 @@ void ANHPlayerController::NHReset()
 		Hustle->ResetProgress();
 		ANHHUD::Toast(this, TEXT("Progress reset. Reload the level to start the story again."), 2);
 	}
+}
+
+void ANHPlayerController::NHAudio()
+{
+	const UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: %s"), Audio ? *Audio->Describe() : TEXT("audio: no subsystem"));
+}
+
+void ANHPlayerController::NHAudioSpace(const FString& Name)
+{
+	UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	if (!Audio)
+	{
+		return;
+	}
+	ENHAudioSpace Held = ENHAudioSpace::Count; // "auto", or anything unknown
+	for (int32 I = 0; I < static_cast<int32>(ENHAudioSpace::Count); ++I)
+	{
+		if (Name.Equals(UNHAudioSubsystem::SpaceName(static_cast<ENHAudioSpace>(I)), ESearchCase::IgnoreCase))
+		{
+			Held = static_cast<ENHAudioSpace>(I);
+		}
+	}
+	Audio->ForceSpace(Held);
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: audio space %s"), Held == ENHAudioSpace::Count ? TEXT("follows where you stand") : *FString::Printf(TEXT("held at %s"), UNHAudioSubsystem::SpaceName(Held)));
+}
+
+void ANHPlayerController::NHAudioTest()
+{
+	GetWorld()->SpawnActor<ANHAudioTest>(ANHAudioTest::StaticClass(), FTransform::Identity);
 }
 
 void ANHPlayerController::NHTime(float Hour)

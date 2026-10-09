@@ -20,6 +20,8 @@
 		{ "Name": "EnhancedInput", "Enabled": true },
 		{ "Name": "PythonScriptPlugin", "Enabled": true },
 		{ "Name": "EditorScriptingUtilities", "Enabled": true },
-		{ "Name": "CableComponent", "Enabled": true }
+		{ "Name": "CableComponent", "Enabled": true },
+		{ "Name": "AudioGameplay", "Enabled": true },
+		{ "Name": "AudioGameplayVolume", "Enabled": true }
 	]
 }

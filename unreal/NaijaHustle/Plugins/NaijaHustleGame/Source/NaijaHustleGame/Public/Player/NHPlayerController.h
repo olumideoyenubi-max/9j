@@ -112,6 +112,15 @@ public:
 	UFUNCTION(Exec)
 	void NHCarShow(float X, float Y, const FString& Folder);
 
+	/** Console: NHAudio prints the audio mix: classes, sliders, the mixes that are on, the space, the voices in use */
+	UFUNCTION(Exec)
+	void NHAudio();
+	/** Console: NHAudioSpace Street|Market|MotorPark|Interior|UnderBridge|Tunnel holds that reverb and EQ; NHAudioSpace auto gives it back to where you stand */
+	UFUNCTION(Exec)
+	void NHAudioSpace(const FString& Name);
+	/** Console: NHAudioTest plays the test tones through the mix and records them (see ANHAudioTest) */
+	UFUNCTION(Exec)
+	void NHAudioTest();
 	/** Mouse and stick look speed, 1 as built (the pause menu's setting) */
 	float LookScale = 1.f;
 	/** How far the city is loaded from the player right now, cm, and whether the streaming overlay is showing (F2) */

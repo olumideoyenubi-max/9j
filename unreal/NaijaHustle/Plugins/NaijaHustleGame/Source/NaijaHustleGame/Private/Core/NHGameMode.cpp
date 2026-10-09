@@ -1,5 +1,7 @@
 #include "Core/NHGameMode.h"
 
+#include "Audio/NHAudioTest.h"
+#include "Audio/NHAudioZone.h"
 #include "Core/NHGameData.h"
 #include "Core/NHNetState.h"
 #include "EngineUtils.h"
@@ -46,6 +48,12 @@ void ANHGameMode::StartPlay()
 		{
 			GetWorld()->SpawnActor<ANHStreetScatter>(ANHStreetScatter::StaticClass(), FTransform::Identity); // street clutter round the player
 		}
+	}
+	ANHAudioZone::SpawnCityZones(GetWorld()); // where the city sounds like a motor park or a market
+	if (FParse::Param(FCommandLine::Get(), TEXT("NHAudioTest")))
+	{
+		// plays test tones through the mix, records the output, quits: see ANHAudioTest
+		GetWorld()->SpawnActor<ANHAudioTest>(ANHAudioTest::StaticClass(), FTransform::Identity)->bQuitWhenDone = true;
 	}
 	if (!ANHGameDirector::Get(this))
 	{
