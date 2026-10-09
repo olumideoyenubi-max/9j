@@ -1,0 +1,1841 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W370814121,Abdul Razaq Street,residential,false,0,7.5,false,false,false,0,282.7,Oshodi,370814121
+W535191764,Abeni Bakare Street,residential,false,0,7.5,false,false,false,0,223.3,Oshodi,535191764
+W92451137,Abeokuta Street,residential,false,0,7.5,false,false,false,0,230.8,Oshodi,92451137
+W92451191,Abolaji Street,residential,false,0,7.5,false,false,false,0,558.0,Oshodi,92451191
+W535191757,Access Road,service,false,0,5.0,false,false,false,0,506.7,Oshodi,535191757
+W93149420,Access Road,unclassified,false,0,7.5,false,false,false,0,126.0,Oshodi,93149420
+W136433571,Adebisi Close,residential,false,0,7.5,false,false,false,0,188.9,Oshodi,136433571
+W137428005,Adebisi Oluwole Street,residential,false,0,7.5,false,false,false,0,143.2,Oshodi,137428005
+W535357578,Adebisi Omotola Street,residential,false,0,7.5,false,false,false,0,384.8,Oshodi,535357578
+W370814115,Adedeji Street,residential,false,0,7.5,false,false,false,0,276.0,Oshodi,370814115
+W113522962,Adefowope Street,residential,false,0,7.5,false,false,false,0,210.3,Oshodi,113522962
+W1472598216,Adefowope Street,residential,false,0,7.5,false,false,false,0,139.8,Oshodi,1472598216
+W535191781,Adegboro Street,tertiary,false,0,10.0,false,false,false,0,255.9,Oshodi,535191781
+W370814122,Adejumobi Street,residential,false,0,7.5,false,false,false,0,353.9,Oshodi,370814122
+W370657997,Adekunle Akala Street,residential,false,0,7.5,false,false,false,0,518.6,Oshodi,370657997
+W136430381,Adekunle Fajuyi Way,tertiary,false,0,10.0,true,false,false,0,22.5,Oshodi,136430381
+W7650792,Adekunle Fajuyi Way,tertiary,false,2,7.6,false,false,false,0,3029.4,Oshodi,7650792
+W8166367,Adekunle Fajuyi Way,tertiary,false,0,10.0,true,false,false,0,25.1,Oshodi,8166367
+W441712293,Adekunle St,residential,false,0,7.5,false,false,false,0,135.1,Oshodi,441712293
+W496763690,Adekunle Street,residential,false,0,7.5,false,false,false,0,285.4,Oshodi,496763690
+W113522964,Adeola Adeleye Street,residential,false,0,7.5,false,false,false,0,495.8,Oshodi,113522964
+W441859068,Adeola Ajayi Crescent,residential,false,0,7.5,false,false,false,0,432.7,Oshodi,441859068
+W437204151,Adeoso Close,residential,false,0,7.5,false,false,false,0,167.9,Oshodi,437204151
+W441859107,Adeoye Street,tertiary,false,0,10.0,false,false,false,0,124.8,Oshodi,441859107
+W5168876,Adepebga Street,residential,false,0,7.5,false,false,false,0,509.4,Oshodi,5168876
+W11102727,Aderinto Street,residential,false,0,7.5,false,false,false,0,322.8,Oshodi,11102727
+W588965956,Adesanya Street,tertiary,false,0,10.0,false,true,false,0,12.9,Oshodi,588965956
+W588965957,Adesanya Street,tertiary,false,0,10.0,false,false,false,0,170.2,Oshodi,588965957
+W92451090,Adesanya Street,tertiary,false,0,10.0,false,false,false,0,866.9,Oshodi,92451090
+W1243883379,Adeshiyan Street,residential,false,0,7.5,false,false,false,0,284.2,Oshodi,1243883379
+W437188469,Adesina Street,residential,false,0,7.5,false,false,false,0,162.5,Oshodi,437188469
+W441859090,Adewale Crescent,residential,false,0,7.5,false,false,false,30,177.1,Oshodi,441859090
+W589014131,Adeyemi Street,secondary,false,0,13.0,false,false,false,0,30.6,Oshodi,589014131
+W589014132,Adeyemi Street,secondary,false,0,13.0,false,true,false,0,12.2,Oshodi,589014132
+W589139290,Adeyemi Street,secondary,false,0,13.0,false,false,false,0,347.4,Oshodi,589139290
+W8564504,Adeyemi Street,secondary,false,0,13.0,false,false,false,0,321.0,Oshodi,8564504
+W441859060,Adeyemo Street,residential,false,0,7.5,false,false,false,0,201.4,Oshodi,441859060
+W113522977,Adeyinka Street,residential,false,0,7.5,false,false,false,0,317.0,Oshodi,113522977
+W1564625481,Adisatu Street,tertiary,false,0,10.0,false,false,false,0,95.1,Oshodi,1564625481
+W92451095,Adisatu Street,residential,false,0,7.5,false,false,false,0,145.7,Oshodi,92451095
+W535191775,Aduke Thomas Street,residential,false,0,7.5,false,false,false,0,132.1,Oshodi,535191775
+W5153764,Afariogun Street,tertiary,false,0,10.0,false,false,false,0,859.9,Oshodi,5153764
+W93148221,African Church Road,residential,false,0,7.5,false,false,false,0,247.4,Oshodi,93148221
+W93156422,Agbelekale Street,residential,false,2,7.6,false,false,false,0,328.7,Oshodi,93156422
+W370814113,Agboola Street,residential,false,0,7.5,false,false,false,0,219.5,Oshodi,370814113
+W589001487,Agboola Street,residential,false,0,7.5,false,false,false,0,62.5,Oshodi,589001487
+W589001488,Agboola Street,residential,false,0,7.5,false,true,false,0,21.9,Oshodi,589001488
+W372515247,Agbor Street,residential,false,0,7.5,false,false,false,0,247.9,Oshodi,372515247
+W133805221,Agege Motor Road,trunk,false,2,7.6,true,false,false,0,9629.8,Oshodi,133805221
+W746512955,Agege Motor Road,trunk,false,2,7.6,true,false,false,0,7894.7,Oshodi,746512955
+W8064880,Aina Eleko Lane,residential,false,0,7.5,false,false,false,0,172.9,Oshodi,8064880
+W441712339,Aina George Street,residential,false,0,7.5,false,false,false,0,384.0,Oshodi,441712339
+W134398955,Airport Road,secondary,false,2,7.6,true,false,false,0,710.0,Oshodi,134398955
+W134398956,Airport Road,secondary,false,2,7.6,true,false,false,0,1016.4,Oshodi,134398956
+W134398961,Airport Road,secondary,false,2,7.6,true,false,false,0,702.3,Oshodi,134398961
+W134398963,Airport Road,secondary,false,2,7.6,true,false,false,0,1019.8,Oshodi,134398963
+W134398965,Airport Road,secondary,false,2,7.6,true,false,false,0,1011.9,Oshodi,134398965
+W134400935,Airport Road,secondary,false,2,7.6,true,false,false,0,1029.1,Oshodi,134400935
+W137428018,Ajani Street,residential,false,0,7.5,false,false,false,0,186.6,Oshodi,137428018
+W1433172319,Ajani Street,residential,false,0,7.5,false,true,false,0,5.2,Oshodi,1433172319
+W1433172321,Ajani Street,residential,false,0,7.5,false,false,false,0,120.8,Oshodi,1433172321
+W1436985648,Ajani Street,residential,false,0,7.5,false,false,false,0,8.1,Oshodi,1436985648
+W441712289,Ajegunle St,residential,false,0,7.5,false,false,false,0,304.8,Oshodi,441712289
+W744431842,Ajegunle Street,residential,false,0,7.5,false,false,false,0,271.2,Oshodi,744431842
+W370301916,Ajibade Oke Street,residential,false,0,7.5,false,false,false,0,396.6,Oshodi,370301916
+W726190615,Ajibulu Street,tertiary,false,0,10.0,false,false,false,0,728.1,Oshodi,726190615
+W726190616,Ajibulu Street,secondary,false,0,13.0,false,true,false,0,94.8,Oshodi,726190616
+W8064836,Ajisegiri Street,tertiary,false,0,10.0,false,false,false,0,494.4,Oshodi,8064836
+W441712353,Akanni Dosumu Close,residential,false,0,7.5,false,false,false,0,106.2,Oshodi,441712353
+W535191786,Akanni Showunmi Street,residential,false,0,7.5,false,false,false,0,523.2,Oshodi,535191786
+W136433582,Akerele Street,residential,false,0,7.5,false,false,false,0,309.8,Oshodi,136433582
+W93156409,Akin-Lawanson Street,residential,false,0,7.5,false,false,false,0,160.9,Oshodi,93156409
+W1442626892,Akinpelu Street,tertiary,false,0,10.0,false,false,false,0,20.0,Oshodi,1442626892
+W93146079,Akinpelu Street,residential,false,0,7.5,false,false,false,0,273.8,Oshodi,93146079
+W23711215,Akinsete Drive,residential,false,0,7.5,false,false,false,0,113.0,Oshodi,23711215
+W370658036,Akinyemi Crescent,tertiary,false,0,10.0,false,false,false,60,1187.7,Oshodi,370658036
+W93156433,Akiode Street,residential,false,0,7.5,false,false,false,0,221.1,Oshodi,93156433
+W370301922,Alabe Street,residential,false,0,7.5,false,false,false,0,400.9,Oshodi,370301922
+W370658030,Alao Street,residential,false,0,7.5,false,false,false,0,378.7,Oshodi,370658030
+W1218918398,Alhaji Akinwunmi Street,tertiary,false,0,10.0,true,false,false,0,692.8,Oshodi,1218918398
+W1441484993,Alhaji Akinwunmi Street,tertiary,false,0,10.0,false,false,false,0,25.5,Oshodi,1441484993
+W610011112,Alhaji Akinwunmi Street,tertiary,false,0,10.0,true,false,false,0,700.1,Oshodi,610011112
+W589854946,Alhaji Mukandasi Street,residential,false,0,7.5,false,false,false,0,71.0,Oshodi,589854946
+W92451083,Alhaji Mukandasi Street,residential,false,0,7.5,false,false,false,0,143.5,Oshodi,92451083
+W1442626896,Alimi Oke Street,residential,false,0,7.5,false,false,false,0,99.7,Oshodi,1442626896
+W93146082,Alimi Oke Street,tertiary,false,0,10.0,false,false,false,0,327.8,Oshodi,93146082
+W93147449,Aluko,residential,false,0,7.5,false,false,false,0,145.5,Oshodi,93147449
+W535191766,Amusa Street,residential,false,0,7.5,false,false,false,0,66.7,Oshodi,535191766
+W92451057,Amusa Street,residential,false,0,7.5,false,false,false,0,285.0,Oshodi,92451057
+W93147421,Anthony Obe Street,residential,false,0,7.5,false,false,false,0,285.2,Oshodi,93147421
+W254986433,Apakun Lane,residential,false,0,7.5,false,false,false,0,334.4,Oshodi,254986433
+W133875227,Apapa-Oworonshoki Expressway,secondary,false,0,13.0,true,false,false,0,1516.7,Oshodi,133875227
+W133875239,Apapa-Oworonshoki Expressway,secondary,false,0,13.0,true,false,false,0,992.6,Oshodi,133875239
+W133875251,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,1525.7,Oshodi,133875251
+W134140045,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,2246.1,Oshodi,134140045
+W134140046,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,70.8,Oshodi,134140046
+W134140052,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,1823.4,Oshodi,134140052
+W134140054,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,true,false,0,221.7,Oshodi,134140054
+W134140056,Apapa-Oworonshoki Expressway,primary,false,0,17.5,false,false,false,0,72.8,Oshodi,134140056
+W134140060,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,43.0,Oshodi,134140060
+W134144374,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,true,false,0,52.0,Oshodi,134144374
+W134144381,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,true,false,0,10.8,Oshodi,134144381
+W134144382,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,70.0,Oshodi,134144382
+W134144397,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,56.6,Oshodi,134144397
+W134144407,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,60.5,Oshodi,134144407
+W134144412,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,84.3,Oshodi,134144412
+W134144413,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,true,false,0,16.7,Oshodi,134144413
+W134144418,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,582.5,Oshodi,134144418
+W134147962,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,true,false,0,36.2,Oshodi,134147962
+W134147970,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,true,false,0,35.1,Oshodi,134147970
+W134147973,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,4527.0,Oshodi,134147973
+W134147977,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,true,false,0,36.2,Oshodi,134147977
+W134147979,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,true,false,0,36.0,Oshodi,134147979
+W134147997,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,4531.8,Oshodi,134147997
+W134147999,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,2178.4,Oshodi,134147999
+W134153444,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,4530.9,Oshodi,134153444
+W134153449,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,4539.2,Oshodi,134153449
+W17505890,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,true,false,0,200.1,Oshodi,17505890
+W17505891,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,2195.5,Oshodi,17505891
+W5133247,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,1518.0,Oshodi,5133247
+W589139284,Apapa-Oworonshoki Expressway,secondary,false,0,13.0,true,false,false,0,467.9,Oshodi,589139284
+W589139285,Apapa-Oworonshoki Expressway,secondary,false,0,13.0,true,false,false,0,399.0,Oshodi,589139285
+W136433544,Araromi Street,residential,false,0,7.5,false,false,false,0,293.2,Oshodi,136433544
+W93146058,Araromi Street,residential,false,0,7.5,false,false,false,0,293.9,Oshodi,93146058
+W93151813,Aremu Olatunbosun Street,residential,false,0,7.5,false,false,false,0,398.9,Oshodi,93151813
+W535191791,Arewa Street,residential,false,0,7.5,false,false,false,0,186.1,Oshodi,535191791
+W254986432,Ari Ori Street,residential,false,0,7.5,false,false,false,0,408.3,Oshodi,254986432
+W92451117,Ariyo Close,residential,false,0,7.5,false,false,false,0,176.1,Oshodi,92451117
+W8563770,Arowojobe Street,tertiary,false,0,10.0,false,false,false,0,528.5,Oshodi,8563770
+W370301925,Asa Afariogun Street,tertiary,false,0,10.0,false,false,false,0,408.6,Oshodi,370301925
+W535250546,Asa Afariogun Street,tertiary,false,0,10.0,true,false,false,0,220.7,Oshodi,535250546
+W589854937,Asa Afariogun Street,tertiary,false,0,10.0,false,false,false,0,277.7,Oshodi,589854937
+W441712350,Ashimowa Close,residential,false,0,7.5,false,false,false,0,111.2,Oshodi,441712350
+W441712349,Ashimowu Jibowu Street,residential,false,0,7.5,false,false,false,0,134.0,Oshodi,441712349
+W370301920,Ashiriabo Street,residential,false,0,7.5,false,false,false,0,341.9,Oshodi,370301920
+W589854939,Ashiriabo Street,residential,false,0,7.5,false,false,false,0,175.1,Oshodi,589854939
+W441712340,Asia Animashaun Street,residential,false,0,7.5,false,false,false,0,167.0,Oshodi,441712340
+W828117668,Association Avenue,tertiary,false,1,4.3,true,false,false,0,94.6,Oshodi,828117668
+W93147446,Assoland Street,residential,false,0,7.5,false,false,false,0,197.1,Oshodi,93147446
+W457942311,Aswani Mechanic Village,residential,false,0,7.5,false,false,false,0,718.9,Oshodi,457942311
+W457942308,Aswani Road,residential,false,0,7.5,false,false,false,0,487.2,Oshodi,457942308
+W93147431,Atanda Street,residential,false,0,7.5,false,false,false,0,329.1,Oshodi,93147431
+W370658024,Ati Okoye Street,tertiary,false,0,10.0,true,false,false,0,428.1,Oshodi,370658024
+W370657969,Awoniyi Elemo Street,residential,false,0,7.5,false,false,false,0,137.6,Oshodi,370657969
+W535357571,Awoniyi Elemo Street,residential,false,0,7.5,false,false,false,0,406.1,Oshodi,535357571
+W1324283714,Awoyokun St,residential,false,0,7.5,false,false,false,0,245.5,Oshodi,1324283714
+W441712276,Awoyokun St,residential,false,0,7.5,false,false,false,0,307.7,Oshodi,441712276
+W535191788,Ayeni Village Road,residential,false,0,7.5,false,false,false,0,273.1,Oshodi,535191788
+W92451104,Ayinde Street,residential,false,0,7.5,false,false,false,0,223.7,Oshodi,92451104
+W1433172318,Ayinke Street,residential,false,0,7.5,false,false,false,0,150.9,Oshodi,1433172318
+W93148232,Ayinke Street,residential,false,0,7.5,false,false,false,0,460.1,Oshodi,93148232
+W93149422,Ayinla Road,residential,false,0,7.5,false,false,false,0,291.3,Oshodi,93149422
+W92451077,Ayo-Ola Awe Street,residential,false,1,4.3,false,false,false,0,210.1,Oshodi,92451077
+W535191762,Ayodele Street,residential,false,0,7.5,false,false,false,0,533.3,Oshodi,535191762
+W1157247977,BRT Lane,service,false,0,5.0,false,false,false,0,331.8,Oshodi,1157247977
+W1157247978,BRT Lane,service,false,0,5.0,true,false,false,0,209.0,Oshodi,1157247978
+W1157247979,BRT Lane,service,false,0,5.0,true,false,false,0,209.3,Oshodi,1157247979
+W746512963,BRT Lane,service,false,0,5.0,false,false,false,0,3617.1,Oshodi,746512963
+W93147436,Babayanju Street,residential,false,1,4.3,false,false,false,0,353.7,Oshodi,93147436
+W535191771,Baderin Street,residential,false,0,7.5,false,false,false,0,152.9,Oshodi,535191771
+W370657972,Banana Close,residential,false,0,7.5,false,false,false,0,149.0,Oshodi,370657972
+W441859104,Banjoko Street,residential,false,0,7.5,false,false,false,0,312.4,Oshodi,441859104
+W441712341,Basheer Augusto Close,residential,false,0,7.5,false,false,false,0,76.7,Oshodi,441712341
+W441712346,Bello Crescent,residential,false,0,7.5,false,false,false,0,103.3,Oshodi,441712346
+W1218918399,Bello Street,tertiary,false,0,10.0,true,false,false,0,239.0,Oshodi,1218918399
+W370658032,Bello Street,tertiary,false,0,10.0,true,false,false,0,243.5,Oshodi,370658032
+W441859122,Bello Street,residential,false,0,7.5,false,false,false,0,578.8,Oshodi,441859122
+W8474720,Bishop Street,residential,false,0,7.5,false,false,false,0,48.5,Oshodi,8474720
+W437204147,Bode Onifade Street,residential,false,1,4.3,false,false,false,0,260.9,Oshodi,437204147
+W370301917,Bola Ademuyiwa Street,residential,false,0,7.5,false,false,false,0,591.1,Oshodi,370301917
+W1343514141,Boladale Street,tertiary,false,0,10.0,true,false,false,0,78.9,Oshodi,1343514141
+W93146072,Boladale Street,tertiary,false,0,10.0,false,false,false,0,329.7,Oshodi,93146072
+W93146068,Boye Street,residential,false,0,7.5,false,false,false,0,149.9,Oshodi,93146068
+W93156407,Branco Street,residential,false,0,7.5,false,false,false,0,455.3,Oshodi,93156407
+W1442626893,Brown Street,tertiary,false,2,7.6,false,false,false,40,94.8,Oshodi,1442626893
+W93146084,Brown Street,tertiary,false,2,7.6,false,false,false,40,517.5,Oshodi,93146084
+W1547601494,Church Street,secondary,false,0,13.0,false,false,false,40,74.2,Oshodi,1547601494
+W370657970,Church Street,residential,false,0,7.5,false,false,false,0,276.2,Oshodi,370657970
+W496652063,Church Street,secondary,false,0,13.0,false,false,false,40,526.6,Oshodi,496652063
+W370301907,Cobham Street,residential,false,0,7.5,false,false,false,0,921.5,Oshodi,370301907
+W1291625179,Coker Road,secondary,false,1,4.3,true,false,false,0,179.3,Oshodi,1291625179
+W1291625180,Coker Road,secondary,false,1,4.3,false,false,false,0,6.1,Oshodi,1291625180
+W1566687472,Coker Road,secondary,false,1,4.3,true,false,false,0,23.6,Oshodi,1566687472
+W1566687473,Coker Road,secondary,false,1,4.3,true,false,false,0,20.9,Oshodi,1566687473
+W589129256,Coker Road,secondary,false,1,4.3,true,false,false,0,20.9,Oshodi,589129256
+W589129257,Coker Road,secondary,false,1,4.3,true,false,false,0,23.2,Oshodi,589129257
+W828117669,Coker Road,secondary,false,2,7.6,false,false,false,0,400.0,Oshodi,828117669
+W9717699,Coker Road,secondary,false,1,4.3,false,false,false,0,518.7,Oshodi,9717699
+W8564505,Daudu Street,tertiary,false,0,10.0,false,false,false,40,324.8,Oshodi,8564505
+W92451049,Deji Adeoye Street,residential,false,0,7.5,false,false,false,0,364.2,Oshodi,92451049
+W441859103,Dipeolu Street,residential,false,0,7.5,false,false,false,0,106.5,Oshodi,441859103
+W441859077,Dosunmu Street,residential,false,0,7.5,false,false,false,0,186.2,Oshodi,441859077
+W535191779,Edun Street,residential,false,0,7.5,false,false,false,0,651.2,Oshodi,535191779
+W535357577,Ehingbeti Street,residential,false,0,7.5,false,false,false,0,560.7,Oshodi,535357577
+W93146076,Enialonbinu Street,residential,false,0,7.5,false,false,false,0,413.7,Oshodi,93146076
+W93151812,Eniola Adesanya Street,residential,false,0,7.5,false,false,false,0,250.7,Oshodi,93151812
+W113522972,Esther Oshiyemi Street,residential,false,0,7.5,false,false,false,0,326.5,Oshodi,113522972
+W441859088,Ewenla Road,residential,false,0,7.5,false,false,false,0,201.8,Oshodi,441859088
+W589001489,Eyinogun Street,unclassified,false,0,7.5,false,true,false,0,11.5,Oshodi,589001489
+W589001490,Eyinogun Street,unclassified,false,0,7.5,false,false,false,0,197.2,Oshodi,589001490
+W589014133,Eyinogun Street,residential,false,0,7.5,false,false,false,0,17.9,Oshodi,589014133
+W93156415,Eyinogun Street,residential,false,0,7.5,false,false,false,0,263.8,Oshodi,93156415
+W93156427,Eyinogun Street,residential,false,0,7.5,false,false,false,0,463.3,Oshodi,93156427
+W134400951,Ezekiel Aiyeilagbe Street,service,false,0,5.0,false,false,false,0,727.7,Oshodi,134400951
+W1421774050,Fatai Atere Way,tertiary,false,0,10.0,false,false,false,0,348.1,Oshodi,1421774050
+W1421774051,Fatai Atere Way,tertiary,false,0,10.0,false,true,false,0,22.6,Oshodi,1421774051
+W5168867,Fatai Atere Way,tertiary,false,0,10.0,false,false,false,0,1075.9,Oshodi,5168867
+W370301914,Fatai Irawo Street,residential,false,0,7.5,false,false,false,0,636.0,Oshodi,370301914
+W113522975,Folayemi Street,residential,false,0,7.5,false,false,false,0,209.2,Oshodi,113522975
+W496763688,Ganikale Close,residential,false,0,7.5,false,false,false,5,91.1,Oshodi,496763688
+W137428010,Haruna Subairu Street,residential,false,0,7.5,false,false,false,0,309.7,Oshodi,137428010
+W93146065,Hassen Street,residential,false,0,7.5,false,false,false,0,221.4,Oshodi,93146065
+W17066317,Ibadiaran Street,residential,false,0,7.5,false,false,false,0,568.5,Oshodi,17066317
+W441712338,Ibefun Lane,residential,false,0,7.5,false,false,false,0,59.1,Oshodi,441712338
+W93147445,Ibidun Street,residential,false,0,7.5,false,false,false,0,225.8,Oshodi,93147445
+W441712277,Idera St,residential,false,0,7.5,false,false,false,0,333.7,Oshodi,441712277
+W8064881,Idiroko Estate,residential,false,0,7.5,false,false,false,0,328.0,Oshodi,8064881
+W370658007,Ifoshi Road,residential,false,0,7.5,false,false,false,0,102.7,Oshodi,370658007
+W1442626890,Igbehinadun Street,tertiary,false,0,10.0,true,false,false,0,188.7,Oshodi,1442626890
+W1442626891,Igbehinadun Street,tertiary,false,0,10.0,false,false,false,0,112.0,Oshodi,1442626891
+W5153762,Igbehinadun Street,tertiary,false,0,10.0,false,false,false,0,486.5,Oshodi,5153762
+W136432600,Ijaola Street,residential,false,0,7.5,false,false,false,0,739.4,Oshodi,136432600
+W93156421,Ijaye Street,residential,false,0,7.5,false,false,false,0,357.1,Oshodi,93156421
+W441712352,Ilaka Street,residential,false,0,7.5,false,false,false,0,388.7,Oshodi,441712352
+W92451058,Ileshomi Street,residential,false,0,7.5,false,false,false,0,336.2,Oshodi,92451058
+W10233173,Ilupeju Bye Pass,unclassified,false,0,7.5,true,false,false,0,639.9,Oshodi,10233173
+W1218918388,Ilupeju Bye Pass,unclassified,false,0,7.5,true,false,false,0,628.4,Oshodi,1218918388
+W1258294555,Ilupeju Bye Pass,unclassified,false,0,7.5,true,false,false,0,20.4,Oshodi,1258294555
+W1258294556,Ilupeju Bye Pass,unclassified,false,0,7.5,true,false,false,0,25.4,Oshodi,1258294556
+W1258294557,Ilupeju Bye Pass,unclassified,false,0,7.5,true,false,false,0,26.0,Oshodi,1258294557
+W1258294558,Ilupeju Bye Pass,unclassified,false,0,7.5,true,false,false,0,21.3,Oshodi,1258294558
+W1356540768,Ilupeju Bye Pass,unclassified,false,0,7.5,true,false,false,0,10.3,Oshodi,1356540768
+W525339718,Ilupeju Bye Pass,unclassified,false,0,7.5,true,false,false,0,189.3,Oshodi,525339718
+W13644683,Ilupeju Industrual Avenue,residential,false,0,7.5,true,false,false,0,1153.3,Oshodi,13644683
+W441712332,Ilupeju Industrual Avenue,residential,false,0,7.5,true,false,false,0,1121.4,Oshodi,441712332
+W589109954,Ilupeju Industrual Avenue,residential,false,0,7.5,true,false,false,0,45.9,Oshodi,589109954
+W9715862,Ilupeju Road,residential,false,0,7.5,false,false,false,0,374.1,Oshodi,9715862
+W441859101,Inasa Street,residential,false,0,7.5,false,false,false,30,257.6,Oshodi,441859101
+W8474715,Industrial Cresent,residential,false,0,7.5,false,false,false,0,442.0,Oshodi,8474715
+W134144393,International Airport Road,secondary,false,0,13.0,true,false,false,0,3201.5,Oshodi,134144393
+W134144421,International Airport Road,motorway,false,2,7.6,true,false,false,0,2435.9,Oshodi,134144421
+W560546952,International Airport Road,motorway,false,2,7.6,true,false,false,0,2456.3,Oshodi,560546952
+W693542464,International Airport Road,secondary,false,0,13.0,true,false,false,0,3000.0,Oshodi,693542464
+W370658009,Inua Mohammed Street,residential,false,0,7.5,false,false,false,0,245.6,Oshodi,370658009
+W4904959,Isaac John Street,residential,false,1,4.3,false,false,false,0,1590.2,Oshodi,4904959
+W93156429,Ishola Anigbjumo Street,residential,false,0,7.5,false,false,false,0,302.1,Oshodi,93156429
+W93156431,Ishola Imam Street,residential,false,0,7.5,false,false,false,0,208.9,Oshodi,93156431
+W441859131,Jacob Taiwo Street,residential,false,0,7.5,false,false,false,0,252.6,Oshodi,441859131
+W370657999,Jaiyeola Ajatta Street,residential,false,0,7.5,false,false,false,0,351.4,Oshodi,370657999
+W370301927,James Oni Street,residential,false,0,7.5,false,false,false,0,269.1,Oshodi,370301927
+W441712347,Johnson Street,residential,false,0,7.5,false,false,false,0,398.0,Oshodi,441712347
+W535357574,Johnson Umejei Street,residential,false,0,7.5,false,false,false,0,477.6,Oshodi,535357574
+W370657971,Joy Avenue,tertiary,false,0,10.0,false,false,false,0,511.7,Oshodi,370657971
+W370814118,Jubril Street,residential,false,0,7.5,false,false,false,0,198.3,Oshodi,370814118
+W92451072,Kalejaiye Street,tertiary,false,0,10.0,false,false,false,0,958.9,Oshodi,92451072
+W1165305451,Kolawole Shonibare Street,residential,false,0,7.5,false,false,false,0,38.8,Oshodi,1165305451
+W370657967,Kolawole Shonibare Street,residential,false,0,7.5,false,false,false,0,148.3,Oshodi,370657967
+W441712336,Kolawole Shonibare Street,residential,false,0,7.5,false,false,false,0,219.4,Oshodi,441712336
+W535250544,Kolawole Shonibare Street,tertiary,false,0,10.0,true,false,false,0,408.8,Oshodi,535250544
+W535250549,Kolawole Shonibare Street,residential,false,0,7.5,false,false,false,0,219.8,Oshodi,535250549
+W134140049,Kunle Akinosi Street,tertiary,false,0,10.0,false,false,false,40,208.9,Oshodi,134140049
+W134400930,L.R. Blocks Road,service,false,0,5.0,false,false,false,0,776.8,Oshodi,134400930
+W1265575273,Ladipo Street,secondary,false,0,13.0,false,false,false,0,143.6,Oshodi,1265575273
+W1442937765,Ladipo Street,secondary,false,0,13.0,true,false,false,0,24.6,Oshodi,1442937765
+W1492041924,Ladipo Street,secondary,false,0,13.0,false,false,false,0,255.4,Oshodi,1492041924
+W1492041925,Ladipo Street,secondary,false,0,13.0,true,false,false,0,673.4,Oshodi,1492041925
+W1492041926,Ladipo Street,secondary,false,0,13.0,true,false,false,0,798.7,Oshodi,1492041926
+W370658033,Ladipo Street,secondary,false,0,13.0,true,false,false,0,789.8,Oshodi,370658033
+W588860869,Ladipo Street,secondary,false,0,13.0,true,false,false,0,23.1,Oshodi,588860869
+W588860873,Ladipo Street,secondary,false,0,13.0,true,false,false,0,676.2,Oshodi,588860873
+W535357570,Lateef Salami Street,tertiary,false,0,10.0,false,false,false,0,356.2,Oshodi,535357570
+W693542461,Lateef Salami Street,tertiary,false,0,10.0,true,false,false,0,133.5,Oshodi,693542461
+W693542462,Lateef Salami Street,tertiary,false,0,10.0,true,false,false,0,32.3,Oshodi,693542462
+W93146067,Mabayoje Street,residential,false,0,7.5,false,false,false,0,391.6,Oshodi,93146067
+W93146055,MacCarthy Lane,residential,false,0,7.5,false,false,false,0,269.0,Oshodi,93146055
+W254986434,Mafoluku Road,secondary,false,0,13.0,false,false,false,0,304.9,Oshodi,254986434
+W589001491,Mafoluku Road,secondary,false,0,13.0,false,true,false,0,17.5,Oshodi,589001491
+W92451086,Mafoluku Road,secondary,false,0,13.0,false,false,false,0,824.4,Oshodi,92451086
+W93146080,Majaro Street,residential,false,0,7.5,false,false,false,0,210.8,Oshodi,93146080
+W1324283713,Majolate St,secondary,false,0,13.0,false,false,false,0,309.1,Oshodi,1324283713
+W13644677,Majolate St,secondary,false,0,13.0,false,false,false,0,363.7,Oshodi,13644677
+W1564625480,Makinde Street,tertiary,false,0,10.0,false,false,false,0,174.2,Oshodi,1564625480
+W589854945,Makinde Street,tertiary,false,0,10.0,false,false,false,0,355.0,Oshodi,589854945
+W92451061,Makinde Street,tertiary,false,0,10.0,false,false,false,0,426.9,Oshodi,92451061
+W441712365,Marconi Road,residential,false,0,7.5,false,false,false,0,292.9,Oshodi,441712365
+W1218918385,Micheal Adekoya Street,residential,false,0,7.5,true,false,false,0,117.6,Oshodi,1218918385
+W1218918386,Micheal Adekoya Street,residential,false,0,7.5,true,false,false,0,460.5,Oshodi,1218918386
+W1059941003,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,1216.1,Oshodi,1059941003
+W828817900,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,1137.2,Oshodi,828817900
+W93146060,Mosaku Street,residential,false,0,7.5,false,false,false,30,506.2,Oshodi,93146060
+W437204150,Musari Apena Street,residential,false,0,7.5,false,false,false,0,200.2,Oshodi,437204150
+W441859073,Mutiatu Kayode Street,residential,false,0,7.5,false,false,false,0,164.3,Oshodi,441859073
+W1566687470,Oba Nle Aro Street,residential,false,0,7.5,true,false,false,0,20.7,Oshodi,1566687470
+W1566687471,Oba Nle Aro Street,residential,false,0,7.5,true,false,false,0,20.2,Oshodi,1566687471
+W23711216,Oba Nle Aro Street,residential,false,0,7.5,false,false,false,0,235.6,Oshodi,23711216
+W441712348,Obanle Aro Crescent,residential,false,0,7.5,false,false,false,0,151.4,Oshodi,441712348
+W7650790,Oduduwa Crescent,residential,false,2,7.6,false,false,false,0,1899.0,Oshodi,7650790
+W7650788,Oduduwa Street,residential,false,2,7.6,false,false,false,0,1360.0,Oshodi,7650788
+W370814117,Odumbaku Street,residential,false,0,7.5,false,false,false,0,172.0,Oshodi,370814117
+W441859119,Odunlami Street,residential,false,0,7.5,false,false,false,0,699.9,Oshodi,441859119
+W113522970,Oduwobi Street,residential,false,0,7.5,false,false,false,0,293.1,Oshodi,113522970
+W93147437,Ogundele Street,residential,false,0,7.5,false,false,false,0,382.8,Oshodi,93147437
+W93146282,Ogunkoya Street,residential,false,0,7.5,false,false,false,0,365.5,Oshodi,93146282
+W496763689,Ogunoloko Road,secondary,false,0,13.0,false,false,false,0,644.8,Oshodi,496763689
+W92451065,Ogunwemimo Street,residential,false,0,7.5,false,false,false,0,229.8,Oshodi,92451065
+W559329572,Ojekunle Street,tertiary,false,0,10.0,true,false,false,0,1174.0,Oshodi,559329572
+W8161019,Ojekunle Street,tertiary,false,0,10.0,true,false,false,0,1168.6,Oshodi,8161019
+W441859057,Okeleye Street,residential,false,0,7.5,false,false,false,0,296.8,Oshodi,441859057
+W93156430,Okeleye Street,residential,false,0,7.5,false,false,false,0,169.7,Oshodi,93156430
+W1442626894,Okun Owa Street,residential,false,0,7.5,false,false,false,0,117.2,Oshodi,1442626894
+W1442626895,Okun Owa Street,tertiary,false,0,10.0,false,false,false,0,71.1,Oshodi,1442626895
+W93146061,Okun Owa Street,residential,false,0,7.5,false,false,false,0,294.5,Oshodi,93146061
+W113522976,Olabisi Street,residential,false,0,7.5,false,false,false,0,157.2,Oshodi,113522976
+W1564625483,Oladeinde Street,residential,false,0,7.5,false,false,false,0,70.5,Oshodi,1564625483
+W92451034,Oladeinde Street,tertiary,false,0,10.0,false,false,false,0,235.7,Oshodi,92451034
+W5021957,Oladipo Bateye Street,residential,false,2,7.6,false,false,false,0,1161.1,Oshodi,5021957
+W92451088,Olafuyi Popoola Street,residential,false,1,4.3,false,false,false,0,571.5,Oshodi,92451088
+W1279347656,Olaiya Street,residential,false,0,7.5,false,true,false,0,11.5,Oshodi,1279347656
+W1279347657,Olaiya Street,residential,false,0,7.5,false,false,false,0,11.0,Oshodi,1279347657
+W589001498,Olaiya Street,residential,false,0,7.5,false,false,false,0,184.0,Oshodi,589001498
+W93156444,Olaiya Street,residential,false,0,7.5,false,false,false,0,825.9,Oshodi,93156444
+W370658006,Olakunle Selesi Crescent,residential,false,0,7.5,false,false,false,0,297.8,Oshodi,370658006
+W1232991924,Olaleye Street,residential,false,0,7.5,false,false,false,0,21.9,Oshodi,1232991924
+W535191768,Olaore Street,residential,false,0,7.5,false,false,false,0,192.6,Oshodi,535191768
+W964898222,Olateju Street,residential,false,1,4.3,false,false,false,0,91.3,Oshodi,964898222
+W964898223,Olateju Street,residential,false,1,4.3,false,false,false,0,189.8,Oshodi,964898223
+W9715860,Olateju Street,residential,false,1,4.3,false,false,false,0,776.7,Oshodi,9715860
+W136430376,Olatunbosun Street,residential,false,0,7.5,false,false,false,0,637.5,Oshodi,136430376
+W92451044,Olatunbosun Street,residential,false,0,7.5,false,false,false,0,219.3,Oshodi,92451044
+W93156442,Old Ewu Road,residential,false,0,7.5,false,false,false,0,858.4,Oshodi,93156442
+W746512954,Olori Street,residential,false,0,7.5,false,false,false,0,352.3,Oshodi,746512954
+W441897768,Olorunsogo Street,residential,false,0,7.5,false,false,false,0,907.6,Oshodi,441897768
+W535357575,Olubi Street,residential,false,0,7.5,false,false,false,0,502.4,Oshodi,535357575
+W92451071,Oludegun Avenue,secondary,false,0,13.0,false,false,false,0,307.7,Oshodi,92451071
+W92451143,Oluneye Street,residential,false,0,7.5,false,false,false,0,570.8,Oshodi,92451143
+W441712337,Olusanya Street,residential,false,0,7.5,false,false,false,0,65.3,Oshodi,441712337
+W370814116,Olusoji Street,residential,false,0,7.5,false,false,false,0,288.5,Oshodi,370814116
+W13656289,Olutanda Street,residential,false,0,7.5,false,false,false,0,393.2,Oshodi,13656289
+W370657996,Olutosin Ajayi Street,residential,false,0,7.5,false,false,false,0,689.6,Oshodi,370657996
+W93156419,Omilade Street,residential,false,0,7.5,false,false,false,0,477.8,Oshodi,93156419
+W441897765,Omodigbo Street,residential,false,0,7.5,false,false,false,0,231.3,Oshodi,441897765
+W93151811,Omolade Oshilowo Street,residential,false,0,7.5,false,false,false,0,251.4,Oshodi,93151811
+W93146083,Oredeyin Street,residential,false,0,7.5,false,false,false,0,315.0,Oshodi,93146083
+W23711217,Oremeji Street,residential,false,0,7.5,false,false,false,0,278.1,Oshodi,23711217
+W93146283,Oremeji Street,residential,false,0,7.5,false,false,false,0,228.4,Oshodi,93146283
+W93146059,Orona Street,residential,false,0,7.5,false,false,false,0,375.4,Oshodi,93146059
+W93147442,Osemene Street,residential,false,0,7.5,false,false,false,0,194.1,Oshodi,93147442
+W637910690,Oseni Ewu Street,residential,false,0,7.5,false,false,false,0,84.2,Oshodi,637910690
+W637910692,Oseni Ewu Street,residential,false,0,7.5,false,true,false,0,11.0,Oshodi,637910692
+W93147425,Oseni Ewu Street,residential,false,0,7.5,false,false,false,0,257.4,Oshodi,93147425
+W1547601493,Oshodi Road,secondary,false,0,13.0,false,false,false,0,351.8,Oshodi,1547601493
+W5153761,Oshodi Road,secondary,false,0,13.0,false,false,false,0,285.0,Oshodi,5153761
+W589001493,Oshodi Road,secondary,false,0,13.0,false,false,false,0,816.8,Oshodi,589001493
+W560546951,Osolo Way,secondary,false,0,13.0,false,false,false,0,1575.0,Oshodi,560546951
+W589001485,Osolo Way,secondary,false,0,13.0,false,true,false,0,42.0,Oshodi,589001485
+W589001486,Osolo Way,secondary,false,0,13.0,false,false,false,0,749.6,Oshodi,589001486
+W693542459,Osolo Way,secondary,false,0,13.0,true,false,false,0,20.1,Oshodi,693542459
+W693542460,Osolo Way,secondary,false,0,13.0,true,false,false,0,19.9,Oshodi,693542460
+W1564625482,Osundeyi Street,residential,false,0,7.5,false,false,false,0,67.0,Oshodi,1564625482
+W92451066,Osundeyi Street,tertiary,false,0,10.0,false,false,false,0,411.4,Oshodi,92451066
+W93147443,Osunyemi,residential,false,0,7.5,false,false,false,0,175.5,Oshodi,93147443
+W93146057,Owoseni Street,residential,false,0,7.5,false,false,false,30,438.0,Oshodi,93146057
+W8563768,Oyegunwa Street,tertiary,false,0,10.0,false,false,false,0,494.1,Oshodi,8563768
+W5153763,Oyetayo Street,secondary,false,2,7.6,false,false,false,40,90.1,Oshodi,5153763
+W93146069,Oyetayo Street,secondary,false,2,7.6,false,false,false,40,454.6,Oshodi,93146069
+W113522967,Oyetola Idowu Street,residential,false,0,7.5,false,false,false,0,364.7,Oshodi,113522967
+W93146071,Oyetola Street,residential,false,0,7.5,false,false,false,0,234.0,Oshodi,93146071
+W11102731,Palm Avenue,tertiary,false,0,10.0,false,false,false,0,1325.7,Oshodi,11102731
+W588860867,Palm Avenue,tertiary,false,0,10.0,true,false,false,0,19.2,Oshodi,588860867
+W588860876,Palm Avenue,tertiary,false,0,10.0,true,false,false,0,19.8,Oshodi,588860876
+W588860878,Palm Avenue,tertiary,false,0,10.0,false,false,false,0,730.0,Oshodi,588860878
+W93156423,Peluola Street,residential,false,0,7.5,false,false,false,0,240.1,Oshodi,93156423
+W437188471,Qudus Folawiyo Cresc,residential,false,0,7.5,false,false,false,0,358.6,Oshodi,437188471
+W134400942,R.S Blocks Road,service,false,0,5.0,false,false,false,0,816.6,Oshodi,134400942
+W535191784,Raji Abayomi Street,tertiary,false,0,10.0,false,false,false,0,402.8,Oshodi,535191784
+W441859084,Raji Street,residential,false,0,7.5,false,false,false,0,127.3,Oshodi,441859084
+W7651403,Remi Fani-Kayode Avenue,residential,false,2,7.6,false,false,false,0,1672.9,Oshodi,7651403
+W1442626897,Rufai Street,tertiary,false,0,10.0,false,false,false,40,158.5,Oshodi,1442626897
+W496652587,Sabiolegbe Street,residential,false,0,7.5,false,false,false,0,195.5,Oshodi,496652587
+W93156436,Sadiku Street,residential,false,0,7.5,false,false,false,0,281.1,Oshodi,93156436
+W535194642,Saka Street,residential,false,0,7.5,false,false,false,0,345.4,Oshodi,535194642
+W441859076,Salako Crescent,residential,false,0,7.5,false,false,false,0,159.3,Oshodi,441859076
+W136420247,Sasegbon Street,residential,false,0,7.5,false,false,false,0,315.9,Oshodi,136420247
+W496652589,Seinde Callisto Street,tertiary,false,0,10.0,false,false,false,0,654.5,Oshodi,496652589
+W113522969,Sere Close,residential,false,0,7.5,false,false,false,0,102.7,Oshodi,113522969
+W133872485,Sere Close,residential,false,0,7.5,false,false,false,0,105.6,Oshodi,133872485
+W370658028,Seriki Abass Crescent,residential,false,0,7.5,false,false,false,0,432.4,Oshodi,370658028
+W92451122,Shamura Street,residential,false,0,7.5,false,false,false,0,542.4,Oshodi,92451122
+W92451183,Shokoya Street,residential,false,0,7.5,false,false,false,0,241.7,Oshodi,92451183
+W136430398,Shonny Highway,residential,false,0,7.5,false,false,false,0,934.7,Oshodi,136430398
+W441859125,Shopeju Street,residential,false,0,7.5,false,false,false,0,304.2,Oshodi,441859125
+W11102850,Shyllon Street,residential,false,0,7.5,false,false,false,0,408.2,Oshodi,11102850
+W457942309,Siemens Road,residential,false,0,7.5,false,false,false,0,451.4,Oshodi,457942309
+W93151819,Smith Road,residential,false,0,7.5,false,false,false,0,267.9,Oshodi,93151819
+W589014138,Sodehinde Close,residential,false,0,7.5,false,false,false,0,86.4,Oshodi,589014138
+W11102602,Sokunbi Street,tertiary,false,0,10.0,false,false,false,0,809.2,Oshodi,11102602
+W93146063,Soneye Street,residential,false,0,7.5,false,false,false,0,146.6,Oshodi,93146063
+W441712280,Sosanya St,living_street,false,0,6.0,false,false,false,0,485.8,Oshodi,441712280
+W370301906,Stella Sholanke Street,residential,false,0,7.5,false,false,false,0,760.1,Oshodi,370301906
+W441897794,Sule Bada St,residential,false,0,7.5,false,false,false,0,95.8,Oshodi,441897794
+W437204148,Sunkanmi Awoyugbo Street,residential,false,0,7.5,false,false,false,0,290.3,Oshodi,437204148
+W589109957,Tawose St,residential,false,0,7.5,false,false,false,0,216.9,Oshodi,589109957
+W92451052,Temidire Street,residential,false,0,7.5,false,false,false,0,225.7,Oshodi,92451052
+W93148224,Tiwalade Street,residential,false,0,7.5,false,false,false,0,361.5,Oshodi,93148224
+W133872489,Town Planning Way,secondary,false,0,13.0,false,false,false,0,537.6,Oshodi,133872489
+W1473521974,Town Planning Way,secondary,false,0,13.0,false,false,false,0,372.3,Oshodi,1473521974
+W1473521975,Town Planning Way,secondary,false,0,13.0,true,false,false,0,255.3,Oshodi,1473521975
+W1566687458,Town Planning Way,secondary,false,0,13.0,false,false,false,0,259.7,Oshodi,1566687458
+W589109946,Town Planning Way,secondary,false,0,13.0,true,false,false,0,164.0,Oshodi,589109946
+W589109947,Town Planning Way,secondary,false,0,13.0,true,false,false,0,164.1,Oshodi,589109947
+W589109948,Town Planning Way,secondary,false,0,13.0,true,false,false,0,254.8,Oshodi,589109948
+W136433548,Trailhead Pl.,residential,false,2,7.6,false,false,false,40,998.7,Oshodi,136433548
+W136433552,Trailhead Rd,residential,false,2,7.6,false,false,false,40,341.7,Oshodi,136433552
+W92451051,Wahab Larinde Street,tertiary,false,0,10.0,false,false,false,0,477.0,Oshodi,92451051
+W93147439,Winsala Close,residential,false,0,7.5,false,false,false,0,88.5,Oshodi,93147439
+W136433547,Yusuf Okunade Close,residential,false,0,7.5,false,false,false,0,179.8,Oshodi,136433547
+W441859158,Yusuph Street,residential,false,0,7.5,false,false,false,0,620.0,Oshodi,441859158
+W1002580328,,service,false,0,5.0,false,false,false,0,4196.2,Oshodi,1002580328
+W1017733439,,service,false,0,5.0,false,false,false,0,52.6,Oshodi,1017733439
+W1018185258,,service,false,0,5.0,false,false,false,0,155.2,Oshodi,1018185258
+W1018185259,,service,false,0,5.0,false,false,false,0,52.2,Oshodi,1018185259
+W1018476066,,residential,false,0,7.5,false,false,false,0,86.1,Oshodi,1018476066
+W1018699514,,residential,false,0,7.5,false,false,false,0,73.2,Oshodi,1018699514
+W1018699788,,service,false,0,5.0,false,false,false,0,285.5,Oshodi,1018699788
+W1018702907,,service,false,0,5.0,false,false,false,0,115.6,Oshodi,1018702907
+W1018703263,,service,false,0,5.0,false,false,false,0,73.3,Oshodi,1018703263
+W1018703264,,service,false,0,5.0,false,false,false,0,196.6,Oshodi,1018703264
+W1018703265,,service,false,0,5.0,false,false,false,0,184.7,Oshodi,1018703265
+W1018703266,,service,false,0,5.0,false,false,false,0,51.2,Oshodi,1018703266
+W1018703267,,service,false,0,5.0,false,false,false,0,90.8,Oshodi,1018703267
+W1018703268,,service,false,0,5.0,false,false,false,0,42.5,Oshodi,1018703268
+W1018703269,,service,false,0,5.0,false,false,false,0,43.4,Oshodi,1018703269
+W1018703270,,service,false,0,5.0,false,false,false,0,136.7,Oshodi,1018703270
+W1018704393,,residential,false,0,7.5,false,false,false,0,58.4,Oshodi,1018704393
+W1018704394,,residential,false,0,7.5,false,false,false,0,111.1,Oshodi,1018704394
+W1018704395,,residential,false,0,7.5,false,false,false,0,111.3,Oshodi,1018704395
+W1018704565,,service,false,0,5.0,false,false,false,0,90.1,Oshodi,1018704565
+W1018704566,,service,false,0,5.0,false,false,false,0,42.4,Oshodi,1018704566
+W1018704567,,service,false,0,5.0,false,false,false,0,94.0,Oshodi,1018704567
+W1018704568,,service,false,0,5.0,false,false,false,0,44.7,Oshodi,1018704568
+W1018704569,,service,false,0,5.0,false,false,false,0,190.3,Oshodi,1018704569
+W1018704570,,service,false,0,5.0,false,false,false,0,118.3,Oshodi,1018704570
+W1018704571,,service,false,0,5.0,false,false,false,0,95.4,Oshodi,1018704571
+W1018704572,,service,false,0,5.0,false,false,false,0,52.2,Oshodi,1018704572
+W1018704573,,service,false,0,5.0,false,false,false,0,60.0,Oshodi,1018704573
+W1018704575,,service,false,0,5.0,false,false,false,0,181.8,Oshodi,1018704575
+W1018704577,,service,false,0,5.0,false,false,false,0,136.0,Oshodi,1018704577
+W1018704578,,service,false,0,5.0,false,false,false,0,73.4,Oshodi,1018704578
+W1018704579,,service,false,0,5.0,false,false,false,0,230.7,Oshodi,1018704579
+W1018704580,,service,false,0,5.0,false,false,false,0,323.2,Oshodi,1018704580
+W1018704597,,service,false,0,5.0,false,false,false,0,65.3,Oshodi,1018704597
+W1018704764,,service,false,0,5.0,false,false,false,0,63.5,Oshodi,1018704764
+W1018705739,,service,false,0,5.0,false,false,false,0,10.4,Oshodi,1018705739
+W1018705740,,service,false,0,5.0,false,false,false,0,80.5,Oshodi,1018705740
+W1019030363,,service,false,0,5.0,false,false,false,0,41.9,Oshodi,1019030363
+W1019030811,,service,false,0,5.0,false,false,false,0,153.7,Oshodi,1019030811
+W1019031007,,service,false,0,5.0,false,false,false,0,60.6,Oshodi,1019031007
+W1019031945,,residential,false,0,7.5,false,false,false,0,190.2,Oshodi,1019031945
+W1020465901,,service,false,0,5.0,false,false,false,0,58.7,Oshodi,1020465901
+W1020465902,,service,false,0,5.0,false,false,false,0,220.0,Oshodi,1020465902
+W1020465903,,service,false,0,5.0,false,false,false,0,45.3,Oshodi,1020465903
+W1020465904,,service,false,0,5.0,false,false,false,0,20.1,Oshodi,1020465904
+W1020465905,,service,false,0,5.0,false,false,false,0,90.5,Oshodi,1020465905
+W10233176,,secondary,true,0,7.5,true,false,false,0,152.5,Oshodi,10233176
+W10233185,,residential,false,0,7.5,false,false,false,0,132.8,Oshodi,10233185
+W1033734166,,service,false,0,5.0,false,false,false,0,92.6,Oshodi,1033734166
+W1033734167,,service,false,0,5.0,false,false,false,0,50.9,Oshodi,1033734167
+W1033735311,,service,false,0,5.0,false,false,false,0,109.8,Oshodi,1033735311
+W1033735312,,service,false,0,5.0,false,false,false,0,94.3,Oshodi,1033735312
+W1033735313,,service,false,0,5.0,false,false,false,0,190.4,Oshodi,1033735313
+W1033735314,,service,false,0,5.0,false,false,false,0,118.8,Oshodi,1033735314
+W1034045981,,service,false,0,5.0,false,false,false,0,12.6,Oshodi,1034045981
+W1034045982,,service,false,0,5.0,false,false,false,0,11.0,Oshodi,1034045982
+W1034045983,,service,false,0,5.0,false,false,false,0,113.3,Oshodi,1034045983
+W1034048420,,service,false,0,5.0,false,false,false,0,49.5,Oshodi,1034048420
+W1034058182,,service,false,0,5.0,false,false,false,0,79.1,Oshodi,1034058182
+W1034060847,,service,false,0,5.0,false,false,false,0,41.0,Oshodi,1034060847
+W1034062023,,service,false,0,5.0,false,false,false,0,51.7,Oshodi,1034062023
+W1034062350,,service,false,0,5.0,false,false,false,0,95.0,Oshodi,1034062350
+W1034062591,,service,false,0,5.0,false,false,false,0,14.7,Oshodi,1034062591
+W1034062592,,service,false,0,5.0,false,false,false,0,75.7,Oshodi,1034062592
+W1034062593,,service,false,0,5.0,false,false,false,0,35.6,Oshodi,1034062593
+W1034110506,,service,false,0,5.0,false,false,false,0,32.8,Oshodi,1034110506
+W1034110507,,service,false,0,5.0,false,false,false,0,95.3,Oshodi,1034110507
+W1034110973,,service,false,0,5.0,false,false,false,0,21.3,Oshodi,1034110973
+W1034110974,,service,false,0,5.0,false,false,false,0,67.1,Oshodi,1034110974
+W1034117996,,service,false,0,5.0,false,false,false,0,235.7,Oshodi,1034117996
+W1034117997,,service,false,0,5.0,false,false,false,0,10.4,Oshodi,1034117997
+W1034118450,,service,false,0,5.0,false,false,false,0,116.0,Oshodi,1034118450
+W1034387004,,service,false,0,5.0,false,false,false,0,62.3,Oshodi,1034387004
+W1034387230,,service,false,0,5.0,false,false,false,0,128.6,Oshodi,1034387230
+W1034387719,,service,false,0,5.0,false,false,false,0,135.6,Oshodi,1034387719
+W1034388321,,service,false,0,5.0,false,false,false,0,165.8,Oshodi,1034388321
+W1034439164,,residential,false,0,7.5,false,false,false,0,110.0,Oshodi,1034439164
+W1034707754,,service,false,0,5.0,false,false,false,0,101.6,Oshodi,1034707754
+W1036406100,,residential,false,0,7.5,false,false,false,0,62.4,Oshodi,1036406100
+W1063127057,,service,false,0,5.0,false,false,false,0,43.5,Oshodi,1063127057
+W1063233113,,service,false,0,5.0,false,false,false,0,37.8,Oshodi,1063233113
+W1063458108,,service,false,0,5.0,false,false,false,0,35.1,Oshodi,1063458108
+W1063458109,,service,false,0,5.0,false,false,false,0,40.8,Oshodi,1063458109
+W1063470281,,service,false,0,5.0,false,false,false,0,31.5,Oshodi,1063470281
+W1063470283,,service,false,0,5.0,false,false,false,0,54.6,Oshodi,1063470283
+W1063470284,,service,false,0,5.0,false,false,false,0,46.6,Oshodi,1063470284
+W1063470400,,service,false,0,5.0,false,false,false,0,56.2,Oshodi,1063470400
+W1063470401,,service,false,0,5.0,false,false,false,0,5.5,Oshodi,1063470401
+W1063470402,,service,false,0,5.0,false,false,false,0,34.0,Oshodi,1063470402
+W1063470575,,service,false,0,5.0,false,false,false,0,68.8,Oshodi,1063470575
+W1063470615,,service,false,0,5.0,false,false,false,0,116.0,Oshodi,1063470615
+W1063476721,,service,false,0,5.0,false,false,false,0,82.9,Oshodi,1063476721
+W1063479478,,service,false,0,5.0,false,false,false,0,132.9,Oshodi,1063479478
+W1063480145,,service,false,0,5.0,false,false,false,0,80.1,Oshodi,1063480145
+W1063480146,,service,false,0,5.0,false,false,false,0,12.0,Oshodi,1063480146
+W1063878441,,service,false,0,5.0,false,false,false,0,42.0,Oshodi,1063878441
+W1063878921,,residential,false,0,7.5,false,false,false,0,64.6,Oshodi,1063878921
+W1063880627,,service,false,0,5.0,false,false,false,0,59.7,Oshodi,1063880627
+W1064229172,,service,false,0,5.0,false,false,false,0,97.4,Oshodi,1064229172
+W1064229241,,service,false,0,5.0,false,false,false,0,53.5,Oshodi,1064229241
+W1064231280,,service,false,0,5.0,false,false,false,0,504.7,Oshodi,1064231280
+W1064231456,,service,false,0,5.0,false,false,false,0,77.6,Oshodi,1064231456
+W1064231458,,service,false,0,5.0,false,false,false,0,36.6,Oshodi,1064231458
+W1064231459,,service,false,0,5.0,false,false,false,0,6.7,Oshodi,1064231459
+W1064231460,,service,false,0,5.0,false,false,false,0,17.6,Oshodi,1064231460
+W1064231461,,service,false,0,5.0,false,false,false,0,146.2,Oshodi,1064231461
+W1064239493,,service,false,0,5.0,false,false,false,0,7.5,Oshodi,1064239493
+W1064240014,,service,false,0,5.0,false,false,false,0,98.1,Oshodi,1064240014
+W1064240064,,service,false,0,5.0,false,false,false,0,135.3,Oshodi,1064240064
+W1064289176,,residential,false,0,7.5,false,false,false,0,63.9,Oshodi,1064289176
+W1065039310,,service,false,0,5.0,false,false,false,0,37.5,Oshodi,1065039310
+W1065419684,,service,false,0,5.0,false,false,false,0,44.9,Oshodi,1065419684
+W1065790586,,track,false,0,4.0,false,false,false,0,189.4,Oshodi,1065790586
+W1065790587,,track,false,0,4.0,false,false,false,0,281.9,Oshodi,1065790587
+W1077591133,,service,false,0,5.0,false,false,false,0,27.2,Oshodi,1077591133
+W1077591246,,service,false,0,5.0,false,false,false,0,54.3,Oshodi,1077591246
+W1077594523,,service,false,0,5.0,false,false,false,0,81.5,Oshodi,1077594523
+W1077607440,,service,false,0,5.0,false,false,false,0,132.9,Oshodi,1077607440
+W1077610109,,service,false,0,5.0,false,false,false,0,34.8,Oshodi,1077610109
+W1077610110,,service,false,0,5.0,false,false,false,0,35.5,Oshodi,1077610110
+W1077610111,,service,false,0,5.0,false,false,false,0,31.1,Oshodi,1077610111
+W1077610837,,service,false,0,5.0,false,false,false,0,49.9,Oshodi,1077610837
+W1077890911,,service,false,0,5.0,false,false,false,0,122.8,Oshodi,1077890911
+W1077891157,,service,false,0,5.0,false,false,false,0,125.6,Oshodi,1077891157
+W1078117650,,service,false,0,5.0,false,false,false,0,53.5,Oshodi,1078117650
+W1078117651,,service,false,0,5.0,false,false,false,0,30.9,Oshodi,1078117651
+W1078117652,,service,false,0,5.0,false,false,false,0,117.0,Oshodi,1078117652
+W1078117654,,service,false,0,5.0,false,false,false,0,146.0,Oshodi,1078117654
+W1082234948,,residential,false,0,7.5,false,false,false,0,62.7,Oshodi,1082234948
+W1082796166,,service,false,0,5.0,false,false,false,0,47.3,Oshodi,1082796166
+W1082797019,,service,false,0,5.0,false,false,false,0,37.6,Oshodi,1082797019
+W1092567399,,service,false,0,5.0,false,false,false,0,66.4,Oshodi,1092567399
+W1092567400,,service,false,0,5.0,false,false,false,0,21.9,Oshodi,1092567400
+W1092567401,,service,false,0,5.0,false,false,false,0,178.7,Oshodi,1092567401
+W1092567402,,service,false,0,5.0,false,false,false,0,220.7,Oshodi,1092567402
+W1096897609,,service,false,0,5.0,false,false,false,0,105.3,Oshodi,1096897609
+W1096899777,,service,false,0,5.0,false,false,false,0,85.1,Oshodi,1096899777
+W1096899778,,service,false,0,5.0,false,false,false,0,305.3,Oshodi,1096899778
+W1096899779,,service,false,0,5.0,false,false,false,0,116.8,Oshodi,1096899779
+W1096899780,,service,false,0,5.0,false,false,false,0,76.0,Oshodi,1096899780
+W1096899781,,residential,false,0,7.5,false,false,false,0,370.9,Oshodi,1096899781
+W1105198603,,secondary,false,0,13.0,false,false,false,0,272.9,Oshodi,1105198603
+W1108449128,,service,false,0,5.0,false,false,false,0,74.9,Oshodi,1108449128
+W1108449129,,service,false,0,5.0,false,false,false,0,177.1,Oshodi,1108449129
+W1108449130,,service,false,0,5.0,false,false,false,0,96.3,Oshodi,1108449130
+W1108449131,,service,false,0,5.0,false,false,false,0,56.4,Oshodi,1108449131
+W1108521520,,service,false,0,5.0,false,false,false,0,44.8,Oshodi,1108521520
+W1108521521,,residential,false,0,7.5,false,false,false,0,89.6,Oshodi,1108521521
+W1108521522,,residential,false,0,7.5,false,false,false,0,144.7,Oshodi,1108521522
+W1108521524,,residential,false,0,7.5,false,false,false,0,70.5,Oshodi,1108521524
+W1111246867,,service,false,0,5.0,false,false,false,0,14.5,Oshodi,1111246867
+W1111510449,,service,false,0,5.0,false,false,false,0,48.0,Oshodi,1111510449
+W1111724016,,service,false,0,5.0,false,false,false,0,65.4,Oshodi,1111724016
+W1111934977,,service,false,0,5.0,false,false,false,0,81.0,Oshodi,1111934977
+W1111935007,,service,false,0,5.0,false,false,false,0,133.3,Oshodi,1111935007
+W1111945418,,service,false,0,5.0,false,false,false,0,41.2,Oshodi,1111945418
+W1111977798,,service,false,0,5.0,false,false,false,0,90.2,Oshodi,1111977798
+W1111977974,,service,false,0,5.0,false,false,false,0,42.5,Oshodi,1111977974
+W1116492330,,service,false,0,5.0,false,false,false,0,42.8,Oshodi,1116492330
+W1116492331,,service,false,0,5.0,false,false,false,0,175.5,Oshodi,1116492331
+W1116492332,,service,false,0,5.0,false,false,false,0,295.8,Oshodi,1116492332
+W1116518938,,service,false,0,5.0,false,false,false,0,29.1,Oshodi,1116518938
+W1125124020,,service,false,0,5.0,false,false,false,0,136.1,Oshodi,1125124020
+W1127472149,,service,false,0,5.0,false,false,false,0,25.4,Oshodi,1127472149
+W1127472150,,service,false,0,5.0,false,false,false,0,57.8,Oshodi,1127472150
+W1130537727,,service,false,0,5.0,false,false,false,0,80.9,Oshodi,1130537727
+W1130537728,,service,false,0,5.0,false,false,false,0,6.2,Oshodi,1130537728
+W1130537729,,service,false,0,5.0,false,false,false,0,19.0,Oshodi,1130537729
+W1130537730,,service,false,0,5.0,false,false,false,0,70.7,Oshodi,1130537730
+W1130537731,,service,false,0,5.0,false,false,false,0,50.2,Oshodi,1130537731
+W1130537732,,service,false,0,5.0,false,false,false,0,85.5,Oshodi,1130537732
+W1130537733,,service,false,0,5.0,false,false,false,0,135.3,Oshodi,1130537733
+W1130537734,,service,false,0,5.0,false,false,false,0,37.4,Oshodi,1130537734
+W1130537735,,residential,false,0,7.5,false,false,false,0,433.5,Oshodi,1130537735
+W1131531556,,service,false,0,5.0,true,false,false,0,36.1,Oshodi,1131531556
+W1132386644,,residential,false,0,7.5,false,false,false,0,57.1,Oshodi,1132386644
+W1132386645,,residential,false,0,7.5,false,false,false,0,70.2,Oshodi,1132386645
+W1133114000,,residential,false,2,7.6,false,false,false,0,457.4,Oshodi,1133114000
+W1133115582,,residential,false,0,7.5,false,false,false,0,59.4,Oshodi,1133115582
+W1133115586,,service,false,0,5.0,false,false,false,0,55.3,Oshodi,1133115586
+W1133115587,,service,false,0,5.0,false,false,false,0,35.8,Oshodi,1133115587
+W1133115588,,service,false,0,5.0,false,false,false,0,38.3,Oshodi,1133115588
+W1133115589,,residential,false,0,7.5,false,false,false,0,47.4,Oshodi,1133115589
+W1133398159,,service,false,0,5.0,false,false,false,0,42.5,Oshodi,1133398159
+W1133398160,,service,false,0,5.0,false,false,false,0,231.6,Oshodi,1133398160
+W1133432510,,service,false,0,5.0,false,false,false,0,37.6,Oshodi,1133432510
+W1133676045,,service,false,0,5.0,false,false,false,0,47.1,Oshodi,1133676045
+W1134693904,,service,false,0,5.0,false,false,false,0,61.9,Oshodi,1134693904
+W1135054431,,service,false,0,5.0,false,false,false,0,55.2,Oshodi,1135054431
+W113522965,,residential,false,0,7.5,false,false,false,0,440.2,Oshodi,113522965
+W113522966,,residential,false,0,7.5,false,false,false,0,258.4,Oshodi,113522966
+W113522971,,residential,false,0,7.5,false,false,false,0,279.8,Oshodi,113522971
+W113522982,,residential,false,0,7.5,false,false,false,0,299.8,Oshodi,113522982
+W113522983,,residential,false,0,7.5,false,false,false,0,552.6,Oshodi,113522983
+W1136397958,,service,false,0,5.0,false,false,false,0,70.2,Oshodi,1136397958
+W1136397959,,service,false,0,5.0,false,false,false,0,36.1,Oshodi,1136397959
+W1136397960,,service,false,0,5.0,false,false,false,0,41.0,Oshodi,1136397960
+W1136397961,,service,false,0,5.0,false,false,false,0,33.2,Oshodi,1136397961
+W1145542973,,service,false,0,5.0,false,false,false,0,99.8,Oshodi,1145542973
+W1145542974,,service,false,0,5.0,false,false,false,0,81.7,Oshodi,1145542974
+W1145542975,,service,false,0,5.0,false,false,false,0,106.6,Oshodi,1145542975
+W1148396564,,service,false,0,5.0,false,false,false,0,24.8,Oshodi,1148396564
+W1148396565,,service,false,0,5.0,false,false,false,0,135.1,Oshodi,1148396565
+W1157247967,,service,false,0,5.0,false,false,false,0,10.4,Oshodi,1157247967
+W1158125996,,service,false,0,5.0,false,false,false,0,49.9,Oshodi,1158125996
+W1158125997,,service,false,0,5.0,false,false,false,0,5.2,Oshodi,1158125997
+W1158125998,,service,false,0,5.0,false,false,false,0,352.1,Oshodi,1158125998
+W1158125999,,service,false,0,5.0,false,false,false,0,40.8,Oshodi,1158125999
+W1158126001,,service,false,0,5.0,false,false,false,0,10.4,Oshodi,1158126001
+W1158126002,,service,false,0,5.0,false,false,false,0,28.1,Oshodi,1158126002
+W1160078010,,service,false,0,5.0,false,false,false,0,13.4,Oshodi,1160078010
+W1160078011,,residential,false,0,7.5,false,false,false,0,324.4,Oshodi,1160078011
+W1160143802,,service,false,0,5.0,false,false,false,0,87.6,Oshodi,1160143802
+W1160143803,,service,false,0,5.0,false,false,false,0,31.1,Oshodi,1160143803
+W1160143804,,service,false,0,5.0,false,false,false,0,119.6,Oshodi,1160143804
+W1163535437,,motorway,true,0,7.5,true,false,false,0,35.5,Oshodi,1163535437
+W1166037964,,service,false,0,5.0,false,false,false,0,84.2,Oshodi,1166037964
+W1169782585,,service,false,0,5.0,false,false,false,0,18.0,Oshodi,1169782585
+W1169782586,,service,false,0,5.0,false,false,false,0,61.7,Oshodi,1169782586
+W1170457775,,residential,false,0,7.5,false,false,false,0,52.7,Oshodi,1170457775
+W1170479340,,service,false,0,5.0,false,false,false,0,38.9,Oshodi,1170479340
+W1170485475,,service,false,0,5.0,false,false,false,0,83.5,Oshodi,1170485475
+W1171521665,,service,false,0,5.0,false,false,false,0,401.6,Oshodi,1171521665
+W1175804259,,service,false,0,5.0,false,false,false,0,55.8,Oshodi,1175804259
+W1175804260,,service,false,0,5.0,false,false,false,0,97.0,Oshodi,1175804260
+W1175804261,,service,false,0,5.0,false,false,false,0,208.6,Oshodi,1175804261
+W1177184698,,service,false,0,5.0,false,false,false,0,36.1,Oshodi,1177184698
+W1177184699,,service,false,0,5.0,false,false,false,0,39.0,Oshodi,1177184699
+W1177184700,,service,false,0,5.0,false,false,false,0,45.6,Oshodi,1177184700
+W1177184702,,service,false,0,5.0,false,false,false,0,42.0,Oshodi,1177184702
+W1177184703,,service,false,0,5.0,false,false,false,0,46.5,Oshodi,1177184703
+W1177834201,,service,false,0,5.0,false,false,false,0,111.8,Oshodi,1177834201
+W1177834202,,service,false,0,5.0,false,false,false,0,12.3,Oshodi,1177834202
+W1177834203,,service,false,0,5.0,false,false,false,0,9.0,Oshodi,1177834203
+W1177834204,,service,false,0,5.0,false,false,false,0,66.5,Oshodi,1177834204
+W1177834205,,residential,false,0,7.5,false,false,false,0,110.8,Oshodi,1177834205
+W1177834206,,service,false,0,5.0,false,false,false,0,40.5,Oshodi,1177834206
+W1177834207,,service,false,0,5.0,false,false,false,0,105.3,Oshodi,1177834207
+W1178004773,,service,false,0,5.0,false,false,false,0,89.4,Oshodi,1178004773
+W1178004774,,service,false,0,5.0,false,false,false,0,32.4,Oshodi,1178004774
+W1185621326,,service,false,0,5.0,false,false,false,0,4.6,Oshodi,1185621326
+W1185621327,,service,false,0,5.0,false,false,false,0,44.4,Oshodi,1185621327
+W1185621328,,service,false,0,5.0,false,false,false,0,44.8,Oshodi,1185621328
+W1185621329,,residential,false,0,7.5,false,false,false,0,313.7,Oshodi,1185621329
+W1185621330,,service,false,0,5.0,false,false,false,0,115.8,Oshodi,1185621330
+W1218442388,,service,false,0,5.0,false,false,false,0,271.6,Oshodi,1218442388
+W1218442392,,service,false,0,5.0,false,false,false,0,10.9,Oshodi,1218442392
+W1218442393,,service,false,0,5.0,false,false,false,0,119.4,Oshodi,1218442393
+W1218442394,,service,false,0,5.0,false,false,false,0,29.0,Oshodi,1218442394
+W1218442395,,service,false,0,5.0,false,false,false,0,150.0,Oshodi,1218442395
+W1218470964,,service,false,0,5.0,false,false,false,0,80.0,Oshodi,1218470964
+W1218470965,,service,false,0,5.0,false,false,false,0,15.3,Oshodi,1218470965
+W1218470966,,service,false,0,5.0,false,false,false,0,33.4,Oshodi,1218470966
+W1218470967,,service,false,0,5.0,false,false,false,0,87.7,Oshodi,1218470967
+W1218470968,,service,false,0,5.0,false,false,false,0,74.6,Oshodi,1218470968
+W1218470969,,service,false,0,5.0,false,false,false,0,85.7,Oshodi,1218470969
+W1218470970,,service,false,0,5.0,false,false,false,0,86.4,Oshodi,1218470970
+W1218470971,,service,false,0,5.0,false,false,false,0,220.7,Oshodi,1218470971
+W1218470972,,service,false,0,5.0,false,false,false,0,17.8,Oshodi,1218470972
+W1218470973,,service,false,0,5.0,false,false,false,0,10.1,Oshodi,1218470973
+W1218474105,,service,false,0,5.0,false,false,false,0,199.5,Oshodi,1218474105
+W1218474106,,residential,false,0,7.5,false,false,false,0,196.1,Oshodi,1218474106
+W1218474107,,service,false,0,5.0,false,false,false,0,21.7,Oshodi,1218474107
+W1218918383,,service,false,0,5.0,false,false,false,0,168.8,Oshodi,1218918383
+W1218918389,,service,false,0,5.0,false,false,false,0,11.6,Oshodi,1218918389
+W1218918390,,service,false,0,5.0,false,false,false,0,23.2,Oshodi,1218918390
+W1218918391,,residential,false,0,7.5,false,false,false,0,313.6,Oshodi,1218918391
+W1218918392,,service,false,0,5.0,false,false,false,0,51.8,Oshodi,1218918392
+W1218918393,,service,false,0,5.0,false,false,false,0,72.3,Oshodi,1218918393
+W1218918394,,service,false,0,5.0,false,false,false,0,59.5,Oshodi,1218918394
+W1218918397,,tertiary,true,0,7.5,false,false,false,0,8.1,Oshodi,1218918397
+W1218929944,,service,false,0,5.0,true,false,false,0,29.6,Oshodi,1218929944
+W1218929945,,service,false,0,5.0,true,false,false,0,29.1,Oshodi,1218929945
+W1218929946,,service,false,0,5.0,true,false,false,0,30.0,Oshodi,1218929946
+W1218929947,,service,false,0,5.0,false,false,false,0,93.6,Oshodi,1218929947
+W1218929948,,service,false,0,5.0,false,false,false,0,65.1,Oshodi,1218929948
+W1218929949,,service,false,0,5.0,false,false,false,0,41.6,Oshodi,1218929949
+W1218929950,,service,false,0,5.0,false,false,false,0,5.1,Oshodi,1218929950
+W1218929951,,service,false,0,5.0,false,false,false,0,86.6,Oshodi,1218929951
+W1218929952,,service,false,0,5.0,false,false,false,0,39.4,Oshodi,1218929952
+W1218929953,,service,false,0,5.0,false,false,false,0,33.1,Oshodi,1218929953
+W1218929954,,service,false,0,5.0,false,false,false,0,111.2,Oshodi,1218929954
+W1219469412,,service,false,0,5.0,false,false,false,0,101.5,Oshodi,1219469412
+W1219469413,,service,false,0,5.0,false,false,false,0,112.6,Oshodi,1219469413
+W1219912144,,service,false,0,5.0,false,false,false,0,40.2,Oshodi,1219912144
+W1219912147,,service,false,0,5.0,false,false,false,0,55.4,Oshodi,1219912147
+W1219912150,,service,false,0,5.0,false,false,false,0,44.9,Oshodi,1219912150
+W1219912151,,service,false,0,5.0,false,false,false,0,51.4,Oshodi,1219912151
+W1219912152,,service,false,0,5.0,false,false,false,0,46.7,Oshodi,1219912152
+W1219912153,,service,false,0,5.0,false,false,false,0,21.7,Oshodi,1219912153
+W1219912154,,service,false,0,5.0,false,false,false,0,13.6,Oshodi,1219912154
+W1219912155,,service,false,0,5.0,false,false,false,0,44.9,Oshodi,1219912155
+W1219912156,,service,false,0,5.0,false,false,false,0,3.1,Oshodi,1219912156
+W1219912157,,service,false,0,5.0,false,false,false,0,24.7,Oshodi,1219912157
+W1219912158,,service,false,0,5.0,false,false,false,0,8.6,Oshodi,1219912158
+W1219912159,,service,false,0,5.0,false,false,false,0,8.7,Oshodi,1219912159
+W1219912160,,service,false,0,5.0,false,false,false,0,100.0,Oshodi,1219912160
+W1219912161,,service,false,0,5.0,false,false,false,0,69.3,Oshodi,1219912161
+W1219912162,,service,false,0,5.0,false,false,false,0,52.7,Oshodi,1219912162
+W1219912163,,service,false,0,5.0,false,false,false,0,32.3,Oshodi,1219912163
+W1219912164,,service,false,0,5.0,false,false,false,0,139.4,Oshodi,1219912164
+W1219912165,,service,false,0,5.0,false,false,false,0,107.1,Oshodi,1219912165
+W1219912166,,service,false,0,5.0,false,false,false,0,18.5,Oshodi,1219912166
+W1221480168,,service,false,0,5.0,false,false,false,0,45.4,Oshodi,1221480168
+W1221480169,,service,false,0,5.0,false,false,false,0,59.5,Oshodi,1221480169
+W1221480170,,service,false,0,5.0,false,false,false,0,15.3,Oshodi,1221480170
+W1221480171,,service,false,0,5.0,false,false,false,0,20.0,Oshodi,1221480171
+W1222309679,,motorway,true,0,7.5,true,false,false,0,174.1,Oshodi,1222309679
+W1222309680,,primary,true,0,7.5,true,false,false,0,69.0,Oshodi,1222309680
+W1227922263,,residential,false,0,7.5,false,false,false,0,137.4,Oshodi,1227922263
+W1228540688,,residential,false,0,7.5,false,false,false,0,196.2,Oshodi,1228540688
+W1228540690,,residential,false,0,7.5,false,false,false,0,43.6,Oshodi,1228540690
+W1228540691,,residential,false,0,7.5,false,false,false,0,45.3,Oshodi,1228540691
+W1228975846,,service,false,0,5.0,false,false,false,0,75.7,Oshodi,1228975846
+W1229005083,,service,false,0,5.0,false,false,false,0,7.2,Oshodi,1229005083
+W1229005084,,service,false,0,5.0,false,false,false,0,102.2,Oshodi,1229005084
+W1229005085,,service,false,0,5.0,false,false,false,0,39.4,Oshodi,1229005085
+W1229005086,,service,false,0,5.0,false,false,false,0,198.3,Oshodi,1229005086
+W1229009078,,service,false,0,5.0,false,false,false,0,91.3,Oshodi,1229009078
+W1229011189,,service,false,0,5.0,false,false,false,0,26.7,Oshodi,1229011189
+W1229011190,,service,false,0,5.0,false,false,false,0,52.0,Oshodi,1229011190
+W1229011191,,service,false,0,5.0,false,false,false,0,86.2,Oshodi,1229011191
+W1229011192,,service,false,0,5.0,false,false,false,0,49.6,Oshodi,1229011192
+W1229011193,,service,false,0,5.0,false,false,false,0,214.1,Oshodi,1229011193
+W1229012978,,service,false,0,5.0,false,false,false,0,81.1,Oshodi,1229012978
+W1229200546,,residential,false,0,7.5,false,false,false,0,107.2,Oshodi,1229200546
+W1229200547,,service,false,0,5.0,false,false,false,0,203.3,Oshodi,1229200547
+W1229207209,,service,false,0,5.0,false,false,false,0,170.0,Oshodi,1229207209
+W1229207210,,service,false,0,5.0,false,false,false,0,20.1,Oshodi,1229207210
+W1229231653,,service,false,0,5.0,false,false,false,0,109.2,Oshodi,1229231653
+W1229564762,,service,false,0,5.0,false,false,false,0,30.4,Oshodi,1229564762
+W1229564763,,service,false,0,5.0,false,false,false,0,95.0,Oshodi,1229564763
+W1254801427,,residential,false,0,7.5,false,false,false,0,16.6,Oshodi,1254801427
+W1257669776,,service,false,0,5.0,false,false,false,0,40.3,Oshodi,1257669776
+W1258205876,,service,false,0,5.0,false,false,false,0,90.4,Oshodi,1258205876
+W1258280911,,residential,false,0,7.5,false,false,false,0,68.2,Oshodi,1258280911
+W1258280915,,residential,false,0,7.5,false,false,false,0,20.7,Oshodi,1258280915
+W1262413538,,residential,false,0,7.5,false,false,false,0,101.6,Oshodi,1262413538
+W1262773070,,service,false,0,5.0,false,false,false,0,21.0,Oshodi,1262773070
+W1265480179,,residential,false,0,7.5,false,false,false,0,105.7,Oshodi,1265480179
+W1265502552,,residential,false,0,7.5,false,false,false,0,256.2,Oshodi,1265502552
+W1265502553,,residential,false,0,7.5,false,false,false,0,516.9,Oshodi,1265502553
+W1265502555,,residential,false,0,7.5,false,false,false,0,298.9,Oshodi,1265502555
+W1265506128,,residential,false,0,7.5,false,false,false,0,426.1,Oshodi,1265506128
+W1265506130,,residential,false,0,7.5,false,false,false,0,173.9,Oshodi,1265506130
+W1265506132,,residential,false,0,7.5,false,false,false,0,137.2,Oshodi,1265506132
+W1265512365,,residential,false,0,7.5,false,false,false,0,150.9,Oshodi,1265512365
+W1265514655,,service,false,0,5.0,false,false,false,0,545.7,Oshodi,1265514655
+W1265562071,,service,false,0,5.0,false,false,false,0,165.6,Oshodi,1265562071
+W1265575276,,residential,false,0,7.5,false,false,false,0,86.9,Oshodi,1265575276
+W1265575277,,residential,false,0,7.5,false,false,false,0,90.9,Oshodi,1265575277
+W1265849091,,residential,false,0,7.5,false,false,false,0,364.8,Oshodi,1265849091
+W1276436781,,residential,false,0,7.5,false,false,false,0,4.8,Oshodi,1276436781
+W1284776442,,service,false,0,5.0,false,false,false,0,155.5,Oshodi,1284776442
+W1284776443,,service,false,0,5.0,false,false,false,0,65.5,Oshodi,1284776443
+W1291627224,,service,false,0,5.0,false,false,false,0,68.3,Oshodi,1291627224
+W1291627225,,service,false,0,5.0,false,false,false,0,117.9,Oshodi,1291627225
+W1291949425,,residential,false,0,7.5,false,false,false,0,42.4,Oshodi,1291949425
+W1291949427,,residential,false,0,7.5,false,false,false,0,54.6,Oshodi,1291949427
+W1291949428,,residential,false,0,7.5,false,false,false,0,30.2,Oshodi,1291949428
+W1291949429,,residential,false,0,7.5,false,false,false,0,65.3,Oshodi,1291949429
+W1291949430,,residential,false,0,7.5,false,false,false,0,98.3,Oshodi,1291949430
+W1291949431,,residential,false,0,7.5,false,false,false,0,28.7,Oshodi,1291949431
+W1291949432,,residential,false,0,7.5,false,false,false,0,66.8,Oshodi,1291949432
+W1309437300,,motorway,true,0,7.5,true,false,false,0,10.9,Oshodi,1309437300
+W1314304516,,residential,false,0,7.5,false,false,false,0,20.8,Oshodi,1314304516
+W1314304517,,residential,false,0,7.5,false,false,false,0,63.5,Oshodi,1314304517
+W1314304518,,residential,false,0,7.5,false,false,false,0,76.8,Oshodi,1314304518
+W1314547202,,residential,false,0,7.5,false,false,false,0,139.7,Oshodi,1314547202
+W1324097087,,service,false,0,5.0,false,false,false,0,23.7,Oshodi,1324097087
+W133872497,,tertiary,false,1,4.3,false,false,false,0,497.7,Oshodi,133872497
+W133875234,,motorway,true,0,7.5,true,false,false,0,16.3,Oshodi,133875234
+W133875241,,motorway,true,0,7.5,true,false,false,0,55.7,Oshodi,133875241
+W133875246,,secondary,false,0,13.0,true,false,false,0,109.4,Oshodi,133875246
+W133875248,,motorway,true,0,7.5,true,false,false,0,45.0,Oshodi,133875248
+W134140051,,residential,false,0,7.5,false,false,false,0,115.2,Oshodi,134140051
+W134140053,,motorway,true,0,7.5,true,false,false,0,61.2,Oshodi,134140053
+W134140055,,motorway,true,0,7.5,true,false,false,0,89.0,Oshodi,134140055
+W134140058,,motorway,true,0,7.5,true,false,false,0,56.1,Oshodi,134140058
+W134140064,,motorway,true,0,7.5,true,false,false,0,36.5,Oshodi,134140064
+W134140066,,secondary,false,0,13.0,true,false,false,0,40.3,Oshodi,134140066
+W134144368,,residential,false,0,7.5,false,false,false,0,224.5,Oshodi,134144368
+W134144370,,primary,true,0,7.5,true,false,false,0,97.0,Oshodi,134144370
+W134144375,,motorway,true,0,7.5,true,false,false,0,158.3,Oshodi,134144375
+W134144377,,motorway,true,0,7.5,true,true,false,0,404.6,Oshodi,134144377
+W134144378,,motorway,true,0,7.5,true,true,false,0,88.3,Oshodi,134144378
+W134144383,,motorway,true,0,7.5,true,true,false,0,22.8,Oshodi,134144383
+W134144387,,motorway,true,0,7.5,true,true,false,0,22.8,Oshodi,134144387
+W134144391,,motorway,true,0,7.5,true,false,false,0,260.5,Oshodi,134144391
+W134144392,,motorway,true,0,7.5,true,false,false,0,15.1,Oshodi,134144392
+W134144398,,primary,true,0,7.5,true,false,false,0,281.9,Oshodi,134144398
+W134144403,,primary,true,0,7.5,true,false,false,0,14.9,Oshodi,134144403
+W134144404,,motorway,true,0,7.5,true,false,false,0,382.3,Oshodi,134144404
+W134144411,,motorway,true,0,7.5,true,false,false,0,17.8,Oshodi,134144411
+W134144415,,motorway,true,0,7.5,true,false,false,0,79.7,Oshodi,134144415
+W134144423,,motorway,true,0,7.5,true,false,false,0,366.4,Oshodi,134144423
+W134144425,,motorway,true,0,7.5,true,false,false,0,267.9,Oshodi,134144425
+W134144426,,motorway,true,0,7.5,true,false,false,0,101.8,Oshodi,134144426
+W134144427,,motorway,true,0,7.5,true,false,false,0,17.7,Oshodi,134144427
+W134147978,,motorway,true,0,7.5,true,false,false,0,208.4,Oshodi,134147978
+W134398954,,secondary,false,0,13.0,true,false,true,0,78.7,Oshodi,134398954
+W134400946,,service,false,0,5.0,false,false,false,0,74.6,Oshodi,134400946
+W134400947,,service,false,0,5.0,false,false,false,0,299.2,Oshodi,134400947
+W134400953,,secondary,false,0,13.0,true,false,true,0,72.7,Oshodi,134400953
+W1351724557,,service,false,0,5.0,false,false,false,0,41.7,Oshodi,1351724557
+W1351724558,,service,false,0,5.0,false,false,false,0,69.1,Oshodi,1351724558
+W1351724559,,service,false,0,5.0,false,false,false,0,143.5,Oshodi,1351724559
+W1351740686,,service,false,0,5.0,false,false,false,0,59.5,Oshodi,1351740686
+W1351740687,,service,false,0,5.0,false,false,false,0,70.0,Oshodi,1351740687
+W1351747114,,service,false,0,5.0,false,false,false,0,44.4,Oshodi,1351747114
+W1351747115,,service,false,0,5.0,false,false,false,0,77.9,Oshodi,1351747115
+W1351753924,,service,false,0,5.0,false,false,false,0,23.5,Oshodi,1351753924
+W1351753925,,service,false,0,5.0,true,false,false,0,43.5,Oshodi,1351753925
+W1351771452,,service,false,0,5.0,false,false,false,0,191.3,Oshodi,1351771452
+W1351778292,,service,false,0,5.0,false,false,false,0,28.4,Oshodi,1351778292
+W1351778293,,service,false,0,5.0,false,false,false,0,27.5,Oshodi,1351778293
+W1351778294,,service,false,0,5.0,false,false,false,0,102.6,Oshodi,1351778294
+W1351976896,,service,false,0,5.0,false,false,false,0,60.0,Oshodi,1351976896
+W1351976897,,service,false,0,5.0,false,false,false,0,21.9,Oshodi,1351976897
+W1351976898,,service,false,0,5.0,false,false,false,0,102.6,Oshodi,1351976898
+W1351976899,,service,false,0,5.0,false,false,false,0,17.1,Oshodi,1351976899
+W1351976900,,service,false,0,5.0,false,false,false,0,195.4,Oshodi,1351976900
+W1351976901,,service,false,0,5.0,false,false,false,0,70.1,Oshodi,1351976901
+W1351976902,,service,false,0,5.0,false,false,false,0,91.7,Oshodi,1351976902
+W1351976903,,service,false,0,5.0,false,false,false,0,191.6,Oshodi,1351976903
+W1351984366,,service,false,0,5.0,false,false,false,0,27.8,Oshodi,1351984366
+W1351984367,,service,false,0,5.0,false,false,false,0,78.4,Oshodi,1351984367
+W1351984368,,service,false,0,5.0,false,false,false,0,30.4,Oshodi,1351984368
+W1351984369,,service,false,0,5.0,false,false,false,0,18.9,Oshodi,1351984369
+W1351984370,,service,false,0,5.0,false,false,false,0,58.8,Oshodi,1351984370
+W1351984371,,service,false,0,5.0,false,false,false,0,146.7,Oshodi,1351984371
+W1351984372,,service,false,0,5.0,false,false,false,0,38.5,Oshodi,1351984372
+W1351984373,,service,false,0,5.0,false,false,false,0,34.9,Oshodi,1351984373
+W1351984374,,service,false,0,5.0,false,false,false,0,76.4,Oshodi,1351984374
+W1351984375,,service,false,0,5.0,false,false,false,0,36.2,Oshodi,1351984375
+W1351984376,,service,false,0,5.0,false,false,false,0,39.2,Oshodi,1351984376
+W1351984377,,service,false,0,5.0,false,false,false,0,41.7,Oshodi,1351984377
+W1351984378,,service,false,0,5.0,false,false,false,0,62.2,Oshodi,1351984378
+W1351984379,,service,false,0,5.0,false,false,false,0,76.0,Oshodi,1351984379
+W1351988907,,service,false,0,5.0,false,false,false,0,16.1,Oshodi,1351988907
+W1351988908,,service,false,0,5.0,false,false,false,0,90.2,Oshodi,1351988908
+W1351988909,,service,false,0,5.0,false,false,false,0,177.3,Oshodi,1351988909
+W1351991789,,service,false,0,5.0,false,false,false,0,32.8,Oshodi,1351991789
+W1351991790,,service,false,0,5.0,false,false,false,0,41.8,Oshodi,1351991790
+W1355578400,,tertiary,false,0,10.0,true,false,false,0,47.0,Oshodi,1355578400
+W1359312733,,residential,false,0,7.5,false,false,false,0,62.1,Oshodi,1359312733
+W136420245,,residential,false,0,7.5,false,false,false,0,346.7,Oshodi,136420245
+W136420248,,residential,false,0,7.5,false,false,false,0,137.3,Oshodi,136420248
+W136420261,,residential,false,0,7.5,false,false,false,0,218.4,Oshodi,136420261
+W136426159,,residential,false,0,7.5,false,false,false,0,140.0,Oshodi,136426159
+W136426162,,residential,false,0,7.5,false,false,false,0,127.0,Oshodi,136426162
+W136426175,,residential,false,0,7.5,false,false,false,0,135.8,Oshodi,136426175
+W136426208,,residential,false,0,7.5,false,false,false,0,135.4,Oshodi,136426208
+W136426223,,residential,false,0,7.5,false,false,false,0,269.6,Oshodi,136426223
+W136432572,,residential,false,0,7.5,false,false,false,0,612.8,Oshodi,136432572
+W136432573,,service,false,0,5.0,false,false,false,0,363.8,Oshodi,136432573
+W136432574,,residential,false,0,7.5,false,false,false,0,199.8,Oshodi,136432574
+W136432575,,service,false,0,5.0,true,false,false,0,45.5,Oshodi,136432575
+W136432576,,residential,false,0,7.5,false,false,false,0,711.9,Oshodi,136432576
+W136432577,,service,false,0,5.0,true,false,false,0,40.0,Oshodi,136432577
+W136432582,,service,false,0,5.0,false,false,false,0,152.0,Oshodi,136432582
+W136432583,,residential,false,0,7.5,false,false,false,0,191.5,Oshodi,136432583
+W136432584,,service,false,0,5.0,false,false,false,0,217.3,Oshodi,136432584
+W136432586,,residential,false,0,7.5,false,false,false,0,122.6,Oshodi,136432586
+W136432587,,residential,false,0,7.5,false,false,false,0,524.7,Oshodi,136432587
+W136432590,,residential,false,0,7.5,false,false,false,0,229.6,Oshodi,136432590
+W136432592,,residential,false,0,7.5,false,false,false,0,254.4,Oshodi,136432592
+W136432593,,residential,false,0,7.5,false,false,false,0,716.1,Oshodi,136432593
+W136432596,,residential,false,0,7.5,false,false,false,0,487.6,Oshodi,136432596
+W136432597,,residential,false,0,7.5,false,false,false,0,444.2,Oshodi,136432597
+W136432598,,unclassified,false,0,7.5,false,false,false,0,1819.3,Oshodi,136432598
+W136432601,,residential,false,0,7.5,false,false,false,0,490.2,Oshodi,136432601
+W136432603,,residential,false,0,7.5,false,false,false,0,187.0,Oshodi,136432603
+W136432604,,service,false,0,5.0,false,false,false,0,256.7,Oshodi,136432604
+W136432606,,residential,false,0,7.5,false,false,false,0,493.9,Oshodi,136432606
+W136432607,,tertiary,false,0,10.0,false,false,false,0,1376.6,Oshodi,136432607
+W136432609,,unclassified,false,0,7.5,false,false,false,0,1021.4,Oshodi,136432609
+W136432611,,residential,false,0,7.5,false,false,false,0,284.7,Oshodi,136432611
+W136432612,,service,false,0,5.0,false,false,false,0,251.1,Oshodi,136432612
+W136433549,,residential,false,0,7.5,false,false,false,0,716.4,Oshodi,136433549
+W136433550,,residential,false,0,7.5,false,false,false,0,65.4,Oshodi,136433550
+W136433554,,residential,false,0,7.5,false,false,false,0,308.2,Oshodi,136433554
+W136433556,,residential,false,0,7.5,false,false,false,0,45.6,Oshodi,136433556
+W136433557,,residential,false,0,7.5,false,false,false,0,202.1,Oshodi,136433557
+W136433560,,residential,false,0,7.5,false,false,false,0,233.3,Oshodi,136433560
+W136433561,,residential,false,0,7.5,false,false,false,0,191.8,Oshodi,136433561
+W136433562,,residential,false,0,7.5,false,false,false,0,100.9,Oshodi,136433562
+W136433565,,residential,false,0,7.5,false,false,false,0,110.1,Oshodi,136433565
+W136433569,,residential,false,0,7.5,false,false,false,0,255.5,Oshodi,136433569
+W136433570,,residential,false,0,7.5,false,false,false,0,75.9,Oshodi,136433570
+W136433574,,residential,false,0,7.5,false,false,false,0,316.8,Oshodi,136433574
+W136433583,,residential,false,0,7.5,false,false,false,0,192.3,Oshodi,136433583
+W1369564309,,service,false,0,5.0,false,false,false,0,74.7,Oshodi,1369564309
+W1369564310,,service,false,0,5.0,false,false,false,0,60.4,Oshodi,1369564310
+W1371547146,,service,false,0,5.0,false,false,false,0,56.7,Oshodi,1371547146
+W1371578055,,service,false,0,5.0,false,false,false,0,42.1,Oshodi,1371578055
+W1372250965,,service,false,0,5.0,false,false,false,0,87.1,Oshodi,1372250965
+W137428004,,residential,false,0,7.5,false,false,false,0,97.8,Oshodi,137428004
+W137428006,,residential,false,0,7.5,false,false,false,0,88.2,Oshodi,137428006
+W137428009,,residential,false,0,7.5,false,false,false,0,432.7,Oshodi,137428009
+W137428011,,residential,false,0,7.5,false,false,false,0,180.2,Oshodi,137428011
+W137428014,,residential,false,0,7.5,false,false,false,0,266.2,Oshodi,137428014
+W137428015,,residential,false,0,7.5,false,false,false,0,157.0,Oshodi,137428015
+W1386272209,,service,false,0,5.0,false,false,false,0,25.4,Oshodi,1386272209
+W1386272210,,service,false,0,5.0,false,false,false,0,27.5,Oshodi,1386272210
+W1386272211,,service,false,0,5.0,false,false,false,0,30.4,Oshodi,1386272211
+W1386272212,,service,false,0,5.0,false,false,false,0,41.0,Oshodi,1386272212
+W1387199477,,residential,false,0,7.5,false,false,false,0,56.7,Oshodi,1387199477
+W1387199478,,residential,false,0,7.5,false,false,false,0,84.2,Oshodi,1387199478
+W1387199479,,residential,false,0,7.5,false,false,false,0,43.4,Oshodi,1387199479
+W1387199480,,residential,false,0,7.5,false,false,false,0,48.4,Oshodi,1387199480
+W1389676892,,service,false,0,5.0,false,false,false,0,98.3,Oshodi,1389676892
+W1392092370,,service,false,0,5.0,false,false,false,0,13.7,Oshodi,1392092370
+W1392092371,,service,false,0,5.0,false,false,false,0,26.5,Oshodi,1392092371
+W1392092372,,service,false,0,5.0,false,false,false,0,20.7,Oshodi,1392092372
+W1392092373,,service,false,0,5.0,false,false,false,0,101.4,Oshodi,1392092373
+W1395647295,,service,false,0,5.0,false,false,false,0,38.6,Oshodi,1395647295
+W1409397567,,service,false,0,5.0,false,false,false,0,269.6,Oshodi,1409397567
+W1409397568,,service,false,0,5.0,false,false,false,0,36.9,Oshodi,1409397568
+W1409397569,,service,false,0,5.0,false,false,false,0,130.9,Oshodi,1409397569
+W1409397570,,service,false,0,5.0,false,false,false,0,149.5,Oshodi,1409397570
+W1409397571,,service,false,0,5.0,false,false,false,0,63.2,Oshodi,1409397571
+W1409397572,,service,false,0,5.0,false,false,false,0,70.5,Oshodi,1409397572
+W1409397573,,service,false,0,5.0,false,false,false,0,383.8,Oshodi,1409397573
+W1409397574,,service,false,0,5.0,false,false,false,0,31.4,Oshodi,1409397574
+W1409397575,,service,false,0,5.0,false,false,false,0,315.2,Oshodi,1409397575
+W1409400893,,service,false,0,5.0,false,false,false,0,99.3,Oshodi,1409400893
+W1409400894,,service,false,0,5.0,false,false,false,0,55.7,Oshodi,1409400894
+W1409400895,,service,false,0,5.0,false,false,false,0,23.4,Oshodi,1409400895
+W1409400896,,service,false,0,5.0,false,false,false,0,60.2,Oshodi,1409400896
+W1409400897,,service,false,0,5.0,false,false,false,0,17.1,Oshodi,1409400897
+W1409431117,,service,false,0,5.0,false,false,false,0,57.1,Oshodi,1409431117
+W1409431118,,service,false,0,5.0,false,false,false,0,115.8,Oshodi,1409431118
+W1409431119,,service,false,0,5.0,false,false,false,0,89.5,Oshodi,1409431119
+W1409431120,,service,false,0,5.0,false,false,false,0,74.1,Oshodi,1409431120
+W1409431121,,service,false,0,5.0,false,false,false,0,19.2,Oshodi,1409431121
+W1409431122,,service,false,0,5.0,false,false,false,0,38.5,Oshodi,1409431122
+W1409431123,,service,false,0,5.0,false,false,false,0,35.1,Oshodi,1409431123
+W1409431124,,service,false,0,5.0,false,false,false,0,44.6,Oshodi,1409431124
+W1409431125,,service,false,0,5.0,false,false,false,0,34.5,Oshodi,1409431125
+W1409431126,,service,false,0,5.0,false,false,false,0,40.0,Oshodi,1409431126
+W1409431127,,service,false,0,5.0,false,false,false,0,38.7,Oshodi,1409431127
+W1409431128,,service,false,0,5.0,false,false,false,0,27.1,Oshodi,1409431128
+W1411946568,,service,false,0,5.0,false,false,false,0,33.2,Oshodi,1411946568
+W1421774048,,tertiary,false,0,10.0,false,false,false,0,267.7,Oshodi,1421774048
+W1421774049,,residential,false,0,7.5,false,false,false,0,76.5,Oshodi,1421774049
+W1426818171,,service,false,0,5.0,false,false,false,0,228.9,Oshodi,1426818171
+W1426843009,,residential,false,0,7.5,false,false,false,0,169.1,Oshodi,1426843009
+W1428964060,,residential,false,0,7.5,false,false,false,0,154.3,Oshodi,1428964060
+W1441924059,,tertiary,false,0,10.0,false,false,false,0,10.1,Oshodi,1441924059
+W1442626898,,residential,false,0,7.5,false,false,false,0,164.0,Oshodi,1442626898
+W1442937764,,secondary,false,0,13.0,true,false,false,0,49.4,Oshodi,1442937764
+W1446276438,,service,false,0,5.0,false,false,false,0,367.0,Oshodi,1446276438
+W1465157927,,residential,false,0,7.5,false,false,false,0,326.0,Oshodi,1465157927
+W1465157928,,residential,false,0,7.5,false,false,false,0,126.7,Oshodi,1465157928
+W1466410977,,service,false,0,5.0,false,false,false,0,90.1,Oshodi,1466410977
+W1474391134,,service,false,0,5.0,false,false,false,0,96.6,Oshodi,1474391134
+W1474391135,,service,false,0,5.0,false,false,false,0,86.5,Oshodi,1474391135
+W1474391136,,service,false,0,5.0,false,false,false,0,57.3,Oshodi,1474391136
+W1474391137,,service,false,0,5.0,false,false,false,0,24.1,Oshodi,1474391137
+W1474391138,,service,false,0,5.0,false,false,false,0,250.8,Oshodi,1474391138
+W1474391139,,service,false,0,5.0,false,false,false,0,89.5,Oshodi,1474391139
+W1474391140,,service,false,0,5.0,false,false,false,0,414.3,Oshodi,1474391140
+W1483328660,,service,false,0,5.0,false,false,false,0,139.4,Oshodi,1483328660
+W1486127575,,service,false,0,5.0,false,false,false,0,35.0,Oshodi,1486127575
+W1489640032,,service,false,0,5.0,false,false,false,0,96.5,Oshodi,1489640032
+W1489662857,,service,false,0,5.0,false,false,false,0,3.9,Oshodi,1489662857
+W1489662858,,service,false,0,5.0,false,false,false,0,25.9,Oshodi,1489662858
+W1489702813,,service,false,0,5.0,false,false,false,0,110.9,Oshodi,1489702813
+W1489702814,,service,false,0,5.0,false,false,false,0,14.1,Oshodi,1489702814
+W1489702815,,service,false,0,5.0,false,false,false,0,43.6,Oshodi,1489702815
+W1489702816,,service,false,0,5.0,false,false,false,0,25.1,Oshodi,1489702816
+W1489702817,,service,false,0,5.0,false,false,false,0,195.8,Oshodi,1489702817
+W1489702818,,service,false,0,5.0,false,false,false,0,97.6,Oshodi,1489702818
+W1489702819,,service,false,0,5.0,false,false,false,0,74.2,Oshodi,1489702819
+W1490047001,,service,false,0,5.0,false,false,false,0,14.5,Oshodi,1490047001
+W1490047002,,service,false,0,5.0,false,false,false,0,111.0,Oshodi,1490047002
+W1490047003,,service,false,0,5.0,false,false,false,0,95.1,Oshodi,1490047003
+W1490047004,,service,false,0,5.0,false,false,false,0,7.6,Oshodi,1490047004
+W1490047005,,service,false,0,5.0,false,false,false,0,8.0,Oshodi,1490047005
+W1490047006,,service,false,0,5.0,false,false,false,0,11.9,Oshodi,1490047006
+W1490047007,,service,false,0,5.0,false,false,false,0,39.5,Oshodi,1490047007
+W1490047008,,service,false,0,5.0,false,false,false,0,6.9,Oshodi,1490047008
+W1490047009,,service,false,0,5.0,false,false,false,0,40.8,Oshodi,1490047009
+W1490047010,,service,false,0,5.0,false,false,false,0,9.0,Oshodi,1490047010
+W1490047011,,service,false,0,5.0,false,false,false,0,23.7,Oshodi,1490047011
+W1490047012,,service,false,0,5.0,false,false,false,0,2.7,Oshodi,1490047012
+W1490047013,,service,false,0,5.0,false,false,false,0,36.9,Oshodi,1490047013
+W1490047014,,service,false,0,5.0,false,false,false,0,5.4,Oshodi,1490047014
+W1490047015,,service,false,0,5.0,false,false,false,0,6.5,Oshodi,1490047015
+W1490047016,,service,false,0,5.0,false,false,false,0,45.3,Oshodi,1490047016
+W1490047017,,service,false,0,5.0,false,false,false,0,8.9,Oshodi,1490047017
+W1490047018,,service,false,0,5.0,false,false,false,0,10.8,Oshodi,1490047018
+W1490183848,,service,false,0,5.0,false,false,false,0,29.4,Oshodi,1490183848
+W1490183849,,service,false,0,5.0,false,false,false,0,10.5,Oshodi,1490183849
+W1499301050,,residential,false,0,7.5,false,false,false,0,10.7,Oshodi,1499301050
+W1499301051,,residential,false,0,7.5,false,false,false,0,192.4,Oshodi,1499301051
+W1502386000,,residential,false,0,7.5,false,false,false,0,173.4,Oshodi,1502386000
+W1502386001,,service,false,0,5.0,false,false,false,0,137.9,Oshodi,1502386001
+W1502386002,,service,false,0,5.0,false,false,false,0,173.8,Oshodi,1502386002
+W1505513146,,service,false,0,5.0,false,false,false,0,96.3,Oshodi,1505513146
+W1505611918,,service,false,0,5.0,false,false,false,0,10.8,Oshodi,1505611918
+W1505611919,,service,false,0,5.0,false,false,false,0,65.1,Oshodi,1505611919
+W1505611920,,service,false,0,5.0,false,false,false,0,12.7,Oshodi,1505611920
+W1505611921,,service,false,0,5.0,false,false,false,0,156.6,Oshodi,1505611921
+W1505611922,,service,false,0,5.0,false,false,false,0,107.1,Oshodi,1505611922
+W1509663425,,service,false,0,5.0,false,false,false,0,91.5,Oshodi,1509663425
+W1509663426,,service,false,0,5.0,false,false,false,0,59.9,Oshodi,1509663426
+W1509670377,,service,false,0,5.0,false,false,false,0,236.8,Oshodi,1509670377
+W1509670378,,service,false,0,5.0,false,false,false,0,245.9,Oshodi,1509670378
+W1509670379,,service,false,0,5.0,false,false,false,0,175.1,Oshodi,1509670379
+W1509670380,,service,false,0,5.0,false,false,false,0,26.4,Oshodi,1509670380
+W1509720687,,service,false,0,5.0,false,false,false,0,48.3,Oshodi,1509720687
+W1510169905,,service,false,0,5.0,false,false,false,0,75.5,Oshodi,1510169905
+W1510169906,,service,false,0,5.0,false,false,false,0,141.2,Oshodi,1510169906
+W1510204012,,service,false,0,5.0,false,false,false,0,2.5,Oshodi,1510204012
+W1510435637,,residential,false,0,7.5,false,false,false,0,55.6,Oshodi,1510435637
+W1510441133,,service,false,0,5.0,false,false,false,0,10.6,Oshodi,1510441133
+W1510441134,,service,false,0,5.0,false,false,false,0,48.3,Oshodi,1510441134
+W1511787708,,service,false,0,5.0,false,false,false,0,2.4,Oshodi,1511787708
+W1511787709,,service,false,0,5.0,false,false,false,0,14.0,Oshodi,1511787709
+W1511787710,,service,false,0,5.0,false,false,false,0,2.9,Oshodi,1511787710
+W1511796885,,motorway,true,0,7.5,true,false,false,0,39.3,Oshodi,1511796885
+W1511796886,,motorway,true,0,7.5,true,false,false,0,31.3,Oshodi,1511796886
+W1512404561,,service,false,0,5.0,false,false,false,0,85.6,Oshodi,1512404561
+W1512404562,,service,false,0,5.0,false,false,false,0,102.8,Oshodi,1512404562
+W1512420924,,service,false,0,5.0,false,false,false,0,84.5,Oshodi,1512420924
+W1512420925,,service,false,0,5.0,false,false,false,0,100.4,Oshodi,1512420925
+W1512420926,,service,false,0,5.0,false,false,false,0,55.2,Oshodi,1512420926
+W152991845,,residential,false,0,7.5,false,false,false,0,380.2,Oshodi,152991845
+W152991848,,residential,false,0,7.5,false,false,false,0,69.1,Oshodi,152991848
+W152991855,,residential,false,0,7.5,false,false,false,0,345.5,Oshodi,152991855
+W152991857,,residential,false,0,7.5,false,false,false,0,129.4,Oshodi,152991857
+W152991865,,residential,false,0,7.5,false,false,false,0,232.3,Oshodi,152991865
+W152991878,,residential,false,0,7.5,false,false,false,0,997.0,Oshodi,152991878
+W152991883,,residential,false,0,7.5,false,false,false,0,327.8,Oshodi,152991883
+W152991885,,residential,false,0,7.5,false,false,false,0,590.8,Oshodi,152991885
+W152991925,,residential,false,0,7.5,false,false,false,0,487.5,Oshodi,152991925
+W152991927,,residential,false,0,7.5,false,false,false,0,109.2,Oshodi,152991927
+W152991931,,residential,false,0,7.5,false,false,false,0,358.8,Oshodi,152991931
+W152991933,,residential,false,0,7.5,false,false,false,0,371.0,Oshodi,152991933
+W152991940,,residential,false,0,7.5,false,false,false,0,420.4,Oshodi,152991940
+W152991945,,residential,false,0,7.5,false,false,false,0,242.2,Oshodi,152991945
+W152991958,,residential,false,0,7.5,false,false,false,0,497.8,Oshodi,152991958
+W1534182973,,service,false,0,5.0,false,false,false,0,36.1,Oshodi,1534182973
+W1534182974,,service,false,0,5.0,false,false,false,0,27.3,Oshodi,1534182974
+W1534182975,,service,false,0,5.0,false,false,false,0,138.0,Oshodi,1534182975
+W1534200578,,service,false,0,5.0,false,false,false,0,55.8,Oshodi,1534200578
+W1534200579,,service,false,0,5.0,false,false,false,0,8.3,Oshodi,1534200579
+W1534207920,,service,false,0,5.0,false,false,false,0,65.3,Oshodi,1534207920
+W1534207921,,service,false,0,5.0,false,false,false,0,9.2,Oshodi,1534207921
+W1534207922,,service,false,0,5.0,false,false,false,0,10.4,Oshodi,1534207922
+W1534211999,,service,false,0,5.0,false,false,false,0,13.6,Oshodi,1534211999
+W1534458656,,service,false,0,5.0,false,false,false,0,11.8,Oshodi,1534458656
+W1534458657,,service,false,0,5.0,false,false,false,0,8.4,Oshodi,1534458657
+W1534458658,,service,false,0,5.0,false,false,false,0,5.8,Oshodi,1534458658
+W1534458659,,service,false,0,5.0,false,false,false,0,8.6,Oshodi,1534458659
+W1534458660,,service,false,0,5.0,false,false,false,0,59.3,Oshodi,1534458660
+W1534458661,,service,false,0,5.0,false,false,false,0,12.5,Oshodi,1534458661
+W1534458662,,service,false,0,5.0,false,false,false,0,17.2,Oshodi,1534458662
+W1534458663,,service,false,0,5.0,false,false,false,0,29.0,Oshodi,1534458663
+W1534458664,,service,false,0,5.0,false,false,false,0,55.0,Oshodi,1534458664
+W1534458665,,service,false,0,5.0,false,false,false,0,110.4,Oshodi,1534458665
+W1534458666,,service,false,0,5.0,false,false,false,0,118.1,Oshodi,1534458666
+W1534458667,,service,false,0,5.0,false,false,false,0,32.1,Oshodi,1534458667
+W1534458668,,service,false,0,5.0,false,false,false,0,154.0,Oshodi,1534458668
+W1534477254,,service,false,0,5.0,false,false,false,0,33.5,Oshodi,1534477254
+W1534477255,,service,false,0,5.0,false,false,false,0,15.5,Oshodi,1534477255
+W1534477256,,service,false,0,5.0,false,false,false,0,96.5,Oshodi,1534477256
+W1534477257,,service,false,0,5.0,false,false,false,0,5.9,Oshodi,1534477257
+W1534824337,,service,false,0,5.0,false,false,false,0,5.7,Oshodi,1534824337
+W1534824338,,service,false,0,5.0,false,false,false,0,50.6,Oshodi,1534824338
+W1534824339,,service,false,0,5.0,false,false,false,0,93.7,Oshodi,1534824339
+W1535742422,,service,false,0,5.0,false,false,false,0,52.8,Oshodi,1535742422
+W1535742423,,service,false,0,5.0,false,false,false,0,10.5,Oshodi,1535742423
+W1535742424,,service,false,0,5.0,false,false,false,0,7.6,Oshodi,1535742424
+W1535754421,,service,false,0,5.0,false,false,false,0,7.2,Oshodi,1535754421
+W1535754422,,service,false,0,5.0,false,false,false,0,47.6,Oshodi,1535754422
+W1535754423,,service,false,0,5.0,false,false,false,0,74.0,Oshodi,1535754423
+W1535754424,,service,false,0,5.0,false,false,false,0,6.4,Oshodi,1535754424
+W1535754425,,service,false,0,5.0,false,false,false,0,28.9,Oshodi,1535754425
+W1535757214,,service,false,0,5.0,false,false,false,0,7.6,Oshodi,1535757214
+W1535757215,,service,false,0,5.0,false,false,false,0,136.5,Oshodi,1535757215
+W1535757216,,service,false,0,5.0,false,false,false,0,3.5,Oshodi,1535757216
+W1535757217,,service,false,0,5.0,false,false,false,0,2.8,Oshodi,1535757217
+W1535757218,,service,false,0,5.0,false,false,false,0,97.9,Oshodi,1535757218
+W1535881808,,service,false,0,5.0,false,false,false,0,52.6,Oshodi,1535881808
+W1536397839,,service,false,0,5.0,false,false,false,0,103.5,Oshodi,1536397839
+W1536397840,,service,false,0,5.0,false,false,false,0,91.1,Oshodi,1536397840
+W1536397841,,service,false,0,5.0,false,false,false,0,45.7,Oshodi,1536397841
+W1539714706,,service,false,0,5.0,false,false,false,0,46.7,Oshodi,1539714706
+W1539714707,,service,false,0,5.0,false,false,false,0,48.3,Oshodi,1539714707
+W1546996429,,residential,false,0,7.5,false,false,false,0,31.8,Oshodi,1546996429
+W1546996430,,residential,false,0,7.5,false,false,false,0,50.1,Oshodi,1546996430
+W1546996431,,service,false,0,5.0,false,false,false,0,51.6,Oshodi,1546996431
+W1548573104,,service,false,0,5.0,false,false,false,0,105.6,Oshodi,1548573104
+W1548739948,,residential,false,0,7.5,false,false,false,0,59.7,Oshodi,1548739948
+W1561010548,,service,false,0,5.0,false,false,false,0,81.6,Oshodi,1561010548
+W1561010549,,service,false,0,5.0,false,false,false,0,162.2,Oshodi,1561010549
+W1566435158,,service,false,0,5.0,false,false,false,0,14.0,Oshodi,1566435158
+W1566435159,,service,false,0,5.0,false,false,false,0,20.2,Oshodi,1566435159
+W1566435160,,service,false,0,5.0,false,false,false,0,5.7,Oshodi,1566435160
+W1566435161,,service,false,0,5.0,false,false,false,0,13.1,Oshodi,1566435161
+W1566435162,,service,false,0,5.0,false,false,false,0,12.3,Oshodi,1566435162
+W1566435163,,service,false,0,5.0,false,false,false,0,36.5,Oshodi,1566435163
+W1566435164,,service,false,0,5.0,false,false,false,0,74.1,Oshodi,1566435164
+W1566435165,,service,false,0,5.0,false,false,false,0,7.0,Oshodi,1566435165
+W1566435166,,service,false,0,5.0,false,false,false,0,11.8,Oshodi,1566435166
+W1566435167,,service,false,0,5.0,false,false,false,0,8.3,Oshodi,1566435167
+W1566435168,,service,false,0,5.0,false,false,false,0,45.0,Oshodi,1566435168
+W1566435169,,service,false,0,5.0,false,false,false,0,9.0,Oshodi,1566435169
+W1566435170,,service,false,0,5.0,false,false,false,0,65.5,Oshodi,1566435170
+W1566435171,,service,false,0,5.0,false,false,false,0,11.3,Oshodi,1566435171
+W1566435172,,service,false,0,5.0,false,false,false,0,10.7,Oshodi,1566435172
+W1566435173,,service,false,0,5.0,false,false,false,0,4.5,Oshodi,1566435173
+W1566435174,,service,false,0,5.0,false,false,false,0,5.1,Oshodi,1566435174
+W1566435175,,service,false,0,5.0,false,false,false,0,11.7,Oshodi,1566435175
+W1566435176,,service,false,0,5.0,false,false,false,0,4.3,Oshodi,1566435176
+W1566435177,,service,false,0,5.0,false,false,false,0,10.8,Oshodi,1566435177
+W1566435178,,service,false,0,5.0,false,false,false,0,5.5,Oshodi,1566435178
+W1566435179,,service,false,0,5.0,false,false,false,0,11.0,Oshodi,1566435179
+W1566435180,,service,false,0,5.0,false,false,false,0,10.8,Oshodi,1566435180
+W1566435181,,service,false,0,5.0,false,false,false,0,9.4,Oshodi,1566435181
+W1566435182,,service,false,0,5.0,false,false,false,0,9.4,Oshodi,1566435182
+W1566435183,,service,false,0,5.0,false,false,false,0,10.5,Oshodi,1566435183
+W1566435184,,service,false,0,5.0,false,false,false,0,32.6,Oshodi,1566435184
+W1566435185,,service,false,0,5.0,false,false,false,0,12.3,Oshodi,1566435185
+W1566435186,,service,false,0,5.0,false,false,false,0,37.4,Oshodi,1566435186
+W1566435187,,service,false,0,5.0,false,false,false,0,14.2,Oshodi,1566435187
+W1566435188,,service,false,0,5.0,false,false,false,0,24.2,Oshodi,1566435188
+W1566435189,,service,false,0,5.0,false,false,false,0,102.8,Oshodi,1566435189
+W1566435190,,service,false,0,5.0,false,false,false,0,14.5,Oshodi,1566435190
+W1566435191,,service,false,0,5.0,false,false,false,0,51.6,Oshodi,1566435191
+W1566438162,,service,false,0,5.0,false,false,false,0,3.0,Oshodi,1566438162
+W1566438163,,service,false,0,5.0,false,false,false,0,2.4,Oshodi,1566438163
+W1566677682,,service,false,0,5.0,false,false,false,0,9.9,Oshodi,1566677682
+W1566677683,,service,false,0,5.0,false,false,false,0,37.5,Oshodi,1566677683
+W1566677684,,service,false,0,5.0,false,false,false,0,5.7,Oshodi,1566677684
+W1566677685,,service,false,0,5.0,false,false,false,0,4.9,Oshodi,1566677685
+W1566677686,,service,false,0,5.0,false,false,false,0,7.7,Oshodi,1566677686
+W1566677687,,service,false,0,5.0,false,false,false,0,63.4,Oshodi,1566677687
+W1566677688,,service,false,0,5.0,false,false,false,0,60.2,Oshodi,1566677688
+W1566677689,,service,false,0,5.0,false,false,false,0,8.6,Oshodi,1566677689
+W1566677690,,service,false,0,5.0,false,false,false,0,10.4,Oshodi,1566677690
+W1566677691,,service,false,0,5.0,false,false,false,0,10.1,Oshodi,1566677691
+W1566677692,,service,false,0,5.0,false,false,false,0,9.3,Oshodi,1566677692
+W1566684170,,service,false,0,5.0,false,false,false,0,8.3,Oshodi,1566684170
+W1566684171,,service,false,0,5.0,false,false,false,0,8.8,Oshodi,1566684171
+W1566684172,,service,false,0,5.0,false,false,false,0,34.4,Oshodi,1566684172
+W1566684173,,service,false,0,5.0,false,false,false,0,2.8,Oshodi,1566684173
+W1566684174,,service,false,0,5.0,false,false,false,0,11.4,Oshodi,1566684174
+W1566684175,,service,false,0,5.0,false,false,false,0,12.8,Oshodi,1566684175
+W1566684176,,service,false,0,5.0,false,false,false,0,7.7,Oshodi,1566684176
+W1566684177,,service,false,0,5.0,false,false,false,0,74.8,Oshodi,1566684177
+W1566684178,,service,false,0,5.0,false,false,false,0,14.4,Oshodi,1566684178
+W1566684179,,service,false,0,5.0,false,false,false,0,22.5,Oshodi,1566684179
+W1566684180,,service,false,0,5.0,false,false,false,0,16.8,Oshodi,1566684180
+W1566684181,,service,false,0,5.0,false,false,false,0,13.2,Oshodi,1566684181
+W1566684182,,service,false,0,5.0,false,false,false,0,40.5,Oshodi,1566684182
+W1566684183,,service,false,0,5.0,false,false,false,0,91.3,Oshodi,1566684183
+W1566684184,,service,false,0,5.0,false,false,false,0,11.8,Oshodi,1566684184
+W1566684185,,service,false,0,5.0,false,false,false,0,13.7,Oshodi,1566684185
+W1566684186,,service,false,0,5.0,false,false,false,0,1.7,Oshodi,1566684186
+W1566684187,,service,false,0,5.0,false,false,false,0,5.9,Oshodi,1566684187
+W1566684188,,service,false,0,5.0,false,false,false,0,28.6,Oshodi,1566684188
+W1566684189,,service,false,0,5.0,false,false,false,0,16.7,Oshodi,1566684189
+W1566684190,,service,false,0,5.0,false,false,false,0,16.5,Oshodi,1566684190
+W1566684191,,service,false,0,5.0,false,false,false,0,9.6,Oshodi,1566684191
+W1566684192,,service,false,0,5.0,false,false,false,0,10.3,Oshodi,1566684192
+W1566684193,,service,false,0,5.0,false,false,false,0,10.8,Oshodi,1566684193
+W1566684194,,service,false,0,5.0,false,false,false,0,89.8,Oshodi,1566684194
+W1566684195,,service,false,0,5.0,false,false,false,0,4.8,Oshodi,1566684195
+W1566684196,,service,false,0,5.0,false,false,false,0,9.3,Oshodi,1566684196
+W1566687455,,residential,false,0,7.5,false,false,false,0,7.7,Oshodi,1566687455
+W1566687456,,service,false,0,5.0,false,false,false,0,207.4,Oshodi,1566687456
+W1566687457,,service,false,0,5.0,false,false,false,0,12.3,Oshodi,1566687457
+W1566687459,,service,false,0,5.0,false,false,false,0,56.1,Oshodi,1566687459
+W1566687460,,service,false,0,5.0,false,false,false,0,12.5,Oshodi,1566687460
+W1566687461,,service,false,0,5.0,false,false,false,0,53.6,Oshodi,1566687461
+W1566687462,,service,false,0,5.0,false,false,false,0,13.1,Oshodi,1566687462
+W1566687463,,service,false,0,5.0,false,false,false,0,10.5,Oshodi,1566687463
+W1566687464,,service,false,0,5.0,false,false,false,0,8.1,Oshodi,1566687464
+W1566687465,,service,false,0,5.0,false,false,false,0,10.7,Oshodi,1566687465
+W1566687466,,service,false,0,5.0,false,false,false,0,34.3,Oshodi,1566687466
+W1566687467,,service,false,0,5.0,false,false,false,0,26.1,Oshodi,1566687467
+W1566687468,,service,false,0,5.0,false,false,false,0,19.4,Oshodi,1566687468
+W1566687469,,service,false,0,5.0,false,false,false,0,12.1,Oshodi,1566687469
+W1566687474,,service,false,0,5.0,false,false,false,0,25.0,Oshodi,1566687474
+W1566687475,,service,false,0,5.0,false,false,false,0,43.6,Oshodi,1566687475
+W1566687476,,service,false,0,5.0,false,false,false,0,55.1,Oshodi,1566687476
+W1566687477,,service,false,0,5.0,false,false,false,0,9.4,Oshodi,1566687477
+W1566687478,,service,false,0,5.0,false,false,false,0,8.3,Oshodi,1566687478
+W1566687479,,service,false,0,5.0,false,false,false,0,7.2,Oshodi,1566687479
+W1566687480,,service,false,0,5.0,false,false,false,0,39.2,Oshodi,1566687480
+W1566690693,,service,false,0,5.0,false,false,false,0,8.4,Oshodi,1566690693
+W1566690694,,service,false,0,5.0,false,false,false,0,2.6,Oshodi,1566690694
+W1566690695,,service,false,0,5.0,false,false,false,0,8.1,Oshodi,1566690695
+W1566690696,,service,false,0,5.0,false,false,false,0,25.9,Oshodi,1566690696
+W1566690697,,service,false,0,5.0,false,false,false,0,3.1,Oshodi,1566690697
+W1566690698,,service,false,0,5.0,false,false,false,0,8.7,Oshodi,1566690698
+W1566690699,,service,false,0,5.0,false,false,false,0,3.3,Oshodi,1566690699
+W1566690700,,service,false,0,5.0,false,false,false,0,62.4,Oshodi,1566690700
+W1566690701,,service,false,0,5.0,false,false,false,0,126.6,Oshodi,1566690701
+W1566690702,,service,false,0,5.0,false,false,false,0,48.8,Oshodi,1566690702
+W1566690703,,service,false,0,5.0,false,false,false,0,14.8,Oshodi,1566690703
+W1566690704,,service,false,0,5.0,false,false,false,0,14.6,Oshodi,1566690704
+W1566690705,,service,false,0,5.0,false,false,false,0,64.0,Oshodi,1566690705
+W1566690706,,residential,false,0,7.5,false,false,false,0,9.8,Oshodi,1566690706
+W17066335,,motorway,true,0,7.5,true,false,false,0,23.3,Oshodi,17066335
+W23711218,,residential,false,0,7.5,false,false,false,0,408.1,Oshodi,23711218
+W352027905,,service,false,0,5.0,false,false,false,0,225.2,Oshodi,352027905
+W370301909,,residential,false,0,7.5,false,false,false,0,327.8,Oshodi,370301909
+W370301912,,residential,false,0,7.5,false,false,false,0,453.0,Oshodi,370301912
+W370301913,,residential,false,0,7.5,false,false,false,0,194.9,Oshodi,370301913
+W370301915,,residential,false,0,7.5,false,false,false,0,329.7,Oshodi,370301915
+W370301930,,tertiary,false,0,10.0,true,false,false,0,251.2,Oshodi,370301930
+W370558334,,residential,false,0,7.5,false,false,false,0,747.4,Oshodi,370558334
+W370657968,,residential,false,0,7.5,false,false,false,0,240.6,Oshodi,370657968
+W370657973,,residential,false,0,7.5,false,false,false,0,111.1,Oshodi,370657973
+W370657974,,residential,false,0,7.5,false,false,false,0,198.3,Oshodi,370657974
+W370658001,,residential,false,0,7.5,false,false,false,0,227.2,Oshodi,370658001
+W370658002,,residential,false,0,7.5,false,false,false,0,268.1,Oshodi,370658002
+W370658005,,residential,false,0,7.5,false,false,false,0,102.6,Oshodi,370658005
+W370658008,,residential,false,0,7.5,false,false,false,0,81.7,Oshodi,370658008
+W370658010,,residential,false,0,7.5,false,false,false,0,148.9,Oshodi,370658010
+W370658011,,residential,false,0,7.5,false,false,false,0,223.3,Oshodi,370658011
+W370658026,,residential,false,0,7.5,false,false,false,0,203.9,Oshodi,370658026
+W370658027,,residential,false,0,7.5,false,false,false,0,66.6,Oshodi,370658027
+W370658029,,residential,false,0,7.5,false,false,false,0,228.9,Oshodi,370658029
+W370658034,,tertiary,false,0,10.0,false,false,false,0,932.7,Oshodi,370658034
+W370658035,,tertiary,false,0,10.0,false,false,false,0,476.6,Oshodi,370658035
+W370658037,,tertiary,false,0,10.0,false,false,false,0,829.3,Oshodi,370658037
+W370814114,,residential,false,0,7.5,false,false,false,0,191.5,Oshodi,370814114
+W370814119,,residential,false,0,7.5,false,false,false,0,121.3,Oshodi,370814119
+W370814120,,residential,false,0,7.5,false,false,false,0,248.1,Oshodi,370814120
+W370814123,,residential,false,0,7.5,false,false,false,0,193.7,Oshodi,370814123
+W372515250,,residential,false,0,7.5,false,false,false,0,355.1,Oshodi,372515250
+W374353095,,residential,false,0,7.5,false,false,false,0,201.5,Oshodi,374353095
+W374353101,,residential,false,0,7.5,false,false,false,0,388.6,Oshodi,374353101
+W436950815,,residential,false,0,7.5,false,false,false,0,715.9,Oshodi,436950815
+W437188467,,residential,false,0,7.5,false,false,false,0,139.9,Oshodi,437188467
+W437188472,,residential,false,0,7.5,false,false,false,0,196.9,Oshodi,437188472
+W437188473,,residential,false,0,7.5,false,false,false,0,220.2,Oshodi,437188473
+W437188474,,residential,false,0,7.5,false,false,false,0,138.7,Oshodi,437188474
+W437188475,,residential,false,0,7.5,false,false,false,0,228.6,Oshodi,437188475
+W437204149,,residential,false,0,7.5,false,false,false,0,94.4,Oshodi,437204149
+W441712278,,residential,false,0,7.5,false,false,false,0,569.6,Oshodi,441712278
+W441712281,,residential,false,0,7.5,false,false,false,0,929.9,Oshodi,441712281
+W441712282,,residential,false,0,7.5,false,false,false,0,459.9,Oshodi,441712282
+W441712283,,residential,false,0,7.5,false,false,false,0,414.6,Oshodi,441712283
+W441712284,,residential,false,0,7.5,false,false,false,0,283.6,Oshodi,441712284
+W441712285,,residential,false,0,7.5,false,false,false,0,445.5,Oshodi,441712285
+W441712286,,residential,false,0,7.5,false,false,false,0,282.7,Oshodi,441712286
+W441712287,,residential,false,0,7.5,false,false,false,0,149.2,Oshodi,441712287
+W441712288,,residential,false,0,7.5,false,false,false,0,170.8,Oshodi,441712288
+W441712317,,residential,false,0,7.5,false,false,false,0,75.7,Oshodi,441712317
+W441712318,,residential,false,0,7.5,false,false,false,0,407.0,Oshodi,441712318
+W441712319,,residential,false,0,7.5,false,false,false,0,978.7,Oshodi,441712319
+W441712320,,residential,false,0,7.5,false,false,false,0,334.6,Oshodi,441712320
+W441712321,,residential,false,0,7.5,false,false,false,0,848.7,Oshodi,441712321
+W441712323,,residential,false,0,7.5,false,false,false,0,245.5,Oshodi,441712323
+W441712324,,residential,false,0,7.5,false,false,false,0,269.9,Oshodi,441712324
+W441712325,,residential,false,0,7.5,false,false,false,0,123.3,Oshodi,441712325
+W441712326,,residential,false,0,7.5,false,false,false,0,130.9,Oshodi,441712326
+W441712327,,residential,false,0,7.5,false,false,false,0,237.1,Oshodi,441712327
+W441712328,,residential,false,0,7.5,false,false,false,0,144.9,Oshodi,441712328
+W441712329,,residential,false,0,7.5,false,false,false,0,59.7,Oshodi,441712329
+W441712330,,residential,false,0,7.5,false,false,false,0,183.1,Oshodi,441712330
+W441712331,,residential,false,0,7.5,false,false,false,0,99.4,Oshodi,441712331
+W441712333,,residential,false,0,7.5,false,false,false,0,54.2,Oshodi,441712333
+W441712334,,residential,false,0,7.5,false,false,false,0,168.0,Oshodi,441712334
+W441712335,,residential,false,0,7.5,false,false,false,0,103.7,Oshodi,441712335
+W441712343,,residential,false,0,7.5,false,false,false,0,192.1,Oshodi,441712343
+W441712344,,residential,false,0,7.5,false,false,false,0,89.1,Oshodi,441712344
+W441712345,,residential,false,0,7.5,false,false,false,0,91.9,Oshodi,441712345
+W441712354,,residential,false,0,7.5,false,false,false,0,245.2,Oshodi,441712354
+W441712355,,residential,false,0,7.5,false,false,false,0,175.1,Oshodi,441712355
+W441712356,,residential,false,0,7.5,false,false,false,0,367.6,Oshodi,441712356
+W441712357,,residential,false,0,7.5,false,false,false,0,133.0,Oshodi,441712357
+W441712358,,residential,false,0,7.5,false,false,false,0,250.1,Oshodi,441712358
+W441712359,,residential,false,0,7.5,false,false,false,0,104.2,Oshodi,441712359
+W441712360,,residential,false,0,7.5,false,false,false,0,216.9,Oshodi,441712360
+W441712361,,service,false,0,5.0,false,false,false,0,439.7,Oshodi,441712361
+W441712363,,service,false,0,5.0,false,false,false,0,386.8,Oshodi,441712363
+W441712364,,service,false,0,5.0,false,false,false,0,269.7,Oshodi,441712364
+W441712366,,residential,false,0,7.5,false,false,false,0,621.1,Oshodi,441712366
+W441712367,,residential,false,0,7.5,false,false,false,0,121.0,Oshodi,441712367
+W441712368,,residential,false,0,7.5,false,false,false,0,254.8,Oshodi,441712368
+W441712369,,residential,false,0,7.5,false,false,false,0,231.6,Oshodi,441712369
+W441712370,,residential,false,0,7.5,false,false,false,0,171.4,Oshodi,441712370
+W441712371,,residential,false,0,7.5,false,false,false,0,233.6,Oshodi,441712371
+W441712372,,residential,false,0,7.5,false,false,false,0,155.7,Oshodi,441712372
+W441712373,,residential,false,0,7.5,false,false,false,0,104.6,Oshodi,441712373
+W441712374,,service,false,0,5.0,false,false,false,0,214.3,Oshodi,441712374
+W441712375,,residential,false,0,7.5,false,false,false,0,242.4,Oshodi,441712375
+W441712378,,residential,false,0,7.5,false,false,false,0,63.7,Oshodi,441712378
+W441859052,,residential,false,0,7.5,false,false,false,0,127.9,Oshodi,441859052
+W441859053,,residential,false,0,7.5,false,false,false,0,123.3,Oshodi,441859053
+W441859054,,residential,false,0,7.5,false,false,false,0,125.0,Oshodi,441859054
+W441859055,,residential,false,0,7.5,false,false,false,0,121.7,Oshodi,441859055
+W441859056,,residential,false,0,7.5,false,false,false,0,112.9,Oshodi,441859056
+W441859058,,residential,false,0,7.5,false,false,false,0,43.2,Oshodi,441859058
+W441859059,,residential,false,0,7.5,false,false,false,0,245.9,Oshodi,441859059
+W441859061,,residential,false,0,7.5,false,false,false,0,212.6,Oshodi,441859061
+W441859062,,residential,false,0,7.5,false,false,false,0,143.6,Oshodi,441859062
+W441859063,,residential,false,0,7.5,false,false,false,0,106.0,Oshodi,441859063
+W441859064,,residential,false,0,7.5,false,false,false,0,112.1,Oshodi,441859064
+W441859065,,residential,false,0,7.5,false,false,false,0,184.6,Oshodi,441859065
+W441859066,,residential,false,0,7.5,false,false,false,0,82.8,Oshodi,441859066
+W441859067,,residential,false,0,7.5,false,false,false,0,91.0,Oshodi,441859067
+W441859069,,residential,false,0,7.5,false,false,false,0,120.1,Oshodi,441859069
+W441859070,,residential,false,0,7.5,false,false,false,0,333.4,Oshodi,441859070
+W441859071,,residential,false,0,7.5,false,false,false,0,70.2,Oshodi,441859071
+W441859072,,residential,false,0,7.5,false,false,false,0,72.3,Oshodi,441859072
+W441859074,,residential,false,0,7.5,false,false,false,0,71.8,Oshodi,441859074
+W441859075,,residential,false,0,7.5,false,false,false,0,67.5,Oshodi,441859075
+W441859078,,tertiary,false,0,10.0,false,false,false,0,70.0,Oshodi,441859078
+W441859079,,residential,false,0,7.5,false,false,false,0,107.3,Oshodi,441859079
+W441859080,,residential,false,0,7.5,false,false,false,0,68.5,Oshodi,441859080
+W441859081,,residential,false,0,7.5,false,false,false,0,88.7,Oshodi,441859081
+W441859083,,residential,false,0,7.5,false,false,false,0,75.4,Oshodi,441859083
+W441859085,,residential,false,0,7.5,false,false,false,0,69.6,Oshodi,441859085
+W441859086,,residential,false,0,7.5,false,false,false,0,208.1,Oshodi,441859086
+W441859087,,residential,false,0,7.5,false,false,false,0,92.8,Oshodi,441859087
+W441859091,,residential,false,0,7.5,false,false,false,0,215.7,Oshodi,441859091
+W441859092,,residential,false,0,7.5,false,false,false,0,225.8,Oshodi,441859092
+W441859093,,residential,false,0,7.5,false,false,false,0,75.3,Oshodi,441859093
+W441859094,,residential,false,0,7.5,false,false,false,0,72.6,Oshodi,441859094
+W441859095,,residential,false,0,7.5,false,false,false,0,175.0,Oshodi,441859095
+W441859096,,tertiary,false,0,10.0,false,false,false,0,79.7,Oshodi,441859096
+W441859097,,tertiary,false,0,10.0,true,false,false,0,79.3,Oshodi,441859097
+W441859099,,tertiary,false,0,10.0,false,false,false,0,192.9,Oshodi,441859099
+W441859100,,residential,false,0,7.5,false,false,false,0,153.4,Oshodi,441859100
+W441859102,,residential,false,0,7.5,false,false,false,0,112.0,Oshodi,441859102
+W441859105,,residential,false,0,7.5,false,false,false,0,133.1,Oshodi,441859105
+W441859106,,residential,false,0,7.5,false,false,false,0,73.6,Oshodi,441859106
+W441859108,,residential,false,0,7.5,false,false,false,0,132.2,Oshodi,441859108
+W441859109,,residential,false,0,7.5,false,false,false,0,53.2,Oshodi,441859109
+W441859110,,tertiary,false,0,10.0,false,false,false,0,76.5,Oshodi,441859110
+W441859111,,tertiary,false,0,10.0,false,false,false,0,151.4,Oshodi,441859111
+W441859112,,residential,false,0,7.5,false,false,false,0,74.3,Oshodi,441859112
+W441859113,,residential,false,0,7.5,false,false,false,0,110.2,Oshodi,441859113
+W441859114,,residential,false,0,7.5,false,false,false,0,267.0,Oshodi,441859114
+W441859115,,residential,false,0,7.5,false,false,false,0,172.9,Oshodi,441859115
+W441859116,,residential,false,0,7.5,false,false,false,0,142.8,Oshodi,441859116
+W441859117,,residential,false,0,7.5,false,false,false,0,78.6,Oshodi,441859117
+W441859118,,residential,false,0,7.5,false,false,false,0,81.5,Oshodi,441859118
+W441859120,,residential,false,0,7.5,false,false,false,0,193.8,Oshodi,441859120
+W441859121,,residential,false,0,7.5,false,false,false,0,75.0,Oshodi,441859121
+W441859123,,residential,false,0,7.5,false,false,false,0,75.6,Oshodi,441859123
+W441859124,,residential,false,0,7.5,false,false,false,0,79.6,Oshodi,441859124
+W441859126,,residential,false,0,7.5,false,false,false,0,106.9,Oshodi,441859126
+W441859127,,residential,false,0,7.5,false,false,false,0,185.4,Oshodi,441859127
+W441859128,,residential,false,0,7.5,false,false,false,0,112.5,Oshodi,441859128
+W441859129,,residential,false,0,7.5,false,false,false,0,127.0,Oshodi,441859129
+W441859130,,residential,false,0,7.5,false,false,false,0,140.4,Oshodi,441859130
+W441859132,,residential,false,0,7.5,false,false,false,0,140.2,Oshodi,441859132
+W441859133,,residential,false,0,7.5,false,false,false,0,96.5,Oshodi,441859133
+W441859134,,residential,false,0,7.5,false,false,false,0,156.5,Oshodi,441859134
+W441859135,,residential,false,0,7.5,false,false,false,0,43.4,Oshodi,441859135
+W441859136,,residential,false,0,7.5,false,false,false,0,176.6,Oshodi,441859136
+W441859137,,residential,false,0,7.5,false,false,false,0,237.5,Oshodi,441859137
+W441859138,,residential,false,0,7.5,false,false,false,0,75.7,Oshodi,441859138
+W441859139,,residential,false,0,7.5,false,false,false,0,79.1,Oshodi,441859139
+W441859140,,residential,false,0,7.5,false,false,false,0,87.3,Oshodi,441859140
+W441859141,,service,false,0,5.0,false,false,false,0,135.7,Oshodi,441859141
+W441859142,,residential,false,0,7.5,false,false,false,0,64.2,Oshodi,441859142
+W441859143,,residential,false,0,7.5,false,false,false,0,103.0,Oshodi,441859143
+W441859144,,residential,false,0,7.5,false,false,false,0,76.9,Oshodi,441859144
+W441859145,,residential,false,0,7.5,false,false,false,0,1073.4,Oshodi,441859145
+W441859150,,residential,false,0,7.5,false,false,false,0,122.2,Oshodi,441859150
+W441859151,,residential,false,0,7.5,false,false,false,0,147.0,Oshodi,441859151
+W441859152,,residential,false,0,7.5,false,false,false,0,141.2,Oshodi,441859152
+W441859153,,residential,false,0,7.5,false,false,false,0,241.5,Oshodi,441859153
+W441859154,,residential,false,0,7.5,false,false,false,0,112.5,Oshodi,441859154
+W441859155,,residential,false,0,7.5,false,false,false,0,93.2,Oshodi,441859155
+W441859157,,residential,false,0,7.5,false,false,false,0,70.6,Oshodi,441859157
+W441859159,,residential,false,0,7.5,false,false,false,0,144.3,Oshodi,441859159
+W441859300,,residential,false,0,7.5,false,false,false,0,70.1,Oshodi,441859300
+W441859301,,residential,false,0,7.5,false,false,false,0,69.2,Oshodi,441859301
+W441859302,,residential,false,0,7.5,false,false,false,0,69.1,Oshodi,441859302
+W441859303,,residential,false,0,7.5,false,false,false,0,72.0,Oshodi,441859303
+W441859304,,residential,false,0,7.5,false,false,false,0,562.5,Oshodi,441859304
+W441859305,,residential,false,0,7.5,false,false,false,0,69.2,Oshodi,441859305
+W441859306,,residential,false,0,7.5,false,false,false,0,293.0,Oshodi,441859306
+W441859307,,residential,false,0,7.5,false,false,false,0,255.0,Oshodi,441859307
+W441859308,,residential,false,0,7.5,false,false,false,0,215.5,Oshodi,441859308
+W441859309,,residential,false,0,7.5,false,false,false,0,84.1,Oshodi,441859309
+W441859310,,residential,false,0,7.5,false,false,false,0,297.7,Oshodi,441859310
+W441859311,,residential,false,0,7.5,false,false,false,0,213.9,Oshodi,441859311
+W441859312,,residential,false,0,7.5,false,false,false,0,72.7,Oshodi,441859312
+W441859313,,residential,false,0,7.5,false,false,false,0,89.7,Oshodi,441859313
+W441859314,,residential,false,0,7.5,false,false,false,0,85.6,Oshodi,441859314
+W441859319,,tertiary,false,0,10.0,false,false,false,0,884.4,Oshodi,441859319
+W441859320,,residential,false,0,7.5,false,false,false,0,119.3,Oshodi,441859320
+W441859321,,residential,false,0,7.5,false,false,false,0,343.6,Oshodi,441859321
+W441859322,,residential,false,0,7.5,false,false,false,0,333.7,Oshodi,441859322
+W441859323,,residential,false,0,7.5,false,false,false,0,715.6,Oshodi,441859323
+W441859324,,residential,false,0,7.5,false,false,false,0,598.8,Oshodi,441859324
+W441859325,,residential,false,0,7.5,false,false,false,0,270.6,Oshodi,441859325
+W441859326,,residential,false,0,7.5,false,false,false,0,387.5,Oshodi,441859326
+W441859327,,residential,false,0,7.5,false,false,false,0,337.5,Oshodi,441859327
+W441897752,,residential,false,0,7.5,false,false,false,0,99.8,Oshodi,441897752
+W441897753,,residential,false,0,7.5,false,false,false,0,229.3,Oshodi,441897753
+W441897754,,residential,false,0,7.5,false,false,false,0,87.7,Oshodi,441897754
+W441897755,,residential,false,0,7.5,false,false,false,0,79.9,Oshodi,441897755
+W441897757,,residential,false,0,7.5,false,false,false,0,134.1,Oshodi,441897757
+W441897759,,residential,false,0,7.5,false,false,false,0,374.7,Oshodi,441897759
+W441897760,,residential,false,0,7.5,false,false,false,0,220.0,Oshodi,441897760
+W441897761,,residential,false,0,7.5,false,false,false,0,148.6,Oshodi,441897761
+W441897762,,residential,false,0,7.5,false,false,false,0,749.7,Oshodi,441897762
+W441897763,,residential,false,0,7.5,false,false,false,0,143.0,Oshodi,441897763
+W441897764,,residential,false,0,7.5,false,false,false,0,67.6,Oshodi,441897764
+W441903770,,service,false,0,5.0,false,false,false,0,348.6,Oshodi,441903770
+W441903772,,service,false,0,5.0,false,false,false,0,408.9,Oshodi,441903772
+W441903773,,service,false,0,5.0,false,false,false,0,228.2,Oshodi,441903773
+W441903774,,service,false,0,5.0,false,false,false,0,70.3,Oshodi,441903774
+W442667462,,residential,false,0,7.5,false,false,false,0,304.8,Oshodi,442667462
+W442667463,,residential,false,0,7.5,false,false,false,0,93.4,Oshodi,442667463
+W442667464,,residential,false,0,7.5,false,false,false,0,74.0,Oshodi,442667464
+W442667465,,residential,false,0,7.5,false,false,false,0,54.8,Oshodi,442667465
+W442667466,,residential,false,0,7.5,false,false,false,0,77.9,Oshodi,442667466
+W442667467,,residential,false,0,7.5,false,false,false,0,70.4,Oshodi,442667467
+W442667468,,residential,false,0,7.5,false,false,false,0,34.6,Oshodi,442667468
+W457942306,,service,false,0,5.0,false,false,false,0,731.7,Oshodi,457942306
+W457942307,,service,false,0,5.0,false,false,false,0,387.2,Oshodi,457942307
+W457942310,,residential,false,0,7.5,false,false,false,0,219.2,Oshodi,457942310
+W457942312,,residential,false,0,7.5,false,false,false,0,196.4,Oshodi,457942312
+W457942313,,service,false,0,5.0,false,false,false,0,115.6,Oshodi,457942313
+W457942315,,service,false,0,5.0,false,false,false,0,144.5,Oshodi,457942315
+W458562263,,service,false,0,5.0,false,false,false,0,329.7,Oshodi,458562263
+W461597767,,residential,false,0,7.5,false,false,false,0,108.2,Oshodi,461597767
+W461597768,,residential,false,0,7.5,false,false,false,0,23.5,Oshodi,461597768
+W461597769,,residential,false,0,7.5,false,false,false,0,86.5,Oshodi,461597769
+W461597770,,residential,false,0,7.5,false,false,false,0,73.9,Oshodi,461597770
+W461597780,,residential,false,0,7.5,false,false,false,0,82.3,Oshodi,461597780
+W525339714,,secondary,false,0,13.0,false,false,false,0,879.9,Oshodi,525339714
+W535191759,,tertiary,false,0,10.0,false,false,false,0,1297.6,Oshodi,535191759
+W535191773,,tertiary,false,0,10.0,false,false,false,0,69.9,Oshodi,535191773
+W535191777,,residential,false,0,7.5,false,false,false,0,179.4,Oshodi,535191777
+W535254402,,service,false,0,5.0,false,false,false,0,161.7,Oshodi,535254402
+W535357572,,tertiary,false,0,10.0,true,false,false,0,251.9,Oshodi,535357572
+W535357573,,tertiary,false,0,10.0,false,false,false,0,9.2,Oshodi,535357573
+W537017495,,secondary,false,1,4.3,true,false,true,0,66.4,Oshodi,537017495
+W560564744,,service,false,0,5.0,true,false,false,0,42.5,Oshodi,560564744
+W560564745,,service,false,0,5.0,true,false,false,0,42.7,Oshodi,560564745
+W560564746,,service,false,0,5.0,false,false,false,0,10.3,Oshodi,560564746
+W560564747,,service,false,0,5.0,false,false,false,0,150.8,Oshodi,560564747
+W560564780,,service,false,0,5.0,false,false,false,0,10.7,Oshodi,560564780
+W560564781,,service,false,0,5.0,false,false,false,0,21.7,Oshodi,560564781
+W560564782,,service,false,0,5.0,false,false,false,0,300.0,Oshodi,560564782
+W586306628,,primary,true,0,7.5,false,false,false,0,11.8,Oshodi,586306628
+W586360031,,residential,false,0,7.5,false,false,false,0,170.7,Oshodi,586360031
+W586360032,,residential,false,0,7.5,false,false,false,0,37.5,Oshodi,586360032
+W586360033,,residential,false,0,7.5,false,false,false,0,31.4,Oshodi,586360033
+W586360034,,service,false,0,5.0,false,false,false,0,28.1,Oshodi,586360034
+W586366517,,residential,false,0,7.5,false,false,false,0,191.0,Oshodi,586366517
+W586366518,,residential,false,0,7.5,false,false,false,0,291.6,Oshodi,586366518
+W586366519,,residential,false,0,7.5,false,false,false,0,288.9,Oshodi,586366519
+W586366520,,residential,false,0,7.5,false,false,false,0,236.2,Oshodi,586366520
+W586384047,,residential,false,0,7.5,false,false,false,0,300.1,Oshodi,586384047
+W586384048,,residential,false,0,7.5,false,false,false,0,146.1,Oshodi,586384048
+W586384049,,residential,false,0,7.5,false,false,false,0,203.5,Oshodi,586384049
+W586384050,,residential,false,0,7.5,false,false,false,0,573.9,Oshodi,586384050
+W586579711,,residential,false,0,7.5,false,false,false,0,246.1,Oshodi,586579711
+W586591409,,residential,false,0,7.5,false,false,false,0,58.2,Oshodi,586591409
+W586612865,,residential,false,0,7.5,false,false,false,0,73.0,Oshodi,586612865
+W586623950,,residential,false,0,7.5,false,false,false,0,59.6,Oshodi,586623950
+W586623953,,residential,false,0,7.5,false,false,false,0,50.2,Oshodi,586623953
+W587359363,,residential,false,0,7.5,false,false,false,0,100.6,Oshodi,587359363
+W587373168,,service,false,0,5.0,false,false,false,0,753.1,Oshodi,587373168
+W588834863,,residential,false,0,7.5,false,false,false,0,78.2,Oshodi,588834863
+W588838486,,residential,false,0,7.5,false,false,false,0,229.8,Oshodi,588838486
+W588843330,,residential,false,0,7.5,false,false,false,0,59.6,Oshodi,588843330
+W588843331,,service,false,0,5.0,false,false,false,0,121.3,Oshodi,588843331
+W588843332,,residential,false,0,7.5,false,false,false,0,77.7,Oshodi,588843332
+W588847944,,service,false,0,5.0,false,false,false,0,285.3,Oshodi,588847944
+W588847945,,service,false,0,5.0,false,false,false,0,133.5,Oshodi,588847945
+W588847946,,service,false,0,5.0,false,false,false,0,176.5,Oshodi,588847946
+W588847947,,service,false,0,5.0,false,false,false,0,160.5,Oshodi,588847947
+W588847948,,service,false,0,5.0,false,false,false,0,209.8,Oshodi,588847948
+W588847949,,service,false,0,5.0,false,false,false,0,85.8,Oshodi,588847949
+W588847950,,service,false,0,5.0,false,false,false,0,244.4,Oshodi,588847950
+W588847951,,service,false,0,5.0,false,false,false,0,120.0,Oshodi,588847951
+W588847952,,service,false,0,5.0,false,false,false,0,383.9,Oshodi,588847952
+W588847953,,service,false,0,5.0,false,false,false,0,147.7,Oshodi,588847953
+W588847954,,service,false,0,5.0,false,false,false,0,99.9,Oshodi,588847954
+W588847955,,service,false,0,5.0,false,false,false,0,99.9,Oshodi,588847955
+W588847956,,service,false,0,5.0,false,false,false,0,108.6,Oshodi,588847956
+W588847957,,service,false,0,5.0,false,false,false,0,59.4,Oshodi,588847957
+W588847958,,service,false,0,5.0,false,false,false,0,135.8,Oshodi,588847958
+W588847959,,service,false,0,5.0,false,false,false,0,95.7,Oshodi,588847959
+W588847960,,service,false,0,5.0,false,false,false,0,68.7,Oshodi,588847960
+W588847961,,service,false,0,5.0,false,false,false,0,186.3,Oshodi,588847961
+W588860874,,tertiary,false,0,10.0,true,false,false,0,19.2,Oshodi,588860874
+W588860875,,tertiary,false,0,10.0,true,false,false,0,18.9,Oshodi,588860875
+W588860880,,service,false,0,5.0,false,false,false,0,113.1,Oshodi,588860880
+W588860881,,service,false,0,5.0,false,false,false,0,220.3,Oshodi,588860881
+W588864967,,service,false,0,5.0,false,false,false,0,198.2,Oshodi,588864967
+W588864968,,service,false,0,5.0,false,false,false,0,68.7,Oshodi,588864968
+W588864969,,service,false,0,5.0,false,false,false,0,167.7,Oshodi,588864969
+W588864970,,service,false,0,5.0,false,false,false,0,186.5,Oshodi,588864970
+W588864971,,service,false,0,5.0,false,false,false,0,60.6,Oshodi,588864971
+W588864972,,service,false,0,5.0,false,false,false,0,148.3,Oshodi,588864972
+W588864973,,service,false,0,5.0,false,false,false,0,123.6,Oshodi,588864973
+W588864974,,service,false,0,5.0,false,false,false,0,50.2,Oshodi,588864974
+W588864975,,service,false,0,5.0,false,false,false,0,70.1,Oshodi,588864975
+W588864976,,service,false,0,5.0,false,false,false,0,60.3,Oshodi,588864976
+W588864978,,service,false,0,5.0,false,false,false,0,58.4,Oshodi,588864978
+W588864979,,service,false,0,5.0,false,false,false,0,31.4,Oshodi,588864979
+W588864980,,service,false,0,5.0,false,false,false,0,63.0,Oshodi,588864980
+W588864981,,service,false,0,5.0,false,false,false,0,295.0,Oshodi,588864981
+W588868269,,service,false,0,5.0,false,false,false,0,114.0,Oshodi,588868269
+W588868270,,service,false,0,5.0,false,false,false,0,62.8,Oshodi,588868270
+W588868272,,service,false,0,5.0,false,false,false,0,48.6,Oshodi,588868272
+W588868273,,service,false,0,5.0,false,false,false,0,60.7,Oshodi,588868273
+W588868274,,service,false,0,5.0,false,false,false,0,212.7,Oshodi,588868274
+W588868275,,service,false,0,5.0,false,false,false,0,66.6,Oshodi,588868275
+W588868276,,service,false,0,5.0,false,false,false,0,152.8,Oshodi,588868276
+W588868277,,service,false,0,5.0,false,false,false,0,193.3,Oshodi,588868277
+W588868278,,service,false,0,5.0,false,false,false,0,205.4,Oshodi,588868278
+W588868279,,service,false,0,5.0,false,false,false,0,162.5,Oshodi,588868279
+W588905929,,residential,false,0,7.5,false,false,false,0,60.4,Oshodi,588905929
+W588905930,,residential,false,0,7.5,false,false,false,0,112.1,Oshodi,588905930
+W588910163,,service,false,0,5.0,false,false,false,0,84.9,Oshodi,588910163
+W588910164,,service,false,0,5.0,false,false,false,0,138.1,Oshodi,588910164
+W588910166,,service,false,0,5.0,false,false,false,0,308.3,Oshodi,588910166
+W588910167,,residential,false,0,7.5,false,false,false,0,59.5,Oshodi,588910167
+W589014134,,residential,false,0,7.5,false,false,false,0,568.1,Oshodi,589014134
+W589014135,,secondary,false,0,13.0,false,false,false,0,37.3,Oshodi,589014135
+W589014136,,residential,false,0,7.5,false,false,false,0,69.4,Oshodi,589014136
+W589030660,,residential,false,0,7.5,false,true,false,0,13.8,Oshodi,589030660
+W589030662,,residential,false,0,7.5,false,false,false,0,30.6,Oshodi,589030662
+W589030663,,residential,false,0,7.5,false,false,false,0,85.8,Oshodi,589030663
+W589030665,,residential,false,0,7.5,false,false,false,0,158.8,Oshodi,589030665
+W589047262,,service,false,0,5.0,false,false,false,0,167.9,Oshodi,589047262
+W589053070,,residential,false,0,7.5,false,false,false,0,69.0,Oshodi,589053070
+W589104497,,residential,false,0,7.5,false,false,false,0,64.8,Oshodi,589104497
+W589109949,,secondary,true,0,7.5,true,false,false,0,31.3,Oshodi,589109949
+W589109950,,secondary,true,0,7.5,true,false,false,0,36.2,Oshodi,589109950
+W589109951,,secondary,true,0,7.5,true,false,false,0,130.3,Oshodi,589109951
+W589109952,,secondary,true,0,7.5,true,false,false,0,35.1,Oshodi,589109952
+W589109953,,secondary,true,0,7.5,true,false,false,0,50.0,Oshodi,589109953
+W589109955,,residential,false,0,7.5,true,false,false,0,45.7,Oshodi,589109955
+W589109956,,residential,false,0,7.5,false,false,false,0,411.5,Oshodi,589109956
+W589124497,,tertiary,false,0,10.0,true,false,false,0,7.0,Oshodi,589124497
+W589124498,,tertiary,false,0,10.0,true,false,false,0,6.9,Oshodi,589124498
+W589124501,,residential,false,0,7.5,false,false,false,0,72.0,Oshodi,589124501
+W589124502,,service,false,0,5.0,false,false,false,0,299.4,Oshodi,589124502
+W589124503,,service,false,0,5.0,false,false,false,0,89.2,Oshodi,589124503
+W589129260,,residential,false,0,7.5,true,false,false,0,14.6,Oshodi,589129260
+W589129261,,residential,false,0,7.5,true,false,false,0,15.1,Oshodi,589129261
+W589129262,,service,false,0,5.0,false,false,false,0,175.6,Oshodi,589129262
+W589227264,,service,false,0,5.0,false,false,false,0,70.2,Oshodi,589227264
+W589233217,,residential,false,0,7.5,false,false,false,0,59.1,Oshodi,589233217
+W589233219,,residential,false,0,7.5,false,false,false,0,155.0,Oshodi,589233219
+W589236401,,residential,false,0,7.5,false,false,false,0,49.6,Oshodi,589236401
+W589249423,,residential,false,0,7.5,false,false,false,0,171.0,Oshodi,589249423
+W589854933,,service,false,0,5.0,false,false,false,0,177.6,Oshodi,589854933
+W589854943,,tertiary,false,0,10.0,false,false,false,0,73.6,Oshodi,589854943
+W589854944,,tertiary,false,0,10.0,false,false,false,0,317.0,Oshodi,589854944
+W589883137,,residential,false,0,7.5,false,false,false,0,96.4,Oshodi,589883137
+W589883139,,service,false,0,5.0,false,false,false,0,141.3,Oshodi,589883139
+W589883143,,service,false,0,5.0,false,false,false,0,140.8,Oshodi,589883143
+W589883145,,service,false,0,5.0,false,false,false,0,38.8,Oshodi,589883145
+W589883147,,service,false,0,5.0,false,false,false,0,313.8,Oshodi,589883147
+W589883149,,service,false,0,5.0,false,false,false,0,326.5,Oshodi,589883149
+W589883153,,service,false,0,5.0,false,false,false,0,608.9,Oshodi,589883153
+W606521207,,service,false,0,5.0,false,false,false,0,276.1,Oshodi,606521207
+W610011103,,service,false,0,5.0,false,false,false,0,397.9,Oshodi,610011103
+W637664744,,service,false,0,5.0,false,false,false,0,480.5,Oshodi,637664744
+W693542455,,secondary,true,0,7.5,true,false,false,0,92.4,Oshodi,693542455
+W693542457,,secondary,true,0,7.5,true,false,false,0,82.4,Oshodi,693542457
+W693542458,,secondary,true,0,7.5,true,true,false,0,272.0,Oshodi,693542458
+W693546085,,motorway,true,0,7.5,true,true,false,0,24.5,Oshodi,693546085
+W693546086,,primary,true,0,7.5,true,true,false,0,25.0,Oshodi,693546086
+W707253858,,service,false,0,5.0,false,false,false,0,434.6,Oshodi,707253858
+W726050237,,service,false,0,5.0,false,false,false,0,67.9,Oshodi,726050237
+W726126696,,service,false,0,5.0,false,false,false,0,384.2,Oshodi,726126696
+W726608765,,service,false,0,5.0,false,false,false,0,41.6,Oshodi,726608765
+W726608766,,service,false,0,5.0,false,false,false,0,41.2,Oshodi,726608766
+W726608767,,service,false,0,5.0,false,false,false,0,86.7,Oshodi,726608767
+W726608768,,service,false,0,5.0,false,false,false,0,107.0,Oshodi,726608768
+W726608769,,residential,false,0,7.5,false,false,false,0,204.0,Oshodi,726608769
+W726614891,,service,false,0,5.0,false,false,false,0,18.6,Oshodi,726614891
+W726614892,,service,false,0,5.0,false,false,false,0,61.6,Oshodi,726614892
+W726614893,,service,false,0,5.0,false,false,false,0,62.6,Oshodi,726614893
+W726614894,,service,false,0,5.0,false,false,false,0,25.3,Oshodi,726614894
+W726614895,,service,false,0,5.0,false,false,false,0,54.1,Oshodi,726614895
+W726614897,,service,false,0,5.0,false,false,false,0,20.0,Oshodi,726614897
+W726614898,,service,false,0,5.0,false,false,false,0,37.9,Oshodi,726614898
+W726614899,,service,false,0,5.0,false,false,false,0,21.3,Oshodi,726614899
+W726614900,,service,false,0,5.0,false,false,false,0,75.6,Oshodi,726614900
+W726614901,,service,false,0,5.0,false,false,false,0,20.3,Oshodi,726614901
+W726614902,,service,false,0,5.0,false,false,false,0,46.0,Oshodi,726614902
+W726614903,,service,false,0,5.0,false,false,false,0,171.5,Oshodi,726614903
+W726614904,,service,false,0,5.0,false,false,false,0,240.7,Oshodi,726614904
+W726614905,,service,false,0,5.0,false,false,false,0,71.8,Oshodi,726614905
+W726614906,,service,false,0,5.0,false,false,false,0,156.8,Oshodi,726614906
+W726614907,,service,false,0,5.0,false,false,false,0,16.8,Oshodi,726614907
+W726614908,,service,false,0,5.0,false,false,false,0,84.9,Oshodi,726614908
+W726614909,,service,false,0,5.0,false,false,false,0,57.4,Oshodi,726614909
+W726614910,,service,false,0,5.0,false,false,false,0,37.0,Oshodi,726614910
+W726614911,,service,false,0,5.0,false,false,false,0,43.8,Oshodi,726614911
+W726614912,,service,false,0,5.0,false,false,false,0,20.0,Oshodi,726614912
+W726614913,,service,false,0,5.0,false,false,false,0,184.4,Oshodi,726614913
+W726614914,,service,false,0,5.0,false,false,false,0,68.2,Oshodi,726614914
+W726614915,,service,false,0,5.0,false,false,false,0,52.9,Oshodi,726614915
+W726614916,,service,false,0,5.0,false,false,false,0,108.5,Oshodi,726614916
+W726614917,,service,false,0,5.0,false,false,false,0,107.9,Oshodi,726614917
+W726614918,,service,false,0,5.0,false,false,false,0,157.0,Oshodi,726614918
+W726629866,,service,false,0,5.0,false,false,false,0,136.8,Oshodi,726629866
+W726764091,,service,false,0,5.0,false,false,false,0,10.6,Oshodi,726764091
+W727368105,,service,false,0,5.0,false,false,false,0,24.3,Oshodi,727368105
+W727384756,,service,false,0,5.0,false,false,false,0,163.1,Oshodi,727384756
+W727384757,,service,false,0,5.0,false,false,false,0,116.8,Oshodi,727384757
+W727416313,,service,false,0,5.0,false,false,false,0,73.5,Oshodi,727416313
+W727416314,,service,false,0,5.0,false,false,false,0,115.5,Oshodi,727416314
+W727953720,,service,false,0,5.0,false,false,false,0,92.8,Oshodi,727953720
+W727953721,,service,false,0,5.0,false,false,false,0,74.5,Oshodi,727953721
+W727953722,,service,false,0,5.0,false,false,false,0,144.5,Oshodi,727953722
+W737818230,,service,false,0,5.0,false,false,false,0,20.5,Oshodi,737818230
+W737818231,,service,false,0,5.0,false,false,false,0,77.6,Oshodi,737818231
+W739717909,,service,false,0,5.0,false,false,false,0,11.2,Oshodi,739717909
+W739724852,,service,false,0,5.0,false,false,false,0,44.2,Oshodi,739724852
+W739724853,,service,false,0,5.0,false,false,false,0,95.9,Oshodi,739724853
+W739724854,,service,false,0,5.0,false,false,false,0,142.8,Oshodi,739724854
+W742287170,,service,false,0,5.0,false,false,false,0,125.0,Oshodi,742287170
+W744474996,,residential,false,0,7.5,false,false,false,0,91.6,Oshodi,744474996
+W744486421,,residential,false,0,7.5,false,false,false,0,11.6,Oshodi,744486421
+W744486422,,residential,false,0,7.5,false,true,false,0,6.0,Oshodi,744486422
+W744493559,,tertiary,false,0,10.0,false,false,false,0,297.4,Oshodi,744493559
+W744493560,,service,false,0,5.0,false,false,false,0,312.8,Oshodi,744493560
+W744493594,,service,false,0,5.0,false,false,false,0,282.8,Oshodi,744493594
+W744497151,,residential,false,0,7.5,false,false,false,0,116.9,Oshodi,744497151
+W761640540,,service,false,0,5.0,false,false,false,0,101.1,Oshodi,761640540
+W766350779,,residential,false,0,7.5,false,false,false,0,73.9,Oshodi,766350779
+W776928919,,service,false,0,5.0,false,false,false,0,8.8,Oshodi,776928919
+W783261689,,service,false,0,5.0,false,false,false,0,26.9,Oshodi,783261689
+W783261690,,service,false,0,5.0,false,false,false,0,241.0,Oshodi,783261690
+W784110222,,service,false,0,5.0,false,false,false,0,98.7,Oshodi,784110222
+W784113859,,residential,false,0,7.5,false,false,false,0,120.0,Oshodi,784113859
+W784669151,,service,false,0,5.0,false,false,false,0,110.6,Oshodi,784669151
+W784669152,,service,false,0,5.0,false,false,false,0,127.4,Oshodi,784669152
+W784671145,,service,false,0,5.0,false,false,false,0,66.4,Oshodi,784671145
+W784671146,,service,false,0,5.0,false,false,false,0,136.2,Oshodi,784671146
+W784672336,,service,false,0,5.0,false,false,false,0,93.1,Oshodi,784672336
+W784673391,,service,false,0,5.0,false,false,false,0,5.6,Oshodi,784673391
+W784674053,,service,false,0,5.0,false,false,false,0,3.7,Oshodi,784674053
+W784674812,,service,false,0,5.0,false,false,false,0,20.5,Oshodi,784674812
+W784676412,,service,false,0,5.0,false,false,false,0,198.0,Oshodi,784676412
+W784678806,,service,false,0,5.0,false,false,false,0,257.3,Oshodi,784678806
+W784681252,,service,false,0,5.0,false,false,false,0,125.6,Oshodi,784681252
+W784681725,,service,false,0,5.0,false,false,false,0,42.3,Oshodi,784681725
+W784682016,,service,false,0,5.0,false,false,false,0,11.5,Oshodi,784682016
+W784683019,,service,false,0,5.0,false,false,false,0,28.4,Oshodi,784683019
+W784683710,,service,false,0,5.0,false,false,false,0,156.6,Oshodi,784683710
+W784684361,,service,false,0,5.0,false,false,false,0,202.6,Oshodi,784684361
+W784709159,,service,false,0,5.0,false,false,false,0,153.8,Oshodi,784709159
+W784961887,,service,false,0,5.0,false,false,false,0,151.3,Oshodi,784961887
+W784963305,,residential,false,0,7.5,false,false,false,0,46.3,Oshodi,784963305
+W784965182,,service,false,0,5.0,false,false,false,0,98.3,Oshodi,784965182
+W784965744,,service,false,0,5.0,false,false,false,0,58.7,Oshodi,784965744
+W784965846,,service,false,0,5.0,false,false,false,0,32.4,Oshodi,784965846
+W784965847,,service,false,0,5.0,false,false,false,0,42.9,Oshodi,784965847
+W784965848,,service,false,0,5.0,false,false,false,0,62.3,Oshodi,784965848
+W784965849,,service,false,0,5.0,false,false,false,0,31.0,Oshodi,784965849
+W784965850,,service,false,0,5.0,false,false,false,0,91.1,Oshodi,784965850
+W784965851,,service,false,0,5.0,false,false,false,0,5.1,Oshodi,784965851
+W784965852,,service,false,0,5.0,false,false,false,0,4.1,Oshodi,784965852
+W784968414,,service,false,0,5.0,false,false,false,0,50.5,Oshodi,784968414
+W784968415,,service,false,0,5.0,false,false,false,0,132.1,Oshodi,784968415
+W784968416,,service,false,0,5.0,false,false,false,0,56.8,Oshodi,784968416
+W784968417,,service,false,0,5.0,false,false,false,0,45.4,Oshodi,784968417
+W784968418,,service,false,0,5.0,false,false,false,0,378.1,Oshodi,784968418
+W784968419,,service,false,0,5.0,false,false,false,0,85.9,Oshodi,784968419
+W784968420,,service,false,0,5.0,false,false,false,0,353.9,Oshodi,784968420
+W784968473,,service,false,0,5.0,false,false,false,0,393.1,Oshodi,784968473
+W784968542,,service,false,0,5.0,false,false,false,0,109.7,Oshodi,784968542
+W788307840,,residential,false,0,7.5,false,false,false,0,334.7,Oshodi,788307840
+W8474941,,residential,false,0,7.5,false,false,false,0,283.3,Oshodi,8474941
+W8475015,,residential,false,0,7.5,false,false,false,0,88.3,Oshodi,8475015
+W8475045,,service,false,0,5.0,false,false,false,0,146.6,Oshodi,8475045
+W848329067,,service,false,0,5.0,false,false,false,0,62.4,Oshodi,848329067
+W848329069,,service,false,0,5.0,false,false,false,0,247.5,Oshodi,848329069
+W848329070,,service,false,0,5.0,false,false,false,0,271.4,Oshodi,848329070
+W848329072,,service,false,0,5.0,false,false,false,0,32.2,Oshodi,848329072
+W848745131,,service,false,0,5.0,false,false,false,0,48.3,Oshodi,848745131
+W848745132,,service,false,0,5.0,false,false,false,0,27.1,Oshodi,848745132
+W848745133,,service,false,0,5.0,false,false,false,0,21.7,Oshodi,848745133
+W848772748,,service,false,0,5.0,false,false,false,0,43.7,Oshodi,848772748
+W848772749,,service,false,0,5.0,false,false,false,0,56.9,Oshodi,848772749
+W850028336,,service,false,0,5.0,true,false,false,0,106.1,Oshodi,850028336
+W850028337,,service,false,0,5.0,false,false,false,0,53.8,Oshodi,850028337
+W850028340,,service,false,0,5.0,false,false,false,0,27.6,Oshodi,850028340
+W850028341,,service,false,0,5.0,false,false,false,0,33.1,Oshodi,850028341
+W850090245,,service,false,0,5.0,false,false,false,0,31.5,Oshodi,850090245
+W850090246,,service,false,0,5.0,false,false,false,0,48.8,Oshodi,850090246
+W850090247,,service,false,0,5.0,false,false,false,0,30.2,Oshodi,850090247
+W850091510,,service,false,0,5.0,false,false,false,0,112.4,Oshodi,850091510
+W850091511,,service,false,0,5.0,false,false,false,0,92.4,Oshodi,850091511
+W850091515,,service,false,0,5.0,false,false,false,0,35.5,Oshodi,850091515
+W8563769,,tertiary,false,0,10.0,false,false,false,0,139.1,Oshodi,8563769
+W92451033,,residential,false,0,7.5,false,false,false,0,437.8,Oshodi,92451033
+W92451054,,residential,false,0,7.5,false,false,false,0,393.1,Oshodi,92451054
+W92451073,,tertiary,false,0,10.0,false,false,false,0,183.1,Oshodi,92451073
+W92451085,,residential,false,0,7.5,false,false,false,0,60.4,Oshodi,92451085
+W92451092,,residential,false,0,7.5,false,false,false,0,215.7,Oshodi,92451092
+W92451097,,residential,false,0,7.5,false,false,false,0,226.4,Oshodi,92451097
+W92451102,,residential,false,0,7.5,false,false,false,0,634.4,Oshodi,92451102
+W92451111,,residential,false,0,7.5,false,false,false,0,151.4,Oshodi,92451111
+W92451115,,tertiary,false,0,10.0,false,false,false,0,145.3,Oshodi,92451115
+W92451126,,tertiary,false,0,10.0,false,false,false,0,270.3,Oshodi,92451126
+W92451136,,residential,false,0,7.5,false,false,false,0,262.0,Oshodi,92451136
+W92451150,,residential,false,0,7.5,false,false,false,0,380.0,Oshodi,92451150
+W92451165,,tertiary,false,0,10.0,false,false,false,0,254.7,Oshodi,92451165
+W92451167,,tertiary,false,0,10.0,false,false,false,0,461.4,Oshodi,92451167
+W92451199,,residential,false,0,7.5,false,false,false,0,212.3,Oshodi,92451199
+W93146056,,residential,false,0,7.5,false,false,false,0,373.1,Oshodi,93146056
+W93146062,,residential,false,0,7.5,false,false,false,0,259.8,Oshodi,93146062
+W93146064,,residential,false,0,7.5,false,false,false,0,157.8,Oshodi,93146064
+W93146066,,residential,false,0,7.5,false,false,false,0,133.7,Oshodi,93146066
+W93146070,,residential,false,0,7.5,false,false,false,0,192.2,Oshodi,93146070
+W93146073,,residential,false,0,7.5,false,false,false,0,229.1,Oshodi,93146073
+W93146074,,residential,false,0,7.5,false,false,false,0,305.5,Oshodi,93146074
+W93146075,,residential,false,0,7.5,false,false,false,0,142.3,Oshodi,93146075
+W93146077,,residential,false,0,7.5,false,false,false,0,117.9,Oshodi,93146077
+W93146078,,residential,false,0,7.5,false,false,false,0,149.4,Oshodi,93146078
+W93146081,,residential,false,0,7.5,false,false,false,0,260.6,Oshodi,93146081
+W93146085,,residential,false,0,7.5,false,false,false,0,230.8,Oshodi,93146085
+W93146086,,residential,false,0,7.5,false,false,false,0,117.3,Oshodi,93146086
+W93146276,,residential,false,0,7.5,false,false,false,0,299.9,Oshodi,93146276
+W93146278,,residential,false,0,7.5,false,false,false,0,160.7,Oshodi,93146278
+W93146279,,residential,false,0,7.5,false,false,false,0,46.8,Oshodi,93146279
+W93146284,,residential,false,0,7.5,false,false,false,0,191.6,Oshodi,93146284
+W93147422,,residential,false,0,7.5,false,false,false,0,139.1,Oshodi,93147422
+W93147428,,residential,false,0,7.5,false,false,false,0,50.5,Oshodi,93147428
+W93147429,,residential,false,0,7.5,false,false,false,0,352.6,Oshodi,93147429
+W93147432,,residential,false,0,7.5,false,false,false,0,313.2,Oshodi,93147432
+W93147434,,residential,false,0,7.5,false,false,false,0,205.0,Oshodi,93147434
+W93147440,,residential,false,0,7.5,false,false,false,0,220.3,Oshodi,93147440
+W93147448,,residential,false,0,7.5,false,false,false,0,114.0,Oshodi,93147448
+W93148223,,residential,false,0,7.5,false,false,false,0,214.9,Oshodi,93148223
+W93148229,,residential,false,0,7.5,false,false,false,0,317.6,Oshodi,93148229
+W93148231,,residential,false,0,7.5,false,false,false,0,294.2,Oshodi,93148231
+W93148234,,residential,false,0,7.5,false,false,false,0,149.1,Oshodi,93148234
+W93149419,,residential,false,0,7.5,false,false,false,0,376.1,Oshodi,93149419
+W93149424,,residential,false,0,7.5,false,false,false,0,323.8,Oshodi,93149424
+W93151808,,residential,false,0,7.5,false,false,false,0,286.2,Oshodi,93151808
+W93151820,,residential,false,0,7.5,false,false,false,0,321.4,Oshodi,93151820
+W93151823,,residential,false,0,7.5,false,false,false,0,146.9,Oshodi,93151823
+W93151826,,residential,false,0,7.5,false,false,false,0,145.9,Oshodi,93151826
+W93156404,,residential,false,0,7.5,false,false,false,0,223.8,Oshodi,93156404
+W93156405,,residential,false,0,7.5,false,false,false,0,103.5,Oshodi,93156405
+W93156410,,residential,false,0,7.5,false,false,false,0,191.8,Oshodi,93156410
+W93156416,,residential,false,0,7.5,false,false,false,0,188.7,Oshodi,93156416
+W93156418,,residential,false,0,7.5,false,false,false,0,195.1,Oshodi,93156418
+W93156426,,tertiary,false,0,10.0,false,false,false,0,140.3,Oshodi,93156426
+W93156434,,residential,false,0,7.5,false,false,false,0,204.1,Oshodi,93156434
+W93156439,,residential,false,0,7.5,false,false,false,0,365.7,Oshodi,93156439
+W93156440,,residential,false,0,7.5,false,false,false,0,228.5,Oshodi,93156440
+W936728633,,motorway,true,0,7.5,true,false,false,0,41.1,Oshodi,936728633
+W936728634,,motorway,true,0,7.5,true,false,false,0,46.6,Oshodi,936728634
+W936728635,,motorway,true,0,7.5,true,false,false,0,178.9,Oshodi,936728635
+W936728645,,service,false,0,5.0,true,false,false,0,185.2,Oshodi,936728645
+W936728646,,service,false,0,5.0,true,false,false,0,143.2,Oshodi,936728646
+W936728647,,service,false,0,5.0,true,false,false,0,9.7,Oshodi,936728647
+W936728654,,service,false,0,5.0,false,false,false,0,10.6,Oshodi,936728654
+W936728659,,motorway,true,0,7.5,true,false,false,0,56.3,Oshodi,936728659
+W936728660,,motorway,true,0,7.5,true,true,false,0,11.3,Oshodi,936728660
+W936728662,,motorway,true,0,7.5,true,false,false,0,76.3,Oshodi,936728662
+W936728663,,motorway,true,0,7.5,true,true,false,0,10.4,Oshodi,936728663
+W936728664,,service,false,0,5.0,true,false,false,0,200.3,Oshodi,936728664
+W953299785,,residential,false,0,7.5,false,false,false,0,503.5,Oshodi,953299785
+W961493615,,trunk,true,0,7.5,false,false,false,0,10.5,Oshodi,961493615
+W964200174,,service,false,0,5.0,false,false,false,0,289.0,Oshodi,964200174
+W964200177,,residential,false,0,7.5,false,false,false,0,68.9,Oshodi,964200177
+W964200178,,residential,false,0,7.5,false,false,false,0,70.9,Oshodi,964200178
+W964200921,,service,false,0,5.0,false,false,false,0,46.6,Oshodi,964200921
+W964200922,,service,false,0,5.0,false,false,false,0,16.8,Oshodi,964200922
+W964200923,,service,false,0,5.0,false,false,false,0,70.6,Oshodi,964200923
+W964200924,,service,false,0,5.0,false,false,false,0,137.4,Oshodi,964200924
+W964218799,,service,false,0,5.0,false,false,false,0,60.0,Oshodi,964218799
+W964230194,,residential,false,0,7.5,false,false,false,0,153.9,Oshodi,964230194
+W964244374,,service,false,0,5.0,false,false,false,0,47.7,Oshodi,964244374
+W964244375,,service,false,0,5.0,false,false,false,0,61.0,Oshodi,964244375
+W964245907,,residential,false,0,7.5,false,false,false,0,192.4,Oshodi,964245907
+W964250866,,service,false,0,5.0,false,false,false,0,33.7,Oshodi,964250866
+W964250867,,service,false,0,5.0,false,false,false,0,58.1,Oshodi,964250867
+W964250868,,service,false,0,5.0,false,false,false,0,22.8,Oshodi,964250868
+W964260325,,service,false,0,5.0,false,false,false,0,23.1,Oshodi,964260325
+W964260326,,service,false,0,5.0,false,false,false,0,44.4,Oshodi,964260326
+W964260328,,service,false,0,5.0,false,false,false,0,73.6,Oshodi,964260328
+W964260329,,service,false,0,5.0,false,false,false,0,183.0,Oshodi,964260329
+W964265106,,service,false,0,5.0,false,false,false,0,12.1,Oshodi,964265106
+W964265107,,service,false,0,5.0,false,false,false,0,15.4,Oshodi,964265107
+W964265108,,service,false,0,5.0,false,false,false,0,101.1,Oshodi,964265108
+W964265109,,service,false,0,5.0,false,false,false,0,15.4,Oshodi,964265109
+W964265110,,service,false,0,5.0,false,false,false,0,72.9,Oshodi,964265110
+W964265111,,residential,false,0,7.5,false,false,false,0,115.3,Oshodi,964265111
+W964265112,,residential,false,0,7.5,false,false,false,0,94.3,Oshodi,964265112
+W964325565,,service,false,0,5.0,true,false,false,0,29.8,Oshodi,964325565
+W964325566,,service,false,0,5.0,true,false,false,0,30.7,Oshodi,964325566
+W964325567,,service,false,0,5.0,false,false,false,0,26.3,Oshodi,964325567
+W964502434,,residential,false,0,7.5,false,false,false,0,45.1,Oshodi,964502434
+W964504495,,service,false,0,5.0,false,false,false,0,114.4,Oshodi,964504495
+W964504654,,service,false,0,5.0,false,false,false,0,164.6,Oshodi,964504654
+W964505524,,service,false,0,5.0,false,false,false,0,49.6,Oshodi,964505524
+W964506663,,service,false,0,5.0,false,false,false,0,71.8,Oshodi,964506663
+W964506664,,service,false,0,5.0,false,false,false,0,24.6,Oshodi,964506664
+W964561201,,service,false,0,5.0,false,false,false,0,121.3,Oshodi,964561201
+W964561202,,service,false,0,5.0,false,false,false,0,124.4,Oshodi,964561202
+W964561203,,service,false,0,5.0,false,false,false,0,111.8,Oshodi,964561203
+W964561204,,service,false,0,5.0,false,false,false,0,45.9,Oshodi,964561204
+W964561660,,service,false,0,5.0,false,false,false,0,44.1,Oshodi,964561660
+W964561661,,service,false,0,5.0,false,false,false,0,89.6,Oshodi,964561661
+W964561662,,service,false,0,5.0,false,false,false,0,43.3,Oshodi,964561662
+W964561982,,service,false,0,5.0,false,false,false,0,101.7,Oshodi,964561982
+W964571860,,residential,false,0,7.5,false,false,false,0,69.8,Oshodi,964571860
+W975547338,,service,false,0,5.0,false,false,false,0,119.5,Oshodi,975547338
+W975547339,,service,false,0,5.0,false,false,false,0,40.8,Oshodi,975547339
+W978374017,,service,false,0,5.0,false,false,false,0,169.4,Oshodi,978374017
+W989801936,,residential,false,0,7.5,false,false,false,0,18.1,Oshodi,989801936
