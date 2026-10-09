@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-09 (phone and DropAm; real-scale Lagos level playable; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
+**Last updated:** 2026-10-09 (car stealing, roll and climb, directions; phone and DropAm; real-scale Lagos level; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -66,8 +66,13 @@ The target is 30 fps at 720p–900p; the game is not there yet.
   - *HUD:* a phone icon with a count by the clock when something is unseen, the incoming-call banner, a subtitle strip. The inventory wheel's PHONE slot opens the phone.
   - *Saved* (slot `NaijaHustlePhone`): friendships, chats, the feed, missed calls, driver rating and trip counts.
   - Measured in `L_Lagos_City` at 1280×720: 39.6 fps standing still. Memory footprint 7.9 GB (peak 8.2 GB), of which 6.5 GB is graphics memory for the city, on the 8 GB Mac: it runs out of swap (7.5 GB of swap in use). That is the level, not the phone, and it needs dealing with (see known gaps).
+- **Car stealing (brief step 1, 2026-10-09):** `ANHCarTheft`. Parked vehicles are locked (62%), open without keys (28%) or left running (10%). F tries the handle; a locked one offers breaking the window, which sets off the alarm (lights flashing and "WEEOO" written in the air: there is no sound); then the hotwire, a marker sweeping a bar to stop in the green three times in 12 s. A vehicle with a driver, stopped or crawling: F pulls the driver out, who runs, chases you on foot and drags you out if he catches the car standing, or rings the Task Force; a danfo's or keke's conductor chases too. Witnesses (people and drivers near enough) raise the stars with the vehicle's value and somebody posts on Yarns. Stolen vehicles are hot for four to seven minutes; luxury ones carry a tracker that keeps the stars topped up. Three places near Mushin, on the map in green, reached by driving there and pressing E: the mechanic (tracker out, ₦15,000), Baba Colour (respray ₦8,000: ends the heat and makes the car yours, with the car keys on the wheel locking and unlocking it), the chop shop (buys by value and damage, not while hot or tracked). Scripted checks: break-in gave window broken, alarm on, hotwire running, one star; carjacking a sedan put the player at the wheel with one person after him, who then dragged him out and locked it; a hotwired keke sold at the chop shop for ₦15,000 (cash 5,000 to 20,000).
+- **Moves:** R keeps you running without Shift held (it lets go when you stand still); Left Ctrl or C rolls about four metres; Space climbs onto a ledge, wall top or vehicle within 2.4 m in front, and jumps otherwise. Checked: the roll starts; the climb put the player 85 cm up onto a car. The body is turned and moved by code: there are no roll or climb animations.
+- **Fixes asked for in play:** the Pathmaster SUV's model has one wheel at its middle and none at the corners, so it now gets the game's own four; headlamps and tail lamps glow when lit, the nearest five moving vehicles drive with lights on after dark, and K is explained on screen when you get in; the pause menu has a Controls page listing every key; a pin now has directions: the way along the roads drawn on both maps and the next turn under the minimap ("In 790 m turn left onto Agege Motor Road").
+- **Network-safety audit** for the multiplayer brief: `docs/NETWORK_AUDIT.md`. No code changed for it.
 - **Car models in the repo project:** copied from the Mac template project they drew black, because their glTF materials were made with Substrate on and this project has it off. `Scripts/use_plain_gltf_materials.py` re-points them (182 instances) at the importer's ordinary parent material; the models' own colours show again.
 - **Lagos Runner (2026-10-09):** the character made in Blender is in as three extra skins (`NHSkin runner`, `dispatch`, `suit`) from `Scripts/import_lagos_runner.py`, moved by his own idle, walk, run, sprint and jump clips through `UNHClipAnimInstance`. The Naija man stays the default.
+- **More people to play as (2026-10-09):** eleven extra skins built in Blender with MakeHuman by `Scripts/build_people_makehuman.py`: five men and six women of African, European, East Asian and South Asian descent, each with different hair (afro, cornrows, low cut, afro puffs, side-swept, ponytail, bob, long) and their own clothes and shoes. Pick one on the Character line of the pause menu or with `NHSkin tunde|emeka|dayo|amaka|zainab|ngozi|mark|kate|chen|mei|priya`. Each has the mannequin's animations retargeted onto it. Sources and licences in `ASSETS.md`. `Scripts/fetch_sketchfab_characters.py` and `Scripts/prep_character_gltf.py` are ready for a further eleven Sketchfab characters, which wait on a Sketchfab API token; their skin entries are already in `ANHCharacter` and stay hidden until the assets exist.
 
 ## In progress
 
@@ -96,6 +101,9 @@ Deferred: NPCs and storyline.
 - Headlights have no gamepad button (every button is taken) and the lamp models do not glow; other traffic has no lights.
 - The models' sizes come from fitting each to its type's length, so a few are too tall (SUV 258 cm, danfo 257 cm, luxury 4x4 226 cm).
 
+- Car stealing, not built from the brief: Task Force units and checkpoints (wanted is still only a star count), any sound, break-in and carjack animations, keys left at petrol stations and bukas in particular (it is a random one in ten anywhere), drivers fighting back (there is no combat yet), saving stolen and owned cars. Not exercised: finishing a hotwire by pressing E in time, the mechanic, the respray, the car keys' lock, a tracker's heat.
+- Loading `L_Lagos_City` now takes from 35 seconds to 3 minutes on the 8 GB Mac, depending on how much it is swapping.
+- On 2026-10-09 at 05:38 `L_Lagos_City` was saved over from the editor as an empty Open World level; it was rebuilt with `LAGOS_STAGE=level import_lagos_city.py`. The level is generated, so rebuild it rather than editing it by hand.
 - **Memory in `L_Lagos_City`:** 7.9 GB footprint on an 8 GB machine, nearly all of it the whole city's meshes held on the GPU at once. It runs, at 37 to 41 fps, but only by swapping. The level needs streaming (load only the cells near the player) before much more is added to it.
 - Phone: checked by five scripted runs (home, contacts, a call, ordering a ride, riding it). Not exercised: every menu row by hand, the DropAm driver job from offer to drop-off, an incoming call being answered, the mechanic's tow, getting out mid-trip. Not built from the brief: voice audio (subtitles only), Whot and Ludo, selfie and photo mode beyond a plain screenshot, the music player, mission texts beyond the opening ones, calls through car speakers (there is no audio at all), asking for backup (waits for the weapons step), and "no phone during combat" (no combat yet). The hailed car is carried along the road like traffic, does not avoid other traffic, and can be driven off by the player with F once the ride is over. Keyboard only.
 - The map, menu and wheel were each checked from one screenshot opened by script (`-NHHudOpen=map|mapzoom|menu|wheel`); clicking a pin with the mouse, changing each menu line, and each wheel action were not exercised by hand. They are keyboard and mouse only (no gamepad). The traffic's drivers all share the Runner's face.
@@ -129,6 +137,16 @@ Deferred: NPCs and storyline.
 - All surfaces use flat placeholder textures.
 
 ## Screenshots
+
+Hotwiring a broken-into danfo; a driver who caught up and dragged the player out; directions to a pin; the Controls page; headlights at night; the SUV with wheels.
+
+| Hotwire | Carjack gone wrong | Directions |
+|---|---|---|
+| ![hotwire](docs/screenshots/theft-hotwire.jpg) | ![carjack](docs/screenshots/theft-carjack.jpg) | ![directions](docs/screenshots/pin-directions.jpg) |
+
+| Controls | Night | SUV |
+|---|---|---|
+| ![controls](docs/screenshots/menu-controls.jpg) | ![night](docs/screenshots/night-headlights.jpg) | ![suv](docs/screenshots/suv-wheels.jpg) |
 
 The phone: home, contacts with friendship meters, a call, a DropAm ride on its way (red on the minimap), and riding it.
 

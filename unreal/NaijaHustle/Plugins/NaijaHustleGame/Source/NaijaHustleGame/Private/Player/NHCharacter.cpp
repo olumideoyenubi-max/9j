@@ -54,6 +54,37 @@ ANHCharacter::ANHCharacter()
 	Runner(TEXT("runner"), TEXT("Lagos runner"), TEXT("/Game/Characters/Player/Runner/Runner.Runner"));
 	Runner(TEXT("dispatch"), TEXT("Lagos runner, dispatch rider"), TEXT("/Game/Characters/Player/Runner/Runner_Dispatch.Runner_Dispatch"));
 	Runner(TEXT("suit"), TEXT("Lagos runner, suit"), TEXT("/Game/Characters/Player/Runner/Runner_Suit.Runner_Suit"));
+	// A character in its own folder with the mannequin's animations retargeted onto it, wearing its own shoes: the
+	// people built by build_people_makehuman.py, then Sketchfab downloads brought in by prep_character_gltf.py
+	const auto Download = [this, &Skin](const TCHAR* Id, const TCHAR* Name, const TCHAR* Folder, float Height)
+	{
+		Skin(Id, Name, *FString::Printf(TEXT("/Game/Characters/Player/%s/%s.%s"), Folder, Folder, Folder),
+			*FString::Printf(TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed_%s.ABP_Unarmed_%s_C"), Folder, Folder), Height);
+		Skins.Last().bShod = true;
+	};
+	Download(TEXT("tunde"), TEXT("Tunde, afro and denim"), TEXT("Tunde"), 180.f);
+	Download(TEXT("emeka"), TEXT("Emeka, big man in a suit"), TEXT("Emeka"), 184.f);
+	Download(TEXT("dayo"), TEXT("Dayo, cornrows and shorts"), TEXT("Dayo"), 178.f);
+	Download(TEXT("amaka"), TEXT("Amaka, side-swept hair"), TEXT("Amaka"), 168.f);
+	Download(TEXT("zainab"), TEXT("Zainab, afro puffs"), TEXT("Zainab"), 166.f);
+	Download(TEXT("ngozi"), TEXT("Ngozi, low cut, gym wear"), TEXT("Ngozi"), 170.f);
+	Download(TEXT("mark"), TEXT("Mark, brown hair, striped shirt"), TEXT("Mark"), 180.f);
+	Download(TEXT("kate"), TEXT("Kate, blonde ponytail"), TEXT("Kate"), 168.f);
+	Download(TEXT("chen"), TEXT("Chen, fringe and jacket"), TEXT("Chen"), 174.f);
+	Download(TEXT("mei"), TEXT("Mei, black bob"), TEXT("Mei"), 162.f);
+	Download(TEXT("priya"), TEXT("Priya, long dark hair"), TEXT("Priya"), 164.f);
+	Download(TEXT("lowpoly"), TEXT("Area boy, orange tee"), TEXT("Lowpoly"), 175.f);
+	Download(TEXT("africanman"), TEXT("Gym man, cargo trousers"), TEXT("AfricanMan"), 180.f);
+	Download(TEXT("nathan"), TEXT("Bearded man, grey tee"), TEXT("Nathan"), 180.f);
+	Download(TEXT("eric"), TEXT("Office man, waistcoat"), TEXT("Eric"), 180.f);
+	Download(TEXT("tarzan"), TEXT("Blond man, green polo"), TEXT("Tarzan"), 180.f);
+	Download(TEXT("indianman"), TEXT("Man in dhoti"), TEXT("IndianMan"), 172.f);
+	Download(TEXT("kuratchi"), TEXT("Man in check shirt"), TEXT("Kuratchi"), 172.f);
+	Download(TEXT("woman3"), TEXT("Woman in beanie"), TEXT("Woman3"), 166.f);
+	Download(TEXT("carla"), TEXT("Office woman, curly hair"), TEXT("Carla"), 166.f);
+	Download(TEXT("claudia"), TEXT("Office woman, blonde ponytail"), TEXT("Claudia"), 168.f);
+	Download(TEXT("sophia"), TEXT("Woman, long brown hair"), TEXT("Sophia"), 168.f);
+	Download(TEXT("teenblack"), TEXT("Woman, long black hair"), TEXT("TeenBlack"), 162.f);
 	Skin(TEXT("mannequin"), TEXT("Mannequin"), TEXT("/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple"), TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed.ABP_Unarmed_C"), 0.f);
 	ShoeMesh = TSoftObjectPtr<UStaticMesh>(FSoftObjectPath(TEXT("/Game/Wardrobe/Trainers_LowTop/Untsssho00215ed/StaticMeshes/hash_CF7B2BF4_model_001.hash_CF7B2BF4_model_001")));
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.f, 0.f, -92.f), FRotator(0.f, -90.f, 0.f)); // feet on the ground, facing forward

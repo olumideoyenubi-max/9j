@@ -514,6 +514,10 @@ void ANHHUD::DrawHUD()
 			{
 				// the night-rain lighting, held, to see the traffic's lights
 				PC->ConsoleCommand(TEXT("NHLighting NightRain"));
+				if (Pawn)
+				{
+					PC->SetControlRotation(FRotator(-4.f, Pawn->GetActorRotation().Yaw + 150.f, 0.f)); // level, looking back along the road at the traffic
+				}
 				if (Dir)
 				{
 					Dir->SetManualLighting();

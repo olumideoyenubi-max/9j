@@ -5,7 +5,8 @@ flat colours. This makes two simple parent materials (opaque, and masked two-sid
 clothing shells) and points each slot's imported material instance at one of them, with its texture and tint.
 
 Run inside the Unreal Editor with NH_PLAYER_NAME set (the folder under /Game/Characters/Player). Slots are matched
-to textures by the HINTS table below; a slot with no texture keeps its flat colour as a tint.
+to textures by the HINTS table below; a slot with no texture keeps its flat colour as a tint. Characters from
+build_people_makehuman.py need no hints: a slot named NH_<part> or NHM_<part> (masked) takes the texture of that name.
 """
 import os
 import unreal
@@ -59,8 +60,9 @@ slots = mesh.get_editor_property("materials")
 for slot in slots:
     slot_name = str(slot.material_slot_name)
     key = slot_name.lower()[5:] if slot_name.lower().startswith("body_") else slot_name.lower()  # MPFB names every slot Body.<part>
-    hint = next((h for h in HINTS if h[0] in key), None)
-    texture = next((textures[t].get_asset() for t in sorted(textures) if hint and hint[1] and hint[1].lower() in t.lower()), None)
+    named = slot_name.startswith(("NH_", "NHM_"))
+    hint = (slot_name, slot_name, slot_name.startswith("NHM_"), {"skin": 0.55, "lowpoly": 0.25, "teethbase": 0.4}.get(slot_name.split("_", 1)[1], 0.8)) if named else next((h for h in HINTS if h[0] in key), None)
+    texture = textures[slot_name].get_asset() if named and slot_name in textures else None if named else next((textures[t].get_asset() for t in sorted(textures) if hint and hint[1] and hint[1].lower() in t.lower()), None)
     masked = bool(hint and hint[2] and texture)
     old = slot.material_interface
     tint = unreal.LinearColor(1, 1, 1, 1)
