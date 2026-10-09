@@ -1,0 +1,22 @@
+{
+  "format": "naija-hustle-population",
+  "version": 1,
+  "note": "Who and what is on the street, by zone and hour (living-Lagos brief, 2.2). A district is 'island' if listed, otherwise 'mainland'; a vehicle on a motorway or trunk road takes the 'expressway' mix wherever it is. Vehicle numbers are weights. Police presence and area boys' territory per district are in response_areas.json. There is no BRT bus model yet, so expressways have none.",
+  "island": ["Banana Island", "Ikoyi", "Victoria Island", "Eko Atlantic", "Lekki Phase I", "Osapa London", "Dolphin Estate", "Ikate", "Maroko", "Jakande"],
+  "maxModels": 8,
+  "zones": {
+    "mainland": { "vehicles": { "danfo": 26, "sedan": 24, "keke": 16, "okada": 16, "suv": 8, "truck": 4, "luxsedan": 2, "tfpick": 2 }, "pedestrians": 1.0, "women": 0.45 },
+    "island": { "vehicles": { "suv": 20, "luxsuv": 18, "luxsedan": 16, "sedan": 16, "royalsuv": 7, "coupesuv": 7, "luxcoupe": 5, "sports": 4, "supersuv": 3, "keke": 2, "danfo": 2 }, "pedestrians": 0.45, "women": 0.5 },
+    "expressway": { "vehicles": { "truck": 26, "sedan": 24, "danfo": 22, "suv": 16, "luxsuv": 7, "tfpick": 3, "luxsedan": 2 }, "pedestrians": 0.0, "women": 0.45 }
+  },
+  "hours": [
+    { "from": 0, "to": 5, "vehicles": 0.25, "pedestrians": 0.1 },
+    { "from": 5, "to": 7, "vehicles": 0.7, "pedestrians": 0.6 },
+    { "from": 7, "to": 10, "vehicles": 1.0, "pedestrians": 1.0 },
+    { "from": 10, "to": 16, "vehicles": 0.8, "pedestrians": 0.8 },
+    { "from": 16, "to": 20, "vehicles": 1.0, "pedestrians": 1.0 },
+    { "from": 20, "to": 24, "vehicles": 0.5, "pedestrians": 0.4 }
+  ],
+  "budget": { "moving": [0, 8, 14, 22], "parked": [0, 4, 8, 10], "pedestrians": [0, 8, 16, 25] },
+  "boards": ["OSHODI", "YABA", "CMS", "OBALENDE", "MILE 2", "IKEJA", "OJOTA", "KETU", "MUSHIN", "AGEGE"]
+}

@@ -5,6 +5,7 @@
 #include "Core/NHGameData.h"
 #include "Core/NHNetState.h"
 #include "EngineUtils.h"
+#include "Gameplay/NHCrowd.h"
 #include "Gameplay/NHGameDirector.h"
 #include "Gameplay/NHResponse.h"
 #include "Player/NHCharacter.h"
@@ -44,6 +45,11 @@ void ANHGameMode::StartPlay()
 	if (Data && Data->bRealCity)
 	{
 		GetWorld()->SpawnActor<ANHTraffic>(ANHTraffic::StaticClass(), FTransform::Identity);
+		GetWorld()->SpawnActor<ANHCrowd>(ANHCrowd::StaticClass(), FTransform::Identity); // the people on the pavements round the player
+		if (FParse::Param(FCommandLine::Get(), TEXT("NHPopulationTest")))
+		{
+			GetWorld()->SpawnActor<ANHPopulationTest>(ANHPopulationTest::StaticClass(), FTransform::Identity); // counts them and the frame rate, and quits
+		}
 		GetWorld()->SpawnActor<ANHStreets>(ANHStreets::StaticClass(), FTransform::Identity); // real street names: banner, signs, map labels
 		if (!FParse::Param(FCommandLine::Get(), TEXT("NHNoScatter"))) // -NHNoScatter: without, to measure what it costs
 		{

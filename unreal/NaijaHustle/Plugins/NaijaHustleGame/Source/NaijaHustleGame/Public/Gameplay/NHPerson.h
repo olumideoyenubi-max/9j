@@ -26,6 +26,8 @@ enum class ENHCast : uint8
 {
 	/** A passer-by, a passenger: any of the people */
 	Anyone,
+	/** Most of a Lagos street: any of the Nigerian people, man or woman */
+	Lagosian,
 	/** Area boys, the Task Force, an owner who gives chase: anybody who goes for the player */
 	Man,
 	Woman,

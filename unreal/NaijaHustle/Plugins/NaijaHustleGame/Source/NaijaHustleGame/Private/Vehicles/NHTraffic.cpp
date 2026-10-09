@@ -1,5 +1,12 @@
 #include "Vehicles/NHTraffic.h"
 
+#include "Core/NHHustleSubsystem.h"
+#include "Dom/JsonObject.h"
+#include "Gameplay/NHCrowd.h"
+#include "Misc/FileHelper.h"
+#include "Serialization/JsonReader.h"
+#include "Serialization/JsonSerializer.h"
+
 #include "Engine/SkeletalMesh.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
@@ -37,10 +44,15 @@ bool ANHTraffic::IsDark(const UObject* WorldContext)
 
 void ANHTraffic::SetDensity(int32 Level)
 {
-	static const int32 Moving[] = { 0, 5, 9, 14 }, Parked[] = { 0, 4, 6, 8 };
 	Level = FMath::Clamp(Level, 0, 3);
-	MaxMoving = Moving[Level];
-	MaxParked = Parked[Level];
+	Density = Level;
+	LoadZones();
+	MaxMoving = Budget(TEXT("moving"), Level);
+	MaxParked = Budget(TEXT("parked"), Level);
+	if (ANHCrowd* Crowd = ANHCrowd::Get(this))
+	{
+		Crowd->MaxPeople = Budget(TEXT("pedestrians"), Level);
+	}
 	// fewer wanted than there are: the furthest go at once (one the player is in is not in Cars)
 	const APlayerController* PC = GetWorld()->GetFirstPlayerController();
 	const FVector2D Player = PC && PC->GetPawn() ? FVector2D(PC->GetPawn()->GetActorLocation()) : FVector2D::ZeroVector;
@@ -49,10 +61,7 @@ void ANHTraffic::SetDensity(int32 Level)
 	{
 		if ((Cars[I].bParked ? NumParked() > MaxParked : NumMoving() > MaxMoving))
 		{
-			if (Cars[I].Vehicle.IsValid())
-			{
-				Cars[I].Vehicle->Destroy();
-			}
+			Retire(Cars[I].Vehicle.Get());
 			Cars.RemoveAt(I);
 		}
 	}
@@ -268,7 +277,7 @@ void ANHTraffic::Step(FCar& Car, const FVector& Player, float DeltaSeconds)
 			}
 			else
 			{
-				V->Destroy(); // the edge of the map or a dead end: gone, and another is made elsewhere
+				Retire(V); // the edge of the map or a dead end: gone, and another is made elsewhere
 				Car.Vehicle = nullptr;
 				return;
 			}
@@ -283,35 +292,183 @@ void ANHTraffic::Step(FCar& Car, const FVector& Player, float DeltaSeconds)
 	V->TrafficMove(Car.At, Car.Yaw, Car.Speed, DeltaSeconds);
 }
 
-FName ANHTraffic::RandomType(bool bParked) const
+void ANHTraffic::LoadZones()
 {
-	// what is on a Lagos road: danfos, kekes and okadas most of all, then ordinary cars, a few big ones and the odd luxury car
-	static const TPair<const TCHAR*, int32> Mix[] = { { TEXT("danfo"), 22 }, { TEXT("sedan"), 20 }, { TEXT("keke"), 12 }, { TEXT("okada"), 12 }, { TEXT("suv"), 12 },
-		{ TEXT("truck"), 5 }, { TEXT("tfpick"), 2 }, { TEXT("luxsedan"), 4 }, { TEXT("luxsuv"), 4 }, { TEXT("royalsuv"), 2 }, { TEXT("coupesuv"), 2 }, { TEXT("supersuv"), 1 },
-		{ TEXT("sports"), 1 }, { TEXT("luxcoupe"), 1 } };
+	if (bZonesLoaded)
+	{
+		return;
+	}
+	bZonesLoaded = true;
+	FString Text;
+	TSharedPtr<FJsonObject> Root;
+	if (!FFileHelper::LoadFileToString(Text, *(UNHGameData::DataDir() / TEXT("population_zones.json"))) || !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root)
+	{
+		UE_LOG(LogNHGame, Warning, TEXT("NAIJA HUSTLE: traffic: Data/population_zones.json could not be read"));
+		return;
+	}
+	TArray<FString> Names;
+	Root->TryGetStringArrayField(TEXT("island"), Names);
+	Island.Append(Names);
+	Root->TryGetStringArrayField(TEXT("boards"), Boards);
+	Root->TryGetNumberField(TEXT("maxModels"), MaxModels);
+	const TSharedPtr<FJsonObject>* All = nullptr;
+	if (Root->TryGetObjectField(TEXT("zones"), All))
+	{
+		for (const auto& KV : (*All)->Values)
+		{
+			const TSharedPtr<FJsonObject> In = KV.Value->AsObject();
+			FZone Zone;
+			const TSharedPtr<FJsonObject>* Mix = nullptr;
+			if (In->TryGetObjectField(TEXT("vehicles"), Mix))
+			{
+				for (const auto& V : (*Mix)->Values)
+				{
+					Zone.Vehicles.Add(TPair<FName, int32>(FName(*V.Key), static_cast<int32>(V.Value->AsNumber())));
+				}
+			}
+			In->TryGetNumberField(TEXT("pedestrians"), Zone.Pedestrians);
+			In->TryGetNumberField(TEXT("women"), Zone.Women);
+			Zones.Add(FName(*KV.Key), MoveTemp(Zone));
+		}
+	}
+	const TArray<TSharedPtr<FJsonValue>>* List = nullptr;
+	if (Root->TryGetArrayField(TEXT("hours"), List))
+	{
+		for (const TSharedPtr<FJsonValue>& V : *List)
+		{
+			const TSharedPtr<FJsonObject> In = V->AsObject();
+			FHour Hour;
+			In->TryGetNumberField(TEXT("from"), Hour.From);
+			In->TryGetNumberField(TEXT("to"), Hour.To);
+			In->TryGetNumberField(TEXT("vehicles"), Hour.Share[0]);
+			In->TryGetNumberField(TEXT("pedestrians"), Hour.Share[1]);
+			Hours.Add(Hour);
+		}
+	}
+	const TSharedPtr<FJsonObject>* Caps = nullptr;
+	if (Root->TryGetObjectField(TEXT("budget"), Caps))
+	{
+		for (const auto& KV : (*Caps)->Values)
+		{
+			TArray<int32>& Out = Budgets.Add(FString(*KV.Key));
+			for (const TSharedPtr<FJsonValue>& N : KV.Value->AsArray())
+			{
+				Out.Add(static_cast<int32>(N->AsNumber()));
+			}
+		}
+	}
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: traffic: %d zones, %d island districts, %d bands of the day, at most %d models at once"), Zones.Num(), Island.Num(), Hours.Num(), MaxModels);
+}
+
+int32 ANHTraffic::Budget(const TCHAR* What, int32 Level) const
+{
+	static const int32 Moving[] = { 0, 8, 14, 22 }, Parked[] = { 0, 4, 8, 10 }, People[] = { 0, 8, 16, 25 };
+	const TArray<int32>* Row = Budgets.Find(What);
+	if (Row && Row->IsValidIndex(Level))
+	{
+		return (*Row)[Level];
+	}
+	return FCString::Strcmp(What, TEXT("moving")) == 0 ? Moving[Level] : FCString::Strcmp(What, TEXT("parked")) == 0 ? Parked[Level] : People[Level];
+}
+
+FName ANHTraffic::ZoneAt(const FVector2D& At) const
+{
+	const UNHGameData* D = Data ? Data : UNHGameData::Get(this);
+	return D && Island.Contains(D->DistrictAt(FVector(At, 0.f))) ? FName(TEXT("island")) : FName(TEXT("mainland"));
+}
+
+float ANHTraffic::HourShare(int32 Index) const
+{
+	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	const float Now = Hustle ? Hustle->HourOfDay() : 12.f;
+	for (const FHour& Hour : Hours)
+	{
+		if (Now >= Hour.From && Now < Hour.To)
+		{
+			return Hour.Share[Index];
+		}
+	}
+	return 1.f;
+}
+
+void ANHTraffic::ZonePeople(FName Zone, float& OutDensity, float& OutWomen) const
+{
+	const FZone* Found = Zones.Find(Zone);
+	OutDensity = Found ? Found->Pedestrians : 1.f;
+	OutWomen = Found ? Found->Women : 0.45f;
+}
+
+int32 ANHTraffic::NumModels() const
+{
+	TSet<FName> Types;
+	for (const FCar& Car : Cars)
+	{
+		if (const ANHVehicle* V = Car.Vehicle.Get())
+		{
+			Types.Add(V->VehicleType);
+		}
+	}
+	return Types.Num();
+}
+
+FName ANHTraffic::RandomType(bool bParked, FName Zone) const
+{
+	// the zone's mix; and once the traffic is already eight different models, only more of those
+	static const TPair<FName, int32> Fallback[] = { { TEXT("danfo"), 22 }, { TEXT("sedan"), 20 }, { TEXT("keke"), 12 }, { TEXT("okada"), 12 }, { TEXT("suv"), 12 } };
+	const FZone* Found = Zones.Find(Zone);
+	TSet<FName> InUse;
+	for (const FCar& Car : Cars)
+	{
+		if (const ANHVehicle* V = Car.Vehicle.Get())
+		{
+			InUse.Add(V->VehicleType);
+		}
+	}
+	const bool bFull = InUse.Num() >= MaxModels;
+	TArray<TPair<FName, int32>> Mix;
+	for (const TPair<FName, int32>& M : (Found && Found->Vehicles.Num() ? TArrayView<const TPair<FName, int32>>(Found->Vehicles) : TArrayView<const TPair<FName, int32>>(Fallback)))
+	{
+		if (Data->Vehicles.Contains(M.Key) && !(bParked && M.Key == TEXT("truck")) && (!bFull || InUse.Contains(M.Key)))
+		{
+			Mix.Add(M);
+		}
+	}
 	int32 Total = 0;
 	for (const auto& M : Mix)
 	{
 		Total += M.Value;
 	}
-	for (int32 Try = 0; Try < 6; ++Try)
+	int32 Roll = Total > 0 ? FMath::RandRange(0, Total - 1) : 0;
+	for (const auto& M : Mix)
 	{
-		int32 Roll = FMath::RandRange(0, Total - 1);
-		for (const auto& M : Mix)
+		Roll -= M.Value;
+		if (Roll < 0)
 		{
-			Roll -= M.Value;
-			if (Roll < 0)
-			{
-				const FName Type(M.Key);
-				if (Data->Vehicles.Contains(Type) && !(bParked && Type == TEXT("truck")))
-				{
-					return Type;
-				}
-				break;
-			}
+			return M.Key;
 		}
 	}
-	return TEXT("sedan");
+	return InUse.Num() ? *InUse.CreateConstIterator() : FName(TEXT("sedan"));
+}
+
+void ANHTraffic::Retire(ANHVehicle* V)
+{
+	if (!V)
+	{
+		return;
+	}
+	// a sound one is put away under the map to come back as the next of its type; a wreck, or one too many, is destroyed
+	if (V->IsWrecked() || Pool.Num() >= 14)
+	{
+		V->Destroy();
+		return;
+	}
+	V->SetHeadlights(false);
+	V->SetTraffic(false);
+	V->SetActorHiddenInGame(true);
+	V->SetActorEnableCollision(false);
+	V->SetActorTickEnabled(false);
+	V->SetActorLocation(FVector(Pool.Num() * 1500.f, 0.f, -200000.f), false, nullptr, ETeleportType::TeleportPhysics);
+	Pool.Add(V);
 }
 
 ANHVehicle* ANHTraffic::Make(FName Type, const FVector2D& At, float Yaw, bool bBridge)
@@ -327,6 +484,29 @@ ANHVehicle* ANHTraffic::Make(FName Type, const FVector2D& At, float Yaw, bool bB
 		}
 	}
 	const FTransform T(FRotator(0.f, Yaw, 0.f), FVector(At.X, At.Y, Z));
+	for (int32 I = Pool.Num() - 1; I >= 0; --I)
+	{
+		ANHVehicle* Old = Pool[I];
+		if (!Old)
+		{
+			Pool.RemoveAtSwap(I);
+		}
+		else if (Old->VehicleType == Type)
+		{
+			// one from the pool: as it was made, mended, locked or not as the caller decides
+			Pool.RemoveAtSwap(I);
+			Old->SetActorLocationAndRotation(T.GetLocation(), T.GetRotation(), false, nullptr, ETeleportType::TeleportPhysics);
+			Old->Health = Old->MaxHealth;
+			Old->SetAlarm(0.f);
+			Old->bStolen = false;
+			Old->Lock = ENHLock::Unlocked;
+			Old->SetActorHiddenInGame(false);
+			Old->SetActorEnableCollision(true);
+			Old->SetActorTickEnabled(true);
+			++Reused;
+			return Old;
+		}
+	}
 	ANHVehicle* V = GetWorld()->SpawnActorDeferred<ANHVehicle>(ANHVehicle::StaticClass(), T, nullptr, nullptr, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
 	if (!V)
 	{
@@ -335,7 +515,12 @@ ANHVehicle* ANHTraffic::Make(FName Type, const FVector2D& At, float Yaw, bool bB
 	const FNHVehicleSpec& Spec = Data->Spec(Type);
 	V->VehicleType = Type;
 	V->Paint = Spec.Colors.Num() ? Spec.Colors[FMath::RandRange(0, Spec.Colors.Num() - 1)] : FLinearColor(0.5f, 0.5f, 0.5f);
-	V->Board = Type == TEXT("danfo") ? TEXT("OSHODI") : TEXT("");
+	// few models, many looks: every one a little more or less faded and sun-bleached than the last of its colour
+	FLinearColor Worn = V->Paint.LinearRGBToHSV();
+	Worn.G *= FMath::FRandRange(0.6f, 1.f);
+	Worn.B *= FMath::FRandRange(0.7f, 1.05f);
+	V->Paint = Worn.HSVToLinearRGB();
+	V->Board = Type != TEXT("danfo") ? FString() : Boards.Num() ? Boards[FMath::RandRange(0, Boards.Num() - 1)] : FString(TEXT("OSHODI"));
 	UGameplayStatics::FinishSpawningActor(V, T);
 	return V;
 }
@@ -355,7 +540,7 @@ ANHVehicle* ANHTraffic::MakeForHire(FName Type, const FVector2D& At, float Yaw)
 bool ANHTraffic::TrySpawn(const FVector2D& Player, bool bParked, float Near)
 {
 	TArray<FNHRoadSeg> Around;
-	Data->RoadsNear(Player, SpawnFar, Around);
+	Data->RoadsNear(Player, SpawnFar * 1.5f, Around);
 	if (Around.Num() == 0)
 	{
 		return false;
@@ -376,7 +561,10 @@ bool ANHTraffic::TrySpawn(const FVector2D& Player, bool bParked, float Near)
 		Car.Along = FMath::FRand() * FVector2D::Distance(NodeAt(Car.Seg, Car.Dir, false), NodeAt(Car.Seg, Car.Dir, true));
 		Rail(Car, Car.At, Car.Yaw);
 		const float Dist = FVector2D::Distance(Car.At, Player);
-		if (Dist < Near || Dist > SpawnFar)
+		// at speed the bubble reaches further ahead (up to half as far again) and nothing new is made behind
+		const float Speed = PlayerVelocity.Size();
+		const bool bAhead = FVector2D::DotProduct(Car.At - Player, PlayerVelocity) > 0.f;
+		if (Dist < Near || Dist > SpawnFar * (Speed > 800.f && bAhead ? 1.f + FMath::Min(Speed / 4000.f, 0.5f) : 1.f) || (Speed > 800.f && !bAhead && !bParked))
 		{
 			continue;
 		}
@@ -398,7 +586,8 @@ bool ANHTraffic::TrySpawn(const FVector2D& Player, bool bParked, float Near)
 		{
 			continue;
 		}
-		ANHVehicle* V = Make(RandomType(bParked), Car.At, Car.Yaw, Way.bBridge);
+		// an expressway carries the expressway's traffic wherever it runs; any other road, its zone's
+		ANHVehicle* V = Make(RandomType(bParked, Way.Class <= 1 ? FName(TEXT("expressway")) : ZoneAt(Car.At)), Car.At, Car.Yaw, Way.bBridge);
 		if (!V)
 		{
 			return false;
@@ -441,10 +630,17 @@ void ANHTraffic::Tidy(const FVector2D& Player)
 			Taken.Add(V);
 			Cars.RemoveAtSwap(I);
 		}
-		else if (FVector2D::Distance(Cars[I].At, Player) > RemoveBeyond)
+		else
 		{
-			V->Destroy();
-			Cars.RemoveAtSwap(I);
+			// left behind at speed, a vehicle goes at 60% of the distance; one ahead stays to the full one
+			const FVector2D To = Cars[I].At - Player;
+			const float Speed = PlayerVelocity.Size();
+			const bool bBehind = Speed > 800.f && FVector2D::DotProduct(To, PlayerVelocity) < 0.f;
+			if (To.Size() > RemoveBeyond * (bBehind ? 0.6f : 1.f + FMath::Min(Speed / 4000.f, 0.5f)))
+			{
+				Retire(V);
+				Cars.RemoveAtSwap(I);
+			}
 		}
 	}
 	for (int32 I = Taken.Num() - 1; I >= 0; --I)
@@ -473,6 +669,12 @@ void ANHTraffic::Tick(float DeltaSeconds)
 		return;
 	}
 	const FVector Player = Pawn->GetActorLocation();
+	PlayerVelocity = FVector2D(Pawn->GetVelocity());
+	if (const ANHVehicle* Mine = Cast<ANHVehicle>(Pawn))
+	{
+		PlayerVelocity = FVector2D(Mine->GetActorForwardVector()) * Mine->Speed; // a driven vehicle is carried, so its velocity is its own figure
+	}
+	LoadZones();
 	Tidy(FVector2D(Player));
 	for (FCar& Car : Cars)
 	{
@@ -505,7 +707,8 @@ void ANHTraffic::Tick(float DeltaSeconds)
 			}
 		}
 		const float Near = bFilled ? SpawnNear : 3500.f;
-		for (int32 N = 0; N < (bFilled ? 1 : 4) && NumMoving() < MaxMoving; ++N)
+		const int32 WantMoving = FMath::RoundToInt(MaxMoving * HourShare(0)); // fewer on the road at night, all of them at rush hour
+		for (int32 N = 0; N < (bFilled ? 1 : 4) && NumMoving() < WantMoving; ++N)
 		{
 			TrySpawn(FVector2D(Player), false, Near);
 		}
@@ -526,7 +729,7 @@ void ANHTraffic::Tick(float DeltaSeconds)
 				NumMoving(), Stopped, NumMoving() ? Sum / NumMoving() * 0.036f : 0.f, NumParked(), Driven / 100000.0, Made, Seated);
 			ReportTime = -1.f;
 		}
-		if (!bFilled && NumMoving() >= MaxMoving / 2)
+		if (!bFilled && NumMoving() >= WantMoving / 2)
 		{
 			bFilled = true;
 			UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: traffic: %d moving and %d parked vehicles around the player"), NumMoving(), NumParked());

@@ -97,6 +97,21 @@ bool ANHPerson::BuildBody(int32 Seed, const FLinearColor& Top, float Scale)
 		return false;
 	}
 	FString Who = Have[FMath::Min(static_cast<int32>(Rand(Seed, 5) * Have.Num()), Have.Num() - 1)];
+	if (Part == ENHCast::Lagosian)
+	{
+		TArray<FString> Local;
+		for (const TCHAR* Name : { TEXT("Tunde"), TEXT("Dayo"), TEXT("Emeka"), TEXT("Amaka"), TEXT("Zainab"), TEXT("Ngozi") })
+		{
+			if (Have.Contains(Name))
+			{
+				Local.Add(Name);
+			}
+		}
+		if (Local.Num() > 0)
+		{
+			Who = Local[FMath::Min(static_cast<int32>(Rand(Seed, 5) * Local.Num()), Local.Num() - 1)];
+		}
+	}
 	if (Part == ENHCast::Man)
 	{
 		// area boys and the Task Force are Lagos men: the Nigerian men the project has, each in turn
@@ -120,7 +135,7 @@ bool ANHPerson::BuildBody(int32 Seed, const FLinearColor& Top, float Scale)
 	}
 	if (Part != ENHCast::Anyone)
 	{
-		static const TCHAR* Parts[] = { TEXT("anyone"), TEXT("a man"), TEXT("a woman"), TEXT("an elderly man") };
+		static const TCHAR* Parts[] = { TEXT("anyone"), TEXT("a Lagosian"), TEXT("a man"), TEXT("a woman"), TEXT("an elderly man") };
 		UE_LOG(LogNHGame, Verbose, TEXT("NAIJA HUSTLE: cast as %s: %s"), Parts[static_cast<int32>(Part)], *Who);
 	}
 	const auto Clip = [&Who](const TCHAR* Path) -> UAnimSequence*
