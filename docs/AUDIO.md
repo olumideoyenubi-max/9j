@@ -149,7 +149,12 @@ for the machete.
   kind: carries 320 m, nothing muffles it). The bullet's knock is heard where the camera was pointing, up to 150 m.
 - **Checked** by `Scripts/mac.sh play -NHWeaponTest`: 3 pistol shots, a second of AK-47, 2 machete swings, recorded
   as `docs/clips/weapons-pistol-ak47-machete.m4a`.
-- **Not yet:** damage, anybody reacting, wanted stars for shooting, ammunition and reloads, shell casings,
+- **Damage:** a bullet takes 45 (pistol) or 38 (AK-47) of a person's 100, the machete 60; at nothing they fall,
+  lie there half a minute and are gone. Everybody within 45 m of a gunshot runs, some with a shout; a blade only
+  scares those within 15 m. Vehicles lose 6, 9 or 4 of their health and are wrecks at nothing. Baba Driver cannot be
+  hurt. Wanted stars: a little for every shot, more for a hit, most for a death. Checked by
+  `Scripts/mac.sh play -NHDamageTest`: 2 s of AK-47 into 12 passers-by gave 6 hits, 2 down, 10 running, 5 stars.
+- **Not yet:** anybody fighting back or police arriving, ammunition and reloads, shell casings,
   ricochets, different knocks for different surfaces, aiming, recoil, animations (the arm does not move; the
   machete itself chops), any of it on a gamepad. These are stand-ins for recorded and designed sounds.
 

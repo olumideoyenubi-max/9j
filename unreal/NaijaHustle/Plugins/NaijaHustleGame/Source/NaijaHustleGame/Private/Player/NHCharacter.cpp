@@ -1,6 +1,11 @@
 #include "Player/NHCharacter.h"
 
 #include "World/NHShapes.h"
+#include "EngineUtils.h"
+#include "UI/NHHUD.h"
+#include "Vehicles/NHVehicle.h"
+#include "Core/NHHustleSubsystem.h"
+#include "Gameplay/NHPerson.h"
 #include "Audio/NHAudioSubsystem.h"
 #include "Components/PointLightComponent.h"
 
@@ -286,9 +291,22 @@ void ANHCharacter::Attack()
 	const FVector Spread = FMath::VRandCone(Aim.Vector(), FMath::DegreesToRadians(bRifle ? 1.6f : 0.8f));
 	FCollisionQueryParams Query(SCENE_QUERY_STAT(NHShot), false, this);
 	FHitResult Hit;
-	if (GetWorld()->LineTraceSingleByChannel(Hit, From, From + Spread * 15000.f, ECC_Visibility, Query) && Audio)
+	const bool bWall = GetWorld()->LineTraceSingleByChannel(Hit, From, From + Spread * 15000.f, ECC_Visibility, Query);
+	// people do not stop rays (their bodies have no collision), so they are looked for along the bullet's line up to whatever it hit
+	float Reach = 0.f;
+	if (ANHPerson* Person = ANHPerson::OnRay(GetWorld(), From, Spread, bWall ? Hit.Distance : 15000.f, Reach))
 	{
-		Audio->PlayShot(ENHShot::BulletHit, Hit.ImpactPoint, ENHSoundKind::Impact);
+		Land(Person, nullptr, From + Spread * Reach, bRifle ? 38.f : 45.f, 0.f, false);
+	}
+	else if (bWall)
+	{
+		Land(nullptr, Hit.GetActor(), Hit.ImpactPoint, 0.f, bRifle ? 9.f : 6.f, false);
+	}
+	// a gun going off: everybody within 45 m runs, and it is noticed
+	ANHPerson::ScareAround(GetWorld(), GetActorLocation(), 4500.f);
+	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this))
+	{
+		Hustle->AddHeat(0.12f);
 	}
 	if (!MuzzleFlash)
 	{
@@ -308,14 +326,74 @@ void ANHCharacter::SwingLand()
 {
 	// half way through the swing: anything within arm's and blade's reach in front rings
 	bSwingLanded = true;
-	const FVector From = GetActorLocation() + FVector(0.f, 0.f, 30.f);
+	const FVector From = GetActorLocation() + FVector(0.f, 0.f, 30.f), Ahead = GetActorForwardVector();
+	// a person within reach in front first (their bodies stop no rays), then anything solid
+	ANHPerson* Near = nullptr;
+	float NearSq = FMath::Square(170.f);
+	for (TActorIterator<ANHPerson> It(GetWorld()); It; ++It)
+	{
+		const FVector To = It->GetActorLocation() - GetActorLocation();
+		if (!It->IsDown() && To.SizeSquared2D() < NearSq && FVector::DotProduct(To.GetSafeNormal2D(), Ahead) > 0.5f)
+		{
+			NearSq = To.SizeSquared2D();
+			Near = *It;
+		}
+	}
 	FCollisionQueryParams Query(SCENE_QUERY_STAT(NHSwing), false, this);
 	FHitResult Hit;
-	if (GetWorld()->SweepSingleByChannel(Hit, From, From + GetActorForwardVector() * 130.f, FQuat::Identity, ECC_Visibility, FCollisionShape::MakeSphere(25.f), Query))
+	if (Near)
 	{
-		if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this))
+		Land(Near, nullptr, Near->GetActorLocation() + FVector(0.f, 0.f, 120.f), 60.f, 0.f, true);
+	}
+	else if (GetWorld()->SweepSingleByChannel(Hit, From, From + Ahead * 130.f, FQuat::Identity, ECC_Visibility, FCollisionShape::MakeSphere(25.f), Query))
+	{
+		Land(nullptr, Hit.GetActor(), Hit.ImpactPoint, 0.f, 4.f, true);
+	}
+}
+
+void ANHCharacter::Land(ANHPerson* Person, AActor* Other, const FVector& At, float PersonDamage, float VehicleDamage, bool bBlade)
+{
+	UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	if (Person)
+	{
+		const bool bKilled = Person->Hurt(PersonDamage, GetActorLocation());
+		if (Audio)
 		{
-			Audio->PlayShot(ENHShot::MacheteHit, Hit.ImpactPoint, ENHSoundKind::Impact);
+			Audio->PlayShot(ENHShot::BodyHit, At, ENHSoundKind::Impact);
+		}
+		if (!Person->bEssential)
+		{
+			++PeopleHit;
+			PeopleDown += bKilled ? 1 : 0;
+			if (Hustle)
+			{
+				Hustle->AddHeat(bKilled ? 1.5f : 0.6f); // hurting somebody is a star; killing them is more
+			}
+			if (bBlade)
+			{
+				ANHPerson::ScareAround(GetWorld(), GetActorLocation(), 1500.f); // a blade is quiet: only those who see it run
+			}
+		}
+		return;
+	}
+	if (Audio)
+	{
+		Audio->PlayShot(bBlade ? ENHShot::MacheteHit : ENHShot::BulletHit, At, ENHSoundKind::Impact);
+	}
+	if (ANHVehicle* Car = Cast<ANHVehicle>(Other))
+	{
+		// the same health a crash takes from: at nothing the vehicle is a wreck and will not drive
+		const bool bWas = Car->IsWrecked();
+		Car->Health = FMath::Max(0.f, Car->Health - VehicleDamage);
+		++VehiclesHit;
+		if (Hustle)
+		{
+			Hustle->AddHeat(0.2f);
+		}
+		if (!bWas && Car->IsWrecked())
+		{
+			ANHHUD::Toast(this, FString::Printf(TEXT("The %s is wrecked"), *Car->DisplayName()), 2);
 		}
 	}
 }

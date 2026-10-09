@@ -15,6 +15,8 @@ enum class ENHShot : uint8
 	RifleTail,
 	/** A bullet arriving: a dull knock and grit */
 	BulletHit,
+	/** A bullet or a blade arriving in somebody: dull, no ring */
+	BodyHit,
 	MacheteSwing,
 	/** The blade on something hard */
 	MacheteHit,

@@ -64,6 +64,11 @@ void ANHPlayerController::BeginPlay()
 	}
 #endif
 
+	if (FParse::Param(FCommandLine::Get(), TEXT("NHDamageTest")))
+	{
+		FTimerHandle Start;
+		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { DamageTestStep(0); }), 8.f, false);
+	}
 	if (FParse::Param(FCommandLine::Get(), TEXT("NHWeaponTest")))
 	{
 		FTimerHandle Start;
@@ -548,6 +553,81 @@ void ANHPlayerController::NHRadio(const FString& What)
 		}
 		Audio->RadioNextStation(Car);
 	}
+}
+
+void ANHPlayerController::DamageTestStep(int32 Step)
+{
+	// -NHDamageTest: a dozen passers-by stood in front of the player, two seconds of AK-47 into them, then the machete on whoever is nearest
+	ANHCharacter* C = Cast<ANHCharacter>(GetPawn());
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	if (!C || !Hustle)
+	{
+		ConsoleCommand(TEXT("quit"));
+		return;
+	}
+	const auto Count = [this](int32& Standing, int32& Down, int32& Fleeing)
+	{
+		Standing = Down = Fleeing = 0;
+		for (TActorIterator<ANHPerson> It(GetWorld()); It; ++It)
+		{
+			Down += It->IsDown() ? 1 : 0;
+			Fleeing += It->IsFleeing() ? 1 : 0;
+			Standing += !It->IsDown() ? 1 : 0;
+		}
+	};
+	int32 Standing = 0, Down = 0, Fleeing = 0;
+	float Wait = 1.f;
+	switch (Step)
+	{
+	case 0:
+		Hustle->ClearHeat();
+		NHPeople(12, 500.f);
+		SetControlRotation(FRotator(0.f, C->GetActorRotation().Yaw, 0.f));
+		C->Equip(TEXT("ak47"));
+		Wait = 1.5f;
+		break;
+	case 1:
+		Count(Standing, Down, Fleeing);
+		UE_LOG(LogNHGame, Log, TEXT("[damagetest] before: %d people standing, %d running, %d stars"), Standing, Fleeing, Hustle->Stars());
+		C->SetTrigger(true);
+		Wait = 2.f;
+		break;
+	case 2:
+		C->SetTrigger(false);
+		Count(Standing, Down, Fleeing);
+		UE_LOG(LogNHGame, Log, TEXT("[damagetest] after 2 s of AK-47 (%d shots): %d hits on people, %d down, %d standing of whom %d running; %d hits on vehicles; %d stars"),
+			C->Attacks, C->PeopleHit, Down, Standing, Fleeing, C->VehiclesHit, Hustle->Stars());
+		break;
+	case 3:
+	{
+		// somebody new right in front, and the machete
+		C->Equip(TEXT("machete"));
+		if (ANHPerson* Person = GetWorld()->SpawnActor<ANHPerson>(ANHPerson::StaticClass(), C->GetActorLocation() + C->GetActorForwardVector() * 110.f, FRotator::ZeroRotator))
+		{
+			Person->Init(977, FLinearColor(0.8f, 0.2f, 0.2f));
+			Person->LifeLeft = 60.f;
+		}
+		C->PeopleHit = C->PeopleDown = 0;
+		Wait = 0.8f;
+		break;
+	}
+	case 4: case 6: C->SetTrigger(true); Wait = 0.1f; break;
+	case 5: C->SetTrigger(false); Wait = 0.7f; break;
+	case 7:
+		C->SetTrigger(false);
+		Wait = 0.8f;
+		break;
+	case 8:
+		UE_LOG(LogNHGame, Log, TEXT("[damagetest] machete, two swings at somebody 1.1 m away: %d hits, %d down; %d stars"), C->PeopleHit, C->PeopleDown, Hustle->Stars());
+		Hustle->ClearHeat();
+		C->Equip(NAME_None);
+		break;
+	default:
+		ConsoleCommand(TEXT("quit"));
+		return;
+	}
+	FTimerHandle Next;
+	GetWorldTimerManager().SetTimer(Next, FTimerDelegate::CreateWeakLambda(this, [this, Step] { DamageTestStep(Step + 1); }), Wait, false);
 }
 
 void ANHPlayerController::WeaponTestStep(int32 Step)

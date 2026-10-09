@@ -94,6 +94,8 @@ public:
 	void SetTrigger(bool bHeld);
 	/** Shots fired and swings made since the level began, for tests */
 	int32 Attacks = 0;
+	/** People hit, people put down and vehicles hit since the level began, for tests */
+	int32 PeopleHit = 0, PeopleDown = 0, VehiclesHit = 0;
 	void ToggleTorch();
 	bool TorchOn() const;
 
@@ -156,6 +158,8 @@ private:
 	float FlashLeft = 0.f;
 	void Attack();
 	void SwingLand();
+	/** What a hit does: to a person (hurt, down, the street's reaction, the police's interest) or to a vehicle */
+	void Land(class ANHPerson* Person, AActor* Other, const FVector& At, float PersonDamage, float VehicleDamage, bool bBlade);
 	UPROPERTY() TObjectPtr<class USpotLightComponent> Torch;
 	UPROPERTY() TObjectPtr<UNHOutfitComponent> Outfit;
 	bool bFrontShown = false;

@@ -1,5 +1,8 @@
 #include "Gameplay/NHPerson.h"
 
+#include "EngineUtils.h"
+#include "UI/NHHUD.h"
+
 #include "Animation/AnimSequence.h"
 #include "Characters/NHOutfitComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -128,8 +131,98 @@ bool ANHPerson::BuildBody(int32 Seed, const FLinearColor& Top, bool bWoman, floa
 	return true;
 }
 
+bool ANHPerson::Hurt(float Damage, const FVector& From)
+{
+	if (bDown)
+	{
+		return false;
+	}
+	if (bEssential)
+	{
+		ANHHUD::Floater(this, GetActorLocation() + FVector(0.f, 0.f, 200.f), TEXT("You dey craze?!"));
+		return false;
+	}
+	Health -= Damage;
+	if (Health > 0.f)
+	{
+		Scare(From);
+		return false;
+	}
+	// down: falls where they stand, lies there half a minute, and is gone
+	bDown = true;
+	bWalking = false;
+	bWaving = false;
+	FleeLeft = 0.f;
+	LifeLeft = 30.f;
+	if (Body)
+	{
+		Body->Stop();
+	}
+	return true;
+}
+
+void ANHPerson::Scare(const FVector& From)
+{
+	if (bDown || bEssential)
+	{
+		return;
+	}
+	static const TCHAR* Cries[] = { TEXT("Ye!"), TEXT("Jesu!"), TEXT("Gunshot o!"), TEXT("Run o!"), TEXT("E don happen!"), TEXT("Chineke!"), TEXT("Wayo!") };
+	if (FleeLeft <= 0.f && FMath::RandRange(0, 2) == 0)
+	{
+		ANHHUD::Floater(this, GetActorLocation() + FVector(0.f, 0.f, 200.f), Cries[FMath::RandRange(0, UE_ARRAY_COUNT(Cries) - 1)]);
+	}
+	// straight away from it, give or take, at a run
+	FVector Away = GetActorLocation() - From;
+	Away.Z = 0.f;
+	Away = Away.GetSafeNormal(1.f, GetActorForwardVector()).RotateAngleAxis(FMath::FRandRange(-35.f, 35.f), FVector::UpVector);
+	FleeLeft = FMath::FRandRange(6.f, 9.f);
+	Target = GetActorLocation() + Away * 6000.f;
+	WalkSpeed = FMath::FRandRange(380.f, 470.f);
+	bWalking = true;
+	bWaving = false;
+}
+
+ANHPerson* ANHPerson::OnRay(const UWorld* World, const FVector& From, const FVector& Direction, float MaxDistance, float& OutDistance)
+{
+	ANHPerson* Best = nullptr;
+	OutDistance = MaxDistance;
+	for (TActorIterator<ANHPerson> It(World); It; ++It)
+	{
+		if (It->bDown)
+		{
+			continue;
+		}
+		// the body as an upright line from the feet to the top of the head: how near the ray passes to it
+		const FVector Feet = It->GetActorLocation();
+		FVector OnRayPoint, OnBody;
+		FMath::SegmentDistToSegmentSafe(From, From + Direction * OutDistance, Feet + FVector(0.f, 0.f, 15.f), Feet + FVector(0.f, 0.f, 175.f), OnRayPoint, OnBody);
+		if (FVector::DistSquared(OnRayPoint, OnBody) < FMath::Square(35.f))
+		{
+			OutDistance = FVector::Dist(From, OnRayPoint);
+			Best = *It;
+		}
+	}
+	return Best;
+}
+
+void ANHPerson::ScareAround(const UWorld* World, const FVector& At, float Radius)
+{
+	for (TActorIterator<ANHPerson> It(World); It; ++It)
+	{
+		if (FVector::DistSquared(It->GetActorLocation(), At) < FMath::Square(Radius))
+		{
+			It->Scare(At);
+		}
+	}
+}
+
 void ANHPerson::WalkTo(const FVector& InTarget, float Speed)
 {
+	if (bDown || FleeLeft > 0.f)
+	{
+		return; // not going anywhere they are told to just now
+	}
 	Target = InTarget;
 	WalkSpeed = Speed;
 	bWalking = true;
@@ -165,6 +258,22 @@ void ANHPerson::Tick(float DeltaSeconds)
 		{
 			Destroy();
 			return;
+		}
+	}
+	if (bDown && FallK < 1.f)
+	{
+		// over backwards in a third of a second
+		FallK = FMath::Min(1.f, FallK + DeltaSeconds * 3.f);
+		FRotator Lie = GetActorRotation();
+		Lie.Pitch = 88.f * FMath::Sin(FallK * UE_HALF_PI);
+		SetActorRotation(Lie);
+	}
+	if (FleeLeft > 0.f)
+	{
+		FleeLeft -= DeltaSeconds;
+		if (FleeLeft <= 0.f)
+		{
+			bWalking = false;
 		}
 	}
 	float Swing = 0.f;

@@ -62,6 +62,10 @@ void ANHGameDirector::BeginPlay()
 	Baba = GetWorld()->SpawnActor<ANHPerson>(ANHPerson::StaticClass(), Ground(D->Park + FVector2D(275.f, -150.f)), FRotator::ZeroRotator);
 	if (Baba.IsValid())
 	{
+		Baba->bEssential = true; // the first mission cannot go on without him
+	}
+	if (Baba.IsValid())
+	{
 		Baba->Init(7, FLinearColor(0.32f, 0.17f, 0.08f), false, 1.05f);
 	}
 	if (!Hustle->IsDone(NHDir::FirstDay))

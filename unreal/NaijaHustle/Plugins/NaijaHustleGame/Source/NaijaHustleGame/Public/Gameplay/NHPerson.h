@@ -38,6 +38,20 @@ public:
 
 	virtual void Tick(float DeltaSeconds) override;
 
+	// ---- being shot at, cut, or near it
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Health = 100.f;
+	/** Somebody the story cannot go on without (Baba Driver): cannot be hurt and does not run */
+	bool bEssential = false;
+	bool IsDown() const { return bDown; }
+	bool IsFleeing() const { return FleeLeft > 0.f; }
+	/** Takes the damage; runs from where it came from if still standing. True if this is what put them down. */
+	bool Hurt(float Damage, const FVector& From);
+	/** Runs away from there for a few seconds, sometimes with a shout */
+	void Scare(const FVector& From);
+	/** The nearest standing person a ray passes through (within 35 cm of the body), nearer than MaxDistance; where along the ray in OutDistance */
+	static ANHPerson* OnRay(const UWorld* World, const FVector& From, const FVector& Direction, float MaxDistance, float& OutDistance);
+	/** Everybody standing within Radius of a point runs from it */
+	static void ScareAround(const UWorld* World, const FVector& At, float Radius);
 	/** Seconds until it removes itself (0 = never) */
 	float LifeLeft = 0.f;
 
@@ -61,6 +75,8 @@ private:
 	UPROPERTY() TObjectPtr<UAnimSequence> IdleClip;
 	UPROPERTY() TObjectPtr<UAnimSequence> WalkClip;
 	bool bWalkShown = false;
+	bool bDown = false;
+	float FleeLeft = 0.f, FallK = 0.f;
 	bool BuildBody(int32 Seed, const FLinearColor& Top, bool bWoman, float Scale);
 	void SnapToGround();
 };

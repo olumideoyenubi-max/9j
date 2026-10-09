@@ -108,6 +108,20 @@ namespace NHWeaponSounds
 			Gain = 0.6f;
 			break;
 		}
+		case ENHShot::BodyHit:
+		{
+			const int32 N = Rate * 16 / 100;
+			Out.SetNumZeroed(N);
+			double Phase = 0.0;
+			for (int32 I = 0; I < N; ++I)
+			{
+				const float T = static_cast<float>(I) / Rate;
+				Phase += 2.0 * UE_DOUBLE_PI * FMath::Lerp(55.f, 110.f * Vary, Decay(T, 0.02f)) / Rate;
+				Out[I] = FMath::Sin(Phase) * Decay(T, 0.035f) * 1.2f + V.LowPass(V.Noise(), 700.f) * Decay(T, 0.02f) * 1.5f;
+			}
+			Gain = 0.6f;
+			break;
+		}
 		case ENHShot::MacheteSwing:
 		{
 			const int32 N = Rate * 28 / 100;
