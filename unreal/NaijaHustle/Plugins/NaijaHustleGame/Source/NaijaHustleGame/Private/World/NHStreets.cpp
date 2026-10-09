@@ -202,6 +202,24 @@ FString ANHStreets::PlaceName(const FVector2D& At) const
 }
 
 // ------------------------------------------------------------------------------------------------- the banner
+void ANHStreets::StreetsIn(const FVector2D& Min, const FVector2D& Max, TArray<int32>& Out) const
+{
+	const FIntPoint A = NHStreetData::CellOf(Min), B = NHStreetData::CellOf(Max);
+	for (int32 CX = A.X; CX <= B.X; ++CX)
+	{
+		for (int32 CY = A.Y; CY <= B.Y; ++CY)
+		{
+			if (const TArray<FIntPoint>* Segments = Cells.Find(FIntPoint(CX, CY)))
+			{
+				for (const FIntPoint& Segment : *Segments)
+				{
+					Out.AddUnique(Segment.X);
+				}
+			}
+		}
+	}
+}
+
 void ANHStreets::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);

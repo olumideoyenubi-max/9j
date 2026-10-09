@@ -10,6 +10,7 @@
 #include "UI/NHHUD.h"
 #include "Vehicles/NHCarTheft.h"
 #include "Vehicles/NHTraffic.h"
+#include "World/NHStreetScatter.h"
 #include "World/NHStreets.h"
 
 ANHGameMode::ANHGameMode()
@@ -41,6 +42,10 @@ void ANHGameMode::StartPlay()
 	{
 		GetWorld()->SpawnActor<ANHTraffic>(ANHTraffic::StaticClass(), FTransform::Identity);
 		GetWorld()->SpawnActor<ANHStreets>(ANHStreets::StaticClass(), FTransform::Identity); // real street names: banner, signs, map labels
+		if (!FParse::Param(FCommandLine::Get(), TEXT("NHNoScatter"))) // -NHNoScatter: without, to measure what it costs
+		{
+			GetWorld()->SpawnActor<ANHStreetScatter>(ANHStreetScatter::StaticClass(), FTransform::Identity); // street clutter round the player
+		}
 	}
 	if (!ANHGameDirector::Get(this))
 	{

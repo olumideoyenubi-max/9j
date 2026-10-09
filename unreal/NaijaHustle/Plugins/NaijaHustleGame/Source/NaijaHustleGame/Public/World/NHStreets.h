@@ -43,6 +43,13 @@ public:
 	void DrawNames(AHUD* Hud, float X, float Y, float Size, const FVector2D& Corner, float Span, int32 MaxNames, float Scale) const;
 
 	int32 NumStreets() const { return Streets.Num(); }
+	// ---- for systems that lay things along streets (the scatter)
+	const TArray<FVector2D>& StreetPoints(int32 Index) const { return Streets[Index].Points; }
+	float StreetWidth(int32 Index) const { return Streets[Index].Width; }
+	/** 0 motorway .. 4 tertiary, 5 unclassified, 6 residential, 7 living street, 8 service, 9 track */
+	int32 StreetRank(int32 Index) const { return Streets[Index].Rank; }
+	/** The streets with a segment in the 200 m cells touching the square from Min to Max */
+	void StreetsIn(const FVector2D& Min, const FVector2D& Max, TArray<int32>& Out) const;
 	/** For scripted screenshots: says the current street's name again */
 	void DebugRepeatBanner() { Current.Reset(); }
 	int32 NumSigns() const { return Signs.Num(); }

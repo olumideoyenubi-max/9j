@@ -2,7 +2,10 @@
 
 Run inside the Unreal Editor (Scripts/mac.sh script <this file>) after Scripts/build_kit.py, and after the surface
 library (import_surfaces.py) and the trim sheets (import_trims_decals.py), whose materials the kit uses.
-Environment variable:  NH_KIT   the folder of .glb pieces (default ~/Downloads/nh-kit)
+Environment variables:
+  NH_KIT_SET   "kit" (default) or "props": the street props of build_props.py, which go to /Game/NaijaHustle/Props as
+               SM_Prop_<Name> with their own few materials (M_NH_PropFlat takes each prop's colour from the scatter)
+  NH_KIT       the folder of .glb pieces (default ~/Downloads/nh-kit, or nh-props)
 
 What it makes, under /Game/NaijaHustle/Kit (generated, not stored in the repo):
   SM_Kit_<Piece>     the pieces. They carry no collision: the generator gives each wall one plain box instead
@@ -16,8 +19,11 @@ import json
 import os
 import unreal
 
-SRC = os.environ.get("NH_KIT", os.path.join(os.path.expanduser("~"), "Downloads", "nh-kit"))
-ROOT = "/Game/NaijaHustle/Kit"
+PROPS = os.environ.get("NH_KIT_SET", "kit") == "props"
+SRC = os.environ.get("NH_KIT", os.path.join(os.path.expanduser("~"), "Downloads", "nh-props" if PROPS else "nh-kit"))
+ROOT = "/Game/NaijaHustle/Props" if PROPS else "/Game/NaijaHustle/Kit"
+PREFIX = "SM_Prop_" if PROPS else "SM_Kit_"
+SOLID = ["Kiosk", "Drum", "Generator"]      # props you cannot walk or drive through: a box each
 SURFACES = "/Game/NaijaHustle/Surfaces"
 
 tools = unreal.AssetToolsHelpers.get_asset_tools()
@@ -51,6 +57,48 @@ def flat_master():
     mel.recompile_material(mat)
     eal.save_loaded_asset(mat, only_if_is_dirty=False)
     return mat
+
+
+def prop_master():
+    """A plain colour multiplied by the colour the scatter gives each prop (per-instance custom data 0 to 2)"""
+    path = ROOT + "/M_NH_PropFlat"
+    if eal.does_asset_exist(path):
+        mat = eal.load_asset(path)
+        mel.delete_all_material_expressions(mat)
+    else:
+        mat = tools.create_asset("M_NH_PropFlat", ROOT, unreal.Material, unreal.MaterialFactoryNew())
+    colour = mel.create_material_expression(mat, unreal.MaterialExpressionVectorParameter, -600, 0)
+    colour.set_editor_property("parameter_name", "Colour")
+    colour.set_editor_property("default_value", unreal.LinearColor(1, 1, 1, 1))
+    own = mel.create_material_expression(mat, unreal.MaterialExpressionPerInstanceCustomData3Vector, -600, 200)
+    own.set_editor_property("data_index", 0)
+    own.set_editor_property("const_default_value", unreal.LinearColor(1, 1, 1, 1))
+    both = mel.create_material_expression(mat, unreal.MaterialExpressionMultiply, -300, 100)
+    mel.connect_material_expressions(colour, "", both, "A")
+    mel.connect_material_expressions(own, "", both, "B")
+    mel.connect_material_property(both, "", MP.MP_BASE_COLOR)
+    for name, value, prop, y in (("Roughness", 0.5, MP.MP_ROUGHNESS, 400), ("Metallic", 0.0, MP.MP_METALLIC, 550)):
+        node = mel.create_material_expression(mat, unreal.MaterialExpressionScalarParameter, -600, y)
+        node.set_editor_property("parameter_name", name)
+        node.set_editor_property("default_value", value)
+        mel.connect_material_property(node, "", prop)
+    mel.set_material_usage(mat, unreal.MaterialUsage.MATUSAGE_INSTANCED_STATIC_MESHES)
+    mel.recompile_material(mat)
+    eal.save_loaded_asset(mat, only_if_is_dirty=False)
+    return mat
+
+
+def prop_materials():
+    """Props borrow the kit's plain materials and add two that take the scatter's colour"""
+    kit = "/Game/NaijaHustle/Kit/"
+    own = prop_master()
+    surface = lambda name: eal.load_asset(f"{SURFACES}/MI_{name}")
+    return {
+        "Plastic": instance("MI_Prop_Plastic", own, {"Roughness": 0.35}), "Paint": instance("MI_Prop_Paint", own, {"Roughness": 0.5, "Metallic": 0.4}),
+        "Weed": instance("MI_Prop_Weed", eal.load_asset(kit + "M_NH_KitFlat"), {"Roughness": 0.8}, (0.06, 0.1, 0.03)),
+        "Dark": eal.load_asset(kit + "MI_Kit_Dark"), "Appliance": eal.load_asset(kit + "MI_Kit_Appliance"), "Concrete": eal.load_asset(kit + "MI_Kit_Concrete"),
+        "Zinc": eal.load_asset(kit + "MI_Kit_RoofZinc"), "Wood": instance("MI_Prop_Wood", surface("Planks_Weathered"), {"Grime": 0.2, "RainStreaks": 0.0, "Tiling": 1.0}),
+    }
 
 
 def instance(name, parent, scalars=None, colour=None):
@@ -87,7 +135,7 @@ def materials():
 
 def import_piece(name, mats):
     scratch = f"{ROOT}/_Import/{name}"
-    dest = f"{ROOT}/SM_Kit_{name}"
+    dest = f"{ROOT}/{PREFIX}{name}"
     if eal.does_directory_exist(scratch):
         eal.delete_directory(scratch)
     task = unreal.AssetImportTask()
@@ -112,6 +160,8 @@ def import_piece(name, mats):
             mesh.set_material(i, mats[key])
         else:
             missing.append(slot_name)
+    if PROPS and name in SOLID:
+        unreal.get_editor_subsystem(unreal.StaticMeshEditorSubsystem).add_simple_collisions(mesh, unreal.ScriptingCollisionShapeType.BOX)
     eal.save_loaded_asset(mesh, only_if_is_dirty=False)
     eal.delete_directory(scratch)
     box = mesh.get_bounding_box()
@@ -121,10 +171,10 @@ def import_piece(name, mats):
 
 with open(os.path.join(SRC, "kit.json"), encoding="utf-8") as fh:
     KIT = json.load(fh)
-MATS = materials()
+MATS = prop_materials() if PROPS else materials()
 lost = [k for k, v in MATS.items() if v is None]
 if lost:
-    say("materials not found (run import_surfaces.py and import_trims_decals.py first): " + ", ".join(lost))
+    say("materials not found (run import_surfaces.py, import_trims_decals.py and, for props, the kit first): " + ", ".join(lost))
 done = 0
 with unreal.ScopedSlowTask(len(KIT["pieces"]), "Importing the building kit") as slow:
     for piece in KIT["pieces"]:
