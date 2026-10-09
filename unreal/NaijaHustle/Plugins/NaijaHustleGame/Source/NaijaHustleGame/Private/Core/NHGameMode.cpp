@@ -1,6 +1,7 @@
 #include "Core/NHGameMode.h"
 
 #include "Core/NHGameData.h"
+#include "Core/NHNetState.h"
 #include "EngineUtils.h"
 #include "Gameplay/NHGameDirector.h"
 #include "Player/NHCharacter.h"
@@ -15,6 +16,8 @@ ANHGameMode::ANHGameMode()
 	DefaultPawnClass = ANHCharacter::StaticClass();
 	PlayerControllerClass = ANHPlayerController::StaticClass();
 	HUDClass = ANHHUD::StaticClass();
+	GameStateClass = ANHGameState::StaticClass();   // the clock and the sky, for everybody
+	PlayerStateClass = ANHPlayerState::StaticClass(); // each player's money and wanted level, owned by the server
 }
 
 void ANHGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)

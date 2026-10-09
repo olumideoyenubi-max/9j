@@ -81,6 +81,11 @@ public:
 	FOnEarn OnEarn;
 
 	static FString Naira(int32 Amount);
+	/**
+	 * False on a machine that has joined somebody else's game. There the numbers here are only a copy of what the
+	 * server says (ANHPlayerState, ANHGameState): Earn, AddHeat, ClearHeat, the clock and Save do nothing.
+	 */
+	bool IsAuthority() const;
 
 private:
 	float HeatTimer = 0.f;

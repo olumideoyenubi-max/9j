@@ -31,13 +31,25 @@ UNHHustleSubsystem* UNHHustleSubsystem::Get(const UObject* WorldContext)
 	return GI ? GI->GetSubsystem<UNHHustleSubsystem>() : nullptr;
 }
 
+bool UNHHustleSubsystem::IsAuthority() const
+{
+	const UWorld* World = GetGameInstance() ? GetGameInstance()->GetWorld() : nullptr;
+	return !World || World->GetNetMode() != NM_Client;
+}
+
 void UNHHustleSubsystem::Earn(int32 Amount, const FString& Why)
 {
 	if (Amount == 0)
 	{
 		return;
 	}
+	if (!IsAuthority())
+	{
+		UE_LOG(LogNHGame, Warning, TEXT("MONEY refused on a client: %+d (%s). Only the server pays."), Amount, *Why);
+		return;
+	}
 	Cash += Amount;
+	UE_LOG(LogNHGame, Log, TEXT("MONEY player=host %+d (%s) balance=%d"), Amount, *Why, Cash);
 	FNHLedgerEntry E;
 	E.Minutes = Minutes;
 	E.Amount = Amount;
@@ -57,18 +69,30 @@ int32 UNHHustleSubsystem::Stars() const
 
 void UNHHustleSubsystem::AddHeat(float Amount)
 {
+	if (!IsAuthority())
+	{
+		return;
+	}
 	Heat = FMath::Min(5.f, Heat + Amount);
 	HeatTimer = 0.f;
 }
 
 void UNHHustleSubsystem::ClearHeat()
 {
+	if (!IsAuthority())
+	{
+		return;
+	}
 	Heat = 0.f;
 	HeatTimer = 0.f;
 }
 
 void UNHHustleSubsystem::TickHeat(float DeltaSeconds, bool bSeen)
 {
+	if (!IsAuthority())
+	{
+		return;
+	}
 	if (Stars() <= 0)
 	{
 		Heat = 0.f;
@@ -89,6 +113,10 @@ void UNHHustleSubsystem::TickHeat(float DeltaSeconds, bool bSeen)
 
 void UNHHustleSubsystem::TickClock(float DeltaSeconds, float Scale)
 {
+	if (!IsAuthority())
+	{
+		return; // the server's clock arrives through ANHGameState
+	}
 	const UNHGameData* Data = GetGameInstance()->GetSubsystem<UNHGameData>();
 	Minutes += DeltaSeconds * (Data ? Data->ClockMinutesPerSecond : 2.f) * Scale;
 }
@@ -108,6 +136,10 @@ FString UNHHustleSubsystem::Naira(int32 Amount)
 
 void UNHHustleSubsystem::Save()
 {
+	if (!IsAuthority())
+	{
+		return; // a guest's numbers are the server's to keep, not this disk's
+	}
 	UNHSaveGame* S = Cast<UNHSaveGame>(UGameplayStatics::CreateSaveGameObject(UNHSaveGame::StaticClass()));
 	if (!S)
 	{
