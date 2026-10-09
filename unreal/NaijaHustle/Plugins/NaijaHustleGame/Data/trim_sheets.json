@@ -1,0 +1,227 @@
+{
+ "format": "naija-hustle-trims",
+ "version": 1,
+ "size": 2048,
+ "note": "v0 and v1 are a strip's top and bottom as a fraction of the sheet's height; strips repeat along U",
+ "sheets": {
+  "Frames": {
+   "FrameAluminium": {
+    "v0": 0.0,
+    "v1": 0.0625,
+    "pixels": 128,
+    "cutout": false
+   },
+   "FrameWood": {
+    "v0": 0.0625,
+    "v1": 0.125,
+    "pixels": 128,
+    "cutout": false
+   },
+   "BurglarBars": {
+    "v0": 0.125,
+    "v1": 0.3125,
+    "pixels": 384,
+    "cutout": true
+   },
+   "BurglarBarsDiamond": {
+    "v0": 0.3125,
+    "v1": 0.5,
+    "pixels": 384,
+    "cutout": true
+   },
+   "Louvres": {
+    "v0": 0.5,
+    "v1": 0.6875,
+    "pixels": 384,
+    "cutout": false
+   },
+   "Ledge": {
+    "v0": 0.6875,
+    "v1": 0.78125,
+    "pixels": 192,
+    "cutout": false
+   },
+   "Gutter": {
+    "v0": 0.78125,
+    "v1": 0.859375,
+    "pixels": 160,
+    "cutout": false
+   },
+   "ParapetCap": {
+    "v0": 0.859375,
+    "v1": 0.921875,
+    "pixels": 128,
+    "cutout": false
+   },
+   "Pipe": {
+    "v0": 0.921875,
+    "v1": 0.96875,
+    "pixels": 96,
+    "cutout": false
+   },
+   "SillTile": {
+    "v0": 0.96875,
+    "v1": 1.0,
+    "pixels": 64,
+    "cutout": false
+   }
+  },
+  "Shop": {
+   "RollerShutter": {
+    "v0": 0.0,
+    "v1": 0.25,
+    "pixels": 512,
+    "cutout": false
+   },
+   "ShutterRail": {
+    "v0": 0.25,
+    "v1": 0.296875,
+    "pixels": 96,
+    "cutout": false
+   },
+   "SignFrame": {
+    "v0": 0.296875,
+    "v1": 0.359375,
+    "pixels": 128,
+    "cutout": false
+   },
+   "Awning": {
+    "v0": 0.359375,
+    "v1": 0.484375,
+    "pixels": 256,
+    "cutout": false
+   },
+   "FoldingGate": {
+    "v0": 0.484375,
+    "v1": 0.671875,
+    "pixels": 384,
+    "cutout": true
+   },
+   "DoorFrame": {
+    "v0": 0.671875,
+    "v1": 0.734375,
+    "pixels": 128,
+    "cutout": false
+   },
+   "Terrazzo": {
+    "v0": 0.734375,
+    "v1": 0.8125,
+    "pixels": 160,
+    "cutout": false
+   },
+   "Kerb": {
+    "v0": 0.8125,
+    "v1": 0.875,
+    "pixels": 128,
+    "cutout": false
+   },
+   "WallTiles": {
+    "v0": 0.875,
+    "v1": 1.0,
+    "pixels": 256,
+    "cutout": false
+   }
+  }
+ },
+ "decals": {
+  "grid": 4,
+  "cells": {
+   "Poster_Revival": {
+    "column": 0,
+    "row": 0,
+    "on": "wall",
+    "size_cm": 110
+   },
+   "Poster_Owambe": {
+    "column": 1,
+    "row": 0,
+    "on": "wall",
+    "size_cm": 110
+   },
+   "Poster_Lesson": {
+    "column": 2,
+    "row": 0,
+    "on": "wall",
+    "size_cm": 100
+   },
+   "Poster_Torn": {
+    "column": 3,
+    "row": 0,
+    "on": "wall",
+    "size_cm": 120
+   },
+   "Stencil_PostNoBill": {
+    "column": 0,
+    "row": 1,
+    "on": "wall",
+    "size_cm": 120
+   },
+   "Stencil_NotForSale": {
+    "column": 1,
+    "row": 1,
+    "on": "wall",
+    "size_cm": 180
+   },
+   "Stencil_NoUrinate": {
+    "column": 2,
+    "row": 1,
+    "on": "wall",
+    "size_cm": 160
+   },
+   "Scrawl_Plumber": {
+    "column": 3,
+    "row": 1,
+    "on": "wall",
+    "size_cm": 130
+   },
+   "Graffiti_Area": {
+    "column": 0,
+    "row": 2,
+    "on": "wall",
+    "size_cm": 200
+   },
+   "Graffiti_NoShaking": {
+    "column": 1,
+    "row": 2,
+    "on": "wall",
+    "size_cm": 200
+   },
+   "Stain_Drips": {
+    "column": 2,
+    "row": 2,
+    "on": "wall",
+    "size_cm": 250
+   },
+   "Stain_Damp": {
+    "column": 3,
+    "row": 2,
+    "on": "wall",
+    "size_cm": 250
+   },
+   "Crack_A": {
+    "column": 0,
+    "row": 3,
+    "on": "any",
+    "size_cm": 250
+   },
+   "Crack_B": {
+    "column": 1,
+    "row": 3,
+    "on": "any",
+    "size_cm": 300
+   },
+   "OilSpill": {
+    "column": 2,
+    "row": 3,
+    "on": "ground",
+    "size_cm": 220
+   },
+   "TyreMarks": {
+    "column": 3,
+    "row": 3,
+    "on": "ground",
+    "size_cm": 600
+   }
+  }
+ }
+}
