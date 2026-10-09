@@ -64,6 +64,8 @@ Executive Sedan's glTF before import.
 
 The task force bike (`tfbike`) is still a blockout.
 
+The Task Force van and patrol pickup and the army pickup and troop truck (`tfvan`, `tfblack`, `armypick`, `armytruck`) are not downloads: `Scripts/build_response_vehicles.py` builds them in Blender from boxes and cylinders (6,500 to 10,100 triangles each), into `Content/Vehicles/TaskForce_Van/` and the like.
+
 Tried and dropped: "Urus Absolut" by SDC PERFORMANCE (1.26 million triangles, non-commercial licence), a Bugatti
 Chiron and a Bentley Continental GT V8 by amogusstrikesback2 (stray parts), "Mercedes W126 Limousine" by fishermans
 (a stretch limousine with no materials), "Tata Signa Cargo Truck" by kevin_k_5124 (an articulated lorry, too long

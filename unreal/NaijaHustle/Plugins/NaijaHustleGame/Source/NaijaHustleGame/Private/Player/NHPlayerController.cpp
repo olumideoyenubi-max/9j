@@ -1,5 +1,9 @@
 #include "Player/NHPlayerController.h"
 
+#include "Camera/CameraActor.h"
+#include "Camera/CameraComponent.h"
+#include "Misc/Paths.h"
+#include "UnrealClient.h"
 #include "Audio/NHAudioSubsystem.h"
 #include "Audio/NHAudioTest.h"
 #include "AudioMixerBlueprintLibrary.h"
@@ -570,7 +574,7 @@ void ANHPlayerController::NHResponse()
 
 void ANHPlayerController::ResponseTestStep(int32 Step)
 {
-	// -NHResponseTest: three stars where the player stands, then half a minute of whoever comes; logs it every five seconds
+	// -NHResponseTest: three stars where the player stands (or -NHResponseStars=N), then half a minute of whoever comes; logs it every five seconds
 	ANHCharacter* C = Cast<ANHCharacter>(GetPawn());
 	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
 	const ANHResponse* Response = ANHResponse::Get(this);
@@ -598,7 +602,29 @@ void ANHPlayerController::ResponseTestStep(int32 Step)
 			}
 		}
 		Hustle->ClearHeat();
-		Hustle->AddHeat(2.6f);
+		int32 Stars = 3; // -NHResponseStars=5 for the army
+		FParse::Value(FCommandLine::Get(), TEXT("NHResponseStars="), Stars);
+		Hustle->AddHeat(FMath::Clamp(Stars, 1, 5) - 0.4f);
+	}
+	if (FVector Ride; Step == 3 && Response->RideAt(Ride))
+	{
+		// a picture of what they came in, and of them, from where the player stands: Saved/NHResponse/response_<stars>.png
+		const FVector Eye = C->GetActorLocation() + (Ride - C->GetActorLocation()).GetSafeNormal2D() * 120.f + FVector(0.f, 0.f, 110.f);
+		ACameraActor* Lens = GetWorld()->SpawnActor<ACameraActor>(Eye, (Ride + FVector(0.f, 0.f, 60.f) - Eye).Rotation());
+		if (Lens)
+		{
+			Lens->GetCameraComponent()->SetFieldOfView(48.f);
+			Lens->GetCameraComponent()->SetConstraintAspectRatio(false);
+		}
+		const FString Shot = FPaths::ProjectSavedDir() / TEXT("NHResponse") / FString::Printf(TEXT("response_%d.png"), Hustle->Stars());
+		if (Lens)
+		{
+			SetViewTarget(Lens);
+			FTimerHandle Later, Back;
+			GetWorldTimerManager().SetTimer(Later, FTimerDelegate::CreateWeakLambda(this, [Shot] { FScreenshotRequest::RequestScreenshot(Shot, false, false); }), 0.8f, false);
+			GetWorldTimerManager().SetTimer(Back, FTimerDelegate::CreateWeakLambda(this, [this, Lens] { SetViewTarget(GetPawn()); Lens->Destroy(); }), 1.6f, false);
+			UE_LOG(LogNHGame, Log, TEXT("[responsetest] picture: %s"), *Shot);
+		}
 	}
 	UE_LOG(LogNHGame, Log, TEXT("[responsetest] %2d s: %s; health %.0f, cash %d"), Step * 5, *Response->Describe().Replace(TEXT("\n"), TEXT(" | ")), C->Health, Hustle->Cash);
 	FTimerHandle Next;
