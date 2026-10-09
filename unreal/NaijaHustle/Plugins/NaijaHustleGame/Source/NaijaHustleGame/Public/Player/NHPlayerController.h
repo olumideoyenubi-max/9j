@@ -118,6 +118,9 @@ public:
 	/** Console: NHAudioSpace Street|Market|MotorPark|Interior|UnderBridge|Tunnel holds that reverb and EQ; NHAudioSpace auto gives it back to where you stand */
 	UFUNCTION(Exec)
 	void NHAudioSpace(const FString& Name);
+	/** Console: NHResponse prints what kind of area this is, the nearest station, and who is coming for you */
+	UFUNCTION(Exec)
+	void NHResponse();
 	/** Console: NHRadio (next station, off after the last), NHRadio track (next song), NHRadio off. For the car you are driving, or on foot the nearest one, which you then hear from outside. */
 	UFUNCTION(Exec)
 	void NHRadio(const FString& What);
@@ -184,6 +187,7 @@ private:
 	void RadioTestStep(int32 Step);
 	void WeaponTestStep(int32 Step);
 	void DamageTestStep(int32 Step);
+	void ResponseTestStep(int32 Step);
 	void UiClickEnd();
 
 	void OnCycleLighting();

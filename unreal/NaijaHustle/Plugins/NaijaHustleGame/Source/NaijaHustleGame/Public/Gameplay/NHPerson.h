@@ -42,6 +42,8 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Health = 100.f;
 	/** Somebody the story cannot go on without (Baba Driver): cannot be hurt and does not run */
 	bool bEssential = false;
+	/** Does not run from gunfire or from being hurt: the Task Force, area boys */
+	bool bBrave = false;
 	bool IsDown() const { return bDown; }
 	bool IsFleeing() const { return FleeLeft > 0.f; }
 	/** Takes the damage; runs from where it came from if still standing. True if this is what put them down. */

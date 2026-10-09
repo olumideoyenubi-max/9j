@@ -90,6 +90,9 @@ public:
 	FName Equip(FName Weapon);
 	FName Equipped() const { return Weapon; }
 	static FString WeaponName(FName Weapon);
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Health = 100.f;
+	/** Shot or cut by somebody. Comes back by itself after a few quiet seconds. At nothing, ANHResponse decides what happens to you. */
+	void Hurt(float Damage);
 	/** The attack button, held or let go. Pistol: one shot a press. AK-47: fires while held. Machete: one swing a press. Nothing in the hand: nothing. */
 	void SetTrigger(bool bHeld);
 	/** Shots fired and swings made since the level began, for tests */
@@ -150,6 +153,7 @@ private:
 	UPROPERTY() TObjectPtr<USceneComponent> WeaponPivot;
 	void BuildWeapon();
 	bool bTrigger = false, bTriggerFresh = false;
+	float SinceHurt = 100.f;
 	float AttackWait = 0.f;
 	/** The machete mid-swing: seconds left, and whether it has landed yet */
 	float SwingLeft = 0.f;

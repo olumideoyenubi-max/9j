@@ -221,6 +221,8 @@ public:
 	/** Map cell code at a world position ('#' off the map); see the legend in lagos_city.json */
 	TCHAR TileAt(const FVector& World) const;
 	FString DistrictAt(const FVector& World) const;
+	/** The middle of a district of the real city, by name; false if there is none */
+	bool DistrictCentre(const FString& Name, FVector2D& Out) const;
 	const FNHVehicleSpec& Spec(FName Type) const;
 	const FNHRoute* FindRoute(FName Id) const;
 

@@ -1,5 +1,7 @@
 #include "Gameplay/NHGameDirector.h"
 
+#include "Gameplay/NHResponse.h"
+
 #include "Core/NHHustleSubsystem.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
@@ -338,7 +340,8 @@ void ANHGameDirector::Tick(float DeltaSeconds)
 		return;
 	}
 	Hustle->TickClock(DeltaSeconds, bSlowClock ? 0.5f : 1.f);
-	Hustle->TickHeat(DeltaSeconds, false); // no Task Force on the streets yet: heat cools off unseen
+	const ANHResponse* Response = ANHResponse::Get(this);
+	Hustle->TickHeat(DeltaSeconds, Response && Response->Seen()); // heat cools off only while nobody who came for you can see you
 	UpdateLighting(DeltaSeconds);
 
 	if (Dialogue.bOpen)

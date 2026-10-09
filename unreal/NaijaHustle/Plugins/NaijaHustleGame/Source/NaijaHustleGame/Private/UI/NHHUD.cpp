@@ -404,6 +404,15 @@ void ANHHUD::DrawHUD()
 		Text(FString::Printf(TEXT("%d km/h"), FMath::RoundToInt(FMath::Abs(V->Speed) * 0.036f)), X, Y + 22.f * S, Muted, Medium, 1.f);
 	}
 
+	// ---- the player's health, on foot, once it is not full
+	if (const ANHCharacter* Me = Cast<ANHCharacter>(Pawn); Me && Me->Health < 99.5f)
+	{
+		const float W = 200.f * S, X = Pad, Y = VH - Pad - 46.f * S;
+		Text(TEXT("Health"), X, Y - 26.f * S, Ink, Medium, 1.f);
+		Panel(X, Y, W, 14.f * S, FLinearColor(1.f, 1.f, 1.f, 0.15f));
+		DrawRect(Me->Health > 35.f ? Good : Bad, X, Y, W * Me->Health / 100.f, 14.f * S);
+	}
+
 	// ---- dialogue (bottom)
 	const UNHAudioSubsystem* AudioSet = UNHAudioSubsystem::Get(this);
 	const float SubK = AudioSet ? AudioSet->SubtitleScale() : 1.f;

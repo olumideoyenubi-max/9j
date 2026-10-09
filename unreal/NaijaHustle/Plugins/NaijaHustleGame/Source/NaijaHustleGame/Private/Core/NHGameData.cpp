@@ -694,6 +694,19 @@ TCHAR UNHGameData::TileAt(const FVector& World) const
 	return Tiles[R][C];
 }
 
+bool UNHGameData::DistrictCentre(const FString& Name, FVector2D& Out) const
+{
+	for (const TPair<FString, FVector2D>& D : RealDistricts)
+	{
+		if (D.Key == Name)
+		{
+			Out = D.Value;
+			return true;
+		}
+	}
+	return false;
+}
+
 FString UNHGameData::DistrictAt(const FVector& World) const
 {
 	if (bRealCity)

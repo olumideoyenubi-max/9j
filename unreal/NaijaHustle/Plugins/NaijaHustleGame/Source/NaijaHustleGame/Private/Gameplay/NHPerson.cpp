@@ -163,7 +163,7 @@ bool ANHPerson::Hurt(float Damage, const FVector& From)
 
 void ANHPerson::Scare(const FVector& From)
 {
-	if (bDown || bEssential)
+	if (bDown || bEssential || bBrave)
 	{
 		return;
 	}

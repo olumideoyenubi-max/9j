@@ -6,6 +6,7 @@
 #include "Core/NHNetState.h"
 #include "EngineUtils.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Gameplay/NHResponse.h"
 #include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
 #include "Phone/NHPhone.h"
@@ -49,6 +50,7 @@ void ANHGameMode::StartPlay()
 			GetWorld()->SpawnActor<ANHStreetScatter>(ANHStreetScatter::StaticClass(), FTransform::Identity); // street clutter round the player
 		}
 	}
+	GetWorld()->SpawnActor<ANHResponse>(ANHResponse::StaticClass(), FTransform::Identity); // who comes when you have wanted stars
 	ANHAudioZone::SpawnCityZones(GetWorld()); // where the city sounds like a motor park or a market
 	if (FParse::Param(FCommandLine::Get(), TEXT("NHAudioTest")))
 	{

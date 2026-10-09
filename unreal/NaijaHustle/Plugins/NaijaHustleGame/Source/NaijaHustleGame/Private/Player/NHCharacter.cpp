@@ -252,6 +252,12 @@ FName ANHCharacter::Equip(FName InWeapon)
 	return Weapon;
 }
 
+void ANHCharacter::Hurt(float Damage)
+{
+	Health = FMath::Max(0.f, Health - Damage);
+	SinceHurt = 0.f;
+}
+
 void ANHCharacter::SetTrigger(bool bHeld)
 {
 	bTriggerFresh = bHeld && !bTrigger;
@@ -715,6 +721,11 @@ void ANHCharacter::SetSprinting(bool bSprint)
 void ANHCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+	SinceHurt += DeltaSeconds;
+	if (SinceHurt > 6.f && Health > 0.f)
+	{
+		Health = FMath::Min(100.f, Health + 8.f * DeltaSeconds); // six quiet seconds, then it comes back
+	}
 	// while the AK-47 is firing the time owed is carried over, so its rate does not depend on the frame rate
 	AttackWait = FMath::Max(bTrigger && Weapon == TEXT("ak47") ? -0.1f : 0.f, AttackWait - DeltaSeconds);
 	if (!Weapon.IsNone() && AttackWait <= 0.f && (bTriggerFresh || (bTrigger && Weapon == TEXT("ak47"))))

@@ -1,0 +1,14 @@
+{
+  "format": "naija-hustle-response",
+  "version": 1,
+  "note": "Who comes when the player has wanted stars, by district (names as in lagos_real.json). Game fiction: the stations and who runs which streets are made up. Any district not listed is ordinary.",
+  "highClass": ["Banana Island", "Ikoyi", "Victoria Island", "Eko Atlantic", "Lekki Phase I", "Ikeja G.R.A", "Osapa London", "Dolphin Estate", "Ikate"],
+  "areaBoys": ["Mushin", "Ajegunle", "Oshodi", "Makoko", "Bariga", "Idi Oro", "Amukoko", "Orile Iganmu", "Ijora", "Iddo", "Mile 12", "Somolu", "Ojuelegba", "Alaba", "Owode Onirin"],
+  "stations": ["Ikeja G.R.A", "Yaba", "Surulere", "Ikoyi", "Victoria Island", "Lagos Island", "Apapa", "Isolo", "Gbagada", "Ojota", "Lekki Phase I", "Obalende", "Ebute-Metta", "Mile 2", "Anthony"],
+  "stationNearMetres": 1500,
+  "stationFarMetres": 4000,
+  "starsNearStation": 2,
+  "starsFarFromStation": 3,
+  "starsForAreaBoys": 2,
+  "witnessSeconds": 6
+}

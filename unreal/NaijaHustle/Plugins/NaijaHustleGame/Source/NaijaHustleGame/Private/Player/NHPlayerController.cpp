@@ -14,7 +14,9 @@
 #include "Lighting/NHLightingRig.h"
 #include "Player/NHCharacter.h"
 #include "Characters/NHOutfitComponent.h"
+#include "Core/NHGameData.h"
 #include "Gameplay/NHPerson.h"
+#include "Gameplay/NHResponse.h"
 #include "Debug/NHBridgeTest.h"
 #include "Phone/NHPhone.h"
 #include "UI/NHHUD.h"
@@ -64,6 +66,11 @@ void ANHPlayerController::BeginPlay()
 	}
 #endif
 
+	if (FParse::Param(FCommandLine::Get(), TEXT("NHResponseTest")))
+	{
+		FTimerHandle Start;
+		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { ResponseTestStep(0); }), 8.f, false);
+	}
 	if (FParse::Param(FCommandLine::Get(), TEXT("NHDamageTest")))
 	{
 		FTimerHandle Start;
@@ -553,6 +560,49 @@ void ANHPlayerController::NHRadio(const FString& What)
 		}
 		Audio->RadioNextStation(Car);
 	}
+}
+
+void ANHPlayerController::NHResponse()
+{
+	const ANHResponse* Response = ANHResponse::Get(this);
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: %s"), Response ? *Response->Describe() : TEXT("response: none in this level"));
+}
+
+void ANHPlayerController::ResponseTestStep(int32 Step)
+{
+	// -NHResponseTest: three stars where the player stands, then half a minute of whoever comes; logs it every five seconds
+	ANHCharacter* C = Cast<ANHCharacter>(GetPawn());
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	const ANHResponse* Response = ANHResponse::Get(this);
+	if (!C || !Hustle || !Response || Step > 7)
+	{
+		ConsoleCommand(TEXT("quit"));
+		return;
+	}
+	if (Step == 0)
+	{
+		UE_LOG(LogNHGame, Log, TEXT("[responsetest] %s"), *Response->AreaReport());
+		if (const UNHGameData* Data = UNHGameData::Get(this); Data && Data->bRealCity)
+		{
+			// what three other parts of town would be
+			static const TCHAR* Kinds[] = { TEXT("ordinary"), TEXT("area boys'"), TEXT("high-class") };
+			for (const TCHAR* Name : { TEXT("Ikoyi"), TEXT("Yaba"), TEXT("Mushin"), TEXT("Ketu") })
+			{
+				FVector2D At;
+				FString Station;
+				float Distance = 0.f;
+				if (Data->DistrictCentre(Name, At) && Response->NearestStation(FVector(At, 0.f), Station, Distance))
+				{
+					UE_LOG(LogNHGame, Log, TEXT("[responsetest] %s: %s streets, nearest station %s %.1f km"), Name, Kinds[static_cast<int32>(Response->AreaAt(FVector(At, 0.f)))], *Station, Distance / 100000.f);
+				}
+			}
+		}
+		Hustle->ClearHeat();
+		Hustle->AddHeat(2.6f);
+	}
+	UE_LOG(LogNHGame, Log, TEXT("[responsetest] %2d s: %s; health %.0f, cash %d"), Step * 5, *Response->Describe().Replace(TEXT("\n"), TEXT(" | ")), C->Health, Hustle->Cash);
+	FTimerHandle Next;
+	GetWorldTimerManager().SetTimer(Next, FTimerDelegate::CreateWeakLambda(this, [this, Step] { ResponseTestStep(Step + 1); }), 5.f, false);
 }
 
 void ANHPlayerController::DamageTestStep(int32 Step)
