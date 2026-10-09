@@ -138,3 +138,9 @@ Before import the glTF download was edited: bone names had Sketchfab's number su
 | Two pairs of jeans, two hoodies | Sketchfab and others; sources and licences not recorded yet | Not imported. Unrigged meshes. |
 
 | not added yet | | |
+
+## Surface textures
+
+| Item | Source and licence | Where | Notes |
+|---|---|---|---|
+| 47 ground, wall, roof, metal and wood surfaces | Poly Haven, https://polyhaven.com, CC0 (public domain, no credit required). The exact asset for each is listed in `Scripts/fetch_surfaces_polyhaven.py`. | `Content/NaijaHustle/Surfaces/` (generated, not in the repo) | Stand-ins for Megascans surfaces. Downloaded to `~/Downloads/nh-surfaces` by the fetch script, imported by `Scripts/import_surfaces.py`. |
