@@ -10,6 +10,7 @@
 #include "UI/NHHUD.h"
 #include "Vehicles/NHCarTheft.h"
 #include "Vehicles/NHTraffic.h"
+#include "World/NHStreets.h"
 
 ANHGameMode::ANHGameMode()
 {
@@ -39,6 +40,7 @@ void ANHGameMode::StartPlay()
 	if (Data && Data->bRealCity)
 	{
 		GetWorld()->SpawnActor<ANHTraffic>(ANHTraffic::StaticClass(), FTransform::Identity);
+		GetWorld()->SpawnActor<ANHStreets>(ANHStreets::StaticClass(), FTransform::Identity); // real street names: banner, signs, map labels
 	}
 	if (!ANHGameDirector::Get(this))
 	{

@@ -16,6 +16,7 @@
 #include "UI/NHHUD.h"
 #include "Vehicles/NHTraffic.h"
 #include "Vehicles/NHVehicle.h"
+#include "World/NHStreets.h"
 
 namespace NHPhoneData
 {
@@ -659,7 +660,11 @@ void ANHPhone::Build()
 			break;
 		case EJob::Offer:
 			Info(FString::Printf(TEXT("%s wants a ride"), *Job.Passenger), Yellow);
-			Info(FString::Printf(TEXT("%s, about %s"), *Job.Where, *UNHHustleSubsystem::Naira(Job.Fare)));
+			if (!Job.From.IsEmpty())
+			{
+				Info(TEXT("From ") + Job.From);
+			}
+			Info(FString::Printf(TEXT("To %s, about %s"), *Job.Where, *UNHHustleSubsystem::Naira(Job.Fare)));
 			Row(TEXT("Accept"), FString::Printf(TEXT("%d s"), FMath::CeilToInt(Job.Timer)), [this]()
 			{
 				Job.Stage = EJob::ToPickup;
@@ -1332,7 +1337,9 @@ void ANHPhone::TickRide(float DeltaSeconds)
 		{
 			Ride.Stage = ERide::Waiting;
 			Ride.Timer = 90.f;
-			ANHHUD::Toast(this, FString::Printf(TEXT("%s is here. Walk to the %s and press F"), *Ride.Driver, *Ride.Car->DisplayName()), 1);
+			const ANHStreets* Streets = ANHStreets::Get(this);
+			const FString On = Streets ? Streets->StreetAt(Ride.At, 2500.f) : FString();
+			ANHHUD::Toast(this, FString::Printf(TEXT("%s is here%s. Walk to the %s and press F"), *Ride.Driver, On.IsEmpty() ? TEXT("") : *(TEXT(" on ") + On), *Ride.Car->DisplayName()), 1);
 		}
 		break;
 	case ERide::Waiting:
@@ -1427,10 +1434,13 @@ void ANHPhone::OfferJob()
 		Job.Fare = FareFor(2, Length, Surge);
 		Job.Expected = Length / 1100.f + 25.f;
 		Job.Passenger = PassengerNames[FMath::RandRange(0, 7)];
-		Job.Where = Data->DistrictAt(FVector(Dropoff, 0.f));
+		// by street where the district has names: "Agege Motor Road, Oshodi"
+		const ANHStreets* Streets = ANHStreets::Get(this);
+		Job.Where = Streets ? Streets->PlaceName(Dropoff) : Data->DistrictAt(FVector(Dropoff, 0.f));
+		Job.From = Streets ? Streets->PlaceName(Pickup) : FString();
 		Job.Stage = EJob::Offer;
 		Job.Timer = 20.f;
-		ANHHUD::Toast(this, FString::Printf(TEXT("DropAm Driver: %s wants a ride to %s for %s. Open the phone (P)"), *Job.Passenger, *Job.Where, *UNHHustleSubsystem::Naira(Job.Fare)), 1);
+		ANHHUD::Toast(this, FString::Printf(TEXT("DropAm Driver: %s wants a ride%s to %s for %s. Open the phone (P)"), *Job.Passenger, Job.From.IsEmpty() ? TEXT("") : *(TEXT(" from ") + Job.From), *Job.Where, *UNHHustleSubsystem::Naira(Job.Fare)), 1);
 		if (bOpen)
 		{
 			Pages.Reset();

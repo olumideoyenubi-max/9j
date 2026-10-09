@@ -71,3 +71,38 @@ thing to settle.
 | Project on disk | 3.4 GB; this section added 1.4 MB (data files and the table) |
 
 (c) OpenStreetMap contributors. The data is available under the Open Database Licence.
+
+---
+
+# Street names in the game (section 3)
+
+**Date:** 2026-10-09 · `ANHStreets` (`World/NHStreets.*`), spawned by the game mode in the real-scale city. It loads every `Data/osm_<district>.json`.
+
+| Asked for | State |
+|---|---|
+| Location banner on entering a street or area | **Done.** "Agege Motor Road · Oshodi", once you have been on the street a second (crossing a side street says nothing), for 4.5 s. |
+| Minimap and map show street names, by zoom | **Done.** The district's side streets are drawn in (the city-wide road graph has only main roads) and named: the nearest four on the minimap; on the map, main roads from 12 km across, tertiary from 6 km, residential from 2.5 km, service roads under 900 m. Names that would overlap are left out. |
+| Directions use street names | **Done.** "In 790 m turn left onto Agege Motor Road", now from the district's own streets where there are some, so side streets are named too. |
+| Street signs at junctions | **Done, in a plain style.** A pole with a green plate for each of up to two streets, lying along its street, white capitals on both faces. Made for the junctions within 160 m of the player (at most 30, four at a time) and removed beyond 240 m, so none are stored in the level. **Not styled after real Lagos signs yet: that waits for the reference photos.** |
+| DropAm pickups by street name | **Done.** A driver job says "Bisi wants a ride from Adeyemi Street, Oshodi to Agege Motor Road, Oshodi"; an arriving ride says which street it is on. |
+| Mission text by street name | **Partly.** The job card shows the objective's street beside its distance ("26 m, Agege Motor Road"). The mission's own lines come from the rules file and are unchanged. |
+
+Outside districts that have data, names fall back to the main roads' names from the road graph.
+
+| Banner and minimap | Map, 1 km across | A sign |
+|---|---|---|
+| ![banner](screenshots/streets-banner-minimap.jpg) | ![map](screenshots/streets-map-names.jpg) | ![sign](screenshots/streets-sign.jpg) |
+
+Checked by scripted runs: the log reports 1 district, 1,840 segments, 262 names, 431 named junctions; "here is 'Agege
+Motor Road, Oshodi'; 8 signs standing near the player"; the three screenshots above. Not checked: a sign read up
+close, the DropAm wording in a real job, the banner changing while driving between streets.
+
+Measured on the M1 8 GB Mac, 1280×720, standing at a junction in Oshodi with the signs, names and traffic: **31.6 fps**,
+memory footprint 5.1 GB. This section added about 30 KB of code and no content.
+
+Known gaps: plates are plain boxes with the engine's text; the name faces are readable from the street's two sides
+only; a junction of three named streets shows two; roundabouts get a sign at every arm; signs stand on the verge by
+rule, so some will stand in a drain or against a wall; no LGA or area line on the plate.
+
+The hooks that call this from the HUD (one line each in the minimap, the map, the directions and the job card) are
+in HUD files that carry other uncommitted work, so they are in the working tree but not in this commit.

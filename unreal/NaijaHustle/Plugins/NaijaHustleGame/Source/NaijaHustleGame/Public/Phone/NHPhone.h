@@ -218,7 +218,7 @@ private:
 		EJob Stage = EJob::Offline;
 		float Timer = 0.f, Started = 0.f, Expected = 1.f;
 		FVector2D Pickup = FVector2D::ZeroVector, Dropoff = FVector2D::ZeroVector;
-		FString Passenger, Where;
+		FString Passenger, Where, From;
 		int32 Fare = 0;
 		TWeakObjectPtr<ANHPerson> Body;
 		float WorstBump = 0.f, LastSpeed = 0.f;
