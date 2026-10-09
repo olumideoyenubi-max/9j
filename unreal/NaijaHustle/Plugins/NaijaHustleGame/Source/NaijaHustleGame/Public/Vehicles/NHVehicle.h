@@ -55,6 +55,18 @@ public:
 	UNHVehicleDynamicsComponent* GetDynamics() const { return Dynamics; }
 	/** Held: it stands still whatever the driver presses (Baba Driver counting the money) */
 	void SetHeld(bool bOn) { bHeld = bOn; if (bOn) { Speed = 0.f; } }
+	/**
+	 * Traffic: the vehicle does not drive itself; ANHTraffic carries it along the road with TrafficMove. Getting in
+	 * still works, and it then drives as usual for as long as someone is at the wheel.
+	 */
+	void SetTraffic(bool bOn) { bTraffic = bOn; if (!bOn) { Speed = 0.f; } }
+	bool IsTraffic() const { return bTraffic; }
+	/** Puts it at a place on the road, on the ground, facing Yaw, with its wheels turning for InSpeed (cm/s) */
+	void TrafficMove(const FVector2D& At, float Yaw, float InSpeed, float DeltaSeconds);
+	/** Seats somebody else at the wheel: a body on a skeleton with the mannequin's bone names, as made (traffic's drivers) */
+	void SetNpcDriver(class USkeletalMesh* Mesh);
+	/** The last vehicle the player drove: traffic does not clear it away, and the car keys find it */
+	bool bPlayerOwned = false;
 	/** Sets the pedals and wheel directly, as the input bindings do (scripted driving) */
 	void SetDriveInput(float InThrottle, float InBrake, float InSteer) { Throttle = InThrottle; BrakeIn = InBrake; Steer = InSteer; }
 
@@ -83,6 +95,7 @@ private:
 	float Throttle = 0.f, BrakeIn = 0.f, Steer = 0.f;
 	bool bHandbrake = false;
 	bool bHeld = false;
+	bool bTraffic = false;
 	bool bBuilt = false;
 	float Clearance = 30.f, HalfHeight = 60.f;
 	float WheelSpin = 0.f, Lean = 0.f, LookIdle = 0.f;
@@ -119,5 +132,7 @@ private:
 	void OnCabinView() { SetCabinView(!bCabinView); }
 	/** Sits the player's current body in the seat, posed for driving; false if the player has no body to show */
 	bool SeatDriver();
+	/** Sits a body in the seat, posed for driving. Scale is its size against how it was made; Facing the way it faces in its own space, degrees. */
+	bool SeatBody(class USkeletalMesh* Mesh, float Scale, float Facing);
 	void OnLook(const FInputActionValue& V);
 };

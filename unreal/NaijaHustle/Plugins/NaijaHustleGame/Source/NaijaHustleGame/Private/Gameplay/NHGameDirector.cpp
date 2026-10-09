@@ -513,6 +513,23 @@ void ANHGameDirector::UpdateFirstDay(float DeltaSeconds)
 		{
 			StartShift(D->FirstRoute, Bus, true, D->Conductor.FirstCut, TEXT("Baba Driver"));
 			Deadline = Hustle->Minutes + D->FirstDayClock;
+			if (D->bRealCity)
+			{
+				// real distances: time for the whole round at a danfo's pace in traffic, a minute a stop, and half as much again
+				float Round = 0.f;
+				FVector2D From = D->Park;
+				for (const FName& Id : D->FirstRoute.Stops)
+				{
+					if (const FNHBusStop* Stop = D->Stops.Find(Id))
+					{
+						Round += FVector2D::Distance(From, Stop->Kerb);
+						From = Stop->Kerb;
+					}
+				}
+				Round += FVector2D::Distance(From, D->Park);
+				const float Seconds = (Round / 1200.f + 60.f * D->FirstRoute.Stops.Num()) * 1.5f;
+				Deadline = Hustle->Minutes + FMath::Max(D->FirstDayClock, Seconds * D->ClockMinutesPerSecond * 0.5f); // the clock runs at half speed meanwhile
+			}
 			bSlowClock = true; // the clock runs at half speed while the deadline counts
 			Stage = EStage::Route;
 		}

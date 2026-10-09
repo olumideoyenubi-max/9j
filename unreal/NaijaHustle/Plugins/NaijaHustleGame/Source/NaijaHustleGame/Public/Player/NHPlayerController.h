@@ -106,6 +106,13 @@ public:
 	UFUNCTION(Exec)
 	void NHCarShow(float X, float Y, const FString& Folder);
 
+	/** Mouse and stick look speed, 1 as built (the pause menu's setting) */
+	float LookScale = 1.f;
+	/** The on-foot character, also while the player drives */
+	ANHCharacter* GetOnFootCharacter() const { return OnFootCharacter; }
+	/** The vehicle the player last drove, if it is still around */
+	ANHVehicle* GetLastVehicle() const { return LastVehicle.Get(); }
+
 	UFUNCTION(BlueprintCallable, Category = "Naija|Vehicle") bool EnterVehicle(ANHVehicle* Vehicle);
 	/** Steps out beside the vehicle. Refuses above walking pace unless bForce. */
 	UFUNCTION(BlueprintCallable, Category = "Naija|Vehicle") bool LeaveVehicle(bool bForce = false);
@@ -125,6 +132,22 @@ private:
 	UNHDebugPlay* DebugPlay();
 	UPROPERTY(Transient)
 	TObjectPtr<UNHDebugPlay> Debug;
+
+	// the map (M), the pause menu (Esc or P) and the inventory wheel (hold Tab): keys go to the HUD, which draws them
+	void UiMap();
+	void UiMenu();
+	void UiWheelOpen();
+	void UiWheelClose();
+	void UiUp();
+	void UiDown();
+	void UiLeft();
+	void UiRight();
+	void UiAccept();
+	void UiClick();
+	void UiRightClick();
+	void UiZoomIn();
+	void UiZoomOut();
+	TWeakObjectPtr<ANHVehicle> LastVehicle;
 
 	void OnCycleLighting();
 	void OnInteract();

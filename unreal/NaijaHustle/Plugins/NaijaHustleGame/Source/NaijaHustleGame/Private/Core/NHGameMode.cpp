@@ -1,10 +1,12 @@
 #include "Core/NHGameMode.h"
 
+#include "Core/NHGameData.h"
 #include "EngineUtils.h"
 #include "Gameplay/NHGameDirector.h"
 #include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
 #include "UI/NHHUD.h"
+#include "Vehicles/NHTraffic.h"
 
 ANHGameMode::ANHGameMode()
 {
@@ -13,9 +15,24 @@ ANHGameMode::ANHGameMode()
 	HUDClass = ANHHUD::StaticClass();
 }
 
+void ANHGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
+{
+	Super::InitGame(MapName, Options, ErrorMessage);
+	// the real-scale Lagos level has its own stops, motor park and road graph; every other level uses the small city's
+	if (UNHGameData* Data = UNHGameData::Get(this))
+	{
+		Data->UseRealCity(MapName.Contains(TEXT("L_Lagos_City")));
+	}
+}
+
 void ANHGameMode::StartPlay()
 {
 	Super::StartPlay();
+	const UNHGameData* Data = UNHGameData::Get(this);
+	if (Data && Data->bRealCity)
+	{
+		GetWorld()->SpawnActor<ANHTraffic>(ANHTraffic::StaticClass(), FTransform::Identity);
+	}
 	if (!ANHGameDirector::Get(this))
 	{
 		GetWorld()->SpawnActor<ANHGameDirector>(ANHGameDirector::StaticClass(), FTransform::Identity);

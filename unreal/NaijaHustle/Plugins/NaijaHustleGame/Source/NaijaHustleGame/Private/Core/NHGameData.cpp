@@ -10,6 +10,11 @@
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
 
+namespace
+{
+	const float RoadCellSize = 20000.f; // 200 m
+}
+
 namespace NHJson
 {
 	TSharedPtr<FJsonObject> Load(const FString& Path)
@@ -150,6 +155,10 @@ void UNHGameData::Initialize(FSubsystemCollectionBase& Collection)
 	const bool bCity = LoadCity(FPaths::Combine(Dir, TEXT("lagos_city.json")));
 	const bool bRules = LoadRules(FPaths::Combine(Dir, TEXT("naija_rules.json")));
 	bLoaded = bCity && bRules;
+	GridStops = Stops;
+	GridBays = ParkBays;
+	GridPark = Park;
+	GridHome = Home;
 	if (bLoaded)
 	{
 		LoadVehicleExtras(FPaths::Combine(Dir, TEXT("unreal_vehicles.json")), FPaths::Combine(Dir, TEXT("vehicle_meshes.json")));
@@ -393,8 +402,171 @@ TArray<FString> UNHGameData::BabaLines(const FString& Key) const
 	return L ? *L : TArray<FString>();
 }
 
+bool UNHGameData::LoadRealCity(const FString& Path)
+{
+	using namespace NHJson;
+	const TSharedPtr<FJsonObject> Root = Load(Path);
+	const TSharedPtr<FJsonObject>* Roads = nullptr;
+	if (!Root.IsValid() || !Root->TryGetObjectField(TEXT("roads"), Roads))
+	{
+		return false;
+	}
+	const TArray<TSharedPtr<FJsonValue>>* Arr = nullptr;
+	if ((*Roads)->TryGetArrayField(TEXT("halfWidth"), Arr))
+	{
+		for (const TSharedPtr<FJsonValue>& V : *Arr)
+		{
+			RoadHalfWidth.Add(static_cast<float>(V->AsNumber()));
+		}
+	}
+	if ((*Roads)->TryGetArrayField(TEXT("nodes"), Arr))
+	{
+		RoadNodes.Reserve(Arr->Num() / 2);
+		for (int32 I = 0; I + 1 < Arr->Num(); I += 2)
+		{
+			RoadNodes.Add(FVector2D((*Arr)[I]->AsNumber(), (*Arr)[I + 1]->AsNumber()));
+		}
+	}
+	if ((*Roads)->TryGetArrayField(TEXT("ways"), Arr))
+	{
+		RoadWays.Reserve(Arr->Num());
+		for (const TSharedPtr<FJsonValue>& V : *Arr)
+		{
+			const TSharedPtr<FJsonObject> O = V->AsObject();
+			FNHRoadWay W;
+			W.Class = static_cast<uint8>(Num(O, TEXT("c")));
+			W.bOneWay = Num(O, TEXT("o")) > 0.5;
+			W.bBridge = Num(O, TEXT("b")) > 0.5;
+			W.Name = Str(O, TEXT("name"));
+			const TArray<TSharedPtr<FJsonValue>>* N = nullptr;
+			if (O->TryGetArrayField(TEXT("n"), N))
+			{
+				for (const TSharedPtr<FJsonValue>& Id : *N)
+				{
+					const int32 Node = static_cast<int32>(Id->AsNumber());
+					if (RoadNodes.IsValidIndex(Node))
+					{
+						W.Nodes.Add(Node);
+					}
+				}
+			}
+			if (W.Nodes.Num() < 2)
+			{
+				continue;
+			}
+			const int32 WayIndex = RoadWays.Add(MoveTemp(W));
+			const FNHRoadWay& Way = RoadWays[WayIndex];
+			for (int32 I = 0; I + 1 < Way.Nodes.Num(); ++I)
+			{
+				const FNHRoadSeg Seg{ WayIndex, I };
+				RoadJoins.FindOrAdd(Way.Nodes[I]).Add(Seg);
+				RoadJoins.FindOrAdd(Way.Nodes[I + 1]).Add(Seg);
+				const FVector2D A = RoadNodes[Way.Nodes[I]], B = RoadNodes[Way.Nodes[I + 1]];
+				const FIntPoint Lo(FMath::FloorToInt(FMath::Min(A.X, B.X) / RoadCellSize), FMath::FloorToInt(FMath::Min(A.Y, B.Y) / RoadCellSize));
+				const FIntPoint Hi(FMath::FloorToInt(FMath::Max(A.X, B.X) / RoadCellSize), FMath::FloorToInt(FMath::Max(A.Y, B.Y) / RoadCellSize));
+				for (int32 CX = Lo.X; CX <= Hi.X; ++CX)
+				{
+					for (int32 CY = Lo.Y; CY <= Hi.Y; ++CY)
+					{
+						RoadCells.FindOrAdd(FIntPoint(CX, CY)).Add(Seg);
+					}
+				}
+			}
+		}
+	}
+	const auto Point = [](const TSharedPtr<FJsonObject>& O, const TCHAR* Key)
+	{
+		const TArray<TSharedPtr<FJsonValue>>* P = nullptr;
+		return O->TryGetArrayField(Key, P) && P->Num() >= 2 ? FVector2D((*P)[0]->AsNumber(), (*P)[1]->AsNumber()) : FVector2D::ZeroVector;
+	};
+	if (Root->TryGetArrayField(TEXT("busStops"), Arr))
+	{
+		for (const TSharedPtr<FJsonValue>& V : *Arr)
+		{
+			const TSharedPtr<FJsonObject> O = V->AsObject();
+			FNHBusStop S;
+			S.Id = FName(Str(O, TEXT("id")));
+			S.Name = Str(O, TEXT("name"));
+			S.Agbero = static_cast<int32>(Num(O, TEXT("agbero")));
+			S.Kerb = Point(O, TEXT("kerb"));
+			S.Wait = Point(O, TEXT("wait"));
+			RealStops.Add(S.Id, S);
+		}
+	}
+	if (Root->TryGetArrayField(TEXT("parkBays"), Arr))
+	{
+		for (const TSharedPtr<FJsonValue>& V : *Arr)
+		{
+			const TSharedPtr<FJsonObject> O = V->AsObject();
+			FNHParkBay B;
+			B.Number = static_cast<int32>(Num(O, TEXT("n")));
+			B.Pos = FVector2D(Num(O, TEXT("x")), Num(O, TEXT("y")));
+			B.Yaw = static_cast<float>(Num(O, TEXT("yaw")));
+			RealBays.Add(B);
+		}
+	}
+	if (Root->TryGetArrayField(TEXT("districts"), Arr))
+	{
+		for (const TSharedPtr<FJsonValue>& V : *Arr)
+		{
+			const TSharedPtr<FJsonObject> O = V->AsObject();
+			RealDistricts.Emplace(Str(O, TEXT("name")), FVector2D(Num(O, TEXT("x")), Num(O, TEXT("y"))));
+		}
+	}
+	RealPark = Point(Root, TEXT("park"));
+	const TSharedPtr<FJsonObject>* Start = nullptr;
+	RealHome = Root->TryGetObjectField(TEXT("playerStart"), Start) ? FVector2D(Num(*Start, TEXT("x")), Num(*Start, TEXT("y"))) : RealPark;
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: real city loaded: %d road nodes, %d ways, %d stops, %d bays, %d districts"), RoadNodes.Num(), RoadWays.Num(), RealStops.Num(), RealBays.Num(), RealDistricts.Num());
+	return RoadWays.Num() > 0 && RealStops.Num() > 0 && RealBays.Num() > 0;
+}
+
+bool UNHGameData::UseRealCity(bool bReal)
+{
+	if (bReal && !bRealLoaded)
+	{
+		bRealLoaded = LoadRealCity(FPaths::Combine(DataDir(), TEXT("lagos_real.json")));
+		if (!bRealLoaded)
+		{
+			UE_LOG(LogNHGame, Warning, TEXT("NAIJA HUSTLE: no usable lagos_real.json in %s (run Scripts/build_lagos_real.py): the level keeps the small city's places"), *DataDir());
+		}
+	}
+	bRealCity = bReal && bRealLoaded;
+	Stops = bRealCity ? RealStops : GridStops;
+	ParkBays = bRealCity ? RealBays : GridBays;
+	Park = bRealCity ? RealPark : GridPark;
+	Home = bRealCity ? RealHome : GridHome;
+	return bRealCity == bReal;
+}
+
+void UNHGameData::RoadsNear(const FVector2D& At, float Radius, TArray<FNHRoadSeg>& Out) const
+{
+	const FIntPoint Lo(FMath::FloorToInt((At.X - Radius) / RoadCellSize), FMath::FloorToInt((At.Y - Radius) / RoadCellSize));
+	const FIntPoint Hi(FMath::FloorToInt((At.X + Radius) / RoadCellSize), FMath::FloorToInt((At.Y + Radius) / RoadCellSize));
+	for (int32 CX = Lo.X; CX <= Hi.X; ++CX)
+	{
+		for (int32 CY = Lo.Y; CY <= Hi.Y; ++CY)
+		{
+			if (const TArray<FNHRoadSeg>* Cell = RoadCells.Find(FIntPoint(CX, CY)))
+			{
+				for (const FNHRoadSeg& Seg : *Cell)
+				{
+					const TArray<int32>& N = RoadWays[Seg.Way].Nodes;
+					if (FMath::PointDistToSegmentSquared(FVector(At, 0.f), FVector(RoadNodes[N[Seg.Index]], 0.f), FVector(RoadNodes[N[Seg.Index + 1]], 0.f)) <= Radius * Radius)
+					{
+						Out.AddUnique(Seg);
+					}
+				}
+			}
+		}
+	}
+}
+
 TCHAR UNHGameData::TileAt(const FVector& World) const
 {
+	if (bRealCity)
+	{
+		return TEXT('R'); // no cell map there: the debug checks that ask are about being on a road
+	}
 	const int32 C = FMath::FloorToInt(World.X / CellSize), R = FMath::FloorToInt(World.Y / CellSize);
 	if (C < 0 || R < 0 || R >= Tiles.Num() || C >= Tiles[R].Len())
 	{
@@ -405,6 +577,21 @@ TCHAR UNHGameData::TileAt(const FVector& World) const
 
 FString UNHGameData::DistrictAt(const FVector& World) const
 {
+	if (bRealCity)
+	{
+		const TPair<FString, FVector2D>* Best = nullptr;
+		float BestDist = TNumericLimits<float>::Max();
+		for (const TPair<FString, FVector2D>& D : RealDistricts)
+		{
+			const float Dist = FVector2D::DistSquared(D.Value, FVector2D(World));
+			if (Dist < BestDist)
+			{
+				BestDist = Dist;
+				Best = &D;
+			}
+		}
+		return Best ? Best->Key : FString();
+	}
 	const int32 C = FMath::FloorToInt(World.X / CellSize), R = FMath::FloorToInt(World.Y / CellSize);
 	if (C < 0 || R < 0 || R >= DistrictGrid.Num() || C >= DistrictGrid[R].Len())
 	{

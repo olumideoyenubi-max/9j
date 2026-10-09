@@ -111,7 +111,43 @@ void ANHPlayerController::SetupInputComponent()
 		Input->BindAction(Set->Choice3, ETriggerEvent::Started, this, &ANHPlayerController::OnChoice3);
 		Input->BindAction(Set->Choice4, ETriggerEvent::Started, this, &ANHPlayerController::OnChoice4);
 	}
+	// Plain key bindings for the HUD's screens: they must work while the game is paused, and need no input assets
+	bShouldPerformFullTickWhenPaused = true;
+	const auto Key = [this](const FKey& K, void (ANHPlayerController::*Fn)(), EInputEvent Event = IE_Pressed)
+	{
+		FInputKeyBinding& Binding = InputComponent->BindKey(K, Event, this, Fn);
+		Binding.bExecuteWhenPaused = true;
+		Binding.bConsumeInput = false;
+	};
+	Key(EKeys::M, &ANHPlayerController::UiMap);
+	Key(EKeys::Escape, &ANHPlayerController::UiMenu);
+	Key(EKeys::P, &ANHPlayerController::UiMenu);
+	Key(EKeys::Tab, &ANHPlayerController::UiWheelOpen);
+	Key(EKeys::Tab, &ANHPlayerController::UiWheelClose, IE_Released);
+	Key(EKeys::Up, &ANHPlayerController::UiUp);
+	Key(EKeys::Down, &ANHPlayerController::UiDown);
+	Key(EKeys::Left, &ANHPlayerController::UiLeft);
+	Key(EKeys::Right, &ANHPlayerController::UiRight);
+	Key(EKeys::Enter, &ANHPlayerController::UiAccept);
+	Key(EKeys::LeftMouseButton, &ANHPlayerController::UiClick);
+	Key(EKeys::RightMouseButton, &ANHPlayerController::UiRightClick);
+	Key(EKeys::MouseScrollUp, &ANHPlayerController::UiZoomIn);
+	Key(EKeys::MouseScrollDown, &ANHPlayerController::UiZoomOut);
 }
+
+void ANHPlayerController::UiMap() { if (ANHHUD* H = ANHHUD::Get(this)) { H->ToggleMap(); } }
+void ANHPlayerController::UiMenu() { if (ANHHUD* H = ANHHUD::Get(this)) { H->ToggleMenu(); } }
+void ANHPlayerController::UiWheelOpen() { if (ANHHUD* H = ANHHUD::Get(this)) { H->SetWheel(true); } }
+void ANHPlayerController::UiWheelClose() { if (ANHHUD* H = ANHHUD::Get(this)) { H->SetWheel(false); } }
+void ANHPlayerController::UiUp() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Nav(0, -1); } }
+void ANHPlayerController::UiDown() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Nav(0, 1); } }
+void ANHPlayerController::UiLeft() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Nav(-1, 0); } }
+void ANHPlayerController::UiRight() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Nav(1, 0); } }
+void ANHPlayerController::UiAccept() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Accept(); } }
+void ANHPlayerController::UiClick() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Click(false); } }
+void ANHPlayerController::UiRightClick() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Click(true); } }
+void ANHPlayerController::UiZoomIn() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Zoom(1); } }
+void ANHPlayerController::UiZoomOut() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Zoom(-1); } }
 
 void ANHPlayerController::NHLighting(const FString& PresetName)
 {
@@ -211,6 +247,12 @@ bool ANHPlayerController::EnterVehicle(ANHVehicle* Vehicle)
 	C->SetActorEnableCollision(false);
 	C->AttachToActor(Vehicle, FAttachmentTransformRules::KeepWorldTransform);
 	Possess(Vehicle);
+	if (LastVehicle.IsValid())
+	{
+		LastVehicle->bPlayerOwned = false;
+	}
+	LastVehicle = Vehicle;
+	Vehicle->bPlayerOwned = true; // kept where it is left, for the car keys to find
 	Vehicle->SetOccupied(true);
 	SetControlRotation(Vehicle->GetActorRotation());
 	return true;

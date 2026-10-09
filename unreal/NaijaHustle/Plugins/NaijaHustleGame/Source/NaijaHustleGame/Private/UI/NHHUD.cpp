@@ -73,6 +73,10 @@ void ANHHUD::BeginPlay()
 {
 	Super::BeginPlay();
 	BuildMinimap();
+	BuildCityMap();
+	LoadSettings();
+	FParse::Value(FCommandLine::Get(), TEXT("NHHudShot="), ShotAt);
+	FParse::Value(FCommandLine::Get(), TEXT("NHHudOpen="), ShotOpen);
 	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this))
 	{
 		EarnHandle = Hustle->OnEarn.AddWeakLambda(this, [this](int32 Amount, const FString&) { CashDelta = Amount; CashDeltaT = 2.5f; });
@@ -149,13 +153,23 @@ void ANHHUD::DrawMinimap(float X, float Y, float Size, const FVector& Player, fl
 		return;
 	}
 	const float Cells = 44.f; // ~176 m across
-	const float PC = Player.X / Data->CellSize, PR = Player.Y / Data->CellSize;
-	const float U0 = (PC - Cells * 0.5f) / Data->Cols, V0 = (PR - Cells * 0.5f) / Data->Rows;
+	// how much of the world the map shows: the small city's 176 m, or 600 m of the real one's roads
+	const float Span = Data->bRealCity ? 60000.f : Cells * Data->CellSize;
+	const FVector2D Corner(Player.X - Span * 0.5f, Player.Y - Span * 0.5f);
 	Panel(X - 4.f * S, Y - 4.f * S, Size + 8.f * S, Size + 8.f * S, FLinearColor(0.f, 0.f, 0.f, 0.7f));
-	DrawTexture(MapTex, X, Y, Size, Size, U0, V0, Cells / Data->Cols, Cells / Data->Rows, FLinearColor::White, BLEND_Opaque);
+	if (Data->bRealCity)
+	{
+		DrawRoads(X, Y, Size, Corner, Span, 1.f); // the real city has no cell map: the roads around the player, from the road graph
+	}
+	else
+	{
+		const float PC = Player.X / Data->CellSize, PR = Player.Y / Data->CellSize;
+		const float U0 = (PC - Cells * 0.5f) / Data->Cols, V0 = (PR - Cells * 0.5f) / Data->Rows;
+		DrawTexture(MapTex, X, Y, Size, Size, U0, V0, Cells / Data->Cols, Cells / Data->Rows, FLinearColor::White, BLEND_Opaque);
+	}
 	auto ToMap = [&](const FVector& W, bool bClamp, FVector2D& Out)
 	{
-		const float MX = (W.X / Data->CellSize - (PC - Cells * 0.5f)) / Cells, MY = (W.Y / Data->CellSize - (PR - Cells * 0.5f)) / Cells;
+		const float MX = (W.X - Corner.X) / Span, MY = (W.Y - Corner.Y) / Span;
 		const bool bInside = MX >= 0.f && MX <= 1.f && MY >= 0.f && MY <= 1.f;
 		Out = FVector2D(X + FMath::Clamp(MX, 0.02f, 0.98f) * Size, Y + FMath::Clamp(MY, 0.02f, 0.98f) * Size);
 		return bInside || bClamp;
@@ -174,6 +188,10 @@ void ANHHUD::DrawMinimap(float X, float Y, float Size, const FVector& Player, fl
 		{
 			DrawRect(FLinearColor(1.f, 0.2f, 0.2f), M.X - 6.f * S, M.Y - 6.f * S, 12.f * S, 12.f * S);
 		}
+	}
+	if (FVector2D M; bHasPin && ToMap(FVector(Pin, 0.f), true, M))
+	{
+		DrawRect(FLinearColor(0.2f, 0.75f, 1.f), M.X - 6.f * S, M.Y - 6.f * S, 12.f * S, 12.f * S);
 	}
 	// the player: a dot with a heading tick
 	const FVector2D C(X + Size * 0.5f, Y + Size * 0.5f);
@@ -253,7 +271,32 @@ void ANHHUD::DrawHUD()
 	{
 		Text(Hustle->ClockText(), VW - Pad - 230.f * S, Pad, Ink, Large, 1.5f);
 	}
-	if (Pawn)
+	if (!bSettingsApplied && PC)
+	{
+		ApplySettings(); // once the controller and the traffic exist
+	}
+	if (Pawn && bHasPin)
+	{
+		// the pin: gone once you are there; until then a marker in the world and how far it is
+		const float Dist = FVector2D::Distance(FVector2D(Pawn->GetActorLocation()), Pin);
+		if (Dist < 2500.f)
+		{
+			bHasPin = false;
+			Toast(this, FString::Printf(TEXT("You have reached %s"), *PinLabel), 1);
+		}
+		else
+		{
+			const FVector At = Project(FVector(Pin.X, Pin.Y, Pawn->GetActorLocation().Z + 250.f));
+			const FString Far = Dist >= 100000.f ? FString::Printf(TEXT("%.1f km"), Dist / 100000.f) : FString::Printf(TEXT("%d m"), FMath::RoundToInt(Dist / 100.f));
+			if (At.Z > 0.f && Screen == EScreen::None)
+			{
+				DrawRect(FLinearColor(0.2f, 0.75f, 1.f), At.X - 7.f * S, At.Y - 7.f * S, 14.f * S, 14.f * S);
+				Text(Far, At.X, At.Y + 12.f * S, FLinearColor(0.2f, 0.75f, 1.f), Medium, 1.f, true);
+			}
+			Text(FString::Printf(TEXT("PIN  %s  %s"), *PinLabel.ToUpper(), *Far), MX + MapSize * 0.5f, MY + MapSize + 56.f * S, FLinearColor(0.2f, 0.75f, 1.f), Medium, 1.f, true);
+		}
+	}
+	if (Pawn && bShowMinimap)
 	{
 		DrawMinimap(MX, MY, MapSize, Pawn->GetActorLocation(), Pawn->GetActorRotation().Yaw);
 		if (Data)
@@ -356,6 +399,55 @@ void ANHHUD::DrawHUD()
 			Panel(X + 22.f * S, Yy, W - 44.f * S, 44.f * S, FLinearColor(1.f, 1.f, 1.f, 0.08f));
 			Text(FString::Printf(TEXT("%d   %s"), I + 1, *P.Options[I]), X + 38.f * S, Yy + 8.f * S, I == 0 ? Yellow : Ink, Medium, 1.15f);
 			Yy += 52.f * S;
+		}
+	}
+
+	// ---- the map, the pause menu, the inventory wheel: over everything else
+	switch (Screen)
+	{
+	case EScreen::Map: DrawMapScreen(VW, VH); break;
+	case EScreen::Menu: DrawMenu(VW, VH); break;
+	case EScreen::Wheel: DrawWheel(VW, VH); break;
+	default: break;
+	}
+
+	if (ShotAt > 0.f && PC)
+	{
+		if (ShotStage == 0 && Now >= ShotAt - 2.f)
+		{
+			ShotStage = 1;
+			if (ShotOpen == TEXT("map"))
+			{
+				ToggleMap();
+				if (const FNHBusStop* Yaba = Data ? Data->Stops.Find(TEXT("balogate")) : nullptr)
+				{
+					SetPin(Yaba->Kerb, Yaba->Name);
+				}
+			}
+			else if (ShotOpen == TEXT("mapzoom"))
+			{
+				ToggleMap();
+				MapZoom = 8.f;
+			}
+			else if (ShotOpen == TEXT("menu"))
+			{
+				ToggleMenu();
+			}
+			else if (ShotOpen == TEXT("wheel"))
+			{
+				SetWheel(true);
+				WheelSlot = 2;
+			}
+		}
+		else if (ShotStage == 1 && Now >= ShotAt)
+		{
+			ShotStage = 2;
+			PC->ConsoleCommand(TEXT("shot showui"));
+		}
+		else if (ShotStage == 2 && Now >= ShotAt + 2.5f)
+		{
+			ShotStage = 3;
+			PC->ConsoleCommand(TEXT("quit"));
 		}
 	}
 }

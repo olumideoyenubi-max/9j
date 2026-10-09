@@ -111,10 +111,31 @@ struct FNHParkBay
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Yaw = 0.f;
 };
 
+/** One road of the real-scale city: a line through RoadNodes. Class indexes UNHGameData::RoadHalfWidth (0 motorway .. 4 tertiary, 5 link). */
+struct FNHRoadWay
+{
+	uint8 Class = 0;
+	bool bOneWay = false;
+	bool bBridge = false;
+	FString Name;
+	TArray<int32> Nodes;
+};
+
+/** The stretch of a way from its node Index to Index + 1 */
+struct FNHRoadSeg
+{
+	int32 Way = 0;
+	int32 Index = 0;
+	bool operator==(const FNHRoadSeg& O) const { return Way == O.Way && Index == O.Index; }
+};
+
 /**
  * Everything the game reads from the plugin's Data folder, loaded once per game instance:
  * lagos_city.json (the map: tiles, stops, bays) and naija_rules.json (routes, fares, vehicles, dialogue),
  * both exported from the browser demo by web/tools/export-unreal.js.
+ *
+ * The real-scale Lagos level (L_Lagos_City) has its own map data, lagos_real.json from Scripts/build_lagos_real.py:
+ * the same stops and motor park at their real places, and the road graph. UseRealCity switches between the two.
  */
 UCLASS()
 class NAIJAHUSTLEGAME_API UNHGameData : public UGameInstanceSubsystem
@@ -139,6 +160,21 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FNHParkBay> ParkBays;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") FVector2D Park = FVector2D::ZeroVector;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") FVector2D Home = FVector2D::ZeroVector;
+
+	// ---- the real-scale city
+	/** True in L_Lagos_City: Stops, ParkBays, Park and Home are then real places and the road graph is loaded */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") bool bRealCity = false;
+	/** Swaps the map data between the small grid city and the real-scale one (the game mode calls it for each level). False if lagos_real.json is missing. */
+	bool UseRealCity(bool bReal);
+	TArray<FVector2D> RoadNodes;
+	TArray<FNHRoadWay> RoadWays;
+	/** Half the paved width of one carriageway by road class, cm */
+	TArray<float> RoadHalfWidth;
+	/** The segments that end at each node */
+	TMap<int32, TArray<FNHRoadSeg>> RoadJoins;
+	/** Every road segment with any part within Radius of a point */
+	void RoadsNear(const FVector2D& At, float Radius, TArray<FNHRoadSeg>& Out) const;
+	float HalfWidth(const FNHRoadWay& Way) const { return RoadHalfWidth.IsValidIndex(Way.Class) ? RoadHalfWidth[Way.Class] : 500.f; }
 
 	// ---- rules
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") int32 StartCash = 5000;
@@ -181,6 +217,15 @@ private:
 	TMap<FString, TArray<FString>> Baba;
 	FNHVehicleSpec DefaultSpec;
 	bool LoadCity(const FString& Path);
+	bool LoadRealCity(const FString& Path);
+	/** The grid city's and the real city's places, kept so UseRealCity can swap them */
+	TMap<FName, FNHBusStop> GridStops, RealStops;
+	TArray<FNHParkBay> GridBays, RealBays;
+	FVector2D GridPark = FVector2D::ZeroVector, GridHome = FVector2D::ZeroVector, RealPark = FVector2D::ZeroVector, RealHome = FVector2D::ZeroVector;
+	TArray<TPair<FString, FVector2D>> RealDistricts;
+	/** Road segments by 200 m cell */
+	TMap<FIntPoint, TArray<FNHRoadSeg>> RoadCells;
+	bool bRealLoaded = false;
 	bool LoadRules(const FString& Path);
 	void LoadVehicleExtras(const FString& TypesPath, const FString& MeshesPath);
 };

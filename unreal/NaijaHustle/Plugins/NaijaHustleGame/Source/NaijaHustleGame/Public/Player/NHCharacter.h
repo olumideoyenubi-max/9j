@@ -24,6 +24,13 @@ struct FNHPlayerSkin
 	UPROPERTY(EditAnywhere, Category = "Skin") TSoftClassPtr<UAnimInstance> AnimClass;
 	/** How tall it should stand, cm: it is scaled to this from its own height. 0 leaves it as made. */
 	UPROPERTY(EditAnywhere, Category = "Skin") float Height = 0.f;
+	/**
+	 * For a body that comes with its own animations instead of an animation Blueprint: the asset path they share,
+	 * up to the clip name (Idle, Walk, Run, Sprint, Jump). UNHClipAnimInstance plays them and AnimClass is not used.
+	 */
+	UPROPERTY(EditAnywhere, Category = "Skin") FString Clips;
+	/** The body is modelled with its shoes on, so it does not wear ShoeMesh */
+	UPROPERTY(EditAnywhere, Category = "Skin") bool bShod = false;
 };
 
 /**
@@ -50,14 +57,21 @@ public:
 	/** True when a body mesh was found and put on; false when the player is still the capsule */
 	UFUNCTION(BlueprintPure, Category = "Body") bool HasBody() const { return bHasBody; }
 
-	/** The bodies the player can wear, best first. Characters come from Scripts/import_player_gltf.py; the last is the Third Person template's mannequin. */
+	/** The bodies the player can wear, best first. The Lagos Runner outfits come from Scripts/import_lagos_runner.py, other characters from Scripts/import_player_gltf.py; the last is the Third Person template's mannequin. */
 	UPROPERTY(EditAnywhere, Category = "Body") TArray<FNHPlayerSkin> Skins;
 
 	/** Puts a skin on by id, and with bRemember saves it as the player's choice. False if there is no such skin or the project does not have its assets. */
 	bool WearSkin(FName Id, bool bRemember = false);
-	/** Puts on the next skin the project has, going round the list; returns the name of what is now worn */
-	FString WearNextSkin();
+	/** Puts on the next skin the project has (Step -1: the one before), going round the list; returns the name of what is now worn */
+	FString WearNextSkin(int32 Step = 1);
 	FName GetSkin() const { return CurrentSkin; }
+	/** The worn skin's name as shown to the player ("" for the capsule) */
+	FString SkinName() const;
+	/** Which way a body faces in its own space, from where its feet point in the reference pose (degrees; 90 if unknown) */
+	static float FacingYawOf(const USkeletalMesh* Mesh);
+	/** A hand torch: a beam ahead of the body, for the night */
+	void ToggleTorch();
+	bool TorchOn() const;
 
 	/**
 	 * One shoe, as an unrigged static mesh lying flat with its toe toward +X. It is worn on both feet (mirrored for
@@ -105,6 +119,7 @@ private:
 	bool bHasBody = false;
 	FName CurrentSkin;
 	UPROPERTY() TArray<TObjectPtr<class UStaticMeshComponent>> ShoeParts;
+	UPROPERTY() TObjectPtr<class USpotLightComponent> Torch;
 	bool bSprinting = false;
 	/** 0 walking .. 1 sprinting, eased */
 	float SprintAlpha = 0.f;

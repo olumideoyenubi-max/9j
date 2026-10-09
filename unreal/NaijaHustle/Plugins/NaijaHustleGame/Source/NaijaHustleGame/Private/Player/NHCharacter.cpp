@@ -1,10 +1,12 @@
 #include "Player/NHCharacter.h"
 
 #include "Animation/AnimInstance.h"
+#include "Animation/AnimSequence.h"
 #include "AnimationRuntime.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Components/SpotLightComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
 #include "Engine/StaticMesh.h"
@@ -14,6 +16,7 @@
 #include "Input/NHInputSet.h"
 #include "Misc/ConfigCacheIni.h"
 #include "Misc/PackageName.h"
+#include "Player/NHClipAnimInstance.h"
 #include "Player/NHPlayerController.h"
 #include "NaijaHustleGame.h"
 
@@ -35,8 +38,22 @@ ANHCharacter::ANHCharacter()
 		S.Height = Height;
 		Skins.Add(S);
 	};
+	// the Lagos Runner made in Blender: three outfits on one skeleton, moved by his own clips
+	const auto Runner = [this](const TCHAR* Id, const TCHAR* Name, const TCHAR* Mesh)
+	{
+		FNHPlayerSkin S;
+		S.Id = Id;
+		S.Name = Name;
+		S.Mesh = TSoftObjectPtr<USkeletalMesh>(FSoftObjectPath(Mesh));
+		S.Clips = TEXT("/Game/Characters/Player/Runner/Anims/Runner_");
+		S.bShod = true;
+		Skins.Add(S);
+	};
 	Skin(TEXT("naija"), TEXT("Naija man"), TEXT("/Game/Characters/Player/Naija/Naija.Naija"), TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed_Naija.ABP_Unarmed_Naija_C"), 0.f);
 	Skin(TEXT("hustler"), TEXT("Young hustler"), TEXT("/Game/Characters/Player/Hustler/scene/SkeletalMeshes/Hustler.Hustler"), TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed_Hustler.ABP_Unarmed_Hustler_C"), 180.f);
+	Runner(TEXT("runner"), TEXT("Lagos runner"), TEXT("/Game/Characters/Player/Runner/Runner.Runner"));
+	Runner(TEXT("dispatch"), TEXT("Lagos runner, dispatch rider"), TEXT("/Game/Characters/Player/Runner/Runner_Dispatch.Runner_Dispatch"));
+	Runner(TEXT("suit"), TEXT("Lagos runner, suit"), TEXT("/Game/Characters/Player/Runner/Runner_Suit.Runner_Suit"));
 	Skin(TEXT("mannequin"), TEXT("Mannequin"), TEXT("/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple"), TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed.ABP_Unarmed_C"), 0.f);
 	ShoeMesh = TSoftObjectPtr<UStaticMesh>(FSoftObjectPath(TEXT("/Game/Wardrobe/Trainers_LowTop/Untsssho00215ed/StaticMeshes/hash_CF7B2BF4_model_001.hash_CF7B2BF4_model_001")));
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.f, 0.f, -92.f), FRotator(0.f, -90.f, 0.f)); // feet on the ground, facing forward
@@ -90,14 +107,16 @@ bool ANHCharacter::SkinAvailable(const FNHPlayerSkin& Skin)
 {
 	// asking for a package that is not there logs a warning, so look first
 	const auto Exists = [](const FSoftObjectPath& Path) { return Path.IsValid() && FPackageName::DoesPackageExist(Path.GetLongPackageName()); };
-	return Exists(Skin.Mesh.ToSoftObjectPath()) && Exists(Skin.AnimClass.ToSoftObjectPath());
+	const FSoftObjectPath Anim = Skin.Clips.IsEmpty() ? Skin.AnimClass.ToSoftObjectPath() : FSoftObjectPath(Skin.Clips + TEXT("Idle"));
+	return Exists(Skin.Mesh.ToSoftObjectPath()) && Exists(Anim);
 }
 
 bool ANHCharacter::WearSkin(FName Id, bool bRemember)
 {
 	const FNHPlayerSkin* Skin = Skins.FindByPredicate([Id](const FNHPlayerSkin& S) { return S.Id == Id; });
 	USkeletalMesh* Mesh = Skin && SkinAvailable(*Skin) ? Skin->Mesh.LoadSynchronous() : nullptr;
-	UClass* Anim = Mesh ? Skin->AnimClass.LoadSynchronous() : nullptr;
+	const bool bClips = Skin && !Skin->Clips.IsEmpty();
+	UClass* Anim = !Mesh ? nullptr : bClips ? UNHClipAnimInstance::StaticClass() : Skin->AnimClass.LoadSynchronous();
 	if (!Mesh || !Anim)
 	{
 		return false;
@@ -105,6 +124,18 @@ bool ANHCharacter::WearSkin(FName Id, bool bRemember)
 	GetMesh()->SetAnimInstanceClass(nullptr);
 	GetMesh()->SetSkeletalMesh(Mesh);
 	GetMesh()->SetAnimInstanceClass(Anim);
+	if (UNHClipAnimInstance* Player = bClips ? Cast<UNHClipAnimInstance>(GetMesh()->GetAnimInstance()) : nullptr)
+	{
+		const auto Clip = [Skin](const TCHAR* Name) -> UAnimSequence*
+		{
+			const FString Path = Skin->Clips + Name;
+			return FPackageName::DoesPackageExist(Path) ? LoadObject<UAnimSequence>(nullptr, *Path) : nullptr;
+		};
+		Player->SetClips(Clip(TEXT("Idle")), Clip(TEXT("Walk")), Clip(TEXT("Run")), Clip(TEXT("Sprint")), Clip(TEXT("Jump")));
+		Player->WalkAt = 0.43f * WalkSpeed;
+		Player->RunAt = WalkSpeed;
+		Player->SprintAt = SprintSpeed;
+	}
 	// a downloaded character can be any size and face any way: stand it at its height, facing forward
 	const float Tall = Mesh->GetBounds().BoxExtent.Z * 2.f;
 	GetMesh()->SetRelativeScale3D(FVector(Skin->Height > 0.f && Tall > 1.f ? Skin->Height / Tall : 1.f));
@@ -122,12 +153,43 @@ bool ANHCharacter::WearSkin(FName Id, bool bRemember)
 	return true;
 }
 
-FString ANHCharacter::WearNextSkin()
+FString ANHCharacter::SkinName() const
+{
+	const FNHPlayerSkin* Skin = Skins.FindByPredicate([this](const FNHPlayerSkin& S) { return S.Id == CurrentSkin; });
+	return Skin ? Skin->Name : FString();
+}
+
+void ANHCharacter::ToggleTorch()
+{
+	if (!Torch)
+	{
+		Torch = NewObject<USpotLightComponent>(this);
+		Torch->SetupAttachment(RootComponent);
+		Torch->SetRelativeLocationAndRotation(FVector(30.f, 18.f, 30.f), FRotator(-6.f, 0.f, 0.f)); // held at the right hip, pointing ahead
+		Torch->SetIntensityUnits(ELightUnits::Candelas);
+		Torch->SetIntensity(2500.f);
+		Torch->SetLightColor(FLinearColor(1.f, 0.95f, 0.85f));
+		Torch->SetInnerConeAngle(12.f);
+		Torch->SetOuterConeAngle(28.f);
+		Torch->SetAttenuationRadius(2500.f);
+		Torch->SetCastShadows(false);
+		Torch->RegisterComponent();
+		Torch->SetVisibility(false);
+	}
+	Torch->SetVisibility(!Torch->IsVisible());
+}
+
+bool ANHCharacter::TorchOn() const
+{
+	return Torch && Torch->IsVisible();
+}
+
+FString ANHCharacter::WearNextSkin(int32 Dir)
 {
 	const int32 Now = Skins.IndexOfByPredicate([this](const FNHPlayerSkin& S) { return S.Id == CurrentSkin; });
 	for (int32 Step = 1; Step <= Skins.Num(); ++Step)
 	{
-		const FNHPlayerSkin& Next = Skins[(FMath::Max(Now, 0) + Step) % Skins.Num()];
+		const FNHPlayerSkin& Next = Skins[((FMath::Max(Now, 0) + Step * (Dir < 0 ? -1 : 1)) % Skins.Num() + Skins.Num()) % Skins.Num()];
 		if (WearSkin(Next.Id, true))
 		{
 			return Next.Name;
@@ -138,7 +200,16 @@ FString ANHCharacter::WearNextSkin()
 
 float ANHCharacter::BodyFacingYaw() const
 {
-	const FReferenceSkeleton& Skeleton = GetMesh()->GetSkeletalMeshAsset()->GetRefSkeleton();
+	return FacingYawOf(GetMesh()->GetSkeletalMeshAsset());
+}
+
+float ANHCharacter::FacingYawOf(const USkeletalMesh* Mesh)
+{
+	if (!Mesh)
+	{
+		return 90.f;
+	}
+	const FReferenceSkeleton& Skeleton = Mesh->GetRefSkeleton();
 	FVector Toes = FVector::ZeroVector;
 	for (const TCHAR* Side : { TEXT("r"), TEXT("l") })
 	{
@@ -162,6 +233,11 @@ void ANHCharacter::PutOnShoes()
 		}
 	}
 	ShoeParts.Reset();
+	const FNHPlayerSkin* Skin = Skins.FindByPredicate([this](const FNHPlayerSkin& S) { return S.Id == CurrentSkin; });
+	if (Skin && Skin->bShod)
+	{
+		return;
+	}
 	const FSoftObjectPath Path = ShoeMesh.ToSoftObjectPath();
 	UStaticMesh* Shoe = Path.IsValid() && FPackageName::DoesPackageExist(Path.GetLongPackageName()) ? ShoeMesh.LoadSynchronous() : nullptr;
 	if (!Shoe)
@@ -239,7 +315,8 @@ void ANHCharacter::OnMove(const FInputActionValue& Value)
 
 void ANHCharacter::OnLook(const FInputActionValue& Value)
 {
-	const FVector2D Axis = Value.Get<FVector2D>();
+	const ANHPlayerController* PC = Cast<ANHPlayerController>(Controller);
+	const FVector2D Axis = Value.Get<FVector2D>() * (PC ? PC->LookScale : 1.f);
 	AddControllerYawInput(Axis.X);
 	AddControllerPitchInput(Axis.Y);
 }

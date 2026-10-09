@@ -336,6 +336,20 @@ bool ANHVehicle::SeatDriver()
 	{
 		return false;
 	}
+	// the body's own scale, and the way it faces in its own space
+	return SeatBody(Mesh, Player->GetMesh()->GetRelativeScale3D().X, -Player->GetMesh()->GetRelativeRotation().Yaw);
+}
+
+void ANHVehicle::SetNpcDriver(USkeletalMesh* Mesh)
+{
+	if (Mesh && SeatBody(Mesh, 1.f, ANHCharacter::FacingYawOf(Mesh)))
+	{
+		DriverBody->SetVisibility(true);
+	}
+}
+
+bool ANHVehicle::SeatBody(USkeletalMesh* Mesh, float Scale, float Facing)
+{
 	if (!DriverBody)
 	{
 		DriverBody = NewObject<UPoseableMeshComponent>(this);
@@ -353,8 +367,6 @@ bool ANHVehicle::SeatDriver()
 
 	// Posed by pointing each limb where a driver's would be, in the body's own space, so it works for any skeleton
 	// that uses the mannequin's bone names, whichever pose it was made in.
-	const float Scale = Player->GetMesh()->GetRelativeScale3D().X;
-	const float Facing = -Player->GetMesh()->GetRelativeRotation().Yaw; // the way the body faces in its own space
 	const FVector Fwd = FRotator(0.f, Facing, 0.f).Vector(), Up = FVector::UpVector, Right = FVector::CrossProduct(Up, Fwd);
 	const auto At = [this](const TCHAR* Bone) { return DriverBody->GetBoneLocationByName(FName(Bone), EBoneSpaces::ComponentSpace); };
 	const auto Aim = [this, &At](const FString& Bone, const FString& Child, const FVector& Toward)
@@ -395,7 +407,7 @@ bool ANHVehicle::SeatDriver()
 	DriverBody->SetRelativeScale3D(FVector(Scale));
 	DriverBody->SetRelativeRotation(FRotator(0.f, -Facing, 0.f));
 	DriverBody->SetRelativeLocation(SeatAt - FVector(0.f, 0.f, Hips * Scale));
-	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: driver seated in the %s at %s (hips %.0f cm up the body, scale %.2f, vehicle %.0f x %.0f x %.0f)"), *VehicleType.ToString(), *SeatAt.ToCompactString(), Hips, Scale, Spec.Length, Spec.Width, BodyHeight);
+	UE_LOG(LogNHGame, Verbose, TEXT("NAIJA HUSTLE: driver seated in the %s at %s (hips %.0f cm up the body, scale %.2f, vehicle %.0f x %.0f x %.0f)"), *VehicleType.ToString(), *SeatAt.ToCompactString(), Hips, Scale, Spec.Length, Spec.Width, BodyHeight);
 	return true;
 }
 
@@ -535,8 +547,22 @@ void ANHVehicle::Tick(float DeltaSeconds)
 	Arm->SetRelativeRotation(FRotator((bCabinView ? 0.f : -12.f) + LookOffset.Y, LookOffset.X, 0.f));
 }
 
+void ANHVehicle::TrafficMove(const FVector2D& At, float Yaw, float InSpeed, float DeltaSeconds)
+{
+	Speed = InSpeed;
+	const FVector From = GetActorLocation();
+	FVector To(At.X, At.Y, From.Z);
+	const float WantZ = GroundZ(To) + Clearance + HalfHeight;
+	To.Z = WantZ > From.Z ? WantZ : FMath::FInterpTo(From.Z, WantZ, DeltaSeconds, 10.f);
+	SetActorLocationAndRotation(To, FRotator(0.f, Yaw, 0.f), false);
+}
+
 void ANHVehicle::Drive(float DeltaSeconds)
 {
+	if (bTraffic && !Controller)
+	{
+		return; // carried along the road by ANHTraffic
+	}
 	const float A = Spec.Accel, V = Spec.MaxSpeed;
 	const bool bDriven = Controller != nullptr && !IsWrecked() && !bHeld;
 	const float T = bDriven ? Throttle : 0.f, B = bDriven ? BrakeIn : 0.f, S = bDriven ? Steer : 0.f;

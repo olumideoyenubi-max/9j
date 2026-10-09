@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-08 (player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
+**Last updated:** 2026-10-09 (real-scale Lagos level playable: real stops, road-graph traffic, minimap; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -49,6 +49,18 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 - **Player character built to the brief (2026-10-08):** "Naija man" is now the default skin: an athletic dark-skinned man with low-cut black hair and a beard, in a white singlet and olive cargo trousers, wearing the test trainers. He is generated with MakeHuman (MPFB) in Blender by `Scripts/build_player_makehuman.py`, which also adds the IK bones the mannequin's animation Blueprint needs; `setup_player_materials.py` connects his textures. Running stride 109 cm each way, 22.7 fps on the dusty street, self-test 75 and autoplay 26 pass. The young hustler is the second skin and the mannequin the third (`NHSkin`). `NHSkinShots <folder>` photographs the player from the front.
 - **Cabin view:** the **V** key switches between the chase camera and the view from the driver's eyes over the dashboard (the driver's body is hidden in that view). Checked in the danfo, the super SUV, the luxury 4x4, the royal SUV, the sports car, the sedan and on the okada. `NHDriveShots` now also saves a cabin picture.
 - **Vehicle model pass (`Scripts/optimise_vehicle_meshes.py`):** every downloaded model now has three lower levels of detail (the 239,000-triangle sports car drops to 25,000 at the first), and solid dark glass is replaced by one shared see-through glass material on ten models, so the driver shows from outside and can see out.
+- **Real-scale Lagos level made playable (2026-10-09):** `L_Lagos_City` (the OpenStreetMap-based Lagos made in Blender, 3,780 pieces, from `Scripts/import_lagos_city.py`) now runs the game on its real streets. `Scripts/build_lagos_real.py` makes `Data/lagos_real.json` from OpenStreetMap: the road graph (3,031 main roads, 1,244 km), the eleven stops at their real places, Oshodi Motor Park as a row of bays beside the road past the Oshodi stop, and 80 district names. `UNHGameData::UseRealCity` swaps that in for this level (the game mode does it by level name), so the mission, stops, park and district label are on the real map, the minimap draws the real roads around you, and the First Day deadline is worked out from the real distances. `ANHTraffic` keeps nine of the game's vehicles driving the road graph around the player (keep right, one-way roads, slowing for what is ahead, turning at junctions) and six parked at the kerb of nearby streets, anywhere in the city; any of them can be got into. Measured at Oshodi: 9 moving at 32 to 59 km/h on average, 2.0 to 2.7 km driven in the first 20 s, 37 fps at 1280×720 standing still. The projection was checked against the model (89% of points sampled along the OpenStreetMap roads land on its road surface) and lane and kerb positions use the model's own road widths. `Scripts/mac.sh city` plays the level; `-NHHudShot=30` saves a screenshot with the HUD.
+- **Lagos level, second pass (2026-10-09):**
+  - *Ground:* in the model the land was at 2.00 m, side streets at 2.75 m and main roads at 3.05 m, as flat sheets with a vertical step between them. `import_lagos_city.py` now puts each kind down separately so main roads are at Z = 0 and everything else lies within 16 cm below; land-use patches and the airport were flattened in Blender (`Shared/Terrain.fbx`, `Airport.fbx`).
+  - *Bridges:* stretched to 1.8 times their height above road level (most flyovers cleared the road beneath by under 3 m), and the 470 of 2,488 piers that stood on a road were removed.
+  - *Buildings on roads:* 818 of about 380,000 buildings and 239 trees whose footprint lay on a main-road lane were removed from the tiles (found by casting the road graph's lanes against the roofs in Blender).
+  - *Drivers:* moving traffic has somebody at the wheel (the Lagos Runner's outfits: dispatch rider on okadas, suit in luxury cars), seated with the same posing as the player. 13 of the 19 vehicles made in a test run had one; the rest were parked.
+  - *Map (M):* the whole city, zoom with the wheel, move with the arrows; click to pin a place (a stop if you click on one). The pin shows on the minimap, in the world and as a distance, and clears when you arrive or on right-click.
+  - *Pause menu (Esc or P):* character, lighting preset, traffic (none to heavy), look speed, resolution, minimap, quit. Remembered between runs.
+  - *Inventory wheel (hold Tab):* phone (map), wardrobe (next character), car keys (pins the vehicle you last drove, which traffic no longer clears away), torch (headlights when driving), wallet, hail (the nearest passing vehicle pulls up for 15 s).
+  - Oshodi Motor Park's bays moved onto the verge, clear of the traffic lanes. 39 to 41 fps at 1280×720 standing still.
+- **Car models in the repo project:** copied from the Mac template project they drew black, because their glTF materials were made with Substrate on and this project has it off. `Scripts/use_plain_gltf_materials.py` re-points them (182 instances) at the importer's ordinary parent material; the models' own colours show again.
+- **Lagos Runner (2026-10-09):** the character made in Blender is in as three extra skins (`NHSkin runner`, `dispatch`, `suit`) from `Scripts/import_lagos_runner.py`, moved by his own idle, walk, run, sprint and jump clips through `UNHClipAnimInstance`. The Naija man stays the default.
 
 ## In progress
 
@@ -77,6 +89,10 @@ Deferred: NPCs and storyline.
 - Headlights have no gamepad button (every button is taken) and the lamp models do not glow; other traffic has no lights.
 - The models' sizes come from fitting each to its type's length, so a few are too tall (SUV 258 cm, danfo 257 cm, luxury 4x4 226 cm).
 
+- The map, menu and wheel were each checked from one screenshot opened by script (`-NHHudOpen=map|mapzoom|menu|wheel`); clicking a pin with the mouse, changing each menu line, and each wheel action were not exercised by hand. They are keyboard and mouse only (no gamepad). The traffic's drivers all share the Runner's face.
+- Bridges: the stretch makes ramps 1.8 times steeper, and decks whose piers were removed span further than is believable. Buildings were only removed where they covered a main-road lane; ones overlapping side streets remain.
+- In `L_Lagos_City`: not played through by hand or by the scripted playtests (self-test and autoplay were written for the small city and were not rerun after these changes); whether the First Day round can be finished at real distances (about 20 km) is untested. Six stops are placed by hand and snapped to the nearest main road, so they are approximate (Gbagada, Iyana Oworo, Tejuosho Market and Idi-Oro moved 150 to 500 m; Charity and Olosha are guesses). The traffic is carried along the road, not driven: no overtaking, no traffic lights, no crashes of its own, nobody at the wheel, and only on main roads (motorway to tertiary), so side streets are empty. Where a flyover crosses a road, a vehicle made underneath may start on the wrong level. The model's own box traffic is imported but no longer placed. Building-lined streets have no pedestrians, and the mission's passengers and agberos are untested there.
+- The Lagos Runner's clips have no turn-in-place or crouch; the Hurdle, Talk, Crouch and Sprint look-back clips are imported but not used. The driver's seat pose is untested with him.
 - Opening the editor adds an `AndroidFileServer` block with a generated `SecurityToken` to `Config/DefaultEngine.ini`. Discard that change before committing (`git checkout unreal/NaijaHustle/Config/DefaultEngine.ini`).
 - Nothing has been built on Windows against UE 5.8.
 - Frame rate is about 22 fps at 1280×720, under the 30 fps target.
@@ -104,6 +120,18 @@ Deferred: NPCs and storyline.
 - All surfaces use flat placeholder textures.
 
 ## Screenshots
+
+The map with a pin, the pause menu, the inventory wheel, and a flyover after the bridge fixes (a driver is at the wheel of the sedan).
+
+| Map | Pause menu | Inventory wheel | Flyover |
+|---|---|---|---|
+| ![map](docs/screenshots/lagos-city-map.jpg) | ![menu](docs/screenshots/lagos-city-menu.jpg) | ![wheel](docs/screenshots/lagos-city-wheel.jpg) | ![flyover](docs/screenshots/lagos-city-flyover.jpg) |
+
+The real-scale Lagos level: Oshodi Motor Park's bays on the real road, traffic, and the minimap of the real streets.
+
+| Oshodi Motor Park | Traffic | HUD and minimap |
+|---|---|---|
+| ![park](docs/screenshots/lagos-city-oshodi-park.jpg) | ![traffic](docs/screenshots/lagos-city-traffic.jpg) | ![minimap](docs/screenshots/lagos-city-minimap.jpg) |
 
 Cabin view (V): danfo and royal SUV.
 
