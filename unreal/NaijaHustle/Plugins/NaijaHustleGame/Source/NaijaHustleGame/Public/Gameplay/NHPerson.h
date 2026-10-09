@@ -17,6 +17,22 @@ class UNHOutfitComponent;
  * hair and clothes also chosen by Seed, with that person's idle and walk. Otherwise it is the blockout: legs and
  * arms that swing as they walk, a shirt, trousers, a head and sometimes a head-tie.
  */
+/**
+ * Who a person has to be for the part they play. The part decides, not chance: nobody who comes to fight the player
+ * is a woman, and Baba Driver is an old man.
+ */
+UENUM()
+enum class ENHCast : uint8
+{
+	/** A passer-by, a passenger: any of the people */
+	Anyone,
+	/** Area boys, the Task Force, an owner who gives chase: anybody who goes for the player */
+	Man,
+	Woman,
+	/** Baba Driver: the oldest man the project has, and he walks like it */
+	ElderMan
+};
+
 UCLASS()
 class NAIJAHUSTLEGAME_API ANHPerson : public AActor
 {
@@ -25,8 +41,9 @@ class NAIJAHUSTLEGAME_API ANHPerson : public AActor
 public:
 	ANHPerson();
 
-	/** Builds the body: Seed picks who it is, the clothes and the height; Top is the shirt colour; bHeadTie makes it a woman */
-	void Init(int32 Seed, const FLinearColor& Top, bool bHeadTie = false, float Scale = 1.f);
+	/** Builds the body: Cast says who it may be, Seed picks among them and picks the clothes and the height; Top is the shirt colour */
+	void Init(int32 Seed, const FLinearColor& Top, ENHCast Cast = ENHCast::Anyone, float Scale = 1.f);
+	ENHCast GetCast() const { return Part; }
 
 	UFUNCTION(BlueprintCallable, Category = "Naija") void WalkTo(const FVector& Target, float Speed = 140.f);
 	UFUNCTION(BlueprintCallable, Category = "Naija") void StopWalking() { bWalking = false; }
@@ -79,6 +96,7 @@ private:
 	bool bWalkShown = false;
 	bool bDown = false;
 	float FleeLeft = 0.f, FallK = 0.f;
-	bool BuildBody(int32 Seed, const FLinearColor& Top, bool bWoman, float Scale);
+	bool BuildBody(int32 Seed, const FLinearColor& Top, float Scale);
+	ENHCast Part = ENHCast::Anyone;
 	void SnapToGround();
 };

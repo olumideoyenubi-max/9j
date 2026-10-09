@@ -398,7 +398,7 @@ void ANHCarTheft::Throw(ANHVehicle* Car, EAfter Kind, const FString& Name, const
 	{
 		return;
 	}
-	P->Init(FMath::RandRange(1, 500), Shirt);
+	P->Init(FMath::RandRange(1, 500), Shirt, Kind == EAfter::Chases ? ENHCast::Man : ENHCast::Anyone); // an owner who comes after you is a man
 	FAngry A;
 	A.Person = P;
 	A.Car = Car;

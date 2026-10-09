@@ -954,7 +954,7 @@ void ANHPlayerController::NHPeople(int32 Count, float Distance)
 		const FVector At = Me->GetActorLocation() + Ahead * (Distance + FMath::Sign(Distance) * 140.f * (I / 8)) + Side * ((I % 8) - 3.5f) * 110.f;
 		if (ANHPerson* Person = GetWorld()->SpawnActor<ANHPerson>(ANHPerson::StaticClass(), At, FRotator::ZeroRotator))
 		{
-			Person->Init(101 + I * 37, FLinearColor::MakeFromHSV8(static_cast<uint8>(I * 53), 170, 200), I % 3 == 1);
+			Person->Init(101 + I * 37, FLinearColor::MakeFromHSV8(static_cast<uint8>(I * 53), 170, 200), I % 3 == 1 ? ENHCast::Woman : ENHCast::Anyone);
 			Person->FaceTowards(Me->GetActorLocation());
 			Person->LifeLeft = 120.f;
 		}

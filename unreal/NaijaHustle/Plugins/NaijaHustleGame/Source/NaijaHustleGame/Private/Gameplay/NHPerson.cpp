@@ -1,6 +1,7 @@
 #include "Gameplay/NHPerson.h"
 
 #include "EngineUtils.h"
+#include "NaijaHustleGame.h"
 #include "UI/NHHUD.h"
 
 #include "Animation/AnimSequence.h"
@@ -30,15 +31,17 @@ ANHPerson::ANHPerson()
 	RootComponent = Root;
 }
 
-void ANHPerson::Init(int32 Seed, const FLinearColor& Top, bool bHeadTie, float Scale)
+void ANHPerson::Init(int32 Seed, const FLinearColor& Top, ENHCast InCast, float Scale)
 {
+	Part = InCast;
+	const bool bHeadTie = Part == ENHCast::Woman; // the blockout's only sign of a woman
 	using namespace NHPeople;
 	if (bBuilt)
 	{
 		return;
 	}
 	bBuilt = true;
-	if (BuildBody(Seed, Top, bHeadTie, Scale))
+	if (BuildBody(Seed, Top, Scale))
 	{
 		SnapToGround();
 		return;
@@ -75,13 +78,14 @@ void ANHPerson::Init(int32 Seed, const FLinearColor& Top, bool bHeadTie, float S
 	SnapToGround();
 }
 
-bool ANHPerson::BuildBody(int32 Seed, const FLinearColor& Top, bool bWoman, float Scale)
+bool ANHPerson::BuildBody(int32 Seed, const FLinearColor& Top, float Scale)
 {
 	using namespace NHPeople;
-	// who: a woman where asked for, otherwise anyone; only those the project has
+	// who: only those the part allows, and only those the project has. The men come first in the list.
 	const TArray<FString>& All = UNHOutfitComponent::People();
+	const bool bMenOnly = Part == ENHCast::Man || Part == ENHCast::ElderMan;
 	TArray<FString> Have;
-	for (int32 I = bWoman ? UNHOutfitComponent::Men : 0; I < All.Num(); ++I)
+	for (int32 I = Part == ENHCast::Woman ? UNHOutfitComponent::Men : 0; I < (bMenOnly ? UNHOutfitComponent::Men : All.Num()); ++I)
 	{
 		if (UNHOutfitComponent::Exists(All[I]))
 		{
@@ -92,7 +96,33 @@ bool ANHPerson::BuildBody(int32 Seed, const FLinearColor& Top, bool bWoman, floa
 	{
 		return false;
 	}
-	const FString Who = Have[FMath::Min(static_cast<int32>(Rand(Seed, 5) * Have.Num()), Have.Num() - 1)];
+	FString Who = Have[FMath::Min(static_cast<int32>(Rand(Seed, 5) * Have.Num()), Have.Num() - 1)];
+	if (Part == ENHCast::Man)
+	{
+		// area boys and the Task Force are Lagos men: the Nigerian men the project has, each in turn
+		TArray<FString> Local;
+		for (const TCHAR* Name : { TEXT("Tunde"), TEXT("Dayo"), TEXT("Emeka") })
+		{
+			if (Have.Contains(Name))
+			{
+				Local.Add(Name);
+			}
+		}
+		if (Local.Num() > 0)
+		{
+			Who = Local[FMath::Abs(Seed) % Local.Num()];
+		}
+	}
+	if (Part == ENHCast::ElderMan)
+	{
+		// "Baba" once the project has an old man of that name; until then Emeka, the oldest of the men (middle-aged)
+		Who = UNHOutfitComponent::Exists(TEXT("Baba")) ? FString(TEXT("Baba")) : Have.Contains(TEXT("Emeka")) ? FString(TEXT("Emeka")) : Who;
+	}
+	if (Part != ENHCast::Anyone)
+	{
+		static const TCHAR* Parts[] = { TEXT("anyone"), TEXT("a man"), TEXT("a woman"), TEXT("an elderly man") };
+		UE_LOG(LogNHGame, Verbose, TEXT("NAIJA HUSTLE: cast as %s: %s"), Parts[static_cast<int32>(Part)], *Who);
+	}
 	const auto Clip = [&Who](const TCHAR* Path) -> UAnimSequence*
 	{
 		const FString Full = FString::Printf(TEXT("/Game/Characters/Mannequins/Anims/Unarmed/%s_%s"), Path, *Who);
@@ -219,6 +249,10 @@ void ANHPerson::ScareAround(const UWorld* World, const FVector& At, float Radius
 
 void ANHPerson::WalkTo(const FVector& InTarget, float Speed)
 {
+	if (Part == ENHCast::ElderMan)
+	{
+		Speed = FMath::Min(Speed, 95.f); // an old man does not hurry
+	}
 	if (bDown || FleeLeft > 0.f)
 	{
 		return; // not going anywhere they are told to just now

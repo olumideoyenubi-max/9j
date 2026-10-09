@@ -275,7 +275,7 @@ void ANHResponse::Arrive(const FVector& Player)
 	const bool bForce = Coming == EComing::TaskForce;
 	// the Task Force in black; area boys in whatever they had on
 	++Made;
-	Body->Init(4001 + 61 * Made, bForce ? FLinearColor(0.02f, 0.02f, 0.03f) : FLinearColor::MakeFromHSV8(static_cast<uint8>(Made * 71), 150, 170));
+	Body->Init(4000 + Made, bForce ? FLinearColor(0.02f, 0.02f, 0.03f) : FLinearColor::MakeFromHSV8(static_cast<uint8>(Made * 71), 150, 170), ENHCast::Man); // whoever comes for the player is a man
 	Body->bBrave = true;
 	Body->Health = bForce ? 120.f : 90.f;
 	Units.Add({ Body, 1.f });

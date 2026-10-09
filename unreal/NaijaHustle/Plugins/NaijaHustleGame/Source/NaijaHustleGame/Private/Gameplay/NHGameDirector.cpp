@@ -68,7 +68,7 @@ void ANHGameDirector::BeginPlay()
 	}
 	if (Baba.IsValid())
 	{
-		Baba->Init(7, FLinearColor(0.32f, 0.17f, 0.08f), false, 1.05f);
+		Baba->Init(7, FLinearColor(0.32f, 0.17f, 0.08f), ENHCast::ElderMan, 0.97f); // an elderly man: a little stooped, never in a hurry
 	}
 	if (!Hustle->IsDone(NHDir::FirstDay))
 	{
@@ -726,7 +726,7 @@ void ANHGameDirector::SpawnWaiting(FName StopId, FPax& Pax, int32 Slot)
 	ANHPerson* Body = GetWorld()->SpawnActor<ANHPerson>(ANHPerson::StaticClass(), QueueSpot(StopId, Slot), FRotator::ZeroRotator);
 	if (Body)
 	{
-		Body->Init(Pax.Id * 31, NHDir::Shirts[Pax.Id % 8], FMath::FRand() < 0.5f);
+		Body->Init(Pax.Id * 31, NHDir::Shirts[Pax.Id % 8], FMath::FRand() < 0.5f ? ENHCast::Woman : ENHCast::Anyone);
 		Body->FaceTowards(StopKerb(StopId));
 		Body->SetWaving(Slot == 0);
 		Pax.Body = Body;
@@ -777,7 +777,7 @@ void ANHGameDirector::Arrive(FName StopId)
 		{
 			if (ANHPerson* Body = GetWorld()->SpawnActor<ANHPerson>(ANHPerson::StaticClass(), Bus->ExitPoint() - FVector(0, 0, 100.f), FRotator::ZeroRotator))
 			{
-				Body->Init(PaxId + I * 7, NHDir::Shirts[(PaxId + I) % 8], FMath::FRand() < 0.5f);
+				Body->Init(PaxId + I * 7, NHDir::Shirts[(PaxId + I) % 8], FMath::FRand() < 0.5f ? ENHCast::Woman : ENHCast::Anyone);
 				Body->WalkTo(Wait + FVector(FMath::FRandRange(-400.f, 400.f), FMath::FRandRange(-100.f, 100.f), 0.f));
 				Body->LifeLeft = 4.f;
 			}
