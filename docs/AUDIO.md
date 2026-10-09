@@ -136,7 +136,7 @@ One station so far, **Ragebait FM**: "Dont Ragebait Me" (Trench Boy) and "Bands"
 
 ## Weapon sounds (brought forward from step 4)
 
-The machete, the pistol and the AK-47 can be used and heard. On foot with one in hand, the **left mouse button**
+The machete, the pistol and the AK-47 can be used and heard. On foot with one in hand, **T** (the left mouse button until 2026-10-10)
 fires or swings: one shot a press for the pistol, 600 rounds a minute while held for the AK-47, one swing a press
 for the machete.
 

@@ -11,6 +11,8 @@
 
 #include "Animation/AnimInstance.h"
 #include "Animation/AnimSequence.h"
+#include "Animation/Skeleton.h"
+#include "Animation/AnimMontage.h"
 #include "AnimationRuntime.h"
 #include "Camera/CameraComponent.h"
 #include "Characters/NHOutfitComponent.h"
@@ -252,6 +254,156 @@ FName ANHCharacter::Equip(FName InWeapon)
 	return Weapon;
 }
 
+UAnimSequence* ANHCharacter::ActionClip(const USkeletalMesh* Mesh, const FString& Clip)
+{
+	// By the skeleton, not the mesh: a body in changeable clothes is another mesh (Wardrobe/Body_Tunde) on the same Tunde_Skeleton.
+	const USkeleton* Bones = Mesh ? Mesh->GetSkeleton() : nullptr;
+	if (!Bones)
+	{
+		return nullptr;
+	}
+	// looked for once: a body without the clips is asked about them every frame
+	static TMap<FString, TWeakObjectPtr<UAnimSequence>> Found;
+	static TSet<FString> Missing;
+	FString Who = Bones->GetName();
+	Who.RemoveFromEnd(TEXT("_Skeleton"));
+	const FString Path = FPackageName::GetLongPackagePath(Bones->GetPackage()->GetName()) / TEXT("Anims") / (Who + TEXT("_") + Clip);
+	if (Missing.Contains(Path))
+	{
+		return nullptr;
+	}
+	if (const TWeakObjectPtr<UAnimSequence>* Have = Found.Find(Path); Have && Have->IsValid())
+	{
+		return Have->Get();
+	}
+	UAnimSequence* Sequence = FPackageName::DoesPackageExist(Path) ? LoadObject<UAnimSequence>(nullptr, *Path) : nullptr;
+	if (Sequence)
+	{
+		// The clips were made on one body and brought in for each: every bone keeps its own body's length (only the
+		// hips' height, and the IK bones, are the clip's), or a shorter woman would be stretched to his arms and legs.
+		static TSet<TWeakObjectPtr<USkeleton>> Fitted;
+		if (USkeleton* Skeleton = Sequence->GetSkeleton(); Skeleton && !Fitted.Contains(Skeleton))
+		{
+			Fitted.Add(Skeleton);
+			const FReferenceSkeleton& Ref = Skeleton->GetReferenceSkeleton();
+			for (int32 I = 0; I < Ref.GetNum(); ++I)
+			{
+				const FString Bone = Ref.GetBoneName(I).ToString();
+				const bool bOwn = I == 0 || Bone.StartsWith(TEXT("ik_"));
+				Skeleton->SetBoneTranslationRetargetingMode(I, bOwn ? EBoneTranslationRetargetingMode::Animation
+					: Bone == TEXT("pelvis") ? EBoneTranslationRetargetingMode::AnimationScaled : EBoneTranslationRetargetingMode::Skeleton);
+			}
+		}
+		Sequence->AddToRoot(); // a handful of short clips, kept for the session
+		Found.Add(Path, Sequence);
+	}
+	else
+	{
+		Missing.Add(Path);
+	}
+	return Sequence;
+}
+
+UAnimSequence* ANHCharacter::Clip(const TCHAR* Name) const
+{
+	return ActionClip(GetMesh()->GetSkeletalMeshAsset(), Name);
+}
+
+void ANHCharacter::ToggleCrouch()
+{
+	if (bIsCrouched)
+	{
+		UnCrouch();
+	}
+	else if (Clip(TEXT("Crouch_Idle")) && RollLeft <= 0.f && ClimbTime <= 0.f && GetCharacterMovement()->IsMovingOnGround())
+	{
+		GetCharacterMovement()->NavAgentProps.bCanCrouch = true;
+		GetCharacterMovement()->SetCrouchedHalfHeight(62.f);
+		GetCharacterMovement()->MaxWalkSpeedCrouched = 112.f; // the crouched walk clip covers 80 cm a second: it is played 1.4 times as fast
+		SetSprinting(false);
+		Crouch();
+	}
+}
+
+void ANHCharacter::PlayShot(const TCHAR* Name, float Rate)
+{
+	UAnimInstance* Anim = GetMesh()->GetAnimInstance();
+	UAnimSequence* Sequence = Clip(Name);
+	if (!Anim || !Sequence)
+	{
+		return;
+	}
+	if (HoldMontage)
+	{
+		Anim->Montage_Stop(0.08f, HoldMontage);
+		HoldMontage = nullptr;
+	}
+	HoldClip = NAME_None; // whatever was held comes back when this has played
+	if (Anim->PlaySlotAnimationAsDynamicMontage(Sequence, TEXT("DefaultSlot"), 0.06f, 0.18f, Rate, 1))
+	{
+		ShotClip = Name;
+		ShotLeft = Sequence->GetPlayLength() / Rate - 0.12f;
+	}
+}
+
+void ANHCharacter::UpdateActions(float DeltaSeconds)
+{
+	UAnimInstance* Anim = GetMesh()->GetAnimInstance();
+	if (!Anim)
+	{
+		return;
+	}
+	ShotLeft = FMath::Max(0.f, ShotLeft - DeltaSeconds);
+	const bool bBusy = RollLeft > 0.f || ClimbTime > 0.f || !GetCharacterMovement()->IsMovingOnGround();
+	const bool bMoving = GetVelocity().SizeSquared2D() > 400.f;
+	const bool bPistol = Weapon == TEXT("pistol"), bRifle = Weapon == TEXT("ak47");
+	SinceShot += DeltaSeconds;
+	// a gun is raised while aiming (right mouse), walking or not, and for a moment after a shot; otherwise it hangs in the hand
+	const bool bRaised = IsAiming() || (SinceShot < 1.4f && !bMoving);
+	// The clips are the whole body standing in one place, so guns are aimed and the machete held on guard only while
+	// stood still; walking, the body's own animation carries on with the weapon in the hand.
+	const TCHAR* Want = nullptr;
+	if (bBusy)
+	{
+		if (bIsCrouched && RollLeft > 0.f)
+		{
+			UnCrouch();
+		}
+	}
+	else if (bIsCrouched)
+	{
+		Want = bMoving ? TEXT("Crouch_Walk") : bPistol ? TEXT("Crouch_Pistol_Aim") : bRifle ? TEXT("Crouch_Rifle_Aim") : TEXT("Crouch_Idle");
+	}
+	else if (bPistol || bRifle)
+	{
+		Want = !bRaised ? nullptr : bPistol ? TEXT("Pistol_Aim") : bTrigger ? TEXT("Rifle_Fire") : TEXT("Rifle_Aim");
+	}
+	else if (!bMoving && Weapon == TEXT("machete"))
+	{
+		Want = TEXT("Machete_Idle");
+	}
+	if (ShotLeft > 0.f && !bBusy)
+	{
+		return; // a shot or a cut is playing through
+	}
+	const FName WantName = Want ? FName(Want) : NAME_None;
+	if (WantName == HoldClip)
+	{
+		return;
+	}
+	if (HoldMontage)
+	{
+		Anim->Montage_Stop(0.2f, HoldMontage);
+		HoldMontage = nullptr;
+	}
+	HoldClip = NAME_None;
+	if (UAnimSequence* Sequence = Want ? Clip(Want) : nullptr)
+	{
+		HoldMontage = Anim->PlaySlotAnimationAsDynamicMontage(Sequence, TEXT("DefaultSlot"), 0.2f, 0.2f, WantName == TEXT("Crouch_Walk") ? 1.4f : 1.f, 100000);
+		HoldClip = HoldMontage ? WantName : NAME_None;
+	}
+}
+
 void ANHCharacter::Hurt(float Damage)
 {
 	Health = FMath::Max(0.f, Health - Damage);
@@ -271,8 +423,21 @@ void ANHCharacter::Attack()
 	++Attacks;
 	if (Weapon == TEXT("machete"))
 	{
-		AttackWait = 0.5f;
-		SwingLeft = 0.28f;
+		// with the clips: a cut across, the cut back, then a chop down, each landing as the blade comes through
+		static const TCHAR* Cuts[] = { TEXT("Machete_Slash"), TEXT("Machete_Backslash"), TEXT("Machete_Chop") };
+		const bool bClips = Clip(Cuts[0]) != nullptr && GetCharacterMovement()->IsMovingOnGround() && RollLeft <= 0.f && ClimbTime <= 0.f;
+		if (bClips)
+		{
+			if (bIsCrouched)
+			{
+				UnCrouch();
+			}
+			PlayShot(Cuts[Swings++ % 3], 1.5f);
+		}
+		AttackWait = bClips ? 0.64f : 0.5f;
+		SwingLength = bClips ? 0.5f : 0.28f;
+		SwingLandsAt = bClips ? 0.23f : 0.14f;
+		SwingLeft = SwingLength;
 		bSwingLanded = false;
 		if (Audio)
 		{
@@ -282,6 +447,11 @@ void ANHCharacter::Attack()
 	}
 	const bool bRifle = Weapon == TEXT("ak47");
 	AttackWait = bRifle ? AttackWait + 0.1f : 0.16f; // 600 rounds a minute; a pistol as fast as the finger
+	SinceShot = 0.f;
+	if (!bRifle && !bIsCrouched && GetVelocity().SizeSquared2D() < 400.f && GetCharacterMovement()->IsMovingOnGround())
+	{
+		PlayShot(TEXT("Pistol_Fire"), 1.f); // the kick; the rifle's is held while the trigger is (UpdateActions)
+	}
 	if (Audio)
 	{
 		Audio->PlayShot(bRifle ? ENHShot::Rifle : ENHShot::Pistol, Muzzle);
@@ -706,6 +876,11 @@ bool ANHCharacter::TryClimb()
 
 void ANHCharacter::Jump()
 {
+	if (bIsCrouched)
+	{
+		UnCrouch(); // up first
+		return;
+	}
 	if (!TryClimb())
 	{
 		Super::Jump();
@@ -736,7 +911,7 @@ void ANHCharacter::Tick(float DeltaSeconds)
 	if (SwingLeft > 0.f)
 	{
 		SwingLeft -= DeltaSeconds;
-		if (!bSwingLanded && SwingLeft < 0.14f)
+		if (!bSwingLanded && SwingLeft < SwingLandsAt)
 		{
 			SwingLand();
 		}
@@ -749,11 +924,26 @@ void ANHCharacter::Tick(float DeltaSeconds)
 			MuzzleFlash->SetIntensity(0.f);
 		}
 	}
+	UpdateActions(DeltaSeconds);
 	if (WeaponPivot)
 	{
-		// held pointing where the player faces: the machete up at an angle (and chopping down through a swing), the guns a little down
-		const float Chop = SwingLeft > 0.f ? -110.f * FMath::Sin(UE_PI * (1.f - SwingLeft / 0.28f)) : 0.f;
-		WeaponPivot->SetWorldRotation(GetActorRotation() + FRotator(Weapon == TEXT("machete") ? 35.f + Chop : -8.f, 0.f, 0.f));
+		const USkeletalMeshComponent* Body = GetMesh();
+		if ((ShotLeft > 0.f || !HoldClip.IsNone()) && Body->GetBoneIndex(TEXT("index_01_r")) != INDEX_NONE && Body->GetBoneIndex(TEXT("pinky_01_r")) != INDEX_NONE)
+		{
+			// a clip is posing the hand: the weapon lies in the fist, a barrel along the knuckles' way, a blade out of the thumb side
+			const FVector Wrist = Body->GetBoneLocation(TEXT("hand_r")), Index = Body->GetBoneLocation(TEXT("index_01_r")), Pinky = Body->GetBoneLocation(TEXT("pinky_01_r"));
+			const FVector Along = ((Index + Pinky) * 0.5f - Wrist).GetSafeNormal(), Thumb = (Index - Pinky).GetSafeNormal();
+			const FVector Palm = FVector::CrossProduct(Thumb, Along).GetSafeNormal() * (FVector::DotProduct(FVector::CrossProduct(Thumb, Along), Body->GetBoneLocation(TEXT("thumb_01_r")) - Wrist) < 0.f ? -1.f : 1.f);
+			const FRotator Held = Weapon == TEXT("machete") ? FRotationMatrix::MakeFromXZ(Thumb, Along).Rotator() : FRotationMatrix::MakeFromXZ(Along, Thumb).Rotator();
+			WeaponPivot->SetWorldLocationAndRotation(Wrist + Along * 8.5f + Palm * 2.f - Held.RotateVector(FVector(4.f, 9.f, 0.f)), Held); // the pieces are built 4 and 9 cm off the pivot
+		}
+		else
+		{
+			// held pointing where the player faces: the machete up at an angle (and chopping down through a swing), the guns a little down
+			const float Chop = SwingLeft > 0.f ? -110.f * FMath::Sin(UE_PI * (1.f - SwingLeft / SwingLength)) : 0.f;
+			WeaponPivot->SetRelativeLocation(Body->GetBoneIndex(TEXT("hand_r")) != INDEX_NONE ? FVector::ZeroVector : FVector(25.f, 22.f, 5.f));
+			WeaponPivot->SetWorldRotation(GetActorRotation() + FRotator(Weapon == TEXT("machete") ? 35.f + Chop : -8.f, 0.f, 0.f));
+		}
 	}
 
 	// running without the key held stops by itself once you have stood still a moment
@@ -798,8 +988,21 @@ void ANHCharacter::Tick(float DeltaSeconds)
 	const bool bRunning = bSprinting && GetVelocity().SizeSquared2D() > FMath::Square(WalkSpeed * 1.1f);
 	SprintAlpha = FMath::FInterpTo(SprintAlpha, bRunning ? 1.f : 0.f, DeltaSeconds, bRunning ? 4.f : 2.5f);
 	const float A = FMath::InterpEaseInOut(0.f, 1.f, SprintAlpha, 2.f);
-	CameraBoom->TargetArmLength = FMath::Lerp(WalkArmLength, SprintArmLength, A);
-	FollowCamera->SetFieldOfView(FMath::Lerp(WalkFOV, SprintFOV, A));
+	// aiming: in over the right shoulder with a narrower view, the body turned to where the camera looks, and no running
+	AimK = FMath::FInterpTo(AimK, IsAiming() ? 1.f : 0.f, DeltaSeconds, 9.f);
+	CameraBoom->TargetArmLength = FMath::Lerp(FMath::Lerp(WalkArmLength, SprintArmLength, A), WalkArmLength * 0.5f, AimK);
+	CameraBoom->SocketOffset = FMath::Lerp(FVector(0.f, 50.f, 45.f), FVector(0.f, 62.f, 52.f), AimK);
+	FollowCamera->SetFieldOfView(FMath::Lerp(FMath::Lerp(WalkFOV, SprintFOV, A), WalkFOV * 0.72f, AimK));
+	if (IsAiming())
+	{
+		if (bSprinting)
+		{
+			bRunLocked = false;
+			SetSprinting(false);
+		}
+		SetActorRotation(FMath::RInterpTo(GetActorRotation(), FRotator(0.f, GetControlRotation().Yaw, 0.f), DeltaSeconds, 14.f));
+	}
+	GetCharacterMovement()->bOrientRotationToMovement = !IsAiming();
 
 	// handheld sway: a small bob and roll in step with the run, fading out with the sprint
 	SwayTime += DeltaSeconds;

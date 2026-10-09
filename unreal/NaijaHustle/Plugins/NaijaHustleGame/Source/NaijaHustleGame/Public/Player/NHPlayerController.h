@@ -169,6 +169,13 @@ private:
 	void UpdateStreaming();
 	TWeakObjectPtr<ANHVehicle> StreamingCar;
 	void OnRoll();
+	void OnCrouch();
+	void OnFire();
+	void OnAimEnd();
+	/** -NHActionTest: the action clips one after another, each photographed from in front: Saved/NHActions/ */
+	void ActionTestStep(int32 Step);
+	UPROPERTY() TObjectPtr<class ACameraActor> ActionLens;
+	void OnFireEnd();
 	void UiBack();
 	void UiWheelOpen();
 	void UiWheelClose();

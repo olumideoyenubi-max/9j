@@ -1,5 +1,7 @@
 #include "Vehicles/NHVehicle.h"
 
+#include "Components/SkeletalMeshComponent.h"
+#include "Animation/AnimSequence.h"
 #include "Audio/NHAudioSubsystem.h"
 
 #include "Camera/CameraComponent.h"
@@ -373,6 +375,75 @@ void ANHVehicle::SetNpcDriver(USkeletalMesh* Mesh)
 	}
 }
 
+void ANHVehicle::SetupDriverAnim(USkeletalMesh* Mesh)
+{
+	DriveClips.Reset();
+	for (const TCHAR* Name : { TEXT("Drive_Idle"), TEXT("Drive_Left"), TEXT("Drive_Right"), TEXT("Drive_Reverse") })
+	{
+		DriveClips.Add(ANHCharacter::ActionClip(Mesh, Name));
+	}
+	const bool bClips = DriveClips[0] != nullptr && !Spec.bBike; // the clips sit him at a car's wheel, not astride a bike
+	DriverBody->SetHiddenInGame(bClips);
+	if (!bClips)
+	{
+		DriveClips.Reset();
+		if (DriverAnim)
+		{
+			DriverAnim->SetVisibility(false);
+		}
+		return;
+	}
+	if (!DriverAnim)
+	{
+		DriverAnim = NewObject<USkeletalMeshComponent>(this);
+		DriverAnim->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		DriverAnim->SetCanEverAffectNavigation(false);
+		DriverAnim->SetupAttachment(Body);
+		DriverAnim->RegisterComponent();
+	}
+	DriverAnim->SetSkeletalMeshAsset(Mesh);
+	DriverAnim->SetRelativeTransform(DriverBody->GetRelativeTransform());
+	DriverAnim->SetAnimationMode(EAnimationMode::AnimationSingleNode);
+	DriverAnim->PlayAnimation(DriveClips[0], true);
+	DriveClipShown = 0;
+	SteerShown = ReverseShown = 0.f;
+}
+
+void ANHVehicle::DriverAnimTick(float DeltaSeconds)
+{
+	if (!DriverAnim || DriveClips.Num() < 4 || !DriverBody)
+	{
+		return;
+	}
+	const bool bShow = DriverBody->GetVisibleFlag();
+	DriverAnim->SetVisibility(bShow);
+	if (!bShow)
+	{
+		return;
+	}
+	SteerShown = FMath::FInterpTo(SteerShown, Controller ? Steer : 0.f, DeltaSeconds, 7.f);
+	ReverseShown = FMath::FInterpTo(ReverseShown, Controller && Speed < -40.f ? 1.f : 0.f, DeltaSeconds, 4.f);
+	// reversing: turned to look behind. Otherwise the hands go round with the wheel, as far through the turning clip as the wheel is turned.
+	const int32 Want = ReverseShown > 0.04f && DriveClips[3] ? 3 : SteerShown < -0.05f && DriveClips[1] ? 1 : SteerShown > 0.05f && DriveClips[2] ? 2 : 0;
+	if (Want != DriveClipShown)
+	{
+		DriveClipShown = Want;
+		DriverAnim->SetAnimation(DriveClips[Want]);
+		if (Want == 0)
+		{
+			DriverAnim->Play(true);
+		}
+		else
+		{
+			DriverAnim->Stop();
+		}
+	}
+	if (Want != 0)
+	{
+		DriverAnim->SetPosition((Want == 3 ? ReverseShown : FMath::Abs(SteerShown)) * DriveClips[Want]->GetPlayLength() * 0.98f, false);
+	}
+}
+
 bool ANHVehicle::SeatBody(USkeletalMesh* Mesh, float Scale, float Facing)
 {
 	if (!DriverBody)
@@ -432,6 +503,7 @@ bool ANHVehicle::SeatBody(USkeletalMesh* Mesh, float Scale, float Facing)
 	DriverBody->SetRelativeScale3D(FVector(Scale));
 	DriverBody->SetRelativeRotation(FRotator(0.f, -Facing, 0.f));
 	DriverBody->SetRelativeLocation(SeatAt - FVector(0.f, 0.f, Hips * Scale));
+	SetupDriverAnim(Mesh);
 	UE_LOG(LogNHGame, Verbose, TEXT("NAIJA HUSTLE: driver seated in the %s at %s (hips %.0f cm up the body, scale %.2f, vehicle %.0f x %.0f x %.0f)"), *VehicleType.ToString(), *SeatAt.ToCompactString(), Hips, Scale, Spec.Length, Spec.Width, BodyHeight);
 	return true;
 }
@@ -557,6 +629,7 @@ void ANHVehicle::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	Drive(DeltaSeconds);
+	DriverAnimTick(DeltaSeconds);
 	if (AlarmLeft > 0.f)
 	{
 		// the alarm: lights flashing (when nobody is driving) and the noise written in the air; there is no sound yet

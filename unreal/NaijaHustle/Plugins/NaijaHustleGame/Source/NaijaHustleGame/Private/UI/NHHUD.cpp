@@ -244,6 +244,16 @@ void ANHHUD::DrawHUD()
 	const float VW = Canvas->ClipX, VH = Canvas->ClipY, Pad = 28.f * S;
 	UFont* Large = GEngine->GetLargeFont();
 	UFont* Medium = GEngine->GetMediumFont();
+	if (const ANHCharacter* Aimer = Cast<ANHCharacter>(GetOwningPawn()); Aimer && Aimer->IsAiming() && Screen == EScreen::None)
+	{
+		// the crosshair: four short strokes round the middle, where the shot goes
+		const float AimGap = 5.f * S, AimLong = 9.f * S, AimThick = FMath::Max(2.f, 2.f * S);
+		const FLinearColor AimInk(1.f, 1.f, 1.f, 0.9f);
+		DrawRect(AimInk, VW * 0.5f - AimGap - AimLong, VH * 0.5f - AimThick * 0.5f, AimLong, AimThick);
+		DrawRect(AimInk, VW * 0.5f + AimGap, VH * 0.5f - AimThick * 0.5f, AimLong, AimThick);
+		DrawRect(AimInk, VW * 0.5f - AimThick * 0.5f, VH * 0.5f - AimGap - AimLong, AimThick, AimLong);
+		DrawRect(AimInk, VW * 0.5f - AimThick * 0.5f, VH * 0.5f + AimGap, AimThick, AimLong);
+	}
 
 	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
 	const UNHGameData* Data = UNHGameData::Get(this);

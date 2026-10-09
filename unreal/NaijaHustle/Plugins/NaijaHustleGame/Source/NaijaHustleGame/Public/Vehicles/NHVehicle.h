@@ -137,6 +137,17 @@ private:
 	UPROPERTY() TObjectPtr<UTextRenderComponent> BoardText;
 	/** The player's own body in the driving seat, made the first time someone gets in */
 	UPROPERTY() TObjectPtr<class UPoseableMeshComponent> DriverBody;
+	/**
+	 * The same body moved by its driving clips, where it has them (ANHCharacter::ActionClip): hands on the wheel,
+	 * carried round with the steering, and a look over the shoulder in reverse. It is shown in place of DriverBody,
+	 * which keeps saying whether a driver should be seen.
+	 */
+	UPROPERTY() TObjectPtr<class USkeletalMeshComponent> DriverAnim;
+	UPROPERTY() TArray<TObjectPtr<class UAnimSequence>> DriveClips;
+	int32 DriveClipShown = -1;
+	float SteerShown = 0.f, ReverseShown = 0.f;
+	void SetupDriverAnim(class USkeletalMesh* Mesh);
+	void DriverAnimTick(float DeltaSeconds);
 	/** Two headlights and a tail light, made the first time they are switched on */
 	UPROPERTY() TArray<TObjectPtr<class ULocalLightComponent>> Lamps;
 	/** The glowing lamp faces that go with them */

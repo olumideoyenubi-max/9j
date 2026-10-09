@@ -75,6 +75,11 @@ void ANHPlayerController::BeginPlay()
 		FTimerHandle Start;
 		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { ResponseTestStep(0); }), 8.f, false);
 	}
+	if (FParse::Param(FCommandLine::Get(), TEXT("NHActionTest")))
+	{
+		FTimerHandle Start;
+		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { ActionTestStep(0); }), 8.f, false);
+	}
 	if (FParse::Param(FCommandLine::Get(), TEXT("NHDamageTest")))
 	{
 		FTimerHandle Start;
@@ -169,6 +174,9 @@ void ANHPlayerController::SetupInputComponent()
 	Key(EKeys::F2, &ANHPlayerController::OnStreamingOverlay);
 	Key(EKeys::LeftControl, &ANHPlayerController::OnRoll);
 	Key(EKeys::C, &ANHPlayerController::OnRoll);
+	Key(EKeys::X, &ANHPlayerController::OnCrouch); // down into a crouch and up again
+	Key(EKeys::T, &ANHPlayerController::OnFire);
+	Key(EKeys::T, &ANHPlayerController::OnFireEnd, IE_Released);
 	Key(EKeys::Tab, &ANHPlayerController::UiWheelOpen);
 	Key(EKeys::Tab, &ANHPlayerController::UiWheelClose, IE_Released);
 	Key(EKeys::Up, &ANHPlayerController::UiUp);
@@ -179,6 +187,7 @@ void ANHPlayerController::SetupInputComponent()
 	Key(EKeys::LeftMouseButton, &ANHPlayerController::UiClick);
 	Key(EKeys::LeftMouseButton, &ANHPlayerController::UiClickEnd, IE_Released);
 	Key(EKeys::RightMouseButton, &ANHPlayerController::UiRightClick);
+	Key(EKeys::RightMouseButton, &ANHPlayerController::OnAimEnd, IE_Released);
 	Key(EKeys::MouseScrollUp, &ANHPlayerController::UiZoomIn);
 	Key(EKeys::MouseScrollDown, &ANHPlayerController::UiZoomOut);
 }
@@ -233,6 +242,14 @@ void ANHPlayerController::UiRadioClose()
 	}
 }
 
+void ANHPlayerController::OnCrouch()
+{
+	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
+	{
+		C->ToggleCrouch();
+	}
+}
+
 void ANHPlayerController::OnRoll()
 {
 	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
@@ -258,21 +275,107 @@ void ANHPlayerController::UiClick()
 	{
 		H->Click(false);
 	}
-	// with no screen open, on foot, the left button is the attack: fire, or swing
+}
+
+void ANHPlayerController::UiClickEnd()
+{
+}
+
+void ANHPlayerController::ActionTestStep(int32 Step)
+{
+	// what is done at each step, and the name of the picture taken at the end of it
+	struct FDo { const TCHAR* Weapon; bool bCrouch; bool bFire; float Wait; const TCHAR* Picture; };
+	static const FDo Steps[] = {
+		{ TEXT("machete"), false, false, 1.2f, TEXT("1_machete_guard") }, { nullptr, false, true, 0.24f, TEXT("2_machete_slash") }, { nullptr, false, false, 0.7f, nullptr },
+		{ nullptr, false, true, 0.24f, TEXT("3_machete_backslash") }, { nullptr, false, false, 0.7f, nullptr },
+		{ TEXT("pistol"), false, false, 1.2f, TEXT("4_pistol_aim") }, { nullptr, false, true, 0.07f, TEXT("5_pistol_fire") },
+		{ TEXT("ak47"), false, false, 1.2f, TEXT("6_rifle_aim") }, { nullptr, true, false, 1.2f, TEXT("7_crouch_rifle_aim") },
+		{ TEXT("ak47"), true, false, 1.2f, TEXT("8_crouch") }, { nullptr, false, false, 1.0f, TEXT("9_standing") },
+	};
+	ANHCharacter* C = Cast<ANHCharacter>(GetPawn());
+	if (!C || Step >= UE_ARRAY_COUNT(Steps))
+	{
+		ConsoleCommand(TEXT("quit"));
+		return;
+	}
+	if (!ActionLens)
+	{
+		const FVector Eye = C->GetActorLocation() + C->GetActorForwardVector() * 330.f + C->GetActorRightVector() * -210.f + FVector(0.f, 0.f, 40.f);
+		ActionLens = GetWorld()->SpawnActor<ACameraActor>(Eye, (C->GetActorLocation() + FVector(0.f, 0.f, 10.f) - Eye).Rotation());
+		ActionLens->GetCameraComponent()->SetFieldOfView(50.f);
+		ActionLens->GetCameraComponent()->SetConstraintAspectRatio(false);
+		SetViewTarget(ActionLens);
+	}
+	const FDo& Do = Steps[Step];
+	if (Step == 0)
+	{
+		const USkeletalMesh* Mesh = C->GetMesh()->GetSkeletalMeshAsset();
+		const UAnimInstance* Anim = C->GetMesh()->GetAnimInstance();
+		UE_LOG(LogNHGame, Log, TEXT("[actiontest] body %s, animated by %s, crouch clip %s"), *GetPathNameSafe(Mesh), Anim ? *Anim->GetClass()->GetName() : TEXT("nothing"),
+			*GetPathNameSafe(ANHCharacter::ActionClip(Mesh, TEXT("Crouch_Idle"))));
+	}
+	if (Do.Weapon)
+	{
+		C->Equip(Do.Weapon); // the one already held is put away
+	}
+	if (Do.bCrouch != C->bIsCrouched)
+	{
+		C->ToggleCrouch();
+	}
+	C->SetTrigger(Do.bFire);
+	C->SetAiming(true); // the guns are photographed raised
+	FTimerHandle Next;
+	GetWorldTimerManager().SetTimer(Next, FTimerDelegate::CreateWeakLambda(this, [this, Step, C, Do]
+	{
+		UE_LOG(LogNHGame, Log, TEXT("[actiontest] %s: holding %s, showing %s%s"), Do.Picture ? Do.Picture : TEXT("-"), *C->Equipped().ToString(), *C->ActionShown().ToString(), C->bIsCrouched ? TEXT(", crouched") : TEXT(""));
+		if (Do.Picture)
+		{
+			FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("NHActions") / (FString(Do.Picture) + TEXT(".png")), false, false);
+		}
+		C->SetTrigger(false);
+		FTimerHandle After;
+		GetWorldTimerManager().SetTimer(After, FTimerDelegate::CreateWeakLambda(this, [this, Step] { ActionTestStep(Step + 1); }), 0.25f, false);
+	}), Do.Wait, false);
+}
+
+void ANHPlayerController::OnFire()
+{
+	// T, with no screen open, on foot, is the attack: fire, or swing. (In a car T is the radio's next song.)
+	const ANHHUD* H = ANHHUD::Get(this);
 	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()); C && (!H || H->GetScreen() == ANHHUD::EScreen::None) && !IsPaused())
 	{
 		C->SetTrigger(true);
 	}
 }
 
-void ANHPlayerController::UiClickEnd()
+void ANHPlayerController::OnFireEnd()
 {
 	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
 	{
 		C->SetTrigger(false);
 	}
 }
-void ANHPlayerController::UiRightClick() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Click(true); } }
+void ANHPlayerController::UiRightClick()
+{
+	ANHHUD* H = ANHHUD::Get(this);
+	if (H)
+	{
+		H->Click(true);
+	}
+	// with no screen open, on foot, the right button aims the gun in the hand
+	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()); C && (!H || H->GetScreen() == ANHHUD::EScreen::None) && !IsPaused())
+	{
+		C->SetAiming(true);
+	}
+}
+
+void ANHPlayerController::OnAimEnd()
+{
+	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
+	{
+		C->SetAiming(false);
+	}
+}
 void ANHPlayerController::UiZoomIn() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Zoom(1); } }
 void ANHPlayerController::UiZoomOut() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Zoom(-1); } }
 

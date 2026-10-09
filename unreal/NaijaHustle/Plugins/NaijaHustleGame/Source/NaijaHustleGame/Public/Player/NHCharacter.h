@@ -101,6 +101,22 @@ public:
 	int32 PeopleHit = 0, PeopleDown = 0, VehiclesHit = 0;
 	void ToggleTorch();
 	bool TorchOn() const;
+	/**
+	 * The body's own action clips, made in Blender (Scripts/build_player_action_anims.py, import_player_action_anims.py):
+	 * <the skeleton's folder>/Anims/<Name>_<Clip> for a skeleton called <Name>_Skeleton. Null where the project has none for that body, and then nothing
+	 * here changes how it moves.
+	 */
+	static class UAnimSequence* ActionClip(const class USkeletalMesh* Mesh, const FString& Clip);
+	/**
+	 * Aiming a gun (right mouse held): the camera comes in over the shoulder, the body turns to where it looks and
+	 * raises the gun, and a crosshair shows. Without a gun in the hand it does nothing.
+	 */
+	void SetAiming(bool bOn) { bAimHeld = bOn; }
+	bool IsAiming() const { return bAimHeld && (Weapon == TEXT("pistol") || Weapon == TEXT("ak47")); }
+	/** Down into a crouch and up again (X), on a body that has the crouch clips */
+	void ToggleCrouch();
+	/** The clip held or being played over the body's own animation just now, for tests ("" if none) */
+	FName ActionShown() const { return ShotLeft > 0.f ? ShotClip : HoldClip; }
 
 	/**
 	 * One shoe, as an unrigged static mesh lying flat with its toe toward +X. It is worn on both feet (mirrored for
@@ -158,6 +174,22 @@ private:
 	/** The machete mid-swing: seconds left, and whether it has landed yet */
 	float SwingLeft = 0.f;
 	bool bSwingLanded = false;
+	/**
+	 * Action clips over the body's own animation, through its DefaultSlot: one held while a state lasts (crouching,
+	 * aiming while stood still, the machete guard) and one played through once (a shot, a cut).
+	 */
+	bool bAimHeld = false;
+	/** Seconds since a gun was last fired: it stays raised a moment after, and how far the aiming camera has come in, 0..1 */
+	float SinceShot = 100.f, AimK = 0.f;
+	FName HoldClip, ShotClip;
+	UPROPERTY() TObjectPtr<class UAnimMontage> HoldMontage;
+	float ShotLeft = 0.f;
+	/** How long a machete swing lasts and how far from its end it lands, seconds: longer with the clips than without */
+	float SwingLength = 0.28f, SwingLandsAt = 0.14f;
+	int32 Swings = 0;
+	class UAnimSequence* Clip(const TCHAR* Name) const;
+	void PlayShot(const TCHAR* Name, float Rate);
+	void UpdateActions(float DeltaSeconds);
 	UPROPERTY() TObjectPtr<class UPointLightComponent> MuzzleFlash;
 	float FlashLeft = 0.f;
 	void Attack();
