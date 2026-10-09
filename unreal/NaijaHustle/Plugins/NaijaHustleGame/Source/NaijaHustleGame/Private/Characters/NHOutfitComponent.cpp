@@ -356,6 +356,26 @@ void UNHOutfitComponent::Pick(int32 Seed, const FLinearColor* Shirt)
 	Apply();
 }
 
+bool UNHOutfitComponent::WearOneOf(ENHOutfitSlot Slot, int32 Seed, const TArray<FString>& Names)
+{
+	const int32 S = static_cast<int32>(Slot);
+	TArray<int32> Have;
+	for (int32 I = 0; I < Pieces[S].Num(); ++I)
+	{
+		if (Names.Contains(Pieces[S][I].Name))
+		{
+			Have.Add(I);
+		}
+	}
+	if (Have.Num() == 0)
+	{
+		return false;
+	}
+	Worn[S] = Have[FMath::Abs(Seed) % Have.Num()];
+	Apply();
+	return true;
+}
+
 TArray<USkeletalMeshComponent*> UNHOutfitComponent::GetParts() const
 {
 	TArray<USkeletalMeshComponent*> Out;

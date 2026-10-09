@@ -305,7 +305,8 @@ def import_meshes(mats):
 
 # -------------------------------------------------------------------------------------------------------- level
 ALWAYS_LOADED = ("Roads_", "Road_Markings", "Railways", "Bridges_", "LinkBridge")   # with the shared pieces: never streamed out
-DATA_LAYERS = ["DL_Crowds", "DL_Props", "DL_Interiors", "DL_Vehicles"]
+# interiors, the people and stock inside them, and event crowds each switch on only when wanted (living-Lagos brief, 1.1)
+DATA_LAYERS = ["DL_Crowds", "DL_Props", "DL_Interiors", "DL_Vehicles", "DL_InteriorNPCs", "DL_ShopStock", "DL_EventCrowds"]
 
 
 def fresh_level(les):

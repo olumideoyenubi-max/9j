@@ -47,6 +47,8 @@ public:
 	FString Describe() const;
 	/** A passer-by's clothes: pieces chosen by Seed, and the top in Shirt if given */
 	void Pick(int32 Seed, const FLinearColor* Shirt = nullptr);
+	/** Changes one slot to one of the named pieces (whichever the person has), chosen by Seed: for people whose part says what they wear. False if they have none of them. */
+	bool WearOneOf(ENHOutfitSlot Slot, int32 Seed, const TArray<FString>& Names);
 	/** Every piece's mesh component, for the owner to set shadows or visibility on */
 	TArray<USkeletalMeshComponent*> GetParts() const;
 

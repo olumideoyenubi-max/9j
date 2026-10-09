@@ -25,8 +25,8 @@ from bl_ext.blender_org.mpfb.services.humanservice import HumanService
 from bl_ext.blender_org.mpfb.services.targetservice import TargetService
 from bl_ext.blender_org.mpfb.services.locationservice import LocationService
 
-BLACK, DARK_BROWN, BROWN, BLONDE = (0.03, 0.026, 0.024), (0.07, 0.045, 0.03), (0.2, 0.12, 0.06), (0.72, 0.55, 0.3)
-TINT_NAMES = {BLACK: "Black", DARK_BROWN: "DarkBrown", BROWN: "Brown", BLONDE: "Blonde"}
+BLACK, DARK_BROWN, BROWN, BLONDE, GREY = (0.03, 0.026, 0.024), (0.07, 0.045, 0.03), (0.2, 0.12, 0.06), (0.72, 0.55, 0.3), (0.62, 0.62, 0.6)
+TINT_NAMES = {BLACK: "Black", DARK_BROWN: "DarkBrown", BROWN: "Brown", BLONDE: "Blonde", GREY: "Grey"}
 # gender 1 is a man, 0 a woman; race is (asian, caucasian, african); clothes are what the one-piece character wears, inside
 # out; wear is what the wardrobe starts on (hair, top or full outfit, bottom, shoes); face is hair that stays on the body
 PEOPLE = {
@@ -34,6 +34,11 @@ PEOPLE = {
                   clothes=["male_casualsuit01", "shoes01"], wear=("Afro", "DenimSet", None, "BrownLeather")),
     "Emeka": dict(gender=1.0, race=(0, 0, 1), age=0.62, muscle=0.55, weight=0.65, skin="middleage_african_male", hair="short04", tint=BLACK,
                   clothes=["male_elegantsuit01", "shoes02"], wear=("Fade", "Suit", None, "GreyLeather"), face=["grinsegold_moustache"]),
+    # Baba Driver: an old man. MakeHuman's oldest age, little muscle, grey hair and a grey beard. There is no old skin in
+    # the packs, so his is the middle-aged one. ANHPerson casts him wherever a part needs an elderly man (ENHCast::ElderMan).
+    "Baba": dict(gender=1.0, race=(0, 0, 1), age=0.95, muscle=0.3, weight=0.6, skin="middleage_african_male", hair="short04", tint=GREY,
+                 clothes=["elvs_male_shirt_untucked_bd1", "elvs_male_trouser", "elvs_male_flip_flop_sandals1"],
+                 wear=("Fade", "UntuckedShirt", "SmartTrousers", "Slippers"), face=["grinsegold_full_beard"]),
     "Dayo": dict(gender=1.0, race=(0, 0, 1), age=0.4, muscle=0.6, weight=0.4, skin="young_african_male", hair="elvs_braided_rows", tint=BLACK,
                  clothes=["drednicolson_short-tail_camo_tee", "cortu_jeans_shorts", "shoes03"], wear=("Cornrows", "CamoTee", "DenimShorts", "BlackBoots")),
     "Mark": dict(gender=1.0, race=(0, 1, 0), age=0.5, muscle=0.6, weight=0.5, skin="young_caucasian_male", hair="short02", tint=BROWN,

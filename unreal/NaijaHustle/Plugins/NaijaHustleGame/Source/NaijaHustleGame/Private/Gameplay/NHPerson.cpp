@@ -142,6 +142,14 @@ bool ANHPerson::BuildBody(int32 Seed, const FLinearColor& Top, float Scale)
 		return false;
 	}
 	Outfit->Pick(Seed, &Top);
+	if (Part == ENHCast::ElderMan)
+	{
+		// an old man's clothes, not whatever the dice gave: short grey hair, a loose shirt, plain trousers, slippers
+		Outfit->WearOneOf(ENHOutfitSlot::Hair, 0, { TEXT("Fade"), TEXT("LowCut") });
+		Outfit->WearOneOf(ENHOutfitSlot::Top, 0, { TEXT("UntuckedShirt") });
+		Outfit->WearOneOf(ENHOutfitSlot::Bottom, 0, { TEXT("SmartTrousers"), TEXT("Chinos") });
+		Outfit->WearOneOf(ENHOutfitSlot::Shoes, 0, { TEXT("Slippers") });
+	}
 	// people off screen do not animate, and far ones animate less often
 	Body->VisibilityBasedAnimTickOption = EVisibilityBasedAnimTickOption::OnlyTickPoseWhenRendered;
 	Body->bEnableUpdateRateOptimizations = true;
@@ -245,6 +253,18 @@ void ANHPerson::ScareAround(const UWorld* World, const FVector& At, float Radius
 			It->Scare(At);
 		}
 	}
+}
+
+FString ANHPerson::Dress(int32 Seed, const TArray<FString>& Tops, const TArray<FString>& Bottoms, const TArray<FString>& Shoes)
+{
+	if (!Outfit || !Outfit->HasWardrobe())
+	{
+		return TEXT("(the blockout body: no wardrobe)");
+	}
+	Outfit->WearOneOf(ENHOutfitSlot::Top, Seed, Tops);
+	Outfit->WearOneOf(ENHOutfitSlot::Bottom, Seed / 3, Bottoms);
+	Outfit->WearOneOf(ENHOutfitSlot::Shoes, Seed / 7, Shoes);
+	return FString::Printf(TEXT("%s, %s, %s"), *Outfit->PieceName(ENHOutfitSlot::Top), *Outfit->PieceName(ENHOutfitSlot::Bottom), *Outfit->PieceName(ENHOutfitSlot::Shoes));
 }
 
 void ANHPerson::WalkTo(const FVector& InTarget, float Speed)

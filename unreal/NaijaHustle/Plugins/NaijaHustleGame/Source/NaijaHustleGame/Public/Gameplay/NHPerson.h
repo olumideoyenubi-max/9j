@@ -44,6 +44,8 @@ public:
 	/** Builds the body: Cast says who it may be, Seed picks among them and picks the clothes and the height; Top is the shirt colour */
 	void Init(int32 Seed, const FLinearColor& Top, ENHCast Cast = ENHCast::Anyone, float Scale = 1.f);
 	ENHCast GetCast() const { return Part; }
+	/** What somebody's part says they wear: one of each list, where the body has a wardrobe. Returns what was put on, for the log. */
+	FString Dress(int32 Seed, const TArray<FString>& Tops, const TArray<FString>& Bottoms, const TArray<FString>& Shoes);
 
 	UFUNCTION(BlueprintCallable, Category = "Naija") void WalkTo(const FVector& Target, float Speed = 140.f);
 	UFUNCTION(BlueprintCallable, Category = "Naija") void StopWalking() { bWalking = false; }

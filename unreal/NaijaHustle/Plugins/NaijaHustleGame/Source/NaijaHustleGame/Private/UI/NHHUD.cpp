@@ -2,6 +2,7 @@
 
 #include "Audio/NHAudioSubsystem.h"
 #include "EngineUtils.h"
+#include "Gameplay/NHPerson.h"
 #include "Player/NHCharacter.h"
 #include "Core/NHGameData.h"
 #include "Core/NHHustleSubsystem.h"
@@ -588,6 +589,20 @@ void ANHHUD::DrawHUD()
 			{
 				ToggleMenu();
 				bMenuCredits = true;
+			}
+			if (ShotOpen == TEXT("baba") && Pawn)
+			{
+				// three metres in front of the old man, looking at him
+				for (TActorIterator<ANHPerson> It(GetWorld()); It; ++It)
+				{
+					if (It->GetCast() == ENHCast::ElderMan)
+					{
+						const FVector Stand = It->GetActorLocation() + It->GetActorForwardVector() * 300.f + FVector(0.f, 0.f, 100.f);
+						Pawn->SetActorLocation(Stand, false, nullptr, ETeleportType::TeleportPhysics);
+						PC->SetControlRotation(FRotator(-5.f, (It->GetActorLocation() - Stand).Rotation().Yaw, 0.f));
+						break;
+					}
+				}
 			}
 			if (ShotOpen == TEXT("audio"))
 			{
