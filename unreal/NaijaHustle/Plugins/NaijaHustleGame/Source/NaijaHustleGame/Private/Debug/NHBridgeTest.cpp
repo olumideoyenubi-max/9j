@@ -43,6 +43,12 @@ bool ANHBridgeTest::FindBridge(int32 Skip)
 	for (int32 I = 0; I < Data->RoadWays.Num(); ++I)
 	{
 		const FNHRoadWay& W = Data->RoadWays[I];
+		FString Only; // -NHBridgeName="Third Mainland": only bridges whose name has that in it
+		FParse::Value(FCommandLine::Get(), TEXT("NHBridgeName="), Only, false);
+		if (!Only.IsEmpty() && !W.Name.Contains(Only))
+		{
+			continue;
+		}
 		if (W.bBridge && W.Class <= 4 && FVector2D::Distance(Data->RoadNodes[W.Nodes[0]], Data->RoadNodes[W.Nodes.Last()]) > 12000.f)
 		{
 			Ways.Add(I);
@@ -131,6 +137,13 @@ void ANHBridgeTest::NextLeg()
 
 void ANHBridgeTest::EndLeg(bool bPass, const FString& Why)
 {
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: [bridgetest] off the ground: at most %.0f cm from its middle to what is under it (about 100 standing), %.0f m along; %.1f s in the air"), HighestOff, HighestOffAlong / 100.f, AirTime);
+	if (PutBack > 0)
+	{
+		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: [bridgetest] the driver was out of the vehicle and put back %d times"), PutBack);
+	}
+	HighestOff = HighestOffAlong = AirTime = 0.f;
+	PutBack = 0;
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: [bridgetest] %s  %s %s: %s"), bPass ? TEXT("PASS") : TEXT("FAIL"), TypeIndex < Types.Num() ? *Types[TypeIndex].ToString() : TEXT("?"), Leg == 0 ? TEXT("over") : TEXT("back"), *Why);
 	(bPass ? Passed : Failed) += 1;
 	if (Leg == 0 && bPass)
@@ -170,6 +183,52 @@ void ANHBridgeTest::Tick(float DeltaSeconds)
 		{
 			Traffic->SetDensity(0); // the bridge and the vehicle alone: other traffic would only confuse a failure
 		}
+		// -NHBridgeProfile="Third Mainland Bridge": no driving. Every 100 m along each of that road's ways, what a ray from
+		// above meets at the middle of the carriageway and 3 m and 6 m to either side: its height and what it is.
+		FString Profile;
+		if (FParse::Value(FCommandLine::Get(), TEXT("NHBridgeProfile="), Profile, false))
+		{
+			const UNHGameData* Data = UNHGameData::Get(this);
+			for (int32 WayIndex = 0; Data && WayIndex < Data->RoadWays.Num(); ++WayIndex)
+			{
+				const FNHRoadWay& W = Data->RoadWays[WayIndex];
+				if (!W.Name.Contains(Profile))
+				{
+					continue;
+				}
+				UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: [bridgeprofile] way %d: %s, class %d, %s, %d points"), WayIndex, *W.Name, W.Class, W.bBridge ? TEXT("bridge") : TEXT("not a bridge"), W.Nodes.Num());
+				float Run = 0.f, Next = 0.f, Step = 10000.f;
+				FParse::Value(FCommandLine::Get(), TEXT("NHBridgeStep="), Step); // cm between samples
+				for (int32 I = 1; I < W.Nodes.Num(); ++I)
+				{
+					const FVector2D P0 = Data->RoadNodes[W.Nodes[I - 1]], P1 = Data->RoadNodes[W.Nodes[I]];
+					const float Seg = FVector2D::Distance(P0, P1);
+					const FVector2D Dir = (P1 - P0).GetSafeNormal(), Side(-Dir.Y, Dir.X);
+					for (; Next <= Run + Seg; Next += Step)
+					{
+						const FVector2D At = P0 + Dir * (Next - Run);
+						FString Line;
+						FString What;
+						for (const float Off : { -600.f, -300.f, 0.f, 300.f, 600.f })
+						{
+							const FVector2D Q = At + Side * Off;
+							FHitResult Hit;
+							const bool bHit = GetWorld()->LineTraceSingleByObjectType(Hit, FVector(Q, 12000.f), FVector(Q, -3000.f), FCollisionObjectQueryParams(ECC_WorldStatic));
+							Line += bHit ? FString::Printf(TEXT("%6.0f"), Hit.ImpactPoint.Z) : FString(TEXT("  none"));
+							if (Off == 0.f)
+							{
+								What = bHit && Hit.GetActor() ? Hit.GetActor()->GetActorNameOrLabel() : FString(TEXT("-"));
+							}
+						}
+						UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: [bridgeprofile] %5.0f m  at %8.0f %8.0f  heights%s  %s"), Next / 100.f, At.X, At.Y, *Line, *What);
+					}
+					Run += Seg;
+				}
+			}
+			PC->ConsoleCommand(TEXT("quit"));
+			SetActorTickEnabled(false);
+			return;
+		}
 		if (!FindBridge(Skip))
 		{
 			UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: [bridgetest] RESULT: FAILED. No bridge the road graph can route over was found."));
@@ -185,6 +244,18 @@ void ANHBridgeTest::Tick(float DeltaSeconds)
 	if (V && V->IsWrecked())
 	{
 		EndLeg(false, FString::Printf(TEXT("wrecked after %.0f s and %.0f m, at height %.0f cm (highest %.0f cm)"), LegTime, Along / 100.f, V->GetActorLocation().Z, Top));
+		return;
+	}
+	if (V && PC->GetPawn() != V && PutBack < 5)
+	{
+		// Something pressed the get-out key (seen 150 m into a drive, twice, from the input system): the driver is sat
+		// back at the wheel and the drive goes on. It is counted, and said at the end of the leg.
+		++PutBack;
+		if (APawn* Walker = PC->GetPawn())
+		{
+			Walker->SetActorLocation(V->ExitPoint(), false, nullptr, ETeleportType::TeleportPhysics);
+		}
+		PC->EnterVehicle(V);
 		return;
 	}
 	if (!V || PC->GetPawn() != V)
@@ -227,7 +298,21 @@ void ANHBridgeTest::Tick(float DeltaSeconds)
 	}
 	const float Want = FMath::RadiansToDegrees(FMath::Atan2(Aim.Y - At.Y, Aim.X - At.X));
 	const float Turn = FMath::FindDeltaAngleDegrees(V->GetActorRotation().Yaw, Want);
-	const float Cruise = FMath::Abs(Turn) > 25.f ? 700.f : 1500.f;
+	float Fast = 1500.f; // -NHBridgeSpeed=3300: how fast it is driven where the road is straight, cm/s
+	FParse::Value(FCommandLine::Get(), TEXT("NHBridgeSpeed="), Fast);
+	const float Cruise = FMath::Abs(Turn) > 25.f ? 700.f : Fast;
+	// how far its underside is off whatever is beneath it: a vehicle in the air
+	FHitResult Below;
+	FCollisionQueryParams NotIt(SCENE_QUERY_STAT(NHBridgeBelow), false, V);
+	if (GetWorld()->LineTraceSingleByObjectType(Below, V->GetActorLocation(), V->GetActorLocation() - FVector(0.f, 0.f, 20000.f), FCollisionObjectQueryParams(ECC_WorldStatic), NotIt))
+	{
+		if (Below.Distance > HighestOff)
+		{
+			HighestOff = Below.Distance;
+			HighestOffAlong = Along;
+		}
+		AirTime += Below.Distance > 220.f ? DeltaSeconds : 0.f;
+	}
 	V->SetDriveInput(V->Speed < Cruise ? 1.f : 0.f, V->Speed > Cruise + 300.f ? 0.5f : 0.f, FMath::Clamp(Turn / 30.f, -1.f, 1.f));
 
 	LegTime += DeltaSeconds;

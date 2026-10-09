@@ -100,7 +100,9 @@ float ANHVehicle::GroundZ(const FVector& At) const
 {
 	FHitResult Hit;
 	FCollisionQueryParams Q(SCENE_QUERY_STAT(NHVehicleGround), false, this);
-	if (GetWorld()->LineTraceSingleByObjectType(Hit, FVector(At.X, At.Y, At.Z + 300.f), FVector(At.X, At.Y, At.Z - 800.f), FCollisionObjectQueryParams(ECC_WorldStatic), Q))
+	// As far down as a tall flyover: with only 8 m of reach, a vehicle that left a bridge's edge found no ground,
+	// was told the ground was wherever it already was, and drove on through the air at deck height.
+	if (GetWorld()->LineTraceSingleByObjectType(Hit, FVector(At.X, At.Y, At.Z + 300.f), FVector(At.X, At.Y, At.Z - 15000.f), FCollisionObjectQueryParams(ECC_WorldStatic), Q))
 	{
 		return Hit.ImpactPoint.Z;
 	}
@@ -736,7 +738,27 @@ void ANHVehicle::Drive(float DeltaSeconds)
 	const float FrontZ = GroundZ(To + Fwd * Axle), RearZ = GroundZ(To - Fwd * Axle);
 	Rot.Pitch = FMath::FInterpTo(GetActorRotation().Pitch, FMath::Clamp(FMath::RadiansToDegrees(FMath::Atan2(FrontZ - RearZ, 2.f * Axle)), -30.f, 30.f), DeltaSeconds, 12.f);
 	const float WantZ = (FrontZ + RearZ) * 0.5f + Clearance + HalfHeight;
-	To.Z = WantZ > From.Z ? WantZ : FMath::FInterpTo(From.Z, WantZ, DeltaSeconds, 10.f); // up kerbs at once, down gently
+	if (WantZ > From.Z - 30.f)
+	{
+		To.Z = WantZ > From.Z ? WantZ : FMath::FInterpTo(From.Z, WantZ, DeltaSeconds, 10.f); // up kerbs at once, down gently
+		FallSpeed = 0.f;
+	}
+	else
+	{
+		// the ground has gone from under it (over a crest at speed, off an edge): it falls as things fall, and lands hard
+		FallSpeed = FMath::Min(FallSpeed + 980.f * DeltaSeconds, 6000.f);
+		To.Z = FMath::Max(WantZ, From.Z - FallSpeed * DeltaSeconds);
+		if (To.Z <= WantZ + 1.f)
+		{
+			if (FallSpeed > 900.f)
+			{
+				Health = FMath::Max(0.f, Health - (FallSpeed - 900.f) / 30.f);
+				Speed *= 0.6f;
+				ANHHUD::Floater(this, To + FVector(0.f, 0.f, 150.f), TEXT("CRASH!"));
+			}
+			FallSpeed = 0.f;
+		}
+	}
 
 	FHitResult Hit;
 	SetActorLocationAndRotation(To, Rot, true, &Hit);

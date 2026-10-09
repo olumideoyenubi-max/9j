@@ -175,6 +175,7 @@ void ANHPlayerController::SetupInputComponent()
 	Key(EKeys::LeftControl, &ANHPlayerController::OnRoll);
 	Key(EKeys::C, &ANHPlayerController::OnRoll);
 	Key(EKeys::X, &ANHPlayerController::OnCrouch); // down into a crouch and up again
+	Key(EKeys::G, &ANHPlayerController::OnClimb);
 	Key(EKeys::T, &ANHPlayerController::OnFire);
 	Key(EKeys::T, &ANHPlayerController::OnFireEnd, IE_Released);
 	Key(EKeys::Tab, &ANHPlayerController::UiWheelOpen);
@@ -239,6 +240,14 @@ void ANHPlayerController::UiRadioClose()
 	if (ANHHUD* H = ANHHUD::Get(this))
 	{
 		H->SetRadioWheel(false);
+	}
+}
+
+void ANHPlayerController::OnClimb()
+{
+	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
+	{
+		C->Climb();
 	}
 }
 

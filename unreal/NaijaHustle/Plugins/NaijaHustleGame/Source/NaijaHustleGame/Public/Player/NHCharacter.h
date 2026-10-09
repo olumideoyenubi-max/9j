@@ -113,6 +113,8 @@ public:
 	 */
 	void SetAiming(bool bOn) { bAimHeld = bOn; }
 	bool IsAiming() const { return bAimHeld && (Weapon == TEXT("pistol") || Weapon == TEXT("ak47")); }
+	/** Climbs what is in front (G): a kerb, a wall, a container, a vehicle, up to 3.3 m. Space does the same when there is something to climb, and jumps otherwise. */
+	void Climb() { TryClimb(); }
 	/** Down into a crouch and up again (X), on a body that has the crouch clips */
 	void ToggleCrouch();
 	/** The clip held or being played over the body's own animation just now, for tests ("" if none) */

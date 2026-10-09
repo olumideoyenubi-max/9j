@@ -170,6 +170,7 @@ private:
 	TWeakObjectPtr<ANHVehicle> StreamingCar;
 	void OnRoll();
 	void OnCrouch();
+	void OnClimb();
 	void OnFire();
 	void OnAimEnd();
 	/** -NHActionTest: the action clips one after another, each photographed from in front: Saved/NHActions/ */

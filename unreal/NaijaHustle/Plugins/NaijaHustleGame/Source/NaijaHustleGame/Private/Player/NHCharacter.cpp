@@ -831,6 +831,10 @@ bool ANHCharacter::TryClimb()
 	{
 		return false;
 	}
+	if (bIsCrouched)
+	{
+		UnCrouch();
+	}
 	// something solid in front at waist height, with a top within reach and room to stand on it
 	const float Half = GetCapsuleComponent()->GetScaledCapsuleHalfHeight(), Radius = GetCapsuleComponent()->GetScaledCapsuleRadius();
 	const FVector Feet = GetActorLocation() - FVector(0.f, 0.f, Half), Fwd = GetActorForwardVector();
@@ -840,7 +844,7 @@ bool ANHCharacter::TryClimb()
 	Solid.AddObjectTypesToQuery(ECC_Vehicle);
 	FHitResult Wall, Top;
 	bool bWall = false;
-	for (const float Height : { 60.f, 120.f, 30.f })
+	for (const float Height : { 60.f, 120.f, 30.f, 180.f })
 	{
 		if (GetWorld()->LineTraceSingleByObjectType(Wall, Feet + FVector(0.f, 0.f, Height), Feet + FVector(0.f, 0.f, Height) + Fwd * (Radius + 70.f), Solid, Q))
 		{
@@ -853,7 +857,7 @@ bool ANHCharacter::TryClimb()
 		return false;
 	}
 	const FVector Over = FVector(Wall.ImpactPoint.X, Wall.ImpactPoint.Y, 0.f) + Fwd * (Radius + 12.f);
-	if (!GetWorld()->LineTraceSingleByObjectType(Top, FVector(Over.X, Over.Y, Feet.Z + 250.f), FVector(Over.X, Over.Y, Feet.Z + 40.f), Solid, Q) || Top.bStartPenetrating)
+	if (!GetWorld()->LineTraceSingleByObjectType(Top, FVector(Over.X, Over.Y, Feet.Z + 330.f), FVector(Over.X, Over.Y, Feet.Z + 40.f), Solid, Q) || Top.bStartPenetrating) // 3.3 m: a jump and a pull up
 	{
 		return false; // too high, or nothing to stand on
 	}

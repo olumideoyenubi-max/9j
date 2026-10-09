@@ -37,6 +37,9 @@ private:
 	float Along = 0.f, LegTime = 0.f, StuckTime = 0.f, Top = 0.f, Slowest = 0.f, StartDelay = 6.f, SteepestSeen = 0.f;
 	FVector LastAt = FVector::ZeroVector;
 	bool bStarted = false;
+	/** The most its middle was above what is under it, cm (about 100 on the ground), where, and seconds spent well clear of it */
+	float HighestOff = 0.f, HighestOffAlong = 0.f, AirTime = 0.f;
+	int32 PutBack = 0;
 	bool FindBridge(int32 Skip);
 	void NextLeg();
 	void EndLeg(bool bPass, const FString& Why);

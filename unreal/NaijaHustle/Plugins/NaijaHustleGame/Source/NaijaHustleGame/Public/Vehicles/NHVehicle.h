@@ -146,6 +146,8 @@ private:
 	UPROPERTY() TArray<TObjectPtr<class UAnimSequence>> DriveClips;
 	int32 DriveClipShown = -1;
 	float SteerShown = 0.f, ReverseShown = 0.f;
+	/** How fast it is falling, cm/s, while there is no ground under it */
+	float FallSpeed = 0.f;
 	void SetupDriverAnim(class USkeletalMesh* Mesh);
 	void DriverAnimTick(float DeltaSeconds);
 	/** Two headlights and a tail light, made the first time they are switched on */
