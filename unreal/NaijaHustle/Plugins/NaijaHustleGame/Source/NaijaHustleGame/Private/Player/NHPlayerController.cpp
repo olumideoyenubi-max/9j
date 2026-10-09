@@ -9,6 +9,7 @@
 #include "Gameplay/NHGameDirector.h"
 #include "Lighting/NHLightingRig.h"
 #include "Player/NHCharacter.h"
+#include "Phone/NHPhone.h"
 #include "UI/NHHUD.h"
 #include "Vehicles/NHVehicle.h"
 #include "EngineUtils.h"
@@ -121,7 +122,8 @@ void ANHPlayerController::SetupInputComponent()
 	};
 	Key(EKeys::M, &ANHPlayerController::UiMap);
 	Key(EKeys::Escape, &ANHPlayerController::UiMenu);
-	Key(EKeys::P, &ANHPlayerController::UiMenu);
+	Key(EKeys::P, &ANHPlayerController::UiPhone);
+	Key(EKeys::BackSpace, &ANHPlayerController::UiBack);
 	Key(EKeys::Tab, &ANHPlayerController::UiWheelOpen);
 	Key(EKeys::Tab, &ANHPlayerController::UiWheelClose, IE_Released);
 	Key(EKeys::Up, &ANHPlayerController::UiUp);
@@ -136,6 +138,8 @@ void ANHPlayerController::SetupInputComponent()
 }
 
 void ANHPlayerController::UiMap() { if (ANHHUD* H = ANHHUD::Get(this)) { H->ToggleMap(); } }
+void ANHPlayerController::UiPhone() { if (ANHHUD* H = ANHHUD::Get(this)) { H->TogglePhone(); } }
+void ANHPlayerController::UiBack() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Back(); } }
 void ANHPlayerController::UiMenu() { if (ANHHUD* H = ANHHUD::Get(this)) { H->ToggleMenu(); } }
 void ANHPlayerController::UiWheelOpen() { if (ANHHUD* H = ANHHUD::Get(this)) { H->SetWheel(true); } }
 void ANHPlayerController::UiWheelClose() { if (ANHHUD* H = ANHHUD::Get(this)) { H->SetWheel(false); } }
@@ -288,6 +292,10 @@ void ANHPlayerController::OnInteract()
 	{
 		return;
 	}
+	if (ANHPhone* Phone = ANHPhone::Get(this); Phone && Phone->Interact())
+	{
+		return; // got into, or out of, a hailed ride
+	}
 	if (Cast<ANHVehicle>(GetPawn()))
 	{
 		LeaveVehicle();
@@ -323,6 +331,11 @@ FString ANHPlayerController::Prompt() const
 	}
 	const FString E = Dir ? Dir->ActionPrompt(GetPawn()) : FString();
 	FString F;
+	const ANHPhone* Phone = ANHPhone::Get(this);
+	if (const FString Ride = Phone ? Phone->InteractPrompt() : FString(); !Ride.IsEmpty())
+	{
+		return Ride; // a hailed ride waiting, or the trip itself
+	}
 	if (const ANHVehicle* V = NearbyVehicle())
 	{
 		F = FString::Printf(TEXT("F  Get in %s"), *V->DisplayName());

@@ -174,6 +174,10 @@ public:
 	TMap<int32, TArray<FNHRoadSeg>> RoadJoins;
 	/** Every road segment with any part within Radius of a point */
 	void RoadsNear(const FVector2D& At, float Radius, TArray<FNHRoadSeg>& Out) const;
+	/** The closest point on any road within about 3 km, and the segment it is on; false if there is none */
+	bool NearestRoad(const FVector2D& At, FNHRoadSeg& OutSeg, FVector2D& OutPoint) const;
+	/** The way to drive from one place to another along the roads, one-way streets respected: road points from near From to near To. False if no way is found. */
+	bool RoadRoute(const FVector2D& From, const FVector2D& To, TArray<FVector2D>& OutLine) const;
 	float HalfWidth(const FNHRoadWay& Way) const { return RoadHalfWidth.IsValidIndex(Way.Class) ? RoadHalfWidth[Way.Class] : 500.f; }
 
 	// ---- rules

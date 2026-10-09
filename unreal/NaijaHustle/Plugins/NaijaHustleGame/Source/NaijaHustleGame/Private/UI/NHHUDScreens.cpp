@@ -11,6 +11,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Lighting/NHLightingRig.h"
 #include "Misc/ConfigCacheIni.h"
+#include "Phone/NHPhone.h"
 #include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
 #include "Vehicles/NHTraffic.h"
@@ -32,7 +33,7 @@ namespace NHScreens
 
 	enum { Phone, Wardrobe, CarKeys, Torch, Wallet, Hail, Slots };
 	const TCHAR* SlotNames[] = { TEXT("PHONE"), TEXT("WARDROBE"), TEXT("CAR KEYS"), TEXT("TORCH"), TEXT("WALLET"), TEXT("HAIL") };
-	const TCHAR* SlotHints[] = { TEXT("Open the map"), TEXT("Next character"), TEXT("Find my car"), TEXT("Light on or off"), TEXT("What I have"), TEXT("Stop a ride") };
+	const TCHAR* SlotHints[] = { TEXT("Chats, rides, map"), TEXT("Next character"), TEXT("Find my car"), TEXT("Light on or off"), TEXT("What I have"), TEXT("Stop a ride") };
 
 	FColor RoadColor(uint8 Class)
 	{
@@ -84,8 +85,31 @@ void ANHHUD::ToggleMap()
 	}
 }
 
+void ANHHUD::TogglePhone()
+{
+	ANHPhone* Phone = ANHPhone::Get(this);
+	if (Phone && Screen == EScreen::None)
+	{
+		Phone->Toggle();
+	}
+}
+
+void ANHHUD::Back()
+{
+	ANHPhone* Phone = ANHPhone::Get(this);
+	if (Phone && Screen == EScreen::None)
+	{
+		Phone->Back();
+	}
+}
+
 void ANHHUD::ToggleMenu()
 {
+	if (ANHPhone* Phone = ANHPhone::Get(this); Phone && Phone->IsOpen() && Screen == EScreen::None)
+	{
+		Phone->Close(); // Esc puts the phone away first
+		return;
+	}
 	if (Screen == EScreen::None)
 	{
 		MenuLine = 0;
@@ -114,6 +138,18 @@ void ANHHUD::SetWheel(bool bOpen)
 
 void ANHHUD::Nav(int32 DX, int32 DY)
 {
+	if (ANHPhone* Phone = ANHPhone::Get(this); Phone && Phone->IsOpen() && Screen == EScreen::None)
+	{
+		if (DY != 0)
+		{
+			Phone->Move(DY);
+		}
+		if (DX != 0)
+		{
+			Phone->Change(DX);
+		}
+		return;
+	}
 	if (Screen == EScreen::Menu)
 	{
 		MenuLine = (MenuLine + DY + NHScreens::Lines) % NHScreens::Lines;
@@ -134,6 +170,11 @@ void ANHHUD::Nav(int32 DX, int32 DY)
 
 void ANHHUD::Accept()
 {
+	if (ANHPhone* Phone = ANHPhone::Get(this); Phone && Screen == EScreen::None)
+	{
+		Phone->Select(); // a row, the next line of a call, answering, or skipping a ride
+		return;
+	}
 	if (Screen == EScreen::Menu)
 	{
 		if (MenuLine == NHScreens::Resume)
@@ -377,6 +418,12 @@ void ANHHUD::DrawMapScreen(float VW, float VH)
 		DrawRect(FLinearColor(0.4f, 0.9f, 0.5f), P.X - 5.f * S, P.Y - 5.f * S, 10.f * S, 10.f * S);
 		Text(TEXT("My car"), P.X + 10.f * S, P.Y - 10.f * S, FLinearColor(0.4f, 0.9f, 0.5f), Medium, 0.9f);
 	}
+	FString RideLabel;
+	if (FVector2D RideAt; ANHPhone::Get(this) && ANHPhone::Get(this)->RideMarker(RideAt, RideLabel) && ToScreen(RideAt, P))
+	{
+		DrawRect(FLinearColor(0.95f, 0.35f, 0.3f), P.X - 6.f * S, P.Y - 6.f * S, 12.f * S, 12.f * S);
+		Text(RideLabel, P.X + 10.f * S, P.Y - 10.f * S, FLinearColor(0.95f, 0.35f, 0.3f), Medium, 0.9f);
+	}
 	if (bHasPin && ToScreen(Pin, P))
 	{
 		DrawRect(PinBlue, P.X - 8.f * S, P.Y - 8.f * S, 16.f * S, 16.f * S);
@@ -560,7 +607,7 @@ void ANHHUD::UseWheel(int32 Slot)
 	switch (Slot)
 	{
 	case Phone:
-		ToggleMap();
+		TogglePhone();
 		break;
 	case Wardrobe:
 		if (ANHCharacter* Char = PC->GetOnFootCharacter())
@@ -644,4 +691,129 @@ void ANHHUD::DrawWheel(float VW, float VH)
 		Text(SlotHints[Slot], At.X, At.Y + 6.f * S, bOn ? FLinearColor(0.15f, 0.12f, 0.f) : Muted, Medium, 0.95f, true, !bOn);
 	}
 	Text(WheelSlot >= 0 ? TEXT("Let go of Tab to use it") : TEXT("Point at one, then let go of Tab"), Centre.X, Centre.Y - 12.f * S, Ink, Medium, 1.f, true);
+}
+
+// --------------------------------------------------------------------------------------------------- the phone
+TArray<FString> ANHHUD::Wrap(const FString& Str, float MaxWidth, UFont* Font, float Scale)
+{
+	TArray<FString> Lines, Words;
+	Str.ParseIntoArray(Words, TEXT(" "));
+	FString Line;
+	for (const FString& Word : Words)
+	{
+		const FString Try = Line.IsEmpty() ? Word : Line + TEXT(" ") + Word;
+		float W = 0.f, H = 0.f;
+		GetTextSize(Try, W, H, Font, Scale * S);
+		if (W > MaxWidth && !Line.IsEmpty())
+		{
+			Lines.Add(Line);
+			Line = Word;
+		}
+		else
+		{
+			Line = Try;
+		}
+	}
+	if (!Line.IsEmpty() || Lines.Num() == 0)
+	{
+		Lines.Add(Line);
+	}
+	return Lines;
+}
+
+void ANHHUD::DrawPhone(float VW, float VH)
+{
+	using namespace NHScreens;
+	ANHPhone* Phone = ANHPhone::Get(this);
+	if (!Phone || !Phone->IsOpen())
+	{
+		return;
+	}
+	UFont* Medium = GEngine->GetMediumFont();
+	// a handset standing left of the minimap, above the dialogue box: clear of the rest of the HUD
+	const float W = 430.f * S, H = 760.f * S, X = VW - 28.f * S - 300.f * S - 30.f * S - W, Y = 40.f * S, In = 18.f * S;
+	Panel(X - 8.f * S, Y - 8.f * S, W + 16.f * S, H + 16.f * S, FLinearColor(0.02f, 0.02f, 0.025f, 0.98f));
+	Panel(X, Y, W, H, FLinearColor(0.09f, 0.1f, 0.12f, 0.98f));
+	DrawRect(Yellow, X, Y, W, 54.f * S);
+	Text(Phone->Title, X + In, Y + 12.f * S, FLinearColor(0.05f, 0.05f, 0.05f), Medium, 1.25f, false, false);
+	const float Top = Y + 66.f * S, Bottom = Y + H - 40.f * S, TextW = W - 2.f * In;
+
+	// how tall each row is, then which row to start from so the chosen one is on the screen
+	struct FLaid { TArray<FString> Lines; float Height; };
+	TArray<FLaid> Laid;
+	bool bAnyChoice = false;
+	for (const ANHPhone::FRow& Row : Phone->Rows)
+	{
+		FLaid L;
+		const float Indent = Row.Badge.IsEmpty() ? 0.f : 54.f * S;
+		L.Lines = Wrap(Row.Text, TextW - Indent - (Row.bChoice ? 16.f * S : 0.f), Medium, Row.bChoice ? 1.1f : 0.95f);
+		L.Height = L.Lines.Num() * (Row.bChoice ? 30.f : 25.f) * S + (Row.bChoice ? (Row.Detail.IsEmpty() ? 20.f : 42.f) * S : 6.f * S) + (Row.Meter >= 0 ? 14.f * S : 0.f);
+		Laid.Add(L);
+		bAnyChoice |= Row.bChoice;
+	}
+	int32 First = bAnyChoice ? 0 : FMath::Clamp(Phone->Scroll, 0, FMath::Max(0, Laid.Num() - 1));
+	if (bAnyChoice)
+	{
+		for (; First < Phone->Selected; ++First)
+		{
+			float Need = 0.f;
+			for (int32 I = First; I <= Phone->Selected && I < Laid.Num(); ++I)
+			{
+				Need += Laid[I].Height;
+			}
+			if (Need <= Bottom - Top)
+			{
+				break;
+			}
+		}
+	}
+	float Yy = Top;
+	for (int32 I = First; I < Phone->Rows.Num(); ++I)
+	{
+		const ANHPhone::FRow& Row = Phone->Rows[I];
+		const FLaid& L = Laid[I];
+		if (Yy + L.Height > Bottom)
+		{
+			Text(TEXT("..."), X + W * 0.5f, Bottom - 22.f * S, Muted, Medium, 1.f, true);
+			break;
+		}
+		const bool bOn = Row.bChoice && I == Phone->Selected;
+		float TextX = X + In;
+		if (Row.bChoice)
+		{
+			Panel(X + 8.f * S, Yy, W - 16.f * S, L.Height - 6.f * S, bOn ? FLinearColor(1.f, 0.77f, 0.f, 0.22f) : FLinearColor(1.f, 1.f, 1.f, 0.05f));
+			if (bOn)
+			{
+				DrawRect(Yellow, X + 8.f * S, Yy, 4.f * S, L.Height - 6.f * S);
+			}
+			TextX += 8.f * S;
+		}
+		if (!Row.Badge.IsEmpty())
+		{
+			// the portrait or app icon: a coloured tile with an initial
+			DrawRect(Row.BadgeColor, TextX, Yy + 7.f * S, 40.f * S, 40.f * S);
+			Text(Row.Badge.ToUpper(), TextX + 20.f * S, Yy + 13.f * S, FLinearColor::White, Medium, 1.2f, true, false);
+			TextX += 54.f * S;
+		}
+		float LineY = Yy + (Row.bChoice ? 7.f : 0.f) * S;
+		for (const FString& Line : L.Lines)
+		{
+			Text(Line, TextX, LineY, bOn ? Yellow : Row.Color, Medium, Row.bChoice ? 1.1f : 0.95f, false, false);
+			LineY += (Row.bChoice ? 30.f : 25.f) * S;
+		}
+		if (!Row.Detail.IsEmpty())
+		{
+			Text(Row.Detail, TextX, LineY - 2.f * S, Muted, Medium, 0.9f, false, false);
+			LineY += 22.f * S;
+		}
+		if (Row.Meter >= 0)
+		{
+			const float BarW = W - (TextX - X) - In - 8.f * S;
+			DrawRect(FLinearColor(1.f, 1.f, 1.f, 0.12f), TextX, LineY + 2.f * S, BarW, 6.f * S);
+			DrawRect(Row.Meter >= 60 ? FLinearColor(0.35f, 0.85f, 0.45f) : Row.Meter >= 30 ? Yellow : FLinearColor(1.f, 0.35f, 0.3f), TextX, LineY + 2.f * S, BarW * Row.Meter / 100.f, 6.f * S);
+		}
+		Yy += L.Height;
+	}
+	const TArray<FString> Foot = Wrap(Phone->Footer, TextW, Medium, 0.8f);
+	Text(Foot[0], X + W * 0.5f, Y + H - 30.f * S, Muted, Medium, 0.8f, true, false);
 }

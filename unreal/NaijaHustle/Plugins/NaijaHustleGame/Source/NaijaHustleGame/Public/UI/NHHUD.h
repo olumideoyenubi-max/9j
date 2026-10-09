@@ -16,7 +16,7 @@ class UFont;
  * It also draws three screens of its own, opened by ANHPlayerController's keys:
  *   the map (M): the whole city, zoomed with the mouse wheel and moved with the arrow keys. Click to pin a place; the
  *     pin shows on the minimap, in the world and as a distance, until you get there or right-click it away.
- *   the pause menu (Esc or P): character, lighting, traffic, look speed, resolution, minimap, quit. Up and down pick a
+ *   the pause menu (Esc): character, lighting, traffic, look speed, resolution, minimap, quit. Up and down pick a
  *     line, left and right change it. The settings are remembered.
  *   the inventory wheel (hold Tab, point with the mouse, let go): phone (the map), wardrobe (next character), car
  *     keys (pins the vehicle you last drove), torch (headlights when driving), wallet, and hail (the nearest passing
@@ -39,6 +39,10 @@ public:
 	enum class EScreen : uint8 { None, Map, Menu, Wheel };
 	void ToggleMap();
 	void ToggleMenu();
+	/** P: the phone (ANHPhone), drawn beside the minimap; it does not stop the game */
+	void TogglePhone();
+	/** Backspace: back a page on the phone, or declines a call */
+	void Back();
 	void SetWheel(bool bOpen);
 	/** Arrow keys: a line up or down and a value left or right in the menu; moving the map; turning the wheel */
 	void Nav(int32 DX, int32 DY);
@@ -75,6 +79,9 @@ private:
 	void DrawMapScreen(float VW, float VH);
 	void DrawMenu(float VW, float VH);
 	void DrawWheel(float VW, float VH);
+	void DrawPhone(float VW, float VH);
+	/** Splits text into lines no wider than MaxWidth at that font and scale */
+	TArray<FString> Wrap(const FString& Str, float MaxWidth, UFont* Font, float Scale);
 	/** The roads of the real city inside a square of the screen showing Span cm of the world from Corner */
 	void DrawRoads(float X, float Y, float Size, const FVector2D& Corner, float Span, float Thick);
 	void BuildCityMap();
@@ -101,8 +108,10 @@ private:
 	void SaveSettings() const;
 	void ApplySettings();
 	bool bSettingsApplied = false;
-	/** -NHHudShot=Seconds [-NHHudOpen=map|menu|wheel]: opens that screen, saves a screenshot with the HUD on after that long, and quits */
+	/** -NHHudShot=Seconds [-NHHudOpen=map|menu|wheel|phone|contacts|call|dropam|ride|driver]: opens that screen, saves a screenshot with the HUD on after that long, and quits */
 	float ShotAt = 0.f;
+	/** How long before the screenshot the screen is opened (-NHHudLead=Seconds), for things that take time, like a ride arriving */
+	float ShotLead = 2.f;
 	FString ShotOpen;
 	int32 ShotStage = 0;
 

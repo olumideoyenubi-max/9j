@@ -10,6 +10,7 @@
 #include "GameFramework/Pawn.h"
 #include "GameFramework/PlayerController.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Phone/NHPhone.h"
 #include "Player/NHPlayerController.h"
 #include "Vehicles/NHVehicle.h"
 
@@ -77,6 +78,7 @@ void ANHHUD::BeginPlay()
 	LoadSettings();
 	FParse::Value(FCommandLine::Get(), TEXT("NHHudShot="), ShotAt);
 	FParse::Value(FCommandLine::Get(), TEXT("NHHudOpen="), ShotOpen);
+	FParse::Value(FCommandLine::Get(), TEXT("NHHudLead="), ShotLead);
 	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this))
 	{
 		EarnHandle = Hustle->OnEarn.AddWeakLambda(this, [this](int32 Amount, const FString&) { CashDelta = Amount; CashDeltaT = 2.5f; });
@@ -188,6 +190,11 @@ void ANHHUD::DrawMinimap(float X, float Y, float Size, const FVector& Player, fl
 		{
 			DrawRect(FLinearColor(1.f, 0.2f, 0.2f), M.X - 6.f * S, M.Y - 6.f * S, 12.f * S, 12.f * S);
 		}
+	}
+	FString RideLabel;
+	if (FVector2D RideAt, M; ANHPhone::Get(this) && ANHPhone::Get(this)->RideMarker(RideAt, RideLabel) && ToMap(FVector(RideAt, 0.f), true, M))
+	{
+		DrawRect(FLinearColor(0.95f, 0.35f, 0.3f), M.X - 5.f * S, M.Y - 5.f * S, 10.f * S, 10.f * S); // the hailed ride, on its way
 	}
 	if (FVector2D M; bHasPin && ToMap(FVector(Pin, 0.f), true, M))
 	{
@@ -402,6 +409,42 @@ void ANHHUD::DrawHUD()
 		}
 	}
 
+	// ---- the phone: its icon by the clock when something is unseen, who is ringing, what is being said, and the handset
+	if (ANHPhone* Phone = ANHPhone::Get(this))
+	{
+		if (const int32 Unseen = Phone->Unseen(); Unseen > 0 && !Phone->IsOpen())
+		{
+			const float IX = VW - Pad - 330.f * S, IY = Pad + 2.f * S;
+			DrawRect(FLinearColor(0.05f, 0.05f, 0.06f, 0.9f), IX, IY, 22.f * S, 34.f * S);
+			DrawRect(Yellow, IX + 3.f * S, IY + 4.f * S, 16.f * S, 22.f * S);
+			Text(FString::FromInt(Unseen), IX + 30.f * S, IY + 6.f * S, Yellow, Medium, 1.f);
+		}
+		if (const FString Who = Phone->Ringing(); !Who.IsEmpty())
+		{
+			const float W = 620.f * S, X = (VW - W) * 0.5f, Y = 150.f * S;
+			Panel(X, Y, W, 84.f * S, FLinearColor(0.f, 0.f, 0.f, 0.82f));
+			DrawRect(Good, X, Y, 6.f * S, 84.f * S);
+			Text(Who + TEXT(" is calling"), X + 26.f * S, Y + 12.f * S, Ink, Medium, 1.3f);
+			Text(TEXT("Enter: answer     Backspace: decline"), X + 26.f * S, Y + 48.f * S, Muted, Medium, 1.f);
+		}
+		if (!Phone->Subtitle.IsEmpty() && !(Dir && Dir->Dialogue.bOpen))
+		{
+			const float W = FMath::Min(1000.f * S, VW - 2.f * Pad), X = (VW - W) * 0.5f;
+			const TArray<FString> Lines = Wrap(Phone->Subtitle, W - 48.f * S, Medium, 1.2f);
+			const float H = (48.f + 32.f * Lines.Num()) * S, Y = VH - 170.f * S - H;
+			Panel(X, Y, W, H, FLinearColor(0.f, 0.f, 0.f, 0.72f));
+			Text(Phone->SubtitleSpeaker, X + 24.f * S, Y + 8.f * S, Yellow, Medium, 1.f);
+			for (int32 I = 0; I < Lines.Num(); ++I)
+			{
+				Text(Lines[I], X + 24.f * S, Y + (36.f + 32.f * I) * S, Ink, Medium, 1.2f);
+			}
+		}
+		if (Screen == EScreen::None)
+		{
+			DrawPhone(VW, VH);
+		}
+	}
+
 	// ---- the map, the pause menu, the inventory wheel: over everything else
 	switch (Screen)
 	{
@@ -413,9 +456,13 @@ void ANHHUD::DrawHUD()
 
 	if (ShotAt > 0.f && PC)
 	{
-		if (ShotStage == 0 && Now >= ShotAt - 2.f)
+		if (ShotStage == 0 && Now >= ShotAt - ShotLead)
 		{
 			ShotStage = 1;
+			if (ANHPhone* Phone = ANHPhone::Get(this); Phone && (ShotOpen == TEXT("phone") || ShotOpen == TEXT("contacts") || ShotOpen == TEXT("call") || ShotOpen == TEXT("dropam") || ShotOpen == TEXT("ride") || ShotOpen == TEXT("driver")))
+			{
+				Phone->DebugOpen(ShotOpen);
+			}
 			if (ShotOpen == TEXT("map"))
 			{
 				ToggleMap();

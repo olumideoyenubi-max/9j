@@ -41,6 +41,10 @@ public:
 	/** Flags down the nearest moving vehicle within 80 m: it stops for a while so the player can get in. The vehicle's name, or "" if none is near. */
 	FString Hail(const FVector& Player);
 	static ANHTraffic* Get(const UObject* WorldContext);
+	/** Somebody to sit at the wheel of a vehicle of that type (null if the project has no bodies for it) */
+	class USkeletalMesh* DriverFor(FName Type);
+	/** A vehicle of that type made on the road at a place, facing Yaw, for somebody else to drive along (a hailed ride); traffic leaves it alone */
+	ANHVehicle* MakeForHire(FName Type, const FVector2D& At, float Yaw);
 
 	int32 NumMoving() const;
 	int32 NumParked() const { return Cars.Num() - NumMoving(); }
@@ -75,7 +79,6 @@ private:
 	/** The people at the wheel: whichever of the Lagos Runner's outfits the project has (street, suit, dispatch rider) */
 	UPROPERTY(Transient) TArray<TObjectPtr<class USkeletalMesh>> Drivers;
 	bool bDriversLoaded = false;
-	class USkeletalMesh* DriverFor(FName Type);
 
 	const UNHGameData* Data = nullptr;
 	FVector2D NodeAt(const FNHRoadSeg& Seg, int32 Dir, bool bEnd) const;

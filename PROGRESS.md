@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-09 (real-scale Lagos level playable: real stops, road-graph traffic, minimap; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
+**Last updated:** 2026-10-09 (phone and DropAm; real-scale Lagos level playable; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -56,9 +56,16 @@ The target is 30 fps at 720p–900p; the game is not there yet.
   - *Buildings on roads:* 818 of about 380,000 buildings and 239 trees whose footprint lay on a main-road lane were removed from the tiles (found by casting the road graph's lanes against the roofs in Blender).
   - *Drivers:* moving traffic has somebody at the wheel (the Lagos Runner's outfits: dispatch rider on okadas, suit in luxury cars), seated with the same posing as the player. 13 of the 19 vehicles made in a test run had one; the rest were parked.
   - *Map (M):* the whole city, zoom with the wheel, move with the arrows; click to pin a place (a stop if you click on one). The pin shows on the minimap, in the world and as a distance, and clears when you arrive or on right-click.
-  - *Pause menu (Esc or P):* character, lighting preset, traffic (none to heavy), look speed, resolution, minimap, quit. Remembered between runs.
+  - *Pause menu (Esc):* character, lighting preset, traffic (none to heavy), look speed, resolution, minimap, quit. Remembered between runs.
   - *Inventory wheel (hold Tab):* phone (map), wardrobe (next character), car keys (pins the vehicle you last drove, which traffic no longer clears away), torch (headlights when driving), wallet, hail (the nearest passing vehicle pulls up for 15 s).
   - Oshodi Motor Park's bays moved onto the verge, clear of the traffic lanes. 39 to 41 fps at 1280×720 standing still.
+- **Phone and DropAm (brief step 3, 2026-10-09):** `ANHPhone` (`Phone/NHPhone.*`, drawn by `UI/NHHUDScreens.cpp`). **P** opens it beside the minimap without stopping the game; arrows, Enter and Backspace work it; Esc puts it away. Ported from the browser game: Gist (chat threads), KoboPay (balance, send money with the ₦50 fee and the 5% "network wahala" reversal, history), Yarns (feed), MapAm (opens the map). New:
+  - *Contacts and calls:* Baba Driver, Mama Ngozi, Iya Basira, Amaka, Oga Shina the mechanic, Kemi and the Task Force hotline, each with a coloured initial for a portrait and a friendship meter. Calls are lines in Pidgin shown as subtitles. Friends: hang out (buka or viewing centre: money and time pass in a fade, friendship rises), ask for a lift (a friend drives to you and takes you where you pinned, free), borrow money (costs friendship). Mechanic: roadside repair, or a tow that brings your last car to the kerb beside you. Hotline: satirical answers and a Yarns post. Friends ring you now and then with an invite; a banner shows who is calling, and ignoring it costs friendship and logs a missed call.
+  - *DropAm rider:* choose where to (the map's pin or any stop) and okada, keke, car or luxury, with a fare estimate from the distance and a surge in the rain and at rush hour. A real vehicle with a driver is made on the road nearby, drives to you along the road graph (`UNHGameData::RoadRoute`, A* with one-way streets), shows on the minimap and map, and waits. F gets in as a passenger; it drives you there while the driver talks; Enter skips the trip, F gets out early and pays for the part driven. Sometimes the first driver cancels, says "I dey come" and sits a while, or parks short and asks you to walk.
+  - *DropAm driver:* go online while driving a car or keke; requests come with a rider, a district and a fare; accept, pick up the waving rider at the pin, drop them at the next pin. DropAm keeps a fifth; a quick smooth trip earns a tip; the rating is a running average and drops for cancelling or ignoring requests.
+  - *HUD:* a phone icon with a count by the clock when something is unseen, the incoming-call banner, a subtitle strip. The inventory wheel's PHONE slot opens the phone.
+  - *Saved* (slot `NaijaHustlePhone`): friendships, chats, the feed, missed calls, driver rating and trip counts.
+  - Measured in `L_Lagos_City` at 1280×720: 39.6 fps standing still. Memory footprint 7.9 GB (peak 8.2 GB), of which 6.5 GB is graphics memory for the city, on the 8 GB Mac: it runs out of swap (7.5 GB of swap in use). That is the level, not the phone, and it needs dealing with (see known gaps).
 - **Car models in the repo project:** copied from the Mac template project they drew black, because their glTF materials were made with Substrate on and this project has it off. `Scripts/use_plain_gltf_materials.py` re-points them (182 instances) at the importer's ordinary parent material; the models' own colours show again.
 - **Lagos Runner (2026-10-09):** the character made in Blender is in as three extra skins (`NHSkin runner`, `dispatch`, `suit`) from `Scripts/import_lagos_runner.py`, moved by his own idle, walk, run, sprint and jump clips through `UNHClipAnimInstance`. The Naija man stays the default.
 
@@ -89,6 +96,8 @@ Deferred: NPCs and storyline.
 - Headlights have no gamepad button (every button is taken) and the lamp models do not glow; other traffic has no lights.
 - The models' sizes come from fitting each to its type's length, so a few are too tall (SUV 258 cm, danfo 257 cm, luxury 4x4 226 cm).
 
+- **Memory in `L_Lagos_City`:** 7.9 GB footprint on an 8 GB machine, nearly all of it the whole city's meshes held on the GPU at once. It runs, at 37 to 41 fps, but only by swapping. The level needs streaming (load only the cells near the player) before much more is added to it.
+- Phone: checked by five scripted runs (home, contacts, a call, ordering a ride, riding it). Not exercised: every menu row by hand, the DropAm driver job from offer to drop-off, an incoming call being answered, the mechanic's tow, getting out mid-trip. Not built from the brief: voice audio (subtitles only), Whot and Ludo, selfie and photo mode beyond a plain screenshot, the music player, mission texts beyond the opening ones, calls through car speakers (there is no audio at all), asking for backup (waits for the weapons step), and "no phone during combat" (no combat yet). The hailed car is carried along the road like traffic, does not avoid other traffic, and can be driven off by the player with F once the ride is over. Keyboard only.
 - The map, menu and wheel were each checked from one screenshot opened by script (`-NHHudOpen=map|mapzoom|menu|wheel`); clicking a pin with the mouse, changing each menu line, and each wheel action were not exercised by hand. They are keyboard and mouse only (no gamepad). The traffic's drivers all share the Runner's face.
 - Bridges: the stretch makes ramps 1.8 times steeper, and decks whose piers were removed span further than is believable. Buildings were only removed where they covered a main-road lane; ones overlapping side streets remain.
 - In `L_Lagos_City`: not played through by hand or by the scripted playtests (self-test and autoplay were written for the small city and were not rerun after these changes); whether the First Day round can be finished at real distances (about 20 km) is untested. Six stops are placed by hand and snapped to the nearest main road, so they are approximate (Gbagada, Iyana Oworo, Tejuosho Market and Idi-Oro moved 150 to 500 m; Charity and Olosha are guesses). The traffic is carried along the road, not driven: no overtaking, no traffic lights, no crashes of its own, nobody at the wheel, and only on main roads (motorway to tertiary), so side streets are empty. Where a flyover crosses a road, a vehicle made underneath may start on the wrong level. The model's own box traffic is imported but no longer placed. Building-lined streets have no pedestrians, and the mission's passengers and agberos are untested there.
@@ -120,6 +129,12 @@ Deferred: NPCs and storyline.
 - All surfaces use flat placeholder textures.
 
 ## Screenshots
+
+The phone: home, contacts with friendship meters, a call, a DropAm ride on its way (red on the minimap), and riding it.
+
+| Home | Contacts | Call | Ride ordered | On the trip |
+|---|---|---|---|---|
+| ![home](docs/screenshots/phone-home.jpg) | ![contacts](docs/screenshots/phone-contacts.jpg) | ![call](docs/screenshots/phone-call.jpg) | ![dropam](docs/screenshots/phone-dropam.jpg) | ![ride](docs/screenshots/phone-ride.jpg) |
 
 The map with a pin, the pause menu, the inventory wheel, and a flyover after the bridge fixes (a driver is at the wheel of the sedan).
 

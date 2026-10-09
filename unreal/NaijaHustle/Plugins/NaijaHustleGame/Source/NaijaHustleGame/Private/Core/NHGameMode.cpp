@@ -5,6 +5,7 @@
 #include "Gameplay/NHGameDirector.h"
 #include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
+#include "Phone/NHPhone.h"
 #include "UI/NHHUD.h"
 #include "Vehicles/NHTraffic.h"
 
@@ -28,6 +29,7 @@ void ANHGameMode::InitGame(const FString& MapName, const FString& Options, FStri
 void ANHGameMode::StartPlay()
 {
 	Super::StartPlay();
+	GetWorld()->SpawnActor<ANHPhone>(ANHPhone::StaticClass(), FTransform::Identity);
 	const UNHGameData* Data = UNHGameData::Get(this);
 	if (Data && Data->bRealCity)
 	{

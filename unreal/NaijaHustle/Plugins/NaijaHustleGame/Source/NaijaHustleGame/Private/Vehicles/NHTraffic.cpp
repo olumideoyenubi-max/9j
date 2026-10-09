@@ -328,6 +328,18 @@ ANHVehicle* ANHTraffic::Make(FName Type, const FVector2D& At, float Yaw, bool bB
 	return V;
 }
 
+ANHVehicle* ANHTraffic::MakeForHire(FName Type, const FVector2D& At, float Yaw)
+{
+	Data = UNHGameData::Get(this);
+	ANHVehicle* V = Data ? Make(Type, At, Yaw, false) : nullptr;
+	if (V)
+	{
+		V->SetTraffic(true);
+		V->SetNpcDriver(DriverFor(Type));
+	}
+	return V;
+}
+
 bool ANHTraffic::TrySpawn(const FVector2D& Player, bool bParked, float Near)
 {
 	TArray<FNHRoadSeg> Around;

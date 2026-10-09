@@ -136,6 +136,8 @@ private:
 	// the map (M), the pause menu (Esc or P) and the inventory wheel (hold Tab): keys go to the HUD, which draws them
 	void UiMap();
 	void UiMenu();
+	void UiPhone();
+	void UiBack();
 	void UiWheelOpen();
 	void UiWheelClose();
 	void UiUp();

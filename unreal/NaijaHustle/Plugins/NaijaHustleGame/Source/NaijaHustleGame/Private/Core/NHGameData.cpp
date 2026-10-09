@@ -561,6 +561,117 @@ void UNHGameData::RoadsNear(const FVector2D& At, float Radius, TArray<FNHRoadSeg
 	}
 }
 
+bool UNHGameData::NearestRoad(const FVector2D& At, FNHRoadSeg& OutSeg, FVector2D& OutPoint) const
+{
+	for (const float Radius : { 15000.f, 60000.f, 300000.f })
+	{
+		TArray<FNHRoadSeg> Near;
+		RoadsNear(At, Radius, Near);
+		float Best = TNumericLimits<float>::Max();
+		for (const FNHRoadSeg& Seg : Near)
+		{
+			const TArray<int32>& N = RoadWays[Seg.Way].Nodes;
+			const FVector P = FMath::ClosestPointOnSegment(FVector(At, 0.f), FVector(RoadNodes[N[Seg.Index]], 0.f), FVector(RoadNodes[N[Seg.Index + 1]], 0.f));
+			const float Dist = FVector2D::DistSquared(FVector2D(P), At);
+			if (Dist < Best)
+			{
+				Best = Dist;
+				OutSeg = Seg;
+				OutPoint = FVector2D(P);
+			}
+		}
+		if (Near.Num() > 0)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool UNHGameData::RoadRoute(const FVector2D& From, const FVector2D& To, TArray<FVector2D>& OutLine) const
+{
+	FNHRoadSeg SegA, SegB;
+	FVector2D PointA, PointB;
+	if (!NearestRoad(From, SegA, PointA) || !NearestRoad(To, SegB, PointB))
+	{
+		return false;
+	}
+	// leave by the end of the first segment a driver may reach, arrive by the start of the last
+	const FNHRoadWay& WayA = RoadWays[SegA.Way];
+	const FNHRoadWay& WayB = RoadWays[SegB.Way];
+	const int32 A0 = WayA.Nodes[SegA.Index], A1 = WayA.Nodes[SegA.Index + 1], B0 = WayB.Nodes[SegB.Index], B1 = WayB.Nodes[SegB.Index + 1];
+	const int32 Start = WayA.bOneWay || FVector2D::DistSquared(RoadNodes[A1], To) < FVector2D::DistSquared(RoadNodes[A0], To) ? A1 : A0;
+	const int32 Goal = WayB.bOneWay || FVector2D::DistSquared(RoadNodes[B0], From) < FVector2D::DistSquared(RoadNodes[B1], From) ? B0 : B1;
+
+	// A* over the road nodes
+	struct FOpen { float F; int32 Node; bool operator<(const FOpen& O) const { return F < O.F; } };
+	TArray<FOpen> Open;
+	TMap<int32, float> Cost;
+	TMap<int32, int32> Came;
+	Open.HeapPush({ 0.f, Start });
+	Cost.Add(Start, 0.f);
+	bool bFound = Start == Goal;
+	int32 Visited = 0;
+	while (Open.Num() > 0 && !bFound && Visited < 60000)
+	{
+		FOpen Top;
+		Open.HeapPop(Top, EAllowShrinking::No);
+		++Visited;
+		if (Top.Node == Goal)
+		{
+			bFound = true;
+			break;
+		}
+		const float Here = Cost[Top.Node];
+		if (const TArray<FNHRoadSeg>* Joins = RoadJoins.Find(Top.Node))
+		{
+			for (const FNHRoadSeg& S : *Joins)
+			{
+				const FNHRoadWay& W = RoadWays[S.Way];
+				const bool bForward = W.Nodes[S.Index] == Top.Node;
+				if (W.bOneWay && !bForward)
+				{
+					continue;
+				}
+				const int32 Next = W.Nodes[S.Index + (bForward ? 1 : 0)];
+				// time, not distance: a driver takes the expressway
+				const float Step = FVector2D::Distance(RoadNodes[Top.Node], RoadNodes[Next]) * (W.Class <= 1 ? 0.6f : W.Class == 2 ? 0.8f : 1.f);
+				const float* Old = Cost.Find(Next);
+				if (!Old || Here + Step < *Old)
+				{
+					Cost.Add(Next, Here + Step);
+					Came.Add(Next, Top.Node);
+					Open.HeapPush({ Here + Step + FVector2D::Distance(RoadNodes[Next], RoadNodes[Goal]) * 0.6f, Next });
+				}
+			}
+		}
+	}
+	if (!bFound)
+	{
+		return false;
+	}
+	TArray<FVector2D> Back;
+	Back.Add(PointB);
+	for (int32 Node = Goal; ; Node = Came[Node])
+	{
+		Back.Add(RoadNodes[Node]);
+		if (Node == Start)
+		{
+			break;
+		}
+	}
+	Back.Add(PointA);
+	OutLine.Reset(Back.Num());
+	for (int32 I = Back.Num() - 1; I >= 0; --I)
+	{
+		if (OutLine.Num() == 0 || FVector2D::DistSquared(OutLine.Last(), Back[I]) > 100.f)
+		{
+			OutLine.Add(Back[I]);
+		}
+	}
+	return OutLine.Num() >= 2;
+}
+
 TCHAR UNHGameData::TileAt(const FVector& World) const
 {
 	if (bRealCity)
