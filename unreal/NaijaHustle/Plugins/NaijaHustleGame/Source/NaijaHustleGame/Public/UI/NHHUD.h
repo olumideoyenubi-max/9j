@@ -15,8 +15,9 @@ class UFont;
  *
  * It also draws three screens of its own, opened by ANHPlayerController's keys:
  *   the map (M): the whole city, zoomed with the mouse wheel and moved with the arrow keys. Click to pin a place; the
- *     pin shows on the minimap, in the world and as a distance, until you get there or right-click it away.
- *   the pause menu (Esc): character, lighting, traffic, look speed, resolution, minimap, quit. Up and down pick a
+ *     pin shows on the minimap, in the world and as a distance, until you get there or right-click it away. The way
+ *     there along the roads is drawn on both maps, with the next turn written under the minimap.
+ *   the pause menu (Esc): character, lighting, traffic, look speed, resolution, minimap, a page of the controls, quit. Up and down pick a
  *     line, left and right change it. The settings are remembered.
  *   the inventory wheel (hold Tab, point with the mouse, let go): phone (the map), wardrobe (next character), car
  *     keys (pins the vehicle you last drove), torch (headlights when driving), wallet, and hail (the nearest passing
@@ -95,6 +96,15 @@ private:
 	FVector2D MapAt = FVector2D::ZeroVector;
 	float MapSide = 1.f, MapSpan = 1.f;
 	FString PinLabel;
+	/** The way to the pin along the roads, worked out again every few seconds, and what to do next on it */
+	TArray<FVector2D> PinRoute;
+	FString PinTurn;
+	float PinRouteAt = -100.f;
+	void UpdatePinRoute(const FVector& Player);
+	/** A line of world points inside a square of the screen showing Span cm of the world from Corner */
+	void DrawPath(const TArray<FVector2D>& Path, float X, float Y, float Size, const FVector2D& Corner, float Span, const FLinearColor& Color, float Thick);
+	/** The pause menu's Controls page is showing */
+	bool bMenuControls = false;
 	int32 MenuLine = 0;
 	int32 WheelSlot = -1;
 	FString MenuValue(int32 Line) const;

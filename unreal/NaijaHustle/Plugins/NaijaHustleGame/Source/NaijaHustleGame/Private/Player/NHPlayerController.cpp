@@ -11,6 +11,8 @@
 #include "Player/NHCharacter.h"
 #include "Phone/NHPhone.h"
 #include "UI/NHHUD.h"
+#include "Vehicles/NHCarTheft.h"
+#include "Vehicles/NHTraffic.h"
 #include "Vehicles/NHVehicle.h"
 #include "EngineUtils.h"
 #include "Engine/Engine.h"
@@ -124,6 +126,10 @@ void ANHPlayerController::SetupInputComponent()
 	Key(EKeys::Escape, &ANHPlayerController::UiMenu);
 	Key(EKeys::P, &ANHPlayerController::UiPhone);
 	Key(EKeys::BackSpace, &ANHPlayerController::UiBack);
+	// on-foot moves: R keeps you running without holding Shift, Left Ctrl or C rolls; Space climbs when there is a ledge (ANHCharacter::Jump)
+	Key(EKeys::R, &ANHPlayerController::OnRunToggle);
+	Key(EKeys::LeftControl, &ANHPlayerController::OnRoll);
+	Key(EKeys::C, &ANHPlayerController::OnRoll);
 	Key(EKeys::Tab, &ANHPlayerController::UiWheelOpen);
 	Key(EKeys::Tab, &ANHPlayerController::UiWheelClose, IE_Released);
 	Key(EKeys::Up, &ANHPlayerController::UiUp);
@@ -138,6 +144,22 @@ void ANHPlayerController::SetupInputComponent()
 }
 
 void ANHPlayerController::UiMap() { if (ANHHUD* H = ANHHUD::Get(this)) { H->ToggleMap(); } }
+void ANHPlayerController::OnRunToggle()
+{
+	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
+	{
+		C->ToggleRun();
+	}
+}
+
+void ANHPlayerController::OnRoll()
+{
+	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
+	{
+		C->Roll();
+	}
+}
+
 void ANHPlayerController::UiPhone() { if (ANHHUD* H = ANHHUD::Get(this)) { H->TogglePhone(); } }
 void ANHPlayerController::UiBack() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Back(); } }
 void ANHPlayerController::UiMenu() { if (ANHHUD* H = ANHHUD::Get(this)) { H->ToggleMenu(); } }
@@ -259,6 +281,16 @@ bool ANHPlayerController::EnterVehicle(ANHVehicle* Vehicle)
 	Vehicle->bPlayerOwned = true; // kept where it is left, for the car keys to find
 	Vehicle->SetOccupied(true);
 	SetControlRotation(Vehicle->GetActorRotation());
+	// how the lights work, said once a session, and again whenever you set off in the dark without them
+	if (ANHTraffic::IsDark(this) && !Vehicle->HeadlightsOn())
+	{
+		ANHHUD::Toast(this, TEXT("It is dark: press K for headlights"), 0);
+	}
+	else if (!bToldLights)
+	{
+		ANHHUD::Toast(this, TEXT("K: headlights on / off     V: cabin view     H: horn"), 0);
+	}
+	bToldLights = true;
 	return true;
 }
 
@@ -302,12 +334,25 @@ void ANHPlayerController::OnInteract()
 	}
 	else if (ANHVehicle* V = NearbyVehicle())
 	{
-		EnterVehicle(V);
+		ANHCarTheft* Theft = ANHCarTheft::Get(this);
+		if (Theft && Theft->Guards(V))
+		{
+			Theft->Approach(V); // not yours: the handle, the window, the wires, or the driver
+		}
+		else
+		{
+			V->Lock = ENHLock::Open; // your own, locked with the keys: they open it
+			EnterVehicle(V);
+		}
 	}
 }
 
 void ANHPlayerController::OnAction()
 {
+	if (ANHCarTheft* Theft = ANHCarTheft::Get(this); Theft && Theft->Action())
+	{
+		return;
+	}
 	if (ANHGameDirector* Dir = ANHGameDirector::Get(this))
 	{
 		Dir->OnAction(GetPawn());
@@ -336,9 +381,14 @@ FString ANHPlayerController::Prompt() const
 	{
 		return Ride; // a hailed ride waiting, or the trip itself
 	}
+	const ANHCarTheft* Theft = ANHCarTheft::Get(this);
+	if (const FString Wire = Theft ? Theft->ActionPrompt() : FString(); !Wire.IsEmpty())
+	{
+		return Wire; // the hotwire, or a place to do business at
+	}
 	if (const ANHVehicle* V = NearbyVehicle())
 	{
-		F = FString::Printf(TEXT("F  Get in %s"), *V->DisplayName());
+		F = Theft && Theft->Guards(V) ? Theft->Prompt(V) : FString::Printf(TEXT("F  Get in %s"), *V->DisplayName());
 	}
 	else if (const ANHVehicle* In = Cast<ANHVehicle>(GetPawn()))
 	{

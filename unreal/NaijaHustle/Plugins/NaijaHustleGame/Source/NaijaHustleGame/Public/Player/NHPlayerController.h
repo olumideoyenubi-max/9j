@@ -137,6 +137,8 @@ private:
 	void UiMap();
 	void UiMenu();
 	void UiPhone();
+	void OnRunToggle();
+	void OnRoll();
 	void UiBack();
 	void UiWheelOpen();
 	void UiWheelClose();
@@ -150,6 +152,7 @@ private:
 	void UiZoomIn();
 	void UiZoomOut();
 	TWeakObjectPtr<ANHVehicle> LastVehicle;
+	bool bToldLights = false;
 
 	void OnCycleLighting();
 	void OnInteract();

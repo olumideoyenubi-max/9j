@@ -53,6 +53,15 @@ public:
 
 	/** Hold to run (the Sprint input calls this) */
 	void SetSprinting(bool bSprint);
+	/** R: keeps running without the key held, until pressed again or you stand still */
+	void ToggleRun();
+	bool RunLocked() const { return bRunLocked; }
+	/** A forward roll the way you are moving (or facing): quick, low, and it carries you about four metres */
+	void Roll();
+	bool IsRolling() const { return RollLeft > 0.f; }
+	/** Space: up onto a ledge, wall top or vehicle in front, if there is one within reach (up to 2.4 m); otherwise a jump */
+	virtual void Jump() override;
+	bool IsClimbing() const { return ClimbTime > 0.f; }
 
 	/** True when a body mesh was found and put on; false when the player is still the capsule */
 	UFUNCTION(BlueprintPure, Category = "Body") bool HasBody() const { return bHasBody; }
@@ -121,6 +130,18 @@ private:
 	UPROPERTY() TArray<TObjectPtr<class UStaticMeshComponent>> ShoeParts;
 	UPROPERTY() TObjectPtr<class USpotLightComponent> Torch;
 	bool bSprinting = false;
+	bool bRunLocked = false;
+	float StillFor = 0.f;
+	/** The roll: seconds left of it, the way it goes, and when the next is allowed */
+	float RollLeft = 0.f, RollWait = 0.f;
+	FVector RollDir = FVector::ForwardVector;
+	/** The climb: from, up over the edge, to standing on top */
+	float ClimbTime = 0.f, ClimbLength = 1.f;
+	FVector ClimbFrom = FVector::ZeroVector, ClimbTo = FVector::ZeroVector;
+	bool TryClimb();
+	/** The body's place and turn on the capsule when standing (set when a skin is put on) */
+	FVector MeshHome = FVector(0.f, 0.f, -92.f);
+	FRotator MeshTurn = FRotator(0.f, -90.f, 0.f);
 	/** 0 walking .. 1 sprinting, eased */
 	float SprintAlpha = 0.f;
 	float SwayTime = 0.f;

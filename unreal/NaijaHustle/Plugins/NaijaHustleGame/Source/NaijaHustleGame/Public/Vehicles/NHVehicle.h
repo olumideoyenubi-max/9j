@@ -20,6 +20,15 @@ class UNHVehicleDynamicsComponent;
  * buildings, rides up kerbs and loses health in crashes. The body is the type's real model when one is
  * assigned (Scripts/assign_vehicle_meshes.py), or else a blockout built from the type's size.
  */
+/** What stands between the player and driving a vehicle off */
+enum class ENHLock : uint8
+{
+	Open,      // get in and go (the mission's vehicles, your own)
+	Unlocked,  // the door opens, but there are no keys: hotwire it
+	Locked,    // break the window, then hotwire it
+	KeysIn     // somebody left it running
+};
+
 UCLASS()
 class NAIJAHUSTLEGAME_API ANHVehicle : public APawn
 {
@@ -63,6 +72,24 @@ public:
 	bool IsTraffic() const { return bTraffic; }
 	/** Puts it at a place on the road, on the ground, facing Yaw, with its wheels turning for InSpeed (cm/s) */
 	void TrafficMove(const FVector2D& At, float Yaw, float InSpeed, float DeltaSeconds);
+	// ---- stealing (see ANHCarTheft)
+	ENHLock Lock = ENHLock::Open;
+	/** Taken from somebody: flagged for HotLeft seconds more, until resprayed */
+	bool bStolen = false;
+	float HotLeft = 0.f;
+	/** A tracker the Task Force follows, on luxury cars, until a mechanic takes it out */
+	bool bTracker = false;
+	/** The player's own: resprayed with new plates. The car keys lock and unlock it. */
+	bool bOwned = false;
+	bool bWindowBroken = false;
+	/** Sets the alarm off: lights flashing and the siren's text for that long (0 stops it) */
+	void SetAlarm(float Seconds) { AlarmLeft = Seconds; }
+	bool AlarmOn() const { return AlarmLeft > 0.f; }
+	/** Somebody other than the player is at the wheel */
+	bool HasNpcDriver() const { return bNpcDriver; }
+	/** What it would fetch whole, naira */
+	int32 Value() const;
+
 	/** Seats somebody else at the wheel: a body on a skeleton with the mannequin's bone names, as made (traffic's drivers) */
 	void SetNpcDriver(class USkeletalMesh* Mesh);
 	/** The last vehicle the player drove: traffic does not clear it away, and the car keys find it */
@@ -96,6 +123,8 @@ private:
 	bool bHandbrake = false;
 	bool bHeld = false;
 	bool bTraffic = false;
+	bool bNpcDriver = false;
+	float AlarmLeft = 0.f, AlarmBeat = 0.f;
 	bool bBuilt = false;
 	float Clearance = 30.f, HalfHeight = 60.f;
 	float WheelSpin = 0.f, Lean = 0.f, LookIdle = 0.f;
@@ -107,6 +136,8 @@ private:
 	UPROPERTY() TObjectPtr<class UPoseableMeshComponent> DriverBody;
 	/** Two headlights and a tail light, made the first time they are switched on */
 	UPROPERTY() TArray<TObjectPtr<class ULocalLightComponent>> Lamps;
+	/** The glowing lamp faces that go with them */
+	UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> LampGlow;
 	bool bHeadlights = false;
 	bool bCabinView = false;
 	/** Where the driver's hips are, relative to Body, and how tall the body is */

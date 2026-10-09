@@ -140,6 +140,9 @@ bool ANHCharacter::WearSkin(FName Id, bool bRemember)
 	const float Tall = Mesh->GetBounds().BoxExtent.Z * 2.f;
 	GetMesh()->SetRelativeScale3D(FVector(Skin->Height > 0.f && Tall > 1.f ? Skin->Height / Tall : 1.f));
 	GetMesh()->SetRelativeRotation(FRotator(0.f, -BodyFacingYaw(), 0.f));
+	MeshTurn = GetMesh()->GetRelativeRotation();
+	MeshHome = FVector(0.f, 0.f, -92.f);
+	GetMesh()->SetRelativeLocation(MeshHome);
 	GetCapsuleComponent()->SetHiddenInGame(true);
 	bHasBody = true;
 	CurrentSkin = Id;
@@ -330,7 +333,83 @@ void ANHCharacter::OnLookStick(const FInputActionValue& Value)
 }
 
 void ANHCharacter::OnSprintStart() { SetSprinting(true); }
-void ANHCharacter::OnSprintStop() { SetSprinting(false); }
+void ANHCharacter::OnSprintStop() { SetSprinting(bRunLocked); }
+
+void ANHCharacter::ToggleRun()
+{
+	bRunLocked = !bRunLocked;
+	SetSprinting(bRunLocked);
+}
+
+void ANHCharacter::Roll()
+{
+	if (RollLeft > 0.f || RollWait > 0.f || ClimbTime > 0.f || !GetCharacterMovement()->IsMovingOnGround())
+	{
+		return;
+	}
+	const FVector Moving = GetVelocity().GetSafeNormal2D();
+	RollDir = Moving.IsNearlyZero() ? GetActorForwardVector() : Moving;
+	RollLeft = 0.6f;
+	RollWait = 1.f;
+	SetActorRotation(FRotator(0.f, RollDir.Rotation().Yaw, 0.f));
+}
+
+bool ANHCharacter::TryClimb()
+{
+	if (ClimbTime > 0.f || RollLeft > 0.f)
+	{
+		return false;
+	}
+	// something solid in front at waist height, with a top within reach and room to stand on it
+	const float Half = GetCapsuleComponent()->GetScaledCapsuleHalfHeight(), Radius = GetCapsuleComponent()->GetScaledCapsuleRadius();
+	const FVector Feet = GetActorLocation() - FVector(0.f, 0.f, Half), Fwd = GetActorForwardVector();
+	FCollisionQueryParams Q(SCENE_QUERY_STAT(NHClimb), false, this);
+	FCollisionObjectQueryParams Solid;
+	Solid.AddObjectTypesToQuery(ECC_WorldStatic);
+	Solid.AddObjectTypesToQuery(ECC_Vehicle);
+	FHitResult Wall, Top;
+	bool bWall = false;
+	for (const float Height : { 60.f, 120.f, 30.f })
+	{
+		if (GetWorld()->LineTraceSingleByObjectType(Wall, Feet + FVector(0.f, 0.f, Height), Feet + FVector(0.f, 0.f, Height) + Fwd * (Radius + 70.f), Solid, Q))
+		{
+			bWall = true;
+			break;
+		}
+	}
+	if (!bWall)
+	{
+		return false;
+	}
+	const FVector Over = FVector(Wall.ImpactPoint.X, Wall.ImpactPoint.Y, 0.f) + Fwd * (Radius + 12.f);
+	if (!GetWorld()->LineTraceSingleByObjectType(Top, FVector(Over.X, Over.Y, Feet.Z + 250.f), FVector(Over.X, Over.Y, Feet.Z + 40.f), Solid, Q) || Top.bStartPenetrating)
+	{
+		return false; // too high, or nothing to stand on
+	}
+	const float Up = Top.ImpactPoint.Z - Feet.Z;
+	const FVector Stand(Over.X, Over.Y, Top.ImpactPoint.Z + Half + 3.f);
+	if (Up < 40.f || Top.ImpactNormal.Z < 0.7f
+		|| GetWorld()->OverlapBlockingTestByChannel(Stand + FVector(0.f, 0.f, 4.f), FQuat::Identity, ECC_Pawn, FCollisionShape::MakeCapsule(Radius * 0.9f, Half * 0.95f), Q))
+	{
+		return false;
+	}
+	ClimbFrom = GetActorLocation();
+	ClimbTo = Stand;
+	ClimbLength = 0.35f + Up / 380.f; // a kerb in a hop, a wall in most of a second
+	ClimbTime = ClimbLength;
+	GetCharacterMovement()->StopMovementImmediately();
+	GetCharacterMovement()->SetMovementMode(MOVE_Flying);
+	SetActorEnableCollision(false);
+	return true;
+}
+
+void ANHCharacter::Jump()
+{
+	if (!TryClimb())
+	{
+		Super::Jump();
+	}
+}
 
 void ANHCharacter::SetSprinting(bool bSprint)
 {
@@ -341,6 +420,44 @@ void ANHCharacter::SetSprinting(bool bSprint)
 void ANHCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+
+	// running without the key held stops by itself once you have stood still a moment
+	StillFor = GetVelocity().SizeSquared2D() < 100.f ? StillFor + DeltaSeconds : 0.f;
+	if (bRunLocked && StillFor > 1.5f)
+	{
+		bRunLocked = false;
+		SetSprinting(false);
+	}
+	RollWait = FMath::Max(0.f, RollWait - DeltaSeconds);
+	if (ClimbTime > 0.f)
+	{
+		// up the face first, then over the edge onto the top
+		ClimbTime = FMath::Max(0.f, ClimbTime - DeltaSeconds);
+		const float A = 1.f - ClimbTime / ClimbLength;
+		const float Rise = FMath::InterpEaseOut(0.f, 1.f, FMath::Clamp(A / 0.65f, 0.f, 1.f), 2.f), Over = FMath::InterpEaseInOut(0.f, 1.f, FMath::Clamp((A - 0.45f) / 0.55f, 0.f, 1.f), 2.f);
+		SetActorLocation(FVector(FMath::Lerp(ClimbFrom.X, ClimbTo.X, Over), FMath::Lerp(ClimbFrom.Y, ClimbTo.Y, Over), FMath::Lerp(ClimbFrom.Z, ClimbTo.Z, Rise)));
+		GetMesh()->SetRelativeRotation((FQuat(FVector::RightVector, FMath::DegreesToRadians(-22.f * FMath::Sin(A * PI))) * MeshTurn.Quaternion()).Rotator()); // leaning into it
+		if (ClimbTime <= 0.f)
+		{
+			SetActorEnableCollision(true);
+			GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+			GetMesh()->SetRelativeRotation(MeshTurn);
+		}
+	}
+	if (RollLeft > 0.f)
+	{
+		// the body tucks and turns once about its middle, close to the ground, while it is carried forward
+		RollLeft = FMath::Max(0.f, RollLeft - DeltaSeconds);
+		const float A = 1.f - RollLeft / 0.6f;
+		GetCharacterMovement()->Velocity = FVector(RollDir.X * 720.f, RollDir.Y * 720.f, GetCharacterMovement()->Velocity.Z);
+		const FQuat Turn(FVector::RightVector, FMath::DegreesToRadians(360.f * A)); // head over heels, forward
+		const FVector Middle(0.f, 0.f, -92.f + 55.f - 30.f * FMath::Sin(A * PI));
+		GetMesh()->SetRelativeLocationAndRotation(Middle + Turn.RotateVector(FVector(0.f, 0.f, -55.f)), (Turn * MeshTurn.Quaternion()).Rotator());
+		if (RollLeft <= 0.f)
+		{
+			GetMesh()->SetRelativeLocationAndRotation(MeshHome, MeshTurn);
+		}
+	}
 
 	// the camera follows what the body is doing: holding Sprint while standing still changes nothing
 	const bool bRunning = bSprinting && GetVelocity().SizeSquared2D() > FMath::Square(WalkSpeed * 1.1f);

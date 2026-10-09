@@ -121,6 +121,14 @@ struct FNHRoadWay
 	TArray<int32> Nodes;
 };
 
+/** Somewhere in the real city with business to do: the mechanic, the paint shop, the chop shop */
+struct FNHPlace
+{
+	FName Id;
+	FString Name;
+	FVector2D Pos = FVector2D::ZeroVector;
+};
+
 /** The stretch of a way from its node Index to Index + 1 */
 struct FNHRoadSeg
 {
@@ -166,6 +174,8 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") bool bRealCity = false;
 	/** Swaps the map data between the small grid city and the real-scale one (the game mode calls it for each level). False if lagos_real.json is missing. */
 	bool UseRealCity(bool bReal);
+	TArray<FNHPlace> Places;
+	const FNHPlace* FindPlace(FName Id) const { return Places.FindByPredicate([Id](const FNHPlace& P) { return P.Id == Id; }); }
 	TArray<FVector2D> RoadNodes;
 	TArray<FNHRoadWay> RoadWays;
 	/** Half the paved width of one carriageway by road class, cm */

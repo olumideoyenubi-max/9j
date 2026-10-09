@@ -6,7 +6,9 @@
 #include "Misc/PackageName.h"
 #include "GameFramework/Pawn.h"
 #include "GameFramework/PlayerController.h"
+#include "Core/NHHustleSubsystem.h"
 #include "Kismet/GameplayStatics.h"
+#include "Lighting/NHLightingRig.h"
 #include "NaijaHustleGame.h"
 #include "Vehicles/NHVehicle.h"
 
@@ -21,6 +23,16 @@ ANHTraffic* ANHTraffic::Get(const UObject* WorldContext)
 	UWorld* World = WorldContext ? WorldContext->GetWorld() : nullptr;
 	TActorIterator<ANHTraffic> It(World);
 	return World && It ? *It : nullptr;
+}
+
+bool ANHTraffic::IsDark(const UObject* WorldContext)
+{
+	if (const ANHLightingRig* Rig = ANHLightingRig::Find(WorldContext))
+	{
+		return Rig->Preset == ENHLightingPreset::NightRain || Rig->Preset == ENHLightingPreset::Sunset;
+	}
+	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(WorldContext);
+	return Hustle && (Hustle->HourOfDay() >= 18.5f || Hustle->HourOfDay() < 6.25f);
 }
 
 void ANHTraffic::SetDensity(int32 Level)
@@ -392,6 +404,13 @@ bool ANHTraffic::TrySpawn(const FVector2D& Player, bool bParked, float Near)
 			return false;
 		}
 		V->SetTraffic(!bParked);
+		if (bParked)
+		{
+			// somebody's, left at the kerb: mostly locked, sometimes not, now and then with the engine running
+			const float Roll = FMath::FRand();
+			V->Lock = Roll < 0.62f ? ENHLock::Locked : Roll < 0.9f ? ENHLock::Unlocked : ENHLock::KeysIn;
+			V->bTracker = V->Value() >= 40000000;
+		}
 		if (!bParked)
 		{
 			USkeletalMesh* Driver = DriverFor(V->VehicleType);
@@ -468,6 +487,23 @@ void ANHTraffic::Tick(float DeltaSeconds)
 	if (SpawnTimer <= 0.f)
 	{
 		SpawnTimer = 0.4f;
+		// after dark the traffic drives with its lights on: the nearest few only, since every lit car is three more lights to draw
+		const bool bDark = IsDark(this);
+		int32 Lit = 0;
+		Cars.Sort([&Player](const FCar& A, const FCar& B) { return FVector2D::DistSquared(A.At, FVector2D(Player)) < FVector2D::DistSquared(B.At, FVector2D(Player)); });
+		for (FCar& Car : Cars)
+		{
+			ANHVehicle* V = Car.Vehicle.Get();
+			if (V && !V->AlarmOn())
+			{
+				const bool bWant = bDark && !Car.bParked && Lit < 5 && FVector2D::Distance(Car.At, FVector2D(Player)) < 16000.f;
+				Lit += bWant ? 1 : 0;
+				if (V->HeadlightsOn() != bWant)
+				{
+					V->SetHeadlights(bWant);
+				}
+			}
+		}
 		const float Near = bFilled ? SpawnNear : 3500.f;
 		for (int32 N = 0; N < (bFilled ? 1 : 4) && NumMoving() < MaxMoving; ++N)
 		{

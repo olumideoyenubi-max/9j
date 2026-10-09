@@ -7,6 +7,7 @@
 #include "Player/NHPlayerController.h"
 #include "Phone/NHPhone.h"
 #include "UI/NHHUD.h"
+#include "Vehicles/NHCarTheft.h"
 #include "Vehicles/NHTraffic.h"
 
 ANHGameMode::ANHGameMode()
@@ -30,6 +31,7 @@ void ANHGameMode::StartPlay()
 {
 	Super::StartPlay();
 	GetWorld()->SpawnActor<ANHPhone>(ANHPhone::StaticClass(), FTransform::Identity);
+	GetWorld()->SpawnActor<ANHCarTheft>(ANHCarTheft::StaticClass(), FTransform::Identity);
 	const UNHGameData* Data = UNHGameData::Get(this);
 	if (Data && Data->bRealCity)
 	{

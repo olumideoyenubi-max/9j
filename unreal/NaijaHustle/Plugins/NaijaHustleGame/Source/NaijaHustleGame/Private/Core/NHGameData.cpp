@@ -505,6 +505,14 @@ bool UNHGameData::LoadRealCity(const FString& Path)
 			RealBays.Add(B);
 		}
 	}
+	if (Root->TryGetArrayField(TEXT("places"), Arr))
+	{
+		for (const TSharedPtr<FJsonValue>& V : *Arr)
+		{
+			const TSharedPtr<FJsonObject> O = V->AsObject();
+			Places.Add({ FName(Str(O, TEXT("id"))), Str(O, TEXT("name")), FVector2D(Num(O, TEXT("x")), Num(O, TEXT("y"))) });
+		}
+	}
 	if (Root->TryGetArrayField(TEXT("districts"), Arr))
 	{
 		for (const TSharedPtr<FJsonValue>& V : *Arr)

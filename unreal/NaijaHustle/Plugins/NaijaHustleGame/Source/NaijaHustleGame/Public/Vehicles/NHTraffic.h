@@ -41,6 +41,8 @@ public:
 	/** Flags down the nearest moving vehicle within 80 m: it stops for a while so the player can get in. The vehicle's name, or "" if none is near. */
 	FString Hail(const FVector& Player);
 	static ANHTraffic* Get(const UObject* WorldContext);
+	/** Night, or the night-rain and sunset lighting: when vehicles drive with their lights on */
+	static bool IsDark(const UObject* WorldContext);
 	/** Somebody to sit at the wheel of a vehicle of that type (null if the project has no bodies for it) */
 	class USkeletalMesh* DriverFor(FName Type);
 	/** A vehicle of that type made on the road at a place, facing Yaw, for somebody else to drive along (a hailed ride); traffic leaves it alone */

@@ -44,6 +44,12 @@ STOPS = [("oshoja", "Oshodi", 6.55725, 3.35141, 400), ("iya", "Charity", 6.5535,
          ("ebute", "Olosha", 6.5300, 3.3530, 0), ("church", "Idi-Oro", 6.5219, 3.3564, 0)]
 
 
+# Places the car trade needs, in the Ladipo spare-parts area of Mushin (invented businesses at roughly real spots):
+# id, name, latitude, longitude. Each is put on the verge of the nearest main road.
+PLACES = [("mechanic", "Shina Garage, Mechanic Village", 6.5389, 3.3476), ("paint", "Baba Colour Roadside Paint", 6.5452, 3.3528),
+          ("chop", "Ladipo Chop Shop", 6.5352, 3.3442)]
+
+
 def fetch(name):
     path = os.path.join(CACHE, name)
     if not os.path.exists(path):
@@ -131,12 +137,18 @@ def main():
     bays = [{"n": i + 1, "x": round(kx + ux * (3000 + 800 * i) + rx * 400), "y": round(ky + uy * (3000 + 800 * i) + ry * 400), "yaw": oshodi["yaw"]} for i in range(8)]
     park = [round(kx + ux * 2200 + rx * 900), round(ky + uy * 2200 + ry * 900)]
     start = {"x": round(kx + ux * 1800 + rx * 1000), "y": round(ky + uy * 1800 + ry * 1000), "z": 120, "yaw": oshodi["yaw"], "note": "on the verge by Oshodi Motor Park"}
+    places = []
+    for place_id, name, lat, lon in PLACES:
+        x, y = project(lat, lon)
+        d, (px, py), (ux, uy), cls = nearest(nodes, ways, x, y, main_roads)
+        rx, ry = -uy, ux
+        places.append({"id": place_id, "name": name, "x": round(px + rx * (HALF_WIDTH[cls] + 350)), "y": round(py + ry * (HALF_WIDTH[cls] + 350))})
     districts = [{"name": p["tags"]["name"], "x": project(p["lat"], p["lon"])[0], "y": project(p["lat"], p["lon"])[1]}
                  for p in fetch("places.json") if p["tags"].get("name") and p["tags"]["place"] != "city"]
     out = {"format": "naija-hustle-real-city", "version": 1, "units": "cm", "axes": "X east, Y south, Z up (Unreal)",
            "credit": "(c) OpenStreetMap contributors, ODbL", "origin": {"lon": LON0, "lat": LAT0},
            "roads": {"classes": CLASSES, "halfWidth": HALF_WIDTH, "nodes": [c for n in nodes for c in n], "ways": ways},
-           "busStops": stops, "park": park, "parkBays": bays, "playerStart": start, "districts": districts}
+           "busStops": stops, "places": places, "park": park, "parkBays": bays, "playerStart": start, "districts": districts}
     with open(OUT, "w", encoding="utf-8") as fh:
         json.dump(out, fh, separators=(",", ":"), ensure_ascii=False)
     length = sum(math.hypot(nodes[b][0] - nodes[a][0], nodes[b][1] - nodes[a][1]) for w in ways for a, b in zip(w["n"], w["n"][1:])) / 100000.0

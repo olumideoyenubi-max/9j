@@ -133,8 +133,15 @@ void ANHVehicle::BuildBody()
 		// A real model: no blockout pieces. Its wheels are part of the one mesh, so unseen hubs stand where they
 		// would be, to keep the suspension and the feel for the road surface working.
 		const float Radius = Spec.bBike ? 30.f : 34.f;
+		// the Pathmaster's model comes with one wheel lying at its middle and none at the corners: it gets the game's own
+		const bool bNoWheels = VehicleType == TEXT("suv");
 		for (int32 i = 0; i < (Spec.bBike ? 2 : 4); ++i)
 		{
+			if (bNoWheels)
+			{
+				Wheel(i < 2 ? 0.305f * L : -0.3f * L, (i % 2 ? 0.5f : -0.5f) * (W - 52.f), 41.f, 26.f);
+				continue;
+			}
 			Wheels.Add(NHShapes::AddPivot(this, Body, FVector((Spec.bBike ? (i == 0) : (i < 2)) ? 0.31f * L : -0.31f * L, Spec.bBike ? 0.f : (i % 2 ? 0.5f : -0.5f) * (W - 50.f), Radius)));
 		}
 		// the driving seat is a guess from the size: left-hand drive, a little ahead of the middle, a third of the way up (over half in a van or truck cab)
@@ -307,8 +314,18 @@ bool ANHVehicle::AddModel(float& OutHeight)
 	return true;
 }
 
+int32 ANHVehicle::Value() const
+{
+	static const TMap<FName, int32> Worth = { { TEXT("okada"), 350000 }, { TEXT("keke"), 900000 }, { TEXT("danfo"), 2500000 }, { TEXT("sedan"), 4500000 }, { TEXT("suv"), 9000000 },
+		{ TEXT("truck"), 12000000 }, { TEXT("tfpick"), 15000000 }, { TEXT("tfbike"), 1200000 }, { TEXT("luxsedan"), 45000000 }, { TEXT("luxsuv"), 70000000 }, { TEXT("coupesuv"), 85000000 },
+		{ TEXT("royalsuv"), 250000000 }, { TEXT("supersuv"), 180000000 }, { TEXT("sports"), 120000000 }, { TEXT("luxcoupe"), 160000000 }, { TEXT("hypercar"), 900000000 } };
+	const int32* V = Worth.Find(VehicleType);
+	return V ? *V : 4000000;
+}
+
 void ANHVehicle::SetOccupied(bool bOn)
 {
+	bNpcDriver = false; // whoever was at the wheel is not any more
 	// the player's own body if there is one to show, the blockout driver otherwise
 	const bool bBody = bOn && SeatDriver();
 	if (DriverBody)
@@ -345,6 +362,7 @@ void ANHVehicle::SetNpcDriver(USkeletalMesh* Mesh)
 	if (Mesh && SeatBody(Mesh, 1.f, ANHCharacter::FacingYawOf(Mesh)))
 	{
 		DriverBody->SetVisibility(true);
+		bNpcDriver = true;
 	}
 }
 
@@ -463,6 +481,12 @@ void ANHVehicle::SetHeadlights(bool bOn)
 			Beam->SetCastShadows(false); // two shadowed lights per car is too much for the 8 GB Mac
 			Beam->RegisterComponent();
 			Lamps.Add(Beam);
+			// the lamp itself, lit: a real model's lamp is only painted on
+			LampGlow.Add(NHShapes::AddPiece(this, Body, ENHShape::Sphere, Beam->GetRelativeLocation() + FVector(2.f, 0.f, 0.f), FVector(10.f, Spec.bBike ? 16.f : 26.f, 13.f), NHCar::HeadLamp));
+		}
+		for (int32 Side = 0; Side < (Spec.bBike ? 1 : 2); ++Side)
+		{
+			LampGlow.Add(NHShapes::AddPiece(this, Body, ENHShape::Sphere, FVector(-L * 0.5f - 1.f, Spec.bBike ? 0.f : (Side ? 0.32f : -0.32f) * W, BodyHeight * (Spec.bBike ? 0.55f : 0.45f)), FVector(8.f, Spec.bBike ? 12.f : 24.f, 11.f), NHCar::TailLamp));
 		}
 		UPointLightComponent* Tail = NewObject<UPointLightComponent>(this);
 		Tail->SetupAttachment(Body);
@@ -480,6 +504,13 @@ void ANHVehicle::SetHeadlights(bool bOn)
 		if (Lamp)
 		{
 			Lamp->SetVisibility(bOn);
+		}
+	}
+	for (UStaticMeshComponent* Glow : LampGlow)
+	{
+		if (Glow)
+		{
+			Glow->SetVisibility(bOn);
 		}
 	}
 	if (IsPlayerControlled())
@@ -519,6 +550,24 @@ void ANHVehicle::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	Drive(DeltaSeconds);
+	if (AlarmLeft > 0.f)
+	{
+		// the alarm: lights flashing (when nobody is driving) and the noise written in the air; there is no sound yet
+		AlarmLeft -= DeltaSeconds;
+		AlarmBeat -= DeltaSeconds;
+		if (AlarmBeat <= 0.f || AlarmLeft <= 0.f)
+		{
+			AlarmBeat = 0.4f;
+			if (!IsPlayerControlled())
+			{
+				SetHeadlights(AlarmLeft > 0.f && !bHeadlights);
+			}
+			if (AlarmLeft > 0.f && FMath::Fmod(AlarmLeft, 2.f) < 0.45f)
+			{
+				ANHHUD::Floater(this, GetActorLocation() + FVector(0, 0, 220.f), TEXT("WEEOO! WEEOO!"));
+			}
+		}
+	}
 
 	// wheels turn with the speed, bikes lean into corners
 	const float R = Spec.bBike ? 32.f : 38.f;

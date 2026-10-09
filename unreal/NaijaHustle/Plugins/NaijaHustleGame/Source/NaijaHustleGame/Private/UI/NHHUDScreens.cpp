@@ -14,6 +14,7 @@
 #include "Phone/NHPhone.h"
 #include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
+#include "Vehicles/NHCarTheft.h"
 #include "Vehicles/NHTraffic.h"
 #include "Vehicles/NHVehicle.h"
 
@@ -26,14 +27,23 @@ namespace NHScreens
 	const FLinearColor Land(0.2f, 0.19f, 0.16f);
 	const TCHAR* Section = TEXT("NaijaHustle");
 
-	enum { Resume, Character, Lighting, Traffic, Look, Resolution, Minimap, Quit, Lines };
-	const TCHAR* LineNames[] = { TEXT("Resume"), TEXT("Character"), TEXT("Lighting"), TEXT("Traffic"), TEXT("Look speed"), TEXT("Resolution"), TEXT("Minimap"), TEXT("Quit game") };
+	enum { Resume, Character, Lighting, Traffic, Look, Resolution, Minimap, Controls, Quit, Lines };
+	const TCHAR* LineNames[] = { TEXT("Resume"), TEXT("Character"), TEXT("Lighting"), TEXT("Traffic"), TEXT("Look speed"), TEXT("Resolution"), TEXT("Minimap"), TEXT("Controls"), TEXT("Quit game") };
+	// the Controls page: a heading (no key) or a key and what it does
+	const TCHAR* ControlList[][2] = {
+		{ TEXT("ON FOOT"), nullptr }, { TEXT("W A S D"), TEXT("Move") }, { TEXT("Mouse"), TEXT("Look") }, { TEXT("Left Shift"), TEXT("Run while held") }, { TEXT("R"), TEXT("Run: stays on until pressed again") },
+		{ TEXT("Left Ctrl or C"), TEXT("Roll") }, { TEXT("Space"), TEXT("Jump; climbs a ledge, wall or car in front") }, { TEXT("F"), TEXT("Get in; try a car's handle; pull a driver out") },
+		{ TEXT("E"), TEXT("Talk, act, next line; join wires when hotwiring") },
+		{ TEXT("DRIVING"), nullptr }, { TEXT("W / S"), TEXT("Accelerate / brake and reverse") }, { TEXT("A / D"), TEXT("Steer") }, { TEXT("Space"), TEXT("Handbrake") },
+		{ TEXT("K"), TEXT("Headlights on / off") }, { TEXT("V"), TEXT("Cabin view") }, { TEXT("H"), TEXT("Horn") }, { TEXT("F"), TEXT("Get out") }, { TEXT("E"), TEXT("Do business at the mechanic, paint shop, chop shop") },
+		{ TEXT("ANYWHERE"), nullptr }, { TEXT("P"), TEXT("Phone (arrows, Enter, Backspace)") }, { TEXT("M"), TEXT("Map: click to pin, right-click to clear, wheel to zoom") },
+		{ TEXT("Hold Tab"), TEXT("Inventory wheel: point, let go") }, { TEXT("1 2 3 4"), TEXT("Choices in a panel") }, { TEXT("L / F1"), TEXT("Lighting: next preset / menu") }, { TEXT("Esc"), TEXT("This menu") } };
 	const TCHAR* TrafficNames[] = { TEXT("None"), TEXT("Light"), TEXT("Normal"), TEXT("Heavy") };
 	const TCHAR* PresetNames[] = { TEXT("Day"), TEXT("Dusty noon"), TEXT("Sunset"), TEXT("Night rain"), TEXT("Harsh morning"), TEXT("Golden evening") };
 
 	enum { Phone, Wardrobe, CarKeys, Torch, Wallet, Hail, Slots };
 	const TCHAR* SlotNames[] = { TEXT("PHONE"), TEXT("WARDROBE"), TEXT("CAR KEYS"), TEXT("TORCH"), TEXT("WALLET"), TEXT("HAIL") };
-	const TCHAR* SlotHints[] = { TEXT("Chats, rides, map"), TEXT("Next character"), TEXT("Find my car"), TEXT("Light on or off"), TEXT("What I have"), TEXT("Stop a ride") };
+	const TCHAR* SlotHints[] = { TEXT("Chats, rides, map"), TEXT("Next character"), TEXT("Lock, unlock, find"), TEXT("Light on or off"), TEXT("What I have"), TEXT("Stop a ride") };
 
 	FColor RoadColor(uint8 Class)
 	{
@@ -105,6 +115,11 @@ void ANHHUD::Back()
 
 void ANHHUD::ToggleMenu()
 {
+	if (Screen == EScreen::Menu && bMenuControls)
+	{
+		bMenuControls = false; // Esc on the Controls page: back to the menu
+		return;
+	}
 	if (ANHPhone* Phone = ANHPhone::Get(this); Phone && Phone->IsOpen() && Screen == EScreen::None)
 	{
 		Phone->Close(); // Esc puts the phone away first
@@ -150,6 +165,10 @@ void ANHHUD::Nav(int32 DX, int32 DY)
 		}
 		return;
 	}
+	if (Screen == EScreen::Menu && bMenuControls)
+	{
+		return;
+	}
 	if (Screen == EScreen::Menu)
 	{
 		MenuLine = (MenuLine + DY + NHScreens::Lines) % NHScreens::Lines;
@@ -177,7 +196,11 @@ void ANHHUD::Accept()
 	}
 	if (Screen == EScreen::Menu)
 	{
-		if (MenuLine == NHScreens::Resume)
+		if (bMenuControls || MenuLine == NHScreens::Controls)
+		{
+			bMenuControls = !bMenuControls;
+		}
+		else if (MenuLine == NHScreens::Resume)
 		{
 			Open(EScreen::None);
 		}
@@ -243,6 +266,9 @@ void ANHHUD::Click(bool bRight)
 
 void ANHHUD::SetPin(const FVector2D& World, const FString& Label)
 {
+	PinRouteAt = -100.f; // work the way out afresh
+	PinRoute.Reset();
+	PinTurn.Reset();
 	bHasPin = true;
 	Pin = World;
 	PinLabel = Label;
@@ -418,11 +444,23 @@ void ANHHUD::DrawMapScreen(float VW, float VH)
 		DrawRect(FLinearColor(0.4f, 0.9f, 0.5f), P.X - 5.f * S, P.Y - 5.f * S, 10.f * S, 10.f * S);
 		Text(TEXT("My car"), P.X + 10.f * S, P.Y - 10.f * S, FLinearColor(0.4f, 0.9f, 0.5f), Medium, 0.9f);
 	}
+	for (const FNHPlace& Place : Data->Places)
+	{
+		if (ToScreen(Place.Pos, P))
+		{
+			DrawRect(FLinearColor(0.4f, 0.9f, 0.5f), P.X - 5.f * S, P.Y - 5.f * S, 10.f * S, 10.f * S);
+			Text(Place.Name, P.X + 10.f * S, P.Y - 10.f * S, FLinearColor(0.4f, 0.9f, 0.5f), Medium, 0.9f);
+		}
+	}
 	FString RideLabel;
 	if (FVector2D RideAt; ANHPhone::Get(this) && ANHPhone::Get(this)->RideMarker(RideAt, RideLabel) && ToScreen(RideAt, P))
 	{
 		DrawRect(FLinearColor(0.95f, 0.35f, 0.3f), P.X - 6.f * S, P.Y - 6.f * S, 12.f * S, 12.f * S);
 		Text(RideLabel, P.X + 10.f * S, P.Y - 10.f * S, FLinearColor(0.95f, 0.35f, 0.3f), Medium, 0.9f);
+	}
+	if (bHasPin)
+	{
+		DrawPath(PinRoute, MapAt.X, MapAt.Y, MapSide, Corner, MapSpan, PinBlue, 4.f); // the way there
 	}
 	if (bHasPin && ToScreen(Pin, P))
 	{
@@ -566,6 +604,31 @@ void ANHHUD::DrawMenu(float VW, float VH)
 	UFont* Medium = GEngine->GetMediumFont();
 	UFont* Large = GEngine->GetLargeFont();
 	DrawRect(FLinearColor(0.f, 0.f, 0.f, 0.6f), 0.f, 0.f, VW, VH);
+	if (bMenuControls)
+	{
+		// every key, in two columns
+		const int32 Count = UE_ARRAY_COUNT(ControlList), PerColumn = (Count + 1) / 2;
+		const float CW = 1500.f * S, CH = (150.f + 44.f * PerColumn) * S, CX = (VW - CW) * 0.5f, CY = (VH - CH) * 0.5f;
+		Panel(CX, CY, CW, CH, FLinearColor(0.05f, 0.05f, 0.05f, 0.95f));
+		DrawRect(Yellow, CX, CY, CW, 5.f * S);
+		Text(TEXT("CONTROLS"), CX + 30.f * S, CY + 22.f * S, Yellow, Large, 1.3f);
+		for (int32 I = 0; I < Count; ++I)
+		{
+			const float RX = CX + 30.f * S + (I / PerColumn) * CW * 0.5f, RY = CY + (90.f + 44.f * (I % PerColumn)) * S;
+			if (!ControlList[I][1])
+			{
+				Text(ControlList[I][0], RX, RY + 6.f * S, Yellow, Medium, 1.05f);
+			}
+			else
+			{
+				Panel(RX, RY, 200.f * S, 36.f * S, FLinearColor(1.f, 1.f, 1.f, 0.1f));
+				Text(ControlList[I][0], RX + 100.f * S, RY + 6.f * S, Ink, Medium, 1.f, true);
+				Text(ControlList[I][1], RX + 216.f * S, RY + 6.f * S, Muted, Medium, 1.f);
+			}
+		}
+		Text(TEXT("Enter or Esc: back"), VW * 0.5f, CY + CH - 40.f * S, Ink, Medium, 0.95f, true);
+		return;
+	}
 	const float W = 760.f * S, RowH = 58.f * S, H = 150.f * S + RowH * Lines, X = (VW - W) * 0.5f, Y = (VH - H) * 0.5f;
 	Panel(X, Y, W, H, FLinearColor(0.05f, 0.05f, 0.05f, 0.94f));
 	DrawRect(Yellow, X, Y, W, 5.f * S);
@@ -591,7 +654,7 @@ void ANHHUD::DrawMenu(float VW, float VH)
 		}
 		Yy += RowH;
 	}
-	Text(TEXT("Up / Down: choose     Left / Right: change     Enter: select     Esc: back to the game"), VW * 0.5f, Y + H - 40.f * S, Muted, Medium, 0.95f, true);
+	Text(TEXT("Up / Down: choose     Left / Right: change     Enter: select     Esc: back to the game"), VW * 0.5f, Y + H - 40.f * S, Ink, Medium, 0.95f, true);
 }
 
 // ------------------------------------------------------------------------------------------- the inventory wheel
@@ -617,7 +680,11 @@ void ANHHUD::UseWheel(int32 Slot)
 		}
 		break;
 	case CarKeys:
-		if (const ANHVehicle* Car = PC->GetLastVehicle(); Car && Car != Pawn)
+		if (ANHCarTheft* Theft = ANHCarTheft::Get(this); Theft && Theft->UseKeys(PC->GetLastVehicle()))
+		{
+			// your own car, near enough for the remote: locked or unlocked
+		}
+		else if (const ANHVehicle* Car = PC->GetLastVehicle(); Car && Car != Pawn)
 		{
 			SetPin(FVector2D(Car->GetActorLocation()), TEXT("your ") + Car->DisplayName());
 		}
@@ -816,4 +883,95 @@ void ANHHUD::DrawPhone(float VW, float VH)
 	}
 	const TArray<FString> Foot = Wrap(Phone->Footer, TextW, Medium, 0.8f);
 	Text(Foot[0], X + W * 0.5f, Y + H - 30.f * S, Muted, Medium, 0.8f, true, false);
+}
+
+// --------------------------------------------------------------------------------------- directions to the pin
+void ANHHUD::DrawPath(const TArray<FVector2D>& Path, float X, float Y, float Size, const FVector2D& Corner, float Span, const FLinearColor& Color, float Thick)
+{
+	for (int32 I = 0; I + 1 < Path.Num(); ++I)
+	{
+		// clip each stretch to the square (Liang-Barsky)
+		const FVector2D A = (Path[I] - Corner) / Span, D = (Path[I + 1] - Corner) / Span - A;
+		float T0 = 0.f, T1 = 1.f;
+		bool bSeen = true;
+		for (int32 Edge = 0; Edge < 4 && bSeen; ++Edge)
+		{
+			const float P = Edge == 0 ? -D.X : Edge == 1 ? D.X : Edge == 2 ? -D.Y : D.Y;
+			const float Q = Edge == 0 ? A.X : Edge == 1 ? 1.f - A.X : Edge == 2 ? A.Y : 1.f - A.Y;
+			if (FMath::IsNearlyZero(P))
+			{
+				bSeen = Q >= 0.f;
+			}
+			else if (P < 0.f)
+			{
+				T0 = FMath::Max(T0, Q / P);
+			}
+			else
+			{
+				T1 = FMath::Min(T1, Q / P);
+			}
+		}
+		if (bSeen && T0 < T1)
+		{
+			const FVector2D From = A + D * T0, To = A + D * T1;
+			DrawLine(X + From.X * Size, Y + From.Y * Size, X + To.X * Size, Y + To.Y * Size, Color, Thick * S);
+		}
+	}
+}
+
+void ANHHUD::UpdatePinRoute(const FVector& Player)
+{
+	const UNHGameData* Data = UNHGameData::Get(this);
+	const float Now = GetWorld()->GetRealTimeSeconds();
+	if (!Data || !Data->bRealCity)
+	{
+		return;
+	}
+	const FVector2D Here(Player);
+	if (Now - PinRouteAt > 3.f)
+	{
+		PinRouteAt = Now;
+		if (!Data->RoadRoute(Here, Pin, PinRoute))
+		{
+			PinRoute.Reset();
+			PinTurn = TEXT("No road goes there");
+			return;
+		}
+		PinRoute.Insert(Here, 0); // from where you stand to the road
+		PinRoute.Add(Pin);
+	}
+	if (PinRoute.Num() < 3)
+	{
+		return;
+	}
+	// the next real turn ahead: where the road's heading swings by more than 40 degrees within 30 m
+	float Along = 0.f;
+	PinTurn.Reset();
+	for (int32 I = 1; I + 1 < PinRoute.Num(); ++I)
+	{
+		Along += FVector2D::Distance(PinRoute[I - 1], PinRoute[I]);
+		if (I < 2)
+		{
+			continue; // the first stretch is only you walking to the road
+		}
+		const FVector2D In = (PinRoute[I] - PinRoute[I - 1]).GetSafeNormal();
+		FVector2D Out = In;
+		float Reach = 0.f;
+		for (int32 J = I; J + 1 < PinRoute.Num() && Reach < 3000.f; ++J)
+		{
+			Reach += FVector2D::Distance(PinRoute[J], PinRoute[J + 1]);
+			Out = (PinRoute[J + 1] - PinRoute[I]).GetSafeNormal();
+		}
+		const float Cross = In.X * Out.Y - In.Y * Out.X, Dot = In | Out;
+		if (FMath::RadiansToDegrees(FMath::Atan2(FMath::Abs(Cross), Dot)) > 40.f && I + 2 < PinRoute.Num())
+		{
+			FNHRoadSeg Seg;
+			FVector2D OnRoad;
+			const FString Road = Data->NearestRoad(PinRoute[I] + Out * 2500.f, Seg, OnRoad) ? Data->RoadWays[Seg.Way].Name : FString();
+			const FString Far = Along >= 100000.f ? FString::Printf(TEXT("%.1f km"), Along / 100000.f) : FString::Printf(TEXT("%d m"), FMath::RoundToInt(Along / 1000.f) * 10);
+			PinTurn = FString::Printf(TEXT("In %s turn %s%s"), *Far, Cross > 0.f ? TEXT("right") : TEXT("left"), Road.IsEmpty() ? TEXT("") : *(TEXT(" onto ") + Road)); // Y runs south, so a positive cross is a right turn
+			return;
+		}
+	}
+	PinTurn = TEXT("Straight on to the pin");
 }

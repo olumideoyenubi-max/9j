@@ -12,6 +12,7 @@
 #include "Gameplay/NHGameDirector.h"
 #include "Phone/NHPhone.h"
 #include "Player/NHPlayerController.h"
+#include "Vehicles/NHCarTheft.h"
 #include "Vehicles/NHVehicle.h"
 
 namespace NHUI
@@ -191,10 +192,21 @@ void ANHHUD::DrawMinimap(float X, float Y, float Size, const FVector& Player, fl
 			DrawRect(FLinearColor(1.f, 0.2f, 0.2f), M.X - 6.f * S, M.Y - 6.f * S, 12.f * S, 12.f * S);
 		}
 	}
+	for (const FNHPlace& Place : Data->Places)
+	{
+		if (FVector2D M; ToMap(FVector(Place.Pos, 0.f), false, M))
+		{
+			DrawRect(FLinearColor(0.4f, 0.9f, 0.5f), M.X - 4.f * S, M.Y - 4.f * S, 8.f * S, 8.f * S); // the mechanic, the paint shop, the chop shop
+		}
+	}
 	FString RideLabel;
 	if (FVector2D RideAt, M; ANHPhone::Get(this) && ANHPhone::Get(this)->RideMarker(RideAt, RideLabel) && ToMap(FVector(RideAt, 0.f), true, M))
 	{
 		DrawRect(FLinearColor(0.95f, 0.35f, 0.3f), M.X - 5.f * S, M.Y - 5.f * S, 10.f * S, 10.f * S); // the hailed ride, on its way
+	}
+	if (bHasPin)
+	{
+		DrawPath(PinRoute, X, Y, Size, Corner, Span, FLinearColor(0.2f, 0.75f, 1.f), 3.f); // the way to the pin
 	}
 	if (FVector2D M; bHasPin && ToMap(FVector(Pin, 0.f), true, M))
 	{
@@ -301,6 +313,8 @@ void ANHHUD::DrawHUD()
 				Text(Far, At.X, At.Y + 12.f * S, FLinearColor(0.2f, 0.75f, 1.f), Medium, 1.f, true);
 			}
 			Text(FString::Printf(TEXT("PIN  %s  %s"), *PinLabel.ToUpper(), *Far), MX + MapSize * 0.5f, MY + MapSize + 56.f * S, FLinearColor(0.2f, 0.75f, 1.f), Medium, 1.f, true);
+			UpdatePinRoute(Pawn->GetActorLocation());
+			Text(PinTurn, MX + MapSize * 0.5f, MY + MapSize + 82.f * S, Ink, Medium, 1.f, true);
 		}
 	}
 	if (Pawn && bShowMinimap)
@@ -409,6 +423,18 @@ void ANHHUD::DrawHUD()
 		}
 	}
 
+	// ---- hotwiring: a marker sweeping a bar, to stop in the green three times
+	if (const ANHCarTheft* Theft = ANHCarTheft::Get(this); Theft && Theft->bHotwiring)
+	{
+		const float W = 620.f * S, X = (VW - W) * 0.5f, Y = VH * 0.5f + 120.f * S, BarX = X + 24.f * S, BarW = W - 48.f * S;
+		Panel(X, Y, W, 124.f * S, FLinearColor(0.f, 0.f, 0.f, 0.8f));
+		Text(FString::Printf(TEXT("HOTWIRE   wire %d of 3   %.0f s"), FMath::Min(Theft->Hits + 1, 3), FMath::Max(0.f, Theft->TimeLeft)), X + 24.f * S, Y + 10.f * S, Theft->TimeLeft < 4.f ? Bad : Yellow, Medium, 1.1f);
+		DrawRect(FLinearColor(1.f, 1.f, 1.f, 0.14f), BarX, Y + 52.f * S, BarW, 26.f * S);
+		DrawRect(Good, BarX + BarW * Theft->ZoneLo, Y + 52.f * S, BarW * (Theft->ZoneHi - Theft->ZoneLo), 26.f * S);
+		DrawRect(FLinearColor::White, BarX + BarW * Theft->Marker - 3.f * S, Y + 46.f * S, 6.f * S, 38.f * S);
+		Text(TEXT("E when the marker is in the green     F: give up"), X + W * 0.5f, Y + 90.f * S, Muted, Medium, 0.95f, true);
+	}
+
 	// ---- the phone: its icon by the clock when something is unseen, who is ringing, what is being said, and the handset
 	if (ANHPhone* Phone = ANHPhone::Get(this))
 	{
@@ -462,6 +488,44 @@ void ANHHUD::DrawHUD()
 			if (ANHPhone* Phone = ANHPhone::Get(this); Phone && (ShotOpen == TEXT("phone") || ShotOpen == TEXT("contacts") || ShotOpen == TEXT("call") || ShotOpen == TEXT("dropam") || ShotOpen == TEXT("ride") || ShotOpen == TEXT("driver")))
 			{
 				Phone->DebugOpen(ShotOpen);
+			}
+			if (ANHCarTheft* Theft = ANHCarTheft::Get(this); Theft && (ShotOpen == TEXT("steal") || ShotOpen == TEXT("hotwin") || ShotOpen == TEXT("carjack") || ShotOpen == TEXT("sell") || ShotOpen == TEXT("roll") || ShotOpen == TEXT("climb")))
+			{
+				Theft->Debug(ShotOpen);
+			}
+			if (ShotOpen == TEXT("route"))
+			{
+				// a pin a few kilometres off, to see the directions; "routemap" the same with the map open
+				if (const FNHBusStop* Yaba = Data ? Data->Stops.Find(TEXT("balogate")) : nullptr)
+				{
+					SetPin(Yaba->Kerb, Yaba->Name);
+				}
+				if (Dir)
+				{
+					Dir->Dialogue = ANHGameDirector::FDialogue();
+				}
+			}
+			if (ShotOpen == TEXT("controls"))
+			{
+				ToggleMenu();
+				bMenuControls = true;
+			}
+			if (ShotOpen == TEXT("night"))
+			{
+				// the night-rain lighting, held, to see the traffic's lights
+				PC->ConsoleCommand(TEXT("NHLighting NightRain"));
+				if (Dir)
+				{
+					Dir->SetManualLighting();
+					Dir->Dialogue = ANHGameDirector::FDialogue();
+				}
+			}
+			if (ShotOpen == TEXT("carshow") && Pawn)
+			{
+				// one of every vehicle type lined up ahead, photographed into the scratch folder given by -NHLookDir
+				FString Folder;
+				FParse::Value(FCommandLine::Get(), TEXT("NHLookDir="), Folder);
+				PC->ConsoleCommand(FString::Printf(TEXT("NHCarShow %.0f %.0f %s"), Pawn->GetActorLocation().X, Pawn->GetActorLocation().Y, *Folder));
 			}
 			if (ShotOpen == TEXT("map"))
 			{
