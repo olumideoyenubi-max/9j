@@ -4,6 +4,7 @@ Run inside the Unreal Editor (Scripts/mac.sh script <this file>) after Scripts/b
 Environment variables:
   NH_TRIMS        the folder the pictures are in (default ~/Downloads/nh-trims)
   NH_TRIM_STAGE   "all" (default), "library" (textures and materials) or "city" (lay sample decals in the Lagos map)
+  NH_TRIM_REBUILD "1" builds the master materials again in place (after changing them below)
   NH_DECAL_SPOT   "X,Y,Yaw" in cm and degrees: the stretch of road the sample decals go on (default: Oshodi expressway)
 
 What it makes, under /Game/NaijaHustle/Surfaces/Trims (generated, not stored in the repo):
@@ -28,6 +29,7 @@ import unreal
 
 SRC = os.environ.get("NH_TRIMS", os.path.join(os.path.expanduser("~"), "Downloads", "nh-trims"))
 STAGE = os.environ.get("NH_TRIM_STAGE", "all")
+REBUILD = os.environ.get("NH_TRIM_REBUILD", "") == "1"
 SPOT = [float(v) for v in os.environ.get("NH_DECAL_SPOT", "-536979,-958460,67").split(",")]
 ROOT = "/Game/NaijaHustle/Surfaces/Trims"
 LEVEL = "/Game/NaijaHustle/Maps/L_Lagos_City"
@@ -89,7 +91,11 @@ def colour(mat, name, x, y, rgba=(1, 1, 1, 1)):
 
 def fresh(name):
     if eal.does_asset_exist(f"{ROOT}/{name}"):
-        return None
+        if not REBUILD:
+            return None
+        mat = eal.load_asset(f"{ROOT}/{name}")       # rebuilt in place, so its instances keep their parent
+        mel.delete_all_material_expressions(mat)
+        return mat
     return tools.create_asset(name, ROOT, unreal.Material, unreal.MaterialFactoryNew())
 
 
@@ -104,6 +110,8 @@ def trim_master(name, textures, cutout):
     normal = node(mat, unreal.MaterialExpressionTextureSampleParameter2D, -900, 0, parameter_name="Normal", texture=textures[1], sampler_type=ST.SAMPLERTYPE_NORMAL)
     orm = node(mat, unreal.MaterialExpressionTextureSampleParameter2D, -900, 300, parameter_name="ORM", texture=textures[2], sampler_type=ST.SAMPLERTYPE_MASKS)
     tinted = op(mat, M, base, colour(mat, "Tint", -900, -500), -600, -350, a_out="RGB")
+    # the building kit colours each building's metalwork and cloth: custom data 4 to 6 (0 to 3 are the wall's)
+    tinted = op(mat, M, tinted, node(mat, unreal.MaterialExpressionPerInstanceCustomData3Vector, -900, -650, data_index=4, const_default_value=unreal.LinearColor(1, 1, 1, 1)), -450, -450)
     # Dirt darkens the hollows first: the occlusion map already knows where they are
     hollow = node(mat, unreal.MaterialExpressionOneMinus, -600, 150)
     mel.connect_material_expressions(orm, "R", hollow, "")
@@ -116,6 +124,7 @@ def trim_master(name, textures, cutout):
     mel.connect_material_property(normal, "RGB", MP.MP_NORMAL)
     if cutout:
         mel.connect_material_property(base, "A", MP.MP_OPACITY_MASK)
+    mel.set_material_usage(mat, unreal.MaterialUsage.MATUSAGE_INSTANCED_STATIC_MESHES)       # the building kit draws everything as instances
     mel.recompile_material(mat)
     eal.save_loaded_asset(mat, only_if_is_dirty=False)
     return mat

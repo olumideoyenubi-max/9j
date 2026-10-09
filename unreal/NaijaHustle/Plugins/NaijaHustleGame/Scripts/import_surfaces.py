@@ -5,6 +5,7 @@ Environment variables:
   NH_SURFACES   the folder of surfaces (default ~/Downloads/nh-surfaces): one sub-folder a surface holding
                 BaseColor.jpg, Normal.jpg (OpenGL), ORM.jpg (AO, roughness, metallic), and surfaces.json listing them
   NH_SURFACE_STAGE   "all" (default), "library" (textures, masters, instances) or "city" (put them on the Lagos map)
+  NH_SURFACE_REBUILD "1" builds the two master materials again in place (after changing them below)
 
 What it makes, under /Game/NaijaHustle/Surfaces (generated, not stored in the repo):
   Textures/T_<Name>_BaseColor|Normal|ORM   base colour sRGB; normal as a normal map with green flipped; ORM as masks,
@@ -28,6 +29,7 @@ import unreal
 
 SRC = os.environ.get("NH_SURFACES", os.path.join(os.path.expanduser("~"), "Downloads", "nh-surfaces"))
 STAGE = os.environ.get("NH_SURFACE_STAGE", "all")
+REBUILD = os.environ.get("NH_SURFACE_REBUILD", "") == "1"
 ROOT = "/Game/NaijaHustle/Surfaces"
 WEATHER = "/Game/NaijaHustle/Lighting/Presets/MPC_NHWeather"
 # the Lagos map's material slots -> surface, tile size in cm
@@ -71,7 +73,11 @@ class Graph:
     """A material being built: g.n(Class, x, y, prop=value) makes a node, g.link joins two, g.out wires an output"""
 
     def __init__(self, name):
-        self.mat = tools.create_asset(name, ROOT, unreal.Material, unreal.MaterialFactoryNew())
+        if eal.does_asset_exist(f"{ROOT}/{name}"):       # rebuilt in place, so its instances keep their parent
+            self.mat = eal.load_asset(f"{ROOT}/{name}")
+            mel.delete_all_material_expressions(self.mat)
+        else:
+            self.mat = tools.create_asset(name, ROOT, unreal.Material, unreal.MaterialFactoryNew())
 
     def n(self, cls, x, y, **props):
         node = mel.create_material_expression(self.mat, cls, x, y)
@@ -120,6 +126,7 @@ class Graph:
         return self.n(unreal.MaterialExpressionCollectionParameter, x, y, collection=eal.load_asset(WEATHER), parameter_name=name)
 
     def finish(self):
+        mel.set_material_usage(self.mat, unreal.MaterialUsage.MATUSAGE_INSTANCED_STATIC_MESHES)       # the building kit draws everything as instances
         mel.recompile_material(self.mat)
         eal.save_loaded_asset(self.mat, only_if_is_dirty=False)
         return self.mat
@@ -130,7 +137,7 @@ SAT, INV = unreal.MaterialExpressionSaturate, unreal.MaterialExpressionOneMinus
 
 
 def building_master(defaults, noise):
-    if eal.does_asset_exist(ROOT + "/M_NH_Building"):
+    if eal.does_asset_exist(ROOT + "/M_NH_Building") and not REBUILD:
         return eal.load_asset(ROOT + "/M_NH_Building")
     g = Graph("M_NH_Building")
     uv = g.op(M, g.n(unreal.MaterialExpressionTextureCoordinate, -2400, -600), g.scalar("Tiling", 1.0, -2400, -500), -2200, -600)
@@ -161,11 +168,13 @@ def building_master(defaults, noise):
     vary = g.lerp(g.op(S, g.const(1.0, -1500, -900), g.scalar("TintVariation", 0.12, -1700, -900), -1400, -900), g.op(A, g.const(1.0, -1500, -820), g.scalar("TintVariation", 0.12, -1700, -820), -1400, -820),
                   g.n(unreal.MaterialExpressionPerInstanceRandom, -1500, -750), -1200, -850)
     tinted = g.op(M, g.op(M, base, g.colour("Tint", (1, 1, 1), -1700, -1050), -1200, -1000, a_out="RGB"), vary, -1000, -950)
+    # the building kit gives every instance its building's paint colour (custom data 0 to 2) and how faded it is (3)
+    tinted = g.op(M, tinted, g.n(unreal.MaterialExpressionPerInstanceCustomData3Vector, -1200, -1100, data_index=0, const_default_value=unreal.LinearColor(1, 1, 1, 1)), -900, -1050)
     vc = g.lerp(g.n(unreal.MaterialExpressionConstant3Vector, -1200, -1200, constant=unreal.LinearColor(1, 1, 1, 1)), g.n(unreal.MaterialExpressionVertexColor, -1400, -1200), g.scalar("VertexColourAmount", 0.0, -1400, -1100), -1000, -1150, b_out="RGB")
     colour = g.op(M, tinted, vc, -800, -1000)
     # 2 paint fade: paler and greyer in blotches
     faded = g.op(A, g.op(M, g.one(unreal.MaterialExpressionDesaturation, colour, -700, -850), g.const(1.12, -800, -780), -550, -850), g.const(0.03, -550, -760), -400, -850)
-    colour = g.lerp(colour, faded, g.op(M, g.one(SAT, g.op(M, g.op(S, blotch, g.const(0.35, -1200, 250), -1000, 250, a_out="R"), g.const(3.0, -1000, 330), -850, 250), -700, 250), g.scalar("PaintFade", 0.35, -850, 400), -550, 250), -250, -900)
+    colour = g.lerp(colour, faded, g.op(M, g.one(SAT, g.op(M, g.op(S, blotch, g.const(0.35, -1200, 250), -1000, 250, a_out="R"), g.const(3.0, -1000, 330), -850, 250), -700, 250), g.op(A, g.scalar("PaintFade", 0.35, -850, 400), g.n(unreal.MaterialExpressionPerInstanceCustomData, -850, 480, data_index=3, const_default_value=0.0), -700, 420), -550, 250), -250, -900)
     # 3 grime rising from the ground
     height = g.one(SAT, g.one(INV, g.op(D, g.op(S, z, g.scalar("GroundZ", 0.0, -1800, 950), -1600, 900), g.scalar("GrimeHeight", 220.0, -1600, 1000), -1400, 900), -1250, 900), -1100, 900)
     grime = g.op(M, g.one(SAT, g.op(A, g.op(M, height, height, -950, 900), g.op(M, g.op(M, height, blotch, -950, 1000, b_out="G"), g.const(0.8, -950, 1080), -800, 1000), -650, 900), -500, 900), g.scalar("Grime", 0.6, -650, 1050), -350, 900)
@@ -194,7 +203,7 @@ def building_master(defaults, noise):
 
 
 def ground_master(defaults, noise):
-    if eal.does_asset_exist(ROOT + "/M_NH_Ground"):
+    if eal.does_asset_exist(ROOT + "/M_NH_Ground") and not REBUILD:
         return eal.load_asset(ROOT + "/M_NH_Ground")
     g = Graph("M_NH_Ground")
     g.mat.set_editor_property("tangent_space_normal", False)     # roads have no UVs to hang a tangent space on
