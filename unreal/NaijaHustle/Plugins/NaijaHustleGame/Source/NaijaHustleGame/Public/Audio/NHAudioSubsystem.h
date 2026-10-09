@@ -92,6 +92,27 @@ public:
 	bool MonoOn() const { return bMono; }
 	void SetMono(bool bOn);
 
+	// ---- the radio: stations and playlists from Data/radio_stations.json, music imported by Scripts/import_radio.py
+	struct FRadioTrack
+	{
+		FString Title, Artist, Asset;
+	};
+	struct FRadioStation
+	{
+		FName Id;
+		FString Name;
+		TArray<FRadioTrack> Tracks;
+	};
+	const TArray<FRadioStation>& GetStations() const { return Stations; }
+	/** R in a car: the next station on that car's radio, and off after the last. The radio stays with the car: get out and you hear it from outside, muffled. */
+	void RadioNextStation(ANHVehicle* Car);
+	/** T: the next song on the station */
+	void RadioNextTrack();
+	void RadioOff();
+	bool RadioOn() const { return RadioStation >= 0; }
+	/** "Ragebait FM: Bands, Tommy Ringz", or "" if it is off */
+	FString RadioNowPlaying() const;
+
 	// ---- what the game tells it
 	/** The car whose radio is playing (null: none). You hear it clearly only from inside. */
 	void SetRadioCar(ANHVehicle* Car);
@@ -153,6 +174,18 @@ private:
 	int32 Forced[static_cast<int32>(ENHMix::Count)];
 	void Watch(UWorld* World);
 	TWeakObjectPtr<ANHVehicle> RadioCar;
+	TArray<FRadioStation> Stations;
+	void LoadStations();
+	int32 RadioStation = -1, RadioTrack = 0;
+	/** When the song began, on the world's audio clock (which stops while the game is paused), and how long it is */
+	float RadioStartedAt = 0.f, RadioLength = 0.f;
+	/** The song is playing as the cabin's own radio (not placed in the world), as against from the car, heard outside */
+	bool bRadioCabin = false;
+	UPROPERTY(Transient) TObjectPtr<USoundBase> RadioSound;
+	TWeakObjectPtr<UAudioComponent> RadioVoice;
+	void RadioStart(UWorld* World, float From);
+	void RadioWatch(UWorld* World, const ANHVehicle* Driving);
+	void RadioAnnounce() const;
 	ENHAudioSpace Space = ENHAudioSpace::Count; // nothing applied yet
 	ENHAudioSpace ForcedSpace = ENHAudioSpace::Count;
 	ENHAudioSpace Pending = ENHAudioSpace::Street;

@@ -2,6 +2,8 @@
 
 #include "Audio/NHAudioSubsystem.h"
 #include "Audio/NHAudioTest.h"
+#include "AudioMixerBlueprintLibrary.h"
+#include "EngineUtils.h"
 #include "Input/NHInputSet.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
@@ -62,6 +64,11 @@ void ANHPlayerController::BeginPlay()
 	}
 #endif
 
+	if (FParse::Param(FCommandLine::Get(), TEXT("NHRadioTest")))
+	{
+		FTimerHandle Start;
+		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { RadioTestStep(0); }), 8.f, false);
+	}
 	if (FParse::Param(FCommandLine::Get(), TEXT("NHBridgeTest")))
 	{
 		GetWorld()->SpawnActor<ANHBridgeTest>(ANHBridgeTest::StaticClass(), FTransform::Identity); // drives each vehicle over a bridge and back, logs, quits
@@ -472,6 +479,85 @@ void ANHPlayerController::NHAudioSpace(const FString& Name)
 	}
 	Audio->ForceSpace(Held);
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: audio space %s"), Held == ENHAudioSpace::Count ? TEXT("follows where you stand") : *FString::Printf(TEXT("held at %s"), UNHAudioSubsystem::SpaceName(Held)));
+}
+
+void ANHPlayerController::NHRadio(const FString& What)
+{
+	UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	if (!Audio)
+	{
+		return;
+	}
+	if (What.Equals(TEXT("off"), ESearchCase::IgnoreCase))
+	{
+		Audio->RadioOff();
+	}
+	else if (What.Equals(TEXT("track"), ESearchCase::IgnoreCase))
+	{
+		Audio->RadioNextTrack();
+	}
+	else
+	{
+		ANHVehicle* Car = Cast<ANHVehicle>(GetPawn());
+		const FVector Here = GetPawn() ? GetPawn()->GetActorLocation() : FVector::ZeroVector;
+		for (TActorIterator<ANHVehicle> It(GetWorld()); !Cast<ANHVehicle>(GetPawn()) && It; ++It)
+		{
+			if (!Car || FVector::DistSquared(It->GetActorLocation(), Here) < FVector::DistSquared(Car->GetActorLocation(), Here))
+			{
+				Car = *It;
+			}
+		}
+		Audio->RadioNextStation(Car);
+	}
+}
+
+void ANHPlayerController::RadioTestStep(int32 Step)
+{
+	UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	const FString Folder = FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir() / TEXT("NHAudio"));
+	static const float Waits[] = { 10.f, 10.f, 10.f, 4.f };
+	switch (Step)
+	{
+	case 0: // into the nearest free car, radio on
+	{
+		ANHVehicle* Car = nullptr;
+		const FVector Here = GetPawn() ? GetPawn()->GetActorLocation() : FVector::ZeroVector;
+		for (TActorIterator<ANHVehicle> It(GetWorld()); It; ++It)
+		{
+			if (!It->GetController() && !It->GetSpec().bBike && (!Car || FVector::DistSquared(It->GetActorLocation(), Here) < FVector::DistSquared(Car->GetActorLocation(), Here)))
+			{
+				Car = *It;
+			}
+		}
+		UAudioMixerBlueprintLibrary::StartRecordingOutput(this, 60.f);
+		const bool bIn = EnterVehicle(Car);
+		UE_LOG(LogNHGame, Log, TEXT("[radiotest] 0 s: %s the %s; %d stations"), bIn ? TEXT("in") : TEXT("COULD NOT GET INTO"), Car ? *Car->DisplayName() : TEXT("(no car)"), Audio ? Audio->GetStations().Num() : 0);
+		if (Audio && Car)
+		{
+			Audio->RadioNextStation(Car);
+		}
+		break;
+	}
+	case 1: // out: the same song, from the car
+		UE_LOG(LogNHGame, Log, TEXT("[radiotest] 10 s: getting out: %s; muffled mix %d"), LeaveVehicle(true) ? TEXT("out") : TEXT("STILL IN"), Audio && Audio->MixOn(ENHMix::RadioMuffled) ? 1 : 0);
+		break;
+	case 2:
+		if (Audio)
+		{
+			UE_LOG(LogNHGame, Log, TEXT("[radiotest] 20 s: muffled mix %d; next song"), Audio->MixOn(ENHMix::RadioMuffled) ? 1 : 0);
+			Audio->RadioNextTrack();
+		}
+		break;
+	case 3:
+		UAudioMixerBlueprintLibrary::StopRecordingOutput(this, EAudioRecordingExportType::WavFile, TEXT("nh_radio_test"), Folder);
+		UE_LOG(LogNHGame, Log, TEXT("[radiotest] 30 s: recorded %s"), *(Folder / TEXT("nh_radio_test.wav")));
+		break;
+	default:
+		ConsoleCommand(TEXT("quit"));
+		return;
+	}
+	FTimerHandle Next;
+	GetWorldTimerManager().SetTimer(Next, FTimerDelegate::CreateWeakLambda(this, [this, Step] { RadioTestStep(Step + 1); }), Waits[Step], false);
 }
 
 void ANHPlayerController::NHAudioTest()

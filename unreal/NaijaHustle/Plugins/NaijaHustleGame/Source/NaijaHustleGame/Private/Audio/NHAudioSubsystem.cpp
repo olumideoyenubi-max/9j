@@ -8,7 +8,15 @@
 #include "Engine/GameInstance.h"
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
+#include "Dom/JsonObject.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Interfaces/IPluginManager.h"
+#include "Misc/FileHelper.h"
+#include "Misc/Paths.h"
+#include "Serialization/JsonReader.h"
+#include "Serialization/JsonSerializer.h"
+#include "Sound/SoundBase.h"
+#include "UI/NHHUD.h"
 #include "Misc/ConfigCacheIni.h"
 #include "NaijaHustleGame.h"
 #include "Phone/NHPhone.h"
@@ -133,6 +141,7 @@ void UNHAudioSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 		State = -1;
 	}
 	LoadSettings();
+	LoadStations();
 }
 
 void UNHAudioSubsystem::Deinitialize()
@@ -592,6 +601,7 @@ void UNHAudioSubsystem::Watch(UWorld* World)
 	// an okada and a keke have no glass to shut; a broken window lets the street back in
 	bWant[static_cast<int32>(ENHMix::Cabin)] = Car && !Car->GetSpec().bBike && Car->VehicleType != TEXT("keke") && !Car->bWindowBroken;
 	bWant[static_cast<int32>(ENHMix::RadioMuffled)] = RadioCar.IsValid() && RadioCar.Get() != Car;
+	RadioWatch(World, Car);
 	for (int32 I = 0; I < static_cast<int32>(ENHMix::Count); ++I)
 	{
 		const bool bOn = Forced[I] >= 0 ? Forced[I] > 0 : bWant[I];
@@ -732,6 +742,171 @@ ENHAudioSpace UNHAudioSubsystem::SpaceFromRoof(UWorld* World, const FVector& Lis
 	return bBothSides && Height < 900.f ? ENHAudioSpace::Tunnel : ENHAudioSpace::UnderBridge;
 }
 
+// ---------------------------------------------------------------------------------------------- the radio
+void UNHAudioSubsystem::LoadStations()
+{
+	Stations.Reset();
+	const TSharedPtr<IPlugin> Plugin = IPluginManager::Get().FindPlugin(TEXT("NaijaHustleGame"));
+	FString Text;
+	TSharedPtr<FJsonObject> Root;
+	if (!Plugin || !FFileHelper::LoadFileToString(Text, *(Plugin->GetBaseDir() / TEXT("Data/radio_stations.json")))
+		|| !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root)
+	{
+		UE_LOG(LogNHGame, Warning, TEXT("NAIJA HUSTLE: radio: Data/radio_stations.json could not be read"));
+		return;
+	}
+	const TArray<TSharedPtr<FJsonValue>>* List = nullptr;
+	if (Root->TryGetArrayField(TEXT("stations"), List))
+	{
+		for (const TSharedPtr<FJsonValue>& Value : *List)
+		{
+			const TSharedPtr<FJsonObject> In = Value->AsObject();
+			FRadioStation Station;
+			Station.Id = FName(*In->GetStringField(TEXT("id")));
+			Station.Name = In->GetStringField(TEXT("name"));
+			const TArray<TSharedPtr<FJsonValue>>* Tracks = nullptr;
+			if (In->TryGetArrayField(TEXT("tracks"), Tracks))
+			{
+				for (const TSharedPtr<FJsonValue>& T : *Tracks)
+				{
+					const TSharedPtr<FJsonObject> Track = T->AsObject();
+					const FString File = Track->GetStringField(TEXT("file"));
+					Station.Tracks.Add({ Track->GetStringField(TEXT("title")), Track->GetStringField(TEXT("artist")),
+						FString::Printf(TEXT("/Game/NaijaHustle/Audio/Radio/%s/%s.%s"), *Station.Id.ToString(), *File, *File) });
+				}
+			}
+			Stations.Add(MoveTemp(Station));
+		}
+	}
+}
+
+FString UNHAudioSubsystem::RadioNowPlaying() const
+{
+	if (!Stations.IsValidIndex(RadioStation) || !Stations[RadioStation].Tracks.IsValidIndex(RadioTrack))
+	{
+		return FString();
+	}
+	const FRadioTrack& Track = Stations[RadioStation].Tracks[RadioTrack];
+	return FString::Printf(TEXT("%s: %s, %s"), *Stations[RadioStation].Name, *Track.Title, *Track.Artist);
+}
+
+void UNHAudioSubsystem::RadioAnnounce() const
+{
+	const FString Now = RadioNowPlaying();
+	ANHHUD::Toast(GetTickableGameObjectWorld(), Now.IsEmpty() ? TEXT("Radio off") : *Now, 0);
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: radio: %s"), Now.IsEmpty() ? TEXT("off") : *Now);
+}
+
+void UNHAudioSubsystem::RadioOff()
+{
+	if (UAudioComponent* Voice = RadioVoice.Get())
+	{
+		Voice->FadeOut(0.3f, 0.f);
+	}
+	RadioVoice.Reset();
+	RadioSound = nullptr;
+	RadioStation = -1;
+	RadioCar.Reset();
+}
+
+void UNHAudioSubsystem::RadioNextStation(ANHVehicle* Car)
+{
+	UWorld* World = GetTickableGameObjectWorld();
+	if (!Car || !World || !bBuilt)
+	{
+		return;
+	}
+	// another car's radio starts from its first station; the same car's moves on, and past the last one is off
+	const int32 Next = RadioCar.Get() == Car ? RadioStation + 1 : 0;
+	RadioOff();
+	if (Stations.IsValidIndex(Next))
+	{
+		RadioStation = Next;
+		RadioTrack = 0;
+		RadioCar = Car;
+		RadioStart(World, 0.f);
+	}
+	RadioAnnounce();
+}
+
+void UNHAudioSubsystem::RadioNextTrack()
+{
+	UWorld* World = GetTickableGameObjectWorld();
+	if (!World || !Stations.IsValidIndex(RadioStation) || Stations[RadioStation].Tracks.Num() == 0)
+	{
+		return;
+	}
+	RadioTrack = (RadioTrack + 1) % Stations[RadioStation].Tracks.Num();
+	RadioStart(World, 0.f);
+	RadioAnnounce();
+}
+
+void UNHAudioSubsystem::RadioStart(UWorld* World, float From)
+{
+	if (UAudioComponent* Voice = RadioVoice.Get())
+	{
+		Voice->Stop();
+	}
+	RadioVoice.Reset();
+	const FRadioStation& Station = Stations[RadioStation];
+	ANHVehicle* Car = RadioCar.Get();
+	if (!Car || !Station.Tracks.IsValidIndex(RadioTrack))
+	{
+		return;
+	}
+	if (From <= 0.f || !RadioSound)
+	{
+		RadioSound = LoadObject<USoundBase>(nullptr, *Station.Tracks[RadioTrack].Asset);
+		RadioLength = RadioSound ? RadioSound->GetDuration() : 0.f;
+		if (!RadioSound)
+		{
+			UE_LOG(LogNHGame, Warning, TEXT("NAIJA HUSTLE: radio: %s is not in the project (run Scripts/import_radio.py)"), *Station.Tracks[RadioTrack].Asset);
+			RadioLength = 3.f; // so the playlist moves on to a song that is there
+		}
+	}
+	RadioStartedAt = World->GetAudioTimeSeconds() - From;
+	const APlayerController* PC = World->GetFirstPlayerController();
+	bRadioCabin = PC && PC->GetPawn() == Car;
+	UAudioComponent* Voice = RadioSound ? Make(RadioSound, bRadioCabin ? ENHSoundKind::RadioCabin : ENHSoundKind::RadioWorld, World, 1.f, 1.f) : nullptr;
+	if (Voice)
+	{
+		if (!bRadioCabin)
+		{
+			Voice->AttachToComponent(Car->GetRootComponent(), FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+		}
+		Voice->Play(FMath::Max(From, 0.f));
+		RadioVoice = Voice;
+	}
+}
+
+void UNHAudioSubsystem::RadioWatch(UWorld* World, const ANHVehicle* Driving)
+{
+	if (RadioStation < 0)
+	{
+		return;
+	}
+	if (!RadioCar.IsValid())
+	{
+		RadioOff(); // the car is gone
+		return;
+	}
+	const float At = World->GetAudioTimeSeconds() - RadioStartedAt;
+	if (At >= RadioLength - 0.1f)
+	{
+		// the song is over: the next one on the playlist, round and round
+		RadioTrack = (RadioTrack + 1) % FMath::Max(1, Stations[RadioStation].Tracks.Num());
+		RadioStart(World, 0.f);
+		if (Driving == RadioCar.Get())
+		{
+			RadioAnnounce();
+		}
+	}
+	else if ((Driving == RadioCar.Get()) != bRadioCabin || !RadioVoice.IsValid())
+	{
+		RadioStart(World, At); // got in or out: the same song from the same place, as the cabin's radio or from the car
+	}
+}
+
 void UNHAudioSubsystem::SetRadioCar(ANHVehicle* Car)
 {
 	RadioCar = Car;
@@ -774,6 +949,7 @@ FString UNHAudioSubsystem::Describe() const
 			Out += FString::Printf(TEXT(" %s"), NHAudio::MixNames[I]);
 		}
 	}
+	Out += FString::Printf(TEXT("\n  radio: %s (%d stations)"), RadioOn() ? *RadioNowPlaying() : TEXT("off"), Stations.Num());
 	Out += FString::Printf(TEXT("\n  space %s%s, zones the listener is in: %d\n  voices %d of %d"), SpaceName(Space), ForcedSpace != ENHAudioSpace::Count ? TEXT(" (held)") : TEXT(""),
 		Inside.Num(), ActiveVoices(), VoiceBudget);
 	return Out;

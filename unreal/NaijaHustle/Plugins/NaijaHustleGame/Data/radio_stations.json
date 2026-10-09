@@ -1,0 +1,15 @@
+{
+  "format": "naija-hustle-radio",
+  "version": 1,
+  "note": "Stations and their playlists. The audio itself is never in the repo: Scripts/import_radio.py brings each track's file from ~/Downloads/nh-radio/<station id>/<file>.wav into /Game/NaijaHustle/Audio/Radio/<station id>/. Every track must be listed in MUSIC_LICENSES.md.",
+  "stations": [
+    {
+      "id": "ragebait",
+      "name": "Ragebait FM",
+      "tracks": [
+        { "file": "dont_ragebait_me", "title": "Dont Ragebait Me", "artist": "Trench Boy" },
+        { "file": "bands", "title": "Bands", "artist": "Tommy Ringz" }
+      ]
+    }
+  ]
+}

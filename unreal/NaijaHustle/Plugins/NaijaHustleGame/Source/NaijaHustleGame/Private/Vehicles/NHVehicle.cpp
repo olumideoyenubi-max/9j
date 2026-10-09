@@ -1,5 +1,7 @@
 #include "Vehicles/NHVehicle.h"
 
+#include "Audio/NHAudioSubsystem.h"
+
 #include "Camera/CameraComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/PointLightComponent.h"
@@ -702,9 +704,27 @@ void ANHVehicle::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	Input->BindAction(Set->Handbrake, ETriggerEvent::Completed, this, &ANHVehicle::OnHandbrakeEnd);
 	Input->BindAction(Set->Horn, ETriggerEvent::Started, this, &ANHVehicle::OnHorn);
 	Input->BindAction(Set->Headlights, ETriggerEvent::Started, this, &ANHVehicle::OnHeadlights);
+	Input->BindAction(Set->Radio, ETriggerEvent::Started, this, &ANHVehicle::OnRadio);
+	Input->BindAction(Set->RadioTrack, ETriggerEvent::Started, this, &ANHVehicle::OnRadioTrack);
 	Input->BindAction(Set->CabinView, ETriggerEvent::Started, this, &ANHVehicle::OnCabinView);
 	Input->BindAction(Set->Look, ETriggerEvent::Triggered, this, &ANHVehicle::OnLook);
 	Input->BindAction(Set->LookStick, ETriggerEvent::Triggered, this, &ANHVehicle::OnLook);
+}
+
+void ANHVehicle::OnRadio()
+{
+	if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this))
+	{
+		Audio->RadioNextStation(this);
+	}
+}
+
+void ANHVehicle::OnRadioTrack()
+{
+	if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this))
+	{
+		Audio->RadioNextTrack();
+	}
 }
 
 void ANHVehicle::OnHorn()

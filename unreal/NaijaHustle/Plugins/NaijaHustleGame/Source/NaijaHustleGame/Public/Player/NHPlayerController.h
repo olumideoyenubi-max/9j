@@ -118,6 +118,9 @@ public:
 	/** Console: NHAudioSpace Street|Market|MotorPark|Interior|UnderBridge|Tunnel holds that reverb and EQ; NHAudioSpace auto gives it back to where you stand */
 	UFUNCTION(Exec)
 	void NHAudioSpace(const FString& Name);
+	/** Console: NHRadio (next station, off after the last), NHRadio track (next song), NHRadio off. For the car you are driving, or on foot the nearest one, which you then hear from outside. */
+	UFUNCTION(Exec)
+	void NHRadio(const FString& What);
 	/** Console: NHAudioTest plays the test tones through the mix and records them (see ANHAudioTest) */
 	UFUNCTION(Exec)
 	void NHAudioTest();
@@ -176,6 +179,8 @@ private:
 	void UiZoomOut();
 	TWeakObjectPtr<ANHVehicle> LastVehicle;
 	bool bToldLights = false;
+	/** -NHRadioTest: gets into the nearest car, turns the radio on, gets out, skips a song, recording it all to Saved/NHAudio/nh_radio_test.wav, and quits */
+	void RadioTestStep(int32 Step);
 
 	void OnCycleLighting();
 	void OnInteract();

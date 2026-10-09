@@ -88,6 +88,7 @@ void UNHInputSet::Build()
 	Horn = MakeAction(this, TEXT("IA_Horn"));
 	ExitVehicle = MakeAction(this, TEXT("IA_ExitVehicle"));
 	Radio = MakeAction(this, TEXT("IA_Radio"));
+	RadioTrack = MakeAction(this, TEXT("IA_RadioTrack"));
 	LookBehind = MakeAction(this, TEXT("IA_LookBehind"));
 	Headlights = MakeAction(this, TEXT("IA_Headlights"));
 	CabinView = MakeAction(this, TEXT("IA_CabinView"));
@@ -111,6 +112,7 @@ void UNHInputSet::Build()
 	Vehicle->MapKey(ExitVehicle, EKeys::Gamepad_FaceButton_Top);
 	Vehicle->MapKey(Radio, EKeys::R);
 	Vehicle->MapKey(Radio, EKeys::Gamepad_DPad_Right);
+	Vehicle->MapKey(RadioTrack, EKeys::T);
 	Vehicle->MapKey(LookBehind, EKeys::C);
 	Vehicle->MapKey(CabinView, EKeys::V);
 	Vehicle->MapKey(Headlights, EKeys::K); // every gamepad button is taken

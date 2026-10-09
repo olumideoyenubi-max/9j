@@ -163,6 +163,8 @@ private:
 	void OnHandbrakeEnd() { bHandbrake = false; }
 	void OnHorn();
 	void OnHeadlights() { SetHeadlights(!bHeadlights); }
+	void OnRadio();
+	void OnRadioTrack();
 	void OnCabinView() { SetCabinView(!bCabinView); }
 	/** Sits the player's current body in the seat, posed for driving; false if the player has no body to show */
 	bool SeatDriver();

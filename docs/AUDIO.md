@@ -109,6 +109,23 @@ Over the 46 seconds of the check at the Oshodi stop:
 
 The disk budget and the 20 largest assets belong to step 8, when there are assets.
 
+## The radio (brought forward from step 6)
+
+One station so far, **Ragebait FM**: "Dont Ragebait Me" (Trench Boy) and "Bands" (Tommy Ringz), round and round.
+
+- **In a car:** `R` turns the radio on (each press is the next station; after the last, off), `T` skips to the next
+  song. The station and song show at the top of the screen.
+- **The radio stays with the car.** Get out and the same song carries on from the same place, heard from the car:
+  quieter, placed where the car is, and with its top end gone (the Radio muffled mix).
+- **Adding a station or a song:** an entry in `Data/radio_stations.json`, the WAV in
+  `~/Downloads/nh-radio/<station>/`, `Scripts/mac.sh script <plugin>/Scripts/import_radio.py`, and a line in
+  `MUSIC_LICENSES.md`. No audio goes in the repo.
+- **Checked** by `Scripts/mac.sh play -NHRadioTest`, which gets into a car, turns the radio on, gets out, skips a
+  song and records it: in the car the level was 0.041 in full stereo; outside 0.013, to one side, with 8% of the
+  top end left; the second song then played.
+- **Not yet:** DJs, adverts, the other stations, radio in shops and on the phone, radio from passing cars, a
+  gamepad button for the next song. On disk the two songs are 26 MB in the project.
+
 ## Engine traps found on the way
 
 - A submix made in code with default reverb settings is silent: `FSubmixEffectReverbSettings::Gain` (the late
