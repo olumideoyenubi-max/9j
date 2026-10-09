@@ -102,12 +102,21 @@ public:
 	/** Console: NHSkin changes the player's body to the next skin the project has; NHSkin <id> picks one (naija, hustler, mannequin). The choice is remembered. */
 	UFUNCTION(Exec)
 	void NHSkin(const FString& Id);
+	/** Console: NHWear hair|top|bottom|shoes [steps] puts on the next piece in that slot; NHWear topcolour|bottomcolour|shoecolour [steps] the next colour. For a character with a wardrobe; saved like the Clothes page. */
+	UFUNCTION(Exec)
+	void NHWear(const FString& What, int32 Steps = 1);
+	/** Console: NHPeople [count] [distance] stands that many passers-by in rows that far in front of the player (behind, if negative), each different, for two minutes */
+	UFUNCTION(Exec)
+	void NHPeople(int32 Count = 8, float Distance = 350.f);
 	/** Console: NHCarShow X Y [Folder] lines up one of every vehicle type there, facing +X (east on the map), to check real models; with a full folder path it saves pictures from above and from in front of each pair */
 	UFUNCTION(Exec)
 	void NHCarShow(float X, float Y, const FString& Folder);
 
 	/** Mouse and stick look speed, 1 as built (the pause menu's setting) */
 	float LookScale = 1.f;
+	/** How far the city is loaded from the player right now, cm, and whether the streaming overlay is showing (F2) */
+	float StreamingRadius = 45000.f;
+	bool bStreamingOverlay = false;
 	/** The on-foot character, also while the player drives */
 	ANHCharacter* GetOnFootCharacter() const { return OnFootCharacter; }
 	/** The vehicle the player last drove, if it is still around */
@@ -138,6 +147,11 @@ private:
 	void UiMenu();
 	void UiPhone();
 	void OnRunToggle();
+	/** F2: World Partition's own map of loaded cells, and a line saying what is loaded */
+	void OnStreamingOverlay();
+	/** World Partition: how much of the city is loaded round the player, wider the faster they drive */
+	void UpdateStreaming();
+	TWeakObjectPtr<ANHVehicle> StreamingCar;
 	void OnRoll();
 	void UiBack();
 	void UiWheelOpen();

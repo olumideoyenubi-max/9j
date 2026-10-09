@@ -12,10 +12,12 @@
 #include "Lighting/NHLightingRig.h"
 #include "Misc/ConfigCacheIni.h"
 #include "Phone/NHPhone.h"
+#include "Characters/NHOutfitComponent.h"
 #include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
 #include "Vehicles/NHCarTheft.h"
 #include "Vehicles/NHTraffic.h"
+#include "World/NHStreets.h"
 #include "Vehicles/NHVehicle.h"
 
 namespace NHScreens
@@ -27,8 +29,8 @@ namespace NHScreens
 	const FLinearColor Land(0.2f, 0.19f, 0.16f);
 	const TCHAR* Section = TEXT("NaijaHustle");
 
-	enum { Resume, Character, Lighting, Traffic, Look, Resolution, Minimap, Controls, Quit, Lines };
-	const TCHAR* LineNames[] = { TEXT("Resume"), TEXT("Character"), TEXT("Lighting"), TEXT("Traffic"), TEXT("Look speed"), TEXT("Resolution"), TEXT("Minimap"), TEXT("Controls"), TEXT("Quit game") };
+	enum { Resume, Character, Clothes, Lighting, Traffic, Look, Resolution, Minimap, Controls, Credits, Quit, Lines };
+	const TCHAR* LineNames[] = { TEXT("Resume"), TEXT("Character"), TEXT("Clothes"), TEXT("Lighting"), TEXT("Traffic"), TEXT("Look speed"), TEXT("Resolution"), TEXT("Minimap"), TEXT("Controls"), TEXT("Credits"), TEXT("Quit game") };
 	// the Controls page: a heading (no key) or a key and what it does
 	const TCHAR* ControlList[][2] = {
 		{ TEXT("ON FOOT"), nullptr }, { TEXT("W A S D"), TEXT("Move") }, { TEXT("Mouse"), TEXT("Look") }, { TEXT("Left Shift"), TEXT("Run while held") }, { TEXT("R"), TEXT("Run: stays on until pressed again") },
@@ -37,7 +39,11 @@ namespace NHScreens
 		{ TEXT("DRIVING"), nullptr }, { TEXT("W / S"), TEXT("Accelerate / brake and reverse") }, { TEXT("A / D"), TEXT("Steer") }, { TEXT("Space"), TEXT("Handbrake") },
 		{ TEXT("K"), TEXT("Headlights on / off") }, { TEXT("V"), TEXT("Cabin view") }, { TEXT("H"), TEXT("Horn") }, { TEXT("F"), TEXT("Get out") }, { TEXT("E"), TEXT("Do business at the mechanic, paint shop, chop shop") },
 		{ TEXT("ANYWHERE"), nullptr }, { TEXT("P"), TEXT("Phone (arrows, Enter, Backspace)") }, { TEXT("M"), TEXT("Map: click to pin, right-click to clear, wheel to zoom") },
-		{ TEXT("Hold Tab"), TEXT("Inventory wheel: point, let go") }, { TEXT("1 2 3 4"), TEXT("Choices in a panel") }, { TEXT("L / F1"), TEXT("Lighting: next preset / menu") }, { TEXT("Esc"), TEXT("This menu") } };
+		{ TEXT("Hold Tab"), TEXT("Inventory wheel: point, let go") }, { TEXT("1 2 3 4"), TEXT("Choices in a panel") }, { TEXT("L / F1"), TEXT("Lighting: next preset / menu") }, { TEXT("F2"), TEXT("Streaming overlay: loaded cells") }, { TEXT("Esc"), TEXT("This menu") } };
+	// the Clothes page: a slot's piece, or its colour
+	struct FClothesLine { const TCHAR* Name; ENHOutfitSlot Slot; bool bColour; };
+	const FClothesLine ClothesLines[] = { { TEXT("Hair"), ENHOutfitSlot::Hair, false }, { TEXT("Top or outfit"), ENHOutfitSlot::Top, false }, { TEXT("Top colour"), ENHOutfitSlot::Top, true },
+		{ TEXT("Bottom"), ENHOutfitSlot::Bottom, false }, { TEXT("Bottom colour"), ENHOutfitSlot::Bottom, true }, { TEXT("Shoes"), ENHOutfitSlot::Shoes, false }, { TEXT("Shoe colour"), ENHOutfitSlot::Shoes, true } };
 	const TCHAR* TrafficNames[] = { TEXT("None"), TEXT("Light"), TEXT("Normal"), TEXT("Heavy") };
 	const TCHAR* PresetNames[] = { TEXT("Day"), TEXT("Dusty noon"), TEXT("Sunset"), TEXT("Night rain"), TEXT("Harsh morning"), TEXT("Golden evening") };
 
@@ -69,6 +75,10 @@ void ANHHUD::Open(EScreen NewScreen)
 	{
 		PC->ResetIgnoreLookInput();
 		PC->ResetIgnoreMoveInput();
+	}
+	if (Screen != EScreen::Menu)
+	{
+		OpenClothes(false);
 	}
 	// the map and the menu stop the game; the wheel slows it to a quarter while you choose
 	PC->SetPause(Screen == EScreen::Map || Screen == EScreen::Menu);
@@ -115,9 +125,14 @@ void ANHHUD::Back()
 
 void ANHHUD::ToggleMenu()
 {
-	if (Screen == EScreen::Menu && bMenuControls)
+	if (Screen == EScreen::Menu && bMenuClothes)
 	{
-		bMenuControls = false; // Esc on the Controls page: back to the menu
+		OpenClothes(false); // Esc on the Clothes page: back to the menu
+		return;
+	}
+	if (Screen == EScreen::Menu && (bMenuControls || bMenuCredits))
+	{
+		bMenuControls = bMenuCredits = false; // Esc on the Controls or Credits page: back to the menu
 		return;
 	}
 	if (ANHPhone* Phone = ANHPhone::Get(this); Phone && Phone->IsOpen() && Screen == EScreen::None)
@@ -165,7 +180,18 @@ void ANHHUD::Nav(int32 DX, int32 DY)
 		}
 		return;
 	}
-	if (Screen == EScreen::Menu && bMenuControls)
+	if (Screen == EScreen::Menu && bMenuClothes)
+	{
+		const int32 Count = UE_ARRAY_COUNT(NHScreens::ClothesLines);
+		ClothesLine = (ClothesLine + DY + Count) % Count;
+		ANHPlayerController* PC = Cast<ANHPlayerController>(GetOwningPlayerController());
+		if (ANHCharacter* Char = DX != 0 && PC ? PC->GetOnFootCharacter() : nullptr)
+		{
+			Char->ChangeOutfit(NHScreens::ClothesLines[ClothesLine].Slot, DX, NHScreens::ClothesLines[ClothesLine].bColour);
+		}
+		return;
+	}
+	if (Screen == EScreen::Menu && (bMenuControls || bMenuCredits))
 	{
 		return;
 	}
@@ -196,7 +222,15 @@ void ANHHUD::Accept()
 	}
 	if (Screen == EScreen::Menu)
 	{
-		if (bMenuControls || MenuLine == NHScreens::Controls)
+		if (bMenuClothes || MenuLine == NHScreens::Clothes)
+		{
+			OpenClothes(!bMenuClothes);
+		}
+		else if (bMenuCredits || (!bMenuControls && MenuLine == NHScreens::Credits))
+		{
+			bMenuCredits = !bMenuCredits;
+		}
+		else if (bMenuControls || MenuLine == NHScreens::Controls)
 		{
 			bMenuControls = !bMenuControls;
 		}
@@ -418,6 +452,10 @@ void ANHHUD::DrawMapScreen(float VW, float VH)
 		const FVector2D UV = (Corner - CityCorner) / CitySpan;
 		DrawTexture(CityTex, MapAt.X, MapAt.Y, MapSide, MapSide, UV.X, UV.Y, MapSpan / CitySpan, MapSpan / CitySpan, FLinearColor::White, BLEND_Opaque);
 	}
+	if (const ANHStreets* Streets = ANHStreets::Get(this))
+	{
+		Streets->DrawNames(this, MapAt.X, MapAt.Y, MapSide, Corner, MapSpan, 40, S); // more names the closer the view
+	}
 	const auto ToScreen = [&](const FVector2D& W, FVector2D& Out)
 	{
 		const FVector2D In = (W - Corner) / MapSpan;
@@ -506,6 +544,11 @@ FString ANHHUD::MenuValue(int32 Line) const
 		const ANHCharacter* Char = PC ? PC->GetOnFootCharacter() : nullptr;
 		const FString Name = Char ? Char->SkinName() : FString();
 		return Name.IsEmpty() ? TEXT("(none in this project)") : Name;
+	}
+	case Clothes:
+	{
+		const ANHCharacter* Char = PC ? PC->GetOnFootCharacter() : nullptr;
+		return Char && Char->GetOutfit() && Char->GetOutfit()->HasWardrobe() ? TEXT("Change") : TEXT("(this character comes as dressed)");
 	}
 	case Lighting:
 	{
@@ -603,7 +646,41 @@ void ANHHUD::DrawMenu(float VW, float VH)
 	using namespace NHScreens;
 	UFont* Medium = GEngine->GetMediumFont();
 	UFont* Large = GEngine->GetLargeFont();
+	if (bMenuClothes)
+	{
+		DrawClothes(VW, VH);
+		return;
+	}
 	DrawRect(FLinearColor(0.f, 0.f, 0.f, 0.6f), 0.f, 0.f, VW, VH);
+	if (bMenuCredits)
+	{
+		// what the map is made from, and what is and is not real in it
+		static const TCHAR* Text1[] = {
+			TEXT("THE MAP"),
+			TEXT("Streets, their names, the coastline, building outlines and land use are from OpenStreetMap."),
+			TEXT("(c) OpenStreetMap contributors. The data is available under the Open Database Licence (ODbL):"),
+			TEXT("openstreetmap.org/copyright"),
+			TEXT(""),
+			TEXT("WHAT IS REAL AND WHAT IS NOT"),
+			TEXT("The streets, areas and public landmarks of Lagos are real, and named as they are."),
+			TEXT("Every character, business, brand, app, bank, fuel station, union, gang, official and organisation"),
+			TEXT("in this game is fictional. Any resemblance to a real person or a real organisation is coincidental."),
+			TEXT("Nothing that happens in the story is a statement about anybody real."),
+			TEXT(""),
+			TEXT("MODELS AND OTHER MATERIAL"),
+			TEXT("Credits and licences for third-party models are listed in ASSETS.md in the project.") };
+		const float CW = 1280.f * S, CH = (150.f + 38.f * UE_ARRAY_COUNT(Text1)) * S, CX = (VW - CW) * 0.5f, CY = (VH - CH) * 0.5f;
+		Panel(CX, CY, CW, CH, FLinearColor(0.05f, 0.05f, 0.05f, 0.95f));
+		DrawRect(Yellow, CX, CY, CW, 5.f * S);
+		Text(TEXT("CREDITS"), CX + 30.f * S, CY + 22.f * S, Yellow, Large, 1.3f);
+		for (int32 I = 0; I < UE_ARRAY_COUNT(Text1); ++I)
+		{
+			const bool bHeading = FString(Text1[I]).ToUpper().Equals(Text1[I], ESearchCase::CaseSensitive) && FCString::Strlen(Text1[I]) > 0;
+			Text(Text1[I], CX + 30.f * S, CY + (90.f + 38.f * I) * S, bHeading ? Yellow : Ink, Medium, bHeading ? 1.05f : 1.f);
+		}
+		Text(TEXT("Enter or Esc: back"), VW * 0.5f, CY + CH - 40.f * S, Ink, Medium, 0.95f, true);
+		return;
+	}
 	if (bMenuControls)
 	{
 		// every key, in two columns
@@ -655,6 +732,56 @@ void ANHHUD::DrawMenu(float VW, float VH)
 		Yy += RowH;
 	}
 	Text(TEXT("Up / Down: choose     Left / Right: change     Enter: select     Esc: back to the game"), VW * 0.5f, Y + H - 40.f * S, Ink, Medium, 0.95f, true);
+}
+
+void ANHHUD::OpenClothes(bool bOpen)
+{
+	ANHPlayerController* PC = Cast<ANHPlayerController>(GetOwningPlayerController());
+	ANHCharacter* Char = PC ? PC->GetOnFootCharacter() : nullptr;
+	bMenuClothes = bOpen && Char && Char->GetOutfit() && Char->GetOutfit()->HasWardrobe();
+	if (Char)
+	{
+		Char->ShowFront(bMenuClothes); // the body turns to the camera while you choose
+	}
+}
+
+void ANHHUD::DrawClothes(float VW, float VH)
+{
+	using namespace NHScreens;
+	UFont* Medium = GEngine->GetMediumFont();
+	UFont* Large = GEngine->GetLargeFont();
+	const ANHPlayerController* PC = Cast<ANHPlayerController>(GetOwningPlayerController());
+	const ANHCharacter* Char = PC ? PC->GetOnFootCharacter() : nullptr;
+	const UNHOutfitComponent* Outfit = Char ? Char->GetOutfit() : nullptr;
+	if (!Outfit)
+	{
+		return;
+	}
+	// down the right-hand side, leaving the body in view
+	const int32 Count = UE_ARRAY_COUNT(ClothesLines);
+	const float W = 640.f * S, RowH = 58.f * S, H = 150.f * S + RowH * Count, X = VW - W - 60.f * S, Y = (VH - H) * 0.5f;
+	Panel(X, Y, W, H, FLinearColor(0.05f, 0.05f, 0.05f, 0.94f));
+	DrawRect(Yellow, X, Y, W, 5.f * S);
+	Text(TEXT("CLOTHES"), X + 30.f * S, Y + 22.f * S, Yellow, Large, 1.3f);
+	Text(*Char->SkinName(), X + 30.f * S, Y + 62.f * S, Muted, Medium, 0.95f);
+	float Yy = Y + 92.f * S;
+	for (int32 Line = 0; Line < Count; ++Line)
+	{
+		const bool bOn = Line == ClothesLine;
+		Panel(X + 22.f * S, Yy, W - 44.f * S, RowH - 8.f * S, bOn ? FLinearColor(1.f, 0.77f, 0.f, 0.22f) : FLinearColor(1.f, 1.f, 1.f, 0.06f));
+		if (bOn)
+		{
+			DrawRect(Yellow, X + 22.f * S, Yy, 5.f * S, RowH - 8.f * S);
+		}
+		Text(ClothesLines[Line].Name, X + 44.f * S, Yy + 12.f * S, bOn ? Yellow : Ink, Medium, 1.2f);
+		const FString Value = ClothesLines[Line].bColour ? Outfit->ColourName(ClothesLines[Line].Slot) : Outfit->PieceName(ClothesLines[Line].Slot);
+		float TW = 0.f, TH = 0.f;
+		const FString Shown = bOn ? FString::Printf(TEXT("<   %s   >"), *Value) : Value;
+		GetTextSize(Shown, TW, TH, Medium, 1.2f * S);
+		Text(Shown, X + W - 44.f * S - TW, Yy + 12.f * S, bOn ? Ink : Muted, Medium, 1.2f);
+		Yy += RowH;
+	}
+	Text(TEXT("Up / Down: choose     Left / Right: change     Esc: back"), X + W * 0.5f, Y + H - 40.f * S, Ink, Medium, 0.95f, true);
 }
 
 // ------------------------------------------------------------------------------------------- the inventory wheel
@@ -967,7 +1094,13 @@ void ANHHUD::UpdatePinRoute(const FVector& Player)
 		{
 			FNHRoadSeg Seg;
 			FVector2D OnRoad;
-			const FString Road = Data->NearestRoad(PinRoute[I] + Out * 2500.f, Seg, OnRoad) ? Data->RoadWays[Seg.Way].Name : FString();
+			// the street being turned onto: the district's own data where there is some (it knows the side streets), else the main road's name
+			const ANHStreets* Streets = ANHStreets::Get(this);
+			FString Road = Streets ? Streets->StreetAt(PinRoute[I] + Out * 2500.f, 1500.f) : FString();
+			if (Road.IsEmpty() && Data->NearestRoad(PinRoute[I] + Out * 2500.f, Seg, OnRoad))
+			{
+				Road = Data->RoadWays[Seg.Way].Name;
+			}
 			const FString Far = Along >= 100000.f ? FString::Printf(TEXT("%.1f km"), Along / 100000.f) : FString::Printf(TEXT("%d m"), FMath::RoundToInt(Along / 1000.f) * 10);
 			PinTurn = FString::Printf(TEXT("In %s turn %s%s"), *Far, Cross > 0.f ? TEXT("right") : TEXT("left"), Road.IsEmpty() ? TEXT("") : *(TEXT(" onto ") + Road)); // Y runs south, so a positive cross is a right turn
 			return;

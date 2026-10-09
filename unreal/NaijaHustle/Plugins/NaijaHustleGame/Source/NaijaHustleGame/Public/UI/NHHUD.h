@@ -105,6 +105,13 @@ private:
 	void DrawPath(const TArray<FVector2D>& Path, float X, float Y, float Size, const FVector2D& Corner, float Span, const FLinearColor& Color, float Thick);
 	/** The pause menu's Controls page is showing */
 	bool bMenuControls = false;
+	/** The pause menu's Credits page is showing: OpenStreetMap's attribution and the notice that everybody in the game is fictional */
+	bool bMenuCredits = false;
+	/** The Clothes page of the pause menu, and the line on it */
+	bool bMenuClothes = false;
+	int32 ClothesLine = 0;
+	void OpenClothes(bool bOpen);
+	void DrawClothes(float VW, float VH);
 	int32 MenuLine = 0;
 	int32 WheelSlot = -1;
 	FString MenuValue(int32 Line) const;

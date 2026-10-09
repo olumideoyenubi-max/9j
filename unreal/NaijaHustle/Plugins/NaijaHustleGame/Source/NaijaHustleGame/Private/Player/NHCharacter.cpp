@@ -4,6 +4,7 @@
 #include "Animation/AnimSequence.h"
 #include "AnimationRuntime.h"
 #include "Camera/CameraComponent.h"
+#include "Characters/NHOutfitComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/SpotLightComponent.h"
@@ -86,6 +87,7 @@ ANHCharacter::ANHCharacter()
 	Download(TEXT("sophia"), TEXT("Woman, long brown hair"), TEXT("Sophia"), 168.f);
 	Download(TEXT("teenblack"), TEXT("Woman, long black hair"), TEXT("TeenBlack"), 162.f);
 	Skin(TEXT("mannequin"), TEXT("Mannequin"), TEXT("/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple"), TEXT("/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarmed.ABP_Unarmed_C"), 0.f);
+	Outfit = CreateDefaultSubobject<UNHOutfitComponent>(TEXT("Outfit"));
 	ShoeMesh = TSoftObjectPtr<UStaticMesh>(FSoftObjectPath(TEXT("/Game/Wardrobe/Trainers_LowTop/Untsssho00215ed/StaticMeshes/hash_CF7B2BF4_model_001.hash_CF7B2BF4_model_001")));
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.f, 0.f, -92.f), FRotator(0.f, -90.f, 0.f)); // feet on the ground, facing forward
 
@@ -177,6 +179,12 @@ bool ANHCharacter::WearSkin(FName Id, bool bRemember)
 	GetCapsuleComponent()->SetHiddenInGame(true);
 	bHasBody = true;
 	CurrentSkin = Id;
+	bFrontShown = false;
+	// a person with a wardrobe swaps the one-piece mesh for a bare body and the clothes last chosen for them
+	Outfit->Undress();
+	FString Worn;
+	GConfig->GetString(TEXT("NaijaHustle"), *FString::Printf(TEXT("Outfit_%s"), *Id.ToString()), Worn, GGameUserSettingsIni);
+	Outfit->Dress(GetMesh(), FPaths::GetBaseFilename(Skin->Mesh.GetLongPackageName()), Worn);
 	PutOnShoes();
 	if (bRemember)
 	{
@@ -185,6 +193,28 @@ bool ANHCharacter::WearSkin(FName Id, bool bRemember)
 	}
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: the player is %s (skin %s), %.0f cm tall as made"), *Skin->Name, *Id.ToString(), Tall);
 	return true;
+}
+
+void ANHCharacter::ChangeOutfit(ENHOutfitSlot Slot, int32 Dir, bool bColour)
+{
+	if (!Outfit->HasWardrobe())
+	{
+		return;
+	}
+	bColour ? Outfit->StepColour(Slot, Dir) : Outfit->Step(Slot, Dir);
+	GConfig->SetString(TEXT("NaijaHustle"), *FString::Printf(TEXT("Outfit_%s"), *CurrentSkin.ToString()), *Outfit->Describe(), GGameUserSettingsIni);
+	GConfig->Flush(false, GGameUserSettingsIni);
+}
+
+void ANHCharacter::ShowFront(bool bFront)
+{
+	if (bFront != bFrontShown && bHasBody)
+	{
+		bFrontShown = bFront;
+		// toward the camera, which sits behind and to the right
+		const float CameraYaw = (FollowCamera->GetComponentLocation() - GetActorLocation()).Rotation().Yaw - GetActorRotation().Yaw;
+		GetMesh()->SetRelativeRotation(bFront ? MeshTurn + FRotator(0.f, CameraYaw, 0.f) : MeshTurn);
+	}
 }
 
 FString ANHCharacter::SkinName() const

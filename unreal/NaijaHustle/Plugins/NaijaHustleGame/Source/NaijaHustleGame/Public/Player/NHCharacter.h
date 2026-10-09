@@ -10,6 +10,8 @@ class UCameraComponent;
 class USkeletalMesh;
 class UAnimInstance;
 class UStaticMesh;
+class UNHOutfitComponent;
+enum class ENHOutfitSlot : uint8;
 
 /** One body the player can wear */
 USTRUCT()
@@ -78,6 +80,11 @@ public:
 	FString SkinName() const;
 	/** Which way a body faces in its own space, from where its feet point in the reference pose (degrees; 90 if unknown) */
 	static float FacingYawOf(const USkeletalMesh* Mesh);
+	/** The worn skin's clothes, where it has a wardrobe (see UNHOutfitComponent); changes are saved per skin */
+	UNHOutfitComponent* GetOutfit() const { return Outfit; }
+	void ChangeOutfit(ENHOutfitSlot Slot, int32 Dir, bool bColour);
+	/** Turns the body to face the camera, for the Clothes page, and back */
+	void ShowFront(bool bFront);
 	/** A hand torch: a beam ahead of the body, for the night */
 	void ToggleTorch();
 	bool TorchOn() const;
@@ -129,6 +136,8 @@ private:
 	FName CurrentSkin;
 	UPROPERTY() TArray<TObjectPtr<class UStaticMeshComponent>> ShoeParts;
 	UPROPERTY() TObjectPtr<class USpotLightComponent> Torch;
+	UPROPERTY() TObjectPtr<UNHOutfitComponent> Outfit;
+	bool bFrontShown = false;
 	bool bSprinting = false;
 	bool bRunLocked = false;
 	float StillFor = 0.f;

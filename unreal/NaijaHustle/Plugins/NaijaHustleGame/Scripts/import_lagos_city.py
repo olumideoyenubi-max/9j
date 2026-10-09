@@ -26,12 +26,19 @@ rig, and a PlayerStart by Oshodi Motor Park, where Data/lagos_real.json (Scripts
 file also holds the stops, the park's bays and the road graph the game uses in this level, so the mission, the
 minimap and the traffic all sit on these streets. The player's body is whichever skin the project has.
 
+World Partition: the level is made partitioned, one file per actor. Everything you can drive or stand on (terrain,
+every road, bridges and their piers, airport, port) is not spatially loaded, so it is always there: nothing is ever
+missing under a moving car. The buildings and trees, which are nearly all of the memory, load by cell around the
+streaming sources (the player, and the vehicle being driven: ANHPlayerController::UpdateStreaming sets how far).
+Data layers DL_Crowds, DL_Props, DL_Interiors and DL_Vehicles are made for later content to go into.
+
 Placement: the model's origin is 3.40 E, 6.47 N; 1 cm = 1 cm; Blender north (+Y) is Unreal -Y.
 Heights: in the model the land is at 2.00 m and each kind of surface is a flat sheet stacked above it in steps (side
 streets at 2.75 m, main roads at 3.05 m), which left a ledge of up to a metre beside every road. Here each kind is
 put down separately so main-road surfaces are at Z = 0 and everything else lies within 16 cm below them (FLAT_Z); the
 land-use patches and the airport were flattened the same way in the Shared/ FBX files. Bridges are stretched upward
-from road level by BRIDGE_RISE, because as modelled most flyovers cleared the road beneath by under 3 m. The piers
+from road level by BRIDGE_RISE (1.5), because as modelled the lower flyovers cleared the road beneath by 2 m. That
+steepens their ramps from about 8% to about 12%; at 1.8 it was about 15% and long vehicles could not get up them. The piers
 that stood on a road (470 of 2,488) were taken out of Bridges_Piers.fbx in Blender.
 """
 import json
@@ -54,7 +61,7 @@ LAND_Z = 200.0          # the land's height in the model, cm: buildings, trees, 
 GROUND = -16.0          # where the land goes in the level, cm
 # the flat kinds: height in the model, cm, and where that goes in the level
 FLAT_Z = {"Roads_Major": (305.0, 0.0), "Road_Markings": (312.0, 2.0), "Railways": (290.0, -1.5), "Roads_Streets": (275.0, -2.0), "Roads_Service": (260.0, -3.0)}
-BRIDGE_RISE = 1.8       # bridges, their piers and the pylon are this much taller above road level than modelled
+BRIDGE_RISE = 1.5       # bridges, their piers and the pylon are this much taller above road level than modelled
 REAL = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Data", "lagos_real.json")
 with open(REAL, encoding="utf-8") as fh:
     START = json.load(fh)["playerStart"]     # by Oshodi Motor Park, on the verge
@@ -297,18 +304,50 @@ def import_meshes(mats):
 
 
 # -------------------------------------------------------------------------------------------------------- level
+ALWAYS_LOADED = ("Roads_", "Road_Markings", "Railways", "Bridges_", "LinkBridge")   # with the shared pieces: never streamed out
+DATA_LAYERS = ["DL_Crowds", "DL_Props", "DL_Interiors", "DL_Vehicles"]
+
+
+def fresh_level(les):
+    """A new World Partition level in place of whatever was there: the level is generated, never edited by hand"""
+    import shutil
+    content = unreal.Paths.convert_relative_path_to_full(unreal.Paths.project_content_dir())
+    if eal.does_asset_exist(LEVEL):
+        eal.delete_asset(LEVEL)
+    for kind in ("__ExternalActors__", "__ExternalObjects__"):
+        shutil.rmtree(os.path.join(content, kind, *LEVEL.split("/")[2:]), ignore_errors=True)
+    try:
+        les.new_level(LEVEL, is_partitioned_world=True)
+        return True
+    except TypeError:  # an engine whose Python has no World Partition flag
+        les.new_level(LEVEL)
+        return False
+
+
+def make_data_layers():
+    """The data layers later content goes into, to switch on and off in the editor. Best effort: says what it managed."""
+    made = []
+    try:
+        subsystem = unreal.get_editor_subsystem(unreal.DataLayerEditorSubsystem)
+        for name in DATA_LAYERS:
+            path = f"{DEST}/DataLayers/{name}"
+            asset = eal.load_asset(path) if eal.does_asset_exist(path) else tools.create_asset(name, DEST + "/DataLayers", unreal.DataLayerAsset, unreal.DataLayerFactory())
+            eal.save_loaded_asset(asset)
+            params = unreal.DataLayerCreationParameters()
+            params.set_editor_property("data_layer_asset", asset)
+            if subsystem.create_data_layer_instance(params):
+                made.append(name)
+    except Exception as error:
+        unreal.log_warning(f"LAGOS: data layers: {error}")
+    return made
+
+
 def build_level():
     eas = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
     les = unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
-    if eal.does_asset_exist(LEVEL):
-        les.load_level(LEVEL)
-        for a in eas.get_all_level_actors():
-            if a.actor_has_tag(TAG):
-                eas.destroy_actor(a)
-    else:
-        les.new_level(LEVEL)
+    partitioned = fresh_level(les)
     registry.scan_paths_synchronous([DEST], True)
-    counts = {}
+    counts, always = {}, 0
     assets = [a for a in registry.get_assets_by_path(DEST, recursive=True) if str(a.asset_class_path.asset_name) == "StaticMesh"]
     with unreal.ScopedSlowTask(len(assets), "Placing Lagos") as task:
         for a in sorted(assets, key=lambda x: str(x.package_name)):
@@ -332,6 +371,9 @@ def build_level():
             comp.set_editor_property("cast_shadow", shadow or (shared and group == "Port"))
             if not collide:
                 comp.set_collision_enabled(unreal.CollisionEnabled.NO_COLLISION)
+            if shared or group.startswith(ALWAYS_LOADED):
+                actor.set_editor_property("is_spatially_loaded", False)   # ground, roads and bridges: always there
+                always += 1
             counts[group] = counts.get(group, 0) + 1
 
     def extra(cls, x, y, z, label, yaw=0.0):
@@ -339,6 +381,7 @@ def build_level():
         actor.set_editor_property("tags", [unreal.Name(TAG)])
         actor.set_actor_label(label)
         actor.set_folder_path("NaijaHustle")
+        actor.set_editor_property("is_spatially_loaded", False)
         return actor
 
     rig = extra(unreal.NHLightingRig, START["x"], START["y"], 0.0, "LightingRig")
@@ -347,7 +390,13 @@ def build_level():
     extra(unreal.PlayerStart, START["x"], START["y"], 120.0, "PlayerStart_Oshodi", START["yaw"])
     world = unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
     world.get_world_settings().set_editor_property("default_game_mode", unreal.NHGameMode.static_class())
+    layers = make_data_layers()
     les.save_current_level()
+    try:  # one file per actor: every placed piece has a file of its own to write
+        unreal.EditorLoadingAndSavingUtils.save_dirty_packages(True, True)
+    except Exception as error:
+        unreal.log_warning(f"LAGOS: could not save every changed file ({error}); use File > Save All")
+    say(f"World Partition {'on' if partitioned else 'NOT available: a plain level'}; {always} pieces always loaded, {sum(counts.values()) - always} loaded by cell; data layers: {', '.join(layers) or 'none made'}")
     return counts
 
 

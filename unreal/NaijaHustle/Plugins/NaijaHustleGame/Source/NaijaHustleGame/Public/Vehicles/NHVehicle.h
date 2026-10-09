@@ -94,6 +94,8 @@ public:
 	void SetNpcDriver(class USkeletalMesh* Mesh);
 	/** The last vehicle the player drove: traffic does not clear it away, and the car keys find it */
 	bool bPlayerOwned = false;
+	/** World Partition: on while the player drives it, loading the city within Radius cm of the vehicle */
+	void SetStreamingRadius(bool bOn, float Radius);
 	/** Sets the pedals and wheel directly, as the input bindings do (scripted driving) */
 	void SetDriveInput(float InThrottle, float InBrake, float InSteer) { Throttle = InThrottle; BrakeIn = InBrake; Steer = InSteer; }
 
@@ -116,6 +118,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "Vehicle") TObjectPtr<UCameraComponent> Camera;
 	UPROPERTY(VisibleAnywhere, Category = "Vehicle") TObjectPtr<UNHVehicleMaterialComponent> PaintFx;
 	UPROPERTY(VisibleAnywhere, Category = "Vehicle") TObjectPtr<UNHVehicleDynamicsComponent> Dynamics;
+	UPROPERTY(VisibleAnywhere, Category = "Vehicle") TObjectPtr<class UWorldPartitionStreamingSourceComponent> Streaming;
 
 private:
 	FNHVehicleSpec Spec;

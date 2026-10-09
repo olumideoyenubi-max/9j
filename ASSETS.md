@@ -122,6 +122,35 @@ in one at a time with `Scripts/import_player_gltf.py` and `Scripts/setup_player_
 Only the entries needed were taken from each pack, by byte range, from `files.makehumancommunity.org` (the `files2`
 mirror was about 70 times slower on 2026-10-09).
 
+## Wardrobe: clothes that can be changed (MakeHuman, built in Blender)
+
+The same eleven people in pieces, for the Clothes page of the pause menu and for the passers-by, who are these bodies in
+pieces picked at random. `Scripts/build_people_makehuman.py -- <out> wardrobe` exports each person's bare body and every
+piece that fits them (40 for a man, 54 for a woman: hair, tops, bottoms, full outfits, shoes), and
+`Scripts/import_wardrobe.py` brings them in: `Content/Characters/Player/<Name>/Wardrobe/` (about 50 MB a person) and
+the shared textures and materials in `Content/Characters/Wardrobe/`. The piece names and their MakeHuman assets are the
+`WARDROBE` table in the build script. Packs, beyond those listed above:
+
+| Pack | Used from it | Licence |
+|---|---|---|
+| makehuman_system_assets | bob01, the remaining `*suit*` outfits | CC0 |
+| hair02 | elvs_braid_bun by Elvaerwyn | CC-BY (credit required) |
+| hair03 | punkduck_alpha7_curly by punkduck | CC-BY (credit required) |
+| shirts01 | namuhekam_male_polo_shirt, elvs_crude_t-shirt_male, toigo_basic_tucked_t-shirt, toigo_camisole_top, joepal_crude_t-shirt_female | CC0 |
+| shirts02 | elvs_male_shirt_untucked_bd1, elvs_hooded_sweat_jacket1, elvs_male_boho_top1, elvs_male_shirt_tie_tucked1, punkduck_lace_up_blouse, punkduck_off-shoulder_long-sleeve_top | CC-BY (credit required) |
+| shirts03 | the other elvs, punkduck and drednicolson tops | CC-BY (credit required) |
+| pants01 | cortu_cargo_pants | CC0 |
+| pants02 | punkduck_male_classic_jeans, mindfront_male_trousers_1, elvs_male_trouser, punkduck_female_tight_jeans, mindfront_female_trousers_1, elvs_jeans_bootcut | CC-BY (credit required) |
+| pants03 | elvs_male_trouser_short_1, punkduck_female_short_jeans | CC-BY (credit required) |
+| dress01 | toigo_shift_dress, toigo_halter_dress_midi, toigo_dress_with_tiered_skirt, toigo_keyhole_neck_dress | CC0 |
+| dress02 | elvs_simple_fashion_dress_1, elvs_simple_60s_dress, elvs_halter_dress_long | CC-BY (credit required) |
+| dress03 | mindfront_f_dress_02, mindfront_f_dress_05 | CC-BY (credit required) |
+| shoes01 | toigo_ankle_boots_male | CC0 |
+| shoes02 | punkduck_running_shoes_01, culturalibre_sneakers, elvs_male_flip_flop_sandals1, dressupdoc_sandals1, mindfront_shoes_oxford_male | CC-BY (credit required) |
+
+Tried and left out for their triangle counts: elvs_male_athletic_tank1 (56,000), o4saken_curly01 hair (60,000),
+toigo_flats (28,800) and elvs_flatshoe_plain1 (16,400).
+
 ## Second player skin (Sketchfab)
 
 | Asset | Licence | Folder | Notes |

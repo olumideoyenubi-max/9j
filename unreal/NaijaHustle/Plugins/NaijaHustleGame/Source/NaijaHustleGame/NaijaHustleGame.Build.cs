@@ -13,7 +13,8 @@ public class NaijaHustleGame : ModuleRules
 		});
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
-			"Json", "Projects" // reading Data/*.json from the plugin folder
+			"Json", "Projects", // reading Data/*.json from the plugin folder
+			"AssetRegistry" // finding the wardrobe pieces by name
 		});
 
 		// the city and rules ship as loose files next to the plugin, in the editor and in packaged games

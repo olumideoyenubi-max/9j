@@ -9,6 +9,9 @@
 #include "Gameplay/NHGameDirector.h"
 #include "Lighting/NHLightingRig.h"
 #include "Player/NHCharacter.h"
+#include "Characters/NHOutfitComponent.h"
+#include "Gameplay/NHPerson.h"
+#include "Debug/NHBridgeTest.h"
 #include "Phone/NHPhone.h"
 #include "UI/NHHUD.h"
 #include "Vehicles/NHCarTheft.h"
@@ -57,6 +60,10 @@ void ANHPlayerController::BeginPlay()
 	}
 #endif
 
+	if (FParse::Param(FCommandLine::Get(), TEXT("NHBridgeTest")))
+	{
+		GetWorld()->SpawnActor<ANHBridgeTest>(ANHBridgeTest::StaticClass(), FTransform::Identity); // drives each vehicle over a bridge and back, logs, quits
+	}
 	FString Spot;
 	if (FParse::Value(FCommandLine::Get(), TEXT("NHLookShots="), Spot, false)) // false: keep the commas
 	{
@@ -128,6 +135,7 @@ void ANHPlayerController::SetupInputComponent()
 	Key(EKeys::BackSpace, &ANHPlayerController::UiBack);
 	// on-foot moves: R keeps you running without holding Shift, Left Ctrl or C rolls; Space climbs when there is a ledge (ANHCharacter::Jump)
 	Key(EKeys::R, &ANHPlayerController::OnRunToggle);
+	Key(EKeys::F2, &ANHPlayerController::OnStreamingOverlay);
 	Key(EKeys::LeftControl, &ANHPlayerController::OnRoll);
 	Key(EKeys::C, &ANHPlayerController::OnRoll);
 	Key(EKeys::Tab, &ANHPlayerController::UiWheelOpen);
@@ -144,6 +152,35 @@ void ANHPlayerController::SetupInputComponent()
 }
 
 void ANHPlayerController::UiMap() { if (ANHHUD* H = ANHHUD::Get(this)) { H->ToggleMap(); } }
+void ANHPlayerController::OnStreamingOverlay()
+{
+	bStreamingOverlay = !bStreamingOverlay;
+	ConsoleCommand(TEXT("wp.Runtime.ToggleDrawRuntimeHash2D"));
+}
+
+void ANHPlayerController::UpdateStreaming()
+{
+	// On foot, 450 m of city around you. Driving, 600 m plus 40 m for every m/s: at a danfo's 100 km/h that is
+	// about 1.7 km, a minute of road ahead, so what you are driving towards is there before you are.
+	ANHVehicle* Car = Cast<ANHVehicle>(GetPawn());
+	const float Want = Car ? FMath::Min(60000.f + FMath::Abs(Car->Speed) * 40.f, 200000.f) : 45000.f;
+	StreamingRadius = FMath::FInterpTo(StreamingRadius, Want, GetWorld()->GetDeltaSeconds(), Want > StreamingRadius ? 4.f : 0.5f); // widens at once, narrows slowly
+	FStreamingSourceShape Shape;
+	Shape.bUseGridLoadingRange = false;
+	Shape.Radius = StreamingRadius;
+	StreamingSourceShapes.SetNum(1);
+	StreamingSourceShapes[0] = Shape;
+	if (StreamingCar.IsValid() && StreamingCar.Get() != Car)
+	{
+		StreamingCar->SetStreamingRadius(false, 0.f);
+	}
+	if (Car)
+	{
+		Car->SetStreamingRadius(true, StreamingRadius);
+	}
+	StreamingCar = Car;
+}
+
 void ANHPlayerController::OnRunToggle()
 {
 	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
@@ -422,6 +459,7 @@ void ANHPlayerController::NHTime(float Hour)
 void ANHPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
+	UpdateStreaming();
 	if (Debug)
 	{
 		Debug->Tick(DeltaTime);
@@ -559,6 +597,44 @@ void ANHPlayerController::NHHeadlights()
 	if (ANHVehicle* V = Cast<ANHVehicle>(GetPawn()))
 	{
 		V->SetHeadlights(!V->HeadlightsOn());
+	}
+}
+
+void ANHPlayerController::NHWear(const FString& What, int32 Steps)
+{
+	ANHCharacter* Char = Cast<ANHCharacter>(GetPawn());
+	const UNHOutfitComponent* Outfit = Char ? Char->GetOutfit() : nullptr;
+	if (!Outfit || !Outfit->HasWardrobe())
+	{
+		UE_LOG(LogNHGame, Warning, TEXT("NHWear: this character has no wardrobe (pick one of the people with NHSkin, on foot)"));
+		return;
+	}
+	const bool bColour = What.EndsWith(TEXT("colour"));
+	const ENHOutfitSlot Slot = What.StartsWith(TEXT("hair")) ? ENHOutfitSlot::Hair : What.StartsWith(TEXT("top")) ? ENHOutfitSlot::Top : What.StartsWith(TEXT("bottom")) ? ENHOutfitSlot::Bottom : ENHOutfitSlot::Shoes;
+	for (int32 I = 0; I < FMath::Abs(Steps); ++I)
+	{
+		Char->ChangeOutfit(Slot, Steps < 0 ? -1 : 1, bColour);
+	}
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: wearing %s"), *Outfit->Describe());
+}
+
+void ANHPlayerController::NHPeople(int32 Count, float Distance)
+{
+	const APawn* Me = GetPawn();
+	if (!Me)
+	{
+		return;
+	}
+	const FVector Ahead = Me->GetActorForwardVector(), Side = Me->GetActorRightVector();
+	for (int32 I = 0; I < FMath::Clamp(Count, 1, 40); ++I)
+	{
+		const FVector At = Me->GetActorLocation() + Ahead * (Distance + FMath::Sign(Distance) * 140.f * (I / 8)) + Side * ((I % 8) - 3.5f) * 110.f;
+		if (ANHPerson* Person = GetWorld()->SpawnActor<ANHPerson>(ANHPerson::StaticClass(), At, FRotator::ZeroRotator))
+		{
+			Person->Init(101 + I * 37, FLinearColor::MakeFromHSV8(static_cast<uint8>(I * 53), 170, 200), I % 3 == 1);
+			Person->FaceTowards(Me->GetActorLocation());
+			Person->LifeLeft = 120.f;
+		}
 	}
 }
 

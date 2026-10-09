@@ -5,11 +5,17 @@
 #include "NHPerson.generated.h"
 
 class UStaticMeshComponent;
+class USkeletalMeshComponent;
+class UAnimSequence;
+class UNHOutfitComponent;
 
 /**
- * A blockout Lagosian (passengers, Baba Driver, agberos): legs and arms that swing as they walk, a
- * shirt, trousers or wrapper, a head and sometimes a head-tie. Walks in a straight line to a target and
- * keeps its feet on the ground. Step 3 replaces the body with MetaHumans; the behaviour stays.
+ * A Lagosian (passengers, Baba Driver, agberos, car owners). Walks in a straight line to a target and keeps its
+ * feet on the ground.
+ *
+ * Where the project has the wardrobe people (UNHOutfitComponent), the body is one of them, chosen by Seed, in
+ * hair and clothes also chosen by Seed, with that person's idle and walk. Otherwise it is the blockout: legs and
+ * arms that swing as they walk, a shirt, trousers, a head and sometimes a head-tie.
  */
 UCLASS()
 class NAIJAHUSTLEGAME_API ANHPerson : public AActor
@@ -19,7 +25,7 @@ class NAIJAHUSTLEGAME_API ANHPerson : public AActor
 public:
 	ANHPerson();
 
-	/** Builds the body: Seed picks skin tone, clothes and height */
+	/** Builds the body: Seed picks who it is, the clothes and the height; Top is the shirt colour; bHeadTie makes it a woman */
 	void Init(int32 Seed, const FLinearColor& Top, bool bHeadTie = false, float Scale = 1.f);
 
 	UFUNCTION(BlueprintCallable, Category = "Naija") void WalkTo(const FVector& Target, float Speed = 140.f);
@@ -49,5 +55,12 @@ private:
 	bool bWalking = false;
 	bool bWaving = false;
 	bool bBuilt = false;
+	/** The real body, where there is one, and its two clips */
+	UPROPERTY() TObjectPtr<USkeletalMeshComponent> Body;
+	UPROPERTY() TObjectPtr<UNHOutfitComponent> Outfit;
+	UPROPERTY() TObjectPtr<UAnimSequence> IdleClip;
+	UPROPERTY() TObjectPtr<UAnimSequence> WalkClip;
+	bool bWalkShown = false;
+	bool BuildBody(int32 Seed, const FLinearColor& Top, bool bWoman, float Scale);
 	void SnapToGround();
 };

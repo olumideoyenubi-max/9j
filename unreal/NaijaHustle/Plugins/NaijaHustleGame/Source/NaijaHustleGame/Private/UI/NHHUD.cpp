@@ -6,13 +6,16 @@
 #include "Engine/Engine.h"
 #include "Engine/Font.h"
 #include "Engine/Texture2D.h"
+#include "Engine/LevelStreaming.h"
 #include "Engine/World.h"
 #include "GameFramework/Pawn.h"
 #include "GameFramework/PlayerController.h"
 #include "Gameplay/NHGameDirector.h"
+#include "NaijaHustleGame.h"
 #include "Phone/NHPhone.h"
 #include "Player/NHPlayerController.h"
 #include "Vehicles/NHCarTheft.h"
+#include "World/NHStreets.h"
 #include "Vehicles/NHVehicle.h"
 
 namespace NHUI
@@ -163,6 +166,10 @@ void ANHHUD::DrawMinimap(float X, float Y, float Size, const FVector& Player, fl
 	if (Data->bRealCity)
 	{
 		DrawRoads(X, Y, Size, Corner, Span, 1.f); // the real city has no cell map: the roads around the player, from the road graph
+		if (const ANHStreets* Streets = ANHStreets::Get(this))
+		{
+			Streets->DrawNames(this, X, Y, Size, Corner, Span, 4, S); // side streets, and the nearest few names
+		}
 	}
 	else
 	{
@@ -275,7 +282,13 @@ void ANHHUD::DrawHUD()
 		if (Dir->bMarker && Pawn) // distance to the objective, the same number as the marker
 		{
 			const int32 Metres = FMath::RoundToInt(FVector::Dist2D(Pawn->GetActorLocation(), Dir->Marker) / 100.f);
-			Text(FString::Printf(TEXT("%d m"), Metres), X + W - 90.f * S, Y + 10.f * S, Muted, Medium, 1.f);
+			// how far, and what street it is on: "26 m, Agege Motor Road", against the card's right edge
+			const ANHStreets* Streets = ANHStreets::Get(this);
+			const FString On = Streets ? Streets->StreetAt(FVector2D(Dir->Marker), 4000.f) : FString();
+			const FString Far = FString::Printf(TEXT("%d m"), Metres) + (On.IsEmpty() ? FString() : TEXT(", ") + On);
+			float FW = 0.f, FH = 0.f;
+			GetTextSize(Far, FW, FH, Medium, 0.9f * S);
+			Text(Far, X + W - 14.f * S - FW, Y + H - FH - 8.f * S, Muted, Medium, 0.9f);
 		}
 		if (Dir->DeadlineMinutesLeft >= 0.f)
 		{
@@ -423,6 +436,23 @@ void ANHHUD::DrawHUD()
 		}
 	}
 
+	// ---- the streaming overlay (F2): what World Partition has loaded round the player, under the engine's own cell map
+	if (PC && PC->bStreamingOverlay)
+	{
+		int32 Loaded = 0, Loading = 0, Total = 0;
+		for (const ULevelStreaming* Cell : GetWorld()->GetStreamingLevels())
+		{
+			++Total;
+			Loaded += Cell && Cell->IsLevelLoaded() && Cell->IsLevelVisible() ? 1 : 0;
+			Loading += Cell && Cell->HasLoadRequestPending() ? 1 : 0;
+		}
+		const float X = Pad, Y = VH - 230.f * S;
+		Panel(X, Y, 560.f * S, 96.f * S, FLinearColor(0.f, 0.f, 0.f, 0.75f));
+		Text(TEXT("STREAMING (F2)"), X + 16.f * S, Y + 8.f * S, Yellow, Medium, 1.f);
+		Text(FString::Printf(TEXT("Loaded round you: %.0f m    Cells shown: %d of %d    Loading: %d"), PC->StreamingRadius / 100.f, Loaded, Total, Loading), X + 16.f * S, Y + 36.f * S, Ink, Medium, 0.95f);
+		Text(TEXT("Roads, bridges and terrain are always loaded; buildings and trees by cell"), X + 16.f * S, Y + 62.f * S, Muted, Medium, 0.85f);
+	}
+
 	// ---- hotwiring: a marker sweeping a bar, to stop in the green three times
 	if (const ANHCarTheft* Theft = ANHCarTheft::Get(this); Theft && Theft->bHotwiring)
 	{
@@ -504,6 +534,39 @@ void ANHHUD::DrawHUD()
 				{
 					Dir->Dialogue = ANHGameDirector::FDialogue();
 				}
+			}
+			if (ShotOpen == TEXT("streaming")) // the F2 overlay, and its numbers in the log
+			{
+				PC->bStreamingOverlay = true;
+				int32 Loaded = 0, Total = 0;
+				for (const ULevelStreaming* Cell : GetWorld()->GetStreamingLevels())
+				{
+					++Total;
+					Loaded += Cell && Cell->IsLevelLoaded() && Cell->IsLevelVisible() ? 1 : 0;
+				}
+				UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: test streaming: %d of %d cells loaded, radius %.0f m, player at %s"), Loaded, Total, PC->StreamingRadius / 100.f, Pawn ? *Pawn->GetActorLocation().ToCompactString() : TEXT("?"));
+			}
+			if (ShotOpen == TEXT("streets"))
+			{
+				if (ANHStreets* Streets = ANHStreets::Get(this))
+				{
+					Streets->DebugRepeatBanner();
+					UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: test streets: here is '%s'; %d signs standing near the player"), Pawn ? *Streets->PlaceName(FVector2D(Pawn->GetActorLocation())) : TEXT(""), Streets->NumSigns());
+				}
+				if (Dir)
+				{
+					Dir->Dialogue = ANHGameDirector::FDialogue();
+				}
+			}
+			if (ShotOpen == TEXT("streetmap"))
+			{
+				ToggleMap(); // close in, to see the side streets and their names
+				MapZoom = 22.f;
+			}
+			if (ShotOpen == TEXT("credits"))
+			{
+				ToggleMenu();
+				bMenuCredits = true;
 			}
 			if (ShotOpen == TEXT("controls"))
 			{

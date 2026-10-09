@@ -1,6 +1,12 @@
 #include "Gameplay/NHPerson.h"
 
+#include "Animation/AnimSequence.h"
+#include "Characters/NHOutfitComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Engine/SkeletalMesh.h"
+#include "Misc/PackageName.h"
+#include "Player/NHCharacter.h"
 #include "Engine/World.h"
 #include "World/NHShapes.h"
 
@@ -29,6 +35,11 @@ void ANHPerson::Init(int32 Seed, const FLinearColor& Top, bool bHeadTie, float S
 		return;
 	}
 	bBuilt = true;
+	if (BuildBody(Seed, Top, bHeadTie, Scale))
+	{
+		SnapToGround();
+		return;
+	}
 	const float H = (0.92f + 0.14f * Rand(Seed, 1)) * Scale; // height factor
 	const FNHSurface SkinS(FLinearColor(Skin[static_cast<int32>(Rand(Seed, 2) * 6.f) % 6]), 0.55f);
 	const FNHSurface TopS(Top, 0.85f, 0.4f);
@@ -59,6 +70,62 @@ void ANHPerson::Init(int32 Seed, const FLinearColor& Top, bool bHeadTie, float S
 		NHShapes::AddPiece(this, Sh, ENHShape::Cylinder, FVector(0, 0, -44.f * H), FVector(9.f, 9.f, 26.f * H), SkinS);
 	}
 	SnapToGround();
+}
+
+bool ANHPerson::BuildBody(int32 Seed, const FLinearColor& Top, bool bWoman, float Scale)
+{
+	using namespace NHPeople;
+	// who: a woman where asked for, otherwise anyone; only those the project has
+	const TArray<FString>& All = UNHOutfitComponent::People();
+	TArray<FString> Have;
+	for (int32 I = bWoman ? UNHOutfitComponent::Men : 0; I < All.Num(); ++I)
+	{
+		if (UNHOutfitComponent::Exists(All[I]))
+		{
+			Have.Add(All[I]);
+		}
+	}
+	if (Have.Num() == 0)
+	{
+		return false;
+	}
+	const FString Who = Have[FMath::Min(static_cast<int32>(Rand(Seed, 5) * Have.Num()), Have.Num() - 1)];
+	const auto Clip = [&Who](const TCHAR* Path) -> UAnimSequence*
+	{
+		const FString Full = FString::Printf(TEXT("/Game/Characters/Mannequins/Anims/Unarmed/%s_%s"), Path, *Who);
+		return FPackageName::DoesPackageExist(Full) ? LoadObject<UAnimSequence>(nullptr, *Full) : nullptr;
+	};
+	Body = NewObject<USkeletalMeshComponent>(this);
+	Body->SetupAttachment(Root);
+	Body->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	Body->SetCanEverAffectNavigation(false);
+	Body->RegisterComponent();
+	Outfit = NewObject<UNHOutfitComponent>(this);
+	Outfit->RegisterComponent();
+	if (!Outfit->Dress(Body, Who))
+	{
+		Body->DestroyComponent();
+		Body = nullptr;
+		return false;
+	}
+	Outfit->Pick(Seed, &Top);
+	// people off screen do not animate, and far ones animate less often
+	Body->VisibilityBasedAnimTickOption = EVisibilityBasedAnimTickOption::OnlyTickPoseWhenRendered;
+	Body->bEnableUpdateRateOptimizations = true;
+	const bool bMan = All.IndexOfByKey(Who) < UNHOutfitComponent::Men;
+	const float Tall = Body->GetSkeletalMeshAsset()->GetBounds().BoxExtent.Z * 2.f;
+	const float Height = (bMan ? 176.f : 164.f) * (0.95f + 0.1f * Rand(Seed, 1)) * Scale;
+	Body->SetRelativeScale3D(FVector(Tall > 1.f ? Height / Tall : 1.f));
+	Body->SetRelativeRotation(FRotator(0.f, -ANHCharacter::FacingYawOf(Body->GetSkeletalMeshAsset()), 0.f));
+	IdleClip = Clip(TEXT("MM_Idle"));
+	WalkClip = Clip(TEXT("Walk/MF_Unarmed_Walk_Fwd"));
+	Body->SetAnimationMode(EAnimationMode::AnimationSingleNode);
+	if (IdleClip)
+	{
+		Body->PlayAnimation(IdleClip, true);
+		Body->SetPosition(Rand(Seed, 6) * IdleClip->GetPlayLength()); // not everyone breathing in step
+	}
+	return true;
 }
 
 void ANHPerson::WalkTo(const FVector& InTarget, float Speed)
@@ -118,6 +185,12 @@ void ANHPerson::Tick(float DeltaSeconds)
 			Phase += DeltaSeconds * WalkSpeed / 30.f;
 			Swing = FMath::Sin(Phase) * 28.f;
 		}
+	}
+	if (Body && bWalking != bWalkShown && IdleClip && WalkClip)
+	{
+		bWalkShown = bWalking;
+		Body->PlayAnimation(bWalking ? WalkClip : IdleClip, true);
+		Body->SetPlayRate(bWalking ? FMath::Clamp(WalkSpeed / 150.f, 0.7f, 1.6f) : 1.f); // the walk clip covers about 1.5 m a second
 	}
 	if (HipL && HipR && ShoulderL && ShoulderR)
 	{

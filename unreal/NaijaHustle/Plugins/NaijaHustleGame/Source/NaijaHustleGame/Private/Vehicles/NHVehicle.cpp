@@ -4,6 +4,7 @@
 #include "Components/BoxComponent.h"
 #include "Components/PointLightComponent.h"
 #include "Components/PoseableMeshComponent.h"
+#include "Components/WorldPartitionStreamingSourceComponent.h"
 #include "Components/SpotLightComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/TextRenderComponent.h"
@@ -60,6 +61,10 @@ ANHVehicle::ANHVehicle()
 
 	PaintFx = CreateDefaultSubobject<UNHVehicleMaterialComponent>(TEXT("PaintFx"));
 	Dynamics = CreateDefaultSubobject<UNHVehicleDynamicsComponent>(TEXT("Dynamics"));
+	// while the player drives it, the vehicle itself asks World Partition for the city around it (see ANHPlayerController::UpdateStreaming)
+	Streaming = CreateDefaultSubobject<UWorldPartitionStreamingSourceComponent>(TEXT("Streaming"));
+	Streaming->DisableStreamingSource();
+	Streaming->Priority = EStreamingSourcePriority::High;
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(Arm, USpringArmComponent::SocketName);
 	Camera->FieldOfView = 75.f;
@@ -601,9 +606,13 @@ void ANHVehicle::TrafficMove(const FVector2D& At, float Yaw, float InSpeed, floa
 	Speed = InSpeed;
 	const FVector From = GetActorLocation();
 	FVector To(At.X, At.Y, From.Z);
-	const float WantZ = GroundZ(To) + Clearance + HalfHeight;
+	const float Axle = Spec.Length * 0.31f;
+	const FVector Fwd = FRotator(0.f, Yaw, 0.f).Vector();
+	const float FrontZ = GroundZ(To + Fwd * Axle), RearZ = GroundZ(To - Fwd * Axle);
+	const float Pitch = FMath::FInterpTo(GetActorRotation().Pitch, FMath::Clamp(FMath::RadiansToDegrees(FMath::Atan2(FrontZ - RearZ, 2.f * Axle)), -30.f, 30.f), DeltaSeconds, 12.f);
+	const float WantZ = (FrontZ + RearZ) * 0.5f + Clearance + HalfHeight;
 	To.Z = WantZ > From.Z ? WantZ : FMath::FInterpTo(From.Z, WantZ, DeltaSeconds, 10.f);
-	SetActorLocationAndRotation(To, FRotator(0.f, Yaw, 0.f), false);
+	SetActorLocationAndRotation(To, FRotator(Pitch, Yaw, 0.f), false);
 }
 
 void ANHVehicle::Drive(float DeltaSeconds)
@@ -640,12 +649,18 @@ void ANHVehicle::Drive(float DeltaSeconds)
 	}
 
 	const float TurnRate = FMath::RadiansToDegrees(Spec.Turn) * S * FMath::Clamp(FMath::Abs(Speed) / (V * 0.2f), 0.f, 1.f) * (Speed >= 0.f ? 1.f : -1.f);
-	const FRotator Rot(0.f, GetActorRotation().Yaw + TurnRate * DeltaSeconds, 0.f);
+	FRotator Rot(0.f, GetActorRotation().Yaw + TurnRate * DeltaSeconds, 0.f);
 	// grip: past the limit (speed, handbrake, dirt, rain) the car slides sideways as well as going where it points
 	const float Slid = Dynamics->StepTraction(DeltaSeconds, Speed, FMath::DegreesToRadians(TurnRate), bHandbrake && bDriven);
 	const FVector From = GetActorLocation(), Delta = Rot.Vector() * Speed * DeltaSeconds + FRotationMatrix(Rot).GetUnitAxis(EAxis::Y) * Slid;
 	FVector To = From + Delta;
-	const float WantZ = GroundZ(To) + Clearance + HalfHeight;
+	// The body follows the ground under its axles: nose up on a ramp, down on the far side. Kept level, the front
+	// of the collision box dug into any slope steeper than about one in ten and the vehicle battered itself to a stop.
+	const float Axle = Spec.Length * 0.31f;
+	const FVector Fwd = Rot.Vector();
+	const float FrontZ = GroundZ(To + Fwd * Axle), RearZ = GroundZ(To - Fwd * Axle);
+	Rot.Pitch = FMath::FInterpTo(GetActorRotation().Pitch, FMath::Clamp(FMath::RadiansToDegrees(FMath::Atan2(FrontZ - RearZ, 2.f * Axle)), -30.f, 30.f), DeltaSeconds, 12.f);
+	const float WantZ = (FrontZ + RearZ) * 0.5f + Clearance + HalfHeight;
 	To.Z = WantZ > From.Z ? WantZ : FMath::FInterpTo(From.Z, WantZ, DeltaSeconds, 10.f); // up kerbs at once, down gently
 
 	FHitResult Hit;
@@ -703,4 +718,19 @@ void ANHVehicle::OnLook(const FInputActionValue& V)
 	LookOffset.X = FMath::Clamp(LookOffset.X + D.X, -170.f, 170.f);
 	LookOffset.Y = FMath::Clamp(LookOffset.Y + D.Y, -30.f, 25.f);
 	LookIdle = 0.f;
+}
+
+void ANHVehicle::SetStreamingRadius(bool bOn, float Radius)
+{
+	if (!bOn)
+	{
+		Streaming->DisableStreamingSource();
+		return;
+	}
+	FStreamingSourceShape Shape;
+	Shape.bUseGridLoadingRange = false;
+	Shape.Radius = Radius;
+	Streaming->Shapes.SetNum(1);
+	Streaming->Shapes[0] = Shape;
+	Streaming->EnableStreamingSource();
 }
