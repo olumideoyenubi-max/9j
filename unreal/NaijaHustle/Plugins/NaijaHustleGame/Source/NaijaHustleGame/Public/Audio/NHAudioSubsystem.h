@@ -106,6 +106,10 @@ public:
 	const TArray<FRadioStation>& GetStations() const { return Stations; }
 	/** R in a car: the next station on that car's radio, and off after the last. The radio stays with the car: get out and you hear it from outside, muffled. */
 	void RadioNextStation(ANHVehicle* Car);
+	/** That station (an index into GetStations), on that car's radio or, with no car, on the phone: heard anywhere, by you alone */
+	void RadioPlay(int32 Station, ANHVehicle* Car);
+	int32 RadioStationIndex() const { return RadioStation; }
+	bool RadioOnPhone() const { return RadioStation >= 0 && bRadioPhone; }
 	/** T: the next song on the station */
 	void RadioNextTrack();
 	void RadioOff();
@@ -181,6 +185,8 @@ private:
 	float RadioStartedAt = 0.f, RadioLength = 0.f;
 	/** The song is playing as the cabin's own radio (not placed in the world), as against from the car, heard outside */
 	bool bRadioCabin = false;
+	/** Playing from the phone, not a car */
+	bool bRadioPhone = false;
 	UPROPERTY(Transient) TObjectPtr<USoundBase> RadioSound;
 	TWeakObjectPtr<UAudioComponent> RadioVoice;
 	void RadioStart(UWorld* World, float From);

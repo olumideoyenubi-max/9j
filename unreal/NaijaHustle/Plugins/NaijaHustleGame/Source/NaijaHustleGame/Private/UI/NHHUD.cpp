@@ -1,6 +1,8 @@
 #include "UI/NHHUD.h"
 
 #include "Audio/NHAudioSubsystem.h"
+#include "EngineUtils.h"
+#include "Player/NHCharacter.h"
 #include "Core/NHGameData.h"
 #include "Core/NHHustleSubsystem.h"
 #include "Engine/Canvas.h"
@@ -630,6 +632,47 @@ void ANHHUD::DrawHUD()
 			{
 				SetWheel(true);
 				WheelSlot = 2;
+			}
+			else if (ShotOpen == TEXT("radiowheel") || ShotOpen == TEXT("music") || ShotOpen == TEXT("weapons"))
+			{
+				// the radio wheel in the nearest car; the phone's Music app with a station on; the three weapons in turn, the last left in hand
+				ANHPlayerController* NHPC = Cast<ANHPlayerController>(PC);
+				UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+				if (ShotOpen == TEXT("radiowheel") && NHPC)
+				{
+					ANHVehicle* Car = nullptr;
+					for (TActorIterator<ANHVehicle> It(GetWorld()); It; ++It)
+					{
+						if (!It->GetController() && !It->GetSpec().bBike && Pawn && (!Car || FVector::DistSquared(It->GetActorLocation(), Pawn->GetActorLocation()) < FVector::DistSquared(Car->GetActorLocation(), Pawn->GetActorLocation())))
+						{
+							Car = *It;
+						}
+					}
+					if (NHPC->EnterVehicle(Car) && Audio)
+					{
+						Audio->RadioPlay(0, Car);
+						SetRadioWheel(true);
+						WheelSlot = 0;
+					}
+				}
+				else if (ShotOpen == TEXT("music"))
+				{
+					if (Audio)
+					{
+						Audio->RadioPlay(0, nullptr);
+					}
+					if (ANHPhone* Phone = ANHPhone::Get(this))
+					{
+						Phone->DebugOpen(TEXT("music"));
+					}
+				}
+				else if (ANHCharacter* Char = Cast<ANHCharacter>(Pawn))
+				{
+					Char->Equip(TEXT("machete"));
+					Char->Equip(TEXT("pistol"));
+					Char->Equip(TEXT("ak47"));
+					UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: in hand: %s"), *ANHCharacter::WeaponName(Char->Equipped()));
+				}
 			}
 		}
 		else if (ShotStage == 1 && Now >= ShotAt)

@@ -807,26 +807,35 @@ void UNHAudioSubsystem::RadioOff()
 	RadioSound = nullptr;
 	RadioStation = -1;
 	RadioCar.Reset();
+	bRadioPhone = false;
+}
+
+void UNHAudioSubsystem::RadioPlay(int32 Station, ANHVehicle* Car)
+{
+	UWorld* World = GetTickableGameObjectWorld();
+	if (!World || !bBuilt)
+	{
+		return;
+	}
+	RadioOff();
+	if (Stations.IsValidIndex(Station))
+	{
+		RadioStation = Station;
+		RadioTrack = 0;
+		RadioCar = Car;
+		bRadioPhone = Car == nullptr;
+		RadioStart(World, 0.f);
+	}
+	RadioAnnounce();
 }
 
 void UNHAudioSubsystem::RadioNextStation(ANHVehicle* Car)
 {
-	UWorld* World = GetTickableGameObjectWorld();
-	if (!Car || !World || !bBuilt)
-	{
-		return;
-	}
 	// another car's radio starts from its first station; the same car's moves on, and past the last one is off
-	const int32 Next = RadioCar.Get() == Car ? RadioStation + 1 : 0;
-	RadioOff();
-	if (Stations.IsValidIndex(Next))
+	if (Car)
 	{
-		RadioStation = Next;
-		RadioTrack = 0;
-		RadioCar = Car;
-		RadioStart(World, 0.f);
+		RadioPlay(RadioCar.Get() == Car ? RadioStation + 1 : 0, Car);
 	}
-	RadioAnnounce();
 }
 
 void UNHAudioSubsystem::RadioNextTrack()
@@ -850,7 +859,7 @@ void UNHAudioSubsystem::RadioStart(UWorld* World, float From)
 	RadioVoice.Reset();
 	const FRadioStation& Station = Stations[RadioStation];
 	ANHVehicle* Car = RadioCar.Get();
-	if (!Car || !Station.Tracks.IsValidIndex(RadioTrack))
+	if ((!Car && !bRadioPhone) || !Station.Tracks.IsValidIndex(RadioTrack))
 	{
 		return;
 	}
@@ -866,7 +875,7 @@ void UNHAudioSubsystem::RadioStart(UWorld* World, float From)
 	}
 	RadioStartedAt = World->GetAudioTimeSeconds() - From;
 	const APlayerController* PC = World->GetFirstPlayerController();
-	bRadioCabin = PC && PC->GetPawn() == Car;
+	bRadioCabin = bRadioPhone || (PC && PC->GetPawn() == Car);
 	UAudioComponent* Voice = RadioSound ? Make(RadioSound, bRadioCabin ? ENHSoundKind::RadioCabin : ENHSoundKind::RadioWorld, World, 1.f, 1.f) : nullptr;
 	if (Voice)
 	{
@@ -885,23 +894,24 @@ void UNHAudioSubsystem::RadioWatch(UWorld* World, const ANHVehicle* Driving)
 	{
 		return;
 	}
-	if (!RadioCar.IsValid())
+	if (!bRadioPhone && !RadioCar.IsValid())
 	{
 		RadioOff(); // the car is gone
 		return;
 	}
+	const bool bHere = bRadioPhone || Driving == RadioCar.Get();
 	const float At = World->GetAudioTimeSeconds() - RadioStartedAt;
 	if (At >= RadioLength - 0.1f)
 	{
 		// the song is over: the next one on the playlist, round and round
 		RadioTrack = (RadioTrack + 1) % FMath::Max(1, Stations[RadioStation].Tracks.Num());
 		RadioStart(World, 0.f);
-		if (Driving == RadioCar.Get())
+		if (bHere)
 		{
 			RadioAnnounce();
 		}
 	}
-	else if ((Driving == RadioCar.Get()) != bRadioCabin || !RadioVoice.IsValid())
+	else if (bHere != bRadioCabin || !RadioVoice.IsValid())
 	{
 		RadioStart(World, At); // got in or out: the same song from the same place, as the cabin's radio or from the car
 	}

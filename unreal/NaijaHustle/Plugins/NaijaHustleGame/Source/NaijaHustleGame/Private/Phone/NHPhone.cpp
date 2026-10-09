@@ -1,5 +1,7 @@
 #include "Phone/NHPhone.h"
 
+#include "Audio/NHAudioSubsystem.h"
+
 #include "Camera/PlayerCameraManager.h"
 #include "Core/NHGameData.h"
 #include "Core/NHHustleSubsystem.h"
@@ -409,6 +411,10 @@ void ANHPhone::Build()
 		App(TEXT("KoboPay"), Hustle ? UNHHustleSubsystem::Naira(Hustle->Cash) : FString(), FLinearColor(0.1f, 0.35f, 0.75f), [this]() { Go(EPage::Kobo); });
 		App(TEXT("Yarns"), UnseenPosts ? FString::Printf(TEXT("%d new"), UnseenPosts) : TEXT("What Lagos is saying"), FLinearColor(0.1f, 0.6f, 0.7f), [this]() { UnseenPosts = 0; Go(EPage::Yarns); });
 		App(TEXT("MapAm"), TEXT("Map and pin"), FLinearColor(0.75f, 0.5f, 0.1f), [this]() { bOpen = false; if (ANHHUD* H = Hud()) { H->ToggleMap(); } });
+		{
+			const UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+			App(TEXT("Music"), Audio && Audio->RadioOnPhone() ? Audio->RadioNowPlaying() : TEXT("Radio stations"), FLinearColor(0.8f, 0.2f, 0.5f), [this]() { Go(EPage::Music); });
+		}
 		App(TEXT("Contacts"), TEXT("Call somebody"), FLinearColor(0.5f, 0.3f, 0.65f), [this]() { Go(EPage::Contacts); });
 		App(TEXT("DropAm"), Ride.Stage != ERide::None ? TEXT("Ride on the way") : TEXT("Order a ride"), FLinearColor(0.85f, 0.25f, 0.2f), [this]() { Go(EPage::DropAm); });
 		App(TEXT("DropAm Driver"), Job.Stage != EJob::Offline ? TEXT("Online") : FString::Printf(TEXT("Rating %.1f"), State->DriverRating), FLinearColor(0.55f, 0.15f, 0.1f), [this]() { Go(EPage::DropAmDriver); });
@@ -466,6 +472,36 @@ void ANHPhone::Build()
 		{
 			Row(TEXT("Call ") + C->Name, FString(), [this]() { CallContact(PageContact); });
 			Selected = Rows.Num() - 1;
+		}
+		break;
+	}
+	case EPage::Music:
+	{
+		// the radio in your pocket: any station, anywhere. Turning a car's radio on takes over from it.
+		Title = TEXT("Music");
+		UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+		if (!Audio || Audio->GetStations().Num() == 0)
+		{
+			Info(TEXT("No stations."));
+			break;
+		}
+		const bool bMine = Audio->RadioOnPhone();
+		for (int32 I = 0; I < Audio->GetStations().Num(); ++I)
+		{
+			const UNHAudioSubsystem::FRadioStation& Station = Audio->GetStations()[I];
+			const bool bOn = bMine && Audio->RadioStationIndex() == I;
+			FRow& R = Row(Station.Name, bOn ? Audio->RadioNowPlaying().RightChop(Station.Name.Len() + 2) : FString::Printf(TEXT("%d songs"), Station.Tracks.Num()), [this, Audio, I]() { Audio->RadioPlay(I, nullptr); Build(); });
+			R.Badge = Station.Name.Left(1);
+			R.BadgeColor = bOn ? FLinearColor(1.f, 0.77f, 0.f) : FLinearColor(0.8f, 0.2f, 0.5f);
+		}
+		if (bMine)
+		{
+			Row(TEXT("Next song"), FString(), [this, Audio]() { Audio->RadioNextTrack(); Build(); });
+			Row(TEXT("Stop"), FString(), [this, Audio]() { Audio->RadioOff(); Build(); });
+		}
+		else if (Audio->RadioOn())
+		{
+			Info(TEXT("A car's radio is on. Picking a station here moves the music to the phone."));
 		}
 		break;
 	}
@@ -722,6 +758,10 @@ void ANHPhone::DebugOpen(const FString& What)
 	if (What == TEXT("contacts"))
 	{
 		Go(EPage::Contacts);
+	}
+	else if (What == TEXT("music"))
+	{
+		Go(EPage::Music);
 	}
 	else if (What == TEXT("call"))
 	{

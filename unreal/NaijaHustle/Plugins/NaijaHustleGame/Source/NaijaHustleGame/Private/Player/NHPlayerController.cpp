@@ -143,7 +143,8 @@ void ANHPlayerController::SetupInputComponent()
 	Key(EKeys::P, &ANHPlayerController::UiPhone);
 	Key(EKeys::BackSpace, &ANHPlayerController::UiBack);
 	// on-foot moves: R keeps you running without holding Shift, Left Ctrl or C rolls; Space climbs when there is a ledge (ANHCharacter::Jump)
-	Key(EKeys::R, &ANHPlayerController::OnRunToggle);
+	Key(EKeys::R, &ANHPlayerController::OnRunToggle); // in a car: hold for the radio wheel
+	Key(EKeys::R, &ANHPlayerController::UiRadioClose, IE_Released);
 	Key(EKeys::F2, &ANHPlayerController::OnStreamingOverlay);
 	Key(EKeys::LeftControl, &ANHPlayerController::OnRoll);
 	Key(EKeys::C, &ANHPlayerController::OnRoll);
@@ -195,6 +196,18 @@ void ANHPlayerController::OnRunToggle()
 	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
 	{
 		C->ToggleRun();
+	}
+	else if (ANHHUD* H = ANHHUD::Get(this))
+	{
+		H->SetRadioWheel(true);
+	}
+}
+
+void ANHPlayerController::UiRadioClose()
+{
+	if (ANHHUD* H = ANHHUD::Get(this))
+	{
+		H->SetRadioWheel(false);
 	}
 }
 

@@ -128,7 +128,7 @@ protected:
 	virtual void EndPlay(const EEndPlayReason::Type Reason) override;
 
 private:
-	enum class EPage : uint8 { Home, Gist, Thread, Kobo, Yarns, Contacts, Contact, HangOut, DropAm, DropAmDriver, Missed };
+	enum class EPage : uint8 { Home, Gist, Thread, Kobo, Yarns, Contacts, Contact, HangOut, DropAm, DropAmDriver, Missed, Music };
 	struct FContact
 	{
 		FName Id;

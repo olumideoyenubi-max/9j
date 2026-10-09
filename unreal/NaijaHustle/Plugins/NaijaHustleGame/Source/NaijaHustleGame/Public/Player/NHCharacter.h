@@ -86,6 +86,10 @@ public:
 	/** Turns the body to face the camera, for the Clothes page, and back */
 	void ShowFront(bool bFront);
 	/** A hand torch: a beam ahead of the body, for the night */
+	/** What is in the player's hand: "" (nothing), machete, pistol or ak47. Asking for the one already held puts it away. Returns what is held after. */
+	FName Equip(FName Weapon);
+	FName Equipped() const { return Weapon; }
+	static FString WeaponName(FName Weapon);
 	void ToggleTorch();
 	bool TorchOn() const;
 
@@ -135,6 +139,10 @@ private:
 	bool bHasBody = false;
 	FName CurrentSkin;
 	UPROPERTY() TArray<TObjectPtr<class UStaticMeshComponent>> ShoeParts;
+	/** The weapon in the hand: a pivot on the right hand (or at the hip, on a body without that bone) and its blockout pieces */
+	FName Weapon;
+	UPROPERTY() TObjectPtr<USceneComponent> WeaponPivot;
+	void BuildWeapon();
 	UPROPERTY() TObjectPtr<class USpotLightComponent> Torch;
 	UPROPERTY() TObjectPtr<UNHOutfitComponent> Outfit;
 	bool bFrontShown = false;

@@ -1,5 +1,7 @@
 #include "Player/NHCharacter.h"
 
+#include "World/NHShapes.h"
+
 #include "Animation/AnimInstance.h"
 #include "Animation/AnimSequence.h"
 #include "AnimationRuntime.h"
@@ -221,6 +223,78 @@ FString ANHCharacter::SkinName() const
 {
 	const FNHPlayerSkin* Skin = Skins.FindByPredicate([this](const FNHPlayerSkin& S) { return S.Id == CurrentSkin; });
 	return Skin ? Skin->Name : FString();
+}
+
+// ------------------------------------------------------------------------------------------------- weapons
+FString ANHCharacter::WeaponName(FName InWeapon)
+{
+	return InWeapon == TEXT("machete") ? TEXT("Machete") : InWeapon == TEXT("pistol") ? TEXT("Pistol") : InWeapon == TEXT("ak47") ? TEXT("AK-47") : FString();
+}
+
+FName ANHCharacter::Equip(FName InWeapon)
+{
+	Weapon = InWeapon == Weapon ? NAME_None : InWeapon;
+	BuildWeapon();
+	return Weapon;
+}
+
+void ANHCharacter::BuildWeapon()
+{
+	if (WeaponPivot)
+	{
+		TArray<USceneComponent*> Pieces;
+		WeaponPivot->GetChildrenComponents(true, Pieces);
+		for (USceneComponent* Piece : Pieces)
+		{
+			Piece->DestroyComponent();
+		}
+		WeaponPivot->DestroyComponent();
+		WeaponPivot = nullptr;
+	}
+	if (Weapon.IsNone())
+	{
+		return;
+	}
+	// On the right hand where the body has one. The pivot keeps the world's rotation and scale, not the hand's, and
+	// Tick points it the way the player faces: skeletons disagree about which way a hand bone points.
+	const bool bHand = GetMesh()->GetSkeletalMeshAsset() && GetMesh()->GetBoneIndex(TEXT("hand_r")) != INDEX_NONE;
+	WeaponPivot = NewObject<USceneComponent>(this);
+	WeaponPivot->SetupAttachment(bHand ? static_cast<USceneComponent*>(GetMesh()) : GetRootComponent(), bHand ? FName(TEXT("hand_r")) : NAME_None);
+	WeaponPivot->SetRelativeLocation(bHand ? FVector::ZeroVector : FVector(25.f, 22.f, 5.f));
+	WeaponPivot->SetUsingAbsoluteRotation(true);
+	WeaponPivot->SetUsingAbsoluteScale(true);
+	WeaponPivot->RegisterComponent();
+
+	// placeholder models from boxes and a cylinder, X along the barrel or blade, sizes in cm
+	const FNHSurface Steel(FLinearColor(0.55f, 0.56f, 0.58f), 0.35f, 0.f, 0.9f), Dark(FLinearColor(0.04f, 0.04f, 0.045f), 0.5f, 0.f, 0.6f), Wood(FLinearColor(0.3f, 0.16f, 0.07f), 0.7f);
+	const auto Piece = [this](ENHShape Shape, const FVector& At, const FVector& Size, const FNHSurface& Surface, const FRotator& Turn = FRotator::ZeroRotator)
+	{
+		// 9 cm out from the hand, clear of the leg, so it shows from behind
+		if (UStaticMeshComponent* Part = NHShapes::AddPiece(this, WeaponPivot, Shape, At + FVector(4.f, 9.f, 0.f), Size, Surface, Turn))
+		{
+			Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			Part->SetCanEverAffectNavigation(false);
+		}
+	};
+	if (Weapon == TEXT("machete"))
+	{
+		Piece(ENHShape::Box, FVector(0.f, 0.f, 0.f), FVector(13.f, 3.f, 2.6f), Wood);    // handle
+		Piece(ENHShape::Box, FVector(31.f, 0.f, 1.f), FVector(50.f, 0.6f, 5.5f), Steel); // blade
+	}
+	else if (Weapon == TEXT("pistol"))
+	{
+		Piece(ENHShape::Box, FVector(0.f, 0.f, -4.f), FVector(4.5f, 3.f, 11.f), Dark, FRotator(-12.f, 0.f, 0.f)); // grip
+		Piece(ENHShape::Box, FVector(6.f, 0.f, 3.f), FVector(19.f, 3.2f, 4.5f), Dark);                             // slide
+	}
+	else
+	{
+		Piece(ENHShape::Box, FVector(-24.f, 0.f, -1.f), FVector(26.f, 3.5f, 6.f), Wood, FRotator(8.f, 0.f, 0.f)); // stock
+		Piece(ENHShape::Box, FVector(6.f, 0.f, 2.f), FVector(34.f, 4.f, 6.5f), Dark);                             // receiver
+		Piece(ENHShape::Box, FVector(-2.f, 0.f, -6.f), FVector(4.f, 3.f, 10.f), Wood, FRotator(-15.f, 0.f, 0.f)); // grip
+		Piece(ENHShape::Box, FVector(12.f, 0.f, -10.f), FVector(6.f, 3.f, 18.f), Dark, FRotator(20.f, 0.f, 0.f)); // the curved magazine
+		Piece(ENHShape::Box, FVector(32.f, 0.f, 1.5f), FVector(18.f, 4.5f, 5.5f), Wood);                          // handguard
+		Piece(ENHShape::Cylinder, FVector(55.f, 0.f, 2.5f), FVector(2.2f, 2.2f, 30.f), Dark, FRotator(90.f, 0.f, 0.f)); // barrel
+	}
 }
 
 void ANHCharacter::ToggleTorch()
@@ -481,6 +555,11 @@ void ANHCharacter::SetSprinting(bool bSprint)
 void ANHCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+	if (WeaponPivot)
+	{
+		// held pointing where the player faces: the machete up at an angle, the guns a little down
+		WeaponPivot->SetWorldRotation(GetActorRotation() + FRotator(Weapon == TEXT("machete") ? 35.f : -8.f, 0.f, 0.f));
+	}
 
 	// running without the key held stops by itself once you have stood still a moment
 	StillFor = GetVelocity().SizeSquared2D() < 100.f ? StillFor + DeltaSeconds : 0.f;

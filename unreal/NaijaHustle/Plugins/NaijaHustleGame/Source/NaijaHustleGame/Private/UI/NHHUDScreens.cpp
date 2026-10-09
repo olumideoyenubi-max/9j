@@ -38,9 +38,9 @@ namespace NHScreens
 		{ TEXT("Left Ctrl or C"), TEXT("Roll") }, { TEXT("Space"), TEXT("Jump; climbs a ledge, wall or car in front") }, { TEXT("F"), TEXT("Get in; try a car's handle; pull a driver out") },
 		{ TEXT("E"), TEXT("Talk, act, next line; join wires when hotwiring") },
 		{ TEXT("DRIVING"), nullptr }, { TEXT("W / S"), TEXT("Accelerate / brake and reverse") }, { TEXT("A / D"), TEXT("Steer") }, { TEXT("Space"), TEXT("Handbrake") },
-		{ TEXT("K"), TEXT("Headlights on / off") }, { TEXT("V"), TEXT("Cabin view") }, { TEXT("H"), TEXT("Horn") }, { TEXT("R"), TEXT("Radio: next station, then off") }, { TEXT("T"), TEXT("Radio: next song") }, { TEXT("F"), TEXT("Get out") }, { TEXT("E"), TEXT("Do business at the mechanic, paint shop, chop shop") },
+		{ TEXT("K"), TEXT("Headlights on / off") }, { TEXT("V"), TEXT("Cabin view") }, { TEXT("H"), TEXT("Horn") }, { TEXT("Hold R"), TEXT("Radio wheel: point at a station, let go") }, { TEXT("T"), TEXT("Radio: next song") }, { TEXT("F"), TEXT("Get out") }, { TEXT("E"), TEXT("Do business at the mechanic, paint shop, chop shop") },
 		{ TEXT("ANYWHERE"), nullptr }, { TEXT("P"), TEXT("Phone (arrows, Enter, Backspace)") }, { TEXT("M"), TEXT("Map: click to pin, right-click to clear, wheel to zoom") },
-		{ TEXT("Hold Tab"), TEXT("Inventory wheel: point, let go") }, { TEXT("1 2 3 4"), TEXT("Choices in a panel") }, { TEXT("L / F1"), TEXT("Lighting: next preset / menu") }, { TEXT("F2"), TEXT("Streaming overlay: loaded cells") }, { TEXT("Esc"), TEXT("This menu") } };
+		{ TEXT("Hold Tab"), TEXT("Inventory wheel: phone, weapons, keys...") }, { TEXT("1 2 3 4"), TEXT("Choices in a panel") }, { TEXT("L / F1"), TEXT("Lighting: next preset / menu") }, { TEXT("F2"), TEXT("Streaming overlay: loaded cells") }, { TEXT("Esc"), TEXT("This menu") } };
 	// the Clothes page: a slot's piece, or its colour
 	struct FClothesLine { const TCHAR* Name; ENHOutfitSlot Slot; bool bColour; };
 	const FClothesLine ClothesLines[] = { { TEXT("Hair"), ENHOutfitSlot::Hair, false }, { TEXT("Top or outfit"), ENHOutfitSlot::Top, false }, { TEXT("Top colour"), ENHOutfitSlot::Top, true },
@@ -51,9 +51,13 @@ namespace NHScreens
 	const TCHAR* TrafficNames[] = { TEXT("None"), TEXT("Light"), TEXT("Normal"), TEXT("Heavy") };
 	const TCHAR* PresetNames[] = { TEXT("Day"), TEXT("Dusty noon"), TEXT("Sunset"), TEXT("Night rain"), TEXT("Harsh morning"), TEXT("Golden evening") };
 
-	enum { Phone, Wardrobe, CarKeys, Torch, Wallet, Hail, Slots };
-	const TCHAR* SlotNames[] = { TEXT("PHONE"), TEXT("WARDROBE"), TEXT("CAR KEYS"), TEXT("TORCH"), TEXT("WALLET"), TEXT("HAIL") };
-	const TCHAR* SlotHints[] = { TEXT("Chats, rides, map"), TEXT("Next character"), TEXT("Lock, unlock, find"), TEXT("Light on or off"), TEXT("What I have"), TEXT("Stop a ride") };
+	enum { Phone, Wardrobe, CarKeys, Torch, Wallet, Hail, Machete, Pistol, AK47, Slots };
+	const TCHAR* SlotNames[] = { TEXT("PHONE"), TEXT("WARDROBE"), TEXT("CAR KEYS"), TEXT("TORCH"), TEXT("WALLET"), TEXT("HAIL"), TEXT("MACHETE"), TEXT("PISTOL"), TEXT("AK-47") };
+	const TCHAR* SlotHints[] = { TEXT("Chats, rides, map"), TEXT("Next character"), TEXT("Lock, unlock, find"), TEXT("Light on or off"), TEXT("What I have"), TEXT("Stop a ride"),
+		TEXT("Take in hand"), TEXT("Take in hand"), TEXT("Take in hand") };
+	const TCHAR* WeaponIds[] = { TEXT("machete"), TEXT("pistol"), TEXT("ak47") };
+	// the radio wheel's ids: a station's index, or one of these
+	enum { RadioNextSong = 1000, RadioSwitchOff };
 
 	FColor RoadColor(uint8 Class)
 	{
@@ -156,18 +160,90 @@ void ANHHUD::ToggleMenu()
 	}
 }
 
+void ANHHUD::FillWheel(bool bRadio)
+{
+	using namespace NHScreens;
+	bRadioWheel = bRadio;
+	WheelItems.Reset();
+	if (!bRadio)
+	{
+		const ANHPlayerController* PC = Cast<ANHPlayerController>(GetOwningPlayerController());
+		const ANHCharacter* Char = PC ? PC->GetOnFootCharacter() : Cast<ANHCharacter>(GetOwningPawn());
+		if (!Char)
+		{
+			Char = Cast<ANHCharacter>(GetOwningPawn());
+		}
+		for (int32 Slot = 0; Slot < Slots; ++Slot)
+		{
+			const bool bHeld = Slot >= Machete && Char && Char->Equipped() == WeaponIds[Slot - Machete];
+			WheelItems.Add({ SlotNames[Slot], bHeld ? TEXT("In hand: put away") : SlotHints[Slot], Slot });
+		}
+		return;
+	}
+	const UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	const ANHVehicle* Car = Cast<ANHVehicle>(GetOwningPawn());
+	for (int32 I = 0; Audio && I < Audio->GetStations().Num(); ++I)
+	{
+		const UNHAudioSubsystem::FRadioStation& Station = Audio->GetStations()[I];
+		const bool bOn = Audio->RadioOn() && !Audio->RadioOnPhone() && Audio->RadioStationIndex() == I;
+		WheelItems.Add({ Station.Name.ToUpper(), bOn ? TEXT("On now") : FString::Printf(TEXT("%d songs"), Station.Tracks.Num()), I });
+	}
+	WheelItems.Add({ TEXT("NEXT SONG"), TEXT("Skip this one"), RadioNextSong });
+	WheelItems.Add({ TEXT("RADIO OFF"), FString(), RadioSwitchOff });
+}
+
 void ANHHUD::SetWheel(bool bOpen)
 {
 	if (bOpen && Screen == EScreen::None)
 	{
 		WheelSlot = -1;
+		FillWheel(false);
 		Open(EScreen::Wheel);
 	}
-	else if (!bOpen && Screen == EScreen::Wheel)
+	else if (!bOpen && Screen == EScreen::Wheel && !bRadioWheel)
 	{
 		const int32 Slot = WheelSlot;
 		Open(EScreen::None);
 		UseWheel(Slot);
+	}
+}
+
+void ANHHUD::SetRadioWheel(bool bOpen)
+{
+	if (bOpen && Screen == EScreen::None && Cast<ANHVehicle>(GetOwningPawn()))
+	{
+		WheelSlot = -1;
+		FillWheel(true);
+		Open(EScreen::Wheel);
+	}
+	else if (!bOpen && Screen == EScreen::Wheel && bRadioWheel)
+	{
+		const int32 Id = WheelItems.IsValidIndex(WheelSlot) ? WheelItems[WheelSlot].Id : -1;
+		Open(EScreen::None);
+		UseRadioWheel(Id);
+	}
+}
+
+void ANHHUD::UseRadioWheel(int32 Id)
+{
+	UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	ANHVehicle* Car = Cast<ANHVehicle>(GetOwningPawn());
+	if (!Audio || !Car || Id < 0)
+	{
+		return;
+	}
+	if (Id == NHScreens::RadioNextSong)
+	{
+		Audio->RadioOn() ? Audio->RadioNextTrack() : Toast(this, TEXT("The radio is off"), 0);
+	}
+	else if (Id == NHScreens::RadioSwitchOff)
+	{
+		Audio->RadioOff();
+		Toast(this, TEXT("Radio off"), 0);
+	}
+	else
+	{
+		Audio->RadioPlay(Id, Car);
 	}
 }
 
@@ -223,7 +299,8 @@ void ANHHUD::Nav(int32 DX, int32 DY)
 	}
 	else if (Screen == EScreen::Wheel)
 	{
-		WheelSlot = ((WheelSlot < 0 ? 0 : WheelSlot + DX + DY) + NHScreens::Slots) % NHScreens::Slots;
+		const int32 Count = FMath::Max(1, WheelItems.Num());
+		WheelSlot = ((WheelSlot < 0 ? 0 : WheelSlot + DX + DY) + Count) % Count;
 	}
 }
 
@@ -946,6 +1023,19 @@ void ANHHUD::UseWheel(int32 Slot)
 			Toast(this, FString::Printf(TEXT("Wallet: %s   Cred %d   Jobs done %d"), *UNHHustleSubsystem::Naira(Hustle->Cash), Hustle->Cred, Hustle->Jobs), 1);
 		}
 		break;
+	case Machete:
+	case Pistol:
+	case AK47:
+		if (ANHCharacter* Char = Cast<ANHCharacter>(Pawn))
+		{
+			const FName Held = Char->Equip(WeaponIds[Slot - Machete]);
+			Toast(this, Held.IsNone() ? FString::Printf(TEXT("%s put away"), SlotNames[Slot]) : FString::Printf(TEXT("%s in hand"), *ANHCharacter::WeaponName(Held)), 0);
+		}
+		else
+		{
+			Toast(this, TEXT("Not while driving"), 0);
+		}
+		break;
 	case Hail:
 		if (ANHTraffic* Cars = ANHTraffic::Get(this))
 		{
@@ -968,7 +1058,9 @@ void ANHHUD::DrawWheel(float VW, float VH)
 	UFont* Medium = GEngine->GetMediumFont();
 	APlayerController* PC = GetOwningPlayerController();
 	const FVector2D Centre(VW * 0.5f, VH * 0.5f);
-	const float Radius = 250.f * S;
+	const int32 Count = FMath::Max(1, WheelItems.Num());
+	// more than six round the wheel: a wider ring of narrower cards
+	const float Radius = (Count > 6 ? 340.f : 250.f) * S, W = (Count > 6 ? 200.f : 250.f) * S, H = 92.f * S;
 	// point with the mouse: past the middle of the wheel, the slot it points toward
 	float MouseX = 0.f, MouseY = 0.f;
 	if (PC && PC->GetMousePosition(MouseX, MouseY))
@@ -977,23 +1069,29 @@ void ANHHUD::DrawWheel(float VW, float VH)
 		if (Aim.Size() > 60.f * S)
 		{
 			const float Turn = FMath::RadiansToDegrees(FMath::Atan2(Aim.X, -Aim.Y)); // 0 up, clockwise
-			WheelSlot = FMath::RoundToInt(FMath::Fmod(Turn + 360.f, 360.f) / (360.f / Slots)) % Slots;
+			WheelSlot = FMath::RoundToInt(FMath::Fmod(Turn + 360.f, 360.f) / (360.f / Count)) % Count;
 		}
 	}
 	DrawRect(FLinearColor(0.f, 0.f, 0.f, 0.45f), 0.f, 0.f, VW, VH);
-	for (int32 Slot = 0; Slot < Slots; ++Slot)
+	for (int32 Slot = 0; Slot < WheelItems.Num(); ++Slot)
 	{
-		const float A = FMath::DegreesToRadians(Slot * 360.f / Slots);
+		const float A = FMath::DegreesToRadians(Slot * 360.f / Count);
 		const FVector2D At = Centre + FVector2D(FMath::Sin(A), -FMath::Cos(A)) * Radius;
 		const bool bOn = Slot == WheelSlot;
-		const float W = 250.f * S, H = 92.f * S;
 		Panel(At.X - W * 0.5f, At.Y - H * 0.5f, W, H, bOn ? FLinearColor(1.f, 0.77f, 0.f, 0.9f) : FLinearColor(0.05f, 0.05f, 0.05f, 0.88f));
 		DrawLine(Centre.X + FMath::Sin(A) * 50.f * S, Centre.Y - FMath::Cos(A) * 50.f * S, Centre.X + FMath::Sin(A) * (Radius - 70.f * S), Centre.Y - FMath::Cos(A) * (Radius - 70.f * S),
 			bOn ? Yellow : FLinearColor(1.f, 1.f, 1.f, 0.2f), (bOn ? 4.f : 2.f) * S);
-		Text(SlotNames[Slot], At.X, At.Y - 32.f * S, bOn ? FLinearColor(0.05f, 0.05f, 0.05f) : Ink, Medium, 1.3f, true, !bOn);
-		Text(SlotHints[Slot], At.X, At.Y + 6.f * S, bOn ? FLinearColor(0.15f, 0.12f, 0.f) : Muted, Medium, 0.95f, true, !bOn);
+		Text(WheelItems[Slot].Name, At.X, At.Y - 32.f * S, bOn ? FLinearColor(0.05f, 0.05f, 0.05f) : Ink, Medium, 1.3f, true, !bOn);
+		Text(WheelItems[Slot].Hint, At.X, At.Y + 6.f * S, bOn ? FLinearColor(0.15f, 0.12f, 0.f) : Muted, Medium, 0.95f, true, !bOn);
 	}
-	Text(WheelSlot >= 0 ? TEXT("Let go of Tab to use it") : TEXT("Point at one, then let go of Tab"), Centre.X, Centre.Y - 12.f * S, Ink, Medium, 1.f, true);
+	const TCHAR* Key = bRadioWheel ? TEXT("R") : TEXT("Tab");
+	if (bRadioWheel)
+	{
+		const UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+		Text(TEXT("RADIO"), Centre.X, Centre.Y - 44.f * S, Yellow, Medium, 1.1f, true);
+		Text(Audio && Audio->RadioOn() ? Audio->RadioNowPlaying() : FString(TEXT("Off")), Centre.X, Centre.Y + 24.f * S, Muted, Medium, 0.9f, true);
+	}
+	Text(WheelSlot >= 0 ? FString::Printf(TEXT("Let go of %s to use it"), Key) : FString::Printf(TEXT("Point at one, then let go of %s"), Key), Centre.X, Centre.Y - 12.f * S, Ink, Medium, 1.f, true);
 }
 
 // --------------------------------------------------------------------------------------------------- the phone

@@ -110,7 +110,6 @@ void UNHInputSet::Build()
 	Vehicle->MapKey(Horn, EKeys::Gamepad_LeftThumbstick);
 	Vehicle->MapKey(ExitVehicle, EKeys::F);
 	Vehicle->MapKey(ExitVehicle, EKeys::Gamepad_FaceButton_Top);
-	Vehicle->MapKey(Radio, EKeys::R);
 	Vehicle->MapKey(Radio, EKeys::Gamepad_DPad_Right);
 	Vehicle->MapKey(RadioTrack, EKeys::T);
 	Vehicle->MapKey(LookBehind, EKeys::C);

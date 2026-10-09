@@ -45,6 +45,8 @@ public:
 	/** Backspace: back a page on the phone, or declines a call */
 	void Back();
 	void SetWheel(bool bOpen);
+	/** Hold R in a car: the same wheel, of radio stations, the next song and off */
+	void SetRadioWheel(bool bOpen);
 	/** Arrow keys: a line up or down and a value left or right in the menu; moving the map; turning the wheel */
 	void Nav(int32 DX, int32 DY);
 	void Accept();
@@ -120,6 +122,12 @@ private:
 	void AudioChange(int32 Line, int32 Dir);
 	int32 MenuLine = 0;
 	int32 WheelSlot = -1;
+	/** What the open wheel offers, clockwise from the top */
+	struct FWheelItem { FString Name, Hint; int32 Id = 0; };
+	TArray<FWheelItem> WheelItems;
+	bool bRadioWheel = false;
+	void FillWheel(bool bRadio);
+	void UseRadioWheel(int32 Id);
 	FString MenuValue(int32 Line) const;
 	void MenuChange(int32 Line, int32 Dir);
 	void UseWheel(int32 Slot);

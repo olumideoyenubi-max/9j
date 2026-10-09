@@ -46,7 +46,7 @@ public:
 	UPROPERTY() TObjectPtr<UInputAction> Handbrake;   // Space / RB
 	UPROPERTY() TObjectPtr<UInputAction> Horn;        // H / L3
 	UPROPERTY() TObjectPtr<UInputAction> ExitVehicle; // F / Y
-	UPROPERTY() TObjectPtr<UInputAction> Radio;       // R / D-pad right: next station, off after the last
+	UPROPERTY() TObjectPtr<UInputAction> Radio;       // D-pad right: next station, off after the last (on the keyboard, hold R for the radio wheel)
 	UPROPERTY() TObjectPtr<UInputAction> RadioTrack;  // T: next song
 	UPROPERTY() TObjectPtr<UInputAction> LookBehind;  // C / R3
 	UPROPERTY() TObjectPtr<UInputAction> Headlights;  // K

@@ -159,6 +159,7 @@ private:
 	void UiMenu();
 	void UiPhone();
 	void OnRunToggle();
+	void UiRadioClose();
 	/** F2: World Partition's own map of loaded cells, and a line saying what is loaded */
 	void OnStreamingOverlay();
 	/** World Partition: how much of the city is loaded round the player, wider the faster they drive */
