@@ -35,7 +35,7 @@ namespace NHScreens
 	// the Controls page: a heading (no key) or a key and what it does
 	const TCHAR* ControlList[][2] = {
 		{ TEXT("ON FOOT"), nullptr }, { TEXT("W A S D"), TEXT("Move") }, { TEXT("Mouse"), TEXT("Look") }, { TEXT("Left Shift"), TEXT("Run while held") }, { TEXT("R"), TEXT("Run: stays on until pressed again") },
-		{ TEXT("Left Ctrl or C"), TEXT("Roll") }, { TEXT("Space"), TEXT("Jump; climbs a ledge, wall or car in front") }, { TEXT("F"), TEXT("Get in; try a car's handle; pull a driver out") },
+		{ TEXT("Left Ctrl or C"), TEXT("Roll") }, { TEXT("Left mouse"), TEXT("Fire or swing what is in your hand") }, { TEXT("Space"), TEXT("Jump; climbs a ledge, wall or car in front") }, { TEXT("F"), TEXT("Get in; try a car's handle; pull a driver out") },
 		{ TEXT("E"), TEXT("Talk, act, next line; join wires when hotwiring") },
 		{ TEXT("DRIVING"), nullptr }, { TEXT("W / S"), TEXT("Accelerate / brake and reverse") }, { TEXT("A / D"), TEXT("Steer") }, { TEXT("Space"), TEXT("Handbrake") },
 		{ TEXT("K"), TEXT("Headlights on / off") }, { TEXT("V"), TEXT("Cabin view") }, { TEXT("H"), TEXT("Horn") }, { TEXT("Hold R"), TEXT("Radio wheel: point at a station, let go") }, { TEXT("T"), TEXT("Radio: next song") }, { TEXT("F"), TEXT("Get out") }, { TEXT("E"), TEXT("Do business at the mechanic, paint shop, chop shop") },

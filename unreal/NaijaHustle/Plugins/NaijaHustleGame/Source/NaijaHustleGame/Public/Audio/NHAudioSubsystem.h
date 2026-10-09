@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Audio/NHAudioTypes.h"
+#include "Audio/NHWeaponSounds.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "Tickable.h"
 #include "NHAudioSubsystem.generated.h"
@@ -65,6 +66,9 @@ public:
 	UAudioComponent* Play(USoundBase* Sound, ENHSoundKind Kind, float Volume = 1.f, float Pitch = 1.f);
 	UAudioComponent* PlayAt(USoundBase* Sound, ENHSoundKind Kind, const FVector& Location, float Volume = 1.f, float Pitch = 1.f);
 	UAudioComponent* PlayAttached(USoundBase* Sound, ENHSoundKind Kind, USceneComponent* To, float Volume = 1.f, float Pitch = 1.f);
+
+	/** One of the game's own weapon sounds, at a place. A different take each time; the pitch moves a little too. */
+	UAudioComponent* PlayShot(ENHShot Shot, const FVector& Location, ENHSoundKind Kind = ENHSoundKind::Weapon, float Volume = 1.f);
 
 	USoundClass* GetClass(ENHSoundClass Class) const { return Classes[static_cast<int32>(Class)]; }
 	USoundSubmix* GetSubmix(ENHSubmix Submix) const { return Submixes[static_cast<int32>(Submix)]; }
@@ -139,6 +143,9 @@ public:
 
 private:
 	bool bBuilt = false;
+	/** The weapon sounds, worked out once the first time each is wanted: Takes of each */
+	TArray<int16> ShotTakes[static_cast<int32>(ENHShot::Count)][NHWeaponSounds::Takes];
+	int32 LastTake[static_cast<int32>(ENHShot::Count)] = {};
 	/** The level the mixes, the sliders and the space were last applied in */
 	TWeakObjectPtr<UWorld> AppliedTo;
 	void Build(UWorld* World);

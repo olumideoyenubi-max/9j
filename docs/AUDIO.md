@@ -134,6 +134,25 @@ One station so far, **Ragebait FM**: "Dont Ragebait Me" (Trench Boy) and "Bands"
 - **Not yet:** DJs, adverts, the other stations, radio in shops, radio from passing cars, a gamepad button for
   the next song or the wheel. On disk the two songs are 26 MB in the project.
 
+## Weapon sounds (brought forward from step 4)
+
+The machete, the pistol and the AK-47 can be used and heard. On foot with one in hand, the **left mouse button**
+fires or swings: one shot a press for the pistol, 600 rounds a minute while held for the AK-47, one swing a press
+for the machete.
+
+- **Every sound is original and made by arithmetic** (`NHWeaponSounds`): noise, a few sine waves and filters,
+  worked out the first time each is needed. No recording, no file, nothing taken from another game. Three takes of
+  each, never the same one twice running, and the pitch moves a little each time.
+- **Nine sounds:** pistol shot and its echo off the street, rifle shot and its echo, a bullet landing, the machete's
+  swing, the machete on something hard, a gun drawn or put away, the blade drawn or put away.
+- A shot is two sounds: the bang at the gun (Weapon kind: carries 126 m, walls muffle it) and the echo (WeaponTail
+  kind: carries 320 m, nothing muffles it). The bullet's knock is heard where the camera was pointing, up to 150 m.
+- **Checked** by `Scripts/mac.sh play -NHWeaponTest`: 3 pistol shots, a second of AK-47, 2 machete swings, recorded
+  as `docs/clips/weapons-pistol-ak47-machete.m4a`.
+- **Not yet:** damage, anybody reacting, wanted stars for shooting, ammunition and reloads, shell casings,
+  ricochets, different knocks for different surfaces, aiming, recoil, animations (the arm does not move; the
+  machete itself chops), any of it on a gamepad. These are stand-ins for recorded and designed sounds.
+
 ## Engine traps found on the way
 
 - A submix made in code with default reverb settings is silent: `FSubmixEffectReverbSettings::Gain` (the late

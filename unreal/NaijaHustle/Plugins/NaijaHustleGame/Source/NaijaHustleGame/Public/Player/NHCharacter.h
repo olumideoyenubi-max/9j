@@ -90,6 +90,10 @@ public:
 	FName Equip(FName Weapon);
 	FName Equipped() const { return Weapon; }
 	static FString WeaponName(FName Weapon);
+	/** The attack button, held or let go. Pistol: one shot a press. AK-47: fires while held. Machete: one swing a press. Nothing in the hand: nothing. */
+	void SetTrigger(bool bHeld);
+	/** Shots fired and swings made since the level began, for tests */
+	int32 Attacks = 0;
 	void ToggleTorch();
 	bool TorchOn() const;
 
@@ -143,6 +147,15 @@ private:
 	FName Weapon;
 	UPROPERTY() TObjectPtr<USceneComponent> WeaponPivot;
 	void BuildWeapon();
+	bool bTrigger = false, bTriggerFresh = false;
+	float AttackWait = 0.f;
+	/** The machete mid-swing: seconds left, and whether it has landed yet */
+	float SwingLeft = 0.f;
+	bool bSwingLanded = false;
+	UPROPERTY() TObjectPtr<class UPointLightComponent> MuzzleFlash;
+	float FlashLeft = 0.f;
+	void Attack();
+	void SwingLand();
 	UPROPERTY() TObjectPtr<class USpotLightComponent> Torch;
 	UPROPERTY() TObjectPtr<UNHOutfitComponent> Outfit;
 	bool bFrontShown = false;

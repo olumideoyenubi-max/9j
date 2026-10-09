@@ -182,6 +182,8 @@ private:
 	bool bToldLights = false;
 	/** -NHRadioTest: gets into the nearest car, turns the radio on, gets out, skips a song, recording it all to Saved/NHAudio/nh_radio_test.wav, and quits */
 	void RadioTestStep(int32 Step);
+	void WeaponTestStep(int32 Step);
+	void UiClickEnd();
 
 	void OnCycleLighting();
 	void OnInteract();

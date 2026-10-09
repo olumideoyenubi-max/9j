@@ -433,6 +433,31 @@ UAudioComponent* UNHAudioSubsystem::PlayAttached(USoundBase* Sound, ENHSoundKind
 	return Comp;
 }
 
+UAudioComponent* UNHAudioSubsystem::PlayShot(ENHShot Shot, const FVector& Location, ENHSoundKind Kind, float Volume)
+{
+	UWorld* World = GetTickableGameObjectWorld();
+	if (!bBuilt || !World)
+	{
+		return nullptr;
+	}
+	const int32 S = static_cast<int32>(Shot);
+	const int32 Take = (LastTake[S] + 1 + FMath::RandRange(0, NHWeaponSounds::Takes - 2)) % NHWeaponSounds::Takes; // never the same one twice running
+	LastTake[S] = Take;
+	if (ShotTakes[S][Take].Num() == 0)
+	{
+		ShotTakes[S][Take] = NHWeaponSounds::Make(Shot, Take);
+	}
+	UNHShotWave* Wave = UNHShotWave::Make(this, ShotTakes[S][Take]);
+	UAudioComponent* Comp = Make(Wave, Kind, World, Volume, FMath::FRandRange(0.97f, 1.03f));
+	if (Comp)
+	{
+		Comp->SetWorldLocation(Location);
+		Comp->Play();
+		Comp->StopDelayed(Wave->Length + 0.05f); // a made-up wave never says it has ended
+	}
+	return Comp;
+}
+
 int32 UNHAudioSubsystem::ActiveVoices() const
 {
 	const UWorld* World = GetTickableGameObjectWorld();

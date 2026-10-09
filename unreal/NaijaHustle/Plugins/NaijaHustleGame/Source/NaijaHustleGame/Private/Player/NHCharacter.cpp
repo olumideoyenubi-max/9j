@@ -1,6 +1,8 @@
 #include "Player/NHCharacter.h"
 
 #include "World/NHShapes.h"
+#include "Audio/NHAudioSubsystem.h"
+#include "Components/PointLightComponent.h"
 
 #include "Animation/AnimInstance.h"
 #include "Animation/AnimSequence.h"
@@ -233,9 +235,89 @@ FString ANHCharacter::WeaponName(FName InWeapon)
 
 FName ANHCharacter::Equip(FName InWeapon)
 {
+	const FName Was = Weapon;
 	Weapon = InWeapon == Weapon ? NAME_None : InWeapon;
 	BuildWeapon();
+	bTrigger = false;
+	SwingLeft = 0.f;
+	if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this); Audio && Was != Weapon)
+	{
+		Audio->PlayShot((Weapon.IsNone() ? Was : Weapon) == TEXT("machete") ? ENHShot::DrawBlade : ENHShot::Draw, GetActorLocation(), ENHSoundKind::Weapon, 0.8f);
+	}
 	return Weapon;
+}
+
+void ANHCharacter::SetTrigger(bool bHeld)
+{
+	bTriggerFresh = bHeld && !bTrigger;
+	bTrigger = bHeld;
+}
+
+void ANHCharacter::Attack()
+{
+	UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
+	const FVector Muzzle = WeaponPivot ? WeaponPivot->GetComponentLocation() + GetActorForwardVector() * 40.f : GetActorLocation();
+	++Attacks;
+	if (Weapon == TEXT("machete"))
+	{
+		AttackWait = 0.5f;
+		SwingLeft = 0.28f;
+		bSwingLanded = false;
+		if (Audio)
+		{
+			Audio->PlayShot(ENHShot::MacheteSwing, Muzzle);
+		}
+		return;
+	}
+	const bool bRifle = Weapon == TEXT("ak47");
+	AttackWait = bRifle ? AttackWait + 0.1f : 0.16f; // 600 rounds a minute; a pistol as fast as the finger
+	if (Audio)
+	{
+		Audio->PlayShot(bRifle ? ENHShot::Rifle : ENHShot::Pistol, Muzzle);
+		Audio->PlayShot(bRifle ? ENHShot::RifleTail : ENHShot::PistolTail, Muzzle, ENHSoundKind::WeaponTail, 0.7f);
+	}
+	// where the camera looks, out to 150 m: the bullet lands there with a knock. It hurts nothing yet.
+	FVector From = GetActorLocation();
+	FRotator Aim = GetActorRotation();
+	if (const AController* Who = GetController())
+	{
+		Who->GetPlayerViewPoint(From, Aim);
+	}
+	const FVector Spread = FMath::VRandCone(Aim.Vector(), FMath::DegreesToRadians(bRifle ? 1.6f : 0.8f));
+	FCollisionQueryParams Query(SCENE_QUERY_STAT(NHShot), false, this);
+	FHitResult Hit;
+	if (GetWorld()->LineTraceSingleByChannel(Hit, From, From + Spread * 15000.f, ECC_Visibility, Query) && Audio)
+	{
+		Audio->PlayShot(ENHShot::BulletHit, Hit.ImpactPoint, ENHSoundKind::Impact);
+	}
+	if (!MuzzleFlash)
+	{
+		MuzzleFlash = NewObject<UPointLightComponent>(this);
+		MuzzleFlash->SetupAttachment(GetRootComponent());
+		MuzzleFlash->SetLightColor(FLinearColor(1.f, 0.72f, 0.35f));
+		MuzzleFlash->SetAttenuationRadius(600.f);
+		MuzzleFlash->SetCastShadows(false);
+		MuzzleFlash->RegisterComponent();
+	}
+	MuzzleFlash->SetWorldLocation(Muzzle);
+	MuzzleFlash->SetIntensity(bRifle ? 9000.f : 6000.f);
+	FlashLeft = 0.05f;
+}
+
+void ANHCharacter::SwingLand()
+{
+	// half way through the swing: anything within arm's and blade's reach in front rings
+	bSwingLanded = true;
+	const FVector From = GetActorLocation() + FVector(0.f, 0.f, 30.f);
+	FCollisionQueryParams Query(SCENE_QUERY_STAT(NHSwing), false, this);
+	FHitResult Hit;
+	if (GetWorld()->SweepSingleByChannel(Hit, From, From + GetActorForwardVector() * 130.f, FQuat::Identity, ECC_Visibility, FCollisionShape::MakeSphere(25.f), Query))
+	{
+		if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this))
+		{
+			Audio->PlayShot(ENHShot::MacheteHit, Hit.ImpactPoint, ENHSoundKind::Impact);
+		}
+	}
 }
 
 void ANHCharacter::BuildWeapon()
@@ -555,10 +637,34 @@ void ANHCharacter::SetSprinting(bool bSprint)
 void ANHCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+	// while the AK-47 is firing the time owed is carried over, so its rate does not depend on the frame rate
+	AttackWait = FMath::Max(bTrigger && Weapon == TEXT("ak47") ? -0.1f : 0.f, AttackWait - DeltaSeconds);
+	if (!Weapon.IsNone() && AttackWait <= 0.f && (bTriggerFresh || (bTrigger && Weapon == TEXT("ak47"))))
+	{
+		Attack();
+	}
+	bTriggerFresh = false;
+	if (SwingLeft > 0.f)
+	{
+		SwingLeft -= DeltaSeconds;
+		if (!bSwingLanded && SwingLeft < 0.14f)
+		{
+			SwingLand();
+		}
+	}
+	if (MuzzleFlash && FlashLeft > 0.f)
+	{
+		FlashLeft -= DeltaSeconds;
+		if (FlashLeft <= 0.f)
+		{
+			MuzzleFlash->SetIntensity(0.f);
+		}
+	}
 	if (WeaponPivot)
 	{
-		// held pointing where the player faces: the machete up at an angle, the guns a little down
-		WeaponPivot->SetWorldRotation(GetActorRotation() + FRotator(Weapon == TEXT("machete") ? 35.f : -8.f, 0.f, 0.f));
+		// held pointing where the player faces: the machete up at an angle (and chopping down through a swing), the guns a little down
+		const float Chop = SwingLeft > 0.f ? -110.f * FMath::Sin(UE_PI * (1.f - SwingLeft / 0.28f)) : 0.f;
+		WeaponPivot->SetWorldRotation(GetActorRotation() + FRotator(Weapon == TEXT("machete") ? 35.f + Chop : -8.f, 0.f, 0.f));
 	}
 
 	// running without the key held stops by itself once you have stood still a moment

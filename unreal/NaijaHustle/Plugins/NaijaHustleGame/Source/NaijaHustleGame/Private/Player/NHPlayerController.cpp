@@ -64,6 +64,11 @@ void ANHPlayerController::BeginPlay()
 	}
 #endif
 
+	if (FParse::Param(FCommandLine::Get(), TEXT("NHWeaponTest")))
+	{
+		FTimerHandle Start;
+		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { WeaponTestStep(0); }), 8.f, false);
+	}
 	if (FParse::Param(FCommandLine::Get(), TEXT("NHRadioTest")))
 	{
 		FTimerHandle Start;
@@ -156,6 +161,7 @@ void ANHPlayerController::SetupInputComponent()
 	Key(EKeys::Right, &ANHPlayerController::UiRight);
 	Key(EKeys::Enter, &ANHPlayerController::UiAccept);
 	Key(EKeys::LeftMouseButton, &ANHPlayerController::UiClick);
+	Key(EKeys::LeftMouseButton, &ANHPlayerController::UiClickEnd, IE_Released);
 	Key(EKeys::RightMouseButton, &ANHPlayerController::UiRightClick);
 	Key(EKeys::MouseScrollUp, &ANHPlayerController::UiZoomIn);
 	Key(EKeys::MouseScrollDown, &ANHPlayerController::UiZoomOut);
@@ -229,7 +235,27 @@ void ANHPlayerController::UiDown() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Nav
 void ANHPlayerController::UiLeft() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Nav(-1, 0); } }
 void ANHPlayerController::UiRight() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Nav(1, 0); } }
 void ANHPlayerController::UiAccept() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Accept(); } }
-void ANHPlayerController::UiClick() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Click(false); } }
+void ANHPlayerController::UiClick()
+{
+	ANHHUD* H = ANHHUD::Get(this);
+	if (H)
+	{
+		H->Click(false);
+	}
+	// with no screen open, on foot, the left button is the attack: fire, or swing
+	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()); C && (!H || H->GetScreen() == ANHHUD::EScreen::None) && !IsPaused())
+	{
+		C->SetTrigger(true);
+	}
+}
+
+void ANHPlayerController::UiClickEnd()
+{
+	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
+	{
+		C->SetTrigger(false);
+	}
+}
 void ANHPlayerController::UiRightClick() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Click(true); } }
 void ANHPlayerController::UiZoomIn() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Zoom(1); } }
 void ANHPlayerController::UiZoomOut() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Zoom(-1); } }
@@ -522,6 +548,42 @@ void ANHPlayerController::NHRadio(const FString& What)
 		}
 		Audio->RadioNextStation(Car);
 	}
+}
+
+void ANHPlayerController::WeaponTestStep(int32 Step)
+{
+	// -NHWeaponTest: three pistol shots, a second of AK-47, two machete swings at a wall, recorded to Saved/NHAudio/nh_weapon_test.wav
+	ANHCharacter* C = Cast<ANHCharacter>(GetPawn());
+	const FString Folder = FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir() / TEXT("NHAudio"));
+	float Wait = 0.5f;
+	if (!C)
+	{
+		ConsoleCommand(TEXT("quit"));
+		return;
+	}
+	switch (Step)
+	{
+	case 0: UAudioMixerBlueprintLibrary::StartRecordingOutput(this, 60.f); C->Equip(TEXT("pistol")); Wait = 1.f; break;
+	case 1: case 3: case 5: C->SetTrigger(true); Wait = 0.1f; break;
+	case 2: case 4: case 6: C->SetTrigger(false); Wait = Step == 6 ? 1.6f : 0.6f; break;
+	case 7: UE_LOG(LogNHGame, Log, TEXT("[weapontest] pistol: %d shots"), C->Attacks); C->Attacks = 0; C->Equip(TEXT("ak47")); Wait = 1.f; break;
+	case 8: C->SetTrigger(true); Wait = 1.f; break;
+	case 9: C->SetTrigger(false); Wait = 2.2f; break;
+	case 10: UE_LOG(LogNHGame, Log, TEXT("[weapontest] AK-47 held for a second: %d shots"), C->Attacks); C->Attacks = 0; C->Equip(TEXT("machete")); Wait = 1.f; break;
+	case 11: case 13: C->SetTrigger(true); Wait = 0.1f; break;
+	case 12: case 14: C->SetTrigger(false); Wait = 1.f; break;
+	case 15:
+		UE_LOG(LogNHGame, Log, TEXT("[weapontest] machete: %d swings"), C->Attacks);
+		C->Equip(NAME_None);
+		UAudioMixerBlueprintLibrary::StopRecordingOutput(this, EAudioRecordingExportType::WavFile, TEXT("nh_weapon_test"), Folder);
+		Wait = 4.f;
+		break;
+	default:
+		ConsoleCommand(TEXT("quit"));
+		return;
+	}
+	FTimerHandle Next;
+	GetWorldTimerManager().SetTimer(Next, FTimerDelegate::CreateWeakLambda(this, [this, Step] { WeaponTestStep(Step + 1); }), Wait, false);
 }
 
 void ANHPlayerController::RadioTestStep(int32 Step)
