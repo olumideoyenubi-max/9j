@@ -175,3 +175,23 @@ Before import the glTF download was edited: bone names had Sketchfab's number su
 | Item | Source and licence | Where | Notes |
 |---|---|---|---|
 | 47 ground, wall, roof, metal and wood surfaces | Poly Haven, https://polyhaven.com, CC0 (public domain, no credit required). The exact asset for each is listed in `Scripts/fetch_surfaces_polyhaven.py`. | `Content/NaijaHustle/Surfaces/` (generated, not in the repo) | Stand-ins for Megascans surfaces. Downloaded to `~/Downloads/nh-surfaces` by the fetch script, imported by `Scripts/import_surfaces.py`. |
+
+## Home interiors and trees (Sketchfab)
+
+Downloaded on 2026-10-10 as GLB through the Sketchfab API with the owner's account, into
+`project-files/downloads/nh-interiors/` and `nh-trees/` (not in the repo). The author of each must be credited; this
+table is the credit list.
+
+| Used for | Model | Author | Licence | Faces | In the project | Source |
+|---|---|---|---|---|---|---|
+| Inside a flat | "loft (13) living room interior" | dasy444 | Sketchfab Free Standard | 22,530 | `Content/Interiors/Loft/` | https://sketchfab.com/3d-models/loft-13-living-room-interior-cfc0e5806d14415d9e9adaa08a59ddcf |
+| Inside a house | "Modular Vintage Living Room - Game Ready PBR" | Renend Studio | CC Attribution 4.0 | 105,279 (the assembled room; the loose kit pieces beside it were left out) | `Content/Interiors/Classic/` | https://sketchfab.com/3d-models/modular-vintage-living-room-game-ready-pbr-d83c3f837bae4c9aa52fafc476500386 |
+| City trees, 4 in 10 | "Coconut Tree" | sujirour | CC Attribution 4.0 | 678 | `Content/Foliage/Coconut_Palm/` | https://sketchfab.com/3d-models/coconut-tree-d141941578044b0f861ca83b36d4c411 |
+| City trees, 6 in 10 | "Tree" | Billy Jackman | CC Attribution 4.0 | 2,438 | `Content/Foliage/Shade_Tree/` | https://sketchfab.com/3d-models/tree-615fbc82493c49569dab81a7b7e535e5 |
+
+The Free Standard licence allows use inside a game but not passing the model on by itself; check its terms again
+before a commercial release. To add them on another machine: `Scripts/prep_interior_gltf.py` (rooms) or
+`Scripts/prep_tree_gltf.py tree` (trees) in Blender, then `Scripts/import_interiors.py` in the editor (for trees with
+`NH_INTERIOR_DEST=/Game/Foliage NH_INTERIOR_COLLIDE=0 NH_INTERIOR_MASKED=1`).
+`Scripts/build_estate_interiors.py` makes two rooms of this project's own in the same two styles; they are not
+imported while the downloaded ones are in use.

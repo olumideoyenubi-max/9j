@@ -21,6 +21,19 @@ struct FNHPlaceCard
 	int32 Fee = 0;
 	bool bOwned = false;
 	FVector2D Where = FVector2D::ZeroVector;
+	/** Whose home it is, of the people to play ("" if nobody's) */
+	FString Resident;
+	bool bIsHome = false;
+};
+
+/** A kept car as the phone lists it */
+struct FNHGarageCard
+{
+	int32 Serial = 0;
+	FString Name, HomeName;
+	bool bWrecked = false, bOut = false;
+	float Fuel = 1.f;
+	int64 Value = 0;
 };
 
 /**
@@ -63,7 +76,24 @@ public:
 	bool PlayAs(FName Id);
 	/** Puts the player at a place's door: NHPlace <id> */
 	bool GoTo(FName Id);
+	/** Quick travel to a place the player owns: there at once, the clock moved on by the drive it would have been */
+	bool Travel(FName Id);
 	bool IsInside() const { return Inside != INDEX_NONE; }
+	/**
+	 * Garages. A home keeps the player's cars: six at a big house or flat, two at a small one. A kept car stands
+	 * outside its home, is saved with the game, can be brought to wherever the player is by the mechanic, and can be
+	 * claimed on the insurance when it has been wrecked.
+	 */
+	void GarageCards(TArray<FNHGarageCard>& Out) const;
+	/** Keeps a car at a home (the player's home if none is said). False if there is no home or no room. */
+	bool Keep(ANHVehicle* Car, FName Home = NAME_None);
+	/** The mechanic brings a kept car to the road by the player, for a fee */
+	bool Deliver(int32 Serial);
+	/** Insurance: a wrecked kept car made whole for a premium */
+	bool Claim(int32 Serial);
+	/** Out of the garage for good, for half what it is worth */
+	bool SellCar(int32 Serial);
+	static constexpr int32 DeliveryFee = 25000;
 	/** Every place, for the phone's websites */
 	void Cards(TArray<FNHPlaceCard>& Out) const;
 	int32 PetrolPrice() const { return PetrolPerLitre; }
@@ -118,11 +148,24 @@ private:
 	bool Place(FPlace& P) const;
 	void Build(FPlace& P);
 	void BuildRoom(const FPlace& P);
+	void BuildHome(const FPlace& P, AActor* Holder, USceneComponent* Base);
+	/** The room model for a kind of home, if it has been brought in (/Game/Interiors) */
+	class UStaticMesh* HomeModel(const FPlace& P) const;
+	/** Somewhere that can be gone into: a bar or a club, and a house or a flat that is the player's own */
+	bool Enterable(const FPlace& P) const { return IsVenue(P) || (IsHome(P) && Owns(P)); }
+	FName StartHome;
 	void LeaveRoom(APawn* Pawn);
 	bool Owns(const FPlace& P) const;
 	bool IsHome(const FPlace& P) const { return P.Kind == TEXT("house") || P.Kind == TEXT("apartment"); }
 	bool IsVenue(const FPlace& P) const { return P.Kind == TEXT("bar") || P.Kind == TEXT("club") || P.Kind == TEXT("strip"); }
 	ANHVehicle* CarAt(const FPlace& P, const APawn* Pawn) const;
-	void Park(const FPlace& P, const TArray<FName>& Types);
+	int32 Slots(const FPlace& P) const { return !IsHome(P) ? 0 : P.Price >= 500000000 ? 6 : 2; }
+	int32 KeptAt(FName Home) const;
+	/** Stands the kept cars of a home outside it that are not already about */
+	void Park(const FPlace& P);
+	ANHVehicle* Standing(int32 Serial) const;
+	ANHVehicle* Make(struct FNHGarageCar& Record, const FTransform& Where);
+	bool Kerb(FTransform& Out) const;
+	float GarageLook = 0.f;
 	FVector RoomAt(const FPlace& P) const { return P.At + FVector(0.f, 0.f, -6000.f); }
 };

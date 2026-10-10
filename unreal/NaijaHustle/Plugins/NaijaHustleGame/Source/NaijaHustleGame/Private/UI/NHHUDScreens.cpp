@@ -149,6 +149,13 @@ void ANHHUD::Back()
 	}
 }
 
+void ANHHUD::OpenWardrobe()
+{
+	Open(EScreen::None);
+	Open(EScreen::Menu);
+	OpenClothes(true);
+}
+
 void ANHHUD::ToggleBag()
 {
 	if (Screen == EScreen::Bag)
@@ -819,6 +826,25 @@ void ANHHUD::DrawMapScreen(float VW, float VH)
 	{
 		DrawRect(FLinearColor(0.4f, 0.9f, 0.5f), P.X - 5.f * S, P.Y - 5.f * S, 10.f * S, 10.f * S);
 		Text(TEXT("My car"), P.X + 10.f * S, P.Y - 10.f * S, FLinearColor(0.4f, 0.9f, 0.5f), Medium, 0.9f);
+	}
+	if (const ANHEstate* Estate = ANHEstate::Get(this))
+	{
+		// homes: the player's own in gold with their names, the homes of the other people to play in white with theirs
+		const UNHHustleSubsystem* Money = UNHHustleSubsystem::Get(this);
+		TArray<FNHPlaceCard> Cards;
+		Estate->Cards(Cards);
+		for (const FNHPlaceCard& Card : Cards)
+		{
+			if ((Card.bOwned || !Card.Resident.IsEmpty()) && ToScreen(Card.Where, P))
+			{
+				const FLinearColor Colour = Card.bOwned ? FLinearColor(1.f, 0.8f, 0.1f) : FLinearColor(0.9f, 0.9f, 0.9f);
+				DrawRect(Colour, P.X - 7.f * S, P.Y - 3.f * S, 14.f * S, 11.f * S);
+				DrawRect(Colour, P.X - 4.f * S, P.Y - 7.f * S, 8.f * S, 4.f * S);
+				DrawRect(Colour, P.X - 1.5f * S, P.Y - 10.f * S, 3.f * S, 3.f * S);
+				const bool bHome = Money && Money->Home == Card.Id;
+				Text(Card.bOwned ? Card.Name + (bHome ? TEXT(" (home)") : Card.bIsHome ? TEXT(" (yours)") : TEXT(" (your business)")) : Card.Resident + TEXT("'s home"), P.X + 12.f * S, P.Y - 10.f * S, Colour, Medium, 0.9f);
+			}
+		}
 	}
 	for (const FNHPlace& Place : Data->Places)
 	{

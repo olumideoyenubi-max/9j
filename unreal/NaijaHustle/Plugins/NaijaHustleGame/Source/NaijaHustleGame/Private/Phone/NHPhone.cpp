@@ -474,7 +474,9 @@ void ANHPhone::BuildSite()
 					{
 						H->SetPin(FVector2D(Where.GetLocation()), Name);
 					}
-					ANHHUD::Toast(this, FString::Printf(TEXT("MotorHaus: your %s is at the kerb"), *Name), 1);
+					ANHEstate* Agent = ANHEstate::Get(this);
+					const bool bKept = Agent && Agent->Keep(Car); // into the garage at home, if there is a home with room
+					ANHHUD::Toast(this, FString::Printf(TEXT("MotorHaus: your %s is at the kerb%s"), *Name, bKept ? TEXT(", and on your garage's books") : TEXT("")), 1);
 				}
 			});
 			R.Badge = Name.Left(1);
@@ -649,6 +651,7 @@ void ANHPhone::Build()
 		App(TEXT("DropAm"), Ride.Stage != ERide::None ? TEXT("Ride on the way") : TEXT("Order a ride"), FLinearColor(0.85f, 0.25f, 0.2f), [this]() { Go(EPage::DropAm); });
 		App(TEXT("DropAm Driver"), Job.Stage != EJob::Offline ? TEXT("Online") : FString::Printf(TEXT("Rating %.1f"), State->DriverRating), FLinearColor(0.55f, 0.15f, 0.1f), [this]() { Go(EPage::DropAmDriver); });
 		App(TEXT("Missed calls"), State->MissedCalls.Num() ? FString::Printf(TEXT("%d"), State->MissedCalls.Num()) : TEXT("None"), FLinearColor(0.4f, 0.4f, 0.4f), [this]() { Go(EPage::Missed); });
+		App(TEXT("Keys"), TEXT("Your places: go there"), FLinearColor(0.75f, 0.6f, 0.1f), [this]() { Go(EPage::Keys); });
 		App(TEXT("Waka"), TEXT("Websites"), FLinearColor(0.05f, 0.45f, 0.95f), [this]() { Go(EPage::Web); });
 		App(TEXT("Camera"), TEXT("Take a photo"), FLinearColor(0.25f, 0.25f, 0.3f), [this]()
 		{
@@ -731,6 +734,72 @@ void ANHPhone::Build()
 	case EPage::Site:
 		BuildSite();
 		break;
+	case EPage::Keys:
+	{
+		// what the player owns, home first: choose one to be driven there at once
+		Title = TEXT("Keys");
+		ANHEstate* Estate = ANHEstate::Get(this);
+		TArray<FNHPlaceCard> Cards;
+		if (Estate)
+		{
+			Estate->Cards(Cards);
+		}
+		Cards.StableSort([Hustle](const FNHPlaceCard& A, const FNHPlaceCard& B) { return Hustle && A.Id == Hustle->Home && B.Id != Hustle->Home; });
+		int32 Mine = 0;
+		for (const FNHPlaceCard& Card : Cards)
+		{
+			if (!Card.bOwned)
+			{
+				continue;
+			}
+			++Mine;
+			const FName Id = Card.Id;
+			const bool bHome = Hustle && Hustle->Home == Card.Id;
+			FRow& R = Row(Card.Name + (bHome ? TEXT("  (home)") : TEXT("")), Card.Area + TEXT("  Go there now: your driver takes you."), [this, Estate, Id]()
+			{
+				if (Estate->Travel(Id))
+				{
+					bOpen = false;
+				}
+			});
+			R.Badge = bHome ? TEXT("H") : Card.Name.Left(1);
+			R.BadgeColor = bHome ? FLinearColor(0.1f, 0.5f, 0.2f) : FLinearColor(0.75f, 0.6f, 0.1f);
+		}
+		TArray<FNHGarageCard> Kept;
+		if (Estate)
+		{
+			Estate->GarageCards(Kept);
+		}
+		if (Kept.Num() > 0)
+		{
+			Info(TEXT("YOUR CARS   Enter: the mechanic brings it (or the insurance, if it is wrecked)   Left / Right: sell it"), FLinearColor(0.96f, 0.95f, 0.9f));
+		}
+		for (const FNHGarageCard& Car : Kept)
+		{
+			const int32 Serial = Car.Serial;
+			const bool bWrecked = Car.bWrecked;
+			FRow& R = Row(Car.Name, bWrecked ? FString::Printf(TEXT("WRECKED. Claim on the insurance: %s"), *UNHHustleSubsystem::Naira(FMath::Max<int64>(Car.Value / 50, 20000)))
+				: FString::Printf(TEXT("Kept at %s  Fuel %.0f%%  Bring it here: %s"), *Car.HomeName, Car.Fuel * 100.f, *UNHHustleSubsystem::Naira(ANHEstate::DeliveryFee)), [this, Estate, Serial, bWrecked]()
+			{
+				if (bWrecked ? Estate->Claim(Serial) : Estate->Deliver(Serial))
+				{
+					bOpen = bWrecked;
+				}
+			});
+			R.Change = [Estate, Serial](int32) { Estate->SellCar(Serial); };
+			R.Badge = Car.Name.Left(1);
+			R.BadgeColor = bWrecked ? FLinearColor(0.5f, 0.1f, 0.1f) : FLinearColor(0.2f, 0.35f, 0.6f);
+		}
+		if (Mine == 0)
+		{
+			Info(TEXT("You own nowhere yet. Property is on eko-homes.ng in Waka, and at the boards by the road."));
+		}
+		else
+		{
+			Info(TEXT("Go into a home of yours to save the game or sleep."));
+		}
+		break;
+	}
 	case EPage::Music:
 	{
 		// the radio in your pocket: any station, anywhere. Turning a car's radio on takes over from it.

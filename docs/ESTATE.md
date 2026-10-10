@@ -38,6 +38,40 @@ Every person, estate and business is made up; street and area names are real. No
   speed (five gears, four on a bike); there is no gearbox to change yourself.
 - **More in traffic:** a minivan, a work pickup and a yellow cab, on models the game already had.
 
+## Homes: going in, saving, quick travel, the map
+
+- A house or flat you own can be gone into (**E** at its board, "Go in"): one big room with a sitting area, a dining
+  table, a kitchen and a bed. **E** inside: **Save the game**, **Sleep till morning** (which also saves), travel, or go out.
+- A saved game starts at the home it was saved in. What is saved: money (pocket and bank), what you own, your home,
+  who you are playing, the day and hour, missions done. Not saved: what is in the bag, cars, health.
+- **Quick travel:** the phone's **Keys** app lists what you own; choosing one puts you at its door and moves the clock
+  on by the drive (the distance and a third, at 50 km/h). The same choices are on the menu of any place you own. It
+  is refused while you have wanted stars.
+- **The map and minimap** mark your places with a gold house (home stays on the minimap's rim when it is far away) and
+  the homes of the other people to play in white, with their names on the big map.
+- `Scripts/mac.sh city -NHEstateTest -NHHomeTest` runs these.
+
+## Garages, the mechanic, insurance, and what is inside a home
+
+After the single-player apartment mod for GTA V the owner pointed at (none of its code is used):
+
+- **Garage:** a home keeps your cars: six at a house or flat priced N500m or more, two at a smaller one. "Keep a car
+  here" on the home's menu takes the car of yours standing by the board. Kept cars stand outside their home, are
+  saved with the game, and a car bought on motorhaus.ng goes onto your home's books if there is room.
+- **Mechanic:** the phone's Keys app lists your cars; Enter has the car brought to the kerb beside you for N25,000.
+- **Insurance:** a wrecked kept car is claimed in the same list for a fiftieth of its value; it is back at home whole.
+  Left / Right on a car sells it for half its value.
+- **Inside:** a flat is a modern loft and a house a classic drawing room, both downloaded models (credits in
+  `ASSETS.md`). Inside: save, sleep, **Wardrobe** (the clothes page) and **Watch television**.
+- `Scripts/mac.sh city -NHRoomTest -NHNoSave` photographs both rooms.
+
+## Trees
+
+`ANHTrees` plants a palm or a shade tree on each of the 110,298 spots where the map had a green cone
+(`Data/lagos_trees.json`), drawn out to 460 m (`-NHTreesFar=<cm>` changes it), and hides the cones. Measured at
+1280x720 on the M1: 30 to 35 frames a second in Ikoyi, Victoria Island and Yaba, the same as without them.
+`Scripts/mac.sh city -NHTreeTest -NHNoSave` repeats that.
+
 ## The phone
 
 - The handset is drawn as a smartphone: rounded metal body, status bar with the game's time, signal and battery, the
@@ -61,7 +95,7 @@ Every person, estate and business is made up; street and area names are real. No
 - **Rooms are built in code under the door**, when you go in, and taken down when you leave: one plan a kind of
   place, furniture shuffled by the place's name. The brief asked for streamed levels on data layers; this is not that.
 - **No music** in the bars and clubs, and the people in them only stand or dance: they cannot be spoken to.
-- **Homes have no inside.** The house and the tower are shells; "Rest" is on the board outside.
+- **Every home has the same room inside**, whatever the building looks like outside, and it is built under the door like the clubs.
 - **The Lekki house does not show.** The house is only stood where the roadside is clear, and the rows of shops the
   game puts along roads near the player fill the plot after it is chosen. The chief's home is its board among the
   shops; the Eko Atlantic tower, on open ground, stands.

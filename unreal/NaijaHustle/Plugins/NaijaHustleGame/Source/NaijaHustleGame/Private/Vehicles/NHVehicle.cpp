@@ -343,12 +343,12 @@ bool ANHVehicle::AddModel(float& OutHeight)
 	return true;
 }
 
-int32 ANHVehicle::Value() const
+int32 ANHVehicle::ValueOf(FName Type)
 {
 	static const TMap<FName, int32> Worth = { { TEXT("okada"), 350000 }, { TEXT("keke"), 900000 }, { TEXT("danfo"), 2500000 }, { TEXT("sedan"), 4500000 }, { TEXT("suv"), 9000000 },
 		{ TEXT("truck"), 12000000 }, { TEXT("tfpick"), 15000000 }, { TEXT("tfbike"), 1200000 }, { TEXT("luxsedan"), 45000000 }, { TEXT("luxsuv"), 70000000 }, { TEXT("coupesuv"), 85000000 },
 		{ TEXT("royalsuv"), 250000000 }, { TEXT("supersuv"), 180000000 }, { TEXT("sports"), 120000000 }, { TEXT("luxcoupe"), 160000000 }, { TEXT("hypercar"), 900000000 } };
-	const int32* V = Worth.Find(VehicleType);
+	const int32* V = Worth.Find(Type);
 	return V ? *V : 4000000;
 }
 

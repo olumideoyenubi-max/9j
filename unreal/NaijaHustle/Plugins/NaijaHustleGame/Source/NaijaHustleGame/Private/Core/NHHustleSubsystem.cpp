@@ -203,6 +203,8 @@ void UNHHustleSubsystem::Save()
 	S->Persona = Persona;
 	S->Owned = Owned;
 	S->Home = Home;
+	S->Cars = Cars;
+	S->NextCar = NextCar;
 	UGameplayStatics::SaveGameToSlot(S, NHSave::Slot, 0);
 }
 
@@ -229,6 +231,8 @@ bool UNHHustleSubsystem::Load()
 	Persona = S->Persona;
 	Owned = S->Owned;
 	Home = S->Home;
+	Cars = S->Cars;
+	NextCar = FMath::Max(S->NextCar, 1);
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: save loaded (%s, %d jobs done)"), *Naira(Cash), Done.Num());
 	return true;
 }
@@ -243,6 +247,7 @@ void UNHHustleSubsystem::ResetProgress()
 	Bank = 0;
 	Persona = Home = NAME_None;
 	Owned.Reset();
+	Cars.Reset();
 	Done.Reset();
 	Ledger.Reset();
 	Outfit = TEXT("fit_street_basic");

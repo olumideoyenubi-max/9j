@@ -14,6 +14,19 @@ struct FNHLedgerEntry
 	UPROPERTY(SaveGame, BlueprintReadOnly, Category = "Naija") FString Why;
 };
 
+/** A car kept in the garage of a home: the player's own, brought back from wherever it was left */
+USTRUCT()
+struct FNHGarageCar
+{
+	GENERATED_BODY()
+	UPROPERTY(SaveGame) int32 Serial = 0;
+	UPROPERTY(SaveGame) FName Type;
+	UPROPERTY(SaveGame) FLinearColor Paint = FLinearColor::Black;
+	UPROPERTY(SaveGame) FName Home;
+	UPROPERTY(SaveGame) float Fuel = 1.f;
+	UPROPERTY(SaveGame) bool bWrecked = false;
+};
+
 /** What survives between sessions (same fields as the browser demo's save) */
 UCLASS()
 class NAIJAHUSTLEGAME_API UNHSaveGame : public USaveGame
@@ -33,6 +46,8 @@ public:
 	UPROPERTY(SaveGame) FName Persona;
 	UPROPERTY(SaveGame) TArray<FName> Owned;
 	UPROPERTY(SaveGame) FName Home;
+	UPROPERTY(SaveGame) TArray<FNHGarageCar> Cars;
+	UPROPERTY(SaveGame) int32 NextCar = 1;
 };
 
 /**
@@ -69,6 +84,9 @@ public:
 	/** Land, houses and businesses bought (Data/estate.json "places"), and the one that is home */
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FName> Owned;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName Home;
+	/** The cars in the garages of the homes owned (ANHEstate keeps them), and the number the next one gets */
+	UPROPERTY() TArray<FNHGarageCar> Cars;
+	int32 NextCar = 1;
 	int64 Worth() const { return static_cast<int64>(Cash) + Bank; }
 	/** Takes Amount from the pocket and then the bank, or takes nothing and says false */
 	bool Pay(int64 Amount, const FString& Why);

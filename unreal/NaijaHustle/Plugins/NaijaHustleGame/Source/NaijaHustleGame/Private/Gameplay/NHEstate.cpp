@@ -146,6 +146,7 @@ void ANHEstate::BeginPlay()
 	FString As;
 	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
 	StartAs = FParse::Value(FCommandLine::Get(), TEXT("NHPlayAs="), As) ? FName(*As) : Hustle ? Hustle->Persona : NAME_None;
+	StartHome = StartAs.IsNone() && Hustle ? Hustle->Home : NAME_None; // a saved game starts at home
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: estate: %d places, %d people to play%s"), Places.Num(), People.Num(), StartAs.IsNone() ? TEXT("") : *FString::Printf(TEXT("; starting as %s"), *StartAs.ToString()));
 }
 
@@ -416,6 +417,11 @@ void ANHEstate::BuildRoom(const FPlace& P)
 	Holder->SetRootComponent(Base);
 	Base->SetWorldLocation(RoomAt(P));
 	Base->RegisterComponent();
+	if (IsHome(P))
+	{
+		BuildHome(P, Holder, Base);
+		return;
+	}
 	FRandomStream Dice(GetTypeHash(P.Id));
 	const NHEstateLook::FKind& Kind = NHEstateLook::Of(P.Kind);
 	const bool bBar = P.Kind == TEXT("bar"), bStrip = P.Kind == TEXT("strip");
@@ -542,6 +548,181 @@ void ANHEstate::BuildRoom(const FPlace& P)
 	}
 }
 
+void ANHEstate::BuildHome(const FPlace& P, AActor* Holder, USceneComponent* Base)
+{
+	// The inside of a house or a flat: one big room 18 m by 12 with a wall of window, a sitting area round a television,
+	// a dining table, a kitchen along one end and a bed behind a half wall at the other. The same plan for every home;
+	// a flat looks out on sky, a house on its garden, and the colours come from the place's name.
+	const bool bFlat = P.Kind == TEXT("apartment");
+	if (UStaticMesh* Model = HomeModel(P))
+	{
+		// A whole room brought in from a model (Scripts/import_interiors.py): a loft for a flat, a drawing room for a
+		// house. Its origin is a clear spot on its floor, where the player comes in; lamps are hung through it here.
+		UStaticMeshComponent* Shell = NewObject<UStaticMeshComponent>(Holder);
+		Shell->SetStaticMesh(Model);
+		Shell->SetupAttachment(Base);
+		Shell->SetCanEverAffectNavigation(false);
+		Shell->RegisterComponent();
+		const FBox Box = Model->GetBoundingBox();
+		const FVector Size = Box.GetSize();
+		const int32 Across = FMath::Max(1, FMath::RoundToInt(Size.X / 450.f)), Down = FMath::Max(1, FMath::RoundToInt(Size.Y / 450.f));
+		for (int32 I = 0; I < Across; ++I)
+		{
+			for (int32 J = 0; J < Down; ++J)
+			{
+				UPointLightComponent* Light = NewObject<UPointLightComponent>(Holder);
+				Light->SetupAttachment(Base);
+				Light->SetRelativeLocation(FVector(Box.Min.X + (I + 0.5f) * Size.X / Across, Box.Min.Y + (J + 0.5f) * Size.Y / Down, Box.Min.Z + FMath::Min(Size.Z * 0.72f, 300.f)));
+				Light->SetIntensityUnits(ELightUnits::Candelas);
+				Light->SetIntensity(bFlat ? 110.f : 150.f);
+				Light->SetLightColor(FLinearColor(1.f, 0.86f, 0.68f));
+				Light->SetAttenuationRadius(900.f);
+				Light->SetCastShadows(false);
+				Light->RegisterComponent();
+			}
+		}
+		return;
+	}
+	FRandomStream Dice(GetTypeHash(P.Id));
+	const FLinearColor Accent = FLinearColor::MakeFromHSV8(static_cast<uint8>(Dice.RandRange(0, 255)), 150, 120);
+	const FNHSurface Floor(FLinearColor(0.32f, 0.2f, 0.11f), 0.35f), Wall(FLinearColor(0.82f, 0.8f, 0.76f), 0.85f), Stone(FLinearColor(0.75f, 0.75f, 0.73f), 0.2f), Dark(FLinearColor(0.03f, 0.03f, 0.035f), 0.4f);
+	const FNHSurface Fabric(Accent, 0.9f), Cream(FLinearColor(0.85f, 0.82f, 0.74f), 0.9f), Wood(FLinearColor(0.22f, 0.11f, 0.05f), 0.45f), Steel(FLinearColor(0.6f, 0.6f, 0.62f), 0.25f, 0.f, 1.f), Green(FLinearColor(0.06f, 0.22f, 0.06f), 0.9f);
+	const FNHSurface Day(bFlat ? FLinearColor(0.45f, 0.7f, 1.f) : FLinearColor(0.55f, 0.8f, 0.6f), 0.3f, 0.f, 0.f, 4.f), Screen(FLinearColor(0.2f, 0.5f, 0.9f), 0.2f, 0.f, 0.f, 3.f), Glow(FLinearColor(1.f, 0.8f, 0.5f), 0.4f, 0.f, 0.f, 6.f);
+	const auto Piece = [Holder, Base](ENHShape Shape, const FVector& Where, const FVector& Size, const FNHSurface& Surface, bool bSolid = true)
+	{
+		if (UStaticMeshComponent* Part = NHShapes::AddPiece(Holder, Base, Shape, Where, Size, Surface))
+		{
+			Part->SetCollisionEnabled(bSolid ? ECollisionEnabled::QueryAndPhysics : ECollisionEnabled::NoCollision);
+			Part->SetCanEverAffectNavigation(false);
+		}
+	};
+	const auto Lamp = [Holder, Base](const FVector& Where, const FLinearColor& Colour, float Candelas, float Reach)
+	{
+		UPointLightComponent* Light = NewObject<UPointLightComponent>(Holder);
+		Light->SetupAttachment(Base);
+		Light->SetRelativeLocation(Where);
+		Light->SetIntensityUnits(ELightUnits::Candelas);
+		Light->SetIntensity(Candelas);
+		Light->SetLightColor(Colour);
+		Light->SetAttenuationRadius(Reach);
+		Light->SetCastShadows(false);
+		Light->RegisterComponent();
+	};
+	const float L = 1800.f, W = 1200.f, H = 380.f;
+	Piece(ENHShape::Box, FVector(0.f, 0.f, -10.f), FVector(L, W, 20.f), Floor);
+	Piece(ENHShape::Box, FVector(0.f, 0.f, H + 10.f), FVector(L, W, 20.f), FNHSurface(FLinearColor(0.9f, 0.9f, 0.88f), 0.9f));
+	Piece(ENHShape::Box, FVector(0.f, W * 0.5f, H * 0.5f), FVector(L, 20.f, H), Wall);
+	for (const float X : { -L * 0.5f, L * 0.5f })
+	{
+		Piece(ENHShape::Box, FVector(X, 0.f, H * 0.5f), FVector(20.f, W, H), Wall);
+	}
+	// the far wall is window from knee to ceiling, with the day outside it
+	Piece(ENHShape::Box, FVector(0.f, -W * 0.5f, 25.f), FVector(L, 20.f, 50.f), Wall);
+	Piece(ENHShape::Box, FVector(0.f, -W * 0.5f - 6.f, H * 0.5f + 25.f), FVector(L, 6.f, H - 50.f), Day, false);
+	Piece(ENHShape::Box, FVector(0.f, -W * 0.5f + 4.f, H * 0.5f + 25.f), FVector(L, 8.f, H - 50.f), FNHSurface(FLinearColor(0.4f, 0.55f, 0.6f), 0.05f)); // the glass: it stops you
+	for (float X = -L * 0.5f; X <= L * 0.5f; X += 300.f)
+	{
+		Piece(ENHShape::Box, FVector(X, -W * 0.5f + 10.f, H * 0.5f + 25.f), FVector(8.f, 10.f, H - 50.f), Dark, false);
+	}
+	Piece(ENHShape::Box, FVector(0.f, W * 0.5f - 12.f, 120.f), FVector(130.f, 8.f, 240.f), Wood, false);                         // the front door
+	// sitting: an L of sofa on a rug, a low table, the television on the wall with a unit under it
+	Piece(ENHShape::Box, FVector(-150.f, -150.f, 1.f), FVector(520.f, 420.f, 2.f), Cream, false);
+	Piece(ENHShape::Box, FVector(-150.f, 60.f, 38.f), FVector(420.f, 110.f, 76.f), Fabric);
+	Piece(ENHShape::Box, FVector(-150.f, 105.f, 75.f), FVector(420.f, 30.f, 70.f), Fabric);
+	Piece(ENHShape::Box, FVector(-395.f, -110.f, 38.f), FVector(110.f, 260.f, 76.f), Fabric);
+	for (const float X : { -280.f, -150.f, -20.f })
+	{
+		Piece(ENHShape::Box, FVector(X, 60.f, 84.f), FVector(60.f, 60.f, 16.f), Cream, false);
+	}
+	Piece(ENHShape::Box, FVector(-150.f, -150.f, 22.f), FVector(200.f, 100.f, 44.f), Stone);
+	Piece(ENHShape::Box, FVector(-150.f, -W * 0.5f + 60.f, 30.f), FVector(360.f, 60.f, 60.f), Wood);
+	Piece(ENHShape::Box, FVector(-150.f, -W * 0.5f + 40.f, 150.f), FVector(300.f, 10.f, 170.f), Dark, false);
+	Piece(ENHShape::Box, FVector(-150.f, -W * 0.5f + 46.f, 150.f), FVector(284.f, 4.f, 156.f), Screen, false);
+	// eating: a long table and six chairs, a light hung low over it
+	Piece(ENHShape::Box, FVector(330.f, 180.f, 74.f), FVector(300.f, 120.f, 8.f), Wood);
+	for (const float X : { 200.f, 460.f })
+	{
+		Piece(ENHShape::Box, FVector(X, 180.f, 36.f), FVector(12.f, 90.f, 72.f), Dark);
+	}
+	for (int32 I = 0; I < 6; ++I)
+	{
+		Piece(ENHShape::Box, FVector(230.f + (I % 3) * 100.f, I < 3 ? 95.f : 265.f, 24.f), FVector(48.f, 48.f, 48.f), Cream);
+	}
+	Piece(ENHShape::Box, FVector(330.f, 180.f, 250.f), FVector(220.f, 12.f, 8.f), Glow, false);
+	// the kitchen along the right-hand end: units, an island, a tall fridge
+	Piece(ENHShape::Box, FVector(L * 0.5f - 45.f, -60.f, 46.f), FVector(70.f, 700.f, 92.f), FNHSurface(FLinearColor(0.1f, 0.12f, 0.14f), 0.4f));
+	Piece(ENHShape::Box, FVector(L * 0.5f - 45.f, -60.f, 95.f), FVector(76.f, 706.f, 6.f), Stone);
+	Piece(ENHShape::Box, FVector(L * 0.5f - 40.f, -60.f, 250.f), FVector(60.f, 700.f, 80.f), FNHSurface(FLinearColor(0.1f, 0.12f, 0.14f), 0.4f));
+	Piece(ENHShape::Box, FVector(L * 0.5f - 50.f, 340.f, 110.f), FVector(80.f, 90.f, 220.f), Steel);
+	Piece(ENHShape::Box, FVector(L * 0.5f - 260.f, -80.f, 46.f), FVector(110.f, 320.f, 92.f), FNHSurface(FLinearColor(0.1f, 0.12f, 0.14f), 0.4f));
+	Piece(ENHShape::Box, FVector(L * 0.5f - 260.f, -80.f, 95.f), FVector(120.f, 330.f, 6.f), Stone);
+	for (const float Y : { -170.f, -80.f, 10.f })
+	{
+		Piece(ENHShape::Cylinder, FVector(L * 0.5f - 350.f, Y, 36.f), FVector(34.f, 34.f, 72.f), Steel);
+	}
+	// sleeping, behind a half wall at the left-hand end: the bed, its tables and lamps, a wardrobe
+	Piece(ENHShape::Box, FVector(-L * 0.5f + 420.f, 120.f, 130.f), FVector(16.f, 520.f, 260.f), Wall);
+	Piece(ENHShape::Box, FVector(-L * 0.5f + 190.f, -120.f, 28.f), FVector(230.f, 200.f, 56.f), Wood);
+	Piece(ENHShape::Box, FVector(-L * 0.5f + 200.f, -120.f, 62.f), FVector(210.f, 190.f, 14.f), Cream);
+	Piece(ENHShape::Box, FVector(-L * 0.5f + 150.f, -120.f, 72.f), FVector(110.f, 192.f, 10.f), Fabric, false);
+	Piece(ENHShape::Box, FVector(-L * 0.5f + 60.f, -120.f, 80.f), FVector(16.f, 230.f, 160.f), Wood);
+	for (const float Y : { -265.f, 25.f })
+	{
+		Piece(ENHShape::Box, FVector(-L * 0.5f + 90.f, Y, 26.f), FVector(50.f, 50.f, 52.f), Wood);
+		Piece(ENHShape::Cylinder, FVector(-L * 0.5f + 90.f, Y, 72.f), FVector(22.f, 22.f, 36.f), Glow, false);
+	}
+	Piece(ENHShape::Box, FVector(-L * 0.5f + 220.f, W * 0.5f - 45.f, 125.f), FVector(380.f, 70.f, 250.f), Wood);
+	// pictures on the walls, plants in the corners
+	for (int32 I = 0; I < 3; ++I)
+	{
+		Piece(ENHShape::Box, FVector(-250.f + I * 330.f, W * 0.5f - 12.f, 200.f), FVector(150.f, 6.f, 110.f), FNHSurface(FLinearColor::MakeFromHSV8(static_cast<uint8>(Dice.RandRange(0, 255)), 170, 150), 0.7f), false);
+	}
+	for (const FVector2D& Pot : { FVector2D(-470.f, -520.f), FVector2D(560.f, -520.f), FVector2D(120.f, 540.f) })
+	{
+		Piece(ENHShape::Cylinder, FVector(Pot, 25.f), FVector(50.f, 50.f, 50.f), Stone);
+		Piece(ENHShape::Cone, FVector(Pot, 115.f), FVector(90.f, 90.f, 150.f), Green, false);
+	}
+	Lamp(FVector(-150.f, -100.f, 320.f), FLinearColor(1.f, 0.9f, 0.75f), 260.f, 1500.f);
+	Lamp(FVector(330.f, 180.f, 230.f), FLinearColor(1.f, 0.85f, 0.6f), 160.f, 900.f);
+	Lamp(FVector(L * 0.5f - 200.f, -80.f, 320.f), FLinearColor(1.f, 0.96f, 0.9f), 220.f, 1100.f);
+	Lamp(FVector(-L * 0.5f + 190.f, -120.f, 300.f), FLinearColor(1.f, 0.8f, 0.55f), 120.f, 900.f);
+	Lamp(FVector(0.f, -W * 0.5f + 120.f, 250.f), bFlat ? FLinearColor(0.6f, 0.8f, 1.f) : FLinearColor(0.7f, 1.f, 0.75f), 180.f, 1600.f);
+}
+
+UStaticMesh* ANHEstate::HomeModel(const FPlace& P) const
+{
+	const FString Path = P.Kind == TEXT("apartment") ? TEXT("/Game/Interiors/Loft/SM_Loft") : P.Kind == TEXT("house") ? TEXT("/Game/Interiors/Classic/SM_Classic") : FString();
+	return !Path.IsEmpty() && FPackageName::DoesPackageExist(Path) ? LoadObject<UStaticMesh>(nullptr, *Path) : nullptr;
+}
+
+bool ANHEstate::Travel(FName Id)
+{
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	const APlayerController* PC = GetWorld()->GetFirstPlayerController();
+	const APawn* Pawn = PC ? PC->GetPawn() : nullptr;
+	const FPlace* P = Places.FindByPredicate([Id](const FPlace& Have) { return Have.Id == Id; });
+	if (!Hustle || !Pawn || !P || !Owns(*P))
+	{
+		return false;
+	}
+	if (Hustle->Stars() > 0)
+	{
+		ANHHUD::Toast(this, TEXT("Not with Task Force on your neck. Lose them first."), 2);
+		return false;
+	}
+	const FVector From = Inside != INDEX_NONE ? Outside : Pawn->GetActorLocation();
+	if (!GoTo(Id))
+	{
+		return false;
+	}
+	// the drive it would have been: the straight distance and a third again, at 50 km/h
+	const float Minutes = FVector::Dist2D(From, P->At) / 100000.f * 1.33f / 50.f * 60.f;
+	Hustle->Minutes += Minutes;
+	Mode = EMode::None;
+	ANHHUD::Toast(this, FString::Printf(TEXT("%s, %s. %.0f minutes on the road."), *P->Name, *P->Area, Minutes), 1);
+	return true;
+}
+
 void ANHEstate::LeaveRoom(APawn* Pawn)
 {
 	if (Pawn)
@@ -594,6 +775,25 @@ void ANHEstate::Tick(float DeltaSeconds)
 		StartAs = NAME_None;
 		PlayAs(Who);
 	}
+	if (!StartHome.IsNone() && GetWorld()->GetTimeSeconds() > 3.f)
+	{
+		GoTo(StartHome);
+		StartHome = NAME_None;
+	}
+	GarageLook -= DeltaSeconds;
+	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this); Hustle && GarageLook <= 0.f)
+	{
+		// what the kept cars have been through since they were last looked at
+		GarageLook = 1.f;
+		for (FNHGarageCar& Record : Hustle->Cars)
+		{
+			if (const ANHVehicle* Car = Standing(Record.Serial))
+			{
+				Record.Fuel = Car->Fuel;
+				Record.bWrecked = Car->IsWrecked();
+			}
+		}
+	}
 	Look -= DeltaSeconds;
 	if (Look > 0.f)
 	{
@@ -620,6 +820,10 @@ void ANHEstate::Tick(float DeltaSeconds)
 		if (P.bPlaced && Far < 50000.f && !P.Built.IsValid())
 		{
 			Build(P);
+			if (IsHome(P) && Owns(P))
+			{
+				Park(P);
+			}
 		}
 		else if (Far > 70000.f && P.Built.IsValid())
 		{
@@ -646,7 +850,7 @@ FString ANHEstate::Prompt(const APawn* Pawn) const
 		return FString();
 	}
 	const FPlace& P = Places[Near];
-	return Inside != INDEX_NONE ? FString::Printf(TEXT("E  %s: the bar, or the door"), *P.Name)
+	return Inside != INDEX_NONE ? (IsHome(P) ? FString::Printf(TEXT("E  %s: save, sleep, or the door"), *P.Name) : FString::Printf(TEXT("E  %s: the bar, or the door"), *P.Name))
 		: IsVenue(P) ? FString::Printf(TEXT("E  %s"), *P.Name)
 		: P.Kind == TEXT("petrol") ? FString::Printf(TEXT("E  %s: petrol"), *P.Name)
 		: Owns(P) ? FString::Printf(TEXT("E  %s (yours)"), *P.Name) : FString::Printf(TEXT("E  %s, %s"), *P.Name, *UNHHustleSubsystem::Naira(P.Price));
@@ -697,6 +901,27 @@ void ANHEstate::Menu(FString& OutTitle, FString& OutHeading, TArray<FNHMenuLine>
 	const bool bMine = Owns(P);
 	OutTitle = P.Name.ToUpper();
 	OutHeading = FString::Printf(TEXT("%s   %s"), *P.Area.ToUpper(), *Have);
+	// the other places that are the player's, to be driven to in a blink
+	const auto Journeys = [this, &P, &OutLines]()
+	{
+		for (const FPlace& Other : Places)
+		{
+			if (Other.Id != P.Id && Owns(Other))
+			{
+				OutLines.Add({ FString::Printf(TEXT("Travel to %s"), *Other.Name), Other.Area, TEXT("Your driver takes you. The clock moves on by the drive.") });
+			}
+		}
+	};
+	if (Inside == Shown && IsHome(P))
+	{
+		OutLines.Add({ TEXT("Save the game"), FString(), TEXT("Your money, what you own, the day and the hour. You start from home next time.") });
+		OutLines.Add({ TEXT("Sleep till morning"), FString(), TEXT("Wake at seven with your health back. Saves the game.") });
+		OutLines.Add({ TEXT("Wardrobe"), FString(), TEXT("Change what you are wearing.") });
+		OutLines.Add({ TEXT("Watch television"), FString(), TEXT("Half an hour of the news.") });
+		Journeys();
+		OutLines.Add({ TEXT("Go out"), FString(), TEXT("Back to the street.") });
+		return;
+	}
 	if (Inside == Shown)
 	{
 		if (const TArray<FDrink>* Card = Menus.Find(P.Kind))
@@ -730,9 +955,15 @@ void ANHEstate::Menu(FString& OutTitle, FString& OutHeading, TArray<FNHMenuLine>
 	{
 		if (IsHome(P))
 		{
+			OutLines.Add({ TEXT("Go in"), FString(), TEXT("Home. Save the game there, sleep, or change your clothes.") });
+			const APlayerController* Who = GetWorld()->GetFirstPlayerController();
+			const ANHVehicle* Car = CarAt(P, Who ? Who->GetPawn() : nullptr);
+			OutLines.Add({ TEXT("Keep a car here"), FString::Printf(TEXT("%d of %d"), KeptAt(P.Id), Slots(P)), Car && Car->GarageSerial == 0 ? FString::Printf(TEXT("The %s by the board goes into this garage: saved, insured, and the mechanic can bring it to you."), *Car->DisplayName())
+				: TEXT("Leave a car of yours by the board first. Kept cars are saved with the game.") });
 			OutLines.Add({ TEXT("Rest till morning"), FString(), TEXT("Sleep, and wake at seven with your health back.") });
 			OutLines.Add({ Hustle && Hustle->Home == P.Id ? TEXT("This is home") : TEXT("Make this home"), FString(), TEXT("Where you start from.") });
 		}
+		Journeys();
 		OutLines.Add({ TEXT("Sell it"), UNHHustleSubsystem::Naira(P.Price * 8 / 10), TEXT("An agent takes it off you today, for four fifths of its price.") });
 	}
 	OutLines.Add({ TEXT("Leave"), FString(), FString() });
@@ -788,6 +1019,60 @@ void ANHEstate::Choose(int32 Line)
 		Mode = EMode::None;
 		LeaveRoom(Pawn);
 	}
+	else if (What.StartsWith(TEXT("Travel to ")))
+	{
+		const FString Name = What.RightChop(10);
+		if (const FPlace* To = Places.FindByPredicate([&Name, this](const FPlace& Have) { return Have.Name == Name && Owns(Have); }))
+		{
+			Travel(To->Id);
+		}
+	}
+	else if (What == TEXT("Keep a car here"))
+	{
+		ANHVehicle* Car = CarAt(P, Pawn);
+		if (!Car || Car->GarageSerial != 0)
+		{
+			ANHHUD::Toast(this, Car ? TEXT("That one is already kept") : TEXT("No car of yours by the board"), 0);
+		}
+		else if (Keep(Car, P.Id))
+		{
+			ANHHUD::Toast(this, FString::Printf(TEXT("The %s is kept at %s"), *Car->DisplayName(), *P.Name), 1);
+		}
+		else
+		{
+			ANHHUD::Toast(this, TEXT("The garage is full"), 2);
+		}
+	}
+	else if (What == TEXT("Wardrobe"))
+	{
+		Mode = EMode::None;
+		if (ANHHUD* H = ANHHUD::Get(this))
+		{
+			H->OpenWardrobe();
+		}
+	}
+	else if (What == TEXT("Watch television"))
+	{
+		static const TCHAR* News[] = { TEXT("\"...and the naira closed stronger today...\""), TEXT("\"...Task Force say the city is calm. The city disagrees...\""), TEXT("\"...fuel queues are back in Apapa...\""),
+			TEXT("\"...Third Mainland Bridge: repairs to finish 'soon'...\""), TEXT("\"...a new tower is rising in Eko Atlantic...\"") };
+		Hustle->Minutes += 30.f;
+		ANHHUD::Toast(this, News[FMath::RandRange(0, UE_ARRAY_COUNT(News) - 1)], 0);
+	}
+	else if (What == TEXT("Save the game"))
+	{
+		Hustle->Home = P.Id;
+		Hustle->Save();
+		ANHHUD::Toast(this, TEXT("Game saved. You start from here next time."), 1);
+	}
+	else if (What == TEXT("Sleep till morning") && Me)
+	{
+		const float Day = FMath::FloorToFloat(Hustle->Minutes / 1440.f) * 1440.f;
+		Hustle->Minutes = Hustle->Minutes < Day + 420.f ? Day + 420.f : Day + 1440.f + 420.f;
+		Me->Health = 100.f;
+		Hustle->Home = P.Id;
+		Hustle->Save();
+		ANHHUD::Toast(this, TEXT("Seven o'clock. Game saved."), 1);
+	}
 	else if (What == TEXT("Go in") && Me)
 	{
 		if (!Owns(P) && !Hustle->Pay(P.Fee, FString::Printf(TEXT("gate fee, %s"), *P.Name)))
@@ -798,7 +1083,8 @@ void ANHEstate::Choose(int32 Line)
 		Outside = Pawn->GetActorLocation();
 		BuildRoom(P);
 		Inside = Shown;
-		Pawn->SetActorLocation(RoomAt(P) + FVector(0.f, 480.f, 100.f), false, nullptr, ETeleportType::TeleportPhysics);
+		// by the door of a room built here; on the clear spot a brought-in room is centred on
+		Pawn->SetActorLocation(RoomAt(P) + (IsHome(P) && HomeModel(P) ? FVector(0.f, 0.f, 110.f) : FVector(0.f, 480.f, 100.f)), false, nullptr, ETeleportType::TeleportPhysics);
 		PC->SetControlRotation(FRotator(0.f, -90.f, 0.f));
 		Mode = EMode::None;
 		ANHHUD::Toast(this, FString::Printf(TEXT("%s, %s"), *P.Name, *P.Area), 0);
@@ -895,35 +1181,231 @@ void ANHEstate::Choose(int32 Line)
 	}
 }
 
-void ANHEstate::Park(const FPlace& P, const TArray<FName>& Types)
+int32 ANHEstate::KeptAt(FName Home) const
 {
-	for (ANHVehicle* Old : Garage)
+	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	int32 N = 0;
+	for (const FNHGarageCar& Car : Hustle ? Hustle->Cars : TArray<FNHGarageCar>())
 	{
-		if (Old && !Old->IsPlayerControlled())
+		N += Car.Home == Home;
+	}
+	return N;
+}
+
+ANHVehicle* ANHEstate::Standing(int32 Serial) const
+{
+	for (ANHVehicle* Car : Garage)
+	{
+		if (Car && IsValid(Car) && Car->GarageSerial == Serial)
 		{
-			Old->Destroy();
+			return Car;
 		}
 	}
-	Garage.Reset();
-	// nose to tail on the verge between the board and the road
+	return nullptr;
+}
+
+ANHVehicle* ANHEstate::Make(FNHGarageCar& Record, const FTransform& Where)
+{
+	ANHVehicle* Car = GetWorld()->SpawnActorDeferred<ANHVehicle>(ANHVehicle::StaticClass(), Where, nullptr, nullptr, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+	if (!Car)
+	{
+		return nullptr;
+	}
+	Car->VehicleType = Record.Type;
+	Car->Paint = Record.Paint;
+	UGameplayStatics::FinishSpawningActor(Car, Where);
+	Car->bOwned = Car->bPlayerOwned = true;
+	Car->Lock = ENHLock::Open;
+	Car->Fuel = Record.Fuel;
+	Car->GarageSerial = Record.Serial;
+	if (Record.bWrecked)
+	{
+		Car->Health = 0.f;
+	}
+	Garage.Add(Car);
+	return Car;
+}
+
+void ANHEstate::Park(const FPlace& P)
+{
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	if (!Hustle || !P.bPlaced)
+	{
+		return;
+	}
+	Garage.RemoveAll([](const TObjectPtr<ANHVehicle>& Car) { return !Car || !IsValid(Car); });
+	// nose to tail on the verge between the board and the road, either side of the board
 	const FRotator Facing(0.f, P.Yaw + 90.f, 0.f);
 	const FVector AlongRoad = Facing.Vector(), ToRoad = FRotator(0.f, P.Yaw, 0.f).Vector();
-	static const FLinearColor Paints[] = { FLinearColor(0.01f, 0.01f, 0.012f), FLinearColor(0.8f, 0.8f, 0.78f), FLinearColor(0.35f, 0.02f, 0.03f), FLinearColor(0.02f, 0.05f, 0.2f) };
-	for (int32 I = 0; I < Types.Num(); ++I)
+	int32 Bay = 0;
+	for (FNHGarageCar& Record : Hustle->Cars)
 	{
-		const FTransform Where(Facing, P.At + ToRoad * 380.f + AlongRoad * (500.f + 720.f * I) * (I % 2 ? -1.f : 1.f) + FVector(0.f, 0.f, 160.f));
-		ANHVehicle* Car = GetWorld()->SpawnActorDeferred<ANHVehicle>(ANHVehicle::StaticClass(), Where, nullptr, nullptr, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
-		if (!Car)
+		if (Record.Home != P.Id)
 		{
 			continue;
 		}
-		Car->VehicleType = Types[I];
-		Car->Paint = Paints[I % UE_ARRAY_COUNT(Paints)];
-		UGameplayStatics::FinishSpawningActor(Car, Where);
-		Car->bOwned = Car->bPlayerOwned = true;
-		Car->Lock = ENHLock::Open;
-		Car->Fuel = 1.f;
-		Garage.Add(Car);
+		const int32 Mine = Bay++;
+		if (!Standing(Record.Serial))
+		{
+			Make(Record, FTransform(Facing, P.At + ToRoad * 380.f + AlongRoad * (500.f + 720.f * (Mine / 2)) * (Mine % 2 ? -1.f : 1.f) + FVector(0.f, 0.f, 160.f)));
+		}
+	}
+}
+
+bool ANHEstate::Keep(ANHVehicle* Car, FName Home)
+{
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	Home = Home.IsNone() && Hustle ? Hustle->Home : Home;
+	const FPlace* P = Places.FindByPredicate([Home](const FPlace& Have) { return Have.Id == Home; });
+	if (!Hustle || !Car || Car->GarageSerial != 0 || !P || !Owns(*P) || KeptAt(Home) >= Slots(*P))
+	{
+		return false;
+	}
+	FNHGarageCar Record;
+	Record.Serial = Hustle->NextCar++;
+	Record.Type = Car->VehicleType;
+	Record.Paint = Car->Paint;
+	Record.Home = Home;
+	Record.Fuel = Car->Fuel;
+	Record.bWrecked = Car->IsWrecked();
+	Hustle->Cars.Add(Record);
+	Car->GarageSerial = Record.Serial;
+	Car->bOwned = Car->bPlayerOwned = true;
+	Car->bStolen = false;
+	Garage.AddUnique(Car);
+	Hustle->Save();
+	return true;
+}
+
+bool ANHEstate::Kerb(FTransform& Out) const
+{
+	const UNHGameData* Data = UNHGameData::Get(this);
+	const APlayerController* PC = GetWorld()->GetFirstPlayerController();
+	const APawn* Pawn = PC ? PC->GetPawn() : nullptr;
+	FNHRoadSeg Seg;
+	FVector2D OnRoad;
+	const FVector Here = Pawn ? (Inside != INDEX_NONE ? Outside : Pawn->GetActorLocation()) : FVector::ZeroVector;
+	if (!Pawn || !Data || !Data->NearestRoad(FVector2D(Here), Seg, OnRoad) || FVector2D::Distance(OnRoad, FVector2D(Here)) > 30000.f)
+	{
+		return false;
+	}
+	const FNHRoadWay& Way = Data->RoadWays[Seg.Way];
+	const FVector2D Along = (Data->RoadNodes[Way.Nodes[Seg.Index + 1]] - Data->RoadNodes[Way.Nodes[Seg.Index]]).GetSafeNormal();
+	Out = FTransform(FRotator(0.f, FMath::RadiansToDegrees(FMath::Atan2(Along.Y, Along.X)), 0.f), FVector(OnRoad + FVector2D(-Along.Y, Along.X) * (Data->HalfWidth(Way) - 160.f), Here.Z + 90.f));
+	return true;
+}
+
+bool ANHEstate::Deliver(int32 Serial)
+{
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	FNHGarageCar* Record = Hustle ? Hustle->Cars.FindByPredicate([Serial](const FNHGarageCar& Have) { return Have.Serial == Serial; }) : nullptr;
+	FTransform Where;
+	if (!Record)
+	{
+		return false;
+	}
+	if (Record->bWrecked)
+	{
+		ANHHUD::Toast(this, TEXT("Mechanic: \"Oga, that one don spoil. Claim the insurance first.\""), 2);
+		return false;
+	}
+	if (!Kerb(Where))
+	{
+		ANHHUD::Toast(this, TEXT("Mechanic: \"I no fit reach you there. Stand near road.\""), 2);
+		return false;
+	}
+	ANHVehicle* Car = Standing(Serial);
+	if (Car && Car->IsPlayerControlled())
+	{
+		ANHHUD::Toast(this, TEXT("You are driving it"), 0);
+		return false;
+	}
+	if (!Hustle->Pay(DeliveryFee, TEXT("mechanic brought the car")))
+	{
+		ANHHUD::Toast(this, TEXT("Mechanic: \"Money for fuel first.\""), 2);
+		return false;
+	}
+	if (Car)
+	{
+		Car->SetActorLocationAndRotation(Where.GetLocation(), Where.GetRotation(), false, nullptr, ETeleportType::TeleportPhysics);
+	}
+	else
+	{
+		Car = Make(*Record, Where);
+	}
+	if (Car)
+	{
+		if (ANHHUD* H = ANHHUD::Get(this))
+		{
+			H->SetPin(FVector2D(Where.GetLocation()), Car->DisplayName());
+		}
+		ANHHUD::Toast(this, FString::Printf(TEXT("Mechanic: \"Your %s dey the kerb.\""), *Car->DisplayName()), 1);
+	}
+	return Car != nullptr;
+}
+
+bool ANHEstate::Claim(int32 Serial)
+{
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	FNHGarageCar* Record = Hustle ? Hustle->Cars.FindByPredicate([Serial](const FNHGarageCar& Have) { return Have.Serial == Serial; }) : nullptr;
+	if (!Record || !Record->bWrecked)
+	{
+		return false;
+	}
+	// the premium: a fiftieth of what the car is worth
+	const int64 Premium = FMath::Max<int64>(ANHVehicle::ValueOf(Record->Type) / 50, 20000);
+	if (!Hustle->Pay(Premium, TEXT("insurance claim")))
+	{
+		ANHHUD::Toast(this, FString::Printf(TEXT("Shield Mutual: the premium is %s"), *UNHHustleSubsystem::Naira(Premium)), 2);
+		return false;
+	}
+	Record->bWrecked = false;
+	Record->Fuel = 1.f;
+	if (ANHVehicle* Car = Standing(Serial))
+	{
+		Garage.Remove(Car);
+		Car->Destroy(); // the wreck is towed; the replacement stands at home
+	}
+	Hustle->Save();
+	ANHHUD::Toast(this, TEXT("Shield Mutual: claim paid. Your car is back at home."), 1);
+	return true;
+}
+
+bool ANHEstate::SellCar(int32 Serial)
+{
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	const int32 Index = Hustle ? Hustle->Cars.IndexOfByPredicate([Serial](const FNHGarageCar& Have) { return Have.Serial == Serial; }) : INDEX_NONE;
+	if (Index == INDEX_NONE)
+	{
+		return false;
+	}
+	const int64 Price = Hustle->Cars[Index].bWrecked ? 0 : ANHVehicle::ValueOf(Hustle->Cars[Index].Type) / 2;
+	if (ANHVehicle* Car = Standing(Serial))
+	{
+		if (Car->IsPlayerControlled())
+		{
+			ANHHUD::Toast(this, TEXT("Get out of it first"), 0);
+			return false;
+		}
+		Garage.Remove(Car);
+		Car->Destroy();
+	}
+	Hustle->Cars.RemoveAt(Index);
+	Hustle->Bankroll(Price, TEXT("sold a car"));
+	Hustle->Save();
+	ANHHUD::Toast(this, FString::Printf(TEXT("Sold. %s in the bank."), *UNHHustleSubsystem::Naira(Price)), 1);
+	return true;
+}
+
+void ANHEstate::GarageCards(TArray<FNHGarageCard>& Out) const
+{
+	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	const UNHGameData* Data = UNHGameData::Get(this);
+	for (const FNHGarageCar& Record : Hustle ? Hustle->Cars : TArray<FNHGarageCar>())
+	{
+		const FNHVehicleSpec* Spec = Data ? Data->Vehicles.Find(Record.Type) : nullptr;
+		const FPlace* Home = Places.FindByPredicate([&Record](const FPlace& Have) { return Have.Id == Record.Home; });
+		Out.Add({ Record.Serial, Spec ? Spec->Name : Record.Type.ToString(), Home ? Home->Name : FString(), Record.bWrecked, Standing(Record.Serial) != nullptr, Record.Fuel, ANHVehicle::ValueOf(Record.Type) });
 	}
 }
 
@@ -983,7 +1465,22 @@ bool ANHEstate::PlayAs(FName Id)
 		{
 			Home->Built->Destroy();
 		}
-		Park(*Home, Who->Cars);
+		if (KeptAt(Home->Id) == 0)
+		{
+			// their cars, the first time: into the garage of the house
+			static const FLinearColor Paints[] = { FLinearColor(0.01f, 0.01f, 0.012f), FLinearColor(0.8f, 0.8f, 0.78f), FLinearColor(0.35f, 0.02f, 0.03f), FLinearColor(0.02f, 0.05f, 0.2f) };
+			for (int32 I = 0; I < Who->Cars.Num() && I < Slots(*Home); ++I)
+			{
+				FNHGarageCar Record;
+				Record.Serial = Hustle->NextCar++;
+				Record.Type = Who->Cars[I];
+				Record.Paint = Paints[I % UE_ARRAY_COUNT(Paints)];
+				Record.Home = Home->Id;
+				Hustle->Cars.Add(Record);
+			}
+			Hustle->Save();
+		}
+		Park(*Home);
 	}
 	ANHHUD::Toast(this, FString::Printf(TEXT("%s. %s in the bank."), *Who->Name, *UNHHustleSubsystem::Naira(Hustle->Bank)), 1);
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: estate: playing as %s at %s, bank %lld, %d cars outside"), *Who->Name, Home ? *Home->Name : TEXT("?"), Hustle->Bank, Garage.Num());
@@ -994,7 +1491,8 @@ void ANHEstate::Cards(TArray<FNHPlaceCard>& Out) const
 {
 	for (const FPlace& P : Places)
 	{
-		Out.Add({ P.Id, P.Kind, P.Name, P.Area, P.About, P.Price, P.Fee, Owns(P), P.bPlaced ? FVector2D(P.At) : P.Want });
+		const FPerson* Who = People.FindByPredicate([&P](const FPerson& Have) { return Have.Home == P.Id; });
+		Out.Add({ P.Id, P.Kind, P.Name, P.Area, P.About, P.Price, P.Fee, Owns(P), P.bPlaced ? FVector2D(P.At) : P.Want, Who ? Who->Name : FString(), IsHome(P) });
 	}
 }
 

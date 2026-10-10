@@ -204,6 +204,24 @@ void ANHHUD::DrawMinimap(float X, float Y, float Size, const FVector& Player, fl
 			DrawRect(FLinearColor(1.f, 0.2f, 0.2f), M.X - 6.f * S, M.Y - 6.f * S, 12.f * S, 12.f * S);
 		}
 	}
+	if (const ANHEstate* Estate = ANHEstate::Get(this))
+	{
+		// homes: the player's own in gold, the homes of the other people to play in white
+		const UNHHustleSubsystem* Money = UNHHustleSubsystem::Get(this);
+		TArray<FNHPlaceCard> Cards;
+		Estate->Cards(Cards);
+		for (const FNHPlaceCard& Card : Cards)
+		{
+			// (home stays on the rim of the minimap when it is off it, to steer by)
+			if (FVector2D M; (Card.bOwned || !Card.Resident.IsEmpty()) && ToMap(FVector(Card.Where, 0.f), Money && Money->Home == Card.Id, M))
+			{
+				const FLinearColor Colour = Card.bOwned ? FLinearColor(1.f, 0.8f, 0.1f) : FLinearColor(0.9f, 0.9f, 0.9f);
+				DrawRect(Colour, M.X - 5.f * S, M.Y - 2.f * S, 10.f * S, 8.f * S);   // a little house: walls and a roof
+				DrawRect(Colour, M.X - 3.f * S, M.Y - 5.f * S, 6.f * S, 3.f * S);
+				DrawRect(Colour, M.X - 1.f * S, M.Y - 7.f * S, 2.f * S, 2.f * S);
+			}
+		}
+	}
 	for (const FNHPlace& Place : Data->Places)
 	{
 		if (FVector2D M; ToMap(FVector(Place.Pos, 0.f), false, M))

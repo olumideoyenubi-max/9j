@@ -40,6 +40,8 @@ public:
 	enum class EScreen : uint8 { None, Map, Menu, Wheel, Bag, Place };
 	/** B: what you carry, as a list. It does not stop the game. */
 	void ToggleBag();
+	/** The clothes page of the pause menu, straight from a wardrobe at home */
+	void OpenWardrobe();
 	void ToggleMap();
 	void ToggleMenu();
 	/** P: the phone (ANHPhone), drawn beside the minimap; it does not stop the game */

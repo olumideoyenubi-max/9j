@@ -1,4 +1,5 @@
 #include "Player/NHPlayerController.h"
+#include "Containers/Ticker.h"
 #include "Gameplay/NHEstate.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -78,6 +79,42 @@ void ANHPlayerController::BeginPlay()
 	{
 		FTimerHandle Start;
 		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { ResponseTestStep(0); }), 8.f, false);
+	}
+	if (const bool bTrees = FParse::Param(FCommandLine::Get(), TEXT("NHTreeTest")); bTrees || FParse::Param(FCommandLine::Get(), TEXT("NHRoomTest")))
+	{
+		// -NHTreeTest -NHNoSave: three places with trees about, a picture and the frame rate at each: Saved/NHTrees/
+		// -NHRoomTest -NHNoSave: into the chief's house and the madam's flat, two pictures of each: Saved/NHRooms/
+		struct FStep { float At; const TCHAR* Do; };
+		static const FStep Steps[] = { { 10.f, TEXT("NHPlayAs chief") }, { 15.f, TEXT("NHPlaceUse 0") }, { 19.f, TEXT("shot house_1") }, { 20.f, TEXT("turn 120") }, { 22.f, TEXT("shot house_2") }, { 23.f, TEXT("turn 240") }, { 25.f, TEXT("shot house_3") },
+			{ 26.f, TEXT("NHPlayAs madam") }, { 31.f, TEXT("NHPlaceUse 0") }, { 35.f, TEXT("shot flat_1") }, { 36.f, TEXT("turn 120") }, { 38.f, TEXT("shot flat_2") }, { 39.f, TEXT("turn 240") }, { 41.f, TEXT("shot flat_3") }, { 43.f, TEXT("quit") } };
+		static const FStep TreeSteps[] = { { 10.f, TEXT("NHPlace land_ikoyi") }, { 11.f, TEXT("turn 200") }, { 19.f, TEXT("fps Ikoyi") }, { 19.5f, TEXT("shot 1_ikoyi") }, { 20.f, TEXT("turn 20") }, { 23.f, TEXT("shot 2_ikoyi") },
+			{ 24.f, TEXT("NHPlace house_vi") }, { 25.f, TEXT("turn 90") }, { 33.f, TEXT("fps Victoria Island") }, { 33.5f, TEXT("shot 3_vi") },
+			{ 34.f, TEXT("NHPlace house_yaba") }, { 35.f, TEXT("turn 300") }, { 43.f, TEXT("fps Yaba") }, { 43.5f, TEXT("shot 4_yaba") }, { 45.f, TEXT("quit") } };
+		for (const FStep& Step : bTrees ? MakeArrayView(TreeSteps) : MakeArrayView(Steps))
+		{
+			const FString Do = Step.Do;
+			FTimerHandle Handle;
+			GetWorldTimerManager().SetTimer(Handle, FTimerDelegate::CreateWeakLambda(this, [this, Do]
+			{
+				if (Do.StartsWith(TEXT("shot ")))
+				{
+					FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / (FParse::Param(FCommandLine::Get(), TEXT("NHTreeTest")) ? TEXT("NHTrees") : TEXT("NHRooms")) / (Do.RightChop(5) + TEXT(".png")), false, false);
+				}
+				else if (Do.StartsWith(TEXT("fps ")))
+				{
+					extern ENGINE_API float GAverageFPS;
+					UE_LOG(LogNHGame, Log, TEXT("[trees] %s: %.0f frames a second"), *Do.RightChop(4), GAverageFPS);
+				}
+				else if (Do.StartsWith(TEXT("turn ")))
+				{
+					SetControlRotation(FRotator(-8.f, FCString::Atof(*Do.RightChop(5)), 0.f));
+				}
+				else
+				{
+					ConsoleCommand(Do);
+				}
+			}), Step.At, false);
+		}
 	}
 	if (FParse::Param(FCommandLine::Get(), TEXT("NHPhoneTest")))
 	{
@@ -700,7 +737,36 @@ void ANHPlayerController::EstateTestStep(int32 Step)
 	switch (Step)
 	{
 	case 0: NHPlayAs(TEXT("chief")); Wait = 5.f; break;
-	case 1: Shot(TEXT("1_chief_at_home")); UE_LOG(LogNHGame, Log, TEXT("[estate] chief: %s"), *Estate->Describe()); Wait = 1.f; break;
+	case 1:
+		Shot(TEXT("1_chief_at_home"));
+		UE_LOG(LogNHGame, Log, TEXT("[estate] chief: %s"), *Estate->Describe());
+		if (FParse::Param(FCommandLine::Get(), TEXT("NHHomeTest")))
+		{
+			// -NHEstateTest -NHHomeTest: into the home, save and sleep, travel to the other home, and the map
+			FTimerHandle A, B, C, D, E;
+			GetWorldTimerManager().SetTimer(A, FTimerDelegate::CreateWeakLambda(this, [this] { NHPlaceUse(0); }), 1.f, false);                               // go in
+			GetWorldTimerManager().SetTimer(B, FTimerDelegate::CreateWeakLambda(this, [this, Shot] { Shot(TEXT("h1_inside_home")); NHPlaceUse(0); }), 4.f, false); // save
+			GetWorldTimerManager().SetTimer(C, FTimerDelegate::CreateWeakLambda(this, [this] { NHPlaceUse(1); NHPlace(TEXT("apt_vi")); }), 6.f, false);        // sleep; then to a flat for sale
+			GetWorldTimerManager().SetTimer(D, FTimerDelegate::CreateWeakLambda(this, [this] { NHPlaceUse(0); if (ANHPhone* Phone = ANHPhone::Get(this)) { Phone->DebugKeys(); } }), 9.f, false); // buy it; the Keys app
+			GetWorldTimerManager().SetTimer(E, FTimerDelegate::CreateWeakLambda(this, [this, Shot]
+			{
+				Shot(TEXT("h2_keys"));
+				ANHEstate* Now = ANHEstate::Get(this);
+				UE_LOG(LogNHGame, Log, TEXT("[estate] travel home: %s; %s"), Now && Now->Travel(TEXT("lekki_mansion")) ? TEXT("there") : TEXT("REFUSED"), Now ? *Now->Describe() : TEXT(""));
+				if (ANHPhone* Phone = ANHPhone::Get(this)) { Phone->Close(); }
+			}), 11.f, false);
+			FTimerHandle F;
+			GetWorldTimerManager().SetTimer(F, FTimerDelegate::CreateWeakLambda(this, [this, Shot]
+			{
+				// the map stops the game, and the game's timers with it: the picture is asked for now and the quit left to a real-time ticker
+				if (ANHHUD* H = Cast<ANHHUD>(GetHUD())) { H->ToggleMap(); }
+				Shot(TEXT("h3_map"));
+				FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateWeakLambda(this, [this](float) { ConsoleCommand(TEXT("quit")); return false; }), 3.f);
+			}), 14.f, false);
+			return;
+		}
+		Wait = 1.f;
+		break;
 	case 2: NHPlace(TEXT("club_lekki")); break;
 	case 3: Shot(TEXT("2_club_door")); NHPlaceUse(0); break;                 // go in
 	case 4: Shot(TEXT("3_club_inside")); NHPlaceUse(3); Wait = 1.5f; break; // champagne for the table

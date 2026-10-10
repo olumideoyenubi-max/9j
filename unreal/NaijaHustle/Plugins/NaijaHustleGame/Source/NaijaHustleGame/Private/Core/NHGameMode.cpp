@@ -8,6 +8,7 @@
 #include "Gameplay/NHCrowd.h"
 #include "Gameplay/NHGameDirector.h"
 #include "Gameplay/NHEstate.h"
+#include "World/NHTrees.h"
 #include "Gameplay/NHLaw.h"
 #include "Gameplay/NHResponse.h"
 #include "Player/NHCharacter.h"
@@ -61,6 +62,7 @@ void ANHGameMode::StartPlay()
 	GetWorld()->SpawnActor<ANHResponse>(ANHResponse::StaticClass(), FTransform::Identity); // who comes when you have wanted stars
 	GetWorld()->SpawnActor<ANHLaw>(ANHLaw::StaticClass(), FTransform::Identity); // witnesses: a crime counts only if somebody reports it
 	GetWorld()->SpawnActor<ANHEstate>(ANHEstate::StaticClass(), FTransform::Identity); // land, houses, bars and clubs, and the rich to play
+	GetWorld()->SpawnActor<ANHTrees>(ANHTrees::StaticClass(), FTransform::Identity); // real trees where the map has cones, if the project has tree models
 	ANHAudioZone::SpawnCityZones(GetWorld()); // where the city sounds like a motor park or a market
 	if (FParse::Param(FCommandLine::Get(), TEXT("NHAudioTest")))
 	{

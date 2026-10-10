@@ -88,7 +88,10 @@ public:
 	/** Somebody other than the player is at the wheel */
 	bool HasNpcDriver() const { return bNpcDriver; }
 	/** What it would fetch whole, naira */
-	int32 Value() const;
+	int32 Value() const { return ValueOf(VehicleType); }
+	static int32 ValueOf(FName Type);
+	/** Its number in the player's garage (UNHHustleSubsystem::Cars), 0 if it is not one of the kept cars */
+	int32 GarageSerial = 0;
 
 	/** Seats somebody else at the wheel: a body on a skeleton with the mannequin's bone names, as made (traffic's drivers) */
 	void SetNpcDriver(class USkeletalMesh* Mesh);
