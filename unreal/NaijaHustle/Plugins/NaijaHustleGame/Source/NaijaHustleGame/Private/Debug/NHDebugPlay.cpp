@@ -1233,6 +1233,24 @@ void UNHDebugPlay::Autoplay(bool bQuitWhenDone)
 	const int32 CashBefore = Hustle()->Cash, CredBefore = Hustle()->Cred;
 	Note(FString::Printf(TEXT("First Day on the Danfo by script. Cash before: %s, cred %d, %s"), *NHPlay::N(CashBefore), CredBefore, *Hustle()->ClockText()));
 
+	// mission 1 opens with its job card and a scene at dawn (ANHMissions): accept the one, skip the other
+	Until(TEXT("the story's opening: the job card accepted (1) and the scene skipped (F)"), [this](float)
+	{
+		ANHMissions* Story = ANHMissions::Get(PC);
+		if (!Story || (!Story->IsActive() && Steps[StepIndex].T > 6.f))
+		{
+			return true; // no story missions in this project: the first day begins the old way
+		}
+		if (Dir()->Panel.bOpen && Story->IsActive())
+		{
+			PC->Choose(0);
+		}
+		else if (Dir()->Dialogue.bOpen && Dir()->Stage == ANHGameDirector::EStage::Meet)
+		{
+			PC->OnInteract();
+		}
+		return Story->IsActive() && Story->ObjectiveType() == TEXT("firstday");
+	}, 20.f);
 	AddMeetBaba();
 	AddEnterBus();
 	for (int32 I = 0; I < Data->FirstRoute.Stops.Num(); ++I)
@@ -1323,6 +1341,24 @@ void UNHDebugPlay::SelfTest(bool bQuitWhenDone)
 	Begin(TEXT("selftest"), bQuitWhenDone);
 	using EStage = ANHGameDirector::EStage;
 	const UNHGameData* Data = UNHGameData::Get(PC);
+	// mission 1 opens with its job card and a scene at dawn (ANHMissions): accept the one, skip the other
+	Until(TEXT("the story's opening: the job card accepted (1) and the scene skipped (F)"), [this](float)
+	{
+		ANHMissions* Story = ANHMissions::Get(PC);
+		if (!Story || (!Story->IsActive() && Steps[StepIndex].T > 6.f))
+		{
+			return true; // no story missions in this project: the first day begins the old way
+		}
+		if (Dir()->Panel.bOpen && Story->IsActive())
+		{
+			PC->Choose(0);
+		}
+		else if (Dir()->Dialogue.bOpen && Dir()->Stage == ANHGameDirector::EStage::Meet)
+		{
+			PC->OnInteract();
+		}
+		return Story->IsActive() && Story->ObjectiveType() == TEXT("firstday");
+	}, 20.f);
 	AddMeetBaba();
 
 	// ---- in and out of every parked vehicle, the mission danfo last (getting into it starts the route)
@@ -1531,6 +1567,18 @@ void UNHDebugPlay::Leads(bool bQuitWhenDone)
 	const auto Shot = [](const TCHAR* Name) { FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("Screenshots/NH/phase1") / (FString(Name) + TEXT(".png")), true, false); };
 	Do(TEXT("start counting frames"), [this]() { PC->NHTime(9.5f); PC->ConsoleCommand(TEXT("startfpschart")); });
 
+	// these tests are not of the story: if mission 1 began by itself on this save, it is put away
+	Do(TEXT("no story mission running"), [this]()
+	{
+		if (ANHMissions* Story = ANHMissions::Get(PC))
+		{
+			Story->bStoryOff = true;
+			if (Story->IsActive())
+			{
+				Story->Abort(TEXT("a test of something else"));
+			}
+		}
+	});
 	// the save may be in the middle of somebody rich's life (ANHEstate): the test is of the two leads
 	Do(TEXT("back from somebody rich, if the save is playing one"), [this, L]()
 	{
@@ -1727,6 +1775,18 @@ void UNHDebugPlay::Systems(bool bQuitWhenDone)
 	};
 	const auto PanelIs = [this](const TCHAR* Starts) { return Dir()->Panel.bOpen && Dir()->Panel.Title.StartsWith(Starts); };
 
+	// these tests are not of the story: if mission 1 began by itself on this save, it is put away
+	Do(TEXT("no story mission running"), [this]()
+	{
+		if (ANHMissions* Story = ANHMissions::Get(PC))
+		{
+			Story->bStoryOff = true;
+			if (Story->IsActive())
+			{
+				Story->Abort(TEXT("a test of something else"));
+			}
+		}
+	});
 	Do(TEXT("back from somebody rich, if the save is playing one"), [this, L]() { if (L() && Hustle() && !Hustle()->Persona.IsNone()) { L()->Switch(NAME_None, true); } });
 	Until(TEXT("back as the lead"), [this, L](float) { return !L() || (!L()->IsSwitching() && Hustle()->Persona.IsNone()); }, 25.f);
 	Do(TEXT("be Tunde, on the road by the Anthony stop"), [this, L]() { if (L() && L()->Current() != TEXT("tunde")) { L()->Switch(TEXT("tunde"), true); } });
@@ -2086,6 +2146,291 @@ void UNHDebugPlay::Systems(bool bQuitWhenDone)
 		Check(TEXT("a tenth of the cash is gone, and the stars with it"), Gone == FMath::Max(2000, Seen->Cash / 10) && Hustle()->Stars() == 0, NHPlay::N(Gone));
 		Check(TEXT("the player is standing beside the clinic's bus stop"), Stop && FVector2D::Distance(FVector2D(PC->GetPawn()->GetActorLocation()), Stop->Wait) < 700.f
 			&& Cast<ANHCharacter>(PC->GetPawn())->GetCharacterMovement()->MovementMode == MOVE_Walking, Data->ClinicName);
+	});
+	Until(TEXT("the last picture is saved"), [this](float Dt) { Pace += Dt; return Pace > 1.f; }, 5.f);
+	Do(TEXT("stop counting frames"), [this]() { PC->ConsoleCommand(TEXT("stopfpschart")); });
+}
+
+// ---------------------------------------------------------------------------------------------------- the story, act by act
+void UNHDebugPlay::PlayStoryFrame(float DeltaSeconds, int32& Failures, float& Cheat)
+{
+	ANHMissions* Story = ANHMissions::Get(PC);
+	ANHLeads* Leads = ANHLeads::Get(PC);
+	ANHGameDirector* D = Dir();
+	if (!Story || !Story->IsActive() || !D)
+	{
+		return;
+	}
+	// ---- cards and scenes
+	if (D->Panel.bOpen)
+	{
+		const FString& T = D->Panel.Title;
+		if (T.StartsWith(TEXT("JOB FAILED")))
+		{
+			++Failures;
+			Note(FString::Printf(TEXT("failed (%s); back to the checkpoint"), D->Panel.Lines.Num() ? *D->Panel.Lines[0] : TEXT("?")));
+			PC->Choose(0);
+		}
+		else if (T == TEXT("NIGHT SHIFT"))
+		{
+			PC->Choose(1); // to the takings
+		}
+		else
+		{
+			PC->Choose(0); // the job card, a choice's first option, the plan's first answers, the reward and takings cards
+		}
+		return;
+	}
+	if (D->Dialogue.bOpen)
+	{
+		PC->OnInteract(); // F: the scene skipped
+		return;
+	}
+	if ((Leads && Leads->IsSwitching()) || Story->ObjectiveIndex() < 0)
+	{
+		return;
+	}
+	const FString Type = Story->ObjectiveType();
+	APawn* Pawn = PC->GetPawn();
+	ANHVehicle* Car = Cast<ANHVehicle>(Pawn);
+	ANHCharacter* C = Cast<ANHCharacter>(Pawn);
+	FVector To;
+	const bool bPlace = Story->Where(To);
+	Cheat += DeltaSeconds;
+	// the script does the travelling the short way: put 25 m before a far place, it walks or drives the rest
+	const auto Approach = [this, Pawn, Car](const FVector& Target)
+	{
+		const FVector Here = Pawn->GetActorLocation();
+		if (FVector::Dist2D(Here, Target) > 3500.f)
+		{
+			FVector2D From = FVector2D(Here - Target).GetSafeNormal() * 2500.f + FVector2D(Target);
+			if (Car)
+			{
+				From = ApproachStart(Car, FVector2D(Target), FVector2D(Target - Here).GetSafeNormal(), 2500.f);
+				PlaceVehicle(Car, From, (FVector2D(Target) - From).GetSafeNormal());
+			}
+			else
+			{
+				PC->NHAt(From.X, From.Y);
+			}
+		}
+	};
+	const auto WalkTo = [C](const FVector& Target)
+	{
+		if (C)
+		{
+			C->SetSprinting(false);
+			const FVector Way = (Target - C->GetActorLocation()) * FVector(1.f, 1.f, 0.f);
+			if (Way.Size() > 40.f)
+			{
+				C->AddMovementInput(Way.GetSafeNormal(), 1.f);
+			}
+		}
+	};
+
+	if (Type == TEXT("goto") && bPlace)
+	{
+		// a place that will not be reached says so once, with where the script is
+		if (Cheat > 40.f && Cheat - DeltaSeconds <= 40.f)
+		{
+			Note(FString::Printf(TEXT("still not at the place after 40 s: %s at %.0f, %.0f, %.0f; the place is %.0f, %.0f, %.0f, %.0f m off"), Car ? TEXT("driving") : TEXT("on foot"),
+				Pawn->GetActorLocation().X, Pawn->GetActorLocation().Y, Pawn->GetActorLocation().Z, To.X, To.Y, To.Z, FVector::Dist2D(Pawn->GetActorLocation(), To) / 100.f));
+		}
+		Approach(To);
+		if (Car && Cheat > 6.f && FMath::Abs(Car->Speed) < 40.f)
+		{
+			// up against a kerb or a stall with the place a few steps off: out, and the rest on foot
+			Car->SetDriveInput(0.f, 0.f, 0.f);
+			PC->LeaveVehicle(true);
+		}
+		else if (Car)
+		{
+			Drive(Car, FVector2D(To), 700.f, true);
+		}
+		else
+		{
+			WalkTo(To);
+		}
+	}
+	else if (Type == TEXT("sneak") && bPlace && C)
+	{
+		// the script is no sneak: it is put at the far side of the guards. That they stand their beats is all it sees of them.
+		if (Cheat > 1.5f && FVector::Dist2D(C->GetActorLocation(), To) > 200.f)
+		{
+			PC->NHAt(To.X, To.Y);
+		}
+	}
+	else if (Type == TEXT("collect") || Type == TEXT("disguise"))
+	{
+		for (AActor* Thing : Story->Things())
+		{
+			if (IsValid(Thing))
+			{
+				WalkTo(Thing->GetActorLocation());
+				break;
+			}
+		}
+	}
+	else if (Type == TEXT("enter"))
+	{
+		if (ANHVehicle* Wanted = Story->MissionVehicle(); Wanted && C && Cheat > 0.5f)
+		{
+			PC->EnterVehicle(Wanted);
+		}
+	}
+	else if (Type == TEXT("unlock"))
+	{
+		if (Leads && Leads->Hud().bTarget)
+		{
+			Leads->UseAbility();
+		}
+	}
+	else if (Type == TEXT("takedown") || Type == TEXT("defeat"))
+	{
+		for (ANHGuard* G : Story->Guards())
+		{
+			if (IsValid(G) && !G->IsDown() && C && Cheat > 1.f)
+			{
+				// put behind him, E; if he had already turned, he is put down the blunt way
+				C->SetActorLocation(G->GetActorLocation() - G->GetActorForwardVector() * 140.f);
+				if (!Story->OnAction(C))
+				{
+					G->Hurt(1000.f, C->GetActorLocation());
+				}
+				Cheat = 0.f;
+				break;
+			}
+		}
+	}
+	else if (Type == TEXT("loseheat"))
+	{
+		if (Cheat > 3.f)
+		{
+			Hustle()->ClearHeat(); // the script does not outrun anybody: the stars are taken off after three seconds
+		}
+	}
+}
+
+void UNHDebugPlay::Act1(bool bQuitWhenDone)
+{
+	Begin(TEXT("act1"), bQuitWhenDone);
+	struct FSeen
+	{
+		int32 Cash = 0, Integrity = 0, Failures = 0;
+		float Cheat = 0.f;
+		int32 LastIndex = -2;
+	};
+	const TSharedRef<FSeen> Seen = MakeShared<FSeen>();
+	const auto M = [this]() { return ANHMissions::Get(PC); };
+	const auto L = [this]() { return ANHLeads::Get(PC); };
+	const auto Shot = [](const FString& Name) { FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("Screenshots/NH/phase3") / (Name + TEXT(".png")), true, false); };
+
+	Do(TEXT("back from somebody rich, if the save is playing one"), [this, L]() { if (L() && Hustle() && !Hustle()->Persona.IsNone()) { L()->Switch(NAME_None, true); } });
+	Until(TEXT("back as the lead"), [this, L](float) { return !L() || (!L()->IsSwitching() && Hustle()->Persona.IsNone()); }, 25.f);
+	Do(TEXT("with the first day already worked"), [this, M]()
+	{
+		if (!Check(TEXT("the level has missions 1 to 4"), M() && M()->Known().Contains(TEXT("m01")) && M()->Known().Contains(TEXT("m02")) && M()->Known().Contains(TEXT("m03")) && M()->Known().Contains(TEXT("m04"))))
+		{
+			End(TEXT("nothing to test"));
+			return;
+		}
+		if (M()->IsActive())
+		{
+			M()->Abort(TEXT("the act test begins after mission 1"));
+		}
+		// mission 1 has its own test (-NHRun=autoplay): here it is taken as done
+		Hustle()->Done.AddUnique(TEXT("lag_01"));
+		Hustle()->Done.AddUnique(TEXT("m01"));
+		Dir()->Dialogue = ANHGameDirector::FDialogue();
+		Dir()->Stage = ANHGameDirector::EStage::Done;
+		Hustle()->ClearHeat();
+		PC->NHTime(9.5f);
+		PC->ConsoleCommand(TEXT("startfpschart"));
+		Check(TEXT("with mission 1 done, mission 2 is the next job"), M()->Next() == TEXT("m02"), M()->Next().ToString());
+	});
+
+	struct FWant { const TCHAR* Id; const TCHAR* Title; int32 Number; int32 Pay; int32 Extra; const TCHAR* Flags[3]; int32 IntegrityBy; const TCHAR* EndsAs; };
+	static const FWant Wants[] = {
+		{ TEXT("m02"), TEXT("Phone Pass"), 2, 1000000, -350000, { TEXT("found_shina_bag"), TEXT("debt_paid"), TEXT("love_started") }, 0, TEXT("tunde") },
+		{ TEXT("m03"), TEXT("The Yahoo Office"), 3, 1135000, 0, { TEXT("shina_protection_seen"), TEXT("returned_scam_money"), nullptr }, 15, TEXT("amaka") },
+		{ TEXT("m04"), TEXT("Hot Bus Robbery"), 4, 1288225, 180000, { TEXT("robbed_levy_bus"), nullptr, nullptr }, 0, TEXT("tunde") } };
+	for (const FWant& W : Wants)
+	{
+		const FWant* Want = &W;
+		Do(FString::Printf(TEXT("%s: to its marker"), W.Id), [this, M, Seen, Want]()
+		{
+			FVector At;
+			FString Title;
+			if (ANHVehicle* In = Cast<ANHVehicle>(PC->GetPawn()))
+			{
+				In->SetDriveInput(0.f, 0.f, 0.f);
+				PC->LeaveVehicle(true);
+			}
+			if (Check(FString::Printf(TEXT("%s is the next job, and its start is a place on this map"), Want->Id), M()->Next() == Want->Id && M()->NextStart(At, Title) && Title == Want->Title, Title))
+			{
+				PC->NHAt(At.X + 150.f, At.Y);
+				Note(FString::Printf(TEXT("its marker is at %.0f, %.0f"), At.X, At.Y));
+			}
+			Seen->Cash = Hustle()->Cash;
+			Seen->Integrity = Hustle()->Integrity;
+			Seen->Failures = 0;
+			Seen->LastIndex = -2;
+		});
+		Until(TEXT("the card names the next job"), [this, Want](float) { return Dir()->ObjTitle == TEXT("NEXT JOB") && Dir()->ObjText == Want->Title; }, 6.f);
+		Do(FString::Printf(TEXT("%s: start it at the marker (E)"), W.Id), [this, M, Want]()
+		{
+			Check(TEXT("at the marker the prompt offers the job"), PC->Prompt().Contains(Want->Title), PC->Prompt());
+			PC->OnAction();
+			Check(TEXT("E there brings up its job card"), M()->IsActive() && M()->ActiveId() == Want->Id && Dir()->Panel.bOpen && Dir()->Panel.Title == FString(Want->Title).ToUpper(), Dir()->Panel.Title);
+		});
+		Until(FString::Printf(TEXT("%s played through"), W.Id), [this, M, Seen, Want, Shot](float Dt)
+		{
+			if (!M()->IsActive())
+			{
+				return true;
+			}
+			if (M()->ObjectiveIndex() != Seen->LastIndex)
+			{
+				Seen->LastIndex = M()->ObjectiveIndex();
+				Seen->Cheat = 0.f;
+				if (Seen->LastIndex == 1 || Seen->LastIndex == 3)
+				{
+					Shot(FString::Printf(TEXT("%s_objective_%d"), Want->Id, Seen->LastIndex + 1));
+				}
+			}
+			PlayStoryFrame(Dt, Seen->Failures, Seen->Cheat);
+			return Seen->Failures > 3;
+		}, 240.f);
+		Do(FString::Printf(TEXT("%s: after it"), W.Id), [this, M, L, Seen, Want]()
+		{
+			const ANHMissions::FResult& R = M()->Last;
+			FString Each;
+			for (const float T : R.ObjectiveSeconds)
+			{
+				Each += FString::Printf(TEXT("%.0f "), T);
+			}
+			Note(FString::Printf(TEXT("%s by script: %.0f s (objectives %s), %d failures on the way"), Want->Id, R.Seconds, *Each, Seen->Failures));
+			Check(TEXT("it is done, in five objectives or fewer, each timed"), R.bDone && R.Id == Want->Id && Hustle()->IsDone(Want->Id) && R.ObjectiveSeconds.Num() >= 1 && R.ObjectiveSeconds.Num() <= 5, FString::Printf(TEXT("%d objectives"), R.ObjectiveSeconds.Num()));
+			Check(TEXT("the night shift paid what the story's table says for it"), R.Pay == Want->Pay, NHPlay::N(R.Pay));
+			Check(TEXT("the money in hand is the pay and what the mission itself gave or took"), Hustle()->Cash == Seen->Cash + Want->Pay + Want->Extra, FString::Printf(TEXT("%s -> %s"), *NHPlay::N(Seen->Cash), *NHPlay::N(Hustle()->Cash)));
+			bool bFlags = true;
+			FString Set;
+			for (const TCHAR* Flag : Want->Flags)
+			{
+				if (Flag)
+				{
+					bFlags &= Hustle()->Flag(Flag) != 0;
+					Set += FString(Flag) + TEXT(" ");
+				}
+			}
+			Check(TEXT("its flags are set"), bFlags, Set);
+			Check(TEXT("Integrity moved by what was chosen"), Hustle()->Integrity == FMath::Clamp(Seen->Integrity + Want->IntegrityBy, -100, 100), FString::Printf(TEXT("%d -> %d"), Seen->Integrity, Hustle()->Integrity));
+			Check(TEXT("the player ends it as the lead the story leaves them with, free to switch"), L()->Current() == Want->EndsAs && !L()->IsLocked(), L()->Current().ToString());
+		});
+	}
+	Do(TEXT("after act 1"), [this, M]()
+	{
+		Check(TEXT("there is no next job until act 2 is made"), M()->Next().IsNone(), M()->Next().ToString());
 	});
 	Until(TEXT("the last picture is saved"), [this](float Dt) { Pace += Dt; return Pace > 1.f; }, 5.f);
 	Do(TEXT("stop counting frames"), [this]() { PC->ConsoleCommand(TEXT("stopfpschart")); });

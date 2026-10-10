@@ -15,6 +15,7 @@ class ANHHackPoint;
  * A mission is a job card, up to five objectives, a reward card and the night shift's pay:
  *   {
  *     "id": "m02", "number": 2, "title": "Phone Pass", "playAs": "amaka", "brief": "...", "standout": "...",
+ *     "start": { "place": "balo_market" } (where its marker is), "rewardCard": true,
  *     "lockSwitch": true, "rewards": { "cred": 25, "goldKobo": 5, "integrity": 0 },
  *     "objectives": [ { "type": "goto", "text": "...", "sub": "...", "at": { "stop": "marketsq", "along": 600, "back": 300 },
  *                       "radius": 500, "checkpoint": true, "say": { "speaker": "Amaka", "lines": ["..."] },
@@ -23,7 +24,9 @@ class ANHHackPoint;
  *
  * Objective types (what the player does; "at" is where, see Place()):
  *   talk      the "say" lines; done when they have been heard or skipped
- *   goto      get within "radius" of "at", on foot or driving
+ *   firstday  mission 1 only: the conductor's first shift, which ANHGameDirector has always run (meet Baba Driver, the
+ *             danfo, the route, bring it back); done when that is
+ *   goto      get within "radius" of "at", on foot or driving; "limit": seconds allowed, after which it fails
  *   enter     get into a vehicle of "vehicle" type; "spawn": true stands one at "at"
  *   wait      hold out for "seconds"
  *   choose    a choice card: "title", "lines", "options": [ { "text", "flags", "integrity", "cash", "toast" } ]
@@ -44,9 +47,15 @@ class ANHHackPoint;
  * The clock: the mission's length and each objective's are logged at the end, with a warning past eight minutes
  * (twelve for missions 8 and 12), for the length rule in docs/BUILD_PROMPT.md.
  *
+ * Any objective: "stars" puts that many wanted stars on as it begins; "sayDone": { "speaker", "lines" } is a scene played
+ * when it has been done, before the next one.
+ * "onDone" (and a choice's option): "flags", "integrity", "cash", "toast", and "switchTo": a lead the game then puts the
+ * player in the shoes of, brought to "at" first if that is given; the next objective begins when the switch is done.
+ *
  * Night shift: after the last objective Tunde drives the danfo a short way (or the player skips to the takings) and
  * is paid: nothing extra for mission 1, whose own shift pays; from mission 2,
- * round(economy.missionPayBase x (1 + economy.missionPayGrowth)^(number - 2)) from naija_rules.json.
+ * round(economy.missionPayBase x (1 + economy.missionPayGrowth)^(number - 2)) from naija_rules.json. "nightShiftCard":
+ * { "lines": [...], "flags": {...} } gives the takings card its own words and sets flags (the bag under the seat).
  */
 UCLASS()
 class NAIJAHUSTLEGAME_API ANHMissions : public AActor
@@ -58,6 +67,13 @@ public:
 	static ANHMissions* Get(const UObject* WorldContext);
 	virtual void Tick(float DeltaSeconds) override;
 
+	/**
+	 * The story mission waiting to be started: the first of m01..m12 not done yet (none while one runs, or when all are
+	 * done). Out of a mission its card and marker show where it starts ("start": a place); E there starts it.
+	 * Mission 1 starts by itself on a new game.
+	 */
+	FName Next() const;
+	bool NextStart(FVector& OutAt, FString& OutTitle) const;
 	/** The missions the Data folder has, in order */
 	const TArray<FName>& Known() const { return Ids; }
 	/** Begins one: the job card, then its first objective. False if there is no such mission or one is already running. */
@@ -109,6 +125,8 @@ public:
 	ANHVehicle* MissionVehicle() const;
 	/** Where the objective wants the player, if it has a place */
 	bool Where(FVector& Out) const;
+	/** Tests of other things: the story neither starts mission 1 by itself nor shows the next job (also -NHNoStory on the command line) */
+	bool bStoryOff = false;
 	/** Gold Kobo earned by playing, kept here until the store (Phase 7) takes it over */
 	int32 GoldKoboEarned = 0;
 
@@ -117,6 +135,11 @@ protected:
 
 private:
 	TArray<FName> Ids;
+	/** Data/story_places.json: the story's places by id */
+	TMap<FString, TSharedPtr<FJsonObject>> StoryPlaces;
+	float OfferWait = 3.f;
+	bool bOfferedFirst = false;
+	void Offer(float DeltaSeconds);
 	bool LoadFile(FName MissionId, TSharedPtr<FJsonObject>& Out) const;
 	void LoadRules();
 
@@ -151,7 +174,7 @@ private:
 	void Clear();
 	const TSharedPtr<FJsonObject>& Obj() const { return Objectives[Index]; }
 	FString Type;
-	bool bHasPlace = false, bChose = false, bSaid = false;
+	bool bHasPlace = false, bChose = false, bSaid = false, bDoneSaid = false;
 	FVector PlaceAt = FVector::ZeroVector;
 	float Radius = 400.f, Seconds = 0.f;
 	int32 PlanStep = 0, Left = 0;
@@ -176,7 +199,7 @@ private:
 	void PayNightShift(bool bDrove);
 
 	// ---- places
-	/** {"stop": id, "along": cm, "back": cm} beside a bus stop; {"xy": [x, y]}; {"player": [ahead, right]} from where the player stood when the objective began; {"lead": id} where that lead is */
+	/** {"place": id} one of the story's places (Data/story_places.json), with "along" and "back" where it is a bus stop; {"stop": id, "along": cm, "back": cm} beside a bus stop; {"xy": [x, y]}; {"player": [ahead, right]} from where the player stood when the objective began; {"lead": id} where that lead is */
 	bool Place(const TSharedPtr<FJsonObject>& At, FVector& Out) const;
 	FVector Anchor = FVector::ZeroVector;
 	float AnchorYaw = 0.f;

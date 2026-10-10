@@ -248,6 +248,8 @@ private:
 	/** The grid city's and the real city's places, kept so UseRealCity can swap them */
 	TMap<FName, FNHBusStop> GridStops, RealStops;
 	TArray<FNHParkBay> GridBays, RealBays;
+	/** The first day's route in each city: the real one is short enough to drive in the mission's few minutes (lagos_real.json "firstRoute") */
+	FNHRoute GridFirstRoute, RealFirstRoute;
 	FVector2D GridPark = FVector2D::ZeroVector, GridHome = FVector2D::ZeroVector, RealPark = FVector2D::ZeroVector, RealHome = FVector2D::ZeroVector;
 	TArray<TPair<FString, FVector2D>> RealDistricts;
 	/** Road segments by 200 m cell */

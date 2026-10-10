@@ -1,0 +1,144 @@
+{
+ "id": "m03",
+ "number": 3,
+ "act": 1,
+ "title": "The Yahoo Office",
+ "playAs": "amaka",
+ "start": {
+  "place": "lekka_strip"
+ },
+ "brief": "A scam crew on Lekka Strip has been emptying market women's accounts. The Task Force raids them tonight. Get in first and take the laptops.",
+ "standout": "In and out of the crew's office before the door comes off its hinges.",
+ "lockSwitch": true,
+ "rewards": {
+  "cred": 25,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "sneak",
+   "text": "Get to the office door unseen",
+   "sub": "Crouch (X). Behind a lookout, E takes him down.",
+   "at": {
+    "place": "lekka_strip",
+    "along": 3200,
+    "back": 0
+   },
+   "radius": 300,
+   "failOnAlert": true,
+   "checkpoint": true,
+   "say": {
+    "speaker": "Lekka Strip, night",
+    "lines": [
+     "Amaka: Third floor. Two lookouts wey think say dem be security.",
+     "Amaka: Iya Tobi's name dey their list. Mama's own money."
+    ]
+   },
+   "guards": [
+    {
+     "at": {
+      "place": "lekka_strip",
+      "along": 1300,
+      "back": 250
+     },
+     "look": {
+      "place": "lekka_strip",
+      "along": 1300,
+      "back": 3000
+     },
+     "sight": 1400
+    },
+    {
+     "at": {
+      "place": "lekka_strip",
+      "along": 2300,
+      "back": 100
+     },
+     "beat": [
+      {
+       "place": "lekka_strip",
+       "along": 2300,
+       "back": 100
+      },
+      {
+       "place": "lekka_strip",
+       "along": 2300,
+       "back": 700
+      }
+     ],
+     "sight": 1400
+    }
+   ]
+  },
+  {
+   "type": "unlock",
+   "text": "Kill the office camera",
+   "sub": "Z when the marker is on it",
+   "at": {
+    "place": "lekka_strip",
+    "along": 3900,
+    "back": 0
+   },
+   "kind": "camera"
+  },
+  {
+   "type": "collect",
+   "text": "Take the laptops",
+   "sub": "Three of them",
+   "at": {
+    "place": "lekka_strip",
+    "along": 4400,
+    "back": 0
+   },
+   "count": 3,
+   "checkpoint": true
+  },
+  {
+   "type": "goto",
+   "text": "Get out before the raid",
+   "sub": "Back the way you came",
+   "at": {
+    "place": "lekka_strip",
+    "along": 1500,
+    "back": 0
+   },
+   "radius": 350,
+   "limit": 75,
+   "late": "The Task Force kicked the door in with you still inside.",
+   "onDone": {
+    "flags": {
+     "shina_protection_seen": 1
+    },
+    "toast": "The laptops show the crew pays Shina 'protection'."
+   }
+  },
+  {
+   "type": "choose",
+   "text": "The victims' money",
+   "title": "THE VICTIMS' MONEY",
+   "lines": [
+    "The crew's accounts hold what they took from the market women.",
+    "Tunde can send it back to them, or you can keep a cut for the trouble."
+   ],
+   "options": [
+    {
+     "text": "Send it all back to the victims",
+     "integrity": 15,
+     "flags": {
+      "returned_scam_money": 1
+     },
+     "toast": "Iya Tobi's alert just came in."
+    },
+    {
+     "text": "Keep a 30% cut",
+     "integrity": -15,
+     "cash": 450000,
+     "flags": {
+      "kept_scam_cut": 1
+     }
+    }
+   ]
+  }
+ ]
+}

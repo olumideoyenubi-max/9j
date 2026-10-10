@@ -283,6 +283,7 @@ bool UNHGameData::LoadRules(const FString& Path)
 	if (Root->TryGetObjectField(TEXT("firstRoute"), O))
 	{
 		FirstRoute = Route(*O);
+		GridFirstRoute = FirstRoute;
 	}
 	PaxNames = Strings(Root, TEXT("paxNames"));
 	Calls = Strings(Root, TEXT("calls"));
@@ -488,6 +489,31 @@ bool UNHGameData::LoadRealCity(const FString& Path)
 		const TArray<TSharedPtr<FJsonValue>>* P = nullptr;
 		return O->TryGetArrayField(Key, P) && P->Num() >= 2 ? FVector2D((*P)[0]->AsNumber(), (*P)[1]->AsNumber()) : FVector2D::ZeroVector;
 	};
+	// the first day's route here, if the file gives one: the same fares and rules as the small city's, other stops
+	if (const TSharedPtr<FJsonObject>* First = nullptr; Root->TryGetObjectField(TEXT("firstRoute"), First))
+	{
+		RealFirstRoute = GridFirstRoute;
+		RealFirstRoute.Stops.Reset();
+		RealFirstRoute.Labels.Reset();
+		TArray<FString> Ids;
+		(*First)->TryGetStringArrayField(TEXT("stops"), Ids);
+		for (const FString& StopId : Ids)
+		{
+			RealFirstRoute.Stops.Add(FName(*StopId));
+		}
+		FString RouteName;
+		if ((*First)->TryGetStringField(TEXT("name"), RouteName))
+		{
+			RealFirstRoute.Name = RouteName;
+		}
+		if (const TSharedPtr<FJsonObject>* Label = nullptr; (*First)->TryGetObjectField(TEXT("label"), Label))
+		{
+			for (const TPair<FString, TSharedPtr<FJsonValue>>& L : (*Label)->Values)
+			{
+				RealFirstRoute.Labels.Add(FName(*L.Key), L.Value->AsString());
+			}
+		}
+	}
 	if (Root->TryGetArrayField(TEXT("busStops"), Arr))
 	{
 		for (const TSharedPtr<FJsonValue>& V : *Arr)
@@ -552,6 +578,10 @@ bool UNHGameData::UseRealCity(bool bReal)
 	ParkBays = bRealCity ? RealBays : GridBays;
 	Park = bRealCity ? RealPark : GridPark;
 	Home = bRealCity ? RealHome : GridHome;
+	if (GridFirstRoute.Stops.Num() > 0)
+	{
+		FirstRoute = bRealCity && RealFirstRoute.Stops.Num() > 0 ? RealFirstRoute : GridFirstRoute;
+	}
 	return bRealCity == bReal;
 }
 

@@ -362,7 +362,7 @@ void ANHGameDirector::Tick(float DeltaSeconds)
 
 	UpdateShift(DeltaSeconds);
 	// a story mission in hand (ANHMissions) has the job card; the first day's own steps wait for it
-	if (const ANHMissions* Story = ANHMissions::Get(this); !Story || !Story->IsActive())
+	if (const ANHMissions* Story = ANHMissions::Get(this); !Story || !Story->IsActive() || Story->ObjectiveType() == TEXT("firstday"))
 	{
 		UpdateFirstDay(DeltaSeconds);
 	}
@@ -460,7 +460,14 @@ void ANHGameDirector::UpdateFirstDay(float DeltaSeconds)
 	if (Stage == EStage::Done || Stage == EStage::Failed)
 	{
 		bSlowClock = false;
-		if (!Shift.bOn)
+		// the story's next job has the card when there is one (ANHMissions writes it, with its marker)
+		const ANHMissions* Story = ANHMissions::Get(this);
+		const bool bNextJob = Stage == EStage::Done && Story && !Story->Next().IsNone() && Story->Next() != TEXT("m01");
+		if (!Shift.bOn && bNextJob)
+		{
+			// left to the story
+		}
+		else if (!Shift.bOn)
 		{
 			ObjTitle = Stage == EStage::Done ? TEXT("FREE ROAM") : D->FirstDayTitle.ToUpper();
 			ObjText = Stage == EStage::Done ? TEXT("Hustle: take a danfo from Oshodi Motor Park") : TEXT("Talk to Baba Driver to try again");

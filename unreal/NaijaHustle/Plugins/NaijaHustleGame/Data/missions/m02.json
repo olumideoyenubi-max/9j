@@ -1,0 +1,150 @@
+{
+ "id": "m02",
+ "number": 2,
+ "act": 1,
+ "title": "Phone Pass",
+ "playAs": "amaka",
+ "start": {
+  "place": "balo_market"
+ },
+ "brief": "The Task Force is raiding Balo Market. Get Amaka's stock out before they reach her stall, then get out yourself.",
+ "standout": "On foot through the raid, then out of the market on the back of Tunde's okada.",
+ "lockSwitch": true,
+ "rewards": {
+  "cred": 25,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "nightShiftCard": {
+  "lines": [
+   "Second night on Baba Driver's danfo.",
+   "Under the back seat: a bag. One million naira. Shina's levy money.",
+   "Mama's N350,000 debt is paid tonight, with Shina's own cash."
+  ],
+  "flags": {
+   "found_shina_bag": 1,
+   "debt_paid": 1
+  },
+  "cash": -350000
+ },
+ "objectives": [
+  {
+   "type": "collect",
+   "text": "Pack the phones off the stall",
+   "sub": "Walk into them",
+   "at": {
+    "place": "balo_market",
+    "along": 400,
+    "back": 0
+   },
+   "count": 3,
+   "checkpoint": true,
+   "say": {
+    "speaker": "Balo Market",
+    "lines": [
+     "Trader: Task Force! Task Force don enter market o!",
+     "Amaka: Not my screens. Not today.",
+     "Amaka: Tunde, if you dey near Balo, come now. Bring that okada."
+    ]
+   }
+  },
+  {
+   "type": "sneak",
+   "text": "Get out through the back of the market",
+   "sub": "Crouch (X) to stay small. They chase what they see.",
+   "at": {
+    "place": "balo_market",
+    "along": 3600,
+    "back": 0
+   },
+   "radius": 320,
+   "guards": [
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 1500,
+      "back": 200
+     },
+     "beat": [
+      {
+       "place": "balo_market",
+       "along": 1500,
+       "back": 200
+      },
+      {
+       "place": "balo_market",
+       "along": 2100,
+       "back": 200
+      }
+     ],
+     "sight": 1500
+    },
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 2800,
+      "back": 100
+     },
+     "look": {
+      "place": "balo_market",
+      "along": 6000,
+      "back": 100
+     },
+     "sight": 1500
+    }
+   ],
+   "onDone": {
+    "switchTo": "tunde",
+    "at": {
+     "place": "balo_market",
+     "along": 3900,
+     "back": 150
+    },
+    "toast": "Tunde don show with the okada!"
+   }
+  },
+  {
+   "type": "enter",
+   "text": "Get on the okada",
+   "sub": "F to get on",
+   "vehicle": "okada",
+   "spawn": true,
+   "at": {
+    "place": "balo_market",
+    "along": 4300,
+    "back": -650
+   },
+   "checkpoint": true
+  },
+  {
+   "type": "loseheat",
+   "text": "Outrun the Task Force",
+   "sub": "Ride. Stay out of their sight until the stars go.",
+   "stars": 2
+  },
+  {
+   "type": "goto",
+   "text": "Back to the stall's roof",
+   "sub": "When the market is quiet again",
+   "at": {
+    "place": "balo_market"
+   },
+   "radius": 600,
+   "sayDone": {
+    "speaker": "The roof over Amaka's stall",
+    "lines": [
+     "Amaka: You came.",
+     "Tunde: You called.",
+     "Amaka: I always knew you'd be somebody, Tunde. Even when you no know.",
+     "Tunde: Conductor. That's the somebody.",
+     "Amaka: For now."
+    ]
+   },
+   "onDone": {
+    "flags": {
+     "love_started": 1
+    }
+   }
+  }
+ ]
+}

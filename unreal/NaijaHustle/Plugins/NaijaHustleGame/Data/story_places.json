@@ -1,0 +1,61 @@
+{
+ "format": "naija-hustle-story-places",
+ "version": 1,
+ "note": "Where the story's places (docs/STORY.md) are on the map. The story's names are fictional; the city is the real one. 'stop' is a bus stop both levels have; 'district' a district of the real city (the nearest road to its middle is used), with 'smallStop' standing in for it in the small level; 'park' the motor park.",
+ "places": {
+  "oshoja_junction": {
+   "name": "Oshoja Junction",
+   "real": "Oshodi",
+   "stop": "oshoja"
+  },
+  "oshoja_park": {
+   "name": "Oshoja Motor Park",
+   "real": "Oshodi Motor Park",
+   "park": true
+  },
+  "balo_market": {
+   "name": "Balo Market",
+   "real": "Tejuosho Market, Yaba",
+   "stop": "marketsq"
+  },
+  "lekka_strip": {
+   "name": "Lekka Strip",
+   "real": "Lekki Phase I",
+   "district": "Lekki Phase I",
+   "smallStop": "ebute"
+  },
+  "eko_crest": {
+   "name": "Eko Crest",
+   "real": "Eko Atlantic",
+   "district": "Eko Atlantic",
+   "smallStop": "eko"
+  },
+  "crestline_bank": {
+   "name": "Crestline Bank",
+   "real": "CMS, Lagos Island",
+   "stop": "eko"
+  },
+  "stilt_town": {
+   "name": "Stilt Town Waters",
+   "real": "Makoko",
+   "district": "Makoko",
+   "smallStop": "lagoon"
+  },
+  "third_lagoon_bridge": {
+   "name": "Third Lagoon Bridge",
+   "real": "Third Mainland Bridge, the Iyana Oworo end",
+   "stop": "bridge"
+  },
+  "old_stadium": {
+   "name": "the old stadium",
+   "real": "Surulere",
+   "district": "Surulere",
+   "smallStop": "church"
+  },
+  "expressway": {
+   "name": "the expressway",
+   "real": "the expressway at Anthony",
+   "stop": "second"
+  }
+ }
+}

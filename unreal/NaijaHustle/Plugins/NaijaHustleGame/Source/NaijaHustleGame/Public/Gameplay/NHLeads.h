@@ -93,6 +93,8 @@ public:
 	/** A mission holds the player to the lead they are */
 	void SetLocked(bool bOn, const FString& Why = FString()) { bLocked = bOn; LockWhy = Why; }
 	bool IsLocked() const { return bLocked; }
+	/** The story puts one of the cast somewhere (a mission bringing Tunde to the market before the switch to him) */
+	void PlaceLead(FName Id, const FVector& At, float Yaw);
 	/** Where one of the cast was left in this level, or the place they start from */
 	FVector SpotOf(FName Id) const;
 	bool WasPlaced(FName Id) const;

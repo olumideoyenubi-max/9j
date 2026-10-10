@@ -348,6 +348,23 @@ FVector ANHLeads::SpotOf(FName Id) const
 	return M ? HomeOf(*M) : FVector::ZeroVector;
 }
 
+void ANHLeads::PlaceLead(FName Id, const FVector& At, float Yaw)
+{
+	if (FNHLeadSpot* S = Spot(Id, true))
+	{
+		S->At = At;
+		S->Yaw = Yaw;
+		S->bPlaced = true;
+		// the body standing where they were before goes; the next look round stands one at the new place
+		if (ANHCharacter* Body = StandIn(Id))
+		{
+			Body->Destroy();
+		}
+		StandIns.Remove(Id);
+		StandInWait = 0.f;
+	}
+}
+
 bool ANHLeads::WasPlaced(FName Id) const
 {
 	const FNHLeadSpot* S = Spot(Id, false);

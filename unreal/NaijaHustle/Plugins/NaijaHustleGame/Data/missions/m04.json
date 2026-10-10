@@ -1,0 +1,102 @@
+{
+ "id": "m04",
+ "number": 4,
+ "act": 1,
+ "title": "Hot Bus Robbery",
+ "playAs": "tunde",
+ "start": {
+  "place": "expressway"
+ },
+ "brief": "Shina's levy danfo does its round on the expressway with the week's collections on board. Take the bus, lose the Red Cowries, hide it.",
+ "standout": "A hijacked danfo flat out down the expressway.",
+ "lockSwitch": true,
+ "rewards": {
+  "cred": 30,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "takedown",
+   "text": "Take the levy bus's guard down",
+   "sub": "From behind, E",
+   "checkpoint": true,
+   "say": {
+    "speaker": "The expressway",
+    "lines": [
+     "Tunde: Shina's collection bus. One guard, one driver wey dey chop gala.",
+     "Tunde: Papa's danfo paid that levy for ten years."
+    ]
+   },
+   "guards": [
+    {
+     "at": {
+      "place": "expressway",
+      "along": 1100,
+      "back": 100
+     },
+     "look": {
+      "place": "expressway",
+      "along": 4000,
+      "back": 100
+     },
+     "sight": 1300
+    }
+   ]
+  },
+  {
+   "type": "enter",
+   "text": "Take the levy danfo",
+   "sub": "F to get in",
+   "vehicle": "danfo",
+   "spawn": true,
+   "at": {
+    "place": "expressway",
+    "along": 1500,
+    "back": -650
+   },
+   "checkpoint": true
+  },
+  {
+   "type": "goto",
+   "text": "Outrun the Red Cowries",
+   "sub": "Down the expressway before their bikes box you in",
+   "at": {
+    "stop": "lagoon"
+   },
+   "radius": 900,
+   "limit": 210,
+   "stars": 2,
+   "late": "The Red Cowries' bikes boxed the bus in."
+  },
+  {
+   "type": "loseheat",
+   "text": "Lose whoever is still behind you",
+   "sub": "Stay out of sight",
+   "checkpoint": true
+  },
+  {
+   "type": "goto",
+   "text": "Hide the bus",
+   "sub": "Under the bridge, off the road",
+   "at": {
+    "stop": "bridge",
+    "back": 250
+   },
+   "radius": 800,
+   "sayDone": {
+    "speaker": "Tunde",
+    "lines": [
+     "Tunde: ...four, five, six bundles.",
+     "Tunde: First real money wey I ever hold. And e be Shina own."
+    ]
+   },
+   "onDone": {
+    "cash": 180000,
+    "flags": {
+     "robbed_levy_bus": 1
+    }
+   }
+  }
+ ]
+}

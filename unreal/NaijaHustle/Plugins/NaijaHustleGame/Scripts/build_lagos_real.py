@@ -42,7 +42,9 @@ QUERIES = {
 STOPS = [("oshoja", "Oshodi", 6.55725, 3.35141, 400), ("iya", "Charity", 6.5535, 3.3400, 0), ("second", "Anthony", 6.55897, 3.36696, 0),
          ("lagoon", "Gbagada", 6.5567, 3.3860, 0), ("bridge", "Iyana Oworo", 6.5456, 3.4010, 500), ("eko", "CMS", 6.4495, 3.38978, 0),
          ("marketrd", "Fadeyi", 6.52492, 3.36769, 0), ("balogate", "Yaba", 6.51147, 3.3700, 600), ("marketsq", "Tejuosho Market", 6.5075, 3.3668, 0),
-         ("ebute", "Olosha", 6.5300, 3.3530, 0), ("church", "Idi-Oro", 6.5219, 3.3564, 0)]
+         ("ebute", "Olosha", 6.5300, 3.3530, 0), ("church", "Idi-Oro", 6.5219, 3.3564, 0),
+         # between Oshodi and Charity, for the first day's short route in the real city (lagos_real.json "firstRoute", added by hand)
+         ("bolade", "Bolade", 6.55531, 3.34527, 0)]
 
 
 # Places the car trade needs, in the Ladipo spare-parts area of Mushin (invented businesses at roughly real spots):

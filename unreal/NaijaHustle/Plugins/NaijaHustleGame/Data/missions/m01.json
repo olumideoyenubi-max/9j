@@ -1,0 +1,43 @@
+{
+ "id": "m01",
+ "number": 1,
+ "title": "First Day on the Danfo",
+ "playAs": "tunde",
+ "act": 1,
+ "brief": "Dawn at Oshoja. Shina Garage's boys came for the levy again. Baba Driver has work for whoever can count change.",
+ "standout": "Your first shift as a conductor: three stops, fares, change, and the agbero.",
+ "lockSwitch": true,
+ "nightShift": false,
+ "start": {
+  "place": "oshoja_park"
+ },
+ "rewards": {
+  "cred": 0,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "talk",
+   "text": "Dawn at Iya Tobi's door",
+   "sub": "E for the next line, F to skip",
+   "say": {
+    "speaker": "Oshoja, dawn",
+    "lines": [
+     "Shina's boy: Mama, the levy na three hundred and fifty. Your husband's own.",
+     "Iya Tobi: Femi don die. Wetin you wan make I sell again?",
+     "Shina's boy: Shina say Friday. After Friday we no go knock.",
+     "Iya Tobi: Tunde... no follow them talk. Go find Baba Driver for the park.",
+     "Tunde: I go find the money, Mama. I swear."
+    ]
+   }
+  },
+  {
+   "type": "firstday",
+   "text": "Work Baba Driver's danfo",
+   "sub": "Meet him at the motor park",
+   "checkpoint": true
+  }
+ ],
+ "rewardCard": false
+}

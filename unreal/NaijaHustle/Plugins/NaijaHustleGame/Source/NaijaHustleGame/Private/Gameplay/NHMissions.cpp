@@ -11,7 +11,9 @@
 #include "Gameplay/NHLeads.h"
 #include "HAL/FileManager.h"
 #include "Kismet/GameplayStatics.h"
+#include "Misc/CommandLine.h"
 #include "Misc/FileHelper.h"
+#include "Misc/Parse.h"
 #include "Misc/Paths.h"
 #include "NaijaHustleGame.h"
 #include "Player/NHCharacter.h"
@@ -118,6 +120,22 @@ void ANHMissions::BeginPlay()
 		Ids.Add(FName(*FPaths::GetBaseFilename(File)));
 	}
 	LoadRules();
+	FString PlacesText;
+	TSharedPtr<FJsonObject> PlacesRoot;
+	if (FFileHelper::LoadFileToString(PlacesText, *(UNHGameData::DataDir() / TEXT("story_places.json"))) && FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(PlacesText), PlacesRoot) && PlacesRoot)
+	{
+		if (const TSharedPtr<FJsonObject> All = Sub(PlacesRoot, TEXT("places")))
+		{
+			for (const TPair<FString, TSharedPtr<FJsonValue>>& P : All->Values)
+			{
+				const TSharedPtr<FJsonObject>* J = nullptr;
+				if (P.Value->TryGetObject(J))
+				{
+					StoryPlaces.Add(P.Key, *J);
+				}
+			}
+		}
+	}
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: missions: %d in Data/missions; the night shift pays %.0f from mission 2, %.1f%% more each mission after"), Ids.Num(), PayBase, PayGrowth * 100.f);
 }
 
@@ -176,8 +194,49 @@ bool ANHMissions::Place(const TSharedPtr<FJsonObject>& At, FVector& Out) const
 	const UNHGameData* Data = UNHGameData::Get(this);
 	FVector2D P = FVector2D(Anchor);
 	const TArray<TSharedPtr<FJsonValue>>* Pair = nullptr;
-	FString StopId, LeadId;
-	if (At->TryGetStringField(TEXT("stop"), StopId))
+	FString StopId, LeadId, PlaceId;
+	// one of the story's places: a bus stop, the motor park, or a district of the real city (a stop stands in for it in the small one)
+	if (At->TryGetStringField(TEXT("place"), PlaceId))
+	{
+		const TSharedPtr<FJsonObject>* Story = StoryPlaces.Find(PlaceId);
+		if (!Story || !Data)
+		{
+			UE_LOG(LogNHGame, Warning, TEXT("NAIJA HUSTLE: missions: %s: no story place '%s'"), *Id.ToString(), *PlaceId);
+			return false;
+		}
+		FVector2D Centre;
+		const float AlongBy = static_cast<float>(Num(At, TEXT("along"))), BackBy = static_cast<float>(Num(At, TEXT("back")));
+		if (Flag(*Story, TEXT("park")))
+		{
+			P = Data->Park + FVector2D(AlongBy, BackBy);
+			StopId.Reset();
+		}
+		else if (const FString District = Str(*Story, TEXT("district")); Data->bRealCity && !District.IsEmpty() && Data->DistrictCentre(District, Centre))
+		{
+			// the roadside nearest the district's middle, measured as a bus stop is: along the road, and back from its edge
+			FNHRoadSeg Seg;
+			FVector2D OnRoad = Centre, Along(1.f, 0.f);
+			float Half = 500.f;
+			if (Data->NearestRoad(Centre, Seg, OnRoad) && Data->RoadWays.IsValidIndex(Seg.Way) && Data->RoadWays[Seg.Way].Nodes.IsValidIndex(Seg.Index + 1))
+			{
+				const FNHRoadWay& Way = Data->RoadWays[Seg.Way];
+				Along = (Data->RoadNodes[Way.Nodes[Seg.Index + 1]] - Data->RoadNodes[Way.Nodes[Seg.Index]]).GetSafeNormal();
+				Half = Data->HalfWidth(Way);
+			}
+			const FVector2D Right(-Along.Y, Along.X);
+			P = OnRoad + Right * (Half + 250.f + BackBy) + Along * AlongBy;
+			StopId.Reset();
+		}
+		else
+		{
+			StopId = Str(*Story, TEXT("stop"), Str(*Story, TEXT("smallStop")));
+		}
+		if (StopId.IsEmpty() && !Flag(*Story, TEXT("park")) && !(Data->bRealCity && !Str(*Story, TEXT("district")).IsEmpty()))
+		{
+			return false;
+		}
+	}
+	if (!StopId.IsEmpty() || (PlaceId.IsEmpty() && At->TryGetStringField(TEXT("stop"), StopId)))
 	{
 		const FNHBusStop* Stop = Data ? Data->Stops.Find(FName(*StopId)) : nullptr;
 		if (!Stop)
@@ -188,6 +247,10 @@ bool ANHMissions::Place(const TSharedPtr<FJsonObject>& At, FVector& Out) const
 		// along the kerb (the way the buses go) and back from it (onto the pavement and beyond)
 		const FVector2D Back = (Stop->Wait - Stop->Kerb).GetSafeNormal(), Along(-Back.Y, Back.X);
 		P = Stop->Wait + Along * static_cast<float>(Num(At, TEXT("along"))) + Back * static_cast<float>(Num(At, TEXT("back")));
+	}
+	else if (!PlaceId.IsEmpty())
+	{
+		// already placed above
 	}
 	else if (At->TryGetArrayField(TEXT("xy"), Pair) && Pair->Num() >= 2)
 	{
@@ -208,7 +271,21 @@ bool ANHMissions::Place(const TSharedPtr<FJsonObject>& At, FVector& Out) const
 		return false;
 	}
 	FHitResult Hit;
-	const bool bGround = GetWorld()->LineTraceSingleByObjectType(Hit, FVector(P.X, P.Y, 30000.f), FVector(P.X, P.Y, -3000.f), FCollisionObjectQueryParams(ECC_WorldStatic));
+	bool bGround = GetWorld()->LineTraceSingleByObjectType(Hit, FVector(P.X, P.Y, 30000.f), FVector(P.X, P.Y, -3000.f), FCollisionObjectQueryParams(ECC_WorldStatic));
+	// A place measured back from a bus stop can come down on a roof (the trace is from above). Then it is brought in to
+	// the line the passengers wait on, which is pavement: somewhere the player can walk to.
+	if (const FNHBusStop* Stop = Data && !StopId.IsEmpty() ? Data->Stops.Find(FName(*StopId)) : nullptr)
+	{
+		const FVector2D Back = (Stop->Wait - Stop->Kerb).GetSafeNormal(), Along(-Back.Y, Back.X);
+		const FVector2D OnLine = Stop->Wait + Along * static_cast<float>(Num(At, TEXT("along")));
+		FHitResult Line;
+		if (GetWorld()->LineTraceSingleByObjectType(Line, FVector(Stop->Wait.X, Stop->Wait.Y, 30000.f), FVector(Stop->Wait.X, Stop->Wait.Y, -3000.f), FCollisionObjectQueryParams(ECC_WorldStatic))
+			&& bGround && Hit.ImpactPoint.Z > Line.ImpactPoint.Z + 200.f)
+		{
+			P = OnLine;
+			bGround = GetWorld()->LineTraceSingleByObjectType(Hit, FVector(P.X, P.Y, 30000.f), FVector(P.X, P.Y, -3000.f), FCollisionObjectQueryParams(ECC_WorldStatic));
+		}
+	}
 	Out = FVector(P.X, P.Y, bGround ? Hit.ImpactPoint.Z : Anchor.Z - 92.f);
 	return true;
 }
@@ -351,6 +428,7 @@ void ANHMissions::Begin(int32 NewIndex)
 	bObjectiveReady = false;
 	bChose = false;
 	bSaid = true;
+	bDoneSaid = false;
 	PlanStep = 0;
 	Left = 0;
 	NoiseWait = 0.f;
@@ -525,10 +603,7 @@ void ANHMissions::Arm()
 	}
 	else if (Type == TEXT("loseheat"))
 	{
-		if (const float Stars = static_cast<float>(Num(Obj(), TEXT("stars"))); Hustle && Stars > 0.f)
-		{
-			Hustle->AddHeat(Stars);
-		}
+		// its stars are put on below, like any objective's
 	}
 	else if (Type == TEXT("collect") || Type == TEXT("disguise"))
 	{
@@ -563,6 +638,10 @@ void ANHMissions::Arm()
 	{
 		SpawnGuards();
 	}
+	if (const float Stars = static_cast<float>(Num(Obj(), TEXT("stars"))); Hustle && Stars > 0.f)
+	{
+		Hustle->AddHeat(Stars); // somebody is after the player from the moment this begins
+	}
 	bObjectiveReady = true;
 }
 
@@ -591,8 +670,18 @@ bool ANHMissions::Done(float DeltaSeconds)
 	{
 		return bSaid;
 	}
+	if (Type == TEXT("firstday"))
+	{
+		// the director runs the shift; it is over when the first day is in the book and its last card has been closed
+		return Hustle->IsDone(TEXT("lag_01")) && !Dir()->IsBusy();
+	}
 	if (Type == TEXT("goto"))
 	{
+		if (const float Limit = static_cast<float>(Num(Obj(), TEXT("limit"))); Limit > 0.f && ObjectiveT > Limit)
+		{
+			Fail(Str(Obj(), TEXT("late"), TEXT("Too slow.")));
+			return false;
+		}
 		return bHasPlace && FVector::Dist2D(Here, PlaceAt) < Radius;
 	}
 	if (Type == TEXT("enter"))
@@ -693,6 +782,19 @@ void ANHMissions::Apply(const TSharedPtr<FJsonObject>& Effects)
 	{
 		ANHHUD::Toast(this, Toast, 1);
 	}
+	// over to the other lead, brought to the scene first if the mission says where
+	if (const FString To = Str(Effects, TEXT("switchTo")); !To.IsEmpty())
+	{
+		if (ANHLeads* Leads = ANHLeads::Get(this))
+		{
+			FVector At;
+			if (Place(Sub(Effects, TEXT("at")), At))
+			{
+				Leads->PlaceLead(FName(*To), At, AnchorYaw);
+			}
+			Leads->Switch(FName(*To), true);
+		}
+	}
 }
 
 void ANHMissions::End()
@@ -700,7 +802,11 @@ void ANHMissions::End()
 	Times.Add(ObjectiveT);
 	Apply(Sub(Obj(), TEXT("onDone")));
 	Clear();
-	if (Index + 1 < Objectives.Num())
+	if (const ANHLeads* Leads = ANHLeads::Get(this); Leads && Leads->IsSwitching() && Index + 1 < Objectives.Num())
+	{
+		bObjectiveReady = false; // the next objective begins once the player is in the other lead's shoes (Tick)
+	}
+	else if (Index + 1 < Objectives.Num())
 	{
 		Begin(Index + 1);
 	}
@@ -759,6 +865,7 @@ void ANHMissions::RestartFromCheckpoint()
 	Clear();
 	++RestartCount;
 	bFailed = false;
+	Times.SetNum(FMath::Min(Times.Num(), Checkpoint.Index)); // the objectives done again are timed again
 	if (ANHGameDirector* D = Dir())
 	{
 		D->Panel = ANHGameDirector::FPanel();
@@ -789,6 +896,18 @@ void ANHMissions::RestartFromCheckpoint()
 
 bool ANHMissions::OnAction(APawn* Pawn)
 {
+	// out of a mission: E at the next job's marker starts it
+	if (!bActive && Pawn)
+	{
+		FVector At;
+		FString NextTitle;
+		const ANHGameDirector* D = Dir();
+		if (D && !D->IsBusy() && D->Stage == ANHGameDirector::EStage::Done && Next() != TEXT("m01") && NextStart(At, NextTitle) && FVector::Dist2D(Pawn->GetActorLocation(), At) < 400.f)
+		{
+			return Start(Next());
+		}
+		return false;
+	}
 	if (!bActive || !Pawn || !bObjectiveReady || bFailed)
 	{
 		return false;
@@ -807,6 +926,16 @@ bool ANHMissions::OnAction(APawn* Pawn)
 
 FString ANHMissions::ActionPrompt(const APawn* Pawn) const
 {
+	if (!bActive && Pawn)
+	{
+		FVector At;
+		FString NextTitle;
+		const ANHGameDirector* D = Dir();
+		if (D && D->Stage == ANHGameDirector::EStage::Done && Next() != TEXT("m01") && NextStart(At, NextTitle) && FVector::Dist2D(Pawn->GetActorLocation(), At) < 400.f)
+		{
+			return FString::Printf(TEXT("E  Start: %s"), *NextTitle);
+		}
+	}
 	if (bActive && Pawn && bObjectiveReady && !bFailed)
 	{
 		for (const ANHGuard* Guard : GuardList)
@@ -863,6 +992,11 @@ void ANHMissions::Finish()
 	CardLines.Add(FString::Printf(TEXT("Cred +%d    Integrity %+d    Gold Kobo +%d"), Last.Cred, Last.Integrity, Last.GoldKobo));
 	const bool bNight = Flag(Root, TEXT("nightShift"), Number >= 2);
 	Night = ENight::Card;
+	if (!Flag(Root, TEXT("rewardCard"), true))
+	{
+		PayNightShift(false); // mission 1: the conductor's own summary was its reward card
+		return;
+	}
 	Dir()->OpenPanel(FString::Printf(TEXT("JOB DONE: %s"), *Title.ToUpper()), CardLines, { bNight ? TEXT("On to the night shift") : TEXT("Done") }, [this, bNight](int32)
 	{
 		if (bNight)
@@ -948,8 +1082,15 @@ void ANHMissions::PayNightShift(bool bDrove)
 		Close();
 		return;
 	}
-	Dir()->OpenPanel(TEXT("NIGHT SHIFT TAKINGS"), { FString::Printf(TEXT("The night's takings: %s"), *UNHHustleSubsystem::Naira(Last.Pay)), bDrove ? TEXT("You drove it yourself.") : TEXT("Tunde drove; you counted.") },
-		{ TEXT("Done") }, [Close](int32) { Close(); });
+	// the takings card: the mission's own words if it has them (the bag under the back seat), and the flags that go with them
+	TArray<FString> CardLines = Lines(Sub(Root, TEXT("nightShiftCard")), TEXT("lines"));
+	Apply(Sub(Root, TEXT("nightShiftCard")));
+	CardLines.Add(FString::Printf(TEXT("The night's takings: %s"), *UNHHustleSubsystem::Naira(Last.Pay)));
+	if (CardLines.Num() == 1)
+	{
+		CardLines.Add(bDrove ? TEXT("You drove it yourself.") : TEXT("Tunde drove; you counted."));
+	}
+	Dir()->OpenPanel(TEXT("NIGHT SHIFT TAKINGS"), CardLines, { TEXT("Done") }, [Close](int32) { Close(); });
 }
 
 // ---------------------------------------------------------------------------------------------------- every frame
@@ -972,6 +1113,10 @@ void ANHMissions::Card()
 		D->bMarker = NightBus && !bIn;
 		D->Marker = NightBus ? NightBus->GetActorLocation() : FVector::ZeroVector;
 		return;
+	}
+	if (Objectives.IsValidIndex(Index) && Night == ENight::None && Type == TEXT("firstday"))
+	{
+		return; // the director writes the first day's own card
 	}
 	if (!Objectives.IsValidIndex(Index) || Night != ENight::None)
 	{
@@ -996,10 +1141,90 @@ void ANHMissions::Card()
 	D->Marker = Thing ? Thing->GetActorLocation() : PlaceAt;
 }
 
+FName ANHMissions::Next() const
+{
+	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	if (bActive || !Hustle)
+	{
+		return NAME_None;
+	}
+	// the story's own: m01 .. m12, in order (the test missions, m00_*, are started by hand)
+	for (const FName& Have : Ids)
+	{
+		const FString Name = Have.ToString();
+		if (Name.Len() == 3 && Name.StartsWith(TEXT("m")) && Name.Mid(1).IsNumeric() && !Hustle->IsDone(Have))
+		{
+			return Have;
+		}
+	}
+	return NAME_None;
+}
+
+bool ANHMissions::NextStart(FVector& OutAt, FString& OutTitle) const
+{
+	const FName Want = Next();
+	TSharedPtr<FJsonObject> File;
+	if (Want.IsNone() || !LoadFile(Want, File))
+	{
+		return false;
+	}
+	OutTitle = Str(File, TEXT("title"), Want.ToString());
+	return Place(Sub(File, TEXT("start")), OutAt);
+}
+
+void ANHMissions::Offer(float DeltaSeconds)
+{
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	ANHGameDirector* D = Dir();
+	const ANHLeads* Leads = ANHLeads::Get(this);
+	const ANHCharacter* Me = Player();
+	if (!Hustle || !D || !Me || (Leads && Leads->IsSwitching()))
+	{
+		return;
+	}
+	// a first day finished the old way (walked up to Baba Driver with no mission running) counts as mission 1
+	if (Hustle->IsDone(TEXT("lag_01")) && Ids.Contains(TEXT("m01")) && !Hustle->IsDone(TEXT("m01")))
+	{
+		Hustle->Done.AddUnique(TEXT("m01"));
+	}
+	OfferWait -= DeltaSeconds;
+	const FName Want = Next();
+	if (bStoryOff || Want.IsNone() || OfferWait > 0.f || D->IsBusy() || !Hustle->Persona.IsNone())
+	{
+		return;
+	}
+	// a new game: mission 1 begins by itself, with Tunde at home at dawn
+	if (Want == TEXT("m01"))
+	{
+		if (!bOfferedFirst && D->Stage == ANHGameDirector::EStage::Meet && (!Leads || Leads->Current() == TEXT("tunde")) && !FParse::Param(FCommandLine::Get(), TEXT("NHNoStory")))
+		{
+			bOfferedFirst = true;
+			Start(Want);
+		}
+		return;
+	}
+	// the next job: its card and marker, until the player gets there and presses E (OnAction)
+	FVector At;
+	FString NextTitle;
+	if (D->Stage == ANHGameDirector::EStage::Done && !D->Shift.bOn && NextStart(At, NextTitle))
+	{
+		D->ObjTitle = TEXT("NEXT JOB");
+		D->ObjText = NextTitle;
+		D->ObjSub = FVector::Dist2D(Me->GetActorLocation(), At) < 400.f ? TEXT("E to start") : TEXT("Go to the marker");
+		D->bMarker = true;
+		D->Marker = At;
+	}
+}
+
 void ANHMissions::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-	if (!bActive || bCardOpen)
+	if (!bActive)
+	{
+		Offer(DeltaSeconds);
+		return;
+	}
+	if (bCardOpen)
 	{
 		return;
 	}
@@ -1083,9 +1308,19 @@ void ANHMissions::Tick(float DeltaSeconds)
 		}
 	}
 
-	if (bSaid && !D->Dialogue.bOpen && Done(DeltaSeconds) && !bFailed)
+	if (bSaid && !D->Dialogue.bOpen && (bDoneSaid || Done(DeltaSeconds)) && !bFailed)
 	{
-		End();
+		// a scene for having done it, once; the objective ends when it has been heard or skipped
+		const TSharedPtr<FJsonObject> After = Sub(Obj(), TEXT("sayDone"));
+		if (!bDoneSaid && After.IsValid() && Lines(After, TEXT("lines")).Num() > 0)
+		{
+			bDoneSaid = true;
+			D->Say(Str(After, TEXT("speaker")), Lines(After, TEXT("lines")), nullptr);
+		}
+		else
+		{
+			End();
+		}
 	}
 	if (bActive)
 	{

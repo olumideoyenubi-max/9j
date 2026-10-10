@@ -49,6 +49,10 @@ public:
 	void Leads(bool bQuitWhenDone);
 	/** -NHRun=systems: plays the two test missions (Data/missions/m00_*.json), which use every piece of the mission runner once (run it with -NHNoSave) */
 	void Systems(bool bQuitWhenDone);
+	/** -NHRun=act1: starts missions 2, 3 and 4 at their markers and plays each through by script, checking flags, money and the night shift's pay (run it with -NHNoSave) */
+	void Act1(bool bQuitWhenDone);
+	/** One frame of playing whatever story mission is running: cards answered, scenes skipped, the objective in hand done the short way. For the act tests. */
+	void PlayStoryFrame(float DeltaSeconds, int32& Failures, float& Cheat);
 	void PaintDemo(const FVector& At);
 	/** Saves two pictures of the player from the front: whole body and face */
 	void SkinShots(const FString& Folder);
