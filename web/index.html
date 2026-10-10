@@ -3283,6 +3283,8 @@ const RULES = () => ({
   vehicles: VT, places: { park: PL.park, home: PL.home, buspark: PL.buspark },
   // the night shift after every mission from the second (docs/STORY.md): pay(n) = round(missionPayBase * (1 + missionPayGrowth)^(n - 2))
   economy: { missionPayBase: 1000000, missionPayGrowth: 0.135 },
+  // knocked down outside a mission: you wake beside this bus stop, with some of your cash gone
+  clinic: { stop: 'iya', name: 'Charity Clinic' },
   // the two leads' abilities (docs/STORY.md). Already in Unreal's units (cm, seconds), so the export does not convert them.
   abilities: {
     switchSeconds: 0.7, switchHeight: 4500,

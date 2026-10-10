@@ -2065,6 +2065,28 @@ void UNHDebugPlay::Systems(bool bQuitWhenDone)
 		PC->Choose(0);
 		Check(TEXT("over"), !M()->IsActive());
 	});
+
+	// ---- knocked down with no mission running: the clinic
+	Do(TEXT("knocked down in the street"), [this, Seen]()
+	{
+		PC->LeaveVehicle(true);
+		Seen->Cash = Hustle()->Cash;
+		Hustle()->AddHeat(2.f); // somebody has to have done it: with no stars nobody is coming, and nothing looks at who is down
+		if (ANHCharacter* C = Cast<ANHCharacter>(PC->GetPawn()))
+		{
+			C->Health = 0.f;
+		}
+	});
+	Until(TEXT("the screen goes dark and comes back at the clinic"), [this](float) { const ANHCharacter* C = Cast<ANHCharacter>(PC->GetPawn()); return C && C->Health > 50.f && !PC->IsTravelling(); }, 25.f);
+	Do(TEXT("at the clinic"), [this, Seen]()
+	{
+		const UNHGameData* Data = UNHGameData::Get(PC);
+		const FNHBusStop* Stop = Data->Stops.Find(Data->ClinicStop);
+		const int32 Gone = Seen->Cash - Hustle()->Cash;
+		Check(TEXT("a tenth of the cash is gone, and the stars with it"), Gone == FMath::Max(2000, Seen->Cash / 10) && Hustle()->Stars() == 0, NHPlay::N(Gone));
+		Check(TEXT("the player is standing beside the clinic's bus stop"), Stop && FVector2D::Distance(FVector2D(PC->GetPawn()->GetActorLocation()), Stop->Wait) < 700.f
+			&& Cast<ANHCharacter>(PC->GetPawn())->GetCharacterMovement()->MovementMode == MOVE_Walking, Data->ClinicName);
+	});
 	Until(TEXT("the last picture is saved"), [this](float Dt) { Pace += Dt; return Pace > 1.f; }, 5.f);
 	Do(TEXT("stop counting frames"), [this]() { PC->ConsoleCommand(TEXT("stopfpschart")); });
 }

@@ -656,10 +656,23 @@ void ANHResponse::PlayerDown(APawn* Pawn)
 	}
 	if (Data)
 	{
-		// back where the day began, on whatever ground is there
-		FHitResult Floor;
-		const FVector Above(Data->Home, Me->GetActorLocation().Z + 5000.f);
-		const bool bFloor = GetWorld()->LineTraceSingleByChannel(Floor, Above, Above - FVector(0.f, 0.f, 20000.f), ECC_Visibility);
-		Me->SetActorLocation(bFloor ? Floor.ImpactPoint + FVector(0.f, 0.f, 100.f) : FVector(Data->Home, Me->GetActorLocation().Z), false, nullptr, ETeleportType::TeleportPhysics);
+		// knocked down, not dead: they wake at the clinic (beside its bus stop; where the day began, in a level without that stop)
+		FVector2D At = Data->Home;
+		float Yaw = 0.f;
+		if (const FNHBusStop* Stop = Data->Stops.Find(Data->ClinicStop))
+		{
+			const FVector2D Back = (Stop->Wait - Stop->Kerb).GetSafeNormal();
+			At = Stop->Wait + Back * 500.f;
+			Yaw = FMath::RadiansToDegrees(FMath::Atan2(-Back.Y, -Back.X));
+		}
+		LastWokeAt = FVector(At, Me->GetActorLocation().Z);
+		if (ANHPlayerController* PC = Cast<ANHPlayerController>(Me->GetController()))
+		{
+			PC->TravelTo(LastWokeAt, Yaw, FString::Printf(TEXT("You wake up at %s."), *Data->ClinicName));
+		}
+		else
+		{
+			Me->SetActorLocation(LastWokeAt, false, nullptr, ETeleportType::TeleportPhysics);
+		}
 	}
 }

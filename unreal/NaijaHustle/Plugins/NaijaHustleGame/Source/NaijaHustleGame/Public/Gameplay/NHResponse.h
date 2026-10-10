@@ -47,6 +47,8 @@ class NAIJAHUSTLEGAME_API ANHResponse : public AActor
 
 public:
 	ANHResponse();
+	/** Where the player last woke after being knocked down (the clinic), for tests */
+	FVector LastWokeAt = FVector::ZeroVector;
 	static ANHResponse* Get(const UObject* WorldContext);
 	virtual void Tick(float DeltaSeconds) override;
 

@@ -160,6 +160,9 @@ public:
 	/** The vehicle the player last drove, if it is still around */
 	ANHVehicle* GetLastVehicle() const { return LastVehicle.Get(); }
 
+	/** Puts the player somewhere that may be far off: the screen goes dark, they are held over the place until the city there has loaded, and then stand on it. Arrived is the line shown then. */
+	void TravelTo(const FVector& At, float Yaw, const FString& Arrived);
+	bool IsTravelling() const { return bTravelling; }
 	UFUNCTION(BlueprintCallable, Category = "Naija|Vehicle") bool EnterVehicle(ANHVehicle* Vehicle);
 	/** Steps out beside the vehicle. Refuses above walking pace unless bForce. */
 	UFUNCTION(BlueprintCallable, Category = "Naija|Vehicle") bool LeaveVehicle(bool bForce = false);
@@ -218,6 +221,10 @@ private:
 	FTimerHandle TabHold;
 	bool bTabWheel = false;
 	void OnAbility();
+	bool bTravelling = false;
+	FVector TravelAt = FVector::ZeroVector;
+	float TravelYaw = 0.f, TravelT = 0.f;
+	FString TravelLine;
 	void UiWheelClose();
 	void UiUp();
 	void UiDown();

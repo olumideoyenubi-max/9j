@@ -199,6 +199,9 @@ public:
 	float LaneOffset(const FNHRoadWay& Way, float Side) const { return (HalfWidth(Way) - LeftHalf(Way)) * 0.5f + Side * (HalfWidth(Way) + LeftHalf(Way)) * 0.25f; }
 
 	// ---- rules
+	/** Where somebody knocked down outside a mission wakes up: beside this bus stop (naija_rules.json "clinic") */
+	FName ClinicStop;
+	FString ClinicName = TEXT("the clinic");
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") int32 StartCash = 5000;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float StartMinutes = 480.f;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float ClockMinutesPerSecond = 2.f;

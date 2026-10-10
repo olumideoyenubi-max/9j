@@ -240,6 +240,11 @@ bool UNHGameData::LoadRules(const FString& Path)
 		StartMinutes = static_cast<float>(Num(*O, TEXT("minutes"), 480));
 	}
 	ClockMinutesPerSecond = static_cast<float>(Num(Root, TEXT("clockMinutesPerSecond"), 2));
+	if (Root->TryGetObjectField(TEXT("clinic"), O))
+	{
+		ClinicStop = FName(*Str(*O, TEXT("stop")));
+		ClinicName = Str(*O, TEXT("name")).IsEmpty() ? ClinicName : Str(*O, TEXT("name"));
+	}
 	if (Root->TryGetObjectField(TEXT("wanted"), O))
 	{
 		SecondsPerStar = static_cast<float>(Num(*O, TEXT("perStar"), 18));

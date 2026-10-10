@@ -5,6 +5,7 @@
 
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Gameplay/NHInventory.h"
 #include "Gameplay/NHLeads.h"
 #include "Gameplay/NHMissions.h"
@@ -902,6 +903,32 @@ void ANHPlayerController::OnAbility()
 	}
 }
 
+void ANHPlayerController::TravelTo(const FVector& At, float Yaw, const FString& Arrived)
+{
+	if (Cast<ANHVehicle>(GetPawn()))
+	{
+		LeaveVehicle(true);
+	}
+	ANHCharacter* Me = Cast<ANHCharacter>(GetPawn());
+	if (!Me)
+	{
+		return;
+	}
+	bTravelling = true;
+	TravelAt = At;
+	TravelYaw = Yaw;
+	TravelT = 0.f;
+	TravelLine = Arrived;
+	SetIgnoreMoveInput(true);
+	Me->GetCharacterMovement()->StopMovementImmediately();
+	Me->GetCharacterMovement()->SetMovementMode(MOVE_None);
+	Me->SetActorLocation(At + FVector(0.f, 0.f, 400.f), false, nullptr, ETeleportType::TeleportPhysics);
+	if (PlayerCameraManager)
+	{
+		PlayerCameraManager->StartCameraFade(1.f, 1.f, 0.1f, FLinearColor::Black, false, true);
+	}
+}
+
 void ANHPlayerController::NHMission(const FString& Id)
 {
 	if (ANHMissions* Story = ANHMissions::Get(this))
@@ -1410,6 +1437,29 @@ void ANHPlayerController::PlayerTick(float DeltaTime)
 		GetPawn()->AddMovementInput(ActionWalk); // -NHActionTest walking
 	}
 	UpdateStreaming();
+	if (bTravelling)
+	{
+		TravelT += DeltaTime;
+		ANHCharacter* Me = Cast<ANHCharacter>(GetPawn());
+		FHitResult Floor;
+		const bool bFloor = GetWorld()->LineTraceSingleByObjectType(Floor, FVector(TravelAt.X, TravelAt.Y, 30000.f), FVector(TravelAt.X, TravelAt.Y, -3000.f), FCollisionObjectQueryParams(ECC_WorldStatic));
+		if (Me && TravelT > 0.5f && (bFloor || TravelT > 10.f))
+		{
+			Me->SetActorLocationAndRotation(FVector(TravelAt.X, TravelAt.Y, (bFloor ? Floor.ImpactPoint.Z : TravelAt.Z) + 100.f), FRotator(0.f, TravelYaw, 0.f), false, nullptr, ETeleportType::TeleportPhysics);
+			Me->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+			SetControlRotation(FRotator(-10.f, TravelYaw, 0.f));
+			SetIgnoreMoveInput(false);
+			if (PlayerCameraManager)
+			{
+				PlayerCameraManager->StartCameraFade(1.f, 0.f, 0.8f, FLinearColor::Black, false, false);
+			}
+			if (!TravelLine.IsEmpty())
+			{
+				ANHHUD::Toast(this, TravelLine, 0);
+			}
+			bTravelling = false;
+		}
+	}
 	if (Debug)
 	{
 		Debug->Tick(DeltaTime);
