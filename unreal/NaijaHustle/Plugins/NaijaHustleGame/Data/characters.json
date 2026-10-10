@@ -1,0 +1,184 @@
+{
+ "format": "naija-hustle-characters",
+ "version": 1,
+ "note": "The cast of docs/STORY.md. 'skin' is one of ANHCharacter's bodies. 'from' is the story's name for where they live; 'stop' is the bus stop they are found beside, in the small level and in the real city alike (the stops already put the story's places on real ones: oshoja is Oshodi, marketsq is Tejuosho Market, eko is CMS); 'districts' are real districts to fall back on where a level lacks that stop. 'unlock': start | mission:<id> | mission:<id>+flag:<name> | story+flag:<name> | premium:<gold kobo> | never. Blockout rule: a character whose skin the project lacks plays as the first body it has.",
+ "leads": [
+  "tunde",
+  "amaka"
+ ],
+ "characters": [
+  {
+   "id": "tunde",
+   "name": "Tunde Adeyemi",
+   "age": 24,
+   "from": "Oshoja Junction",
+   "districts": [
+    "Oshodi"
+   ],
+   "stop": "oshoja",
+   "role": "Danfo conductor. Quick mouth, quick feet, loyal, takes the hits.",
+   "ability": "hustleRush",
+   "abilityName": "Hustle Rush",
+   "unlock": "start",
+   "skin": "naija",
+   "outfit": "fit_street_basic",
+   "colour": "#f5c400"
+  },
+  {
+   "id": "amaka",
+   "name": "Amaka Nwosu",
+   "age": 23,
+   "from": "Balo Market",
+   "districts": [
+    "Yaba"
+   ],
+   "stop": "marketsq",
+   "role": "Phone-repair and hacking genius. Sharp, funny, fearless.",
+   "ability": "unlock",
+   "abilityName": "Unlock",
+   "unlock": "start",
+   "skin": "amaka",
+   "outfit": "fit_street_basic",
+   "colour": "#3fb6ff"
+  },
+  {
+   "id": "chidi",
+   "name": "Chidi Nwosu",
+   "age": 19,
+   "from": "Balo Market",
+   "districts": [
+    "Yaba"
+   ],
+   "stop": "marketsq",
+   "role": "Amaka's little brother, pulled into the Red Cowries.",
+   "ability": "",
+   "abilityName": "",
+   "unlock": "mission:m05",
+   "skin": "dayo",
+   "outfit": "fit_street_basic",
+   "colour": "#ff7043"
+  },
+  {
+   "id": "sule",
+   "name": "Baba Sule",
+   "age": 58,
+   "from": "Oshoja Motor Park",
+   "districts": [
+    "Oshodi"
+   ],
+   "stop": "oshoja",
+   "role": "Femi's old partner and Tunde's mentor. He drives the bus Shina took.",
+   "ability": "",
+   "abilityName": "",
+   "unlock": "mission:m08",
+   "skin": "nathan",
+   "outfit": "fit_street_basic",
+   "colour": "#8d6e63"
+  },
+  {
+   "id": "zainab",
+   "name": "Zainab Yusuf-Cole",
+   "age": 31,
+   "from": "Balo Market",
+   "districts": [
+    "Yaba"
+   ],
+   "stop": "marketsq",
+   "role": "Independent journalist chasing the Kingmaker's money.",
+   "ability": "",
+   "abilityName": "",
+   "unlock": "mission:m12+flag:zainab_alive",
+   "skin": "zainab",
+   "outfit": "fit_street_basic",
+   "colour": "#ab47bc"
+  },
+  {
+   "id": "jaguar",
+   "name": "Sir Jaguar",
+   "age": 29,
+   "from": "the old stadium",
+   "districts": [
+    "Idi Oro",
+    "Mushin"
+   ],
+   "stop": "church",
+   "role": "Head of the Red Cowries, a fictional campus confraternity turned street gang.",
+   "ability": "",
+   "abilityName": "",
+   "unlock": "story+flag:spared_jaguar",
+   "skin": "africanman",
+   "outfit": "fit_street_basic",
+   "colour": "#c62828"
+  },
+  {
+   "id": "shina",
+   "name": "Shina Garage",
+   "age": 44,
+   "from": "Oshoja Motor Park",
+   "districts": [
+    "Oshodi"
+   ],
+   "stop": "oshoja",
+   "role": "Motor-park strongman. He runs the levies and owes favours upward.",
+   "ability": "",
+   "abilityName": "",
+   "unlock": "never",
+   "skin": "emeka",
+   "outfit": "fit_street_basic",
+   "colour": "#455a64"
+  },
+  {
+   "id": "kemi",
+   "name": "Kemi Lawson-Bright",
+   "age": 33,
+   "from": "Eko Crest",
+   "districts": [
+    "Lagos Island",
+    "Victoria Island"
+   ],
+   "stop": "eko",
+   "role": "Island party promoter who knows everyone's secrets.",
+   "ability": "guestList",
+   "abilityName": "Guest List",
+   "unlock": "premium:1800",
+   "skin": "carla",
+   "outfit": "fit_street_basic",
+   "colour": "#ec407a"
+  },
+  {
+   "id": "kingmaker",
+   "name": "Hon. Dapo \"Kingmaker\" Akinsola",
+   "age": 56,
+   "from": "Lekka Strip",
+   "districts": [
+    "Lekki Phase I"
+   ],
+   "stop": "ebute",
+   "role": "Fictional politician running for governor, and Shina's sponsor.",
+   "ability": "convoy",
+   "abilityName": "Convoy",
+   "unlock": "premium:2500+story",
+   "skin": "eric",
+   "outfit": "fit_street_basic",
+   "colour": "#2e7d32"
+  },
+  {
+   "id": "bigbar",
+   "name": "Chief Barnabas \"Big Bar\" Okon",
+   "age": 63,
+   "from": "Eko Crest",
+   "districts": [
+    "Eko Atlantic",
+    "Victoria Island"
+   ],
+   "stop": "eko",
+   "role": "The fictional Big Man who funds the Kingmaker from his Eko Crest tower.",
+   "ability": "settle",
+   "abilityName": "Settle",
+   "unlock": "premium:3500+story",
+   "skin": "emeka",
+   "outfit": "fit_street_basic",
+   "colour": "#ffd54f"
+  }
+ ]
+}

@@ -218,6 +218,16 @@ bool ANHTraffic::Blocked(const FCar& Car, const FVector& Player, float& OutGap) 
 		}
 	};
 	Ahead(FVector2D(Player), 220.f);
+	// a light turned red: the line across the road at the light, for a car that has not passed it yet
+	for (const FRedLight& Light : RedLights)
+	{
+		if (GetWorld()->GetTimeSeconds() < Light.Until && FVector2D::Distance(Car.At, Light.At) < Light.Radius)
+		{
+			const float Before = OutGap;
+			Ahead(Light.At, Light.Radius);
+			LightStops += OutGap < Before ? 1 : 0;
+		}
+	}
 	for (const FCar& Other : Cars)
 	{
 		if (&Other != &Car && Other.Vehicle.IsValid())
@@ -736,4 +746,12 @@ void ANHTraffic::Tick(float DeltaSeconds)
 			UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: traffic: %d moving and %d parked vehicles around the player"), NumMoving(), NumParked());
 		}
 	}
+}
+
+void ANHTraffic::StopAt(const FVector2D& At, float Radius, float Seconds)
+{
+	const double Now = GetWorld()->GetTimeSeconds();
+	RedLights.RemoveAll([Now](const FRedLight& Light) { return Light.Until < Now; });
+	RedLights.Add({ At, Radius, Now + Seconds });
+	LightStops = 0;
 }

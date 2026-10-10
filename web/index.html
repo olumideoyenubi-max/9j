@@ -3281,6 +3281,12 @@ const RULES = () => ({
   wanted: { perStar: WANT.perStar, crimes: CRIME, units: UNITS },
   routes: ROUTES, firstRoute: FIRST_ROUTE, paxNames: PAX_NAMES, calls: CALLS, babaLines: BABA_LINES, outfits: OUTFITS, contacts: CONTACTS,
   vehicles: VT, places: { park: PL.park, home: PL.home, buspark: PL.buspark },
+  // the two leads' abilities (docs/STORY.md). Already in Unreal's units (cm, seconds), so the export does not convert them.
+  abilities: {
+    switchSeconds: 0.7, switchHeight: 4500,
+    hustleRush: { fillSeconds: 120, seconds: 8, speed: 1.35, damageTaken: 0.5, vehiclePull: 1.6, vehicleTop: 1.15, vehicleGrip: 1.3 },
+    unlock: { fillSeconds: 150, range: 3000, phoneCash: [800, 4500], phoneIntegrity: -1, cctvStars: 1, cctvSeconds: 25, lightSeconds: 15, lightRadius: 6000 },
+  },
   missions: Object.fromEntries(ORDER.map(id => [id, { title: MISSIONS[id].title, giver: MISSIONS[id].giver, req: MISSIONS[id].req, reward: MISSIONS[id].reward, cred: MISSIONS[id].cred, brief: MISSIONS[id].brief,
     objectives: MISSIONS[id].objs.map(o => ({ type: o.t, text: o.text, sub: o.sub || '', clock: o.clock || 0, r: o.r || 0 })) }])),
 });

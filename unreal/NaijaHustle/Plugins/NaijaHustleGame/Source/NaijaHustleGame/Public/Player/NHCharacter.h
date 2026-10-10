@@ -58,6 +58,7 @@ public:
 	/** R: keeps running without the key held, until pressed again or you stand still */
 	void ToggleRun();
 	bool RunLocked() const { return bRunLocked; }
+	bool IsSprinting() const { return bSprinting; }
 	/** A forward roll the way you are moving (or facing): quick, low, and it carries you about four metres */
 	void Roll();
 	bool IsRolling() const { return RollLeft > 0.f; }
@@ -91,6 +92,8 @@ public:
 	FName Equipped() const { return Weapon; }
 	static FString WeaponName(FName Weapon);
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Health = 100.f;
+	/** Set by ANHLeads while an ability lasts: how much faster the body moves, and how much of a blow it takes (1: as made) */
+	float SpeedBoost = 1.f, DamageTaken = 1.f;
 	/** Shot or cut by somebody. Comes back by itself after a few quiet seconds. At nothing, ANHResponse decides what happens to you. */
 	void Hurt(float Damage);
 	/** The attack button, held or let go. Pistol: one shot a press. AK-47: fires while held. Machete: one swing a press. Nothing in the hand: nothing. */

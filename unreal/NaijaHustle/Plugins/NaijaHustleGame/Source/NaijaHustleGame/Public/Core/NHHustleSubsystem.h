@@ -27,6 +27,20 @@ struct FNHGarageCar
 	UPROPERTY(SaveGame) bool bWrecked = false;
 };
 
+/** One of the cast (Data/characters.json) as the player left them: where, facing which way, and how full their ability is */
+USTRUCT()
+struct FNHLeadSpot
+{
+	GENERATED_BODY()
+	UPROPERTY(SaveGame) FName Id;
+	/** The level it was in: a place in the small city means nothing in the real one */
+	UPROPERTY(SaveGame) FName Level;
+	UPROPERTY(SaveGame) FVector At = FVector::ZeroVector;
+	UPROPERTY(SaveGame) float Yaw = 0.f;
+	UPROPERTY(SaveGame) bool bPlaced = false;
+	UPROPERTY(SaveGame) float Meter = 0.f;
+};
+
 /** What survives between sessions (same fields as the browser demo's save) */
 UCLASS()
 class NAIJAHUSTLEGAME_API UNHSaveGame : public USaveGame
@@ -48,6 +62,10 @@ public:
 	UPROPERTY(SaveGame) FName Home;
 	UPROPERTY(SaveGame) TArray<FNHGarageCar> Cars;
 	UPROPERTY(SaveGame) int32 NextCar = 1;
+	UPROPERTY(SaveGame) FName Lead;
+	UPROPERTY(SaveGame) TArray<FNHLeadSpot> LeadSpots;
+	UPROPERTY(SaveGame) TMap<FName, int32> Flags;
+	UPROPERTY(SaveGame) TArray<FName> Bought;
 };
 
 /**
@@ -87,6 +105,15 @@ public:
 	/** The cars in the garages of the homes owned (ANHEstate keeps them), and the number the next one gets */
 	UPROPERTY() TArray<FNHGarageCar> Cars;
 	int32 NextCar = 1;
+	/** Which of the cast is being played (Data/characters.json; none: the first lead), and where the others were left (ANHLeads) */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName Lead;
+	UPROPERTY() TArray<FNHLeadSpot> LeadSpots;
+	/** The story's flags (found_shina_bag, spared_jaguar, zainab_alive, kept_ledger...): 0 where never set */
+	UPROPERTY() TMap<FName, int32> Flags;
+	int32 Flag(FName Name) const { const int32* V = Flags.Find(Name); return V ? *V : 0; }
+	void SetFlag(FName Name, int32 Value = 1) { Flags.Add(Name, Value); }
+	/** Characters bought in the store (premium ones) */
+	UPROPERTY() TArray<FName> Bought;
 	int64 Worth() const { return static_cast<int64>(Cash) + Bank; }
 	/** Takes Amount from the pocket and then the bank, or takes nothing and says false */
 	bool Pay(int64 Amount, const FString& Why);

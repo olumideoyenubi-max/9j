@@ -44,6 +44,7 @@ namespace NHScreens
 		{ TEXT("DRIVING"), nullptr }, { TEXT("W / S"), TEXT("Accelerate / brake and reverse") }, { TEXT("A / D"), TEXT("Steer") }, { TEXT("Space"), TEXT("Handbrake") },
 		{ TEXT("K"), TEXT("Headlights on / off") }, { TEXT("V"), TEXT("Cabin view") }, { TEXT("H"), TEXT("Horn") }, { TEXT("Hold R"), TEXT("Radio wheel: point at a station, let go") }, { TEXT("T"), TEXT("Radio: next song") }, { TEXT("F"), TEXT("Get out") }, { TEXT("E"), TEXT("Do business at the mechanic, paint shop, chop shop") },
 		{ TEXT("ANYWHERE"), nullptr }, { TEXT("P"), TEXT("Phone (arrows, Enter, Backspace)") }, { TEXT("M"), TEXT("Map: click to pin, right-click to clear, wheel to zoom") },
+		{ TEXT("Tab"), TEXT("Switch between Tunde and Amaka") }, { TEXT("Z"), TEXT("Your ability, when its meter is full") },
 		{ TEXT("Hold Tab"), TEXT("Inventory wheel: phone, weapons, keys...") }, { TEXT("1 2 3 4"), TEXT("Choices in a panel") }, { TEXT("L / F1"), TEXT("Lighting: next preset / menu") }, { TEXT("F2"), TEXT("Streaming overlay: loaded cells") }, { TEXT("Esc"), TEXT("This menu") } };
 	// the Clothes page: a slot's piece, or its colour
 	struct FClothesLine { const TCHAR* Name; ENHOutfitSlot Slot; bool bColour; };

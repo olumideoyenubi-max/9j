@@ -502,6 +502,7 @@ void ANHCharacter::UpdateActions(float DeltaSeconds)
 
 void ANHCharacter::Hurt(float Damage)
 {
+	Damage *= DamageTaken;
 	Health = FMath::Max(0.f, Health - Damage);
 	SinceHurt = 0.f;
 	if (Damage > 2.f && Health > 0.f && ShotLeft <= 0.f && Clip(TEXT("Hit")))
@@ -1032,7 +1033,7 @@ void ANHCharacter::Jump()
 void ANHCharacter::SetSprinting(bool bSprint)
 {
 	bSprinting = bSprint;
-	GetCharacterMovement()->MaxWalkSpeed = bSprint ? SprintSpeed : WalkSpeed;
+	GetCharacterMovement()->MaxWalkSpeed = (bSprint ? SprintSpeed : WalkSpeed) * SpeedBoost;
 }
 
 void ANHCharacter::Tick(float DeltaSeconds)

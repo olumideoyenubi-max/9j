@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-10 (master build prompt, Phase 0 done, and a standalone Mac build; before that: living Lagos step 3, first part: witnesses, see `docs/LAW.md`; pedestrians keep off bridges, see `docs/POPULATION.md`; before that, 2026-10-09: audio brief step 1: the mix; radio station Ragebait FM; car stealing, roll and climb, directions; phone and DropAm; real-scale Lagos level; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
+**Last updated:** 2026-10-10 (master build prompt, Phases 0 and 1 done, and a standalone Mac build; before that: living Lagos step 3, first part: witnesses, see `docs/LAW.md`; pedestrians keep off bridges, see `docs/POPULATION.md`; before that, 2026-10-09: audio brief step 1: the mix; radio station Ragebait FM; car stealing, roll and climb, directions; phone and DropAm; real-scale Lagos level; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -22,7 +22,14 @@ Decided with the user on 2026-10-10:
   - [x] 0.6 Mission 1 by script (`Scripts/mac.sh play -NHRun=autoplay`, in MyProject): 26 of 26 checks, twice running. It first failed at "drive in to Yaba and stop", and failed the same way in this repo's own project: the test planned its braking for brakes twice as strong as the vehicles have had since the gentler-driving change, ran past the kerb and sat there. `UNHDebugPlay::Drive` now plans with the brake it uses, and a step that runs out of time says where the vehicle was, its speed, fuel and whether it was held.
   - [x] 0.7 Committed and pushed to `origin/lagos-real-city`.
   - Measured in the small level, 1280x720 window: 31.8 fps standing still at the Balo Gate stop (15 s, 477 frames); 1.1 GB resident at the peak of the scripted mission. Pictures in MyProject's `Saved/Screenshots/NH/phase0/`. Not measured: the city level, 1080p.
-- [ ] **Phase 1:** the two leads, Tunde and Amaka (`characters.json`, switching, Hustle Rush and Unlock, unlock rules)
+- [x] **Phase 1: the two leads** (done 2026-10-10; `ANHLeads`, `Data/characters.json`, `naija_rules.json` "abilities")
+  - **Cast:** ten people in `characters.json` with name, age, where they are from, role, ability, unlock rule and body. Tunde wears the "Naija man" body (the default the user asked to keep), Amaka the `amaka` one. The story's places sit on the stops the game already has: Oshoja is Oshodi, Balo Market is Tejuosho Market.
+  - **Switching:** tap **Tab** (held, Tab is still the inventory wheel), or `NHSwitch`. The camera goes straight up, the player becomes the other lead where they were left (the first time, beside their stop), and it comes down. The lead left behind stands there as a body while the player is within 150 m. Refused with a line on the screen during a job, with wanted stars, or when a mission has locked it (`SetLocked`); `Switch(id, true)` is for a mission to do it. From somebody rich (the estate's chief or madam) it goes back to the lead and ends that life.
+  - **Hustle Rush (Z, Tunde):** 8 s of running 1.35 times as fast and taking half of each blow; in a vehicle more pull, a higher top speed and more grip. **Unlock (Z, Amaka):** the nearest phone (a person), CCTV camera or traffic light within 30 m, marked on the screen: a phone gives ₦800 to ₦4,500 and costs a point of Integrity, a camera takes a star off, a light stops the traffic short of it. Cameras and lights are blockout pieces stood beside road junctions near the player (beside bus stops in the small level). Meters fill in 120 s and 150 s of play, half as fast standing still.
+  - **Unlock rules** are read from the cast file: Chidi after `m05`, Baba Sule after `m08`, Zainab after `m12` with `zainab_alive`, Sir Jaguar after the story with `spared_jaguar`, the three rich ones bought. Flags and the bought list are in the save now (`NHFlag` sets one).
+  - **Test:** `Scripts/mac.sh play -NHRun=leads -NHNoSave` (and `city`): ten switches and each ability once. 72 of 72 checks, three clean runs in the small level and two in the city, where each switch crosses 5.6 km.
+  - **Measured over the whole test, 1280x720:** small level 19 fps average, city 22 fps (the test spends much of its time on the camera's high view); 1.1 GB and 1.7 GB resident at the peak. Both under the 30 fps aim. Pictures in MyProject's `Saved/Screenshots/NH/phase1/` (taken at four in the morning by the save's clock, so dark).
+  - **Not done or not checked:** the leads left behind only stand (no life of their own); Hustle Rush at the wheel, and Unlock on a phone or a light, were not exercised by the test (only the camera); switching to anybody but the two leads is by console only; the missions named in the unlock rules (`m05`...) do not exist until Phase 3; no phone shortcut for switching yet (the phone work is in Phase 2).
 - [ ] **Phase 2:** the mission runner and shared systems (flags and Integrity, night-shift pay, combat, enemy AI, stealth, speedboat, disguises, heist board, phone, checkpoints)
 - [ ] **Phase 3:** Act 1, missions 1 to 4
 - [ ] **Phase 4:** Act 2, missions 5 to 7
@@ -34,7 +41,9 @@ Decided with the user on 2026-10-10:
 
 Open problems:
 - The internal disk has about 3.8 GB free. A cook or a long editor run can push it under 2 GB, where Unreal's storage server refuses writes (see "Standalone Mac build" below).
-- Where the brief and the game differ, beyond the two decisions above: the brief's fixed `r.Streaming.PoolSize=1000` against this project's 800; the brief's fps target at 1080p against the 1280x720 window the tests use. Left as they are until measured.
+- Landing as Tunde beside his stop puts him next to Baba Driver, which starts the first job's talk if it has not been done. Left as it is until Phase 3 reshapes mission 1.
+- The estate's rich people (chief, madam) and the story's premium characters (Phase 7) are two versions of one idea; they are not joined up yet.
+- Where the brief and the game differ, beyond the two decisions above: the brief puts switching on Tab, which was the inventory wheel's key; a tap now switches and a hold still opens the wheel. the brief's fixed `r.Streaming.PoolSize=1000` against this project's 800; the brief's fps target at 1080p against the 1280x720 window the tests use. Left as they are until measured.
 
 ## Standalone Mac build (2026-10-10)
 

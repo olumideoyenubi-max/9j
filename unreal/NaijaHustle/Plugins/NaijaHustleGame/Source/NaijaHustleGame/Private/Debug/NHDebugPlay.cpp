@@ -11,6 +11,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/HUD.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Gameplay/NHLeads.h"
 #include "Gameplay/NHPerson.h"
 #include "Kismet/GameplayStatics.h"
 #include "Lighting/NHLightingRig.h"
@@ -1506,4 +1507,181 @@ void UNHDebugPlay::SelfTest(bool bQuitWhenDone)
 	AddMomentumChecks();
 	AddVehiclePaintChecks();
 	AddVehicleDynamicsChecks();
+}
+
+// ---------------------------------------------------------------------------------------------------- the two leads
+void UNHDebugPlay::Leads(bool bQuitWhenDone)
+{
+	Begin(TEXT("leads"), bQuitWhenDone);
+	// what the script remembers between steps
+	struct FSeen
+	{
+		TMap<FName, FVector> Left; // where each lead was last left
+		int32 Cash = 0, Switches = 0;
+		FName Expect;
+		float RushT = 0.f;
+		int32 Stars = 0;
+		TWeakObjectPtr<ANHHackPoint> Camera;
+	};
+	const TSharedRef<FSeen> Seen = MakeShared<FSeen>();
+	const auto L = [this]() { return ANHLeads::Get(PC); };
+	// pictures with the HUD on, in Saved/Screenshots/NH/phase1/, and the frame rate over the whole run (Saved/Profiling/FPSChartStats)
+	const auto Shot = [](const TCHAR* Name) { FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("Screenshots/NH/phase1") / (FString(Name) + TEXT(".png")), true, false); };
+	Do(TEXT("start counting frames"), [this]() { PC->ConsoleCommand(TEXT("startfpschart")); });
+
+	// the save may be in the middle of somebody rich's life (ANHEstate): the test is of the two leads
+	Do(TEXT("back from somebody rich, if the save is playing one"), [this, L]()
+	{
+		if (L() && Hustle() && !Hustle()->Persona.IsNone())
+		{
+			Note(FString::Printf(TEXT("the save is playing '%s'"), *Hustle()->Persona.ToString()));
+			Check(TEXT("from somebody rich, the switch goes back to the lead last played"), L()->Switch(NAME_None, true), L()->Current().ToString());
+		}
+	});
+	Until(TEXT("back as the lead"), [this, L](float) { return !L() || (!L()->IsSwitching() && Hustle()->Persona.IsNone()); }, 25.f);
+	Do(TEXT("who is being played at the start"), [this, Seen, L]()
+	{
+		ANHLeads* Leads = L();
+		if (!Check(TEXT("the level has the story's cast"), Leads && Leads->Members().Num() >= 2 && Hustle() && Character(), Leads ? FString::Printf(TEXT("%d in the cast"), Leads->Members().Num()) : TEXT("no ANHLeads")))
+		{
+			End(TEXT("nothing to test"));
+			return;
+		}
+		Hustle()->ClearHeat();
+		Seen->Cash = Hustle()->Cash;
+		// away from Baba Driver: walking up to him starts the first job's talk, and nobody switches in the middle of a job
+		if (const UNHGameData* Data = UNHGameData::Get(PC))
+		{
+			const FNHBusStop* Quiet = Data->Stops.Find(TEXT("second"));
+			const FVector2D At = Quiet ? Quiet->Wait + (Quiet->Wait - Quiet->Kerb).GetSafeNormal() * 400.f : Data->Home + FVector2D(3000.f, 3000.f);
+			PC->NHAt(At.X, At.Y);
+			Note(FString::Printf(TEXT("standing at %.0f, %.0f, %.0f m from the motor park"), At.X, At.Y, FVector2D::Distance(At, Data->Park) / 100.f));
+		}
+		// Tunde's own place is beside the motor park: if landing there began Baba Driver's talk, walk away from it as if it had not
+		if (ANHGameDirector* D = Dir(); D && D->Stage == ANHGameDirector::EStage::Talk)
+		{
+			D->Dialogue = ANHGameDirector::FDialogue();
+			D->Stage = ANHGameDirector::EStage::Meet;
+			Note(TEXT("Baba Driver's talk had begun; put back to before it"));
+		}
+		const ANHLeads::FMember* Who = Leads->Find(Leads->Current());
+		Note(FString::Printf(TEXT("playing %s (%s), %s; body '%s'"), Who ? *Who->Name : TEXT("?"), *Leads->Current().ToString(), *NHPlay::N(Seen->Cash), *Character()->GetSkin().ToString()));
+		Check(TEXT("Tunde and Amaka can both be played from the start, and nobody else of the cast"), Leads->IsUnlocked(TEXT("tunde")) && Leads->IsUnlocked(TEXT("amaka")) && !Leads->IsUnlocked(TEXT("chidi"))
+			&& !Leads->IsUnlocked(TEXT("sule")) && !Leads->IsUnlocked(TEXT("zainab")) && !Leads->IsUnlocked(TEXT("jaguar")) && !Leads->IsUnlocked(TEXT("kemi")) && !Leads->IsUnlocked(TEXT("shina")));
+	});
+
+	for (int32 I = 0; I < 10; ++I)
+	{
+		Do(FString::Printf(TEXT("switch %d of 10 (Tab)"), I + 1), [this, Seen, L, I]()
+		{
+			ANHLeads* Leads = L();
+			const FName From = Leads->Current();
+			Seen->Expect = From == TEXT("tunde") ? FName(TEXT("amaka")) : FName(TEXT("tunde"));
+			// a few steps off first, so "where they were left" is not just where they started
+			if (ANHCharacter* C = Character())
+			{
+				C->SetActorLocation(C->GetActorLocation() + FVector(120.f * (I % 3), 90.f * (I % 2), 0.f), true);
+				Seen->Left.Add(From, C->GetActorLocation());
+			}
+			Check(FString::Printf(TEXT("the switch from %s starts"), *From.ToString()), Leads->Switch() && Leads->IsSwitching());
+		});
+		Until(TEXT("the camera goes up, across and down"), [L](float) { return !L()->IsSwitching(); }, 20.f);
+		Do(TEXT("after the switch"), [this, Seen, L]()
+		{
+			ANHLeads* Leads = L();
+			ANHCharacter* C = Character();
+			const FName Now = Leads->Current(), Other = Now == TEXT("tunde") ? FName(TEXT("amaka")) : FName(TEXT("tunde"));
+			const ANHLeads::FMember* Who = Leads->Find(Now);
+			++Seen->Switches;
+			Check(FString::Printf(TEXT("the player is %s"), *Seen->Expect.ToString()), Now == Seen->Expect && C && PC->GetPawn() == C, Who ? Who->Name : FString());
+			Check(TEXT("in that lead's own body"), C && Who && (C->GetSkin() == Who->Skin || !C->HasBody()), C ? C->GetSkin().ToString() : FString());
+			if (const FVector* Was = Seen->Left.Find(Now))
+			{
+				const float Off = FVector::Dist2D(C->GetActorLocation(), *Was);
+				Check(TEXT("standing where that lead was left"), Off < 150.f, FString::Printf(TEXT("%.0f cm from it"), Off));
+			}
+			else
+			{
+				Check(TEXT("the first time, at the place that lead starts from"), FVector::Dist2D(C->GetActorLocation(), Leads->SpotOf(Now)) < 150.f || Leads->WasPlaced(Now),
+					FString::Printf(TEXT("at %.0f, %.0f"), C->GetActorLocation().X, C->GetActorLocation().Y));
+			}
+			Check(TEXT("on the ground, walking"), C && C->GetCharacterMovement()->MovementMode == MOVE_Walking && C->GetCharacterMovement()->IsMovingOnGround());
+			Check(TEXT("the money is the same"), Hustle()->Cash == Seen->Cash, NHPlay::N(Hustle()->Cash));
+			const FVector* LeftAt = Seen->Left.Find(Other);
+			const float Away = LeftAt ? FVector::Dist2D(C->GetActorLocation(), *LeftAt) : 0.f;
+			Note(FString::Printf(TEXT("%s was left %.0f m away"), *Other.ToString(), Away / 100.f));
+		});
+		if (I == 0)
+		{
+			Until(TEXT("a look at Amaka where she starts"), [this](float Dt) { Pace += Dt; return Pace > 1.5f; }, 5.f);
+			Do(TEXT("picture: Amaka after the first switch"), [Shot]() { Shot(TEXT("1_amaka_after_switch")); });
+		}
+		Until(TEXT("the lead left behind is standing there, when near enough to see"), [this, Seen, L](float)
+		{
+			ANHLeads* Leads = L();
+			const FName Other = Leads->Current() == TEXT("tunde") ? FName(TEXT("amaka")) : FName(TEXT("tunde"));
+			const FVector* LeftAt = Seen->Left.Find(Other);
+			if (!LeftAt || FVector::Dist2D(Character()->GetActorLocation(), *LeftAt) > 14000.f)
+			{
+				return true; // too far for a body: nothing to see
+			}
+			const ANHCharacter* Body = Leads->StandIn(Other);
+			return Body && FVector::Dist2D(Body->GetActorLocation(), *LeftAt) < 150.f;
+		}, 6.f);
+	}
+
+	// ---- Tunde: Hustle Rush
+	Do(TEXT("be Tunde"), [L]() { if (L()->Current() != TEXT("tunde")) { L()->Switch(TEXT("tunde"), true); } });
+	Until(TEXT("Tunde"), [L](float) { return !L()->IsSwitching() && L()->Current() == TEXT("tunde"); }, 20.f);
+	Do(TEXT("Hustle Rush with the meter empty, then full (Z)"), [this, Seen, L, Shot]()
+	{
+		ANHLeads* Leads = L();
+		Leads->SetMeter(TEXT("tunde"), 0.2f);
+		Check(TEXT("it does nothing until the meter is full"), !Leads->UseAbility() && !Leads->RushOn(), FString::Printf(TEXT("meter %.0f%%"), Leads->Meter(TEXT("tunde")) * 100.f));
+		Leads->SetMeter(TEXT("tunde"), 1.f);
+		const float Before = Character()->GetCharacterMovement()->MaxWalkSpeed;
+		Check(TEXT("full, it starts"), Leads->UseAbility() && Leads->RushOn(), FString::Printf(TEXT("%.1f s"), Leads->RushSecondsLeft()));
+		Check(TEXT("he is faster and takes less of a blow, and the meter is spent"), Character()->SpeedBoost > 1.f && Character()->DamageTaken < 1.f && Character()->GetCharacterMovement()->MaxWalkSpeed > Before
+			&& Leads->Meter(TEXT("tunde")) < 0.05f, FString::Printf(TEXT("speed x%.2f (%.0f -> %.0f cm/s), blows x%.2f"), Character()->SpeedBoost, Before, Character()->GetCharacterMovement()->MaxWalkSpeed, Character()->DamageTaken));
+		const float Health = Character()->Health;
+		Character()->Hurt(20.f);
+		Check(TEXT("a blow of 20 takes less than 20 off him"), Health - Character()->Health < 19.f && Health - Character()->Health > 0.f, FString::Printf(TEXT("%.0f"), Health - Character()->Health));
+		Seen->RushT = 0.f;
+		Shot(TEXT("2_tunde_hustle_rush"));
+	});
+	Until(TEXT("Hustle Rush runs out"), [L](float) { return !L()->RushOn(); }, 30.f);
+	Do(TEXT("after Hustle Rush"), [this, L]()
+	{
+		Check(TEXT("he is back to how he was"), FMath::IsNearlyEqual(Character()->SpeedBoost, 1.f) && FMath::IsNearlyEqual(Character()->DamageTaken, 1.f));
+	});
+
+	// ---- Amaka: Unlock
+	Do(TEXT("be Amaka"), [L]() { L()->Switch(TEXT("amaka"), true); });
+	Until(TEXT("Amaka"), [L](float) { return !L()->IsSwitching() && L()->Current() == TEXT("amaka"); }, 20.f);
+	Do(TEXT("a camera nine metres in front of her, and two wanted stars"), [this, Seen, L]()
+	{
+		Seen->Camera = L()->PlaceHackPoint(ENHHackKind::Camera, 900.f);
+		Hustle()->AddHeat(2.f);
+		Seen->Stars = Hustle()->Stars();
+		L()->SetMeter(TEXT("amaka"), 1.f);
+		Check(TEXT("the camera stands there"), Seen->Camera.IsValid(), FString::Printf(TEXT("%d stars"), Seen->Stars));
+	});
+	Until(TEXT("the marker finds something to unlock"), [L](float) { return L()->Hud().bTarget; }, 5.f);
+	Do(TEXT("picture: the marker on what Unlock would get into"), [Shot]() { Shot(TEXT("3_amaka_unlock_marker")); });
+	Until(TEXT("the picture is saved"), [this](float Dt) { Pace += Dt; return Pace > 0.6f; }, 5.f);
+	Do(TEXT("Unlock (Z)"), [this, Seen, L]()
+	{
+		ANHLeads* Leads = L();
+		Note(FString::Printf(TEXT("marked: %s"), *Leads->Hud().TargetLabel));
+		Check(TEXT("it unlocks what is marked"), Leads->UseAbility() && !Leads->LastUnlocked.IsNone(), Leads->LastUnlocked.ToString());
+		Check(TEXT("the meter is spent"), Leads->Meter(TEXT("amaka")) < 0.05f);
+		if (Leads->LastUnlocked == TEXT("camera"))
+		{
+			Check(TEXT("the camera is down and a star is gone"), Seen->Camera.IsValid() && Seen->Camera->IsHacked() && Leads->CamerasDown() && Hustle()->Stars() < Seen->Stars, FString::Printf(TEXT("%d -> %d stars"), Seen->Stars, Hustle()->Stars()));
+		}
+		Hustle()->ClearHeat();
+		Note(FString::Printf(TEXT("%d switches made; %s"), Seen->Switches, *NHPlay::N(Hustle()->Cash)));
+	});
+	Until(TEXT("the last picture is saved"), [this](float Dt) { Pace += Dt; return Pace > 1.f; }, 5.f);
+	Do(TEXT("stop counting frames"), [this]() { PC->ConsoleCommand(TEXT("stopfpschart")); });
 }

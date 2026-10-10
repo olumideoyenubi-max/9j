@@ -6,6 +6,7 @@
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
 #include "Gameplay/NHInventory.h"
+#include "Gameplay/NHLeads.h"
 #include "Misc/Paths.h"
 #include "UnrealClient.h"
 #include "Audio/NHAudioSubsystem.h"
@@ -69,7 +70,7 @@ void ANHPlayerController::BeginPlay()
 		{
 			if (UNHDebugPlay* Play = DebugPlay(); Play && !Play->IsRunning())
 			{
-				Run == TEXT("selftest") ? Play->SelfTest(bQuitAfter) : Play->Autoplay(bQuitAfter);
+				Run == TEXT("selftest") ? Play->SelfTest(bQuitAfter) : Run == TEXT("leads") ? Play->Leads(bQuitAfter) : Play->Autoplay(bQuitAfter);
 			}
 		}), 4.f, false);
 	}
@@ -267,8 +268,9 @@ void ANHPlayerController::SetupInputComponent()
 	Key(EKeys::N, &ANHPlayerController::NHWho); // who to be
 	Key(EKeys::T, &ANHPlayerController::OnFire);
 	Key(EKeys::T, &ANHPlayerController::OnFireEnd, IE_Released);
-	Key(EKeys::Tab, &ANHPlayerController::UiWheelOpen);
-	Key(EKeys::Tab, &ANHPlayerController::UiWheelClose, IE_Released);
+	Key(EKeys::Tab, &ANHPlayerController::OnTabDown);
+	Key(EKeys::Tab, &ANHPlayerController::OnTabUp, IE_Released);
+	Key(EKeys::Z, &ANHPlayerController::OnAbility);
 	Key(EKeys::Up, &ANHPlayerController::UiUp);
 	Key(EKeys::Down, &ANHPlayerController::UiDown);
 	Key(EKeys::Left, &ANHPlayerController::UiLeft);
@@ -855,6 +857,71 @@ void ANHPlayerController::NHPlayAs(const FString& Who)
 	if (ANHEstate* Estate = ANHEstate::Get(this))
 	{
 		Estate->PlayAs(FName(*Who));
+	}
+}
+
+void ANHPlayerController::OnTabDown()
+{
+	bTabWheel = false;
+	GetWorldTimerManager().SetTimer(TabHold, FTimerDelegate::CreateWeakLambda(this, [this]()
+	{
+		bTabWheel = true;
+		UiWheelOpen();
+	}), 0.25f, false);
+}
+
+void ANHPlayerController::OnTabUp()
+{
+	GetWorldTimerManager().ClearTimer(TabHold);
+	if (bTabWheel)
+	{
+		UiWheelClose();
+	}
+	else if (const ANHHUD* H = ANHHUD::Get(this); H && H->GetScreen() == ANHHUD::EScreen::None && !IsPaused())
+	{
+		NHSwitch(FString());
+	}
+	bTabWheel = false;
+}
+
+void ANHPlayerController::OnAbility()
+{
+	if (const ANHHUD* H = ANHHUD::Get(this); H && H->GetScreen() == ANHHUD::EScreen::None && !IsPaused())
+	{
+		NHAbility();
+	}
+}
+
+void ANHPlayerController::NHSwitch(const FString& Who)
+{
+	if (ANHLeads* Leads = ANHLeads::Get(this))
+	{
+		Leads->Switch(Who.IsEmpty() ? NAME_None : FName(*Who));
+	}
+}
+
+void ANHPlayerController::NHAbility()
+{
+	if (ANHLeads* Leads = ANHLeads::Get(this))
+	{
+		Leads->UseAbility();
+	}
+}
+
+void ANHPlayerController::NHMeter(float Value)
+{
+	if (ANHLeads* Leads = ANHLeads::Get(this))
+	{
+		Leads->SetMeter(Leads->Current(), Value);
+	}
+}
+
+void ANHPlayerController::NHFlag(const FString& Name, int32 Value)
+{
+	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this); Hustle && !Name.IsEmpty())
+	{
+		Hustle->SetFlag(FName(*Name), Value);
+		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: flag %s = %d"), *Name, Value);
 	}
 }
 

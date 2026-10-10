@@ -45,6 +45,8 @@ public:
 	void Finish();
 	void Autoplay(bool bQuitWhenDone);
 	void SelfTest(bool bQuitWhenDone);
+	/** -NHRun=leads: switches between Tunde and Amaka ten times and uses each one's ability once (run it with -NHNoSave) */
+	void Leads(bool bQuitWhenDone);
 	void PaintDemo(const FVector& At);
 	/** Saves two pictures of the player from the front: whole body and face */
 	void SkinShots(const FString& Folder);

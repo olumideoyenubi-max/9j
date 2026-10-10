@@ -46,6 +46,9 @@ public:
 	/** Flags down the nearest moving vehicle within 80 m: it stops for a while so the player can get in. The vehicle's name, or "" if none is near. */
 	FString Hail(const FVector& Player);
 	static ANHTraffic* Get(const UObject* WorldContext);
+	/** A light gone red (Amaka's Unlock): for that long, traffic within Radius of the point stops short of it */
+	void StopAt(const FVector2D& At, float Radius, float Seconds);
+	int32 StoppedAtLights() const { return LightStops; }
 	/** Night, or the night-rain and sunset lighting: when vehicles drive with their lights on */
 	static bool IsDark(const UObject* WorldContext);
 	/** Somebody to sit at the wheel of a vehicle of that type (null if the project has no bodies for it) */
@@ -130,6 +133,10 @@ private:
 	bool NextSegment(FCar& Car) const;
 	void Step(FCar& Car, const FVector& Player, float DeltaSeconds);
 	bool Blocked(const FCar& Car, const FVector& Player, float& OutGap) const;
+	struct FRedLight { FVector2D At = FVector2D::ZeroVector; float Radius = 0.f; double Until = 0.0; };
+	TArray<FRedLight> RedLights;
+	/** Cars held by a red light on the last pass, for tests */
+	mutable int32 LightStops = 0;
 	bool TrySpawn(const FVector2D& Player, bool bParked, float Near);
 	ANHVehicle* Make(FName Type, const FVector2D& At, float Yaw, bool bBridge);
 	FName RandomType(bool bParked, FName Zone) const;

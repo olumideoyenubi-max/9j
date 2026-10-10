@@ -16,6 +16,7 @@
 #include "GameFramework/Pawn.h"
 #include "GameFramework/PlayerController.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Gameplay/NHLeads.h"
 #include "NaijaHustleGame.h"
 #include "Phone/NHPhone.h"
 #include "Player/NHPlayerController.h"
@@ -294,6 +295,56 @@ void ANHHUD::DrawHUD()
 			Text((CashDelta > 0 ? TEXT("+") : TEXT("")) + UNHHustleSubsystem::Naira(CashDelta), Pad, Pad + 62.f * S, CashDelta > 0 ? Good : Bad, Large, 1.2f);
 		}
 		DrawStars(Pad, Pad + 100.f * S, Hustle->Stars(), 26.f * S);
+	}
+
+	// ---- the lead being played and their ability (left edge, below the job card's room)
+	if (const ANHLeads* Leads = ANHLeads::Get(this); Leads && Screen == EScreen::None && Hustle && Hustle->Persona.IsNone())
+	{
+		const ANHLeads::FHud Lead = Leads->Hud();
+		if (!Lead.Name.IsEmpty())
+		{
+			const float X = Pad, Y = VH * 0.62f, W = 300.f * S, H = Lead.bHasAbility ? 74.f * S : 40.f * S;
+			Panel(X, Y, W, H);
+			DrawRect(Lead.Colour, X, Y, 6.f * S, H);
+			Text(Lead.Name, X + 18.f * S, Y + 6.f * S, Ink, Medium, 1.05f);
+			if (Lead.bCanSwitch)
+			{
+				Text(TEXT("Tab"), X + W - 44.f * S, Y + 8.f * S, Muted, Medium, 0.85f);
+			}
+			if (Lead.bHasAbility)
+			{
+				// the meter: filling, full (the key shows), or running down while Hustle Rush lasts
+				const bool bFull = Lead.Meter >= 1.f, bRush = Lead.RushLeft > 0.f;
+				const float BarX = X + 18.f * S, BarY = Y + 56.f * S, BarW = W - 36.f * S;
+				Text(bRush ? FString::Printf(TEXT("%s  %.0f s"), *Lead.AbilityName, Lead.RushLeft) : bFull ? Lead.AbilityName + TEXT("  [Z]") : Lead.AbilityName, BarX, Y + 32.f * S, bFull || bRush ? Yellow : Muted, Medium, 0.9f);
+				DrawRect(FLinearColor(1.f, 1.f, 1.f, 0.14f), BarX, BarY, BarW, 6.f * S);
+				DrawRect(bFull || bRush ? Yellow : Lead.Colour, BarX, BarY, BarW * FMath::Clamp(bRush ? 1.f : Lead.Meter, 0.f, 1.f), 6.f * S);
+			}
+		}
+		if (Lead.bTarget)
+		{
+			// what Unlock would get into: four corners round it and its name
+			const FVector At = Canvas->Project(Lead.TargetAt);
+			if (At.Z > 0.f && At.X > 0.f && At.X < VW && At.Y > 0.f && At.Y < VH)
+			{
+				const float R = 22.f * S, L = 9.f * S, T = FMath::Max(2.f, 2.f * S);
+				const FLinearColor Mark = Lead.Meter >= 1.f ? Yellow : FLinearColor(1.f, 1.f, 1.f, 0.55f);
+				for (const float SX : { -1.f, 1.f })
+				{
+					for (const float SY : { -1.f, 1.f })
+					{
+						DrawRect(Mark, At.X + SX * R - (SX > 0.f ? L : 0.f), At.Y + SY * R - T * 0.5f, L, T);
+						DrawRect(Mark, At.X + SX * R - T * 0.5f, At.Y + SY * R - (SY > 0.f ? L : 0.f), T, L);
+					}
+				}
+				Text(Lead.Meter >= 1.f ? Lead.TargetLabel + TEXT("  [Z] Unlock") : Lead.TargetLabel, At.X, At.Y + R + 6.f * S, Mark, Medium, 0.9f, true);
+			}
+		}
+		if (Lead.bSwitching && !Lead.SwitchTo.IsEmpty())
+		{
+			Panel(0.f, VH * 0.76f, VW, 84.f * S, FLinearColor(0.f, 0.f, 0.f, 0.7f));
+			Text(Lead.SwitchTo, VW * 0.5f, VH * 0.76f + 24.f * S, Ink, Large, 1.5f, true);
+		}
 	}
 
 	// ---- job card (left, under the stars)

@@ -754,7 +754,7 @@ void ANHVehicle::Drive(float DeltaSeconds)
 	{
 		return; // carried along the road by ANHTraffic
 	}
-	const float A = Spec.Accel, V = Spec.MaxSpeed;
+	const float A = Spec.Accel, V = Spec.MaxSpeed * TopBoost;
 	const bool bDriven = Controller != nullptr && !IsWrecked() && !bHeld;
 	const float T = bDriven && Fuel > 0.f ? Throttle : 0.f, B = bDriven ? BrakeIn : 0.f, S = bDriven ? Steer : 0.f;
 	if (bDriven && Throttle > 0.f && Fuel <= 0.f && IsPlayerControlled() && GetWorld()->GetTimeSeconds() - DrySaid > 6.f)
@@ -765,7 +765,7 @@ void ANHVehicle::Drive(float DeltaSeconds)
 
 	// The engine pulls hardest from rest and less and less as the speed climbs, so a car works up through its speed
 	// to the top over a quarter of a minute. (Used whole, the data's figure put every car at top speed inside two seconds.)
-	const float Pull = A * 0.2f * FMath::Lerp(1.f, 0.12f, FMath::Clamp(Speed / V, 0.f, 1.f));
+	const float Pull = A * 0.2f * PullBoost * FMath::Lerp(1.f, 0.12f, FMath::Clamp(Speed / V, 0.f, 1.f));
 	if (T > 0.f)
 	{
 		Speed += (Speed < 0.f ? A * 0.3f : Pull) * T * DeltaSeconds;

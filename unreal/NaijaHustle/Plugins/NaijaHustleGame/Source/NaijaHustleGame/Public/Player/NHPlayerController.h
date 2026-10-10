@@ -59,6 +59,12 @@ public:
 	void NHTime(float Hour);
 	/** What you carry, in the log */
 	UFUNCTION(Exec) void NHBag();
+	/** The story's cast: NHSwitch goes to the other lead, NHSwitch amaka to one by id (Tab does the first). NHAbility is the Z key. */
+	UFUNCTION(Exec) void NHSwitch(const FString& Who);
+	UFUNCTION(Exec) void NHAbility();
+	/** NHMeter 1 fills the ability meter of whoever is being played; NHFlag spared_jaguar 1 sets one of the story's flags */
+	UFUNCTION(Exec) void NHMeter(float Value);
+	UFUNCTION(Exec) void NHFlag(const FString& Name, int32 Value);
 	/** Somebody rich to be: NHPlayAs chief, NHPlayAs madam (Data/estate.json). NHWho lists them on the screen. */
 	UFUNCTION(Exec) void NHPlayAs(const FString& Who);
 	UFUNCTION(Exec) void NHWho();
@@ -201,6 +207,12 @@ private:
 	void OnFireEnd();
 	void UiBack();
 	void UiWheelOpen();
+	/** Tab: let go quickly, it switches lead; held a quarter of a second, it opens the inventory wheel */
+	void OnTabDown();
+	void OnTabUp();
+	FTimerHandle TabHold;
+	bool bTabWheel = false;
+	void OnAbility();
 	void UiWheelClose();
 	void UiUp();
 	void UiDown();
