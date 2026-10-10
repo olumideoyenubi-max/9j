@@ -1,8 +1,60 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-10 (living Lagos step 3, first part: witnesses, see `docs/LAW.md`; pedestrians keep off bridges, see `docs/POPULATION.md`; before that, 2026-10-09: audio brief step 1: the mix; radio station Ragebait FM; car stealing, roll and climb, directions; phone and DropAm; real-scale Lagos level; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
+**Last updated:** 2026-10-10 (master build prompt, Phase 0 done, and a standalone Mac build; before that: living Lagos step 3, first part: witnesses, see `docs/LAW.md`; pedestrians keep off bridges, see `docs/POPULATION.md`; before that, 2026-10-09: audio brief step 1: the mix; radio station Ragebait FM; car stealing, roll and climb, directions; phone and DropAm; real-scale Lagos level; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
+
+## Master build prompt: phase checklist (started 2026-10-10)
+
+The brief is `docs/BUILD_PROMPT.md`; the story, store and hustles are `docs/STORY.md`, `docs/STORE.md`, `docs/HUSTLES.md`. On **continue**, pick up at the first unticked step below.
+
+Decided with the user on 2026-10-10:
+- **Where the work happens:** `~/Documents/Unreal Projects/MyProject` (target `MyProjectEditor`), brought up to date first. Its `Content` is a link to `unreal/NaijaHustle/Content` in this repo, so both projects see one set of assets and every file stays under `~/Documents/9j`. Its plugin folder is a copy: work in MyProject, copy `Source`, `Data`, `Scripts` back here at the end of each phase.
+- **Real map, fictional story:** the real-scale Lagos, its real street names and the downloaded car models stay. Story people, gangs, banks, companies and politicians are fictional, and the story's districts sit on real places (Oshoja at Oshodi, and so on; the full table is due before Phase 3).
+- **Pushes go to** `origin/lagos-real-city`. The brief's branch `claude/happy-turing-4xqato` held only the five new docs and is merged in.
+
+- [x] **Phase 0: sync with the repo** (done 2026-10-10)
+  - [x] 0.1 Branch fetched and merged: docs only (`BUILD_PROMPT`, `STORY`, `STORE`, `HUSTLES`, `GDD`).
+  - [x] 0.2 Plugins compared three ways. The branch's plugin (42 files) is the oldest; MyProject's (8 Oct, 70 files) held the local fixes; this repo's (191 files) already had all of them plus two days more. Only `Scripts/lagos_retile.py` was missing here and is now added.
+  - [x] 0.3 `STORY`, `STORE`, `HUSTLES` and the `GDD` change read in full.
+  - [x] 0.4 MyProject updated: plugin, `Config` (its own project id and template redirects kept; Substrate now off, as here), the six plugins the game needs in `MyProject.uproject`, `Scripts/mac.sh`, the save games. Its old state is in `MyProject-backup-2026-10-10.tar` on the LumiTB drive and in `Content.before-link` / `Config.before-update` beside the project.
+  - [x] 0.5 `MyProjectEditor` builds (263 s); the plugin's script tests pass.
+  - [x] 0.6 Mission 1 by script (`Scripts/mac.sh play -NHRun=autoplay`, in MyProject): 26 of 26 checks, twice running. It first failed at "drive in to Yaba and stop", and failed the same way in this repo's own project: the test planned its braking for brakes twice as strong as the vehicles have had since the gentler-driving change, ran past the kerb and sat there. `UNHDebugPlay::Drive` now plans with the brake it uses, and a step that runs out of time says where the vehicle was, its speed, fuel and whether it was held.
+  - [x] 0.7 Committed and pushed to `origin/lagos-real-city`.
+  - Measured in the small level, 1280x720 window: 31.8 fps standing still at the Balo Gate stop (15 s, 477 frames); 1.1 GB resident at the peak of the scripted mission. Pictures in MyProject's `Saved/Screenshots/NH/phase0/`. Not measured: the city level, 1080p.
+- [ ] **Phase 1:** the two leads, Tunde and Amaka (`characters.json`, switching, Hustle Rush and Unlock, unlock rules)
+- [ ] **Phase 2:** the mission runner and shared systems (flags and Integrity, night-shift pay, combat, enemy AI, stealth, speedboat, disguises, heist board, phone, checkpoints)
+- [ ] **Phase 3:** Act 1, missions 1 to 4
+- [ ] **Phase 4:** Act 2, missions 5 to 7
+- [ ] **Phase 5:** Act 3, missions 8 and 9
+- [ ] **Phase 6:** Act 4, missions 10 to 12, the three endings, mission replay
+- [ ] **Phase 7:** the Gold Kobo store (mock purchases only)
+- [ ] **Phase 8:** hustles and warnings
+- [ ] **Phase 9:** the look. **WAIT** for the user to type `surfaces added`.
+
+Open problems:
+- The internal disk has about 3.8 GB free. A cook or a long editor run can push it under 2 GB, where Unreal's storage server refuses writes (see "Standalone Mac build" below).
+- Where the brief and the game differ, beyond the two decisions above: the brief's fixed `r.Streaming.PoolSize=1000` against this project's 800; the brief's fps target at 1080p against the 1280x720 window the tests use. Left as they are until measured.
+
+## Standalone Mac build (2026-10-10)
+
+- The game now exists as a Mac app in a disk image: `project-files/builds/NaijaHustle-mac-arm64.dmg` (1.2 GB; Shipping, Apple Silicon only, signed to run locally, not notarized). Launched from the mounted image it reached the first mission; it took three to four minutes to get there.
+- Made from `unreal/NaijaHustle` (not MyProject): 8,747 packages cooked, no errors, one `pakchunk0` (the 78 district labels made no chunks of their own).
+- `Config/DefaultEngine.ini` starts the packaged game in `L_Lagos_City`. `Config/DefaultGame.ini` always cooks the eight content folders, because the game loads most models by name, and stages the plugin's `Data` folder.
+- How, and what went wrong on the way:
+  - Cooked, staged and archived on an APFS image on the LumiTB drive (`NaijaHustle-build/work.sparseimage`, mounted as `/Volumes/NHBuild`); the internal disk is too small.
+  - UnrealBuildTool's own Xcode step ("finalize the .app") fails on this Mac, cause not found. Build with `UE_BUILD_FROM_XCODE=1`, run that `xcodebuild` step by hand, then `BuildCookRun` without `-build`.
+  - The cook writes into Unreal's Zen storage folder on the internal disk and stops with "Insufficient Storage (507)" under 2 GB free. That folder was linked to the drive for the cook and put back afterwards.
+  - `-CookOutputDir` has to end in `Mac`.
+- Seen in the packaged game and not looked into: five wanted stars from the first frame; in one launch the camera sat low under the player during the opening talk.
+- `docs/STORAGE.md` still says no packaged build exists; its chunk sizes are still the uncooked ones.
+
+## Real streets in twelve districts (2026-10-10)
+
+- `Scripts/build_district_osm.py all` now builds eleven more districts beside Oshodi from OpenStreetMap: Ikeja, Maryland, Gbagada, Mushin and Surulere, Yaba, Iganmu and Ijora, Ebute Metta, Apapa, Lagos Island and Eko Atlantic, Ikoyi and Victoria Island, Lekki Phase 1 (`Data/osm_<district>.json`, `streets_<district>.csv`). It tries three map servers in turn, and only fetches building footprints for Oshodi.
+- The game loads every district file by itself: 20,549 street segments, 2,527 different street names, 5,151 named junctions. In those districts the side streets and their names are on the minimap and map, the street banner and junction signs use the real names, and the street clutter (poles and wires, stalls, kiosks, weeds, litter) is laid along them.
+- Seen with `-NHTreeTest` in Ikoyi, Victoria Island, Yaba, Eko Atlantic and Lekki: 35 to 37 frames a second.
+- Not covered: the map north of Ikeja and Maryland, west of 3.325 E, and east of Lekki Phase 1. The side streets' surfaces are still the city model's own.
 
 ## SUV replaced, life at home, grass and water (2026-10-10)
 

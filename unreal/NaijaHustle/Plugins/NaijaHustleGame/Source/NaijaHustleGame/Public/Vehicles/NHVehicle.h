@@ -64,6 +64,7 @@ public:
 	UNHVehicleDynamicsComponent* GetDynamics() const { return Dynamics; }
 	/** Held: it stands still whatever the driver presses (Baba Driver counting the money) */
 	void SetHeld(bool bOn) { bHeld = bOn; if (bOn) { Speed = 0.f; } }
+	bool IsHeld() const { return bHeld; }
 	/**
 	 * Traffic: the vehicle does not drive itself; ANHTraffic carries it along the road with TrafficMove. Getting in
 	 * still works, and it then drives as usual for as long as someone is at the wheel.

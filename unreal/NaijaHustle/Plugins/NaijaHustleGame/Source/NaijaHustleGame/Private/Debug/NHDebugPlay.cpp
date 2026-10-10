@@ -140,8 +140,9 @@ bool UNHDebugPlay::Drive(ANHVehicle* V, const FVector2D& Target, float Cruise, b
 	const float Want = FMath::RadiansToDegrees(FMath::Atan2(To.Y, To.X));
 	const float Off = FMath::FindDeltaAngleDegrees(V->GetActorRotation().Yaw, Want);
 	const float Steer = Dist > 200.f ? FMath::Clamp(Off / 25.f, -1.f, 1.f) : 0.f;
-	// slow for the target so it can stop there: v² = 2 a d, with the gentle half of the brakes
-	const float Limit = bStopThere ? FMath::Min(Cruise, FMath::Sqrt(FMath::Max(0.f, Dist - 80.f) * V->GetSpec().Accel * 0.5f)) : Cruise;
+	// slow for the target so it can stop there: v² = 2 a d. Half brake takes off Accel * 0.15 a second (ANHVehicle::Drive);
+	// the plan counts on four fifths of that, so the bus is under the limit when it reaches the kerb and does not run past it
+	const float Limit = bStopThere ? FMath::Min(Cruise, FMath::Sqrt(FMath::Max(0.f, Dist - 80.f) * V->GetSpec().Accel * 0.24f)) : Cruise;
 	const bool bArrived = bStopThere && Dist < 150.f;
 	float Throttle = 0.f, Brake = 0.f;
 	if (!bArrived && V->Speed < Limit - 40.f)
@@ -990,8 +991,15 @@ void UNHDebugPlay::Tick(float DeltaSeconds)
 	if (S.T > S.Timeout)
 	{
 		ANHGameDirector* D = Dir();
-		End(FString::Printf(TEXT("Step '%s' did not finish in %.0f s (stage %s, panel '%s', dialogue %s)"), *S.Name, S.Timeout, *StageName(),
-			D && D->Panel.bOpen ? *D->Panel.Title : TEXT("none"), D && D->Dialogue.bOpen ? TEXT("open") : TEXT("closed")));
+		// what the vehicle was doing, when the step that ran out was a drive
+		FString Driving;
+		if (const ANHVehicle* V = Cast<ANHVehicle>(PC->GetPawn()))
+		{
+			Driving = FString::Printf(TEXT("; in the %s at %.0f, %.0f, %.0f doing %.0f cm/s, fuel %.0f%%%s%s, at stop '%s'"), *V->GetSpec().Name, V->GetActorLocation().X, V->GetActorLocation().Y,
+				V->GetActorLocation().Z, V->Speed, V->Fuel * 100.f, V->IsHeld() ? TEXT(", held") : TEXT(""), V->IsWrecked() ? TEXT(", wrecked") : TEXT(""), D ? *D->Shift.AtStop.ToString() : TEXT("?"));
+		}
+		End(FString::Printf(TEXT("Step '%s' did not finish in %.0f s (stage %s, panel '%s', dialogue %s%s)"), *S.Name, S.Timeout, *StageName(),
+			D && D->Panel.bOpen ? *D->Panel.Title : TEXT("none"), D && D->Dialogue.bOpen ? TEXT("open") : TEXT("closed"), *Driving));
 	}
 }
 
