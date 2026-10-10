@@ -195,6 +195,16 @@ UNHShotWave::UNHShotWave(const FObjectInitializer& ObjectInitializer)
 	SoundGroup = SOUNDGROUP_Default;
 }
 
+UNHShotWave* UNHShotWave::MakeAt(UObject* Outer, const TArray<int16>& Samples, int32 SampleRate)
+{
+	UNHShotWave* Wave = NewObject<UNHShotWave>(Outer);
+	Wave->SetSampleRate(SampleRate);
+	Wave->Length = static_cast<float>(Samples.Num()) / SampleRate;
+	Wave->Duration = Wave->Length;
+	Wave->QueueAudio(reinterpret_cast<const uint8*>(Samples.GetData()), Samples.Num() * sizeof(int16));
+	return Wave;
+}
+
 UNHShotWave* UNHShotWave::Make(UObject* Outer, const TArray<int16>& Samples)
 {
 	UNHShotWave* Wave = NewObject<UNHShotWave>(Outer);

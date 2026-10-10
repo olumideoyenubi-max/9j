@@ -1,4 +1,7 @@
 #include "Gameplay/NHCrowd.h"
+#include "Core/NHHustleSubsystem.h"
+#include "UI/NHHUD.h"
+#include "Audio/NHEngineWave.h"
 
 #include "Core/NHGameData.h"
 #include "EngineUtils.h"
@@ -117,6 +120,28 @@ void ANHCrowd::Tick(float DeltaSeconds)
 	if (!Data || !Data->bRealCity || !Pawn || !Traffic)
 	{
 		return;
+	}
+	// somebody the player passes close to says the greeting for the hour, in Yoruba or Pidgin (Data/barks.json)
+	GreetWait -= DeltaSeconds;
+	if (GreetWait <= 0.f && Pawn->GetVelocity().SizeSquared2D() < 700.f * 700.f)
+	{
+		for (const FWalker& Walker : Walkers)
+		{
+			ANHPerson* Body = Walker.Body.Get();
+			if (Body && !Body->IsDown() && !Body->IsFleeing() && FVector::DistSquared2D(Body->GetActorLocation(), Pawn->GetActorLocation()) < 280.f * 280.f)
+			{
+				const UNHHustleSubsystem* Clock = UNHHustleSubsystem::Get(this);
+				const float Hour = Clock ? Clock->HourOfDay() : 12.f;
+				const FName Kind = FMath::RandRange(0, 3) == 0 ? FName(TEXT("smalltalk")) : Hour < 12.f ? FName(TEXT("greet_morning")) : Hour < 16.f ? FName(TEXT("greet_afternoon")) : Hour < 19.f ? FName(TEXT("greet_evening")) : FName(TEXT("greet_night"));
+				if (const FString Line = NHBarks::Pick(Kind); !Line.IsEmpty())
+				{
+					ANHHUD::Say(this, Body->GetActorLocation() + FVector(0.f, 0.f, 200.f), Line, Body->GetName(), Body->GetUniqueID() % 2 == 0);
+					++Greeted;
+				}
+				GreetWait = FMath::FRandRange(9.f, 16.f);
+				break;
+			}
+		}
 	}
 	Think -= DeltaSeconds;
 	if (Think > 0.f)

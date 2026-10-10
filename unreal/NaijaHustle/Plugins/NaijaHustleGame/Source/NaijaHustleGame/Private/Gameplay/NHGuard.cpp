@@ -1,5 +1,7 @@
 #include "Gameplay/NHGuard.h"
 
+#include "Audio/NHEngineWave.h"
+
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
 #include "Gameplay/NHMissions.h"
@@ -34,11 +36,13 @@ void ANHGuard::Go(ENHGuardState To)
 	UE_LOG(LogNHGame, Verbose, TEXT("NAIJA HUSTLE: guard %s: %s -> %s"), *GetName(), Names[static_cast<int32>(State)], Names[static_cast<int32>(To)]);
 	if (To == ENHGuardState::Chase && State != ENHGuardState::Attack)
 	{
-		ANHHUD::Floater(this, GetActorLocation() + FVector(0.f, 0.f, 210.f), TEXT("!"));
+		const FString Shout = NHBarks::Pick(TEXT("guard_alert"));
+		ANHHUD::Say(this, GetActorLocation() + FVector(0.f, 0.f, 210.f), Shout.IsEmpty() ? FString(TEXT("!")) : Shout, GetName());
 	}
 	else if (To == ENHGuardState::Investigate)
 	{
-		ANHHUD::Floater(this, GetActorLocation() + FVector(0.f, 0.f, 210.f), TEXT("?"));
+		const FString Asks = NHBarks::Pick(TEXT("guard_look"));
+		ANHHUD::Say(this, GetActorLocation() + FVector(0.f, 0.f, 210.f), Asks.IsEmpty() ? FString(TEXT("?")) : Asks, GetName());
 		++Investigated;
 	}
 	if (To == ENHGuardState::Flee)

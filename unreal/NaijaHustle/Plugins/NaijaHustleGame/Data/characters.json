@@ -180,5 +180,26 @@
    "outfit": "fit_street_basic",
    "colour": "#ffd54f"
   }
- ]
+ ],
+ "languages": {
+  "note": "What each of the cast speaks in their lines. Yoruba lines carry their English in brackets; the made-up voices follow the Yoruba tone marks.",
+  "yoruba": [
+   "Iya Tobi",
+   "Baba Sule",
+   "Baba Driver",
+   "Shina Garage and his boys",
+   "Tunde (to his mother and the old men)",
+   "the neighbours at Oshoja",
+   "the traders at Balo Market"
+  ],
+  "pidgin_and_english": [
+   "Amaka",
+   "Chidi",
+   "Zainab",
+   "Kemi",
+   "Sir Jaguar",
+   "Big Bar and his men",
+   "the Kingmaker's people"
+  ]
+ }
 }

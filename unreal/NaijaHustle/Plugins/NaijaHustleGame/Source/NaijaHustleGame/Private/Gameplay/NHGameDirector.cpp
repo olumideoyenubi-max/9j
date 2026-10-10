@@ -1,4 +1,6 @@
 #include "Gameplay/NHGameDirector.h"
+#include "Audio/NHAudioSubsystem.h"
+#include "Audio/NHEngineWave.h"
 #include "Gameplay/NHMissions.h"
 
 #include "Gameplay/NHResponse.h"
@@ -211,6 +213,10 @@ void ANHGameDirector::Say(const FString& Speaker, const TArray<FString>& Lines, 
 	Dialogue.Index = 0;
 	Dialogue.T = 0.f;
 	Dialogue.OnDone = MoveTemp(OnDone);
+	if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this))
+	{
+		Audio->Speak(Speaker, Lines[0]); // the first line, in the speaker's voice
+	}
 }
 
 void ANHGameDirector::OpenPanel(const FString& Title, const TArray<FString>& Lines, const TArray<FString>& Options, TFunction<void(int32)> OnChoose)
@@ -245,10 +251,18 @@ void ANHGameDirector::OnAction(APawn* Pawn)
 		{
 			TFunction<void()> Done = MoveTemp(Dialogue.OnDone);
 			Dialogue = FDialogue();
+			if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this))
+			{
+				Audio->StopSpeaking();
+			}
 			if (Done)
 			{
 				Done();
 			}
+		}
+		else if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this))
+		{
+			Audio->Speak(Dialogue.Speaker, Dialogue.Lines[Dialogue.Index]); // the next line
 		}
 		Dialogue.T = 0.f;
 		return;
@@ -836,7 +850,9 @@ void ANHGameDirector::CallPassengers()
 	}
 	if (Data()->Calls.Num())
 	{
-		ANHHUD::Floater(this, Bus->GetActorLocation() + FVector(0, 0, 300.f), NHDir::Pick(Data()->Calls).Replace(TEXT("\""), TEXT("")));
+		// the conductor's call: Yoruba as often as not
+		const FString YorubaCall = FMath::RandBool() ? NHBarks::Pick(TEXT("conductor")) : FString();
+		ANHHUD::Say(this, Bus->GetActorLocation() + FVector(0, 0, 300.f), YorubaCall.IsEmpty() ? NHDir::Pick(Data()->Calls).Replace(TEXT("\""), TEXT("")) : YorubaCall, TEXT("Tunde"));
 	}
 	if (!Shift.bMission && FMath::FRand() < 0.4f) // shouting the route pulls in one more
 	{
@@ -935,7 +951,9 @@ void ANHGameDirector::AnswerChange(int32 Choice)
 		if (FMath::FRand() < 0.5f)
 		{
 			Shift.Tips += 50;
-			ANHHUD::Floater(this, At, TEXT("\"Thank you o!\" +N50"));
+			const FString Thanks = NHBarks::Pick(TEXT("thanks"));
+			ANHHUD::Say(this, At, Thanks.IsEmpty() ? FString(TEXT("Thank you o!")) : Thanks, Q.Pax.Name, Q.Pax.Id % 2 == 0);
+			ANHHUD::Floater(this, At + FVector(0.f, 0.f, 40.f), TEXT("+N50"));
 		}
 	}
 	else if (Choice == -1)
@@ -943,7 +961,7 @@ void ANHGameDirector::AnswerChange(int32 Choice)
 		Shift.Keep += Q.Right;
 		Hustle->Integrity = FMath::Clamp(Hustle->Integrity - 3, -100, 100);
 		Shift.Comfort = FMath::Max(0.f, Shift.Comfort - 15.f);
-		ANHHUD::Floater(this, At, FString::Printf(TEXT("\"%s: Conductor, where my change?!\""), *Q.Pax.Name));
+		ANHHUD::Say(this, At, FString::Printf(TEXT("%s: Conductor, where my change?!"), *Q.Pax.Name), Q.Pax.Name, Q.Pax.Id % 2 == 0);
 	}
 	else if (Choice > Q.Right)
 	{
@@ -955,7 +973,7 @@ void ANHGameDirector::AnswerChange(int32 Choice)
 		Shift.Keep += Q.Right - Choice;
 		Hustle->Integrity = FMath::Clamp(Hustle->Integrity - 2, -100, 100);
 		Shift.Comfort = FMath::Max(0.f, Shift.Comfort - 10.f);
-		ANHHUD::Floater(this, At, FString::Printf(TEXT("\"%s: My change no complete!\""), *Q.Pax.Name));
+		ANHHUD::Say(this, At, FString::Printf(TEXT("%s: My change no complete!"), *Q.Pax.Name), Q.Pax.Name, Q.Pax.Id % 2 == 0);
 	}
 }
 

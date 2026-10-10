@@ -65,6 +65,9 @@ public:
 	/** Held: it stands still whatever the driver presses (Baba Driver counting the money) */
 	void SetHeld(bool bOn) { bHeld = bOn; if (bOn) { Speed = 0.f; } }
 	bool IsHeld() const { return bHeld; }
+	/** The engine can be heard right now (it runs while somebody drives it or it is moving, near enough the listener), and the note it is on, Hz */
+	bool EngineSounding() const;
+	float EngineNote() const;
 	/** Is there water at that place for a boat to float on: the small city's lagoon cells, the real city's water surface */
 	bool Afloat(const FVector& At) const;
 	/** Set by ANHLeads while Hustle Rush lasts: the engine's pull and the top speed, times this (1: as made) */
@@ -144,6 +147,10 @@ private:
 	float Throttle = 0.f, BrakeIn = 0.f, Steer = 0.f;
 	bool bHandbrake = false;
 	bool bHeld = false;
+	UPROPERTY() TObjectPtr<class UNHEngineWave> EngineWave;
+	TWeakObjectPtr<class UAudioComponent> EngineVoice;
+	float EngineStill = 0.f, EngineRevs = 0.f;
+	void UpdateEngineSound(float DeltaSeconds);
 	bool bTraffic = false;
 	bool bNpcDriver = false;
 	float AlarmLeft = 0.f, AlarmBeat = 0.f;

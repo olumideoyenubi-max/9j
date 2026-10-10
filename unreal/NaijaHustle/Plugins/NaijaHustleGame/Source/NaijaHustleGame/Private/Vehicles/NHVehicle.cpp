@@ -1,4 +1,7 @@
 #include "Vehicles/NHVehicle.h"
+#include "Camera/PlayerCameraManager.h"
+#include "Components/AudioComponent.h"
+#include "Audio/NHEngineWave.h"
 #include "Materials/MaterialInterface.h"
 
 #include "Components/SkeletalMeshComponent.h"
@@ -667,6 +670,7 @@ void ANHVehicle::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	Drive(DeltaSeconds);
 	DriverAnimTick(DeltaSeconds);
+	UpdateEngineSound(DeltaSeconds);
 	if (AlarmLeft > 0.f)
 	{
 		// the alarm: lights flashing (when nobody is driving) and the noise written in the air; there is no sound yet
@@ -919,8 +923,58 @@ void ANHVehicle::OnRadioTrack()
 	}
 }
 
+bool ANHVehicle::EngineSounding() const
+{
+	return EngineVoice.IsValid() && EngineVoice->IsPlaying();
+}
+
+float ANHVehicle::EngineNote() const
+{
+	return EngineWave ? EngineWave->NoteAt(EngineRevs) : 0.f;
+}
+
+void ANHVehicle::UpdateEngineSound(float DeltaSeconds)
+{
+	// It runs while somebody is at the wheel or it is on the move, and is only made while the listener is near enough
+	// to hear it: the Mac mixes a few engines at once, not a street full (the audio system's own limit thins them too).
+	const APlayerController* PC = GetWorld()->GetFirstPlayerController();
+	const FVector Ear = PC && PC->PlayerCameraManager ? PC->PlayerCameraManager->GetCameraLocation() : GetActorLocation();
+	const bool bPlayers = Controller != nullptr && Controller->IsPlayerController();
+	const bool bRunning = !IsWrecked() && (bPlayers || FMath::Abs(Speed) > 25.f) && (bPlayers || Fuel > 0.f);
+	EngineStill = bRunning ? 0.f : EngineStill + DeltaSeconds;
+	const float Far = FVector::Dist(Ear, GetActorLocation());
+	const bool bWanted = bRunning && (bPlayers || Far < 6000.f);
+	if (bWanted && !EngineSounding())
+	{
+		if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this))
+		{
+			EngineWave = UNHEngineWave::Make(this, UNHEngineWave::KindFor(VehicleType, Spec.bBike, Spec.bBoat));
+			EngineVoice = Audio->PlayAttached(EngineWave, ENHSoundKind::VehicleEngine, RootComponent, bPlayers ? 1.6f : 1.1f);
+		}
+	}
+	else if (EngineSounding() && (EngineStill > 1.5f || (!bPlayers && Far > 8000.f)))
+	{
+		EngineVoice->FadeOut(0.4f, 0.f);
+		EngineVoice.Reset();
+	}
+	if (EngineWave && EngineSounding())
+	{
+		int32 Gear = 0;
+		float Rpm = 900.f;
+		Readings(Gear, Rpm);
+		EngineRevs = FMath::Clamp((Rpm - 900.f) / 5600.f, 0.f, 1.f);
+		// carried along by the traffic there is no pedal to read: it is pulling when it is going
+		const float Load = Controller ? FMath::Clamp(Throttle, 0.f, 1.f) : FMath::Clamp(FMath::Abs(Speed) / 900.f, 0.2f, 0.7f);
+		EngineWave->Set(EngineRevs, Load);
+	}
+}
+
 void ANHVehicle::OnHorn()
 {
+	if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this))
+	{
+		Audio->Horn(GetActorLocation(), VehicleType == TEXT("danfo") || VehicleType.ToString().Contains(TEXT("truck")));
+	}
 	ANHHUD::Floater(this, GetActorLocation() + FVector(0, 0, 250.f), VehicleType == TEXT("danfo") ? TEXT("PAAAN! PAAAN!") : TEXT("PIM PIM!"));
 }
 

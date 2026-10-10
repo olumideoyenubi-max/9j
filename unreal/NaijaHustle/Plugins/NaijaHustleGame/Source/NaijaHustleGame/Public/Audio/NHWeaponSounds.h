@@ -50,6 +50,8 @@ class NAIJAHUSTLEGAME_API UNHShotWave : public USoundWaveProcedural
 public:
 	UNHShotWave(const FObjectInitializer& ObjectInitializer);
 	static UNHShotWave* Make(UObject* Outer, const TArray<int16>& Samples);
+	/** The same for samples at another rate (the voices and the horn are worked out at 24 kHz) */
+	static UNHShotWave* MakeAt(UObject* Outer, const TArray<int16>& Samples, int32 SampleRate);
 	/** How long the sound is, seconds */
 	float Length = 0.f;
 };

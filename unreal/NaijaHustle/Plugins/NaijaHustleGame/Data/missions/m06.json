@@ -31,10 +31,10 @@
    "say": {
     "speaker": "Oshoja Junction",
     "lines": [
-     "Neighbour: Tunde! Dem carry your mama! Black car, three men!",
+     "Neighbour: Túndé! Wọ́n ti gbé màmá ẹ lọ! Mọ́tò dúdú, ọkùnrin mẹ́ta!  (Tunde! They have taken your mother! A black car, three men!)",
      "Shina (on the phone): You hold my bag, conductor. I hold your mother.",
      "Tunde: Baba Sule, which way?",
-     "Baba Sule: Dem dey run go the water. Stilt Town. Drive!"
+     "Baba Sule: Wọ́n ń sá lọ sí etí omi. Stilt Town. Yára!  (They are running to the waterside. Stilt Town. Hurry!)"
     ]
    }
   },
@@ -125,8 +125,8 @@
    "sayDone": {
     "speaker": "Stilt Town Waters",
     "lines": [
-     "Iya Tobi: Tunde. I tell them say you go come.",
-     "Tunde: Mama, we dey go.",
+     "Iya Tobi: Túndé. Mo sọ fún wọn pé wàá wá.  (Tunde. I told them you would come.)",
+     "Tunde: Màmá, a ń lọ.  (Mama, we are going.)",
      "Baba Sule: I get people for Ibadan. She go stay there till this thing finish."
     ]
    },

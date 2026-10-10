@@ -51,6 +51,8 @@ public:
 	void Systems(bool bQuitWhenDone);
 	/** -NHRun=act1: starts missions 2, 3 and 4 at their markers and plays each through by script, checking flags, money and the night shift's pay (run it with -NHNoSave) */
 	void Story(bool bQuitWhenDone, int32 Variant);
+	/** -NHRun=sounds: voices on three tones, a scene's line, a bark, a horn and an engine run up, recorded to Saved/NHAudio/nh_sounds.wav for Scripts/sound_check.py */
+	void Sounds(bool bQuitWhenDone);
 	/** The answers the story test gives to the choice cards, by the start of the card's title */
 	TMap<FString, int32> StoryChoices;
 	/** One frame of playing whatever story mission is running: cards answered, scenes skipped, the objective in hand done the short way. For the act tests. */

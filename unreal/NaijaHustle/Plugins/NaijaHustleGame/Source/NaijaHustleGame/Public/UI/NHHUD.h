@@ -35,6 +35,8 @@ public:
 	static void Toast(const UObject* WorldContext, const FString& Text, int32 Kind = 0);
 	/** Text that floats up from a point in the world */
 	static void Floater(const UObject* WorldContext, const FVector& World, const FString& Text);
+	/** Somebody saying something where they stand: the words float up, and their voice says them (UNHAudioSubsystem::Bark) */
+	static void Say(const UObject* WorldContext, const FVector& World, const FString& Text, const FString& Who = FString(), bool bWoman = false);
 	static ANHHUD* Get(const UObject* WorldContext);
 
 	enum class EScreen : uint8 { None, Map, Menu, Wheel, Bag, Place };

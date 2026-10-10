@@ -70,6 +70,18 @@ public:
 	/** One of the game's own weapon sounds, at a place. A different take each time; the pitch moves a little too. */
 	UAudioComponent* PlayShot(ENHShot Shot, const FVector& Location, ENHSoundKind Kind = ENHSoundKind::Weapon, float Volume = 1.f);
 
+	/**
+	 * A line said aloud in the speaker's own made-up voice (NHVoice): a mission's or Baba Driver's, not placed in the
+	 * world. A new line cuts the one before it off. "Amaka: Not today." is said by Amaka, without her name.
+	 */
+	UAudioComponent* Speak(const FString& Speaker, const FString& Line);
+	void StopSpeaking();
+	/** Somebody in the street saying something, where they stand */
+	UAudioComponent* Bark(const FString& Who, const FString& Line, const FVector& Location, bool bWoman = false);
+	UAudioComponent* Horn(const FVector& Location, bool bBig);
+	/** Lines spoken, barks and horns since the game began, for tests */
+	int32 Spoken = 0, Barked = 0, Horns = 0;
+
 	USoundClass* GetClass(ENHSoundClass Class) const { return Classes[static_cast<int32>(Class)]; }
 	USoundSubmix* GetSubmix(ENHSubmix Submix) const { return Submixes[static_cast<int32>(Submix)]; }
 	USoundAttenuation* GetAttenuation(ENHSoundKind Kind) const { return Attenuations[static_cast<int32>(Kind)]; }
@@ -143,6 +155,7 @@ public:
 
 private:
 	bool bBuilt = false;
+	TWeakObjectPtr<UAudioComponent> SpeakingVoice;
 	/** The weapon sounds, worked out once the first time each is wanted: Takes of each */
 	TArray<int16> ShotTakes[static_cast<int32>(ENHShot::Count)][NHWeaponSounds::Takes];
 	int32 LastTake[static_cast<int32>(ENHShot::Count)] = {};

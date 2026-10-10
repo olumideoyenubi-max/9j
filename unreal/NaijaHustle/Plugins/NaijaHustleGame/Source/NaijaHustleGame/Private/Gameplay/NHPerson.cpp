@@ -1,4 +1,5 @@
 #include "Gameplay/NHPerson.h"
+#include "Audio/NHEngineWave.h"
 
 #include "EngineUtils.h"
 #include "NaijaHustleGame.h"
@@ -192,7 +193,8 @@ bool ANHPerson::Hurt(float Damage, const FVector& From)
 	}
 	if (bEssential)
 	{
-		ANHHUD::Floater(this, GetActorLocation() + FVector(0.f, 0.f, 200.f), TEXT("You dey craze?!"));
+		const FString Angry = NHBarks::Pick(TEXT("angry"));
+		ANHHUD::Say(this, GetActorLocation() + FVector(0.f, 0.f, 200.f), Angry.IsEmpty() ? FString(TEXT("You dey craze?!")) : Angry, GetName(), GetUniqueID() % 2 == 0);
 		return false;
 	}
 	Health -= Damage;
@@ -223,7 +225,8 @@ void ANHPerson::Scare(const FVector& From)
 	static const TCHAR* Cries[] = { TEXT("Ye!"), TEXT("Jesu!"), TEXT("Gunshot o!"), TEXT("Run o!"), TEXT("E don happen!"), TEXT("Chineke!"), TEXT("Wayo!") };
 	if (FleeLeft <= 0.f && FMath::RandRange(0, 2) == 0)
 	{
-		ANHHUD::Floater(this, GetActorLocation() + FVector(0.f, 0.f, 200.f), Cries[FMath::RandRange(0, UE_ARRAY_COUNT(Cries) - 1)]);
+		const FString Cry = NHBarks::Pick(TEXT("scared"));
+		ANHHUD::Say(this, GetActorLocation() + FVector(0.f, 0.f, 200.f), Cry.IsEmpty() ? FString(Cries[FMath::RandRange(0, UE_ARRAY_COUNT(Cries) - 1)]) : Cry, GetName(), GetUniqueID() % 2 == 0);
 	}
 	// straight away from it, give or take, at a run
 	FVector Away = GetActorLocation() - From;

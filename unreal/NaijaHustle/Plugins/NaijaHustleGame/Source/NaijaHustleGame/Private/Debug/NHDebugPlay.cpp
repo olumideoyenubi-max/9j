@@ -1,4 +1,9 @@
 #include "Debug/NHDebugPlay.h"
+#include "UI/NHHUD.h"
+#include "Gameplay/NHCrowd.h"
+#include "AudioMixerBlueprintLibrary.h"
+#include "Audio/NHEngineWave.h"
+#include "Audio/NHAudioSubsystem.h"
 
 #include "Characters/NHAdvancedMovementComponent.h"
 #include "Camera/CameraActor.h"
@@ -2537,4 +2542,169 @@ void UNHDebugPlay::Story(bool bQuitWhenDone, int32 Variant)
 	});
 	Until(TEXT("the last picture is saved"), [this](float Dt) { Pace += Dt; return Pace > 1.f; }, 5.f);
 	Do(TEXT("stop counting frames"), [this]() { PC->ConsoleCommand(TEXT("stopfpschart")); });
+}
+
+// ---------------------------------------------------------------------------------------------------- engines and voices
+void UNHDebugPlay::Sounds(bool bQuitWhenDone)
+{
+	Begin(TEXT("sounds"), bQuitWhenDone);
+	struct FSeen
+	{
+		double Began = 0.0;
+		float Note0 = 0.f, Note1 = 0.f;
+		TWeakObjectPtr<ANHVehicle> Car;
+	};
+	const TSharedRef<FSeen> Seen = MakeShared<FSeen>();
+	const FString Folder = FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir() / TEXT("NHAudio"));
+	const auto A = [this]() { return UNHAudioSubsystem::Get(PC); };
+	// each sound is logged with when it began, counted from the start of the recording: the checking script reads these
+	const auto Mark = [this, Seen](const TCHAR* What) { Note(FString::Printf(TEXT("mark %s %.2f"), What, PC->GetWorld()->GetTimeSeconds() - Seen->Began)); };
+	const auto Wait = [this](float Seconds) { Until(TEXT("let it sound"), [this, Seconds](float Dt) { Pace += Dt; return Pace > Seconds; }, Seconds + 5.f); };
+
+	Do(TEXT("no story mission running, and the recording begun"), [this, Seen, A, Folder]()
+	{
+		if (ANHMissions* Story = ANHMissions::Get(PC))
+		{
+			Story->bStoryOff = true;
+			if (Story->IsActive())
+			{
+				Story->Abort(TEXT("a test of something else"));
+			}
+		}
+		if (ANHGameDirector* D = Dir(); D && D->Stage == ANHGameDirector::EStage::Talk)
+		{
+			D->Dialogue = ANHGameDirector::FDialogue();
+			D->Stage = ANHGameDirector::EStage::Meet;
+		}
+		Check(TEXT("the audio system is up and the street's lines are loaded"), A() && A()->IsBuilt() && NHBarks::Count(TEXT("greet_morning")) >= 3 && NHBarks::Count(TEXT("conductor")) >= 3,
+			FString::Printf(TEXT("%d morning greetings, %d conductor's calls"), NHBarks::Count(TEXT("greet_morning")), NHBarks::Count(TEXT("conductor"))));
+		// the same word on the three tones: the high one has to come out higher than the mid, and the mid than the low
+		const auto Pitch = [](const TCHAR* Word)
+		{
+			const TArray<int16> S = NHVoice::Make(Word, FNHVoice{ 120.f, 1.f, 1.f });
+			// how far apart the sound repeats itself: the lag at which it best matches itself, over the middle of the word
+			const int32 From = S.Num() / 3, Span = FMath::Min(3000, S.Num() / 3);
+			int32 BestLag = 1;
+			double Best = -1.0;
+			for (int32 Lag = NHVoice::Rate / 320; Lag <= NHVoice::Rate / 70; ++Lag)
+			{
+				double Sum = 0.0;
+				for (int32 I = 0; I + Lag < Span; ++I)
+				{
+					Sum += static_cast<double>(S[From + I]) * S[From + I + Lag];
+				}
+				if (Sum > Best)
+				{
+					Best = Sum;
+					BestLag = Lag;
+				}
+			}
+			return static_cast<float>(NHVoice::Rate) / BestLag;
+		};
+		const float High = Pitch(TEXT("áááá")), Mid = Pitch(TEXT("aaaa")), Low = Pitch(TEXT("àààà"));
+		// (a word with no tone marks is given a tune of its own, so the mid one is only reported; the recording's check has all three in a marked line's company)
+		Check(TEXT("a Yoruba high tone is said higher than a low one"), High > Low * 1.2f && Mid > 60.f, FString::Printf(TEXT("%.0f, %.0f and %.0f Hz on a 120 Hz voice"), High, Mid, Low));
+		Check(TEXT("a line makes a voice of a sensible length, and brackets of English are not said"), NHVoice::Make(TEXT("Ẹ káàárọ̀ o!"), FNHVoice()).Num() > NHVoice::Rate / 2
+			&& NHBarks::Spoken(TEXT("Ẹ ṣé o!  (Thank you)")) == TEXT("Ẹ ṣé o!"), NHBarks::Spoken(TEXT("Ẹ ṣé o!  (Thank you)")));
+		IFileManager::Get().Delete(*(Folder / TEXT("nh_sounds.wav")));
+		UAudioMixerBlueprintLibrary::StartRecordingOutput(PC, 60.f);
+		Seen->Began = PC->GetWorld()->GetTimeSeconds();
+	});
+	Wait(1.f);
+	Do(TEXT("the three tones, in Tunde's voice"), [this, A, Mark]() { Mark(TEXT("high")); Check(TEXT("a line is spoken"), A()->Speak(TEXT("Tunde"), TEXT("á á á á á á")) != nullptr); });
+	Wait(2.f);
+	Do(TEXT("mid"), [A, Mark]() { Mark(TEXT("mid")); A()->Speak(TEXT("Tunde"), TEXT("a a a a a a")); });
+	Wait(2.f);
+	Do(TEXT("low"), [A, Mark]() { Mark(TEXT("low")); A()->Speak(TEXT("Tunde"), TEXT("à à à à à à")); });
+	Wait(2.f);
+	Do(TEXT("a mother's line from a scene"), [this, A, Mark]()
+	{
+		Mark(TEXT("iya"));
+		const int32 Before = A()->Spoken;
+		A()->Speak(TEXT("Oshoja, dawn"), TEXT("Iya Tobi: Túndé, ọmọ mi, má bá wọn jà.  (Tunde, my child, do not fight them.)"));
+		Check(TEXT("a scene's line is spoken by whoever it names"), A()->Spoken == Before + 1);
+	});
+	Wait(3.5f);
+	Do(TEXT("a greeting in the street, and a horn"), [this, A, Mark]()
+	{
+		Mark(TEXT("bark"));
+		const FString Line = NHBarks::Pick(TEXT("greet_morning"));
+		const int32 Barks = A()->Barked;
+		ANHHUD::Say(PC, PC->GetPawn()->GetActorLocation() + PC->GetPawn()->GetActorForwardVector() * 250.f, Line, TEXT("a passer-by"), true);
+		Check(TEXT("somebody in the street is heard as well as read"), A()->Barked == Barks + 1, Line);
+	});
+	Wait(2.5f);
+	Do(TEXT("a horn"), [this, A, Mark]()
+	{
+		Mark(TEXT("horn"));
+		Check(TEXT("a horn sounds"), A()->Horn(PC->GetPawn()->GetActorLocation() + PC->GetPawn()->GetActorForwardVector() * 300.f, false) != nullptr && A()->Horns >= 1);
+	});
+	Wait(1.5f);
+
+	// ---- an engine, from idle up
+	Do(TEXT("into the nearest car"), [this, Seen, Mark]()
+	{
+		ANHVehicle* Best = nullptr;
+		for (TActorIterator<ANHVehicle> It(PC->GetWorld()); It; ++It)
+		{
+			if (!It->GetController() && !It->GetSpec().bBike && (!Best || FVector::DistSquared(It->GetActorLocation(), PC->GetPawn()->GetActorLocation()) < FVector::DistSquared(Best->GetActorLocation(), PC->GetPawn()->GetActorLocation())))
+			{
+				Best = *It;
+			}
+		}
+		Seen->Car = Best;
+		if (Check(TEXT("there is a car to get into"), Best && PC->EnterVehicle(Best), Best ? Best->GetSpec().Name : FString()))
+		{
+			Best->SetHeld(false);
+			Best->Fuel = 1.f;
+		}
+		Mark(TEXT("idle"));
+	});
+	Wait(2.5f);
+	Do(TEXT("the engine at idle"), [this, Seen]()
+	{
+		ANHVehicle* Car = Seen->Car.Get();
+		Seen->Note0 = Car ? Car->EngineNote() : 0.f;
+		Check(TEXT("with somebody at the wheel the engine is running"), Car && Car->EngineSounding() && Seen->Note0 > 10.f, FString::Printf(TEXT("firing at %.0f Hz"), Seen->Note0));
+	});
+	Do(TEXT("foot down"), [Seen, Mark]() { Mark(TEXT("pull")); });
+	Until(TEXT("pull away for five seconds"), [this, Seen](float Dt)
+	{
+		Pace += Dt;
+		if (ANHVehicle* Car = Seen->Car.Get())
+		{
+			Car->SetDriveInput(1.f, 0.f, 0.f);
+			Seen->Note1 = FMath::Max(Seen->Note1, Car->EngineNote());
+		}
+		return Pace > 5.f;
+	}, 10.f);
+	Do(TEXT("the engine pulling"), [this, Seen, Mark]()
+	{
+		ANHVehicle* Car = Seen->Car.Get();
+		Mark(TEXT("end"));
+		Check(TEXT("its note rose with the revs"), Car && Seen->Note1 > Seen->Note0 * 1.5f, FString::Printf(TEXT("%.0f Hz at idle, up to %.0f Hz"), Seen->Note0, Seen->Note1));
+		if (Car)
+		{
+			Car->SetDriveInput(0.f, 1.f, 0.f);
+		}
+	});
+	Wait(1.f);
+	// ---- how Yoruba looks on the screen: a scene's line and a greeting over somebody's head, photographed
+	Do(TEXT("a Yoruba line on the screen"), [this]()
+	{
+		PC->LeaveVehicle(true);
+		PC->NHTime(9.5f);
+		Dir()->Say(TEXT("Oshoja, dawn"), { TEXT("Iya Tobi: Túndé, ọmọ mi, má bá wọn sọ̀rọ̀. Lọ bá Bàbá Awakọ̀ ní páàkì.  (Tunde, my child, do not talk to them. Go to Baba Driver at the park.)") }, nullptr);
+		ANHHUD::Say(PC, PC->GetPawn()->GetActorLocation() + PC->GetPawn()->GetActorForwardVector() * 200.f + FVector(0.f, 0.f, 120.f), TEXT("Ẹ káàárọ̀, ṣé dáadáa ni?  (Good morning, is all well?)"), TEXT("a passer-by"), true);
+	});
+	Wait(0.6f);
+	Do(TEXT("picture"), []() { FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("Screenshots/NH/sounds/yoruba_lines.png"), true, false); });
+	Wait(1.2f);
+	Do(TEXT("the line closed"), [this]() { PC->OnAction(); });
+	Do(TEXT("the recording saved"), [this, Folder]()
+	{
+		UAudioMixerBlueprintLibrary::StopRecordingOutput(PC, EAudioRecordingExportType::WavFile, TEXT("nh_sounds"), Folder);
+		Note(FString::Printf(TEXT("recorded %s; measure it with Scripts/sound_check.py"), *(Folder / TEXT("nh_sounds.wav"))));
+	});
+	Wait(2.f);
 }

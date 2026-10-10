@@ -46,6 +46,11 @@ private:
 	TArray<FWalker> Walkers;
 	float Think = 0.f;
 	int32 Made = 0, Moved = 0;
+	/** Seconds until somebody may greet the player again, and how many have, for tests */
+	float GreetWait = 6.f;
+public:
+	int32 Greeted = 0;
+private:
 	bool bFilled = false;
 	/**
 	 * A spot on the edge of a street between Near and Far from the player, and the two ends of that edge (the street's

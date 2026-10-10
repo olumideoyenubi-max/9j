@@ -1,0 +1,223 @@
+{
+ "format": "naija-hustle-barks",
+ "version": 1,
+ "note": "What people in the street say. 'yo' is Yoruba, written with its tone marks (the made-up voices follow them: acute said higher, grave lower) and shown with 'en' after it in brackets; 'pcm' is Nigerian Pidgin, shown as it is. Written by a non-native speaker from common phrases: a Yoruba speaker should read these through before release.",
+ "lines": {
+  "greet_morning": [
+   {
+    "yo": "Ẹ káàárọ̀ o!",
+    "en": "Good morning"
+   },
+   {
+    "yo": "Ẹ káàárọ̀, ṣé dáadáa ni?",
+    "en": "Good morning, is all well?"
+   },
+   {
+    "yo": "Ṣé ẹ jí dáadáa?",
+    "en": "Did you wake well?"
+   },
+   {
+    "pcm": "Morning o! How body?"
+   }
+  ],
+  "greet_afternoon": [
+   {
+    "yo": "Ẹ káàsán o!",
+    "en": "Good afternoon"
+   },
+   {
+    "yo": "Ẹ kú iṣẹ́ o!",
+    "en": "Well done with the work"
+   },
+   {
+    "yo": "Báwo ni?",
+    "en": "How are you?"
+   },
+   {
+    "pcm": "Afternoon o! How far?"
+   }
+  ],
+  "greet_evening": [
+   {
+    "yo": "Ẹ kúùrọ̀lẹ́ o!",
+    "en": "Good evening"
+   },
+   {
+    "yo": "Ẹ kú ìrọ̀lẹ́!",
+    "en": "Good evening"
+   },
+   {
+    "yo": "Ẹ kú iṣẹ́ o!",
+    "en": "Well done with the work"
+   },
+   {
+    "pcm": "Evening o! You don close?"
+   }
+  ],
+  "greet_night": [
+   {
+    "yo": "Ẹ káalẹ́ o!",
+    "en": "Good evening (night)"
+   },
+   {
+    "yo": "Ó dàárọ̀ o!",
+    "en": "Good night, till morning"
+   },
+   {
+    "pcm": "This night, you still dey waka?"
+   }
+  ],
+  "smalltalk": [
+   {
+    "yo": "Báwo ni nǹkan?",
+    "en": "How are things?"
+   },
+   {
+    "yo": "Ọ̀nà yìí ti dí jù!",
+    "en": "This road is too jammed!"
+   },
+   {
+    "yo": "Oòrùn yìí mú gan-an!",
+    "en": "This sun is fierce!"
+   },
+   {
+    "yo": "Ẹ jọ̀ọ́, ẹ yà sí ẹ̀gbẹ́.",
+    "en": "Please, move to the side."
+   },
+   {
+    "yo": "Ọlọ́run á ràn wá lọ́wọ́.",
+    "en": "God will help us."
+   },
+   {
+    "pcm": "Lagos no dey carry last."
+   },
+   {
+    "pcm": "Fuel don cost again o."
+   }
+  ],
+  "scared": [
+   {
+    "yo": "Yéè! Ẹ gbà mí o!",
+    "en": "Help me!"
+   },
+   {
+    "yo": "Olè! Olè!",
+    "en": "Thief! Thief!"
+   },
+   {
+    "yo": "Ẹ sá o! Ẹ sá!",
+    "en": "Run! Run!"
+   },
+   {
+    "yo": "Mo gbé o!",
+    "en": "I am finished!"
+   },
+   {
+    "yo": "Jésù!",
+    "en": "Jesus!"
+   },
+   {
+    "pcm": "Gunshot o!"
+   },
+   {
+    "pcm": "E don happen!"
+   },
+   {
+    "pcm": "Run o!"
+   }
+  ],
+  "angry": [
+   {
+    "yo": "Ṣé o ya wèrè ni?!",
+    "en": "Are you mad?!"
+   },
+   {
+    "yo": "Kí ló ṣe ẹ́?!",
+    "en": "What is wrong with you?!"
+   },
+   {
+    "yo": "Má fọwọ́ kàn mí!",
+    "en": "Do not touch me!"
+   },
+   {
+    "pcm": "You dey craze?!"
+   },
+   {
+    "pcm": "Na me you dey do this one?"
+   }
+  ],
+  "thanks": [
+   {
+    "yo": "Ẹ ṣé o!",
+    "en": "Thank you"
+   },
+   {
+    "yo": "O ṣé gan-an, kọ́ńdọ́kítọ̀!",
+    "en": "Thank you very much, conductor!"
+   },
+   {
+    "yo": "Ọlọ́run á bùkún ẹ.",
+    "en": "God bless you."
+   },
+   {
+    "pcm": "Thank you o!"
+   }
+  ],
+  "conductor": [
+   {
+    "yo": "Wọlé pẹ̀lú ṣéńjì ẹ o!",
+    "en": "Enter with your change!"
+   },
+   {
+    "yo": "Ó ń lọ o! Ó ń lọ!",
+    "en": "It's going! It's going!"
+   },
+   {
+    "yo": "Ẹ wọlé, ẹ jókòó!",
+    "en": "Come in, sit down!"
+   },
+   {
+    "yo": "Owó dà? Mú owó ẹ wá!",
+    "en": "Where's the money? Bring your fare!"
+   },
+   {
+    "yo": "Ẹ sún mọ́ ara yín!",
+    "en": "Shift closer together!"
+   }
+  ],
+  "guard_alert": [
+   {
+    "yo": "Ta ni yẹn?! Dúró níbẹ̀!",
+    "en": "Who is that?! Stop there!"
+   },
+   {
+    "yo": "Ẹ mú un!",
+    "en": "Catch him!"
+   },
+   {
+    "yo": "Olè ni!",
+    "en": "It's a thief!"
+   },
+   {
+    "pcm": "Hey! Who be that?!"
+   }
+  ],
+  "guard_look": [
+   {
+    "yo": "Kí ló ń ṣẹlẹ̀ níbẹ̀?",
+    "en": "What is happening there?"
+   },
+   {
+    "yo": "Mo gbọ́ nǹkan kan.",
+    "en": "I heard something."
+   },
+   {
+    "yo": "Ta ló wà níbẹ̀?",
+    "en": "Who is there?"
+   },
+   {
+    "pcm": "Wetin be that noise?"
+   }
+  ]
+ }
+}

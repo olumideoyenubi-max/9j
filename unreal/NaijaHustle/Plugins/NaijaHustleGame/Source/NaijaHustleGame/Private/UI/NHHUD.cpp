@@ -74,6 +74,15 @@ void ANHHUD::Toast(const UObject* WorldContext, const FString& Str, int32 Kind)
 	}
 }
 
+void ANHHUD::Say(const UObject* WorldContext, const FVector& World, const FString& Text, const FString& Who, bool bWoman)
+{
+	Floater(WorldContext, World, Text);
+	if (UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(WorldContext))
+	{
+		Audio->Bark(Who.IsEmpty() ? FString::Printf(TEXT("somebody at %d %d"), FMath::RoundToInt(World.X / 400.f), FMath::RoundToInt(World.Y / 400.f)) : Who, Text, World, bWoman);
+	}
+}
+
 void ANHHUD::Floater(const UObject* WorldContext, const FVector& World, const FString& Str)
 {
 	if (ANHHUD* H = Get(WorldContext))
@@ -126,8 +135,15 @@ void ANHHUD::BuildMinimap()
 	MapTex->UpdateResource();
 }
 
-float ANHHUD::Text(const FString& Str, float X, float Y, const FLinearColor& Color, UFont* Font, float Scale, bool bCentre, bool bShadow)
+float ANHHUD::Text(const FString& Raw, float X, float Y, const FLinearColor& Color, UFont* Font, float Scale, bool bCentre, bool bShadow)
 {
+	// Yoruba's s with a dot below is not in the engine's font as one letter (it drew as a box); as an s and the dot it is
+	FString Str = Raw;
+	if (Raw.Contains(FString::Chr(static_cast<TCHAR>(0x1E63))) || Raw.Contains(FString::Chr(static_cast<TCHAR>(0x1E62))))
+	{
+		Str = Raw.Replace(*FString::Chr(static_cast<TCHAR>(0x1E63)), *(FString(TEXT("s")) + FString::Chr(static_cast<TCHAR>(0x0323))), ESearchCase::CaseSensitive)
+			.Replace(*FString::Chr(static_cast<TCHAR>(0x1E62)), *(FString(TEXT("S")) + FString::Chr(static_cast<TCHAR>(0x0323))), ESearchCase::CaseSensitive);
+	}
 	float W = 0.f, H = 0.f;
 	GetTextSize(Str, W, H, Font, Scale * S);
 	const float DX = bCentre ? -W * 0.5f : 0.f;

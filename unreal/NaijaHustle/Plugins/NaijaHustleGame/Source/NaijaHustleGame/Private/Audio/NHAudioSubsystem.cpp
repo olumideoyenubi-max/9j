@@ -1,4 +1,5 @@
 #include "Audio/NHAudioSubsystem.h"
+#include "Audio/NHEngineWave.h"
 
 #include "Audio/NHAudioZone.h"
 #include "Audio/NHSubmixEffectMono.h"
@@ -454,6 +455,92 @@ UAudioComponent* UNHAudioSubsystem::PlayShot(ENHShot Shot, const FVector& Locati
 		Comp->SetWorldLocation(Location);
 		Comp->Play();
 		Comp->StopDelayed(Wave->Length + 0.05f); // a made-up wave never says it has ended
+	}
+	return Comp;
+}
+
+UAudioComponent* UNHAudioSubsystem::Speak(const FString& Speaker, const FString& Line)
+{
+	UWorld* World = GetTickableGameObjectWorld();
+	if (!bBuilt || !World || Line.IsEmpty())
+	{
+		return nullptr;
+	}
+	StopSpeaking();
+	// "Name: what they say" inside a scene: that name's voice, and the name itself is not said
+	FString Who = Speaker, Words = Line;
+	int32 Colon = INDEX_NONE;
+	if (Line.FindChar(TEXT(':'), Colon) && Colon > 1 && Colon < 28)
+	{
+		Who = Line.Left(Colon);
+		Words = Line.Mid(Colon + 1);
+	}
+	const TArray<int16> Samples = NHVoice::Make(NHBarks::Spoken(Words), NHVoice::For(Who, Who.Contains(TEXT("Iya")) || Who.Contains(TEXT("Madam")) || Who.Contains(TEXT("Aunty"))));
+	if (Samples.Num() == 0)
+	{
+		return nullptr;
+	}
+	UNHShotWave* Wave = UNHShotWave::MakeAt(this, Samples, NHVoice::Rate);
+	UAudioComponent* Comp = Make(Wave, ENHSoundKind::Dialogue, World, 0.9f, 1.f);
+	if (Comp)
+	{
+		Comp->Play();
+		Comp->StopDelayed(Wave->Length + 0.05f);
+		SpeakingVoice = Comp;
+		++Spoken;
+	}
+	return Comp;
+}
+
+void UNHAudioSubsystem::StopSpeaking()
+{
+	if (UAudioComponent* Was = SpeakingVoice.Get())
+	{
+		Was->Stop();
+	}
+	SpeakingVoice.Reset();
+}
+
+UAudioComponent* UNHAudioSubsystem::Bark(const FString& Who, const FString& Line, const FVector& Location, bool bWoman)
+{
+	UWorld* World = GetTickableGameObjectWorld();
+	const FString Words = NHBarks::Spoken(Line);
+	if (!bBuilt || !World || Words.IsEmpty())
+	{
+		return nullptr;
+	}
+	const TArray<int16> Samples = NHVoice::Make(Words, NHVoice::For(Who, bWoman));
+	if (Samples.Num() == 0)
+	{
+		return nullptr;
+	}
+	UNHShotWave* Wave = UNHShotWave::MakeAt(this, Samples, NHVoice::Rate);
+	UAudioComponent* Comp = Make(Wave, ENHSoundKind::Bark, World, 1.f, 1.f);
+	if (Comp)
+	{
+		Comp->SetWorldLocation(Location);
+		Comp->Play();
+		Comp->StopDelayed(Wave->Length + 0.05f);
+		++Barked;
+	}
+	return Comp;
+}
+
+UAudioComponent* UNHAudioSubsystem::Horn(const FVector& Location, bool bBig)
+{
+	UWorld* World = GetTickableGameObjectWorld();
+	if (!bBuilt || !World)
+	{
+		return nullptr;
+	}
+	UNHShotWave* Wave = UNHShotWave::MakeAt(this, NHVoice::Horn(bBig), NHVoice::Rate);
+	UAudioComponent* Comp = Make(Wave, ENHSoundKind::Horn, World, 1.f, FMath::FRandRange(0.97f, 1.03f));
+	if (Comp)
+	{
+		Comp->SetWorldLocation(Location);
+		Comp->Play();
+		Comp->StopDelayed(Wave->Length + 0.05f);
+		++Horns;
 	}
 	return Comp;
 }
