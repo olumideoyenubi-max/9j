@@ -5,8 +5,9 @@
 Plain Python, run outside Unreal. It downloads (once) the main roads, bus stops and place names of the model's area
 from OpenStreetMap through the Overpass API, and writes:
 
-  roads      the road graph: nodes in Unreal cm and ways (class, one-way, bridge, name, node list). The traffic drives
-             along it and the minimap draws it.
+  roads      the road graph: nodes in Unreal cm and ways (class, one-way, bridge, name, node list, and 'l' where a
+             one-way road's lanes must stop short of the other carriageway on its left). The traffic drives along it
+             and the minimap draws it. `build_lagos_real.py --lanes` works out the 'l's again without downloading.
   busStops   the game's eleven stops at their real places, each moved to the kerb of the nearest main road
   park, parkBays, playerStart   Oshodi: the motor park is a row of bays on the verge just past the Oshodi stop
   districts  place names with a point each; the nearest one names where you are
@@ -113,8 +114,71 @@ def nearest(nodes, ways, x, y, allow):
     return best
 
 
+def lane_limits(nodes, ways):
+    """Gives a one-way road with the other carriageway close on its left an 'l': how far, cm, its lanes may reach that way.
+
+    A dual carriageway is two one-way roads on the map. Taken at its class's full width each, their lanes lay over each
+    other wherever the two are closer together than that width (on the Eko Bridge, 12 m apart and 24 m wide, the fast
+    lane of each side was the fast lane of the other, head on). With 'l', a road's lanes stop 40 cm short of the line
+    midway between the two."""
+    segs, cell = {}, 6000.0
+    for k, way in enumerate(ways):
+        way.pop("l", None)
+        for a, b in zip(way["n"], way["n"][1:]):
+            (ax, ay), (bx, by) = nodes[a], nodes[b]
+            length = math.hypot(bx - ax, by - ay)
+            if length < 1:
+                continue
+            for c in range(int(length // 2000) + 1):       # a point every 20 m or so
+                t = (c + 0.5) / (int(length // 2000) + 1)
+                x, y = ax + (bx - ax) * t, ay + (by - ay) * t
+                segs.setdefault((int(x // cell), int(y // cell)), []).append((x, y, (bx - ax) / length, (by - ay) / length, k))
+    changed = 0
+    for k, way in enumerate(ways):
+        if not way["o"]:
+            continue
+        gaps = []
+        for a, b in zip(way["n"], way["n"][1:]):
+            (ax, ay), (bx, by) = nodes[a], nodes[b]
+            length = math.hypot(bx - ax, by - ay)
+            if length < 1:
+                continue
+            ux, uy = (bx - ax) / length, (by - ay) / length
+            for c in range(int(length // 2000) + 1):
+                t = (c + 0.5) / (int(length // 2000) + 1)
+                x, y = ax + (bx - ax) * t, ay + (by - ay) * t
+                best = None
+                for cx in (-1, 0, 1):
+                    for cy in (-1, 0, 1):
+                        for ox, oy, vx, vy, other in segs.get((int(x // cell) + cx, int(y // cell) + cy), ()):
+                            # going the other way, and on the driver's left (Unreal: X east, Y south, so right is (-uy, ux))
+                            side = (ox - x) * -uy + (oy - y) * ux
+                            if other == k or ux * vx + uy * vy > -0.85 or side > -200 or abs((ox - x) * ux + (oy - y) * uy) > 1500:
+                                continue
+                            best = -side if best is None else min(best, -side)
+                gaps.append(best)
+        near = sorted(g for g in gaps if g is not None)
+        if len(near) * 2 < len(gaps) or not near:           # beside the other carriageway for under half its length: left alone
+            continue
+        left = max(300, round(near[len(near) // 5] / 2 - 40))
+        if left < HALF_WIDTH[way["c"]]:
+            way["l"] = left
+            changed += 1
+    return changed
+
+
 def main():
+    if "--lanes" in sys.argv:                               # only work out the lane limits again, on the file as it is
+        with open(OUT, encoding="utf-8") as fh:
+            out = json.load(fh)
+        flat = out["roads"]["nodes"]
+        changed = lane_limits([(flat[i], flat[i + 1]) for i in range(0, len(flat), 2)], out["roads"]["ways"])
+        with open(OUT, "w", encoding="utf-8") as fh:
+            json.dump(out, fh, separators=(",", ":"), ensure_ascii=False)
+        print(f"{os.path.normpath(OUT)}: {changed} one-way roads given a lane limit beside their other carriageway")
+        return
     nodes, ways = build_roads()
+    lane_limits(nodes, ways)
     main_roads = {CLASSES.index(c) for c in ("trunk", "primary", "secondary", "tertiary")}
     stops, notes = [], []
     for stop_id, name, lat, lon, agbero in STOPS:

@@ -8,6 +8,7 @@
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Gameplay/NHEstate.h"
 #include "Gameplay/NHGameDirector.h"
 #include "Gameplay/NHPerson.h"
 #include "Kismet/GameplayStatics.h"
@@ -281,10 +282,233 @@ void ANHPhone::Back()
 	}
 }
 
+bool ANHPhone::OnHome() const
+{
+	return (Pages.Num() == 0 || Pages.Last() == EPage::Home) && !(Call.bActive && !Call.bIncoming);
+}
+
+void ANHPhone::DebugSite(const FString& Which)
+{
+	bOpen = true;
+	Pages.Reset();
+	Go(EPage::Home);
+	if (!Which.IsEmpty())
+	{
+		Go(EPage::Web);
+		if (Which != TEXT("start"))
+		{
+			Site = FName(*Which);
+			Go(EPage::Site);
+		}
+	}
+	Build();
+}
+
+void ANHPhone::BuildSite()
+{
+	// Every site is made up. They read the same game the streets do: what is for sale, what the bank holds, what was said.
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	const ANHEstate* Estate = ANHEstate::Get(this);
+	TArray<FNHPlaceCard> Cards;
+	if (Estate)
+	{
+		Estate->Cards(Cards);
+	}
+	const auto Pin = [this](const FNHPlaceCard& Card)
+	{
+		const FVector2D Where = Card.Where;
+		const FString Name = Card.Name;
+		return [this, Where, Name]()
+		{
+			if (ANHHUD* H = Hud())
+			{
+				H->SetPin(Where, Name);
+			}
+			ANHHUD::Toast(this, FString::Printf(TEXT("%s is pinned on the map"), *Name), 1);
+		};
+	};
+	if (Site == TEXT("ekohomes"))
+	{
+		Title = TEXT("Eko Homes");
+		Address = TEXT("eko-homes.ng/for-sale");
+		Info(TEXT("Lagos property, straight from the agents. Choose one to pin it on your map; you buy at the board."));
+		Cards.Sort([](const FNHPlaceCard& A, const FNHPlaceCard& B) { return A.Price > B.Price; });
+		for (const FNHPlaceCard& Card : Cards)
+		{
+			if (Card.Kind == TEXT("land") || Card.Kind == TEXT("house") || Card.Kind == TEXT("apartment"))
+			{
+				FRow& R = Row(Card.Name, FString::Printf(TEXT("%s  %s  %s"), *Card.Area, Card.bOwned ? TEXT("YOURS") : *UNHHustleSubsystem::Naira(Card.Price), *Card.About), Pin(Card));
+				R.Badge = Card.Kind == TEXT("land") ? TEXT("L") : Card.Kind == TEXT("house") ? TEXT("H") : TEXT("F");
+				R.BadgeColor = Card.bOwned ? FLinearColor(0.1f, 0.5f, 0.2f) : FLinearColor(0.05f, 0.45f, 0.4f);
+			}
+		}
+		if (Cards.Num() == 0)
+		{
+			Info(TEXT("No listings: this site only covers the big city."));
+		}
+	}
+	else if (Site == TEXT("afterdark"))
+	{
+		Title = TEXT("Lagos After Dark");
+		Address = TEXT("lagosafterdark.ng/tonight");
+		Info(TEXT("Where Lagos is drinking and dancing tonight. Choose one to pin it."));
+		for (const FNHPlaceCard& Card : Cards)
+		{
+			if (Card.Kind == TEXT("bar") || Card.Kind == TEXT("club") || Card.Kind == TEXT("strip"))
+			{
+				FRow& R = Row(Card.Name, FString::Printf(TEXT("%s  %s  Gate: %s  %s"), Card.Kind == TEXT("bar") ? TEXT("Bar") : Card.Kind == TEXT("club") ? TEXT("Night club") : TEXT("Gentlemen's club"), *Card.Area,
+					Card.bOwned || Card.Fee == 0 ? TEXT("free") : *UNHHustleSubsystem::Naira(static_cast<int64>(Card.Fee)), *Card.About), Pin(Card));
+				R.Badge = Card.Name.Left(1);
+				R.BadgeColor = Card.Kind == TEXT("bar") ? FLinearColor(0.8f, 0.45f, 0.05f) : Card.Kind == TEXT("club") ? FLinearColor(0.15f, 0.3f, 0.9f) : FLinearColor(0.85f, 0.05f, 0.25f);
+			}
+		}
+	}
+	else if (Site == TEXT("pmswatch"))
+	{
+		Title = TEXT("PMS Watch");
+		Address = TEXT("pmswatch.ng");
+		Info(FString::Printf(TEXT("Petrol today: N%d a litre. A full 60 litre tank: %s."), Estate ? Estate->PetrolPrice() : 0, *UNHHustleSubsystem::Naira(static_cast<int64>(60 * (Estate ? Estate->PetrolPrice() : 0)))), FLinearColor(0.96f, 0.95f, 0.9f));
+		for (const FNHPlaceCard& Card : Cards)
+		{
+			if (Card.Kind == TEXT("petrol"))
+			{
+				FRow& R = Row(Card.Name, Card.Area + TEXT("  Selling. Choose to pin it."), Pin(Card));
+				R.Badge = TEXT("P");
+				R.BadgeColor = FLinearColor(0.1f, 0.5f, 0.15f);
+			}
+		}
+	}
+	else if (Site == TEXT("coastbank"))
+	{
+		Title = TEXT("Coast Bank");
+		Address = TEXT("coastbank.ng/account");
+		if (!Hustle)
+		{
+			return;
+		}
+		Info(FString::Printf(TEXT("Account balance  %s"), *UNHHustleSubsystem::Naira(Hustle->Bank)), FLinearColor(0.96f, 0.95f, 0.9f));
+		Info(FString::Printf(TEXT("Cash on you  %s"), *UNHHustleSubsystem::Naira(Hustle->Cash)));
+		for (const int32 Amount : { 100000, 1000000, 10000000 })
+		{
+			Row(FString::Printf(TEXT("Withdraw %s"), *UNHHustleSubsystem::Naira(Amount)), TEXT("From the account to your pocket"), [this, Hustle, Amount]()
+			{
+				if (Hustle->Bank < Amount || Hustle->Cash > 2000000000 - Amount)
+				{
+					ANHHUD::Toast(this, Hustle->Bank < Amount ? TEXT("Coast Bank: insufficient funds") : TEXT("Your pocket cannot carry more"), 2);
+					return;
+				}
+				Hustle->Bank -= Amount;
+				Hustle->Earn(Amount, TEXT("withdrawn from Coast Bank"));
+				Hustle->Save();
+			});
+		}
+		Row(TEXT("Pay in all your cash"), TEXT("From your pocket to the account"), [this, Hustle]()
+		{
+			const int32 Amount = Hustle->Cash;
+			if (Amount <= 0)
+			{
+				ANHHUD::Toast(this, TEXT("You no hold cash"), 0);
+				return;
+			}
+			Hustle->Earn(-Amount, TEXT("paid in to Coast Bank"));
+			Hustle->Bankroll(Amount, TEXT("paid in"));
+			Hustle->Save();
+		});
+		Info(TEXT("Recent"));
+		for (int32 I = 0; I < FMath::Min(Hustle->Ledger.Num(), 6); ++I)
+		{
+			Info(FString::Printf(TEXT("%s%s  %s"), Hustle->Ledger[I].Amount > 0 ? TEXT("+") : TEXT(""), *UNHHustleSubsystem::Naira(Hustle->Ledger[I].Amount), *Hustle->Ledger[I].Why));
+		}
+	}
+	else if (Site == TEXT("motorhaus"))
+	{
+		Title = TEXT("MotorHaus");
+		Address = TEXT("motorhaus.ng/showroom");
+		Info(TEXT("Pay here and the car is brought to the road beside you, full tank, papers in your name."));
+		struct FOffer { const TCHAR* Type; const TCHAR* Line; int64 Price; };
+		static const FOffer Offers[] = {
+			{ TEXT("okada"), TEXT("125 cc motorcycle"), 650000 }, { TEXT("keke"), TEXT("Tricycle"), 1800000 }, { TEXT("taxi"), TEXT("Saloon, used, yellow"), 6500000 },
+			{ TEXT("sedan"), TEXT("Saloon, clean"), 9000000 }, { TEXT("minivan"), TEXT("Minivan, seven seats"), 14000000 }, { TEXT("pickup"), TEXT("Work pickup"), 22000000 },
+			{ TEXT("suv"), TEXT("Family SUV"), 28000000 }, { TEXT("luxsedan"), TEXT("Executive saloon"), 95000000 }, { TEXT("luxsuv"), TEXT("Boxy luxury 4x4"), 240000000 },
+			{ TEXT("coupesuv"), TEXT("Coupe SUV"), 180000000 }, { TEXT("sports"), TEXT("Sports car"), 320000000 }, { TEXT("supersuv"), TEXT("Super SUV"), 450000000 },
+			{ TEXT("luxcoupe"), TEXT("Grand coupe"), 520000000 }, { TEXT("royalsuv"), TEXT("The biggest SUV there is"), 950000000 }, { TEXT("hypercar"), TEXT("Hypercar, one of a handful"), 4500000000 } };
+		const UNHGameData* Data = UNHGameData::Get(this);
+		for (const FOffer& Offer : Offers)
+		{
+			const FName Type(Offer.Type);
+			const FNHVehicleSpec* Spec = Data ? Data->Vehicles.Find(Type) : nullptr;
+			if (!Spec)
+			{
+				continue;
+			}
+			const int64 Price = Offer.Price;
+			const FString Name = Spec->Name;
+			FRow& R = Row(Name, FString::Printf(TEXT("%s  %s  Top speed %d km/h"), *UNHHustleSubsystem::Naira(Price), Offer.Line, FMath::RoundToInt(Spec->MaxSpeed * 0.036f)), [this, Hustle, Data, Type, Price, Name]()
+			{
+				const APlayerController* PC = GetWorld()->GetFirstPlayerController();
+				const APawn* Pawn = PC ? PC->GetPawn() : nullptr;
+				FNHRoadSeg Seg;
+				FVector2D OnRoad;
+				if (!Pawn || !Hustle || !Data->bRealCity || !Data->NearestRoad(FVector2D(Pawn->GetActorLocation()), Seg, OnRoad) || FVector2D::Distance(OnRoad, FVector2D(Pawn->GetActorLocation())) > 30000.f)
+				{
+					ANHHUD::Toast(this, TEXT("MotorHaus: we cannot reach you there. Stand near a road."), 2);
+					return;
+				}
+				if (!Hustle->Pay(Price, FString::Printf(TEXT("bought a %s"), *Name)))
+				{
+					ANHHUD::Toast(this, TEXT("MotorHaus: payment declined"), 2);
+					return;
+				}
+				const FNHRoadWay& Way = Data->RoadWays[Seg.Way];
+				const FVector2D Along = (Data->RoadNodes[Way.Nodes[Seg.Index + 1]] - Data->RoadNodes[Way.Nodes[Seg.Index]]).GetSafeNormal();
+				const FTransform Where(FRotator(0.f, FMath::RadiansToDegrees(FMath::Atan2(Along.Y, Along.X)), 0.f), FVector(OnRoad + FVector2D(-Along.Y, Along.X) * (Data->HalfWidth(Way) - 160.f), Pawn->GetActorLocation().Z + 80.f));
+				if (ANHVehicle* Car = GetWorld()->SpawnActorDeferred<ANHVehicle>(ANHVehicle::StaticClass(), Where, nullptr, nullptr, ESpawnActorCollisionHandlingMethod::AlwaysSpawn))
+				{
+					Car->VehicleType = Type;
+					Car->Paint = FLinearColor(0.02f, 0.02f, 0.025f);
+					UGameplayStatics::FinishSpawningActor(Car, Where);
+					Car->bOwned = Car->bPlayerOwned = true;
+					Car->Lock = ENHLock::Open;
+					Car->Fuel = 1.f;
+					if (ANHHUD* H = Hud())
+					{
+						H->SetPin(FVector2D(Where.GetLocation()), Name);
+					}
+					ANHHUD::Toast(this, FString::Printf(TEXT("MotorHaus: your %s is at the kerb"), *Name), 1);
+				}
+			});
+			R.Badge = Name.Left(1);
+			R.BadgeColor = FLinearColor(0.6f, 0.1f, 0.1f);
+		}
+	}
+	else
+	{
+		Title = TEXT("9ja Headlines");
+		Address = TEXT("9jaheadlines.ng/lagos");
+		Info(Hustle ? FString::Printf(TEXT("Lagos, day %d, %s"), Hustle->Day(), *Hustle->ClockText()) : FString(), FLinearColor(0.96f, 0.95f, 0.9f));
+		if (Hustle && Hustle->Stars() > 0)
+		{
+			Info(FString::Printf(TEXT("BREAKING: Task Force hunt suspect across the city. Wanted level: %d."), Hustle->Stars()), FLinearColor(1.f, 0.4f, 0.3f));
+		}
+		Info(FString::Printf(TEXT("FUEL: pump price holds at N%d a litre as queues ease."), Estate ? Estate->PetrolPrice() : 900));
+		Info(Raining() ? TEXT("WEATHER: heavy rain, flooding on the island roads. Fares are up.") : TEXT("WEATHER: dry, hot, and the traffic is what it always is."));
+		Info(RushHour() ? TEXT("TRAFFIC: rush hour. Third Mainland is slow in both directions.") : TEXT("TRAFFIC: Third Mainland and Eko Bridge are moving."));
+		for (int32 I = 0; I < FMath::Min(State->Feed.Num(), 5); ++I)
+		{
+			Info(FString::Printf(TEXT("TRENDING: \"%s\" (%s)"), *State->Feed[I].Text, *State->Feed[I].Author), FLinearColor(0.96f, 0.95f, 0.9f));
+		}
+	}
+}
+
 void ANHPhone::Move(int32 Dir)
 {
 	if (!bOpen || Rows.Num() == 0)
 	{
+		return;
+	}
+	if (OnHome())
+	{
+		Selected = FMath::Clamp(Selected + Dir * 4, 0, Rows.Num() - 1); // a row of icons up or down
 		return;
 	}
 	if (!Rows.ContainsByPredicate([](const FRow& R) { return R.bChoice; }))
@@ -305,6 +529,11 @@ void ANHPhone::Move(int32 Dir)
 
 void ANHPhone::Change(int32 Dir)
 {
+	if (bOpen && OnHome() && Rows.Num() > 0)
+	{
+		Selected = FMath::Clamp(Selected + Dir, 0, Rows.Num() - 1); // along the row of icons
+		return;
+	}
 	if (bOpen && Rows.IsValidIndex(Selected) && Rows[Selected].Change)
 	{
 		const TFunction<void(int32)> Fn = Rows[Selected].Change;
@@ -375,6 +604,7 @@ void ANHPhone::Build()
 {
 	using namespace NHPhoneData;
 	Rows.Reset();
+	Address.Reset();
 	Footer = TEXT("Up / Down   Enter: open   Backspace: back   P: put away");
 	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
 	const UNHGameData* Data = UNHGameData::Get(this);
@@ -419,6 +649,7 @@ void ANHPhone::Build()
 		App(TEXT("DropAm"), Ride.Stage != ERide::None ? TEXT("Ride on the way") : TEXT("Order a ride"), FLinearColor(0.85f, 0.25f, 0.2f), [this]() { Go(EPage::DropAm); });
 		App(TEXT("DropAm Driver"), Job.Stage != EJob::Offline ? TEXT("Online") : FString::Printf(TEXT("Rating %.1f"), State->DriverRating), FLinearColor(0.55f, 0.15f, 0.1f), [this]() { Go(EPage::DropAmDriver); });
 		App(TEXT("Missed calls"), State->MissedCalls.Num() ? FString::Printf(TEXT("%d"), State->MissedCalls.Num()) : TEXT("None"), FLinearColor(0.4f, 0.4f, 0.4f), [this]() { Go(EPage::Missed); });
+		App(TEXT("Waka"), TEXT("Websites"), FLinearColor(0.05f, 0.45f, 0.95f), [this]() { Go(EPage::Web); });
 		App(TEXT("Camera"), TEXT("Take a photo"), FLinearColor(0.25f, 0.25f, 0.3f), [this]()
 		{
 			bOpen = false;
@@ -475,6 +706,31 @@ void ANHPhone::Build()
 		}
 		break;
 	}
+	case EPage::Web:
+	{
+		// the browser's start page: the sites worth knowing
+		Title = TEXT("Waka");
+		Address = TEXT("waka://start");
+		struct FMark { const TCHAR* Site; const TCHAR* Name; const TCHAR* About; FLinearColor Colour; };
+		static const FMark Marks[] = {
+			{ TEXT("ekohomes"), TEXT("eko-homes.ng"), TEXT("Land, houses and flats for sale"), FLinearColor(0.05f, 0.45f, 0.4f) },
+			{ TEXT("coastbank"), TEXT("coastbank.ng"), TEXT("Coast Bank: your account online"), FLinearColor(0.05f, 0.2f, 0.5f) },
+			{ TEXT("motorhaus"), TEXT("motorhaus.ng"), TEXT("Cars, brought to where you are"), FLinearColor(0.6f, 0.1f, 0.1f) },
+			{ TEXT("afterdark"), TEXT("lagosafterdark.ng"), TEXT("Bars and clubs: who is open, what the gate costs"), FLinearColor(0.55f, 0.1f, 0.45f) },
+			{ TEXT("pmswatch"), TEXT("pmswatch.ng"), TEXT("Petrol: today's price and where to find it"), FLinearColor(0.1f, 0.5f, 0.15f) },
+			{ TEXT("headlines"), TEXT("9jaheadlines.ng"), TEXT("What happened in Lagos today"), FLinearColor(0.7f, 0.45f, 0.05f) } };
+		for (const FMark& M : Marks)
+		{
+			const FName Which(M.Site);
+			FRow& R = Row(M.Name, M.About, [this, Which]() { Site = Which; Go(EPage::Site); });
+			R.Badge = FString(M.Name).Left(1);
+			R.BadgeColor = M.Colour;
+		}
+		break;
+	}
+	case EPage::Site:
+		BuildSite();
+		break;
 	case EPage::Music:
 	{
 		// the radio in your pocket: any station, anywhere. Turning a car's radio on takes over from it.

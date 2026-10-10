@@ -96,6 +96,17 @@ public:
 	bool bPlayerOwned = false;
 	/** World Partition: on while the player drives it, loading the city within Radius cm of the vehicle */
 	void SetStreamingRadius(bool bOn, float Radius);
+	/** How full the tank is, 0..1. It goes down with the distance driven; empty, the engine gives nothing. */
+	float Fuel = 1.f;
+	float TankLitres() const { return Spec.bBike ? 12.f : Spec.Length > 560.f ? 90.f : 60.f; }
+	/** How far it has been driven since it was made, cm */
+	double Odometer = 0.0;
+	/** For the dashboard: the gear (-1 reverse, 0 neutral, 1 up) and the engine's revolutions a minute at this speed */
+	void Readings(int32& OutGear, float& OutRpm) const;
+	bool HandbrakeOn() const { return bHandbrake; }
+	float TopSpeed() const { return Spec.MaxSpeed; }
+	/** For the log: wheels, how they are turning, the lean, and which driving clip the rider is in */
+	FString DescribeMotion() const;
 	/** Sets the pedals and wheel directly, as the input bindings do (scripted driving) */
 	void SetDriveInput(float InThrottle, float InBrake, float InSteer) { Throttle = InThrottle; BrakeIn = InBrake; Steer = InSteer; }
 
@@ -146,6 +157,9 @@ private:
 	UPROPERTY() TArray<TObjectPtr<class UAnimSequence>> DriveClips;
 	int32 DriveClipShown = -1;
 	float SteerShown = 0.f, ReverseShown = 0.f;
+	/** The steering as the wheel has got to, -1..1: it follows the key, not jumps to it */
+	float SteerEased = 0.f;
+	float DrySaid = -10.f;
 	/** How fast it is falling, cm/s, while there is no ground under it */
 	float FallSpeed = 0.f;
 	void SetupDriverAnim(class USkeletalMesh* Mesh);

@@ -1,4 +1,5 @@
 #include "UI/NHHUD.h"
+#include "Gameplay/NHEstate.h"
 
 #include "Audio/NHAudioSubsystem.h"
 #include "EngineUtils.h"
@@ -265,6 +266,10 @@ void ANHHUD::DrawHUD()
 	if (Hustle)
 	{
 		Text(UNHHustleSubsystem::Naira(Hustle->Cash), Pad, Pad, Ink, Large, 2.2f);
+		if (Hustle->Bank > 0)
+		{
+			Text(TEXT("Bank ") + UNHHustleSubsystem::Naira(Hustle->Bank), Pad + 260.f * S, Pad + 10.f * S, Muted, Medium, 1.1f); // beside the cash in the pocket
+		}
 		if (CashDeltaT > 0.f)
 		{
 			CashDeltaT -= Dt;
@@ -413,6 +418,10 @@ void ANHHUD::DrawHUD()
 		const float K = V->MaxHealth > 0.f ? V->Health / V->MaxHealth : 0.f;
 		DrawRect(K > 0.35f ? Good : Bad, X, Y, W * K, 14.f * S);
 		Text(FString::Printf(TEXT("%d km/h"), FMath::RoundToInt(FMath::Abs(V->Speed) * 0.036f)), X, Y + 22.f * S, Muted, Medium, 1.f);
+		if (Screen == EScreen::None || Screen == EScreen::Place)
+		{
+			DrawDashboard(V, VW, VH);
+		}
 	}
 
 	// ---- the player's health, on foot, once it is not full
@@ -533,12 +542,28 @@ void ANHHUD::DrawHUD()
 		}
 	}
 
+	// ---- a place's menu comes up and goes away with ANHEstate's say-so
+	if (const ANHEstate* Estate = ANHEstate::Get(this))
+	{
+		if (Estate->MenuOpen() && Screen == EScreen::None)
+		{
+			PlaceLine = 0;
+			Open(EScreen::Place);
+		}
+		else if (!Estate->MenuOpen() && Screen == EScreen::Place)
+		{
+			Open(EScreen::None);
+		}
+	}
+
 	// ---- the map, the pause menu, the inventory wheel: over everything else
 	switch (Screen)
 	{
+	case EScreen::Place: DrawPlace(VW, VH); break;
 	case EScreen::Map: DrawMapScreen(VW, VH); break;
 	case EScreen::Menu: DrawMenu(VW, VH); break;
 	case EScreen::Wheel: DrawWheel(VW, VH); break;
+	case EScreen::Bag: DrawBag(VW, VH); break;
 	default: break;
 	}
 

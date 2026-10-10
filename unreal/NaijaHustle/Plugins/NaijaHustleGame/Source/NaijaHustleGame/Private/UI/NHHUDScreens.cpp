@@ -1,5 +1,7 @@
 // The HUD's own screens: the map with its pin, the pause menu and the inventory wheel (see NHHUD.h)
 #include "UI/NHHUD.h"
+#include "Gameplay/NHEstate.h"
+#include "Gameplay/NHInventory.h"
 
 #include "Audio/NHAudioSubsystem.h"
 #include "Core/NHGameData.h"
@@ -26,6 +28,8 @@ namespace NHScreens
 	const FLinearColor Ink(0.96f, 0.95f, 0.9f);
 	const FLinearColor Muted(0.7f, 0.68f, 0.62f);
 	const FLinearColor Yellow(1.f, 0.77f, 0.f);
+	const FLinearColor Good(0.3f, 0.85f, 0.4f);
+	const FLinearColor Bad(0.95f, 0.25f, 0.2f);
 	const FLinearColor PinBlue(0.2f, 0.75f, 1.f);
 	const FLinearColor Land(0.2f, 0.19f, 0.16f);
 	const TCHAR* Section = TEXT("NaijaHustle");
@@ -35,7 +39,7 @@ namespace NHScreens
 	// the Controls page: a heading (no key) or a key and what it does
 	const TCHAR* ControlList[][2] = {
 		{ TEXT("ON FOOT"), nullptr }, { TEXT("W A S D"), TEXT("Move") }, { TEXT("Mouse"), TEXT("Look") }, { TEXT("Left Shift"), TEXT("Run while held") }, { TEXT("R"), TEXT("Run: stays on until pressed again") },
-		{ TEXT("Left Ctrl or C"), TEXT("Roll") }, { TEXT("T"), TEXT("Fire or swing what is in your hand") }, { TEXT("Right mouse"), TEXT("Aim the gun in your hand") }, { TEXT("X"), TEXT("Crouch, and up again") }, { TEXT("G"), TEXT("Climb what is in front, up to 3.3 m") }, { TEXT("Space"), TEXT("Jump; climbs a ledge, wall or car in front") }, { TEXT("F"), TEXT("Get in; try a car's handle; pull a driver out") },
+		{ TEXT("Left Ctrl or C"), TEXT("Roll") }, { TEXT("T"), TEXT("Fire or swing what is in your hand") }, { TEXT("Right mouse"), TEXT("Aim the gun in your hand") }, { TEXT("X"), TEXT("Crouch, and up again") }, { TEXT("G"), TEXT("Climb what is in front, up to 3.3 m") }, { TEXT("B"), TEXT("Bag: what you carry; eat, hold or drop it") }, { TEXT("Space"), TEXT("Jump; climbs a ledge, wall or car in front") }, { TEXT("F"), TEXT("Get in; try a car's handle; pull a driver out") },
 		{ TEXT("E"), TEXT("Talk, act, next line; join wires when hotwiring") },
 		{ TEXT("DRIVING"), nullptr }, { TEXT("W / S"), TEXT("Accelerate / brake and reverse") }, { TEXT("A / D"), TEXT("Steer") }, { TEXT("Space"), TEXT("Handbrake") },
 		{ TEXT("K"), TEXT("Headlights on / off") }, { TEXT("V"), TEXT("Cabin view") }, { TEXT("H"), TEXT("Horn") }, { TEXT("Hold R"), TEXT("Radio wheel: point at a station, let go") }, { TEXT("T"), TEXT("Radio: next song") }, { TEXT("F"), TEXT("Get out") }, { TEXT("E"), TEXT("Do business at the mechanic, paint shop, chop shop") },
@@ -125,6 +129,19 @@ void ANHHUD::TogglePhone()
 
 void ANHHUD::Back()
 {
+	if (Screen == EScreen::Place)
+	{
+		if (ANHEstate* Estate = ANHEstate::Get(this))
+		{
+			Estate->CloseMenu();
+		}
+		return;
+	}
+	if (Screen == EScreen::Bag)
+	{
+		Open(EScreen::None);
+		return;
+	}
 	ANHPhone* Phone = ANHPhone::Get(this);
 	if (Phone && Screen == EScreen::None)
 	{
@@ -132,8 +149,185 @@ void ANHHUD::Back()
 	}
 }
 
+void ANHHUD::ToggleBag()
+{
+	if (Screen == EScreen::Bag)
+	{
+		Open(EScreen::None);
+	}
+	else if (Screen == EScreen::None && Cast<ANHCharacter>(GetOwningPawn()))
+	{
+		BagLine = 0;
+		bBagDrop = false;
+		Open(EScreen::Bag);
+	}
+}
+
+void ANHHUD::DrawListMenu(const FString& Title, const FString& Heading, const TArray<FMenuRow>& Rows, int32 Chosen, const FString& Keys)
+{
+	using namespace NHScreens;
+	UFont* Medium = GEngine->GetMediumFont();
+	UFont* Large = GEngine->GetLargeFont();
+	const float X = 70.f * S, Y = 150.f * S, W = 560.f * S, Banner = 104.f * S, Bar = 44.f * S, RowH = 46.f * S;
+	const int32 Showing = FMath::Min(Rows.Num(), 10), First = FMath::Clamp(Chosen - 6, 0, FMath::Max(0, Rows.Num() - Showing));
+	// the banner and the bar under it
+	Panel(X, Y, W, Banner, FLinearColor(0.02f, 0.02f, 0.02f, 0.96f));
+	DrawRect(Yellow, X, Y + Banner - 6.f * S, W, 6.f * S);
+	Text(Title, X + W * 0.5f, Y + 26.f * S, Yellow, Large, 1.9f, true);
+	Panel(X, Y + Banner, W, Bar, FLinearColor(0.f, 0.f, 0.f, 0.98f));
+	Text(Heading, X + 16.f * S, Y + Banner + 9.f * S, Ink, Medium, 1.05f);
+	const FString Place = FString::Printf(TEXT("%d / %d"), Rows.Num() ? Chosen + 1 : 0, Rows.Num());
+	float TW = 0.f, TH = 0.f;
+	GetTextSize(Place, TW, TH, Medium, 1.05f * S);
+	Text(Place, X + W - 16.f * S - TW, Y + Banner + 9.f * S, Ink, Medium, 1.05f);
+	// the rows: the chosen one is a light bar with dark writing
+	float Yy = Y + Banner + Bar;
+	for (int32 I = First; I < First + Showing; ++I)
+	{
+		const bool bOn = I == Chosen;
+		Panel(X, Yy, W, RowH, bOn ? FLinearColor(0.96f, 0.95f, 0.9f, 0.96f) : FLinearColor(0.f, 0.f, 0.f, I % 2 ? 0.62f : 0.7f));
+		const FLinearColor Pen = bOn ? FLinearColor(0.03f, 0.03f, 0.03f) : Ink;
+		Text(Rows[I].Label, X + 16.f * S, Yy + 10.f * S, Pen, Medium, 1.15f);
+		GetTextSize(Rows[I].Value, TW, TH, Medium, 1.1f * S);
+		Text(Rows[I].Value, X + W - 16.f * S - TW, Yy + 11.f * S, bOn ? Pen : Muted, Medium, 1.1f);
+		Yy += RowH;
+	}
+	if (Rows.Num() == 0)
+	{
+		Panel(X, Yy, W, RowH, FLinearColor(0.f, 0.f, 0.f, 0.7f));
+		Text(TEXT("Nothing here"), X + 16.f * S, Yy + 10.f * S, Muted, Medium, 1.15f);
+		Yy += RowH;
+	}
+	// what the chosen row is, and the keys
+	DrawRect(Yellow, X, Yy + 4.f * S, W, 3.f * S);
+	const TArray<FString> Help = Rows.IsValidIndex(Chosen) ? Wrap(Rows[Chosen].Help, W - 32.f * S, Medium, 1.f * S) : TArray<FString>();
+	const float HelpH = (Help.Num() + 1) * 26.f * S + 22.f * S;
+	Panel(X, Yy + 7.f * S, W, HelpH, FLinearColor(0.f, 0.f, 0.f, 0.86f));
+	float Hy = Yy + 16.f * S;
+	for (const FString& Line : Help)
+	{
+		Text(Line, X + 16.f * S, Hy, Ink, Medium, 1.f);
+		Hy += 26.f * S;
+	}
+	Text(Keys, X + 16.f * S, Hy + 4.f * S, Muted, Medium, 0.9f);
+}
+
+void ANHHUD::DrawBag(float VW, float VH)
+{
+	const ANHCharacter* Me = Cast<ANHCharacter>(GetOwningPawn());
+	const UNHInventoryComponent* Bag = Me ? Me->GetInventory() : nullptr;
+	if (!Bag)
+	{
+		Open(EScreen::None); // got into a vehicle with it open
+		return;
+	}
+	TArray<FMenuRow> Rows;
+	for (const FNHItemStack& Stack : Bag->GetStacks())
+	{
+		const FNHItemDef* D = UNHInventoryComponent::Def(Stack.Item);
+		if (!D)
+		{
+			continue;
+		}
+		const bool bHeld = !D->Weapon.IsNone() && Me->Equipped() == D->Weapon;
+		const TCHAR* Does = bBagDrop ? TEXT("Enter: drop one.") : !D->Weapon.IsNone() ? (bHeld ? TEXT("Enter: put it away.") : TEXT("Enter: take it in your hand."))
+			: D->Heal > 0 ? TEXT("Enter: use one.") : !D->AmmoFor.IsNone() ? TEXT("Used as you fire.") : TEXT("Carried.");
+		Rows.Add({ D->Label + (bHeld ? TEXT("  (in hand)") : TEXT("")), FString::Printf(TEXT("x%d   %.1f kg"), Stack.Count, D->Weight * Stack.Count / 1000.f), D->Description + TEXT(" ") + Does });
+	}
+	BagLine = FMath::Clamp(BagLine, 0, FMath::Max(0, Rows.Num() - 1));
+	DrawListMenu(TEXT("BAG"), FString::Printf(TEXT("%s    %.1f of %.0f kg"), bBagDrop ? TEXT("DROP") : TEXT("USE"), Bag->Weight() / 1000.f, UNHInventoryComponent::MaxWeight() / 1000.f), Rows, BagLine,
+		TEXT("Up / Down: choose    Enter: do it    Left / Right: use or drop    B: close"));
+}
+
+void ANHHUD::DrawPlace(float VW, float VH)
+{
+	const ANHEstate* Estate = ANHEstate::Get(this);
+	if (!Estate)
+	{
+		return;
+	}
+	FString Title, Heading;
+	TArray<FNHMenuLine> Lines;
+	Estate->Menu(Title, Heading, Lines);
+	TArray<FMenuRow> Rows;
+	for (const FNHMenuLine& Line : Lines)
+	{
+		Rows.Add({ Line.Label, Line.Value, Line.Help });
+	}
+	PlaceLine = FMath::Clamp(PlaceLine, 0, FMath::Max(0, Rows.Num() - 1));
+	DrawListMenu(Title, Heading, Rows, PlaceLine, TEXT("Up / Down: choose    Enter: do it    E or Backspace: leave"));
+}
+
+void ANHHUD::DrawDashboard(const ANHVehicle* V, float VW, float VH)
+{
+	using namespace NHScreens;
+	UFont* Medium = GEngine->GetMediumFont();
+	UFont* Large = GEngine->GetLargeFont();
+	int32 Gear = 0;
+	float Rpm = 0.f;
+	V->Readings(Gear, Rpm);
+	const float Kmh = FMath::Abs(V->Speed) * 0.036f;
+	// the dial reads to the next 20 over the vehicle's top speed
+	const float Full = FMath::CeilToFloat(V->TopSpeed() * 0.036f / 20.f) * 20.f + 20.f;
+	const float R = 105.f * S, Gap = 36.f * S;
+	const FVector2D Speedo(VW - 60.f * S - R, VH - 70.f * S - R), Revs(Speedo.X - 2.f * R - Gap, Speedo.Y);
+	Panel(Revs.X - R - 22.f * S, Speedo.Y - R - 22.f * S, 4.f * R + Gap + 44.f * S, 2.f * R + 78.f * S, FLinearColor(0.f, 0.f, 0.f, 0.62f));
+	// a dial: from seven o'clock round the top to five o'clock, 240 degrees
+	const auto Dial = [this, R, Medium](const FVector2D& C, float Value, float Top, float Step, int32 Minor, float RedFrom, const TFunctionRef<FString(float)>& Label)
+	{
+		const auto Angle = [Top](float Now) { return FMath::DegreesToRadians(150.f + 240.f * FMath::Clamp(Now / Top, 0.f, 1.f)); };
+		const int32 Ticks = FMath::RoundToInt(Top / Step) * Minor;
+		for (int32 I = 0; I <= Ticks; ++I)
+		{
+			const float Now = Top * I / Ticks, A = Angle(Now);
+			const bool bMajor = I % Minor == 0;
+			const FLinearColor Colour = Now >= RedFrom ? FLinearColor(0.95f, 0.15f, 0.1f) : NHScreens::Ink;
+			const FVector2D Dir(FMath::Cos(A), FMath::Sin(A));
+			DrawLine(C.X + Dir.X * R, C.Y + Dir.Y * R, C.X + Dir.X * (R - (bMajor ? 16.f : 8.f) * S), C.Y + Dir.Y * (R - (bMajor ? 16.f : 8.f) * S), Colour, (bMajor ? 3.f : 1.5f) * S);
+			if (bMajor)
+			{
+				Text(Label(Now), C.X + Dir.X * (R - 34.f * S), C.Y + Dir.Y * (R - 34.f * S) - 9.f * S, Colour, Medium, 0.85f, true);
+			}
+		}
+		const float A = Angle(Value);
+		DrawLine(C.X - FMath::Cos(A) * 14.f * S, C.Y - FMath::Sin(A) * 14.f * S, C.X + FMath::Cos(A) * (R - 20.f * S), C.Y + FMath::Sin(A) * (R - 20.f * S), FLinearColor(1.f, 0.3f, 0.05f), 4.f * S);
+		DrawRect(NHScreens::Ink, C.X - 5.f * S, C.Y - 5.f * S, 10.f * S, 10.f * S);
+	};
+	Dial(Speedo, Kmh, Full, 20.f, 2, BIG_NUMBER, [](float Now) { return FString::FromInt(FMath::RoundToInt(Now)); });
+	Dial(Revs, Rpm, 8000.f, 1000.f, 2, 6500.f, [](float Now) { return FString::FromInt(FMath::RoundToInt(Now / 1000.f)); });
+	Text(FString::FromInt(FMath::RoundToInt(Kmh)), Speedo.X, Speedo.Y + 30.f * S, Ink, Large, 1.5f, true);
+	Text(TEXT("km/h"), Speedo.X, Speedo.Y + 66.f * S, Muted, Medium, 0.8f, true);
+	Text(Gear < 0 ? TEXT("R") : Gear == 0 ? TEXT("N") : *FString::FromInt(Gear), Revs.X, Revs.Y + 30.f * S, Gear < 0 ? Bad : Yellow, Large, 1.5f, true);
+	Text(TEXT("x1000 rpm"), Revs.X, Revs.Y + 66.f * S, Muted, Medium, 0.8f, true);
+	// under the dials: the fuel, how far it has gone, and the lights that are lit
+	const float Left = Revs.X - R, Wide = 4.f * R + Gap, Y = Speedo.Y + R + 18.f * S;
+	Text(TEXT("E"), Left, Y - 3.f * S, V->Fuel < 0.12f ? Bad : Muted, Medium, 0.9f);
+	Panel(Left + 20.f * S, Y, 150.f * S, 12.f * S, FLinearColor(1.f, 1.f, 1.f, 0.15f));
+	DrawRect(V->Fuel < 0.12f ? Bad : V->Fuel < 0.25f ? Yellow : Good, Left + 20.f * S, Y, 150.f * S * V->Fuel, 12.f * S);
+	Text(TEXT("F"), Left + 178.f * S, Y - 3.f * S, Muted, Medium, 0.9f);
+	Text(FString::Printf(TEXT("%.0f L"), V->Fuel * V->TankLitres()), Left + 200.f * S, Y - 3.f * S, V->Fuel < 0.12f ? Bad : Ink, Medium, 0.9f);
+	const FString Gone = FString::Printf(TEXT("%07.1f km"), V->Odometer / 100000.0);
+	float TW = 0.f, TH = 0.f;
+	GetTextSize(Gone, TW, TH, Medium, 0.9f * S);
+	Text(Gone, Left + Wide - TW, Y - 3.f * S, Ink, Medium, 0.9f);
+	const float Lights = Left + 270.f * S;
+	Text(TEXT("LIGHTS"), Lights, Y - 3.f * S, V->HeadlightsOn() ? FLinearColor(0.3f, 0.9f, 0.4f) : FLinearColor(1.f, 1.f, 1.f, 0.22f), Medium, 0.8f);
+	Text(TEXT("BRAKE"), Lights + 70.f * S, Y - 3.f * S, V->HandbrakeOn() ? Bad : FLinearColor(1.f, 1.f, 1.f, 0.22f), Medium, 0.8f);
+	Text(TEXT("ENGINE"), Lights + 130.f * S, Y - 3.f * S, V->MaxHealth > 0.f && V->Health / V->MaxHealth < 0.35f ? Yellow : FLinearColor(1.f, 1.f, 1.f, 0.22f), Medium, 0.8f);
+}
+
 void ANHHUD::ToggleMenu()
 {
+	if (Screen == EScreen::Place)
+	{
+		Back();
+		return;
+	}
+	if (Screen == EScreen::Bag)
+	{
+		Open(EScreen::None); // Esc closes the bag
+		return;
+	}
 	if (Screen == EScreen::Menu && bMenuClothes)
 	{
 		OpenClothes(false); // Esc on the Clothes page: back to the menu
@@ -249,6 +443,19 @@ void ANHHUD::UseRadioWheel(int32 Id)
 
 void ANHHUD::Nav(int32 DX, int32 DY)
 {
+	if (Screen == EScreen::Place)
+	{
+		PlaceLine = FMath::Max(0, PlaceLine + DY); // DrawPlace keeps it on the list
+		return;
+	}
+	if (Screen == EScreen::Bag)
+	{
+		const ANHCharacter* Me = Cast<ANHCharacter>(GetOwningPawn());
+		const int32 Lines = Me && Me->GetInventory() ? Me->GetInventory()->GetStacks().Num() : 0;
+		BagLine = Lines > 0 ? (BagLine + DY + Lines) % Lines : 0;
+		bBagDrop = DX != 0 ? !bBagDrop : bBagDrop;
+		return;
+	}
 	if (ANHPhone* Phone = ANHPhone::Get(this); Phone && Phone->IsOpen() && Screen == EScreen::None)
 	{
 		if (DY != 0)
@@ -306,6 +513,37 @@ void ANHHUD::Nav(int32 DX, int32 DY)
 
 void ANHHUD::Accept()
 {
+	if (Screen == EScreen::Place)
+	{
+		if (ANHEstate* Estate = ANHEstate::Get(this))
+		{
+			Estate->Choose(PlaceLine);
+		}
+		return;
+	}
+	if (Screen == EScreen::Bag)
+	{
+		ANHCharacter* Me = Cast<ANHCharacter>(GetOwningPawn());
+		UNHInventoryComponent* Bag = Me ? Me->GetInventory() : nullptr;
+		if (Bag && Bag->GetStacks().IsValidIndex(BagLine))
+		{
+			const FName Item = Bag->GetStacks()[BagLine].Item;
+			const FNHItemDef* D = UNHInventoryComponent::Def(Item);
+			if (bBagDrop)
+			{
+				Bag->ServerDrop(Item, 1);
+			}
+			else if (D && !D->Weapon.IsNone())
+			{
+				Me->Equip(D->Weapon);
+			}
+			else
+			{
+				Bag->ServerUse(Item);
+			}
+		}
+		return;
+	}
 	if (ANHPhone* Phone = ANHPhone::Get(this); Phone && Screen == EScreen::None)
 	{
 		Phone->Select(); // a row, the next line of a call, answering, or skipping a ride
@@ -1131,24 +1369,144 @@ void ANHHUD::DrawPhone(float VW, float VH)
 		return;
 	}
 	UFont* Medium = GEngine->GetMediumFont();
-	// a handset standing left of the minimap, above the dialogue box: clear of the rest of the HUD
-	const float W = 430.f * S, H = 760.f * S, X = VW - 28.f * S - 300.f * S - 30.f * S - W, Y = 40.f * S, In = 18.f * S;
-	Panel(X - 8.f * S, Y - 8.f * S, W + 16.f * S, H + 16.f * S, FLinearColor(0.02f, 0.02f, 0.025f, 0.98f));
-	Panel(X, Y, W, H, FLinearColor(0.09f, 0.1f, 0.12f, 0.98f));
-	DrawRect(Yellow, X, Y, W, 54.f * S);
-	Text(Phone->Title, X + In, Y + 12.f * S, FLinearColor(0.05f, 0.05f, 0.05f), Medium, 1.25f, false, false);
-	const float Top = Y + 66.f * S, Bottom = Y + H - 40.f * S, TextW = W - 2.f * In;
+	UFont* Large = GEngine->GetLargeFont();
+	// A smartphone standing left of the minimap: a rounded metal body, a black bezel, the screen with its status bar
+	// and the cut-out at the top, and the bar at the bottom you would swipe up from.
+	const float W = 410.f * S, H = 840.f * S, X = VW - 28.f * S - 300.f * S - 40.f * S - W, Y = 26.f * S;
+	// a box with rounded corners, drawn as thin strips that get shorter toward the top and bottom
+	const auto Round = [this](float RX, float RY, float RW, float RH, float Radius, const FLinearColor& Colour)
+	{
+		const float Strip = FMath::Max(1.f, Radius / 14.f);
+		for (float D = 0.f; D < Radius; D += Strip)
+		{
+			const float In = Radius - FMath::Sqrt(FMath::Max(0.f, Radius * Radius - FMath::Square(Radius - D - Strip * 0.5f)));
+			DrawRect(Colour, RX + In, RY + D, RW - 2.f * In, Strip + 0.5f);
+			DrawRect(Colour, RX + In, RY + RH - D - Strip, RW - 2.f * In, Strip + 0.5f);
+		}
+		DrawRect(Colour, RX, RY + Radius - 0.5f, RW, RH - 2.f * Radius + 1.f);
+	};
+	const FLinearColor Metal(0.2f, 0.2f, 0.215f, 1.f), Black(0.f, 0.f, 0.f, 1.f), Blue(0.04f, 0.52f, 1.f), Card(1.f, 1.f, 1.f, 0.07f);
+	DrawRect(Metal, X - 4.f * S, Y + 150.f * S, 5.f * S, 34.f * S);                       // the switch and the volume buttons
+	DrawRect(Metal, X - 4.f * S, Y + 210.f * S, 5.f * S, 62.f * S);
+	DrawRect(Metal, X - 4.f * S, Y + 286.f * S, 5.f * S, 62.f * S);
+	DrawRect(Metal, X + W - 1.f * S, Y + 240.f * S, 5.f * S, 96.f * S);                   // the side button
+	Round(X, Y, W, H, 58.f * S, Metal);
+	Round(X + 4.f * S, Y + 4.f * S, W - 8.f * S, H - 8.f * S, 54.f * S, Black);
+	const float SX = X + 13.f * S, SY = Y + 13.f * S, SW = W - 26.f * S, SH = H - 26.f * S, In = 18.f * S;
+	const bool bHome = Phone->OnHome();
+	if (bHome)
+	{
+		// the wallpaper: a Lagos evening, deep blue down to orange over the lagoon
+		const int32 Bands = 160;
+		const float Radius = 46.f * S;
+		for (int32 I = 0; I < Bands; ++I)
+		{
+			const float K = static_cast<float>(I) / (Bands - 1), BY = SY + SH * I / Bands, D = FMath::Min(BY - SY, SY + SH - BY - SH / Bands);
+			const float Cut = D < Radius ? Radius - FMath::Sqrt(FMath::Max(0.f, Radius * Radius - FMath::Square(Radius - D))) : 0.f;
+			const FLinearColor Sky = K < 0.6f ? FMath::Lerp(FLinearColor(0.02f, 0.04f, 0.16f), FLinearColor(0.35f, 0.1f, 0.3f), K / 0.6f) : FMath::Lerp(FLinearColor(0.35f, 0.1f, 0.3f), FLinearColor(0.95f, 0.45f, 0.1f), (K - 0.6f) / 0.4f);
+			DrawRect(FLinearColor(Sky.R, Sky.G, Sky.B, 1.f), SX + Cut, BY, SW - 2.f * Cut, SH / Bands + 1.f);
+		}
+	}
+	else
+	{
+		Round(SX, SY, SW, SH, 46.f * S, FLinearColor(0.045f, 0.045f, 0.055f, 1.f));
+	}
+	// the status bar: the time, the cut-out, the signal, the network and the battery
+	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	const float Hour = Hustle ? Hustle->HourOfDay() : 9.68f;
+	Text(FString::Printf(TEXT("%d:%02d"), FMath::FloorToInt(Hour), FMath::FloorToInt(FMath::Frac(Hour) * 60.f)), SX + 34.f * S, SY + 16.f * S, FLinearColor::White, Medium, 1.05f, false, false);
+	Round(SX + SW * 0.5f - 56.f * S, SY + 11.f * S, 112.f * S, 32.f * S, 16.f * S, Black);
+	for (int32 I = 0; I < 4; ++I)
+	{
+		DrawRect(I < 3 ? FLinearColor::White : FLinearColor(1.f, 1.f, 1.f, 0.35f), SX + SW - 118.f * S + I * 7.f * S, SY + 30.f * S - (5.f + I * 3.f) * S, 5.f * S, (5.f + I * 3.f) * S);
+	}
+	Text(TEXT("5G"), SX + SW - 86.f * S, SY + 17.f * S, FLinearColor::White, Medium, 0.8f, false, false);
+	DrawRect(FLinearColor(1.f, 1.f, 1.f, 0.4f), SX + SW - 60.f * S, SY + 18.f * S, 30.f * S, 14.f * S);
+	DrawRect(Black, SX + SW - 58.5f * S, SY + 19.5f * S, 27.f * S, 11.f * S);
+	DrawRect(FLinearColor::White, SX + SW - 57.f * S, SY + 21.f * S, 19.f * S, 8.f * S);
+	DrawRect(FLinearColor(1.f, 1.f, 1.f, 0.4f), SX + SW - 29.f * S, SY + 22.f * S, 2.5f * S, 6.f * S);
+	// the bar at the bottom
+	Round(SX + SW * 0.5f - 62.f * S, SY + SH - 14.f * S, 124.f * S, 5.f * S, 2.5f * S, FLinearColor(1.f, 1.f, 1.f, 0.85f));
+
+	if (bHome)
+	{
+		// the apps: icons four to a row with their names under them; the last four sit in the dock
+		const int32 Count = Phone->Rows.Num(), Docked = FMath::Min(4, Count), Loose = Count - Docked;
+		const float Icon = 70.f * S, Gap = (SW - 4.f * Icon) / 5.f, Top = SY + 150.f * S, RowH = 112.f * S;
+		Text(Hustle ? FString::Printf(TEXT("Day %d"), Hustle->Day()) : FString(), SX + SW * 0.5f, SY + 62.f * S, FLinearColor(1.f, 1.f, 1.f, 0.85f), Medium, 1.f, true, false);
+		Text(FString::Printf(TEXT("%d:%02d"), FMath::FloorToInt(Hour), FMath::FloorToInt(FMath::Frac(Hour) * 60.f)), SX + SW * 0.5f, SY + 80.f * S, FLinearColor::White, Large, 2.3f, true, false);
+		const float DockY = SY + SH - 126.f * S;
+		Round(SX + 12.f * S, DockY - 14.f * S, SW - 24.f * S, Icon + 28.f * S, 30.f * S, FLinearColor(1.f, 1.f, 1.f, 0.22f));
+		for (int32 I = 0; I < Count; ++I)
+		{
+			const ANHPhone::FRow& Row = Phone->Rows[I];
+			const bool bDock = I >= Loose, bOn = I == Phone->Selected;
+			const int32 Slot = bDock ? I - Loose : I;
+			const float IX = SX + Gap + (Slot % 4) * (Icon + Gap), IY = bDock ? DockY : Top + (Slot / 4) * RowH;
+			if (bOn)
+			{
+				Round(IX - 5.f * S, IY - 5.f * S, Icon + 10.f * S, Icon + 10.f * S, 21.f * S, FLinearColor::White);
+			}
+			Round(IX, IY, Icon, Icon, 17.f * S, FLinearColor(Row.BadgeColor.R, Row.BadgeColor.G, Row.BadgeColor.B, 1.f));
+			DrawRect(FLinearColor(1.f, 1.f, 1.f, 0.1f), IX + 8.f * S, IY + 4.f * S, Icon - 16.f * S, Icon * 0.42f); // a sheen across the top half
+			Text(Row.Badge.ToUpper(), IX + Icon * 0.5f, IY + 15.f * S, FLinearColor::White, Large, 1.5f, true, false);
+			// a red count on an app with something new (its detail starts with a number)
+			if (Row.Detail.Len() > 0 && FChar::IsDigit(Row.Detail[0]) && FCString::Atoi(*Row.Detail) > 0)
+			{
+				Round(IX + Icon - 16.f * S, IY - 8.f * S, 26.f * S, 26.f * S, 13.f * S, FLinearColor(0.95f, 0.15f, 0.15f, 1.f));
+				Text(FString::FromInt(FMath::Min(FCString::Atoi(*Row.Detail), 99)), IX + Icon - 3.f * S, IY - 5.f * S, FLinearColor::White, Medium, 0.8f, true, false);
+			}
+			if (!bDock)
+			{
+				FString Name = Row.Text;
+				float TW = 0.f, TH = 0.f;
+				for (GetTextSize(Name, TW, TH, Medium, 0.78f * S); TW > Icon + Gap - 4.f * S && Name.Len() > 3; GetTextSize(Name, TW, TH, Medium, 0.78f * S))
+				{
+					Name = Name.LeftChop(2).TrimEnd() + TEXT(".");
+				}
+				Text(Name, IX + Icon * 0.5f, IY + Icon + 6.f * S, FLinearColor::White, Medium, 0.78f, true, true);
+			}
+		}
+		// what the chosen app has to say, over the dock
+		if (Phone->Rows.IsValidIndex(Phone->Selected))
+		{
+			const ANHPhone::FRow& On = Phone->Rows[Phone->Selected];
+			Text(On.Text + (On.Detail.IsEmpty() ? FString() : TEXT("  ·  ") + On.Detail), SX + SW * 0.5f, DockY - 46.f * S, FLinearColor::White, Medium, 0.9f, true, true);
+		}
+		return;
+	}
+
+	// ---- inside an app: a bar with Back and the app's name, an address bar in the browser, then its rows as cards
+	Text(TEXT("< Back"), SX + In, SY + 62.f * S, Blue, Medium, 1.f, false, false);
+	Text(Phone->Title, SX + SW * 0.5f, SY + 60.f * S, FLinearColor::White, Medium, 1.15f, true, false);
+	float Top = SY + 98.f * S;
+	if (!Phone->Address.IsEmpty())
+	{
+		Round(SX + 12.f * S, Top, SW - 24.f * S, 38.f * S, 12.f * S, FLinearColor(1.f, 1.f, 1.f, 0.12f));
+		DrawRect(FLinearColor(0.4f, 0.85f, 0.5f), SX + 28.f * S, Top + 17.f * S, 10.f * S, 9.f * S);                     // a padlock
+		DrawRect(FLinearColor(0.4f, 0.85f, 0.5f), SX + 30.f * S, Top + 11.f * S, 6.f * S, 2.f * S);
+		DrawRect(FLinearColor(0.4f, 0.85f, 0.5f), SX + 30.f * S, Top + 11.f * S, 2.f * S, 7.f * S);
+		DrawRect(FLinearColor(0.4f, 0.85f, 0.5f), SX + 34.f * S, Top + 11.f * S, 2.f * S, 7.f * S);
+		Text(Phone->Address, SX + SW * 0.5f, Top + 9.f * S, FLinearColor(0.92f, 0.92f, 0.95f), Medium, 0.95f, true, false);
+		Top += 50.f * S;
+	}
+	DrawRect(FLinearColor(1.f, 1.f, 1.f, 0.1f), SX, Top - 6.f * S, SW, 1.f);
+	const float Bottom = SY + SH - 52.f * S, TextW = SW - 2.f * In;
 
 	// how tall each row is, then which row to start from so the chosen one is on the screen
-	struct FLaid { TArray<FString> Lines; float Height; };
+	struct FLaid { TArray<FString> Lines, More; float Height; };
 	TArray<FLaid> Laid;
 	bool bAnyChoice = false;
 	for (const ANHPhone::FRow& Row : Phone->Rows)
 	{
 		FLaid L;
-		const float Indent = Row.Badge.IsEmpty() ? 0.f : 54.f * S;
-		L.Lines = Wrap(Row.Text, TextW - Indent - (Row.bChoice ? 16.f * S : 0.f), Medium, Row.bChoice ? 1.1f : 0.95f);
-		L.Height = L.Lines.Num() * (Row.bChoice ? 30.f : 25.f) * S + (Row.bChoice ? (Row.Detail.IsEmpty() ? 20.f : 42.f) * S : 6.f * S) + (Row.Meter >= 0 ? 14.f * S : 0.f);
+		const float Indent = Row.Badge.IsEmpty() ? 0.f : 56.f * S;
+		L.Lines = Wrap(Row.Text, TextW - Indent - (Row.bChoice ? 20.f * S : 0.f), Medium, Row.bChoice ? 1.05f : 0.95f);
+		if (!Row.Detail.IsEmpty())
+		{
+			L.More = Wrap(Row.Detail, TextW - Indent - 20.f * S, Medium, 0.85f);
+		}
+		L.Height = L.Lines.Num() * (Row.bChoice ? 28.f : 25.f) * S + L.More.Num() * 21.f * S + (Row.bChoice ? 22.f * S : 6.f * S) + (Row.Meter >= 0 ? 14.f * S : 0.f);
 		Laid.Add(L);
 		bAnyChoice |= Row.bChoice;
 	}
@@ -1175,48 +1533,44 @@ void ANHHUD::DrawPhone(float VW, float VH)
 		const FLaid& L = Laid[I];
 		if (Yy + L.Height > Bottom)
 		{
-			Text(TEXT("..."), X + W * 0.5f, Bottom - 22.f * S, Muted, Medium, 1.f, true);
+			Text(TEXT("..."), SX + SW * 0.5f, Bottom - 20.f * S, Muted, Medium, 1.f, true);
 			break;
 		}
 		const bool bOn = Row.bChoice && I == Phone->Selected;
-		float TextX = X + In;
+		float TextX = SX + In;
 		if (Row.bChoice)
 		{
-			Panel(X + 8.f * S, Yy, W - 16.f * S, L.Height - 6.f * S, bOn ? FLinearColor(1.f, 0.77f, 0.f, 0.22f) : FLinearColor(1.f, 1.f, 1.f, 0.05f));
-			if (bOn)
-			{
-				DrawRect(Yellow, X + 8.f * S, Yy, 4.f * S, L.Height - 6.f * S);
-			}
-			TextX += 8.f * S;
+			Round(SX + 10.f * S, Yy, SW - 20.f * S, L.Height - 7.f * S, 14.f * S, bOn ? FLinearColor(Blue.R, Blue.G, Blue.B, 0.9f) : Card);
+			TextX += 6.f * S;
 		}
 		if (!Row.Badge.IsEmpty())
 		{
-			// the portrait or app icon: a coloured tile with an initial
-			DrawRect(Row.BadgeColor, TextX, Yy + 7.f * S, 40.f * S, 40.f * S);
-			Text(Row.Badge.ToUpper(), TextX + 20.f * S, Yy + 13.f * S, FLinearColor::White, Medium, 1.2f, true, false);
-			TextX += 54.f * S;
+			// the portrait or the site's icon: a rounded tile with an initial
+			Round(TextX, Yy + 8.f * S, 42.f * S, 42.f * S, 11.f * S, FLinearColor(Row.BadgeColor.R, Row.BadgeColor.G, Row.BadgeColor.B, 1.f));
+			Text(Row.Badge.ToUpper(), TextX + 21.f * S, Yy + 15.f * S, FLinearColor::White, Medium, 1.2f, true, false);
+			TextX += 56.f * S;
 		}
-		float LineY = Yy + (Row.bChoice ? 7.f : 0.f) * S;
+		float LineY = Yy + (Row.bChoice ? 8.f : 0.f) * S;
 		for (const FString& Line : L.Lines)
 		{
-			Text(Line, TextX, LineY, bOn ? Yellow : Row.Color, Medium, Row.bChoice ? 1.1f : 0.95f, false, false);
-			LineY += (Row.bChoice ? 30.f : 25.f) * S;
+			Text(Line, TextX, LineY, bOn ? FLinearColor::White : Row.Color, Medium, Row.bChoice ? 1.05f : 0.95f, false, false);
+			LineY += (Row.bChoice ? 28.f : 25.f) * S;
 		}
-		if (!Row.Detail.IsEmpty())
+		for (const FString& Line : L.More)
 		{
-			Text(Row.Detail, TextX, LineY - 2.f * S, Muted, Medium, 0.9f, false, false);
-			LineY += 22.f * S;
+			Text(Line, TextX, LineY - 2.f * S, bOn ? FLinearColor(1.f, 1.f, 1.f, 0.85f) : Muted, Medium, 0.85f, false, false);
+			LineY += 21.f * S;
 		}
 		if (Row.Meter >= 0)
 		{
-			const float BarW = W - (TextX - X) - In - 8.f * S;
+			const float BarW = SW - (TextX - SX) - In - 8.f * S;
 			DrawRect(FLinearColor(1.f, 1.f, 1.f, 0.12f), TextX, LineY + 2.f * S, BarW, 6.f * S);
 			DrawRect(Row.Meter >= 60 ? FLinearColor(0.35f, 0.85f, 0.45f) : Row.Meter >= 30 ? Yellow : FLinearColor(1.f, 0.35f, 0.3f), TextX, LineY + 2.f * S, BarW * Row.Meter / 100.f, 6.f * S);
 		}
 		Yy += L.Height;
 	}
-	const TArray<FString> Foot = Wrap(Phone->Footer, TextW, Medium, 0.8f);
-	Text(Foot[0], X + W * 0.5f, Y + H - 30.f * S, Muted, Medium, 0.8f, true, false);
+	const TArray<FString> Foot = Wrap(Phone->Footer, TextW, Medium, 0.72f);
+	Text(Foot[0], SX + SW * 0.5f, SY + SH - 44.f * S, FLinearColor(1.f, 1.f, 1.f, 0.4f), Medium, 0.72f, true, false);
 }
 
 // --------------------------------------------------------------------------------------- directions to the pin

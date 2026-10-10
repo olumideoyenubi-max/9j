@@ -1,0 +1,379 @@
+{
+ "format": "naija-hustle-estate",
+ "note": "People to play, and places to buy, enter and use, in the real-scale city. lat/lon are real; each place is put on the verge of the nearest main road. Every person, estate and business here is made up. Prices in naira. kind: land, house, apartment (for sale and to live in); bar, club, strip (go in, buy, and the business itself can be bought); petrol.",
+ "pocket": 5000000,
+ "people": [
+  {
+   "id": "chief",
+   "name": "Chief Dotun Bankole",
+   "about": "Oil, cement and three senators. Lekki Phase 1.",
+   "skin": "emeka",
+   "bank": 300000000000,
+   "home": "lekki_mansion",
+   "cars": [
+    "royalsuv",
+    "hypercar",
+    "luxsedan",
+    "supersuv"
+   ]
+  },
+  {
+   "id": "madam",
+   "name": "Adaeze Nwosu",
+   "about": "Fintech at 29, half of Eko Atlantic by 35.",
+   "skin": "amaka",
+   "bank": 100000000000,
+   "home": "atlantic_penthouse",
+   "cars": [
+    "luxcoupe",
+    "sports",
+    "luxsuv"
+   ]
+  }
+ ],
+ "menus": {
+  "bar": [
+   [
+    "Cold lager",
+    1500,
+    8
+   ],
+   [
+    "Small stout",
+    1800,
+    8
+   ],
+   [
+    "Palm wine, one keg",
+    2500,
+    12
+   ],
+   [
+    "Pepper soup",
+    3500,
+    25
+   ],
+   [
+    "Suya, one stick",
+    1000,
+    10
+   ]
+  ],
+  "club": [
+   [
+    "Cold lager",
+    5000,
+    8
+   ],
+   [
+    "Cocktail",
+    12000,
+    10
+   ],
+   [
+    "Bottle of cognac",
+    350000,
+    15
+   ],
+   [
+    "Champagne for the table",
+    900000,
+    20
+   ],
+   [
+    "Small chops",
+    15000,
+    25
+   ]
+  ],
+  "strip": [
+   [
+    "Cold lager",
+    6000,
+    8
+   ],
+   [
+    "Cocktail",
+    15000,
+    10
+   ],
+   [
+    "Champagne for the stage",
+    1200000,
+    20
+   ],
+   [
+    "Spray the dancers",
+    50000,
+    0
+   ],
+   [
+    "Private table",
+    250000,
+    0
+   ]
+  ]
+ },
+ "petrolPerLitre": 900,
+ "places": [
+  {
+   "id": "lekki_mansion",
+   "kind": "house",
+   "name": "Bankole House",
+   "area": "Lekki Phase 1",
+   "lat": 6.448,
+   "lon": 3.472,
+   "price": 2500000000,
+   "about": "Seven bedrooms, a pool, and a garage for six."
+  },
+  {
+   "id": "atlantic_penthouse",
+   "kind": "apartment",
+   "name": "Meridian Tower penthouse",
+   "area": "Eko Atlantic",
+   "lat": 6.412,
+   "lon": 3.41,
+   "price": 1800000000,
+   "about": "The top two floors, with the ocean on three sides."
+  },
+  {
+   "id": "land_lekki",
+   "kind": "land",
+   "name": "Plot 7, Palm Crest Estate",
+   "area": "Lekki",
+   "lat": 6.4405,
+   "lon": 3.488,
+   "price": 450000000,
+   "about": "900 square metres, fenced, C of O."
+  },
+  {
+   "id": "land_ikoyi",
+   "kind": "land",
+   "name": "Plot 3, Lagoon View",
+   "area": "Ikoyi",
+   "lat": 6.452,
+   "lon": 3.438,
+   "price": 1200000000,
+   "about": "On the water. 1,400 square metres."
+  },
+  {
+   "id": "land_surulere",
+   "kind": "land",
+   "name": "Corner plot, Adeniran side",
+   "area": "Surulere",
+   "lat": 6.499,
+   "lon": 3.355,
+   "price": 85000000,
+   "about": "A full plot on a corner. Omo onile settled."
+  },
+  {
+   "id": "land_ikeja",
+   "kind": "land",
+   "name": "Half plot, Allen side",
+   "area": "Ikeja",
+   "lat": 6.601,
+   "lon": 3.351,
+   "price": 120000000,
+   "about": "Commercial. Good for a shop front."
+  },
+  {
+   "id": "house_ikoyi",
+   "kind": "house",
+   "name": "Lagoon House",
+   "area": "Ikoyi",
+   "lat": 6.456,
+   "lon": 3.442,
+   "price": 3200000000,
+   "about": "Six bedrooms and a jetty."
+  },
+  {
+   "id": "house_vi",
+   "kind": "house",
+   "name": "The Admiral's Terrace",
+   "area": "Victoria Island",
+   "lat": 6.43,
+   "lon": 3.421,
+   "price": 950000000,
+   "about": "Five-bedroom terrace with a roof deck."
+  },
+  {
+   "id": "house_yaba",
+   "kind": "house",
+   "name": "Four-bedroom duplex",
+   "area": "Yaba",
+   "lat": 6.509,
+   "lon": 3.379,
+   "price": 180000000,
+   "about": "Newly built, with a boys' quarters."
+  },
+  {
+   "id": "house_surulere",
+   "kind": "house",
+   "name": "Three-bedroom bungalow",
+   "area": "Surulere",
+   "lat": 6.5,
+   "lon": 3.348,
+   "price": 65000000,
+   "about": "Old but solid. Mango tree in the yard."
+  },
+  {
+   "id": "apt_vi",
+   "kind": "apartment",
+   "name": "Azure Heights, flat 12B",
+   "area": "Victoria Island",
+   "lat": 6.433,
+   "lon": 3.43,
+   "price": 420000000,
+   "about": "Three bedrooms, serviced, with a gym."
+  },
+  {
+   "id": "apt_ikeja",
+   "kind": "apartment",
+   "name": "Greenfield Court, flat 4",
+   "area": "Ikeja",
+   "lat": 6.596,
+   "lon": 3.343,
+   "price": 75000000,
+   "about": "Two bedrooms. Light is steady here."
+  },
+  {
+   "id": "apt_lekki",
+   "kind": "apartment",
+   "name": "Marlin Residences penthouse",
+   "area": "Lekki",
+   "lat": 6.44,
+   "lon": 3.46,
+   "price": 1400000000,
+   "about": "Four bedrooms and a private lift."
+  },
+  {
+   "id": "bar_surulere",
+   "kind": "bar",
+   "name": "Mama Risi's Joint",
+   "area": "Surulere",
+   "lat": 6.496,
+   "lon": 3.357,
+   "fee": 0,
+   "price": 40000000,
+   "about": "Plastic chairs, cold beer, loud football."
+  },
+  {
+   "id": "bar_ikeja",
+   "kind": "bar",
+   "name": "The Rusty Kettle",
+   "area": "Ikeja",
+   "lat": 6.6,
+   "lon": 3.348,
+   "fee": 0,
+   "price": 60000000,
+   "about": "After-work bar. Pepper soup till late."
+  },
+  {
+   "id": "bar_yaba",
+   "kind": "bar",
+   "name": "Under Bridge Bar",
+   "area": "Yaba",
+   "lat": 6.512,
+   "lon": 3.374,
+   "fee": 0,
+   "price": 35000000,
+   "about": "Students, palm wine and a pool table."
+  },
+  {
+   "id": "club_vi",
+   "kind": "club",
+   "name": "Club Obsidian",
+   "area": "Victoria Island",
+   "lat": 6.429,
+   "lon": 3.426,
+   "fee": 20000,
+   "price": 900000000,
+   "about": "Bottle service and a queue outside."
+  },
+  {
+   "id": "club_lekki",
+   "kind": "club",
+   "name": "Velvet Lagoon",
+   "area": "Lekki Phase 1",
+   "lat": 6.446,
+   "lon": 3.476,
+   "fee": 50000,
+   "price": 1500000000,
+   "about": "Where the big boys spray dollars."
+  },
+  {
+   "id": "club_ikeja",
+   "kind": "club",
+   "name": "Level 9",
+   "area": "Ikeja",
+   "lat": 6.605,
+   "lon": 3.35,
+   "fee": 10000,
+   "price": 400000000,
+   "about": "Mainland's loudest dance floor."
+  },
+  {
+   "id": "strip_vi",
+   "kind": "strip",
+   "name": "The Silk Room",
+   "area": "Victoria Island",
+   "lat": 6.4275,
+   "lon": 3.419,
+   "fee": 30000,
+   "price": 700000000,
+   "about": "Gentlemen's club. No phones on the floor."
+  },
+  {
+   "id": "strip_ikeja",
+   "kind": "strip",
+   "name": "Night Orchid",
+   "area": "Ikeja, red-light side",
+   "lat": 6.602,
+   "lon": 3.354,
+   "fee": 15000,
+   "price": 300000000,
+   "about": "Red lights from the road to the stage."
+  },
+  {
+   "id": "strip_ojuelegba",
+   "kind": "strip",
+   "name": "Red Lantern",
+   "area": "Ojuelegba, red-light side",
+   "lat": 6.51,
+   "lon": 3.366,
+   "fee": 5000,
+   "price": 120000000,
+   "about": "Cheap, crowded, open till morning."
+  },
+  {
+   "id": "petrol_ikorodu",
+   "kind": "petrol",
+   "name": "Sunrise Petroleum",
+   "area": "Ikorodu Road",
+   "lat": 6.55,
+   "lon": 3.367,
+   "about": "Petrol, when there is petrol.",
+   "price": 650000000
+  },
+  {
+   "id": "petrol_lekki",
+   "kind": "petrol",
+   "name": "Sunrise Petroleum",
+   "area": "Lekki",
+   "lat": 6.444,
+   "lon": 3.481,
+   "about": "Petrol, when there is petrol.",
+   "price": 1100000000
+  },
+  {
+   "id": "petrol_apapa",
+   "kind": "petrol",
+   "name": "Harbour Fuels",
+   "area": "Apapa",
+   "lat": 6.45,
+   "lon": 3.364,
+   "about": "Tankers queue here before dawn.",
+   "price": 800000000
+  }
+ ]
+}

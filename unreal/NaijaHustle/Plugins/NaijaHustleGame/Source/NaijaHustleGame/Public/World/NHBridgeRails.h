@@ -11,6 +11,8 @@
  * finds on each side where the deck stops (the surface drops away by more than a metre), and stands a low concrete
  * wall just inside that edge. A side where the deck carries on (the other carriageway, a slip road joining) gets
  * none, and nor does a deck at ground level. The walls are instances of one cube on one actor and block everything.
+ * Each wall also hangs down the side of the slab as a fascia, and where a deck has an open edge it is given the road
+ * paint the map leaves off bridges: a solid line along each open edge and a broken one down the middle.
  */
 UCLASS()
 class NAIJAHUSTLEGAME_API UNHBridgeRails : public UWorldSubsystem

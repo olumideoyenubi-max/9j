@@ -86,6 +86,12 @@ public:
 	};
 	FString Title;
 	FString Footer;
+	/** The home screen: its rows are app icons, laid out in a grid (Up / Down go a row, Left / Right an icon) */
+	bool OnHome() const;
+	/** In the browser: what its address bar says; empty anywhere else */
+	FString Address;
+	/** -NHPhoneTest: opens the phone at the browser's site (or "" for the home screen) for a picture */
+	void DebugSite(const FString& Which);
 	TArray<FRow> Rows;
 	int32 Selected = 0;
 	/** On a page with nothing to choose (a chat, the feed), how many rows down it is scrolled */
@@ -128,7 +134,10 @@ protected:
 	virtual void EndPlay(const EEndPlayReason::Type Reason) override;
 
 private:
-	enum class EPage : uint8 { Home, Gist, Thread, Kobo, Yarns, Contacts, Contact, HangOut, DropAm, DropAmDriver, Missed, Music };
+	enum class EPage : uint8 { Home, Gist, Thread, Kobo, Yarns, Contacts, Contact, HangOut, DropAm, DropAmDriver, Missed, Music, Web, Site };
+	/** Which website the browser is on (EPage::Site) */
+	FName Site;
+	void BuildSite();
 	struct FContact
 	{
 		FName Id;

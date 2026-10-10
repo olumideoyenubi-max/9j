@@ -57,6 +57,16 @@ public:
 	/** Console: NHTime 9.5 sets the clock to 9:30 today (the lighting follows) */
 	UFUNCTION(Exec)
 	void NHTime(float Hour);
+	/** What you carry, in the log */
+	UFUNCTION(Exec) void NHBag();
+	/** Somebody rich to be: NHPlayAs chief, NHPlayAs madam (Data/estate.json). NHWho lists them on the screen. */
+	UFUNCTION(Exec) void NHPlayAs(const FString& Who);
+	UFUNCTION(Exec) void NHWho();
+	/** To a place's door: NHPlace club_vi. NHPlaceUse 0 chooses a line of its menu (opening it first). */
+	UFUNCTION(Exec) void NHPlace(const FString& Id);
+	UFUNCTION(Exec) void NHPlaceUse(int32 Line);
+	/** Puts things in the bag: NHGive suya 3. Single player and the host only. */
+	UFUNCTION(Exec) void NHGive(const FString& Item, int32 HowMany);
 
 	/**
 	 * Console: NHLookShots X Y Yaw [Folder]. Look-development screenshots: puts you on foot at X, Y (cm) facing Yaw at
@@ -170,12 +180,22 @@ private:
 	TWeakObjectPtr<ANHVehicle> StreamingCar;
 	void OnRoll();
 	void OnCrouch();
+	void OnBag();
+	/** -NHBagTest: eats, fires till the rounds are gone, drops, and photographs the bag: Saved/NHBag/bag.png */
+	void BagTestStep(int32 Step);
 	void OnClimb();
 	void OnFire();
 	void OnAimEnd();
-	/** -NHActionTest: the action clips one after another, each photographed from in front: Saved/NHActions/ */
+	/** -NHEstateTest: the rich to play, a club and a strip club gone into, land bought, the pumps: pictures in Saved/NHEstate/ */
+	void EstateTestStep(int32 Step);
+	/** -NHRideTest=okada: that vehicle ridden off, turned and braked, its wheels, lean and rider logged: pictures in Saved/NHRide/ */
+	void RideTestStep(int32 Step);
+	UPROPERTY() TObjectPtr<class ANHVehicle> RideTestCar;
+	/** -NHActionTest: the action clips one after another, stood and then walking, each photographed from in front: Saved/NHActions/ */
 	void ActionTestStep(int32 Step);
 	UPROPERTY() TObjectPtr<class ACameraActor> ActionLens;
+	/** -NHActionTest: the way the body is being walked, zero while it stands; and the line it walks along */
+	FVector ActionWalk = FVector::ZeroVector, ActionAhead = FVector::ForwardVector;
 	void OnFireEnd();
 	void UiBack();
 	void UiWheelOpen();

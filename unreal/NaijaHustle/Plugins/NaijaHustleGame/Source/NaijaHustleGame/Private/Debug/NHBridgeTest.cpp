@@ -1,5 +1,11 @@
 #include "Debug/NHBridgeTest.h"
 
+#include "TimerManager.h"
+#include "Misc/Paths.h"
+#include "UnrealClient.h"
+#include "GameFramework/HUD.h"
+#include "Camera/CameraComponent.h"
+#include "Camera/CameraActor.h"
 #include "Core/NHGameData.h"
 #include "Engine/World.h"
 #include "Gameplay/NHGameDirector.h"
@@ -72,7 +78,9 @@ bool ANHBridgeTest::FindBridge(int32 Skip)
 			return false;
 		};
 		TArray<FVector2D> There;
-		if (Data->RoadRoute(A - Dir * 20000.f, B + Dir * 20000.f, There) && Crosses(There) && Skip-- <= 0)
+		float Lead = 20000.f; // -NHBridgeLead=2000: how far before the bridge the drive starts and past it it ends, cm
+		FParse::Value(FCommandLine::Get(), TEXT("NHBridgeLead="), Lead);
+		if (Data->RoadRoute(A - Dir * Lead, B + Dir * Lead, There) && Crosses(There) && Skip-- <= 0)
 		{
 			// Back the way it came, over the same bridge. On a one-way flyover that is against the traffic, which the
 			// test switches off: what is being tested is the ramps in both directions, not the highway code.
@@ -182,6 +190,98 @@ void ANHBridgeTest::Tick(float DeltaSeconds)
 		if (ANHTraffic* Traffic = ANHTraffic::Get(this))
 		{
 			Traffic->SetDensity(0); // the bridge and the vehicle alone: other traffic would only confuse a failure
+		}
+		// -NHBridgeShots="Western Avenue": no driving. Pictures of that road's longest bridge way by day, from on the deck
+		// at its middle and a quarter along, from off to one side, and from above: Saved/NHBridge/<n>_<view>.png
+		FString Shots;
+		if (FParse::Value(FCommandLine::Get(), TEXT("NHBridgeShots="), Shots, false))
+		{
+			const UNHGameData* Data = UNHGameData::Get(this);
+			const FNHRoadWay* Best = nullptr;
+			float BestLength = 0.f;
+			for (int32 WayIndex = 0; Data && WayIndex < Data->RoadWays.Num(); ++WayIndex)
+			{
+				const FNHRoadWay& W = Data->RoadWays[WayIndex];
+				float Length = 0.f;
+				for (int32 I = 1; I < W.Nodes.Num(); ++I)
+				{
+					Length += FVector2D::Distance(Data->RoadNodes[W.Nodes[I - 1]], Data->RoadNodes[W.Nodes[I]]);
+				}
+				if (W.bBridge && W.Name.Contains(Shots) && Length > BestLength)
+				{
+					Best = &W;
+					BestLength = Length;
+				}
+			}
+			if (!Best)
+			{
+				UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: [bridgeshots] no bridge way named like %s"), *Shots);
+				PC->ConsoleCommand(TEXT("quit"));
+				SetActorTickEnabled(false);
+				return;
+			}
+			const auto PointAt = [Data, Best, BestLength](float Share, FVector2D& OutDir)
+			{
+				float Run = 0.f;
+				for (int32 I = 1; I < Best->Nodes.Num(); ++I)
+				{
+					const FVector2D P0 = Data->RoadNodes[Best->Nodes[I - 1]], P1 = Data->RoadNodes[Best->Nodes[I]];
+					const float Seg = FVector2D::Distance(P0, P1);
+					if (Run + Seg >= BestLength * Share || I == Best->Nodes.Num() - 1)
+					{
+						OutDir = (P1 - P0).GetSafeNormal();
+						return P0 + OutDir * FMath::Clamp(BestLength * Share - Run, 0.f, Seg);
+					}
+					Run += Seg;
+				}
+				return FVector2D::ZeroVector;
+			};
+			const auto DeckTop = [this](const FVector2D& At)
+			{
+				FHitResult Hit;
+				return GetWorld()->LineTraceSingleByObjectType(Hit, FVector(At, 12000.f), FVector(At, -3000.f), FCollisionObjectQueryParams(ECC_WorldStatic)) ? Hit.ImpactPoint.Z : 0.f;
+			};
+			FVector2D Dir;
+			const FVector2D Mid = PointAt(0.5f, Dir), Side(-Dir.Y, Dir.X);
+			const float Deck = DeckTop(Mid);
+			FVector2D QuarterDir;
+			const FVector2D Quarter = PointAt(0.2f, QuarterDir);
+			struct FView { FString Name; FVector Eye, Look; };
+			TArray<FView> Views;
+			Views.Add({ TEXT("1_on_deck_middle"), FVector(Mid - Dir * 600.f, Deck + 190.f), FVector(Mid + Dir * 3000.f, Deck + 60.f) });
+			Views.Add({ TEXT("2_on_deck_quarter"), FVector(Quarter - QuarterDir * 600.f, DeckTop(Quarter) + 190.f), FVector(Quarter + QuarterDir * 3000.f, DeckTop(Quarter + QuarterDir * 3000.f) + 60.f) });
+			Views.Add({ TEXT("3_from_the_side"), FVector(Mid + Side * 5200.f - Dir * 2500.f, Deck + 900.f), FVector(Mid, Deck) });
+			Views.Add({ TEXT("4_from_above"), FVector(Mid - Dir * 3500.f + Side * 800.f, Deck + 3800.f), FVector(Mid + Dir * 1500.f, Deck) });
+			Views.Add({ TEXT("5_foot_of_the_ramp"), FVector(PointAt(0.f, QuarterDir) - QuarterDir * 1500.f + Side * 300.f, DeckTop(PointAt(0.f, QuarterDir)) + 220.f), FVector(PointAt(0.12f, QuarterDir), DeckTop(PointAt(0.12f, QuarterDir))) });
+			UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: [bridgeshots] %s: a way of %.0f m, its middle at %.0f %.0f, deck at %.0f cm there"), *Best->Name, BestLength / 100.f, Mid.X, Mid.Y, Deck);
+			// the player stands on the deck so the city round it is loaded; the hour is held at one in the afternoon
+			PC->GetPawn()->SetActorLocation(FVector(Mid + Side * 200.f, Deck + 150.f), false, nullptr, ETeleportType::TeleportPhysics);
+			if (AHUD* Hud = PC->GetHUD())
+			{
+				Hud->bShowHUD = false;
+			}
+			ACameraActor* Lens = GetWorld()->SpawnActor<ACameraActor>(Views[0].Eye, FRotator::ZeroRotator);
+			Lens->GetCameraComponent()->SetConstraintAspectRatio(false);
+			Lens->GetCameraComponent()->SetFieldOfView(70.f);
+			PC->SetViewTarget(Lens);
+			for (int32 I = 0; I < Views.Num(); ++I)
+			{
+				const FView View = Views[I];
+				FTimerHandle Aim, Take;
+				GetWorldTimerManager().SetTimer(Aim, FTimerDelegate::CreateWeakLambda(this, [PC, Lens, View]
+				{
+					PC->ConsoleCommand(TEXT("NHTime 13"));
+					Lens->SetActorLocationAndRotation(View.Eye, (View.Look - View.Eye).Rotation());
+				}), 12.f + I * 5.f, false);
+				GetWorldTimerManager().SetTimer(Take, FTimerDelegate::CreateWeakLambda(this, [View]
+				{
+					FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("NHBridge") / (View.Name + TEXT(".png")), false, false);
+				}), 12.f + I * 5.f + 3.5f, false);
+			}
+			FTimerHandle Done;
+			GetWorldTimerManager().SetTimer(Done, FTimerDelegate::CreateWeakLambda(this, [PC] { PC->ConsoleCommand(TEXT("quit")); }), 12.f + Views.Num() * 5.f + 2.f, false);
+			SetActorTickEnabled(false);
+			return;
 		}
 		// -NHBridgeProfile="Third Mainland Bridge": no driving. Every 100 m along each of that road's ways, what a ray from
 		// above meets at the middle of the carriageway and 3 m and 6 m to either side: its height and what it is.
@@ -331,8 +431,28 @@ void ANHBridgeTest::Tick(float DeltaSeconds)
 		LastAt = At;
 	}
 	StuckTime = FMath::Abs(V->Speed) < 60.f && LegTime > 3.f ? StuckTime + DeltaSeconds : 0.f;
+	if (StuckTime > 3.f && StuckTime - DeltaSeconds <= 3.f)
+	{
+		// a picture of where it has stopped, a second before the leg is called off: Saved/NHBridge/stuck_<type>.png
+		FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("NHBridge") / (TEXT("stuck_") + Types[TypeIndex].ToString() + TEXT(".png")), false, false);
+	}
 
-	const FString Where = FString::Printf(TEXT("%.0f m of %.0f m along, at %.0f, %.0f, height %.0f cm (highest %.0f cm), health %.0f of %.0f"), Along / 100.f, Total / 100.f, At.X, At.Y, At.Z, Top, V->Health, V->MaxHealth);
+	FString Where = FString::Printf(TEXT("%.0f m of %.0f m along, at %.0f, %.0f, height %.0f cm (highest %.0f cm), health %.0f of %.0f"), Along / 100.f, Total / 100.f, At.X, At.Y, At.Z, Top, V->Health, V->MaxHealth);
+	if (StuckTime > 4.f || V->IsWrecked())
+	{
+		// what it is up against: whatever a box its size meets within 4 m, ahead and to each side
+		for (const FVector& Way : { V->GetActorForwardVector(), V->GetActorRightVector(), -V->GetActorRightVector(), -V->GetActorForwardVector() })
+		{
+			FHitResult Hit;
+			FCollisionQueryParams Q(SCENE_QUERY_STAT(NHBridgeStuck), false, V);
+			if (GetWorld()->SweepSingleByChannel(Hit, At + FVector(0.f, 0.f, 40.f), At + FVector(0.f, 0.f, 40.f) + Way * 400.f, FQuat::Identity, ECC_Visibility, FCollisionShape::MakeBox(FVector(60.f, 60.f, 40.f)), Q))
+			{
+				Where += FString::Printf(TEXT("; %.0f cm %s: %s / %s"), Hit.Distance, Way.Equals(V->GetActorForwardVector()) ? TEXT("ahead") : Way.Equals(-V->GetActorForwardVector()) ? TEXT("behind") : TEXT("beside"),
+					*GetNameSafe(Hit.GetActor()), *GetNameSafe(Hit.GetComponent()));
+			}
+		}
+		Where += FString::Printf(TEXT("; heading %.0f, the line next goes to %.0f, %.0f"), V->GetActorRotation().Yaw, Line().IsValidIndex(0) ? Line().Last().X : 0.f, Line().IsValidIndex(0) ? Line().Last().Y : 0.f);
+	}
 	if (At.Z < -600.f)
 	{
 		EndLeg(false, TEXT("fell through the world, ") + Where);

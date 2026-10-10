@@ -127,8 +127,9 @@ void ANHTraffic::Rail(const FCar& Car, FVector2D& OutAt, float& OutYaw) const
 	const FVector2D Along = (B - A).GetSafeNormal();
 	const FVector2D Right(-Along.Y, Along.X);
 	// parked: against the kerb; moving: the middle of its half of the carriageway
-	const float Off = Car.bParked ? Data->HalfWidth(Way) - 140.f : Data->HalfWidth(Way) * 0.5f;
-	OutAt = A + Along * Car.Along + Right * Off * Car.Side;
+	// (on a dual road the lanes stop short of the other carriageway: UNHGameData::LaneOffset)
+	const float Off = !Car.bParked ? Data->LaneOffset(Way, Car.Side) : Car.Side > 0.f ? Data->HalfWidth(Way) - 140.f : 140.f - Data->LeftHalf(Way);
+	OutAt = A + Along * Car.Along + Right * Off;
 	OutYaw = FMath::RadiansToDegrees(FMath::Atan2(Along.Y, Along.X));
 }
 

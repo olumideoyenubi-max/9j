@@ -7,7 +7,9 @@ Run inside an open Blender instead, with the body already imported, by setting N
 The clips, all in place at 30 frames a second on the body's own skeleton (MakeHuman game_engine, mannequin bone names):
   Crouch_Idle, Crouch_Walk, Stand_To_Crouch, Crouch_To_Stand
   Pistol_Aim, Pistol_Fire, Crouch_Pistol_Aim, Rifle_Aim, Rifle_Fire, Crouch_Rifle_Aim
+  Pistol_Carry, Rifle_Carry, Machete_Carry   (the weapon held but not raised: the game lays these over walking and running)
   Machete_Idle, Machete_Slash, Machete_Backslash, Machete_Chop
+  Dance   (a two-step on the spot, for the people in the bars and clubs)
   Drive_Idle, Drive_Left, Drive_Right, Drive_Reverse   (the hips stay at standing height: the game puts the seat under them;
                                                         Left and Right go from straight ahead to 75 degrees of wheel)
 
@@ -456,6 +458,12 @@ CROUCH_PISTOL_AIM = pistol(CROUCH_GUN_BODY, V(4, 44, 118), PISTOL_FWD)
 CROUCH_RIFLE_BODY = P(STAND, **CROUCH_LEGS, hip_rot=(0, -30, 0), spine=(16, -8, 4), head=(2, 36, 9), cl_r=(8, 9), cl_l=(26, 4))
 CROUCH_RIFLE_AIM = rifle(CROUCH_RIFLE_BODY, V(12, 22, 107), RIFLE_FWD)
 
+# Carried, not aimed: the game lays these over the walk and the run, on the right arm (the pistol) or the arms and trunk
+# (the rifle), so the legs here are only the standing pose.
+PISTOL_CARRY = pistol(STAND, V(27, 9, 95), V(0, 0.42, -0.9), elb_r=V(0.3, -1, 0), idx_r=0.1,
+                      hand_l=STAND["hand_l"], l_fwd=STAND["l_fwd"], l_palm=STAND["l_palm"], grip_l=STAND["grip_l"], elb_l=STAND["elb_l"])
+RIFLE_CARRY = rifle(P(STAND, spine=(5, 0, 0), cl_r=(4, 4), cl_l=(16, 4)), V(14, 10, 124), V(-0.8, 0.45, -0.4), elb_r=V(1, -0.8, -0.4), idx_r=0.1)
+
 # -------------------------------------------------------------------------------------------------------- machete
 MACHETE_BODY = P(STAND, hip=V(0, 0, 87), hip_rot=(0, -22, 0), spine=(12, -6, 0), head=(0, 26, 0),
                  foot_l=V(-13, 26, 7.6), footrot_l=(0, -4, 0), foot_r=V(17, -20, 7.6), footrot_r=(0, -45, 0), cl_r=(0, 4), cl_l=(10, 4))
@@ -471,6 +479,8 @@ def machete(base, wrist, blade, edge, **over):
 
 LEFT_GUARD = dict(hand_l=V(-20, 30, 118), l_fwd=V(0.25, 1, 0.5), l_palm=V(0.6, 0.3, -0.7), elb_l=V(-1, -0.4, -0.6), grip_l=0.35)
 MACHETE_GUARD = machete(P(MACHETE_BODY, **LEFT_GUARD), V(24, 20, 116), V(-0.2, 0.25, 1), V(-0.2, 1, -0.2), elb_r=V(1, -0.6, -0.5))
+
+MACHETE_CARRY = machete(STAND, V(27, 8, 95), V(0, 0.9, -0.43), V(0, -0.43, -0.9), elb_r=V(0.3, -1, 0))   # at the side, the blade forward and low
 
 MACHETE_SLASH = [  # a flat cut from the right shoulder across to the left hip
     (0, MACHETE_GUARD, "io"),
@@ -563,7 +573,24 @@ def drive_reverse(f, n=16):
     return blend(drive(0.0), DRIVE_REVERSE, EASE["io"](min(f / n, 1.0)))
 
 
+# -------------------------------------------------------------------------------------------------------- dancing
+def dance(f, n=48):
+    """A two-step on the spot: the hips from side to side and round, the weight going from foot to foot, the hands up and loose."""
+    a = 2 * math.pi * f / n
+    sway, bounce = math.sin(a), math.cos(2 * a)
+    p = P(STAND, hip=V(5.5 * sway, 0.7 + 1.5 * math.cos(a), 93.5 + 1.6 * bounce), hip_rot=(0, 14 * math.cos(a), 5 * sway),
+          spine=(4, -10 * math.cos(a), -6 * sway), head=(-2, 4 * math.cos(a), 3 * sway), cl_r=(8, 4), cl_l=(8, 4))
+    p["foot_r"] = V(13, 1.8, 7.6 + 4.5 * max(0.0, -sway))        # the foot the weight is off comes up on its toes
+    p["foot_l"] = V(-13, 1.8, 7.6 + 4.5 * max(0.0, sway))
+    p["footrot_r"], p["toe_r"] = (22 * max(0.0, -sway), -10, 0), 22 * max(0.0, -sway)
+    p["footrot_l"], p["toe_l"] = (22 * max(0.0, sway), 10, 0), 22 * max(0.0, sway)
+    p.update(hand_r=V(30 + 5 * sway, 22 + 7 * math.sin(2 * a), 138 + 9 * bounce), r_fwd=V(-0.2, 0.5, 1), r_palm=V(-1, 0.3, 0), elb_r=V(1, -0.3, -1), grip_r=0.45,
+             hand_l=V(-30 + 5 * sway, 22 - 7 * math.sin(2 * a), 128 - 9 * bounce), l_fwd=V(0.2, 0.5, 1), l_palm=V(1, 0.3, 0), elb_l=V(-1, -0.3, -1), grip_l=0.45)
+    return p
+
+
 CLIPS = {
+    "Dance": (48, dance, None, True),
     # name: (frames, pose at frame, prop, loops)
     "Crouch_Idle": (60, breathing(CROUCH, 60), None, True),
     "Crouch_Walk": (30, crouch_walk, None, True),
@@ -575,6 +602,9 @@ CLIPS = {
     "Rifle_Aim": (60, breathing(RIFLE_AIM, 60, 0.6, hands=False), "rifle", True),
     "Rifle_Fire": (6, keyed([(0, RIFLE_AIM, "io"), (1, RIFLE_KICK, "out"), (3, RIFLE_AIM, "io"), (4, RIFLE_KICK, "out"), (6, RIFLE_AIM, "io")]), "rifle", True),
     "Crouch_Rifle_Aim": (60, breathing(CROUCH_RIFLE_AIM, 60, 0.6, hands=False), "rifle", True),
+    "Pistol_Carry": (60, breathing(PISTOL_CARRY, 60, 0.6, hands=False), "pistol", True),
+    "Rifle_Carry": (60, breathing(RIFLE_CARRY, 60, 0.6, hands=False), "rifle", True),
+    "Machete_Carry": (60, breathing(MACHETE_CARRY, 60, 0.6, hands=False), "machete", True),
     "Machete_Idle": (60, breathing(MACHETE_GUARD, 60, 1.0), "machete", True),
     "Machete_Slash": (28, keyed(MACHETE_SLASH), "machete", False),
     "Machete_Backslash": (26, keyed(MACHETE_BACKSLASH), "machete", False),

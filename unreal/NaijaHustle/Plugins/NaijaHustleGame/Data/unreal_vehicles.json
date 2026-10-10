@@ -127,10 +127,105 @@
     "#c1121f"
    ]
   },
-  "tfvan": {"name": "Task Force van", "body": "suv", "len": 532, "wid": 224, "max": 3300, "acc": 2400, "turn": 2.3, "hp": 200, "colors": ["#050506"]},
-  "tfblack": {"name": "Task Force patrol pickup", "body": "suv", "len": 549, "wid": 226, "max": 3650, "acc": 3000, "turn": 2.7, "hp": 180, "colors": ["#050506"]},
-  "armypick": {"name": "Army pickup", "body": "suv", "len": 549, "wid": 226, "max": 3500, "acc": 2800, "turn": 2.6, "hp": 220, "colors": ["#1f2a14"]},
-  "armytruck": {"name": "Army troop truck", "body": "suv", "len": 705, "wid": 290, "max": 2600, "acc": 1700, "turn": 1.9, "hp": 400, "colors": ["#1f2a14"]}
+  "tfvan": {
+   "name": "Task Force van",
+   "body": "suv",
+   "len": 532,
+   "wid": 224,
+   "max": 3300,
+   "acc": 2400,
+   "turn": 2.3,
+   "hp": 200,
+   "colors": [
+    "#050506"
+   ]
+  },
+  "tfblack": {
+   "name": "Task Force patrol pickup",
+   "body": "suv",
+   "len": 549,
+   "wid": 226,
+   "max": 3650,
+   "acc": 3000,
+   "turn": 2.7,
+   "hp": 180,
+   "colors": [
+    "#050506"
+   ]
+  },
+  "armypick": {
+   "name": "Army pickup",
+   "body": "suv",
+   "len": 549,
+   "wid": 226,
+   "max": 3500,
+   "acc": 2800,
+   "turn": 2.6,
+   "hp": 220,
+   "colors": [
+    "#1f2a14"
+   ]
+  },
+  "armytruck": {
+   "name": "Army troop truck",
+   "body": "suv",
+   "len": 705,
+   "wid": 290,
+   "max": 2600,
+   "acc": 1700,
+   "turn": 1.9,
+   "hp": 400,
+   "colors": [
+    "#1f2a14"
+   ]
+  },
+  "minivan": {
+   "name": "Sienna-type minivan",
+   "body": "suv",
+   "len": 532,
+   "wid": 226,
+   "max": 3400,
+   "acc": 2300,
+   "turn": 2.3,
+   "hp": 150,
+   "colors": [
+    "#e8e6df",
+    "#9a9da1",
+    "#1d2f52",
+    "#5a1016",
+    "#2b2b2e"
+   ]
+  },
+  "pickup": {
+   "name": "Work pickup",
+   "body": "suv",
+   "len": 549,
+   "wid": 226,
+   "max": 3500,
+   "acc": 2600,
+   "turn": 2.6,
+   "hp": 170,
+   "colors": [
+    "#e8e6df",
+    "#7d7f82",
+    "#143a22",
+    "#6b1a12",
+    "#c9a227"
+   ]
+  },
+  "taxi": {
+   "name": "Yellow cab",
+   "body": "sedan",
+   "len": 475,
+   "wid": 220,
+   "max": 3600,
+   "acc": 2500,
+   "turn": 2.6,
+   "hp": 100,
+   "colors": [
+    "#f2c400"
+   ]
+  }
  },
  "parked": [
   {

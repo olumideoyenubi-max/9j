@@ -437,6 +437,7 @@ bool UNHGameData::LoadRealCity(const FString& Path)
 			W.Class = static_cast<uint8>(Num(O, TEXT("c")));
 			W.bOneWay = Num(O, TEXT("o")) > 0.5;
 			W.bBridge = Num(O, TEXT("b")) > 0.5;
+			W.Left = static_cast<float>(Num(O, TEXT("l")));
 			W.Name = Str(O, TEXT("name"));
 			const TArray<TSharedPtr<FJsonValue>>* N = nullptr;
 			if (O->TryGetArrayField(TEXT("n"), N))

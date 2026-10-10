@@ -1,7 +1,10 @@
 #include "Player/NHPlayerController.h"
+#include "Gameplay/NHEstate.h"
+#include "Kismet/GameplayStatics.h"
 
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
+#include "Gameplay/NHInventory.h"
 #include "Misc/Paths.h"
 #include "UnrealClient.h"
 #include "Audio/NHAudioSubsystem.h"
@@ -19,6 +22,7 @@
 #include "Player/NHCharacter.h"
 #include "Characters/NHOutfitComponent.h"
 #include "Core/NHGameData.h"
+#include "Gameplay/NHLaw.h"
 #include "Gameplay/NHPerson.h"
 #include "Gameplay/NHResponse.h"
 #include "Debug/NHBridgeTest.h"
@@ -74,6 +78,41 @@ void ANHPlayerController::BeginPlay()
 	{
 		FTimerHandle Start;
 		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { ResponseTestStep(0); }), 8.f, false);
+	}
+	if (FParse::Param(FCommandLine::Get(), TEXT("NHPhoneTest")))
+	{
+		// -NHPhoneTest: the phone's home screen, the browser and three of its sites, a picture of each in Saved/NHPhone/
+		static const TCHAR* Shots[] = { TEXT(""), TEXT("start"), TEXT("ekohomes"), TEXT("coastbank"), TEXT("motorhaus"), TEXT("headlines") };
+		for (int32 I = 0; I <= UE_ARRAY_COUNT(Shots); ++I)
+		{
+			FTimerHandle Step;
+			GetWorldTimerManager().SetTimer(Step, FTimerDelegate::CreateWeakLambda(this, [this, I]
+			{
+				ANHPhone* Phone = ANHPhone::Get(this);
+				if (!Phone || I >= UE_ARRAY_COUNT(Shots))
+				{
+					ConsoleCommand(TEXT("quit"));
+					return;
+				}
+				Phone->DebugSite(Shots[I]);
+				FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("NHPhone") / FString::Printf(TEXT("%d_%s.png"), I, I == 0 ? TEXT("home") : Shots[I]), true, false);
+			}), 10.f + 2.f * I, false);
+		}
+	}
+	if (FParse::Param(FCommandLine::Get(), TEXT("NHEstateTest")))
+	{
+		FTimerHandle Start;
+		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { EstateTestStep(0); }), 9.f, false);
+	}
+	if (FString Ride; FParse::Value(FCommandLine::Get(), TEXT("NHRideTest="), Ride))
+	{
+		FTimerHandle Start;
+		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { RideTestStep(0); }), 9.f, false);
+	}
+	if (FParse::Param(FCommandLine::Get(), TEXT("NHBagTest")))
+	{
+		FTimerHandle Start;
+		GetWorldTimerManager().SetTimer(Start, FTimerDelegate::CreateWeakLambda(this, [this] { BagTestStep(0); }), 8.f, false);
 	}
 	if (FParse::Param(FCommandLine::Get(), TEXT("NHActionTest")))
 	{
@@ -176,6 +215,8 @@ void ANHPlayerController::SetupInputComponent()
 	Key(EKeys::C, &ANHPlayerController::OnRoll);
 	Key(EKeys::X, &ANHPlayerController::OnCrouch); // down into a crouch and up again
 	Key(EKeys::G, &ANHPlayerController::OnClimb);
+	Key(EKeys::B, &ANHPlayerController::OnBag);
+	Key(EKeys::N, &ANHPlayerController::NHWho); // who to be
 	Key(EKeys::T, &ANHPlayerController::OnFire);
 	Key(EKeys::T, &ANHPlayerController::OnFireEnd, IE_Released);
 	Key(EKeys::Tab, &ANHPlayerController::UiWheelOpen);
@@ -243,6 +284,71 @@ void ANHPlayerController::UiRadioClose()
 	}
 }
 
+void ANHPlayerController::OnBag()
+{
+	if (ANHHUD* H = ANHHUD::Get(this))
+	{
+		H->ToggleBag();
+	}
+}
+
+void ANHPlayerController::NHBag()
+{
+	const ANHCharacter* C = GetOnFootCharacter();
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: bag: %s"), C && C->GetInventory() ? *C->GetInventory()->Describe() : TEXT("nobody to carry one"));
+}
+
+void ANHPlayerController::NHGive(const FString& Item, int32 HowMany)
+{
+	const ANHCharacter* C = GetOnFootCharacter();
+	if (!HasAuthority() || !C || !C->GetInventory())
+	{
+		return;
+	}
+	const bool bGiven = C->GetInventory()->Add(FName(*Item), FMath::Max(HowMany, 1), TEXT("console"));
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: bag: %s %d %s; %s"), bGiven ? TEXT("given") : TEXT("could not give"), FMath::Max(HowMany, 1), *Item, *C->GetInventory()->Describe());
+}
+
+void ANHPlayerController::BagTestStep(int32 Step)
+{
+	ANHCharacter* C = Cast<ANHCharacter>(GetPawn());
+	UNHInventoryComponent* Bag = C ? C->GetInventory() : nullptr;
+	if (!Bag || Step > 9)
+	{
+		ConsoleCommand(TEXT("quit"));
+		return;
+	}
+	float Wait = 0.6f;
+	const auto Say = [C, Bag](const TCHAR* What)
+	{
+		UE_LOG(LogNHGame, Log, TEXT("[bagtest] %s: health %.0f, holding %s, shots %d; %s"), What, C->Health, *C->Equipped().ToString(), C->Attacks, *Bag->Describe());
+	};
+	switch (Step)
+	{
+	case 0: Say(TEXT("at the start")); C->Hurt(60.f); break;
+	case 1: Bag->ServerUse(TEXT("meat_pie")); Say(TEXT("hurt for 60, then a meat pie")); break;
+	case 2: Say(TEXT("too heavy, and unknown, are refused"));
+		UE_LOG(LogNHGame, Log, TEXT("[bagtest] 40 jerry cans: %s; a second pistol: %s; a thing that is not an item: %s"), Bag->Add(TEXT("jerry_can"), 40, TEXT("test")) ? TEXT("TAKEN (wrong)") : TEXT("refused"),
+			Bag->Add(TEXT("pistol"), 1, TEXT("test")) ? TEXT("TAKEN (wrong)") : TEXT("refused"), Bag->Add(TEXT("gold_bar"), 1, TEXT("test")) ? TEXT("TAKEN (wrong)") : TEXT("refused"));
+		break;
+	case 3: Bag->Remove(TEXT("pistol_ammo"), Bag->Count(TEXT("pistol_ammo")) - 2, TEXT("test")); C->Equip(TEXT("pistol")); Say(TEXT("pistol out, two rounds left")); break;
+	case 4: case 5: case 6: C->SetTrigger(true); Wait = 0.3f; break; // three pulls on two rounds
+	case 7: C->SetTrigger(false); Say(TEXT("after three pulls of the trigger")); Bag->ServerDrop(TEXT("pistol"), 1); break;
+	case 8: Say(TEXT("pistol dropped")); C->Equip(TEXT("pistol")); OnBag(); Wait = 1.5f; break;
+	case 9: Say(TEXT("asked for the pistol again; the bag is open"));
+		FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("NHBag") / TEXT("bag.png"), true, false);
+		Wait = 1.f;
+		break;
+	}
+	if (Step >= 4 && Step <= 6)
+	{
+		FTimerHandle Up;
+		GetWorldTimerManager().SetTimer(Up, FTimerDelegate::CreateWeakLambda(this, [C] { C->SetTrigger(false); }), 0.1f, false);
+	}
+	FTimerHandle Next;
+	GetWorldTimerManager().SetTimer(Next, FTimerDelegate::CreateWeakLambda(this, [this, Step] { BagTestStep(Step + 1); }), Wait, false);
+}
+
 void ANHPlayerController::OnClimb()
 {
 	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
@@ -293,17 +399,25 @@ void ANHPlayerController::UiClickEnd()
 void ANHPlayerController::ActionTestStep(int32 Step)
 {
 	// what is done at each step, and the name of the picture taken at the end of it
-	struct FDo { const TCHAR* Weapon; bool bCrouch; bool bFire; float Wait; const TCHAR* Picture; };
+	struct FDo { const TCHAR* Weapon; bool bCrouch; bool bFire; float Wait; const TCHAR* Picture; bool bAim = true; bool bWalk = false; };
 	static const FDo Steps[] = {
 		{ TEXT("machete"), false, false, 1.2f, TEXT("1_machete_guard") }, { nullptr, false, true, 0.24f, TEXT("2_machete_slash") }, { nullptr, false, false, 0.7f, nullptr },
 		{ nullptr, false, true, 0.24f, TEXT("3_machete_backslash") }, { nullptr, false, false, 0.7f, nullptr },
 		{ TEXT("pistol"), false, false, 1.2f, TEXT("4_pistol_aim") }, { nullptr, false, true, 0.07f, TEXT("5_pistol_fire") },
 		{ TEXT("ak47"), false, false, 1.2f, TEXT("6_rifle_aim") }, { nullptr, true, false, 1.2f, TEXT("7_crouch_rifle_aim") },
 		{ TEXT("ak47"), true, false, 1.2f, TEXT("8_crouch") }, { nullptr, false, false, 1.0f, TEXT("9_standing") },
+		// carried, not raised, stood and walking; then the weapon used on the move
+		{ TEXT("machete"), false, false, 1.4f, TEXT("10_machete_carried"), false }, { nullptr, false, false, 1.6f, TEXT("11_machete_walking"), false, true },
+		{ nullptr, false, true, 0.24f, TEXT("12_machete_walking_cut"), false, true }, { nullptr, false, false, 0.7f, nullptr, false, true },
+		{ TEXT("pistol"), false, false, 1.4f, TEXT("13_pistol_carried"), false }, { nullptr, false, false, 1.6f, TEXT("14_pistol_walking"), false, true },
+		{ nullptr, false, false, 1.2f, TEXT("15_pistol_walking_aimed"), true, true },
+		{ TEXT("ak47"), false, false, 1.4f, TEXT("16_rifle_carried"), false }, { nullptr, false, false, 1.6f, TEXT("17_rifle_walking"), false, true },
+		{ nullptr, false, true, 0.5f, TEXT("18_rifle_walking_firing"), false, true }, { nullptr, false, false, 1.0f, TEXT("19_rifle_after"), false },
 	};
 	ANHCharacter* C = Cast<ANHCharacter>(GetPawn());
 	if (!C || Step >= UE_ARRAY_COUNT(Steps))
 	{
+		ActionWalk = FVector::ZeroVector;
 		ConsoleCommand(TEXT("quit"));
 		return;
 	}
@@ -313,9 +427,22 @@ void ANHPlayerController::ActionTestStep(int32 Step)
 		ActionLens = GetWorld()->SpawnActor<ACameraActor>(Eye, (C->GetActorLocation() + FVector(0.f, 0.f, 10.f) - Eye).Rotation());
 		ActionLens->GetCameraComponent()->SetFieldOfView(50.f);
 		ActionLens->GetCameraComponent()->SetConstraintAspectRatio(false);
+		ActionLens->AttachToActor(C, FAttachmentTransformRules::KeepWorldTransform); // it goes with the body when the body walks
 		SetViewTarget(ActionLens);
+		ActionAhead = C->GetActorForwardVector();
+		SetControlRotation(C->GetActorRotation());
 	}
 	const FDo& Do = Steps[Step];
+	// walking steps go out and back along one line, so the test stays where it started
+	if (Do.bWalk && ActionWalk.IsZero())
+	{
+		ActionAhead = -ActionAhead;
+	}
+	ActionWalk = Do.bWalk ? ActionAhead : FVector::ZeroVector;
+	if (Do.bWalk)
+	{
+		SetControlRotation(ActionAhead.Rotation());
+	}
 	if (Step == 0)
 	{
 		const USkeletalMesh* Mesh = C->GetMesh()->GetSkeletalMeshAsset();
@@ -332,7 +459,7 @@ void ANHPlayerController::ActionTestStep(int32 Step)
 		C->ToggleCrouch();
 	}
 	C->SetTrigger(Do.bFire);
-	C->SetAiming(true); // the guns are photographed raised
+	C->SetAiming(Do.bAim);
 	FTimerHandle Next;
 	GetWorldTimerManager().SetTimer(Next, FTimerDelegate::CreateWeakLambda(this, [this, Step, C, Do]
 	{
@@ -560,8 +687,128 @@ void ANHPlayerController::OnInteract()
 	}
 }
 
+void ANHPlayerController::EstateTestStep(int32 Step)
+{
+	ANHEstate* Estate = ANHEstate::Get(this);
+	if (!Estate || Step > 12)
+	{
+		ConsoleCommand(TEXT("quit"));
+		return;
+	}
+	const auto Shot = [](const TCHAR* Name) { FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("NHEstate") / (FString(Name) + TEXT(".png")), true, false); };
+	float Wait = 3.f;
+	switch (Step)
+	{
+	case 0: NHPlayAs(TEXT("chief")); Wait = 5.f; break;
+	case 1: Shot(TEXT("1_chief_at_home")); UE_LOG(LogNHGame, Log, TEXT("[estate] chief: %s"), *Estate->Describe()); Wait = 1.f; break;
+	case 2: NHPlace(TEXT("club_lekki")); break;
+	case 3: Shot(TEXT("2_club_door")); NHPlaceUse(0); break;                 // go in
+	case 4: Shot(TEXT("3_club_inside")); NHPlaceUse(3); Wait = 1.5f; break; // champagne for the table
+	case 5: NHPlaceUse(5); NHPlace(TEXT("strip_vi")); break;                 // out, and across town
+	case 6: NHPlaceUse(0); break;
+	case 7: Shot(TEXT("4_strip_club_inside")); Wait = 1.f; break;
+	case 8: NHPlaceUse(5); NHPlace(TEXT("land_ikoyi")); break;
+	case 9: Shot(TEXT("5_land_for_sale")); NHPlaceUse(0); Wait = 2.f; break; // buy it
+	case 10: Shot(TEXT("6_land_bought")); NHPlace(TEXT("petrol_lekki")); break;
+	case 11: Shot(TEXT("7_petrol")); NHPlayAs(TEXT("madam")); Wait = 5.f; break;
+	default: Shot(TEXT("8_madam_at_home")); UE_LOG(LogNHGame, Log, TEXT("[estate] madam: %s"), *Estate->Describe()); Wait = 1.f; break;
+	}
+	FTimerHandle Next;
+	GetWorldTimerManager().SetTimer(Next, FTimerDelegate::CreateWeakLambda(this, [this, Step] { EstateTestStep(Step + 1); }), Wait, false);
+}
+
+void ANHPlayerController::RideTestStep(int32 Step)
+{
+	FString Type;
+	FParse::Value(FCommandLine::Get(), TEXT("NHRideTest="), Type);
+	const auto Shot = [&Type](const TCHAR* Name) { FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("NHRide") / (Type + TEXT("_") + Name + TEXT(".png")), true, false); };
+	const auto Say = [this](const TCHAR* What) { UE_LOG(LogNHGame, Log, TEXT("[ridetest] %s: %s"), What, RideTestCar ? *RideTestCar->DescribeMotion() : TEXT("no vehicle")); };
+	float Wait = 2.f;
+	if (Step == 0 && GetPawn())
+	{
+		// on the nearest road, in its right-hand lane and facing along it, where the map has roads; else just ahead of the player
+		FTransform Where(GetPawn()->GetActorRotation(), GetPawn()->GetActorLocation() + GetPawn()->GetActorForwardVector() * 500.f + FVector(0.f, 0.f, 80.f));
+		const UNHGameData* Data = UNHGameData::Get(this);
+		FNHRoadSeg Seg;
+		FVector2D OnRoad;
+		if (Data && Data->bRealCity && Data->NearestRoad(FVector2D(GetPawn()->GetActorLocation()), Seg, OnRoad))
+		{
+			const FNHRoadWay& Way = Data->RoadWays[Seg.Way];
+			const FVector2D Along = (Data->RoadNodes[Way.Nodes[Seg.Index + 1]] - Data->RoadNodes[Way.Nodes[Seg.Index]]).GetSafeNormal();
+			Where = FTransform(FRotator(0.f, FMath::RadiansToDegrees(FMath::Atan2(Along.Y, Along.X)), 0.f), FVector(OnRoad + FVector2D(-Along.Y, Along.X) * Data->LaneOffset(Way, 1.f), GetPawn()->GetActorLocation().Z + 60.f));
+		}
+		RideTestCar = GetWorld()->SpawnActorDeferred<ANHVehicle>(ANHVehicle::StaticClass(), Where, nullptr, nullptr, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+		if (RideTestCar)
+		{
+			RideTestCar->VehicleType = FName(*Type);
+			UGameplayStatics::FinishSpawningActor(RideTestCar, Where);
+			RideTestCar->Fuel = 0.6f;
+		}
+	}
+	if (!RideTestCar || Step > 6)
+	{
+		ConsoleCommand(TEXT("quit"));
+		return;
+	}
+	switch (Step)
+	{
+	case 0: break;
+	case 1: UE_LOG(LogNHGame, Log, TEXT("[ridetest] got on: %s"), EnterVehicle(RideTestCar) ? TEXT("yes") : TEXT("NO")); Say(TEXT("standing")); Shot(TEXT("1_standing")); Wait = 1.f; break;
+	case 2: RideTestCar->SetDriveInput(1.f, 0.f, 0.f); Wait = 4.f; break;
+	case 3: Say(TEXT("after 4 s of throttle")); Shot(TEXT("2_riding")); RideTestCar->SetDriveInput(1.f, 0.f, 1.f); Wait = 1.5f; break;
+	case 4: Say(TEXT("turning right")); Shot(TEXT("3_turning")); RideTestCar->SetDriveInput(1.f, 0.f, -1.f); Wait = 1.5f; break;
+	case 5: Say(TEXT("turning left")); RideTestCar->SetDriveInput(0.f, 1.f, 0.f); Wait = 2.5f; break;
+	default: Say(TEXT("after braking")); Shot(TEXT("4_stopped")); RideTestCar->SetDriveInput(0.f, 0.f, 0.f); Wait = 1.f; break;
+	}
+	FTimerHandle Next;
+	GetWorldTimerManager().SetTimer(Next, FTimerDelegate::CreateWeakLambda(this, [this, Step] { RideTestStep(Step + 1); }), Wait, false);
+}
+
+void ANHPlayerController::NHPlayAs(const FString& Who)
+{
+	if (ANHEstate* Estate = ANHEstate::Get(this))
+	{
+		Estate->PlayAs(FName(*Who));
+	}
+}
+
+void ANHPlayerController::NHWho()
+{
+	if (ANHEstate* Estate = ANHEstate::Get(this))
+	{
+		Estate->OpenPeople();
+	}
+}
+
+void ANHPlayerController::NHPlace(const FString& Id)
+{
+	ANHEstate* Estate = ANHEstate::Get(this);
+	UE_LOG(LogNHGame, Log, TEXT("[estate] to %s: %s"), *Id, Estate && Estate->GoTo(FName(*Id)) ? TEXT("there") : TEXT("no such place, or nowhere to stand it"));
+}
+
+void ANHPlayerController::NHPlaceUse(int32 Line)
+{
+	if (ANHEstate* Estate = ANHEstate::Get(this))
+	{
+		if (!Estate->MenuOpen())
+		{
+			Estate->Interact(GetPawn());
+		}
+		FString Title, Heading;
+		TArray<FNHMenuLine> Lines;
+		Estate->Menu(Title, Heading, Lines);
+		UE_LOG(LogNHGame, Log, TEXT("[estate] %s / %s: choosing %d of %d: %s"), *Title, *Heading, Line, Lines.Num(), Lines.IsValidIndex(Line) ? *(Lines[Line].Label + TEXT("  ") + Lines[Line].Value) : TEXT("nothing"));
+		Estate->Choose(Line);
+		UE_LOG(LogNHGame, Log, TEXT("[estate] now: %s"), *Estate->Describe());
+	}
+}
+
 void ANHPlayerController::OnAction()
 {
+	if (ANHEstate* Estate = ANHEstate::Get(this); Estate && Estate->Interact(GetPawn()))
+	{
+		return; // a place's board, door, counter or pumps
+	}
 	if (ANHCarTheft* Theft = ANHCarTheft::Get(this); Theft && Theft->Action())
 	{
 		return;
@@ -587,7 +834,9 @@ FString ANHPlayerController::Prompt() const
 	{
 		return FString();
 	}
-	const FString E = Dir ? Dir->ActionPrompt(GetPawn()) : FString();
+	const ANHEstate* Estate = ANHEstate::Get(this);
+	const FString AtPlace = Estate ? Estate->Prompt(GetPawn()) : FString();
+	const FString E = !AtPlace.IsEmpty() ? AtPlace : Dir ? Dir->ActionPrompt(GetPawn()) : FString();
 	FString F;
 	const ANHPhone* Phone = ANHPhone::Get(this);
 	if (const FString Ride = Phone ? Phone->InteractPrompt() : FString(); !Ride.IsEmpty())
@@ -807,8 +1056,19 @@ void ANHPlayerController::DamageTestStep(int32 Step)
 		break;
 	case 8:
 		UE_LOG(LogNHGame, Log, TEXT("[damagetest] machete, two swings at somebody 1.1 m away: %d hits, %d down; %d stars"), C->PeopleHit, C->PeopleDown, Hustle->Stars());
-		Hustle->ClearHeat();
+		if (const ANHLaw* Law = ANHLaw::Get(this))
+		{
+			UE_LOG(LogNHGame, Log, TEXT("[damagetest] %s"), *Law->Describe());
+		}
 		C->Equip(NAME_None);
+		Wait = 8.f; // the reports are phone calls: give them time to be made
+		break;
+	case 9:
+		if (const ANHLaw* Law = ANHLaw::Get(this))
+		{
+			UE_LOG(LogNHGame, Log, TEXT("[damagetest] 8 s later, %d stars: %s"), Hustle->Stars(), *Law->Describe());
+		}
+		Hustle->ClearHeat();
 		break;
 	default:
 		ConsoleCommand(TEXT("quit"));
@@ -920,6 +1180,10 @@ void ANHPlayerController::NHTime(float Hour)
 void ANHPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
+	if (!ActionWalk.IsZero() && GetPawn())
+	{
+		GetPawn()->AddMovementInput(ActionWalk); // -NHActionTest walking
+	}
 	UpdateStreaming();
 	if (Debug)
 	{

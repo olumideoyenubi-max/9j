@@ -117,6 +117,8 @@ struct FNHRoadWay
 	uint8 Class = 0;
 	bool bOneWay = false;
 	bool bBridge = false;
+	/** How far its lanes may reach to the driver's left, cm, where the other carriageway is close on that side; 0: its class's half width */
+	float Left = 0.f;
 	FString Name;
 	TArray<int32> Nodes;
 };
@@ -189,6 +191,10 @@ public:
 	/** The way to drive from one place to another along the roads, one-way streets respected: road points from near From to near To. False if no way is found. */
 	bool RoadRoute(const FVector2D& From, const FVector2D& To, TArray<FVector2D>& OutLine) const;
 	float HalfWidth(const FNHRoadWay& Way) const { return RoadHalfWidth.IsValidIndex(Way.Class) ? RoadHalfWidth[Way.Class] : 500.f; }
+	/** The same to the driver's left: less where the other carriageway of a dual road is close on that side */
+	float LeftHalf(const FNHRoadWay& Way) const { return Way.Left > 0.f ? FMath::Min(Way.Left, HalfWidth(Way)) : HalfWidth(Way); }
+	/** Where a lane's middle is, cm to the right of the way's line: Side -1 the left lane, 1 the right, 0 the line between them */
+	float LaneOffset(const FNHRoadWay& Way, float Side) const { return (HalfWidth(Way) - LeftHalf(Way)) * 0.5f + Side * (HalfWidth(Way) + LeftHalf(Way)) * 0.25f; }
 
 	// ---- rules
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") int32 StartCash = 5000;

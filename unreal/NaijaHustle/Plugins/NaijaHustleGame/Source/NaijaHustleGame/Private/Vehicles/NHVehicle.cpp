@@ -20,6 +20,8 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Input/NHInputSet.h"
 #include "Kismet/GameplayStatics.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 #include "NaijaHustleGame.h"
 #include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
@@ -94,6 +96,22 @@ void ANHVehicle::BeginPlay()
 		Hubs.Add(Hub);
 	}
 	Dynamics->Setup(Body, Hubs, Clearance + HalfHeight, Spec.bBike);
+	if (static TSet<FName> Said; FParse::Param(FCommandLine::Get(), TEXT("NHVehicleSit")) && !Said.Contains(VehicleType))
+	{
+		// how far the lowest thing drawn (the tyres) is off the plane the vehicle is driven on: above it floats, below it is sunk
+		Said.Add(VehicleType);
+		TArray<USceneComponent*> Parts;
+		Body->GetChildrenComponents(true, Parts);
+		float Lowest = BIG_NUMBER;
+		for (const USceneComponent* Part : Parts)
+		{
+			if (const UStaticMeshComponent* Mesh = Cast<UStaticMeshComponent>(Part); Mesh && Mesh->GetStaticMesh())
+			{
+				Lowest = FMath::Min(Lowest, Mesh->Bounds.GetBox().Min.Z);
+			}
+		}
+		UE_LOG(LogNHGame, Log, TEXT("[vehiclesit] %s: lowest point %.1f cm off the driving plane"), *VehicleType.ToString(), Lowest - (GetActorLocation().Z - Clearance - HalfHeight));
+	}
 }
 
 float ANHVehicle::GroundZ(const FVector& At) const
@@ -678,6 +696,43 @@ void ANHVehicle::Tick(float DeltaSeconds)
 	Arm->SetRelativeRotation(FRotator((bCabinView ? 0.f : -12.f) + LookOffset.Y, LookOffset.X, 0.f));
 }
 
+void ANHVehicle::Readings(int32& OutGear, float& OutRpm) const
+{
+	// Five gears (four on a bike), each taking a wider band of the speed than the one below; the revs climb through a
+	// gear and drop back at the change, as a rev counter's needle does.
+	static const float Tops[] = { 0.14f, 0.3f, 0.5f, 0.74f, 1.02f };
+	const int32 Gears = Spec.bBike ? 4 : 5;
+	const float K = FMath::Abs(Speed) / FMath::Max(Spec.MaxSpeed, 1.f) * (Spec.bBike ? Tops[4] / Tops[3] : 1.f);
+	if (Speed < -20.f)
+	{
+		OutGear = -1;
+		OutRpm = 900.f + FMath::Clamp(K / 0.3f, 0.f, 1.f) * 4200.f;
+		return;
+	}
+	if (FMath::Abs(Speed) < 20.f && Throttle <= 0.f)
+	{
+		OutGear = 0;
+		OutRpm = Fuel > 0.f && Controller ? 850.f : 0.f;
+		return;
+	}
+	int32 G = 0;
+	while (G < Gears - 1 && K > Tops[G])
+	{
+		++G;
+	}
+	const float Low = G == 0 ? 0.f : Tops[G - 1];
+	OutGear = G + 1;
+	OutRpm = (G == 0 ? 1000.f : 2600.f) + FMath::Clamp((K - Low) / (Tops[G] - Low), 0.f, 1.f) * (G == 0 ? 5400.f : 3800.f);
+}
+
+FString ANHVehicle::DescribeMotion() const
+{
+	static const TCHAR* Clips[] = { TEXT("Drive_Idle"), TEXT("Drive_Left"), TEXT("Drive_Right"), TEXT("Drive_Reverse") };
+	return FString::Printf(TEXT("%s: %d wheels, turned %.0f deg, lean %.1f deg, steering %.2f, speed %.0f km/h, rider %s, rider's clip %s, fuel %.0f%%"), *VehicleType.ToString(), Wheels.Num(), WheelSpin, Lean, SteerEased,
+		Speed * 0.036f, DriverAnim && DriverAnim->IsVisible() ? TEXT("animated") : DriverBody && DriverBody->IsVisible() ? TEXT("posed, no clips") : TEXT("not shown"),
+		DriveClipShown >= 0 && DriveClipShown < 4 ? Clips[DriveClipShown] : TEXT("none"), Fuel * 100.f);
+}
+
 void ANHVehicle::TrafficMove(const FVector2D& At, float Yaw, float InSpeed, float DeltaSeconds)
 {
 	Speed = InSpeed;
@@ -688,7 +743,8 @@ void ANHVehicle::TrafficMove(const FVector2D& At, float Yaw, float InSpeed, floa
 	const float FrontZ = GroundZ(To + Fwd * Axle), RearZ = GroundZ(To - Fwd * Axle);
 	const float Pitch = FMath::FInterpTo(GetActorRotation().Pitch, FMath::Clamp(FMath::RadiansToDegrees(FMath::Atan2(FrontZ - RearZ, 2.f * Axle)), -30.f, 30.f), DeltaSeconds, 12.f);
 	const float WantZ = (FrontZ + RearZ) * 0.5f + Clearance + HalfHeight;
-	To.Z = WantZ > From.Z ? WantZ : FMath::FInterpTo(From.Z, WantZ, DeltaSeconds, 10.f);
+	const float Slope = FVector::Dist2D(From, To) * 0.3f + 1.f; // down a slope with the road; only a sharp drop is eased
+	To.Z = WantZ > From.Z - Slope ? WantZ : FMath::Max(WantZ, FMath::Min(From.Z - Slope, FMath::FInterpTo(From.Z, WantZ, DeltaSeconds, 10.f)));
 	SetActorLocationAndRotation(To, FRotator(Pitch, Yaw, 0.f), false);
 }
 
@@ -700,19 +756,27 @@ void ANHVehicle::Drive(float DeltaSeconds)
 	}
 	const float A = Spec.Accel, V = Spec.MaxSpeed;
 	const bool bDriven = Controller != nullptr && !IsWrecked() && !bHeld;
-	const float T = bDriven ? Throttle : 0.f, B = bDriven ? BrakeIn : 0.f, S = bDriven ? Steer : 0.f;
+	const float T = bDriven && Fuel > 0.f ? Throttle : 0.f, B = bDriven ? BrakeIn : 0.f, S = bDriven ? Steer : 0.f;
+	if (bDriven && Throttle > 0.f && Fuel <= 0.f && IsPlayerControlled() && GetWorld()->GetTimeSeconds() - DrySaid > 6.f)
+	{
+		DrySaid = GetWorld()->GetTimeSeconds();
+		ANHHUD::Toast(this, TEXT("Fuel don finish. Find petrol, or a jerry can."), 2);
+	}
 
+	// The engine pulls hardest from rest and less and less as the speed climbs, so a car works up through its speed
+	// to the top over a quarter of a minute. (Used whole, the data's figure put every car at top speed inside two seconds.)
+	const float Pull = A * 0.2f * FMath::Lerp(1.f, 0.12f, FMath::Clamp(Speed / V, 0.f, 1.f));
 	if (T > 0.f)
 	{
-		Speed += A * T * (Speed < 0.f ? 2.f : 1.f) * DeltaSeconds;
+		Speed += (Speed < 0.f ? A * 0.3f : Pull) * T * DeltaSeconds;
 	}
 	if (B > 0.f)
 	{
-		Speed -= A * B * (Speed > 50.f ? 2.f : 0.6f) * DeltaSeconds; // brakes hard, then reverses slowly
+		Speed -= A * B * (Speed > 50.f ? 0.3f : 0.1f) * DeltaSeconds; // brakes at about a g, then reverses slowly
 	}
 	if (T <= 0.f && B <= 0.f)
 	{
-		Speed -= FMath::Sign(Speed) * FMath::Min(FMath::Abs(Speed), (300.f + FMath::Abs(Speed) * 0.35f) * DeltaSeconds);
+		Speed -= FMath::Sign(Speed) * FMath::Min(FMath::Abs(Speed), (70.f + FMath::Abs(Speed) * 0.06f) * DeltaSeconds); // rolls on, slowing
 	}
 	if (bHandbrake && bDriven)
 	{
@@ -725,7 +789,11 @@ void ANHVehicle::Drive(float DeltaSeconds)
 		return;
 	}
 
-	const float TurnRate = FMath::RadiansToDegrees(Spec.Turn) * S * FMath::Clamp(FMath::Abs(Speed) / (V * 0.2f), 0.f, 1.f) * (Speed >= 0.f ? 1.f : -1.f);
+	// The wheel takes a moment to go over and comes back quicker; and the faster the car, the less it turns, held to
+	// what the tyres can do (about 1.2 g sideways), so a touch of the key at speed is a lane change, not a swerve.
+	SteerEased = FMath::FInterpConstantTo(SteerEased, S, DeltaSeconds, FMath::Abs(S) > FMath::Abs(SteerEased) ? 2.4f : 4.5f);
+	const float MostTurn = FMath::Min(Spec.Turn * 0.55f, 1200.f / FMath::Max(FMath::Abs(Speed), 1.f));
+	const float TurnRate = FMath::RadiansToDegrees(MostTurn) * SteerEased * FMath::Clamp(FMath::Abs(Speed) / (V * 0.1f), 0.f, 1.f) * (Speed >= 0.f ? 1.f : -1.f);
 	FRotator Rot(0.f, GetActorRotation().Yaw + TurnRate * DeltaSeconds, 0.f);
 	// grip: past the limit (speed, handbrake, dirt, rain) the car slides sideways as well as going where it points
 	const float Slid = Dynamics->StepTraction(DeltaSeconds, Speed, FMath::DegreesToRadians(TurnRate), bHandbrake && bDriven);
@@ -740,7 +808,10 @@ void ANHVehicle::Drive(float DeltaSeconds)
 	const float WantZ = (FrontZ + RearZ) * 0.5f + Clearance + HalfHeight;
 	if (WantZ > From.Z - 30.f)
 	{
-		To.Z = WantZ > From.Z ? WantZ : FMath::FInterpTo(From.Z, WantZ, DeltaSeconds, 10.f); // up kerbs at once, down gently
+		// Up at once; down a slope with the road, the wheels on it (eased, the body hung a foot in the air all the way
+		// down a ramp); only a sharp drop, off a kerb, is let down gently.
+		const float Slope = Delta.Size2D() * 0.3f + 1.f;
+		To.Z = WantZ > From.Z - Slope ? WantZ : FMath::Max(WantZ, FMath::Min(From.Z - Slope, FMath::FInterpTo(From.Z, WantZ, DeltaSeconds, 10.f)));
 		FallSpeed = 0.f;
 	}
 	else
@@ -760,6 +831,9 @@ void ANHVehicle::Drive(float DeltaSeconds)
 		}
 	}
 
+	// ten litres a hundred kilometres for a car, three for a bike, out of the tank
+	Odometer += Delta.Size2D();
+	Fuel = FMath::Max(0.f, Fuel - Delta.Size2D() / 1.e7f * (Spec.bBike ? 3.f : 10.f) / TankLitres());
 	FHitResult Hit;
 	SetActorLocationAndRotation(To, Rot, true, &Hit);
 	if (Hit.bBlockingHit)

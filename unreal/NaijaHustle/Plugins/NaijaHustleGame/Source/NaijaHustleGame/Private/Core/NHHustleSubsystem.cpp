@@ -1,4 +1,6 @@
 #include "Core/NHHustleSubsystem.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 
 #include "Core/NHGameData.h"
 #include "Engine/GameInstance.h"
@@ -134,11 +136,55 @@ FString UNHHustleSubsystem::Naira(int32 Amount)
 	return (Amount < 0 ? TEXT("-N") : TEXT("N")) + Digits;
 }
 
+FString UNHHustleSubsystem::Naira(int64 Amount)
+{
+	// 300,000,000,000 is a mouthful on a HUD: from a billion up it is written N300.00bn
+	const int64 Abs = Amount < 0 ? -Amount : Amount;
+	if (Abs >= 1000000000)
+	{
+		return FString::Printf(TEXT("%sN%.2fbn"), Amount < 0 ? TEXT("-") : TEXT(""), static_cast<double>(Abs) / 1e9);
+	}
+	return Naira(static_cast<int32>(Amount));
+}
+
+bool UNHHustleSubsystem::Pay(int64 Amount, const FString& Why)
+{
+	if (Amount <= 0 || !IsAuthority() || Amount > Worth())
+	{
+		return Amount == 0;
+	}
+	// what the pocket can cover comes out of the pocket; anything bigger is a transfer, and leaves the pocket alone if the bank can stand it
+	const int32 FromPocket = Amount <= Cash ? static_cast<int32>(Amount) : Bank >= Amount ? 0 : static_cast<int32>(FMath::Min<int64>(Amount, FMath::Max(Cash, 0)));
+	if (FromPocket > 0)
+	{
+		Earn(-FromPocket, Why);
+	}
+	if (Amount > FromPocket)
+	{
+		Bank -= Amount - FromPocket;
+		UE_LOG(LogNHGame, Log, TEXT("MONEY player=host bank -%lld (%s) bank=%lld"), Amount - FromPocket, *Why, Bank);
+	}
+	return true;
+}
+
+void UNHHustleSubsystem::Bankroll(int64 Amount, const FString& Why)
+{
+	if (Amount > 0 && IsAuthority())
+	{
+		Bank += Amount;
+		UE_LOG(LogNHGame, Log, TEXT("MONEY player=host bank +%lld (%s) bank=%lld"), Amount, *Why, Bank);
+	}
+}
+
 void UNHHustleSubsystem::Save()
 {
 	if (!IsAuthority())
 	{
 		return; // a guest's numbers are the server's to keep, not this disk's
+	}
+	if (static const bool bTest = FParse::Param(FCommandLine::Get(), TEXT("NHEstateTest")) || FParse::Param(FCommandLine::Get(), TEXT("NHNoSave")); bTest)
+	{
+		return; // a test that plays the rich must not leave the player's own save a billionaire's
 	}
 	UNHSaveGame* S = Cast<UNHSaveGame>(UGameplayStatics::CreateSaveGameObject(UNHSaveGame::StaticClass()));
 	if (!S)
@@ -153,6 +199,10 @@ void UNHHustleSubsystem::Save()
 	S->Done = Done;
 	S->Outfit = Outfit;
 	S->Ledger = Ledger;
+	S->Bank = Bank;
+	S->Persona = Persona;
+	S->Owned = Owned;
+	S->Home = Home;
 	UGameplayStatics::SaveGameToSlot(S, NHSave::Slot, 0);
 }
 
@@ -175,6 +225,10 @@ bool UNHHustleSubsystem::Load()
 	Done = S->Done;
 	Outfit = S->Outfit.IsNone() ? FName(TEXT("fit_street_basic")) : S->Outfit;
 	Ledger = S->Ledger;
+	Bank = S->Bank;
+	Persona = S->Persona;
+	Owned = S->Owned;
+	Home = S->Home;
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: save loaded (%s, %d jobs done)"), *Naira(Cash), Done.Num());
 	return true;
 }
@@ -186,6 +240,9 @@ void UNHHustleSubsystem::ResetProgress()
 	Cash = Data ? Data->StartCash : 5000;
 	Minutes = Data ? Data->StartMinutes : 480.f;
 	Cred = Integrity = Jobs = 0;
+	Bank = 0;
+	Persona = Home = NAME_None;
+	Owned.Reset();
 	Done.Reset();
 	Ledger.Reset();
 	Outfit = TEXT("fit_street_basic");

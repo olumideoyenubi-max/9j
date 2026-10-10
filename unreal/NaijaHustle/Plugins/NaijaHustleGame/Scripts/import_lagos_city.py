@@ -11,6 +11,8 @@ Run inside the Unreal Editor (Scripts/mac.sh script <this file>). Environment va
   LAGOS_PACK    folder with Textures/ and Shared/                    (default ~/Downloads/map lagos/Lagos_Unreal)
   LAGOS_STAGE   "all" (default), "assets" (textures and materials), "meshes", or "level"
   LAGOS_ONLY    comma-separated FBX names (without .fbx) to limit the "meshes" stage to, for a quick trial
+  LAGOS_REFRESH   comma-separated piece FBX names to import over what is there, keeping the assets (and so the level's
+                  actors): for a file whose pieces changed shape but not name, as rebuild_bridge_decks.py leaves them
   LAGOS_REIMPORT  comma-separated names (Terrain, Airport, Port, or a piece FBX such as Bridges_Piers) to import again after the FBX changed
 
 Safe to run again: an FBX whose pieces are already in the project is skipped, so a run that was killed for
@@ -51,6 +53,7 @@ PACK = os.environ.get("LAGOS_PACK", os.path.join(HOME, "Downloads", "map lagos",
 STAGE = os.environ.get("LAGOS_STAGE", "all")
 ONLY = [n for n in os.environ.get("LAGOS_ONLY", "").split(",") if n]
 REIMPORT = [n for n in os.environ.get("LAGOS_REIMPORT", "").split(",") if n]
+REFRESH = [n for n in os.environ.get("LAGOS_REFRESH", "").split(",") if n]
 
 DEST = "/Game/Lagos"
 LEVEL = "/Game/NaijaHustle/Maps/L_Lagos_City"
@@ -280,7 +283,7 @@ def import_meshes(mats):
         if f in REIMPORT and eal.does_directory_exist(dest):
             eal.delete_directory(dest)
         have = len(meshes_in(dest)) if eal.does_directory_exist(dest) else 0
-        if have >= len(pieces):
+        if have >= len(pieces) and f not in REFRESH:
             say(f"{f}: {have} pieces already imported")
             continue
         count, slots = import_file(os.path.join(TILES, f + ".fbx"), dest, False, mats, kind_of(f)[0])

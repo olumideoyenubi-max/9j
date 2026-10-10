@@ -5,9 +5,9 @@
   "island": ["Banana Island", "Ikoyi", "Victoria Island", "Eko Atlantic", "Lekki Phase I", "Osapa London", "Dolphin Estate", "Ikate", "Maroko", "Jakande"],
   "maxModels": 8,
   "zones": {
-    "mainland": { "vehicles": { "danfo": 26, "sedan": 24, "keke": 16, "okada": 16, "suv": 8, "truck": 4, "luxsedan": 2, "tfpick": 2 }, "pedestrians": 1.0, "women": 0.45 },
-    "island": { "vehicles": { "suv": 20, "luxsuv": 18, "luxsedan": 16, "sedan": 16, "royalsuv": 7, "coupesuv": 7, "luxcoupe": 5, "sports": 4, "supersuv": 3, "keke": 2, "danfo": 2 }, "pedestrians": 0.45, "women": 0.5 },
-    "expressway": { "vehicles": { "truck": 26, "sedan": 24, "danfo": 22, "suv": 16, "luxsuv": 7, "tfpick": 3, "luxsedan": 2 }, "pedestrians": 0.0, "women": 0.45 }
+    "mainland": { "vehicles": { "danfo": 26, "sedan": 20, "taxi": 6, "minivan": 5, "pickup": 4, "keke": 16, "okada": 16, "suv": 8, "truck": 4, "luxsedan": 2, "tfpick": 2 }, "pedestrians": 1.0, "women": 0.45 },
+    "island": { "vehicles": { "suv": 20, "minivan": 4, "taxi": 4, "pickup": 2, "luxsuv": 18, "luxsedan": 16, "sedan": 16, "royalsuv": 7, "coupesuv": 7, "luxcoupe": 5, "sports": 4, "supersuv": 3, "keke": 2, "danfo": 2 }, "pedestrians": 0.45, "women": 0.5 },
+    "expressway": { "vehicles": { "truck": 26, "sedan": 20, "pickup": 6, "minivan": 5, "taxi": 3, "danfo": 22, "suv": 16, "luxsuv": 7, "tfpick": 3, "luxsedan": 2 }, "pedestrians": 0.0, "women": 0.45 }
   },
   "hours": [
     { "from": 0, "to": 5, "vehicles": 0.25, "pedestrians": 0.1 },

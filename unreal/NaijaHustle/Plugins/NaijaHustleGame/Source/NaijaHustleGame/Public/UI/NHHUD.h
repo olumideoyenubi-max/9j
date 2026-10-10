@@ -37,7 +37,9 @@ public:
 	static void Floater(const UObject* WorldContext, const FVector& World, const FString& Text);
 	static ANHHUD* Get(const UObject* WorldContext);
 
-	enum class EScreen : uint8 { None, Map, Menu, Wheel };
+	enum class EScreen : uint8 { None, Map, Menu, Wheel, Bag, Place };
+	/** B: what you carry, as a list. It does not stop the game. */
+	void ToggleBag();
 	void ToggleMap();
 	void ToggleMenu();
 	/** P: the phone (ANHPhone), drawn beside the minimap; it does not stop the game */
@@ -82,6 +84,22 @@ private:
 	void DrawMapScreen(float VW, float VH);
 	void DrawMenu(float VW, float VH);
 	void DrawWheel(float VW, float VH);
+	/**
+	 * A list menu in the style GTA's mod menus use: a title banner, a bar under it with a heading and "3 / 12", rows
+	 * with the chosen one lit, a value at the right of a row, and a panel of help under the list. Up to ten rows show
+	 * and the list scrolls. New menus are drawn with this; the older pages are still drawn their own way.
+	 */
+	struct FMenuRow { FString Label, Value, Help; };
+	void DrawListMenu(const FString& Title, const FString& Heading, const TArray<FMenuRow>& Rows, int32 Chosen, const FString& Keys);
+	void DrawBag(float VW, float VH);
+	/** A place's menu, or the people to play (ANHEstate): the list menu again. It does not stop the game. */
+	void DrawPlace(float VW, float VH);
+	int32 PlaceLine = 0;
+	/** The instruments, bottom right, while driving: speed, revs and gear, fuel, distance, lights and handbrake */
+	void DrawDashboard(const class ANHVehicle* V, float VW, float VH);
+	int32 BagLine = 0;
+	/** Left / Right in the bag: Enter drops one instead of using it */
+	bool bBagDrop = false;
 	void DrawPhone(float VW, float VH);
 	/** Splits text into lines no wider than MaxWidth at that font and scale */
 	TArray<FString> Wrap(const FString& Str, float MaxWidth, UFont* Font, float Scale);

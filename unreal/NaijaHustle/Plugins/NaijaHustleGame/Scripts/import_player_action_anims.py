@@ -20,7 +20,8 @@ MAKEHUMAN = ["Naija", "Tunde", "Emeka", "Dayo", "Amaka", "Zainab", "Ngozi", "Mar
 CLIP_PREFIX = "Naija_Anim_"
 REPLACE = os.environ.get("NH_ANIM_REPLACE", "") not in ("", "0")
 # clips that play round and round
-LOOPS = {"Crouch_Idle", "Crouch_Walk", "Pistol_Aim", "Crouch_Pistol_Aim", "Rifle_Aim", "Rifle_Fire", "Crouch_Rifle_Aim", "Machete_Idle", "Drive_Idle"}
+LOOPS = {"Crouch_Idle", "Crouch_Walk", "Pistol_Aim", "Crouch_Pistol_Aim", "Rifle_Aim", "Rifle_Fire", "Crouch_Rifle_Aim", "Machete_Idle", "Drive_Idle",
+         "Pistol_Carry", "Rifle_Carry", "Machete_Carry", "Dance"}
 
 tools = unreal.AssetToolsHelpers.get_asset_tools()
 eal = unreal.EditorAssetLibrary

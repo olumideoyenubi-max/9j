@@ -141,7 +141,7 @@ bool UNHDebugPlay::Drive(ANHVehicle* V, const FVector2D& Target, float Cruise, b
 	const float Off = FMath::FindDeltaAngleDegrees(V->GetActorRotation().Yaw, Want);
 	const float Steer = Dist > 200.f ? FMath::Clamp(Off / 25.f, -1.f, 1.f) : 0.f;
 	// slow for the target so it can stop there: v² = 2 a d, with the gentle half of the brakes
-	const float Limit = bStopThere ? FMath::Min(Cruise, FMath::Sqrt(FMath::Max(0.f, Dist - 80.f) * V->GetSpec().Accel)) : Cruise;
+	const float Limit = bStopThere ? FMath::Min(Cruise, FMath::Sqrt(FMath::Max(0.f, Dist - 80.f) * V->GetSpec().Accel * 0.5f)) : Cruise;
 	const bool bArrived = bStopThere && Dist < 150.f;
 	float Throttle = 0.f, Brake = 0.f;
 	if (!bArrived && V->Speed < Limit - 40.f)

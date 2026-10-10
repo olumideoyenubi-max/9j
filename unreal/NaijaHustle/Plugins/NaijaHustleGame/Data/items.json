@@ -1,0 +1,26 @@
+{
+  "format": "naija-hustle-items",
+  "version": 1,
+  "note": "Everything a player can carry. Shaped like the shared item lists of the GTA roleplay frameworks (name, label, weight in grams, kind, unique, useable, description), with the game's own fields: price in naira, heal (health given back when used), weapon (what it puts in the hand), ammoFor (the weapon it loads). Names and brands are made up.",
+  "maxWeightGrams": 30000,
+  "start": { "machete": 1, "pistol": 1, "ak47": 1, "pistol_ammo": 36, "rifle_ammo": 120, "meat_pie": 2, "pure_water": 3, "phone": 1 },
+  "items": [
+    { "name": "machete", "label": "Machete", "kind": "weapon", "weight": 900, "unique": true, "useable": true, "weapon": "machete", "price": 6500, "description": "A cutlass. Farm tool, till e no be farm tool." },
+    { "name": "pistol", "label": "Pistol", "kind": "weapon", "weight": 850, "unique": true, "useable": true, "weapon": "pistol", "price": 180000, "description": "Nine millimetre. Takes pistol rounds." },
+    { "name": "ak47", "label": "AK-47", "kind": "weapon", "weight": 3900, "unique": true, "useable": true, "weapon": "ak47", "price": 950000, "description": "Loud, heavy, and everybody knows the sound. Takes rifle rounds." },
+    { "name": "pistol_ammo", "label": "Pistol rounds", "kind": "ammo", "weight": 12, "ammoFor": "pistol", "price": 450, "description": "One is used every shot." },
+    { "name": "rifle_ammo", "label": "Rifle rounds", "kind": "ammo", "weight": 16, "ammoFor": "ak47", "price": 700, "description": "One is used every shot. They go fast." },
+    { "name": "meat_pie", "label": "Meat pie", "kind": "food", "weight": 180, "useable": true, "heal": 25, "price": 800, "description": "Still warm. Gives back some health." },
+    { "name": "suya", "label": "Suya", "kind": "food", "weight": 250, "useable": true, "heal": 40, "price": 2000, "description": "Wrapped in newspaper, plenty pepper. Gives back a lot of health." },
+    { "name": "gala", "label": "Sausage roll", "kind": "food", "weight": 90, "useable": true, "heal": 12, "price": 300, "description": "Traffic food. Gives back a little health." },
+    { "name": "pure_water", "label": "Pure water", "kind": "drink", "weight": 500, "useable": true, "heal": 8, "price": 50, "description": "A sachet of cold water. Gives back a little health." },
+    { "name": "malt", "label": "Malt drink", "kind": "drink", "weight": 350, "useable": true, "heal": 18, "price": 600, "description": "Cold and sweet. Gives back some health." },
+    { "name": "bandage", "label": "Bandage", "kind": "medical", "weight": 60, "useable": true, "heal": 35, "price": 1500, "description": "Stops the bleeding. Gives back health." },
+    { "name": "first_aid", "label": "First aid box", "kind": "medical", "weight": 700, "useable": true, "heal": 100, "price": 12000, "description": "Everything a chemist would do for you. Full health." },
+    { "name": "phone", "label": "Phone", "kind": "tool", "weight": 190, "unique": true, "price": 85000, "description": "Your line to everybody. P opens it." },
+    { "name": "torch", "label": "Torch", "kind": "tool", "weight": 220, "unique": true, "price": 3500, "description": "For when NEPA takes light." },
+    { "name": "lockpick", "label": "Master key", "kind": "tool", "weight": 40, "price": 9000, "description": "Opens what is not yours. It can break." },
+    { "name": "repair_kit", "label": "Repair kit", "kind": "tool", "weight": 2500, "price": 25000, "description": "Spanners, tape and hope. Puts a vehicle back on the road." },
+    { "name": "jerry_can", "label": "Jerry can of fuel", "kind": "tool", "weight": 4200, "price": 9000, "description": "Twenty litres. Use it standing by a car to pour it in." }
+  ]
+}

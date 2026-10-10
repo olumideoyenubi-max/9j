@@ -101,6 +101,8 @@ public:
 	int32 PeopleHit = 0, PeopleDown = 0, VehiclesHit = 0;
 	void ToggleTorch();
 	bool TorchOn() const;
+	/** What this player carries (UNHInventoryComponent): weapons can only be held, and guns fired, from what is in it */
+	class UNHInventoryComponent* GetInventory() const { return Inventory; }
 	/**
 	 * The body's own action clips, made in Blender (Scripts/build_player_action_anims.py, import_player_action_anims.py):
 	 * <the skeleton's folder>/Anims/<Name>_<Clip> for a skeleton called <Name>_Skeleton. Null where the project has none for that body, and then nothing
@@ -177,9 +179,12 @@ private:
 	float SwingLeft = 0.f;
 	bool bSwingLanded = false;
 	/**
-	 * Action clips over the body's own animation, through its DefaultSlot: one held while a state lasts (crouching,
-	 * aiming while stood still, the machete guard) and one played through once (a shot, a cut).
+	 * Action clips over the body's own animation: one held while a state lasts (crouching, a weapon carried or aimed,
+	 * the machete guard) and one played through once (a shot, a cut). Laid over the arms and trunk while the legs walk
+	 * where the body's blueprint is a UNHBodyAnimInstance; otherwise through its DefaultSlot, whole, while stood still.
 	 */
+	UPROPERTY() TObjectPtr<class UNHInventoryComponent> Inventory;
+	float DryToast = -10.f;
 	bool bAimHeld = false;
 	/** Seconds since a gun was last fired: it stays raised a moment after, and how far the aiming camera has come in, 0..1 */
 	float SinceShot = 100.f, AimK = 0.f;

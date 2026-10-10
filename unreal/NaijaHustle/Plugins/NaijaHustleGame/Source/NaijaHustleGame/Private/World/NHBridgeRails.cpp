@@ -4,6 +4,7 @@
 #include "Core/NHGameData.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/World.h"
+#include "Materials/MaterialInstanceDynamic.h"
 #include "NaijaHustleGame.h"
 #include "TimerManager.h"
 
@@ -39,10 +40,10 @@ void UNHBridgeRails::Build()
 		return true;
 	};
 	const float Piece = 1000.f; // a length of wall, cm
-	TArray<FTransform> Walls;
+	TArray<FTransform> Walls, Lines;
 	for (const FNHRoadWay& Way : Data->RoadWays)
 	{
-		if (!Way.bBridge || Way.Class > 4)
+		if (!Way.bBridge)
 		{
 			continue;
 		}
@@ -62,6 +63,8 @@ void UNHBridgeRails::Build()
 				}
 				// the wall leans with the deck on a ramp
 				const float Slope = TopAt(At + Dir * Piece * 0.5f, Ahead) && TopAt(At - Dir * Piece * 0.5f, Behind) && FMath::Abs(Ahead - Behind) < 300.f ? Ahead - Behind : 0.f;
+				const FRotator Turn(FMath::RadiansToDegrees(FMath::Atan2(Slope, Piece)), FMath::RadiansToDegrees(FMath::Atan2(Dir.Y, Dir.X)), 0.f);
+				bool bOpen = false;
 				for (const float Sign : { -1.f, 1.f })
 				{
 					// outward from the middle of the carriageway until the surface drops away; a surface that rises instead
@@ -81,9 +84,37 @@ void UNHBridgeRails::Build()
 					}
 					if (Edge > 0.f)
 					{
-						const FRotator Turn(FMath::RadiansToDegrees(FMath::Atan2(Slope, Piece)), FMath::RadiansToDegrees(FMath::Atan2(Dir.Y, Dir.X)), 0.f);
-						Walls.Add(FTransform(Turn, FVector(At + Side * Sign * (Edge - 25.f), Deck + 42.f), FVector((Piece + 30.f) / 100.f, 0.28f, 0.9f)));
+						// to within a few centimetres of where the slab stops
+						float In = Edge, Out = Edge + 100.f;
+						for (int32 Step = 0; Step < 6; ++Step)
+						{
+							const float Half = (In + Out) * 0.5f;
+							(TopAt(At + Side * Sign * Half, Z) && Deck - Z <= 120.f ? In : Out) = Half;
+						}
+						// A length of wall is only stood where the edge is open at both its ends: where two decks come together
+						// the last length would otherwise run on past the join and end out in the road.
+						bool bWhole = true;
+						for (const float End : { -0.5f, 0.5f })
+						{
+							float Beyond = 0.f;
+							bWhole &= !TopAt(At + Dir * Piece * End + Side * Sign * (In + 40.f), Beyond) || Deck + Slope * End - Beyond > 120.f;
+						}
+						if (!bWhole)
+						{
+							continue;
+						}
+						// One piece does two jobs: 90 cm of it stands above the deck as the parapet, and the rest hangs down the
+						// slab's side as a fascia, covering the streaked face the map's decks have there.
+						Walls.Add(FTransform(Turn, FVector(At + Side * Sign * (In + 9.f), Deck - 45.f), FVector((Piece + 30.f) / 100.f, 0.28f, 2.7f)));
+						// a solid white line along the edge of the carriageway
+						Lines.Add(FTransform(Turn, FVector(At + Side * Sign * (In - 75.f), Deck + 1.5f), FVector(Piece / 100.f, 0.14f, 0.02f)));
+						bOpen = true;
 					}
+				}
+				if (bOpen)
+				{
+					// and a broken one down its middle: 4 m of paint in every 10
+					Lines.Add(FTransform(Turn, FVector(At + Side * Data->LaneOffset(Way, 0.f), Deck + 1.5f), FVector(4.f, 0.14f, 0.02f)));
 				}
 			}
 			Run += Seg;
@@ -104,7 +135,25 @@ void UNHBridgeRails::Build()
 	Rails->SetCanEverAffectNavigation(false);
 	Holder->SetRootComponent(Rails);
 	Rails->RegisterComponent();
+	// weathered concrete, not the cube's own bright grey
+	if (UMaterialInstanceDynamic* Concrete = Rails->CreateDynamicMaterialInstance(0))
+	{
+		Concrete->SetVectorParameterValue(TEXT("Color"), FLinearColor(0.2f, 0.2f, 0.19f));
+	}
 	Rails->AddInstances(Walls, false, true);
+	// the paint: the same cube, flat and white, with nothing to bump into
+	UInstancedStaticMeshComponent* Paint = NewObject<UInstancedStaticMeshComponent>(Holder);
+	Paint->SetStaticMesh(Cube);
+	Paint->SetMobility(EComponentMobility::Static);
+	Paint->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	Paint->SetCastShadow(false);
+	Paint->SetupAttachment(Rails);
+	Paint->RegisterComponent();
+	if (UMaterialInstanceDynamic* White = Paint->CreateDynamicMaterialInstance(0))
+	{
+		White->SetVectorParameterValue(TEXT("Color"), FLinearColor(0.72f, 0.72f, 0.68f));
+	}
+	Paint->AddInstances(Lines, false, true);
 	Made = Walls.Num();
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: bridge parapets: %d lengths of %.0f m stood along open deck edges, in %.2f s"), Made, Piece / 100.f, FPlatformTime::Seconds() - Started);
 }

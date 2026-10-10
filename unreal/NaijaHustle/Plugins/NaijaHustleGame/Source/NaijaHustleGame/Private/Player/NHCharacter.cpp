@@ -1,6 +1,7 @@
 #include "Player/NHCharacter.h"
 
 #include "World/NHShapes.h"
+#include "Gameplay/NHLaw.h"
 #include "EngineUtils.h"
 #include "UI/NHHUD.h"
 #include "Vehicles/NHVehicle.h"
@@ -11,6 +12,7 @@
 
 #include "Animation/AnimInstance.h"
 #include "Animation/AnimSequence.h"
+#include "Gameplay/NHInventory.h"
 #include "Animation/Skeleton.h"
 #include "Animation/AnimMontage.h"
 #include "AnimationRuntime.h"
@@ -28,6 +30,7 @@
 #include "Input/NHInputSet.h"
 #include "Misc/ConfigCacheIni.h"
 #include "Misc/PackageName.h"
+#include "Player/NHBodyAnimInstance.h"
 #include "Player/NHClipAnimInstance.h"
 #include "Player/NHPlayerController.h"
 #include "NaijaHustleGame.h"
@@ -125,11 +128,17 @@ ANHCharacter::ANHCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
 	FollowCamera->SetFieldOfView(WalkFOV);
+
+	Inventory = CreateDefaultSubobject<UNHInventoryComponent>(TEXT("Inventory"));
 }
 
 void ANHCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	if (HasAuthority())
+	{
+		Inventory->GiveStartingKit(); // until there is a save for it: every player starts with the same things
+	}
 
 	FString Saved;
 	GConfig->GetString(TEXT("NaijaHustle"), TEXT("PlayerSkin"), Saved, GGameUserSettingsIni);
@@ -242,6 +251,12 @@ FString ANHCharacter::WeaponName(FName InWeapon)
 
 FName ANHCharacter::Equip(FName InWeapon)
 {
+	// only what is carried can be taken in the hand
+	if (!InWeapon.IsNone() && InWeapon != Weapon && Inventory && UNHInventoryComponent::Def(InWeapon) && Inventory->Count(InWeapon) <= 0)
+	{
+		ANHHUD::Toast(this, FString::Printf(TEXT("You no get %s"), *WeaponName(InWeapon)), 2);
+		return Weapon;
+	}
 	const FName Was = Weapon;
 	Weapon = InWeapon == Weapon ? NAME_None : InWeapon;
 	BuildWeapon();
@@ -333,6 +348,14 @@ void ANHCharacter::PlayShot(const TCHAR* Name, float Rate)
 	{
 		return;
 	}
+	if (UNHBodyAnimInstance* Layer = Cast<UNHBodyAnimInstance>(Anim))
+	{
+		Layer->ShowClip(Sequence, Rate, false, 0.06f);
+		HoldClip = NAME_None;
+		ShotClip = Name;
+		ShotLeft = Sequence->GetPlayLength() / Rate - 0.12f;
+		return;
+	}
 	if (HoldMontage)
 	{
 		Anim->Montage_Stop(0.08f, HoldMontage);
@@ -354,15 +377,19 @@ void ANHCharacter::UpdateActions(float DeltaSeconds)
 		return;
 	}
 	ShotLeft = FMath::Max(0.f, ShotLeft - DeltaSeconds);
-	const bool bBusy = RollLeft > 0.f || ClimbTime > 0.f || !GetCharacterMovement()->IsMovingOnGround();
+	// A body whose blueprint has been put under UNHBodyAnimInstance has the clips laid over its own animation, so the
+	// arms carry on with the weapon while its legs walk, run and jump. Any other body plays them whole, stood still.
+	UNHBodyAnimInstance* Layer = Cast<UNHBodyAnimInstance>(Anim);
+	const bool bGround = GetCharacterMovement()->IsMovingOnGround();
+	const bool bBusy = RollLeft > 0.f || ClimbTime > 0.f || (!Layer && !bGround);
 	const bool bMoving = GetVelocity().SizeSquared2D() > 400.f;
-	const bool bPistol = Weapon == TEXT("pistol"), bRifle = Weapon == TEXT("ak47");
+	const bool bStood = bGround && !bMoving;
+	const bool bPistol = Weapon == TEXT("pistol"), bRifle = Weapon == TEXT("ak47"), bBlade = Weapon == TEXT("machete");
 	SinceShot += DeltaSeconds;
-	// a gun is raised while aiming (right mouse), walking or not, and for a moment after a shot; otherwise it hangs in the hand
-	const bool bRaised = IsAiming() || (SinceShot < 1.4f && !bMoving);
-	// The clips are the whole body standing in one place, so guns are aimed and the machete held on guard only while
-	// stood still; walking, the body's own animation carries on with the weapon in the hand.
+	// a weapon is raised while aiming (right mouse) and for a moment after a shot or a cut; otherwise it is carried low
+	const bool bRaised = IsAiming() || (SinceShot < (bBlade ? 2.5f : 1.4f) && (Layer || !bMoving));
 	const TCHAR* Want = nullptr;
+	bool bCarried = false;
 	if (bBusy)
 	{
 		if (bIsCrouched && RollLeft > 0.f)
@@ -370,17 +397,38 @@ void ANHCharacter::UpdateActions(float DeltaSeconds)
 			UnCrouch();
 		}
 	}
-	else if (bIsCrouched)
+	else if (bIsCrouched && bGround)
 	{
 		Want = bMoving ? TEXT("Crouch_Walk") : bPistol ? TEXT("Crouch_Pistol_Aim") : bRifle ? TEXT("Crouch_Rifle_Aim") : TEXT("Crouch_Idle");
 	}
 	else if (bPistol || bRifle)
 	{
-		Want = !bRaised ? nullptr : bPistol ? TEXT("Pistol_Aim") : bTrigger ? TEXT("Rifle_Fire") : TEXT("Rifle_Aim");
+		bCarried = !bRaised;
+		Want = bRaised ? (bPistol ? TEXT("Pistol_Aim") : bTrigger ? TEXT("Rifle_Fire") : TEXT("Rifle_Aim")) : !Layer ? nullptr : bPistol ? TEXT("Pistol_Carry") : TEXT("Rifle_Carry");
 	}
-	else if (!bMoving && Weapon == TEXT("machete"))
+	else if (bBlade)
 	{
-		Want = TEXT("Machete_Idle");
+		bCarried = Layer && !bRaised;
+		Want = bCarried ? TEXT("Machete_Carry") : Layer || !bMoving ? TEXT("Machete_Idle") : nullptr;
+	}
+	if (Layer)
+	{
+		// The pistol and the machete are carried by the right arm alone, so the other arm and the trunk go on swinging
+		// with the walk; anything else takes the trunk. The clip's own legs (its stance) show only while stood still.
+		const bool bShot = ShotLeft > 0.f;
+		Layer->SetReach(!bShot && bCarried && !bRifle ? 0.f : 1.f, bIsCrouched && bGround && !bShot ? 1.f : bCarried || !bStood ? 0.f : 1.f);
+		if (bShot && !bBusy)
+		{
+			return; // a shot or a cut is playing through
+		}
+		UAnimSequence* Sequence = Want ? Clip(Want) : nullptr;
+		if (Layer->Showing() != Sequence || bShot)
+		{
+			ShotLeft = 0.f;
+			Layer->ShowClip(Sequence, Sequence && FName(Want) == TEXT("Crouch_Walk") ? 1.4f : 1.f, true, 0.2f);
+		}
+		HoldClip = Sequence ? FName(Want) : NAME_None;
+		return;
 	}
 	if (ShotLeft > 0.f && !bBusy)
 	{
@@ -426,6 +474,7 @@ void ANHCharacter::Attack()
 		// with the clips: a cut across, the cut back, then a chop down, each landing as the blade comes through
 		static const TCHAR* Cuts[] = { TEXT("Machete_Slash"), TEXT("Machete_Backslash"), TEXT("Machete_Chop") };
 		const bool bClips = Clip(Cuts[0]) != nullptr && GetCharacterMovement()->IsMovingOnGround() && RollLeft <= 0.f && ClimbTime <= 0.f;
+		SinceShot = 0.f; // on guard for a moment after
 		if (bClips)
 		{
 			if (bIsCrouched)
@@ -446,9 +495,26 @@ void ANHCharacter::Attack()
 		return;
 	}
 	const bool bRifle = Weapon == TEXT("ak47");
+	// every shot is a round out of what is carried; with none left the trigger only clicks
+	if (const FName Rounds = UNHInventoryComponent::AmmoOf(Weapon); Inventory && !Rounds.IsNone() && !Inventory->Remove(Rounds, 1, TEXT("fired")))
+	{
+		--Attacks;
+		AttackWait = 0.35f;
+		if (Audio)
+		{
+			Audio->PlayShot(ENHShot::Draw, Muzzle, ENHSoundKind::Weapon, 0.5f);
+		}
+		if (GetWorld()->GetTimeSeconds() - DryToast > 2.5f)
+		{
+			DryToast = GetWorld()->GetTimeSeconds();
+			ANHHUD::Toast(this, TEXT("Bullet don finish"), 2);
+		}
+		return;
+	}
 	AttackWait = bRifle ? AttackWait + 0.1f : 0.16f; // 600 rounds a minute; a pistol as fast as the finger
 	SinceShot = 0.f;
-	if (!bRifle && !bIsCrouched && GetVelocity().SizeSquared2D() < 400.f && GetCharacterMovement()->IsMovingOnGround())
+	const bool bLayered = Cast<UNHBodyAnimInstance>(GetMesh()->GetAnimInstance()) != nullptr; // then the kick is the arms' and the legs walk on
+	if (!bRifle && !bIsCrouched && (bLayered || (GetVelocity().SizeSquared2D() < 400.f && GetCharacterMovement()->IsMovingOnGround())))
 	{
 		PlayShot(TEXT("Pistol_Fire"), 1.f); // the kick; the rifle's is held while the trigger is (UpdateActions)
 	}
@@ -480,9 +546,9 @@ void ANHCharacter::Attack()
 	}
 	// a gun going off: everybody within 45 m runs, and it is noticed
 	ANHPerson::ScareAround(GetWorld(), GetActorLocation(), 4500.f);
-	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this))
+	if (ANHLaw* Law = ANHLaw::Get(this))
 	{
-		Hustle->AddHeat(0.12f);
+		Law->Crime(ENHCrime::GunFired, GetActorLocation()); // it only counts against you if somebody hears it and reports it
 	}
 	if (!MuzzleFlash)
 	{
@@ -542,9 +608,9 @@ void ANHCharacter::Land(ANHPerson* Person, AActor* Other, const FVector& At, flo
 		{
 			++PeopleHit;
 			PeopleDown += bKilled ? 1 : 0;
-			if (Hustle)
+			if (ANHLaw* Law = ANHLaw::Get(this))
 			{
-				Hustle->AddHeat(bKilled ? 1.5f : 0.6f); // hurting somebody is a star; killing them is more
+				Law->Crime(bKilled ? ENHCrime::Killing : bBlade ? ENHCrime::Assault : ENHCrime::Shooting, At, Person); // stars only if a witness reports it
 			}
 			if (bBlade)
 			{
@@ -563,9 +629,9 @@ void ANHCharacter::Land(ANHPerson* Person, AActor* Other, const FVector& At, flo
 		const bool bWas = Car->IsWrecked();
 		Car->Health = FMath::Max(0.f, Car->Health - VehicleDamage);
 		++VehiclesHit;
-		if (Hustle)
+		if (ANHLaw* Law = ANHLaw::Get(this))
 		{
-			Hustle->AddHeat(0.2f);
+			Law->Crime(ENHCrime::VehicleDamage, At);
 		}
 		if (!bWas && Car->IsWrecked())
 		{
@@ -591,13 +657,12 @@ void ANHCharacter::BuildWeapon()
 	{
 		return;
 	}
-	// On the right hand where the body has one. The pivot keeps the world's rotation and scale, not the hand's, and
-	// Tick points it the way the player faces: skeletons disagree about which way a hand bone points.
+	// On the right hand where the body has one, and carried by it. Tick says how it lies in the hand: in the fist of a
+	// body with fingers, or pointed the way the player faces, since skeletons disagree about which way a hand bone points.
 	const bool bHand = GetMesh()->GetSkeletalMeshAsset() && GetMesh()->GetBoneIndex(TEXT("hand_r")) != INDEX_NONE;
 	WeaponPivot = NewObject<USceneComponent>(this);
 	WeaponPivot->SetupAttachment(bHand ? static_cast<USceneComponent*>(GetMesh()) : GetRootComponent(), bHand ? FName(TEXT("hand_r")) : NAME_None);
 	WeaponPivot->SetRelativeLocation(bHand ? FVector::ZeroVector : FVector(25.f, 22.f, 5.f));
-	WeaponPivot->SetUsingAbsoluteRotation(true);
 	WeaponPivot->SetUsingAbsoluteScale(true);
 	WeaponPivot->RegisterComponent();
 
@@ -932,14 +997,17 @@ void ANHCharacter::Tick(float DeltaSeconds)
 	if (WeaponPivot)
 	{
 		const USkeletalMeshComponent* Body = GetMesh();
-		if ((ShotLeft > 0.f || !HoldClip.IsNone()) && Body->GetBoneIndex(TEXT("index_01_r")) != INDEX_NONE && Body->GetBoneIndex(TEXT("pinky_01_r")) != INDEX_NONE)
+		if (Body->GetBoneIndex(TEXT("hand_r")) != INDEX_NONE && Body->GetBoneIndex(TEXT("index_01_r")) != INDEX_NONE && Body->GetBoneIndex(TEXT("pinky_01_r")) != INDEX_NONE)
 		{
-			// a clip is posing the hand: the weapon lies in the fist, a barrel along the knuckles' way, a blade out of the thumb side
+			// The weapon lies in the fist, a barrel along the knuckles' way, a blade out of the thumb side. Where that is
+			// is worked out against the hand bone and kept, so the weapon goes with the hand every frame, at any speed.
 			const FVector Wrist = Body->GetBoneLocation(TEXT("hand_r")), Index = Body->GetBoneLocation(TEXT("index_01_r")), Pinky = Body->GetBoneLocation(TEXT("pinky_01_r"));
 			const FVector Along = ((Index + Pinky) * 0.5f - Wrist).GetSafeNormal(), Thumb = (Index - Pinky).GetSafeNormal();
 			const FVector Palm = FVector::CrossProduct(Thumb, Along).GetSafeNormal() * (FVector::DotProduct(FVector::CrossProduct(Thumb, Along), Body->GetBoneLocation(TEXT("thumb_01_r")) - Wrist) < 0.f ? -1.f : 1.f);
-			const FRotator Held = Weapon == TEXT("machete") ? FRotationMatrix::MakeFromXZ(Thumb, Along).Rotator() : FRotationMatrix::MakeFromXZ(Along, Thumb).Rotator();
-			WeaponPivot->SetWorldLocationAndRotation(Wrist + Along * 8.5f + Palm * 2.f - Held.RotateVector(FVector(4.f, 9.f, 0.f)), Held); // the pieces are built 4 and 9 cm off the pivot
+			const FQuat Held = (Weapon == TEXT("machete") ? FRotationMatrix::MakeFromXZ(Thumb, Along) : FRotationMatrix::MakeFromXZ(Along, Thumb)).ToQuat();
+			const FVector At = Wrist + Along * 8.5f + Palm * 2.f - Held.RotateVector(FVector(4.f, 9.f, 0.f)); // the pieces are built 4 and 9 cm off the pivot
+			const FTransform Hand = Body->GetSocketTransform(TEXT("hand_r"));
+			WeaponPivot->SetRelativeLocationAndRotation(Hand.InverseTransformPosition(At), Hand.GetRotation().Inverse() * Held);
 		}
 		else
 		{

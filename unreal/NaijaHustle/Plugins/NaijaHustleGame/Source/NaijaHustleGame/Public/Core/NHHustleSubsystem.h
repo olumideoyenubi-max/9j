@@ -29,6 +29,10 @@ public:
 	UPROPERTY(SaveGame) TArray<FName> Done;
 	UPROPERTY(SaveGame) FName Outfit;
 	UPROPERTY(SaveGame) TArray<FNHLedgerEntry> Ledger;
+	UPROPERTY(SaveGame) int64 Bank = 0;
+	UPROPERTY(SaveGame) FName Persona;
+	UPROPERTY(SaveGame) TArray<FName> Owned;
+	UPROPERTY(SaveGame) FName Home;
 };
 
 /**
@@ -54,6 +58,23 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FName> Done;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName Outfit = TEXT("fit_street_basic");
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FNHLedgerEntry> Ledger;
+
+	/**
+	 * Money in the bank, apart from the cash in the pocket: 64 bits, because the big men and women of NHEstate have
+	 * hundreds of billions and the pocket's 32 bits stop at two. Pay takes from the pocket first, then from here.
+	 */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") int64 Bank = 0;
+	/** Who is being played (Data/estate.json "people"), or none: the conductor the game starts with */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName Persona;
+	/** Land, houses and businesses bought (Data/estate.json "places"), and the one that is home */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FName> Owned;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName Home;
+	int64 Worth() const { return static_cast<int64>(Cash) + Bank; }
+	/** Takes Amount from the pocket and then the bank, or takes nothing and says false */
+	bool Pay(int64 Amount, const FString& Why);
+	/** Into the bank (a sale, a transfer) */
+	void Bankroll(int64 Amount, const FString& Why);
+	static FString Naira(int64 Amount);
 
 	/** Wanted level: 0..5, shown as stars rounded up */
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Heat = 0.f;

@@ -4,6 +4,19 @@
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
+## Driving, bridges, property and night life (2026-10-10)
+
+- **Driving:** the engine pulls less as the speed climbs (top speed in about 16 s, not 1.5); steering eases in and turns less the faster the car goes; a vehicle going down a slope stays on the road instead of hanging above it.
+- **Bridges:** every bridge deck in the city (441 bridge roads, 110 km) rebuilt from the road graph by `Scripts/rebuild_bridge_decks.py` as one surface: no parapets across the road, no slab ends in mid-deck, no ramp steeper than 9%. Where two carriageways of a dual road are close, each direction's lanes now stop short of the other's (`l` in `lagos_real.json`, 1,152 roads). See the script's header.
+- **Estate:** see `docs/ESTATE.md`: 25 places, two rich people to play, a 64-bit bank, fuel, a dashboard.
+
+## Weapons carried and used on the move (2026-10-10)
+
+- Three new clips made in Blender (`build_player_action_anims.py`): `Pistol_Carry`, `Rifle_Carry`, `Machete_Carry`, the weapon held low and not raised. Imported for the twelve MakeHuman bodies (21 clips each).
+- `UNHBodyAnimInstance` is now the parent class of the bodies' animation blueprints (`Scripts/reparent_body_anims.py`, run once; the blueprints are generated assets, not in git). It runs the blueprint's graph, then lays the action clip over the right arm, and as far as asked over the trunk and the legs. So a weapon is carried, aimed and fired by the arms while the legs walk, run or jump; a clip's own stance shows only stood still.
+- The weapon is fixed to the hand bone in the fist every frame; it no longer hangs 9 cm off the hand pointing where the body faces.
+- Checked with `Scripts/mac.sh play -NHActionTest` (19 pictures in `Saved/NHActions`, stood and walking, on Tunde). Not checked: sprinting, jumping, the women's bodies, the city level.
+
 ## Latest frame rate
 
 Standalone game, 1280×720 window, standing on the dusty street (8000, 14000, facing west), 15-second average.

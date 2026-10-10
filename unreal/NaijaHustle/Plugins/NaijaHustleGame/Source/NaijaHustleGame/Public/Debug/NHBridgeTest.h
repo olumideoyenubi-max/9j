@@ -11,6 +11,7 @@ class ANHVehicle;
  * road before a bridge, over the whole of it, and back, and must not stop, fall or get stuck.
  *
  *   Scripts/mac.sh city -NHBridgeTest [-NHBridgeTypes=danfo,sedan,keke] [-NHBridgeIndex=0]
+ *                       [-NHBridgeName="Eko Bridge"] [-NHBridgeSpeed=2600] [-NHBridgeLead=2000]
  *
  * It picks the bridge nearest the player (or the Nth nearest) that the road graph can route over in both directions,
  * logs one "[bridgetest]" line a leg with PASS or FAIL and why (where it stuck, the slope there, how fast it was
