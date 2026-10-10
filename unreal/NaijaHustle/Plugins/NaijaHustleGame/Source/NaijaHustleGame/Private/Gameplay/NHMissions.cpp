@@ -1315,6 +1315,14 @@ bool ANHMissions::NextStart(FVector& OutAt, FString& OutTitle) const
 	return Place(Sub(File, TEXT("start")), OutAt);
 }
 
+bool ANHMissions::AboutToOpen() const
+{
+	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	const ANHLeads* Leads = ANHLeads::Get(this);
+	return !bActive && !bStoryOff && !bOfferedFirst && Hustle && Ids.Contains(TEXT("m01")) && !Hustle->IsDone(TEXT("m01")) && !Hustle->IsDone(TEXT("lag_01")) && Hustle->Persona.IsNone()
+		&& (!Leads || Leads->Current() == TEXT("tunde")) && !FParse::Param(FCommandLine::Get(), TEXT("NHNoStory"));
+}
+
 void ANHMissions::Offer(float DeltaSeconds)
 {
 	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);

@@ -221,6 +221,8 @@ private:
 	FTimerHandle TabHold;
 	bool bTabWheel = false;
 	void OnAbility();
+	/** Seconds since the level began: for the first few the view is held level behind the player (see PlayerTick) */
+	float SinceBegin = 0.f;
 	bool bTravelling = false;
 	FVector TravelAt = FVector::ZeroVector;
 	float TravelYaw = 0.f, TravelT = 0.f;

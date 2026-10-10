@@ -376,7 +376,8 @@ void ANHGameDirector::Tick(float DeltaSeconds)
 
 	UpdateShift(DeltaSeconds);
 	// a story mission in hand (ANHMissions) has the job card; the first day's own steps wait for it
-	if (const ANHMissions* Story = ANHMissions::Get(this); !Story || !Story->IsActive() || Story->ObjectiveType() == TEXT("firstday"))
+	// (and on a new game he waits for mission 1's own opening: the player starts beside him, and would be spoken to first)
+	if (const ANHMissions* Story = ANHMissions::Get(this); !Story || (!Story->IsActive() && !Story->AboutToOpen()) || Story->ObjectiveType() == TEXT("firstday"))
 	{
 		UpdateFirstDay(DeltaSeconds);
 	}

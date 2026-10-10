@@ -69,12 +69,20 @@ step "the disk image"
 mkdir "$WORK/dmgroot"
 cp -cR "$APP" "$WORK/dmgroot/Naija Hustle.app"
 ln -s /Applications "$WORK/dmgroot/Applications"
+# The seal has come out broken once ("file modified: pakchunk0-Mac.ucas": the pak rewritten after the app was signed).
+# It is signed to run locally anyway, so it is signed again here, and has to verify after that.
+if ! codesign --verify --deep --strict "$WORK/dmgroot/Naija Hustle.app" 2>/dev/null; then
+  echo "== the app's signature did not verify: signing it again"
+  codesign --force --deep --sign - "$WORK/dmgroot/Naija Hustle.app" 2>&1 | tail -1
+fi
 codesign --verify --deep --strict "$WORK/dmgroot/Naija Hustle.app"
 hdiutil create -volname "Naija Hustle" -srcfolder "$WORK/dmgroot" -fs HFS+ -format UDZO -ov "$WORK/$DMG" 2>&1 | grep -v WARNING | tail -1
 hdiutil verify "$WORK/$DMG" 2>&1 | tail -1
 
 step "replace the old image"
 cp "$WORK/$DMG" "$OUT/$DMG"
+# and a copy straight on the drive, beside the work image, where it can be read without mounting anything
+[[ -d "$HOME/LumiTB_mnt/NaijaHustle-build" ]] && cp "$WORK/$DMG" "$HOME/LumiTB_mnt/NaijaHustle-build/$DMG" && echo "== copied to ~/LumiTB_mnt/NaijaHustle-build/$DMG"
 ls -lh "$OUT/$DMG"
 du -sh "$APP" | sed 's/^/app: /'
 echo "== done: $OUT/$DMG"

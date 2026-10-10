@@ -75,6 +75,8 @@ public:
 	 * Mission 1 starts by itself on a new game.
 	 */
 	FName Next() const;
+	/** Mission 1 is about to begin by itself (a new game, a moment after the level starts): Baba Driver holds his talk until it has */
+	bool AboutToOpen() const;
 	bool NextStart(FVector& OutAt, FString& OutTitle) const;
 	/** The missions the Data folder has, in order */
 	const TArray<FName>& Known() const { return Ids; }
@@ -147,7 +149,7 @@ private:
 	TArray<FName> Ids;
 	/** Data/story_places.json: the story's places by id */
 	TMap<FString, TSharedPtr<FJsonObject>> StoryPlaces;
-	float OfferWait = 3.f;
+	float OfferWait = 1.5f;
 	bool bOfferedFirst = false;
 	void Offer(float DeltaSeconds);
 	bool LoadFile(FName MissionId, TSharedPtr<FJsonObject>& Out) const;

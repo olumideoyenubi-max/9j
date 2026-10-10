@@ -86,7 +86,27 @@ Open problems:
 - The estate's rich people (chief, madam) and the story's premium characters (Phase 7) are two versions of one idea; they are not joined up yet.
 - Where the brief and the game differ, beyond the two decisions above: the brief puts switching on Tab, which was the inventory wheel's key; a tap now switches and a hold still opens the wheel. the brief's fixed `r.Streaming.PoolSize=1000` against this project's 800; the brief's fps target at 1080p against the 1280x720 window the tests use. Left as they are until measured.
 
+## Engines, voices and Yoruba (2026-10-10)
+
+Everything here is worked out by the game as it plays; there is still no recorded sound in it but the radio's music.
+
+- **Engines** (`UNHEngineWave`): every vehicle has one while somebody drives it or it is moving within 60 m of the listener. The note follows the revs through the gears and the throttle; five kinds (car, diesel for danfos and trucks, okada, keke, outboard). **Horns** sound (H), lower on a danfo.
+- **Voices** (`NHVoice`): a line is said in a made-up voice, a different one for each of the cast and for each passer-by. It is not speech that can be understood; the words stay on the screen. Yoruba's tone marks are followed: an acute accent is said higher, a grave one lower. Mission scenes, Baba Driver, the conductor's calls, passengers, guards and people in the street are heard as well as read.
+- **Yoruba** (`Data/barks.json`, 52 lines of 11 kinds, Yoruba with its English after it in brackets, and Pidgin): pedestrians greet the player by the hour when passed close by, cry out when frightened, and answer back; guards challenge and wonder aloud; the conductor calls in Yoruba half the time; passengers say thank you. In the missions Iya Tobi, Baba Sule, Shina's boy, the neighbour and a trader speak Yoruba (missions 1, 2, 6, 8 and 12). `Data/characters.json` "languages" says who speaks what.
+- **The Yoruba was written by a non-native speaker from common phrases and has not been read by one.** It should be before anybody else plays it.
+- The engine's font has no single letter for the s with a dot below; it drew as a box, and is now drawn as an s and the dot.
+- **Test:** `Scripts/mac.sh play -NHRun=sounds -NHNoSave` plays the three tones, a scene's line, a greeting, a horn and an engine from idle up, recording what comes out of the speakers; `python3 Plugins/NaijaHustleGame/Scripts/sound_check.py Saved/NHAudio/nh_sounds.wav ~/Library/Logs/MyProject/MyProject.log` measures it. 10 of 10 in the game and 12 of 12 on the recording: every sound is there, the tones come out at 142, 119 and 100 Hz, the engine sits higher (170 to 264 Hz) and 8 dB louder pulling away than idling.
+- **Not checked:** how any of it sounds to a person. Nobody has listened: the levels and pitches are measured, the character is not. The engines of traffic going past, the okada's, keke's and boat's kinds, and the greetings in the real city's crowd were not in the test.
+
 ## Standalone Mac build (2026-10-10)
+
+- **Rebuilt the same evening with everything above and all twelve missions** by `unreal/NaijaHustle/Scripts/package_mac.sh`, which cleans the last cook away, compiles, cooks, stages, writes the image and copies it to both places below. Found and put right on the way:
+  - **Buildings drew in the default grey** in the packaged game ("Missing shader resource"): chunked packaging made a shader library for each of 78 district chunks and packed only chunk 0. `bGenerateChunks` is now off in `Config/DefaultGame.ini`; the labels are kept.
+  - **Mission 1's dawn scene never played** in the city: the player starts beside Baba Driver, who spoke first. He now waits for the mission's own opening.
+  - The app's signature does not verify after packaging (the pak is rewritten after signing); the script signs it again to run locally.
+  - A Shipping build writes no log. A Development one staged from the same cook (`-clientconfig=Development -skipcook`) does, in `~/Library/Containers/com.YourCompany.NaijaHustle/Data/Library/Logs/NaijaHustle/`.
+  - The image is at `project-files/builds/NaijaHustle-mac-arm64.dmg` (on the LumiTB drive, inside the work image) and, straight on the drive, at `NaijaHustle-build/NaijaHustle-mac-arm64.dmg`.
+
 
 - The game now exists as a Mac app in a disk image: `project-files/builds/NaijaHustle-mac-arm64.dmg` (1.2 GB; Shipping, Apple Silicon only, signed to run locally, not notarized). Launched from the mounted image it reached the first mission; it took three to four minutes to get there.
 - Made from `unreal/NaijaHustle` (not MyProject): 8,747 packages cooked, no errors, one `pakchunk0` (the 78 district labels made no chunks of their own).
@@ -96,7 +116,7 @@ Open problems:
   - UnrealBuildTool's own Xcode step ("finalize the .app") fails on this Mac, cause not found. Build with `UE_BUILD_FROM_XCODE=1`, run that `xcodebuild` step by hand, then `BuildCookRun` without `-build`.
   - The cook writes into Unreal's Zen storage folder on the internal disk and stops with "Insufficient Storage (507)" under 2 GB free. That folder was linked to the drive for the cook and put back afterwards.
   - `-CookOutputDir` has to end in `Mac`.
-- Seen in the packaged game and not looked into: five wanted stars from the first frame; in one launch the camera sat low under the player during the opening talk.
+- (Five white stars on the screen are five empty outlines: no wanted stars. Read wrongly as five stars at first.)
 - `docs/STORAGE.md` still says no packaged build exists; its chunk sizes are still the uncooked ones.
 
 ## Real streets in twelve districts (2026-10-10)

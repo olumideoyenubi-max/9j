@@ -1437,6 +1437,17 @@ void ANHPlayerController::PlayerTick(float DeltaTime)
 		GetPawn()->AddMovementInput(ActionWalk); // -NHActionTest walking
 	}
 	UpdateStreaming();
+	// The packaged game came up looking straight down at the player's head, every time: the mouse is captured as the
+	// window opens, and what it reports in that first moment is a jump, not a look. For the first three seconds the
+	// view is held where a game should begin, a little above level behind the player.
+	if (SinceBegin < 3.f)
+	{
+		SinceBegin += DeltaTime;
+		if (const APawn* Me = GetPawn(); Me && !bLookShotActive)
+		{
+			SetControlRotation(FRotator(-10.f, Me->GetActorRotation().Yaw, 0.f));
+		}
+	}
 	if (bTravelling)
 	{
 		TravelT += DeltaTime;
