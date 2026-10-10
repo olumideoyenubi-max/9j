@@ -10,6 +10,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Gameplay/NHEstate.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Gameplay/NHLeads.h"
 #include "Gameplay/NHPerson.h"
 #include "Kismet/GameplayStatics.h"
 #include "Lighting/NHLightingRig.h"
@@ -639,6 +640,20 @@ void ANHPhone::Build()
 			R.Badge = FString(Name).Left(1);
 			R.BadgeColor = Color;
 		};
+		// the other lead, one press away (the same as tapping Tab)
+		if (const ANHLeads* Leads = ANHLeads::Get(this); Leads && Leads->Members().Num() > 1 && Hustle)
+		{
+			const FName Other = Leads->Current() == TEXT("tunde") ? FName(TEXT("amaka")) : FName(TEXT("tunde"));
+			const ANHLeads::FMember* Who = Hustle->Persona.IsNone() ? Leads->Find(Other) : Leads->Find(Leads->Current());
+			App(TEXT("Switch"), Who ? (Leads->IsLocked() ? TEXT("Not during this job") : FString::Printf(TEXT("Be %s"), *Who->Name)) : FString(), Who ? Who->Colour : FLinearColor::Gray, [this]()
+			{
+				bOpen = false;
+				if (ANHLeads* L = ANHLeads::Get(this))
+				{
+					L->Switch();
+				}
+			});
+		}
 		App(TEXT("Gist"), Unread ? FString::Printf(TEXT("%d unread"), Unread) : TEXT("Chats"), FLinearColor(0.1f, 0.55f, 0.35f), [this]() { Go(EPage::Gist); });
 		App(TEXT("KoboPay"), Hustle ? UNHHustleSubsystem::Naira(Hustle->Cash) : FString(), FLinearColor(0.1f, 0.35f, 0.75f), [this]() { Go(EPage::Kobo); });
 		App(TEXT("Yarns"), UnseenPosts ? FString::Printf(TEXT("%d new"), UnseenPosts) : TEXT("What Lagos is saying"), FLinearColor(0.1f, 0.6f, 0.7f), [this]() { UnseenPosts = 0; Go(EPage::Yarns); });

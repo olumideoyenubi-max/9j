@@ -1,4 +1,5 @@
 #include "Vehicles/NHVehicle.h"
+#include "Materials/MaterialInterface.h"
 
 #include "Components/SkeletalMeshComponent.h"
 #include "Animation/AnimSequence.h"
@@ -237,6 +238,22 @@ void ANHVehicle::BuildBody()
 		Wheel(-L * 0.5f + 42.f, -W * 0.5f + 14.f, 26.f, 16.f);
 		Wheel(-L * 0.5f + 42.f, W * 0.5f - 14.f, 26.f, 16.f);
 		Seated(FVector(L * 0.1f, 0, 60.f), 0.95f);
+	}
+	else if (Spec.bBoat)
+	{
+		// a speedboat: hull, pointed bow, screen, bench and an outboard. No wheels to see; unseen hubs keep the chassis code fed.
+		Height = 110.f;
+		Piece(ENHShape::Box, FVector(-L * 0.08f, 0, 38.f), FVector(L * 0.78f, W, 56.f), PaintS);
+		Piece(ENHShape::Cone, FVector(L * 0.42f, 0, 38.f), FVector(W * 0.98f, W * 0.98f, L * 0.26f), PaintS, FRotator(-90.f, 0.f, 0.f));
+		Piece(ENHShape::Box, FVector(-L * 0.08f, 0, 70.f), FVector(L * 0.7f, W - 36.f, 10.f), FNHSurface(FLinearColor(0.75f, 0.72f, 0.62f), 0.8f)); // deck
+		Piece(ENHShape::Box, FVector(L * 0.14f, 0, 96.f), FVector(8.f, W - 60.f, 44.f), Glass, FRotator(-22.f, 0.f, 0.f));                         // screen
+		Piece(ENHShape::Box, FVector(-L * 0.2f, 0, 86.f), FVector(46.f, W - 70.f, 22.f), Black);                                                 // bench
+		Piece(ENHShape::Box, FVector(-L * 0.5f + 6.f, 0, 62.f), FVector(34.f, 40.f, 78.f), Black);                                               // outboard
+		for (int32 i = 0; i < 4; ++i)
+		{
+			Wheels.Add(NHShapes::AddPivot(this, Body, FVector(i < 2 ? 0.31f * L : -0.31f * L, (i % 2 ? 0.5f : -0.5f) * (W - 50.f), 30.f)));
+		}
+		Seated(FVector(L * 0.02f, 0, 70.f), 0.95f);
 	}
 	else if (Spec.bBike)
 	{
@@ -799,6 +816,12 @@ void ANHVehicle::Drive(float DeltaSeconds)
 	const float Slid = Dynamics->StepTraction(DeltaSeconds, Speed, FMath::DegreesToRadians(TurnRate), bHandbrake && bDriven);
 	const FVector From = GetActorLocation(), Delta = Rot.Vector() * Speed * DeltaSeconds + FRotationMatrix(Rot).GetUnitAxis(EAxis::Y) * Slid;
 	FVector To = From + Delta;
+	// a boat runs aground at the water's edge: it stops there and can be backed off
+	if (Spec.bBoat && FMath::Abs(Speed) > 1.f && !Afloat(To + Rot.Vector() * Spec.Length * 0.4f * FMath::Sign(Speed)))
+	{
+		Speed = 0.f;
+		return;
+	}
 	// The body follows the ground under its axles: nose up on a ramp, down on the far side. Kept level, the front
 	// of the collision box dug into any slope steeper than about one in ten and the vehicle battered itself to a stop.
 	const float Axle = Spec.Length * 0.31f;
@@ -922,4 +945,22 @@ void ANHVehicle::SetStreamingRadius(bool bOn, float Radius)
 	Streaming->Shapes.SetNum(1);
 	Streaming->Shapes[0] = Shape;
 	Streaming->EnableStreamingSource();
+}
+
+bool ANHVehicle::Afloat(const FVector& At) const
+{
+	const UNHGameData* Data = UNHGameData::Get(this);
+	if (Data && !Data->bRealCity)
+	{
+		return Data->TileAt(At) == TEXT('W');
+	}
+	// the real city: whatever is under the boat is water if its material or its piece is named for it
+	FHitResult Hit;
+	FCollisionQueryParams Q(SCENE_QUERY_STAT(NHVehicleWater), false, this);
+	if (!GetWorld()->LineTraceSingleByObjectType(Hit, FVector(At.X, At.Y, At.Z + 300.f), FVector(At.X, At.Y, At.Z - 3000.f), FCollisionObjectQueryParams(ECC_WorldStatic), Q) || !Hit.GetComponent())
+	{
+		return false;
+	}
+	const UMaterialInterface* Material = Hit.GetComponent()->GetMaterial(0);
+	return (Material && Material->GetName().Contains(TEXT("Water"))) || Hit.GetComponent()->GetName().Contains(TEXT("Water")) || (Hit.GetActor() && Hit.GetActor()->GetName().Contains(TEXT("Water")));
 }

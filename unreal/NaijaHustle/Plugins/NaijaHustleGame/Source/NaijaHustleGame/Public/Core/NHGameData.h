@@ -47,6 +47,8 @@ struct FNHVehicleSpec
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Turn = 2.4f;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Hp = 100.f;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") bool bBike = false;
+	/** A boat: it goes only where there is water under it (unreal_vehicles.json "boat") */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") bool bBoat = false;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FLinearColor> Colors;
 	/** Which blockout shape a car gets: sedan, suv or sports (empty: by type name) */
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName Body;

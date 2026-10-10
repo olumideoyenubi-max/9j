@@ -7,6 +7,7 @@
 #include "Camera/CameraComponent.h"
 #include "Gameplay/NHInventory.h"
 #include "Gameplay/NHLeads.h"
+#include "Gameplay/NHMissions.h"
 #include "Misc/Paths.h"
 #include "UnrealClient.h"
 #include "Audio/NHAudioSubsystem.h"
@@ -70,7 +71,7 @@ void ANHPlayerController::BeginPlay()
 		{
 			if (UNHDebugPlay* Play = DebugPlay(); Play && !Play->IsRunning())
 			{
-				Run == TEXT("selftest") ? Play->SelfTest(bQuitAfter) : Run == TEXT("leads") ? Play->Leads(bQuitAfter) : Play->Autoplay(bQuitAfter);
+				Run == TEXT("selftest") ? Play->SelfTest(bQuitAfter) : Run == TEXT("leads") ? Play->Leads(bQuitAfter) : Run == TEXT("systems") ? Play->Systems(bQuitAfter) : Play->Autoplay(bQuitAfter);
 			}
 		}), 4.f, false);
 	}
@@ -719,6 +720,15 @@ bool ANHPlayerController::LeaveVehicle(bool bForce)
 
 void ANHPlayerController::OnInteract()
 {
+	// F in a story mission's talk: the rest of the scene is skipped
+	if (ANHGameDirector* Talk = ANHGameDirector::Get(this); Talk && Talk->Dialogue.bOpen && ANHMissions::Get(this) && ANHMissions::Get(this)->IsActive())
+	{
+		for (int32 Guard = 0; Guard < 16 && Talk->Dialogue.bOpen; ++Guard)
+		{
+			Talk->OnAction(GetPawn());
+		}
+		return;
+	}
 	if (ANHGameDirector* Dir = ANHGameDirector::Get(this); Dir && Dir->IsBusy())
 	{
 		return;
@@ -892,6 +902,50 @@ void ANHPlayerController::OnAbility()
 	}
 }
 
+void ANHPlayerController::NHMission(const FString& Id)
+{
+	if (ANHMissions* Story = ANHMissions::Get(this))
+	{
+		if (Id.IsEmpty())
+		{
+			FString Known;
+			for (const FName& Have : Story->Known())
+			{
+				Known += Have.ToString() + TEXT(" ");
+			}
+			UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: missions: %s"), *Known);
+		}
+		else
+		{
+			Story->Start(FName(*Id));
+		}
+	}
+}
+
+void ANHPlayerController::NHObjective()
+{
+	if (ANHMissions* Story = ANHMissions::Get(this))
+	{
+		Story->SkipObjective();
+	}
+}
+
+void ANHPlayerController::NHMissionAbort()
+{
+	if (ANHMissions* Story = ANHMissions::Get(this))
+	{
+		Story->Abort(TEXT("console"));
+	}
+}
+
+void ANHPlayerController::NHCheckpoint()
+{
+	if (ANHMissions* Story = ANHMissions::Get(this))
+	{
+		Story->RestartFromCheckpoint();
+	}
+}
+
 void ANHPlayerController::NHSwitch(const FString& Who)
 {
 	if (ANHLeads* Leads = ANHLeads::Get(this))
@@ -968,6 +1022,10 @@ void ANHPlayerController::NHPlaceUse(int32 Line)
 
 void ANHPlayerController::OnAction()
 {
+	if (ANHMissions* Story = ANHMissions::Get(this); Story && Story->OnAction(GetPawn()))
+	{
+		return; // a guard taken down from behind
+	}
 	if (ANHEstate* Estate = ANHEstate::Get(this); Estate && Estate->Interact(GetPawn()))
 	{
 		return; // a place's board, door, counter or pumps
@@ -996,6 +1054,10 @@ FString ANHPlayerController::Prompt() const
 	if (Dir && Dir->IsBusy())
 	{
 		return FString();
+	}
+	if (const ANHMissions* Story = ANHMissions::Get(this); Story && !Story->ActionPrompt(GetPawn()).IsEmpty())
+	{
+		return Story->ActionPrompt(GetPawn());
 	}
 	const ANHEstate* Estate = ANHEstate::Get(this);
 	const FString AtPlace = Estate ? Estate->Prompt(GetPawn()) : FString();

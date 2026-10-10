@@ -16,7 +16,9 @@
 #include "GameFramework/Pawn.h"
 #include "GameFramework/PlayerController.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Gameplay/NHGuard.h"
 #include "Gameplay/NHLeads.h"
+#include "Gameplay/NHMissions.h"
 #include "NaijaHustleGame.h"
 #include "Phone/NHPhone.h"
 #include "Player/NHPlayerController.h"
@@ -344,6 +346,30 @@ void ANHHUD::DrawHUD()
 		{
 			Panel(0.f, VH * 0.76f, VW, 84.f * S, FLinearColor(0.f, 0.f, 0.f, 0.7f));
 			Text(Lead.SwitchTo, VW * 0.5f, VH * 0.76f + 24.f * S, Ink, Large, 1.5f, true);
+		}
+	}
+
+	// ---- a story mission's guards: a bar over each head that fills as it notices you (white, yellow when it comes to look, red when it gives chase)
+	if (const ANHMissions* Story = ANHMissions::Get(this); Story && Story->IsActive() && Screen == EScreen::None)
+	{
+		for (const ANHGuard* Guard : Story->Guards())
+		{
+			if (!IsValid(Guard) || Guard->IsDown() || (Guard->Awareness() < 0.02f && !Guard->IsAlert()))
+			{
+				continue;
+			}
+			const FVector At = Canvas->Project(Guard->GetActorLocation() + FVector(0.f, 0.f, 215.f));
+			if (At.Z > 0.f && At.X > 0.f && At.X < VW && At.Y > 0.f && At.Y < VH)
+			{
+				const float W = 46.f * S, H = 6.f * S;
+				const FLinearColor Fill = Guard->IsAlert() ? Bad : Guard->GetState() == ENHGuardState::Investigate ? Yellow : Ink;
+				DrawRect(FLinearColor(0.f, 0.f, 0.f, 0.6f), At.X - W * 0.5f - 1.f, At.Y - 1.f, W + 2.f, H + 2.f);
+				DrawRect(Fill, At.X - W * 0.5f, At.Y, W * (Guard->IsAlert() ? 1.f : Guard->Awareness()), H);
+			}
+		}
+		if (!Story->Disguise.IsNone())
+		{
+			Text(FString::Printf(TEXT("Dressed as: %s"), *Story->Disguise.ToString().Replace(TEXT("_"), TEXT(" "))), Pad, VH * 0.62f - 30.f * S, Yellow, Medium, 0.9f);
 		}
 	}
 

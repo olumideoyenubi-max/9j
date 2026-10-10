@@ -225,6 +225,22 @@
    "colors": [
     "#f2c400"
    ]
+  },
+  "speedboat": {
+   "name": "Lagoon Speedboat",
+   "body": "boat",
+   "boat": true,
+   "len": 620,
+   "wid": 230,
+   "max": 2400,
+   "acc": 1700,
+   "turn": 1.6,
+   "hp": 90,
+   "colors": [
+    "#f2f0ea",
+    "#14213d",
+    "#c1121f"
+   ]
   }
  },
  "parked": [

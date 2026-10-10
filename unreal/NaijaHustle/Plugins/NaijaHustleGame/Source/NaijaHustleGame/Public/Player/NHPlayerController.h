@@ -59,6 +59,11 @@ public:
 	void NHTime(float Hour);
 	/** What you carry, in the log */
 	UFUNCTION(Exec) void NHBag();
+	/** The story's missions (Data/missions): NHMission m02 starts one, NHObjective passes the objective in hand, NHMissionAbort gives it up, NHCheckpoint goes back to the last checkpoint */
+	UFUNCTION(Exec) void NHMission(const FString& Id);
+	UFUNCTION(Exec) void NHObjective();
+	UFUNCTION(Exec) void NHMissionAbort();
+	UFUNCTION(Exec) void NHCheckpoint();
 	/** The story's cast: NHSwitch goes to the other lead, NHSwitch amaka to one by id (Tab does the first). NHAbility is the Z key. */
 	UFUNCTION(Exec) void NHSwitch(const FString& Who);
 	UFUNCTION(Exec) void NHAbility();

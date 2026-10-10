@@ -1,0 +1,259 @@
+{
+ "id": "m00_systems",
+ "number": 0,
+ "kind": "test",
+ "title": "Systems Check",
+ "playAs": "tunde",
+ "brief": "A test job that uses every piece of the mission runner once. Not part of the story.",
+ "standout": "Every system, once.",
+ "lockSwitch": true,
+ "nightShift": true,
+ "nightShiftAs": 2,
+ "rewards": {
+  "cred": 5,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "talk",
+   "text": "Hear the brief",
+   "sub": "E for the next line, F to skip",
+   "say": {
+    "speaker": "Baba Sule",
+    "lines": [
+     "Tunde. Today we check say everything dey work.",
+     "Follow the road. No rush."
+    ]
+   }
+  },
+  {
+   "type": "goto",
+   "text": "Walk down the road",
+   "sub": "To the marker",
+   "at": {
+    "stop": "second",
+    "along": 700,
+    "back": -900
+   },
+   "radius": 220
+  },
+  {
+   "type": "disguise",
+   "text": "Put on the waiter's jacket",
+   "sub": "Walk into the bundle",
+   "at": {
+    "stop": "second",
+    "along": 1100,
+    "back": -900
+   },
+   "outfit": "waiter",
+   "outfitName": "a waiter",
+   "checkpoint": true
+  },
+  {
+   "type": "sneak",
+   "text": "Walk past the doorman",
+   "sub": "He takes waiters at face value. Do not run.",
+   "at": {
+    "stop": "second",
+    "along": 2500,
+    "back": -900
+   },
+   "radius": 220,
+   "failOnAlert": true,
+   "guards": [
+    {
+     "at": {
+      "stop": "second",
+      "along": 1800,
+      "back": -400
+     },
+     "look": {
+      "stop": "second",
+      "along": 1800,
+      "back": 3000
+     },
+     "fooledBy": [
+      "waiter"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "takedown",
+   "text": "Take the lookout down from behind",
+   "sub": "Get behind him and press E",
+   "checkpoint": true,
+   "guards": [
+    {
+     "at": {
+      "stop": "second",
+      "along": 3300,
+      "back": -900
+     },
+     "look": {
+      "stop": "second",
+      "along": 6000,
+      "back": -900
+     },
+     "sight": 1200
+    }
+   ]
+  },
+  {
+   "type": "defeat",
+   "text": "Deal with the collector",
+   "sub": "T to hit",
+   "guards": [
+    {
+     "at": {
+      "stop": "second",
+      "along": 4000,
+      "back": -900
+     },
+     "look": {
+      "stop": "second",
+      "along": 0,
+      "back": -900
+     },
+     "health": 40,
+     "sight": 1500
+    }
+   ]
+  },
+  {
+   "type": "choose",
+   "text": "The collector's bag",
+   "title": "THE BAG",
+   "lines": [
+    "There is money in the collector's bag."
+   ],
+   "options": [
+    {
+     "text": "Leave it for its owners",
+     "integrity": 5,
+     "flags": {
+      "test_bag": 1
+     },
+     "toast": "You left it."
+    },
+    {
+     "text": "Keep it",
+     "integrity": -5,
+     "cash": 20000,
+     "flags": {
+      "test_bag": 2
+     }
+    }
+   ]
+  },
+  {
+   "type": "plan",
+   "text": "Plan the next move",
+   "steps": [
+    {
+     "title": "Who drives?",
+     "flag": "plan_driver",
+     "options": [
+      {
+       "text": "Baba Sule",
+       "value": 1
+      },
+      {
+       "text": "Chidi",
+       "value": 2
+      }
+     ]
+    },
+    {
+     "title": "How do we go in?",
+     "flag": "plan_quiet",
+     "options": [
+      {
+       "text": "Quiet",
+       "value": 1
+      },
+      {
+       "text": "Loud",
+       "value": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "switch",
+   "text": "Over to Amaka",
+   "to": "amaka"
+  },
+  {
+   "type": "unlock",
+   "text": "Unlock the camera",
+   "sub": "Z when the marker is on it",
+   "at": {
+    "player": [
+     800,
+     0
+    ]
+   },
+   "kind": "camera",
+   "checkpoint": true
+  },
+  {
+   "type": "collect",
+   "text": "Pick up the three phones",
+   "sub": "Walk into them",
+   "at": {
+    "player": [
+     500,
+     0
+    ]
+   },
+   "count": 3
+  },
+  {
+   "type": "loseheat",
+   "text": "Lose the star",
+   "sub": "Stay out of trouble",
+   "stars": 0.6
+  },
+  {
+   "type": "wait",
+   "text": "Hold on",
+   "sub": "Keep your head down",
+   "seconds": 3
+  },
+  {
+   "type": "enter",
+   "text": "Get in the speedboat",
+   "sub": "F to get in",
+   "vehicle": "speedboat",
+   "spawn": true,
+   "at": {
+    "xy": [
+     22000,
+     1000
+    ]
+   },
+   "yaw": 0
+  },
+  {
+   "type": "goto",
+   "text": "Cross the lagoon",
+   "sub": "To the marker",
+   "at": {
+    "xy": [
+     24400,
+     1000
+    ]
+   },
+   "radius": 450,
+   "onDone": {
+    "flags": {
+     "test_done": 1
+    }
+   }
+  }
+ ]
+}

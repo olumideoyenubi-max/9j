@@ -95,6 +95,9 @@ namespace NHJson
 		bool bBike = false;
 		J->TryGetBoolField(TEXT("bike"), bBike);
 		S.bBike = bBike;
+		bool bBoat = false;
+		J->TryGetBoolField(TEXT("boat"), bBoat);
+		S.bBoat = bBoat;
 		for (const FString& C : Strings(J, TEXT("colors")))
 		{
 			S.Colors.Add(Color(C));

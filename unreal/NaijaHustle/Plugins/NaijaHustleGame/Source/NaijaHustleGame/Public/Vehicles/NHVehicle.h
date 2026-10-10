@@ -65,6 +65,8 @@ public:
 	/** Held: it stands still whatever the driver presses (Baba Driver counting the money) */
 	void SetHeld(bool bOn) { bHeld = bOn; if (bOn) { Speed = 0.f; } }
 	bool IsHeld() const { return bHeld; }
+	/** Is there water at that place for a boat to float on: the small city's lagoon cells, the real city's water surface */
+	bool Afloat(const FVector& At) const;
 	/** Set by ANHLeads while Hustle Rush lasts: the engine's pull and the top speed, times this (1: as made) */
 	float PullBoost = 1.f, TopBoost = 1.f;
 	/**

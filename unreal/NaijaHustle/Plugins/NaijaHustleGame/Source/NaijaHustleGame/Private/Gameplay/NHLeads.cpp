@@ -11,6 +11,7 @@
 #include "EngineUtils.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Gameplay/NHMissions.h"
 #include "Gameplay/NHPerson.h"
 #include "Kismet/GameplayStatics.h"
 #include "Misc/FileHelper.h"
@@ -659,6 +660,15 @@ void ANHLeads::FindTarget()
 	}
 	float Best = UnlockRange;
 	const FVector Here = Me->GetActorLocation();
+	// the one a story mission is asking for comes before anything else in reach
+	if (const ANHMissions* Story = ANHMissions::Get(this))
+	{
+		if (ANHHackPoint* Wanted = Story->UnlockTarget(); Wanted && !Wanted->IsHacked() && FVector::Dist(Here, Wanted->GetActorLocation()) < UnlockRange)
+		{
+			Target = Wanted;
+			return;
+		}
+	}
 	for (ANHHackPoint* Point : HackPoints)
 	{
 		if (const float D = IsValid(Point) && !Point->IsHacked() ? FVector::Dist(Here, Point->GetActorLocation()) : UnlockRange; D < Best)

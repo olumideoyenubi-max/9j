@@ -384,6 +384,10 @@
    "lightRadius": 6000
   }
  },
+ "economy": {
+  "missionPayBase": 1000000,
+  "missionPayGrowth": 0.135
+ },
  "missions": {
   "lag_01": {
    "title": "First Day on the Danfo",

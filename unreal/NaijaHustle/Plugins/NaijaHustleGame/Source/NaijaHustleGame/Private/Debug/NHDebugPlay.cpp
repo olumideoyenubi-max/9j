@@ -11,7 +11,9 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/HUD.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Gameplay/NHGuard.h"
 #include "Gameplay/NHLeads.h"
+#include "Gameplay/NHMissions.h"
 #include "Gameplay/NHPerson.h"
 #include "Kismet/GameplayStatics.h"
 #include "Lighting/NHLightingRig.h"
@@ -1527,7 +1529,7 @@ void UNHDebugPlay::Leads(bool bQuitWhenDone)
 	const auto L = [this]() { return ANHLeads::Get(PC); };
 	// pictures with the HUD on, in Saved/Screenshots/NH/phase1/, and the frame rate over the whole run (Saved/Profiling/FPSChartStats)
 	const auto Shot = [](const TCHAR* Name) { FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("Screenshots/NH/phase1") / (FString(Name) + TEXT(".png")), true, false); };
-	Do(TEXT("start counting frames"), [this]() { PC->ConsoleCommand(TEXT("startfpschart")); });
+	Do(TEXT("start counting frames"), [this]() { PC->NHTime(9.5f); PC->ConsoleCommand(TEXT("startfpschart")); });
 
 	// the save may be in the middle of somebody rich's life (ANHEstate): the test is of the two leads
 	Do(TEXT("back from somebody rich, if the save is playing one"), [this, L]()
@@ -1681,6 +1683,387 @@ void UNHDebugPlay::Leads(bool bQuitWhenDone)
 		}
 		Hustle()->ClearHeat();
 		Note(FString::Printf(TEXT("%d switches made; %s"), Seen->Switches, *NHPlay::N(Hustle()->Cash)));
+	});
+	Until(TEXT("the last picture is saved"), [this](float Dt) { Pace += Dt; return Pace > 1.f; }, 5.f);
+	Do(TEXT("stop counting frames"), [this]() { PC->ConsoleCommand(TEXT("stopfpschart")); });
+}
+
+// ---------------------------------------------------------------------------------------------------- the mission runner
+void UNHDebugPlay::Systems(bool bQuitWhenDone)
+{
+	Begin(TEXT("systems"), bQuitWhenDone);
+	struct FSeen
+	{
+		int32 Cash = 0, Integrity = 0, Restarts = 0;
+		float Clock = 0.f;
+		FVector At = FVector::ZeroVector;
+		bool bAlerted = false;
+		float Punch = 0.f;
+	};
+	const TSharedRef<FSeen> Seen = MakeShared<FSeen>();
+	const auto M = [this]() { return ANHMissions::Get(PC); };
+	const auto L = [this]() { return ANHLeads::Get(PC); };
+	const auto Shot = [](const TCHAR* Name) { FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("Screenshots/NH/phase2") / (FString(Name) + TEXT(".png")), true, false); };
+	// walking, not running: a run is a noise, and gives a disguise away
+	const auto Walk = [this](const FVector& To, float Reach)
+	{
+		ANHCharacter* C = Cast<ANHCharacter>(PC->GetPawn());
+		if (!C)
+		{
+			return false;
+		}
+		C->SetSprinting(false);
+		const FVector Way = (To - C->GetActorLocation()) * FVector(1.f, 1.f, 0.f);
+		if (Way.Size() < Reach)
+		{
+			return true;
+		}
+		C->AddMovementInput(Way.GetSafeNormal(), 1.f);
+		return false;
+	};
+	const auto Objective = [this, M](int32 Index, const TCHAR* Type, float Timeout)
+	{
+		Until(FString::Printf(TEXT("objective %d begins (%s)"), Index + 1, Type), [M, Index, Type](float) { return M()->IsActive() && M()->ObjectiveIndex() == Index && M()->ObjectiveType() == Type; }, Timeout);
+	};
+	const auto PanelIs = [this](const TCHAR* Starts) { return Dir()->Panel.bOpen && Dir()->Panel.Title.StartsWith(Starts); };
+
+	Do(TEXT("back from somebody rich, if the save is playing one"), [this, L]() { if (L() && Hustle() && !Hustle()->Persona.IsNone()) { L()->Switch(NAME_None, true); } });
+	Until(TEXT("back as the lead"), [this, L](float) { return !L() || (!L()->IsSwitching() && Hustle()->Persona.IsNone()); }, 25.f);
+	Do(TEXT("be Tunde, on the road by the Anthony stop"), [this, L]() { if (L() && L()->Current() != TEXT("tunde")) { L()->Switch(TEXT("tunde"), true); } });
+	Until(TEXT("Tunde"), [L](float) { return !L() || !L()->IsSwitching(); }, 25.f);
+	Do(TEXT("the start"), [this, Seen, M]()
+	{
+		const UNHGameData* Data = UNHGameData::Get(PC);
+		const FNHBusStop* Stop = Data ? Data->Stops.Find(TEXT("second")) : nullptr;
+		if (!Check(TEXT("the level has the mission runner, both test missions and the Anthony stop"), M() && Stop && M()->Known().Contains(TEXT("m00_systems")) && M()->Known().Contains(TEXT("m00_night")),
+			M() ? FString::Printf(TEXT("%d missions"), M()->Known().Num()) : TEXT("no ANHMissions")))
+		{
+			End(TEXT("nothing to test"));
+			return;
+		}
+		const FVector2D Back = (Stop->Wait - Stop->Kerb).GetSafeNormal(), Along(-Back.Y, Back.X);
+		const FVector2D At = Stop->Wait - Back * 900.f;
+		PC->NHAt(At.X, At.Y);
+		const float Yaw = FMath::RadiansToDegrees(FMath::Atan2(Along.Y, Along.X));
+		PC->GetPawn()->SetActorRotation(FRotator(0.f, Yaw, 0.f));
+		PC->SetControlRotation(FRotator(-10.f, Yaw, 0.f));
+		if (ANHGameDirector* D = Dir(); D && D->Stage == ANHGameDirector::EStage::Talk)
+		{
+			D->Dialogue = ANHGameDirector::FDialogue();
+			D->Stage = ANHGameDirector::EStage::Meet;
+		}
+		Hustle()->ClearHeat();
+		PC->NHTime(9.5f); // by day, so the pictures show something (nothing is saved: the run is made with -NHNoSave)
+		PC->ConsoleCommand(TEXT("startfpschart"));
+		// the night shift's pay, against the table in docs/STORY.md
+		int64 Total = 0;
+		for (int32 N = 2; N <= 12; ++N)
+		{
+			Total += M()->PayFor(N);
+		}
+		Check(TEXT("the night shift pays nothing extra for mission 1, N1,000,000 for mission 2 and N3,547,796 for mission 12"), M()->PayFor(1) == 0 && M()->PayFor(2) == 1000000 && M()->PayFor(12) == 3547796,
+			FString::Printf(TEXT("%d, %d, %d"), M()->PayFor(1), M()->PayFor(2), M()->PayFor(12)));
+		Check(TEXT("missions 2 to 12 pay N22,420,357 between them"), Total == 22420357, FString::Printf(TEXT("%lld"), Total));
+		Seen->Cash = Hustle()->Cash;
+		Seen->Integrity = Hustle()->Integrity;
+	});
+
+	// ---- the job card and the talk
+	Do(TEXT("start the test mission"), [this, M, PanelIs]()
+	{
+		Check(TEXT("it starts with a job card"), M()->Start(TEXT("m00_systems")) && M()->IsActive() && PanelIs(TEXT("SYSTEMS CHECK")), Dir()->Panel.Title);
+		Check(TEXT("a second mission cannot start while one runs"), !M()->Start(TEXT("m00_night")));
+		PC->Choose(0);
+	});
+	Objective(0, TEXT("talk"), 25.f);
+	Do(TEXT("the brief: two lines, E for each"), [this, L]()
+	{
+		Check(TEXT("the scene's lines are on the screen"), Dir()->Dialogue.bOpen && Dir()->Dialogue.Lines.Num() == 2, Dir()->Dialogue.Speaker);
+		Check(TEXT("switching lead is locked for the length of the job"), L()->IsLocked() && !L()->Switch());
+		PC->OnAction();
+		PC->OnAction();
+	});
+
+	// ---- goto, disguise, sneak
+	Objective(1, TEXT("goto"), 10.f);
+	Until(TEXT("walk to the marker"), [M, Walk](float) { FVector To; return !M()->Where(To) || M()->ObjectiveIndex() != 1 || Walk(To, 100.f); }, 30.f);
+	Objective(2, TEXT("disguise"), 10.f);
+	Until(TEXT("walk into the bundle"), [M, Walk](float) { FVector To; return M()->ObjectiveIndex() != 2 || (M()->Where(To) && Walk(To, 60.f)); }, 30.f);
+	Objective(3, TEXT("sneak"), 10.f);
+	Do(TEXT("dressed as a waiter, with a doorman ahead"), [this, M, Shot]()
+	{
+		Check(TEXT("the disguise is on"), M()->Disguise == TEXT("waiter"), M()->Disguise.ToString());
+		Check(TEXT("the doorman stands at his post"), M()->Guards().Num() == 1 && M()->Guards()[0] && M()->Guards()[0]->GetState() == ENHGuardState::Patrol);
+	});
+	Until(TEXT("walk past the doorman"), [this, M, Walk, Seen, Shot](float)
+	{
+		if (M()->ObjectiveIndex() != 3)
+		{
+			return true;
+		}
+		const ANHGuard* Doorman = M()->Guards().Num() ? M()->Guards()[0].Get() : nullptr;
+		if (Doorman && !Seen->bAlerted && FVector::Dist2D(PC->GetPawn()->GetActorLocation(), Doorman->GetActorLocation()) < 620.f)
+		{
+			Seen->bAlerted = true; // used here as "the picture has been taken"
+			Shot(TEXT("1_waiter_past_the_doorman"));
+		}
+		FVector To;
+		return (M()->Where(To) && Walk(To, 100.f)) || Dir()->Panel.bOpen;
+	}, 40.f);
+	Do(TEXT("past him"), [this, M, PanelIs]()
+	{
+		Check(TEXT("he took the waiter at face value: no failure card, no restart"), !PanelIs(TEXT("JOB FAILED")) && M()->Restarts() == 0);
+	});
+
+	// ---- a checkpoint, a noise, a takedown
+	Objective(4, TEXT("takedown"), 10.f);
+	Do(TEXT("fail on purpose, to see the checkpoint"), [this, M, Seen, PanelIs]()
+	{
+		Seen->Clock = M()->Elapsed();
+		Seen->At = PC->GetPawn()->GetActorLocation();
+		PC->GetPawn()->SetActorLocation(Seen->At + FVector(0.f, 300.f, 0.f));
+		M()->Fail(TEXT("A test of the checkpoint."));
+		Check(TEXT("a failure brings up the card with the checkpoint on it"), PanelIs(TEXT("JOB FAILED")) && Dir()->Panel.Options.Num() == 2, Dir()->Panel.Lines.Num() > 1 ? Dir()->Panel.Lines[1] : FString());
+		PC->Choose(0);
+	});
+	Until(TEXT("back at the checkpoint"), [M](float) { return M()->IsActive() && M()->ObjectiveIndex() == 4 && M()->Guards().Num() == 1; }, 15.f);
+	Do(TEXT("after the restart"), [this, M, Seen]()
+	{
+		Check(TEXT("it is the same objective again, with one restart counted"), M()->ObjectiveType() == TEXT("takedown") && M()->Restarts() == 1);
+		Check(TEXT("the player is back where the checkpoint was"), FVector::Dist2D(PC->GetPawn()->GetActorLocation(), Seen->At) < 60.f, FString::Printf(TEXT("%.0f cm off"), FVector::Dist2D(PC->GetPawn()->GetActorLocation(), Seen->At)));
+		Check(TEXT("the mission's clock kept running"), M()->Elapsed() >= Seen->Clock, FString::Printf(TEXT("%.1f s then, %.1f s now"), Seen->Clock, M()->Elapsed()));
+		Check(TEXT("the disguise put on before the checkpoint is still on"), M()->Disguise == TEXT("waiter"));
+		ANHGuard* Lookout = M()->Guards()[0];
+		Check(TEXT("in front of the lookout, a takedown is not on offer"), !Lookout->CanBeTakenDown(Lookout->GetActorLocation() + Lookout->GetActorForwardVector() * 150.f));
+		// a noise to his side, with the player well out of his sight while he looks about (he turns right round)
+		PC->GetPawn()->SetActorLocation(Seen->At - Lookout->GetActorForwardVector() * 3000.f);
+		Lookout->Hear(Lookout->GetActorLocation() + Lookout->GetActorRightVector() * 450.f, 900.f);
+		Check(TEXT("a noise nearby sends him to look"), Lookout->GetState() == ENHGuardState::Investigate && Lookout->Investigated == 1);
+	});
+	Until(TEXT("he looks about and goes back to his post"), [M](float) { const ANHGuard* G = M()->Guards()[0]; return G->GetState() == ENHGuardState::Patrol && !G->IsWalking(); }, 25.f);
+	Do(TEXT("back to the checkpoint's spot, behind him"), [this, Seen]() { PC->GetPawn()->SetActorLocation(Seen->At); });
+	Until(TEXT("walk up behind him"), [this, M, Walk](float)
+	{
+		const ANHGuard* G = M()->Guards().Num() ? M()->Guards()[0].Get() : nullptr;
+		return !G || G->IsDown() || G->CanBeTakenDown(PC->GetPawn()->GetActorLocation()) || Walk(G->GetActorLocation(), 120.f) || G->IsAlert();
+	}, 30.f);
+	Do(TEXT("take him down (E)"), [this, M]()
+	{
+		ANHGuard* G = M()->Guards()[0];
+		Check(TEXT("behind him and unseen, the prompt offers it"), !G->IsAlert() && M()->ActionPrompt(PC->GetPawn()).Contains(TEXT("Take down")), FString::Printf(TEXT("awareness %.0f%%"), G->Awareness() * 100.f));
+		PC->OnAction();
+		Check(TEXT("he is down"), G->IsDown());
+	});
+
+	// ---- a fight
+	Objective(5, TEXT("defeat"), 10.f);
+	Do(TEXT("the collector"), [Seen]() { Seen->bAlerted = false; Seen->Punch = 0.f; });
+	Until(TEXT("fight the collector with bare hands"), [this, M, Seen, Shot](float Dt)
+	{
+		if (M()->ObjectiveIndex() != 5 || M()->Guards().Num() == 0)
+		{
+			return true;
+		}
+		ANHGuard* G = M()->Guards()[0];
+		ANHCharacter* C = Cast<ANHCharacter>(PC->GetPawn());
+		if (!G || !C || G->IsDown())
+		{
+			return false; // the runner moves on by itself
+		}
+		if (G->IsAlert() && !Seen->bAlerted)
+		{
+			Seen->bAlerted = true;
+			Shot(TEXT("2_the_collector_gives_chase"));
+		}
+		const FVector Way = (G->GetActorLocation() - C->GetActorLocation()) * FVector(1.f, 1.f, 0.f);
+		C->Health = FMath::Max(C->Health, 40.f); // the script is no boxer: the fight is to see blows land both ways, not who wins
+		if (Way.Size() > 95.f)
+		{
+			C->AddMovementInput(Way.GetSafeNormal(), 1.f);
+		}
+		C->SetActorRotation(FRotator(0.f, Way.Rotation().Yaw, 0.f));
+		// T pressed, and let go a few frames later: a fist reaches 1.35 m
+		Seen->Punch -= Dt;
+		if (Seen->Punch <= 0.f && Way.Size() < 130.f)
+		{
+			Seen->Punch = 0.5f;
+			C->SetTrigger(true);
+		}
+		else if (Seen->Punch < 0.35f)
+		{
+			C->SetTrigger(false);
+		}
+		return false;
+	}, 60.f);
+	Do(TEXT("after the fight"), [this, Seen]()
+	{
+		Check(TEXT("facing the player, the collector saw him and came for him"), Seen->bAlerted);
+		if (ANHCharacter* C = Cast<ANHCharacter>(PC->GetPawn()))
+		{
+			C->Health = 100.f;
+		}
+	});
+
+	// ---- a choice and the plan
+	Objective(6, TEXT("choose"), 10.f);
+	Do(TEXT("the bag: leave it (1)"), [this, PanelIs]()
+	{
+		Check(TEXT("the choice card is up with two options"), PanelIs(TEXT("THE BAG")) && Dir()->Panel.Options.Num() == 2);
+		PC->Choose(0);
+	});
+	Objective(7, TEXT("plan"), 10.f);
+	Do(TEXT("the plan, step one: Chidi drives (2)"), [this, Seen, PanelIs]()
+	{
+		Check(TEXT("leaving the bag raised Integrity by 5 and set the flag"), Hustle()->Integrity == FMath::Min(Seen->Integrity + 5, 100) && Hustle()->Flag(TEXT("test_bag")) == 1, FString::Printf(TEXT("%d -> %d"), Seen->Integrity, Hustle()->Integrity));
+		Check(TEXT("the heist board's first card"), PanelIs(TEXT("THE PLAN  1 / 2")), Dir()->Panel.Title);
+		PC->Choose(1);
+	});
+	Do(TEXT("the plan, step two: quiet (1)"), [this, PanelIs]()
+	{
+		Check(TEXT("the heist board's second card"), PanelIs(TEXT("THE PLAN  2 / 2")), Dir()->Panel.Title);
+		PC->Choose(0);
+	});
+
+	// ---- over to Amaka: Unlock, things to pick up, a star to lose, a wait
+	Objective(9, TEXT("unlock"), 30.f);
+	Do(TEXT("as Amaka, with the plan made"), [this, L]()
+	{
+		Check(TEXT("the plan is in the flags"), Hustle()->Flag(TEXT("plan_driver")) == 2 && Hustle()->Flag(TEXT("plan_quiet")) == 1);
+		Check(TEXT("the mission put the player in Amaka's shoes"), L()->Current() == TEXT("amaka"));
+	});
+	Until(TEXT("the marker is on the mission's camera"), [L](float) { return L()->Hud().bTarget; }, 8.f);
+	Do(TEXT("Unlock (Z)"), [this, L, M]() { Check(TEXT("Unlock works on the mission's camera"), L()->UseAbility() && M()->UnlockTarget() == nullptr || L()->LastUnlocked == TEXT("camera"), L()->LastUnlocked.ToString()); });
+	Objective(10, TEXT("collect"), 10.f);
+	Until(TEXT("pick up the three phones"), [this, M, Walk](float)
+	{
+		if (M()->ObjectiveIndex() != 10)
+		{
+			return true;
+		}
+		Hustle()->ClearHeat(); // the fight put stars on; the next objective is to be about its own star
+		for (AActor* Thing : M()->Things())
+		{
+			if (IsValid(Thing))
+			{
+				Walk(Thing->GetActorLocation(), 40.f);
+				break;
+			}
+		}
+		return false;
+	}, 40.f);
+	Objective(11, TEXT("loseheat"), 10.f);
+	Do(TEXT("a star to lose"), [this]() { Check(TEXT("the objective put one star on"), Hustle()->Stars() == 1, FString::Printf(TEXT("%d"), Hustle()->Stars())); });
+	Objective(12, TEXT("wait"), 60.f);
+	Objective(13, TEXT("enter"), 15.f);
+
+	// ---- the speedboat
+	Do(TEXT("to the lagoon, and into the boat (F)"), [this, M]()
+	{
+		ANHVehicle* Boat = M()->MissionVehicle();
+		if (Check(TEXT("a speedboat is waiting on the water"), Boat && Boat->GetSpec().bBoat && Boat->Afloat(Boat->GetActorLocation()), Boat ? Boat->GetSpec().Name : FString()))
+		{
+			Check(TEXT("it would not float on the road"), !Boat->Afloat(FVector(11400.f, 5650.f, Boat->GetActorLocation().Z)));
+			PC->GetPawn()->SetActorLocation(Boat->GetActorLocation() + FVector(0.f, 0.f, 150.f));
+			Check(TEXT("the player gets in"), PC->EnterVehicle(Boat) && PC->GetPawn() == Boat);
+		}
+	});
+	Objective(14, TEXT("goto"), 10.f);
+	Until(TEXT("across the lagoon"), [this, M, Seen, Shot](float)
+	{
+		ANHVehicle* Boat = Cast<ANHVehicle>(PC->GetPawn());
+		FVector To;
+		if (!Boat || !M()->Where(To) || M()->ObjectiveIndex() != 14)
+		{
+			return true;
+		}
+		if (FMath::Abs(Boat->Speed) > 300.f && Seen->Punch < 100.f)
+		{
+			Seen->Punch = 1000.f; // once
+			Shot(TEXT("3_speedboat_on_the_lagoon"));
+		}
+		Drive(Boat, FVector2D(To), 900.f, true);
+		return false;
+	}, 60.f);
+
+	// ---- the end: the reward card, the night shift skipped
+	Until(TEXT("the reward card"), [PanelIs](float) { return PanelIs(TEXT("JOB DONE")); }, 20.f);
+	Do(TEXT("job done"), [this, M, Seen]()
+	{
+		const ANHMissions::FResult& R = M()->Last;
+		FString Each;
+		for (const float T : R.ObjectiveSeconds)
+		{
+			Each += FString::Printf(TEXT("%.0f "), T);
+		}
+		Note(FString::Printf(TEXT("the mission took %.0f s; objectives: %s"), R.Seconds, *Each));
+		Check(TEXT("it is recorded as done, timed objective by objective, with its cred and the flag from the last objective"), R.bDone && R.ObjectiveSeconds.Num() == 15 && R.Cred == 5 && R.Restarts == 1
+			&& Hustle()->IsDone(TEXT("m00_systems")) && Hustle()->Flag(TEXT("test_done")) == 1, FString::Printf(TEXT("%d objectives timed"), R.ObjectiveSeconds.Num()));
+		Check(TEXT("the test mission is inside the length rule's eight minutes"), !R.bTooLong && R.Seconds < 480.f, FString::Printf(TEXT("%.0f s"), R.Seconds));
+		PC->Choose(0);
+	});
+	Do(TEXT("the night shift: skip to the takings (2)"), [this, PanelIs]()
+	{
+		Check(TEXT("the night shift's card offers the drive or the takings"), PanelIs(TEXT("NIGHT SHIFT")) && Dir()->Panel.Options.Num() == 2);
+		PC->Choose(1);
+	});
+	Do(TEXT("the takings"), [this, M, Seen, PanelIs, L]()
+	{
+		Check(TEXT("paid as mission 2: N1,000,000, on top of what was there"), PanelIs(TEXT("NIGHT SHIFT TAKINGS")) && M()->Last.Pay == 1000000 && Hustle()->Cash == Seen->Cash + 1000000, NHPlay::N(Hustle()->Cash));
+		PC->Choose(0);
+		Check(TEXT("the mission is over and switching is free again"), !M()->IsActive() && !L()->IsLocked());
+		Seen->Cash = Hustle()->Cash;
+	});
+
+	// ---- the second test mission: the night shift driven
+	Do(TEXT("out of the boat and back to the road"), [this]()
+	{
+		PC->LeaveVehicle(true);
+		PC->NHAt(11400.f, 6950.f); // on the pavement: Amaka is left standing here, and the night bus comes down the road
+	});
+	Do(TEXT("start the night-shift mission"), [this, M]()
+	{
+		Check(TEXT("it starts"), M()->Start(TEXT("m00_night")));
+		PC->Choose(0);
+	});
+	Objective(0, TEXT("talk"), 30.f);
+	Do(TEXT("his one line"), [this, L]()
+	{
+		Check(TEXT("the job card put the player back in Tunde's shoes"), L()->Current() == TEXT("tunde"));
+		PC->OnAction();
+	});
+	Until(TEXT("the reward card"), [PanelIs](float) { return PanelIs(TEXT("JOB DONE")); }, 15.f);
+	Do(TEXT("on to the night shift, driven (1)"), [this]()
+	{
+		// facing back up the road he walked down: the bus is brought round in front of him, with the road clear ahead of it
+		PC->GetPawn()->SetActorRotation(FRotator(0.f, 0.f, 0.f));
+		PC->Choose(0);
+		PC->Choose(0);
+	});
+	Until(TEXT("the night bus is brought round"), [M](float) { return M()->MissionVehicle() != nullptr; }, 25.f);
+	Do(TEXT("into the night bus (F)"), [this, M]()
+	{
+		ANHVehicle* Bus = M()->MissionVehicle();
+		Check(TEXT("it is a danfo, and Tunde gets in"), Bus && Bus->VehicleType == TEXT("danfo") && PC->EnterVehicle(Bus));
+	});
+	Until(TEXT("drive the night route"), [this, PanelIs](float)
+	{
+		ANHVehicle* Bus = Cast<ANHVehicle>(PC->GetPawn());
+		if (!Bus || PanelIs(TEXT("NIGHT SHIFT TAKINGS")))
+		{
+			return true;
+		}
+		Drive(Bus, FVector2D(Bus->GetActorLocation() + Bus->GetActorForwardVector() * 5000.f), 800.f, false);
+		return false;
+	}, 60.f);
+	Do(TEXT("the takings, driven"), [this, M, Seen, PanelIs]()
+	{
+		if (ANHVehicle* Bus = Cast<ANHVehicle>(PC->GetPawn()))
+		{
+			Bus->SetDriveInput(0.f, 0.f, 0.f);
+		}
+		Check(TEXT("paid as mission 3: N1,135,000"), PanelIs(TEXT("NIGHT SHIFT TAKINGS")) && M()->Last.Pay == 1135000 && Hustle()->Cash == Seen->Cash + 1135000, NHPlay::N(M()->Last.Pay));
+		PC->Choose(0);
+		Check(TEXT("over"), !M()->IsActive());
 	});
 	Until(TEXT("the last picture is saved"), [this](float Dt) { Pace += Dt; return Pace > 1.f; }, 5.f);
 	Do(TEXT("stop counting frames"), [this]() { PC->ConsoleCommand(TEXT("stopfpschart")); });

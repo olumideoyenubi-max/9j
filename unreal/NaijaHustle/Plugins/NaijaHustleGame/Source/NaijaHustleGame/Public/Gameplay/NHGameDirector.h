@@ -79,6 +79,7 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	friend class ANHMissions;
 	float Deadline = -1.f;
 	bool bSlowClock = false;
 	bool bManualLighting = false;

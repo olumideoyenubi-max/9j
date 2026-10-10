@@ -1,0 +1,29 @@
+{
+ "id": "m00_night",
+ "number": 0,
+ "kind": "test",
+ "title": "Night Shift Check",
+ "playAs": "tunde",
+ "brief": "One line, then the night shift driven by hand. Not part of the story.",
+ "lockSwitch": true,
+ "nightShift": true,
+ "nightShiftAs": 3,
+ "rewards": {
+  "cred": 0,
+  "goldKobo": 0,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "talk",
+   "text": "Hear him out",
+   "say": {
+    "speaker": "Baba Sule",
+    "lines": [
+     "Night don reach. Take the bus."
+    ]
+   }
+  }
+ ],
+ "nightRoute": 6000
+}

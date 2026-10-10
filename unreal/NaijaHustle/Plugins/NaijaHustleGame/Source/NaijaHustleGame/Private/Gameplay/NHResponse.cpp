@@ -1,4 +1,5 @@
 #include "Gameplay/NHResponse.h"
+#include "Gameplay/NHMissions.h"
 
 #include "Audio/NHAudioSubsystem.h"
 #include "Core/NHGameData.h"
@@ -192,9 +193,18 @@ void ANHResponse::Tick(float DeltaSeconds)
 		}
 		Act(Units[I], Pawn, DeltaSeconds);
 	}
-	if (const ANHCharacter* Me = Cast<ANHCharacter>(Pawn); Me && Me->Health <= 0.f)
+	if (ANHCharacter* Me = Cast<ANHCharacter>(Pawn); Me && Me->Health <= 0.f)
 	{
-		PlayerDown(Pawn);
+		// in a story mission, going down is the mission's to deal with: back to its checkpoint, nothing taken
+		if (ANHMissions* Story = ANHMissions::Get(this); Story && Story->IsActive())
+		{
+			Me->Health = 1.f;
+			Story->Fail(TEXT("You went down."));
+		}
+		else
+		{
+			PlayerDown(Pawn);
+		}
 	}
 }
 

@@ -1,4 +1,5 @@
 #include "Gameplay/NHGameDirector.h"
+#include "Gameplay/NHMissions.h"
 
 #include "Gameplay/NHResponse.h"
 
@@ -360,7 +361,11 @@ void ANHGameDirector::Tick(float DeltaSeconds)
 	}
 
 	UpdateShift(DeltaSeconds);
-	UpdateFirstDay(DeltaSeconds);
+	// a story mission in hand (ANHMissions) has the job card; the first day's own steps wait for it
+	if (const ANHMissions* Story = ANHMissions::Get(this); !Story || !Story->IsActive())
+	{
+		UpdateFirstDay(DeltaSeconds);
+	}
 	if (!Shift.ChangeQ.IsEmpty() && !Panel.bOpen && !Dialogue.bOpen)
 	{
 		OpenChangePanel();

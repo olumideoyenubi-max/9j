@@ -47,6 +47,8 @@ public:
 	void SelfTest(bool bQuitWhenDone);
 	/** -NHRun=leads: switches between Tunde and Amaka ten times and uses each one's ability once (run it with -NHNoSave) */
 	void Leads(bool bQuitWhenDone);
+	/** -NHRun=systems: plays the two test missions (Data/missions/m00_*.json), which use every piece of the mission runner once (run it with -NHNoSave) */
+	void Systems(bool bQuitWhenDone);
 	void PaintDemo(const FVector& At);
 	/** Saves two pictures of the player from the front: whole body and face */
 	void SkinShots(const FString& Folder);
