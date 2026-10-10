@@ -1,0 +1,140 @@
+{
+ "id": "m06",
+ "number": 6,
+ "act": 2,
+ "title": "Iya Tobi",
+ "playAs": "tunde",
+ "start": {
+  "place": "oshoja_junction"
+ },
+ "brief": "Shina has taken Tunde's mother to force him out. Their car is leaving Oshoja now. Go after it.",
+ "standout": "A car chase out of Oshoja, and your mother at the end of it.",
+ "lockSwitch": true,
+ "rewards": {
+  "cred": 35,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "enter",
+   "text": "Take a car",
+   "sub": "F to get in",
+   "vehicle": "sedan",
+   "spawn": true,
+   "at": {
+    "place": "oshoja_junction",
+    "along": 600,
+    "back": -650
+   },
+   "checkpoint": true,
+   "say": {
+    "speaker": "Oshoja Junction",
+    "lines": [
+     "Neighbour: Tunde! Dem carry your mama! Black car, three men!",
+     "Shina (on the phone): You hold my bag, conductor. I hold your mother.",
+     "Tunde: Baba Sule, which way?",
+     "Baba Sule: Dem dey run go the water. Stilt Town. Drive!"
+    ]
+   }
+  },
+  {
+   "type": "goto",
+   "text": "Chase the kidnappers' car",
+   "sub": "To the waterside before they reach the boats",
+   "at": {
+    "stop": "lagoon"
+   },
+   "radius": 900,
+   "limit": 300,
+   "late": "They reached the boats with her."
+  },
+  {
+   "type": "enter",
+   "text": "Take the speedboat",
+   "sub": "F to get in",
+   "vehicle": "speedboat",
+   "spawn": true,
+   "at": {
+    "xy": [
+     22000,
+     1000
+    ]
+   },
+   "ifWater": true,
+   "checkpoint": true
+  },
+  {
+   "type": "goto",
+   "text": "Cross the water to the hideout",
+   "sub": "To the marker",
+   "at": {
+    "xy": [
+     24400,
+     1000
+    ]
+   },
+   "radius": 450,
+   "ifWater": true
+  },
+  {
+   "type": "defeat",
+   "text": "Storm the hideout",
+   "sub": "Three of Shina's men",
+   "checkpoint": true,
+   "guards": [
+    {
+     "at": {
+      "place": "stilt_town",
+      "along": 600,
+      "back": 100
+     },
+     "look": {
+      "place": "stilt_town",
+      "along": -3000,
+      "back": 100
+     }
+    },
+    {
+     "at": {
+      "place": "stilt_town",
+      "along": 1000,
+      "back": 300
+     },
+     "look": {
+      "place": "stilt_town",
+      "along": -3000,
+      "back": 300
+     },
+     "armed": true
+    },
+    {
+     "at": {
+      "place": "stilt_town",
+      "along": 1300,
+      "back": 0
+     },
+     "look": {
+      "place": "stilt_town",
+      "along": -3000,
+      "back": 0
+     },
+     "coward": true
+    }
+   ],
+   "sayDone": {
+    "speaker": "Stilt Town Waters",
+    "lines": [
+     "Iya Tobi: Tunde. I tell them say you go come.",
+     "Tunde: Mama, we dey go.",
+     "Baba Sule: I get people for Ibadan. She go stay there till this thing finish."
+    ]
+   },
+   "onDone": {
+    "flags": {
+     "mama_rescued": 1
+    }
+   }
+  }
+ ]
+}

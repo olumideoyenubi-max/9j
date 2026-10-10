@@ -47,7 +47,9 @@ class ANHHackPoint;
  * The clock: the mission's length and each objective's are logged at the end, with a warning past eight minutes
  * (twelve for missions 8 and 12), for the length rule in docs/BUILD_PROMPT.md.
  *
- * Any objective: "stars" puts that many wanted stars on as it begins; "sayDone": { "speaker", "lines" } is a scene played
+ * Any objective: "ifFlag": { "kept_ledger": 1 } leaves it out unless every flag named has that value (what happens after a
+ * choice); "ifWater": true leaves it out where its place is not water (the boat's part of a mission, in a level whose
+ * water the game cannot tell from land). "stars" puts that many wanted stars on as it begins; "sayDone": { "speaker", "lines" } is a scene played
  * when it has been done, before the next one.
  * "onDone" (and a choice's option): "flags", "integrity", "cash", "toast", and "switchTo": a lead the game then puts the
  * player in the shoes of, brought to "at" first if that is given; the next objective begins when the switch is done.
@@ -77,7 +79,15 @@ public:
 	/** The missions the Data folder has, in order */
 	const TArray<FName>& Known() const { return Ids; }
 	/** Begins one: the job card, then its first objective. False if there is no such mission or one is already running. */
-	bool Start(FName Id);
+	bool Start(FName Id, bool bReplay = false);
+	/** A mission already done, played again from the phone's Jobs page: for the medal only. Nothing is paid and no flag or choice is changed. */
+	bool IsReplay() const { return bReplaying; }
+	/** 0 none, 1 bronze, 2 silver, 3 gold: by the clock against the mission's length and the restarts it took */
+	static int32 MedalFor(float Seconds, float Limit, int32 Restarts);
+	static const TCHAR* MedalName(int32 Medal);
+	/** Which ending the flags and Integrity lead to (Data/endings.json): its id, or none before the choices that decide it */
+	FName Ending() const;
+	FName LastEnding;
 	/** Gives the running mission up: everything it stood in the world goes, nothing is paid */
 	void Abort(const FString& Why);
 	bool IsActive() const { return bActive; }
@@ -113,7 +123,7 @@ public:
 		bool bDone = false;
 		float Seconds = 0.f;
 		TArray<float> ObjectiveSeconds;
-		int32 Pay = 0, Cred = 0, Integrity = 0, GoldKobo = 0, Restarts = 0;
+		int32 Pay = 0, Cred = 0, Integrity = 0, GoldKobo = 0, Restarts = 0, Medal = 0;
 		bool bTooLong = false;
 	};
 	FResult Last;
@@ -151,7 +161,9 @@ private:
 	FString Title;
 	int32 Number = 0, Index = -1, RestartCount = 0;
 	float MissionT = 0.f, ObjectiveT = 0.f, LengthLimit = 480.f;
-	bool bCardOpen = false, bObjectiveReady = false, bFailed = false, bLockedSwitch = false;
+	bool bCardOpen = false, bObjectiveReady = false, bFailed = false, bLockedSwitch = false, bReplaying = false;
+	bool Holds(const TSharedPtr<FJsonObject>& Objective) const;
+	void PlayEnding();
 	TArray<float> Times;
 
 	struct FCheckpoint

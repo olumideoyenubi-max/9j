@@ -11,6 +11,7 @@
 #include "Gameplay/NHEstate.h"
 #include "Gameplay/NHGameDirector.h"
 #include "Gameplay/NHLeads.h"
+#include "Gameplay/NHMissions.h"
 #include "Gameplay/NHPerson.h"
 #include "Kismet/GameplayStatics.h"
 #include "Lighting/NHLightingRig.h"
@@ -667,6 +668,7 @@ void ANHPhone::Build()
 		App(TEXT("DropAm Driver"), Job.Stage != EJob::Offline ? TEXT("Online") : FString::Printf(TEXT("Rating %.1f"), State->DriverRating), FLinearColor(0.55f, 0.15f, 0.1f), [this]() { Go(EPage::DropAmDriver); });
 		App(TEXT("Missed calls"), State->MissedCalls.Num() ? FString::Printf(TEXT("%d"), State->MissedCalls.Num()) : TEXT("None"), FLinearColor(0.4f, 0.4f, 0.4f), [this]() { Go(EPage::Missed); });
 		App(TEXT("Keys"), TEXT("Your places: go there"), FLinearColor(0.75f, 0.6f, 0.1f), [this]() { Go(EPage::Keys); });
+		App(TEXT("Jobs"), TEXT("Play a finished job again for its medal"), FLinearColor(0.9f, 0.7f, 0.05f), [this]() { Go(EPage::Jobs); });
 		App(TEXT("Waka"), TEXT("Websites"), FLinearColor(0.05f, 0.45f, 0.95f), [this]() { Go(EPage::Web); });
 		App(TEXT("Camera"), TEXT("Take a photo"), FLinearColor(0.25f, 0.25f, 0.3f), [this]()
 		{
@@ -749,6 +751,31 @@ void ANHPhone::Build()
 	case EPage::Site:
 		BuildSite();
 		break;
+	case EPage::Jobs:
+	{
+		// the story's missions that are done, with the best medal on each: choose one to play it again
+		Title = TEXT("Jobs");
+		ANHMissions* Story = ANHMissions::Get(this);
+		int32 Listed = 0;
+		for (const FName& Done : Story ? Story->Known() : TArray<FName>())
+		{
+			if (!Hustle || !Hustle->IsDone(Done) || Done.ToString().StartsWith(TEXT("m00")) || Done == TEXT("m01"))
+			{
+				continue; // the first day has its own way of being played again: any danfo at the park
+			}
+			++Listed;
+			Row(Done.ToString().ToUpper(), FString::Printf(TEXT("%s. Play it again."), ANHMissions::MedalName(Hustle->Medals.FindRef(Done))), [this, Story, Done]()
+			{
+				bOpen = false;
+				Story->Start(Done, true);
+			});
+		}
+		if (Listed == 0)
+		{
+			Row(TEXT("Nothing yet"), TEXT("Finished jobs are listed here."), nullptr);
+		}
+		break;
+	}
 	case EPage::Keys:
 	{
 		// what the player owns, home first: choose one to be driven there at once

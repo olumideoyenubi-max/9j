@@ -2177,7 +2177,16 @@ void UNHDebugPlay::PlayStoryFrame(float DeltaSeconds, int32& Failures, float& Ch
 		}
 		else
 		{
-			PC->Choose(0); // the job card, a choice's first option, the plan's first answers, the reward and takings cards
+			// the job card, the reward and takings cards: the only option. A choice or a plan card: the test's answer, or the first.
+			int32 Option = 0;
+			for (const TPair<FString, int32>& Answer : StoryChoices)
+			{
+				if (T.StartsWith(Answer.Key))
+				{
+					Option = Answer.Value;
+				}
+			}
+			PC->Choose(FMath::Clamp(Option, 0, FMath::Max(D->Panel.Options.Num() - 1, 0)));
 		}
 		return;
 	}
@@ -2194,6 +2203,10 @@ void UNHDebugPlay::PlayStoryFrame(float DeltaSeconds, int32& Failures, float& Ch
 	APawn* Pawn = PC->GetPawn();
 	ANHVehicle* Car = Cast<ANHVehicle>(Pawn);
 	ANHCharacter* C = Cast<ANHCharacter>(Pawn);
+	if (C)
+	{
+		C->Health = 100.f; // the script is no fighter: what the guards do to it is not what is being tested
+	}
 	FVector To;
 	const bool bPlace = Story->Where(To);
 	Cheat += DeltaSeconds;
@@ -2228,6 +2241,13 @@ void UNHDebugPlay::PlayStoryFrame(float DeltaSeconds, int32& Failures, float& Ch
 		}
 	};
 
+	// out of whatever is being driven for anything done on foot, or to get into the vehicle the objective wants
+	if (Car && Type != TEXT("goto") && Type != TEXT("loseheat") && Type != TEXT("wait") && Type != TEXT("talk") && Car != Story->MissionVehicle())
+	{
+		Car->SetDriveInput(0.f, 0.f, 0.f);
+		PC->LeaveVehicle(true);
+		return;
+	}
 	if (Type == TEXT("goto") && bPlace)
 	{
 		// a place that will not be reached says so once, with where the script is
@@ -2246,6 +2266,11 @@ void UNHDebugPlay::PlayStoryFrame(float DeltaSeconds, int32& Failures, float& Ch
 		else if (Car)
 		{
 			Drive(Car, FVector2D(To), 700.f, true);
+		}
+		else if (Cheat > 45.f)
+		{
+			PC->NHAt(To.X + 80.f, To.Y); // walked into something on the way: set down at the place
+			Cheat = 20.f;
 		}
 		else
 		{
@@ -2266,6 +2291,12 @@ void UNHDebugPlay::PlayStoryFrame(float DeltaSeconds, int32& Failures, float& Ch
 		{
 			if (IsValid(Thing))
 			{
+				if (Cheat > 8.f && C)
+				{
+					// something in the straight line to it (a shelter, a stall): a person walks round, the script is set down beside it
+					PC->NHAt(Thing->GetActorLocation().X + 60.f, Thing->GetActorLocation().Y);
+					Cheat = 0.f;
+				}
 				WalkTo(Thing->GetActorLocation());
 				break;
 			}
@@ -2311,79 +2342,100 @@ void UNHDebugPlay::PlayStoryFrame(float DeltaSeconds, int32& Failures, float& Ch
 	}
 }
 
-void UNHDebugPlay::Act1(bool bQuitWhenDone)
+void UNHDebugPlay::Story(bool bQuitWhenDone, int32 Variant)
 {
-	Begin(TEXT("act1"), bQuitWhenDone);
+	Begin(FString::Printf(TEXT("story%d"), Variant), bQuitWhenDone);
 	struct FSeen
 	{
-		int32 Cash = 0, Integrity = 0, Failures = 0;
+		int32 Cash = 0, Failures = 0, LastIndex = -2;
+		int64 Paid = 0;
 		float Cheat = 0.f;
-		int32 LastIndex = -2;
+		int32 Medal = 0;
+		TMap<FName, int32> Flags;
 	};
 	const TSharedRef<FSeen> Seen = MakeShared<FSeen>();
 	const auto M = [this]() { return ANHMissions::Get(PC); };
 	const auto L = [this]() { return ANHLeads::Get(PC); };
-	const auto Shot = [](const FString& Name) { FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / TEXT("Screenshots/NH/phase3") / (Name + TEXT(".png")), true, false); };
+	const FString Folder = FString::Printf(TEXT("Screenshots/NH/story%d"), Variant);
+	const auto Shot = [Folder](const FString& Name) { FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / Folder / (Name + TEXT(".png")), true, false); };
 
+	// ---- three ways through the story's choices, one to each ending (docs/STORY.md)
+	//   1 The Broadcast:      the money sent back, Jaguar spared, the rifle turned on Big Bar's men, the ledger kept
+	//   2 The Big Man's Boy:  the shot taken (and the bank done loud, to play that way in)
+	//   3 Gone Quiet:         the cut kept, Jaguar left, the hit faked, the ledger handed over
+	StoryChoices.Reset();
+	StoryChoices.Add(TEXT("THE VICTIMS' MONEY"), Variant == 3 ? 1 : 0);
+	StoryChoices.Add(TEXT("SIR JAGUAR"), Variant == 3 ? 1 : 0);
+	StoryChoices.Add(TEXT("THE PLAN  3 / 3"), Variant == 2 ? 1 : 0);
+	StoryChoices.Add(TEXT("THE OFFER"), Variant == 1 ? 2 : Variant == 2 ? 0 : 1);
+	StoryChoices.Add(TEXT("THE LEDGER"), Variant == 3 ? 0 : 1);
+	struct FEnd { const TCHAR* Id; int32 Integrity; int32 Extra; bool bZainab, bJaguar; };
+	static const FEnd Ends[] = { { TEXT("broadcast"), 40, -350000 + 180000, true, true }, { TEXT("bigmans_boy"), -15, -350000 + 180000 + 5000000, false, true }, { TEXT("gone_quiet"), -15, -350000 + 450000 + 180000, true, false } };
+	const FEnd* End0 = &Ends[FMath::Clamp(Variant, 1, 3) - 1];
+
+	Do(TEXT("no story mission running yet"), [this, M]() { if (M() && M()->IsActive()) { M()->Abort(TEXT("the story test begins after mission 1")); } });
 	Do(TEXT("back from somebody rich, if the save is playing one"), [this, L]() { if (L() && Hustle() && !Hustle()->Persona.IsNone()) { L()->Switch(NAME_None, true); } });
 	Until(TEXT("back as the lead"), [this, L](float) { return !L() || (!L()->IsSwitching() && Hustle()->Persona.IsNone()); }, 25.f);
-	Do(TEXT("with the first day already worked"), [this, M]()
+	Do(TEXT("with the first day already worked, and a clean book"), [this, M, Seen]()
 	{
-		if (!Check(TEXT("the level has missions 1 to 4"), M() && M()->Known().Contains(TEXT("m01")) && M()->Known().Contains(TEXT("m02")) && M()->Known().Contains(TEXT("m03")) && M()->Known().Contains(TEXT("m04"))))
+		bool bAll = M() != nullptr;
+		for (int32 N = 1; N <= 12 && bAll; ++N)
+		{
+			bAll = M()->Known().Contains(FName(*FString::Printf(TEXT("m%02d"), N)));
+		}
+		if (!Check(TEXT("the level has missions 1 to 12"), bAll, M() ? FString::Printf(TEXT("%d mission files"), M()->Known().Num()) : FString()))
 		{
 			End(TEXT("nothing to test"));
 			return;
 		}
 		if (M()->IsActive())
 		{
-			M()->Abort(TEXT("the act test begins after mission 1"));
+			M()->Abort(TEXT("the story test begins after mission 1"));
 		}
-		// mission 1 has its own test (-NHRun=autoplay): here it is taken as done
-		Hustle()->Done.AddUnique(TEXT("lag_01"));
-		Hustle()->Done.AddUnique(TEXT("m01"));
+		// mission 1 has its own test (-NHRun=autoplay): here it is taken as done. Nothing of this is saved (-NHNoSave).
+		Hustle()->Done.Reset();
+		Hustle()->Done.Add(TEXT("lag_01"));
+		Hustle()->Done.Add(TEXT("m01"));
+		Hustle()->Flags.Reset();
+		Hustle()->Medals.Reset();
+		Hustle()->Integrity = 0;
 		Dir()->Dialogue = ANHGameDirector::FDialogue();
 		Dir()->Stage = ANHGameDirector::EStage::Done;
 		Hustle()->ClearHeat();
 		PC->NHTime(9.5f);
 		PC->ConsoleCommand(TEXT("startfpschart"));
 		Check(TEXT("with mission 1 done, mission 2 is the next job"), M()->Next() == TEXT("m02"), M()->Next().ToString());
+		Seen->Cash = Hustle()->Cash;
 	});
 
-	struct FWant { const TCHAR* Id; const TCHAR* Title; int32 Number; int32 Pay; int32 Extra; const TCHAR* Flags[3]; int32 IntegrityBy; const TCHAR* EndsAs; };
-	static const FWant Wants[] = {
-		{ TEXT("m02"), TEXT("Phone Pass"), 2, 1000000, -350000, { TEXT("found_shina_bag"), TEXT("debt_paid"), TEXT("love_started") }, 0, TEXT("tunde") },
-		{ TEXT("m03"), TEXT("The Yahoo Office"), 3, 1135000, 0, { TEXT("shina_protection_seen"), TEXT("returned_scam_money"), nullptr }, 15, TEXT("amaka") },
-		{ TEXT("m04"), TEXT("Hot Bus Robbery"), 4, 1288225, 180000, { TEXT("robbed_levy_bus"), nullptr, nullptr }, 0, TEXT("tunde") } };
-	for (const FWant& W : Wants)
+	static const TCHAR* Titles[] = { TEXT("Phone Pass"), TEXT("The Yahoo Office"), TEXT("Hot Bus Robbery"), TEXT("Red Cowries"), TEXT("Iya Tobi"), TEXT("Owambe Con"), TEXT("Crestline Job"), TEXT("Rally Day"), TEXT("The Offer"), TEXT("Amaka"), TEXT("Big Man Down") };
+	for (int32 Number = 2; Number <= 12; ++Number)
 	{
-		const FWant* Want = &W;
-		Do(FString::Printf(TEXT("%s: to its marker"), W.Id), [this, M, Seen, Want]()
+		const FName Id(*FString::Printf(TEXT("m%02d"), Number));
+		const FString Title = Titles[Number - 2];
+		Do(FString::Printf(TEXT("%s: to its marker"), *Id.ToString()), [this, M, Seen, Id, Title]()
 		{
 			FVector At;
-			FString Title;
+			FString Found;
 			if (ANHVehicle* In = Cast<ANHVehicle>(PC->GetPawn()))
 			{
 				In->SetDriveInput(0.f, 0.f, 0.f);
 				PC->LeaveVehicle(true);
 			}
-			if (Check(FString::Printf(TEXT("%s is the next job, and its start is a place on this map"), Want->Id), M()->Next() == Want->Id && M()->NextStart(At, Title) && Title == Want->Title, Title))
+			if (Check(FString::Printf(TEXT("%s is the next job, and it starts somewhere on this map"), *Id.ToString()), M()->Next() == Id && M()->NextStart(At, Found) && Found == Title, Found))
 			{
 				PC->NHAt(At.X + 150.f, At.Y);
-				Note(FString::Printf(TEXT("its marker is at %.0f, %.0f"), At.X, At.Y));
 			}
-			Seen->Cash = Hustle()->Cash;
-			Seen->Integrity = Hustle()->Integrity;
 			Seen->Failures = 0;
 			Seen->LastIndex = -2;
 		});
-		Until(TEXT("the card names the next job"), [this, Want](float) { return Dir()->ObjTitle == TEXT("NEXT JOB") && Dir()->ObjText == Want->Title; }, 6.f);
-		Do(FString::Printf(TEXT("%s: start it at the marker (E)"), W.Id), [this, M, Want]()
+		Until(TEXT("the card names the next job"), [this, Title](float) { return Dir()->ObjTitle == TEXT("NEXT JOB") && Dir()->ObjText == Title; }, 8.f);
+		Do(FString::Printf(TEXT("%s: start it at the marker (E)"), *Id.ToString()), [this, M, Id, Title]()
 		{
-			Check(TEXT("at the marker the prompt offers the job"), PC->Prompt().Contains(Want->Title), PC->Prompt());
 			PC->OnAction();
-			Check(TEXT("E there brings up its job card"), M()->IsActive() && M()->ActiveId() == Want->Id && Dir()->Panel.bOpen && Dir()->Panel.Title == FString(Want->Title).ToUpper(), Dir()->Panel.Title);
+			Check(TEXT("E at the marker brings up its job card"), M()->IsActive() && M()->ActiveId() == Id && Dir()->Panel.bOpen && Dir()->Panel.Title == Title.ToUpper(), Dir()->Panel.Title);
 		});
-		Until(FString::Printf(TEXT("%s played through"), W.Id), [this, M, Seen, Want, Shot](float Dt)
+		Until(FString::Printf(TEXT("%s played through"), *Id.ToString()), [this, M, Seen, Id, Shot](float Dt)
 		{
 			if (!M()->IsActive())
 			{
@@ -2393,15 +2445,15 @@ void UNHDebugPlay::Act1(bool bQuitWhenDone)
 			{
 				Seen->LastIndex = M()->ObjectiveIndex();
 				Seen->Cheat = 0.f;
-				if (Seen->LastIndex == 1 || Seen->LastIndex == 3)
+				if (Seen->LastIndex == 2)
 				{
-					Shot(FString::Printf(TEXT("%s_objective_%d"), Want->Id, Seen->LastIndex + 1));
+					Shot(Id.ToString());
 				}
 			}
 			PlayStoryFrame(Dt, Seen->Failures, Seen->Cheat);
 			return Seen->Failures > 3;
-		}, 240.f);
-		Do(FString::Printf(TEXT("%s: after it"), W.Id), [this, M, L, Seen, Want]()
+		}, 300.f);
+		Do(FString::Printf(TEXT("%s: after it"), *Id.ToString()), [this, M, L, Seen, Id, Number]()
 		{
 			const ANHMissions::FResult& R = M()->Last;
 			FString Each;
@@ -2409,28 +2461,79 @@ void UNHDebugPlay::Act1(bool bQuitWhenDone)
 			{
 				Each += FString::Printf(TEXT("%.0f "), T);
 			}
-			Note(FString::Printf(TEXT("%s by script: %.0f s (objectives %s), %d failures on the way"), Want->Id, R.Seconds, *Each, Seen->Failures));
-			Check(TEXT("it is done, in five objectives or fewer, each timed"), R.bDone && R.Id == Want->Id && Hustle()->IsDone(Want->Id) && R.ObjectiveSeconds.Num() >= 1 && R.ObjectiveSeconds.Num() <= 5, FString::Printf(TEXT("%d objectives"), R.ObjectiveSeconds.Num()));
-			Check(TEXT("the night shift paid what the story's table says for it"), R.Pay == Want->Pay, NHPlay::N(R.Pay));
-			Check(TEXT("the money in hand is the pay and what the mission itself gave or took"), Hustle()->Cash == Seen->Cash + Want->Pay + Want->Extra, FString::Printf(TEXT("%s -> %s"), *NHPlay::N(Seen->Cash), *NHPlay::N(Hustle()->Cash)));
-			bool bFlags = true;
-			FString Set;
-			for (const TCHAR* Flag : Want->Flags)
+			Note(FString::Printf(TEXT("%s by script: %.0f s (objectives %s), %d failures, %s medal"), *Id.ToString(), R.Seconds, *Each, Seen->Failures, ANHMissions::MedalName(R.Medal)));
+			Check(FString::Printf(TEXT("%s is done in five objectives or fewer, inside its length"), *Id.ToString()), R.bDone && R.Id == Id && Hustle()->IsDone(Id) && R.ObjectiveSeconds.Num() >= 1 && R.ObjectiveSeconds.Num() <= 5 && !R.bTooLong,
+				FString::Printf(TEXT("%d objectives, %.0f s"), R.ObjectiveSeconds.Num(), R.Seconds));
+			Check(TEXT("the night shift paid what the story's table says for it"), R.Pay == M()->PayFor(Number), NHPlay::N(R.Pay));
+			Check(TEXT("switching is free again"), !L()->IsLocked());
+			Seen->Paid += R.Pay;
+			// who can be played, as the story goes
+			if (Number == 5)
 			{
-				if (Flag)
-				{
-					bFlags &= Hustle()->Flag(Flag) != 0;
-					Set += FString(Flag) + TEXT(" ");
-				}
+				Check(TEXT("after mission 5 Chidi can be played, and Baba Sule not yet"), L()->IsUnlocked(TEXT("chidi")) && !L()->IsUnlocked(TEXT("sule")));
 			}
-			Check(TEXT("its flags are set"), bFlags, Set);
-			Check(TEXT("Integrity moved by what was chosen"), Hustle()->Integrity == FMath::Clamp(Seen->Integrity + Want->IntegrityBy, -100, 100), FString::Printf(TEXT("%d -> %d"), Seen->Integrity, Hustle()->Integrity));
-			Check(TEXT("the player ends it as the lead the story leaves them with, free to switch"), L()->Current() == Want->EndsAs && !L()->IsLocked(), L()->Current().ToString());
+			if (Number == 8)
+			{
+				Check(TEXT("after mission 8 Baba Sule can be played, and the ledger is in hand"), L()->IsUnlocked(TEXT("sule")) && Hustle()->Flag(TEXT("has_ledger")) == 1);
+			}
 		});
 	}
-	Do(TEXT("after act 1"), [this, M]()
+
+	// ---- the ending
+	Until(TEXT("the epilogue, line by line (E), to the last card"), [this](float)
 	{
-		Check(TEXT("there is no next job until act 2 is made"), M()->Next().IsNone(), M()->Next().ToString());
+		if (Dir()->Dialogue.bOpen)
+		{
+			PC->OnAction();
+		}
+		return Dir()->Panel.bOpen && Dir()->Panel.Title.StartsWith(TEXT("THE END"));
+	}, 30.f);
+	Do(TEXT("the end"), [this, M, L, Seen, End0, Shot]()
+	{
+		Shot(TEXT("the_end"));
+		Note(FString::Printf(TEXT("%s; Integrity %d; cash %s"), *Dir()->Panel.Title, Hustle()->Integrity, *NHPlay::N(Hustle()->Cash)));
+		Check(TEXT("these choices lead to the ending the story says they do"), M()->LastEnding == End0->Id && Hustle()->Flag(TEXT("story_done")) == 1, M()->LastEnding.ToString());
+		Check(TEXT("Integrity is what the choices add up to"), Hustle()->Integrity == End0->Integrity, FString::Printf(TEXT("%d"), Hustle()->Integrity));
+		Check(TEXT("the night shifts of missions 2 to 12 paid N22,420,357 between them"), Seen->Paid == 22420357, FString::Printf(TEXT("%lld"), Seen->Paid));
+		Check(TEXT("the money in hand is that pay and the choice money"), Hustle()->Cash == Seen->Cash + 22420357 + End0->Extra, NHPlay::N(Hustle()->Cash));
+		Check(TEXT("Zainab can be played if she lived, Sir Jaguar if he was spared"), L()->IsUnlocked(TEXT("zainab")) == End0->bZainab && L()->IsUnlocked(TEXT("jaguar")) == End0->bJaguar,
+			FString::Printf(TEXT("Zainab %s, Jaguar %s"), L()->IsUnlocked(TEXT("zainab")) ? TEXT("yes") : TEXT("no"), L()->IsUnlocked(TEXT("jaguar")) ? TEXT("yes") : TEXT("no")));
+		Check(TEXT("the rich three still have to be bought"), !L()->IsUnlocked(TEXT("kemi")) && !L()->IsUnlocked(TEXT("kingmaker")) && !L()->IsUnlocked(TEXT("bigbar")));
+		PC->Choose(0);
+		Check(TEXT("then it is free roam, with no next job"), !Dir()->Panel.bOpen && M()->Next().IsNone());
+		Seen->Cash = Hustle()->Cash;
+		Seen->Flags = Hustle()->Flags;
+		Seen->Medal = Hustle()->Medals.FindRef(TEXT("m03"));
+	});
+
+	// ---- a replay, for the medal only
+	Do(TEXT("play mission 3 again from the Jobs list"), [this, M]()
+	{
+		Check(TEXT("a finished mission starts again as a replay"), M()->Start(TEXT("m03"), true) && M()->IsReplay() && Dir()->Panel.bOpen, Dir()->Panel.Lines.Num() > 2 ? Dir()->Panel.Lines[2] : FString());
+	});
+	Until(TEXT("the replay played through"), [this, M, Seen](float Dt)
+	{
+		if (!M()->IsActive())
+		{
+			return true;
+		}
+		if (M()->ObjectiveIndex() != Seen->LastIndex)
+		{
+			Seen->LastIndex = M()->ObjectiveIndex();
+			Seen->Cheat = 0.f;
+		}
+		PlayStoryFrame(Dt, Seen->Failures, Seen->Cheat);
+		return false;
+	}, 300.f);
+	Do(TEXT("after the replay"), [this, M, Seen]()
+	{
+		bool bSame = Hustle()->Flags.Num() == Seen->Flags.Num();
+		for (const TPair<FName, int32>& F : Seen->Flags)
+		{
+			bSame &= Hustle()->Flag(F.Key) == F.Value;
+		}
+		Check(TEXT("a replay pays nothing and changes no flag"), M()->Last.bDone && M()->Last.Pay == 0 && Hustle()->Cash == Seen->Cash && bSame, NHPlay::N(Hustle()->Cash));
+		Check(TEXT("it keeps the best medal"), Hustle()->Medals.FindRef(TEXT("m03")) >= Seen->Medal && M()->Last.Medal >= 1, ANHMissions::MedalName(Hustle()->Medals.FindRef(TEXT("m03"))));
 	});
 	Until(TEXT("the last picture is saved"), [this](float Dt) { Pace += Dt; return Pace > 1.f; }, 5.f);
 	Do(TEXT("stop counting frames"), [this]() { PC->ConsoleCommand(TEXT("stopfpschart")); });

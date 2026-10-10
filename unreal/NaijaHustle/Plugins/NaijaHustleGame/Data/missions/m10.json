@@ -1,0 +1,161 @@
+{
+ "id": "m10",
+ "number": 10,
+ "act": 4,
+ "title": "The Offer",
+ "playAs": "tunde",
+ "start": {
+  "place": "eko_crest"
+ },
+ "brief": "Big Bar's man wants a word, at the top of an unfinished tower in Eko Crest. He has brought a rifle. It is not for him.",
+ "standout": "One rifle, one target, three ways it can go.",
+ "lockSwitch": true,
+ "rewards": {
+  "cred": 50,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "goto",
+   "text": "Go up the unfinished tower",
+   "sub": "To the marker",
+   "at": {
+    "place": "eko_crest",
+    "along": 2600,
+    "back": 200
+   },
+   "radius": 350,
+   "checkpoint": true,
+   "say": {
+    "speaker": "Eko Crest",
+    "lines": [
+     "Big Bar's man: The Chief admires a boy who takes what he wants.",
+     "Big Bar's man: He has a job for that boy. Come up. Mind the edge."
+    ]
+   }
+  },
+  {
+   "type": "choose",
+   "text": "The offer",
+   "title": "THE OFFER",
+   "lines": [
+    "Zainab Yusuf-Cole is crossing the plaza below. The rifle is on its stand.",
+    "Big Bar's man: One shot, and you are a rich man with no enemies."
+   ],
+   "options": [
+    {
+     "text": "Take the shot",
+     "integrity": -40,
+     "cash": 5000000,
+     "flags": {
+      "took_shot": 1,
+      "zainab_alive": 0
+     }
+    },
+    {
+     "text": "Fake it: miss, and get her out",
+     "integrity": 10,
+     "flags": {
+      "faked_hit": 1,
+      "zainab_alive": 1
+     }
+    },
+    {
+     "text": "Turn the rifle on Big Bar's men",
+     "integrity": 15,
+     "flags": {
+      "fought_bigbar": 1,
+      "zainab_alive": 1
+     }
+    }
+   ]
+  },
+  {
+   "type": "wait",
+   "text": "Walk away",
+   "sub": "It is done",
+   "seconds": 6,
+   "ifFlag": {
+    "took_shot": 1
+   },
+   "sayDone": {
+    "speaker": "The plaza",
+    "lines": [
+     "The story Zainab was chasing is buried with her.",
+     "Big Bar's man: Welcome to the family."
+    ]
+   }
+  },
+  {
+   "type": "goto",
+   "text": "Get Zainab out of the plaza",
+   "sub": "Before they see she is breathing",
+   "at": {
+    "place": "eko_crest",
+    "along": 600,
+    "back": 0
+   },
+   "radius": 350,
+   "limit": 100,
+   "ifFlag": {
+    "faked_hit": 1
+   },
+   "late": "They saw her move."
+  },
+  {
+   "type": "defeat",
+   "text": "Fight your way off the tower",
+   "sub": "Three of Big Bar's men. One has a gun.",
+   "checkpoint": true,
+   "ifFlag": {
+    "fought_bigbar": 1
+   },
+   "guards": [
+    {
+     "at": {
+      "place": "eko_crest",
+      "along": 3000,
+      "back": 200
+     },
+     "look": {
+      "place": "eko_crest",
+      "along": 0,
+      "back": 200
+     }
+    },
+    {
+     "at": {
+      "place": "eko_crest",
+      "along": 3400,
+      "back": 350
+     },
+     "look": {
+      "place": "eko_crest",
+      "along": 0,
+      "back": 350
+     },
+     "armed": true
+    },
+    {
+     "at": {
+      "place": "eko_crest",
+      "along": 3700,
+      "back": 100
+     },
+     "look": {
+      "place": "eko_crest",
+      "along": 0,
+      "back": 100
+     }
+    }
+   ]
+  },
+  {
+   "type": "loseheat",
+   "text": "Get clear of Eko Crest",
+   "sub": "Stay out of sight",
+   "stars": 2
+  }
+ ]
+}

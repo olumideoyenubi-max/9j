@@ -1,0 +1,143 @@
+{
+ "id": "m07",
+ "number": 7,
+ "act": 2,
+ "title": "Owambe Con",
+ "playAs": "amaka",
+ "start": {
+  "place": "eko_crest"
+ },
+ "brief": "Kemi's owambe is tonight, and the Kingmaker's campaign treasurer never misses one. Go in as a rich returnee and come out with his phone.",
+ "standout": "A con in gold lace at the party of the year.",
+ "lockSwitch": true,
+ "rewards": {
+  "cred": 35,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "disguise",
+   "text": "Dress the part",
+   "sub": "Walk into the bundle",
+   "at": {
+    "place": "eko_crest",
+    "along": 400,
+    "back": 0
+   },
+   "outfit": "rich_returnee",
+   "outfitName": "a rich returnee",
+   "checkpoint": true,
+   "say": {
+    "speaker": "Eko Crest, evening",
+    "lines": [
+     "Kemi: Darling, tonight you are Adaeze from Houston. You own three care homes.",
+     "Amaka: I own a soldering iron.",
+     "Kemi: Not tonight you don't. Chin up. Walk slowly. Rich people never hurry."
+    ]
+   }
+  },
+  {
+   "type": "sneak",
+   "text": "Cross the party to the treasurer's table",
+   "sub": "Walk. Returnees do not run.",
+   "at": {
+    "place": "eko_crest",
+    "along": 3200,
+    "back": 0
+   },
+   "radius": 300,
+   "failOnAlert": true,
+   "guards": [
+    {
+     "at": {
+      "place": "eko_crest",
+      "along": 1500,
+      "back": 150
+     },
+     "look": {
+      "place": "eko_crest",
+      "along": 1500,
+      "back": 3000
+     },
+     "fooledBy": [
+      "rich_returnee"
+     ]
+    },
+    {
+     "at": {
+      "place": "eko_crest",
+      "along": 2400,
+      "back": 250
+     },
+     "beat": [
+      {
+       "place": "eko_crest",
+       "along": 2400,
+       "back": 250
+      },
+      {
+       "place": "eko_crest",
+       "along": 2400,
+       "back": 850
+      }
+     ],
+     "fooledBy": [
+      "rich_returnee"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "collect",
+   "text": "Lift the treasurer's phone",
+   "sub": "While he is telling you about his yacht",
+   "at": {
+    "place": "eko_crest",
+    "along": 3600,
+    "back": 0
+   },
+   "count": 1,
+   "checkpoint": true,
+   "say": {
+    "speaker": "The treasurer's table",
+    "lines": [
+     "Treasurer: Houston! My cousin is in Houston. You must know him.",
+     "Amaka: Everybody knows him. May I see your new phone? My nephew wants that one.",
+     "Treasurer: Take, take. The campaign pays for everything."
+    ]
+   }
+  },
+  {
+   "type": "goto",
+   "text": "Leave before he looks for it",
+   "sub": "Slowly. Then not slowly.",
+   "at": {
+    "place": "eko_crest",
+    "along": 900,
+    "back": 0
+   },
+   "radius": 350,
+   "limit": 90,
+   "late": "He asked for his phone back, and then for security."
+  },
+  {
+   "type": "talk",
+   "text": "What is on the phone",
+   "say": {
+    "speaker": "Amaka, outside",
+    "lines": [
+     "Amaka: Tunde. The Kingmaker's campaign money. I am looking at all of it.",
+     "Amaka: Big Bar pays. It goes through Shina's levies and comes out clean.",
+     "Amaka: And the accounts are all in one place. Crestline Bank.",
+     "Tunde: Then we know where to go."
+    ]
+   },
+   "onDone": {
+    "flags": {
+     "crestline_lead": 1
+    }
+   }
+  }
+ ]
+}

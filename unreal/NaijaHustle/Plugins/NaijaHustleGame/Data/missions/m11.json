@@ -1,0 +1,149 @@
+{
+ "id": "m11",
+ "number": 11,
+ "act": 4,
+ "title": "Amaka",
+ "playAs": "tunde",
+ "start": {
+  "place": "third_lagoon_bridge"
+ },
+ "brief": "Big Bar's men have Amaka. They want the ledger for her, on the Third Lagoon Bridge, alone.",
+ "standout": "A trade on the bridge that does not stay a trade.",
+ "lockSwitch": true,
+ "rewards": {
+  "cred": 50,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "goto",
+   "text": "Walk out onto the bridge",
+   "sub": "To the marker",
+   "at": {
+    "place": "third_lagoon_bridge",
+    "along": 2800,
+    "back": 0
+   },
+   "radius": 350,
+   "checkpoint": true,
+   "say": {
+    "speaker": "The Third Lagoon Bridge",
+    "lines": [
+     "Big Bar's man: The book for the girl. Come alone. Come slowly.",
+     "Amaka (far off): Tunde, no give them!"
+    ]
+   }
+  },
+  {
+   "type": "choose",
+   "text": "The ledger",
+   "title": "THE LEDGER",
+   "lines": [
+    "Amaka is twenty metres away with a hand on her arm.",
+    "The ledger is the only proof there is."
+   ],
+   "options": [
+    {
+     "text": "Hand it over and get her back",
+     "flags": {
+      "gave_ledger": 1,
+      "kept_ledger": 0
+     }
+    },
+    {
+     "text": "Keep it, and fight for both",
+     "flags": {
+      "kept_ledger": 1
+     }
+    }
+   ]
+  },
+  {
+   "type": "wait",
+   "text": "Watch them take it",
+   "sub": "Then they let her go. Then they reach for their guns anyway.",
+   "seconds": 6,
+   "ifFlag": {
+    "gave_ledger": 1
+   }
+  },
+  {
+   "type": "defeat",
+   "text": "Fight for both",
+   "sub": "Three of them. One has a gun.",
+   "checkpoint": true,
+   "ifFlag": {
+    "kept_ledger": 1
+   },
+   "guards": [
+    {
+     "at": {
+      "place": "third_lagoon_bridge",
+      "along": 3300,
+      "back": 100
+     },
+     "look": {
+      "place": "third_lagoon_bridge",
+      "along": 0,
+      "back": 100
+     }
+    },
+    {
+     "at": {
+      "place": "third_lagoon_bridge",
+      "along": 3700,
+      "back": 250
+     },
+     "look": {
+      "place": "third_lagoon_bridge",
+      "along": 0,
+      "back": 250
+     },
+     "armed": true
+    },
+    {
+     "at": {
+      "place": "third_lagoon_bridge",
+      "along": 4000,
+      "back": -50
+     },
+     "look": {
+      "place": "third_lagoon_bridge",
+      "along": 0,
+      "back": -50
+     }
+    }
+   ]
+  },
+  {
+   "type": "goto",
+   "text": "Run for it, with Amaka",
+   "sub": "Off the bridge before they regroup",
+   "at": {
+    "place": "third_lagoon_bridge",
+    "along": 300,
+    "back": 0
+   },
+   "radius": 400,
+   "limit": 120,
+   "stars": 2,
+   "late": "They caught you both on the bridge.",
+   "sayDone": {
+    "speaker": "Under the bridge",
+    "lines": [
+     "Amaka: You came.",
+     "Tunde: You called. You always call.",
+     "Tunde: Amaka. I love you. I should have said it at that stall, years ago.",
+     "Amaka: I know. I was waiting for you to catch up."
+    ]
+   },
+   "onDone": {
+    "flags": {
+     "amaka_safe": 1,
+     "love_told": 1
+    }
+   }
+  }
+ ]
+}

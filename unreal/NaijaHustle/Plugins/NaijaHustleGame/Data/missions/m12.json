@@ -1,0 +1,210 @@
+{
+ "id": "m12",
+ "number": 12,
+ "act": 4,
+ "title": "Big Man Down",
+ "playAs": "both",
+ "startAs": "tunde",
+ "start": {
+  "place": "balo_market"
+ },
+ "brief": "Tonight it goes out live from the back office in Balo Market. Shina, the Red Cowries and Big Bar's convoy are all coming to stop it.",
+ "standout": "Everybody you made an enemy of, at one door.",
+ "lockSwitch": true,
+ "lengthLimit": 720,
+ "ending": true,
+ "rewards": {
+  "cred": 100,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "defeat",
+   "text": "Shina's boys: hold the front",
+   "sub": "Three of them",
+   "checkpoint": true,
+   "say": {
+    "speaker": "Balo Market, the back office",
+    "lines": [
+     "Tunde: Ten minutes and it is on every phone in Lagos.",
+     "Chidi: The drivers from the park dey outside. Dem say dem tire for levy too.",
+     "Baba Sule: I block the back road with the bus.",
+     "Amaka: Here they come."
+    ]
+   },
+   "guards": [
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 1400,
+      "back": 100
+     },
+     "look": {
+      "place": "balo_market",
+      "along": 0,
+      "back": 100
+     }
+    },
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 1800,
+      "back": 300
+     },
+     "look": {
+      "place": "balo_market",
+      "along": 0,
+      "back": 300
+     }
+    },
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 2100,
+      "back": -50
+     },
+     "look": {
+      "place": "balo_market",
+      "along": 0,
+      "back": -50
+     },
+     "coward": true
+    }
+   ],
+   "onDone": {
+    "switchTo": "amaka",
+    "at": {
+     "place": "balo_market",
+     "along": 300,
+     "back": 200
+    },
+    "toast": "Amaka: the lights. Give me the lights."
+   }
+  },
+  {
+   "type": "unlock",
+   "text": "Turn the junction lights red",
+   "sub": "Z when the marker is on it: it holds the convoy back",
+   "at": {
+    "place": "balo_market",
+    "along": 900,
+    "back": 0
+   },
+   "kind": "light",
+   "onDone": {
+    "switchTo": "tunde",
+    "at": {
+     "place": "balo_market",
+     "along": 600,
+     "back": 100
+    }
+   }
+  },
+  {
+   "type": "defeat",
+   "text": "The Red Cowries: hold the side",
+   "sub": "Three of them. One has a gun.",
+   "checkpoint": true,
+   "guards": [
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 1500,
+      "back": 200
+     },
+     "look": {
+      "place": "balo_market",
+      "along": 0,
+      "back": 200
+     }
+    },
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 1900,
+      "back": 350
+     },
+     "look": {
+      "place": "balo_market",
+      "along": 0,
+      "back": 350
+     },
+     "armed": true
+    },
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 2200,
+      "back": 50
+     },
+     "look": {
+      "place": "balo_market",
+      "along": 0,
+      "back": 50
+     }
+    }
+   ]
+  },
+  {
+   "type": "wait",
+   "text": "Hold the door",
+   "sub": "It is going out",
+   "seconds": 25
+  },
+  {
+   "type": "defeat",
+   "text": "Big Bar's convoy: the last of them",
+   "sub": "Three. Two have guns.",
+   "checkpoint": true,
+   "guards": [
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 1500,
+      "back": 100
+     },
+     "look": {
+      "place": "balo_market",
+      "along": 0,
+      "back": 100
+     },
+     "armed": true
+    },
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 1900,
+      "back": 300
+     },
+     "look": {
+      "place": "balo_market",
+      "along": 0,
+      "back": 300
+     },
+     "armed": true
+    },
+    {
+     "at": {
+      "place": "balo_market",
+      "along": 2300,
+      "back": 0
+     },
+     "look": {
+      "place": "balo_market",
+      "along": 0,
+      "back": 0
+     }
+    }
+   ],
+   "sayDone": {
+    "speaker": "Balo Market, dawn",
+    "lines": [
+     "The street is quiet.",
+     "Amaka: Tunde. Look at your phone.",
+     "Tunde: ...Everybody is looking at their phone."
+    ]
+   }
+  }
+ ]
+}

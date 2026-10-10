@@ -66,6 +66,7 @@ public:
 	UPROPERTY(SaveGame) TArray<FNHLeadSpot> LeadSpots;
 	UPROPERTY(SaveGame) TMap<FName, int32> Flags;
 	UPROPERTY(SaveGame) TArray<FName> Bought;
+	UPROPERTY(SaveGame) TMap<FName, int32> Medals;
 };
 
 /**
@@ -112,6 +113,8 @@ public:
 	UPROPERTY() TMap<FName, int32> Flags;
 	int32 Flag(FName Name) const { const int32* V = Flags.Find(Name); return V ? *V : 0; }
 	void SetFlag(FName Name, int32 Value = 1) { Flags.Add(Name, Value); }
+	/** The best medal on each story mission: 1 bronze, 2 silver, 3 gold (ANHMissions) */
+	UPROPERTY() TMap<FName, int32> Medals;
 	/** Characters bought in the store (premium ones) */
 	UPROPERTY() TArray<FName> Bought;
 	int64 Worth() const { return static_cast<int64>(Cash) + Bank; }

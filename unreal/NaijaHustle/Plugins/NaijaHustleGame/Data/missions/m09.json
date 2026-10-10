@@ -1,0 +1,134 @@
+{
+ "id": "m09",
+ "number": 9,
+ "act": 3,
+ "title": "Rally Day",
+ "playAs": "amaka",
+ "start": {
+  "place": "eko_crest"
+ },
+ "brief": "The Kingmaker's biggest rally is today. Go in as security, swap his speech, and get Zainab's camera into the VIP tent.",
+ "standout": "His own words, out of his own mouth, live.",
+ "lockSwitch": true,
+ "rewards": {
+  "cred": 45,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "disguise",
+   "text": "Put on the security vest",
+   "sub": "Walk into the bundle",
+   "at": {
+    "place": "eko_crest",
+    "along": 400,
+    "back": 0
+   },
+   "outfit": "security_vest",
+   "outfitName": "rally security",
+   "checkpoint": true,
+   "say": {
+    "speaker": "The rally ground",
+    "lines": [
+     "Zainab: I need my camera in that tent and his real speech on that stand.",
+     "Amaka: Which one is the real speech?",
+     "Zainab: The one his treasurer wrote for the donors. It is on the phone you took."
+    ]
+   }
+  },
+  {
+   "type": "sneak",
+   "text": "Get to the stage",
+   "sub": "Security walks. It does not run.",
+   "at": {
+    "place": "eko_crest",
+    "along": 3000,
+    "back": 0
+   },
+   "radius": 300,
+   "failOnAlert": true,
+   "guards": [
+    {
+     "at": {
+      "place": "eko_crest",
+      "along": 1400,
+      "back": 150
+     },
+     "look": {
+      "place": "eko_crest",
+      "along": 1400,
+      "back": 3000
+     },
+     "fooledBy": [
+      "security_vest"
+     ]
+    },
+    {
+     "at": {
+      "place": "eko_crest",
+      "along": 2300,
+      "back": 250
+     },
+     "beat": [
+      {
+       "place": "eko_crest",
+       "along": 2300,
+       "back": 250
+      },
+      {
+       "place": "eko_crest",
+       "along": 2300,
+       "back": 850
+      }
+     ],
+     "fooledBy": [
+      "security_vest"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "collect",
+   "text": "Swap the speech on the stand",
+   "sub": "Walk up to it",
+   "at": {
+    "place": "eko_crest",
+    "along": 3400,
+    "back": 0
+   },
+   "count": 1,
+   "checkpoint": true
+  },
+  {
+   "type": "goto",
+   "text": "Get Zainab's camera into the VIP tent",
+   "sub": "To the marker",
+   "at": {
+    "place": "eko_crest",
+    "along": 4600,
+    "back": 200
+   },
+   "radius": 300
+  },
+  {
+   "type": "wait",
+   "text": "Hold your nerve",
+   "sub": "It is going out live",
+   "seconds": 20,
+   "sayDone": {
+    "speaker": "Yarns, an hour later",
+    "lines": [
+     "@lagosgist: The Kingmaker just read out who is paying him. On his own stage.",
+     "@oshojaboy: 'To our friends at Crestline, who keep the levy money safe.' HE SAID IT.",
+     "Zainab: His polls are gone. And Big Bar now knows your names."
+    ]
+   },
+   "onDone": {
+    "flags": {
+     "speech_swapped": 1
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,203 @@
+{
+ "id": "m05",
+ "number": 5,
+ "act": 2,
+ "title": "Red Cowries",
+ "playAs": "both",
+ "startAs": "tunde",
+ "start": {
+  "place": "old_stadium"
+ },
+ "brief": "The Red Cowries meet tonight under the old stadium, and Chidi is with them. Get in, get Amaka's brother, get out.",
+ "standout": "A cult's night meeting, crashed by a conductor and a phone repairer.",
+ "lockSwitch": true,
+ "rewards": {
+  "cred": 35,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "sneak",
+   "text": "Get under the stadium",
+   "sub": "Crouch (X). Their lookouts chase what they see.",
+   "at": {
+    "place": "old_stadium",
+    "along": 3000,
+    "back": 0
+   },
+   "radius": 320,
+   "checkpoint": true,
+   "say": {
+    "speaker": "The old stadium, night",
+    "lines": [
+     "Amaka: Chidi dey inside. He no choose this. Dem choose am.",
+     "Tunde: Sir Jaguar no dey release person. We go collect am.",
+     "Amaka: Get me to the gate. I go blind their camera."
+    ]
+   },
+   "guards": [
+    {
+     "at": {
+      "place": "old_stadium",
+      "along": 1200,
+      "back": 200
+     },
+     "beat": [
+      {
+       "place": "old_stadium",
+       "along": 1200,
+       "back": 200
+      },
+      {
+       "place": "old_stadium",
+       "along": 1800,
+       "back": 200
+      }
+     ],
+     "sight": 1500
+    },
+    {
+     "at": {
+      "place": "old_stadium",
+      "along": 2400,
+      "back": 100
+     },
+     "look": {
+      "place": "old_stadium",
+      "along": 6000,
+      "back": 100
+     },
+     "sight": 1500
+    }
+   ],
+   "onDone": {
+    "switchTo": "amaka",
+    "at": {
+     "place": "old_stadium",
+     "along": 2800,
+     "back": 200
+    },
+    "toast": "Amaka is at the gate."
+   }
+  },
+  {
+   "type": "unlock",
+   "text": "Blind the gate camera",
+   "sub": "Z when the marker is on it",
+   "at": {
+    "place": "old_stadium",
+    "along": 3500,
+    "back": 0
+   },
+   "kind": "camera",
+   "onDone": {
+    "switchTo": "tunde",
+    "at": {
+     "place": "old_stadium",
+     "along": 3200,
+     "back": 100
+    }
+   }
+  },
+  {
+   "type": "defeat",
+   "text": "Fight through to Chidi",
+   "sub": "T to hit. Their numbers are three.",
+   "checkpoint": true,
+   "guards": [
+    {
+     "at": {
+      "place": "old_stadium",
+      "along": 3900,
+      "back": 100
+     },
+     "look": {
+      "place": "old_stadium",
+      "along": 0,
+      "back": 100
+     }
+    },
+    {
+     "at": {
+      "place": "old_stadium",
+      "along": 4300,
+      "back": 300
+     },
+     "look": {
+      "place": "old_stadium",
+      "along": 0,
+      "back": 300
+     }
+    },
+    {
+     "at": {
+      "place": "old_stadium",
+      "along": 4600,
+      "back": -100
+     },
+     "look": {
+      "place": "old_stadium",
+      "along": 0,
+      "back": -100
+     },
+     "coward": true
+    }
+   ],
+   "sayDone": {
+    "speaker": "Under the stadium",
+    "lines": [
+     "Chidi: Tunde? Amaka?! Dem say if I comot, dem go come for una.",
+     "Sir Jaguar: Conductor. You enter my house. I go remember your face.",
+     "Tunde: The Iron Sparrows dey outside for you already, Jaguar. Your own people call them."
+    ]
+   }
+  },
+  {
+   "type": "choose",
+   "text": "Sir Jaguar",
+   "title": "SIR JAGUAR",
+   "lines": [
+    "The rival cult is at the other gate, and Sir Jaguar is hurt.",
+    "You can take him out with you, or leave him to them."
+   ],
+   "options": [
+    {
+     "text": "Take him out with you",
+     "integrity": 10,
+     "flags": {
+      "spared_jaguar": 1
+     },
+     "toast": "Sir Jaguar: I owe nobody. But I go remember."
+    },
+    {
+     "text": "Leave him to them",
+     "integrity": -10,
+     "flags": {
+      "jaguar_left": 1
+     }
+    }
+   ]
+  },
+  {
+   "type": "goto",
+   "text": "Get Chidi out",
+   "sub": "Back to the road before the rest of them come",
+   "at": {
+    "place": "old_stadium",
+    "along": 600,
+    "back": 0
+   },
+   "radius": 400,
+   "limit": 120,
+   "stars": 1,
+   "late": "The Red Cowries closed the gates.",
+   "onDone": {
+    "flags": {
+     "chidi_rescued": 1
+    },
+    "toast": "Chidi is out."
+   }
+  }
+ ]
+}

@@ -135,7 +135,7 @@ protected:
 	virtual void EndPlay(const EEndPlayReason::Type Reason) override;
 
 private:
-	enum class EPage : uint8 { Home, Gist, Thread, Kobo, Yarns, Contacts, Contact, HangOut, DropAm, DropAmDriver, Missed, Music, Web, Site, Keys };
+	enum class EPage : uint8 { Home, Gist, Thread, Kobo, Yarns, Contacts, Contact, HangOut, DropAm, DropAmDriver, Missed, Music, Web, Site, Keys, Jobs };
 	/** Which website the browser is on (EPage::Site) */
 	FName Site;
 	void BuildSite();

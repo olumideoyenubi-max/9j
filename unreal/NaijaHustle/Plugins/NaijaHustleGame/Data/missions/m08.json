@@ -1,0 +1,245 @@
+{
+ "id": "m08",
+ "number": 8,
+ "act": 3,
+ "title": "Crestline Job",
+ "playAs": "both",
+ "startAs": "amaka",
+ "start": {
+  "place": "crestline_bank"
+ },
+ "brief": "Crestline Bank holds every naira of the Kingmaker's campaign, and a ledger that says where it came from. Plan it, case it, take it.",
+ "standout": "The big score: your plan, your crew, Crestline's vault.",
+ "lockSwitch": true,
+ "lengthLimit": 720,
+ "rewards": {
+  "cred": 60,
+  "goldKobo": 5,
+  "integrity": 0
+ },
+ "objectives": [
+  {
+   "type": "plan",
+   "text": "Plan the job",
+   "checkpoint": true,
+   "say": {
+    "speaker": "Baba Sule's yard",
+    "lines": [
+     "Baba Sule: Thirty years I drive past that bank. Today I park outside am.",
+     "Chidi: I fit carry. I fit watch. I no fit shoot.",
+     "Amaka: Nobody is shooting if I do my part.",
+     "Tunde: Then make we choose who does what."
+    ]
+   },
+   "steps": [
+    {
+     "title": "Who watches the street?",
+     "flag": "plan_lookout",
+     "options": [
+      {
+       "text": "Chidi",
+       "value": 1
+      },
+      {
+       "text": "Baba Sule",
+       "value": 2
+      }
+     ]
+    },
+    {
+     "title": "Which way out?",
+     "flag": "plan_route",
+     "options": [
+      {
+       "text": "The marina road",
+       "value": 1
+      },
+      {
+       "text": "Through the go-slow",
+       "value": 2
+      }
+     ]
+    },
+    {
+     "title": "How do we go in?",
+     "flag": "plan_quiet",
+     "options": [
+      {
+       "text": "Quiet",
+       "value": 1
+      },
+      {
+       "text": "Loud",
+       "value": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "unlock",
+   "text": "Case the bank: blind its camera",
+   "sub": "Z when the marker is on it",
+   "at": {
+    "place": "crestline_bank",
+    "along": 1500,
+    "back": 0
+   },
+   "kind": "camera",
+   "onDone": {
+    "switchTo": "tunde",
+    "at": {
+     "place": "crestline_bank",
+     "along": 1200,
+     "back": 150
+    },
+    "toast": "Camera down. Tunde, you're on."
+   }
+  },
+  {
+   "type": "sneak",
+   "text": "Into the vault, quietly",
+   "sub": "Crouch (X). Behind a guard, E.",
+   "at": {
+    "place": "crestline_bank",
+    "along": 3400,
+    "back": 0
+   },
+   "radius": 300,
+   "failOnAlert": true,
+   "checkpoint": true,
+   "ifFlag": {
+    "plan_quiet": 1
+   },
+   "guards": [
+    {
+     "at": {
+      "place": "crestline_bank",
+      "along": 2200,
+      "back": 200
+     },
+     "look": {
+      "place": "crestline_bank",
+      "along": 2200,
+      "back": 3000
+     },
+     "sight": 1400
+    },
+    {
+     "at": {
+      "place": "crestline_bank",
+      "along": 2900,
+      "back": 100
+     },
+     "beat": [
+      {
+       "place": "crestline_bank",
+       "along": 2900,
+       "back": 100
+      },
+      {
+       "place": "crestline_bank",
+       "along": 2900,
+       "back": 700
+      }
+     ],
+     "sight": 1400
+    }
+   ]
+  },
+  {
+   "type": "defeat",
+   "text": "Into the vault, loud",
+   "sub": "Three guards. One has a gun.",
+   "checkpoint": true,
+   "ifFlag": {
+    "plan_quiet": 0
+   },
+   "guards": [
+    {
+     "at": {
+      "place": "crestline_bank",
+      "along": 2200,
+      "back": 100
+     },
+     "look": {
+      "place": "crestline_bank",
+      "along": 0,
+      "back": 100
+     }
+    },
+    {
+     "at": {
+      "place": "crestline_bank",
+      "along": 2700,
+      "back": 300
+     },
+     "look": {
+      "place": "crestline_bank",
+      "along": 0,
+      "back": 300
+     },
+     "armed": true
+    },
+    {
+     "at": {
+      "place": "crestline_bank",
+      "along": 3100,
+      "back": -50
+     },
+     "look": {
+      "place": "crestline_bank",
+      "along": 0,
+      "back": -50
+     },
+     "coward": true
+    }
+   ]
+  },
+  {
+   "type": "collect",
+   "text": "Empty the box: the cash and the ledger",
+   "sub": "Two things",
+   "at": {
+    "place": "crestline_bank",
+    "along": 3700,
+    "back": 0
+   },
+   "count": 2,
+   "checkpoint": true,
+   "onDone": {
+    "flags": {
+     "has_ledger": 1
+    },
+    "toast": "The ledger: every naira, from the Oshoja levy to the Kingmaker."
+   }
+  },
+  {
+   "type": "goto",
+   "text": "The getaway",
+   "sub": "Baba Sule has the engine running",
+   "at": {
+    "place": "crestline_bank",
+    "along": 16000,
+    "back": -650
+   },
+   "radius": 900,
+   "limit": 200,
+   "stars": 3,
+   "late": "The Task Force sealed the street.",
+   "sayDone": {
+    "speaker": "The getaway",
+    "lines": [
+     "Baba Sule: Thirty years. I never drive like this before.",
+     "Tunde: We have money, Baba. And we have this.",
+     "Amaka: Leverage."
+    ]
+   },
+   "onDone": {
+    "flags": {
+     "crestline_done": 1
+    }
+   }
+  }
+ ]
+}

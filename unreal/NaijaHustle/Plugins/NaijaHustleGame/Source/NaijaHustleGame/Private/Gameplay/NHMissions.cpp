@@ -291,7 +291,44 @@ bool ANHMissions::Place(const TSharedPtr<FJsonObject>& At, FVector& Out) const
 }
 
 // ---------------------------------------------------------------------------------------------------- start and stop
-bool ANHMissions::Start(FName MissionId)
+int32 ANHMissions::MedalFor(float Seconds, float Limit, int32 Restarts)
+{
+	// gold: inside three quarters of the mission's length with no restart; silver: inside it; bronze: finished
+	return Seconds <= Limit * 0.75f && Restarts == 0 ? 3 : Seconds <= Limit ? 2 : 1;
+}
+
+const TCHAR* ANHMissions::MedalName(int32 Medal)
+{
+	return Medal >= 3 ? TEXT("Gold") : Medal == 2 ? TEXT("Silver") : Medal == 1 ? TEXT("Bronze") : TEXT("No medal");
+}
+
+bool ANHMissions::Holds(const TSharedPtr<FJsonObject>& Objective) const
+{
+	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	if (const TSharedPtr<FJsonObject> Want = Sub(Objective, TEXT("ifFlag")); Want.IsValid() && Hustle)
+	{
+		for (const TPair<FString, TSharedPtr<FJsonValue>>& F : Want->Values)
+		{
+			if (Hustle->Flag(FName(*F.Key)) != static_cast<int32>(F.Value->AsNumber()))
+			{
+				return false;
+			}
+		}
+	}
+	if (Flag(Objective, TEXT("ifWater")))
+	{
+		// the small city's lagoon cells are known; the real city's water is not told from land yet, so the boat's part is left out there
+		const UNHGameData* Data = UNHGameData::Get(this);
+		FVector At;
+		if (!Data || Data->bRealCity || !Place(Sub(Objective, TEXT("at")), At) || Data->TileAt(At) != TEXT('W'))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool ANHMissions::Start(FName MissionId, bool bReplay)
 {
 	ANHGameDirector* D = Dir();
 	TSharedPtr<FJsonObject> File;
@@ -313,9 +350,15 @@ bool ANHMissions::Start(FName MissionId)
 		UE_LOG(LogNHGame, Warning, TEXT("NAIJA HUSTLE: missions: %s has no objectives"), *Id.ToString());
 		return false;
 	}
-	if (Objectives.Num() > 5 && !bTest)
+	// five at most on any one way through: objectives that depend on a choice count once between them
+	int32 Always = 0, Sometimes = 0;
+	for (const TSharedPtr<FJsonObject>& O : Objectives)
 	{
-		UE_LOG(LogNHGame, Warning, TEXT("NAIJA HUSTLE: missions: %s has %d objectives; the rule is five at most"), *Id.ToString(), Objectives.Num());
+		(Sub(O, TEXT("ifFlag")).IsValid() || Flag(O, TEXT("ifWater")) ? Sometimes : Always) += 1;
+	}
+	if (Always + (Sometimes > 0 ? 1 : 0) > 5 && !Flag(Root, TEXT("ifWaterExtra")) && !bTest)
+	{
+		UE_LOG(LogNHGame, Warning, TEXT("NAIJA HUSTLE: missions: %s has %d objectives on a way through; the rule is five at most"), *Id.ToString(), Always + 1);
 	}
 	for (const TSharedPtr<FJsonObject>& O : Objectives)
 	{
@@ -335,20 +378,27 @@ bool ANHMissions::Start(FName MissionId)
 	Last = FResult();
 	Last.Id = Id;
 	bLockedSwitch = Flag(Root, TEXT("lockSwitch"), true);
+	bReplaying = bReplay;
 
 	// the job card
-	const FString PlayAs = Str(Root, TEXT("playAs"));
+	// a mission for both leads begins as "startAs"
+	const FString PlayAs = Str(Root, TEXT("startAs"), Str(Root, TEXT("playAs")));
 	const ANHLeads* Leads = ANHLeads::Get(this);
 	const ANHLeads::FMember* Who = Leads ? Leads->Find(FName(*PlayAs)) : nullptr;
 	TArray<FString> CardLines;
 	CardLines.Add(Str(Root, TEXT("brief")));
-	CardLines.Add(FString::Printf(TEXT("You play: %s"), Who ? *Who->Name : PlayAs == TEXT("both") ? TEXT("Tunde and Amaka") : TEXT("whoever you are")));
+	CardLines.Add(FString::Printf(TEXT("You play: %s"), Str(Root, TEXT("playAs")) == TEXT("both") ? TEXT("Tunde and Amaka") : Who ? *Who->Name : TEXT("whoever you are")));
+	if (bReplay)
+	{
+		const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+		CardLines.Add(FString::Printf(TEXT("Replay, for the medal. Best so far: %s. Nothing is paid and no choice changes."), MedalName(Hustle ? Hustle->Medals.FindRef(MissionId) : 0)));
+	}
 	bCardOpen = true;
 	D->OpenPanel(Title.ToUpper(), CardLines, { TEXT("Start") }, [this](int32)
 	{
 		bCardOpen = false;
 		// in the right shoes before it begins
-		const FString As = Str(Root, TEXT("playAs"));
+		const FString As = Str(Root, TEXT("startAs"), Str(Root, TEXT("playAs")));
 		if (ANHLeads* L = ANHLeads::Get(this); L && L->Find(FName(*As)) && L->Current() != FName(*As))
 		{
 			L->Switch(FName(*As), true);
@@ -423,6 +473,19 @@ void ANHMissions::SaveCheckpoint()
 
 void ANHMissions::Begin(int32 NewIndex)
 {
+	// objectives that depend on a choice not made that way, or on water this level has not got, are passed over
+	while (Objectives.IsValidIndex(NewIndex) && !Holds(Objectives[NewIndex]))
+	{
+		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: missions: %s objective %d of %d left out (%s)"), *Id.ToString(), NewIndex + 1, Objectives.Num(), *Str(Objectives[NewIndex], TEXT("text")));
+		++NewIndex;
+	}
+	if (!Objectives.IsValidIndex(NewIndex))
+	{
+		Index = Objectives.Num() - 1;
+		bObjectiveReady = true;
+		Finish();
+		return;
+	}
 	Index = NewIndex;
 	ObjectiveT = 0.f;
 	bObjectiveReady = false;
@@ -761,6 +824,27 @@ void ANHMissions::Apply(const TSharedPtr<FJsonObject>& Effects)
 	{
 		return;
 	}
+	if (bReplaying)
+	{
+		// a replay: the scene goes on (the switch, the line on the screen), the story's book is left as it was
+		if (const FString Toast = Str(Effects, TEXT("toast")); !Toast.IsEmpty())
+		{
+			ANHHUD::Toast(this, Toast, 1);
+		}
+		if (const FString To = Str(Effects, TEXT("switchTo")); !To.IsEmpty())
+		{
+			if (ANHLeads* Leads = ANHLeads::Get(this))
+			{
+				FVector At;
+				if (Place(Sub(Effects, TEXT("at")), At))
+				{
+					Leads->PlaceLead(FName(*To), At, AnchorYaw);
+				}
+				Leads->Switch(FName(*To), true);
+			}
+		}
+		return;
+	}
 	if (const TSharedPtr<FJsonObject> Flags = Sub(Effects, TEXT("flags")))
 	{
 		for (const TPair<FString, TSharedPtr<FJsonValue>>& F : Flags->Values)
@@ -958,15 +1042,22 @@ void ANHMissions::Finish()
 	Last.Seconds = MissionT;
 	Last.ObjectiveSeconds = Times;
 	Last.Restarts = RestartCount;
-	Last.Cred = static_cast<int32>(Num(Rewards, TEXT("cred")));
-	Last.GoldKobo = static_cast<int32>(Num(Rewards, TEXT("goldKobo")));
+	Last.Cred = bReplaying ? 0 : static_cast<int32>(Num(Rewards, TEXT("cred")));
+	Last.GoldKobo = bReplaying ? 0 : static_cast<int32>(Num(Rewards, TEXT("goldKobo")));
 	Last.bTooLong = MissionT > LengthLimit;
-	if (const int32 Integrity = static_cast<int32>(Num(Rewards, TEXT("integrity"))); Hustle && Integrity != 0)
+	// the medal, and ten Gold Kobo the first time it is gold
+	Last.Medal = MedalFor(MissionT, LengthLimit, RestartCount);
+	if (Hustle && Last.Medal > Hustle->Medals.FindRef(Id))
+	{
+		Last.GoldKobo += Last.Medal == 3 ? 10 : 0;
+		Hustle->Medals.Add(Id, Last.Medal);
+	}
+	if (const int32 Integrity = static_cast<int32>(Num(Rewards, TEXT("integrity"))); Hustle && Integrity != 0 && !bReplaying)
 	{
 		Hustle->Integrity = FMath::Clamp(Hustle->Integrity + Integrity, -100, 100);
 		Last.Integrity += Integrity;
 	}
-	if (Hustle)
+	if (Hustle && !bReplaying)
 	{
 		Hustle->Cred += Last.Cred;
 		Hustle->Done.AddUnique(Id);
@@ -988,9 +1079,9 @@ void ANHMissions::Finish()
 	{
 		CardLines.Add(Standout);
 	}
-	CardLines.Add(FString::Printf(TEXT("Time %s"), *Clock(MissionT)));
+	CardLines.Add(FString::Printf(TEXT("Time %s    %s medal"), *Clock(MissionT), MedalName(Last.Medal)));
 	CardLines.Add(FString::Printf(TEXT("Cred +%d    Integrity %+d    Gold Kobo +%d"), Last.Cred, Last.Integrity, Last.GoldKobo));
-	const bool bNight = Flag(Root, TEXT("nightShift"), Number >= 2);
+	const bool bNight = Flag(Root, TEXT("nightShift"), Number >= 2) && !bReplaying;
 	Night = ENight::Card;
 	if (!Flag(Root, TEXT("rewardCard"), true))
 	{
@@ -1047,7 +1138,7 @@ void ANHMissions::PayNightShift(bool bDrove)
 {
 	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
 	const int32 As = static_cast<int32>(Num(Root, TEXT("nightShiftAs"), Number));
-	Last.Pay = Flag(Root, TEXT("nightShift"), Number >= 2) ? PayFor(As) : 0;
+	Last.Pay = Flag(Root, TEXT("nightShift"), Number >= 2) && !bReplaying ? PayFor(As) : 0;
 	if (Hustle && Last.Pay > 0)
 	{
 		Hustle->Earn(Last.Pay, TEXT("Night shift"));
@@ -1075,6 +1166,11 @@ void ANHMissions::PayNightShift(bool bDrove)
 		{
 			H->Save();
 		}
+		// the last mission: what it all came to
+		if (Flag(Root, TEXT("ending")) && !bReplaying)
+		{
+			PlayEnding();
+		}
 	};
 	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: missions: %s night shift (%s): %d naira"), *Id.ToString(), bDrove ? TEXT("driven") : TEXT("skipped"), Last.Pay);
 	if (Last.Pay <= 0)
@@ -1082,9 +1178,9 @@ void ANHMissions::PayNightShift(bool bDrove)
 		Close();
 		return;
 	}
+	Apply(Sub(Root, TEXT("nightShiftCard")));
 	// the takings card: the mission's own words if it has them (the bag under the back seat), and the flags that go with them
 	TArray<FString> CardLines = Lines(Sub(Root, TEXT("nightShiftCard")), TEXT("lines"));
-	Apply(Sub(Root, TEXT("nightShiftCard")));
 	CardLines.Add(FString::Printf(TEXT("The night's takings: %s"), *UNHHustleSubsystem::Naira(Last.Pay)));
 	if (CardLines.Num() == 1)
 	{
@@ -1139,6 +1235,53 @@ void ANHMissions::Card()
 	const AActor* Thing = Car ? static_cast<const AActor*>(Car.Get()) : HackTarget ? static_cast<const AActor*>(HackTarget.Get()) : Pickups.Num() > 0 && IsValid(Pickups[0]) ? Pickups[0].Get() : nullptr;
 	D->bMarker = bHasPlace || Thing;
 	D->Marker = Thing ? Thing->GetActorLocation() : PlaceAt;
+}
+
+FName ANHMissions::Ending() const
+{
+	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	if (!Hustle)
+	{
+		return NAME_None;
+	}
+	// docs/STORY.md: the shot taken, or a rotten name, makes him the Big Man's boy; Zainab alive with the ledger kept and a
+	// good name puts it on the air; anything else, they go quiet
+	if (Hustle->Flag(TEXT("took_shot")) != 0 || Hustle->Integrity <= -30)
+	{
+		return TEXT("bigmans_boy");
+	}
+	if (Hustle->Flag(TEXT("zainab_alive")) != 0 && Hustle->Flag(TEXT("kept_ledger")) != 0 && Hustle->Integrity >= 30)
+	{
+		return TEXT("broadcast");
+	}
+	return TEXT("gone_quiet");
+}
+
+void ANHMissions::PlayEnding()
+{
+	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	ANHGameDirector* D = Dir();
+	FString Text;
+	TSharedPtr<FJsonObject> File;
+	if (!Hustle || !D || !FFileHelper::LoadFileToString(Text, *(UNHGameData::DataDir() / TEXT("endings.json"))) || !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), File) || !File)
+	{
+		return;
+	}
+	LastEnding = Ending();
+	const TSharedPtr<FJsonObject> Which = Sub(Sub(File, TEXT("endings")), *LastEnding.ToString());
+	const FString EndTitle = Str(Which, TEXT("title"), LastEnding.ToString());
+	const bool bFirst = Hustle->Flag(TEXT("story_done")) == 0;
+	Hustle->SetFlag(TEXT("story_done"), 1);
+	Hustle->SetFlag(FName(*(TEXT("ending_") + LastEnding.ToString())), 1);
+	GoldKoboEarned += bFirst ? static_cast<int32>(Num(File, TEXT("goldKobo"), 50.0)) : 0;
+	Hustle->Save();
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: missions: the ending is %s (\"%s\"): Integrity %d, Zainab %s, the ledger %s, the shot %s"), *LastEnding.ToString(), *EndTitle, Hustle->Integrity,
+		Hustle->Flag(TEXT("zainab_alive")) ? TEXT("alive") : TEXT("dead"), Hustle->Flag(TEXT("kept_ledger")) ? TEXT("kept") : TEXT("gone"), Hustle->Flag(TEXT("took_shot")) ? TEXT("taken") : TEXT("not taken"));
+	const TArray<FString> Credits = Lines(File, TEXT("credits"));
+	D->Say(Str(Which, TEXT("speaker"), TEXT("Lagos, after")), Lines(Which, TEXT("lines")), [this, EndTitle, Credits]()
+	{
+		Dir()->OpenPanel(FString::Printf(TEXT("THE END: %s"), *EndTitle.ToUpper()), Credits, { TEXT("Back to Lagos") }, [](int32) {});
+	});
 }
 
 FName ANHMissions::Next() const

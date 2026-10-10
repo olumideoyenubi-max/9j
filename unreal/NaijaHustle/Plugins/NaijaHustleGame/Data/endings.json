@@ -1,0 +1,44 @@
+{
+ "format": "naija-hustle-endings",
+ "version": 1,
+ "goldKobo": 50,
+ "note": "The three endings of docs/STORY.md, chosen by ANHMissions::Ending from the flags and Integrity when mission 12 is over.",
+ "credits": [
+  "NAIJA HUSTLE",
+  "Everybody and everything in this story is fictional.",
+  "Map data from OpenStreetMap contributors.",
+  "Lagos goes on. So does the hustle."
+ ],
+ "endings": {
+  "broadcast": {
+   "title": "The Broadcast",
+   "speaker": "Oshoja Park, a month on",
+   "lines": [
+    "The ledger went out live. Every naira, from the Oshoja levy to the Kingmaker's campaign.",
+    "The Kingmaker withdrew by morning. Big Bar's accounts are frozen. Shina Garage is in a cell.",
+    "There is no levy at Oshoja Park any more.",
+    "Iya Tobi owns Femi's danfo again. Tunde and Amaka run it together."
+   ]
+  },
+  "bigmans_boy": {
+   "title": "The Big Man's Boy",
+   "speaker": "Oshoja, a month on",
+   "lines": [
+    "Tunde rides at the back of Big Bar's convoy now. Rich. Untouchable.",
+    "Amaka left the week after. She did not say where.",
+    "The convoy sweeps past Oshoja Park without slowing.",
+    "A new boy collects the levy there. He collects it for Tunde."
+   ]
+  },
+  "gone_quiet": {
+   "title": "Gone Quiet",
+   "speaker": "Stilt Town Waters, a month on",
+   "lines": [
+    "Tunde and Amaka took the Crestline money and went quiet on the water.",
+    "The ledger never aired.",
+    "Somebody at Oshoja Park still pays the levy.",
+    "Some nights Tunde takes the boat out and looks back at the lights."
+   ]
+  }
+ }
+}

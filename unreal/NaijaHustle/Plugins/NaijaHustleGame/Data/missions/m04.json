@@ -78,10 +78,10 @@
   {
    "type": "goto",
    "text": "Hide the bus",
-   "sub": "Under the bridge, off the road",
+   "sub": "Back past Anthony, off the road",
    "at": {
-    "stop": "bridge",
-    "back": 250
+    "stop": "second",
+    "along": -900
    },
    "radius": 800,
    "sayDone": {

@@ -50,7 +50,9 @@ public:
 	/** -NHRun=systems: plays the two test missions (Data/missions/m00_*.json), which use every piece of the mission runner once (run it with -NHNoSave) */
 	void Systems(bool bQuitWhenDone);
 	/** -NHRun=act1: starts missions 2, 3 and 4 at their markers and plays each through by script, checking flags, money and the night shift's pay (run it with -NHNoSave) */
-	void Act1(bool bQuitWhenDone);
+	void Story(bool bQuitWhenDone, int32 Variant);
+	/** The answers the story test gives to the choice cards, by the start of the card's title */
+	TMap<FString, int32> StoryChoices;
 	/** One frame of playing whatever story mission is running: cards answered, scenes skipped, the objective in hand done the short way. For the act tests. */
 	void PlayStoryFrame(float DeltaSeconds, int32& Failures, float& Cheat);
 	void PaintDemo(const FVector& At);

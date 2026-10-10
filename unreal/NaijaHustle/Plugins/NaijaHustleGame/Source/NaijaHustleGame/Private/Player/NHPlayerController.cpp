@@ -72,7 +72,7 @@ void ANHPlayerController::BeginPlay()
 		{
 			if (UNHDebugPlay* Play = DebugPlay(); Play && !Play->IsRunning())
 			{
-				Run == TEXT("selftest") ? Play->SelfTest(bQuitAfter) : Run == TEXT("leads") ? Play->Leads(bQuitAfter) : Run == TEXT("systems") ? Play->Systems(bQuitAfter) : Run == TEXT("act1") ? Play->Act1(bQuitAfter) : Play->Autoplay(bQuitAfter);
+				Run == TEXT("selftest") ? Play->SelfTest(bQuitAfter) : Run == TEXT("leads") ? Play->Leads(bQuitAfter) : Run == TEXT("systems") ? Play->Systems(bQuitAfter) : Run == TEXT("act1") || Run == TEXT("story1") ? Play->Story(bQuitAfter, 1) : Run == TEXT("story2") ? Play->Story(bQuitAfter, 2) : Run == TEXT("story3") ? Play->Story(bQuitAfter, 3) : Play->Autoplay(bQuitAfter);
 			}
 		}), 4.f, false);
 	}
