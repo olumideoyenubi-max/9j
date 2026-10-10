@@ -149,6 +149,11 @@ private:
 	void Build(FPlace& P);
 	void BuildRoom(const FPlace& P);
 	void BuildHome(const FPlace& P, AActor* Holder, USceneComponent* Base);
+	/** The pool and the shower of a home, built beside its living room; the player is taken there to swim or wash */
+	void BuildWetRoom(AActor* Holder, USceneComponent* Base);
+	const FVector WetRoom = FVector(6000.f, 0.f, 0.f);
+	bool bAway = false;
+	FVector AwayFrom = FVector::ZeroVector;
 	/** The room model for a kind of home, if it has been brought in (/Game/Interiors) */
 	class UStaticMesh* HomeModel(const FPlace& P) const;
 	/** Somewhere that can be gone into: a bar or a club, and a house or a flat that is the player's own */

@@ -324,6 +324,20 @@ UAnimSequence* ANHCharacter::Clip(const TCHAR* Name) const
 	return ActionClip(GetMesh()->GetSkeletalMeshAsset(), Name);
 }
 
+void ANHCharacter::Perform(FName ClipName, float Seconds)
+{
+	if (bIsCrouched)
+	{
+		UnCrouch();
+	}
+	if (!Weapon.IsNone())
+	{
+		Equip(Weapon); // whatever is in the hand is put away first
+	}
+	DoingClip = ClipName;
+	DoingLeft = Clip(*ClipName.ToString()) ? Seconds : 0.f;
+}
+
 void ANHCharacter::ToggleCrouch()
 {
 	if (bIsCrouched)
@@ -406,10 +420,44 @@ void ANHCharacter::UpdateActions(float DeltaSeconds)
 		bCarried = !bRaised;
 		Want = bRaised ? (bPistol ? TEXT("Pistol_Aim") : bTrigger ? TEXT("Rifle_Fire") : TEXT("Rifle_Aim")) : !Layer ? nullptr : bPistol ? TEXT("Pistol_Carry") : TEXT("Rifle_Carry");
 	}
+	else if (Weapon.IsNone() && Layer && SinceShot < 2.5f && Clip(TEXT("Fight_Idle")))
+	{
+		Want = TEXT("Fight_Idle"); // fists up for a moment after a blow
+	}
 	else if (bBlade)
 	{
 		bCarried = Layer && !bRaised;
 		Want = bCarried ? TEXT("Machete_Carry") : Layer || !bMoving ? TEXT("Machete_Idle") : nullptr;
+	}
+	if (UAnimSequence* Down = Layer && Health <= 0.f ? Clip(TEXT("Knocked_Out")) : nullptr)
+	{
+		// with nothing left the body goes down and stays down, until whoever comes for it has stood it up again
+		Layer->SetReach(1.f, 1.f);
+		if (Layer->Showing() != Down)
+		{
+			Layer->ShowClip(Down, 1.f, false, 0.1f);
+		}
+		HoldClip = TEXT("Knocked_Out");
+		ShotLeft = 0.f;
+		return;
+	}
+	if (Layer && DoingLeft > 0.f)
+	{
+		// sitting, eating, swimming: the whole body, until the time is up or the player walks off
+		DoingLeft = GetVelocity().SizeSquared2D() > 400.f || !bGround ? 0.f : DoingLeft - DeltaSeconds;
+		UAnimSequence* Doing = Clip(*DoingClip.ToString());
+		if (DoingLeft > 0.f && Doing)
+		{
+			Layer->SetReach(1.f, 1.f);
+			if (Layer->Showing() != Doing)
+			{
+				Layer->ShowClip(Doing, 1.f, true, 0.3f);
+			}
+			HoldClip = DoingClip;
+			ShotLeft = 0.f;
+			return;
+		}
+		DoingLeft = 0.f;
 	}
 	if (Layer)
 	{
@@ -456,6 +504,10 @@ void ANHCharacter::Hurt(float Damage)
 {
 	Health = FMath::Max(0.f, Health - Damage);
 	SinceHurt = 0.f;
+	if (Damage > 2.f && Health > 0.f && ShotLeft <= 0.f && Clip(TEXT("Hit")))
+	{
+		PlayShot(TEXT("Hit"), 1.2f); // the body takes it (a body with the clip; a blow mid-swing does not interrupt the swing)
+	}
 }
 
 void ANHCharacter::SetTrigger(bool bHeld)
@@ -469,6 +521,27 @@ void ANHCharacter::Attack()
 	UNHAudioSubsystem* Audio = UNHAudioSubsystem::Get(this);
 	const FVector Muzzle = WeaponPivot ? WeaponPivot->GetComponentLocation() + GetActorForwardVector() * 40.f : GetActorLocation();
 	++Attacks;
+	if (Weapon.IsNone())
+	{
+		// bare hands: a punch, another, then a kick, each landing part way through its clip
+		static const TCHAR* Blows[] = { TEXT("Punch"), TEXT("Punch"), TEXT("Kick") };
+		const int32 Blow = Swings++ % 3;
+		if (bIsCrouched)
+		{
+			UnCrouch();
+		}
+		PlayShot(Blows[Blow], Blow == 2 ? 0.9f : 1.15f);
+		SinceShot = 0.f; // the guard stays up a moment after
+		AttackWait = Blow == 2 ? 0.55f : 0.38f;
+		SwingLength = AttackWait;
+		SwingLandsAt = SwingLength * 0.5f;
+		SwingLeft = SwingLength;
+		bSwingLanded = false;
+		bSwingFist = true;
+		SwingHurts = Blow == 2 ? 30.f : 18.f;
+		return;
+	}
+	bSwingFist = false;
 	if (Weapon == TEXT("machete"))
 	{
 		// with the clips: a cut across, the cut back, then a chop down, each landing as the blade comes through
@@ -571,7 +644,7 @@ void ANHCharacter::SwingLand()
 	const FVector From = GetActorLocation() + FVector(0.f, 0.f, 30.f), Ahead = GetActorForwardVector();
 	// a person within reach in front first (their bodies stop no rays), then anything solid
 	ANHPerson* Near = nullptr;
-	float NearSq = FMath::Square(170.f);
+	float NearSq = FMath::Square(bSwingFist ? 135.f : 170.f);
 	for (TActorIterator<ANHPerson> It(GetWorld()); It; ++It)
 	{
 		const FVector To = It->GetActorLocation() - GetActorLocation();
@@ -585,9 +658,9 @@ void ANHCharacter::SwingLand()
 	FHitResult Hit;
 	if (Near)
 	{
-		Land(Near, nullptr, Near->GetActorLocation() + FVector(0.f, 0.f, 120.f), 60.f, 0.f, true);
+		Land(Near, nullptr, Near->GetActorLocation() + FVector(0.f, 0.f, 120.f), bSwingFist ? SwingHurts : 60.f, 0.f, true);
 	}
-	else if (GetWorld()->SweepSingleByChannel(Hit, From, From + Ahead * 130.f, FQuat::Identity, ECC_Visibility, FCollisionShape::MakeSphere(25.f), Query))
+	else if (!bSwingFist && GetWorld()->SweepSingleByChannel(Hit, From, From + Ahead * 130.f, FQuat::Identity, ECC_Visibility, FCollisionShape::MakeSphere(25.f), Query))
 	{
 		Land(nullptr, Hit.GetActor(), Hit.ImpactPoint, 0.f, 4.f, true);
 	}
@@ -972,7 +1045,8 @@ void ANHCharacter::Tick(float DeltaSeconds)
 	}
 	// while the AK-47 is firing the time owed is carried over, so its rate does not depend on the frame rate
 	AttackWait = FMath::Max(bTrigger && Weapon == TEXT("ak47") ? -0.1f : 0.f, AttackWait - DeltaSeconds);
-	if (!Weapon.IsNone() && AttackWait <= 0.f && (bTriggerFresh || (bTrigger && Weapon == TEXT("ak47"))))
+	// (with nothing in the hand T is the fists, on a body that has the clips for it)
+	if ((!Weapon.IsNone() || Clip(TEXT("Punch"))) && AttackWait <= 0.f && (bTriggerFresh || (bTrigger && Weapon == TEXT("ak47"))))
 	{
 		Attack();
 	}

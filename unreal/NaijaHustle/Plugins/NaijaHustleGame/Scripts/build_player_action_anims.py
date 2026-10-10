@@ -10,6 +10,7 @@ The clips, all in place at 30 frames a second on the body's own skeleton (MakeHu
   Pistol_Carry, Rifle_Carry, Machete_Carry   (the weapon held but not raised: the game lays these over walking and running)
   Machete_Idle, Machete_Slash, Machete_Backslash, Machete_Chop
   Dance   (a two-step on the spot, for the people in the bars and clubs)
+  Sit, Lie_Down, Swim, Shower, Eat, Drink   (what is done at home)
   Drive_Idle, Drive_Left, Drive_Right, Drive_Reverse   (the hips stay at standing height: the game puts the seat under them;
                                                         Left and Right go from straight ahead to 75 degrees of wheel)
 
@@ -589,7 +590,64 @@ def dance(f, n=48):
     return p
 
 
+# ------------------------------------------------------------------------------------------------- at home
+# Things done in a house or a flat. Each is made on the spot the body stands on: the game plays it there.
+SIT = P(STAND, hip=V(0, -6, 52), hip_rot=(-12, 0, 0), spine=(6, 0, 0), head=(4, 0, 0),
+        foot_r=V(13, 36, 7.6), knee_r=V(0.15, 0.6, 1), footrot_r=(0, -6, 0), foot_l=V(-13, 36, 7.6), knee_l=V(-0.15, 0.6, 1), footrot_l=(0, 6, 0),
+        hand_r=V(17, 22, 60), r_fwd=V(-0.1, 1, -0.25), r_palm=V(0, -0.2, -1), elb_r=V(1, -0.6, 0), grip_r=0.2,
+        hand_l=V(-17, 22, 60), l_fwd=V(0.1, 1, -0.25), l_palm=V(0, -0.2, -1), elb_l=V(-1, -0.6, 0), grip_l=0.2)
+# on the back, head away from where the body faced, hands on the stomach
+LIE = P(STAND, hip=V(0, 0, 14), hip_rot=(-90, 0, 0), spine=(-2, 0, 0), head=(6, 0, 0),
+        foot_r=V(11, 88, 12), knee_r=V(0.1, 0, 1), footrot_r=(-70, -14, 0), toe_r=0, foot_l=V(-11, 88, 12), knee_l=V(-0.1, 0, 1), footrot_l=(-70, 14, 0), toe_l=0,
+        hand_r=V(10, -14, 27), r_fwd=V(-1, 0.2, 0), r_palm=V(0, 0, -1), elb_r=V(1, 0, 0.2), grip_r=0.15,
+        hand_l=V(-10, -22, 27), l_fwd=V(1, 0.2, 0), l_palm=V(0, 0, -1), elb_l=V(-1, 0, 0.2), grip_l=0.15)
+
+
+def swim(f, n=40):
+    """A front crawl on the spot: the body flat, face down, the arms reaching over in turn and the legs beating."""
+    a = 2 * math.pi * f / n
+    p = P(STAND, hip=V(0, 0, 96 + 1.5 * math.sin(2 * a)), hip_rot=(78, 0, 9 * math.sin(a)), spine=(-8, 0, -6 * math.sin(a)), head=(-22, 14 * math.sin(a), 0))
+    for side, sign, ph in (("r", 1, 0.0), ("l", -1, math.pi)):
+        c, s_ = math.cos(a + ph), math.sin(a + ph)
+        p["hand_" + side] = V(sign * 20, 40 + 38 * c, 100 + 22 * max(s_, -0.2))         # forward over the water, back under it
+        p[side + "_fwd"], p[side + "_palm"] = V(0, 1, -0.2), V(0, 0, -1)
+        p["elb_" + side], p["grip_" + side] = V(sign, -0.2, 0.6), 0.1
+        kick = 9 * math.sin(2 * a + ph)
+        p["foot_" + side] = V(sign * 10, -92, 96 + kick)
+        p["knee_" + side], p["footrot_" + side], p["toe_" + side] = V(sign * 0.1, 0, -1), (70, 0, 0), 30
+    return p
+
+
+def shower(f, n=60):
+    """Stood under the water: the head back a little, one hand through the hair and the other across the chest, changing over."""
+    w = wave(f, n)
+    return P(STAND, spine=(-3, 4 * w, 0), head=(-12, 6 * w, 0), cl_r=(16, 8), cl_l=(10, 4),
+             hand_r=V(9 + 3 * w, 6, 170 + 4 * wave(f, n / 2)), r_fwd=V(-0.7, -0.2, 0.7), r_palm=V(-0.3, -0.6, -0.7), elb_r=V(1, 0.6, 0.2), grip_r=0.3,
+             hand_l=V(-6 + 8 * w, 17, 132 - 6 * wave(f, n / 2)), l_fwd=V(1, 0.2, 0.1), l_palm=V(0, -1, 0), elb_l=V(-1, -0.4, -0.5), grip_l=0.2)
+
+
+def eat(f, n=40):
+    """A plate in the left hand; the right goes from the plate to the mouth and back."""
+    t = 0.5 - 0.5 * math.cos(2 * math.pi * f / n)        # 0 at the plate, 1 at the mouth
+    return P(STAND, spine=(4 + 3 * t, 0, 0), head=(6 * t, 0, 0),
+             hand_l=V(-12, 26, 112), l_fwd=V(0.5, 1, 0), l_palm=V(0, 0, 1), elb_l=V(-1, -0.6, -0.3), grip_l=0.3,
+             hand_r=V(2 + 4 * (1 - t), 22 - 8 * t, 120 + 38 * t), r_fwd=V(-0.5, 0.3 - 0.6 * t, 0.2 + 0.8 * t), r_palm=V(-0.3, -1, 0), elb_r=V(1, -0.3, -0.4 + 0.5 * t), grip_r=0.8)
+
+
+def drink(f, n=50):
+    """A cup in the right hand, raised, tipped with the head back, and lowered."""
+    t = min(1.0, max(0.0, 1.3 * math.sin(math.pi * f / n)))
+    return P(STAND, spine=(-2 * t, 0, 0), head=(-16 * t, 0, 0),
+             hand_r=V(22 - 16 * t, 24 - 8 * t, 116 + 44 * t), r_fwd=V(-0.3 * t, 1 - 0.6 * t, 0.2 + 0.9 * t), r_palm=V(-1, 0, 0), elb_r=V(1, -0.5, -0.5 + 0.6 * t), grip_r=0.75)
+
+
 CLIPS = {
+    "Sit": (60, breathing(SIT, 60, 0.7, hands=False), None, True),
+    "Lie_Down": (60, breathing(LIE, 60, 0.5, hands=False), None, True),
+    "Swim": (40, swim, None, True),
+    "Shower": (60, shower, None, True),
+    "Eat": (40, eat, None, True),
+    "Drink": (50, drink, None, True),
     "Dance": (48, dance, None, True),
     # name: (frames, pose at frame, prop, loops)
     "Crouch_Idle": (60, breathing(CROUCH, 60), None, True),

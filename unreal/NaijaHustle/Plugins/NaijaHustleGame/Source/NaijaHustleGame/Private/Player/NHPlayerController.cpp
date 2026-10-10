@@ -89,8 +89,19 @@ void ANHPlayerController::BeginPlay()
 			{ 26.f, TEXT("NHPlayAs madam") }, { 31.f, TEXT("NHPlaceUse 0") }, { 35.f, TEXT("shot flat_1") }, { 36.f, TEXT("turn 120") }, { 38.f, TEXT("shot flat_2") }, { 39.f, TEXT("turn 240") }, { 41.f, TEXT("shot flat_3") }, { 43.f, TEXT("quit") } };
 		static const FStep TreeSteps[] = { { 10.f, TEXT("NHPlace land_ikoyi") }, { 11.f, TEXT("turn 200") }, { 19.f, TEXT("fps Ikoyi") }, { 19.5f, TEXT("shot 1_ikoyi") }, { 20.f, TEXT("turn 20") }, { 23.f, TEXT("shot 2_ikoyi") },
 			{ 24.f, TEXT("NHPlace house_vi") }, { 25.f, TEXT("turn 90") }, { 33.f, TEXT("fps Victoria Island") }, { 33.5f, TEXT("shot 3_vi") },
-			{ 34.f, TEXT("NHPlace house_yaba") }, { 35.f, TEXT("turn 300") }, { 43.f, TEXT("fps Yaba") }, { 43.5f, TEXT("shot 4_yaba") }, { 45.f, TEXT("quit") } };
-		for (const FStep& Step : bTrees ? MakeArrayView(TreeSteps) : MakeArrayView(Steps))
+			{ 34.f, TEXT("NHPlace house_yaba") }, { 35.f, TEXT("turn 300") }, { 43.f, TEXT("fps Yaba") }, { 43.5f, TEXT("shot 4_yaba") },
+			{ 45.f, TEXT("NHPlace atlantic_penthouse") }, { 46.f, TEXT("turn 180") }, { 52.f, TEXT("shot 5_atlantic_a") }, { 53.f, TEXT("turn 90") }, { 56.f, TEXT("shot 6_atlantic_b") }, { 57.f, TEXT("turn 270") }, { 60.f, TEXT("shot 7_atlantic_c") },
+			{ 61.f, TEXT("NHPlace land_lekki") }, { 62.f, TEXT("turn 0") }, { 68.f, TEXT("shot 8_lekki_a") }, { 69.f, TEXT("turn 180") }, { 72.f, TEXT("shot 9_lekki_b") }, { 74.f, TEXT("quit") } };
+		// -NHTreeTest -NHGround: the grass, the forest floor, the beach and the water
+		static const FStep GroundSteps[] = { { 10.f, TEXT("NHAt 282051 349417") }, { 11.f, TEXT("turn 0") }, { 18.f, TEXT("shot g1_grass") }, { 19.f, TEXT("turn 180") }, { 21.f, TEXT("shot g2_grass") },
+			{ 22.f, TEXT("NHAt 237660 144533") }, { 23.f, TEXT("turn 90") }, { 30.f, TEXT("shot g3_forest") },
+			{ 31.f, TEXT("NHAt -42328 750439") }, { 32.f, TEXT("turn 90") }, { 39.f, TEXT("shot g4_beach_south") }, { 40.f, TEXT("turn 0") }, { 42.f, TEXT("shot g5_beach_east") }, { 43.f, TEXT("turn 200") }, { 45.f, TEXT("shot g6_beach_west") }, { 47.f, TEXT("quit") } };
+		// -NHRoomTest -NHLiving: the things done at home, a picture of each
+		static const FStep LivingSteps[] = { { 10.f, TEXT("NHPlayAs chief") }, { 15.f, TEXT("NHPlaceUse 0") }, { 18.f, TEXT("turn 200") }, { 19.f, TEXT("NHPlaceUse 2") }, { 21.f, TEXT("shot live_1_sit") },
+			{ 22.f, TEXT("NHPlaceUse 3") }, { 24.f, TEXT("shot live_2_lie_down") }, { 25.f, TEXT("NHPlaceUse 4") }, { 27.f, TEXT("shot live_3_eat") }, { 34.f, TEXT("NHPlaceUse 5") }, { 36.f, TEXT("shot live_4_drink") },
+			{ 41.f, TEXT("NHPlaceUse 6") }, { 44.f, TEXT("shot live_5_shower") }, { 51.f, TEXT("NHPlaceUse 7") }, { 55.f, TEXT("shot live_6_swim") }, { 66.f, TEXT("shot live_7_back_in_the_room") }, { 68.f, TEXT("quit") } };
+		const bool bLiving = FParse::Param(FCommandLine::Get(), TEXT("NHLiving"));
+		for (const FStep& Step : bTrees && FParse::Param(FCommandLine::Get(), TEXT("NHGround")) ? MakeArrayView(GroundSteps) : bTrees ? MakeArrayView(TreeSteps) : bLiving ? MakeArrayView(LivingSteps) : MakeArrayView(Steps))
 		{
 			const FString Do = Step.Do;
 			FTimerHandle Handle;
@@ -436,7 +447,7 @@ void ANHPlayerController::UiClickEnd()
 void ANHPlayerController::ActionTestStep(int32 Step)
 {
 	// what is done at each step, and the name of the picture taken at the end of it
-	struct FDo { const TCHAR* Weapon; bool bCrouch; bool bFire; float Wait; const TCHAR* Picture; bool bAim = true; bool bWalk = false; };
+	struct FDo { const TCHAR* Weapon; bool bCrouch; bool bFire; float Wait; const TCHAR* Picture; bool bAim = true; bool bWalk = false; float Hurt = 0.f; };
 	static const FDo Steps[] = {
 		{ TEXT("machete"), false, false, 1.2f, TEXT("1_machete_guard") }, { nullptr, false, true, 0.24f, TEXT("2_machete_slash") }, { nullptr, false, false, 0.7f, nullptr },
 		{ nullptr, false, true, 0.24f, TEXT("3_machete_backslash") }, { nullptr, false, false, 0.7f, nullptr },
@@ -450,6 +461,11 @@ void ANHPlayerController::ActionTestStep(int32 Step)
 		{ nullptr, false, false, 1.2f, TEXT("15_pistol_walking_aimed"), true, true },
 		{ TEXT("ak47"), false, false, 1.4f, TEXT("16_rifle_carried"), false }, { nullptr, false, false, 1.6f, TEXT("17_rifle_walking"), false, true },
 		{ nullptr, false, true, 0.5f, TEXT("18_rifle_walking_firing"), false, true }, { nullptr, false, false, 1.0f, TEXT("19_rifle_after"), false },
+		// bare hands: the rifle put away, two punches and a kick, a blow taken, and down
+		{ TEXT("ak47"), false, false, 0.8f, nullptr, false }, { nullptr, false, true, 0.2f, TEXT("20_punch"), false }, { nullptr, false, false, 0.3f, nullptr, false },
+		{ nullptr, false, true, 0.2f, TEXT("21_punch_again"), false }, { nullptr, false, false, 0.3f, nullptr, false }, { nullptr, false, true, 0.28f, TEXT("22_kick"), false },
+		{ nullptr, false, false, 0.9f, TEXT("23_fists_up"), false }, { nullptr, false, false, 0.15f, TEXT("24_hit"), false, false, 12.f }, { nullptr, false, false, 2.0f, nullptr, false },
+		{ nullptr, false, false, 1.2f, TEXT("25_knocked_out"), false, false, 500.f },
 	};
 	ANHCharacter* C = Cast<ANHCharacter>(GetPawn());
 	if (!C || Step >= UE_ARRAY_COUNT(Steps))
@@ -497,6 +513,10 @@ void ANHPlayerController::ActionTestStep(int32 Step)
 	}
 	C->SetTrigger(Do.bFire);
 	C->SetAiming(Do.bAim);
+	if (Do.Hurt > 0.f)
+	{
+		C->Hurt(Do.Hurt);
+	}
 	FTimerHandle Next;
 	GetWorldTimerManager().SetTimer(Next, FTimerDelegate::CreateWeakLambda(this, [this, Step, C, Do]
 	{
@@ -850,6 +870,16 @@ void ANHPlayerController::NHPlace(const FString& Id)
 {
 	ANHEstate* Estate = ANHEstate::Get(this);
 	UE_LOG(LogNHGame, Log, TEXT("[estate] to %s: %s"), *Id, Estate && Estate->GoTo(FName(*Id)) ? TEXT("there") : TEXT("no such place, or nowhere to stand it"));
+}
+
+void ANHPlayerController::NHAt(float X, float Y)
+{
+	FHitResult Hit;
+	const bool bGround = GetWorld()->LineTraceSingleByObjectType(Hit, FVector(X, Y, 30000.f), FVector(X, Y, -3000.f), FCollisionObjectQueryParams(ECC_WorldStatic));
+	if (GetPawn())
+	{
+		GetPawn()->SetActorLocation(FVector(X, Y, (bGround ? Hit.ImpactPoint.Z : 0.f) + 110.f), false, nullptr, ETeleportType::TeleportPhysics);
+	}
 }
 
 void ANHPlayerController::NHPlaceUse(int32 Line)

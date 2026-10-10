@@ -27,6 +27,9 @@ SURFACES = {
     "Gravel_Road": ("gravel_road", "ground", "filler"), "Sandy_Gravel": ("sandy_gravel", "ground", "filler"),
     "Concrete_Pavement": ("concrete_pavement", "ground", "filler"), "Concrete_Pavement_Worn": ("concrete_pavement_02", "ground", "filler"),
     "Concrete_Floor_Worn": ("concrete_floor_worn_001", "ground", "filler"), "Interlock_Paving": ("herringbone_pavement", "ground", "filler"),
+    # what grows, and the shore
+    "Grass": ("leafy_grass", "ground", "hero"), "Grass_Sparse": ("sparse_grass", "ground", "filler"), "Forest_Floor": ("forrest_ground_01", "ground", "filler"),
+    "Beach_Sand": ("coast_sand_01", "ground", "filler"), "Mangrove_Mud": ("brown_mud_02", "ground", "filler"),
     # walls
     "Plaster": ("plastered_wall", "building", "hero"), "Plaster_Rough": ("plastered_wall_02", "building", "filler"), "Plaster_Patched": ("plastered_wall_04", "building", "filler"),
     "Plaster_Painted": ("painted_plaster_wall", "building", "hero"), "Plaster_Blue_Weathered": ("blue_plaster_weathered", "building", "filler"),

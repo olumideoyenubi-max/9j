@@ -120,6 +120,9 @@ public:
 	/** Down into a crouch and up again (X), on a body that has the crouch clips */
 	void ToggleCrouch();
 	/** The clip held or being played over the body's own animation just now, for tests ("" if none) */
+	/** Does something on the spot for a while (sitting, eating, swimming: a looping clip by name). Moving off stops it. */
+	void Perform(FName ClipName, float Seconds);
+	bool IsPerforming() const { return DoingLeft > 0.f; }
 	FName ActionShown() const { return ShotLeft > 0.f ? ShotClip : HoldClip; }
 
 	/**
@@ -194,6 +197,11 @@ private:
 	/** How long a machete swing lasts and how far from its end it lands, seconds: longer with the clips than without */
 	float SwingLength = 0.28f, SwingLandsAt = 0.14f;
 	int32 Swings = 0;
+	FName DoingClip;
+	float DoingLeft = 0.f;
+	/** The swing in hand is a fist or a foot, not the machete, and what it takes off whoever it lands on */
+	bool bSwingFist = false;
+	float SwingHurts = 60.f;
 	class UAnimSequence* Clip(const TCHAR* Name) const;
 	void PlayShot(const TCHAR* Name, float Rate);
 	void UpdateActions(float DeltaSeconds);

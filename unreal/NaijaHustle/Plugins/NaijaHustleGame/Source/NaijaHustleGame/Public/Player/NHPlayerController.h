@@ -65,6 +65,8 @@ public:
 	/** To a place's door: NHPlace club_vi. NHPlaceUse 0 chooses a line of its menu (opening it first). */
 	UFUNCTION(Exec) void NHPlace(const FString& Id);
 	UFUNCTION(Exec) void NHPlaceUse(int32 Line);
+	/** Anywhere on the map, by its place in centimetres: NHAt 282051 349417 stands the player on the ground there */
+	UFUNCTION(Exec) void NHAt(float X, float Y);
 	/** Puts things in the bag: NHGive suya 3. Single player and the host only. */
 	UFUNCTION(Exec) void NHGive(const FString& Item, int32 HowMany);
 

@@ -548,8 +548,79 @@ void ANHEstate::BuildRoom(const FPlace& P)
 	}
 }
 
+void ANHEstate::BuildWetRoom(AActor* Holder, USceneComponent* Base)
+{
+	// Beside the living room, through no door (the menu takes you): a tiled hall with a pool 12 m by 5 and a shower in
+	// the corner. The water's top is at chest height over the pool's floor, where the swimming clip holds the body.
+	const FVector O = WetRoom;
+	const FNHSurface Tile(FLinearColor(0.75f, 0.8f, 0.82f), 0.25f), Dark(FLinearColor(0.06f, 0.08f, 0.1f), 0.3f), Water(FLinearColor(0.02f, 0.3f, 0.45f), 0.03f, 1.f), Steel(FLinearColor(0.6f, 0.6f, 0.62f), 0.25f, 0.f, 1.f);
+	const FNHSurface Glow(FLinearColor(0.6f, 0.85f, 1.f), 0.3f, 0.f, 0.f, 5.f), Spray(FLinearColor(0.7f, 0.85f, 1.f), 0.1f, 1.f, 0.f, 1.5f), Wood(FLinearColor(0.3f, 0.17f, 0.08f), 0.5f);
+	const auto Piece = [Holder, Base, O](ENHShape Shape, const FVector& Where, const FVector& Size, const FNHSurface& Surface, bool bSolid = true)
+	{
+		if (UStaticMeshComponent* Part = NHShapes::AddPiece(Holder, Base, Shape, O + Where, Size, Surface))
+		{
+			Part->SetCollisionEnabled(bSolid ? ECollisionEnabled::QueryAndPhysics : ECollisionEnabled::NoCollision);
+			Part->SetCanEverAffectNavigation(false);
+		}
+	};
+	// the pool: its floor is where the swimmer stands (height 0 here), the hall's floor a metre and a bit above it
+	Piece(ENHShape::Box, FVector(0.f, 0.f, -10.f), FVector(1200.f, 500.f, 20.f), Tile);
+	Piece(ENHShape::Box, FVector(0.f, 0.f, 96.f), FVector(1200.f, 500.f, 6.f), Water, false);
+	for (const float Y : { -260.f, 260.f })
+	{
+		Piece(ENHShape::Box, FVector(0.f, Y, 55.f), FVector(1240.f, 20.f, 130.f), Tile);
+	}
+	for (const float X : { -610.f, 610.f })
+	{
+		Piece(ENHShape::Box, FVector(X, 0.f, 55.f), FVector(20.f, 540.f, 130.f), Tile);
+	}
+	for (const float Y : { -520.f, 520.f })                                                                      // the hall's floor either side
+	{
+		Piece(ENHShape::Box, FVector(0.f, Y, 110.f), FVector(1700.f, 500.f, 20.f), Wood);
+	}
+	for (const float X : { -735.f, 735.f })
+	{
+		Piece(ENHShape::Box, FVector(X, 0.f, 110.f), FVector(230.f, 540.f, 20.f), Wood);
+	}
+	Piece(ENHShape::Box, FVector(0.f, 0.f, 560.f), FVector(1700.f, 1540.f, 20.f), FNHSurface(FLinearColor(0.9f, 0.9f, 0.9f), 0.9f));
+	for (const float Y : { -770.f, 770.f })
+	{
+		Piece(ENHShape::Box, FVector(0.f, Y, 340.f), FVector(1700.f, 20.f, 460.f), Tile);
+	}
+	for (const float X : { -850.f, 850.f })
+	{
+		Piece(ENHShape::Box, FVector(X, 0.f, 340.f), FVector(20.f, 1540.f, 460.f), X > 0.f ? Glow : Tile, X < 0.f);
+	}
+	for (int32 I = 0; I < 3; ++I)                                                                                // loungers along the far side
+	{
+		Piece(ENHShape::Box, FVector(-360.f + I * 360.f, -560.f, 140.f), FVector(190.f, 70.f, 24.f), FNHSurface(FLinearColor(0.9f, 0.9f, 0.86f), 0.8f));
+	}
+	// the shower: a tiled corner, a head on an arm, the water falling
+	Piece(ENHShape::Box, FVector(-420.f, 560.f + 110.f, 240.f), FVector(160.f, 8.f, 240.f), Dark);
+	Piece(ENHShape::Box, FVector(-500.f, 560.f, 240.f), FVector(8.f, 220.f, 240.f), FNHSurface(FLinearColor(0.5f, 0.65f, 0.7f), 0.05f));
+	Piece(ENHShape::Cylinder, FVector(-420.f, 560.f + 90.f, 330.f), FVector(4.f, 4.f, 40.f), Steel, false);
+	Piece(ENHShape::Cylinder, FVector(-420.f, 560.f + 20.f, 345.f), FVector(34.f, 34.f, 5.f), Steel, false);
+	for (int32 I = 0; I < 9; ++I)
+	{
+		Piece(ENHShape::Box, FVector(-432.f + (I % 3) * 12.f, 560.f + 8.f + (I / 3) * 12.f, 560.f), FVector(1.2f, 1.2f, 225.f), Spray, false);
+	}
+	for (const FVector& At : { FVector(-400.f, 0.f, 500.f), FVector(400.f, 0.f, 500.f), FVector(-420.f, 600.f, 420.f) })
+	{
+		UPointLightComponent* Light = NewObject<UPointLightComponent>(Holder);
+		Light->SetupAttachment(Base);
+		Light->SetRelativeLocation(O + At);
+		Light->SetIntensityUnits(ELightUnits::Candelas);
+		Light->SetIntensity(260.f);
+		Light->SetLightColor(FLinearColor(0.85f, 0.95f, 1.f));
+		Light->SetAttenuationRadius(1500.f);
+		Light->SetCastShadows(false);
+		Light->RegisterComponent();
+	}
+}
+
 void ANHEstate::BuildHome(const FPlace& P, AActor* Holder, USceneComponent* Base)
 {
+	BuildWetRoom(Holder, Base);
 	// The inside of a house or a flat: one big room 18 m by 12 with a wall of window, a sitting area round a television,
 	// a dining table, a kitchen along one end and a bed behind a half wall at the other. The same plan for every home;
 	// a flat looks out on sky, a house on its garden, and the colours come from the place's name.
@@ -794,6 +865,15 @@ void ANHEstate::Tick(float DeltaSeconds)
 			}
 		}
 	}
+	if (ANHCharacter* Me = bAway ? Cast<ANHCharacter>(Pawn) : nullptr; Me && !Me->IsPerforming())
+	{
+		// out of the pool, or the shower: back to where they were in the living room
+		bAway = false;
+		if (Inside != INDEX_NONE)
+		{
+			Pawn->SetActorLocation(AwayFrom, false, nullptr, ETeleportType::TeleportPhysics);
+		}
+	}
 	Look -= DeltaSeconds;
 	if (Look > 0.f)
 	{
@@ -916,7 +996,13 @@ void ANHEstate::Menu(FString& OutTitle, FString& OutHeading, TArray<FNHMenuLine>
 	{
 		OutLines.Add({ TEXT("Save the game"), FString(), TEXT("Your money, what you own, the day and the hour. You start from home next time.") });
 		OutLines.Add({ TEXT("Sleep till morning"), FString(), TEXT("Wake at seven with your health back. Saves the game.") });
-		OutLines.Add({ TEXT("Wardrobe"), FString(), TEXT("Change what you are wearing.") });
+		OutLines.Add({ TEXT("Sit down"), FString(), TEXT("Take the weight off. Walk off to get up.") });
+		OutLines.Add({ TEXT("Lie down"), FString(), TEXT("Flat on your back. Walk off to get up.") });
+		OutLines.Add({ TEXT("Eat"), FString(), TEXT("Something from the kitchen. Good for 25 health.") });
+		OutLines.Add({ TEXT("Drink"), FString(), TEXT("Something cold. Good for 8 health.") });
+		OutLines.Add({ TEXT("Take a shower"), FString(), TEXT("A quarter of an hour under the water.") });
+		OutLines.Add({ TEXT("Swim"), FString(), TEXT("A few lengths of the pool. Good for 10 health.") });
+		OutLines.Add({ TEXT("Change clothes"), FString(), TEXT("The wardrobe: change what you are wearing.") });
 		OutLines.Add({ TEXT("Watch television"), FString(), TEXT("Half an hour of the news.") });
 		Journeys();
 		OutLines.Add({ TEXT("Go out"), FString(), TEXT("Back to the street.") });
@@ -1043,7 +1129,35 @@ void ANHEstate::Choose(int32 Line)
 			ANHHUD::Toast(this, TEXT("The garage is full"), 2);
 		}
 	}
-	else if (What == TEXT("Wardrobe"))
+	else if (Me && (What == TEXT("Sit down") || What == TEXT("Lie down") || What == TEXT("Eat") || What == TEXT("Drink")))
+	{
+		Mode = EMode::None;
+		const bool bEat = What == TEXT("Eat"), bDrink = What == TEXT("Drink");
+		Me->Perform(What == TEXT("Sit down") ? TEXT("Sit") : What == TEXT("Lie down") ? TEXT("Lie_Down") : bEat ? TEXT("Eat") : TEXT("Drink"), bEat ? 8.f : bDrink ? 5.f : 3600.f);
+		if (bEat || bDrink)
+		{
+			Me->Health = FMath::Min(100.f, Me->Health + (bEat ? 25.f : 8.f));
+			Hustle->Minutes += bEat ? 20.f : 5.f;
+		}
+	}
+	else if (Me && (What == TEXT("Take a shower") || What == TEXT("Swim")))
+	{
+		// through to the wet room beside the living room, and back when it is done (ANHEstate::Tick)
+		const bool bSwim = What == TEXT("Swim");
+		Mode = EMode::None;
+		AwayFrom = Pawn->GetActorLocation();
+		bAway = true;
+		Pawn->SetActorLocation(RoomAt(P) + WetRoom + (bSwim ? FVector(0.f, 0.f, 100.f) : FVector(-420.f, 560.f, 215.f)), false, nullptr, ETeleportType::TeleportPhysics);
+		if (PC)
+		{
+			PC->SetControlRotation(FRotator(-10.f, bSwim ? 0.f : 180.f, 0.f));
+		}
+		Pawn->SetActorRotation(FRotator(0.f, bSwim ? 0.f : 180.f, 0.f));
+		Me->Perform(bSwim ? TEXT("Swim") : TEXT("Shower"), bSwim ? 12.f : 8.f);
+		Me->Health = FMath::Min(100.f, Me->Health + (bSwim ? 10.f : 0.f));
+		Hustle->Minutes += bSwim ? 20.f : 15.f;
+	}
+	else if (What == TEXT("Wardrobe") || What == TEXT("Change clothes"))
 	{
 		Mode = EMode::None;
 		if (ANHHUD* H = ANHHUD::Get(this))

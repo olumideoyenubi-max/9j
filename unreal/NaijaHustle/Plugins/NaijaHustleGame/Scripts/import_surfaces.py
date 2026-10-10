@@ -21,7 +21,8 @@ Ground: large-scale colour variation to hide the tiling, wetness and puddles fro
 parameter, so an instance (or one building) can be cleaner or dirtier. Not done: edge wear (needs curvature data the
 meshes do not carry) and streaks placed under windows (the shader does not know where windows are).
 
-Stage "city" then puts ground instances on the Lagos map's roads, bridges and earth in place of their flat colours.
+Stage "city" then puts ground instances on the Lagos map's roads, bridges and earth in place of their flat colours:
+grass, forest floor, beach and mangrove mud among them, and M_NH_Water (rippling, glossy, opaque) on the water.
 """
 import json
 import os
@@ -35,7 +36,8 @@ WEATHER = "/Game/NaijaHustle/Lighting/Presets/MPC_NHWeather"
 # the Lagos map's material slots -> surface, tile size in cm
 CITY = {"Road_Asphalt": ("Asphalt", 600), "Road_Street": ("Asphalt_Patched", 450), "Road_Service": ("Laterite", 500), "Bridge_Concrete": ("Concrete_Floor_Worn", 500),
         "Rail_Ballast": ("Gravel_Road", 400), "Ground_Laterite": ("Laterite_Dry", 900), "LU_BareSand": ("Red_Sand", 800), "LU_Parking": ("Concrete_Pavement_Worn", 500),
-        "LU_Industrial": ("Concrete_Floor_Worn", 700), "LU_Commercial": ("Concrete_Pavement", 500)}
+        "LU_Industrial": ("Concrete_Floor_Worn", 700), "LU_Commercial": ("Concrete_Pavement", 500),
+        "LU_Grass": ("Grass", 500), "LU_Pitch": ("Grass_Sparse", 450), "LU_Forest": ("Forest_Floor", 700), "LU_Beach": ("Beach_Sand", 900), "LU_Mangrove": ("Mangrove_Mud", 700)}
 
 tools = unreal.AssetToolsHelpers.get_asset_tools()
 eal = unreal.EditorAssetLibrary
@@ -258,10 +260,73 @@ def library():
     say(f"library: {len(surfaces)} surfaces, {len(textures) * 3 + 1} textures, 2 master materials, {made} instances made this run")
 
 
+def water_material():
+    """The lagoon and the sea: dark, glossy, and moving. Two copies of the engine's water normal map slide across each
+    other at different sizes (mapped by world position, so the sheet needs no UVs); the colour is deep seen from above
+    and paler toward the horizon. Opaque: a see-through sea over this much of the map costs more than this Mac has."""
+    path = ROOT + "/M_NH_Water"
+    if eal.does_asset_exist(path) and not REBUILD:
+        return eal.load_asset(path)
+    if eal.does_asset_exist(path):
+        eal.delete_asset(path)
+    mat = tools.create_asset("M_NH_Water", ROOT, unreal.Material, unreal.MaterialFactoryNew())
+    ripples = eal.load_asset("/Engine/Functions/Engine_MaterialFunctions02/ExampleContent/Textures/water_n")
+    new = lambda cls, x, y: mel.create_material_expression(mat, cls, x, y)
+    place = new(unreal.MaterialExpressionWorldPosition, -1700, 0)
+    flat = new(unreal.MaterialExpressionComponentMask, -1500, 0)
+    for key, value in (("r", True), ("g", True), ("b", False), ("a", False)):
+        flat.set_editor_property(key, value)
+    mel.connect_material_expressions(place, "", flat, "")
+    layers = []
+    for k, (size, speed) in enumerate(((2600.0, (0.012, 0.007)), (900.0, (-0.02, 0.013)))):
+        scale = new(unreal.MaterialExpressionConstant, -1500, 200 + 300 * k)
+        scale.set_editor_property("r", size)
+        uv = new(unreal.MaterialExpressionDivide, -1300, 100 + 300 * k)
+        mel.connect_material_expressions(flat, "", uv, "A")
+        mel.connect_material_expressions(scale, "", uv, "B")
+        slide = new(unreal.MaterialExpressionPanner, -1100, 100 + 300 * k)
+        slide.set_editor_property("speed_x", speed[0])
+        slide.set_editor_property("speed_y", speed[1])
+        mel.connect_material_expressions(uv, "", slide, "Coordinate")
+        sample = new(unreal.MaterialExpressionTextureSample, -850, 100 + 300 * k)
+        sample.set_editor_property("texture", ripples)
+        sample.set_editor_property("sampler_type", ST.SAMPLERTYPE_NORMAL)
+        mel.connect_material_expressions(slide, "", sample, "UVs")
+        layers.append(sample)
+    both = new(unreal.MaterialExpressionAdd, -550, 250)
+    mel.connect_material_expressions(layers[0], "RGB", both, "A")
+    mel.connect_material_expressions(layers[1], "RGB", both, "B")
+    calm = new(unreal.MaterialExpressionConstant3Vector, -550, 450)                 # how much of the up direction is kept: flatter water
+    calm.set_editor_property("constant", unreal.LinearColor(0.0, 0.0, 2.2, 0.0))
+    softer = new(unreal.MaterialExpressionAdd, -350, 300)
+    mel.connect_material_expressions(both, "", softer, "A")
+    mel.connect_material_expressions(calm, "", softer, "B")
+    unit = new(unreal.MaterialExpressionNormalize, -150, 300)
+    mel.connect_material_expressions(softer, "", unit, "VectorInput")
+    mel.connect_material_property(unit, "", MP.MP_NORMAL)
+    deep = new(unreal.MaterialExpressionConstant3Vector, -550, -350)
+    deep.set_editor_property("constant", unreal.LinearColor(0.004, 0.035, 0.05, 1.0))
+    pale = new(unreal.MaterialExpressionConstant3Vector, -550, -200)
+    pale.set_editor_property("constant", unreal.LinearColor(0.03, 0.16, 0.2, 1.0))
+    edge = new(unreal.MaterialExpressionFresnel, -550, -50)
+    colour = new(unreal.MaterialExpressionLinearInterpolate, -300, -250)
+    mel.connect_material_expressions(deep, "", colour, "A")
+    mel.connect_material_expressions(pale, "", colour, "B")
+    mel.connect_material_expressions(edge, "", colour, "Alpha")
+    mel.connect_material_property(colour, "", MP.MP_BASE_COLOR)
+    for prop, value, y in ((MP.MP_ROUGHNESS, 0.06, 650), (MP.MP_SPECULAR, 1.0, 800), (MP.MP_METALLIC, 0.0, 950)):
+        node = new(unreal.MaterialExpressionConstant, -300, y)
+        node.set_editor_property("r", value)
+        mel.connect_material_property(node, "", prop)
+    mel.recompile_material(mat)
+    eal.save_loaded_asset(mat)
+    return mat
+
+
 def city():
     """Ground instances onto the Lagos map: each slot's own instance, with the tile size that suits it"""
     registry.scan_paths_synchronous(["/Game/Lagos"], True)
-    mats = {}
+    mats = {"Water": water_material()}
     for slot, (surface, tile) in CITY.items():
         path = f"{ROOT}/City/MI_City_{slot}"
         inst = eal.load_asset(path) if eal.does_asset_exist(path) else tools.create_asset(

@@ -195,3 +195,27 @@ before a commercial release. To add them on another machine: `Scripts/prep_inter
 `NH_INTERIOR_DEST=/Game/Foliage NH_INTERIOR_COLLIDE=0 NH_INTERIOR_MASKED=1`).
 `Scripts/build_estate_interiors.py` makes two rooms of this project's own in the same two styles; they are not
 imported while the downloaded ones are in use.
+
+## Fighting animations (Sketchfab)
+
+| Used for | Pack | Author | Licence | In the project | Source |
+|---|---|---|---|---|---|
+| Punch, Kick, Hit, Knocked_Out, Fight_Idle, Sneak | "Third Person Animations" (10 clips; these six taken) | Artem_Dubinin | CC Attribution 4.0 | `Content/Characters/Player/<Body>/Anims/<Body>_<Clip>` for the twelve MakeHuman bodies | https://sketchfab.com/3d-models/third-person-animations-6e9b4493927b484291c5887a99a0a36e |
+
+Downloaded 2026-10-10 as GLB into `project-files/downloads/nh-anims/`. `Scripts/retarget_anim_pack.py` (Blender) moves
+the clips onto the player's skeleton and writes the same kind of FBX as `build_player_action_anims.py`;
+`import_player_action_anims.py` brings them in. Only the motion is used, not the pack's character.
+
+## Replacement SUV (Sketchfab)
+
+| Game vehicle type | Model | Author | Licence | Faces | Folder | Source |
+|---|---|---|---|---|---|---|
+| suv (Pathmaster V8) | "Range Rover Evoque" | minghauLoh | CC Attribution 4.0 | 38,912 | `Content/Vehicles/Suv_Evoque/` | https://sketchfab.com/3d-models/range-rover-evoque-e0bb09118ab84fe0a0530bd0df2fd74a |
+
+Replaces the first SUV model (`Suv_Rav4`), whose wheels came in out of place. Made ready by `Scripts/prep_car_gltf.py`
+(one mesh, 5.25 m long, wheels on the ground, nose along +X) and brought in by `Scripts/import_car_gltf.py`; its entry
+in `Data/vehicle_meshes.json` is yaw 0, scale 1, offset 0, height 198.9. A real make: the badge needs removing before a
+commercial release, like the other cars'.
+
+Ground textures added 2026-10-10 from Poly Haven (CC0, no credit required): leafy_grass, sparse_grass,
+forrest_ground_01, coast_sand_01, brown_mud_02 (`Scripts/fetch_surfaces_polyhaven.py`).

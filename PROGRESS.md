@@ -4,6 +4,18 @@
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
+## SUV replaced, life at home, grass and water (2026-10-10)
+
+- **SUV:** the `suv` type now uses a Range Rover Evoque model (credit in `ASSETS.md`) made ready by `Scripts/prep_car_gltf.py`; seen driving in the city on four wheels.
+- **At home:** six new clips made in Blender (Sit, Lie_Down, Swim, Shower, Eat, Drink) and `ANHCharacter::Perform`. Inside a home the menu has sit down, lie down, eat, drink, take a shower, swim and change clothes; a pool and a shower are built beside the living room and the player is taken there and back. Seen in `-NHRoomTest -NHLiving`: all but the shower, which was moved afterwards and not photographed again.
+- **Landscape:** grass, sparse grass, forest floor, beach sand and mangrove mud from Poly Haven on the terrain's land-use patches, and `M_NH_Water` (rippling, glossy, opaque) on the water (`import_surfaces.py`). Seen: grass and beach (`-NHTreeTest -NHGround`); the water only from a distance.
+
+## Bare-hand fighting from a downloaded animation pack (2026-10-10)
+
+- `Scripts/retarget_anim_pack.py` moves the clips of a mannequin-named animation pack onto the MakeHuman bodies. Six clips of Sketchfab's "Third Person Animations" (CC-BY, credit in `ASSETS.md`) are in: Punch, Kick, Hit, Knocked_Out, Fight_Idle, Sneak.
+- With nothing in the hand, **T** throws a punch, another, then a kick (18, 18 and 30 damage to a person within reach); the fists stay up for a couple of seconds after. Being hurt plays the hit reaction.
+- Seen in `-NHActionTest` (pictures 20 to 25). Not seen: the knock-out (the game stands the player up again as soon as health reaches nothing), a blow landing on somebody, Sneak (imported, not used).
+
 ## Driving, bridges, property and night life (2026-10-10)
 
 - **Driving:** the engine pulls less as the speed climbs (top speed in about 16 s, not 1.5); steering eases in and turns less the faster the car goes; a vehicle going down a slope stays on the road instead of hanging above it.
