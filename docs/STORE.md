@@ -73,6 +73,8 @@ Characters you unlock through the story (Baba Sule, Chidi, Zainab, Sir Jaguar) a
 
 ## Rules
 
+- **Bought naira can't be bet.** Naira from Gold Kobo packs is tracked separately and can't go into betting,
+  stocks or crypto ([HUSTLES.md](HUSTLES.md)).
 - **The story never needs a purchase.** Every mission can be finished with what the game gives you.
 - **No loot boxes:** you always see exactly what you're buying.
 - **Every real-money purchase is confirmed,** with the price shown in local currency. Purchases are restored on
