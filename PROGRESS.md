@@ -65,7 +65,7 @@ Decided with the user on 2026-10-10:
 - [ ] **Phase 9:** the look. **WAIT** for the user to type `surfaces added`.
 
 Open problems:
-- The internal disk has about 3.8 GB free. A cook or a long editor run can push it under 2 GB, where Unreal's storage server refuses writes (see "Standalone Mac build" below).
+- **Storage (2026-10-10):** the raw working files (`project-files/downloads`, `desktop`, `references`, `builds`, 5.7 GB) are now on the LumiTB drive, inside the work image at `/Volumes/NHBuild/project-files/`; the four folders here are links to them, so old paths still work but need the drive plugged in, mounted at `~/LumiTB_mnt`, and `NaijaHustle-build/work.sparseimage` attached. Game content, caches and build files stayed on the internal disk, which now has about 10 GB free. A cook can still squeeze it through swap (under 2 GB free, Unreal's storage server refuses writes; see "Standalone Mac build" below).
 - The brief asks for fictional guns; the game's rifle is called AK-47, which is a real one. Not renamed yet.
 - Gold Kobo earned from missions is counted while the game runs but not saved; the store (Phase 7) is to own it.
 - Landing as Tunde beside his stop puts him next to Baba Driver, which starts the first job's talk if it has not been done. Left as it is until Phase 3 reshapes mission 1.
