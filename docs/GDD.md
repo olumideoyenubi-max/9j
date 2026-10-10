@@ -25,9 +25,9 @@ who to become along the way. Loud, funny and full of satire, with plenty of hear
 
 | Character | City | Role |
 |---|---|---|
-| **Tobiloba "Lucky" Adeyemi** | Lagos → all | Protagonist. Mainland-born, quick-talking, broke, loyal. |
+| **Tunde Adeyemi** | Lagos → all | Lead (playable). Danfo conductor, mainland-born, quick-talking, broke, loyal. |
 | **Baba Sule** | Lagos | Danfo driver and mentor. Thirty years on the Oshoja–Eko Crest route. |
-| **Amaka Nwosu** | Lagos | Balo Market trader and phone-repair genius, Lucky's oldest friend. |
+| **Amaka Nwosu** | Lagos → all | Lead (playable). Balo Market phone-repair and hacking genius, Tunde's oldest friend and love interest. |
 | **Kemi Lawson-Bright** | Lagos | Island party promoter. Owambe royalty. |
 | **Shina Garage** | Lagos | Motor-park strongman and Lagos antagonist. |
 | **Captain Ebi Tamuno** | Port Harcourt | Creek boatman, Baba Sule's cousin. |
@@ -41,14 +41,17 @@ who to become along the way. Loud, funny and full of satire, with plenty of hear
 
 ## 3. Story arc
 
-- **Act 1, Lagos ("The Hustle").** Conductor → errand runner → Island party fixer. Lucky
+> The current storyline is [STORY.md](STORY.md): 12 Lagos missions, two playable leads, unlockable and premium
+> characters. The three-city arc below is the long-term plan for expansions.
+
+- **Act 1, Lagos ("The Hustle").** Conductor → errand runner → Island party fixer. Tunde
   refuses (or doesn't) to collect Shina Garage's levies, wins back Baba Sule's danfo and flees
   on the night bus east. *Rise: street cred. Fall: run out of town.*
 - **Act 2, Port Harcourt ("Garden City").** Boat taxis, crane work and tanker escorts lead
   to evidence of waste dumping and sabotage. The trail goes offshore to Platform Ekene-9, and the
   signatures lead to Abuja. Mr. Pius offers a fortune to make it disappear. *Rise: oil money.
   Fall: betrayed, hunted.*
-- **Act 3, Abuja ("The Capital").** Chauffeur and estate-security gigs open doors. Lucky
+- **Act 3, Abuja ("The Capital").** Chauffeur and estate-security gigs open doors. Tunde
   infiltrates a "transparency" gala, chases a 17-SUV convoy, survives Haruna's ambush and
   escapes a locked-down city by helicopter, then holds the line for Zainab's live broadcast. *Ending
   chosen by the player (flags + Integrity).*
