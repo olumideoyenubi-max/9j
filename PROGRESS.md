@@ -1,6 +1,6 @@
 # NAIJA HUSTLE (Unreal) progress
 
-**Last updated:** 2026-10-09 (audio brief step 1: the mix; radio station Ragebait FM; car stealing, roll and climb, directions; phone and DropAm; real-scale Lagos level; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
+**Last updated:** 2026-10-10 (living Lagos step 3, first part: witnesses, see `docs/LAW.md`; pedestrians keep off bridges, see `docs/POPULATION.md`; before that, 2026-10-09: audio brief step 1: the mix; radio station Ragebait FM; car stealing, roll and climb, directions; phone and DropAm; real-scale Lagos level; before that: player built to the brief with MakeHuman; driver in the seat; headlights; real models on 15 of 16 vehicle types)
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
@@ -20,6 +20,8 @@ The target is 30 fps at 720p–900p; the game is not there yet.
 
 ## Done
 
+- **Witnesses (living-Lagos 3.2 and 3.1):** a crime raises wanted stars only if somebody sees or hears it and reports it by a six-second phone call that can be stopped; each crime counts once; on area boys' streets the call goes to the boys. Tested at Oshodi and in the small level: 0 stars straight after a shooting, 5 once the first call finished, nothing added by the later calls. A crime with nobody near is untested. `docs/LAW.md`.
+- **Pedestrians keep off bridges and out of the road:** each walks one stretch of a street's edge; 25 at the Oshodi stop, none within 12 m of a bridge or expressway or off the ground. `docs/POPULATION.md`.
 - **Plugin on UE 5.8:** `NaijaHustleGame` compiles and runs on the Mac, inside a UE 5.8 Third Person template project. One API fix (JSON map keys).
 - **8 GB memory fix:** on machines with 8 GB or less the lighting rig turns off Lumen GI, volumetric fog and clouds, and uses screen-space reflections. This stopped a Metal out-of-memory crash on Play.
 - **Look pass 1:** surface-type material pipeline (`M_NHSurface` and one `MI_NHSurface_<Type>` per surface), overhead cables, ruts and rubbish on dusty streets, harsh-morning preset, over-the-shoulder sprint camera.

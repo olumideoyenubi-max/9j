@@ -7,6 +7,7 @@
 #include "EngineUtils.h"
 #include "Gameplay/NHCrowd.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Gameplay/NHLaw.h"
 #include "Gameplay/NHResponse.h"
 #include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
@@ -57,6 +58,7 @@ void ANHGameMode::StartPlay()
 		}
 	}
 	GetWorld()->SpawnActor<ANHResponse>(ANHResponse::StaticClass(), FTransform::Identity); // who comes when you have wanted stars
+	GetWorld()->SpawnActor<ANHLaw>(ANHLaw::StaticClass(), FTransform::Identity); // witnesses: a crime counts only if somebody reports it
 	ANHAudioZone::SpawnCityZones(GetWorld()); // where the city sounds like a motor park or a market
 	if (FParse::Param(FCommandLine::Get(), TEXT("NHAudioTest")))
 	{

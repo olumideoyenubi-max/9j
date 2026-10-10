@@ -61,3 +61,21 @@ Before this step, at the same spot: 9 moving and 6 parked, no pedestrians, 35 ms
   the game's data.
 - A parked vehicle that came out of the pool may still have its driver sitting in it.
 - Pedestrians walk straight along the street's edge: they do not cross, queue, trade or avoid each other.
+
+## Pedestrians keep off bridges and the middle of the road (2026-10-10)
+
+Pedestrians used to be stood on flyover decks and to walk across carriageways. Now each one is given a stretch of
+one street's edge (1.2 to 2.6 m outside the kerb) and walks from one end of it to the other and back. A spot is
+refused if a bridge or an expressway runs within 15 m of it or of either end, or if anything solid is more than
+2.5 m above the ground there (a deck or a roof).
+
+`Scripts/mac.sh city -NHPopulationTest -NHDensity=3` counts anybody on foot within 12 m of a bridge or expressway
+or standing more than 1.5 m above the ground:
+
+| Where | Pedestrians | Misplaced | Frame |
+|---|---|---|---|
+| The Oshodi stop | 25 | 0 | 27 ms (37 fps) |
+| Iganmu (`-NHPopulationDistrict=Iganmu`), on the Apapa Road and Eko Bridge ramps | 0 | 0 | 28 ms (35 fps) |
+
+Nobody at the Iganmu point is the right answer: every road within 90 m of it is a bridge. Not checked by eye in
+the running game, and not checked anywhere else in the city.

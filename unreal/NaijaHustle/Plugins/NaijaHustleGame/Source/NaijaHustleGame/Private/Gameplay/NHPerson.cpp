@@ -311,7 +311,8 @@ void ANHPerson::SnapToGround()
 	FHitResult Hit;
 	const FVector P = GetActorLocation();
 	FCollisionQueryParams Q(SCENE_QUERY_STAT(NHPersonGround), false, this);
-	if (GetWorld() && GetWorld()->LineTraceSingleByObjectType(Hit, P + FVector(0, 0, 150.f), P - FVector(0, 0, 400.f), FCollisionObjectQueryParams(ECC_WorldStatic), Q))
+	// felt for from knee height down, so somebody under a bridge stays on the street and is not lifted onto the deck above
+	if (GetWorld() && GetWorld()->LineTraceSingleByObjectType(Hit, P + FVector(0, 0, 60.f), P - FVector(0, 0, 400.f), FCollisionObjectQueryParams(ECC_WorldStatic), Q))
 	{
 		SetActorLocation(FVector(P.X, P.Y, Hit.ImpactPoint.Z));
 	}

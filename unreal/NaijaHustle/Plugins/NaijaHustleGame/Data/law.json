@@ -1,0 +1,33 @@
+{
+  "format": "naija-hustle-law",
+  "version": 1,
+  "note": "Witnesses (living-Lagos brief, 3.1). A crime raises wanted stars only if somebody sees or hears it AND reports it. Reaction numbers are weights. Area boys' streets: nobody calls the Task Force; the report is a call to the boys instead. 'stars' is what one finished report adds.",
+  "seeMetres": 25,
+  "hearMetres": 60,
+  "callSeconds": 6,
+  "stopMetres": 2.5,
+  "highClassReport": 1.6,
+  "nightReport": 0.7,
+  "victimReport": 1.5,
+  "heardOnly": 0.5,
+  "reactions": {
+    "minor": { "ignore": 70, "film": 10, "shout": 10, "report": 10 },
+    "serious": { "ignore": 10, "film": 15, "shout": 15, "report": 60 }
+  },
+  "crimes": {
+    "GunFired": { "serious": false, "loud": true, "stars": 0.6 },
+    "VehicleDamage": { "serious": false, "loud": false, "stars": 0.5 },
+    "Assault": { "serious": true, "loud": false, "stars": 1.2 },
+    "Shooting": { "serious": true, "loud": true, "stars": 1.5 },
+    "Killing": { "serious": true, "loud": false, "stars": 2.5 }
+  },
+  "lines": {
+    "ignore": ["Na your business.", "I no see anything.", "Me, I dey go my own.", "Lagos! Na so."],
+    "film": ["*dey film am for Yarns*", "Make I record this one."],
+    "shout": ["Thief! Ole!", "Wetin be this?!", "Somebody help o!", "You no get conscience?"],
+    "report": ["Hello? Task Force?", "Abeg, come quick, e don happen!"],
+    "boys": ["Area! Area! Come see o!", "Make una come, person dey misbehave for here!"],
+    "stopped": ["Abeg! I no see anything o.", "No vex, oga. I no call anybody."],
+    "yarns": ["Just saw one guy scatter everywhere for {district}. Lagos no dey carry last.", "Wahala for {district} this {time}. Video dey my page.", "Who be this one wey dey do anyhow for {district}?"]
+  }
+}

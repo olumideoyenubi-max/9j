@@ -8,7 +8,8 @@ class ANHPerson;
 
 /**
  * The people on the pavements round the player, in the real city: a handful of walkers kept within 90 m, on the
- * edges of ordinary streets (none on expressways or bridges). How many depends on the zone and the hour
+ * edges of ordinary streets (none on, under or within 30 m of an expressway or a bridge). Each keeps to the side of
+ * the road, up and down one stretch of its edge. How many depends on the zone and the hour
  * (Data/population_zones.json, read by ANHTraffic) and on the pause menu's traffic setting, 25 at the very most.
  *
  * Nobody is made or destroyed as the player moves: a walker left more than 90 m behind is stood somewhere new out
@@ -30,20 +31,29 @@ public:
 	int32 NumPeople() const { return Walkers.Num(); }
 	int32 NumMade() const { return Made; }
 	int32 NumMoved() const { return Moved; }
+	/** The ground under a point: the lowest thing a ray from the sky meets. False if something else is above it there (a deck, a roof). */
+	bool OpenGround(const FVector2D& At, float& OutZ) const;
 
 private:
 	struct FWalker
 	{
 		TWeakObjectPtr<ANHPerson> Body;
 		float Idle = 0.f;
+		/** The two ends of the stretch of road edge they walk, already out at the side of the road, and which end they are heading for */
+		FVector2D EndA = FVector2D::ZeroVector, EndB = FVector2D::ZeroVector;
+		bool bToB = true;
 	};
 	TArray<FWalker> Walkers;
 	float Think = 0.f;
 	int32 Made = 0, Moved = 0;
 	bool bFilled = false;
-	/** A spot on the edge of a street between Near and Far from the player, and which way the street runs there; false if none was found */
-	bool FindSpot(const FVector& Player, float Near, float Far, FVector& OutAt, FVector2D& OutAlong) const;
-	void SendOn(ANHPerson* Body, const FVector2D& Along) const;
+	/**
+	 * A spot on the edge of a street between Near and Far from the player, and the two ends of that edge (the street's
+	 * own line moved out to its side). Never on, under or beside a bridge or an expressway, and its height is the
+	 * ground's, whatever the player is standing on. False if none was found.
+	 */
+	bool FindSpot(const FVector& Player, float Near, float Far, FVector& OutAt, FVector2D& OutA, FVector2D& OutB) const;
+	void SendOn(FWalker& Walker) const;
 };
 
 /**
