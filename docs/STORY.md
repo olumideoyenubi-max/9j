@@ -52,7 +52,7 @@ safehouse, signature car and wardrobe. See [STORE.md](STORE.md).
 | # | Mission | Play as | Theme | What you do | Story beat |
 |---|---|---|---|---|---|
 | 1 | **First Day on the Danfo** | Tunde | The hustle | Conductor shift: three stops, fares, change, the agbero | Shina's boys threaten Iya Tobi at dawn. Tunde takes the job in his father's old bus. *(Already playable.)* |
-| 2 | **Phone Pass** | Amaka → Tunde | Love | Rush Amaka's stall through a Task Force raid on Balo Market, on foot then on okada | Tunde and Amaka, close again. On the stall's rooftop afterwards she says she's always believed in him, and their love story starts. |
+| 2 | **Phone Pass** | Amaka → Tunde | Love | Rush Amaka's stall through a Task Force raid on Balo Market, on foot then on okada | Tunde and Amaka, close again. On the stall's rooftop afterwards she says she's always believed in him, and their love story starts. That night, on his second night driving the danfo, Tunde finds **₦1,000,000** in a bag under the back seat: Shina's levy money, dropped by a collector. He pays off his mother's debt with Shina's own cash, and Shina starts hunting for whoever has his bag. |
 | 3 | **The Yahoo Office** | Amaka | Scamming | Infiltrate a scam crew's office in Lekka Strip and steal their laptops before the Task Force raid | Amaka finds the crew has been scamming market women, including Iya Tobi. Tunde returns the money to the victims, or keeps a cut (Integrity). The laptops show the crew pays Shina "protection". |
 | 4 | **Hot Bus Robbery** | Tunde | Robbery | Hijack Shina's levy-collection danfo on the expressway and outrun the Red Cowries' bikes | Tunde takes his first real money. Shina now knows someone is hitting him, and the Red Cowries hunt for the thief. |
 | 5 | **Red Cowries** | Tunde + Amaka | Cultism | Get into the cult's night meeting under the old stadium, recover Amaka's brother **Chidi**, and fight your way out | Chidi was forced into the Red Cowries. Sir Jaguar marks Tunde. **Choice 1:** spare Sir Jaguar or let the rival cult finish him. |
@@ -63,6 +63,35 @@ safehouse, signature car and wardrobe. See [STORE.md](STORE.md).
 | 10 | **The Offer** | Tunde | Assassination | Big Bar's man takes Tunde up an unfinished Eko Crest tower with a rifle and a target: Zainab, crossing the plaza below | **Choice 2:** take the shot (Zainab dies and the story is buried), fake it (stage the hit and smuggle her out), or turn the rifle on Big Bar's men and run. |
 | 11 | **Amaka** | Tunde | Love and kidnapping | Big Bar's men take Amaka as a hostage for the ledger. Trade it at the Third Lagoon Bridge, then turn the trade into a chase | **Choice 3:** hand over the ledger to get her back safely, or keep it and fight for both. Either way Tunde tells Amaka he loves her. |
 | 12 | **Big Man Down** | Both (switch) | All of it | Hold the line at Zainab's live broadcast from her back office in Balo Market while Shina, the Red Cowries and Big Bar's convoy close in | The finale. Who comes to help depends on your choices: Chidi and the drivers, Baba Sule, Sir Jaguar if you spared him. |
+
+## Money: the night shift
+
+Every mission ends with Tunde's night shift on the danfo, and that's where the pay comes from. Mission 1 is his
+first night (normal fares and tips). On his second night he finds ₦1,000,000. From then on, each mission pays
+**13.5% more than the one before**.
+
+| # | Mission | Night-shift pay | Running total |
+|---|---|---|---|
+| 1 | First Day on the Danfo | Fares and tips (a few thousand) | — |
+| 2 | Phone Pass | ₦1,000,000 (the bag under the seat) | ₦1,000,000 |
+| 3 | The Yahoo Office | ₦1,135,000 | ₦2,135,000 |
+| 4 | Hot Bus Robbery | ₦1,288,225 | ₦3,423,225 |
+| 5 | Red Cowries | ₦1,462,135 | ₦4,885,360 |
+| 6 | Iya Tobi | ₦1,659,524 | ₦6,544,884 |
+| 7 | Owambe Con | ₦1,883,559 | ₦8,428,443 |
+| 8 | Crestline Job | ₦2,137,840 | ₦10,566,283 |
+| 9 | Rally Day | ₦2,426,448 | ₦12,992,731 |
+| 10 | The Offer | ₦2,754,019 | ₦15,746,750 |
+| 11 | Amaka | ₦3,125,811 | ₦18,872,561 |
+| 12 | Big Man Down | ₦3,547,796 | ₦22,420,357 |
+
+- The formula is `pay(n) = 1,000,000 × 1.135^(n − 2)` for mission n ≥ 2, rounded to the nearest naira. It lives in
+  `naija_rules.json` (`economy.missionPayBase = 1000000`, `economy.missionPayGrowth = 0.135`) so it can be tuned.
+- The pay is shown on the reward card as the night-shift earnings, after a short end-of-mission drive (or a
+  skippable summary).
+- Story-choice money is extra, on top of the shift pay: keeping the scam cut (mission 3) or taking the shot
+  (mission 10).
+- The ₦350,000 family debt is paid off automatically in mission 2, from the found money.
 
 ## Where it happens
 
