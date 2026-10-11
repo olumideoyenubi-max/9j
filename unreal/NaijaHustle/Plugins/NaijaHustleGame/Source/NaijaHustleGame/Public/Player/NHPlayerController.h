@@ -59,11 +59,12 @@ public:
 	void NHTime(float Hour);
 	/** What you carry, in the log */
 	UFUNCTION(Exec) void NHBag();
-	/** The story's missions (Data/missions): NHMission m02 starts one, NHObjective passes the objective in hand, NHMissionAbort gives it up, NHCheckpoint goes back to the last checkpoint */
+	/** The story's missions (Data/missions): NHMission m02 starts one, NHObjective passes the objective in hand, NHMissionAbort gives it up, NHCheckpoint goes back to the last checkpoint, NHMissionRestart starts it again from its job card */
 	UFUNCTION(Exec) void NHMission(const FString& Id);
 	UFUNCTION(Exec) void NHObjective();
 	UFUNCTION(Exec) void NHMissionAbort();
 	UFUNCTION(Exec) void NHCheckpoint();
+	UFUNCTION(Exec) void NHMissionRestart();
 	/** The story's cast: NHSwitch goes to the other lead, NHSwitch amaka to one by id (Tab does the first). NHAbility is the Z key. */
 	UFUNCTION(Exec) void NHSwitch(const FString& Who);
 	UFUNCTION(Exec) void NHAbility();
@@ -233,6 +234,26 @@ private:
 	void UiLeft();
 	void UiRight();
 	void UiAccept();
+	/**
+	 * A USB or Bluetooth controller (Xbox, PlayStation or any the Mac sees as a gamepad). The sticks, triggers at the wheel,
+	 * jump, get in and act are in UNHInputSet; these are the buttons that were keys only. What a button does depends on
+	 * what is open: with a menu, the map, the phone or the bag up the d-pad moves, A accepts and B goes back; on a card
+	 * A is its first answer and the d-pad the others (left 1, right 2, up 3, down 4); otherwise they are the game's.
+	 */
+	bool PadInUi() const;
+	bool PadOnCard() const;
+	void PadA();
+	void PadB();
+	void PadUp();
+	void PadDown();
+	void PadLeft();
+	void PadRight();
+	void PadFire();
+	void PadFireEnd();
+	void PadAim();
+	void PadAimEnd();
+	void PadCrouch();
+	void PadAbility();
 	void UiClick();
 	void UiRightClick();
 	void UiZoomIn();

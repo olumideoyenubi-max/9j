@@ -1,4 +1,6 @@
 #include "Phone/NHPhone.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 
 #include "Audio/NHAudioSubsystem.h"
 
@@ -147,6 +149,11 @@ void ANHPhone::EndPlay(const EEndPlayReason::Type Reason)
 
 void ANHPhone::Save()
 {
+	// tests run with -NHNoSave leave the player's texts, trips and contacts as they were, like the rest of the save
+	if (static const bool bTest = FParse::Param(FCommandLine::Get(), TEXT("NHEstateTest")) || FParse::Param(FCommandLine::Get(), TEXT("NHNoSave")); bTest)
+	{
+		return;
+	}
 	if (State)
 	{
 		UGameplayStatics::SaveGameToSlot(State, NHPhoneData::Slot, 0);

@@ -1749,7 +1749,7 @@ void UNHDebugPlay::Systems(bool bQuitWhenDone)
 	{
 		int32 Cash = 0, Integrity = 0, Restarts = 0;
 		float Clock = 0.f;
-		FVector At = FVector::ZeroVector;
+		FVector At = FVector::ZeroVector, Began = FVector::ZeroVector;
 		bool bAlerted = false;
 		float Punch = 0.f;
 	};
@@ -1834,8 +1834,9 @@ void UNHDebugPlay::Systems(bool bQuitWhenDone)
 	});
 
 	// ---- the job card and the talk
-	Do(TEXT("start the test mission"), [this, M, PanelIs]()
+	Do(TEXT("start the test mission"), [this, M, Seen, PanelIs]()
 	{
+		Seen->Began = PC->GetPawn()->GetActorLocation();
 		Check(TEXT("it starts with a job card"), M()->Start(TEXT("m00_systems")) && M()->IsActive() && PanelIs(TEXT("SYSTEMS CHECK")), Dir()->Panel.Title);
 		Check(TEXT("a second mission cannot start while one runs"), !M()->Start(TEXT("m00_night")));
 		PC->Choose(0);
@@ -1848,6 +1849,47 @@ void UNHDebugPlay::Systems(bool bQuitWhenDone)
 		PC->OnAction();
 		PC->OnAction();
 	});
+
+	// ---- the pause menu's two lines about the job: back to the checkpoint, and the whole job again
+	Objective(1, TEXT("goto"), 10.f);
+	Do(TEXT("pause menu: Return to checkpoint"), [this, M]()
+	{
+		ANHHUD* Hud = ANHHUD::Get(PC);
+		PC->GetPawn()->SetActorLocation(PC->GetPawn()->GetActorLocation() + FVector(0.f, 400.f, 0.f));
+		Hud->ToggleMenu();
+		Check(TEXT("the pause menu opens over a running job"), Hud->GetScreen() == ANHHUD::EScreen::Menu && M()->CanRestart());
+		Hud->Nav(0, 1); // Resume, then Return to checkpoint
+		Hud->Accept();
+		Check(TEXT("Return to checkpoint closes the menu and counts a restart"), Hud->GetScreen() == ANHHUD::EScreen::None && M()->IsActive() && M()->Restarts() == 1, FString::Printf(TEXT("%d restarts"), M()->Restarts()));
+	});
+	Objective(0, TEXT("talk"), 15.f);
+	Do(TEXT("the checkpoint was the job's start: its scene again"), [this, Seen]()
+	{
+		Check(TEXT("the player is back where the job's first checkpoint was"), FVector::Dist2D(PC->GetPawn()->GetActorLocation(), Seen->Began) < 60.f, FString::Printf(TEXT("%.0f cm off"), FVector::Dist2D(PC->GetPawn()->GetActorLocation(), Seen->Began)));
+		PC->OnAction();
+		PC->OnAction();
+	});
+	Objective(1, TEXT("goto"), 10.f);
+	Do(TEXT("pause menu: Restart mission"), [this, M, Seen, PanelIs]()
+	{
+		ANHHUD* Hud = ANHHUD::Get(PC);
+		// something for the restart to undo: a story flag and Integrity, as a choice in the job would have set them
+		Hustle()->SetFlag(TEXT("test_restart_flag"), 1);
+		Hustle()->Integrity = Seen->Integrity + 9;
+		PC->GetPawn()->SetActorLocation(PC->GetPawn()->GetActorLocation() + FVector(0.f, 500.f, 0.f));
+		Hud->ToggleMenu();
+		Hud->Nav(0, 1);
+		Hud->Nav(0, 1); // Restart mission
+		Hud->Accept();
+		Check(TEXT("Restart mission closes the menu and brings the job card up again"), Hud->GetScreen() == ANHHUD::EScreen::None && M()->IsActive() && PanelIs(TEXT("SYSTEMS CHECK")) && M()->ObjectiveIndex() == -1, Dir()->Panel.Title);
+		Check(TEXT("the clock and the restarts begin again"), M()->Restarts() == 0 && M()->Elapsed() < 1.f, FString::Printf(TEXT("%d restarts, %.1f s"), M()->Restarts(), M()->Elapsed()));
+		Check(TEXT("the story's book is as it was when the job was taken on"), Hustle()->Flag(TEXT("test_restart_flag")) == 0 && Hustle()->Integrity == Seen->Integrity,
+			FString::Printf(TEXT("flag %d, Integrity %d (was %d)"), Hustle()->Flag(TEXT("test_restart_flag")), Hustle()->Integrity, Seen->Integrity));
+		Check(TEXT("the player is back where the job was taken on"), FVector::Dist2D(PC->GetPawn()->GetActorLocation(), Seen->Began) < 60.f, FString::Printf(TEXT("%.0f cm off"), FVector::Dist2D(PC->GetPawn()->GetActorLocation(), Seen->Began)));
+		PC->Choose(0);
+	});
+	Objective(0, TEXT("talk"), 25.f);
+	Do(TEXT("the brief again"), [this]() { PC->OnAction(); PC->OnAction(); });
 
 	// ---- goto, disguise, sneak
 	Objective(1, TEXT("goto"), 10.f);

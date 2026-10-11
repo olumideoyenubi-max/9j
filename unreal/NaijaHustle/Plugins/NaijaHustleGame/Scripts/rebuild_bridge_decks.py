@@ -16,6 +16,9 @@ What it does, for the named bridges and every bridge way joined to them (carriag
   surface   a strip a way, as wide as the game takes that class of road to be; where strips overlap they take the same
             height, so two carriageways and the slip roads joining them make one deck. No parapets: the game stands
             those along whatever edge is left open (NHBridgeRails)
+  headroom  where a road on the ground passes under a deck, the deck is raised to leave UNDER clear beneath its slab
+            (the old model's flyovers were often 1.5 m over the road they cross: a wall across it). The ramps each side
+            lengthen at MAX_GRADE, and go to STEEP only where the bridge is too short for that
   old deck  the old slabs under the new strips are taken out; piers that would come up through the new deck are too,
             and so are piers standing in a road on the ground
 
@@ -39,6 +42,8 @@ MAX_GRADE = 0.06     # in the model; the level stretches bridges 1.5 times upwar
 STEP = 6.0           # a row of the strip every so many metres
 SLAB = 1.2           # how thick the deck is
 TILE = 1200.0        # the model's pieces are 1.2 km squares
+UNDER = 3.0          # clear height under the slab where a ground road passes beneath (4.5 m in the game)
+STEEP = 0.08         # the steepest a ramp may go to make that room (12% in the game: long vehicles still get up it)
 SAME_LEVEL = (2.0, 4.0)   # strips within 2 m of each other in height are one deck; over 4 m apart they pass over and under
 
 
@@ -276,6 +281,107 @@ for attempt in range(8):
 say(f"{len(height)} nodes, {len(fixed)} on the ground, {missing} the old deck did not reach; {len(ties)} places where two ways are one deck")
 say(f"steepest stretch was {steepest * 100:.0f}%, now {max(abs(z[a] - z[b]) / d for a, b, d in along) * 100:.1f}%; "
     f"across one deck the ways differ by at most {max([abs(z[a] - z[b]) for a, b, d in ties] or [0]):.2f} m")
+
+# ----------------------------------------------------------------------------- headroom for the roads underneath
+# A road on the ground that crosses a bridge way (and is not one of the roads the bridge joins) passes under it.
+import heapq
+from collections import defaultdict
+
+
+def crossing(a, b, c, e):
+    """How far along a-b the segment c-e crosses it (0..1), or None."""
+    d1, d2 = b - a, e - c
+    den = d1.x * d2.y - d1.y * d2.x
+    if abs(den) < 1e-9:
+        return None
+    t = ((c.x - a.x) * d2.y - (c.y - a.y) * d2.x) / den
+    u = ((c.x - a.x) * d1.y - (c.y - a.y) * d1.x) / den
+    return t if 0.0 <= t <= 1.0 and 0.0 <= u <= 1.0 else None
+
+
+CELL = 150.0
+ground_segs = defaultdict(list)
+for w in roads["ways"]:
+    if w["b"]:
+        continue
+    for c, e in zip(w["n"], w["n"][1:]):
+        pc, pe = at(c), at(e)
+        for gx in range(int(min(pc.x, pe.x) // CELL), int(max(pc.x, pe.x) // CELL) + 1):
+            for gy in range(int(min(pc.y, pe.y) // CELL), int(max(pc.y, pe.y) // CELL) + 1):
+                ground_segs[(gx, gy)].append((c, e, pc, pe, HALF[w["c"]], w["name"]))
+need, under = {}, []                                 # variable: the least its height may be; (line, how far along, road)
+for n, l in enumerate(lines):
+    for j in range(len(l.rows) - 1):
+        pa, pb = l.rows[j][0], l.rows[j + 1][0]
+        done = set()
+        for gx in range(int(min(pa.x, pb.x) // CELL), int(max(pa.x, pb.x) // CELL) + 1):
+            for gy in range(int(min(pa.y, pb.y) // CELL), int(max(pa.y, pb.y) // CELL) + 1):
+                for c, e, pc, pe, half, name in ground_segs.get((gx, gy), ()):
+                    if (c, e) in done or c in l.node_at or e in l.node_at:
+                        continue
+                    done.add((c, e))
+                    t = crossing(pa, pb, pc, pe)
+                    if t is None:
+                        continue
+                    s = l.rows[j][3] + t * (l.rows[j + 1][3] - l.rows[j][3])
+                    under.append((n, s, name))
+                    for r in l.rows:
+                        if abs(r[3] - s) <= half + 3.0 + STEP / 2:
+                            need[r[1]] = ROAD_Z + UNDER + SLAB
+# between the first road a deck passes over and the last, it stays up: no dip and rise again between two carriageways
+span = {}
+for n, s_at, _ in under:
+    span[n] = (min(span.get(n, (s_at, s_at))[0], s_at), max(span.get(n, (s_at, s_at))[1], s_at))
+for n, (first, last) in span.items():
+    for r in lines[n].rows:
+        if first <= r[3] <= last:
+            need[r[1]] = ROAD_Z + UNDER + SLAB
+graph = defaultdict(list)
+for a, b, d in along:
+    graph[a].append((b, d))
+    graph[b].append((a, d))
+for a, b, d in ties:                                 # across one deck the height hardly changes
+    graph[a].append((b, 0.2 * d))
+    graph[b].append((a, 0.2 * d))
+
+
+def spread(start, slope):
+    """The greatest of (a start value - slope x the way there) at every variable."""
+    best = dict(start)
+    heap = [(-v, k, var) for k, (var, v) in enumerate(start.items())]
+    heapq.heapify(heap)
+    count = len(heap)
+    while heap:
+        v, _, var = heapq.heappop(heap)
+        v = -v
+        if v < best.get(var, -1e18) - 1e-9:
+            continue
+        for other, d in graph.get(var, ()):
+            got = v - slope * d
+            if got > best.get(other, -1e18) + 1e-9:
+                best[other] = got
+                count += 1
+                heapq.heappush(heap, (-got, count, other))
+    return best
+
+
+# how high each point could be at all, climbing at STEEP from the ends that are held to the ground
+reach_up = spread({var: -(ROAD_Z + LIFT) for var in fixed_vars if var in z}, STEEP)
+cap = {var: -v for var, v in reach_up.items()}
+floor = {var: min(h, cap.get(var, 1e9)) for var, h in need.items()}
+least = spread(floor, MAX_GRADE)
+raised, most, short = 0, 0.0, 0
+for var, h in least.items():
+    h = min(h, cap.get(var, 1e9))
+    if var in z and var not in fixed_vars and h > z[var] + 0.005:
+        most = max(most, h - z[var])
+        z[var] = h
+        raised += 1
+for var, h in need.items():
+    short += z.get(var, h) < h - 0.05
+say(f"headroom: {len(under)} places where a ground road passes under a deck; {raised} points raised, by {most:.2f} m at most; "
+    f"{short} points still short of {UNDER:.1f} m clear (a road passing under within {(UNDER + SLAB) / STEEP:.0f} m of a bridge's end)")
+say(f"steepest stretch after that {max(abs(z[a] - z[b]) / d for a, b, d in along) * 100:.1f}%")
 
 
 def surface(n, j, off):

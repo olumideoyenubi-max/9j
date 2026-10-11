@@ -14,6 +14,11 @@ The clips, all in place at 30 frames a second on the body's own skeleton (MakeHu
   Drive_Idle, Drive_Left, Drive_Right, Drive_Reverse   (the hips stay at standing height: the game puts the seat under them;
                                                         Left and Right go from straight ahead to 75 degrees of wheel)
 
+  Ride_Idle, Ride_Left, Ride_Right   (astride an okada: feet on the pegs, hands on the bars; Left and Right go from
+                                      straight ahead to 28 degrees of bar, with the shoulders and head going into the turn)
+
+Set NH_ANIM_ONLY to a comma-separated list of clips (or a prefix ending in *, as Ride_*) to bake and export just those.
+
 Poses are written by hand in the character's own space, in centimetres, V(right, forward, up): where the hips are, how
 the spine and head bend, and where the hands and feet go. A small solver turns each pose into bone rotations, and every
 frame is keyed. The machete, pistol, rifle, car seat and steering wheel are stand-ins for looking at the clips in
@@ -574,6 +579,49 @@ def drive_reverse(f, n=16):
     return blend(drive(0.0), DRIVE_REVERSE, EASE["io"](min(f / n, 1.0)))
 
 
+# --------------------------------------------------------------------------------------------------- on a motorbike
+# Astride, the hips where a seat would be (standing height, as for the car: the game puts the saddle under them), leaning
+# a little forward to bars that are ahead of the hips and above them, knees out round the tank, feet back on the pegs.
+BARS_AT, BARS_HALF = V(0, 50, 119), 27.0
+ASTRIDE = P(STAND, hip=V(0, 0.7, 98.2), hip_rot=(6, 0, 0), spine=(13, 0, 0), head=(-12, 0, 0), cl_r=(14, 3), cl_l=(14, 3),
+            foot_r=V(20, 6, 53), knee_r=V(0.45, 1, 0.5), footrot_r=(10, -6, 0), toe_r=0,
+            foot_l=V(-20, 6, 53), knee_l=V(-0.45, 1, 0.5), footrot_l=(10, 6, 0), toe_l=0)
+
+
+def on_bars(side, steer):
+    """A hand closed round its grip, the bars turned steer degrees to the right about their stem."""
+    a = math.radians(steer)
+    out = V(math.cos(a), -math.sin(a), 0) * (1.0 if side == "r" else -1.0)       # along the bar, away from the stem
+    ahead = V(math.sin(a), math.cos(a), 0)
+    knuckles, palm = unit(ahead + V(0, 0, 0.18)), unit(V(0, 0, -1) + ahead * 0.2)
+    return wrist_for(side, BARS_AT + out * BARS_HALF, knuckles, palm), knuckles, palm
+
+
+def ride(steer=0.0, **over):
+    p = P(ASTRIDE, steer=steer)
+    p["hand_r"], p["r_fwd"], p["r_palm"] = on_bars("r", steer)
+    p["hand_l"], p["l_fwd"], p["l_palm"] = on_bars("l", steer)
+    lean = steer / 28.0
+    # into the turn: the shoulders drop to the inside, the head turns to where he is going and stays level
+    p.update(grip_r=0.95, grip_l=0.95, elb_r=V(1, -0.3, -0.7), elb_l=V(-1, -0.3, -0.7),
+             hip_rot=(6, -3 * lean, 2 * lean), spine=(13, -7 * lean, 7 * lean), head=(-12, -16 * lean, -6 * lean),
+             knee_r=V(0.45 + 0.2 * max(lean, 0), 1, 0.5), knee_l=V(-0.45 + 0.2 * min(lean, 0), 1, 0.5))
+    p.update(over)
+    return p
+
+
+def ride_idle(f, n=90):
+    p = ride(1.2 * wave(f, n) + 0.6 * wave(f, n / 3, 0.2))
+    w = wave(f, n, 0.3)
+    p["spine"] = (13 + 1.0 * w, p["spine"][1], p["spine"][2])
+    p["head"] = (-12 - 0.6 * w, p["head"][1] + 2.5 * wave(f, n, 0.6), p["head"][2])
+    return p
+
+
+def ride_turn(sign):
+    return lambda f: ride(sign * 28.0 * EASE["io"](min(f / 15.0, 1.0)))
+
+
 # -------------------------------------------------------------------------------------------------------- dancing
 def dance(f, n=48):
     """A two-step on the spot: the hips from side to side and round, the weight going from foot to foot, the hands up and loose."""
@@ -671,7 +719,13 @@ CLIPS = {
     "Drive_Left": (15, drive_turn(-1.0), "car", False),
     "Drive_Right": (15, drive_turn(1.0), "car", False),
     "Drive_Reverse": (16, drive_reverse, "car", False),
+    "Ride_Idle": (90, ride_idle, "bike", True),
+    "Ride_Left": (15, ride_turn(-1.0), "bike", False),
+    "Ride_Right": (15, ride_turn(1.0), "bike", False),
 }
+ONLY = [n.strip() for n in os.environ.get("NH_ANIM_ONLY", "").split(",") if n.strip()]
+if ONLY:
+    CLIPS = {k: v for k, v in CLIPS.items() if any(k == n or (n.endswith("*") and k.startswith(n[:-1])) for n in ONLY)}
 
 
 # ==================================================================================================== the props
@@ -765,7 +819,12 @@ wheel = bpy.data.objects.new("Prop_Wheel", mesh)
 bpy.context.scene.collection.objects.link(wheel)
 wheel.parent = rig
 wheel.rotation_mode = "QUATERNION"
-PROPS = {"machete": [machete_prop], "pistol": [pistol_prop], "rifle": [rifle_prop], "car": [seat, wheel]}
+# the bike: a saddle, a tank, the bars and the two pegs, to see the rider against
+# (in the armature's own space, where he faces -Y)
+bike = make("Prop_Bike", [((0, 6, 84), (24, 56, 9), None, 0), ((0, -32, 92), (26, 30, 18), None, 1), ((0, -50, 119), (62, 3, 3), None, 1),
+                          ((0, -50, 108), (4, 4, 22), None, 1), ((0, -8, 45), (46, 4, 3), None, 1)], [SEAT, DARK])
+bike.parent = rig
+PROPS = {"machete": [machete_prop], "pistol": [pistol_prop], "rifle": [rifle_prop], "car": [seat, wheel], "bike": [bike]}
 
 
 def wheel_turn(steer):
@@ -851,6 +910,6 @@ def export(folder, prefix="Naija_Anim_"):
 
 if OUT:
     print("NH exported", export(OUT))
-    show("Machete_Slash", 0)
+    show("Machete_Slash" if "Machete_Slash" in CLIPS else next(iter(CLIPS)), 0)
     if bpy.app.background:
-        bpy.ops.wm.save_as_mainfile(filepath=os.path.join(OUT, "Naija_Actions.blend"))
+        bpy.ops.wm.save_as_mainfile(filepath=os.path.join(OUT, "Naija_Actions.blend" if not ONLY else "Naija_Actions_part.blend"))

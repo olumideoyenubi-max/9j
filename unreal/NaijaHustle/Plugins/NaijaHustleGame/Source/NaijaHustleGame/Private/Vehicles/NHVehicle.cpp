@@ -2,6 +2,7 @@
 #include "Camera/PlayerCameraManager.h"
 #include "Components/AudioComponent.h"
 #include "Audio/NHEngineWave.h"
+#include "Characters/NHOutfitComponent.h"
 #include "Materials/MaterialInterface.h"
 
 #include "Components/SkeletalMeshComponent.h"
@@ -403,13 +404,91 @@ bool ANHVehicle::SeatDriver()
 		return false;
 	}
 	// the body's own scale, and the way it faces in its own space
-	return SeatBody(Mesh, Player->GetMesh()->GetRelativeScale3D().X, -Player->GetMesh()->GetRelativeRotation().Yaw);
+	if (!SeatBody(Mesh, Player->GetMesh()->GetRelativeScale3D().X, -Player->GetMesh()->GetRelativeRotation().Yaw))
+	{
+		return false;
+	}
+	DressDriver(Player); // every time: the clothes may have been changed since the body was seated
+	return true;
+}
+
+void ANHVehicle::DressDriver(const ANHCharacter* Wearer)
+{
+	if (!DriverBody)
+	{
+		return;
+	}
+	// what is drawn: the body moved by its clips where it has them, the posed one otherwise
+	USkinnedMeshComponent* Shown = DriverAnim && DriveClips.Num() > 0 ? static_cast<USkinnedMeshComponent*>(DriverAnim) : static_cast<USkinnedMeshComponent*>(DriverBody);
+	for (USkinnedMeshComponent* Skin : { static_cast<USkinnedMeshComponent*>(DriverBody), static_cast<USkinnedMeshComponent*>(DriverAnim) })
+	{
+		if (!Skin)
+		{
+			continue;
+		}
+		// the wearer's own materials: their skin, with the patches under the clothes hidden
+		Skin->EmptyOverrideMaterials();
+		for (int32 I = 0; Wearer && I < Wearer->GetMesh()->GetNumMaterials(); ++I)
+		{
+			Skin->SetMaterial(I, Wearer->GetMesh()->GetMaterial(I));
+		}
+	}
+	const TArray<USkeletalMeshComponent*> Worn = Wearer && Wearer->GetOutfit() ? Wearer->GetOutfit()->GetParts() : TArray<USkeletalMeshComponent*>();
+	int32 Used = 0;
+	for (const USkeletalMeshComponent* Piece : Worn)
+	{
+		USkeletalMesh* Mesh = Piece ? Piece->GetSkeletalMeshAsset() : nullptr;
+		if (!Mesh)
+		{
+			continue;
+		}
+		if (!DriverClothes.IsValidIndex(Used))
+		{
+			USkeletalMeshComponent* Made = NewObject<USkeletalMeshComponent>(this);
+			Made->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			Made->SetCanEverAffectNavigation(false);
+			Made->bUseBoundsFromLeaderPoseComponent = true;
+			Made->SetupAttachment(Shown);
+			Made->RegisterComponent();
+			DriverClothes.Add(Made);
+		}
+		USkeletalMeshComponent* Cloth = DriverClothes[Used++];
+		if (Cloth->GetAttachParent() != Shown)
+		{
+			Cloth->AttachToComponent(Shown, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+		}
+		Cloth->SetRelativeTransform(FTransform::Identity);
+		Cloth->EmptyOverrideMaterials();
+		Cloth->SetSkeletalMesh(Mesh);
+		for (int32 I = 0; I < Piece->GetNumMaterials(); ++I)
+		{
+			Cloth->SetMaterial(I, Piece->GetMaterial(I)); // dyed pieces keep their colour
+		}
+		Cloth->SetLeaderPoseComponent(Shown, true);
+		Cloth->SetVisibility(Shown->IsVisible());
+	}
+	for (int32 I = Used; I < DriverClothes.Num(); ++I)
+	{
+		DriverClothes[I]->SetSkeletalMesh(nullptr);
+		DriverClothes[I]->SetVisibility(false);
+	}
+}
+
+int32 ANHVehicle::DriverClothesShown() const
+{
+	int32 N = 0;
+	for (const USkeletalMeshComponent* Cloth : DriverClothes)
+	{
+		N += Cloth && Cloth->GetSkeletalMeshAsset() && Cloth->IsVisible() ? 1 : 0;
+	}
+	return N;
 }
 
 void ANHVehicle::SetNpcDriver(USkeletalMesh* Mesh)
 {
 	if (Mesh && SeatBody(Mesh, 1.f, ANHCharacter::FacingYawOf(Mesh)))
 	{
+		DressDriver(nullptr); // these bodies come dressed; nothing of the last driver's is left on them
 		DriverBody->SetVisibility(true);
 		bNpcDriver = true;
 	}
@@ -418,11 +497,22 @@ void ANHVehicle::SetNpcDriver(USkeletalMesh* Mesh)
 void ANHVehicle::SetupDriverAnim(USkeletalMesh* Mesh)
 {
 	DriveClips.Reset();
-	for (const TCHAR* Name : { TEXT("Drive_Idle"), TEXT("Drive_Left"), TEXT("Drive_Right"), TEXT("Drive_Reverse") })
+	// a car's clips sit him at a wheel; a bike has its own (astride, hands on the bars, leaning into the turn), and so has a
+	// boat (standing at the console). A body without the bike's or the boat's is posed by SeatBody instead.
+	const TCHAR* Kind = Spec.bBike ? TEXT("Ride") : Spec.bBoat ? TEXT("Helm") : TEXT("Drive");
+	for (const TCHAR* Name : { TEXT("Idle"), TEXT("Left"), TEXT("Right"), TEXT("Reverse") })
 	{
-		DriveClips.Add(ANHCharacter::ActionClip(Mesh, Name));
+		DriveClips.Add(ANHCharacter::ActionClip(Mesh, *FString::Printf(TEXT("%s_%s"), Kind, Name)));
 	}
-	const bool bClips = DriveClips[0] != nullptr && !Spec.bBike; // the clips sit him at a car's wheel, not astride a bike
+	if (Spec.bBoat && !DriveClips[0])
+	{
+		DriveClips.Reset();
+		for (const TCHAR* Name : { TEXT("Drive_Idle"), TEXT("Drive_Left"), TEXT("Drive_Right"), TEXT("Drive_Reverse") })
+		{
+			DriveClips.Add(ANHCharacter::ActionClip(Mesh, Name));
+		}
+	}
+	const bool bClips = DriveClips[0] != nullptr;
 	DriverBody->SetHiddenInGame(bClips);
 	if (!bClips)
 	{
@@ -670,6 +760,19 @@ void ANHVehicle::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	Drive(DeltaSeconds);
 	DriverAnimTick(DeltaSeconds);
+	if (DriverClothes.Num() > 0 && DriverBody)
+	{
+		// the clothes are seen when the body they are on is
+		const USkinnedMeshComponent* Shown = DriverAnim && DriveClips.Num() > 0 ? static_cast<const USkinnedMeshComponent*>(DriverAnim) : static_cast<const USkinnedMeshComponent*>(DriverBody);
+		const bool bSeen = Shown->IsVisible();
+		for (USkeletalMeshComponent* Cloth : DriverClothes)
+		{
+			if (Cloth && Cloth->GetSkeletalMeshAsset() && Cloth->GetVisibleFlag() != bSeen)
+			{
+				Cloth->SetVisibility(bSeen);
+			}
+		}
+	}
 	UpdateEngineSound(DeltaSeconds);
 	if (AlarmLeft > 0.f)
 	{

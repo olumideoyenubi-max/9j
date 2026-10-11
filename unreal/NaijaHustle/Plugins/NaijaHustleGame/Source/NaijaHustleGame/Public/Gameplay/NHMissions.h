@@ -103,6 +103,17 @@ public:
 	/** The objective cannot go on: the card to restart from the last checkpoint or give the job up */
 	void Fail(const FString& Why);
 	void RestartFromCheckpoint();
+	/**
+	 * The whole job again, from its job card: the player back where they took it on, the wanted stars gone, and the
+	 * story's book as it was then (the flags a choice set, the Integrity and cash the job had given so far). The clock and
+	 * the count of restarts begin again. False if no job is running or it is already on its cards at the end.
+	 * Both this and RestartFromCheckpoint are on the pause menu.
+	 */
+	bool RestartMission();
+	/** A job is running and not yet on the cards at its end: it can be gone back in */
+	bool CanRestart() const { return bActive && Night == ENight::None; }
+	/** The objective the last checkpoint is at, counted from 1 */
+	int32 CheckpointObjective() const { return Checkpoint.Index + 1; }
 	int32 Restarts() const { return RestartCount; }
 	/** E: a takedown, when a guard's back is within reach. True if it did something. */
 	bool OnAction(APawn* Pawn);
@@ -176,6 +187,18 @@ private:
 		FName Lead, Disguise;
 	};
 	FCheckpoint Checkpoint;
+	/** How things stood when the job was taken on, for RestartMission */
+	struct FBegan
+	{
+		FVector At = FVector::ZeroVector;
+		float Yaw = 0.f;
+		FName Lead;
+		TMap<FName, int32> Flags;
+		int32 Integrity = 0;
+	};
+	FBegan Began;
+	/** Cash the job's objectives and choices have given (or taken) so far */
+	int32 CashGiven = 0;
 	void SaveCheckpoint();
 
 	// ---- one objective

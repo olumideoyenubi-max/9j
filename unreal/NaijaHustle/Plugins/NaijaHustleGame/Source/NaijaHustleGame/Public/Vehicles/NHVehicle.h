@@ -116,6 +116,8 @@ public:
 	void Readings(int32& OutGear, float& OutRpm) const;
 	bool HandbrakeOn() const { return bHandbrake; }
 	float TopSpeed() const { return Spec.MaxSpeed; }
+	/** How many pieces of clothing the seated body is shown in, for tests */
+	int32 DriverClothesShown() const;
 	/** For the log: wheels, how they are turning, the lean, and which driving clip the rider is in */
 	FString DescribeMotion() const;
 	/** Sets the pedals and wheel directly, as the input bindings do (scripted driving) */
@@ -170,6 +172,13 @@ private:
 	 */
 	UPROPERTY() TObjectPtr<class USkeletalMeshComponent> DriverAnim;
 	UPROPERTY() TArray<TObjectPtr<class UAnimSequence>> DriveClips;
+	/**
+	 * The clothes of whoever is in the seat. A body with a wardrobe (UNHOutfitComponent) is bare skin with the clothes as
+	 * separate pieces, so the seated copy needs the same pieces and the same hidden patches of skin: in a car nobody saw
+	 * the difference, on a bike or a boat they did.
+	 */
+	UPROPERTY() TArray<TObjectPtr<class USkeletalMeshComponent>> DriverClothes;
+	void DressDriver(const class ANHCharacter* Wearer);
 	int32 DriveClipShown = -1;
 	float SteerShown = 0.f, ReverseShown = 0.f;
 	/** The steering as the wheel has got to, -1..1: it follows the key, not jumps to it */

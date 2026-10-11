@@ -278,6 +278,23 @@ void ANHPlayerController::SetupInputComponent()
 	Key(EKeys::Left, &ANHPlayerController::UiLeft);
 	Key(EKeys::Right, &ANHPlayerController::UiRight);
 	Key(EKeys::Enter, &ANHPlayerController::UiAccept);
+	// a controller: the buttons that are keys only above (see the header)
+	Key(EKeys::Gamepad_Special_Right, &ANHPlayerController::UiMenu);       // Menu / Options
+	Key(EKeys::Gamepad_Special_Left, &ANHPlayerController::UiMap);         // View / Share
+	Key(EKeys::Gamepad_FaceButton_Bottom, &ANHPlayerController::PadA);
+	Key(EKeys::Gamepad_FaceButton_Right, &ANHPlayerController::PadB);
+	Key(EKeys::Gamepad_DPad_Up, &ANHPlayerController::PadUp);
+	Key(EKeys::Gamepad_DPad_Down, &ANHPlayerController::PadDown);
+	Key(EKeys::Gamepad_DPad_Left, &ANHPlayerController::PadLeft);
+	Key(EKeys::Gamepad_DPad_Right, &ANHPlayerController::PadRight);
+	Key(EKeys::Gamepad_RightTrigger, &ANHPlayerController::PadFire);
+	Key(EKeys::Gamepad_RightTrigger, &ANHPlayerController::PadFireEnd, IE_Released);
+	Key(EKeys::Gamepad_LeftTrigger, &ANHPlayerController::PadAim);
+	Key(EKeys::Gamepad_LeftTrigger, &ANHPlayerController::PadAimEnd, IE_Released);
+	Key(EKeys::Gamepad_RightThumbstick, &ANHPlayerController::PadCrouch);
+	Key(EKeys::Gamepad_RightShoulder, &ANHPlayerController::PadAbility);
+	Key(EKeys::Gamepad_LeftShoulder, &ANHPlayerController::OnTabDown);     // tap: the other lead; held: the wheel
+	Key(EKeys::Gamepad_LeftShoulder, &ANHPlayerController::OnTabUp, IE_Released);
 	Key(EKeys::LeftMouseButton, &ANHPlayerController::UiClick);
 	Key(EKeys::LeftMouseButton, &ANHPlayerController::UiClickEnd, IE_Released);
 	Key(EKeys::RightMouseButton, &ANHPlayerController::UiRightClick);
@@ -435,6 +452,119 @@ void ANHPlayerController::UiDown() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Nav
 void ANHPlayerController::UiLeft() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Nav(-1, 0); } }
 void ANHPlayerController::UiRight() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Nav(1, 0); } }
 void ANHPlayerController::UiAccept() { if (ANHHUD* H = ANHHUD::Get(this)) { H->Accept(); } }
+bool ANHPlayerController::PadInUi() const
+{
+	const ANHHUD* H = ANHHUD::Get(this);
+	const ANHPhone* Phone = ANHPhone::Get(this);
+	return (H && H->GetScreen() != ANHHUD::EScreen::None) || (Phone && Phone->IsOpen());
+}
+
+bool ANHPlayerController::PadOnCard() const
+{
+	const ANHGameDirector* Dir = ANHGameDirector::Get(this);
+	return Dir && Dir->Panel.bOpen && !IsPaused();
+}
+
+void ANHPlayerController::PadA()
+{
+	if (PadInUi())
+	{
+		UiAccept();
+	}
+	else if (PadOnCard())
+	{
+		Choose(0);
+	}
+}
+
+void ANHPlayerController::PadB()
+{
+	ANHHUD* H = ANHHUD::Get(this);
+	const ANHPhone* Phone = ANHPhone::Get(this);
+	if (H && H->GetScreen() == ANHHUD::EScreen::Menu)
+	{
+		H->ToggleMenu(); // back a page, or out of the menu, as Esc
+	}
+	else if (H && H->GetScreen() == ANHHUD::EScreen::Map)
+	{
+		H->ToggleMap();
+	}
+	else if (H && H->GetScreen() == ANHHUD::EScreen::Bag)
+	{
+		H->ToggleBag();
+	}
+	else if (Phone && Phone->IsOpen())
+	{
+		UiBack();
+	}
+	else if (IsPaused() || PadOnCard())
+	{
+		return;
+	}
+	else if (Cast<ANHVehicle>(GetPawn()))
+	{
+		NHHeadlights();
+	}
+	else
+	{
+		OnRoll();
+	}
+}
+
+void ANHPlayerController::PadUp() { PadInUi() ? UiUp() : PadOnCard() ? Choose(2) : UiPhone(); }
+void ANHPlayerController::PadDown() { PadInUi() ? UiDown() : PadOnCard() ? Choose(3) : OnBag(); }
+// left and right on a card are its first two answers already (UNHInputSet's Choice1 and Choice2)
+void ANHPlayerController::PadLeft() { if (PadInUi()) { UiLeft(); } }
+void ANHPlayerController::PadRight() { if (PadInUi()) { UiRight(); } }
+
+void ANHPlayerController::PadFire()
+{
+	if (Cast<ANHCharacter>(GetPawn()) && !PadInUi() && !IsPaused())
+	{
+		OnFire();
+	}
+}
+
+void ANHPlayerController::PadFireEnd()
+{
+	if (Cast<ANHCharacter>(GetPawn()))
+	{
+		OnFireEnd();
+	}
+}
+
+void ANHPlayerController::PadAim()
+{
+	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()); C && !PadInUi() && !IsPaused())
+	{
+		C->SetAiming(true);
+	}
+}
+
+void ANHPlayerController::PadAimEnd()
+{
+	if (Cast<ANHCharacter>(GetPawn()))
+	{
+		OnAimEnd();
+	}
+}
+
+void ANHPlayerController::PadCrouch()
+{
+	if (Cast<ANHCharacter>(GetPawn()) && !PadInUi() && !IsPaused()) // at the wheel this button looks behind
+	{
+		OnCrouch();
+	}
+}
+
+void ANHPlayerController::PadAbility()
+{
+	if (Cast<ANHCharacter>(GetPawn()) && !PadInUi() && !IsPaused()) // at the wheel this button is the handbrake
+	{
+		OnAbility();
+	}
+}
+
 void ANHPlayerController::UiClick()
 {
 	ANHHUD* H = ANHHUD::Get(this);
@@ -970,6 +1100,14 @@ void ANHPlayerController::NHCheckpoint()
 	if (ANHMissions* Story = ANHMissions::Get(this))
 	{
 		Story->RestartFromCheckpoint();
+	}
+}
+
+void ANHPlayerController::NHMissionRestart()
+{
+	if (ANHMissions* Story = ANHMissions::Get(this))
+	{
+		Story->RestartMission();
 	}
 }
 

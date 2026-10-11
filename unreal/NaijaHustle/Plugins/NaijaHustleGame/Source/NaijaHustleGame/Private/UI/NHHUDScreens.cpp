@@ -1,6 +1,7 @@
 // The HUD's own screens: the map with its pin, the pause menu and the inventory wheel (see NHHUD.h)
 #include "UI/NHHUD.h"
 #include "Gameplay/NHEstate.h"
+#include "Gameplay/NHMissions.h"
 #include "Gameplay/NHInventory.h"
 
 #include "Audio/NHAudioSubsystem.h"
@@ -34,8 +35,8 @@ namespace NHScreens
 	const FLinearColor Land(0.2f, 0.19f, 0.16f);
 	const TCHAR* Section = TEXT("NaijaHustle");
 
-	enum { Resume, Character, Clothes, Lighting, Traffic, Look, Resolution, Minimap, AudioPage, Controls, Credits, Quit, Lines };
-	const TCHAR* LineNames[] = { TEXT("Resume"), TEXT("Character"), TEXT("Clothes"), TEXT("Lighting"), TEXT("Traffic"), TEXT("Look speed"), TEXT("Resolution"), TEXT("Minimap"), TEXT("Audio"), TEXT("Controls"), TEXT("Credits"), TEXT("Quit game") };
+	enum { Resume, ToCheckpoint, RestartJob, Character, Clothes, Lighting, Traffic, Look, Resolution, Minimap, AudioPage, Controls, Credits, Quit, Lines };
+	const TCHAR* LineNames[] = { TEXT("Resume"), TEXT("Return to checkpoint"), TEXT("Restart mission"), TEXT("Character"), TEXT("Clothes"), TEXT("Lighting"), TEXT("Traffic"), TEXT("Look speed"), TEXT("Resolution"), TEXT("Minimap"), TEXT("Audio"), TEXT("Controls"), TEXT("Credits"), TEXT("Quit game") };
 	// the Controls page: a heading (no key) or a key and what it does
 	const TCHAR* ControlList[][2] = {
 		{ TEXT("ON FOOT"), nullptr }, { TEXT("W A S D"), TEXT("Move") }, { TEXT("Mouse"), TEXT("Look") }, { TEXT("Left Shift"), TEXT("Run while held") }, { TEXT("R"), TEXT("Run: stays on until pressed again") },
@@ -45,7 +46,13 @@ namespace NHScreens
 		{ TEXT("K"), TEXT("Headlights on / off") }, { TEXT("V"), TEXT("Cabin view") }, { TEXT("H"), TEXT("Horn") }, { TEXT("Hold R"), TEXT("Radio wheel: point at a station, let go") }, { TEXT("T"), TEXT("Radio: next song") }, { TEXT("F"), TEXT("Get out") }, { TEXT("E"), TEXT("Do business at the mechanic, paint shop, chop shop") },
 		{ TEXT("ANYWHERE"), nullptr }, { TEXT("P"), TEXT("Phone (arrows, Enter, Backspace)") }, { TEXT("M"), TEXT("Map: click to pin, right-click to clear, wheel to zoom") },
 		{ TEXT("Tab"), TEXT("Switch between Tunde and Amaka") }, { TEXT("Z"), TEXT("Your ability, when its meter is full") },
-		{ TEXT("Hold Tab"), TEXT("Inventory wheel: phone, weapons, keys...") }, { TEXT("1 2 3 4"), TEXT("Choices in a panel") }, { TEXT("L / F1"), TEXT("Lighting: next preset / menu") }, { TEXT("F2"), TEXT("Streaming overlay: loaded cells") }, { TEXT("Esc"), TEXT("This menu") } };
+		{ TEXT("Hold Tab"), TEXT("Inventory wheel: phone, weapons, keys...") }, { TEXT("1 2 3 4"), TEXT("Choices in a panel") }, { TEXT("L / F1"), TEXT("Lighting: next preset / menu") }, { TEXT("F2"), TEXT("Streaming overlay: loaded cells") }, { TEXT("Esc"), TEXT("This menu") },
+		{ TEXT("CONTROLLER (USB or Bluetooth)"), nullptr }, { TEXT("Left stick"), TEXT("Move; steer") }, { TEXT("Right stick"), TEXT("Look") }, { TEXT("A / Cross"), TEXT("Jump; accept; a card's first answer") },
+		{ TEXT("B / Circle"), TEXT("Roll; back; headlights at the wheel") }, { TEXT("X / Square"), TEXT("Talk, act, next line") }, { TEXT("Y / Triangle"), TEXT("Get in or out") },
+		{ TEXT("RT / R2"), TEXT("Fire or swing; accelerate") }, { TEXT("LT / L2"), TEXT("Aim; brake and reverse") }, { TEXT("RB / R1"), TEXT("Ability; handbrake") }, { TEXT("LB / L1"), TEXT("Tap: other lead. Hold: wheel") },
+		{ TEXT("Click left stick"), TEXT("Run while held; horn") }, { TEXT("Click right stick"), TEXT("Crouch; look behind") }, { TEXT("D-pad"), TEXT("Up phone, down bag; menus; card answers") },
+		{ TEXT("Menu / Options"), TEXT("Pause menu") }, { TEXT("View / Share"), TEXT("Map") },
+	};
 	// the Clothes page: a slot's piece, or its colour
 	struct FClothesLine { const TCHAR* Name; ENHOutfitSlot Slot; bool bColour; };
 	const FClothesLine ClothesLines[] = { { TEXT("Hair"), ENHOutfitSlot::Hair, false }, { TEXT("Top or outfit"), ENHOutfitSlot::Top, false }, { TEXT("Top colour"), ENHOutfitSlot::Top, true },
@@ -584,6 +591,18 @@ void ANHHUD::Accept()
 		{
 			Open(EScreen::None);
 		}
+		else if (MenuLine == NHScreens::ToCheckpoint || MenuLine == NHScreens::RestartJob)
+		{
+			// the menu closes first: the game is paused under it, and the job's own cards open over the game
+			ANHMissions* Story = ANHMissions::Get(this);
+			if (Story && Story->CanRestart())
+			{
+				const bool bWhole = MenuLine == NHScreens::RestartJob;
+				MenuLine = NHScreens::Resume;
+				Open(EScreen::None);
+				bWhole ? (void)Story->RestartMission() : Story->RestartFromCheckpoint();
+			}
+		}
 		else if (MenuLine == NHScreens::Quit)
 		{
 			GetOwningPlayerController()->ConsoleCommand(TEXT("quit"));
@@ -904,6 +923,17 @@ FString ANHHUD::MenuValue(int32 Line) const
 	const ANHPlayerController* PC = Cast<ANHPlayerController>(GetOwningPlayerController());
 	switch (Line)
 	{
+	case ToCheckpoint:
+	case RestartJob:
+	{
+		// the job in hand: what Enter would go back to
+		const ANHMissions* Story = ANHMissions::Get(this);
+		if (!Story || !Story->CanRestart())
+		{
+			return TEXT("(no job running)");
+		}
+		return Line == ToCheckpoint ? FString::Printf(TEXT("Objective %d"), Story->CheckpointObjective()) : TEXT("From the job card");
+	}
 	case Character:
 	{
 		const ANHCharacter* Char = PC ? PC->GetOnFootCharacter() : nullptr;
@@ -1054,15 +1084,15 @@ void ANHHUD::DrawMenu(float VW, float VH)
 	}
 	if (bMenuControls)
 	{
-		// every key, in two columns
-		const int32 Count = UE_ARRAY_COUNT(ControlList), PerColumn = (Count + 1) / 2;
-		const float CW = 1500.f * S, CH = (150.f + 44.f * PerColumn) * S, CX = (VW - CW) * 0.5f, CY = (VH - CH) * 0.5f;
+		// every key and every button, in three columns
+		const int32 Count = UE_ARRAY_COUNT(ControlList), Columns = 3, PerColumn = (Count + Columns - 1) / Columns;
+		const float CW = 1840.f * S, CH = (150.f + 44.f * PerColumn) * S, CX = (VW - CW) * 0.5f, CY = (VH - CH) * 0.5f;
 		Panel(CX, CY, CW, CH, FLinearColor(0.05f, 0.05f, 0.05f, 0.95f));
 		DrawRect(Yellow, CX, CY, CW, 5.f * S);
 		Text(TEXT("CONTROLS"), CX + 30.f * S, CY + 22.f * S, Yellow, Large, 1.3f);
 		for (int32 I = 0; I < Count; ++I)
 		{
-			const float RX = CX + 30.f * S + (I / PerColumn) * CW * 0.5f, RY = CY + (90.f + 44.f * (I % PerColumn)) * S;
+			const float RX = CX + 30.f * S + (I / PerColumn) * (CW - 30.f * S) / Columns, RY = CY + (90.f + 44.f * (I % PerColumn)) * S;
 			if (!ControlList[I][1])
 			{
 				Text(ControlList[I][0], RX, RY + 6.f * S, Yellow, Medium, 1.05f);
@@ -1096,7 +1126,9 @@ void ANHHUD::DrawMenu(float VW, float VH)
 		if (!Value.IsEmpty())
 		{
 			float TW = 0.f, TH = 0.f;
-			const FString Shown = bOn ? FString::Printf(TEXT("<   %s   >"), *Value) : Value;
+			// left and right change a setting; the two lines about the job in hand are done with Enter
+			const bool bSetting = Line != ToCheckpoint && Line != RestartJob;
+			const FString Shown = bOn && bSetting ? FString::Printf(TEXT("<   %s   >"), *Value) : Value;
 			GetTextSize(Shown, TW, TH, Medium, 1.2f * S);
 			Text(Shown, X + W - 44.f * S - TW, Yy + 12.f * S, bOn ? Ink : Muted, Medium, 1.2f);
 		}

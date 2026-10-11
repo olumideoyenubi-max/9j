@@ -379,6 +379,23 @@ bool ANHMissions::Start(FName MissionId, bool bReplay)
 	Last.Id = Id;
 	bLockedSwitch = Flag(Root, TEXT("lockSwitch"), true);
 	bReplaying = bReplay;
+	// how things stand now, for starting the job again from the pause menu
+	Began = FBegan();
+	CashGiven = 0;
+	if (const ANHCharacter* Me = Player())
+	{
+		Began.At = Me->GetActorLocation();
+		Began.Yaw = Me->GetActorRotation().Yaw;
+	}
+	if (const ANHLeads* Cast1 = ANHLeads::Get(this))
+	{
+		Began.Lead = Cast1->Current();
+	}
+	if (const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this))
+	{
+		Began.Flags = Hustle->Flags;
+		Began.Integrity = Hustle->Integrity;
+	}
 
 	// the job card
 	// a mission for both leads begins as "startAs"
@@ -861,6 +878,7 @@ void ANHMissions::Apply(const TSharedPtr<FJsonObject>& Effects)
 	if (const int32 Cash = static_cast<int32>(Num(Effects, TEXT("cash"))); Cash != 0)
 	{
 		Hustle->Earn(Cash, Title);
+		CashGiven += Cash;
 	}
 	if (const FString Toast = Str(Effects, TEXT("toast")); !Toast.IsEmpty())
 	{
@@ -937,10 +955,82 @@ void ANHMissions::Fail(const FString& Why)
 	});
 }
 
+bool ANHMissions::RestartMission()
+{
+	ANHGameDirector* D = Dir();
+	if (!CanRestart() || !D)
+	{
+		return false;
+	}
+	const FName Again = Id;
+	const bool bWasReplay = bReplaying;
+	const FBegan Was = Began;
+	const int32 Given = CashGiven;
+	const float Played = MissionT;
+	ANHPlayerController* PC = Cast<ANHPlayerController>(GetWorld()->GetFirstPlayerController());
+	Abort(TEXT("started again from the pause menu"));
+	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this))
+	{
+		Hustle->ClearHeat();
+		if (!bWasReplay) // a replay never wrote in the book
+		{
+			Hustle->Flags = Was.Flags;
+			Hustle->Integrity = Was.Integrity;
+			Hustle->Cash = FMath::Max(0, Hustle->Cash - Given);
+		}
+	}
+	if (PC && Cast<ANHVehicle>(PC->GetPawn()))
+	{
+		PC->LeaveVehicle(true);
+	}
+	ANHLeads* Leads = ANHLeads::Get(this);
+	if (Leads && !Was.Lead.IsNone() && Leads->Current() != Was.Lead)
+	{
+		// the job had moved on to the other lead: the one who took it is stood back where they did, and played again
+		Leads->PlaceLead(Was.Lead, Was.At, Was.Yaw);
+		Leads->Switch(Was.Lead, true);
+	}
+	else if (ANHCharacter* Me = Player())
+	{
+		Me->SetActorLocationAndRotation(Was.At, FRotator(0.f, Was.Yaw, 0.f), false, nullptr, ETeleportType::TeleportPhysics);
+	}
+	if (ANHCharacter* Me = Player())
+	{
+		Me->Health = 100.f;
+	}
+	// mission 1's shift is the director's: its passengers, clock and danfo go back to the morning as well
+	if (D->Stage != ANHGameDirector::EStage::Done && D->Stage != ANHGameDirector::EStage::Meet)
+	{
+		D->ClearPassengers();
+		D->Shift = ANHGameDirector::FShift();
+		D->Deadline = -1.f;
+		D->bSlowClock = false;
+		D->SpawnMissionBus();
+		D->Stage = ANHGameDirector::EStage::Meet;
+	}
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: missions: %s started again after %s (cash given back %d)"), *Again.ToString(), *Clock(Played), Given);
+	return Start(Again, bWasReplay);
+}
+
 void ANHMissions::RestartFromCheckpoint()
 {
 	if (!bActive)
 	{
+		return;
+	}
+	// in mission 1's shift the checkpoint is the director's own: back to the park, the danfo new, Baba Driver's word
+	if (ANHGameDirector* D = Dir(); D && Type == TEXT("firstday") && D->Stage >= ANHGameDirector::EStage::Board && D->Stage <= ANHGameDirector::EStage::Failed)
+	{
+		D->Panel = ANHGameDirector::FPanel();
+		D->Dialogue = ANHGameDirector::FDialogue();
+		D->ClearPassengers();
+		D->Shift = ANHGameDirector::FShift();
+		D->Deadline = -1.f;
+		D->bSlowClock = false;
+		++RestartCount;
+		bFailed = false;
+		D->RetryFirstDay();
+		UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: missions: %s back to the start of the shift (restart %d)"), *Id.ToString(), RestartCount);
 		return;
 	}
 	ANHPlayerController* PC = Cast<ANHPlayerController>(GetWorld()->GetFirstPlayerController());
