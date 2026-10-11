@@ -24,6 +24,9 @@
 
 **Waiting:** the new boat ("Progress" motorboat, Sketchfab, CC Attribution) needs `SKETCHFAB_TOKEN=... python3 Scripts/fetch_sketchfab_model.py 4d0e69bb45a34f669709c416eec37b15 <nh-vehicles>/Boat_Speedboat` run by the user; then import, seat the driver, credit in `ASSETS.md`.
 
+**Disk image rebuilt 11 Oct 14:38** with all of the above (1.2 GB, both places on the drive). The Shipping app from that build was launched twice: it loads the save, shows the next job's card and the city textured, camera behind Tunde at 20 s. In a picture at 60 s the camera was at his feet looking straight up; the Mac was in use at the time, so it may have been the user's mouse, and it was not run again unattended.
+- The packaged project's `Intermediate` folders are on the internal disk (`~/NaijaHustle-intermediate`, about 5 GB, links left in their place): read off the USB drive, the compilers finished nothing in fifty minutes. That folder also holds links back to `Build`, `Config`, `Source` and the rest, because Xcode's finishing step looks for them beside `Intermediate`.
+
 ## Master build prompt: phase checklist (started 2026-10-10)
 
 The brief is `docs/BUILD_PROMPT.md`; the story, store and hustles are `docs/STORY.md`, `docs/STORE.md`, `docs/HUSTLES.md`. On **continue**, pick up at the first unticked step below.

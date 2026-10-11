@@ -20,3 +20,6 @@ Build/
 Packaged/
 # Python
 __pycache__/
+# the same two folders when they are links to the internal disk (build caches are too slow to read off the USB drive)
+Intermediate
+Plugins/*/Intermediate

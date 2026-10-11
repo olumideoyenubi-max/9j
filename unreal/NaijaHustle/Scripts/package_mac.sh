@@ -8,7 +8,8 @@
 #   hdiutil attach ~/LumiTB_mnt/NaijaHustle-build/work.sparseimage -nobrowse     (mounts /Volumes/NHBuild)
 # Override the places with UE_ROOT, NH_WORK and NH_OUT. The Unreal Editor must be closed.
 #
-# Three things here are workarounds, each for something that went wrong the first time (PROGRESS.md, "Standalone Mac build"):
+# -NoUBA: with the project on the drive behind a link, the build accelerator wrote truncated object files (11 Oct).
+# Three more things here are workarounds, each for something that went wrong the first time (PROGRESS.md, "Standalone Mac build"):
 #   - UnrealBuildTool's own Xcode step fails on this Mac, so the game is built with UE_BUILD_FROM_XCODE=1 and that
 #     step is run by hand, and BuildCookRun is run without -build
 #   - the cook writes into Unreal's Zen storage folder, which stops below 2 GB free; it is pointed at the drive for
@@ -51,8 +52,8 @@ if [[ ! -L "$ZEN/Data" ]]; then
 fi
 
 step "compile: the editor (the cook runs in it) and the Shipping game"
-"$UE_ROOT/Engine/Build/BatchFiles/Mac/Build.sh" NaijaHustleEditor Mac Development -project="$PROJECT" > "$LOGS/pkg_build_editor.log" 2>&1 || { tail -20 "$LOGS/pkg_build_editor.log"; exit 1; }
-UE_BUILD_FROM_XCODE=1 "$UE_ROOT/Engine/Build/BatchFiles/Mac/Build.sh" NaijaHustle Mac Shipping -project="$PROJECT" -architecture=arm64 > "$LOGS/pkg_build_game.log" 2>&1 || { tail -20 "$LOGS/pkg_build_game.log"; exit 1; }
+"$UE_ROOT/Engine/Build/BatchFiles/Mac/Build.sh" NaijaHustleEditor Mac Development -project="$PROJECT" -NoUBA > "$LOGS/pkg_build_editor.log" 2>&1 || { tail -20 "$LOGS/pkg_build_editor.log"; exit 1; }
+UE_BUILD_FROM_XCODE=1 "$UE_ROOT/Engine/Build/BatchFiles/Mac/Build.sh" NaijaHustle Mac Shipping -project="$PROJECT" -architecture=arm64 -NoUBA > "$LOGS/pkg_build_game.log" 2>&1 || { tail -20 "$LOGS/pkg_build_game.log"; exit 1; }
 (cd "$PROJECT_DIR/Intermediate/ProjectFiles" && UBT_NO_POST_DEPLOY=true xcodebuild build -workspace NaijaHustle_Mac_NaijaHustle.xcworkspace -scheme NaijaHustle -configuration Shipping \
   -destination generic/platform=macOS CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION=YES UE_XCODE_BUILD_MODE=PostBuildSync -hideShellScriptEnvironment > "$LOGS/pkg_xcode.log" 2>&1) || { tail -20 "$LOGS/pkg_xcode.log"; exit 1; }
 
