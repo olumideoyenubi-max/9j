@@ -4,6 +4,26 @@
 **Engine:** Unreal Engine 5.8, macOS, Metal SM5
 **Test machine:** Apple M1, 8 GB RAM
 
+## 11 October: the drive, riders' clothes, bike clips, flyover headroom, restart, controller
+
+**Where everything is.** The whole project now lives on the LumiTB drive, in the work image `NaijaHustle-build/work.sparseimage` (mounted as `/Volumes/NHBuild`): `~/Documents/9j` is a link to `/Volumes/NHBuild/9j` and `~/Documents/Unreal Projects/MyProject` to `/Volumes/NHBuild/MyProject`. Plug the drive in and run `~/mount-naija-drive.command` first. The code's other copy is GitHub; `Content` and the raw files are on the drive alone.
+- **Build by the real path.** A build started through the link (`~/Documents/Unreal Projects/MyProject/...`) writes truncated object files (the build accelerator and the link do not get on). Use `Build.sh MyProjectEditor Mac Development -Project=/Volumes/NHBuild/MyProject/MyProject.uproject -NoUBA`. `Scripts/mac.sh` already resolves the real path.
+- The drive dropped off the Mac once in the middle of a compile; the work volume, git and file counts checked out afterwards.
+
+**Riders' clothes.** A body with a wardrobe is bare skin with the clothes as separate pieces, and the copy seated in a vehicle had only the skin: unseen inside a car, plain on a bike or boat. `ANHVehicle::DressDriver` gives the seated body the same pieces, colours and hidden skin patches, every time somebody gets in. Seen on the okada with Emeka (a wardrobe body), at midday in the city. Not looked at on the boat.
+
+**Bike clips.** `Ride_Idle`, `Ride_Left`, `Ride_Right` (astride, feet on the pegs, hands on the bars, shoulders and head into the turn), made by `build_player_action_anims.py` (`NH_ANIM_ONLY="Ride_*"` bakes just those) and imported for all twelve MakeHuman bodies. A bike uses them in place of the old fixed pose; there is no reversing clip.
+
+**Flyover headroom.** The Apapa-Oworonshoki Expressway's deck stood 1.5 m over Agege Motor Road at Oshodi: a wall across it. `rebuild_bridge_decks.py` now raises a deck wherever a ground road passes under it, to 3 m clear in the model (4.5 m in the game), lengthens the ramps at 6% and goes to 8% only where the bridge is too short. All 441 bridge ways rebuilt and re-imported; 347 places where a road passes under a deck. Checked at Oshodi by measurement and by a picture from the road. **Not done:** crossings within about 50 m of a bridge's end are still short of full clearance (466 points), and piers under a raised deck were not lengthened, so some now stop short of it. The files as they were are beside the new ones as `.before_headroom`.
+
+**Restart mission, return to checkpoint.** Two lines on the pause menu under Resume. Return to checkpoint is what the failure card already did, now at any time. Restart mission (`ANHMissions::RestartMission`, console `NHMissionRestart`) starts the job again from its card: the player back where they took it on, wanted stars gone, and the flags, Integrity and cash the job had given so far undone. In mission 1's shift both also put Baba Driver's shift back (passengers, clock, a new danfo). `-NHRun=systems` presses both through the menu: 50 of 50. Mission 1's own restart was not run by a test.
+
+**Controller.** The sticks, triggers at the wheel, jump, get in and act were already mapped; the rest were keys only. Added: RT fire, LT aim, right-stick click crouch, B roll (headlights at the wheel; back in a menu), RB ability, LB the other lead (held: the wheel), Menu the pause menu, View the map, d-pad up the phone and down the bag; in a menu, the map, the phone or the bag the d-pad moves and A accepts; on a card A is the first answer and the d-pad the others. Listed on the Controls page, now three columns. **Not tested: there was no controller to plug in.** The inventory wheel and the map's pin still need the mouse.
+
+**Also:** tests run with `-NHNoSave` no longer write the phone's save. After all of it: systems 50 of 50, story1 69 of 69, leads 72 of 72.
+
+**Waiting:** the new boat ("Progress" motorboat, Sketchfab, CC Attribution) needs `SKETCHFAB_TOKEN=... python3 Scripts/fetch_sketchfab_model.py 4d0e69bb45a34f669709c416eec37b15 <nh-vehicles>/Boat_Speedboat` run by the user; then import, seat the driver, credit in `ASSETS.md`.
+
 ## Master build prompt: phase checklist (started 2026-10-10)
 
 The brief is `docs/BUILD_PROMPT.md`; the story, store and hustles are `docs/STORY.md`, `docs/STORE.md`, `docs/HUSTLES.md`. On **continue**, pick up at the first unticked step below.
