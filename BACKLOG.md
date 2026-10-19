@@ -22,6 +22,17 @@ The slice is Oke-Erupe at dusk, the conductor chapter, and nothing else.
 
 ## Ready
 
+- [ ] `[web]` `p2-conductor` fails on the default branch and has done since before this queue
+      existed — the first CI run of the browser suites caught it. Reproduce it, find out what broke,
+      and fix the game rather than the test. Start with the agbero haggle in `p2-conductor.js`: it
+      pins an exact dice roll (`seed 4000000000`, first roll `.9`), which the live-Lagos commit
+      already had to patch once, so a world that now draws more randomness between the seed and the
+      roll is the first thing to rule out. If the test is the thing that is wrong, make it assert the
+      behaviour rather than the roll — do not just re-pin the seed.
+- [ ] `[web]` `p5-live` is flaky: it passed on one CI run and failed on another against the same
+      `web/` tree. Run it ten times, report how many fail, find the source of the non-determinism
+      (real-time timers under software rendering are the usual cause) and make it deterministic. A
+      flaky test in the safety net is worse than no test, because it trains everyone to ignore red.
 - [ ] `[web]` Fuel runs down but there is no warning before the engine cuts. Add a HUD warning at
       low fuel and a phone or radio nudge toward the nearest Gidi Fuel. Follow the UI rules in
       `CLAUDE.md` — translucent, one accent colour, contextual.
