@@ -1,0 +1,30 @@
+name: Claude
+
+# Mention @claude in any issue or PR comment and it works in this repo.
+# Needs the Claude GitHub App installed and an ANTHROPIC_API_KEY repository secret
+# (or CLAUDE_CODE_OAUTH_TOKEN — see docs/AGENTS.md).
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  claude:
+    if: contains(github.event.comment.body, '@claude')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: '--max-turns 30'
