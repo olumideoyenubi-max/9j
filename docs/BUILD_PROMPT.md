@@ -13,8 +13,9 @@ Engine 5.8.3 project at `~/Documents/Unreal Projects/MyProject`. The game code i
 ## Ground rules (apply to every phase)
 
 1. **Story first.** `docs/STORY.md` is the source of truth for characters, missions, choices, money and endings.
-   `docs/STORE.md` covers the Gold Kobo store and `docs/HUSTLES.md` covers betting, stocks, crypto, love life and
-   scams. If this prompt and those docs disagree, the docs win. Tell me about the conflict.
+   `docs/STORE.md` covers the Gold Kobo store, `docs/HUSTLES.md` covers betting, stocks, crypto, love life and
+   scams, and `docs/LIFE.md` covers everyday interactions and animations. If this prompt and those docs disagree,
+   the docs win. Tell me about the conflict.
 2. **Everything original.** Use no Rockstar or GTA names, logos or assets, and no real politicians, companies,
    banks, gangs or brands. Every name comes from the docs or is newly invented.
 3. **Missions are short and punchy:**
@@ -55,7 +56,8 @@ Engine 5.8.3 project at `~/Documents/Unreal Projects/MyProject`. The game code i
 2. Compare `unreal/NaijaHustle/Plugins/NaijaHustleGame` in the repo with `Plugins/NaijaHustleGame` in my project.
    My local copy has fixes the repo doesn't (UE 5.8 / Mac / 8 GB memory fixes, the lighting rig fallback, and maybe
    NH debug commands and autoplay). **Keep my local fixes** and merge in anything newer from the repo.
-3. Read `docs/STORY.md`, `docs/STORE.md`, `docs/HUSTLES.md` and `docs/GDD.md` in full before writing any code.
+3. Read `docs/STORY.md`, `docs/STORE.md`, `docs/HUSTLES.md`, `docs/LIFE.md` and `docs/GDD.md` in full before
+   writing any code.
 4. Copy the merged plugin back into the repo and push it. Push code, scripts, JSON and docs only: **no file over
    5 MB, no `.uasset`/`.umap`, no Megascans**. If GitHub won't let you push, run `gh auth login`. If that's not
    possible, write a patch to `~/Desktop/naija-hustle.patch` and tell me.
@@ -219,7 +221,54 @@ Follow `docs/HUSTLES.md`, with all numbers under `risk` in `naija_rules.json`:
   - Check bought naira can't be bet.
   - Trigger each scam and check its warning shows first.
 
-## Phase 9: The look (Lagos like the reference video)
+## Phase 9: Life in Lagos (interactions and animations, GTA RP style)
+
+Follow `docs/LIFE.md`. Build the systems first with stand-in animations, then swap in real ones.
+
+1. **Interaction system:**
+   - look-at prompts, the **E** interaction wheel (hold) and the **G** emote wheel
+   - every option loaded from `interactions.json` and `emotes.json`, with a stand-in animation when the real one
+     is missing
+2. **People:**
+   - greet (handshake with a snap; Tunde prostrates and Amaka kneels to their elders), chat, gist, directions,
+     flirt, beg or bribe, insult or fight, rob, hire
+   - respect per named NPC and per area, saved
+   - crowd reactions: head turns, stepping aside, filming fights on phones, fleeing gunfire
+3. **Daily life:** hunger, energy and stress (light, never punishing); bukkas, suya spots, hawkers, sleeping at home;
+   random power cuts with generators.
+4. **RP jobs**, 5–10 minutes each: okada rider, keke, Amaka's phone repair, roadside mechanic, POS agent, market
+   trader, ChopRun delivery, tow truck. Rules in `jobs.json`.
+5. **The city:**
+   - hawkers at the car window in go-slow, and window boys
+   - Gidi Fuel stations, the vulcanizer, the car wash, the barber and tailor
+   - owambe dancing and spraying money
+   - the viewing centre, 3-a-side street football, draughts with Baba Sule
+6. **Stops and arrests:** pull over or run, hands up, answer on the wheel (polite, argue, settle, refuse), then a
+   search, fine, bribe or arrest with the handcuff scene and the station release.
+7. **Vehicle animations:** the danfo side door, okada kick-start, keke climb-in, car doors, smashing a window and
+   hot-wiring; the conductor hanging out of the door shouting the route and banging the side; passengers boarding.
+8. **Animations, in two steps:**
+   - **First**, use what's already in the project: the mannequin and Third Person animations, plus stand-ins.
+     Set up the IK Retargeter, layered upper-body montages, foot and hand IK, look-at, the Animation Budget
+     Allocator and animation sharing for crowds.
+   - **WAIT:** then stop and ask me to add Epic's free **Game Animation Sample** from Fab and the Mixamo
+     animations you list for me. Give me a short list with exact Mixamo names, FBX at 30 fps, without skin. Continue
+     only when I type **`animations added`**.
+   - **Then** retarget them, wire motion matching for locomotion (measure it; if it costs too much on 8 GB, use a
+     state machine with blend spaces instead), and replace the stand-ins.
+   - For moves Mixamo doesn't have (prostrating, kneeling, Shaku Shaku, Zanku, Etighi, the conductor door hang,
+     spraying money), make simple versions with Control Rig, and tell me how to record better ones with phone-video
+     mocap.
+9. **Budget:** animation memory under 150 MB, at most 40 fully animated characters near the player, 30+ fps at Balo
+   Market at its busiest.
+10. **Autoplay test:**
+    - use every wheel option on a test NPC
+    - do every emote
+    - finish one shift of each job
+    - get stopped and arrested once
+    - check respect and needs are saved after reloading
+
+## Phase 10: The look (Lagos like the reference video)
 
 **WAIT:** stop here and ask me to add surfaces from Fab (Megascans). Continue only when I type
 **`surfaces added`**.
