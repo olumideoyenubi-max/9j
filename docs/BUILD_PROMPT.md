@@ -47,8 +47,16 @@ Engine 5.8.3 project at `~/Documents/Unreal Projects/MyProject`. The game code i
    6. Update `PROGRESS.md` (in the project root): what's done, what's next, any open problems.
    7. Commit and push to the repo (see Phase 0).
    8. Give me a 5-line summary, then **carry on to the next phase** unless that phase says WAIT.
-8. **If something fails three times,** stop, write it in `PROGRESS.md`, and ask me.
-9. **Resume.** When I type `continue`, read `PROGRESS.md` and pick up from the first unfinished step.
+8. **Server-ready from now on.** The game is single-player today but will go on RP servers later, so write every
+   new system the way `docs/MULTIPLAYER.md` describes:
+   - the server decides (money, damage, purchases, mission results); the client only asks
+   - per-player state on the PlayerState, shared world state on the GameState, nothing important in widgets or
+     static globals
+   - replicated properties and RPCs from the start, even with one player
+   - from Phase 2 on, run each autoplay test once more as a listen server with one extra client (2 players) and
+     check both see the same thing
+9. **If something fails three times,** stop, write it in `PROGRESS.md`, and ask me.
+10. **Resume.** When I type `continue`, read `PROGRESS.md` and pick up from the first unfinished step.
 
 ## Phase 0: Sync with the repo
 
@@ -56,7 +64,7 @@ Engine 5.8.3 project at `~/Documents/Unreal Projects/MyProject`. The game code i
 2. Compare `unreal/NaijaHustle/Plugins/NaijaHustleGame` in the repo with `Plugins/NaijaHustleGame` in my project.
    My local copy has fixes the repo doesn't (UE 5.8 / Mac / 8 GB memory fixes, the lighting rig fallback, and maybe
    NH debug commands and autoplay). **Keep my local fixes** and merge in anything newer from the repo.
-3. Read `docs/STORY.md`, `docs/STORE.md`, `docs/HUSTLES.md`, `docs/LIFE.md` and `docs/GDD.md` in full before
+3. Read `docs/STORY.md`, `docs/STORE.md`, `docs/HUSTLES.md`, `docs/LIFE.md`, `docs/MULTIPLAYER.md` and `docs/GDD.md` in full before
    writing any code.
 4. Copy the merged plugin back into the repo and push it. Push code, scripts, JSON and docs only: **no file over
    5 MB, no `.uasset`/`.umap`, no Megascans**. If GitHub won't let you push, run `gh auth login`. If that's not
@@ -89,6 +97,9 @@ Engine 5.8.3 project at `~/Documents/Unreal Projects/MyProject`. The game code i
 
 Build once, use in all 12 missions:
 
+- **Server-ready state first** (see `docs/MULTIPLAYER.md`): move cash, cred, Integrity, flags, needs and respect
+  out of the single-player subsystem into a replicated player state component, and the clock and weather into the
+  GameState. Single-player keeps working exactly as before.
 - **Mission runner:**
   - loads `missions/mNN.json`: objectives, triggers, checkpoints, dialogue lines, the standout moment, rewards
   - shows a job card at the start and the night-shift reward card at the end

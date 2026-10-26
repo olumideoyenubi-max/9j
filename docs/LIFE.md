@@ -151,14 +151,10 @@ How you behave changes the outcome, and real officers are different from fake on
 - at most 40 fully animated characters near the player; the rest use crowd animation
 - 30+ fps at Balo Market at its busiest
 
-## 10. Multiplayer (later)
+## 10. Multiplayer
 
-Real GTA RP happens on online servers with many players. NAIJA HUSTLE stays single-player for now, but the
-interaction system is built so it could be networked later:
-- every action is a request the game approves (server-authoritative)
-- state lives in components that could be replicated
-
-Online play would be a separate, large project after the story is done.
+NAIJA HUSTLE is heading for RP servers. Every interaction here is built server-ready from the start, as
+[MULTIPLAYER.md](MULTIPLAYER.md) describes, so it works the same with one player or many.
 
 ## Data
 

@@ -95,3 +95,8 @@ Characters you unlock through the story (Baba Sule, Chidi, Zainab, Sir Jaguar) a
 A store that takes real money also needs a server for receipt checks, the platform developer accounts
 (Apple, Google, Steam or Epic) and the age-rating questions about in-game purchases. That comes before launch,
 not before the gameplay.
+
+## On RP servers
+
+Gold Kobo is cosmetic-only on servers: outfits, car paint, emotes, dances and decor. Naira packs, cars and premium
+characters stay in story mode, so nobody can pay to win. See [MULTIPLAYER.md](MULTIPLAYER.md).
