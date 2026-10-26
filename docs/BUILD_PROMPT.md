@@ -76,7 +76,7 @@ Engine 5.8.3 project at `~/Documents/Unreal Projects/MyProject`. The game code i
 
 **Already done in the repo:** `Data/characters.json` (the whole cast and how each unlocks), blockout bodies per
 character, Left Alt switching with a camera fly-over (blocked while driving, during a shift or mid-mission), and
-both abilities on a meter (Caps Lock). Build it, play it, fix anything that doesn't compile or feel right, then do
+both abilities on a meter (X). Build it, play it, fix anything that doesn't compile or feel right, then do
 what's left below (the switch on the phone, the autoplay test).
 
 - **Characters data** (`characters.json`), with each character's name, age, home, ability, how they're

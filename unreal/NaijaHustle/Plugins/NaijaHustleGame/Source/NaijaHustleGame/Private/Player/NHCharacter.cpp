@@ -64,13 +64,23 @@ void ANHCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
 	DOREPLIFETIME(ANHCharacter, LeadId);
 	DOREPLIFETIME_CONDITION(ANHCharacter, AbilityMeter, COND_OwnerOnly);
 	DOREPLIFETIME(ANHCharacter, bRushing);
-	DOREPLIFETIME(ANHCharacter, bSprinting);
+	// the owner already changed its own speed when the key went down; an echo would undo newer presses
+	DOREPLIFETIME_CONDITION(ANHCharacter, bSprinting, COND_SkipOwner);
 }
 
 void ANHCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	if (!bBodyBuilt)
+	{
+		BuildBody();
+	}
+}
+
+void ANHCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+	if (LeadId.IsNone())
 	{
 		BuildBody();
 	}
@@ -145,7 +155,7 @@ void ANHCharacter::BuildBody()
 	{
 		// a player's own character: a look picked from their player id until the character creator exists
 		const APlayerState* PS = GetPlayerState();
-		const int32 Seed = PS ? PS->GetPlayerId() : GetUniqueID();
+		const int32 Seed = PS ? PS->GetPlayerId() : 0;
 		Look = FNHBodyLook::FromSeed(Seed, FLinearColor(0.05f, 0.2f, 0.7f), false, 1.f);
 	}
 	const FNHBody Body = FNHBody::Build(this, BodyRoot, Look);
@@ -303,7 +313,7 @@ void ANHCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	Input->BindAction(Set->Jump, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 	Input->BindAction(Set->Sprint, ETriggerEvent::Started, this, &ANHCharacter::OnSprintStart);
 	Input->BindAction(Set->Sprint, ETriggerEvent::Completed, this, &ANHCharacter::OnSprintStop);
-	// F (vehicles), E (talk, call passengers), Alt (switch lead) and Caps Lock (ability) are bound by ANHPlayerController
+	// F (vehicles), E (talk, call passengers), Alt (switch lead) and X (ability) are bound by ANHPlayerController
 }
 
 void ANHCharacter::OnMove(const FInputActionValue& Value)
@@ -349,6 +359,15 @@ void ANHCharacter::OnSprintStop()
 	if (!HasAuthority())
 	{
 		ServerSetSprint(false);
+	}
+}
+
+void ANHCharacter::StopSprint()
+{
+	if (HasAuthority())
+	{
+		bSprinting = false;
+		ApplySpeed();
 	}
 }
 

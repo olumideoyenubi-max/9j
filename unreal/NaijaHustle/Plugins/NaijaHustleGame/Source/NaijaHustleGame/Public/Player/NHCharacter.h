@@ -49,9 +49,13 @@ public:
 	FString UseAbility(ANHVehicle* Vehicle);
 	/** The vehicle Unlock would hit from here (any machine; the server decides for real) */
 	ANHVehicle* UnlockTarget() const;
+	/** Server: back to walking pace (the player switched away while holding sprint) */
+	void StopSprint();
 
 protected:
 	virtual void BeginPlay() override;
+	/** A player's own character takes its look from their player id, which can arrive after BeginPlay */
+	virtual void OnRep_PlayerState() override;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	TObjectPtr<USpringArmComponent> CameraBoom;

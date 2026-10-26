@@ -39,7 +39,7 @@ public:
 	UPROPERTY() TObjectPtr<UInputAction> Interact;    // F / Y: enter or steal a vehicle, talk
 	UPROPERTY() TObjectPtr<UInputAction> Action;      // E / X: context action (call passengers, buy, pick up)
 	UPROPERTY() TObjectPtr<UInputAction> SwitchLead;  // Left Alt / RB: switch to the next lead (Tunde, Amaka, ...)
-	UPROPERTY() TObjectPtr<UInputAction> Ability;     // Caps Lock / R3: the lead's special ability (Caps Lock also at the wheel)
+	UPROPERTY() TObjectPtr<UInputAction> Ability;     // X / R3: the lead's special ability (X also at the wheel). Not Caps Lock: on a Mac it toggles, so every other press is lost
 
 	// ---- vehicle
 	UPROPERTY() TObjectPtr<UInputAction> Throttle;    // Axis1D: W / right trigger

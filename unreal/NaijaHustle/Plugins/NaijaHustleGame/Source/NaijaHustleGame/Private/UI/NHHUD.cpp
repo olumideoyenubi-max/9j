@@ -333,7 +333,7 @@ void ANHHUD::DrawHUD()
 			const bool bReady = K >= 1.f && !Lead->IsAbilityActive();
 			Panel(X, Y, W, 10.f * S, FLinearColor(1.f, 1.f, 1.f, 0.15f));
 			DrawRect(Lead->IsAbilityActive() ? Good : bReady ? Yellow : Muted, X, Y, W * K, 10.f * S);
-			Text(bReady ? FString::Printf(TEXT("%s ready: Caps Lock"), *Ability) : Lead->IsAbilityActive() ? Ability + TEXT("!") : Ability,
+			Text(bReady ? FString::Printf(TEXT("%s ready: X"), *Ability) : Lead->IsAbilityActive() ? Ability + TEXT("!") : Ability,
 				X + W + 12.f * S, Y - 6.f * S, bReady ? Yellow : Muted, Medium, 0.9f);
 			// what Amaka's Unlock would hit
 			if (bReady)

@@ -154,6 +154,7 @@ bool ANHPlayerController::EnterVehicle(ANHVehicle* Vehicle)
 	C->SetActorEnableCollision(false);
 	C->AttachToActor(Vehicle, FAttachmentTransformRules::KeepWorldTransform);
 	Possess(Vehicle);
+	C->SetOwner(this); // unpossessing cleared it; the owner keeps the lead's meter replicating to this player
 	Vehicle->SetOccupied(true);
 	SetControlRotation(Vehicle->GetActorRotation());
 	return true;
@@ -418,6 +419,7 @@ void ANHPlayerController::ServerSwitchLead_Implementation()
 	{
 		return;
 	}
+	From->StopSprint(); // its input goes away with the switch, so Shift can't be released on it
 	Possess(To);
 	From->SetOwner(this); // unpossessing cleared it; the owner is how we know it's still this player's lead
 	SetControlRotation(FRotator(-10.f, To->GetActorRotation().Yaw, 0.f));

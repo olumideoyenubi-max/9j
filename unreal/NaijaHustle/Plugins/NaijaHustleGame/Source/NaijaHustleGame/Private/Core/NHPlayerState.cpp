@@ -45,13 +45,14 @@ ANHPlayerState* ANHPlayerState::Local(const UObject* WorldContext)
 
 ANHPlayerState* ANHPlayerState::Host(const UObject* WorldContext)
 {
-	// on the server (or in single-player) the first player controller is the host's
+	// the host is the player at the server's own screen: none on a client or a dedicated server
 	const UWorld* World = WorldContext ? WorldContext->GetWorld() : nullptr;
-	if (!World || World->GetNetMode() == NM_Client)
+	if (!World || World->GetNetMode() == NM_Client || World->GetNetMode() == NM_DedicatedServer)
 	{
 		return nullptr;
 	}
-	return Local(WorldContext);
+	const APlayerController* PC = World->GetFirstPlayerController();
+	return (PC && PC->IsLocalController()) ? PC->GetPlayerState<ANHPlayerState>() : nullptr;
 }
 
 // ---------------------------------------------------------------------------------------------------- server-side changes
@@ -78,6 +79,7 @@ void ANHPlayerState::Earn(int32 Amount, const FString& Why)
 	SeenCash = Cash;
 	bSeenCash = true;
 	OnCashChanged.Broadcast(Amount, Why);
+	ForceNetUpdate(); // player states only send about once a second otherwise
 }
 
 void ANHPlayerState::AddCred(int32 Amount)
@@ -139,6 +141,7 @@ void ANHPlayerState::AddHeat(float Amount)
 	{
 		Heat = FMath::Min(5.f, Heat + Amount);
 		HeatTimer = 0.f;
+		ForceNetUpdate();
 	}
 }
 

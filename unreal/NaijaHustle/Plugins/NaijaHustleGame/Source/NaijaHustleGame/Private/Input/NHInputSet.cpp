@@ -83,7 +83,7 @@ void UNHInputSet::Build()
 	OnFoot->MapKey(Action, EKeys::Gamepad_FaceButton_Left);
 	OnFoot->MapKey(SwitchLead, EKeys::LeftAlt);
 	OnFoot->MapKey(SwitchLead, EKeys::Gamepad_RightShoulder);
-	OnFoot->MapKey(Ability, EKeys::CapsLock);
+	OnFoot->MapKey(Ability, EKeys::X);
 	OnFoot->MapKey(Ability, EKeys::Gamepad_RightThumbstick);
 
 	// ---------------------------------------------------------------- vehicle
@@ -124,7 +124,7 @@ void UNHInputSet::Build()
 	Vehicle->MapKey(Action, EKeys::E);
 	Vehicle->MapKey(Action, EKeys::Gamepad_FaceButton_Left);
 	// Hustle Rush works at the wheel too (the gamepad's R3 is look-behind here)
-	Vehicle->MapKey(Ability, EKeys::CapsLock);
+	Vehicle->MapKey(Ability, EKeys::X);
 
 	// ---------------------------------------------------------------- always on
 	Phone = MakeAction(this, TEXT("IA_Phone"));

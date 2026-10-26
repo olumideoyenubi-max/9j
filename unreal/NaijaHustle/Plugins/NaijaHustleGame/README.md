@@ -65,7 +65,7 @@ You start at home beside Oshoja Motor Park, at 8:00 on day 1, with N5,000.
 | H | | horn |
 | L | next lighting preset (stops following the clock) | |
 | Left Alt | switch lead (Tunde, Amaka, and characters you unlock) | |
-| Caps Lock | the lead's ability when its meter is full | Hustle Rush works here too |
+| X | the lead's ability when its meter is full | Hustle Rush works here too |
 
 1. Walk to **Baba Driver** at the motor park and hear him out.
 2. Get in the yellow danfo in **bay 1** (the board says BALO).
@@ -100,7 +100,7 @@ You start as **Tunde**. **Amaka** waits at Balo Market Square. Press **Left Alt*
 camera flies across to her, and Tunde stays where you left him. You can't switch while driving, during a shift
 or mid-mission. Characters from `Data/characters.json` join the list as the story unlocks them.
 
-Each lead's ability meter (bottom left) fills as you play, faster on the move. When it's full, press **Caps Lock**:
+Each lead's ability meter (bottom left) fills as you play, faster on the move. When it's full, press **X**:
 - **Tunde, Hustle Rush:** 8 seconds of extra speed on foot, or a boost at the wheel.
 - **Amaka, Unlock:** the nearest vehicle within 30 m (marked on screen) cuts out for 6 seconds.
 
