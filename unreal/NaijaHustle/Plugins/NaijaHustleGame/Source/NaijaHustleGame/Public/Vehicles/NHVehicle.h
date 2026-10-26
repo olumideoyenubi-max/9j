@@ -46,7 +46,12 @@ public:
 	FVector ExitPoint() const;
 	void SetOccupied(bool bOn);
 	/** Puts it back on its wheels with full health (mission retries) */
-	void Repair() { Health = MaxHealth; Speed = 0.f; }
+	void Repair() { Health = MaxHealth; Speed = 0.f; EngineOffTime = BoostTime = 0.f; }
+	/** Amaka's Unlock: the engine cuts out for a few seconds (no throttle; brakes and steering still work) */
+	void KillEngine(float Seconds) { EngineOffTime = FMath::Max(EngineOffTime, Seconds); }
+	UFUNCTION(BlueprintPure, Category = "Vehicle") bool IsEngineKilled() const { return EngineOffTime > 0.f; }
+	/** Tunde's Hustle Rush at the wheel: more top speed and acceleration for a few seconds */
+	void Boost(float Seconds, float Multiplier) { BoostTime = Seconds; BoostMult = Multiplier; }
 
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
@@ -63,6 +68,7 @@ private:
 	FNHVehicleSpec Spec;
 	float Throttle = 0.f, BrakeIn = 0.f, Steer = 0.f;
 	bool bHandbrake = false;
+	float EngineOffTime = 0.f, BoostTime = 0.f, BoostMult = 1.f;
 	bool bBuilt = false;
 	float Clearance = 30.f, HalfHeight = 60.f;
 	float WheelSpin = 0.f, Lean = 0.f, LookIdle = 0.f;

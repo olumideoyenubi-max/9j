@@ -1,0 +1,83 @@
+{
+ "note": "The NAIJA HUSTLE cast (docs/STORY.md). Hand-written, not exported from the browser game. unlock.type: start | mission (playable after that mission) | flag (after the story, only if the flag is set) | premium (bought with Gold Kobo) | never. spawn: the bus stop (lagos_city.json) where they first appear, or next to the player. look: top and bottom colours, skin 0 (darkest) to 5, height factor, head-tie.",
+ "characters": [
+  {
+   "id": "tunde", "name": "Tunde Adeyemi", "age": 24, "home": "Oshoja Junction",
+   "role": "Danfo conductor. Quick mouth, quick feet, loyal, takes the hits.",
+   "ability": "hustle_rush",
+   "unlock": { "type": "start" },
+   "look": { "top": "#f2b705", "bottom": "#1f2a44", "skin": 1, "height": 1.04, "headTie": false }
+  },
+  {
+   "id": "amaka", "name": "Amaka Nwosu", "age": 23, "home": "Balo Market",
+   "role": "Phone-repair and hacking genius. Sharp, funny, fearless.",
+   "spawn": "marketsq",
+   "ability": "unlock",
+   "unlock": { "type": "start" },
+   "look": { "top": "#7b2cbf", "bottom": "#2b2b2b", "skin": 3, "height": 0.97, "headTie": true }
+  },
+  {
+   "id": "chidi", "name": "Chidi Nwosu", "age": 19, "home": "Balo Market",
+   "role": "Amaka's little brother, pulled into the Red Cowries.",
+   "spawn": "marketsq",
+   "ability": "",
+   "unlock": { "type": "mission", "mission": "lag_05" },
+   "look": { "top": "#d62828", "bottom": "#3d5a80", "skin": 3, "height": 1.0, "headTie": false }
+  },
+  {
+   "id": "baba_sule", "name": "Baba Sule", "age": 61, "home": "Oshoja Motor Park",
+   "role": "Femi's old partner and Tunde's mentor. Drives the bus Shina took.",
+   "spawn": "oshoja",
+   "ability": "",
+   "unlock": { "type": "mission", "mission": "lag_08" },
+   "look": { "top": "#6b4f3a", "bottom": "#5d5a3e", "skin": 0, "height": 1.0, "headTie": false }
+  },
+  {
+   "id": "zainab", "name": "Zainab Yusuf-Cole", "age": 31, "home": "Balo Market",
+   "role": "Independent journalist chasing the Kingmaker's money.",
+   "spawn": "marketrd",
+   "ability": "",
+   "unlock": { "type": "flag", "flag": "zainab_alive", "mission": "lag_12" },
+   "look": { "top": "#2a9d8f", "bottom": "#1f2a44", "skin": 4, "height": 0.98, "headTie": true }
+  },
+  {
+   "id": "sir_jaguar", "name": "\"Sir Jaguar\"", "age": 27, "home": "The old stadium",
+   "role": "Head of the Red Cowries, Shina's muscle.",
+   "spawn": "second",
+   "ability": "",
+   "unlock": { "type": "flag", "flag": "spared_jaguar", "mission": "lag_12" },
+   "look": { "top": "#9d0208", "bottom": "#111111", "skin": 1, "height": 1.08, "headTie": false }
+  },
+  {
+   "id": "shina", "name": "Shina Garage", "age": 48, "home": "Oshoja Motor Park",
+   "role": "Motor-park strongman. Runs the levies and owes favours upward.",
+   "ability": "",
+   "unlock": { "type": "never" },
+   "look": { "top": "#e9c46a", "bottom": "#2b2b2b", "skin": 2, "height": 1.1, "headTie": false }
+  },
+  {
+   "id": "kemi", "name": "Kemi Lawson-Bright", "age": 29, "home": "Eko Crest",
+   "role": "Island party promoter who knows everyone's secrets.",
+   "spawn": "eko",
+   "ability": "",
+   "unlock": { "type": "premium", "kobo": 1800 },
+   "look": { "top": "#ff4d6d", "bottom": "#f8f9fa", "skin": 4, "height": 1.0, "headTie": true }
+  },
+  {
+   "id": "kingmaker", "name": "Hon. Dapo \"Kingmaker\" Akinsola", "age": 56, "home": "Eko Crest",
+   "role": "Running for governor, and Shina's sponsor.",
+   "spawn": "eko",
+   "ability": "",
+   "unlock": { "type": "premium", "kobo": 2500, "mission": "lag_12" },
+   "look": { "top": "#f8f9fa", "bottom": "#f8f9fa", "skin": 2, "height": 1.02, "headTie": false }
+  },
+  {
+   "id": "big_bar", "name": "Chief Barnabas \"Big Bar\" Okon", "age": 63, "home": "Eko Crest",
+   "role": "The Big Man who funds the Kingmaker from his Eko Crest tower.",
+   "spawn": "eko",
+   "ability": "",
+   "unlock": { "type": "premium", "kobo": 3500, "mission": "lag_12" },
+   "look": { "top": "#3a0ca3", "bottom": "#3a0ca3", "skin": 0, "height": 1.06, "headTie": false }
+  }
+ ]
+}

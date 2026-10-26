@@ -8,6 +8,15 @@
   "missionPayBase": 1000000,
   "missionPayGrowth": 0.135
  },
+ "abilities": {
+  "meterPerSecond": 1,
+  "meterPerSecondMoving": 2.5,
+  "rushSeconds": 8,
+  "rushSpeed": 1.45,
+  "rushVehicleBoost": 1.3,
+  "unlockRadius": 3000,
+  "unlockSeconds": 6
+ },
  "clockMinutesPerSecond": 2,
  "conductor": {
   "capacity": 14,

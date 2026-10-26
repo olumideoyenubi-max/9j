@@ -59,6 +59,8 @@ public:
 	/** What E does right now, for the prompt ("" if nothing) */
 	FString ActionPrompt(const APawn* Pawn) const;
 	bool IsBusy() const { return Panel.bOpen || Dialogue.bOpen; }
+	/** Switching leads is off in menus, during a shift and while a mission is under way */
+	bool CanSwitchLead() const;
 
 	ANHVehicle* SpawnVehicle(FName Type, const FVector2D& Pos, float Yaw, const FLinearColor& Paint, const FString& Board);
 

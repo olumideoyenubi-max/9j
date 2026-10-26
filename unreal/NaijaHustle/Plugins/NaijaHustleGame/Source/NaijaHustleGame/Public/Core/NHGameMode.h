@@ -19,6 +19,7 @@ class NAIJAHUSTLEGAME_API ANHGameMode : public AGameModeBase
 public:
 	ANHGameMode();
 	virtual void StartPlay() override;
-	/** Loads the local save into the host's player state. Other players start fresh for now. */
+	/** Loads the local save into the host's player state and gives the host the story's leads.
+	 *  Other players start fresh, as their own character, for now. */
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 };

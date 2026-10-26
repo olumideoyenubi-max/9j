@@ -3,6 +3,7 @@
 #include "Input/NHInputSet.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Core/NHGameData.h"
 #include "Core/NHGameState.h"
 #include "Core/NHHustleSubsystem.h"
 #include "Core/NHPlayerState.h"
@@ -14,6 +15,7 @@
 #include "Vehicles/NHVehicle.h"
 #include "EngineUtils.h"
 #include "Engine/LocalPlayer.h"
+#include "Engine/World.h"
 #include "NaijaHustleGame.h"
 
 UNHInputSet* ANHPlayerController::GetInputSet()
@@ -65,6 +67,8 @@ void ANHPlayerController::SetupInputComponent()
 		Input->BindAction(Set->Interact, ETriggerEvent::Started, this, &ANHPlayerController::OnInteract);
 		Input->BindAction(Set->ExitVehicle, ETriggerEvent::Started, this, &ANHPlayerController::OnInteract);
 		Input->BindAction(Set->Action, ETriggerEvent::Started, this, &ANHPlayerController::OnAction);
+		Input->BindAction(Set->SwitchLead, ETriggerEvent::Started, this, &ANHPlayerController::OnSwitchLead);
+		Input->BindAction(Set->Ability, ETriggerEvent::Started, this, &ANHPlayerController::OnAbility);
 		Input->BindAction(Set->Choice1, ETriggerEvent::Started, this, &ANHPlayerController::OnChoice1);
 		Input->BindAction(Set->Choice2, ETriggerEvent::Started, this, &ANHPlayerController::OnChoice2);
 		Input->BindAction(Set->Choice3, ETriggerEvent::Started, this, &ANHPlayerController::OnChoice3);
@@ -262,4 +266,185 @@ void ANHPlayerController::ServerCheatCash_Implementation(int32 Amount)
 		Stats->Earn(Amount, TEXT("Console"));
 	}
 #endif
+}
+
+// ---------------------------------------------------------------------------------------------------- leads (Tunde, Amaka, ...)
+void ANHPlayerController::ClientToast_Implementation(const FString& Text, int32 Kind)
+{
+	ANHHUD::Toast(this, Text, Kind);
+}
+
+ANHCharacter* ANHPlayerController::CurrentLead() const
+{
+	if (ANHCharacter* C = Cast<ANHCharacter>(GetPawn()))
+	{
+		return C;
+	}
+	// at the wheel the character rides along, attached to the vehicle
+	if (const APawn* P = GetPawn())
+	{
+		TArray<AActor*> Riders;
+		P->GetAttachedActors(Riders);
+		for (AActor* A : Riders)
+		{
+			if (ANHCharacter* C = Cast<ANHCharacter>(A))
+			{
+				return C;
+			}
+		}
+	}
+	return OnFootCharacter;
+}
+
+ANHCharacter* ANHPlayerController::NextLead() const
+{
+	const UNHGameData* Data = UNHGameData::Get(this);
+	ANHCharacter* Current = CurrentLead();
+	if (!Data || !Current || Current->GetLeadId().IsNone())
+	{
+		return nullptr;
+	}
+	// this player's leads, in characters.json order
+	TArray<ANHCharacter*> Mine;
+	for (TActorIterator<ANHCharacter> It(GetWorld()); It; ++It)
+	{
+		if (!It->GetLeadId().IsNone() && (*It == Current || It->GetOwner() == this))
+		{
+			Mine.Add(*It);
+		}
+	}
+	auto Order = [Data](const ANHCharacter* C)
+	{
+		return Data->Characters.IndexOfByPredicate([C](const FNHCharacterInfo& I) { return I.Id == C->GetLeadId(); });
+	};
+	Mine.Sort([&Order](const ANHCharacter& A, const ANHCharacter& B) { return Order(&A) < Order(&B); });
+	if (Mine.Num() < 2)
+	{
+		return nullptr;
+	}
+	const int32 I = Mine.IndexOfByKey(Current);
+	return Mine[(I + 1) % Mine.Num()];
+}
+
+FString ANHPlayerController::SwitchBlocker() const
+{
+	if (!Cast<ANHCharacter>(GetPawn()))
+	{
+		return TEXT("Get out of the vehicle to switch.");
+	}
+	if (const ANHGameDirector* Dir = ANHGameDirector::Get(this); Dir && !Dir->CanSwitchLead())
+	{
+		return TEXT("You can't switch in the middle of a job.");
+	}
+	if (!NextLead())
+	{
+		return TEXT("Nobody else to switch to yet.");
+	}
+	return FString();
+}
+
+FVector ANHPlayerController::LeadSpawnPoint(FName SpawnStop) const
+{
+	const UNHGameData* Data = UNHGameData::Get(this);
+	const APawn* Me = GetPawn();
+	const FNHBusStop* Stop = (Data && !SpawnStop.IsNone()) ? Data->Stops.Find(SpawnStop) : nullptr;
+	// a few metres back from where passengers wait, so they don't stand in the queue
+	FVector P = Stop ? FVector(Stop->Wait.X + 150.f, Stop->Wait.Y + 150.f, 0.f)
+		: (Me ? Me->GetActorLocation() + Me->GetActorRightVector() * 250.f : FVector::ZeroVector);
+	FHitResult Hit;
+	FCollisionQueryParams Q(SCENE_QUERY_STAT(NHLeadSpawn), false, Me);
+	if (GetWorld()->LineTraceSingleByObjectType(Hit, FVector(P.X, P.Y, 20000.f), FVector(P.X, P.Y, -5000.f), FCollisionObjectQueryParams(ECC_WorldStatic), Q))
+	{
+		P.Z = Hit.ImpactPoint.Z + 100.f; // the capsule's half height, and a bit
+	}
+	else if (Me)
+	{
+		P.Z = Me->GetActorLocation().Z;
+	}
+	return P;
+}
+
+void ANHPlayerController::RefreshLeads()
+{
+	const UNHGameData* Data = UNHGameData::Get(this);
+	ANHCharacter* Current = CurrentLead();
+	if (!HasAuthority() || !Data || !Current)
+	{
+		return;
+	}
+	const ANHPlayerState* Stats = GetPlayerState<ANHPlayerState>();
+	if (Current->GetLeadId().IsNone() && Data->Characters.Num() > 0)
+	{
+		Current->SetLead(Data->Characters[0].Id); // Tunde: the story starts with him
+	}
+	for (const FNHCharacterInfo& Info : Data->Characters)
+	{
+		if (!Data->IsPlayable(Info, Stats))
+		{
+			continue;
+		}
+		bool bHave = false;
+		for (TActorIterator<ANHCharacter> It(GetWorld()); It && !bHave; ++It)
+		{
+			bHave = It->GetLeadId() == Info.Id && (*It == Current || It->GetOwner() == this);
+		}
+		if (bHave)
+		{
+			continue;
+		}
+		FActorSpawnParameters Params;
+		Params.Owner = this;
+		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+		const FVector At = LeadSpawnPoint(Info.SpawnStop);
+		if (ANHCharacter* Lead = GetWorld()->SpawnActor<ANHCharacter>(Current->GetClass(), At, FRotator(0.f, FMath::FRandRange(0.f, 360.f), 0.f), Params))
+		{
+			Lead->SetLead(Info.Id);
+			UE_LOG(LogNHGame, Log, TEXT("Lead ready: %s"), *Info.Name);
+		}
+	}
+}
+
+void ANHPlayerController::ServerSwitchLead_Implementation()
+{
+	const FString Blocker = SwitchBlocker();
+	if (!Blocker.IsEmpty())
+	{
+		ClientToast(Blocker, 2);
+		return;
+	}
+	ANHCharacter* From = CurrentLead();
+	ANHCharacter* To = NextLead();
+	if (!From || !To)
+	{
+		return;
+	}
+	Possess(To);
+	From->SetOwner(this); // unpossessing cleared it; the owner is how we know it's still this player's lead
+	SetControlRotation(FRotator(-10.f, To->GetActorRotation().Yaw, 0.f));
+	ClientLeadSwitched(From);
+	ClientToast(FString::Printf(TEXT("Now playing as %s"), *To->DisplayName()), 1);
+}
+
+void ANHPlayerController::ClientLeadSwitched_Implementation(AActor* From)
+{
+	// start the view on the lead we left, then fly across to the new one
+	if (From && GetPawn())
+	{
+		SetViewTarget(From);
+		SetViewTargetWithBlend(GetPawn(), 1.2f, EViewTargetBlendFunction::VTBlend_EaseInOut, 2.f);
+	}
+}
+
+void ANHPlayerController::ServerUseAbility_Implementation()
+{
+	ANHCharacter* Lead = CurrentLead();
+	if (!Lead)
+	{
+		return;
+	}
+	const FString Result = Lead->UseAbility(Cast<ANHVehicle>(GetPawn()));
+	if (!Result.IsEmpty())
+	{
+		ClientToast(Result, Lead->IsAbilityActive() || Result.EndsWith(TEXT("!")) ? 1 : 0);
+	}
 }

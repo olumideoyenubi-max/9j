@@ -57,6 +57,20 @@ public:
 	/** The bottom-of-screen prompt for what F and E do right now */
 	FString Prompt() const;
 
+	/** Server: spawns every lead this player may play (Tunde is the pawn they started with) */
+	void RefreshLeads();
+	/** The lead the player is playing, on foot or at the wheel */
+	ANHCharacter* CurrentLead() const;
+	/** The lead Alt switches to next, or nullptr if there's only one. A player's leads are the
+	 *  characters they own (Owner), so this works on their own machine as well as on the server. */
+	ANHCharacter* NextLead() const;
+	/** Why switching isn't possible right now ("" if it is) */
+	FString SwitchBlocker() const;
+
+	/** A message for this player only, wherever the game logic ran */
+	UFUNCTION(Client, Reliable)
+	void ClientToast(const FString& Text, int32 Kind);
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
@@ -65,6 +79,18 @@ protected:
 private:
 	UFUNCTION(Server, Reliable)
 	void ServerCheatCash(int32 Amount);
+	UFUNCTION(Server, Reliable)
+	void ServerSwitchLead();
+	UFUNCTION(Server, Reliable)
+	void ServerUseAbility();
+	/** The camera flies from the old lead to the new one */
+	UFUNCTION(Client, Reliable)
+	void ClientLeadSwitched(AActor* From);
+
+	void OnSwitchLead() { ServerSwitchLead(); }
+	void OnAbility() { ServerUseAbility(); }
+	/** Where a newly unlocked lead first appears */
+	FVector LeadSpawnPoint(FName SpawnStop) const;
 
 	void OnCycleLighting();
 	void OnInteract();

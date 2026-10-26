@@ -280,9 +280,13 @@ void ANHVehicle::Tick(float DeltaSeconds)
 
 void ANHVehicle::Drive(float DeltaSeconds)
 {
-	const float A = Spec.Accel, V = Spec.MaxSpeed;
+	EngineOffTime = FMath::Max(0.f, EngineOffTime - DeltaSeconds);
+	BoostTime = FMath::Max(0.f, BoostTime - DeltaSeconds);
+	const float Mult = BoostTime > 0.f ? BoostMult : 1.f;
+	const float A = Spec.Accel * Mult, V = Spec.MaxSpeed * Mult;
 	const bool bDriven = Controller != nullptr && !IsWrecked();
-	const float T = bDriven ? Throttle : 0.f, B = bDriven ? BrakeIn : 0.f, S = bDriven ? Steer : 0.f;
+	const float T = (bDriven && EngineOffTime <= 0.f) ? Throttle : 0.f, B = bDriven ? BrakeIn : 0.f, S = bDriven ? Steer : 0.f;
+	const float SpeedBefore = Speed;
 
 	if (T > 0.f)
 	{
@@ -300,7 +304,9 @@ void ANHVehicle::Drive(float DeltaSeconds)
 	{
 		Speed *= FMath::Max(0.f, 1.f - 3.f * DeltaSeconds);
 	}
-	Speed = FMath::Clamp(Speed, -V * 0.3f, V);
+	// above top speed (a boost just ended), ease back down instead of snapping
+	const float Top = SpeedBefore > V ? FMath::Max(V, SpeedBefore - A * DeltaSeconds) : V;
+	Speed = FMath::Clamp(Speed, -V * 0.3f, Top);
 	if (FMath::Abs(Speed) < 1.f && T <= 0.f && B <= 0.f)
 	{
 		Speed = 0.f;

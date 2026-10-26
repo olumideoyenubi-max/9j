@@ -96,6 +96,8 @@ const OUT = path.join(DIR, 'lagos_city.json'), RULES_OUT = path.join(DIR, 'naija
     for (const m of Object.values(R.missions)) for (const o of m.objectives) o.r = cm(o.r);
     // night-shift pay after each story mission (docs/STORY.md), unless the browser rules set their own
     R.economy = R.economy || { missionPayBase: 1000000, missionPayGrowth: 0.135 };
+    // the leads' abilities (cm and seconds), unless the browser rules set their own
+    R.abilities = R.abilities || { meterPerSecond: 1, meterPerSecondMoving: 2.5, rushSeconds: 8, rushSpeed: 1.45, rushVehicleBoost: 1.3, unlockRadius: 3000, unlockSeconds: 6 };
     R.units = 'cm, cm/s, cm/s², rad/s; minutes are in-game minutes';
     return R; });
   if (errors.length) { console.error('page errors:', errors); process.exit(1); }

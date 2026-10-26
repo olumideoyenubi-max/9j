@@ -1,5 +1,6 @@
 #include "Core/NHGameData.h"
 
+#include "Core/NHPlayerState.h"
 #include "Dom/JsonObject.h"
 #include "Engine/GameInstance.h"
 #include "Engine/World.h"
@@ -129,6 +130,10 @@ void UNHGameData::Initialize(FSubsystemCollectionBase& Collection)
 	const bool bCity = LoadCity(FPaths::Combine(Dir, TEXT("lagos_city.json")));
 	const bool bRules = LoadRules(FPaths::Combine(Dir, TEXT("naija_rules.json")));
 	bLoaded = bCity && bRules;
+	if (!LoadCharacters(FPaths::Combine(Dir, TEXT("characters.json"))))
+	{
+		UE_LOG(LogNHGame, Warning, TEXT("NAIJA HUSTLE: no characters.json in %s, so the leads use default looks."), *Dir);
+	}
 	if (!bLoaded)
 	{
 		UE_LOG(LogNHGame, Error, TEXT("NAIJA HUSTLE: could not read the game data in %s (city %d, rules %d). Re-export with web/tools/export-unreal.js."), *Dir, bCity, bRules);
@@ -203,6 +208,17 @@ bool UNHGameData::LoadRules(const FString& Path)
 		StartMinutes = static_cast<float>(Num(*O, TEXT("minutes"), 480));
 	}
 	ClockMinutesPerSecond = static_cast<float>(Num(Root, TEXT("clockMinutesPerSecond"), 2));
+	if (Root->TryGetObjectField(TEXT("abilities"), O))
+	{
+		FNHAbilityRules& A = Abilities;
+		A.MeterPerSecond = static_cast<float>(Num(*O, TEXT("meterPerSecond"), A.MeterPerSecond));
+		A.MeterPerSecondMoving = static_cast<float>(Num(*O, TEXT("meterPerSecondMoving"), A.MeterPerSecondMoving));
+		A.RushSeconds = static_cast<float>(Num(*O, TEXT("rushSeconds"), A.RushSeconds));
+		A.RushSpeed = static_cast<float>(Num(*O, TEXT("rushSpeed"), A.RushSpeed));
+		A.RushVehicleBoost = static_cast<float>(Num(*O, TEXT("rushVehicleBoost"), A.RushVehicleBoost));
+		A.UnlockRadius = static_cast<float>(Num(*O, TEXT("unlockRadius"), A.UnlockRadius));
+		A.UnlockSeconds = static_cast<float>(Num(*O, TEXT("unlockSeconds"), A.UnlockSeconds));
+	}
 	if (Root->TryGetObjectField(TEXT("economy"), O))
 	{
 		MissionPayBase = static_cast<int32>(Num(*O, TEXT("missionPayBase"), MissionPayBase));
@@ -351,6 +367,81 @@ const FNHVehicleSpec& UNHGameData::Spec(FName Type) const
 {
 	const FNHVehicleSpec* S = Vehicles.Find(Type);
 	return S ? *S : DefaultSpec;
+}
+
+bool UNHGameData::LoadCharacters(const FString& Path)
+{
+	using namespace NHJson;
+	const TSharedPtr<FJsonObject> Root = Load(Path);
+	const TArray<TSharedPtr<FJsonValue>>* Arr = nullptr;
+	if (!Root.IsValid() || !Root->TryGetArrayField(TEXT("characters"), Arr))
+	{
+		return false;
+	}
+	for (const TSharedPtr<FJsonValue>& V : *Arr)
+	{
+		const TSharedPtr<FJsonObject> J = V->AsObject();
+		if (!J.IsValid())
+		{
+			continue;
+		}
+		FNHCharacterInfo C;
+		C.Id = FName(Str(J, TEXT("id")));
+		C.Name = Str(J, TEXT("name"));
+		C.Age = static_cast<int32>(Num(J, TEXT("age")));
+		C.Home = Str(J, TEXT("home"));
+		C.Role = Str(J, TEXT("role"));
+		const FString Spawn = Str(J, TEXT("spawn"));
+		C.SpawnStop = Spawn.IsEmpty() ? NAME_None : FName(Spawn);
+		const FString Ability = Str(J, TEXT("ability"));
+		C.Ability = Ability.IsEmpty() ? NAME_None : FName(Ability);
+		const TSharedPtr<FJsonObject>* U = nullptr;
+		if (J->TryGetObjectField(TEXT("unlock"), U))
+		{
+			const FString Type = Str(*U, TEXT("type"));
+			C.Unlock = Type == TEXT("start") ? ENHUnlock::Start : Type == TEXT("mission") ? ENHUnlock::Mission : Type == TEXT("flag") ? ENHUnlock::Flag
+				: Type == TEXT("premium") ? ENHUnlock::Premium : ENHUnlock::Never;
+			const FString Mission = Str(*U, TEXT("mission")), Flag = Str(*U, TEXT("flag"));
+			C.UnlockMission = Mission.IsEmpty() ? NAME_None : FName(Mission);
+			C.UnlockFlag = Flag.IsEmpty() ? NAME_None : FName(Flag);
+			C.Kobo = static_cast<int32>(Num(*U, TEXT("kobo")));
+		}
+		const TSharedPtr<FJsonObject>* L = nullptr;
+		if (J->TryGetObjectField(TEXT("look"), L))
+		{
+			C.Top = Color(Str(*L, TEXT("top")));
+			C.Bottom = Color(Str(*L, TEXT("bottom")));
+			C.Skin = FMath::Clamp(static_cast<int32>(Num(*L, TEXT("skin"), 2)), 0, 5);
+			C.Height = static_cast<float>(Num(*L, TEXT("height"), 1));
+			bool bTie = false;
+			(*L)->TryGetBoolField(TEXT("headTie"), bTie);
+			C.bHeadTie = bTie;
+		}
+		if (!C.Id.IsNone())
+		{
+			Characters.Add(C);
+		}
+	}
+	return Characters.Num() > 0;
+}
+
+const FNHCharacterInfo* UNHGameData::FindCharacter(FName Id) const
+{
+	return Characters.FindByPredicate([Id](const FNHCharacterInfo& C) { return C.Id == Id; });
+}
+
+bool UNHGameData::IsPlayable(const FNHCharacterInfo& Info, const ANHPlayerState* Player) const
+{
+	const bool bAfterMission = Info.UnlockMission.IsNone() || (Player && Player->IsDone(Info.UnlockMission));
+	switch (Info.Unlock)
+	{
+	case ENHUnlock::Start:   return true;
+	case ENHUnlock::Mission: return bAfterMission;
+	case ENHUnlock::Flag:    return bAfterMission && Player && Player->HasFlag(Info.UnlockFlag);
+	// a purchase sets the flag owned_<id>
+	case ENHUnlock::Premium: return bAfterMission && Player && Player->HasFlag(FName(*(TEXT("owned_") + Info.Id.ToString())));
+	default:                 return false;
+	}
 }
 
 int32 UNHGameData::MissionPay(int32 MissionNumber) const

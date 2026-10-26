@@ -66,6 +66,8 @@ void UNHInputSet::Build()
 	Sprint = MakeAction(this, TEXT("IA_Sprint"));
 	Interact = MakeAction(this, TEXT("IA_Interact"));
 	Action = MakeAction(this, TEXT("IA_Action"));
+	SwitchLead = MakeAction(this, TEXT("IA_SwitchLead"));
+	Ability = MakeAction(this, TEXT("IA_Ability"));
 
 	MapWASD(OnFoot, Move);
 	// Mouse up is +Y; negating Y gives the usual "mouse up looks up" with the engine's pitch convention.
@@ -79,6 +81,10 @@ void UNHInputSet::Build()
 	OnFoot->MapKey(Interact, EKeys::Gamepad_FaceButton_Top);
 	OnFoot->MapKey(Action, EKeys::E);
 	OnFoot->MapKey(Action, EKeys::Gamepad_FaceButton_Left);
+	OnFoot->MapKey(SwitchLead, EKeys::LeftAlt);
+	OnFoot->MapKey(SwitchLead, EKeys::Gamepad_RightShoulder);
+	OnFoot->MapKey(Ability, EKeys::CapsLock);
+	OnFoot->MapKey(Ability, EKeys::Gamepad_RightThumbstick);
 
 	// ---------------------------------------------------------------- vehicle
 	Throttle = MakeAction(this, TEXT("IA_Throttle"), EV::Axis1D);
@@ -117,6 +123,8 @@ void UNHInputSet::Build()
 	// E stays useful in a vehicle: the conductor's "call passengers" at a bus stop
 	Vehicle->MapKey(Action, EKeys::E);
 	Vehicle->MapKey(Action, EKeys::Gamepad_FaceButton_Left);
+	// Hustle Rush works at the wheel too (the gamepad's R3 is look-behind here)
+	Vehicle->MapKey(Ability, EKeys::CapsLock);
 
 	// ---------------------------------------------------------------- always on
 	Phone = MakeAction(this, TEXT("IA_Phone"));

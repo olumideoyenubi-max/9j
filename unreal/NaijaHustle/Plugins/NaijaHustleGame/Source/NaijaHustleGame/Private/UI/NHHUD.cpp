@@ -12,6 +12,7 @@
 #include "GameFramework/Pawn.h"
 #include "GameFramework/PlayerController.h"
 #include "Gameplay/NHGameDirector.h"
+#include "Player/NHCharacter.h"
 #include "Player/NHPlayerController.h"
 #include "Vehicles/NHVehicle.h"
 
@@ -315,6 +316,44 @@ void ANHHUD::DrawHUD()
 			GetTextSize(Prompt, TW, TH, Medium, 1.3f * S);
 			Panel(VW * 0.5f - TW * 0.5f - 24.f * S, VH - 140.f * S, TW + 48.f * S, TH + 20.f * S, FLinearColor(0.f, 0.f, 0.f, 0.7f));
 			Text(Prompt, VW * 0.5f, VH - 130.f * S, Yellow, Medium, 1.3f, true);
+		}
+	}
+
+	// ---- the lead you're playing, their ability meter and who Alt switches to (bottom left)
+	if (const ANHCharacter* Lead = PC ? PC->CurrentLead() : nullptr)
+	{
+		const bool bDriving = Cast<ANHVehicle>(Pawn) != nullptr;
+		const float X = Pad, W = 260.f * S;
+		float Y = VH - Pad - (bDriving ? 150.f : 70.f) * S;
+		Text(Lead->DisplayName(), X, Y - 30.f * S, Ink, Medium, 1.1f);
+		const FString Ability = Lead->AbilityName();
+		if (!Ability.IsEmpty())
+		{
+			const float K = Lead->IsAbilityActive() ? 1.f : FMath::Clamp(Lead->GetAbilityMeter() / 100.f, 0.f, 1.f);
+			const bool bReady = K >= 1.f && !Lead->IsAbilityActive();
+			Panel(X, Y, W, 10.f * S, FLinearColor(1.f, 1.f, 1.f, 0.15f));
+			DrawRect(Lead->IsAbilityActive() ? Good : bReady ? Yellow : Muted, X, Y, W * K, 10.f * S);
+			Text(bReady ? FString::Printf(TEXT("%s ready: Caps Lock"), *Ability) : Lead->IsAbilityActive() ? Ability + TEXT("!") : Ability,
+				X + W + 12.f * S, Y - 6.f * S, bReady ? Yellow : Muted, Medium, 0.9f);
+			// what Amaka's Unlock would hit
+			if (bReady)
+			{
+				if (const ANHVehicle* Target = Lead->UnlockTarget())
+				{
+					const FVector P = Project(Target->GetActorLocation() + FVector(0, 0, 300.f));
+					if (P.Z > 0.f)
+					{
+						Text(TEXT("[ UNLOCK ]"), P.X, P.Y, Yellow, Medium, 1.1f, true);
+					}
+				}
+			}
+		}
+		if (!bDriving && Dir && Dir->CanSwitchLead())
+		{
+			if (const ANHCharacter* Next = PC->NextLead())
+			{
+				Text(FString::Printf(TEXT("Alt  Switch to %s"), *Next->DisplayName()), X, Y + 18.f * S, Muted, Medium, 0.9f);
+			}
 		}
 	}
 

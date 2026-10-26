@@ -64,6 +64,8 @@ You start at home beside Oshoja Motor Park, at 8:00 on day 1, with N5,000.
 | 1–4 | | answer a choice: change, agbero, route, summary |
 | H | | horn |
 | L | next lighting preset (stops following the clock) | |
+| Left Alt | switch lead (Tunde, Amaka, and characters you unlock) | |
+| Caps Lock | the lead's ability when its meter is full | Hustle Rush works here too |
 
 1. Walk to **Baba Driver** at the motor park and hear him out.
 2. Get in the yellow danfo in **bay 1** (the board says BALO).
@@ -92,6 +94,18 @@ The game is single-player for now, but money and the clock already work the way 
 - each player has their own money; `NHCash 1000` in either window changes only that player's money
 - the story (Baba Driver and the first mission) runs for the host, the first window
 
+### The two leads
+
+You start as **Tunde**. **Amaka** waits at Balo Market Square. Press **Left Alt** (gamepad RB) to switch: the
+camera flies across to her, and Tunde stays where you left him. You can't switch while driving, during a shift
+or mid-mission. Characters from `Data/characters.json` join the list as the story unlocks them.
+
+Each lead's ability meter (bottom left) fills as you play, faster on the move. When it's full, press **Caps Lock**:
+- **Tunde, Hustle Rush:** 8 seconds of extra speed on foot, or a boost at the wheel.
+- **Amaka, Unlock:** the nearest vehicle within 30 m (marked on screen) cuts out for 6 seconds.
+
+The timings are under `abilities` in `naija_rules.json`.
+
 **Console commands** (open the console with the backtick key):
 - `NHLighting Day|DustyNoon|Sunset|NightRain` sets the lighting.
 - `NHCash 50000` adds money (not in shipping builds).
@@ -102,6 +116,7 @@ The game is single-player for now, but money and the clock already work the way 
 | Path | What |
 |---|---|
 | `Data/lagos_city.json` | The map: tiles, 530 buildings, shop fronts, signs, lamps, props, road markings, road graph, stops, bays |
+| `Data/characters.json` | The cast: names, how each is unlocked, where they first appear, their ability and look (hand-written) |
 | `Data/naija_rules.json` | Routes, fares, conductor numbers, vehicle handling, Baba Driver's lines, missions, outfits |
 | `Source/.../Core` | `NHGameMode`, `NHGameData` (loads the JSON), `NHPlayerState` (each player's money, cred, integrity, story flags, heat; replicated), `NHGameState` (the shared clock and lighting; replicated), `NHHustleSubsystem` (saving and loading) |
 | `Source/.../Gameplay` | `NHGameDirector` (the mission and conductor shifts), `NHPerson` (passengers, Baba Driver) |

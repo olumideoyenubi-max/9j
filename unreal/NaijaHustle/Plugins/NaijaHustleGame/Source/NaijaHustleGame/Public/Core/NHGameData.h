@@ -74,6 +74,22 @@ struct FNHConductorRules
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Refill = 10.f;
 };
 
+/** The leads' special abilities (times s, distances cm, the meter runs 0..100) */
+USTRUCT(BlueprintType)
+struct FNHAbilityRules
+{
+	GENERATED_BODY()
+	/** Meter gained per second standing still, and per second on the move */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float MeterPerSecond = 1.f;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float MeterPerSecondMoving = 2.5f;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float RushSeconds = 8.f;
+	/** Hustle Rush: on-foot speed, and vehicle top speed and acceleration, multipliers */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float RushSpeed = 1.45f;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float RushVehicleBoost = 1.3f;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float UnlockRadius = 3000.f;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float UnlockSeconds = 6.f;
+};
+
 USTRUCT(BlueprintType)
 struct FNHParkBay
 {
@@ -83,10 +99,47 @@ struct FNHParkBay
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Yaw = 0.f;
 };
 
+/** How a character becomes playable (characters.json, docs/STORY.md) */
+UENUM(BlueprintType)
+enum class ENHUnlock : uint8
+{
+	Start,    // from the start
+	Mission,  // after finishing Mission
+	Flag,     // after Mission, only if the story flag Flag is set
+	Premium,  // bought with Gold Kobo (and after Mission, if set)
+	Never     // not playable
+};
+
+/** One of the cast: who they are, how they're unlocked and how their blockout body looks */
+USTRUCT(BlueprintType)
+struct FNHCharacterInfo
+{
+	GENERATED_BODY()
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName Id;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FString Name;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") int32 Age = 0;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FString Home;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FString Role;
+	/** hustle_rush, unlock, or none */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName Ability;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") ENHUnlock Unlock = ENHUnlock::Never;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName UnlockMission;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName UnlockFlag;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") int32 Kobo = 0;
+	/** The bus stop where they first appear (None: next to the player) */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FName SpawnStop;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FLinearColor Top = FLinearColor(0.5f, 0.5f, 0.5f);
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FLinearColor Bottom = FLinearColor(0.1f, 0.1f, 0.15f);
+	/** 0 (darkest) to 5 */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") int32 Skin = 2;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float Height = 1.f;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") bool bHeadTie = false;
+};
+
 /**
  * Everything the game reads from the plugin's Data folder, loaded once per game instance:
  * lagos_city.json (the map: tiles, stops, bays) and naija_rules.json (routes, fares, vehicles, dialogue),
- * both exported from the browser demo by web/tools/export-unreal.js.
+ * both exported from the browser demo by web/tools/export-unreal.js, and characters.json (the cast).
  */
 UCLASS()
 class NAIJAHUSTLEGAME_API UNHGameData : public UGameInstanceSubsystem
@@ -121,6 +174,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") int32 MissionPayBase = 1000000;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float MissionPayGrowth = 0.135f;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") FNHConductorRules Conductor;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") FNHAbilityRules Abilities;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FNHRoute> Routes;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") FNHRoute FirstRoute;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TMap<FName, FNHVehicleSpec> Vehicles;
@@ -135,6 +189,12 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FString> FirstDaySubs;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") int32 FirstDayCred = 20;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float FirstDayClock = 120.f;
+
+	/** The cast, in the order of characters.json */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FNHCharacterInfo> Characters;
+	const FNHCharacterInfo* FindCharacter(FName Id) const;
+	/** Whether this player may play as the character now (finished missions, story flags, purchases) */
+	bool IsPlayable(const FNHCharacterInfo& Info, const class ANHPlayerState* Player) const;
 
 	/** Baba Driver's lines: intro, retry, done, wrecked, late */
 	TArray<FString> BabaLines(const FString& Key) const;
@@ -155,4 +215,5 @@ private:
 	FNHVehicleSpec DefaultSpec;
 	bool LoadCity(const FString& Path);
 	bool LoadRules(const FString& Path);
+	bool LoadCharacters(const FString& Path);
 };

@@ -28,6 +28,11 @@ void ANHGameMode::PostLogin(APlayerController* NewPlayer)
 		{
 			Hustle->LoadInto(NewPlayer->GetPlayerState<ANHPlayerState>(), GetGameState<ANHGameState>());
 		}
+		// the story's leads (Tunde, Amaka, and whoever the save has unlocked) belong to the host
+		if (ANHPlayerController* PC = Cast<ANHPlayerController>(NewPlayer))
+		{
+			PC->RefreshLeads();
+		}
 	}
 }
 

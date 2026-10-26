@@ -48,6 +48,12 @@ const UNHGameData* ANHGameDirector::Data() const
 	return UNHGameData::Get(this);
 }
 
+bool ANHGameDirector::CanSwitchLead() const
+{
+	const bool bMissionOn = Stage == EStage::Talk || Stage == EStage::Board || Stage == EStage::Route || Stage == EStage::Return || Stage == EStage::Wrapping;
+	return !IsBusy() && !Shift.bOn && !bMissionOn;
+}
+
 float ANHGameDirector::Now() const
 {
 	const ANHGameState* GS = ANHGameState::Get(this);
@@ -581,6 +587,10 @@ void ANHGameDirector::PassFirstDay()
 		Hustle->AddCred(Data()->FirstDayCred);
 		Hustle->MarkDone(NHDir::FirstDay);
 		SaveProgress();
+		if (ANHPlayerController* PC = Cast<ANHPlayerController>(GetWorld()->GetFirstPlayerController()))
+		{
+			PC->RefreshLeads(); // finishing missions unlocks characters (characters.json)
+		}
 	}
 	ANHHUD::Toast(this, FString::Printf(TEXT("JOB DONE!  %s   +%d cred"), *Data()->FirstDayTitle, Data()->FirstDayCred), 1);
 	ANHHUD::Toast(this, TEXT("Baba Driver gave you a danfo union card and the vehicle papers."), 1);
