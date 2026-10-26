@@ -117,6 +117,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float StartMinutes = 480.f;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float ClockMinutesPerSecond = 2.f;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") float SecondsPerStar = 18.f;
+	/** Night-shift pay after each story mission (STORY.md): the found bag on mission 2, then +growth each mission */
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") int32 MissionPayBase = 1000000;
+	UPROPERTY(BlueprintReadOnly, Category = "Naija") float MissionPayGrowth = 0.135f;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") FNHConductorRules Conductor;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") TArray<FNHRoute> Routes;
 	UPROPERTY(BlueprintReadOnly, Category = "Naija") FNHRoute FirstRoute;
@@ -141,6 +144,8 @@ public:
 	FString DistrictAt(const FVector& World) const;
 	const FNHVehicleSpec& Spec(FName Type) const;
 	const FNHRoute* FindRoute(FName Id) const;
+	/** Night-shift pay for story mission n: 0 for mission 1 (fares only), then MissionPayBase × (1 + growth)^(n − 2) */
+	int32 MissionPay(int32 MissionNumber) const;
 
 	/** Folder holding the JSON files */
 	static FString DataDir();

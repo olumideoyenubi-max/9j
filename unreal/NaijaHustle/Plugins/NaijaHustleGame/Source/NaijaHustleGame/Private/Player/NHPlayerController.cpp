@@ -3,7 +3,9 @@
 #include "Input/NHInputSet.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Core/NHGameState.h"
 #include "Core/NHHustleSubsystem.h"
+#include "Core/NHPlayerState.h"
 #include "Components/CapsuleComponent.h"
 #include "Gameplay/NHGameDirector.h"
 #include "Lighting/NHLightingRig.h"
@@ -99,9 +101,9 @@ void ANHPlayerController::NHLighting(const FString& PresetName)
 void ANHPlayerController::OnCycleLighting()
 {
 	NHLighting(FString());
-	if (ANHGameDirector* Dir = ANHGameDirector::Get(this))
+	if (ANHGameState* GS = ANHGameState::Get(this))
 	{
-		Dir->SetManualLighting();
+		GS->SetManualLighting();
 	}
 }
 
@@ -235,17 +237,29 @@ FString ANHPlayerController::Prompt() const
 
 void ANHPlayerController::NHReset()
 {
-	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this))
+	if (!HasAuthority())
 	{
-		Hustle->ResetProgress();
+		ANHHUD::Toast(this, TEXT("Only the host can reset the story."), 2);
+		return;
+	}
+	if (UNHHustleSubsystem* Saves = UNHHustleSubsystem::Get(this))
+	{
+		Saves->ResetProgress(this);
 		ANHHUD::Toast(this, TEXT("Progress reset. Reload the level to start the story again."), 2);
 	}
 }
 
 void ANHPlayerController::NHCash(int32 Amount)
 {
-	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this))
+	ServerCheatCash(Amount);
+}
+
+void ANHPlayerController::ServerCheatCash_Implementation(int32 Amount)
+{
+#if !UE_BUILD_SHIPPING
+	if (ANHPlayerState* Stats = GetPlayerState<ANHPlayerState>())
 	{
-		Hustle->Earn(Amount, TEXT("Console"));
+		Stats->Earn(Amount, TEXT("Console"));
 	}
+#endif
 }

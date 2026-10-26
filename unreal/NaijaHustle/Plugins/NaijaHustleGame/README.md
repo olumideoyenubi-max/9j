@@ -83,10 +83,19 @@ You start at home beside Oshoja Motor Park, at 8:00 on day 1, with N5,000.
 
 Progress (cash, cred, integrity, the clock and finished jobs) saves to the `NaijaHustle` slot after every job.
 
+### Two players (testing the multiplayer groundwork)
+
+The game is single-player for now, but money and the clock already work the way they will on servers
+(see `docs/MULTIPLAYER.md` in the main repo). To check it, open the **Play** button's menu, set
+**Number of Players** to 2 and **Net Mode** to **Play As Listen Server**, then press Play:
+- both windows show the same clock and lighting
+- each player has their own money; `NHCash 1000` in either window changes only that player's money
+- the story (Baba Driver and the first mission) runs for the host, the first window
+
 **Console commands** (open the console with the backtick key):
 - `NHLighting Day|DustyNoon|Sunset|NightRain` sets the lighting.
-- `NHCash 50000` adds money.
-- `NHReset` starts the story again; reload the level afterwards.
+- `NHCash 50000` adds money (not in shipping builds).
+- `NHReset` starts the story again (host only); reload the level afterwards.
 
 ## What's inside
 
@@ -94,7 +103,7 @@ Progress (cash, cred, integrity, the clock and finished jobs) saves to the `Naij
 |---|---|
 | `Data/lagos_city.json` | The map: tiles, 530 buildings, shop fronts, signs, lamps, props, road markings, road graph, stops, bays |
 | `Data/naija_rules.json` | Routes, fares, conductor numbers, vehicle handling, Baba Driver's lines, missions, outfits |
-| `Source/.../Core` | `NHGameMode`, `NHGameData` (loads the JSON), `NHHustleSubsystem` (money, clock, heat, save) |
+| `Source/.../Core` | `NHGameMode`, `NHGameData` (loads the JSON), `NHPlayerState` (each player's money, cred, integrity, story flags, heat; replicated), `NHGameState` (the shared clock and lighting; replicated), `NHHustleSubsystem` (saving and loading) |
 | `Source/.../Gameplay` | `NHGameDirector` (the mission and conductor shifts), `NHPerson` (passengers, Baba Driver) |
 | `Source/.../Vehicles` | `NHVehicle` (arcade handling, crashes and damage, blockout bodies per type, chase camera) |
 | `Source/.../Player`, `Input` | `NHPlayerController` (get in and out, E and choices, prompts), `NHCharacter`, Enhanced Input built in code |

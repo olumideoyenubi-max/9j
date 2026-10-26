@@ -1,7 +1,9 @@
 #include "UI/NHHUD.h"
 
 #include "Core/NHGameData.h"
+#include "Core/NHGameState.h"
 #include "Core/NHHustleSubsystem.h"
+#include "Core/NHPlayerState.h"
 #include "Engine/Canvas.h"
 #include "Engine/Engine.h"
 #include "Engine/Font.h"
@@ -73,10 +75,6 @@ void ANHHUD::BeginPlay()
 {
 	Super::BeginPlay();
 	BuildMinimap();
-	if (UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this))
-	{
-		EarnHandle = Hustle->OnEarn.AddWeakLambda(this, [this](int32 Amount, const FString&) { CashDelta = Amount; CashDeltaT = 2.5f; });
-	}
 }
 
 void ANHHUD::BuildMinimap()
@@ -197,7 +195,14 @@ void ANHHUD::DrawHUD()
 	UFont* Large = GEngine->GetLargeFont();
 	UFont* Medium = GEngine->GetMediumFont();
 
-	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	// on a client the player state arrives a moment after the HUD, so bind to its cash changes when it does
+	ANHPlayerState* Hustle = GetOwningPlayerController() ? GetOwningPlayerController()->GetPlayerState<ANHPlayerState>() : nullptr;
+	if (Hustle && BoundStats.Get() != Hustle)
+	{
+		BoundStats = Hustle;
+		Hustle->OnCashChanged.AddWeakLambda(this, [this](int32 Amount, const FString&) { CashDelta = Amount; CashDeltaT = 2.5f; });
+	}
+	const ANHGameState* Clock = ANHGameState::Get(this);
 	const UNHGameData* Data = UNHGameData::Get(this);
 	ANHGameDirector* Dir = ANHGameDirector::Get(this);
 	APawn* Pawn = GetOwningPawn();
@@ -249,9 +254,9 @@ void ANHHUD::DrawHUD()
 
 	// ---- clock, minimap, district (top right)
 	const float MapSize = 300.f * S, MX = VW - Pad - MapSize, MY = Pad + 46.f * S;
-	if (Hustle)
+	if (Clock)
 	{
-		Text(Hustle->ClockText(), VW - Pad - 230.f * S, Pad, Ink, Large, 1.5f);
+		Text(Clock->ClockText(), VW - Pad - 230.f * S, Pad, Ink, Large, 1.5f);
 	}
 	if (Pawn)
 	{

@@ -94,6 +94,8 @@ const OUT = path.join(DIR, 'lagos_city.json'), RULES_OUT = path.join(DIR, 'naija
     for (const v of Object.values(R.vehicles)) { v.len = cm(v.len); v.wid = cm(v.wid); v.max = cm(v.max); v.acc = cm(v.acc); v.bike = !!v.bike; v.cop = !!v.cop; }
     for (const p of Object.values(R.places)) { p.x = cm(p.x); p.y = cm(p.y); }
     for (const m of Object.values(R.missions)) for (const o of m.objectives) o.r = cm(o.r);
+    // night-shift pay after each story mission (docs/STORY.md), unless the browser rules set their own
+    R.economy = R.economy || { missionPayBase: 1000000, missionPayGrowth: 0.135 };
     R.units = 'cm, cm/s, cm/s², rad/s; minutes are in-game minutes';
     return R; });
   if (errors.length) { console.error('page errors:', errors); process.exit(1); }

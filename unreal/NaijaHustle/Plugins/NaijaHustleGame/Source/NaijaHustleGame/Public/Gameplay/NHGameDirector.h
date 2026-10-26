@@ -10,9 +10,10 @@ class ANHPerson;
 
 /**
  * Runs the game in a level: the "First Day on the Danfo" mission, free conductor shifts on any danfo,
- * Baba Driver, the vehicles parked at Oshoja Motor Park, the clock, lighting by time of day and the
- * wanted level's decay. A port of the browser demo's conductor and mission code, with the same rules
- * and numbers (read from naija_rules.json). The game mode spawns one; the HUD reads its state.
+ * Baba Driver and the vehicles parked at Oshoja Motor Park. It runs on the server, for the host
+ * player (story mode); money and progress go to their ANHPlayerState. A port of the browser demo's
+ * conductor and mission code, with the same rules and numbers (read from naija_rules.json). The game mode
+ * spawns one; the HUD reads its state.
  */
 UCLASS()
 class NAIJAHUSTLEGAME_API ANHGameDirector : public AActor
@@ -55,8 +56,6 @@ public:
 	// ---- input from the player controller
 	void OnAction(APawn* Pawn);
 	void OnChoice(int32 Index);
-	/** The player picked a lighting preset by hand: stop following the clock */
-	void SetManualLighting() { bManualLighting = true; }
 	/** What E does right now, for the prompt ("" if nothing) */
 	FString ActionPrompt(const APawn* Pawn) const;
 	bool IsBusy() const { return Panel.bOpen || Dialogue.bOpen; }
@@ -73,9 +72,6 @@ private:
 	TWeakObjectPtr<ANHVehicle> MissionBus;
 	float Deadline = -1.f;
 	bool bSlowClock = false;
-	bool bManualLighting = false;
-	float LightCheck = 0.f;
-	int32 LastPreset = -1;
 
 	struct FPax
 	{
@@ -150,6 +146,9 @@ private:
 	FVector QueueSpot(FName StopId, int32 Slot) const;
 	APawn* PlayerPawn() const;
 	ANHVehicle* PlayerVehicle() const;
-	void UpdateLighting(float DeltaSeconds);
+	/** The clock (in-game minutes) from the game state */
+	float Now() const;
+	/** Saves the host's progress */
+	void SaveProgress();
 	const UNHGameData* Data() const;
 };

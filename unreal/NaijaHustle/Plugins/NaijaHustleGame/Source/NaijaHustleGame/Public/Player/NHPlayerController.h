@@ -45,7 +45,7 @@ public:
 	UFUNCTION(Exec)
 	void NHReset();
 
-	/** Console: NHCash 50000 */
+	/** Console: NHCash 50000 (asks the server; ignored in shipping builds) */
 	UFUNCTION(Exec)
 	void NHCash(int32 Amount);
 
@@ -63,6 +63,9 @@ protected:
 	virtual void OnPossess(APawn* InPawn) override;
 
 private:
+	UFUNCTION(Server, Reliable)
+	void ServerCheatCash(int32 Amount);
+
 	void OnCycleLighting();
 	void OnInteract();
 	void OnAction();

@@ -38,7 +38,8 @@ private:
 	int32 CashDelta = 0;
 	float CashDeltaT = 0.f;
 	float LastTime = 0.f;
-	FDelegateHandle EarnHandle;
+	/** The player state whose cash changes the HUD listens to */
+	TWeakObjectPtr<class ANHPlayerState> BoundStats;
 
 	UPROPERTY(Transient) TObjectPtr<UTexture2D> MapTex;
 

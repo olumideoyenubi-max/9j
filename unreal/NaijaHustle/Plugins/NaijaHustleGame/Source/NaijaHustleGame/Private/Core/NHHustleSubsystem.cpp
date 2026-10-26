@@ -1,6 +1,8 @@
 #include "Core/NHHustleSubsystem.h"
 
 #include "Core/NHGameData.h"
+#include "Core/NHGameState.h"
+#include "Core/NHPlayerState.h"
 #include "Engine/GameInstance.h"
 #include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
@@ -11,19 +13,6 @@ namespace NHSave
 	const TCHAR* Slot = TEXT("NaijaHustle");
 }
 
-void UNHHustleSubsystem::Initialize(FSubsystemCollectionBase& Collection)
-{
-	Collection.InitializeDependency<UNHGameData>();
-	Super::Initialize(Collection);
-	if (const UNHGameData* Data = GetGameInstance()->GetSubsystem<UNHGameData>())
-	{
-		Cash = Data->StartCash;
-		Minutes = Data->StartMinutes;
-		SecondsPerStar = Data->SecondsPerStar;
-	}
-	Load();
-}
-
 UNHHustleSubsystem* UNHHustleSubsystem::Get(const UObject* WorldContext)
 {
 	const UWorld* World = WorldContext ? WorldContext->GetWorld() : nullptr;
@@ -31,102 +20,35 @@ UNHHustleSubsystem* UNHHustleSubsystem::Get(const UObject* WorldContext)
 	return GI ? GI->GetSubsystem<UNHHustleSubsystem>() : nullptr;
 }
 
-void UNHHustleSubsystem::Earn(int32 Amount, const FString& Why)
-{
-	if (Amount == 0)
-	{
-		return;
-	}
-	Cash += Amount;
-	FNHLedgerEntry E;
-	E.Minutes = Minutes;
-	E.Amount = Amount;
-	E.Why = Why;
-	Ledger.Insert(E, 0);
-	if (Ledger.Num() > 20)
-	{
-		Ledger.SetNum(20);
-	}
-	OnEarn.Broadcast(Amount, Why);
-}
-
-int32 UNHHustleSubsystem::Stars() const
-{
-	return FMath::CeilToInt(FMath::Min(Heat, 5.f) - 1e-4f);
-}
-
-void UNHHustleSubsystem::AddHeat(float Amount)
-{
-	Heat = FMath::Min(5.f, Heat + Amount);
-	HeatTimer = 0.f;
-}
-
-void UNHHustleSubsystem::ClearHeat()
-{
-	Heat = 0.f;
-	HeatTimer = 0.f;
-}
-
-void UNHHustleSubsystem::TickHeat(float DeltaSeconds, bool bSeen)
-{
-	if (Stars() <= 0)
-	{
-		Heat = 0.f;
-		return;
-	}
-	if (bSeen)
-	{
-		HeatTimer = 0.f;
-		return;
-	}
-	HeatTimer += DeltaSeconds;
-	if (HeatTimer >= SecondsPerStar)
-	{
-		HeatTimer = 0.f;
-		Heat = static_cast<float>(FMath::Max(0, Stars() - 1));
-	}
-}
-
-void UNHHustleSubsystem::TickClock(float DeltaSeconds, float Scale)
-{
-	const UNHGameData* Data = GetGameInstance()->GetSubsystem<UNHGameData>();
-	Minutes += DeltaSeconds * (Data ? Data->ClockMinutesPerSecond : 2.f) * Scale;
-}
-
-FString UNHHustleSubsystem::ClockText() const
-{
-	const int32 M = FMath::FloorToInt(FMath::Fmod(Minutes, 1440.f));
-	return FString::Printf(TEXT("%02d:%02d  Day %d"), M / 60, M % 60, Day());
-}
-
 FString UNHHustleSubsystem::Naira(int32 Amount)
 {
-	// The engine's default font has no naira sign, so the HUD writes "N" (as on a Lagos price tag)
 	FString Digits = FString::FormatAsNumber(FMath::Abs(Amount));
 	return (Amount < 0 ? TEXT("-N") : TEXT("N")) + Digits;
 }
 
-void UNHHustleSubsystem::Save()
+void UNHHustleSubsystem::Save(const UObject* WorldContext)
 {
+	const ANHPlayerState* Player = ANHPlayerState::Host(WorldContext);
+	if (!Player)
+	{
+		return;
+	}
 	UNHSaveGame* S = Cast<UNHSaveGame>(UGameplayStatics::CreateSaveGameObject(UNHSaveGame::StaticClass()));
 	if (!S)
 	{
 		return;
 	}
-	S->Cash = Cash;
-	S->Cred = Cred;
-	S->Integrity = Integrity;
-	S->Minutes = Minutes;
-	S->Jobs = Jobs;
-	S->Done = Done;
-	S->Outfit = Outfit;
-	S->Ledger = Ledger;
+	Player->WriteTo(*S);
+	if (const ANHGameState* GS = ANHGameState::Get(WorldContext))
+	{
+		S->Minutes = GS->Minutes;
+	}
 	UGameplayStatics::SaveGameToSlot(S, NHSave::Slot, 0);
 }
 
-bool UNHHustleSubsystem::Load()
+bool UNHHustleSubsystem::LoadInto(ANHPlayerState* Player, ANHGameState* World)
 {
-	if (!UGameplayStatics::DoesSaveGameExist(NHSave::Slot, 0))
+	if (!Player || !UGameplayStatics::DoesSaveGameExist(NHSave::Slot, 0))
 	{
 		return false;
 	}
@@ -135,27 +57,26 @@ bool UNHHustleSubsystem::Load()
 	{
 		return false;
 	}
-	Cash = S->Cash;
-	Cred = S->Cred;
-	Integrity = S->Integrity;
-	Minutes = S->Minutes;
-	Jobs = S->Jobs;
-	Done = S->Done;
-	Outfit = S->Outfit.IsNone() ? FName(TEXT("fit_street_basic")) : S->Outfit;
-	Ledger = S->Ledger;
-	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: save loaded (%s, %d jobs done)"), *Naira(Cash), Done.Num());
+	Player->ReadFrom(*S);
+	if (World)
+	{
+		World->SetMinutes(S->Minutes);
+	}
+	UE_LOG(LogNHGame, Log, TEXT("NAIJA HUSTLE: save loaded (%s, %d jobs done)"), *Naira(S->Cash), S->Done.Num());
 	return true;
 }
 
-void UNHHustleSubsystem::ResetProgress()
+void UNHHustleSubsystem::ResetProgress(const UObject* WorldContext)
 {
 	UGameplayStatics::DeleteGameInSlot(NHSave::Slot, 0);
-	const UNHGameData* Data = GetGameInstance()->GetSubsystem<UNHGameData>();
-	Cash = Data ? Data->StartCash : 5000;
-	Minutes = Data ? Data->StartMinutes : 480.f;
-	Cred = Integrity = Jobs = 0;
-	Done.Reset();
-	Ledger.Reset();
-	Outfit = TEXT("fit_street_basic");
-	ClearHeat();
+	if (ANHPlayerState* Player = ANHPlayerState::Host(WorldContext))
+	{
+		Player->ResetToStart();
+	}
+	ANHGameState* GS = ANHGameState::Get(WorldContext);
+	const UNHGameData* Data = UNHGameData::Get(WorldContext);
+	if (GS && Data)
+	{
+		GS->SetMinutes(Data->StartMinutes);
+	}
 }

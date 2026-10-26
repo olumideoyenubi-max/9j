@@ -203,6 +203,11 @@ bool UNHGameData::LoadRules(const FString& Path)
 		StartMinutes = static_cast<float>(Num(*O, TEXT("minutes"), 480));
 	}
 	ClockMinutesPerSecond = static_cast<float>(Num(Root, TEXT("clockMinutesPerSecond"), 2));
+	if (Root->TryGetObjectField(TEXT("economy"), O))
+	{
+		MissionPayBase = static_cast<int32>(Num(*O, TEXT("missionPayBase"), MissionPayBase));
+		MissionPayGrowth = static_cast<float>(Num(*O, TEXT("missionPayGrowth"), MissionPayGrowth));
+	}
 	if (Root->TryGetObjectField(TEXT("wanted"), O))
 	{
 		SecondsPerStar = static_cast<float>(Num(*O, TEXT("perStar"), 18));
@@ -346,6 +351,15 @@ const FNHVehicleSpec& UNHGameData::Spec(FName Type) const
 {
 	const FNHVehicleSpec* S = Vehicles.Find(Type);
 	return S ? *S : DefaultSpec;
+}
+
+int32 UNHGameData::MissionPay(int32 MissionNumber) const
+{
+	if (MissionNumber < 2)
+	{
+		return 0;
+	}
+	return FMath::RoundToInt(static_cast<double>(MissionPayBase) * FMath::Pow(1.0 + static_cast<double>(MissionPayGrowth), static_cast<double>(MissionNumber - 2)));
 }
 
 const FNHRoute* UNHGameData::FindRoute(FName Id) const

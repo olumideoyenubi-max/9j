@@ -1,6 +1,8 @@
 #include "Gameplay/NHGameDirector.h"
 
+#include "Core/NHGameState.h"
 #include "Core/NHHustleSubsystem.h"
+#include "Core/NHPlayerState.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
@@ -46,15 +48,35 @@ const UNHGameData* ANHGameDirector::Data() const
 	return UNHGameData::Get(this);
 }
 
+float ANHGameDirector::Now() const
+{
+	const ANHGameState* GS = ANHGameState::Get(this);
+	return GS ? GS->Minutes : 0.f;
+}
+
+void ANHGameDirector::SaveProgress()
+{
+	if (UNHHustleSubsystem* Saves = UNHHustleSubsystem::Get(this))
+	{
+		Saves->Save(this);
+	}
+}
+
 // ---------------------------------------------------------------------------------------------------- setup
 void ANHGameDirector::BeginPlay()
 {
 	Super::BeginPlay();
 	const UNHGameData* D = Data();
-	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
-	if (!D || !D->bLoaded || !Hustle)
+	ANHPlayerState* Hustle = ANHPlayerState::Host(this);
+	if (!D || !D->bLoaded)
 	{
 		UE_LOG(LogNHGame, Error, TEXT("NHGameDirector: no game data, so no missions. Check the plugin's Data folder."));
+		return;
+	}
+	if (!Hustle)
+	{
+		// the story runs for the host player; a dedicated server has none (yet)
+		UE_LOG(LogNHGame, Log, TEXT("NHGameDirector: no host player, so no story missions."));
 		return;
 	}
 
@@ -324,14 +346,15 @@ FString ANHGameDirector::ActionPrompt(const APawn* Pawn) const
 void ANHGameDirector::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	ANHPlayerState* Hustle = ANHPlayerState::Host(this);
 	if (!Hustle || !Data() || !Data()->bLoaded)
 	{
 		return;
 	}
-	Hustle->TickClock(DeltaSeconds, bSlowClock ? 0.5f : 1.f);
-	Hustle->TickHeat(DeltaSeconds, false); // no Task Force on the streets yet: heat cools off unseen
-	UpdateLighting(DeltaSeconds);
+	if (ANHGameState* GS = ANHGameState::Get(this))
+	{
+		GS->SetClockScale(bSlowClock ? 0.5f : 1.f);
+	}
 
 	if (Dialogue.bOpen)
 	{
@@ -375,39 +398,16 @@ void ANHGameDirector::Tick(float DeltaSeconds)
 	}
 }
 
-void ANHGameDirector::UpdateLighting(float DeltaSeconds)
-{
-	LightCheck -= DeltaSeconds;
-	if (LightCheck > 0.f || bManualLighting)
-	{
-		return;
-	}
-	LightCheck = 2.f;
-	const UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
-	ANHLightingRig* Rig = ANHLightingRig::Find(this);
-	if (!Hustle || !Rig)
-	{
-		return;
-	}
-	const float H = Hustle->HourOfDay();
-	const ENHLightingPreset Want = (H < 6.f || H >= 19.5f) ? ENHLightingPreset::NightRain : H >= 17.5f ? ENHLightingPreset::Sunset : (H >= 11.5f && H < 15.f) ? ENHLightingPreset::DustyNoon : ENHLightingPreset::Day;
-	if (static_cast<int32>(Want) != LastPreset)
-	{
-		LastPreset = static_cast<int32>(Want);
-		Rig->ApplyPreset(Want);
-	}
-}
-
 // ---------------------------------------------------------------------------------------------------- "First Day on the Danfo"
 void ANHGameDirector::UpdateFirstDay(float DeltaSeconds)
 {
 	const UNHGameData* D = Data();
-	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	ANHPlayerState* Hustle = ANHPlayerState::Host(this);
 	APawn* Pawn = PlayerPawn();
 	auto Obj = [&](int32 I) { return D->FirstDayObjectives.IsValidIndex(I) ? D->FirstDayObjectives[I] : FString(); };
 	auto Sub = [&](int32 I) { return D->FirstDaySubs.IsValidIndex(I) ? D->FirstDaySubs[I] : FString(); };
 	const FVector Park = Ground(D->Park);
-	DeadlineMinutesLeft = (Deadline > 0.f && (Stage == EStage::Route || Stage == EStage::Return)) ? FMath::Max(0.f, Deadline - Hustle->Minutes) : -1.f;
+	DeadlineMinutesLeft = (Deadline > 0.f && (Stage == EStage::Route || Stage == EStage::Return)) ? FMath::Max(0.f, Deadline - Now()) : -1.f;
 	RouteStopPoints.Reset();
 	if (Shift.bOn && !Shift.bRouteDone)
 	{
@@ -451,7 +451,7 @@ void ANHGameDirector::UpdateFirstDay(float DeltaSeconds)
 			FailFirstDay(TEXT("wrecked"));
 			return;
 		}
-		if (Stage != EStage::Board && Deadline > 0.f && Hustle->Minutes > Deadline)
+		if (Stage != EStage::Board && Deadline > 0.f && Now() > Deadline)
 		{
 			FailFirstDay(TEXT("late"));
 			return;
@@ -484,7 +484,7 @@ void ANHGameDirector::UpdateFirstDay(float DeltaSeconds)
 		if (Bus && PlayerVehicle() == Bus)
 		{
 			StartShift(D->FirstRoute, Bus, true, D->Conductor.FirstCut, TEXT("Baba Driver"));
-			Deadline = Hustle->Minutes + D->FirstDayClock;
+			Deadline = Now() + D->FirstDayClock;
 			bSlowClock = true; // the clock runs at half speed while the deadline counts
 			Stage = EStage::Route;
 		}
@@ -552,7 +552,7 @@ void ANHGameDirector::FailFirstDay(const FString& Reason)
 
 void ANHGameDirector::RetryFirstDay()
 {
-	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	ANHPlayerState* Hustle = ANHPlayerState::Host(this);
 	if (Hustle && Hustle->Stars() > 0)
 	{
 		Hustle->ClearHeat();
@@ -572,15 +572,15 @@ void ANHGameDirector::RetryFirstDay()
 
 void ANHGameDirector::PassFirstDay()
 {
-	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	ANHPlayerState* Hustle = ANHPlayerState::Host(this);
 	Stage = EStage::Done;
 	Deadline = -1.f;
 	bSlowClock = false;
 	if (Hustle && !Hustle->IsDone(NHDir::FirstDay))
 	{
-		Hustle->Cred += Data()->FirstDayCred;
-		Hustle->Done.Add(NHDir::FirstDay);
-		Hustle->Save();
+		Hustle->AddCred(Data()->FirstDayCred);
+		Hustle->MarkDone(NHDir::FirstDay);
+		SaveProgress();
 	}
 	ANHHUD::Toast(this, FString::Printf(TEXT("JOB DONE!  %s   +%d cred"), *Data()->FirstDayTitle, Data()->FirstDayCred), 1);
 	ANHHUD::Toast(this, TEXT("Baba Driver gave you a danfo union card and the vehicle papers."), 1);
@@ -700,7 +700,7 @@ void ANHGameDirector::ClearPassengers()
 void ANHGameDirector::Arrive(FName StopId)
 {
 	const FNHConductorRules& C = Data()->Conductor;
-	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	ANHPlayerState* Hustle = ANHPlayerState::Host(this);
 	ANHVehicle* Bus = Shift.Bus.Get();
 	Shift.AtStop = StopId;
 	Shift.bNear = false;
@@ -716,7 +716,7 @@ void ANHGameDirector::Arrive(FName StopId)
 		}
 		Shift.Onboard.RemoveAt(I);
 		Shift.Carried++;
-		Hustle->Jobs++;
+		Hustle->AddJobs(1);
 		if (Bus)
 		{
 			if (ANHPerson* Body = GetWorld()->SpawnActor<ANHPerson>(ANHPerson::StaticClass(), Bus->ExitPoint() - FVector(0, 0, 100.f), FRotator::ZeroRotator))
@@ -860,7 +860,7 @@ void ANHGameDirector::AnswerChange(int32 Choice)
 	}
 	const FChange Q = Shift.ChangeQ[0];
 	Shift.ChangeQ.RemoveAt(0);
-	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	ANHPlayerState* Hustle = ANHPlayerState::Host(this);
 	const FVector At = Shift.Bus.IsValid() ? Shift.Bus->GetActorLocation() + FVector(0, 0, 320.f) : FVector::ZeroVector;
 	if (Choice == Q.Right)
 	{
@@ -873,7 +873,7 @@ void ANHGameDirector::AnswerChange(int32 Choice)
 	else if (Choice == -1)
 	{
 		Shift.Keep += Q.Right;
-		Hustle->Integrity = FMath::Clamp(Hustle->Integrity - 3, -100, 100);
+		Hustle->AddIntegrity(-3);
 		Shift.Comfort = FMath::Max(0.f, Shift.Comfort - 15.f);
 		ANHHUD::Floater(this, At, FString::Printf(TEXT("\"%s: Conductor, where my change?!\""), *Q.Pax.Name));
 	}
@@ -885,7 +885,7 @@ void ANHGameDirector::AnswerChange(int32 Choice)
 	else
 	{
 		Shift.Keep += Q.Right - Choice;
-		Hustle->Integrity = FMath::Clamp(Hustle->Integrity - 2, -100, 100);
+		Hustle->AddIntegrity(-2);
 		Shift.Comfort = FMath::Max(0.f, Shift.Comfort - 10.f);
 		ANHHUD::Floater(this, At, FString::Printf(TEXT("\"%s: My change no complete!\""), *Q.Pax.Name));
 	}
@@ -959,7 +959,7 @@ void ANHGameDirector::OpenAgbero(FName StopId, int32 Amount, bool bCanBeg)
 		  (Mult && *Mult > 1) ? TEXT("They remember you drove off last time.") : TEXT("Park touts want their \"ticket\" before you load.") },
 		Opts, [this, StopId, Amount, bCanBeg](int32 Choice)
 		{
-			UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+			ANHPlayerState* Hustle = ANHPlayerState::Host(this);
 			const int32 Action = (!bCanBeg && Choice == 1) ? 2 : Choice; // without "Beg", the second option is "Drive off"
 			if (Action == 0)
 			{
@@ -1052,13 +1052,13 @@ void ANHGameDirector::EndShift(const FString& Title, TFunction<void()> OnClose)
 		}
 		return;
 	}
-	UNHHustleSubsystem* Hustle = UNHHustleSubsystem::Get(this);
+	ANHPlayerState* Hustle = ANHPlayerState::Host(this);
 	const FTotals T = Totals();
 	const FString RouteName = Shift.Route.Name;
 	const int32 CutPct = FMath::RoundToInt(Shift.Cut * 100.f);
 	// anyone still on board gets down; their fares were already collected
 	Shift.Carried += Shift.Onboard.Num();
-	Hustle->Jobs += Shift.Onboard.Num();
+	Hustle->AddJobs(Shift.Onboard.Num());
 	Shift.Onboard.Reset();
 	const int32 Paid = T.Net >= 0 ? T.Net : -FMath::Min(Hustle->Cash, -T.Net);
 	if (Paid == T.Net) // the ledger shows each part of the settle-up; the total is the same
@@ -1087,7 +1087,7 @@ void ANHGameDirector::EndShift(const FString& Title, TFunction<void()> OnClose)
 	ClearPassengers();
 	Shift.bOn = false;
 	RouteStopPoints.Reset();
-	Hustle->Save();
+	SaveProgress();
 	OpenPanel(Title, Lines, { TEXT("Collect") }, [OnClose](int32) { if (OnClose) OnClose(); });
 }
 

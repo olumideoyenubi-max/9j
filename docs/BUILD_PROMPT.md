@@ -97,9 +97,12 @@ Engine 5.8.3 project at `~/Documents/Unreal Projects/MyProject`. The game code i
 
 Build once, use in all 12 missions:
 
-- **Server-ready state first** (see `docs/MULTIPLAYER.md`): move cash, cred, Integrity, flags, needs and respect
-  out of the single-player subsystem into a replicated player state component, and the clock and weather into the
-  GameState. Single-player keeps working exactly as before.
+- **Server-ready state first** (see `docs/MULTIPLAYER.md`). **Already done in the repo:** `ANHPlayerState` holds
+  cash, bought cash, cred, Integrity, jobs, finished missions, story flags, outfit and heat (replicated, changed
+  only on the server); `ANHGameState` holds the clock and drives the lighting; `UNHHustleSubsystem` only saves and
+  loads; `UNHGameData::MissionPay(n)` gives the night-shift pay from `economy` in `naija_rules.json`. When you
+  merge in Phase 0, keep this design and re-apply your local fixes on top. Then build, check the two-player test in
+  the plugin README, and add needs and respect to `ANHPlayerState` when Phase 9 needs them.
 - **Mission runner:**
   - loads `missions/mNN.json`: objectives, triggers, checkpoints, dialogue lines, the standout moment, rewards
   - shows a job card at the start and the night-shift reward card at the end

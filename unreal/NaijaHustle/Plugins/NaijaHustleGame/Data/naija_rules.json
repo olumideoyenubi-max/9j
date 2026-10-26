@@ -4,6 +4,10 @@
   "minutes": 480,
   "outfit": "fit_street_basic"
  },
+ "economy": {
+  "missionPayBase": 1000000,
+  "missionPayGrowth": 0.135
+ },
  "clockMinutesPerSecond": 2,
  "conductor": {
   "capacity": 14,
