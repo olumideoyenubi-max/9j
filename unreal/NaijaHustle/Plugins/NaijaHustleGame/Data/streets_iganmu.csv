@@ -1,0 +1,1702 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W281437243,Abosede Kuboye Street,residential,false,0,7.5,false,false,false,0,303.4,Iganmu and Ijora,281437243
+W280570881,Achakpo Street,residential,false,0,7.5,false,false,false,0,498.2,Iganmu and Ijora,280570881
+W114912324,Achala Street,residential,false,0,7.5,false,false,false,0,86.4,Iganmu and Ijora,114912324
+W206280949,Adamu Orisha Crescent,residential,false,0,7.5,false,false,false,0,131.9,Iganmu and Ijora,206280949
+W206634561,Ade-Omo Olubiyi Street,residential,false,0,7.5,false,false,false,0,179.5,Iganmu and Ijora,206634561
+W114912320,Adebola Ojomu Street,unclassified,false,0,7.5,false,false,false,0,382.3,Iganmu and Ijora,114912320
+W205833466,Adebola Ojomu Street,unclassified,false,0,7.5,false,false,false,0,385.8,Iganmu and Ijora,205833466
+W10221514,Adebola Street,residential,false,0,7.5,false,false,false,0,900.8,Iganmu and Ijora,10221514
+W206277498,Adedamola Ojoma Close,residential,false,0,7.5,false,false,false,0,160.9,Iganmu and Ijora,206277498
+W167619020,Adegboyega Street,residential,false,0,7.5,false,false,false,0,341.6,Iganmu and Ijora,167619020
+W167404418,Adejiyan Street,residential,false,0,7.5,false,false,false,0,577.2,Iganmu and Ijora,167404418
+W215667100,Adelabu Street,secondary,false,4,14.2,true,false,false,0,857.5,Iganmu and Ijora,215667100
+W584900123,Adelabu Street,secondary,false,4,14.2,true,false,false,0,855.2,Iganmu and Ijora,584900123
+W608826236,Adelabu Street,secondary,false,4,14.2,false,false,false,0,154.5,Iganmu and Ijora,608826236
+W403465359,Adelabu- Babs Juncton,secondary,false,0,13.0,true,false,true,0,35.9,Iganmu and Ijora,403465359
+W10636727,Adeniran Ogunsanya Street,secondary,false,1,4.3,true,false,false,0,1034.7,Iganmu and Ijora,10636727
+W9719406,Adeniran Ogunsanya Street,secondary,false,2,7.6,true,false,false,0,1027.4,Iganmu and Ijora,9719406
+W441900917,Adeniyi Jakande Close,residential,false,0,7.5,false,false,false,0,108.8,Iganmu and Ijora,441900917
+W206634554,Adenuga Street,residential,false,0,7.5,false,false,false,0,72.2,Iganmu and Ijora,206634554
+W113521763,Adetola Road,residential,false,0,7.5,false,false,false,0,2000.9,Iganmu and Ijora,113521763
+W564904729,Adewuyi Street,residential,false,0,7.5,false,false,false,0,685.3,Iganmu and Ijora,564904729
+W90288393,Agbamu Street,residential,false,0,7.5,false,false,false,0,760.4,Iganmu and Ijora,90288393
+W206280950,Agusto Close,residential,false,0,7.5,false,false,false,0,109.8,Iganmu and Ijora,206280950
+W90288342,Aibu Street,residential,false,0,7.5,false,false,false,0,172.1,Iganmu and Ijora,90288342
+W167404415,Aiyepe Street,residential,false,0,7.5,false,false,false,0,144.0,Iganmu and Ijora,167404415
+W114912321,Aiyetoro Street,residential,false,0,7.5,false,false,false,0,567.3,Iganmu and Ijora,114912321
+W138040485,Ajani Oluare Street,residential,false,0,7.5,false,false,false,0,542.2,Iganmu and Ijora,138040485
+W167145269,Akinwande Street,unclassified,false,0,7.5,true,false,false,0,888.6,Iganmu and Ijora,167145269
+W217003244,Akinwande Street,unclassified,false,0,7.5,true,false,false,0,889.6,Iganmu and Ijora,217003244
+W870609298,Akinwande Street,unclassified,false,0,7.5,true,false,false,0,7.9,Iganmu and Ijora,870609298
+W870609299,Akinwande Street,unclassified,false,0,7.5,true,false,false,0,8.9,Iganmu and Ijora,870609299
+W167116423,Alaba Lane,residential,false,0,7.5,false,false,false,0,38.8,Iganmu and Ijora,167116423
+W167116477,Alaba Lane,residential,false,0,7.5,false,false,false,0,106.8,Iganmu and Ijora,167116477
+W167404410,Alaba Oro Road,secondary,false,0,13.0,true,false,false,0,900.7,Iganmu and Ijora,167404410
+W588659178,Alaba Oro Road,secondary,false,0,13.0,true,false,false,0,879.1,Iganmu and Ijora,588659178
+W441713776,Alhaji Ajala Street,residential,false,0,7.5,false,false,false,0,291.7,Iganmu and Ijora,441713776
+W280477051,Alhaji Jimoh Street,residential,false,0,7.5,false,false,false,0,416.2,Iganmu and Ijora,280477051
+W206634568,Alhaji Kayode Close,residential,false,0,7.5,false,false,false,0,178.9,Iganmu and Ijora,206634568
+W206634560,Alhaji Muniru Close,residential,false,0,7.5,false,false,false,0,54.4,Iganmu and Ijora,206634560
+W90288350,Alhaji Olaogun Drive,residential,false,0,7.5,false,false,false,0,197.7,Iganmu and Ijora,90288350
+W90288377,Alhaji Olaogun Drive,residential,false,0,7.5,false,false,false,0,116.1,Iganmu and Ijora,90288377
+W206634572,Alhaji Salami Street,residential,false,0,7.5,false,false,false,0,374.1,Iganmu and Ijora,206634572
+W138040467,Alhaji Tokan Street,residential,false,0,7.5,false,false,false,0,468.5,Iganmu and Ijora,138040467
+W176064895,Alice Tinubu Street,residential,false,0,7.5,false,false,false,0,425.0,Iganmu and Ijora,176064895
+W167116429,Amaechi Street,residential,false,0,7.5,false,false,false,0,194.4,Iganmu and Ijora,167116429
+W206280954,Anifowoshe Close,residential,false,0,7.5,false,false,false,0,92.2,Iganmu and Ijora,206280954
+W90288328,Animashaun Street,residential,false,0,7.5,false,false,false,0,381.1,Iganmu and Ijora,90288328
+W1289507302,Anjorin Street,residential,false,0,7.5,false,false,false,0,30.7,Iganmu and Ijora,1289507302
+W1289507303,Anjorin Street,residential,false,0,7.5,false,false,false,0,17.7,Iganmu and Ijora,1289507303
+W1433205365,Anjorin Street,residential,false,0,7.5,false,false,false,0,30.8,Iganmu and Ijora,1433205365
+W167404417,Anjorin Street,residential,false,0,7.5,false,false,false,0,151.5,Iganmu and Ijora,167404417
+W588664587,Anjorin Street,secondary,true,0,7.5,false,false,false,0,9.0,Iganmu and Ijora,588664587
+W167116385,Anthony Agbaje Street,residential,false,0,7.5,false,false,false,0,603.8,Iganmu and Ijora,167116385
+W133795062,Apapa Road,motorway,false,0,24.0,true,true,false,0,1664.9,Iganmu and Ijora,133795062
+W133795069,Apapa Road,motorway,false,0,24.0,true,false,false,0,364.8,Iganmu and Ijora,133795069
+W133795089,Apapa Road,motorway,false,0,24.0,true,false,false,0,771.0,Iganmu and Ijora,133795089
+W133800599,Apapa Road,motorway,false,0,24.0,true,true,false,0,623.5,Iganmu and Ijora,133800599
+W264916640,Apapa Road,motorway,false,0,24.0,true,true,false,0,408.4,Iganmu and Ijora,264916640
+W264916641,Apapa Road,motorway,false,0,24.0,true,true,false,0,93.1,Iganmu and Ijora,264916641
+W264916642,Apapa Road,motorway,false,0,24.0,true,false,false,0,602.6,Iganmu and Ijora,264916642
+W264916643,Apapa Road,motorway,false,0,24.0,true,true,false,0,409.9,Iganmu and Ijora,264916643
+W264916644,Apapa Road,motorway,false,0,24.0,true,false,false,0,202.7,Iganmu and Ijora,264916644
+W642340880,Apapa Road,motorway,false,0,24.0,true,true,false,0,129.3,Iganmu and Ijora,642340880
+W89929130,Apapa Road,motorway,false,0,24.0,true,true,false,0,544.9,Iganmu and Ijora,89929130
+W134153456,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,5846.3,Iganmu and Ijora,134153456
+W134153458,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,5839.1,Iganmu and Ijora,134153458
+W134163202,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,5833.9,Iganmu and Ijora,134163202
+W134163206,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,5837.0,Iganmu and Ijora,134163206
+W1323745077,Apasa Street,residential,false,0,7.5,false,false,false,0,143.6,Iganmu and Ijora,1323745077
+W91339955,Apasa Street,residential,false,0,7.5,false,false,false,0,615.8,Iganmu and Ijora,91339955
+W206634563,Arumeni Lane,residential,false,0,7.5,false,false,false,0,79.8,Iganmu and Ijora,206634563
+W566492479,Arumeni Lane,residential,false,0,7.5,false,false,false,0,64.7,Iganmu and Ijora,566492479
+W167619016,Atolagbe Street,residential,false,0,7.5,false,false,false,0,216.1,Iganmu and Ijora,167619016
+W167621405,Awoyemi Street,residential,false,0,7.5,false,false,false,0,329.8,Iganmu and Ijora,167621405
+W280374814,Ayoelegbede Street,residential,false,0,7.5,false,false,false,0,253.6,Iganmu and Ijora,280374814
+W167068984,Baala Ayetoro Street,unclassified,false,0,7.5,false,false,false,0,525.7,Iganmu and Ijora,167068984
+W167014123,Baale Adeyemo Street,tertiary,false,0,10.0,false,false,false,0,320.7,Iganmu and Ijora,167014123
+W280570889,Baale Adeyemo Street,tertiary,false,0,10.0,false,true,false,0,41.8,Iganmu and Ijora,280570889
+W280570890,Baale Adeyemo Street,tertiary,false,0,10.0,false,false,false,0,82.1,Iganmu and Ijora,280570890
+W206634553,Bababtope Street,residential,false,0,7.5,false,false,false,0,392.2,Iganmu and Ijora,206634553
+W10219988,Babs Animashaun Street,secondary,false,0,13.0,false,false,false,0,127.0,Iganmu and Ijora,10219988
+W10219989,Babs Animashaun Street,secondary,false,0,13.0,true,false,false,0,1062.1,Iganmu and Ijora,10219989
+W280398136,Babs Animashaun Street,secondary,false,0,13.0,false,true,false,0,54.4,Iganmu and Ijora,280398136
+W280398137,Babs Animashaun Street,secondary,false,0,13.0,false,false,false,0,322.8,Iganmu and Ijora,280398137
+W535066070,Babs Animashaun Street,secondary,false,0,13.0,true,false,false,0,1065.4,Iganmu and Ijora,535066070
+W535066076,Babs Animashaun Street,secondary,false,0,13.0,true,false,false,0,9.5,Iganmu and Ijora,535066076
+W535066077,Babs Animashaun Street,secondary,false,0,13.0,true,false,false,0,10.1,Iganmu and Ijora,535066077
+W167404434,Bakare Faro Street,unclassified,false,0,7.5,false,true,false,0,48.4,Iganmu and Ijora,167404434
+W280570892,Bakare Faro Street,unclassified,false,0,7.5,false,false,false,0,344.9,Iganmu and Ijora,280570892
+W1220169163,Bale Street,unclassified,false,0,7.5,true,false,false,0,27.4,Iganmu and Ijora,1220169163
+W1468819607,Bale Street,unclassified,false,0,7.5,false,false,false,0,9.8,Iganmu and Ijora,1468819607
+W829092439,Bale Street,unclassified,false,0,7.5,true,false,false,0,25.3,Iganmu and Ijora,829092439
+W829092440,Bale Street,unclassified,false,0,7.5,false,false,false,0,1266.7,Iganmu and Ijora,829092440
+W92451074,Bale Street,unclassified,false,0,7.5,false,true,false,0,50.0,Iganmu and Ijora,92451074
+W206634555,Balogun Close,residential,false,0,7.5,false,false,false,0,98.7,Iganmu and Ijora,206634555
+W280588517,Balogun Kuku Street,residential,false,0,7.5,false,false,false,0,369.1,Iganmu and Ijora,280588517
+W10561273,Basheer Augusto Street,residential,false,0,7.5,false,false,false,0,304.3,Iganmu and Ijora,10561273
+W206634557,Basiyi Street,residential,false,0,7.5,false,false,false,0,176.7,Iganmu and Ijora,206634557
+W106100725,Bassie Ogamba Street,secondary,false,0,13.0,false,false,false,0,274.1,Iganmu and Ijora,106100725
+W133792623,Bode Thomas Street,secondary,false,1,4.3,false,false,false,0,271.5,Iganmu and Ijora,133792623
+W280398138,Bode Thomas Street,secondary,false,1,4.3,false,true,false,0,22.1,Iganmu and Ijora,280398138
+W280398140,Bode Thomas Street,secondary,false,1,4.3,false,false,false,0,1440.3,Iganmu and Ijora,280398140
+W113525864,Bolaji Banwo Street,residential,false,0,7.5,false,false,false,0,566.0,Iganmu and Ijora,113525864
+W215649056,Boundary Road,tertiary,false,0,10.0,false,false,false,0,6.2,Iganmu and Ijora,215649056
+W113521764,Brown Road,residential,false,0,7.5,false,false,false,0,925.8,Iganmu and Ijora,113521764
+W1411928245,Brown Road,unclassified,false,0,7.5,false,false,false,0,249.2,Iganmu and Ijora,1411928245
+W167404429,Cemetery Road,secondary,false,0,13.0,true,false,false,0,737.3,Iganmu and Ijora,167404429
+W588659176,Cemetery Road,secondary,false,0,13.0,true,false,false,0,738.3,Iganmu and Ijora,588659176
+W588675465,Cemetery Road,secondary,false,0,13.0,true,false,false,0,480.2,Iganmu and Ijora,588675465
+W588675470,Cemetery Road,secondary,false,0,13.0,true,false,false,0,487.4,Iganmu and Ijora,588675470
+W206277502,Census Close,residential,false,0,7.5,false,false,false,0,885.6,Iganmu and Ijora,206277502
+W92451124,Chief Natufe Street,residential,false,0,7.5,false,false,false,0,375.3,Iganmu and Ijora,92451124
+W90288324,Chief Onitana Street,residential,false,0,7.5,false,false,false,0,145.1,Iganmu and Ijora,90288324
+W186241019,Cnd Road,residential,false,0,7.5,false,false,false,0,283.1,Iganmu and Ijora,186241019
+W1218697077,College Road,secondary,false,0,13.0,true,false,false,0,411.7,Iganmu and Ijora,1218697077
+W167404404,College Road,secondary,false,0,13.0,true,false,false,0,408.8,Iganmu and Ijora,167404404
+W90288349,Curtis Adeniyi Jones Close,residential,false,0,7.5,false,false,false,0,319.0,Iganmu and Ijora,90288349
+W138040469,Daramola Street,residential,false,0,7.5,false,false,false,0,128.3,Iganmu and Ijora,138040469
+W113519421,Dimeji Longe Avenue,unclassified,false,0,7.5,false,false,false,0,210.2,Iganmu and Ijora,113519421
+W114912322,Efutide Street,residential,false,0,7.5,false,false,false,0,432.9,Iganmu and Ijora,114912322
+W133795093,Eko Bridge,motorway,false,0,24.0,true,true,false,0,262.8,Iganmu and Ijora,133795093
+W206277497,Eko Club close,service,false,0,5.0,false,false,false,0,157.8,Iganmu and Ijora,206277497
+W206634552,Emmanuel Close,residential,false,0,7.5,false,false,false,0,89.1,Iganmu and Ijora,206634552
+W10561274,Eric Manuel Cresent,residential,false,0,7.5,false,false,false,0,495.6,Iganmu and Ijora,10561274
+W133797417,Eric Moore Road,tertiary,false,0,10.0,true,false,false,0,1404.3,Iganmu and Ijora,133797417
+W133797428,Eric Moore Road,tertiary,false,0,10.0,true,false,false,0,72.0,Iganmu and Ijora,133797428
+W673524763,Eric Moore Road,tertiary,false,0,10.0,true,false,false,0,1663.7,Iganmu and Ijora,673524763
+W685566692,Eric Moore Road,tertiary,false,0,10.0,true,false,false,0,180.3,Iganmu and Ijora,685566692
+W167138022,Ezeagu Street,residential,false,0,7.5,false,false,false,0,940.5,Iganmu and Ijora,167138022
+W91339944,Fagbemi Street,residential,false,0,7.5,false,false,false,0,481.6,Iganmu and Ijora,91339944
+W206634556,Falohun Street,residential,false,0,7.5,false,false,false,0,268.1,Iganmu and Ijora,206634556
+W90288401,Femi Ayantuga Crescent,residential,false,0,7.5,false,false,false,0,729.8,Iganmu and Ijora,90288401
+W91339893,Freedom Street,residential,false,0,7.5,false,false,false,0,187.6,Iganmu and Ijora,91339893
+W1218697072,Gaskiya College Road,secondary,false,0,13.0,true,true,false,0,43.7,Iganmu and Ijora,1218697072
+W1218697073,Gaskiya College Road,secondary,false,0,13.0,false,false,false,0,8.0,Iganmu and Ijora,1218697073
+W1218697074,Gaskiya College Road,secondary,false,0,13.0,true,false,false,0,773.7,Iganmu and Ijora,1218697074
+W1218697075,Gaskiya College Road,secondary,false,0,13.0,true,false,false,0,138.9,Iganmu and Ijora,1218697075
+W1290913942,Gaskiya College Road,secondary,false,0,13.0,true,false,false,0,11.1,Iganmu and Ijora,1290913942
+W1290913943,Gaskiya College Road,secondary,false,0,13.0,true,false,false,0,107.8,Iganmu and Ijora,1290913943
+W280570894,Gaskiya College Road,secondary,false,0,13.0,true,false,false,0,784.0,Iganmu and Ijora,280570894
+W280570895,Gaskiya College Road,secondary,false,0,13.0,true,true,false,0,45.8,Iganmu and Ijora,280570895
+W280570896,Gaskiya College Road,secondary,false,0,13.0,true,false,false,0,10.4,Iganmu and Ijora,280570896
+W280570897,Gaskiya College Road,secondary,false,0,13.0,true,false,false,0,141.4,Iganmu and Ijora,280570897
+W90288334,Gaskiya Road,secondary,false,0,13.0,true,false,false,0,108.5,Iganmu and Ijora,90288334
+W12335303,Gbajumo Close,residential,false,0,7.5,false,false,false,0,339.0,Iganmu and Ijora,12335303
+W206634546,Humani Close,residential,false,0,7.5,false,false,false,0,77.5,Iganmu and Ijora,206634546
+W206634550,Idahosa Ojo Osagie Street,residential,false,0,7.5,false,false,false,0,215.8,Iganmu and Ijora,206634550
+W90288306,Idita Street,residential,false,0,7.5,false,false,false,0,173.5,Iganmu and Ijora,90288306
+W1364695242,Idowu Odenuga Crescent,tertiary,false,0,10.0,false,false,false,0,214.7,Iganmu and Ijora,1364695242
+W206634566,Idowu Odenuga Crescent,tertiary,false,0,10.0,false,true,false,0,14.1,Iganmu and Ijora,206634566
+W280570898,Idowu Odenuga Crescent,tertiary,false,0,10.0,false,false,false,0,52.9,Iganmu and Ijora,280570898
+W864169455,Idowu Odenuga Crescent,residential,false,0,7.5,false,false,false,0,72.5,Iganmu and Ijora,864169455
+W864169456,Idowu Odenuga Crescent,tertiary,false,0,10.0,false,false,false,0,6.8,Iganmu and Ijora,864169456
+W206634559,Idowu Randle Close,residential,false,0,7.5,false,false,false,0,65.6,Iganmu and Ijora,206634559
+W167619014,Igaja Street,residential,false,0,7.5,false,false,false,0,209.5,Iganmu and Ijora,167619014
+W1218697078,Iganmu Road,secondary,false,0,13.0,true,true,false,0,46.2,Iganmu and Ijora,1218697078
+W1218697079,Iganmu Road,secondary,false,0,13.0,true,false,false,0,803.6,Iganmu and Ijora,1218697079
+W1218697080,Iganmu Road,secondary,false,0,13.0,true,false,false,0,722.2,Iganmu and Ijora,1218697080
+W608185268,Iganmu Road,secondary,false,0,13.0,true,false,false,0,20.4,Iganmu and Ijora,608185268
+W608185269,Iganmu Road,secondary,false,0,13.0,true,false,false,0,9.0,Iganmu and Ijora,608185269
+W90288358,Iganmu Road,secondary,false,0,13.0,true,false,false,0,722.6,Iganmu and Ijora,90288358
+W90288373,Iganmu Road,secondary,false,0,13.0,true,true,false,0,48.8,Iganmu and Ijora,90288373
+W90288376,Iganmu Road,secondary,false,0,13.0,true,false,false,0,812.4,Iganmu and Ijora,90288376
+W559358549,Ijesha Road,secondary,false,4,14.2,false,false,false,0,801.0,Iganmu and Ijora,559358549
+W167619006,Iludun Close,residential,false,0,7.5,false,false,false,0,127.2,Iganmu and Ijora,167619006
+W280477065,Imam Dauda Street,residential,false,0,7.5,false,false,false,0,664.7,Iganmu and Ijora,280477065
+W280477075,Imam Dauda Street,residential,false,0,7.5,false,false,false,0,673.0,Iganmu and Ijora,280477075
+W10561275,Iponri Estate Road,residential,false,0,7.5,false,false,false,0,393.3,Iganmu and Ijora,10561275
+W10561276,Iponri Estate Road,residential,false,0,7.5,false,false,false,0,518.0,Iganmu and Ijora,10561276
+W1364452483,Iponri Estate Road,residential,false,0,7.5,true,false,false,0,28.9,Iganmu and Ijora,1364452483
+W1364452484,Iponri Estate Road,residential,false,0,7.5,true,false,false,0,28.2,Iganmu and Ijora,1364452484
+W10561271,Ishau Adewale Street,residential,false,0,7.5,false,false,false,0,295.4,Iganmu and Ijora,10561271
+W280398148,Itire Road,unclassified,false,0,7.5,false,true,false,0,27.6,Iganmu and Ijora,280398148
+W280398150,Itire Road,unclassified,false,0,7.5,false,false,false,0,288.4,Iganmu and Ijora,280398150
+W1394158112,Itolo Street,residential,false,0,7.5,false,false,false,0,15.1,Iganmu and Ijora,1394158112
+W90288313,Itolo Street,residential,false,0,7.5,false,false,false,0,574.3,Iganmu and Ijora,90288313
+W114912323,Jadesola Osodi Street,residential,false,0,7.5,false,false,false,0,480.5,Iganmu and Ijora,114912323
+W1125116632,Jalupon Close,residential,false,0,7.5,false,false,false,0,81.0,Iganmu and Ijora,1125116632
+W206280951,Jalupon Close,residential,false,0,7.5,false,false,false,0,421.3,Iganmu and Ijora,206280951
+W206280957,Jalupon Close,residential,false,0,7.5,false,false,false,0,114.3,Iganmu and Ijora,206280957
+W90288325,Jimoh Odutola Street,unclassified,false,0,7.5,false,false,false,0,1095.9,Iganmu and Ijora,90288325
+W90288340,Johnson Street,residential,false,0,7.5,false,false,false,0,778.9,Iganmu and Ijora,90288340
+W90288419,Kernel Street,residential,false,0,7.5,false,false,false,0,220.7,Iganmu and Ijora,90288419
+W167621384,Labaka Street,residential,false,0,7.5,false,false,false,0,376.5,Iganmu and Ijora,167621384
+W207462073,Lagos Badagry Expressway,trunk,false,0,11.5,true,true,false,0,173.8,Iganmu and Ijora,207462073
+W207462074,Lagos Badagry Expressway,trunk,false,0,11.5,true,true,false,0,174.4,Iganmu and Ijora,207462074
+W264916645,Lagos Badagry Expressway,trunk,false,0,11.5,true,true,false,0,70.5,Iganmu and Ijora,264916645
+W893293881,Lagos Badagry Expressway,trunk,false,0,11.5,true,true,false,0,70.7,Iganmu and Ijora,893293881
+W1098549363,Lagos-Badagry Expressway,motorway,false,0,24.0,true,false,false,30,718.1,Iganmu and Ijora,1098549363
+W279848224,Lagos-Badagry Expressway,motorway,false,0,24.0,true,true,false,0,37.3,Iganmu and Ijora,279848224
+W279848226,Lagos-Badagry Expressway,motorway,false,0,24.0,true,false,false,0,64.1,Iganmu and Ijora,279848226
+W279848227,Lagos-Badagry Expressway,trunk,false,0,11.5,true,false,false,0,1730.6,Iganmu and Ijora,279848227
+W535066067,Lagos-Badagry Expressway,trunk,false,0,11.5,true,false,false,0,1700.9,Iganmu and Ijora,535066067
+W829092418,Lagos-Badagry Expressway,motorway,false,0,24.0,true,false,false,0,206.8,Iganmu and Ijora,829092418
+W829092421,Lagos-Badagry Expressway,primary,false,0,17.5,true,false,false,0,1096.0,Iganmu and Ijora,829092421
+W829092422,Lagos-Badagry Expressway,motorway,false,0,24.0,true,false,false,0,741.8,Iganmu and Ijora,829092422
+W829092423,Lagos-Badagry Expressway,motorway,false,0,24.0,true,false,false,0,24.6,Iganmu and Ijora,829092423
+W829092428,Lagos-Badagry Expressway,motorway,false,0,24.0,true,false,false,0,667.4,Iganmu and Ijora,829092428
+W829092429,Lagos-Badagry Expressway,motorway,false,0,24.0,true,false,false,0,3255.6,Iganmu and Ijora,829092429
+W829092433,Lagos-Badagry Expressway,primary,false,0,17.5,true,false,false,0,2816.5,Iganmu and Ijora,829092433
+W829092434,Lagos-Badagry Expressway,primary,false,0,17.5,true,true,false,0,41.9,Iganmu and Ijora,829092434
+W893293872,Lagos-Badagry Expressway,primary,false,0,17.5,true,false,false,0,3762.2,Iganmu and Ijora,893293872
+W893293874,Lagos-Badagry Expressway,motorway,false,0,24.0,true,false,false,0,2792.6,Iganmu and Ijora,893293874
+W893293876,Lagos-Badagry Expressway,motorway,false,0,24.0,true,true,false,30,38.0,Iganmu and Ijora,893293876
+W893293877,Lagos-Badagry Expressway,primary,false,0,17.5,true,false,false,0,730.3,Iganmu and Ijora,893293877
+W893293878,Lagos-Badagry Expressway,motorway,false,0,24.0,true,false,false,30,898.1,Iganmu and Ijora,893293878
+W893293879,Lagos-Badagry Expressway,motorway,false,0,24.0,true,false,false,0,111.9,Iganmu and Ijora,893293879
+W893293903,Lagos-Badagry Expressway,primary,false,0,17.5,true,false,false,0,268.7,Iganmu and Ijora,893293903
+W893293904,Lagos-Badagry Expressway,primary,false,0,17.5,true,true,false,0,69.1,Iganmu and Ijora,893293904
+W167068965,MBA Street,tertiary,false,0,10.0,false,false,false,0,1123.0,Iganmu and Ijora,167068965
+W167619026,Makanjuola Street,residential,false,0,7.5,false,false,false,0,173.9,Iganmu and Ijora,167619026
+W1222388842,Malu Road,secondary,false,0,13.0,true,false,false,0,157.5,Iganmu and Ijora,1222388842
+W1222389916,Malu Road,secondary,false,0,13.0,true,false,false,0,30.0,Iganmu and Ijora,1222389916
+W133801178,Malu Road,secondary,false,2,7.6,true,false,false,0,562.2,Iganmu and Ijora,133801178
+W133801186,Malu Road,secondary,false,2,7.6,true,false,false,0,823.2,Iganmu and Ijora,133801186
+W144838167,Malu Road,secondary,false,2,7.6,true,false,false,0,564.2,Iganmu and Ijora,144838167
+W144838173,Malu Road,secondary,false,2,7.6,true,false,false,0,676.4,Iganmu and Ijora,144838173
+W144838178,Malu Road,secondary,false,2,7.6,true,true,false,0,30.5,Iganmu and Ijora,144838178
+W144838181,Malu Road,secondary,false,2,7.6,true,true,false,0,31.6,Iganmu and Ijora,144838181
+W10219985,Modupe Johnson Cresent,residential,false,0,7.5,false,false,false,0,584.3,Iganmu and Ijora,10219985
+W167404413,Mosafejo Street,secondary,false,0,13.0,true,false,false,0,542.9,Iganmu and Ijora,167404413
+W588659177,Mosafejo Street,secondary,false,0,13.0,true,false,false,0,538.2,Iganmu and Ijora,588659177
+W91102658,Mosalashi Street,residential,false,0,7.5,false,false,false,0,603.0,Iganmu and Ijora,91102658
+W167404421,Moshalashi Street,residential,false,0,7.5,false,false,false,0,297.9,Iganmu and Ijora,167404421
+W167621409,Muri Ojara Street,residential,false,0,7.5,false,false,false,0,756.4,Iganmu and Ijora,167621409
+W207324982,Mustapha Close,residential,false,0,7.5,false,false,false,0,57.0,Iganmu and Ijora,207324982
+W167014122,Nosamu Street,residential,false,0,7.5,false,false,false,0,647.1,Iganmu and Ijora,167014122
+W216245276,Oba Kayode Akinyemi Way,residential,false,0,7.5,true,false,false,0,939.5,Iganmu and Ijora,216245276
+W564544516,Oba Kayode Akinyemi Way,residential,false,0,7.5,true,false,false,0,961.4,Iganmu and Ijora,564544516
+W280570899,Obale Street,unclassified,false,0,7.5,false,false,false,0,38.5,Iganmu and Ijora,280570899
+W280570900,Obale Street,unclassified,false,0,7.5,false,false,false,0,93.0,Iganmu and Ijora,280570900
+W167404411,Odofin Street,residential,false,0,7.5,false,false,false,0,386.2,Iganmu and Ijora,167404411
+W113525858,Odunjo Street,residential,false,0,7.5,false,false,false,0,10.2,Iganmu and Ijora,113525858
+W1411928242,Odunjo Street,residential,false,0,7.5,false,false,false,0,5.1,Iganmu and Ijora,1411928242
+W1411928243,Odunjo Street,residential,false,0,7.5,false,false,false,0,238.1,Iganmu and Ijora,1411928243
+W206634544,Ogunbadero Street,residential,false,0,7.5,false,false,false,0,142.0,Iganmu and Ijora,206634544
+W280398153,Oguniyi Street,residential,false,0,7.5,false,false,false,0,82.7,Iganmu and Ijora,280398153
+W1432736575,Ojo Road,tertiary,false,0,10.0,false,false,false,0,290.9,Iganmu and Ijora,1432736575
+W167116392,Ojo Road,tertiary,false,0,10.0,false,false,false,0,708.8,Iganmu and Ijora,167116392
+W206634565,Okamba Close,residential,false,0,7.5,false,false,false,0,82.4,Iganmu and Ijora,206634565
+W167116403,Okorogbo Street,residential,false,0,7.5,false,false,false,0,324.8,Iganmu and Ijora,167116403
+W280570903,Okoya Road,unclassified,false,0,7.5,false,false,false,0,332.4,Iganmu and Ijora,280570903
+W113525855,Oladimeji Street,residential,false,0,7.5,false,false,false,0,635.6,Iganmu and Ijora,113525855
+W206277503,Olatunde Onimole Street,unclassified,false,0,7.5,false,false,false,0,235.7,Iganmu and Ijora,206277503
+W1289653456,Olayinka Street,unclassified,false,0,7.5,false,false,false,0,57.8,Iganmu and Ijora,1289653456
+W1289653457,Olayinka Street,unclassified,false,0,7.5,false,true,false,0,32.2,Iganmu and Ijora,1289653457
+W167116381,Olayinka Street,unclassified,false,0,7.5,false,false,false,0,428.8,Iganmu and Ijora,167116381
+W280570904,Olayinka Street,unclassified,false,0,7.5,false,true,false,0,56.4,Iganmu and Ijora,280570904
+W90288388,Olojowon Street,residential,false,0,7.5,false,false,false,0,519.2,Iganmu and Ijora,90288388
+W167404433,Olufiditi Street,residential,false,0,7.5,false,false,false,0,169.7,Iganmu and Ijora,167404433
+W167404422,Olum Okun Street,unclassified,false,0,7.5,false,false,false,0,340.1,Iganmu and Ijora,167404422
+W113525854,Onikoyi Street,residential,false,0,7.5,false,false,false,0,465.4,Iganmu and Ijora,113525854
+W206634558,Oniwinde Street,residential,false,0,7.5,false,false,false,0,333.7,Iganmu and Ijora,206634558
+W167621412,Oroki Street,residential,false,0,7.5,false,false,false,0,124.6,Iganmu and Ijora,167621412
+W280477067,Orowunmi Street,residential,false,0,7.5,false,false,false,0,168.4,Iganmu and Ijora,280477067
+W206634571,Orunmila Way,residential,false,0,7.5,false,false,false,0,83.0,Iganmu and Ijora,206634571
+W90288361,Oseni Close,residential,false,0,7.5,false,false,false,0,129.6,Iganmu and Ijora,90288361
+W167619018,Oshogbo Street,residential,false,0,7.5,false,false,false,0,222.7,Iganmu and Ijora,167619018
+W167404419,Otua Street,residential,false,0,7.5,false,false,false,0,479.0,Iganmu and Ijora,167404419
+W138040486,Owukori Crescent,residential,false,0,7.5,false,false,false,0,661.0,Iganmu and Ijora,138040486
+W206634562,Oyebode Street,residential,false,0,7.5,false,false,false,0,121.2,Iganmu and Ijora,206634562
+W281439187,Oyediran Street,residential,false,0,7.5,false,false,false,0,241.7,Iganmu and Ijora,281439187
+W10221517,Rasaq Balogun Street,residential,false,0,7.5,false,false,false,0,737.3,Iganmu and Ijora,10221517
+W586770825,Rufai Street,residential,false,0,7.5,false,false,false,0,285.1,Iganmu and Ijora,586770825
+W10561270,Sabiu Ajose Cresent,residential,false,0,7.5,false,false,false,0,230.4,Iganmu and Ijora,10561270
+W186241014,Sadiku Street,residential,false,0,7.5,false,false,false,0,183.1,Iganmu and Ijora,186241014
+W587090406,Saka Alao Close,residential,false,0,7.5,false,false,false,0,265.8,Iganmu and Ijora,587090406
+W91339913,Sanni Street,residential,false,0,7.5,false,false,false,0,222.7,Iganmu and Ijora,91339913
+W206634569,Santos Estate,residential,false,0,7.5,false,false,false,0,86.0,Iganmu and Ijora,206634569
+W186241037,Sanusi Street,residential,false,0,7.5,false,false,false,0,146.9,Iganmu and Ijora,186241037
+W280570907,Sanya Street,residential,false,0,7.5,false,true,false,0,9.4,Iganmu and Ijora,280570907
+W280570908,Sanya Street,residential,false,0,7.5,false,false,false,0,277.4,Iganmu and Ijora,280570908
+W113525866,Savannah Street,residential,false,0,7.5,false,false,false,0,424.7,Iganmu and Ijora,113525866
+W113525867,Savannah Street,residential,false,0,7.5,false,false,false,0,88.0,Iganmu and Ijora,113525867
+W206634549,Shittu Oridota Street,residential,false,0,7.5,false,false,false,0,76.1,Iganmu and Ijora,206634549
+W167068950,Sidi Street,residential,false,0,7.5,false,false,false,0,144.8,Iganmu and Ijora,167068950
+W206634547,Tade Aramolate Close,residential,false,0,7.5,false,false,false,0,227.1,Iganmu and Ijora,206634547
+W11102812,Tafawa Balewa Crescent,residential,false,0,7.5,false,false,false,0,804.2,Iganmu and Ijora,11102812
+W169080012,Taoridi Street,residential,false,0,7.5,false,false,false,0,398.0,Iganmu and Ijora,169080012
+W138040480,Temple Street,residential,false,0,7.5,false,false,false,0,312.2,Iganmu and Ijora,138040480
+W113525863,Thomas Animashaun Street,residential,false,0,7.5,false,false,false,0,847.8,Iganmu and Ijora,113525863
+W167116409,Tieda Close,residential,false,0,7.5,false,false,false,0,188.4,Iganmu and Ijora,167116409
+W206634551,Trimnel Street,residential,false,0,7.5,false,false,false,0,108.3,Iganmu and Ijora,206634551
+W167116402,Uweriro Street,residential,false,0,7.5,false,false,false,0,85.8,Iganmu and Ijora,167116402
+W206634548,Victor Olaiya Avenue,residential,false,0,7.5,false,false,false,0,62.2,Iganmu and Ijora,206634548
+W133795057,Western Avenue,motorway,false,2,7.6,true,true,false,80,382.0,Iganmu and Ijora,133795057
+W133795071,Western Avenue,primary,false,0,17.5,true,false,false,80,889.5,Iganmu and Ijora,133795071
+W133803781,Western Avenue,motorway,false,2,7.6,true,false,false,80,730.4,Iganmu and Ijora,133803781
+W1541019433,Western Avenue,primary,false,0,17.5,true,false,false,80,897.6,Iganmu and Ijora,1541019433
+W231756295,Western Avenue,motorway,false,2,7.6,true,false,false,80,724.9,Iganmu and Ijora,231756295
+W231756298,Western Avenue,motorway,false,2,7.6,true,true,false,0,32.4,Iganmu and Ijora,231756298
+W231756306,Western Avenue,motorway,false,2,7.6,true,false,false,0,141.0,Iganmu and Ijora,231756306
+W231756310,Western Avenue,motorway,false,2,7.6,true,true,false,0,32.4,Iganmu and Ijora,231756310
+W231756314,Western Avenue,primary,false,0,17.5,true,true,false,0,31.4,Iganmu and Ijora,231756314
+W231756317,Western Avenue,primary,false,0,17.5,true,true,false,0,32.7,Iganmu and Ijora,231756317
+W231756320,Western Avenue,primary,false,0,17.5,true,false,false,80,2771.0,Iganmu and Ijora,231756320
+W231756330,Western Avenue,primary,false,0,17.5,true,false,false,80,902.5,Iganmu and Ijora,231756330
+W5150272,Western Avenue,motorway,false,2,7.6,true,true,false,80,278.4,Iganmu and Ijora,5150272
+W8064810,Western Avenue,motorway,false,2,7.6,true,false,false,0,142.8,Iganmu and Ijora,8064810
+W206634570,Williams Close,residential,false,0,7.5,false,false,false,0,176.4,Iganmu and Ijora,206634570
+W1432708065,Yisa Braimoh Close,residential,false,0,7.5,false,false,false,0,155.6,Iganmu and Ijora,1432708065
+W1432708066,Yisa Braimoh Close,residential,false,0,7.5,false,false,false,0,116.9,Iganmu and Ijora,1432708066
+W206634567,Yisa Braimoh Close,residential,false,0,7.5,false,false,false,0,60.7,Iganmu and Ijora,206634567
+W144840500,Young Lane,residential,false,0,7.5,false,false,false,0,186.6,Iganmu and Ijora,144840500
+W106100711,Yussuf Sanusi Street,residential,false,0,7.5,false,false,false,0,242.6,Iganmu and Ijora,106100711
+W1432700234,Yusuf Esan Street,residential,false,0,7.5,false,false,false,0,313.4,Iganmu and Ijora,1432700234
+W167404430,Yusuf Esan Street,residential,false,0,7.5,false,false,false,0,256.4,Iganmu and Ijora,167404430
+W167068978,Zacheus Street,residential,false,0,7.5,false,false,false,0,243.6,Iganmu and Ijora,167068978
+W1017820152,,service,false,0,5.0,false,false,false,0,105.8,Iganmu and Ijora,1017820152
+W1017820153,,service,false,0,5.0,false,false,false,0,123.4,Iganmu and Ijora,1017820153
+W1017820154,,service,false,0,5.0,false,false,false,0,48.5,Iganmu and Ijora,1017820154
+W1017820710,,residential,false,0,7.5,false,false,false,0,55.1,Iganmu and Ijora,1017820710
+W1018168060,,service,false,0,5.0,false,false,false,0,6.5,Iganmu and Ijora,1018168060
+W1018179346,,service,false,0,5.0,false,false,false,0,9.4,Iganmu and Ijora,1018179346
+W1018179347,,service,false,0,5.0,false,false,false,0,9.3,Iganmu and Ijora,1018179347
+W1018179405,,service,false,0,5.0,false,false,false,0,89.6,Iganmu and Ijora,1018179405
+W1018179488,,residential,false,0,7.5,false,false,false,0,207.0,Iganmu and Ijora,1018179488
+W1018179961,,service,false,0,5.0,false,false,false,0,18.1,Iganmu and Ijora,1018179961
+W1018179962,,service,false,0,5.0,false,false,false,0,17.8,Iganmu and Ijora,1018179962
+W1018945591,,service,false,0,5.0,false,false,false,0,47.9,Iganmu and Ijora,1018945591
+W1018947917,,service,false,0,5.0,false,false,false,0,124.8,Iganmu and Ijora,1018947917
+W1018947918,,service,false,0,5.0,false,false,false,0,55.4,Iganmu and Ijora,1018947918
+W1019041945,,service,false,0,5.0,false,false,false,0,65.6,Iganmu and Ijora,1019041945
+W1019901743,,service,false,0,5.0,false,false,false,0,82.4,Iganmu and Ijora,1019901743
+W1019905017,,residential,false,0,7.5,false,false,false,0,83.3,Iganmu and Ijora,1019905017
+W1028634127,,service,false,0,5.0,false,false,false,0,55.0,Iganmu and Ijora,1028634127
+W1028634128,,service,false,0,5.0,false,false,false,0,76.1,Iganmu and Ijora,1028634128
+W1028634129,,service,false,0,5.0,false,false,false,0,70.3,Iganmu and Ijora,1028634129
+W1032444359,,service,false,0,5.0,false,false,false,0,38.4,Iganmu and Ijora,1032444359
+W1032763214,,residential,false,0,7.5,false,false,false,0,7.6,Iganmu and Ijora,1032763214
+W1034360279,,service,false,0,5.0,false,false,false,0,34.1,Iganmu and Ijora,1034360279
+W1034360527,,service,false,0,5.0,false,false,false,0,31.5,Iganmu and Ijora,1034360527
+W1034360528,,service,false,0,5.0,false,false,false,0,27.6,Iganmu and Ijora,1034360528
+W1034361171,,service,false,0,5.0,false,false,false,0,122.7,Iganmu and Ijora,1034361171
+W1034362191,,service,false,0,5.0,false,false,false,0,49.8,Iganmu and Ijora,1034362191
+W1034362442,,service,false,0,5.0,false,false,false,0,10.0,Iganmu and Ijora,1034362442
+W1034362443,,service,false,0,5.0,false,false,false,0,34.4,Iganmu and Ijora,1034362443
+W1034363147,,service,false,0,5.0,false,false,false,0,82.5,Iganmu and Ijora,1034363147
+W1034363148,,service,false,0,5.0,false,false,false,0,80.9,Iganmu and Ijora,1034363148
+W1034363869,,service,false,0,5.0,false,false,false,0,129.8,Iganmu and Ijora,1034363869
+W1034390723,,residential,false,0,7.5,false,false,false,0,54.2,Iganmu and Ijora,1034390723
+W1034390724,,residential,false,0,7.5,false,false,false,0,48.8,Iganmu and Ijora,1034390724
+W1034390856,,service,false,0,5.0,false,false,false,0,115.4,Iganmu and Ijora,1034390856
+W1034391609,,service,false,0,5.0,false,false,false,0,62.3,Iganmu and Ijora,1034391609
+W1034391788,,service,false,0,5.0,false,false,false,0,64.8,Iganmu and Ijora,1034391788
+W1034445632,,service,false,0,5.0,false,false,false,0,68.3,Iganmu and Ijora,1034445632
+W1034445633,,service,false,0,5.0,false,false,false,0,68.0,Iganmu and Ijora,1034445633
+W1034445634,,service,false,0,5.0,false,false,false,0,67.8,Iganmu and Ijora,1034445634
+W1034445635,,service,false,0,5.0,false,false,false,0,67.6,Iganmu and Ijora,1034445635
+W1034445636,,service,false,0,5.0,false,false,false,0,88.8,Iganmu and Ijora,1034445636
+W1034445637,,service,false,0,5.0,false,false,false,0,79.8,Iganmu and Ijora,1034445637
+W1034691528,,service,false,0,5.0,false,false,false,0,71.2,Iganmu and Ijora,1034691528
+W1034691529,,service,false,0,5.0,false,false,false,0,93.6,Iganmu and Ijora,1034691529
+W1034691530,,service,false,0,5.0,false,false,false,0,138.2,Iganmu and Ijora,1034691530
+W1034693662,,service,false,0,5.0,false,false,false,0,58.9,Iganmu and Ijora,1034693662
+W1034693663,,service,false,0,5.0,false,false,false,0,60.5,Iganmu and Ijora,1034693663
+W1034693664,,service,false,0,5.0,false,false,false,0,56.3,Iganmu and Ijora,1034693664
+W1034693665,,service,false,0,5.0,false,false,false,0,173.4,Iganmu and Ijora,1034693665
+W1035896861,,service,false,0,5.0,false,false,false,0,35.3,Iganmu and Ijora,1035896861
+W1035896862,,service,false,0,5.0,false,false,false,0,100.0,Iganmu and Ijora,1035896862
+W1035914875,,service,false,0,5.0,false,false,false,0,72.3,Iganmu and Ijora,1035914875
+W1035915406,,service,false,0,5.0,false,false,false,0,11.0,Iganmu and Ijora,1035915406
+W1035915531,,residential,false,0,7.5,false,false,false,0,64.1,Iganmu and Ijora,1035915531
+W1035915660,,residential,false,0,7.5,false,false,false,0,74.2,Iganmu and Ijora,1035915660
+W1037025947,,residential,false,0,7.5,false,false,false,0,118.1,Iganmu and Ijora,1037025947
+W1043800918,,tertiary,false,0,10.0,true,false,false,0,220.5,Iganmu and Ijora,1043800918
+W1043800919,,tertiary,false,0,10.0,true,false,false,0,217.3,Iganmu and Ijora,1043800919
+W1043800920,,secondary,false,0,13.0,true,true,false,0,254.7,Iganmu and Ijora,1043800920
+W1043800921,,motorway,true,0,7.5,true,false,false,0,186.7,Iganmu and Ijora,1043800921
+W1043800922,,motorway,true,0,7.5,true,true,false,0,124.6,Iganmu and Ijora,1043800922
+W1043800923,,motorway,true,0,7.5,true,true,false,0,123.5,Iganmu and Ijora,1043800923
+W1043800924,,motorway,true,0,7.5,true,false,false,0,70.9,Iganmu and Ijora,1043800924
+W1043800925,,motorway,true,0,7.5,true,false,false,0,189.8,Iganmu and Ijora,1043800925
+W1043800926,,motorway,true,0,7.5,true,false,false,0,72.3,Iganmu and Ijora,1043800926
+W1043800927,,motorway,true,0,7.5,true,false,false,0,166.2,Iganmu and Ijora,1043800927
+W1043800928,,motorway,true,0,7.5,true,false,false,0,163.9,Iganmu and Ijora,1043800928
+W1043800929,,motorway,true,0,7.5,true,true,false,0,132.5,Iganmu and Ijora,1043800929
+W1043800930,,motorway,true,0,7.5,true,true,false,0,127.2,Iganmu and Ijora,1043800930
+W1043800931,,motorway,true,0,7.5,true,false,false,0,98.2,Iganmu and Ijora,1043800931
+W1043800932,,motorway,true,0,7.5,true,false,false,0,94.2,Iganmu and Ijora,1043800932
+W1063207974,,service,false,0,5.0,false,false,false,0,68.1,Iganmu and Ijora,1063207974
+W1063223935,,residential,false,0,7.5,false,false,false,0,70.0,Iganmu and Ijora,1063223935
+W1063473193,,service,false,0,5.0,false,false,false,0,45.9,Iganmu and Ijora,1063473193
+W1063473976,,service,false,0,5.0,false,false,false,0,33.0,Iganmu and Ijora,1063473976
+W1063474453,,service,false,0,5.0,true,false,false,0,12.1,Iganmu and Ijora,1063474453
+W1063474454,,service,false,0,5.0,true,false,false,0,12.2,Iganmu and Ijora,1063474454
+W1063474455,,service,false,0,5.0,true,false,false,0,39.8,Iganmu and Ijora,1063474455
+W1063474456,,service,false,0,5.0,false,false,false,0,46.8,Iganmu and Ijora,1063474456
+W1063475035,,service,false,0,5.0,false,false,false,0,37.0,Iganmu and Ijora,1063475035
+W1063814697,,service,false,0,5.0,false,false,false,0,106.8,Iganmu and Ijora,1063814697
+W1063814699,,service,false,0,5.0,false,false,false,0,308.0,Iganmu and Ijora,1063814699
+W1063831082,,service,false,0,5.0,false,false,false,0,16.2,Iganmu and Ijora,1063831082
+W1063831083,,service,false,0,5.0,false,false,false,0,57.4,Iganmu and Ijora,1063831083
+W1063831084,,service,false,0,5.0,false,false,false,0,77.9,Iganmu and Ijora,1063831084
+W1063831691,,service,false,0,5.0,false,false,false,0,119.4,Iganmu and Ijora,1063831691
+W1063832636,,service,false,0,5.0,false,false,false,0,8.6,Iganmu and Ijora,1063832636
+W1063833522,,service,false,0,5.0,false,false,false,0,36.4,Iganmu and Ijora,1063833522
+W1063994923,,service,false,0,5.0,false,false,false,0,98.6,Iganmu and Ijora,1063994923
+W1064233694,,service,false,0,5.0,false,false,false,0,53.2,Iganmu and Ijora,1064233694
+W1064234078,,service,false,0,5.0,false,false,false,0,27.8,Iganmu and Ijora,1064234078
+W1064235016,,service,false,0,5.0,false,false,false,0,64.9,Iganmu and Ijora,1064235016
+W1064236598,,service,false,0,5.0,false,false,false,0,84.8,Iganmu and Ijora,1064236598
+W1065067266,,service,false,0,5.0,false,false,false,0,33.1,Iganmu and Ijora,1065067266
+W1065410102,,service,false,0,5.0,false,false,false,0,54.2,Iganmu and Ijora,1065410102
+W1065410480,,service,false,0,5.0,false,false,false,0,31.9,Iganmu and Ijora,1065410480
+W1065788575,,service,false,0,5.0,false,false,false,0,15.8,Iganmu and Ijora,1065788575
+W1065788576,,service,false,0,5.0,false,false,false,0,15.9,Iganmu and Ijora,1065788576
+W1065788577,,service,false,0,5.0,false,false,false,0,9.8,Iganmu and Ijora,1065788577
+W1065788578,,service,false,0,5.0,false,false,false,0,47.1,Iganmu and Ijora,1065788578
+W1065789181,,residential,false,0,7.5,false,false,false,0,66.4,Iganmu and Ijora,1065789181
+W1077589257,,service,false,0,5.0,false,false,false,0,40.9,Iganmu and Ijora,1077589257
+W1077870322,,residential,false,0,7.5,false,false,false,0,2.8,Iganmu and Ijora,1077870322
+W1078099893,,service,false,0,5.0,false,false,false,0,6.8,Iganmu and Ijora,1078099893
+W1078099894,,service,false,0,5.0,false,false,false,0,40.8,Iganmu and Ijora,1078099894
+W1078099895,,service,false,0,5.0,false,false,false,0,35.6,Iganmu and Ijora,1078099895
+W1078099896,,service,false,0,5.0,false,false,false,0,30.4,Iganmu and Ijora,1078099896
+W1078099897,,service,false,0,5.0,false,false,false,0,7.0,Iganmu and Ijora,1078099897
+W1078100326,,service,false,0,5.0,false,false,false,0,52.0,Iganmu and Ijora,1078100326
+W1079672198,,residential,false,0,7.5,false,false,false,0,60.0,Iganmu and Ijora,1079672198
+W1079672199,,service,false,0,5.0,false,false,false,0,24.1,Iganmu and Ijora,1079672199
+W1079672200,,service,false,0,5.0,false,false,false,0,39.0,Iganmu and Ijora,1079672200
+W1079672201,,service,false,0,5.0,false,false,false,0,26.7,Iganmu and Ijora,1079672201
+W1082256581,,service,false,0,5.0,false,false,false,0,67.8,Iganmu and Ijora,1082256581
+W1082807900,,service,false,0,5.0,false,false,false,0,51.4,Iganmu and Ijora,1082807900
+W1082807901,,residential,false,0,7.5,false,false,false,0,73.0,Iganmu and Ijora,1082807901
+W1082807902,,residential,false,0,7.5,false,false,false,0,107.2,Iganmu and Ijora,1082807902
+W1082808203,,service,false,0,5.0,false,false,false,0,58.1,Iganmu and Ijora,1082808203
+W1082812359,,service,false,0,5.0,false,false,false,0,115.5,Iganmu and Ijora,1082812359
+W1082825701,,service,false,0,5.0,false,false,false,0,9.6,Iganmu and Ijora,1082825701
+W1094401224,,residential,false,0,7.5,false,false,false,0,60.8,Iganmu and Ijora,1094401224
+W1094401225,,residential,false,0,7.5,false,false,false,0,119.5,Iganmu and Ijora,1094401225
+W1094401226,,residential,false,0,7.5,false,false,false,0,52.8,Iganmu and Ijora,1094401226
+W1094401227,,residential,false,0,7.5,false,false,false,0,116.2,Iganmu and Ijora,1094401227
+W1096771799,,service,false,0,5.0,false,false,false,0,75.7,Iganmu and Ijora,1096771799
+W1096875680,,residential,false,0,7.5,false,false,false,0,30.1,Iganmu and Ijora,1096875680
+W1096875829,,service,false,0,5.0,false,false,false,0,72.6,Iganmu and Ijora,1096875829
+W1096875830,,service,false,0,5.0,false,false,false,0,88.4,Iganmu and Ijora,1096875830
+W1096894590,,service,false,0,5.0,false,false,false,0,23.7,Iganmu and Ijora,1096894590
+W1097263571,,service,false,0,5.0,false,false,false,0,11.2,Iganmu and Ijora,1097263571
+W1098549364,,motorway,false,0,24.0,true,false,false,0,124.9,Iganmu and Ijora,1098549364
+W1104899175,,residential,false,0,7.5,false,false,false,0,127.3,Iganmu and Ijora,1104899175
+W1104899176,,residential,false,0,7.5,false,false,false,0,116.6,Iganmu and Ijora,1104899176
+W1104899177,,residential,false,0,7.5,false,false,false,0,35.5,Iganmu and Ijora,1104899177
+W1107005451,,service,false,0,5.0,false,false,false,0,268.2,Iganmu and Ijora,1107005451
+W1111972288,,service,false,0,5.0,false,false,false,0,48.1,Iganmu and Ijora,1111972288
+W1112189650,,residential,false,0,7.5,false,false,false,0,18.4,Iganmu and Ijora,1112189650
+W1112197992,,service,false,0,5.0,false,false,false,0,36.5,Iganmu and Ijora,1112197992
+W1112197993,,service,false,0,5.0,false,false,false,0,27.7,Iganmu and Ijora,1112197993
+W1115992301,,residential,false,0,7.5,false,false,false,0,25.8,Iganmu and Ijora,1115992301
+W1115992304,,residential,false,0,7.5,false,false,false,0,140.7,Iganmu and Ijora,1115992304
+W1121680868,,service,false,0,5.0,false,false,false,0,91.3,Iganmu and Ijora,1121680868
+W1122215620,,service,false,0,5.0,false,false,false,0,44.6,Iganmu and Ijora,1122215620
+W1125116629,,service,false,0,5.0,false,false,false,0,27.6,Iganmu and Ijora,1125116629
+W1125116630,,service,false,0,5.0,false,false,false,0,92.2,Iganmu and Ijora,1125116630
+W1125116631,,service,false,0,5.0,false,false,false,0,41.3,Iganmu and Ijora,1125116631
+W1125364143,,service,false,0,5.0,false,false,false,0,199.4,Iganmu and Ijora,1125364143
+W1125364728,,service,false,0,5.0,false,false,false,0,59.2,Iganmu and Ijora,1125364728
+W1125366464,,service,false,0,5.0,false,false,false,0,56.5,Iganmu and Ijora,1125366464
+W1133355582,,service,false,0,5.0,false,false,false,0,58.5,Iganmu and Ijora,1133355582
+W1133355609,,service,false,0,5.0,false,false,false,0,65.7,Iganmu and Ijora,1133355609
+W1134414186,,service,false,0,5.0,false,false,false,0,42.6,Iganmu and Ijora,1134414186
+W1134415282,,service,false,0,5.0,false,false,false,0,64.8,Iganmu and Ijora,1134415282
+W1134437478,,service,false,0,5.0,false,false,false,0,870.2,Iganmu and Ijora,1134437478
+W113519423,,residential,false,0,7.5,false,false,false,0,213.5,Iganmu and Ijora,113519423
+W113519424,,residential,false,0,7.5,false,false,false,0,596.6,Iganmu and Ijora,113519424
+W113519438,,residential,false,0,7.5,false,false,false,0,228.4,Iganmu and Ijora,113519438
+W113519439,,residential,false,0,7.5,false,false,false,0,794.8,Iganmu and Ijora,113519439
+W113519440,,residential,false,0,7.5,false,false,false,0,400.3,Iganmu and Ijora,113519440
+W113519441,,residential,false,0,7.5,false,false,false,0,1168.5,Iganmu and Ijora,113519441
+W113519442,,residential,false,0,7.5,false,false,false,0,825.7,Iganmu and Ijora,113519442
+W113520304,,residential,false,0,7.5,false,false,false,0,521.6,Iganmu and Ijora,113520304
+W113521728,,residential,false,0,7.5,false,false,false,0,642.3,Iganmu and Ijora,113521728
+W113521733,,residential,false,0,7.5,false,false,false,0,578.8,Iganmu and Ijora,113521733
+W113521761,,residential,false,0,7.5,false,false,false,0,358.5,Iganmu and Ijora,113521761
+W113521766,,residential,false,0,7.5,false,false,false,0,195.1,Iganmu and Ijora,113521766
+W113521768,,residential,false,0,7.5,false,false,false,0,382.3,Iganmu and Ijora,113521768
+W113521773,,residential,false,0,7.5,false,false,false,0,849.2,Iganmu and Ijora,113521773
+W113521777,,residential,false,0,7.5,false,false,false,0,188.8,Iganmu and Ijora,113521777
+W113521778,,residential,false,0,7.5,false,false,false,0,411.3,Iganmu and Ijora,113521778
+W113522907,,residential,false,0,7.5,false,false,false,0,437.5,Iganmu and Ijora,113522907
+W113522908,,residential,false,0,7.5,false,false,false,0,343.7,Iganmu and Ijora,113522908
+W113522909,,residential,false,0,7.5,false,false,false,0,376.4,Iganmu and Ijora,113522909
+W113522910,,residential,false,0,7.5,false,false,false,0,327.2,Iganmu and Ijora,113522910
+W113522912,,residential,false,0,7.5,false,false,false,0,333.6,Iganmu and Ijora,113522912
+W113525852,,residential,false,0,7.5,false,false,false,0,347.6,Iganmu and Ijora,113525852
+W113525856,,residential,false,0,7.5,false,false,false,0,138.6,Iganmu and Ijora,113525856
+W113525857,,residential,false,0,7.5,false,false,false,0,313.1,Iganmu and Ijora,113525857
+W113525859,,residential,false,0,7.5,false,false,false,0,282.1,Iganmu and Ijora,113525859
+W113525860,,residential,false,0,7.5,false,false,false,0,251.6,Iganmu and Ijora,113525860
+W113525861,,residential,false,0,7.5,false,false,false,0,252.1,Iganmu and Ijora,113525861
+W113525862,,residential,false,0,7.5,false,false,false,0,252.1,Iganmu and Ijora,113525862
+W113525865,,residential,false,0,7.5,false,false,false,0,320.2,Iganmu and Ijora,113525865
+W113525869,,residential,false,0,7.5,false,false,false,0,655.4,Iganmu and Ijora,113525869
+W114912338,,residential,false,0,7.5,false,false,false,0,148.4,Iganmu and Ijora,114912338
+W114912339,,residential,false,0,7.5,false,false,false,0,437.0,Iganmu and Ijora,114912339
+W114912340,,residential,false,0,7.5,false,false,false,0,393.5,Iganmu and Ijora,114912340
+W114912341,,residential,false,0,7.5,false,false,false,0,703.6,Iganmu and Ijora,114912341
+W114912342,,residential,false,0,7.5,false,false,false,0,94.5,Iganmu and Ijora,114912342
+W114912343,,residential,false,0,7.5,false,false,false,0,90.2,Iganmu and Ijora,114912343
+W114912345,,residential,false,0,7.5,false,false,false,0,491.0,Iganmu and Ijora,114912345
+W114912346,,residential,false,0,7.5,false,false,false,0,449.9,Iganmu and Ijora,114912346
+W1155981596,,service,false,0,5.0,false,false,false,0,60.4,Iganmu and Ijora,1155981596
+W1155981597,,service,false,0,5.0,false,false,false,0,100.8,Iganmu and Ijora,1155981597
+W1155981598,,service,false,0,5.0,false,false,false,0,97.0,Iganmu and Ijora,1155981598
+W1155981599,,residential,false,0,7.5,false,false,false,0,56.3,Iganmu and Ijora,1155981599
+W1155981600,,service,false,0,5.0,false,false,false,0,116.1,Iganmu and Ijora,1155981600
+W1161970739,,service,false,0,5.0,false,false,false,0,156.4,Iganmu and Ijora,1161970739
+W1161970740,,service,false,0,5.0,false,false,false,0,80.1,Iganmu and Ijora,1161970740
+W1161970741,,service,false,0,5.0,false,false,false,0,72.5,Iganmu and Ijora,1161970741
+W1161970742,,service,false,0,5.0,false,false,false,0,74.7,Iganmu and Ijora,1161970742
+W1161970743,,service,false,0,5.0,false,false,false,0,71.1,Iganmu and Ijora,1161970743
+W1168962133,,service,false,0,5.0,false,false,false,0,42.6,Iganmu and Ijora,1168962133
+W1169827548,,service,false,0,5.0,false,false,false,0,54.1,Iganmu and Ijora,1169827548
+W1169830809,,service,false,0,5.0,false,false,false,0,35.0,Iganmu and Ijora,1169830809
+W1169909828,,service,false,0,5.0,false,false,false,0,48.9,Iganmu and Ijora,1169909828
+W1169909829,,service,false,0,5.0,false,false,false,0,42.7,Iganmu and Ijora,1169909829
+W1170478295,,service,false,0,5.0,false,false,false,0,14.6,Iganmu and Ijora,1170478295
+W1180390416,,residential,false,0,7.5,false,false,false,0,5.6,Iganmu and Ijora,1180390416
+W1180390417,,residential,false,0,7.5,false,false,false,0,47.9,Iganmu and Ijora,1180390417
+W1180391129,,residential,false,0,7.5,false,false,false,0,81.4,Iganmu and Ijora,1180391129
+W1185410513,,residential,false,0,7.5,false,false,false,0,46.5,Iganmu and Ijora,1185410513
+W1185410514,,residential,false,0,7.5,false,false,false,0,36.1,Iganmu and Ijora,1185410514
+W1185627228,,service,false,0,5.0,false,false,false,0,54.5,Iganmu and Ijora,1185627228
+W1185627229,,service,false,0,5.0,false,false,false,0,46.8,Iganmu and Ijora,1185627229
+W1187971234,,residential,false,0,7.5,false,false,false,0,44.8,Iganmu and Ijora,1187971234
+W1187971236,,service,false,0,5.0,false,false,false,0,42.6,Iganmu and Ijora,1187971236
+W1192761611,,service,false,0,5.0,false,false,false,0,32.2,Iganmu and Ijora,1192761611
+W1198571455,,residential,false,0,7.5,false,false,false,0,9.3,Iganmu and Ijora,1198571455
+W1207909451,,service,false,0,5.0,false,false,false,0,249.8,Iganmu and Ijora,1207909451
+W1207909452,,service,false,0,5.0,false,false,false,0,38.4,Iganmu and Ijora,1207909452
+W1207909453,,service,false,0,5.0,false,false,false,0,70.8,Iganmu and Ijora,1207909453
+W1207909454,,service,false,0,5.0,false,false,false,0,104.8,Iganmu and Ijora,1207909454
+W1207909456,,service,false,0,5.0,false,false,false,0,153.7,Iganmu and Ijora,1207909456
+W1208989781,,service,false,0,5.0,false,false,false,0,76.8,Iganmu and Ijora,1208989781
+W1208989782,,service,false,0,5.0,false,false,false,0,136.8,Iganmu and Ijora,1208989782
+W1208989783,,service,false,0,5.0,false,false,false,0,42.6,Iganmu and Ijora,1208989783
+W1208989785,,service,false,0,5.0,false,false,false,0,45.6,Iganmu and Ijora,1208989785
+W1219444004,,residential,false,0,7.5,false,false,false,0,122.6,Iganmu and Ijora,1219444004
+W1219444005,,residential,false,0,7.5,false,false,false,0,75.3,Iganmu and Ijora,1219444005
+W1219444006,,residential,false,0,7.5,false,false,false,0,166.5,Iganmu and Ijora,1219444006
+W1219444007,,residential,false,0,7.5,false,false,false,0,163.0,Iganmu and Ijora,1219444007
+W1219444008,,residential,false,0,7.5,false,false,false,0,165.5,Iganmu and Ijora,1219444008
+W1219444009,,residential,false,0,7.5,false,false,false,0,163.9,Iganmu and Ijora,1219444009
+W1219444010,,residential,false,0,7.5,false,false,false,0,167.6,Iganmu and Ijora,1219444010
+W1219444011,,residential,false,0,7.5,false,false,false,0,69.1,Iganmu and Ijora,1219444011
+W1219444012,,residential,false,0,7.5,false,false,false,0,16.0,Iganmu and Ijora,1219444012
+W1220169162,,service,false,0,5.0,false,false,false,0,14.4,Iganmu and Ijora,1220169162
+W1221654398,,service,false,0,5.0,false,false,false,0,107.1,Iganmu and Ijora,1221654398
+W1221654399,,service,false,0,5.0,false,false,false,0,50.1,Iganmu and Ijora,1221654399
+W1222388843,,service,false,0,5.0,true,false,false,0,187.5,Iganmu and Ijora,1222388843
+W1222390333,,motorway,true,0,7.5,true,true,false,0,485.5,Iganmu and Ijora,1222390333
+W1222843738,,trunk,true,0,7.5,true,false,false,0,50.8,Iganmu and Ijora,1222843738
+W1226370968,,residential,false,0,7.5,false,false,false,0,48.9,Iganmu and Ijora,1226370968
+W1226370969,,residential,false,0,7.5,false,false,false,0,43.5,Iganmu and Ijora,1226370969
+W1226370970,,service,false,0,5.0,false,false,false,0,55.0,Iganmu and Ijora,1226370970
+W1226370971,,service,false,0,5.0,false,false,false,0,47.3,Iganmu and Ijora,1226370971
+W1226370972,,service,false,0,5.0,false,false,false,0,29.4,Iganmu and Ijora,1226370972
+W1226370973,,service,false,0,5.0,false,false,false,0,34.5,Iganmu and Ijora,1226370973
+W1226370974,,service,false,0,5.0,false,false,false,0,113.2,Iganmu and Ijora,1226370974
+W1226398683,,residential,false,0,7.5,false,false,false,0,120.5,Iganmu and Ijora,1226398683
+W1226648834,,service,false,0,5.0,false,false,false,0,35.5,Iganmu and Ijora,1226648834
+W1226648835,,residential,false,0,7.5,false,false,false,0,28.7,Iganmu and Ijora,1226648835
+W1226648838,,residential,false,0,7.5,false,false,false,0,32.5,Iganmu and Ijora,1226648838
+W1226648840,,service,false,0,5.0,false,false,false,0,99.6,Iganmu and Ijora,1226648840
+W1226648841,,service,false,0,5.0,false,false,false,0,111.8,Iganmu and Ijora,1226648841
+W1228996724,,service,false,0,5.0,false,false,false,0,15.4,Iganmu and Ijora,1228996724
+W1228996725,,service,false,0,5.0,false,false,false,0,142.8,Iganmu and Ijora,1228996725
+W1229607222,,service,false,0,5.0,false,false,false,0,40.0,Iganmu and Ijora,1229607222
+W1229607223,,service,false,0,5.0,false,false,false,0,47.5,Iganmu and Ijora,1229607223
+W1230226618,,service,false,0,5.0,false,false,false,0,11.3,Iganmu and Ijora,1230226618
+W1230226621,,service,false,0,5.0,false,false,false,0,67.2,Iganmu and Ijora,1230226621
+W1230226622,,service,false,0,5.0,false,false,false,0,119.1,Iganmu and Ijora,1230226622
+W1230229162,,service,false,0,5.0,false,false,false,0,32.7,Iganmu and Ijora,1230229162
+W1230229163,,service,false,0,5.0,false,false,false,0,156.9,Iganmu and Ijora,1230229163
+W1230462175,,service,false,0,5.0,false,false,false,0,36.6,Iganmu and Ijora,1230462175
+W1230462176,,service,false,0,5.0,false,false,false,0,95.4,Iganmu and Ijora,1230462176
+W1230462177,,service,false,0,5.0,false,false,false,0,53.2,Iganmu and Ijora,1230462177
+W1230474545,,service,false,0,5.0,false,false,false,0,212.1,Iganmu and Ijora,1230474545
+W1230474546,,service,false,0,5.0,false,false,false,0,117.3,Iganmu and Ijora,1230474546
+W1242100149,,residential,false,0,7.5,false,false,false,0,34.5,Iganmu and Ijora,1242100149
+W1242100150,,residential,false,0,7.5,false,false,false,0,47.7,Iganmu and Ijora,1242100150
+W1246215671,,service,false,0,5.0,false,false,false,0,21.9,Iganmu and Ijora,1246215671
+W1246215672,,service,false,0,5.0,false,false,false,0,67.7,Iganmu and Ijora,1246215672
+W1246215673,,service,false,0,5.0,false,false,false,0,34.8,Iganmu and Ijora,1246215673
+W1246215674,,service,false,0,5.0,false,false,false,0,12.3,Iganmu and Ijora,1246215674
+W1267164182,,residential,false,0,7.5,false,false,false,0,100.0,Iganmu and Ijora,1267164182
+W1268659513,,residential,false,0,7.5,false,false,false,0,640.1,Iganmu and Ijora,1268659513
+W1278045326,,service,false,0,5.0,false,false,false,0,15.6,Iganmu and Ijora,1278045326
+W1285185671,,residential,false,0,7.5,false,false,false,0,64.8,Iganmu and Ijora,1285185671
+W1285185679,,residential,false,0,7.5,false,false,false,0,219.3,Iganmu and Ijora,1285185679
+W1285185729,,residential,false,0,7.5,false,false,false,0,79.4,Iganmu and Ijora,1285185729
+W1285185732,,residential,false,0,7.5,false,false,false,0,81.4,Iganmu and Ijora,1285185732
+W1289504252,,unclassified,false,0,7.5,false,false,false,0,22.8,Iganmu and Ijora,1289504252
+W1289504253,,unclassified,false,0,7.5,false,true,false,0,40.8,Iganmu and Ijora,1289504253
+W1289504254,,residential,false,0,7.5,false,true,false,0,32.2,Iganmu and Ijora,1289504254
+W1289504255,,residential,false,0,7.5,false,false,false,0,89.5,Iganmu and Ijora,1289504255
+W1289504257,,residential,false,0,7.5,false,true,false,0,18.6,Iganmu and Ijora,1289504257
+W1289504258,,residential,false,0,7.5,false,true,false,0,38.3,Iganmu and Ijora,1289504258
+W1289504259,,residential,false,0,7.5,false,false,false,0,82.1,Iganmu and Ijora,1289504259
+W1289504260,,residential,false,0,7.5,false,true,false,0,34.3,Iganmu and Ijora,1289504260
+W1289504261,,residential,false,0,7.5,false,false,false,0,101.1,Iganmu and Ijora,1289504261
+W1289507300,,residential,false,0,7.5,false,true,false,0,54.3,Iganmu and Ijora,1289507300
+W1289507301,,residential,false,0,7.5,false,false,false,0,59.3,Iganmu and Ijora,1289507301
+W1289507304,,residential,false,0,7.5,false,false,false,0,20.3,Iganmu and Ijora,1289507304
+W1289507306,,residential,false,0,7.5,false,true,false,0,25.4,Iganmu and Ijora,1289507306
+W1289507307,,residential,false,0,7.5,false,false,false,0,26.5,Iganmu and Ijora,1289507307
+W1289507309,,residential,false,0,7.5,false,false,false,0,35.4,Iganmu and Ijora,1289507309
+W1289507310,,residential,false,0,7.5,false,true,false,0,38.1,Iganmu and Ijora,1289507310
+W1289507311,,residential,false,0,7.5,false,false,false,0,75.7,Iganmu and Ijora,1289507311
+W1289507312,,residential,false,0,7.5,false,false,false,0,75.7,Iganmu and Ijora,1289507312
+W1289507313,,residential,false,0,7.5,false,true,false,0,66.3,Iganmu and Ijora,1289507313
+W1289507314,,residential,false,0,7.5,false,false,false,0,60.0,Iganmu and Ijora,1289507314
+W1289507317,,residential,false,0,7.5,false,false,false,0,29.5,Iganmu and Ijora,1289507317
+W1289507318,,residential,false,0,7.5,false,false,false,0,33.4,Iganmu and Ijora,1289507318
+W1289680690,,residential,false,0,7.5,false,false,false,0,16.6,Iganmu and Ijora,1289680690
+W1289680691,,residential,false,0,7.5,false,false,false,0,23.1,Iganmu and Ijora,1289680691
+W1289685318,,residential,false,0,7.5,false,false,false,0,27.9,Iganmu and Ijora,1289685318
+W1289685319,,residential,false,0,7.5,false,false,false,0,236.6,Iganmu and Ijora,1289685319
+W1305002961,,residential,false,0,7.5,false,false,false,0,134.8,Iganmu and Ijora,1305002961
+W1322662004,,residential,false,0,7.5,false,false,false,0,104.2,Iganmu and Ijora,1322662004
+W1325626151,,residential,false,0,7.5,false,false,false,0,22.4,Iganmu and Ijora,1325626151
+W1325626152,,residential,false,0,7.5,false,false,false,0,6.3,Iganmu and Ijora,1325626152
+W1331677599,,service,false,0,5.0,false,false,false,0,25.2,Iganmu and Ijora,1331677599
+W1331677600,,service,false,0,5.0,false,false,false,0,30.0,Iganmu and Ijora,1331677600
+W1331677601,,service,false,0,5.0,false,false,false,0,16.3,Iganmu and Ijora,1331677601
+W1333115594,,residential,false,0,7.5,false,false,false,0,756.2,Iganmu and Ijora,1333115594
+W1333258409,,service,false,0,5.0,false,false,false,0,53.9,Iganmu and Ijora,1333258409
+W1333258410,,residential,false,0,7.5,false,false,false,0,36.6,Iganmu and Ijora,1333258410
+W1333258411,,residential,false,0,7.5,false,false,false,0,88.5,Iganmu and Ijora,1333258411
+W1333258412,,service,false,0,5.0,false,false,false,0,104.0,Iganmu and Ijora,1333258412
+W1333258413,,service,false,0,5.0,false,false,false,0,125.1,Iganmu and Ijora,1333258413
+W1333258414,,service,false,0,5.0,false,false,false,0,114.0,Iganmu and Ijora,1333258414
+W133795056,,tertiary,false,0,10.0,true,false,false,0,782.4,Iganmu and Ijora,133795056
+W133795059,,motorway,true,0,7.5,true,true,false,0,130.3,Iganmu and Ijora,133795059
+W133795065,,motorway,true,0,7.5,true,true,false,0,185.4,Iganmu and Ijora,133795065
+W133795078,,motorway,true,0,7.5,true,true,false,0,206.9,Iganmu and Ijora,133795078
+W133795085,,motorway,true,0,7.5,true,true,false,0,355.7,Iganmu and Ijora,133795085
+W133795090,,tertiary,false,0,10.0,true,false,false,0,487.4,Iganmu and Ijora,133795090
+W133797421,,unclassified,false,0,7.5,true,true,false,0,166.8,Iganmu and Ijora,133797421
+W133797425,,trunk,true,0,7.5,true,false,false,0,200.7,Iganmu and Ijora,133797425
+W133797430,,tertiary,false,0,10.0,true,true,false,0,325.9,Iganmu and Ijora,133797430
+W133799107,,trunk,true,0,7.5,true,true,false,0,152.8,Iganmu and Ijora,133799107
+W133799108,,trunk,true,0,7.5,true,false,false,0,59.4,Iganmu and Ijora,133799108
+W133799109,,trunk,true,0,7.5,true,false,false,0,167.4,Iganmu and Ijora,133799109
+W133799111,,primary,false,0,17.5,true,false,false,0,80.0,Iganmu and Ijora,133799111
+W133799114,,trunk,true,0,7.5,true,true,false,0,161.2,Iganmu and Ijora,133799114
+W133799117,,trunk,true,0,7.5,true,false,false,0,79.1,Iganmu and Ijora,133799117
+W133799121,,unclassified,false,0,7.5,true,false,false,0,217.0,Iganmu and Ijora,133799121
+W133799122,,primary,true,0,7.5,true,false,false,0,28.2,Iganmu and Ijora,133799122
+W133799124,,unclassified,false,0,7.5,true,false,false,0,217.3,Iganmu and Ijora,133799124
+W133799126,,trunk,true,0,7.5,true,false,false,0,43.2,Iganmu and Ijora,133799126
+W133800602,,motorway,true,0,7.5,true,true,false,0,454.9,Iganmu and Ijora,133800602
+W133800603,,motorway,true,0,7.5,true,false,false,0,74.7,Iganmu and Ijora,133800603
+W133800604,,motorway,true,0,7.5,true,false,false,0,93.3,Iganmu and Ijora,133800604
+W133800605,,motorway,true,0,7.5,true,false,false,0,62.8,Iganmu and Ijora,133800605
+W133800606,,unclassified,false,0,7.5,false,false,false,0,795.5,Iganmu and Ijora,133800606
+W133800607,,motorway,true,0,7.5,true,true,false,0,142.0,Iganmu and Ijora,133800607
+W133800608,,motorway,true,0,7.5,true,false,false,0,64.2,Iganmu and Ijora,133800608
+W133800609,,motorway,true,0,7.5,true,false,false,0,94.7,Iganmu and Ijora,133800609
+W133800610,,primary,false,0,17.5,false,false,false,0,47.9,Iganmu and Ijora,133800610
+W133800612,,tertiary,false,0,10.0,true,false,false,0,625.1,Iganmu and Ijora,133800612
+W133800614,,motorway,true,0,7.5,true,true,false,0,191.1,Iganmu and Ijora,133800614
+W133800618,,motorway,true,0,7.5,true,true,false,0,136.2,Iganmu and Ijora,133800618
+W133800620,,motorway,true,0,7.5,true,false,false,0,235.6,Iganmu and Ijora,133800620
+W133800622,,motorway,true,0,7.5,true,false,false,0,17.5,Iganmu and Ijora,133800622
+W133800623,,motorway,true,0,7.5,true,false,false,0,60.7,Iganmu and Ijora,133800623
+W133800624,,motorway,true,0,7.5,true,true,false,0,252.0,Iganmu and Ijora,133800624
+W133800626,,motorway,true,0,7.5,true,false,false,0,74.2,Iganmu and Ijora,133800626
+W133800627,,service,false,0,5.0,false,false,false,0,425.9,Iganmu and Ijora,133800627
+W133800628,,motorway,true,0,7.5,true,false,false,0,97.3,Iganmu and Ijora,133800628
+W133800629,,motorway,true,0,7.5,true,true,false,0,216.9,Iganmu and Ijora,133800629
+W133800630,,motorway,true,0,7.5,true,false,false,0,453.6,Iganmu and Ijora,133800630
+W133800631,,motorway,true,0,7.5,true,true,false,0,193.1,Iganmu and Ijora,133800631
+W133801171,,residential,false,0,7.5,false,false,false,0,524.2,Iganmu and Ijora,133801171
+W133801173,,residential,false,0,7.5,false,false,false,0,193.3,Iganmu and Ijora,133801173
+W133801179,,residential,false,0,7.5,false,false,false,0,387.8,Iganmu and Ijora,133801179
+W133801182,,residential,false,0,7.5,false,false,false,0,195.8,Iganmu and Ijora,133801182
+W133801187,,motorway,true,0,7.5,true,false,false,0,165.0,Iganmu and Ijora,133801187
+W133803789,,motorway,true,0,7.5,true,false,false,0,107.7,Iganmu and Ijora,133803789
+W133803790,,motorway,true,0,7.5,true,false,false,0,106.7,Iganmu and Ijora,133803790
+W133803794,,motorway,true,0,7.5,true,false,false,80,119.2,Iganmu and Ijora,133803794
+W134153443,,residential,false,0,7.5,false,false,false,0,265.3,Iganmu and Ijora,134153443
+W134153482,,residential,false,0,7.5,false,false,false,0,676.4,Iganmu and Ijora,134153482
+W134157441,,motorway,true,0,7.5,true,false,false,0,8.0,Iganmu and Ijora,134157441
+W134157442,,service,false,0,5.0,false,false,false,0,80.2,Iganmu and Ijora,134157442
+W134160399,,motorway,true,0,7.5,true,false,false,0,11.0,Iganmu and Ijora,134160399
+W134160400,,motorway,true,0,7.5,true,false,false,0,8.0,Iganmu and Ijora,134160400
+W1353054616,,service,false,0,5.0,false,false,false,0,39.7,Iganmu and Ijora,1353054616
+W1353054617,,residential,false,0,7.5,false,false,false,0,72.5,Iganmu and Ijora,1353054617
+W1364655529,,service,false,0,5.0,false,false,false,0,511.8,Iganmu and Ijora,1364655529
+W1364673412,,service,false,0,5.0,false,false,false,0,18.2,Iganmu and Ijora,1364673412
+W1364673413,,service,false,0,5.0,false,false,false,0,22.3,Iganmu and Ijora,1364673413
+W1364673414,,service,false,0,5.0,false,false,false,0,68.4,Iganmu and Ijora,1364673414
+W1364673415,,service,false,0,5.0,false,false,false,0,66.5,Iganmu and Ijora,1364673415
+W1364673416,,service,false,0,5.0,false,false,false,0,25.9,Iganmu and Ijora,1364673416
+W1364673417,,service,false,0,5.0,false,false,false,0,82.4,Iganmu and Ijora,1364673417
+W1364673418,,service,false,0,5.0,false,false,false,0,153.9,Iganmu and Ijora,1364673418
+W1364674135,,service,false,0,5.0,false,false,false,0,33.5,Iganmu and Ijora,1364674135
+W1364674136,,service,false,0,5.0,false,false,false,0,63.1,Iganmu and Ijora,1364674136
+W1364677765,,service,false,0,5.0,false,false,false,0,17.9,Iganmu and Ijora,1364677765
+W1364677766,,service,false,0,5.0,false,false,false,0,15.2,Iganmu and Ijora,1364677766
+W1364680886,,service,false,0,5.0,false,false,false,0,87.7,Iganmu and Ijora,1364680886
+W1364904205,,service,false,0,5.0,false,false,false,0,36.0,Iganmu and Ijora,1364904205
+W1364904206,,service,false,0,5.0,false,false,false,0,55.6,Iganmu and Ijora,1364904206
+W1364904207,,service,false,0,5.0,false,false,false,0,32.8,Iganmu and Ijora,1364904207
+W1364904208,,service,false,0,5.0,false,false,false,0,54.2,Iganmu and Ijora,1364904208
+W1364904209,,service,false,0,5.0,false,false,false,0,12.3,Iganmu and Ijora,1364904209
+W1364904210,,service,false,0,5.0,false,false,false,0,93.7,Iganmu and Ijora,1364904210
+W1364909267,,service,false,0,5.0,false,false,false,0,11.6,Iganmu and Ijora,1364909267
+W1364909268,,service,false,0,5.0,false,false,false,0,89.9,Iganmu and Ijora,1364909268
+W1364909269,,service,false,0,5.0,false,false,false,0,17.6,Iganmu and Ijora,1364909269
+W1364909270,,service,false,0,5.0,false,false,false,0,14.8,Iganmu and Ijora,1364909270
+W1364931389,,service,false,0,5.0,false,false,false,0,48.0,Iganmu and Ijora,1364931389
+W1364948952,,residential,false,0,7.5,false,false,false,0,17.4,Iganmu and Ijora,1364948952
+W1364948953,,service,false,0,5.0,false,false,false,0,28.8,Iganmu and Ijora,1364948953
+W1364948954,,service,false,0,5.0,false,false,false,0,76.4,Iganmu and Ijora,1364948954
+W1364955716,,service,false,0,5.0,false,false,false,0,32.2,Iganmu and Ijora,1364955716
+W1364957549,,service,false,0,5.0,false,false,false,0,32.5,Iganmu and Ijora,1364957549
+W1364958295,,service,false,0,5.0,false,false,false,0,34.7,Iganmu and Ijora,1364958295
+W1365119908,,service,false,0,5.0,false,false,false,0,33.1,Iganmu and Ijora,1365119908
+W1366413754,,service,false,0,5.0,false,false,false,0,49.8,Iganmu and Ijora,1366413754
+W1366548606,,service,false,0,5.0,false,false,false,0,35.9,Iganmu and Ijora,1366548606
+W1368596870,,residential,false,0,7.5,false,false,false,0,190.3,Iganmu and Ijora,1368596870
+W1368597332,,residential,false,0,7.5,false,false,false,0,266.4,Iganmu and Ijora,1368597332
+W1369872445,,residential,false,0,7.5,false,false,false,0,138.1,Iganmu and Ijora,1369872445
+W1371019422,,residential,false,0,7.5,false,false,false,0,102.4,Iganmu and Ijora,1371019422
+W1371019423,,residential,false,0,7.5,false,false,false,0,67.9,Iganmu and Ijora,1371019423
+W1371590549,,service,false,0,5.0,false,false,false,0,15.1,Iganmu and Ijora,1371590549
+W1371590550,,service,false,0,5.0,false,false,false,0,6.3,Iganmu and Ijora,1371590550
+W1371590551,,service,false,0,5.0,false,false,false,0,16.3,Iganmu and Ijora,1371590551
+W1372003869,,service,false,0,5.0,false,false,false,0,11.0,Iganmu and Ijora,1372003869
+W1372247288,,service,false,0,5.0,false,false,false,0,173.4,Iganmu and Ijora,1372247288
+W1372247289,,service,false,0,5.0,false,false,false,0,104.7,Iganmu and Ijora,1372247289
+W1374080356,,service,false,0,5.0,false,false,false,0,42.1,Iganmu and Ijora,1374080356
+W1374080361,,service,false,0,5.0,false,false,false,0,121.7,Iganmu and Ijora,1374080361
+W138040515,,residential,false,0,7.5,false,false,false,0,71.8,Iganmu and Ijora,138040515
+W138040523,,residential,false,0,7.5,false,false,false,0,71.6,Iganmu and Ijora,138040523
+W138040543,,residential,false,0,7.5,false,false,false,0,117.3,Iganmu and Ijora,138040543
+W1382211869,,service,false,0,5.0,false,false,false,0,48.3,Iganmu and Ijora,1382211869
+W1382211870,,service,false,0,5.0,false,false,false,0,39.6,Iganmu and Ijora,1382211870
+W1382211871,,service,false,0,5.0,false,false,false,0,101.1,Iganmu and Ijora,1382211871
+W1383724887,,service,false,0,5.0,false,false,false,0,115.7,Iganmu and Ijora,1383724887
+W1384238938,,service,false,0,5.0,false,false,false,0,117.6,Iganmu and Ijora,1384238938
+W1384238939,,service,false,0,5.0,false,false,false,0,1086.5,Iganmu and Ijora,1384238939
+W1386088186,,service,false,0,5.0,false,false,false,0,6.6,Iganmu and Ijora,1386088186
+W1386088187,,service,false,0,5.0,false,false,false,0,70.2,Iganmu and Ijora,1386088187
+W1386088188,,residential,false,0,7.5,false,false,false,0,71.2,Iganmu and Ijora,1386088188
+W1390131685,,service,false,0,5.0,false,false,false,0,205.7,Iganmu and Ijora,1390131685
+W1390131686,,service,false,0,5.0,false,false,false,0,9.7,Iganmu and Ijora,1390131686
+W1390131687,,service,false,0,5.0,false,false,false,0,49.8,Iganmu and Ijora,1390131687
+W1390131688,,residential,false,0,7.5,false,false,false,0,36.3,Iganmu and Ijora,1390131688
+W1390131689,,service,false,0,5.0,false,false,false,0,119.2,Iganmu and Ijora,1390131689
+W1390131690,,residential,false,0,7.5,false,false,false,0,90.1,Iganmu and Ijora,1390131690
+W1392352253,,residential,false,0,7.5,false,false,false,0,290.3,Iganmu and Ijora,1392352253
+W1392352254,,service,false,0,5.0,false,false,false,0,132.7,Iganmu and Ijora,1392352254
+W1392383993,,residential,false,0,7.5,false,false,false,0,185.9,Iganmu and Ijora,1392383993
+W1392383994,,residential,false,0,7.5,false,false,false,0,110.9,Iganmu and Ijora,1392383994
+W1396053935,,residential,false,0,7.5,false,false,false,0,24.1,Iganmu and Ijora,1396053935
+W1396053936,,service,false,0,5.0,false,false,false,0,33.3,Iganmu and Ijora,1396053936
+W1396053937,,service,false,0,5.0,false,false,false,0,26.4,Iganmu and Ijora,1396053937
+W1396053938,,residential,false,0,7.5,false,false,false,0,46.6,Iganmu and Ijora,1396053938
+W1396053939,,residential,false,0,7.5,false,false,false,0,70.0,Iganmu and Ijora,1396053939
+W1411928240,,residential,false,0,7.5,false,false,false,0,76.6,Iganmu and Ijora,1411928240
+W1411928241,,residential,false,0,7.5,false,false,false,0,25.9,Iganmu and Ijora,1411928241
+W1413172374,,residential,false,0,7.5,false,false,false,0,45.5,Iganmu and Ijora,1413172374
+W1413228291,,service,false,0,5.0,false,false,false,0,42.1,Iganmu and Ijora,1413228291
+W1413274723,,service,false,0,5.0,false,false,false,0,33.5,Iganmu and Ijora,1413274723
+W1415415219,,primary,false,0,17.5,true,false,false,0,97.5,Iganmu and Ijora,1415415219
+W1415415220,,primary,false,0,17.5,true,true,false,0,300.3,Iganmu and Ijora,1415415220
+W1415415221,,service,false,0,5.0,false,false,false,0,186.5,Iganmu and Ijora,1415415221
+W1415442309,,service,false,0,5.0,false,false,false,0,27.1,Iganmu and Ijora,1415442309
+W1415442310,,service,false,0,5.0,false,false,false,0,23.0,Iganmu and Ijora,1415442310
+W1415442311,,service,false,0,5.0,false,true,false,0,231.3,Iganmu and Ijora,1415442311
+W1418822715,,residential,false,0,7.5,false,false,false,0,199.5,Iganmu and Ijora,1418822715
+W1419168097,,service,false,0,5.0,false,false,false,0,65.6,Iganmu and Ijora,1419168097
+W1421529830,,residential,false,0,7.5,false,false,false,0,87.4,Iganmu and Ijora,1421529830
+W1421530712,,residential,false,0,7.5,false,false,false,0,60.9,Iganmu and Ijora,1421530712
+W1421718620,,service,false,0,5.0,false,false,false,0,48.1,Iganmu and Ijora,1421718620
+W1421718621,,service,false,0,5.0,false,false,false,0,31.3,Iganmu and Ijora,1421718621
+W1421718622,,residential,false,0,7.5,false,false,false,0,72.8,Iganmu and Ijora,1421718622
+W1421719011,,residential,false,0,7.5,false,false,false,0,82.4,Iganmu and Ijora,1421719011
+W1424970074,,service,false,0,5.0,false,false,false,0,47.4,Iganmu and Ijora,1424970074
+W1426332918,,service,false,0,5.0,false,false,false,0,36.3,Iganmu and Ijora,1426332918
+W1426332919,,service,false,0,5.0,false,false,false,0,59.6,Iganmu and Ijora,1426332919
+W1426404571,,service,false,0,5.0,false,false,false,0,41.8,Iganmu and Ijora,1426404571
+W1426404572,,service,false,0,5.0,false,false,false,0,103.5,Iganmu and Ijora,1426404572
+W1426404573,,service,false,0,5.0,false,false,false,0,27.9,Iganmu and Ijora,1426404573
+W1426404574,,service,false,0,5.0,false,false,false,0,89.7,Iganmu and Ijora,1426404574
+W1426404575,,service,false,0,5.0,false,false,false,0,50.2,Iganmu and Ijora,1426404575
+W1426404576,,service,false,0,5.0,false,false,false,0,49.1,Iganmu and Ijora,1426404576
+W1426404577,,service,false,0,5.0,false,false,false,0,115.4,Iganmu and Ijora,1426404577
+W1426404578,,service,false,0,5.0,false,false,false,0,34.3,Iganmu and Ijora,1426404578
+W1426404579,,service,false,0,5.0,false,false,false,0,87.1,Iganmu and Ijora,1426404579
+W1426404580,,service,false,0,5.0,false,false,false,0,291.2,Iganmu and Ijora,1426404580
+W1426437507,,service,false,0,5.0,true,false,false,0,11.7,Iganmu and Ijora,1426437507
+W1426437508,,service,false,0,5.0,true,false,false,0,10.0,Iganmu and Ijora,1426437508
+W1426437509,,service,false,0,5.0,true,false,false,0,10.3,Iganmu and Ijora,1426437509
+W1427271667,,secondary,false,0,13.0,true,false,false,0,8.1,Iganmu and Ijora,1427271667
+W1427831868,,service,false,0,5.0,false,false,false,0,73.0,Iganmu and Ijora,1427831868
+W1429937225,,residential,false,0,7.5,false,false,false,0,82.3,Iganmu and Ijora,1429937225
+W1430571502,,residential,false,0,7.5,false,false,false,0,55.1,Iganmu and Ijora,1430571502
+W1430633503,,residential,false,0,7.5,false,false,false,0,51.1,Iganmu and Ijora,1430633503
+W1430633504,,service,false,0,5.0,false,false,false,0,33.6,Iganmu and Ijora,1430633504
+W1432738023,,service,false,0,5.0,false,false,false,0,18.3,Iganmu and Ijora,1432738023
+W1432738024,,service,false,0,5.0,false,false,false,0,28.0,Iganmu and Ijora,1432738024
+W1432738834,,service,false,0,5.0,false,false,false,0,105.6,Iganmu and Ijora,1432738834
+W1433225777,,service,false,0,5.0,false,false,false,0,89.2,Iganmu and Ijora,1433225777
+W1433254428,,residential,false,0,7.5,true,false,false,0,20.9,Iganmu and Ijora,1433254428
+W1433254429,,residential,false,0,7.5,true,false,false,0,20.4,Iganmu and Ijora,1433254429
+W1433254430,,residential,false,0,7.5,true,false,false,0,190.5,Iganmu and Ijora,1433254430
+W1433254431,,residential,false,0,7.5,true,false,false,0,19.0,Iganmu and Ijora,1433254431
+W1433254432,,residential,false,0,7.5,true,false,false,0,190.2,Iganmu and Ijora,1433254432
+W1433254433,,residential,false,0,7.5,true,false,false,0,19.1,Iganmu and Ijora,1433254433
+W1433254434,,service,false,0,5.0,false,false,false,0,462.6,Iganmu and Ijora,1433254434
+W1433256545,,service,false,0,5.0,false,false,false,0,44.6,Iganmu and Ijora,1433256545
+W1433256546,,residential,false,0,7.5,false,false,false,0,26.7,Iganmu and Ijora,1433256546
+W1433294985,,service,false,0,5.0,false,false,false,0,38.2,Iganmu and Ijora,1433294985
+W1433294986,,service,false,0,5.0,false,false,false,0,151.3,Iganmu and Ijora,1433294986
+W1433294987,,service,false,0,5.0,false,false,false,0,76.4,Iganmu and Ijora,1433294987
+W1433294988,,service,false,0,5.0,false,false,false,0,21.2,Iganmu and Ijora,1433294988
+W1433294989,,service,false,0,5.0,false,false,false,0,154.5,Iganmu and Ijora,1433294989
+W1433294990,,service,false,0,5.0,false,false,false,0,142.6,Iganmu and Ijora,1433294990
+W1433294991,,service,false,0,5.0,false,false,false,0,234.5,Iganmu and Ijora,1433294991
+W1433294992,,service,false,0,5.0,false,false,false,0,67.6,Iganmu and Ijora,1433294992
+W1433294993,,service,false,0,5.0,false,false,false,0,248.7,Iganmu and Ijora,1433294993
+W1433294994,,service,false,0,5.0,false,false,false,0,241.3,Iganmu and Ijora,1433294994
+W1433965431,,service,false,0,5.0,false,false,false,0,99.6,Iganmu and Ijora,1433965431
+W1433965432,,service,false,0,5.0,false,false,false,0,54.9,Iganmu and Ijora,1433965432
+W1433965433,,service,false,0,5.0,false,false,false,0,284.4,Iganmu and Ijora,1433965433
+W1433965434,,residential,false,0,7.5,false,false,false,0,54.4,Iganmu and Ijora,1433965434
+W1433965435,,residential,false,0,7.5,false,false,false,0,114.3,Iganmu and Ijora,1433965435
+W1433997346,,service,false,0,5.0,false,false,false,0,230.3,Iganmu and Ijora,1433997346
+W1433997347,,service,false,0,5.0,false,false,false,0,13.1,Iganmu and Ijora,1433997347
+W1433997348,,service,false,0,5.0,false,false,false,0,64.3,Iganmu and Ijora,1433997348
+W1433997349,,service,false,0,5.0,false,false,false,0,39.0,Iganmu and Ijora,1433997349
+W1433997350,,residential,false,0,7.5,false,false,false,0,93.4,Iganmu and Ijora,1433997350
+W1434560852,,tertiary,false,0,10.0,false,false,false,0,124.7,Iganmu and Ijora,1434560852
+W1435848424,,service,false,0,5.0,false,false,false,0,87.3,Iganmu and Ijora,1435848424
+W1442069041,,service,false,0,5.0,false,false,false,0,55.6,Iganmu and Ijora,1442069041
+W1442069042,,service,false,0,5.0,false,false,false,0,427.0,Iganmu and Ijora,1442069042
+W1442069043,,service,false,0,5.0,false,false,false,0,76.3,Iganmu and Ijora,1442069043
+W1442069044,,service,false,0,5.0,false,false,false,0,144.7,Iganmu and Ijora,1442069044
+W1442069045,,service,false,0,5.0,false,false,false,0,101.0,Iganmu and Ijora,1442069045
+W1442069046,,service,false,0,5.0,false,false,false,0,321.2,Iganmu and Ijora,1442069046
+W1442069047,,service,false,0,5.0,false,false,false,0,345.8,Iganmu and Ijora,1442069047
+W1442069098,,service,false,0,5.0,false,false,false,0,101.8,Iganmu and Ijora,1442069098
+W1447343035,,service,false,0,5.0,false,false,false,0,118.0,Iganmu and Ijora,1447343035
+W1447343036,,service,false,0,5.0,false,false,false,0,333.2,Iganmu and Ijora,1447343036
+W1447343037,,service,false,0,5.0,false,false,false,0,154.2,Iganmu and Ijora,1447343037
+W1447343038,,service,false,0,5.0,false,false,false,0,254.8,Iganmu and Ijora,1447343038
+W1447612348,,residential,false,0,7.5,false,false,false,0,61.0,Iganmu and Ijora,1447612348
+W1447612349,,service,false,0,5.0,false,false,false,0,56.8,Iganmu and Ijora,1447612349
+W144838166,,residential,false,0,7.5,false,false,false,0,494.8,Iganmu and Ijora,144838166
+W144838170,,residential,false,0,7.5,false,false,false,0,372.8,Iganmu and Ijora,144838170
+W144838172,,unclassified,false,0,7.5,false,false,false,0,207.0,Iganmu and Ijora,144838172
+W144838175,,tertiary,false,0,10.0,false,false,false,0,789.5,Iganmu and Ijora,144838175
+W144838176,,residential,false,0,7.5,false,false,false,0,114.8,Iganmu and Ijora,144838176
+W144840427,,residential,false,0,7.5,false,false,false,0,475.9,Iganmu and Ijora,144840427
+W144840430,,residential,false,0,7.5,false,false,false,0,80.6,Iganmu and Ijora,144840430
+W144840432,,residential,false,0,7.5,false,false,false,0,191.9,Iganmu and Ijora,144840432
+W144840435,,residential,false,0,7.5,false,false,false,0,274.0,Iganmu and Ijora,144840435
+W144840439,,service,false,0,5.0,false,false,false,0,174.7,Iganmu and Ijora,144840439
+W144840443,,residential,false,0,7.5,false,false,false,0,182.9,Iganmu and Ijora,144840443
+W144840454,,residential,false,0,7.5,false,false,false,0,61.7,Iganmu and Ijora,144840454
+W144840455,,residential,false,0,7.5,false,false,false,0,142.1,Iganmu and Ijora,144840455
+W144840458,,residential,false,0,7.5,false,false,false,0,212.2,Iganmu and Ijora,144840458
+W144840460,,residential,false,0,7.5,false,false,false,0,363.5,Iganmu and Ijora,144840460
+W144840465,,residential,false,0,7.5,false,false,false,0,135.8,Iganmu and Ijora,144840465
+W144840469,,residential,false,0,7.5,false,false,false,0,670.9,Iganmu and Ijora,144840469
+W144840471,,tertiary,false,0,10.0,true,false,false,0,275.6,Iganmu and Ijora,144840471
+W144840473,,residential,false,0,7.5,false,false,false,0,307.9,Iganmu and Ijora,144840473
+W144840478,,residential,false,0,7.5,false,false,false,0,716.3,Iganmu and Ijora,144840478
+W144840480,,residential,false,0,7.5,false,false,false,0,189.7,Iganmu and Ijora,144840480
+W144840483,,residential,false,0,7.5,false,false,false,0,535.2,Iganmu and Ijora,144840483
+W144840484,,residential,false,0,7.5,false,false,false,0,197.5,Iganmu and Ijora,144840484
+W144840486,,residential,false,0,7.5,false,false,false,0,146.8,Iganmu and Ijora,144840486
+W144840494,,residential,false,0,7.5,false,false,false,0,123.9,Iganmu and Ijora,144840494
+W144840495,,residential,false,0,7.5,false,false,false,0,79.2,Iganmu and Ijora,144840495
+W144840504,,residential,false,0,7.5,false,false,false,0,55.5,Iganmu and Ijora,144840504
+W144840505,,residential,false,0,7.5,false,false,false,0,118.7,Iganmu and Ijora,144840505
+W144840509,,residential,false,0,7.5,false,false,false,0,211.6,Iganmu and Ijora,144840509
+W1449398360,,service,false,0,5.0,false,false,false,0,83.1,Iganmu and Ijora,1449398360
+W1449398361,,service,false,0,5.0,false,false,false,0,79.6,Iganmu and Ijora,1449398361
+W1449398362,,service,false,0,5.0,false,false,false,0,86.4,Iganmu and Ijora,1449398362
+W1459003466,,residential,false,0,7.5,false,false,false,0,65.4,Iganmu and Ijora,1459003466
+W1462815267,,service,false,0,5.0,false,false,false,0,77.4,Iganmu and Ijora,1462815267
+W1462815268,,service,false,0,5.0,false,false,false,0,16.4,Iganmu and Ijora,1462815268
+W1462815269,,service,false,0,5.0,false,false,false,0,44.3,Iganmu and Ijora,1462815269
+W1462985827,,service,false,0,5.0,false,false,false,0,69.1,Iganmu and Ijora,1462985827
+W1462985828,,residential,false,0,7.5,false,false,false,0,142.6,Iganmu and Ijora,1462985828
+W1462985946,,residential,false,0,7.5,false,false,false,0,34.0,Iganmu and Ijora,1462985946
+W1473870805,,residential,false,0,7.5,false,false,false,0,272.2,Iganmu and Ijora,1473870805
+W1474464245,,residential,false,0,7.5,false,false,false,0,88.3,Iganmu and Ijora,1474464245
+W1474464246,,residential,false,0,7.5,false,false,false,0,162.8,Iganmu and Ijora,1474464246
+W1474464247,,service,false,0,5.0,false,false,false,0,145.0,Iganmu and Ijora,1474464247
+W1474464248,,service,false,0,5.0,false,false,false,0,160.2,Iganmu and Ijora,1474464248
+W1476098748,,residential,false,0,7.5,false,false,false,0,23.2,Iganmu and Ijora,1476098748
+W1477838199,,service,false,0,5.0,false,false,false,0,5.9,Iganmu and Ijora,1477838199
+W1477838200,,service,false,0,5.0,false,false,false,0,20.5,Iganmu and Ijora,1477838200
+W1483305092,,service,false,0,5.0,false,false,false,0,88.3,Iganmu and Ijora,1483305092
+W1483305093,,service,false,0,5.0,false,false,false,0,15.0,Iganmu and Ijora,1483305093
+W1484661584,,service,false,0,5.0,false,false,false,0,58.9,Iganmu and Ijora,1484661584
+W1484661585,,service,false,0,5.0,false,false,false,0,57.6,Iganmu and Ijora,1484661585
+W1484661586,,service,false,0,5.0,false,false,false,0,99.8,Iganmu and Ijora,1484661586
+W1485555980,,residential,false,0,7.5,false,false,false,0,272.1,Iganmu and Ijora,1485555980
+W1487168356,,residential,false,0,7.5,false,false,false,0,50.2,Iganmu and Ijora,1487168356
+W1489369527,,service,false,0,5.0,false,false,false,0,2.8,Iganmu and Ijora,1489369527
+W1489455503,,residential,false,0,7.5,false,false,false,0,7.7,Iganmu and Ijora,1489455503
+W1490227474,,service,false,0,5.0,false,false,false,0,19.6,Iganmu and Ijora,1490227474
+W1492174164,,service,false,0,5.0,false,false,false,0,246.5,Iganmu and Ijora,1492174164
+W1492174165,,residential,false,0,7.5,false,false,false,0,95.9,Iganmu and Ijora,1492174165
+W1492174166,,service,false,0,5.0,false,false,false,0,173.8,Iganmu and Ijora,1492174166
+W1492174167,,service,false,0,5.0,false,false,false,0,192.1,Iganmu and Ijora,1492174167
+W1505417568,,service,false,0,5.0,false,false,false,0,23.2,Iganmu and Ijora,1505417568
+W1505437338,,service,false,0,5.0,false,false,false,0,67.5,Iganmu and Ijora,1505437338
+W1505437339,,service,false,0,5.0,false,false,false,0,8.9,Iganmu and Ijora,1505437339
+W1505437340,,service,false,0,5.0,false,false,false,0,10.5,Iganmu and Ijora,1505437340
+W1505437341,,service,false,0,5.0,false,false,false,0,228.5,Iganmu and Ijora,1505437341
+W1505437342,,service,false,0,5.0,false,false,false,0,12.5,Iganmu and Ijora,1505437342
+W1505437343,,residential,false,0,7.5,false,false,false,0,123.2,Iganmu and Ijora,1505437343
+W1505465937,,residential,false,0,7.5,false,false,false,0,51.2,Iganmu and Ijora,1505465937
+W1505471405,,service,false,0,5.0,false,false,false,0,85.2,Iganmu and Ijora,1505471405
+W1505614530,,service,false,0,5.0,false,false,false,0,7.3,Iganmu and Ijora,1505614530
+W1505614531,,service,false,0,5.0,false,false,false,0,7.8,Iganmu and Ijora,1505614531
+W1505614532,,service,false,0,5.0,false,false,false,0,36.2,Iganmu and Ijora,1505614532
+W1505614533,,service,false,0,5.0,false,false,false,0,59.2,Iganmu and Ijora,1505614533
+W1505627919,,service,false,0,5.0,false,false,false,0,60.2,Iganmu and Ijora,1505627919
+W1505629301,,residential,false,0,7.5,false,false,false,0,42.6,Iganmu and Ijora,1505629301
+W1505629973,,service,false,0,5.0,false,false,false,0,94.1,Iganmu and Ijora,1505629973
+W1505761373,,service,false,0,5.0,false,false,false,0,85.2,Iganmu and Ijora,1505761373
+W1505761374,,service,false,0,5.0,false,false,false,0,95.1,Iganmu and Ijora,1505761374
+W1505761375,,service,false,0,5.0,false,false,false,0,47.6,Iganmu and Ijora,1505761375
+W1510177090,,service,false,0,5.0,false,false,false,0,69.7,Iganmu and Ijora,1510177090
+W1510177091,,service,false,0,5.0,false,false,false,0,44.2,Iganmu and Ijora,1510177091
+W1510183247,,service,false,0,5.0,false,false,false,0,79.4,Iganmu and Ijora,1510183247
+W1510189311,,service,false,0,5.0,false,false,false,0,43.4,Iganmu and Ijora,1510189311
+W1510215694,,service,false,0,5.0,false,false,false,0,10.2,Iganmu and Ijora,1510215694
+W1510215695,,service,false,0,5.0,false,false,false,0,194.8,Iganmu and Ijora,1510215695
+W1510215696,,service,false,0,5.0,false,false,false,0,40.7,Iganmu and Ijora,1510215696
+W1510435698,,service,false,0,5.0,false,false,false,0,22.4,Iganmu and Ijora,1510435698
+W1510435699,,service,false,0,5.0,false,false,false,0,113.7,Iganmu and Ijora,1510435699
+W1510435700,,service,false,0,5.0,false,false,false,0,9.5,Iganmu and Ijora,1510435700
+W1510435701,,service,false,0,5.0,false,false,false,0,153.8,Iganmu and Ijora,1510435701
+W1510435702,,service,false,0,5.0,false,false,false,0,6.6,Iganmu and Ijora,1510435702
+W1510435703,,service,false,0,5.0,false,false,false,0,71.1,Iganmu and Ijora,1510435703
+W1510435704,,service,false,0,5.0,false,false,false,0,56.9,Iganmu and Ijora,1510435704
+W1510439045,,service,false,0,5.0,false,false,false,0,4.4,Iganmu and Ijora,1510439045
+W1510439046,,service,false,0,5.0,false,false,false,0,371.8,Iganmu and Ijora,1510439046
+W1510439047,,service,false,0,5.0,false,false,false,0,8.4,Iganmu and Ijora,1510439047
+W1510439048,,service,false,0,5.0,false,false,false,0,104.2,Iganmu and Ijora,1510439048
+W1510439049,,service,false,0,5.0,false,false,false,0,274.3,Iganmu and Ijora,1510439049
+W1517065482,,residential,false,0,7.5,false,false,false,0,3.9,Iganmu and Ijora,1517065482
+W1518706041,,service,false,0,5.0,false,false,false,0,265.8,Iganmu and Ijora,1518706041
+W1518706043,,service,false,0,5.0,false,false,false,0,38.8,Iganmu and Ijora,1518706043
+W1518706044,,service,false,0,5.0,false,false,false,0,115.0,Iganmu and Ijora,1518706044
+W1518706047,,service,false,0,5.0,false,false,false,0,474.2,Iganmu and Ijora,1518706047
+W1518706048,,service,false,0,5.0,false,false,false,0,121.5,Iganmu and Ijora,1518706048
+W1518706049,,service,false,0,5.0,false,false,false,0,31.9,Iganmu and Ijora,1518706049
+W1518706050,,service,false,0,5.0,false,false,false,0,361.2,Iganmu and Ijora,1518706050
+W1518706051,,service,false,0,5.0,false,false,false,0,310.4,Iganmu and Ijora,1518706051
+W1525777573,,residential,false,0,7.5,false,false,false,0,297.0,Iganmu and Ijora,1525777573
+W1525777574,,service,false,0,5.0,false,false,false,0,86.5,Iganmu and Ijora,1525777574
+W1526494761,,service,false,0,5.0,false,false,false,0,40.4,Iganmu and Ijora,1526494761
+W1526494762,,service,false,0,5.0,false,false,false,0,19.0,Iganmu and Ijora,1526494762
+W1526494763,,service,false,0,5.0,false,false,false,0,275.3,Iganmu and Ijora,1526494763
+W1526494764,,service,false,0,5.0,false,false,false,0,16.1,Iganmu and Ijora,1526494764
+W1533999385,,service,false,0,5.0,false,false,false,0,60.6,Iganmu and Ijora,1533999385
+W1533999386,,service,false,0,5.0,false,false,false,0,88.2,Iganmu and Ijora,1533999386
+W1533999387,,service,false,0,5.0,false,false,false,0,118.4,Iganmu and Ijora,1533999387
+W1533999388,,service,false,0,5.0,false,false,false,0,133.0,Iganmu and Ijora,1533999388
+W1533999390,,service,false,0,5.0,false,false,false,0,48.2,Iganmu and Ijora,1533999390
+W1533999391,,service,false,0,5.0,false,false,false,0,170.0,Iganmu and Ijora,1533999391
+W1533999392,,service,false,0,5.0,false,false,false,0,147.1,Iganmu and Ijora,1533999392
+W1535728321,,residential,false,0,7.5,false,false,false,0,121.6,Iganmu and Ijora,1535728321
+W1535728322,,service,false,0,5.0,true,false,false,0,80.9,Iganmu and Ijora,1535728322
+W167014129,,residential,false,0,7.5,false,false,false,0,56.9,Iganmu and Ijora,167014129
+W167068947,,residential,false,0,7.5,false,false,false,0,102.9,Iganmu and Ijora,167068947
+W167068951,,residential,false,0,7.5,false,false,false,0,155.2,Iganmu and Ijora,167068951
+W167068952,,residential,false,0,7.5,false,false,false,0,161.3,Iganmu and Ijora,167068952
+W167068953,,residential,false,0,7.5,false,false,false,0,194.0,Iganmu and Ijora,167068953
+W167068955,,service,false,0,5.0,false,false,false,0,61.3,Iganmu and Ijora,167068955
+W167068956,,residential,false,0,7.5,false,false,false,0,173.2,Iganmu and Ijora,167068956
+W167068958,,residential,false,0,7.5,false,false,false,0,206.3,Iganmu and Ijora,167068958
+W167068962,,unclassified,false,0,7.5,false,false,false,0,692.4,Iganmu and Ijora,167068962
+W167068963,,unclassified,false,0,7.5,false,false,false,0,274.2,Iganmu and Ijora,167068963
+W167068973,,residential,false,0,7.5,false,false,false,0,101.1,Iganmu and Ijora,167068973
+W167068975,,residential,false,0,7.5,false,false,false,0,103.3,Iganmu and Ijora,167068975
+W167068981,,service,false,0,5.0,false,false,false,0,114.6,Iganmu and Ijora,167068981
+W167068988,,residential,false,0,7.5,false,false,false,0,212.7,Iganmu and Ijora,167068988
+W167068990,,residential,false,0,7.5,false,false,false,0,94.1,Iganmu and Ijora,167068990
+W167068999,,residential,false,0,7.5,false,false,false,0,155.1,Iganmu and Ijora,167068999
+W167069004,,residential,false,0,7.5,false,false,false,0,334.3,Iganmu and Ijora,167069004
+W167069007,,residential,false,0,7.5,false,false,false,0,117.2,Iganmu and Ijora,167069007
+W167069011,,residential,false,0,7.5,false,false,false,0,78.8,Iganmu and Ijora,167069011
+W167069012,,residential,false,0,7.5,false,false,false,0,31.8,Iganmu and Ijora,167069012
+W167116378,,residential,false,0,7.5,false,false,false,0,124.2,Iganmu and Ijora,167116378
+W167116386,,residential,false,0,7.5,false,false,false,0,301.3,Iganmu and Ijora,167116386
+W167116387,,residential,false,0,7.5,false,false,false,0,103.8,Iganmu and Ijora,167116387
+W167116390,,residential,false,0,7.5,false,false,false,0,102.3,Iganmu and Ijora,167116390
+W167116394,,residential,false,0,7.5,false,false,false,0,137.0,Iganmu and Ijora,167116394
+W167116395,,residential,false,0,7.5,false,false,false,0,138.9,Iganmu and Ijora,167116395
+W167116398,,residential,false,0,7.5,false,false,false,0,202.6,Iganmu and Ijora,167116398
+W167116400,,residential,false,0,7.5,false,false,false,0,153.7,Iganmu and Ijora,167116400
+W167116404,,residential,false,0,7.5,false,false,false,0,77.4,Iganmu and Ijora,167116404
+W167116405,,residential,false,0,7.5,false,false,false,0,255.4,Iganmu and Ijora,167116405
+W167116410,,residential,false,0,7.5,false,false,false,0,204.1,Iganmu and Ijora,167116410
+W167116412,,unclassified,false,0,7.5,false,true,false,0,17.4,Iganmu and Ijora,167116412
+W167116413,,residential,false,0,7.5,false,false,false,0,51.2,Iganmu and Ijora,167116413
+W167116418,,residential,false,0,7.5,false,false,false,0,215.6,Iganmu and Ijora,167116418
+W167116420,,residential,false,0,7.5,false,false,false,0,172.5,Iganmu and Ijora,167116420
+W167116421,,residential,false,0,7.5,false,false,false,0,332.4,Iganmu and Ijora,167116421
+W167116422,,residential,false,0,7.5,false,false,false,0,169.5,Iganmu and Ijora,167116422
+W167116427,,residential,false,0,7.5,false,false,false,0,224.8,Iganmu and Ijora,167116427
+W167116430,,residential,false,0,7.5,false,false,false,0,100.5,Iganmu and Ijora,167116430
+W167116431,,residential,false,0,7.5,false,false,false,0,205.9,Iganmu and Ijora,167116431
+W167116432,,residential,false,0,7.5,false,false,false,0,210.8,Iganmu and Ijora,167116432
+W167116436,,service,false,0,5.0,false,false,false,0,65.0,Iganmu and Ijora,167116436
+W167116438,,residential,false,0,7.5,false,false,false,0,206.9,Iganmu and Ijora,167116438
+W167116440,,residential,false,0,7.5,false,false,false,0,118.1,Iganmu and Ijora,167116440
+W167116441,,residential,false,0,7.5,false,false,false,0,253.6,Iganmu and Ijora,167116441
+W167116442,,residential,false,0,7.5,false,false,false,0,118.1,Iganmu and Ijora,167116442
+W167116445,,residential,false,0,7.5,false,false,false,0,44.5,Iganmu and Ijora,167116445
+W167116449,,residential,false,0,7.5,false,false,false,0,114.5,Iganmu and Ijora,167116449
+W167116450,,residential,false,0,7.5,false,false,false,0,214.2,Iganmu and Ijora,167116450
+W167116451,,residential,false,0,7.5,false,false,false,0,105.0,Iganmu and Ijora,167116451
+W167116454,,residential,false,0,7.5,false,false,false,0,289.6,Iganmu and Ijora,167116454
+W167116456,,residential,false,0,7.5,false,false,false,0,198.6,Iganmu and Ijora,167116456
+W167116458,,residential,false,0,7.5,false,false,false,0,140.0,Iganmu and Ijora,167116458
+W167116459,,residential,false,0,7.5,false,false,false,0,279.9,Iganmu and Ijora,167116459
+W167116460,,residential,false,0,7.5,false,false,false,0,171.8,Iganmu and Ijora,167116460
+W167116463,,residential,false,0,7.5,false,false,false,0,422.5,Iganmu and Ijora,167116463
+W167116465,,residential,false,0,7.5,false,false,false,0,230.0,Iganmu and Ijora,167116465
+W167116467,,residential,false,0,7.5,false,false,false,0,163.5,Iganmu and Ijora,167116467
+W167116468,,service,false,0,5.0,false,false,false,0,76.6,Iganmu and Ijora,167116468
+W167116469,,residential,false,0,7.5,false,false,false,0,96.9,Iganmu and Ijora,167116469
+W167116472,,residential,false,0,7.5,false,false,false,0,139.8,Iganmu and Ijora,167116472
+W167116474,,residential,false,0,7.5,false,false,false,0,503.1,Iganmu and Ijora,167116474
+W167116476,,residential,false,0,7.5,false,false,false,0,227.2,Iganmu and Ijora,167116476
+W167116478,,residential,false,0,7.5,false,false,false,0,118.5,Iganmu and Ijora,167116478
+W167116485,,residential,false,0,7.5,false,false,false,0,406.1,Iganmu and Ijora,167116485
+W167138016,,residential,false,0,7.5,false,false,false,0,48.4,Iganmu and Ijora,167138016
+W167138025,,residential,false,0,7.5,false,false,false,0,73.7,Iganmu and Ijora,167138025
+W167138029,,tertiary,false,0,10.0,false,false,false,0,1198.6,Iganmu and Ijora,167138029
+W167138030,,residential,false,0,7.5,false,false,false,0,204.4,Iganmu and Ijora,167138030
+W167138047,,residential,false,0,7.5,false,false,false,0,108.3,Iganmu and Ijora,167138047
+W167138051,,residential,false,0,7.5,false,false,false,0,307.7,Iganmu and Ijora,167138051
+W167138053,,residential,false,0,7.5,false,false,false,0,582.0,Iganmu and Ijora,167138053
+W167138057,,residential,false,0,7.5,false,false,false,0,127.2,Iganmu and Ijora,167138057
+W167138061,,residential,false,0,7.5,false,false,false,0,97.5,Iganmu and Ijora,167138061
+W167138063,,residential,false,0,7.5,false,false,false,0,178.8,Iganmu and Ijora,167138063
+W167138065,,residential,false,0,7.5,false,false,false,0,396.2,Iganmu and Ijora,167138065
+W167138067,,residential,false,0,7.5,false,false,false,0,474.2,Iganmu and Ijora,167138067
+W167138068,,residential,false,0,7.5,false,false,false,0,478.9,Iganmu and Ijora,167138068
+W167138074,,residential,false,0,7.5,false,false,false,0,929.4,Iganmu and Ijora,167138074
+W167138077,,residential,false,0,7.5,false,false,false,0,707.3,Iganmu and Ijora,167138077
+W167138079,,residential,false,0,7.5,false,false,false,0,94.8,Iganmu and Ijora,167138079
+W167138080,,residential,false,0,7.5,false,false,false,0,569.0,Iganmu and Ijora,167138080
+W167138084,,residential,false,0,7.5,false,false,false,0,245.7,Iganmu and Ijora,167138084
+W167138085,,residential,false,0,7.5,false,false,false,0,115.9,Iganmu and Ijora,167138085
+W167404387,,residential,false,0,7.5,false,false,false,0,220.9,Iganmu and Ijora,167404387
+W167404395,,residential,false,0,7.5,false,false,false,0,190.6,Iganmu and Ijora,167404395
+W167404397,,residential,false,0,7.5,false,false,false,0,198.0,Iganmu and Ijora,167404397
+W167404401,,residential,false,0,7.5,false,false,false,0,151.2,Iganmu and Ijora,167404401
+W167404403,,residential,false,0,7.5,false,false,false,0,207.0,Iganmu and Ijora,167404403
+W167404405,,residential,false,0,7.5,false,false,false,0,214.6,Iganmu and Ijora,167404405
+W167404406,,residential,false,0,7.5,false,false,false,0,164.6,Iganmu and Ijora,167404406
+W167404407,,residential,false,0,7.5,false,false,false,0,222.3,Iganmu and Ijora,167404407
+W167404408,,service,false,0,5.0,false,false,false,0,289.9,Iganmu and Ijora,167404408
+W167404409,,residential,false,0,7.5,false,false,false,0,90.9,Iganmu and Ijora,167404409
+W167404412,,residential,false,0,7.5,false,false,false,0,89.6,Iganmu and Ijora,167404412
+W167404416,,residential,false,0,7.5,false,false,false,0,90.8,Iganmu and Ijora,167404416
+W167404420,,residential,false,0,7.5,false,false,false,0,147.4,Iganmu and Ijora,167404420
+W167404423,,residential,false,0,7.5,false,false,false,0,161.2,Iganmu and Ijora,167404423
+W167404424,,residential,false,0,7.5,false,false,false,0,191.6,Iganmu and Ijora,167404424
+W167404425,,residential,false,0,7.5,false,false,false,0,150.5,Iganmu and Ijora,167404425
+W167404426,,residential,false,0,7.5,false,false,false,0,81.7,Iganmu and Ijora,167404426
+W167404427,,residential,false,0,7.5,false,false,false,0,156.8,Iganmu and Ijora,167404427
+W167404428,,residential,false,0,7.5,false,false,false,0,74.0,Iganmu and Ijora,167404428
+W167404431,,residential,false,0,7.5,false,false,false,0,46.7,Iganmu and Ijora,167404431
+W167404432,,residential,false,0,7.5,false,false,false,0,322.2,Iganmu and Ijora,167404432
+W167404435,,residential,false,0,7.5,false,false,false,0,143.7,Iganmu and Ijora,167404435
+W167404436,,residential,false,0,7.5,false,false,false,0,227.2,Iganmu and Ijora,167404436
+W167404438,,residential,false,0,7.5,false,false,false,0,196.5,Iganmu and Ijora,167404438
+W167404439,,residential,false,0,7.5,false,false,false,0,103.3,Iganmu and Ijora,167404439
+W167537248,,residential,false,0,7.5,false,false,false,0,345.7,Iganmu and Ijora,167537248
+W167537250,,residential,false,0,7.5,false,false,false,0,191.4,Iganmu and Ijora,167537250
+W167537251,,residential,false,0,7.5,false,false,false,0,175.1,Iganmu and Ijora,167537251
+W167537252,,residential,false,0,7.5,false,false,false,0,105.2,Iganmu and Ijora,167537252
+W167537253,,residential,false,0,7.5,false,false,false,0,484.4,Iganmu and Ijora,167537253
+W167537254,,residential,false,0,7.5,false,false,false,0,268.6,Iganmu and Ijora,167537254
+W167537256,,residential,false,0,7.5,false,false,false,0,85.0,Iganmu and Ijora,167537256
+W167537258,,residential,false,0,7.5,false,false,false,0,356.4,Iganmu and Ijora,167537258
+W167537260,,residential,false,0,7.5,false,false,false,0,324.0,Iganmu and Ijora,167537260
+W167537262,,residential,false,0,7.5,false,false,false,0,377.6,Iganmu and Ijora,167537262
+W167537264,,residential,false,0,7.5,false,false,false,0,489.9,Iganmu and Ijora,167537264
+W167537265,,residential,false,0,7.5,false,false,false,0,363.7,Iganmu and Ijora,167537265
+W167537267,,residential,false,0,7.5,false,false,false,0,91.5,Iganmu and Ijora,167537267
+W167537269,,residential,false,0,7.5,false,false,false,0,155.4,Iganmu and Ijora,167537269
+W167537273,,residential,false,0,7.5,false,false,false,0,94.1,Iganmu and Ijora,167537273
+W167537275,,residential,false,0,7.5,false,false,false,0,142.3,Iganmu and Ijora,167537275
+W167537277,,residential,false,0,7.5,false,false,false,0,116.6,Iganmu and Ijora,167537277
+W167537282,,residential,false,0,7.5,false,false,false,0,152.7,Iganmu and Ijora,167537282
+W167537285,,residential,false,0,7.5,false,false,false,0,20.6,Iganmu and Ijora,167537285
+W167619007,,residential,false,0,7.5,false,false,false,0,112.0,Iganmu and Ijora,167619007
+W167619008,,residential,false,0,7.5,false,false,false,0,106.0,Iganmu and Ijora,167619008
+W167619009,,residential,false,0,7.5,false,false,false,0,125.2,Iganmu and Ijora,167619009
+W167619010,,residential,false,0,7.5,false,false,false,0,223.6,Iganmu and Ijora,167619010
+W167619011,,residential,false,0,7.5,false,false,false,0,87.9,Iganmu and Ijora,167619011
+W167619012,,residential,false,0,7.5,false,false,false,0,142.6,Iganmu and Ijora,167619012
+W167619013,,residential,false,0,7.5,false,false,false,0,166.9,Iganmu and Ijora,167619013
+W167619015,,residential,false,0,7.5,false,false,false,0,153.5,Iganmu and Ijora,167619015
+W167619017,,residential,false,0,7.5,false,false,false,0,76.5,Iganmu and Ijora,167619017
+W167619019,,residential,false,0,7.5,false,false,false,0,100.1,Iganmu and Ijora,167619019
+W167619021,,residential,false,0,7.5,false,false,false,0,173.7,Iganmu and Ijora,167619021
+W167619022,,residential,false,0,7.5,false,false,false,0,115.0,Iganmu and Ijora,167619022
+W167619023,,residential,false,0,7.5,false,false,false,0,210.7,Iganmu and Ijora,167619023
+W167619024,,residential,false,0,7.5,false,false,false,0,212.6,Iganmu and Ijora,167619024
+W167619025,,residential,false,0,7.5,false,false,false,0,259.7,Iganmu and Ijora,167619025
+W167621381,,residential,false,0,7.5,true,false,false,0,166.5,Iganmu and Ijora,167621381
+W167621382,,residential,false,0,7.5,false,false,false,0,157.6,Iganmu and Ijora,167621382
+W167621385,,residential,false,0,7.5,false,false,false,0,118.4,Iganmu and Ijora,167621385
+W167621386,,residential,false,0,7.5,false,false,false,0,62.5,Iganmu and Ijora,167621386
+W167621387,,residential,false,0,7.5,false,false,false,0,66.2,Iganmu and Ijora,167621387
+W167621388,,residential,false,0,7.5,false,false,false,0,143.5,Iganmu and Ijora,167621388
+W167621392,,residential,false,0,7.5,false,false,false,0,509.8,Iganmu and Ijora,167621392
+W167621393,,residential,false,0,7.5,false,false,false,0,270.8,Iganmu and Ijora,167621393
+W167621394,,residential,false,0,7.5,false,false,false,0,484.2,Iganmu and Ijora,167621394
+W167621396,,residential,false,0,7.5,false,false,false,0,65.0,Iganmu and Ijora,167621396
+W167621397,,residential,false,0,7.5,false,false,false,0,206.5,Iganmu and Ijora,167621397
+W167621398,,residential,false,0,7.5,false,false,false,0,132.1,Iganmu and Ijora,167621398
+W167621399,,residential,false,0,7.5,false,false,false,0,552.8,Iganmu and Ijora,167621399
+W167621400,,residential,false,0,7.5,false,false,false,0,362.7,Iganmu and Ijora,167621400
+W167621401,,residential,false,0,7.5,false,false,false,0,167.9,Iganmu and Ijora,167621401
+W167621403,,residential,false,0,7.5,false,false,false,0,362.6,Iganmu and Ijora,167621403
+W167621404,,residential,false,0,7.5,false,false,false,0,173.9,Iganmu and Ijora,167621404
+W167621406,,residential,false,0,7.5,false,false,false,0,87.9,Iganmu and Ijora,167621406
+W167621407,,residential,false,0,7.5,false,false,false,0,155.6,Iganmu and Ijora,167621407
+W167621408,,residential,false,0,7.5,false,false,false,0,101.1,Iganmu and Ijora,167621408
+W167621410,,residential,false,0,7.5,false,false,false,0,262.0,Iganmu and Ijora,167621410
+W167621411,,residential,false,0,7.5,false,false,false,0,249.5,Iganmu and Ijora,167621411
+W167621413,,residential,false,0,7.5,false,false,false,0,388.9,Iganmu and Ijora,167621413
+W167621414,,residential,false,0,7.5,false,false,false,0,73.1,Iganmu and Ijora,167621414
+W167621415,,residential,false,0,7.5,false,false,false,0,449.4,Iganmu and Ijora,167621415
+W167621416,,residential,false,0,7.5,false,false,false,0,131.9,Iganmu and Ijora,167621416
+W167621417,,residential,false,0,7.5,false,false,false,0,298.9,Iganmu and Ijora,167621417
+W167621418,,residential,false,0,7.5,false,false,false,0,249.1,Iganmu and Ijora,167621418
+W167621419,,residential,false,0,7.5,false,false,false,0,216.4,Iganmu and Ijora,167621419
+W167621420,,residential,false,0,7.5,false,false,false,0,33.9,Iganmu and Ijora,167621420
+W167621421,,residential,false,0,7.5,false,false,false,0,184.5,Iganmu and Ijora,167621421
+W167621422,,tertiary,false,0,10.0,false,false,false,0,737.0,Iganmu and Ijora,167621422
+W167621423,,residential,false,0,7.5,false,false,false,0,127.1,Iganmu and Ijora,167621423
+W167621424,,residential,false,0,7.5,false,false,false,0,283.0,Iganmu and Ijora,167621424
+W167621425,,residential,false,0,7.5,false,false,false,0,144.7,Iganmu and Ijora,167621425
+W167621426,,residential,false,0,7.5,false,false,false,0,63.7,Iganmu and Ijora,167621426
+W167621427,,residential,false,0,7.5,false,false,false,0,263.7,Iganmu and Ijora,167621427
+W167621428,,residential,false,0,7.5,false,false,false,0,128.0,Iganmu and Ijora,167621428
+W167621429,,residential,false,0,7.5,false,false,false,0,472.8,Iganmu and Ijora,167621429
+W167622532,,residential,false,0,7.5,false,false,false,0,94.6,Iganmu and Ijora,167622532
+W167622534,,service,false,0,5.0,false,false,false,0,102.2,Iganmu and Ijora,167622534
+W167622536,,residential,false,0,7.5,false,false,false,0,642.2,Iganmu and Ijora,167622536
+W167622541,,residential,false,0,7.5,false,false,false,0,226.4,Iganmu and Ijora,167622541
+W167622542,,residential,false,0,7.5,false,false,false,0,263.8,Iganmu and Ijora,167622542
+W167622543,,residential,false,0,7.5,false,false,false,0,483.1,Iganmu and Ijora,167622543
+W168281404,,residential,false,0,7.5,false,false,false,0,180.3,Iganmu and Ijora,168281404
+W168281405,,residential,false,0,7.5,false,false,false,0,118.6,Iganmu and Ijora,168281405
+W168281406,,residential,false,0,7.5,false,false,false,0,212.9,Iganmu and Ijora,168281406
+W168281407,,residential,false,0,7.5,false,false,false,0,278.6,Iganmu and Ijora,168281407
+W168281408,,residential,false,0,7.5,false,false,false,0,202.0,Iganmu and Ijora,168281408
+W168281409,,residential,false,0,7.5,false,false,false,0,244.4,Iganmu and Ijora,168281409
+W168281410,,residential,false,0,7.5,false,false,false,0,373.9,Iganmu and Ijora,168281410
+W168281411,,residential,false,0,7.5,false,false,false,0,162.3,Iganmu and Ijora,168281411
+W168281414,,residential,false,0,7.5,false,false,false,0,126.8,Iganmu and Ijora,168281414
+W168281415,,residential,false,0,7.5,false,false,false,0,260.5,Iganmu and Ijora,168281415
+W168281416,,residential,false,0,7.5,false,false,false,0,274.0,Iganmu and Ijora,168281416
+W168281417,,residential,false,0,7.5,false,false,false,0,70.3,Iganmu and Ijora,168281417
+W168281418,,residential,false,0,7.5,false,false,false,0,237.6,Iganmu and Ijora,168281418
+W168282198,,residential,false,0,7.5,false,false,false,0,91.2,Iganmu and Ijora,168282198
+W168282200,,residential,false,0,7.5,false,false,false,0,97.2,Iganmu and Ijora,168282200
+W168282201,,residential,false,0,7.5,false,false,false,0,79.3,Iganmu and Ijora,168282201
+W168282202,,residential,false,0,7.5,false,false,false,0,174.3,Iganmu and Ijora,168282202
+W168282203,,residential,false,0,7.5,false,false,false,0,67.2,Iganmu and Ijora,168282203
+W176064810,,residential,false,0,7.5,false,false,false,0,302.7,Iganmu and Ijora,176064810
+W176064811,,residential,false,0,7.5,false,false,false,0,59.4,Iganmu and Ijora,176064811
+W176064812,,residential,false,0,7.5,false,false,false,0,277.8,Iganmu and Ijora,176064812
+W176064814,,residential,false,0,7.5,false,false,false,0,219.0,Iganmu and Ijora,176064814
+W176064816,,residential,false,0,7.5,false,false,false,0,254.0,Iganmu and Ijora,176064816
+W176064818,,residential,false,0,7.5,false,false,false,0,82.4,Iganmu and Ijora,176064818
+W176064822,,residential,false,0,7.5,false,false,false,0,329.3,Iganmu and Ijora,176064822
+W176064823,,residential,false,0,7.5,false,false,false,0,265.0,Iganmu and Ijora,176064823
+W176064826,,residential,false,0,7.5,false,false,false,0,77.1,Iganmu and Ijora,176064826
+W176064827,,residential,false,0,7.5,false,false,false,0,692.1,Iganmu and Ijora,176064827
+W176064832,,residential,false,0,7.5,false,false,false,0,101.7,Iganmu and Ijora,176064832
+W176064835,,residential,false,0,7.5,false,false,false,0,50.4,Iganmu and Ijora,176064835
+W176064837,,residential,false,0,7.5,false,false,false,0,54.6,Iganmu and Ijora,176064837
+W176064848,,residential,false,0,7.5,false,false,false,0,106.0,Iganmu and Ijora,176064848
+W176064851,,residential,false,0,7.5,false,false,false,0,50.2,Iganmu and Ijora,176064851
+W176064853,,residential,false,0,7.5,false,false,false,0,274.0,Iganmu and Ijora,176064853
+W176064856,,residential,false,0,7.5,false,false,false,0,58.0,Iganmu and Ijora,176064856
+W176064858,,residential,false,0,7.5,false,false,false,0,139.9,Iganmu and Ijora,176064858
+W176064860,,residential,false,0,7.5,false,false,false,0,100.3,Iganmu and Ijora,176064860
+W176064868,,residential,false,0,7.5,false,false,false,0,121.0,Iganmu and Ijora,176064868
+W176064872,,residential,false,0,7.5,false,false,false,0,76.8,Iganmu and Ijora,176064872
+W176064874,,residential,false,0,7.5,false,false,false,0,401.6,Iganmu and Ijora,176064874
+W176064875,,residential,false,0,7.5,false,false,false,0,56.9,Iganmu and Ijora,176064875
+W176064876,,residential,false,0,7.5,false,false,false,0,254.4,Iganmu and Ijora,176064876
+W176064880,,residential,false,0,7.5,false,false,false,0,142.8,Iganmu and Ijora,176064880
+W176064883,,residential,false,0,7.5,false,false,false,0,33.3,Iganmu and Ijora,176064883
+W176064886,,residential,false,0,7.5,false,false,false,0,157.2,Iganmu and Ijora,176064886
+W176064888,,residential,false,0,7.5,false,false,false,0,95.5,Iganmu and Ijora,176064888
+W176064893,,residential,false,0,7.5,false,false,false,0,172.8,Iganmu and Ijora,176064893
+W176064897,,residential,false,0,7.5,false,false,false,0,494.8,Iganmu and Ijora,176064897
+W176064900,,residential,false,0,7.5,false,false,false,0,174.6,Iganmu and Ijora,176064900
+W176064902,,residential,false,0,7.5,false,false,false,0,128.0,Iganmu and Ijora,176064902
+W176064905,,residential,false,0,7.5,false,false,false,0,235.2,Iganmu and Ijora,176064905
+W176064907,,residential,false,0,7.5,false,false,false,0,228.8,Iganmu and Ijora,176064907
+W176064909,,residential,false,0,7.5,false,false,false,0,314.4,Iganmu and Ijora,176064909
+W176064911,,residential,false,0,7.5,false,false,false,0,611.1,Iganmu and Ijora,176064911
+W176064913,,residential,false,0,7.5,false,false,false,0,227.1,Iganmu and Ijora,176064913
+W176064917,,residential,false,0,7.5,false,false,false,0,226.1,Iganmu and Ijora,176064917
+W176068865,,residential,false,0,7.5,false,false,false,0,185.6,Iganmu and Ijora,176068865
+W176068866,,residential,false,0,7.5,false,false,false,0,113.5,Iganmu and Ijora,176068866
+W176068867,,residential,false,0,7.5,false,false,false,0,323.4,Iganmu and Ijora,176068867
+W176068868,,residential,false,0,7.5,false,false,false,0,284.9,Iganmu and Ijora,176068868
+W176068869,,residential,false,0,7.5,false,false,false,0,281.9,Iganmu and Ijora,176068869
+W176068870,,residential,false,0,7.5,false,false,false,0,186.7,Iganmu and Ijora,176068870
+W176068871,,residential,false,0,7.5,false,false,false,0,110.9,Iganmu and Ijora,176068871
+W176068872,,residential,false,0,7.5,false,false,false,0,148.6,Iganmu and Ijora,176068872
+W176068873,,residential,false,0,7.5,false,false,false,0,268.8,Iganmu and Ijora,176068873
+W176068874,,residential,false,0,7.5,false,false,false,0,285.2,Iganmu and Ijora,176068874
+W176068875,,residential,false,0,7.5,false,false,false,0,48.0,Iganmu and Ijora,176068875
+W176068876,,residential,false,0,7.5,false,false,false,0,163.7,Iganmu and Ijora,176068876
+W176068877,,residential,false,0,7.5,false,false,false,0,610.3,Iganmu and Ijora,176068877
+W186240981,,residential,false,0,7.5,false,false,false,0,130.8,Iganmu and Ijora,186240981
+W186240982,,residential,false,0,7.5,false,false,false,0,379.8,Iganmu and Ijora,186240982
+W186240983,,residential,false,0,7.5,false,false,false,0,267.4,Iganmu and Ijora,186240983
+W186240984,,residential,false,0,7.5,false,false,false,0,232.5,Iganmu and Ijora,186240984
+W186240985,,residential,false,0,7.5,false,false,false,0,388.5,Iganmu and Ijora,186240985
+W186240986,,residential,false,0,7.5,false,false,false,0,184.0,Iganmu and Ijora,186240986
+W186240987,,residential,false,0,7.5,false,false,false,0,202.4,Iganmu and Ijora,186240987
+W186240988,,residential,false,0,7.5,false,false,false,0,160.9,Iganmu and Ijora,186240988
+W186240989,,residential,false,0,7.5,false,false,false,0,87.9,Iganmu and Ijora,186240989
+W186240990,,residential,false,0,7.5,false,false,false,0,134.3,Iganmu and Ijora,186240990
+W186240991,,residential,false,0,7.5,false,false,false,0,114.7,Iganmu and Ijora,186240991
+W186240992,,residential,false,0,7.5,false,false,false,0,196.1,Iganmu and Ijora,186240992
+W186240993,,residential,false,0,7.5,false,false,false,0,185.1,Iganmu and Ijora,186240993
+W186240994,,residential,false,0,7.5,false,false,false,0,276.1,Iganmu and Ijora,186240994
+W186241001,,residential,false,0,7.5,false,false,false,0,94.2,Iganmu and Ijora,186241001
+W186241002,,residential,false,0,7.5,false,false,false,0,198.0,Iganmu and Ijora,186241002
+W186241003,,residential,false,0,7.5,false,false,false,0,333.6,Iganmu and Ijora,186241003
+W186241004,,residential,false,0,7.5,false,false,false,0,97.6,Iganmu and Ijora,186241004
+W186241005,,residential,false,0,7.5,false,false,false,0,195.9,Iganmu and Ijora,186241005
+W186241006,,residential,false,0,7.5,false,false,false,0,130.9,Iganmu and Ijora,186241006
+W186241007,,residential,false,0,7.5,false,false,false,0,88.4,Iganmu and Ijora,186241007
+W186241008,,residential,false,0,7.5,false,false,false,0,129.3,Iganmu and Ijora,186241008
+W186241009,,residential,false,0,7.5,false,false,false,0,177.4,Iganmu and Ijora,186241009
+W186241010,,residential,false,0,7.5,false,false,false,0,61.7,Iganmu and Ijora,186241010
+W186241011,,residential,false,0,7.5,false,false,false,0,145.2,Iganmu and Ijora,186241011
+W186241012,,residential,false,0,7.5,false,false,false,0,101.7,Iganmu and Ijora,186241012
+W186241013,,residential,false,0,7.5,false,false,false,0,338.2,Iganmu and Ijora,186241013
+W186241018,,residential,false,0,7.5,false,false,false,0,126.1,Iganmu and Ijora,186241018
+W186241020,,residential,false,0,7.5,false,false,false,0,153.0,Iganmu and Ijora,186241020
+W186241021,,residential,false,0,7.5,false,false,false,0,194.1,Iganmu and Ijora,186241021
+W186241022,,residential,false,0,7.5,false,false,false,0,34.1,Iganmu and Ijora,186241022
+W186241023,,residential,false,0,7.5,false,false,false,0,326.2,Iganmu and Ijora,186241023
+W186241024,,residential,false,0,7.5,false,false,false,0,215.2,Iganmu and Ijora,186241024
+W186241025,,residential,false,0,7.5,false,false,false,0,232.1,Iganmu and Ijora,186241025
+W186241026,,residential,false,0,7.5,false,false,false,0,96.1,Iganmu and Ijora,186241026
+W186241027,,residential,false,0,7.5,false,false,false,0,81.4,Iganmu and Ijora,186241027
+W186241028,,residential,false,0,7.5,false,false,false,0,180.1,Iganmu and Ijora,186241028
+W186241029,,residential,false,0,7.5,false,false,false,0,212.4,Iganmu and Ijora,186241029
+W186241030,,residential,false,0,7.5,false,false,false,0,142.3,Iganmu and Ijora,186241030
+W186241031,,residential,false,0,7.5,false,false,false,0,298.1,Iganmu and Ijora,186241031
+W186241032,,residential,false,0,7.5,false,false,false,0,317.9,Iganmu and Ijora,186241032
+W186241033,,residential,false,0,7.5,false,false,false,0,187.0,Iganmu and Ijora,186241033
+W186241034,,residential,false,0,7.5,false,false,false,0,576.2,Iganmu and Ijora,186241034
+W186241036,,residential,false,0,7.5,false,false,false,0,258.4,Iganmu and Ijora,186241036
+W186241038,,residential,false,0,7.5,false,false,false,0,91.8,Iganmu and Ijora,186241038
+W206634545,,residential,false,0,7.5,false,false,false,0,267.0,Iganmu and Ijora,206634545
+W206634564,,residential,false,0,7.5,false,false,false,0,74.6,Iganmu and Ijora,206634564
+W207323887,,residential,false,0,7.5,false,false,false,0,56.8,Iganmu and Ijora,207323887
+W212433604,,service,false,0,5.0,false,false,false,0,470.8,Iganmu and Ijora,212433604
+W217003242,,secondary,false,0,13.0,true,true,false,0,671.4,Iganmu and Ijora,217003242
+W217003246,,tertiary,false,0,10.0,true,false,true,0,116.6,Iganmu and Ijora,217003246
+W217138678,,unclassified,false,0,7.5,false,false,false,0,679.2,Iganmu and Ijora,217138678
+W217574049,,unclassified,false,0,7.5,true,true,false,0,166.9,Iganmu and Ijora,217574049
+W217574060,,residential,false,0,7.5,false,false,false,0,153.0,Iganmu and Ijora,217574060
+W217574069,,residential,false,0,7.5,true,false,false,0,53.7,Iganmu and Ijora,217574069
+W231756301,,motorway,true,0,7.5,true,false,false,0,118.3,Iganmu and Ijora,231756301
+W264916670,,primary,false,0,17.5,true,false,false,0,852.5,Iganmu and Ijora,264916670
+W264916671,,primary,false,0,17.5,true,false,false,0,1138.8,Iganmu and Ijora,264916671
+W264916672,,primary,false,0,17.5,true,false,false,0,1459.4,Iganmu and Ijora,264916672
+W264916673,,trunk,true,0,7.5,true,true,false,0,163.9,Iganmu and Ijora,264916673
+W264916674,,trunk,true,0,7.5,true,true,false,0,158.7,Iganmu and Ijora,264916674
+W264916675,,primary,false,0,17.5,false,false,false,0,440.6,Iganmu and Ijora,264916675
+W280363717,,residential,false,0,7.5,false,false,false,0,336.8,Iganmu and Ijora,280363717
+W280363722,,residential,false,0,7.5,false,false,false,0,489.4,Iganmu and Ijora,280363722
+W280363750,,residential,false,0,7.5,false,false,false,0,348.7,Iganmu and Ijora,280363750
+W280374810,,residential,false,0,7.5,false,false,false,0,407.9,Iganmu and Ijora,280374810
+W280374820,,residential,false,0,7.5,false,false,false,0,252.3,Iganmu and Ijora,280374820
+W280374822,,residential,false,0,7.5,false,false,false,0,324.3,Iganmu and Ijora,280374822
+W280477048,,residential,false,0,7.5,false,false,false,0,263.1,Iganmu and Ijora,280477048
+W280477050,,residential,false,0,7.5,false,false,false,0,350.4,Iganmu and Ijora,280477050
+W280477052,,residential,false,0,7.5,false,false,false,0,603.6,Iganmu and Ijora,280477052
+W280477054,,residential,false,0,7.5,false,false,false,0,430.3,Iganmu and Ijora,280477054
+W280477055,,residential,false,0,7.5,false,false,false,0,643.7,Iganmu and Ijora,280477055
+W280477057,,residential,false,0,7.5,false,false,false,0,77.0,Iganmu and Ijora,280477057
+W280477058,,residential,false,0,7.5,false,false,false,0,36.7,Iganmu and Ijora,280477058
+W280477061,,residential,false,0,7.5,false,false,false,0,773.8,Iganmu and Ijora,280477061
+W280477064,,residential,false,0,7.5,false,false,false,0,118.2,Iganmu and Ijora,280477064
+W280477068,,service,false,0,5.0,false,false,false,0,617.0,Iganmu and Ijora,280477068
+W280477069,,residential,false,0,7.5,false,false,false,0,79.1,Iganmu and Ijora,280477069
+W280477071,,residential,false,0,7.5,false,false,false,0,231.3,Iganmu and Ijora,280477071
+W280477072,,residential,false,0,7.5,false,false,false,0,227.2,Iganmu and Ijora,280477072
+W280477074,,residential,false,0,7.5,false,false,false,0,154.4,Iganmu and Ijora,280477074
+W280477077,,residential,false,0,7.5,false,false,false,0,254.4,Iganmu and Ijora,280477077
+W280477079,,residential,false,0,7.5,false,false,false,0,353.1,Iganmu and Ijora,280477079
+W280479705,,residential,false,0,7.5,false,false,false,0,570.2,Iganmu and Ijora,280479705
+W280479709,,residential,false,0,7.5,false,false,false,0,274.7,Iganmu and Ijora,280479709
+W280570909,,primary,false,0,17.5,true,false,false,0,441.5,Iganmu and Ijora,280570909
+W280570929,,tertiary,false,0,10.0,false,false,false,0,171.5,Iganmu and Ijora,280570929
+W280579887,,residential,false,0,7.5,false,false,false,0,73.1,Iganmu and Ijora,280579887
+W280579904,,residential,false,0,7.5,false,false,false,0,172.8,Iganmu and Ijora,280579904
+W280588452,,residential,false,0,7.5,false,false,false,0,110.2,Iganmu and Ijora,280588452
+W280588464,,residential,false,0,7.5,false,false,false,0,51.9,Iganmu and Ijora,280588464
+W280588479,,residential,false,0,7.5,false,false,false,0,60.1,Iganmu and Ijora,280588479
+W280588483,,residential,false,0,7.5,false,false,false,0,96.0,Iganmu and Ijora,280588483
+W280588484,,residential,false,0,7.5,false,false,false,0,267.7,Iganmu and Ijora,280588484
+W280588494,,residential,false,0,7.5,false,false,false,0,129.8,Iganmu and Ijora,280588494
+W280588495,,residential,false,0,7.5,false,false,false,0,280.5,Iganmu and Ijora,280588495
+W280588505,,residential,false,0,7.5,false,false,false,0,86.5,Iganmu and Ijora,280588505
+W280588506,,residential,false,0,7.5,false,false,false,0,156.0,Iganmu and Ijora,280588506
+W280588510,,residential,false,0,7.5,false,false,false,0,151.1,Iganmu and Ijora,280588510
+W280588512,,residential,false,0,7.5,false,false,false,0,194.3,Iganmu and Ijora,280588512
+W280588513,,residential,false,0,7.5,false,false,false,0,171.0,Iganmu and Ijora,280588513
+W280588514,,residential,false,0,7.5,false,false,false,0,128.5,Iganmu and Ijora,280588514
+W280588516,,residential,false,0,7.5,false,false,false,0,474.7,Iganmu and Ijora,280588516
+W280588519,,residential,false,0,7.5,false,false,false,0,376.3,Iganmu and Ijora,280588519
+W280596079,,service,false,0,5.0,false,false,false,0,336.7,Iganmu and Ijora,280596079
+W280596080,,residential,false,0,7.5,false,false,false,0,468.9,Iganmu and Ijora,280596080
+W280596084,,service,false,0,5.0,false,false,false,0,240.3,Iganmu and Ijora,280596084
+W280596089,,service,false,0,5.0,false,false,false,0,36.2,Iganmu and Ijora,280596089
+W280596093,,service,false,0,5.0,false,false,false,0,106.9,Iganmu and Ijora,280596093
+W280596095,,service,false,0,5.0,false,false,false,0,126.1,Iganmu and Ijora,280596095
+W280596096,,service,false,0,5.0,false,false,false,0,126.3,Iganmu and Ijora,280596096
+W280596100,,residential,false,0,7.5,false,false,false,0,89.2,Iganmu and Ijora,280596100
+W280596101,,service,false,0,5.0,false,false,false,0,548.1,Iganmu and Ijora,280596101
+W280596102,,service,false,0,5.0,false,false,false,0,96.4,Iganmu and Ijora,280596102
+W280596106,,residential,false,0,7.5,false,false,false,0,188.5,Iganmu and Ijora,280596106
+W280596107,,service,false,0,5.0,false,false,false,0,143.3,Iganmu and Ijora,280596107
+W280596108,,service,false,0,5.0,false,false,false,0,162.9,Iganmu and Ijora,280596108
+W280596111,,residential,false,0,7.5,false,false,false,0,205.8,Iganmu and Ijora,280596111
+W280596113,,service,false,0,5.0,false,false,false,0,148.6,Iganmu and Ijora,280596113
+W280596114,,service,false,0,5.0,false,false,false,0,239.7,Iganmu and Ijora,280596114
+W280596116,,service,false,0,5.0,false,false,false,0,230.7,Iganmu and Ijora,280596116
+W280596124,,residential,false,0,7.5,false,false,false,0,152.4,Iganmu and Ijora,280596124
+W280596126,,service,false,0,5.0,false,false,false,0,238.0,Iganmu and Ijora,280596126
+W280596129,,residential,false,0,7.5,false,false,false,0,303.0,Iganmu and Ijora,280596129
+W280596131,,residential,false,0,7.5,false,false,false,0,284.3,Iganmu and Ijora,280596131
+W280600166,,service,false,0,5.0,false,false,false,0,840.3,Iganmu and Ijora,280600166
+W281436829,,residential,false,0,7.5,false,false,false,0,80.2,Iganmu and Ijora,281436829
+W281436844,,residential,false,0,7.5,false,false,false,0,219.0,Iganmu and Ijora,281436844
+W281437242,,residential,false,0,7.5,false,false,false,0,403.6,Iganmu and Ijora,281437242
+W281439182,,service,false,0,5.0,false,false,false,0,332.8,Iganmu and Ijora,281439182
+W281439183,,residential,false,0,7.5,false,false,false,0,275.5,Iganmu and Ijora,281439183
+W281439184,,residential,false,0,7.5,false,false,false,0,73.9,Iganmu and Ijora,281439184
+W281439185,,residential,false,0,7.5,false,false,false,0,179.3,Iganmu and Ijora,281439185
+W281439186,,service,false,0,5.0,false,false,false,0,11.8,Iganmu and Ijora,281439186
+W281439188,,residential,false,0,7.5,false,false,false,0,150.9,Iganmu and Ijora,281439188
+W281439189,,residential,false,0,7.5,false,false,false,0,97.9,Iganmu and Ijora,281439189
+W281439190,,residential,false,0,7.5,false,false,false,0,183.6,Iganmu and Ijora,281439190
+W281439191,,residential,false,0,7.5,false,false,false,0,115.7,Iganmu and Ijora,281439191
+W295045437,,tertiary,false,0,10.0,true,false,false,0,346.9,Iganmu and Ijora,295045437
+W295045438,,tertiary,false,0,10.0,true,false,false,0,336.3,Iganmu and Ijora,295045438
+W297477175,,residential,false,0,7.5,false,false,false,0,191.0,Iganmu and Ijora,297477175
+W441713769,,residential,false,0,7.5,false,false,false,0,411.5,Iganmu and Ijora,441713769
+W441713770,,residential,false,0,7.5,false,false,false,0,105.9,Iganmu and Ijora,441713770
+W441713771,,residential,false,0,7.5,false,false,false,0,330.5,Iganmu and Ijora,441713771
+W441713772,,residential,false,0,7.5,false,false,false,0,92.7,Iganmu and Ijora,441713772
+W441713773,,residential,false,0,7.5,false,false,false,0,100.8,Iganmu and Ijora,441713773
+W441713774,,residential,false,0,7.5,false,false,false,0,222.8,Iganmu and Ijora,441713774
+W441713775,,residential,false,0,7.5,false,false,false,0,118.1,Iganmu and Ijora,441713775
+W441713777,,residential,false,0,7.5,false,false,false,0,181.7,Iganmu and Ijora,441713777
+W441713778,,residential,false,0,7.5,false,false,false,0,86.6,Iganmu and Ijora,441713778
+W441713779,,residential,false,0,7.5,false,false,false,0,74.7,Iganmu and Ijora,441713779
+W441713780,,residential,false,0,7.5,false,false,false,0,234.6,Iganmu and Ijora,441713780
+W441713781,,residential,false,0,7.5,false,false,false,0,46.3,Iganmu and Ijora,441713781
+W441713782,,residential,false,0,7.5,false,false,false,0,253.3,Iganmu and Ijora,441713782
+W441713783,,residential,false,0,7.5,false,false,false,0,221.8,Iganmu and Ijora,441713783
+W441713784,,residential,false,0,7.5,false,false,false,0,123.7,Iganmu and Ijora,441713784
+W441713785,,residential,false,0,7.5,false,false,false,0,80.0,Iganmu and Ijora,441713785
+W441713786,,residential,false,0,7.5,false,false,false,0,314.7,Iganmu and Ijora,441713786
+W441713788,,residential,false,0,7.5,false,false,false,0,152.1,Iganmu and Ijora,441713788
+W441713789,,residential,false,0,7.5,false,false,false,0,58.2,Iganmu and Ijora,441713789
+W441713790,,residential,false,0,7.5,false,false,false,0,197.8,Iganmu and Ijora,441713790
+W441860238,,residential,false,0,7.5,false,false,false,0,241.6,Iganmu and Ijora,441860238
+W441860239,,residential,false,0,7.5,false,false,false,0,110.2,Iganmu and Ijora,441860239
+W441860240,,residential,false,0,7.5,false,false,false,0,98.9,Iganmu and Ijora,441860240
+W441860241,,residential,false,0,7.5,false,false,false,0,72.1,Iganmu and Ijora,441860241
+W441860243,,residential,false,0,7.5,false,false,false,0,131.9,Iganmu and Ijora,441860243
+W441860244,,residential,false,0,7.5,false,false,false,0,204.7,Iganmu and Ijora,441860244
+W441860245,,residential,false,0,7.5,false,false,false,0,196.8,Iganmu and Ijora,441860245
+W441860246,,residential,false,0,7.5,false,false,false,0,172.4,Iganmu and Ijora,441860246
+W441860247,,residential,false,0,7.5,false,false,false,0,122.3,Iganmu and Ijora,441860247
+W441860248,,residential,false,0,7.5,false,false,false,0,947.6,Iganmu and Ijora,441860248
+W441900914,,residential,false,0,7.5,false,false,false,0,55.2,Iganmu and Ijora,441900914
+W441900915,,residential,false,0,7.5,false,false,false,0,245.1,Iganmu and Ijora,441900915
+W441900916,,residential,false,0,7.5,false,false,false,0,70.0,Iganmu and Ijora,441900916
+W457940820,,service,false,0,5.0,false,false,false,0,42.2,Iganmu and Ijora,457940820
+W458561129,,residential,false,0,7.5,false,false,false,0,329.8,Iganmu and Ijora,458561129
+W461600416,,residential,false,0,7.5,false,false,false,0,166.9,Iganmu and Ijora,461600416
+W461600417,,residential,false,0,7.5,false,false,false,0,114.8,Iganmu and Ijora,461600417
+W461601163,,residential,false,0,7.5,false,false,false,0,82.5,Iganmu and Ijora,461601163
+W461601164,,residential,false,0,7.5,false,false,false,0,258.9,Iganmu and Ijora,461601164
+W461601165,,residential,false,0,7.5,false,false,false,0,103.6,Iganmu and Ijora,461601165
+W461601167,,residential,false,0,7.5,false,false,false,0,13.2,Iganmu and Ijora,461601167
+W461601168,,residential,false,0,7.5,false,false,false,0,88.6,Iganmu and Ijora,461601168
+W461601169,,residential,false,0,7.5,false,false,false,0,51.8,Iganmu and Ijora,461601169
+W461601170,,residential,false,0,7.5,false,false,false,0,413.2,Iganmu and Ijora,461601170
+W461777144,,service,false,0,5.0,false,false,false,0,251.3,Iganmu and Ijora,461777144
+W535043104,,secondary,true,0,7.5,true,false,false,0,9.3,Iganmu and Ijora,535043104
+W535043105,,secondary,true,0,7.5,true,false,false,0,9.5,Iganmu and Ijora,535043105
+W535053121,,residential,false,0,7.5,false,false,false,0,9.3,Iganmu and Ijora,535053121
+W535066064,,secondary,true,0,7.5,true,false,false,0,37.8,Iganmu and Ijora,535066064
+W535066066,,secondary,true,0,7.5,true,false,false,0,40.7,Iganmu and Ijora,535066066
+W535066069,,service,false,0,5.0,true,false,false,0,114.5,Iganmu and Ijora,535066069
+W535066072,,secondary,true,0,7.5,false,false,false,0,6.0,Iganmu and Ijora,535066072
+W535066073,,residential,false,0,7.5,true,false,false,0,18.6,Iganmu and Ijora,535066073
+W535066074,,residential,false,0,7.5,true,false,false,0,18.2,Iganmu and Ijora,535066074
+W559358551,,secondary,false,0,13.0,false,false,false,0,341.6,Iganmu and Ijora,559358551
+W564519472,,motorway,true,0,7.5,true,false,false,0,11.0,Iganmu and Ijora,564519472
+W564539669,,unclassified,false,0,7.5,true,false,false,0,286.5,Iganmu and Ijora,564539669
+W564557257,,residential,false,0,7.5,false,false,false,0,633.9,Iganmu and Ijora,564557257
+W564884715,,service,false,0,5.0,false,false,false,0,235.1,Iganmu and Ijora,564884715
+W564884720,,service,false,0,5.0,false,false,false,0,120.4,Iganmu and Ijora,564884720
+W564884721,,service,false,0,5.0,false,false,false,0,139.1,Iganmu and Ijora,564884721
+W564884728,,service,false,0,5.0,false,false,false,0,166.5,Iganmu and Ijora,564884728
+W564897389,,residential,false,0,7.5,false,false,false,0,258.5,Iganmu and Ijora,564897389
+W564963989,,residential,false,0,7.5,false,true,false,0,25.6,Iganmu and Ijora,564963989
+W564963991,,residential,false,0,7.5,false,false,false,0,65.1,Iganmu and Ijora,564963991
+W564963993,,residential,false,0,7.5,false,false,false,0,69.3,Iganmu and Ijora,564963993
+W564974561,,residential,false,0,7.5,false,false,false,0,132.6,Iganmu and Ijora,564974561
+W564974562,,residential,false,0,7.5,false,false,false,0,83.1,Iganmu and Ijora,564974562
+W564974563,,residential,false,0,7.5,false,false,false,0,346.5,Iganmu and Ijora,564974563
+W566486269,,residential,false,0,7.5,false,false,false,0,338.8,Iganmu and Ijora,566486269
+W566486270,,tertiary,false,0,10.0,false,false,false,0,58.8,Iganmu and Ijora,566486270
+W566486271,,tertiary,false,0,10.0,false,false,false,0,13.1,Iganmu and Ijora,566486271
+W566486272,,residential,false,0,7.5,false,false,false,0,227.2,Iganmu and Ijora,566486272
+W566486273,,residential,false,0,7.5,false,false,false,0,450.2,Iganmu and Ijora,566486273
+W566486274,,residential,false,0,7.5,false,false,false,0,167.1,Iganmu and Ijora,566486274
+W566492481,,residential,false,0,7.5,false,false,false,0,48.6,Iganmu and Ijora,566492481
+W566492483,,residential,false,0,7.5,false,false,false,0,83.8,Iganmu and Ijora,566492483
+W566492485,,residential,false,0,7.5,false,false,false,0,94.9,Iganmu and Ijora,566492485
+W566495861,,residential,false,0,7.5,false,false,false,0,163.1,Iganmu and Ijora,566495861
+W566495862,,residential,false,0,7.5,false,false,false,0,213.7,Iganmu and Ijora,566495862
+W566500544,,residential,false,0,7.5,false,false,false,0,172.0,Iganmu and Ijora,566500544
+W566500545,,residential,false,0,7.5,false,false,false,0,67.7,Iganmu and Ijora,566500545
+W566507015,,residential,false,0,7.5,false,false,false,0,75.3,Iganmu and Ijora,566507015
+W566507016,,residential,false,0,7.5,false,false,false,0,64.0,Iganmu and Ijora,566507016
+W566507017,,residential,false,0,7.5,false,false,false,0,106.0,Iganmu and Ijora,566507017
+W566507018,,residential,false,0,7.5,false,false,false,0,61.1,Iganmu and Ijora,566507018
+W566507019,,residential,false,0,7.5,false,false,false,0,78.0,Iganmu and Ijora,566507019
+W566507020,,residential,false,0,7.5,false,false,false,0,70.6,Iganmu and Ijora,566507020
+W566524149,,residential,false,0,7.5,false,false,false,0,82.6,Iganmu and Ijora,566524149
+W566524150,,residential,false,0,7.5,false,false,false,0,49.5,Iganmu and Ijora,566524150
+W566524152,,service,false,0,5.0,false,false,false,0,193.5,Iganmu and Ijora,566524152
+W566533849,,residential,false,0,7.5,false,false,false,0,52.9,Iganmu and Ijora,566533849
+W566533850,,residential,false,0,7.5,false,false,false,0,66.9,Iganmu and Ijora,566533850
+W566533851,,residential,false,0,7.5,false,false,false,0,404.8,Iganmu and Ijora,566533851
+W566533852,,residential,false,0,7.5,false,false,false,0,201.3,Iganmu and Ijora,566533852
+W566533853,,residential,false,0,7.5,false,false,false,0,55.0,Iganmu and Ijora,566533853
+W566533854,,residential,false,0,7.5,false,false,false,0,56.3,Iganmu and Ijora,566533854
+W566533855,,service,false,0,5.0,false,false,false,0,68.7,Iganmu and Ijora,566533855
+W566533856,,service,false,0,5.0,false,false,false,0,120.1,Iganmu and Ijora,566533856
+W566533857,,service,false,0,5.0,false,false,false,0,169.4,Iganmu and Ijora,566533857
+W566533858,,service,false,0,5.0,false,false,false,0,157.6,Iganmu and Ijora,566533858
+W566540328,,residential,false,0,7.5,false,false,false,0,133.6,Iganmu and Ijora,566540328
+W566540330,,residential,false,0,7.5,false,false,false,0,62.7,Iganmu and Ijora,566540330
+W584900117,,residential,false,0,7.5,false,false,false,0,8.5,Iganmu and Ijora,584900117
+W584900119,,residential,false,0,7.5,false,false,false,0,9.6,Iganmu and Ijora,584900119
+W586770822,,residential,false,0,7.5,false,false,false,0,102.5,Iganmu and Ijora,586770822
+W586770823,,secondary,true,0,7.5,false,false,false,0,11.8,Iganmu and Ijora,586770823
+W586770824,,residential,false,0,7.5,false,false,false,0,215.8,Iganmu and Ijora,586770824
+W586770826,,residential,false,0,7.5,false,false,false,0,157.4,Iganmu and Ijora,586770826
+W586781231,,residential,false,0,7.5,false,false,false,0,129.1,Iganmu and Ijora,586781231
+W586781232,,residential,false,0,7.5,false,false,false,0,71.2,Iganmu and Ijora,586781232
+W586798053,,residential,false,0,7.5,false,false,false,0,193.2,Iganmu and Ijora,586798053
+W586798055,,residential,false,0,7.5,false,false,false,0,227.0,Iganmu and Ijora,586798055
+W586855430,,residential,false,0,7.5,false,false,false,0,160.9,Iganmu and Ijora,586855430
+W587066261,,residential,false,0,7.5,false,false,false,0,312.9,Iganmu and Ijora,587066261
+W587073148,,service,false,0,5.0,false,false,false,0,13.1,Iganmu and Ijora,587073148
+W587090411,,residential,false,0,7.5,false,false,false,0,15.2,Iganmu and Ijora,587090411
+W587090412,,secondary,true,0,7.5,false,false,false,0,10.8,Iganmu and Ijora,587090412
+W587090413,,secondary,true,0,7.5,false,false,false,0,10.1,Iganmu and Ijora,587090413
+W587521736,,service,false,0,5.0,false,false,false,0,239.1,Iganmu and Ijora,587521736
+W587526200,,service,false,0,5.0,false,false,false,0,113.5,Iganmu and Ijora,587526200
+W587526201,,residential,false,0,7.5,false,false,false,0,170.0,Iganmu and Ijora,587526201
+W588117799,,residential,false,0,7.5,false,false,false,0,94.6,Iganmu and Ijora,588117799
+W588123010,,residential,false,0,7.5,false,false,false,0,67.6,Iganmu and Ijora,588123010
+W588123013,,residential,false,0,7.5,false,false,false,0,76.3,Iganmu and Ijora,588123013
+W588130166,,tertiary,false,0,10.0,false,false,false,0,1129.0,Iganmu and Ijora,588130166
+W588135657,,residential,false,0,7.5,false,false,false,0,41.3,Iganmu and Ijora,588135657
+W588664586,,secondary,true,0,7.5,false,false,false,0,5.3,Iganmu and Ijora,588664586
+W588675463,,secondary,true,0,7.5,false,false,false,0,7.7,Iganmu and Ijora,588675463
+W588696613,,service,false,0,5.0,false,false,false,0,205.6,Iganmu and Ijora,588696613
+W588696634,,unclassified,false,0,7.5,false,false,false,0,83.2,Iganmu and Ijora,588696634
+W588696636,,residential,false,0,7.5,false,false,false,0,199.2,Iganmu and Ijora,588696636
+W588752879,,residential,false,0,7.5,false,false,false,0,67.0,Iganmu and Ijora,588752879
+W588752881,,residential,false,0,7.5,false,false,false,0,79.0,Iganmu and Ijora,588752881
+W588767897,,residential,false,0,7.5,false,false,false,0,8.3,Iganmu and Ijora,588767897
+W588998696,,residential,false,0,7.5,false,false,false,0,14.9,Iganmu and Ijora,588998696
+W589005026,,residential,false,0,7.5,false,false,false,0,34.4,Iganmu and Ijora,589005026
+W589046878,,service,false,0,5.0,false,false,false,0,238.2,Iganmu and Ijora,589046878
+W589213241,,residential,false,0,7.5,false,false,false,0,176.4,Iganmu and Ijora,589213241
+W589237215,,residential,false,0,7.5,false,false,false,0,82.5,Iganmu and Ijora,589237215
+W589247572,,residential,false,0,7.5,false,false,false,0,68.4,Iganmu and Ijora,589247572
+W589249714,,residential,false,0,7.5,false,false,false,0,32.0,Iganmu and Ijora,589249714
+W589273593,,residential,false,0,7.5,false,false,false,0,112.6,Iganmu and Ijora,589273593
+W590771433,,residential,false,0,7.5,false,false,false,0,87.2,Iganmu and Ijora,590771433
+W590830568,,residential,false,0,7.5,false,false,false,0,141.6,Iganmu and Ijora,590830568
+W591624976,,service,false,0,5.0,false,false,false,0,78.2,Iganmu and Ijora,591624976
+W591633173,,residential,false,0,7.5,false,false,false,0,197.4,Iganmu and Ijora,591633173
+W591850322,,residential,false,0,7.5,false,false,false,0,22.4,Iganmu and Ijora,591850322
+W592338373,,residential,false,0,7.5,false,false,false,0,41.7,Iganmu and Ijora,592338373
+W592338374,,service,false,0,5.0,false,false,false,0,71.1,Iganmu and Ijora,592338374
+W592338375,,residential,false,0,7.5,false,false,false,0,81.0,Iganmu and Ijora,592338375
+W592355267,,residential,false,0,7.5,false,false,false,0,170.4,Iganmu and Ijora,592355267
+W592355269,,residential,false,0,7.5,false,false,false,0,18.4,Iganmu and Ijora,592355269
+W592357774,,residential,false,0,7.5,false,false,false,0,206.9,Iganmu and Ijora,592357774
+W592357775,,service,false,0,5.0,false,false,false,0,275.6,Iganmu and Ijora,592357775
+W592357776,,residential,false,0,7.5,false,false,false,0,79.1,Iganmu and Ijora,592357776
+W592360919,,service,false,0,5.0,false,false,false,0,117.2,Iganmu and Ijora,592360919
+W592360920,,service,false,0,5.0,false,false,false,0,19.7,Iganmu and Ijora,592360920
+W592360921,,residential,false,0,7.5,false,false,false,0,211.6,Iganmu and Ijora,592360921
+W592360922,,residential,false,0,7.5,false,false,false,0,47.7,Iganmu and Ijora,592360922
+W592360923,,residential,false,0,7.5,false,false,false,0,115.2,Iganmu and Ijora,592360923
+W592360924,,residential,false,0,7.5,false,false,false,0,244.5,Iganmu and Ijora,592360924
+W592415155,,primary,true,0,7.5,false,false,false,0,26.3,Iganmu and Ijora,592415155
+W592428447,,residential,false,0,7.5,false,false,false,0,174.9,Iganmu and Ijora,592428447
+W608185266,,residential,false,0,7.5,false,false,false,0,162.1,Iganmu and Ijora,608185266
+W617028294,,service,false,0,5.0,false,false,false,0,111.1,Iganmu and Ijora,617028294
+W685546678,,trunk,true,0,7.5,true,false,false,0,225.3,Iganmu and Ijora,685546678
+W706082454,,service,false,0,5.0,false,false,false,0,161.6,Iganmu and Ijora,706082454
+W707842366,,residential,false,0,7.5,false,false,false,0,56.9,Iganmu and Ijora,707842366
+W726615540,,service,false,0,5.0,false,false,false,0,26.7,Iganmu and Ijora,726615540
+W726615541,,service,false,0,5.0,false,false,false,0,69.8,Iganmu and Ijora,726615541
+W726615542,,service,false,0,5.0,false,false,false,0,118.5,Iganmu and Ijora,726615542
+W726661103,,residential,false,0,7.5,false,false,false,0,234.2,Iganmu and Ijora,726661103
+W727395966,,residential,false,0,7.5,false,false,false,0,80.5,Iganmu and Ijora,727395966
+W727395967,,residential,false,0,7.5,false,false,false,0,129.3,Iganmu and Ijora,727395967
+W727395968,,residential,false,0,7.5,false,false,false,0,124.4,Iganmu and Ijora,727395968
+W727395969,,residential,false,0,7.5,false,false,false,0,177.2,Iganmu and Ijora,727395969
+W727442344,,service,false,0,5.0,false,false,false,0,186.1,Iganmu and Ijora,727442344
+W737765197,,service,false,0,5.0,true,false,false,0,16.3,Iganmu and Ijora,737765197
+W737765198,,service,false,0,5.0,true,false,false,0,16.3,Iganmu and Ijora,737765198
+W737765199,,service,false,0,5.0,true,false,false,0,145.3,Iganmu and Ijora,737765199
+W738080411,,service,false,0,5.0,false,false,false,0,270.5,Iganmu and Ijora,738080411
+W744376362,,service,false,0,5.0,true,false,false,0,58.9,Iganmu and Ijora,744376362
+W75323649,,residential,false,0,7.5,false,false,false,0,577.8,Iganmu and Ijora,75323649
+W75324034,,residential,false,0,7.5,false,false,false,0,597.7,Iganmu and Ijora,75324034
+W75324146,,residential,false,0,7.5,false,false,false,0,104.4,Iganmu and Ijora,75324146
+W784063113,,residential,false,0,7.5,false,false,false,0,28.1,Iganmu and Ijora,784063113
+W784661197,,service,false,0,5.0,false,false,false,0,306.8,Iganmu and Ijora,784661197
+W784688873,,service,false,0,5.0,false,false,false,0,109.5,Iganmu and Ijora,784688873
+W784695871,,service,false,0,5.0,false,false,false,0,141.6,Iganmu and Ijora,784695871
+W784695872,,service,false,0,5.0,false,false,false,0,147.1,Iganmu and Ijora,784695872
+W784696157,,service,false,0,5.0,false,false,false,0,22.3,Iganmu and Ijora,784696157
+W784696158,,service,false,0,5.0,false,false,false,0,92.2,Iganmu and Ijora,784696158
+W784702603,,service,false,0,5.0,false,false,false,0,109.7,Iganmu and Ijora,784702603
+W784949569,,service,false,0,5.0,false,false,false,0,59.6,Iganmu and Ijora,784949569
+W784968631,,service,false,0,5.0,false,false,false,0,310.4,Iganmu and Ijora,784968631
+W784969936,,service,false,0,5.0,false,false,false,0,59.8,Iganmu and Ijora,784969936
+W784969937,,service,false,0,5.0,false,false,false,0,187.4,Iganmu and Ijora,784969937
+W784970062,,service,false,0,5.0,false,false,false,0,73.6,Iganmu and Ijora,784970062
+W784970063,,service,false,0,5.0,false,false,false,0,340.9,Iganmu and Ijora,784970063
+W784970307,,service,false,0,5.0,false,false,false,0,123.8,Iganmu and Ijora,784970307
+W784983663,,service,false,0,5.0,false,false,false,0,194.9,Iganmu and Ijora,784983663
+W784990920,,service,false,0,5.0,false,false,false,0,66.4,Iganmu and Ijora,784990920
+W795831169,,service,false,0,5.0,false,false,false,0,95.8,Iganmu and Ijora,795831169
+W795831170,,service,false,0,5.0,false,false,false,0,7.8,Iganmu and Ijora,795831170
+W795831171,,service,false,0,5.0,false,false,false,0,98.8,Iganmu and Ijora,795831171
+W795831173,,residential,false,0,7.5,false,false,false,0,323.5,Iganmu and Ijora,795831173
+W828803910,,service,false,0,5.0,false,false,false,0,59.6,Iganmu and Ijora,828803910
+W828809255,,service,false,0,5.0,false,false,false,0,145.4,Iganmu and Ijora,828809255
+W828809256,,service,false,0,5.0,false,false,false,0,69.3,Iganmu and Ijora,828809256
+W828809258,,service,false,0,5.0,false,false,false,0,21.0,Iganmu and Ijora,828809258
+W828819903,,service,false,0,5.0,false,false,false,0,72.9,Iganmu and Ijora,828819903
+W828819904,,service,false,0,5.0,false,false,false,0,38.3,Iganmu and Ijora,828819904
+W829092419,,residential,false,0,7.5,false,false,false,0,222.3,Iganmu and Ijora,829092419
+W829092420,,residential,false,0,7.5,false,false,false,0,96.6,Iganmu and Ijora,829092420
+W829092424,,residential,false,0,7.5,false,false,false,0,299.2,Iganmu and Ijora,829092424
+W829092425,,residential,false,0,7.5,false,false,false,0,228.6,Iganmu and Ijora,829092425
+W829092426,,residential,false,0,7.5,false,false,false,0,191.7,Iganmu and Ijora,829092426
+W829092427,,residential,false,0,7.5,false,false,false,0,254.8,Iganmu and Ijora,829092427
+W829092431,,unclassified,false,0,7.5,true,false,false,0,284.3,Iganmu and Ijora,829092431
+W829092432,,secondary,false,0,13.0,true,true,false,0,675.4,Iganmu and Ijora,829092432
+W829092435,,residential,false,0,7.5,false,false,false,0,22.8,Iganmu and Ijora,829092435
+W829092436,,residential,false,0,7.5,false,false,false,0,24.8,Iganmu and Ijora,829092436
+W829092437,,residential,false,0,7.5,false,false,false,0,21.5,Iganmu and Ijora,829092437
+W829092438,,residential,false,0,7.5,false,false,false,0,25.0,Iganmu and Ijora,829092438
+W829092441,,residential,false,0,7.5,false,false,false,0,20.3,Iganmu and Ijora,829092441
+W832231742,,residential,false,0,7.5,true,false,false,0,93.9,Iganmu and Ijora,832231742
+W847911560,,residential,false,0,7.5,false,false,false,0,103.4,Iganmu and Ijora,847911560
+W847911561,,residential,false,0,7.5,false,false,false,0,128.1,Iganmu and Ijora,847911561
+W847912261,,residential,false,0,7.5,false,false,false,0,86.6,Iganmu and Ijora,847912261
+W848292103,,service,false,0,5.0,false,false,false,0,124.6,Iganmu and Ijora,848292103
+W848760518,,service,false,0,5.0,false,false,false,0,69.1,Iganmu and Ijora,848760518
+W848760519,,service,false,0,5.0,false,false,false,0,13.9,Iganmu and Ijora,848760519
+W848760522,,service,false,0,5.0,false,false,false,0,66.2,Iganmu and Ijora,848760522
+W850033184,,service,false,0,5.0,false,false,false,0,120.0,Iganmu and Ijora,850033184
+W850033185,,service,false,0,5.0,false,false,false,0,44.2,Iganmu and Ijora,850033185
+W850033186,,service,false,0,5.0,false,false,false,0,20.6,Iganmu and Ijora,850033186
+W850033187,,service,false,0,5.0,false,false,false,0,20.7,Iganmu and Ijora,850033187
+W850033188,,service,false,0,5.0,false,false,false,0,20.9,Iganmu and Ijora,850033188
+W870610237,,secondary,false,0,13.0,true,false,false,0,60.1,Iganmu and Ijora,870610237
+W893293880,,trunk,true,0,7.5,true,true,false,0,13.3,Iganmu and Ijora,893293880
+W893293882,,primary,false,0,17.5,true,false,false,0,417.8,Iganmu and Ijora,893293882
+W893293883,,trunk,true,0,7.5,true,true,false,0,15.6,Iganmu and Ijora,893293883
+W893293884,,primary,false,0,17.5,true,false,false,0,208.2,Iganmu and Ijora,893293884
+W90288318,,residential,false,0,7.5,false,false,false,0,350.1,Iganmu and Ijora,90288318
+W90288321,,residential,false,0,7.5,false,false,false,0,541.1,Iganmu and Ijora,90288321
+W90288326,,unclassified,false,0,7.5,false,true,false,0,67.0,Iganmu and Ijora,90288326
+W90288327,,residential,false,0,7.5,false,false,false,0,389.9,Iganmu and Ijora,90288327
+W90288330,,residential,false,0,7.5,false,false,false,0,287.3,Iganmu and Ijora,90288330
+W90288331,,residential,false,0,7.5,false,false,false,0,314.4,Iganmu and Ijora,90288331
+W90288333,,residential,false,0,7.5,false,false,false,0,356.5,Iganmu and Ijora,90288333
+W90288336,,residential,false,0,7.5,false,false,false,0,398.5,Iganmu and Ijora,90288336
+W90288360,,residential,false,0,7.5,false,false,false,0,223.3,Iganmu and Ijora,90288360
+W90288371,,residential,false,0,7.5,false,false,false,0,281.9,Iganmu and Ijora,90288371
+W90288380,,residential,false,0,7.5,false,false,false,0,178.3,Iganmu and Ijora,90288380
+W90288386,,residential,false,0,7.5,false,false,false,0,284.9,Iganmu and Ijora,90288386
+W90288387,,residential,false,0,7.5,false,false,false,0,417.5,Iganmu and Ijora,90288387
+W90288399,,residential,false,0,7.5,false,false,false,0,454.9,Iganmu and Ijora,90288399
+W90288403,,residential,false,0,7.5,false,false,false,0,755.3,Iganmu and Ijora,90288403
+W90288405,,unclassified,false,0,7.5,false,false,false,0,865.1,Iganmu and Ijora,90288405
+W90288411,,residential,false,0,7.5,false,false,false,0,387.4,Iganmu and Ijora,90288411
+W90288412,,residential,false,0,7.5,false,false,false,0,312.2,Iganmu and Ijora,90288412
+W90288416,,residential,false,0,7.5,false,false,false,0,993.4,Iganmu and Ijora,90288416
+W91339852,,residential,false,0,7.5,false,false,false,0,143.1,Iganmu and Ijora,91339852
+W91339854,,residential,false,0,7.5,false,false,false,0,162.9,Iganmu and Ijora,91339854
+W91339855,,residential,false,0,7.5,false,false,false,0,511.0,Iganmu and Ijora,91339855
+W91339856,,residential,false,0,7.5,false,false,false,0,282.5,Iganmu and Ijora,91339856
+W91339857,,residential,false,0,7.5,false,false,false,0,715.3,Iganmu and Ijora,91339857
+W91339858,,residential,false,0,7.5,false,false,false,0,160.4,Iganmu and Ijora,91339858
+W91339861,,residential,false,0,7.5,false,false,false,0,218.5,Iganmu and Ijora,91339861
+W91339865,,residential,false,0,7.5,false,false,false,0,173.0,Iganmu and Ijora,91339865
+W91339870,,residential,false,0,7.5,false,false,false,0,244.6,Iganmu and Ijora,91339870
+W91339872,,residential,false,0,7.5,false,false,false,0,653.4,Iganmu and Ijora,91339872
+W91339874,,residential,false,0,7.5,false,false,false,0,309.9,Iganmu and Ijora,91339874
+W91339876,,residential,false,0,7.5,false,false,false,0,264.4,Iganmu and Ijora,91339876
+W91339878,,residential,false,0,7.5,false,false,false,0,750.2,Iganmu and Ijora,91339878
+W91339879,,residential,false,0,7.5,false,false,false,0,180.9,Iganmu and Ijora,91339879
+W91339882,,residential,false,0,7.5,false,false,false,0,158.9,Iganmu and Ijora,91339882
+W91339885,,residential,false,0,7.5,false,false,false,0,445.5,Iganmu and Ijora,91339885
+W91339888,,residential,false,0,7.5,false,false,false,0,599.6,Iganmu and Ijora,91339888
+W91339890,,unclassified,false,0,7.5,false,false,false,0,349.2,Iganmu and Ijora,91339890
+W91339892,,residential,false,0,7.5,false,false,false,0,612.7,Iganmu and Ijora,91339892
+W91339895,,residential,false,0,7.5,false,false,false,0,198.7,Iganmu and Ijora,91339895
+W91339897,,residential,false,0,7.5,false,false,false,0,324.6,Iganmu and Ijora,91339897
+W91339902,,residential,false,0,7.5,false,false,false,0,197.6,Iganmu and Ijora,91339902
+W91339904,,residential,false,0,7.5,false,false,false,0,288.7,Iganmu and Ijora,91339904
+W91339905,,residential,false,0,7.5,false,false,false,0,758.9,Iganmu and Ijora,91339905
+W91339908,,residential,false,0,7.5,false,false,false,0,198.0,Iganmu and Ijora,91339908
+W91339909,,residential,false,0,7.5,false,false,false,0,656.1,Iganmu and Ijora,91339909
+W91339914,,residential,false,0,7.5,false,false,false,0,142.4,Iganmu and Ijora,91339914
+W91339916,,residential,false,0,7.5,false,false,false,0,196.3,Iganmu and Ijora,91339916
+W91339921,,residential,false,0,7.5,false,false,false,0,331.1,Iganmu and Ijora,91339921
+W91339922,,residential,false,0,7.5,false,false,false,0,664.1,Iganmu and Ijora,91339922
+W91339924,,service,false,0,5.0,false,false,false,0,102.9,Iganmu and Ijora,91339924
+W91339925,,unclassified,false,0,7.5,false,false,false,0,702.6,Iganmu and Ijora,91339925
+W91339931,,residential,false,0,7.5,false,false,false,0,420.2,Iganmu and Ijora,91339931
+W91339937,,residential,false,0,7.5,false,false,false,0,396.5,Iganmu and Ijora,91339937
+W91339940,,residential,false,0,7.5,false,false,false,0,316.3,Iganmu and Ijora,91339940
+W91339943,,residential,false,0,7.5,false,false,false,0,185.1,Iganmu and Ijora,91339943
+W91339953,,residential,false,0,7.5,false,false,false,0,986.0,Iganmu and Ijora,91339953
+W91339957,,unclassified,false,0,7.5,false,false,false,0,373.2,Iganmu and Ijora,91339957
+W91339958,,residential,false,0,7.5,false,false,false,0,149.6,Iganmu and Ijora,91339958
+W91339959,,residential,false,0,7.5,false,false,false,0,130.3,Iganmu and Ijora,91339959
+W92451055,,residential,false,0,7.5,false,false,false,0,163.1,Iganmu and Ijora,92451055
+W92451076,,residential,false,0,7.5,false,false,false,0,856.6,Iganmu and Ijora,92451076
+W92451084,,residential,false,0,7.5,false,false,false,0,474.9,Iganmu and Ijora,92451084
+W92451113,,residential,false,0,7.5,false,false,false,0,418.0,Iganmu and Ijora,92451113
+W92451187,,unclassified,false,0,7.5,false,false,false,0,703.8,Iganmu and Ijora,92451187
+W964196328,,service,false,0,5.0,false,false,false,0,11.5,Iganmu and Ijora,964196328
+W964196329,,service,false,0,5.0,false,false,false,0,118.0,Iganmu and Ijora,964196329
+W964196330,,service,false,0,5.0,false,false,false,0,92.4,Iganmu and Ijora,964196330
+W964197466,,service,false,0,5.0,false,false,false,0,33.6,Iganmu and Ijora,964197466
+W964197467,,service,false,0,5.0,false,false,false,0,57.6,Iganmu and Ijora,964197467
+W964197468,,service,false,0,5.0,false,false,false,0,66.9,Iganmu and Ijora,964197468
+W964197469,,residential,false,0,7.5,false,false,false,0,130.1,Iganmu and Ijora,964197469
+W964197470,,residential,false,0,7.5,false,false,false,0,75.4,Iganmu and Ijora,964197470
+W964197471,,service,false,0,5.0,false,false,false,0,33.0,Iganmu and Ijora,964197471
+W964197472,,service,false,0,5.0,false,false,false,0,67.0,Iganmu and Ijora,964197472
+W964197473,,residential,false,0,7.5,false,false,false,0,69.8,Iganmu and Ijora,964197473
+W964217495,,service,false,0,5.0,false,false,false,0,49.9,Iganmu and Ijora,964217495
+W964219164,,service,false,0,5.0,false,false,false,0,60.2,Iganmu and Ijora,964219164
+W964867758,,service,false,0,5.0,false,false,false,0,53.7,Iganmu and Ijora,964867758
+W964868493,,service,false,0,5.0,false,false,false,0,44.8,Iganmu and Ijora,964868493
+W965791979,,service,false,0,5.0,false,false,false,0,44.8,Iganmu and Ijora,965791979
+W965791980,,service,false,0,5.0,false,false,false,0,83.0,Iganmu and Ijora,965791980
+W965791981,,service,false,0,5.0,false,false,false,0,67.1,Iganmu and Ijora,965791981
+W966405930,,service,false,0,5.0,false,false,false,0,86.2,Iganmu and Ijora,966405930

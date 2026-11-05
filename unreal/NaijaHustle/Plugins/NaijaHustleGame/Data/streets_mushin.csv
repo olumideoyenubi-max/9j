@@ -1,0 +1,1914 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W205694765,Abati George Avenue,residential,false,0,7.5,false,false,false,0,289.7,Mushin and Surulere,205694765
+W138058005,Abayomi Street,residential,false,0,7.5,false,false,false,0,539.0,Mushin and Surulere,138058005
+W92439865,Abeokuta Street,residential,false,0,7.5,false,false,false,0,897.6,Mushin and Surulere,92439865
+W207323886,Abibu Oki Close,residential,false,0,7.5,false,false,false,0,73.2,Mushin and Surulere,207323886
+W205694767,Abijade Street,residential,false,0,7.5,false,false,false,0,115.0,Mushin and Surulere,205694767
+W11102844,Abimbola Shadipe Street,residential,false,0,7.5,false,false,false,0,167.3,Mushin and Surulere,11102844
+W191736199,Abimbola Street,residential,false,0,7.5,false,false,false,0,62.7,Mushin and Surulere,191736199
+W92439815,Abimbola Way,tertiary,false,0,10.0,false,false,false,0,1174.7,Mushin and Surulere,92439815
+W90288348,Abina Street,residential,false,0,7.5,false,false,false,0,398.3,Mushin and Surulere,90288348
+W106100727,Abiodun Ogunayo Street,residential,false,0,7.5,false,false,false,0,154.2,Mushin and Surulere,106100727
+W106100708,Abiodun Wright Street,residential,false,0,7.5,false,false,false,0,376.2,Mushin and Surulere,106100708
+W205694766,Aborishade Close,residential,false,0,7.5,false,false,false,0,34.1,Mushin and Surulere,205694766
+W92439840,Aborishade Road,residential,false,0,7.5,false,false,false,0,564.3,Mushin and Surulere,92439840
+W92451082,Adagun Odo,residential,false,0,7.5,false,false,false,0,510.4,Mushin and Surulere,92451082
+W106100718,Adamson Street,residential,false,0,7.5,false,false,false,0,143.4,Mushin and Surulere,106100718
+W12335379,Ade Thianni Street,residential,false,0,7.5,false,false,false,0,227.8,Mushin and Surulere,12335379
+W13644724,Adebayo Street,residential,false,0,7.5,false,false,false,0,118.0,Mushin and Surulere,13644724
+W205396263,Adebisi Close,residential,false,0,7.5,false,false,false,0,99.9,Mushin and Surulere,205396263
+W188183807,Adebisi Street,residential,false,0,7.5,false,false,false,0,99.6,Mushin and Surulere,188183807
+W10221514,Adebola Street,residential,false,0,7.5,false,false,false,0,900.8,Mushin and Surulere,10221514
+W535992622,Adedeji Street,residential,false,1,4.3,false,false,false,0,471.2,Mushin and Surulere,535992622
+W280596085,Adedoyin Road,residential,false,0,7.5,false,false,false,0,394.9,Mushin and Surulere,280596085
+W205692020,Adefimihan Street,residential,false,0,7.5,false,false,false,0,419.6,Mushin and Surulere,205692020
+W220662741,Adegbite Street,residential,false,0,7.5,false,false,false,0,250.0,Mushin and Surulere,220662741
+W138058014,Adegbola Street,residential,false,0,7.5,false,false,false,0,249.4,Mushin and Surulere,138058014
+W220662749,Adegbola Street,residential,false,0,7.5,false,false,false,0,149.3,Mushin and Surulere,220662749
+W205394920,Adegoke Street,residential,false,0,7.5,false,false,false,0,488.6,Mushin and Surulere,205394920
+W205394913,Adegoke Street Link,residential,false,0,7.5,false,false,false,0,76.0,Mushin and Surulere,205394913
+W138058046,Adekoya Street,residential,false,0,7.5,false,false,false,0,156.3,Mushin and Surulere,138058046
+W113519422,Adekunle Kuy Street,residential,false,0,7.5,false,false,false,0,557.1,Mushin and Surulere,113519422
+W5153767,Adekunle Street,residential,false,0,7.5,false,false,false,0,336.1,Mushin and Surulere,5153767
+W589854938,Adekunle Street,residential,false,0,7.5,false,false,false,0,151.0,Mushin and Surulere,589854938
+W106100728,Adelabu Close,residential,false,0,7.5,false,false,false,0,75.8,Mushin and Surulere,106100728
+W215667092,Adelabu Street,secondary,false,2,7.6,true,false,false,0,94.0,Mushin and Surulere,215667092
+W215667100,Adelabu Street,secondary,false,4,14.2,true,false,false,0,857.5,Mushin and Surulere,215667100
+W215667120,Adelabu Street,secondary,false,2,7.6,true,false,false,0,94.9,Mushin and Surulere,215667120
+W584900123,Adelabu Street,secondary,false,4,14.2,true,false,false,0,855.2,Mushin and Surulere,584900123
+W1427242093,Adeleke Street,residential,false,0,7.5,false,false,false,0,110.0,Mushin and Surulere,1427242093
+W13644718,Adeniji Street,residential,false,0,7.5,false,false,false,0,215.7,Mushin and Surulere,13644718
+W188183390,Adenike Street,residential,false,0,7.5,false,false,false,0,73.9,Mushin and Surulere,188183390
+W10636727,Adeniran Ogunsanya Street,secondary,false,1,4.3,true,false,false,0,1034.7,Mushin and Surulere,10636727
+W9719406,Adeniran Ogunsanya Street,secondary,false,2,7.6,true,false,false,0,1027.4,Mushin and Surulere,9719406
+W205692015,Adeniyi Street,residential,false,0,7.5,false,false,false,0,75.0,Mushin and Surulere,205692015
+W220660833,Adeniyi Street,residential,false,0,7.5,false,false,false,0,185.2,Mushin and Surulere,220660833
+W280385616,Adeniyi Street,tertiary,false,0,10.0,true,false,false,0,426.3,Mushin and Surulere,280385616
+W535992601,Adeniyi Street,tertiary,false,0,10.0,true,false,false,0,390.5,Mushin and Surulere,535992601
+W535992605,Adeniyi Street,tertiary,false,0,10.0,true,true,false,0,42.0,Mushin and Surulere,535992605
+W535992611,Adeniyi Street,tertiary,false,0,10.0,true,false,false,0,291.8,Mushin and Surulere,535992611
+W559336295,Adeniyi Street,tertiary,false,0,10.0,true,true,false,0,40.6,Mushin and Surulere,559336295
+W559336298,Adeniyi Street,tertiary,false,1,4.3,true,false,false,0,226.7,Mushin and Surulere,559336298
+W114912307,Adeosun Street,residential,false,0,7.5,false,false,false,0,446.3,Mushin and Surulere,114912307
+W1265168712,Adeoyo Street,unclassified,false,0,7.5,false,false,false,0,175.3,Mushin and Surulere,1265168712
+W134147991,Adeoyo Street,unclassified,false,0,7.5,false,false,false,0,990.2,Mushin and Surulere,134147991
+W106100746,Aderibigbe Street,residential,false,0,7.5,false,false,false,0,360.8,Mushin and Surulere,106100746
+W11102727,Aderinto Street,residential,false,0,7.5,false,false,false,0,322.8,Mushin and Surulere,11102727
+W205887444,Adeshina Street,residential,false,0,7.5,false,false,false,0,228.9,Mushin and Surulere,205887444
+W113521762,Adetayo Shode Street,residential,false,0,7.5,false,false,false,0,355.6,Mushin and Surulere,113521762
+W113521763,Adetola Road,residential,false,0,7.5,false,false,false,0,2000.9,Mushin and Surulere,113521763
+W564904729,Adewuyi Street,residential,false,0,7.5,false,false,false,0,685.3,Mushin and Surulere,564904729
+W205692014,Adeyemi Compound,residential,false,0,7.5,false,false,false,0,66.9,Mushin and Surulere,205692014
+W461599074,Adijatu Street,residential,false,0,7.5,false,false,false,0,186.8,Mushin and Surulere,461599074
+W12335564,Adisa Bashua Street,residential,false,0,7.5,false,false,false,0,655.9,Mushin and Surulere,12335564
+W205832069,Adisa Bashua Street,residential,false,0,7.5,false,false,false,0,238.6,Mushin and Surulere,205832069
+W106100736,Affini Street,residential,false,0,7.5,false,false,false,0,74.3,Mushin and Surulere,106100736
+W187543767,Afolabi Dada Street,residential,false,0,7.5,false,false,false,0,154.6,Mushin and Surulere,187543767
+W437188462,Agbabiaka Street,residential,false,0,7.5,false,false,false,0,244.7,Mushin and Surulere,437188462
+W188183389,Agbela Street,residential,false,0,7.5,false,false,false,0,82.2,Mushin and Surulere,188183389
+W535357583,Agboola Fagbemi,tertiary,false,0,10.0,false,false,false,0,124.4,Mushin and Surulere,535357583
+W106100734,Agboyin Street,residential,false,0,7.5,false,false,false,0,587.1,Mushin and Surulere,106100734
+W133805221,Agege Motor Road,trunk,false,2,7.6,true,false,false,0,9631.0,Mushin and Surulere,133805221
+W746512955,Agege Motor Road,trunk,false,2,7.6,true,false,false,0,7894.7,Mushin and Surulere,746512955
+W205832067,Agoro Street,residential,false,0,7.5,false,false,false,0,57.4,Mushin and Surulere,205832067
+W521873446,Agoro Street,residential,false,0,7.5,false,false,false,0,371.3,Mushin and Surulere,521873446
+W191736885,Ahme Street,residential,false,0,7.5,false,false,false,0,63.2,Mushin and Surulere,191736885
+W114912334,Aina Street,residential,false,0,7.5,false,false,false,0,581.9,Mushin and Surulere,114912334
+W441860191,Aiyeleto Street,residential,false,0,7.5,false,false,false,0,126.8,Mushin and Surulere,441860191
+W220662789,Ajani Street,residential,false,0,7.5,false,false,false,0,135.3,Mushin and Surulere,220662789
+W92439848,Ajao Street,residential,false,0,7.5,false,false,false,0,559.7,Mushin and Surulere,92439848
+W220662781,Aje Street,residential,false,0,7.5,false,false,false,0,274.2,Mushin and Surulere,220662781
+W441712289,Ajegunle St,residential,false,0,7.5,false,false,false,0,304.8,Mushin and Surulere,441712289
+W370566941,Ajegunle Street,residential,false,0,7.5,false,false,false,0,490.4,Mushin and Surulere,370566941
+W106100744,Ajoke Street,residential,false,0,7.5,false,false,false,0,162.9,Mushin and Surulere,106100744
+W220662788,Ajose Street,residential,false,0,7.5,false,false,false,20,492.7,Mushin and Surulere,220662788
+W370558327,Akande Adebiyi Street,residential,false,0,7.5,false,false,false,0,229.0,Mushin and Surulere,370558327
+W138058037,Akanji Street,residential,false,0,7.5,false,false,false,0,244.4,Mushin and Surulere,138058037
+W134149932,Akanro Street,tertiary,false,2,7.6,false,false,false,0,1283.9,Mushin and Surulere,134149932
+W16369543,Akerele Road,tertiary,false,4,14.2,true,false,false,0,326.5,Mushin and Surulere,16369543
+W215667107,Akerele Road,tertiary,false,2,7.6,true,false,false,0,189.8,Mushin and Surulere,215667107
+W280398132,Akerele Road,tertiary,false,4,14.2,true,true,false,0,12.0,Mushin and Surulere,280398132
+W280398133,Akerele Road,tertiary,false,4,14.2,true,true,false,0,4.1,Mushin and Surulere,280398133
+W280398134,Akerele Road,tertiary,false,4,14.2,true,false,false,0,219.5,Mushin and Surulere,280398134
+W280398135,Akerele Road,tertiary,false,4,14.2,true,false,false,0,556.8,Mushin and Surulere,280398135
+W521871978,Akin Baruwa Street,residential,false,0,7.5,false,false,false,0,172.1,Mushin and Surulere,521871978
+W187543781,Akin Oluwolaba Road,tertiary,false,0,10.0,false,false,false,0,82.6,Mushin and Surulere,187543781
+W220663168,Akinbaiye Street,unclassified,false,0,7.5,false,false,false,0,795.7,Mushin and Surulere,220663168
+W191736202,Akindelu Street,residential,false,0,7.5,false,false,false,0,187.8,Mushin and Surulere,191736202
+W13644716,Akinhanmin Street,residential,false,0,7.5,false,false,false,0,381.0,Mushin and Surulere,13644716
+W114912326,Akinkunmi Street,residential,false,0,7.5,false,false,false,0,434.2,Mushin and Surulere,114912326
+W90288384,Akintan Street,residential,false,0,7.5,false,false,false,0,451.5,Mushin and Surulere,90288384
+W92451068,Akinwonmi Street,residential,false,0,7.5,false,false,false,0,255.0,Mushin and Surulere,92451068
+W205691368,Akinwunmi Street,residential,false,0,7.5,false,false,false,0,184.3,Mushin and Surulere,205691368
+W205887446,Akinyele Street,residential,false,0,7.5,false,false,false,0,128.1,Mushin and Surulere,205887446
+W1158119629,Akinyemi Close,residential,false,0,7.5,false,false,false,0,129.1,Mushin and Surulere,1158119629
+W205694772,Akinyemi Thompson Street,residential,false,0,7.5,false,false,false,0,142.5,Mushin and Surulere,205694772
+W370566974,Akodu Street,residential,false,0,7.5,false,false,false,0,777.7,Mushin and Surulere,370566974
+W106100730,Akpoguma Street,residential,false,0,7.5,false,false,false,0,1095.1,Mushin and Surulere,106100730
+W584889847,Akpoguma Street,tertiary,false,0,10.0,true,false,false,0,102.8,Mushin and Surulere,584889847
+W584889850,Akpoguma Street,tertiary,false,0,10.0,true,false,false,0,100.5,Mushin and Surulere,584889850
+W370301922,Alabe Street,residential,false,0,7.5,false,false,false,0,400.9,Mushin and Surulere,370301922
+W5153768,Alabe Street,residential,false,0,7.5,false,false,false,0,271.7,Mushin and Surulere,5153768
+W206280952,Alade Close,residential,false,0,7.5,false,false,false,0,113.1,Mushin and Surulere,206280952
+W205832065,Alade Shonubi Street,residential,false,0,7.5,false,false,false,0,69.1,Mushin and Surulere,205832065
+W795831243,Alafia Street,residential,false,0,7.5,false,false,false,0,546.6,Mushin and Surulere,795831243
+W138058015,Aleje Street,residential,false,0,7.5,false,false,false,0,119.6,Mushin and Surulere,138058015
+W441841536,Alhaji Amosun Street,residential,false,0,7.5,false,false,false,0,139.8,Mushin and Surulere,441841536
+W13644701,Alhaji Awoyejo Street,residential,false,0,7.5,false,false,false,0,173.5,Mushin and Surulere,13644701
+W13644706,Alhaji Lasisi Street,residential,false,0,7.5,false,false,false,0,267.7,Mushin and Surulere,13644706
+W585149743,Alhaji Lasisi Street,residential,false,0,7.5,false,false,false,0,6.8,Mushin and Surulere,585149743
+W16369562,Alhaji Masha Road,tertiary,false,2,7.6,true,false,false,0,202.9,Mushin and Surulere,16369562
+W215667085,Alhaji Masha Road,tertiary,false,2,7.6,true,true,false,0,34.0,Mushin and Surulere,215667085
+W215667089,Alhaji Masha Road,tertiary,false,1,4.3,true,true,false,0,244.9,Mushin and Surulere,215667089
+W215667090,Alhaji Masha Road,tertiary,false,2,7.6,true,false,false,0,181.8,Mushin and Surulere,215667090
+W215667095,Alhaji Masha Road,tertiary,false,1,4.3,true,false,false,0,74.5,Mushin and Surulere,215667095
+W215667098,Alhaji Masha Road,tertiary,false,2,7.6,true,false,false,0,308.2,Mushin and Surulere,215667098
+W215667099,Alhaji Masha Road,tertiary,false,1,4.3,true,true,false,0,244.3,Mushin and Surulere,215667099
+W215667102,Alhaji Masha Road,tertiary,false,2,7.6,true,false,false,0,79.6,Mushin and Surulere,215667102
+W215667103,Alhaji Masha Road,tertiary,false,1,4.3,true,true,false,0,244.9,Mushin and Surulere,215667103
+W215667108,Alhaji Masha Road,tertiary,false,1,4.3,true,false,false,0,79.5,Mushin and Surulere,215667108
+W215667112,Alhaji Masha Road,tertiary,false,2,7.6,true,false,false,0,309.4,Mushin and Surulere,215667112
+W215667117,Alhaji Masha Road,tertiary,false,1,4.3,true,false,false,0,70.5,Mushin and Surulere,215667117
+W215667123,Alhaji Masha Road,tertiary,false,1,4.3,true,true,false,0,244.1,Mushin and Surulere,215667123
+W215667129,Alhaji Masha Road,tertiary,false,2,7.6,true,false,false,0,65.2,Mushin and Surulere,215667129
+W215667130,Alhaji Masha Road,tertiary,false,1,4.3,true,false,false,0,94.0,Mushin and Surulere,215667130
+W215667131,Alhaji Masha Road,tertiary,false,1,4.3,true,false,false,0,73.2,Mushin and Surulere,215667131
+W215667132,Alhaji Masha Road,tertiary,false,1,4.3,true,false,false,0,73.1,Mushin and Surulere,215667132
+W215667133,Alhaji Masha Road,tertiary,false,1,4.3,true,false,false,0,94.1,Mushin and Surulere,215667133
+W215667135,Alhaji Masha Road,tertiary,false,2,7.6,true,true,false,0,33.0,Mushin and Surulere,215667135
+W215667136,Alhaji Masha Road,tertiary,false,1,4.3,true,false,false,0,81.9,Mushin and Surulere,215667136
+W215667137,Alhaji Masha Road,tertiary,false,2,7.6,true,false,false,0,205.0,Mushin and Surulere,215667137
+W215667138,Alhaji Masha Road,tertiary,false,2,7.6,true,false,false,0,185.4,Mushin and Surulere,215667138
+W138058017,Alhaji Nuru Street,residential,false,0,7.5,false,false,false,0,200.2,Mushin and Surulere,138058017
+W90288350,Alhaji Olaogun Drive,residential,false,0,7.5,false,false,false,0,197.7,Mushin and Surulere,90288350
+W205832075,Alhaji Otun Street,residential,false,0,7.5,false,false,false,0,69.1,Mushin and Surulere,205832075
+W205833467,Alhaji Shittu Street,residential,false,0,7.5,true,false,false,0,72.0,Mushin and Surulere,205833467
+W828115896,Alhaji Shittu Street,residential,false,0,7.5,false,false,false,0,44.6,Mushin and Surulere,828115896
+W138040467,Alhaji Tokan Street,residential,false,0,7.5,false,false,false,0,484.6,Mushin and Surulere,138040467
+W441841542,Alhaji Yahaya Street,residential,false,0,7.5,false,false,false,0,225.2,Mushin and Surulere,441841542
+W521873450,Aluko Close,residential,false,0,7.5,false,false,false,0,95.6,Mushin and Surulere,521873450
+W1257856633,Amodu Street,residential,false,0,7.5,false,false,false,0,33.4,Mushin and Surulere,1257856633
+W1257856680,Amodu Street,residential,false,0,7.5,false,false,false,0,68.1,Mushin and Surulere,1257856680
+W441897784,Amodu Street,residential,false,0,7.5,false,false,false,0,325.6,Mushin and Surulere,441897784
+W220662777,Amusu Street,residential,false,0,7.5,false,false,false,0,371.3,Mushin and Surulere,220662777
+W138058033,Anjorin Lane,residential,false,0,7.5,false,false,false,0,73.8,Mushin and Surulere,138058033
+W138058061,Anjorin Street,residential,false,0,7.5,false,false,false,0,477.3,Mushin and Surulere,138058061
+W461600391,Anjorin Street,residential,false,0,7.5,false,false,false,0,267.3,Mushin and Surulere,461600391
+W220662776,Anuoluwapo Street,residential,false,0,7.5,false,false,false,0,157.5,Mushin and Surulere,220662776
+W134147973,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,4527.0,Mushin and Surulere,134147973
+W134147997,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,4531.8,Mushin and Surulere,134147997
+W134153444,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,4530.9,Mushin and Surulere,134153444
+W134153449,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,4539.3,Mushin and Surulere,134153449
+W370566935,Apena Street,residential,false,0,7.5,false,false,false,0,285.4,Mushin and Surulere,370566935
+W441897810,Apesin Street,residential,false,0,7.5,false,false,false,0,553.0,Mushin and Surulere,441897810
+W106100748,Aralile Street,residential,false,0,7.5,false,false,false,0,302.3,Mushin and Surulere,106100748
+W220662769,Araromi Street,residential,false,0,7.5,false,false,false,0,242.1,Mushin and Surulere,220662769
+W188184478,Arowosere Street,residential,false,0,7.5,false,false,false,0,168.4,Mushin and Surulere,188184478
+W437188480,Asala Street,residential,false,0,7.5,false,false,false,0,189.3,Mushin and Surulere,437188480
+W106100724,Ashimowu Bakare Street,residential,false,0,7.5,false,false,false,0,541.1,Mushin and Surulere,106100724
+W1289343120,Ashimowu Bakare Street,residential,false,0,7.5,false,true,false,0,12.4,Mushin and Surulere,1289343120
+W370301920,Ashiriabo Street,residential,false,0,7.5,false,false,false,0,341.9,Mushin and Surulere,370301920
+W205694778,Asoluka Street,residential,false,0,7.5,false,false,false,0,83.5,Mushin and Surulere,205694778
+W521871977,Atunrase Street,residential,false,0,7.5,false,false,false,0,434.8,Mushin and Surulere,521871977
+W370566986,Awoniyi Street,residential,false,2,7.6,false,false,false,0,375.6,Mushin and Surulere,370566986
+W90288323,Awoyemi Close,residential,false,0,7.5,false,false,false,0,137.0,Mushin and Surulere,90288323
+W442959201,Ayandeji Street,residential,false,0,7.5,false,false,false,0,103.7,Mushin and Surulere,442959201
+W205692018,Ayepe Street,residential,false,0,7.5,false,false,false,0,375.6,Mushin and Surulere,205692018
+W583259225,Ayilara Street,residential,false,0,7.5,false,false,false,0,360.3,Mushin and Surulere,583259225
+W90288362,Ayilara Street,residential,false,0,7.5,false,false,false,0,503.1,Mushin and Surulere,90288362
+W92451141,Ayinde Giwa Street,residential,false,0,7.5,false,false,false,0,247.2,Mushin and Surulere,92451141
+W187529588,Ayisatu Street,residential,false,0,7.5,false,false,false,0,156.9,Mushin and Surulere,187529588
+W205394914,Ayo Idowu Close,residential,false,0,7.5,false,false,false,0,127.7,Mushin and Surulere,205394914
+W106100754,Ayodele Street,residential,false,0,7.5,false,false,false,0,289.5,Mushin and Surulere,106100754
+W280374814,Ayoelegbede Street,residential,false,0,7.5,false,false,false,0,253.6,Mushin and Surulere,280374814
+W152991836,Ayuba Daudu Street,residential,false,0,7.5,false,false,false,0,559.8,Mushin and Surulere,152991836
+W220662746,Baale Street,residential,false,0,7.5,false,false,false,0,476.5,Mushin and Surulere,220662746
+W220663187,Baale Street,residential,false,0,7.5,false,false,false,0,372.1,Mushin and Surulere,220663187
+W205694774,Babalola Close,residential,false,0,7.5,false,false,false,0,60.0,Mushin and Surulere,205694774
+W92439836,Babalola Street,residential,false,0,7.5,false,false,false,0,187.3,Mushin and Surulere,92439836
+W92439826,Babatunde Road,residential,false,0,7.5,false,false,false,0,375.7,Mushin and Surulere,92439826
+W138058045,Badaru Street,residential,false,0,7.5,false,false,false,0,156.2,Mushin and Surulere,138058045
+W191736886,Baiye Street,unclassified,false,0,7.5,false,false,false,0,108.5,Mushin and Surulere,191736886
+W441841557,Bakare Street,residential,false,0,7.5,false,false,false,0,164.8,Mushin and Surulere,441841557
+W205692017,Balogun Lane,residential,false,0,7.5,false,false,false,0,193.6,Mushin and Surulere,205692017
+W205691366,Balogun Street,residential,false,0,7.5,false,false,false,0,75.3,Mushin and Surulere,205691366
+W521871976,Banire Street,residential,false,0,7.5,false,false,false,0,358.4,Mushin and Surulere,521871976
+W220662759,Bankole Street,residential,false,0,7.5,false,false,false,0,349.0,Mushin and Surulere,220662759
+W191736888,Baoku Street,residential,false,0,7.5,false,false,false,0,107.4,Mushin and Surulere,191736888
+W92451075,Bayo Olumide Street,residential,false,0,7.5,false,false,false,0,342.9,Mushin and Surulere,92451075
+W11102815,Benson Street,residential,false,0,7.5,false,false,false,0,279.8,Mushin and Surulere,11102815
+W136182529,Bishop Crowther Street,residential,false,0,7.5,false,false,false,0,269.6,Mushin and Surulere,136182529
+W10223033,Bishop Fashoro Street,residential,false,0,7.5,false,false,false,0,768.4,Mushin and Surulere,10223033
+W585149741,Bishop Fashoro Street,residential,false,0,7.5,false,false,false,0,7.4,Mushin and Surulere,585149741
+W106100735,Bola Shadu Street,residential,false,0,7.5,false,false,false,0,317.6,Mushin and Surulere,106100735
+W205832036,Bola Shodipe Close,residential,false,0,7.5,false,false,false,0,66.4,Mushin and Surulere,205832036
+W205694770,Bola Street,residential,false,0,7.5,false,false,false,0,117.4,Mushin and Surulere,205694770
+W1411928244,Brown Road,residential,false,0,7.5,false,false,false,0,183.0,Mushin and Surulere,1411928244
+W1411928245,Brown Road,unclassified,false,0,7.5,false,false,false,0,249.2,Mushin and Surulere,1411928245
+W1434033152,Buraimoh Street,residential,false,0,7.5,false,false,false,0,386.0,Mushin and Surulere,1434033152
+W205691371,Buraimoh Street,residential,false,0,7.5,false,false,false,0,303.4,Mushin and Surulere,205691371
+W106100742,Calabar Street,residential,false,0,7.5,false,false,false,0,327.6,Mushin and Surulere,106100742
+W1364449242,Cardoso street,residential,false,0,7.5,false,false,false,0,273.9,Mushin and Surulere,1364449242
+W370566968,Cardoso street,residential,false,0,7.5,false,false,false,0,377.9,Mushin and Surulere,370566968
+W1179640825,Caxton Close,residential,false,0,7.5,false,false,false,0,73.1,Mushin and Surulere,1179640825
+W441900874,Caxton Close,residential,false,0,7.5,false,false,false,0,52.9,Mushin and Surulere,441900874
+W370558806,Cecilia Odutuga Street,residential,false,0,7.5,false,false,false,0,263.5,Mushin and Surulere,370558806
+W106100756,Chief Bereola Street,residential,false,0,7.5,false,false,false,0,153.2,Mushin and Surulere,106100756
+W205832038,Chilaka Close,residential,false,0,7.5,false,false,false,0,50.6,Mushin and Surulere,205832038
+W585104315,Church Close,residential,false,0,7.5,false,false,false,0,60.8,Mushin and Surulere,585104315
+W220662787,Church Street,residential,false,0,7.5,false,false,false,0,269.0,Mushin and Surulere,220662787
+W1287643229,Clegg Street,residential,false,0,7.5,false,false,false,0,7.3,Mushin and Surulere,1287643229
+W1287643230,Clegg Street,residential,false,0,7.5,false,true,false,0,9.7,Mushin and Surulere,1287643230
+W1287643231,Clegg Street,residential,false,0,7.5,false,false,false,0,33.0,Mushin and Surulere,1287643231
+W1287643232,Clegg Street,residential,false,0,7.5,false,false,false,0,97.8,Mushin and Surulere,1287643232
+W133803788,Clegg Street,residential,false,0,7.5,false,false,false,0,215.7,Mushin and Surulere,133803788
+W90288347,Clegg Street,residential,false,0,7.5,false,false,false,0,472.5,Mushin and Surulere,90288347
+W188184820,Coast-U Feli Street,residential,false,0,7.5,false,false,false,0,157.3,Mushin and Surulere,188184820
+W217535651,Coker Street,tertiary,false,0,10.0,false,false,false,0,662.6,Mushin and Surulere,217535651
+W585731343,Coker Street,tertiary,false,0,10.0,false,false,false,0,214.0,Mushin and Surulere,585731343
+W114912329,Cole Street,unclassified,false,0,7.5,false,false,false,0,782.0,Mushin and Surulere,114912329
+W12339473,Cole Street,residential,false,0,7.5,false,false,false,0,460.1,Mushin and Surulere,12339473
+W134147975,Cowbell Way,tertiary,false,2,7.6,false,false,false,60,578.3,Mushin and Surulere,134147975
+W461600410,Dabiri Close,residential,false,0,7.5,false,false,false,0,83.0,Mushin and Surulere,461600410
+W152991946,Daniyan Street,residential,false,0,7.5,false,false,false,0,193.5,Mushin and Surulere,152991946
+W220662775,Dauda Oseni Street,residential,false,0,7.5,false,false,false,0,206.6,Mushin and Surulere,220662775
+W114912328,Dayo Ojutiku Street,residential,false,0,7.5,false,false,false,0,297.6,Mushin and Surulere,114912328
+W113519421,Dimeji Longe Avenue,unclassified,false,0,7.5,false,false,false,0,210.2,Mushin and Surulere,113519421
+W114912317,Dipo Olubi Street,residential,false,0,7.5,false,false,false,0,440.4,Mushin and Surulere,114912317
+W206280948,Dodo Williams Close,residential,false,0,7.5,false,false,false,0,50.5,Mushin and Surulere,206280948
+W521871979,Dosunmu Road,residential,false,0,7.5,false,false,false,0,450.8,Mushin and Surulere,521871979
+W205694776,Durojaiye Lane,residential,false,0,7.5,false,false,false,0,73.7,Mushin and Surulere,205694776
+W188183392,Durojaiye Street,residential,false,0,7.5,false,false,false,0,249.8,Mushin and Surulere,188183392
+W441841561,Durojaiye Street,residential,false,0,7.5,false,false,false,0,387.3,Mushin and Surulere,441841561
+W92439824,Durojaiye street,residential,false,0,7.5,false,false,false,0,399.0,Mushin and Surulere,92439824
+W188184473,Ebenezer Lane,residential,false,0,7.5,false,false,false,0,68.1,Mushin and Surulere,188184473
+W205396266,Ebun Street,residential,false,0,7.5,false,false,false,0,149.6,Mushin and Surulere,205396266
+W138058055,Elaloro Street,residential,false,0,7.5,false,false,false,0,206.7,Mushin and Surulere,138058055
+W106100738,Eloseh Street,residential,false,0,7.5,false,false,false,0,302.4,Mushin and Surulere,106100738
+W205887443,Eloseh Street,residential,false,0,7.5,false,false,false,0,35.7,Mushin and Surulere,205887443
+W205394917,Eniyanosoro Beyioku Road,residential,false,0,7.5,false,false,false,0,252.5,Mushin and Surulere,205394917
+W113519420,Erinosho Street,residential,false,2,7.6,false,false,false,0,768.6,Mushin and Surulere,113519420
+W220660851,Eshinlokun Street,residential,false,0,7.5,false,false,false,0,492.4,Mushin and Surulere,220660851
+W441841537,Fabiyi Street,residential,false,0,7.5,false,false,false,0,315.1,Mushin and Surulere,441841537
+W205832073,Fagbemi Dawodu Crescent,residential,false,0,7.5,false,false,false,0,53.9,Mushin and Surulere,205832073
+W441712290,Fagbile St,residential,false,0,7.5,false,false,false,0,142.1,Mushin and Surulere,441712290
+W205832060,Fajobi Olaofe Street,residential,false,0,7.5,false,false,false,0,59.6,Mushin and Surulere,205832060
+W13644725,Falolu Road,residential,false,0,7.5,false,false,false,0,762.0,Mushin and Surulere,13644725
+W205694769,Fasanya Street,residential,false,0,7.5,false,false,false,0,113.0,Mushin and Surulere,205694769
+W280596109,Fashina Street,residential,false,0,7.5,false,false,false,0,119.9,Mushin and Surulere,280596109
+W220662748,Fayemi Street,residential,false,0,7.5,false,false,false,0,99.7,Mushin and Surulere,220662748
+W90288401,Femi Ayantuga Crescent,residential,false,0,7.5,false,false,false,0,729.8,Mushin and Surulere,90288401
+W205694768,Folarin Street,residential,false,0,7.5,false,false,false,0,182.8,Mushin and Surulere,205694768
+W191736887,Folawiyo Bankole Street,residential,false,0,7.5,false,false,false,0,266.0,Mushin and Surulere,191736887
+W12335591,Fred Anyiam Street,residential,false,0,7.5,false,false,false,0,131.6,Mushin and Surulere,12335591
+W114912330,Gasper Street,residential,false,0,7.5,false,false,false,0,312.0,Mushin and Surulere,114912330
+W205832042,Gbadamosi Close,residential,false,0,7.5,false,false,false,0,136.6,Mushin and Surulere,205832042
+W220662760,Gbadamosi Street,residential,false,0,7.5,false,false,false,0,182.0,Mushin and Surulere,220662760
+W280588492,Gbadamosi Street,residential,false,0,7.5,false,false,false,0,82.3,Mushin and Surulere,280588492
+W11102820,Gbaja Street,residential,false,0,7.5,false,false,false,0,36.5,Mushin and Surulere,11102820
+W280398142,Gbaja Street,residential,false,0,7.5,false,true,false,0,7.8,Mushin and Surulere,280398142
+W280398145,Gbaja Street,residential,false,0,7.5,false,false,false,0,179.3,Mushin and Surulere,280398145
+W152991875,Gbolahan Street,residential,false,0,7.5,false,false,false,0,97.2,Mushin and Surulere,152991875
+W437188463,Gebeleyi Street,residential,false,0,7.5,false,false,false,0,214.7,Mushin and Surulere,437188463
+W106100732,Godwin Okigbo Street,residential,false,0,7.5,false,false,false,0,359.1,Mushin and Surulere,106100732
+W113637335,Godwin Omonua Street,tertiary,false,0,10.0,false,false,false,0,648.1,Mushin and Surulere,113637335
+W92451131,Godwin Way,residential,false,0,7.5,false,false,false,0,442.9,Mushin and Surulere,92451131
+W437188460,Goloba Street,residential,false,0,7.5,false,false,false,0,289.0,Mushin and Surulere,437188460
+W134149926,Hassan Street,residential,false,0,7.5,false,false,false,0,171.4,Mushin and Surulere,134149926
+W437188479,Hassan Street,residential,false,0,7.5,false,false,false,0,188.3,Mushin and Surulere,437188479
+W218716727,Hogan Bassey Close,residential,false,0,7.5,false,false,false,0,76.9,Mushin and Surulere,218716727
+W864163993,Hogan Bassey Close,residential,false,0,7.5,true,false,false,0,330.0,Mushin and Surulere,864163993
+W92439851,I.K Dairo Street,residential,false,0,7.5,false,false,false,0,174.9,Mushin and Surulere,92439851
+W535684905,Ibadan Street,residential,false,0,7.5,false,false,false,0,207.6,Mushin and Surulere,535684905
+W106100723,Ibezim Obiajulu Street,residential,false,0,7.5,false,false,false,0,322.3,Mushin and Surulere,106100723
+W220660847,Ibidun Street,residential,false,1,4.3,false,false,false,0,200.0,Mushin and Surulere,220660847
+W90288316,Ibidun Street,residential,false,0,7.5,false,false,false,0,414.9,Mushin and Surulere,90288316
+W90288409,Ibidun Street,residential,false,0,7.5,false,false,false,0,298.3,Mushin and Surulere,90288409
+W220662754,Ibitoye Igbaja Street,residential,false,0,7.5,false,false,false,0,238.2,Mushin and Surulere,220662754
+W106100740,Ibukun Street,residential,false,0,7.5,false,false,false,0,324.3,Mushin and Surulere,106100740
+W92451181,Idowu Oshinfodunrin Street,residential,false,0,7.5,false,false,false,0,342.4,Mushin and Surulere,92451181
+W106100710,Idowu Street,residential,false,0,7.5,false,false,false,0,201.7,Mushin and Surulere,106100710
+W220662743,Ifelodun Street,residential,false,0,7.5,false,false,false,0,362.0,Mushin and Surulere,220662743
+W152991873,Igbehinadun Street,residential,false,0,7.5,false,false,false,0,196.4,Mushin and Surulere,152991873
+W138057999,Igbesa Street,residential,false,0,7.5,false,false,false,0,179.7,Mushin and Surulere,138057999
+W220662786,Igbesi Street,residential,false,0,7.5,false,false,false,0,369.0,Mushin and Surulere,220662786
+W220662785,Ijaiye Street,residential,false,0,7.5,false,false,false,0,165.7,Mushin and Surulere,220662785
+W535992606,Ijaiye Street,residential,false,0,7.5,false,false,false,0,505.4,Mushin and Surulere,535992606
+W106100739,Ijesha Road,secondary,false,4,14.2,true,false,false,0,1719.3,Mushin and Surulere,106100739
+W535992621,Ijesha Road,secondary,false,0,13.0,true,false,false,0,1707.9,Mushin and Surulere,535992621
+W559358549,Ijesha Road,secondary,false,4,14.2,false,false,false,0,801.0,Mushin and Surulere,559358549
+W205832046,Ikenne Close,residential,false,0,7.5,false,false,false,0,36.8,Mushin and Surulere,205832046
+W106100716,Ikenne Street,residential,false,0,7.5,false,false,false,0,229.5,Mushin and Surulere,106100716
+W370047600,Ikeolu Street,residential,false,0,7.5,false,false,false,0,274.4,Mushin and Surulere,370047600
+W585149742,Ikeolu Street,residential,false,0,7.5,false,false,false,0,7.6,Mushin and Surulere,585149742
+W133803796,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,713.5,Mushin and Surulere,133803796
+W16369687,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,710.6,Mushin and Surulere,16369687
+W191736200,Ikpoh Street,residential,false,0,7.5,false,false,false,0,198.2,Mushin and Surulere,191736200
+W188184474,Ilarogun Close,residential,false,0,7.5,false,false,false,0,84.1,Mushin and Surulere,188184474
+W205394915,Ilesanmi Street,residential,false,0,7.5,false,false,false,0,393.7,Mushin and Surulere,205394915
+W92439873,Ilori Street,residential,false,0,7.5,false,false,false,0,405.0,Mushin and Surulere,92439873
+W12335215,Ilorin Street,residential,false,0,7.5,false,false,false,0,144.7,Mushin and Surulere,12335215
+W220663184,Imoje Street,residential,false,0,7.5,false,false,false,0,227.2,Mushin and Surulere,220663184
+W150363226,Ishaga Close,residential,false,0,7.5,false,false,false,0,162.4,Mushin and Surulere,150363226
+W583249624,Ishaga Close,secondary,false,0,13.0,true,false,false,0,9.5,Mushin and Surulere,583249624
+W10223018,Ishaga Road,secondary,false,0,13.0,true,false,false,0,1117.0,Mushin and Surulere,10223018
+W583249622,Ishaga Road,secondary,false,0,13.0,true,false,false,0,11.0,Mushin and Surulere,583249622
+W583249626,Ishaga Road,secondary,false,0,13.0,true,false,false,0,1112.6,Mushin and Surulere,583249626
+W583292497,Ishaga Road,secondary,false,0,13.0,true,true,false,0,35.5,Mushin and Surulere,583292497
+W583292498,Ishaga Road,secondary,false,0,13.0,true,false,false,0,648.4,Mushin and Surulere,583292498
+W583292499,Ishaga Road,secondary,false,0,13.0,true,true,false,0,35.2,Mushin and Surulere,583292499
+W583292500,Ishaga Road,secondary,false,0,13.0,true,false,false,0,640.3,Mushin and Surulere,583292500
+W585736127,Ishaga Road,secondary,false,0,13.0,true,false,false,0,6.3,Mushin and Surulere,585736127
+W585736128,Ishaga Road,secondary,false,0,13.0,true,false,false,0,6.1,Mushin and Surulere,585736128
+W90288309,Ishola Street,residential,false,0,7.5,false,false,false,0,384.4,Mushin and Surulere,90288309
+W205691370,Isiba Street,residential,false,0,7.5,false,false,false,0,291.1,Mushin and Surulere,205691370
+W11102771,Isolo Road,primary,false,0,17.5,false,false,false,0,41.2,Mushin and Surulere,11102771
+W134147964,Isolo Road,primary,false,0,17.5,false,true,false,0,287.7,Mushin and Surulere,134147964
+W134147967,Isolo Road,primary,false,0,17.5,true,false,false,0,295.6,Mushin and Surulere,134147967
+W134147992,Isolo Road,primary,false,0,17.5,true,false,false,0,1530.8,Mushin and Surulere,134147992
+W134147993,Isolo Road,primary,false,0,17.5,true,false,false,0,1526.0,Mushin and Surulere,134147993
+W1354009672,Isolo Road,primary,false,0,17.5,false,false,false,0,100.9,Mushin and Surulere,1354009672
+W1354009673,Isolo Road,primary,false,0,17.5,false,false,false,0,41.9,Mushin and Surulere,1354009673
+W280363716,Itelorun Street,residential,false,0,7.5,false,false,false,0,613.1,Mushin and Surulere,280363716
+W12339479,Itire Road,secondary,false,0,13.0,true,false,false,0,778.9,Mushin and Surulere,12339479
+W521871975,Itire Road,secondary,false,0,13.0,true,false,false,0,246.0,Mushin and Surulere,521871975
+W535992608,Itire Road,tertiary,false,0,10.0,true,false,false,0,50.6,Mushin and Surulere,535992608
+W583259219,Itire Road,secondary,false,0,13.0,true,false,false,0,785.0,Mushin and Surulere,583259219
+W583259222,Itire Road,secondary,false,0,13.0,true,false,false,0,248.1,Mushin and Surulere,583259222
+W218716733,Iyun Road,residential,false,0,7.5,false,false,false,0,322.1,Mushin and Surulere,218716733
+W216228559,Iyun Street,service,false,0,5.0,false,false,false,0,366.0,Mushin and Surulere,216228559
+W206280957,Jalupon Close,residential,false,0,7.5,false,false,false,0,114.3,Mushin and Surulere,206280957
+W90288375,James Robertson Street,residential,false,0,7.5,false,false,false,0,591.3,Mushin and Surulere,90288375
+W439472141,Jimoh Farombi Drive,residential,false,0,7.5,false,false,false,0,448.7,Mushin and Surulere,439472141
+W187529592,Jimoh Ojuku Street,residential,false,0,7.5,false,false,false,0,180.2,Mushin and Surulere,187529592
+W205692019,Joe Dunmade Close,residential,false,0,7.5,false,false,false,0,215.9,Mushin and Surulere,205692019
+W205694764,Jubril Martins Street,unclassified,false,0,7.5,false,false,false,0,1077.9,Mushin and Surulere,205694764
+W205691365,Kabiyesi Street,residential,false,0,7.5,false,false,false,0,171.6,Mushin and Surulere,205691365
+W535992610,Kabiyesi Street,tertiary,false,0,10.0,true,false,false,0,86.0,Mushin and Surulere,535992610
+W535992620,Kabiyesi Street,residential,false,0,7.5,false,false,false,0,104.6,Mushin and Surulere,535992620
+W187543777,Kadiri Street,residential,false,0,7.5,false,false,false,0,232.8,Mushin and Surulere,187543777
+W280385612,Kadiri Street,residential,false,0,7.5,false,false,false,0,46.6,Mushin and Surulere,280385612
+W280385615,Kadiri Street,residential,false,0,7.5,false,true,false,0,9.1,Mushin and Surulere,280385615
+W441712292,Karimu St,residential,false,0,7.5,false,false,false,0,139.3,Mushin and Surulere,441712292
+W583259228,Karimu Street,residential,false,0,7.5,false,false,false,0,284.1,Mushin and Surulere,583259228
+W90288407,Karimu Street,residential,false,0,7.5,false,false,false,0,474.1,Mushin and Surulere,90288407
+W187529593,Karounwi Street,residential,false,0,7.5,false,false,false,0,473.5,Mushin and Surulere,187529593
+W205692022,Kasali Street,residential,false,0,7.5,false,false,false,0,161.7,Mushin and Surulere,205692022
+W1421774045,Kayode Street,tertiary,false,0,10.0,false,false,false,0,111.7,Mushin and Surulere,1421774045
+W217535630,Kayode Street,residential,false,0,7.5,false,false,false,0,256.9,Mushin and Surulere,217535630
+W585114349,Kayode Street,residential,false,1,4.3,false,false,false,0,7.6,Mushin and Surulere,585114349
+W205887442,Koya Street,residential,false,0,7.5,false,false,false,0,119.0,Mushin and Surulere,205887442
+W113521765,Kusimo Street,tertiary,false,0,10.0,false,false,false,0,1131.6,Mushin and Surulere,113521765
+W1288254092,Kusimo Street,tertiary,false,0,10.0,false,true,false,0,17.7,Mushin and Surulere,1288254092
+W1288254093,Kusimo Street,tertiary,false,0,10.0,false,false,false,0,972.8,Mushin and Surulere,1288254093
+W11102803,Laboye Laleye Cresent,residential,false,0,7.5,false,false,false,0,96.5,Mushin and Surulere,11102803
+W441860225,Ladejobi Street,residential,false,0,7.5,false,false,false,0,138.9,Mushin and Surulere,441860225
+W1265575273,Ladipo Street,secondary,false,0,13.0,false,false,false,0,143.6,Mushin and Surulere,1265575273
+W585149736,Ladipo Street,secondary,false,0,13.0,false,false,false,0,624.1,Mushin and Surulere,585149736
+W441841570,Lawani Street,residential,false,0,7.5,false,false,false,0,324.2,Mushin and Surulere,441841570
+W90288352,Lawani Street,residential,false,0,7.5,false,false,false,0,206.6,Mushin and Surulere,90288352
+W217535655,Lawanson Crescent,residential,false,0,7.5,false,false,false,0,332.2,Mushin and Surulere,217535655
+W535992623,Lawanson Road,tertiary,false,0,10.0,true,false,false,0,274.1,Mushin and Surulere,535992623
+W559358547,Lawanson Road,secondary,false,0,13.0,true,false,false,0,1692.3,Mushin and Surulere,559358547
+W559358548,Lawanson Road,secondary,false,0,13.0,true,false,false,0,1685.6,Mushin and Surulere,559358548
+W134147983,Layi Oyekanmi Street,residential,false,0,7.5,false,false,false,0,925.6,Mushin and Surulere,134147983
+W10221519,Lucinda Johnson Street,residential,false,0,7.5,false,false,false,0,256.3,Mushin and Surulere,10221519
+W220662768,Mabinuori Street,residential,false,0,7.5,false,false,false,0,271.7,Mushin and Surulere,220662768
+W10223027,Mabo Street,residential,false,0,7.5,false,false,false,0,374.3,Mushin and Surulere,10223027
+W13644677,Majolate St,secondary,false,0,13.0,false,false,false,0,363.7,Mushin and Surulere,13644677
+W218716729,Makinde Close,residential,false,0,7.5,false,false,false,0,139.3,Mushin and Surulere,218716729
+W280481966,Makinde Street,residential,false,0,7.5,false,false,false,0,166.0,Mushin and Surulere,280481966
+W106100704,Manugo Street,residential,false,0,7.5,false,false,false,0,216.1,Mushin and Surulere,106100704
+W11102809,Mba Street,residential,false,0,7.5,false,false,false,0,240.2,Mushin and Surulere,11102809
+W191733675,Memedu Aremu Street,residential,false,0,7.5,false,false,false,0,330.0,Mushin and Surulere,191733675
+W106100755,Mercy Eneli Street,residential,false,0,7.5,false,false,false,0,598.2,Mushin and Surulere,106100755
+W205887447,Modupe Ore Crescent,residential,false,0,7.5,false,false,false,0,227.4,Mushin and Surulere,205887447
+W205394919,Mogaji Close,residential,false,0,7.5,false,false,false,0,52.6,Mushin and Surulere,205394919
+W191733673,Molusi Street,residential,false,0,7.5,false,false,false,0,288.2,Mushin and Surulere,191733673
+W441841554,Morgan Street,residential,false,0,7.5,false,false,false,0,231.4,Mushin and Surulere,441841554
+W136182552,Moronu Maduagwu Street,residential,false,0,7.5,false,false,false,0,262.0,Mushin and Surulere,136182552
+W138058013,Muniru Baruwa Street,residential,false,0,7.5,false,false,false,0,143.6,Mushin and Surulere,138058013
+W11102786,Mureni Street,residential,false,0,7.5,false,false,false,0,417.9,Mushin and Surulere,11102786
+W1157079484,Mushin Flyover Bridge,tertiary,false,0,10.0,false,true,false,0,566.9,Mushin and Surulere,1157079484
+W1461323944,Mushin Road,primary,false,0,17.5,true,false,false,0,1036.8,Mushin and Surulere,1461323944
+W5199272,Mushin Road,primary,false,0,17.5,true,false,false,0,1036.8,Mushin and Surulere,5199272
+W559379274,Mushin Road,secondary,false,0,13.0,true,false,false,0,24.5,Mushin and Surulere,559379274
+W583244652,Mushin Road,secondary,false,0,13.0,false,true,false,0,19.1,Mushin and Surulere,583244652
+W583244653,Mushin Road,secondary,false,0,13.0,false,false,false,0,843.7,Mushin and Surulere,583244653
+W92439858,Mushin Road,secondary,false,0,13.0,false,false,false,0,1440.1,Mushin and Surulere,92439858
+W437188461,Mustapha Street,residential,false,0,7.5,false,false,false,0,273.5,Mushin and Surulere,437188461
+W114912332,Mutairu Onigbanjo Street,residential,false,0,7.5,false,false,false,0,463.5,Mushin and Surulere,114912332
+W216228558,National Stadium Complex,service,false,0,5.0,false,false,false,0,965.7,Mushin and Surulere,216228558
+W106100715,Nnobi Street,residential,false,0,7.5,false,false,false,0,409.3,Mushin and Surulere,106100715
+W106100752,Nuru Oniwo,residential,false,0,7.5,false,false,false,0,206.1,Mushin and Surulere,106100752
+W828115894,Nuru Oniwo,residential,false,0,7.5,false,false,false,0,242.3,Mushin and Surulere,828115894
+W828115895,Nuru Oniwo,residential,false,0,7.5,true,false,false,0,71.8,Mushin and Surulere,828115895
+W205833469,Nuru Oniwo Street,residential,false,0,7.5,false,false,false,0,41.3,Mushin and Surulere,205833469
+W206277500,Obasun Link Street,residential,false,0,7.5,false,false,false,0,119.2,Mushin and Surulere,206277500
+W206277501,Obasun Street,residential,false,0,7.5,false,false,false,0,39.8,Mushin and Surulere,206277501
+W206280955,Odeku Close,residential,false,0,7.5,false,false,false,0,54.2,Mushin and Surulere,206280955
+W106100751,Odelola Street,residential,false,0,7.5,false,false,false,0,286.6,Mushin and Surulere,106100751
+W188183811,Odubiyi Street,residential,false,0,7.5,false,false,false,0,564.2,Mushin and Surulere,188183811
+W582942063,Odubiyi Street,residential,false,0,7.5,false,false,false,0,125.1,Mushin and Surulere,582942063
+W585161922,Odubiyi Street,residential,false,0,7.5,false,false,false,0,173.4,Mushin and Surulere,585161922
+W187543766,Oduduwa Street,residential,false,0,7.5,false,false,false,0,114.3,Mushin and Surulere,187543766
+W205832071,Odutayo Street,residential,false,0,7.5,false,false,false,0,339.3,Mushin and Surulere,205832071
+W461600390,Ogun Street,residential,false,0,7.5,false,false,false,0,174.2,Mushin and Surulere,461600390
+W583093207,Ogunbowale Street,residential,false,0,7.5,false,false,false,0,347.1,Mushin and Surulere,583093207
+W205833468,Ogundare Street,residential,false,0,7.5,false,false,false,0,235.7,Mushin and Surulere,205833468
+W237365976,Ogundare Street,residential,false,0,7.5,false,false,false,0,119.9,Mushin and Surulere,237365976
+W370566957,Ogunfunmi Street,residential,false,0,7.5,false,false,false,0,258.7,Mushin and Surulere,370566957
+W370566946,Ogungbaiye Street,residential,false,0,7.5,false,false,false,0,940.2,Mushin and Surulere,370566946
+W12339482,Ogunlana Drive,secondary,false,4,14.2,true,false,false,0,1075.6,Mushin and Surulere,12339482
+W215667113,Ogunlana Drive,secondary,false,2,7.6,true,false,false,0,91.3,Mushin and Surulere,215667113
+W215667128,Ogunlana Drive,secondary,false,2,7.6,true,false,false,0,92.5,Mushin and Surulere,215667128
+W583323034,Ogunlana Drive,secondary,false,4,14.2,true,false,false,0,1073.7,Mushin and Surulere,583323034
+W136182539,Ogunlana Lane,residential,false,0,7.5,false,false,false,0,76.1,Mushin and Surulere,136182539
+W114912319,Ogunlana Street,residential,false,0,7.5,false,false,false,0,220.8,Mushin and Surulere,114912319
+W114912318,Ogunleye Street,residential,false,0,7.5,false,false,false,0,259.3,Mushin and Surulere,114912318
+W9717710,Ogunmokun Street,tertiary,false,1,4.3,false,false,false,0,219.3,Mushin and Surulere,9717710
+W280363748,Ogunsami Street,residential,false,0,7.5,false,false,false,0,729.8,Mushin and Surulere,280363748
+W441712303,Ogunsanya Street,residential,false,0,7.5,false,false,false,0,156.9,Mushin and Surulere,441712303
+W220662763,Oguntoyinbo Street,residential,false,0,7.5,false,false,false,0,183.5,Mushin and Surulere,220662763
+W220662771,Oguntoyinbo Street,residential,false,0,7.5,false,false,false,0,145.4,Mushin and Surulere,220662771
+W559329572,Ojekunle Street,tertiary,false,0,10.0,true,false,false,0,1174.0,Mushin and Surulere,559329572
+W8161019,Ojekunle Street,tertiary,false,0,10.0,true,false,false,0,1168.6,Mushin and Surulere,8161019
+W370566947,Ojerinde Street,residential,false,0,7.5,false,false,false,0,476.4,Mushin and Surulere,370566947
+W218590473,Ojuelegba Road,secondary,false,0,13.0,true,false,false,0,431.6,Mushin and Surulere,218590473
+W218590475,Ojuelegba Road,secondary,false,0,13.0,true,false,false,0,464.6,Mushin and Surulere,218590475
+W585187762,Ojuelegba Road,secondary,false,0,13.0,true,true,false,0,10.8,Mushin and Surulere,585187762
+W585187763,Ojuelegba Road,secondary,false,0,13.0,true,false,false,0,341.2,Mushin and Surulere,585187763
+W585187764,Ojuelegba Road,secondary,false,0,13.0,true,true,false,0,10.3,Mushin and Surulere,585187764
+W585187765,Ojuelegba Road,secondary,false,0,13.0,true,false,false,0,338.4,Mushin and Surulere,585187765
+W136182542,Okanlawon Ajayi Street,residential,false,0,7.5,false,false,false,0,304.4,Mushin and Surulere,136182542
+W92451064,Okeho Street,residential,false,0,7.5,false,false,false,0,641.0,Mushin and Surulere,92451064
+W138058006,Okeolu Street,residential,false,0,7.5,false,false,false,0,197.4,Mushin and Surulere,138058006
+W106100712,Okeona Street,residential,false,0,7.5,false,false,false,0,360.9,Mushin and Surulere,106100712
+W280596125,Okoh Drive,residential,false,0,7.5,false,false,false,0,129.2,Mushin and Surulere,280596125
+W205832062,Oladeinde Street,residential,false,0,7.5,false,false,false,0,113.7,Mushin and Surulere,205832062
+W113525855,Oladimeji Street,residential,false,0,7.5,false,false,false,0,635.6,Mushin and Surulere,113525855
+W188185274,Olagunju Close,residential,false,0,7.5,false,false,false,0,69.3,Mushin and Surulere,188185274
+W106100719,Olaide Street,residential,false,0,7.5,false,false,false,0,341.0,Mushin and Surulere,106100719
+W106100737,Olaitan Odularu Street,residential,false,0,7.5,false,false,false,0,612.4,Mushin and Surulere,106100737
+W191733674,Olaitan Onasanya Street,residential,false,0,7.5,false,false,false,0,70.5,Mushin and Surulere,191733674
+W114912316,Olamojuba Street,residential,false,0,7.5,false,false,false,0,221.5,Mushin and Surulere,114912316
+W205832053,Olamojuba Street,residential,false,0,7.5,false,false,false,0,62.2,Mushin and Surulere,205832053
+W188183806,Olaogun Street,residential,false,0,7.5,false,false,false,0,170.3,Mushin and Surulere,188183806
+W188183808,Olaogun Street,residential,false,0,7.5,false,false,false,0,115.5,Mushin and Surulere,188183808
+W220663180,Olaolu Street,residential,false,0,7.5,false,false,false,0,309.9,Mushin and Surulere,220663180
+W441712279,Olapido Sode St,residential,false,0,7.5,false,false,false,0,225.5,Mushin and Surulere,441712279
+W1443908001,Olaseni Diyaolu Street,residential,false,0,7.5,false,false,false,0,254.9,Mushin and Surulere,1443908001
+W9715860,Olateju Street,residential,false,1,4.3,false,false,false,0,776.7,Mushin and Surulere,9715860
+W585731342,Olatilewa Street,unclassified,false,0,7.5,false,false,false,0,49.4,Mushin and Surulere,585731342
+W92439838,Olatilewa Street,residential,false,0,7.5,false,false,false,0,565.9,Mushin and Surulere,92439838
+W106100714,Olayemi Street,residential,false,0,7.5,false,false,false,0,278.6,Mushin and Surulere,106100714
+W92439827,Olokun Avenue,residential,false,0,7.5,false,false,false,0,59.7,Mushin and Surulere,92439827
+W11102835,Olorogun Street,residential,false,0,7.5,false,false,false,0,100.6,Mushin and Surulere,11102835
+W441897768,Olorunsogo Street,residential,false,0,7.5,false,false,false,0,907.6,Mushin and Surulere,441897768
+W370558810,Olorunwa Street,residential,false,0,7.5,false,false,false,0,114.0,Mushin and Surulere,370558810
+W220663169,Olu Ajilo Street,residential,false,0,7.5,false,false,false,0,128.2,Mushin and Surulere,220663169
+W220662747,Olubunmi Street,residential,false,0,7.5,false,false,false,0,332.5,Mushin and Surulere,220662747
+W92451060,Olufemi Peters Street,residential,false,0,7.5,false,false,false,0,420.2,Mushin and Surulere,92451060
+W583093209,Olufemi Samson Street,residential,false,0,7.5,false,false,false,0,185.3,Mushin and Surulere,583093209
+W92439856,Olufemi Street,unclassified,false,0,7.5,false,false,false,0,414.2,Mushin and Surulere,92439856
+W152991890,Olufowobi Street,residential,false,0,7.5,false,false,false,0,306.8,Mushin and Surulere,152991890
+W205396264,Olukole Close,residential,false,0,7.5,false,false,false,0,42.0,Mushin and Surulere,205396264
+W138058050,Olukole Street,residential,false,0,7.5,false,false,false,0,424.5,Mushin and Surulere,138058050
+W535357586,Olusalako Street,residential,false,0,7.5,false,false,false,0,199.5,Mushin and Surulere,535357586
+W205832051,Olusesan Adetula Street,residential,false,0,7.5,false,false,false,0,252.8,Mushin and Surulere,205832051
+W188183810,Olushola Keku Street,residential,false,0,7.5,false,false,false,0,269.0,Mushin and Surulere,188183810
+W205691374,Ominiyi Street,residential,false,0,7.5,false,false,false,0,166.5,Mushin and Surulere,205691374
+W205694777,Omobola Street,residential,false,0,7.5,false,false,false,0,572.1,Mushin and Surulere,205694777
+W441897765,Omodigbo Street,residential,false,0,7.5,false,false,false,0,231.3,Mushin and Surulere,441897765
+W188184476,Omodunni Street,residential,false,0,7.5,false,false,false,0,233.6,Mushin and Surulere,188184476
+W90288310,Omolewa Street,residential,false,0,7.5,false,false,false,0,214.7,Mushin and Surulere,90288310
+W205692021,Omosebi Street,residential,false,0,7.5,false,false,false,0,46.4,Mushin and Surulere,205692021
+W205692016,Omosolape Street,residential,false,0,7.5,false,false,false,0,555.4,Mushin and Surulere,205692016
+W205691367,Omotashe Compound,residential,false,0,7.5,false,false,false,0,23.9,Mushin and Surulere,205691367
+W138057996,Onadeko Street,residential,false,0,7.5,false,false,false,0,253.5,Mushin and Surulere,138057996
+W441841571,Onasanya Street,residential,false,0,7.5,false,false,false,0,339.4,Mushin and Surulere,441841571
+W280481977,Oni Street,residential,false,0,7.5,false,false,false,0,333.0,Mushin and Surulere,280481977
+W187543769,Onibuore Street,residential,false,0,7.5,false,false,false,0,142.1,Mushin and Surulere,187543769
+W280385620,Onibuore Street,residential,false,0,7.5,false,true,false,0,8.0,Mushin and Surulere,280385620
+W497500495,Onibuore Street,residential,false,0,7.5,false,false,false,0,401.8,Mushin and Surulere,497500495
+W441897815,Onifade street,residential,false,0,7.5,false,false,false,0,758.6,Mushin and Surulere,441897815
+W92439818,Onipede Street,residential,false,0,7.5,false,false,false,0,386.7,Mushin and Surulere,92439818
+W11102824,Onitolo Street,residential,false,0,7.5,false,false,false,0,279.4,Mushin and Surulere,11102824
+W220663182,Onwufuju Street,residential,false,0,7.5,false,false,false,0,279.6,Mushin and Surulere,220663182
+W188185118,Oremeji Street,residential,false,0,7.5,false,false,false,0,215.0,Mushin and Surulere,188185118
+W1200727421,Orotedo Street,residential,false,0,7.5,false,false,false,0,83.3,Mushin and Surulere,1200727421
+W457676503,Oseni Agoro Street,residential,false,0,7.5,false,false,false,0,259.5,Mushin and Surulere,457676503
+W205694773,Oseni Street,residential,false,0,7.5,false,false,false,0,412.1,Mushin and Surulere,205694773
+W187529590,Oshoba Close,residential,false,0,7.5,false,false,false,0,153.7,Mushin and Surulere,187529590
+W187543780,Oshofisan Street,residential,false,0,7.5,false,false,false,0,239.4,Mushin and Surulere,187543780
+W560546951,Osolo Way,secondary,false,0,13.0,false,false,false,0,1575.1,Mushin and Surulere,560546951
+W441841572,Owodele Close,residential,false,0,7.5,false,false,false,0,219.4,Mushin and Surulere,441841572
+W136182544,Oyekan Street,residential,false,0,7.5,false,false,false,0,69.4,Mushin and Surulere,136182544
+W90288364,Oyekan Street,residential,false,0,7.5,false,false,false,0,699.0,Mushin and Surulere,90288364
+W205832055,Oyelowo Close,residential,false,0,7.5,false,false,false,0,151.7,Mushin and Surulere,205832055
+W138058043,Oyenekan Street,residential,false,0,7.5,false,false,false,0,339.3,Mushin and Surulere,138058043
+W106100720,Oyerokun Street,residential,false,0,7.5,false,false,false,0,316.7,Mushin and Surulere,106100720
+W11102731,Palm Avenue,tertiary,false,0,10.0,false,false,false,0,1325.7,Mushin and Surulere,11102731
+W588860878,Palm Avenue,tertiary,false,0,10.0,false,false,false,0,730.1,Mushin and Surulere,588860878
+W370566948,Paul Okuntola Street,residential,false,0,7.5,false,false,false,0,676.8,Mushin and Surulere,370566948
+W585731339,Paul Okuntola Street,residential,false,0,7.5,false,false,false,0,240.5,Mushin and Surulere,585731339
+W10561277,Rabiatu Thompson Cresent,residential,false,0,7.5,false,false,false,0,122.0,Mushin and Surulere,10561277
+W832165480,Rabiatu Thompson Cresent,residential,false,0,7.5,false,false,false,0,134.1,Mushin and Surulere,832165480
+W832165481,Rabiatu Thompson Cresent,residential,false,0,7.5,true,false,false,0,163.7,Mushin and Surulere,832165481
+W832607147,Rabiatu Thompson Cresent,residential,false,0,7.5,true,false,false,0,359.1,Mushin and Surulere,832607147
+W205832077,Raimi Street,residential,false,0,7.5,false,false,false,0,108.9,Mushin and Surulere,205832077
+W205691369,Ramoni Oke Street,residential,false,0,7.5,false,false,false,0,278.8,Mushin and Surulere,205691369
+W114912336,Ramoni Street,residential,false,0,7.5,false,false,false,0,410.4,Mushin and Surulere,114912336
+W10223013,Randle Avenue,tertiary,false,0,10.0,false,false,false,0,829.1,Mushin and Surulere,10223013
+W10221517,Rasaq Balogun Street,residential,false,0,7.5,false,false,false,0,737.3,Mushin and Surulere,10221517
+W106100705,Raufu Williams Crescent,residential,false,0,7.5,false,false,false,0,578.8,Mushin and Surulere,106100705
+W1366765432,Raufu Williams Crescent,residential,false,0,7.5,false,false,false,0,63.3,Mushin and Surulere,1366765432
+W461600409,Remilekun Road,residential,false,0,7.5,false,false,false,0,151.6,Mushin and Surulere,461600409
+W205832048,Rosanwo Street,residential,false,0,7.5,false,false,false,0,286.5,Mushin and Surulere,205832048
+W5168865,Sadiku Street,service,false,0,5.0,false,false,false,0,864.9,Mushin and Surulere,5168865
+W188184477,Saibu Lawal Street,residential,false,0,7.5,false,false,false,0,87.9,Mushin and Surulere,188184477
+W113521748,Salami Bashorun Street,residential,false,0,7.5,false,false,false,0,353.0,Mushin and Surulere,113521748
+W188184475,Salami Oke Street,residential,false,0,7.5,false,false,false,0,81.2,Mushin and Surulere,188184475
+W134149935,Salamotu Street,residential,false,0,7.5,false,false,false,0,341.4,Mushin and Surulere,134149935
+W90288312,Salawu Street,residential,false,0,7.5,false,false,false,0,405.1,Mushin and Surulere,90288312
+W92439845,Sam Shonibare Street,residential,false,0,7.5,false,false,false,0,72.3,Mushin and Surulere,92439845
+W92439857,Sam Shonibare Street,residential,false,0,7.5,false,false,false,0,537.5,Mushin and Surulere,92439857
+W206277499,Samuel Omotara Street,residential,false,0,7.5,false,false,false,0,158.5,Mushin and Surulere,206277499
+W205691373,Sariyu Street,residential,false,0,7.5,false,false,false,0,190.2,Mushin and Surulere,205691373
+W205832040,Shade Shomefun Street,residential,false,0,7.5,false,false,false,0,22.9,Mushin and Surulere,205832040
+W207323885,Shaki Crescent,residential,false,0,7.5,false,false,false,0,277.0,Mushin and Surulere,207323885
+W152991901,Shittu Street,residential,false,0,7.5,false,false,false,0,292.5,Mushin and Surulere,152991901
+W205394918,Shofidiya Close,residential,false,0,7.5,false,false,false,0,76.5,Mushin and Surulere,205394918
+W106100745,Shomade Crescent,residential,false,0,7.5,false,false,false,0,390.4,Mushin and Surulere,106100745
+W188183387,Shonde Street,residential,false,0,7.5,false,false,false,0,123.7,Mushin and Surulere,188183387
+W205832057,Shotayo Hughes Street,residential,false,0,7.5,false,false,false,0,285.1,Mushin and Surulere,205832057
+W187529594,Shoyinka Street,residential,false,0,7.5,false,false,false,0,285.4,Mushin and Surulere,187529594
+W188183391,Shoyomokun Street,residential,false,0,7.5,false,false,false,0,236.8,Mushin and Surulere,188183391
+W205394916,Simisola Street,residential,false,0,7.5,false,false,false,0,213.9,Mushin and Surulere,205394916
+W11102602,Sokunbi Street,tertiary,false,0,10.0,false,false,false,0,809.2,Mushin and Surulere,11102602
+W441712280,Sosanya St,living_street,false,0,6.0,false,false,false,0,485.8,Mushin and Surulere,441712280
+W92439874,Subuola Road,residential,false,0,7.5,false,false,false,0,217.0,Mushin and Surulere,92439874
+W11102812,Tafawa Balewa Crescent,residential,false,0,7.5,false,false,false,0,804.2,Mushin and Surulere,11102812
+W535357584,Taiwo Street,residential,false,0,7.5,false,false,false,0,343.7,Mushin and Surulere,535357584
+W290795845,Taiwo Way,residential,false,0,7.5,false,false,false,0,133.2,Mushin and Surulere,290795845
+W206277504,Taiwo Williams Crescent,residential,false,0,7.5,false,false,false,0,66.0,Mushin and Surulere,206277504
+W441841562,Taju Thompson Street,residential,false,0,7.5,false,false,false,0,189.8,Mushin and Surulere,441841562
+W106100701,Tali Eniola Street,residential,false,0,7.5,false,false,false,0,299.4,Mushin and Surulere,106100701
+W535357585,Tanimola Street,residential,false,0,7.5,false,false,false,0,308.4,Mushin and Surulere,535357585
+W535992603,Technical Street,service,false,0,5.0,false,false,false,0,464.0,Mushin and Surulere,535992603
+W133803795,Tejuoso Street,unclassified,false,0,7.5,false,false,false,0,533.4,Mushin and Surulere,133803795
+W138058028,Temidire Street,residential,false,0,7.5,false,false,false,0,150.9,Mushin and Surulere,138058028
+W220662744,Temitope Street,residential,false,0,7.5,false,false,false,0,413.4,Mushin and Surulere,220662744
+W114912333,Tossou Street,residential,false,0,7.5,false,false,false,0,137.9,Mushin and Surulere,114912333
+W535357580,Tunji Aderinto Street,residential,false,0,7.5,false,false,false,0,301.3,Mushin and Surulere,535357580
+W220660856,Twins Street,residential,false,0,7.5,false,false,false,0,398.9,Mushin and Surulere,220660856
+W535357579,Ugali Street,residential,false,0,7.5,false,false,false,0,447.7,Mushin and Surulere,535357579
+W191736201,Victoria Street,residential,false,0,7.5,false,false,false,0,117.0,Mushin and Surulere,191736201
+W133803781,Western Avenue,motorway,false,2,7.6,true,false,false,80,730.4,Mushin and Surulere,133803781
+W133803783,Western Avenue,motorway,false,2,7.6,true,false,false,0,453.5,Mushin and Surulere,133803783
+W133803785,Western Avenue,motorway,false,2,7.6,true,true,false,80,341.2,Mushin and Surulere,133803785
+W133803787,Western Avenue,motorway,false,2,7.6,true,false,false,80,1053.9,Mushin and Surulere,133803787
+W133803793,Western Avenue,motorway,false,2,7.6,true,true,false,80,343.9,Mushin and Surulere,133803793
+W133805213,Western Avenue,primary,false,0,17.5,true,false,false,0,401.7,Mushin and Surulere,133805213
+W133805214,Western Avenue,primary,false,0,17.5,true,false,false,80,2884.7,Mushin and Surulere,133805214
+W133805220,Western Avenue,motorway,false,2,7.6,true,true,false,80,337.4,Mushin and Surulere,133805220
+W133805227,Western Avenue,motorway,false,2,7.6,true,true,false,80,344.5,Mushin and Surulere,133805227
+W133805232,Western Avenue,motorway,false,2,7.6,true,false,false,80,1050.4,Mushin and Surulere,133805232
+W133805233,Western Avenue,motorway,false,2,7.6,true,false,false,0,453.9,Mushin and Surulere,133805233
+W207402244,Western Avenue,primary,false,0,17.5,true,false,false,0,192.0,Mushin and Surulere,207402244
+W231756295,Western Avenue,motorway,false,2,7.6,true,false,false,80,724.9,Mushin and Surulere,231756295
+W231756320,Western Avenue,primary,false,0,17.5,true,false,false,80,2771.0,Mushin and Surulere,231756320
+W205692013,Wuraola Street,residential,false,0,7.5,false,false,false,0,183.3,Mushin and Surulere,205692013
+W114912327,Yaru Street,residential,false,0,7.5,false,false,false,0,202.6,Mushin and Surulere,114912327
+W10221520,Yussuf Sanusi Street,residential,false,0,7.5,false,false,false,0,165.5,Mushin and Surulere,10221520
+W106100711,Yussuf Sanusi Street,residential,false,0,7.5,false,false,false,0,242.6,Mushin and Surulere,106100711
+W114912331,Zamba Street,residential,false,0,7.5,false,false,false,0,493.6,Mushin and Surulere,114912331
+W1008413849,,service,false,0,5.0,false,false,false,0,152.8,Mushin and Surulere,1008413849
+W1016803210,,residential,false,0,7.5,false,false,false,0,119.1,Mushin and Surulere,1016803210
+W1017731010,,service,false,0,5.0,false,false,false,0,27.7,Mushin and Surulere,1017731010
+W1017732071,,service,false,0,5.0,false,false,false,0,47.8,Mushin and Surulere,1017732071
+W1017732072,,service,false,0,5.0,false,false,false,0,105.8,Mushin and Surulere,1017732072
+W1017750492,,service,false,0,5.0,false,false,false,0,126.0,Mushin and Surulere,1017750492
+W1017815217,,service,false,0,5.0,false,false,false,0,149.8,Mushin and Surulere,1017815217
+W1017818294,,service,false,0,5.0,false,false,false,0,58.5,Mushin and Surulere,1017818294
+W1017819066,,residential,false,0,7.5,false,false,false,0,32.4,Mushin and Surulere,1017819066
+W1017819368,,residential,false,0,7.5,false,false,false,0,139.2,Mushin and Surulere,1017819368
+W1018169294,,residential,false,0,7.5,false,false,false,0,22.8,Mushin and Surulere,1018169294
+W1018245169,,service,false,0,5.0,false,false,false,0,25.2,Mushin and Surulere,1018245169
+W1018477580,,residential,false,0,7.5,false,false,false,0,55.6,Mushin and Surulere,1018477580
+W1018700882,,service,false,0,5.0,true,false,false,0,13.5,Mushin and Surulere,1018700882
+W1018700883,,service,false,0,5.0,true,false,false,0,10.4,Mushin and Surulere,1018700883
+W1018700884,,service,false,0,5.0,true,false,false,0,16.8,Mushin and Surulere,1018700884
+W1018700885,,service,false,0,5.0,false,false,false,0,55.5,Mushin and Surulere,1018700885
+W1018705731,,service,false,0,5.0,false,false,false,0,70.9,Mushin and Surulere,1018705731
+W1018705732,,service,false,0,5.0,false,false,false,0,99.6,Mushin and Surulere,1018705732
+W1018705733,,service,false,0,5.0,false,false,false,0,39.2,Mushin and Surulere,1018705733
+W1019040849,,service,false,0,5.0,false,false,false,0,112.1,Mushin and Surulere,1019040849
+W1019041945,,service,false,0,5.0,false,false,false,0,65.6,Mushin and Surulere,1019041945
+W1019051146,,service,false,0,5.0,false,false,false,0,29.1,Mushin and Surulere,1019051146
+W1019051147,,service,false,0,5.0,false,false,false,0,55.7,Mushin and Surulere,1019051147
+W1019051426,,residential,false,0,7.5,false,false,false,0,231.1,Mushin and Surulere,1019051426
+W1019901811,,service,false,0,5.0,false,false,false,0,61.0,Mushin and Surulere,1019901811
+W1019901812,,service,false,0,5.0,false,false,false,0,49.7,Mushin and Surulere,1019901812
+W1019901813,,service,false,0,5.0,false,false,false,0,139.0,Mushin and Surulere,1019901813
+W1019901814,,service,false,0,5.0,false,false,false,0,74.5,Mushin and Surulere,1019901814
+W1019901967,,service,false,0,5.0,false,false,false,0,97.9,Mushin and Surulere,1019901967
+W1019902081,,service,false,0,5.0,false,false,false,0,60.7,Mushin and Surulere,1019902081
+W1032445566,,service,false,0,5.0,false,false,false,0,74.6,Mushin and Surulere,1032445566
+W1032480711,,service,false,0,5.0,false,false,false,0,55.2,Mushin and Surulere,1032480711
+W1032515240,,residential,false,0,7.5,false,false,false,0,66.6,Mushin and Surulere,1032515240
+W1032515343,,residential,false,0,7.5,false,false,false,0,59.7,Mushin and Surulere,1032515343
+W1032518552,,service,false,0,5.0,false,false,false,0,27.2,Mushin and Surulere,1032518552
+W1032518553,,service,false,0,5.0,false,false,false,0,53.4,Mushin and Surulere,1032518553
+W1032519890,,service,false,0,5.0,false,false,false,0,69.9,Mushin and Surulere,1032519890
+W1033681723,,service,false,0,5.0,false,false,false,0,62.2,Mushin and Surulere,1033681723
+W1033727216,,service,false,0,5.0,false,false,false,0,40.9,Mushin and Surulere,1033727216
+W1033727218,,service,false,0,5.0,false,false,false,0,604.4,Mushin and Surulere,1033727218
+W1033727219,,service,false,0,5.0,false,false,false,0,20.7,Mushin and Surulere,1033727219
+W1033727220,,service,false,0,5.0,false,false,false,0,25.3,Mushin and Surulere,1033727220
+W1033727221,,service,false,0,5.0,false,false,false,0,77.7,Mushin and Surulere,1033727221
+W1033727222,,service,false,0,5.0,false,false,false,0,93.6,Mushin and Surulere,1033727222
+W1033727223,,service,false,0,5.0,false,false,false,0,98.4,Mushin and Surulere,1033727223
+W1033735311,,service,false,0,5.0,false,false,false,0,109.8,Mushin and Surulere,1033735311
+W1033735312,,service,false,0,5.0,false,false,false,0,94.3,Mushin and Surulere,1033735312
+W1034048458,,residential,false,0,7.5,false,false,false,0,52.2,Mushin and Surulere,1034048458
+W1034120775,,service,false,0,5.0,false,false,false,0,34.8,Mushin and Surulere,1034120775
+W1034122020,,service,false,0,5.0,false,false,false,0,75.0,Mushin and Surulere,1034122020
+W1034357546,,service,false,0,5.0,false,false,false,0,16.5,Mushin and Surulere,1034357546
+W1034358679,,service,false,0,5.0,false,false,false,0,51.3,Mushin and Surulere,1034358679
+W1034358811,,residential,false,0,7.5,false,false,false,0,99.2,Mushin and Surulere,1034358811
+W1034358890,,service,false,0,5.0,false,false,false,0,61.2,Mushin and Surulere,1034358890
+W1034358891,,service,false,0,5.0,false,false,false,0,25.7,Mushin and Surulere,1034358891
+W1034389078,,service,false,0,5.0,false,false,false,0,72.4,Mushin and Surulere,1034389078
+W1034389770,,service,false,0,5.0,true,false,false,0,59.8,Mushin and Surulere,1034389770
+W1034488416,,residential,false,0,7.5,false,false,false,0,118.9,Mushin and Surulere,1034488416
+W1034702127,,service,false,0,5.0,false,false,false,0,175.4,Mushin and Surulere,1034702127
+W1034703087,,service,false,0,5.0,false,false,false,0,40.0,Mushin and Surulere,1034703087
+W1034715680,,residential,false,0,7.5,false,false,false,0,151.0,Mushin and Surulere,1034715680
+W1034715815,,service,false,0,5.0,false,false,false,0,70.3,Mushin and Surulere,1034715815
+W1034716296,,service,false,0,5.0,false,false,false,0,82.3,Mushin and Surulere,1034716296
+W1034716297,,service,false,0,5.0,false,false,false,0,88.7,Mushin and Surulere,1034716297
+W1034716298,,service,false,0,5.0,false,false,false,0,175.1,Mushin and Surulere,1034716298
+W1034721610,,service,false,0,5.0,true,false,false,0,57.2,Mushin and Surulere,1034721610
+W1034721611,,service,false,0,5.0,true,false,false,0,45.7,Mushin and Surulere,1034721611
+W1036406576,,residential,false,0,7.5,false,false,false,0,63.3,Mushin and Surulere,1036406576
+W106100713,,residential,false,0,7.5,false,false,false,0,296.3,Mushin and Surulere,106100713
+W106100717,,residential,false,0,7.5,false,false,false,0,142.2,Mushin and Surulere,106100717
+W106100721,,residential,false,0,7.5,false,false,false,0,568.5,Mushin and Surulere,106100721
+W106100726,,residential,false,0,7.5,false,false,false,0,141.7,Mushin and Surulere,106100726
+W106100733,,residential,false,0,7.5,false,false,false,0,243.7,Mushin and Surulere,106100733
+W106100743,,residential,false,0,7.5,false,false,false,0,293.3,Mushin and Surulere,106100743
+W106100750,,residential,false,0,7.5,false,false,false,0,585.4,Mushin and Surulere,106100750
+W106100753,,residential,false,0,7.5,false,false,false,0,257.3,Mushin and Surulere,106100753
+W1063479994,,service,false,0,5.0,false,false,false,0,33.6,Mushin and Surulere,1063479994
+W1063479995,,service,false,0,5.0,false,false,false,0,70.5,Mushin and Surulere,1063479995
+W1063484478,,residential,false,0,7.5,false,false,false,0,16.8,Mushin and Surulere,1063484478
+W1063484479,,residential,false,0,7.5,false,false,false,0,49.5,Mushin and Surulere,1063484479
+W1063830991,,residential,false,0,7.5,false,false,false,0,58.2,Mushin and Surulere,1063830991
+W1063867778,,service,false,0,5.0,false,false,false,0,36.9,Mushin and Surulere,1063867778
+W1063867779,,service,false,0,5.0,false,false,false,0,74.6,Mushin and Surulere,1063867779
+W1064242560,,service,false,0,5.0,false,false,false,0,56.4,Mushin and Surulere,1064242560
+W1064242870,,service,false,0,5.0,false,false,false,0,40.0,Mushin and Surulere,1064242870
+W1064243330,,service,false,0,5.0,false,false,false,0,68.8,Mushin and Surulere,1064243330
+W1064243331,,service,false,0,5.0,true,false,false,0,16.3,Mushin and Surulere,1064243331
+W1064243579,,service,false,0,5.0,false,false,false,0,40.2,Mushin and Surulere,1064243579
+W1064243580,,service,false,0,5.0,true,false,false,0,25.6,Mushin and Surulere,1064243580
+W1064279155,,service,false,0,5.0,false,false,false,0,128.0,Mushin and Surulere,1064279155
+W1064297826,,residential,false,0,7.5,false,false,false,0,74.8,Mushin and Surulere,1064297826
+W1065028105,,residential,false,0,7.5,false,false,false,0,87.3,Mushin and Surulere,1065028105
+W1065064828,,service,false,0,5.0,false,false,false,0,60.0,Mushin and Surulere,1065064828
+W1065464810,,service,false,0,5.0,false,false,false,0,65.9,Mushin and Surulere,1065464810
+W1065472007,,service,false,0,5.0,false,false,false,0,36.1,Mushin and Surulere,1065472007
+W1065472008,,residential,false,0,7.5,false,false,false,0,84.6,Mushin and Surulere,1065472008
+W1065759164,,service,false,0,5.0,false,false,false,0,33.7,Mushin and Surulere,1065759164
+W1065759350,,service,false,0,5.0,false,false,false,0,60.4,Mushin and Surulere,1065759350
+W1065764316,,service,false,0,5.0,false,false,false,0,58.6,Mushin and Surulere,1065764316
+W1065764641,,service,false,0,5.0,false,false,false,0,63.6,Mushin and Surulere,1065764641
+W1065764808,,service,false,0,5.0,false,false,false,0,51.0,Mushin and Surulere,1065764808
+W1078105192,,service,false,0,5.0,false,false,false,0,64.8,Mushin and Surulere,1078105192
+W1078118669,,service,false,0,5.0,false,false,false,0,28.8,Mushin and Surulere,1078118669
+W1082824230,,service,false,0,5.0,true,false,false,0,134.0,Mushin and Surulere,1082824230
+W1082824387,,service,false,0,5.0,false,false,false,0,77.9,Mushin and Surulere,1082824387
+W1082830975,,service,false,0,5.0,false,false,false,0,4.6,Mushin and Surulere,1082830975
+W1082831895,,residential,false,0,7.5,false,false,false,0,157.5,Mushin and Surulere,1082831895
+W1083112949,,service,false,0,5.0,false,false,false,0,92.3,Mushin and Surulere,1083112949
+W1083114959,,service,false,0,5.0,false,false,false,0,42.6,Mushin and Surulere,1083114959
+W1083147422,,service,false,0,5.0,false,false,false,0,41.5,Mushin and Surulere,1083147422
+W1083147423,,service,false,0,5.0,false,false,false,0,48.4,Mushin and Surulere,1083147423
+W1088383185,,service,false,0,5.0,false,false,false,0,69.6,Mushin and Surulere,1088383185
+W1094019729,,service,false,0,5.0,false,false,false,0,49.9,Mushin and Surulere,1094019729
+W1094019730,,service,false,0,5.0,false,false,false,0,56.3,Mushin and Surulere,1094019730
+W1096875213,,service,false,0,5.0,false,false,false,0,102.5,Mushin and Surulere,1096875213
+W1096875289,,residential,false,0,7.5,false,false,false,0,28.1,Mushin and Surulere,1096875289
+W1097207007,,service,false,0,5.0,false,false,false,0,53.1,Mushin and Surulere,1097207007
+W1097877424,,service,false,0,5.0,false,false,false,0,65.2,Mushin and Surulere,1097877424
+W1105432949,,service,false,0,5.0,false,false,false,0,30.7,Mushin and Surulere,1105432949
+W11102598,,residential,false,0,7.5,false,false,false,0,178.7,Mushin and Surulere,11102598
+W11102789,,residential,false,0,7.5,false,false,false,0,213.0,Mushin and Surulere,11102789
+W11102792,,residential,false,0,7.5,false,false,false,0,29.2,Mushin and Surulere,11102792
+W1111714211,,residential,false,0,7.5,false,false,false,0,56.2,Mushin and Surulere,1111714211
+W1111719486,,service,false,0,5.0,false,false,false,0,64.0,Mushin and Surulere,1111719486
+W1111942359,,service,false,0,5.0,false,false,false,0,37.5,Mushin and Surulere,1111942359
+W1112186907,,service,false,0,5.0,false,false,false,0,26.1,Mushin and Surulere,1112186907
+W1112190987,,residential,false,0,7.5,false,false,false,0,116.7,Mushin and Surulere,1112190987
+W1112192493,,service,false,0,5.0,false,false,false,0,53.7,Mushin and Surulere,1112192493
+W1112193059,,service,false,0,5.0,false,false,false,0,26.8,Mushin and Surulere,1112193059
+W1112194235,,service,false,0,5.0,false,false,false,0,24.3,Mushin and Surulere,1112194235
+W1112194238,,service,false,0,5.0,false,false,false,0,30.3,Mushin and Surulere,1112194238
+W1112197117,,service,false,0,5.0,false,false,false,0,37.3,Mushin and Surulere,1112197117
+W1112835469,,service,false,0,5.0,false,false,false,0,29.8,Mushin and Surulere,1112835469
+W1112836167,,service,false,0,5.0,false,false,false,0,36.2,Mushin and Surulere,1112836167
+W1115939660,,service,false,0,5.0,false,false,false,0,72.5,Mushin and Surulere,1115939660
+W1115939661,,service,false,0,5.0,false,false,false,0,104.7,Mushin and Surulere,1115939661
+W1115939662,,service,false,0,5.0,false,false,false,0,153.8,Mushin and Surulere,1115939662
+W1116511987,,service,false,0,5.0,false,false,false,0,77.0,Mushin and Surulere,1116511987
+W1116511988,,service,false,0,5.0,false,false,false,0,53.4,Mushin and Surulere,1116511988
+W1116511989,,service,false,0,5.0,false,false,false,0,121.5,Mushin and Surulere,1116511989
+W1116511990,,service,false,0,5.0,false,false,false,0,150.2,Mushin and Surulere,1116511990
+W1116511991,,service,false,0,5.0,false,false,false,0,154.4,Mushin and Surulere,1116511991
+W1116511992,,service,false,0,5.0,false,false,false,0,214.0,Mushin and Surulere,1116511992
+W1118315409,,service,false,0,5.0,false,false,false,0,307.0,Mushin and Surulere,1118315409
+W1118315410,,service,false,0,5.0,false,false,false,0,153.0,Mushin and Surulere,1118315410
+W1118315411,,service,false,0,5.0,false,false,false,0,307.8,Mushin and Surulere,1118315411
+W1123607406,,residential,false,0,7.5,false,false,false,0,106.4,Mushin and Surulere,1123607406
+W1123607407,,service,false,0,5.0,false,false,false,0,159.3,Mushin and Surulere,1123607407
+W1123607408,,service,false,0,5.0,false,false,false,0,103.5,Mushin and Surulere,1123607408
+W1123607409,,service,false,0,5.0,false,false,false,0,213.5,Mushin and Surulere,1123607409
+W1126830244,,service,false,0,5.0,false,false,false,0,35.3,Mushin and Surulere,1126830244
+W1126830245,,service,false,0,5.0,false,false,false,0,22.3,Mushin and Surulere,1126830245
+W1126830246,,service,false,0,5.0,false,false,false,0,12.3,Mushin and Surulere,1126830246
+W1126830247,,service,false,0,5.0,false,false,false,0,39.0,Mushin and Surulere,1126830247
+W1126830248,,service,false,0,5.0,false,false,false,0,40.3,Mushin and Surulere,1126830248
+W1126830249,,service,false,0,5.0,false,false,false,0,38.3,Mushin and Surulere,1126830249
+W1126830250,,residential,false,0,7.5,false,false,false,0,124.5,Mushin and Surulere,1126830250
+W1126830251,,service,false,0,5.0,false,false,false,0,47.8,Mushin and Surulere,1126830251
+W1126830252,,service,false,0,5.0,false,false,false,0,40.5,Mushin and Surulere,1126830252
+W1133103283,,service,false,0,5.0,false,false,false,0,55.4,Mushin and Surulere,1133103283
+W1134693904,,service,false,0,5.0,false,false,false,0,61.9,Mushin and Surulere,1134693904
+W113519419,,residential,false,0,7.5,false,false,false,0,77.2,Mushin and Surulere,113519419
+W113520301,,residential,false,0,7.5,false,false,false,0,522.5,Mushin and Surulere,113520301
+W113520304,,residential,false,0,7.5,false,false,false,0,521.6,Mushin and Surulere,113520304
+W113521737,,residential,false,0,7.5,false,false,false,0,504.6,Mushin and Surulere,113521737
+W113521740,,residential,false,0,7.5,false,false,false,0,513.8,Mushin and Surulere,113521740
+W113521745,,residential,false,0,7.5,false,false,false,0,764.8,Mushin and Surulere,113521745
+W113521747,,residential,false,0,7.5,false,false,false,0,125.6,Mushin and Surulere,113521747
+W113521749,,residential,false,0,7.5,false,false,false,0,363.3,Mushin and Surulere,113521749
+W113521767,,residential,false,0,7.5,false,false,false,0,265.8,Mushin and Surulere,113521767
+W113521768,,residential,false,0,7.5,false,false,false,0,382.3,Mushin and Surulere,113521768
+W113525824,,residential,false,0,7.5,false,false,false,0,552.4,Mushin and Surulere,113525824
+W113525857,,residential,false,0,7.5,false,false,false,0,313.1,Mushin and Surulere,113525857
+W1144581202,,service,false,0,5.0,false,false,false,0,57.1,Mushin and Surulere,1144581202
+W1144581203,,service,false,0,5.0,false,false,false,0,54.9,Mushin and Surulere,1144581203
+W1148408035,,service,false,0,5.0,false,false,false,0,43.8,Mushin and Surulere,1148408035
+W114911404,,residential,false,0,7.5,false,false,false,0,272.0,Mushin and Surulere,114911404
+W114911405,,residential,false,0,7.5,false,false,false,0,193.6,Mushin and Surulere,114911405
+W114911406,,residential,false,0,7.5,false,false,false,0,1279.9,Mushin and Surulere,114911406
+W114912335,,residential,false,0,7.5,false,false,false,0,198.4,Mushin and Surulere,114912335
+W114912344,,residential,false,0,7.5,false,false,false,0,255.4,Mushin and Surulere,114912344
+W114912345,,residential,false,0,7.5,false,false,false,0,491.0,Mushin and Surulere,114912345
+W114912346,,residential,false,0,7.5,false,false,false,0,449.9,Mushin and Surulere,114912346
+W114912347,,residential,false,0,7.5,false,false,false,0,298.7,Mushin and Surulere,114912347
+W114912348,,residential,false,0,7.5,false,false,false,0,132.6,Mushin and Surulere,114912348
+W114912349,,residential,false,0,7.5,false,false,false,0,203.7,Mushin and Surulere,114912349
+W1156514167,,service,false,0,5.0,false,false,false,0,27.8,Mushin and Surulere,1156514167
+W1156514168,,service,false,0,5.0,false,false,false,0,27.8,Mushin and Surulere,1156514168
+W1157079486,,tertiary,false,0,10.0,false,false,false,0,68.6,Mushin and Surulere,1157079486
+W1157079487,,residential,false,0,7.5,false,false,false,0,207.1,Mushin and Surulere,1157079487
+W1157079488,,residential,false,0,7.5,false,false,false,0,257.1,Mushin and Surulere,1157079488
+W1158119627,,service,false,0,5.0,false,false,false,0,46.8,Mushin and Surulere,1158119627
+W1158119628,,service,false,0,5.0,false,false,false,0,62.0,Mushin and Surulere,1158119628
+W1158119630,,residential,false,0,7.5,false,false,false,0,71.5,Mushin and Surulere,1158119630
+W1158119631,,residential,false,0,7.5,false,false,false,0,80.4,Mushin and Surulere,1158119631
+W1158119632,,residential,false,0,7.5,false,false,false,0,74.6,Mushin and Surulere,1158119632
+W1158119633,,service,false,0,5.0,false,false,false,0,139.6,Mushin and Surulere,1158119633
+W1158119634,,service,false,0,5.0,false,false,false,0,140.2,Mushin and Surulere,1158119634
+W1158388137,,service,false,0,5.0,false,false,false,0,73.2,Mushin and Surulere,1158388137
+W1158390093,,service,false,0,5.0,false,false,false,0,71.7,Mushin and Surulere,1158390093
+W1159795398,,service,false,0,5.0,false,false,false,0,86.4,Mushin and Surulere,1159795398
+W1167861165,,residential,false,0,7.5,false,false,false,0,67.6,Mushin and Surulere,1167861165
+W1169795163,,service,false,0,5.0,false,false,false,0,50.3,Mushin and Surulere,1169795163
+W1169859056,,service,false,0,5.0,false,false,false,0,48.4,Mushin and Surulere,1169859056
+W1171476779,,service,false,0,5.0,false,false,false,0,130.1,Mushin and Surulere,1171476779
+W1177773988,,service,false,0,5.0,false,false,false,0,54.1,Mushin and Surulere,1177773988
+W1177773989,,service,false,0,5.0,false,false,false,0,60.6,Mushin and Surulere,1177773989
+W1200727419,,service,false,0,5.0,false,false,false,0,42.0,Mushin and Surulere,1200727419
+W1200727420,,service,false,0,5.0,false,false,false,0,49.8,Mushin and Surulere,1200727420
+W1200727422,,residential,false,0,7.5,false,false,false,0,12.7,Mushin and Surulere,1200727422
+W1209275935,,service,false,0,5.0,false,false,false,0,44.9,Mushin and Surulere,1209275935
+W1209275936,,service,false,0,5.0,false,false,false,0,28.6,Mushin and Surulere,1209275936
+W1213473202,,primary,true,0,7.5,false,false,false,0,6.9,Mushin and Surulere,1213473202
+W1214258450,,residential,false,0,7.5,false,false,false,0,102.0,Mushin and Surulere,1214258450
+W1214258451,,residential,false,0,7.5,false,false,false,0,108.0,Mushin and Surulere,1214258451
+W1214258452,,residential,false,0,7.5,false,false,false,0,43.2,Mushin and Surulere,1214258452
+W1215280576,,service,false,0,5.0,false,false,false,0,11.7,Mushin and Surulere,1215280576
+W1215280577,,service,false,0,5.0,false,false,false,0,34.3,Mushin and Surulere,1215280577
+W1215905525,,service,false,0,5.0,false,false,false,0,136.8,Mushin and Surulere,1215905525
+W1219654783,,service,false,0,5.0,false,false,false,0,29.4,Mushin and Surulere,1219654783
+W1219654784,,service,false,0,5.0,false,false,false,0,136.6,Mushin and Surulere,1219654784
+W1219654785,,service,false,0,5.0,false,false,false,0,17.7,Mushin and Surulere,1219654785
+W1221896850,,residential,false,0,7.5,false,false,false,0,185.3,Mushin and Surulere,1221896850
+W1226370967,,residential,false,0,7.5,false,false,false,0,46.9,Mushin and Surulere,1226370967
+W1226370968,,residential,false,0,7.5,false,false,false,0,48.9,Mushin and Surulere,1226370968
+W1226648836,,residential,false,0,7.5,false,false,false,0,35.0,Mushin and Surulere,1226648836
+W1226648837,,residential,false,0,7.5,false,false,false,0,139.0,Mushin and Surulere,1226648837
+W1227482915,,residential,false,0,7.5,false,false,false,0,92.0,Mushin and Surulere,1227482915
+W1227482916,,service,false,0,5.0,false,false,false,0,102.2,Mushin and Surulere,1227482916
+W1227482917,,service,false,0,5.0,false,false,false,0,82.8,Mushin and Surulere,1227482917
+W1227482918,,service,false,0,5.0,false,false,false,0,148.3,Mushin and Surulere,1227482918
+W1228540688,,residential,false,0,7.5,false,false,false,0,196.2,Mushin and Surulere,1228540688
+W1228580226,,service,false,0,5.0,false,false,false,0,233.6,Mushin and Surulere,1228580226
+W1229004185,,primary,true,0,7.5,false,false,false,0,10.8,Mushin and Surulere,1229004185
+W1229196480,,residential,false,0,7.5,false,false,false,0,26.9,Mushin and Surulere,1229196480
+W1229196481,,service,false,0,5.0,false,false,false,0,23.5,Mushin and Surulere,1229196481
+W1229206131,,service,false,0,5.0,false,false,false,0,138.9,Mushin and Surulere,1229206131
+W1229568126,,service,false,0,5.0,false,false,false,0,147.4,Mushin and Surulere,1229568126
+W1229568127,,service,false,0,5.0,false,false,false,0,175.5,Mushin and Surulere,1229568127
+W1229584628,,service,false,0,5.0,true,false,false,0,60.0,Mushin and Surulere,1229584628
+W1229584629,,service,false,0,5.0,false,false,false,0,7.0,Mushin and Surulere,1229584629
+W1229584630,,service,false,0,5.0,true,false,false,0,60.1,Mushin and Surulere,1229584630
+W12335204,,residential,false,0,7.5,false,false,false,0,88.0,Mushin and Surulere,12335204
+W12339475,,residential,false,0,7.5,false,false,false,0,169.3,Mushin and Surulere,12339475
+W1257446510,,residential,false,0,7.5,false,false,false,0,9.5,Mushin and Surulere,1257446510
+W1257446513,,residential,false,0,7.5,false,false,false,0,22.0,Mushin and Surulere,1257446513
+W1257446530,,residential,false,0,7.5,false,false,false,0,517.3,Mushin and Surulere,1257446530
+W1257464239,,residential,false,0,7.5,false,false,false,0,199.2,Mushin and Surulere,1257464239
+W1257594512,,service,false,0,5.0,false,false,false,0,12.7,Mushin and Surulere,1257594512
+W1257607317,,residential,false,0,7.5,false,false,false,0,18.3,Mushin and Surulere,1257607317
+W1257607332,,residential,false,0,7.5,false,false,false,0,54.5,Mushin and Surulere,1257607332
+W1257811416,,residential,false,0,7.5,false,false,false,0,32.2,Mushin and Surulere,1257811416
+W1257811432,,residential,false,0,7.5,false,false,false,0,4.4,Mushin and Surulere,1257811432
+W1257841916,,residential,false,0,7.5,false,false,false,0,1299.1,Mushin and Surulere,1257841916
+W1257841924,,residential,false,0,7.5,false,false,false,0,45.8,Mushin and Surulere,1257841924
+W1257856594,,residential,false,0,7.5,false,false,false,0,36.6,Mushin and Surulere,1257856594
+W1257856656,,residential,false,0,7.5,false,false,false,0,24.4,Mushin and Surulere,1257856656
+W1258705254,,residential,false,0,7.5,false,false,false,0,252.4,Mushin and Surulere,1258705254
+W1262413538,,residential,false,0,7.5,false,false,false,0,101.6,Mushin and Surulere,1262413538
+W1263641108,,residential,false,0,7.5,false,false,false,0,168.6,Mushin and Surulere,1263641108
+W1265139640,,residential,false,0,7.5,false,false,false,0,139.6,Mushin and Surulere,1265139640
+W1265168713,,residential,false,0,7.5,false,false,false,0,7.9,Mushin and Surulere,1265168713
+W1265168714,,residential,false,0,7.5,false,false,false,0,244.9,Mushin and Surulere,1265168714
+W1265168720,,residential,false,0,7.5,false,false,false,0,130.1,Mushin and Surulere,1265168720
+W1265168725,,residential,false,0,7.5,false,false,false,0,70.9,Mushin and Surulere,1265168725
+W1265172520,,residential,false,0,7.5,false,false,false,0,43.0,Mushin and Surulere,1265172520
+W1265184304,,residential,false,0,7.5,false,false,false,0,148.3,Mushin and Surulere,1265184304
+W1265186901,,service,false,0,5.0,false,false,false,0,61.5,Mushin and Surulere,1265186901
+W1265196804,,residential,false,0,7.5,false,false,false,0,67.1,Mushin and Surulere,1265196804
+W1265202167,,residential,false,0,7.5,false,false,false,0,160.3,Mushin and Surulere,1265202167
+W1265461566,,residential,false,0,7.5,false,false,false,0,98.3,Mushin and Surulere,1265461566
+W1265461567,,residential,false,0,7.5,false,false,false,0,67.2,Mushin and Surulere,1265461567
+W1265461568,,residential,false,0,7.5,false,false,false,0,242.0,Mushin and Surulere,1265461568
+W1265502550,,residential,false,0,7.5,false,false,false,0,260.5,Mushin and Surulere,1265502550
+W1265502551,,residential,false,0,7.5,false,false,false,0,83.8,Mushin and Surulere,1265502551
+W1265502552,,residential,false,0,7.5,false,false,false,0,256.2,Mushin and Surulere,1265502552
+W1265502553,,residential,false,0,7.5,false,false,false,0,516.9,Mushin and Surulere,1265502553
+W1265502554,,residential,false,0,7.5,false,false,false,0,74.1,Mushin and Surulere,1265502554
+W1265502555,,residential,false,0,7.5,false,false,false,0,298.9,Mushin and Surulere,1265502555
+W1265506127,,residential,false,0,7.5,false,false,false,0,92.4,Mushin and Surulere,1265506127
+W1265506128,,residential,false,0,7.5,false,false,false,0,426.1,Mushin and Surulere,1265506128
+W1265512365,,residential,false,0,7.5,false,false,false,0,150.9,Mushin and Surulere,1265512365
+W1265542601,,residential,false,0,7.5,false,false,false,0,45.1,Mushin and Surulere,1265542601
+W1265542720,,residential,false,0,7.5,false,false,false,0,71.6,Mushin and Surulere,1265542720
+W1265552825,,residential,false,0,7.5,false,false,false,0,18.9,Mushin and Surulere,1265552825
+W1265575274,,residential,false,0,7.5,false,false,false,0,320.4,Mushin and Surulere,1265575274
+W1265575275,,residential,false,0,7.5,false,false,false,0,90.3,Mushin and Surulere,1265575275
+W1265627014,,residential,false,0,7.5,false,false,false,0,128.6,Mushin and Surulere,1265627014
+W1265627015,,residential,false,0,7.5,false,false,false,0,215.6,Mushin and Surulere,1265627015
+W1265627016,,residential,false,0,7.5,false,false,false,0,253.0,Mushin and Surulere,1265627016
+W1265849088,,residential,false,0,7.5,false,false,false,0,72.2,Mushin and Surulere,1265849088
+W1265849089,,residential,false,0,7.5,false,false,false,0,260.8,Mushin and Surulere,1265849089
+W1265849090,,residential,false,0,7.5,false,false,false,0,173.3,Mushin and Surulere,1265849090
+W1265849091,,residential,false,0,7.5,false,false,false,0,364.8,Mushin and Surulere,1265849091
+W1266081099,,residential,false,0,7.5,false,false,false,0,308.8,Mushin and Surulere,1266081099
+W1266081101,,residential,false,0,7.5,false,false,false,0,249.6,Mushin and Surulere,1266081101
+W1266402428,,service,false,0,5.0,true,false,false,0,214.1,Mushin and Surulere,1266402428
+W1266402429,,service,false,0,5.0,true,false,false,0,219.0,Mushin and Surulere,1266402429
+W1266811706,,residential,false,0,7.5,false,false,false,0,385.3,Mushin and Surulere,1266811706
+W1266811707,,residential,false,0,7.5,false,false,false,0,84.7,Mushin and Surulere,1266811707
+W1268183467,,residential,false,0,7.5,false,false,false,0,349.9,Mushin and Surulere,1268183467
+W1270897739,,residential,false,0,7.5,false,false,false,0,73.0,Mushin and Surulere,1270897739
+W1272632309,,residential,false,0,7.5,false,false,false,0,99.9,Mushin and Surulere,1272632309
+W1284799718,,residential,false,0,7.5,false,false,false,0,144.2,Mushin and Surulere,1284799718
+W1284799719,,residential,false,0,7.5,false,false,false,0,102.4,Mushin and Surulere,1284799719
+W1284799720,,residential,false,0,7.5,false,false,false,0,64.7,Mushin and Surulere,1284799720
+W1284799721,,residential,false,0,7.5,false,false,false,0,166.6,Mushin and Surulere,1284799721
+W1287044763,,residential,false,0,7.5,false,false,false,0,448.9,Mushin and Surulere,1287044763
+W1288257987,,residential,false,0,7.5,false,false,false,0,333.5,Mushin and Surulere,1288257987
+W1291623892,,residential,false,0,7.5,false,false,false,0,47.2,Mushin and Surulere,1291623892
+W1291623948,,service,false,0,5.0,false,false,false,0,110.7,Mushin and Surulere,1291623948
+W1291623949,,residential,false,0,7.5,false,false,false,0,55.8,Mushin and Surulere,1291623949
+W1296088339,,primary,false,0,17.5,true,false,false,0,8.2,Mushin and Surulere,1296088339
+W1296088340,,primary,false,0,17.5,true,false,false,0,8.1,Mushin and Surulere,1296088340
+W1296088341,,primary,false,0,17.5,true,false,false,0,10.9,Mushin and Surulere,1296088341
+W1296088342,,primary,false,0,17.5,true,false,false,0,7.7,Mushin and Surulere,1296088342
+W1303728037,,residential,false,0,7.5,false,false,false,0,290.6,Mushin and Surulere,1303728037
+W1314298450,,residential,false,0,7.5,false,false,false,0,35.8,Mushin and Surulere,1314298450
+W1314298451,,residential,false,0,7.5,false,false,false,0,147.3,Mushin and Surulere,1314298451
+W1314298452,,residential,false,0,7.5,false,false,false,0,16.5,Mushin and Surulere,1314298452
+W1314301450,,residential,false,0,7.5,false,false,false,0,153.9,Mushin and Surulere,1314301450
+W1314312891,,residential,false,0,7.5,false,false,false,0,171.9,Mushin and Surulere,1314312891
+W1314312892,,residential,false,0,7.5,false,false,false,0,60.0,Mushin and Surulere,1314312892
+W1314314743,,residential,false,0,7.5,false,false,false,0,31.0,Mushin and Surulere,1314314743
+W1314314744,,residential,false,0,7.5,false,false,false,0,77.8,Mushin and Surulere,1314314744
+W1314314745,,residential,false,0,7.5,false,false,false,0,204.6,Mushin and Surulere,1314314745
+W1314314746,,residential,false,0,7.5,false,false,false,0,68.7,Mushin and Surulere,1314314746
+W1314314747,,residential,false,0,7.5,false,false,false,0,467.7,Mushin and Surulere,1314314747
+W1314325314,,residential,false,0,7.5,false,false,false,0,73.0,Mushin and Surulere,1314325314
+W1322057554,,residential,false,0,7.5,false,false,false,0,72.2,Mushin and Surulere,1322057554
+W1324281282,,residential,false,0,7.5,false,false,false,0,102.8,Mushin and Surulere,1324281282
+W133803784,,primary,true,1,4.3,true,false,false,0,78.3,Mushin and Surulere,133803784
+W133803792,,primary,true,1,4.3,true,false,false,0,70.1,Mushin and Surulere,133803792
+W133805216,,motorway,true,0,7.5,true,false,false,0,86.9,Mushin and Surulere,133805216
+W133805218,,motorway,true,0,7.5,true,false,false,0,70.5,Mushin and Surulere,133805218
+W133805219,,motorway,true,0,7.5,true,false,false,0,81.0,Mushin and Surulere,133805219
+W133805223,,motorway,true,0,7.5,true,false,false,0,86.4,Mushin and Surulere,133805223
+W133805226,,motorway,true,0,7.5,true,false,false,0,76.6,Mushin and Surulere,133805226
+W133805228,,primary,true,0,7.5,true,false,false,0,62.8,Mushin and Surulere,133805228
+W133805231,,primary,true,0,7.5,true,false,false,0,69.1,Mushin and Surulere,133805231
+W133805234,,motorway,true,0,7.5,true,false,false,0,68.5,Mushin and Surulere,133805234
+W133805237,,primary,true,0,7.5,true,false,false,0,74.1,Mushin and Surulere,133805237
+W133805241,,motorway,true,0,7.5,true,false,false,0,80.9,Mushin and Surulere,133805241
+W134147965,,primary,true,0,7.5,true,false,false,0,275.9,Mushin and Surulere,134147965
+W134147968,,primary,false,0,17.5,true,false,false,0,297.0,Mushin and Surulere,134147968
+W134147969,,primary,false,0,17.5,true,false,false,0,264.0,Mushin and Surulere,134147969
+W134147974,,primary,false,0,17.5,true,false,false,0,124.8,Mushin and Surulere,134147974
+W134147976,,primary,true,0,7.5,true,false,false,0,269.9,Mushin and Surulere,134147976
+W134147980,,primary,false,0,17.5,true,false,false,0,127.2,Mushin and Surulere,134147980
+W134147987,,primary,false,0,17.5,true,false,true,0,85.8,Mushin and Surulere,134147987
+W134147989,,residential,false,0,7.5,false,false,false,0,474.7,Mushin and Surulere,134147989
+W134147990,,primary,false,0,17.5,true,false,false,0,233.2,Mushin and Surulere,134147990
+W134153464,,residential,false,0,7.5,false,false,false,0,46.1,Mushin and Surulere,134153464
+W1347909346,,residential,false,0,7.5,false,false,false,0,74.7,Mushin and Surulere,1347909346
+W1347909347,,service,false,0,5.0,false,false,false,0,56.6,Mushin and Surulere,1347909347
+W1347909348,,service,false,0,5.0,false,false,false,0,52.3,Mushin and Surulere,1347909348
+W1347909349,,residential,false,0,7.5,false,false,false,0,69.6,Mushin and Surulere,1347909349
+W1348025564,,residential,false,0,7.5,false,false,false,0,41.7,Mushin and Surulere,1348025564
+W1349899145,,residential,false,0,7.5,false,false,false,0,60.5,Mushin and Surulere,1349899145
+W1349899146,,residential,false,0,7.5,false,false,false,0,204.0,Mushin and Surulere,1349899146
+W1353850943,,service,false,0,5.0,false,false,false,0,151.9,Mushin and Surulere,1353850943
+W1353976928,,primary,false,2,7.6,true,false,false,0,55.9,Mushin and Surulere,1353976928
+W1353976929,,primary,false,2,7.6,true,false,false,0,66.2,Mushin and Surulere,1353976929
+W1355335582,,residential,false,0,7.5,false,false,false,0,279.4,Mushin and Surulere,1355335582
+W1355335583,,residential,false,0,7.5,false,false,false,0,118.6,Mushin and Surulere,1355335583
+W1360694663,,residential,false,0,7.5,false,false,false,0,117.2,Mushin and Surulere,1360694663
+W1360694664,,residential,false,0,7.5,false,false,false,0,171.1,Mushin and Surulere,1360694664
+W136182593,,service,false,0,5.0,false,false,false,0,203.0,Mushin and Surulere,136182593
+W1364674146,,residential,false,0,7.5,false,false,false,0,155.5,Mushin and Surulere,1364674146
+W1364689406,,service,false,0,5.0,false,false,false,0,36.9,Mushin and Surulere,1364689406
+W1364689407,,residential,false,0,7.5,false,false,false,0,99.4,Mushin and Surulere,1364689407
+W1364954928,,residential,false,0,7.5,false,false,false,0,13.9,Mushin and Surulere,1364954928
+W1364954930,,residential,false,0,7.5,false,false,false,0,46.5,Mushin and Surulere,1364954930
+W1364959440,,service,false,0,5.0,false,true,false,0,5.0,Mushin and Surulere,1364959440
+W1364959441,,service,false,0,5.0,false,false,false,0,10.2,Mushin and Surulere,1364959441
+W1364959442,,service,false,0,5.0,false,false,false,0,20.2,Mushin and Surulere,1364959442
+W1364959443,,service,false,0,5.0,false,false,false,0,13.8,Mushin and Surulere,1364959443
+W1365137239,,service,false,0,5.0,false,false,false,0,13.1,Mushin and Surulere,1365137239
+W1366594647,,service,false,0,5.0,false,false,false,0,22.7,Mushin and Surulere,1366594647
+W1366727809,,service,false,0,5.0,false,false,false,0,27.0,Mushin and Surulere,1366727809
+W1366727810,,service,false,0,5.0,false,false,false,0,27.9,Mushin and Surulere,1366727810
+W1366727811,,residential,false,0,7.5,false,false,false,0,30.7,Mushin and Surulere,1366727811
+W1366727812,,residential,false,0,7.5,false,false,false,0,15.4,Mushin and Surulere,1366727812
+W1366954965,,service,false,0,5.0,false,false,false,0,145.2,Mushin and Surulere,1366954965
+W1366954966,,service,false,0,5.0,false,false,false,0,65.7,Mushin and Surulere,1366954966
+W1366954967,,service,false,0,5.0,false,false,false,0,160.1,Mushin and Surulere,1366954967
+W1366954968,,service,false,0,5.0,false,false,false,0,49.7,Mushin and Surulere,1366954968
+W1366954969,,service,false,0,5.0,false,false,false,0,51.6,Mushin and Surulere,1366954969
+W1367098836,,residential,false,0,7.5,false,false,false,0,57.3,Mushin and Surulere,1367098836
+W1369036947,,service,false,0,5.0,false,false,false,0,110.3,Mushin and Surulere,1369036947
+W1369036948,,service,false,0,5.0,false,false,false,0,81.1,Mushin and Surulere,1369036948
+W1369046862,,service,false,0,5.0,false,false,false,0,137.8,Mushin and Surulere,1369046862
+W1369222168,,residential,false,0,7.5,false,false,false,0,20.8,Mushin and Surulere,1369222168
+W1371388742,,residential,false,0,7.5,true,false,false,0,95.3,Mushin and Surulere,1371388742
+W1371400613,,service,false,0,5.0,false,false,false,0,8.6,Mushin and Surulere,1371400613
+W1371400614,,service,false,0,5.0,false,false,false,0,4.2,Mushin and Surulere,1371400614
+W1371400615,,service,false,0,5.0,false,false,false,0,9.2,Mushin and Surulere,1371400615
+W1371400616,,service,false,0,5.0,false,false,false,0,11.0,Mushin and Surulere,1371400616
+W1371400617,,residential,false,0,7.5,false,false,false,0,24.4,Mushin and Surulere,1371400617
+W1371964742,,service,false,0,5.0,false,false,false,0,82.8,Mushin and Surulere,1371964742
+W138058048,,residential,false,0,7.5,false,false,false,0,93.8,Mushin and Surulere,138058048
+W1382444225,,service,false,0,5.0,true,false,false,0,30.9,Mushin and Surulere,1382444225
+W1382444226,,service,false,0,5.0,true,false,false,0,8.9,Mushin and Surulere,1382444226
+W1383691944,,service,false,0,5.0,false,false,false,0,56.9,Mushin and Surulere,1383691944
+W1383691945,,residential,false,0,7.5,false,false,false,0,61.2,Mushin and Surulere,1383691945
+W1383691946,,residential,false,0,7.5,false,false,false,0,87.4,Mushin and Surulere,1383691946
+W1383720408,,residential,false,0,7.5,false,false,false,0,5.2,Mushin and Surulere,1383720408
+W1383720409,,residential,false,0,7.5,false,false,false,0,12.7,Mushin and Surulere,1383720409
+W1395887462,,service,false,0,5.0,false,false,false,0,14.3,Mushin and Surulere,1395887462
+W1395887463,,service,false,0,5.0,false,false,false,0,34.0,Mushin and Surulere,1395887463
+W1395887464,,service,false,0,5.0,false,false,false,0,139.2,Mushin and Surulere,1395887464
+W1395888560,,service,false,0,5.0,false,false,false,0,66.3,Mushin and Surulere,1395888560
+W1395888561,,service,false,0,5.0,false,false,false,0,26.1,Mushin and Surulere,1395888561
+W1395888562,,service,false,0,5.0,false,false,false,0,41.6,Mushin and Surulere,1395888562
+W1395888563,,service,false,0,5.0,false,false,false,0,38.7,Mushin and Surulere,1395888563
+W1395888564,,service,false,0,5.0,false,false,false,0,71.4,Mushin and Surulere,1395888564
+W1395892738,,service,false,0,5.0,false,false,false,0,22.5,Mushin and Surulere,1395892738
+W1395892739,,service,false,0,5.0,false,false,false,0,30.8,Mushin and Surulere,1395892739
+W1395892740,,service,false,0,5.0,false,false,false,0,30.2,Mushin and Surulere,1395892740
+W1395892741,,service,false,0,5.0,false,false,false,0,20.6,Mushin and Surulere,1395892741
+W1395892742,,service,false,0,5.0,false,false,false,0,26.6,Mushin and Surulere,1395892742
+W1395908009,,service,false,0,5.0,false,false,false,0,84.6,Mushin and Surulere,1395908009
+W1395908010,,service,false,0,5.0,false,false,false,0,43.1,Mushin and Surulere,1395908010
+W1395908011,,service,false,0,5.0,false,false,false,0,45.2,Mushin and Surulere,1395908011
+W1395908012,,service,false,0,5.0,false,false,false,0,20.9,Mushin and Surulere,1395908012
+W1395908014,,service,false,0,5.0,false,false,false,0,27.3,Mushin and Surulere,1395908014
+W1395908015,,service,false,0,5.0,false,false,false,0,60.3,Mushin and Surulere,1395908015
+W1395908016,,service,false,0,5.0,false,false,false,0,57.6,Mushin and Surulere,1395908016
+W1395908017,,service,false,0,5.0,false,false,false,0,49.8,Mushin and Surulere,1395908017
+W1395908018,,service,false,0,5.0,false,false,false,0,25.7,Mushin and Surulere,1395908018
+W1395908019,,service,false,0,5.0,false,false,false,0,30.5,Mushin and Surulere,1395908019
+W1395908020,,service,false,0,5.0,false,false,false,0,30.6,Mushin and Surulere,1395908020
+W1409125068,,service,false,0,5.0,false,false,false,0,153.9,Mushin and Surulere,1409125068
+W1409125069,,service,false,0,5.0,false,false,false,0,258.7,Mushin and Surulere,1409125069
+W1409125070,,service,false,0,5.0,false,false,false,0,154.4,Mushin and Surulere,1409125070
+W1409125071,,service,false,0,5.0,false,false,false,0,103.3,Mushin and Surulere,1409125071
+W1409125072,,service,false,0,5.0,false,false,false,0,246.4,Mushin and Surulere,1409125072
+W1410825262,,service,false,0,5.0,false,false,false,0,119.6,Mushin and Surulere,1410825262
+W1410825263,,service,false,0,5.0,false,false,false,0,51.9,Mushin and Surulere,1410825263
+W1412208393,,service,false,0,5.0,false,false,false,0,66.6,Mushin and Surulere,1412208393
+W1413303465,,residential,false,0,7.5,false,false,false,0,102.4,Mushin and Surulere,1413303465
+W1413303466,,service,false,0,5.0,false,false,false,0,72.3,Mushin and Surulere,1413303466
+W1413304953,,residential,false,0,7.5,false,false,false,0,66.8,Mushin and Surulere,1413304953
+W1413304954,,service,false,0,5.0,false,false,false,0,19.3,Mushin and Surulere,1413304954
+W1413304955,,service,false,0,5.0,false,false,false,0,29.4,Mushin and Surulere,1413304955
+W1413304956,,service,false,0,5.0,false,false,false,0,17.5,Mushin and Surulere,1413304956
+W1413442011,,residential,false,0,7.5,false,false,false,0,140.3,Mushin and Surulere,1413442011
+W1419100660,,residential,false,0,7.5,false,false,false,0,90.8,Mushin and Surulere,1419100660
+W1419117948,,residential,false,0,7.5,false,false,false,0,10.7,Mushin and Surulere,1419117948
+W1419117949,,residential,false,0,7.5,false,false,false,0,26.7,Mushin and Surulere,1419117949
+W1422135486,,service,false,0,5.0,false,false,false,0,59.9,Mushin and Surulere,1422135486
+W1422339122,,service,false,0,5.0,false,false,false,0,32.1,Mushin and Surulere,1422339122
+W1422339123,,service,false,0,5.0,false,false,false,0,60.3,Mushin and Surulere,1422339123
+W1424790502,,residential,false,0,7.5,false,false,false,0,202.7,Mushin and Surulere,1424790502
+W1427242092,,residential,false,0,7.5,false,false,false,0,30.3,Mushin and Surulere,1427242092
+W1428303745,,service,false,0,5.0,false,false,false,0,73.3,Mushin and Surulere,1428303745
+W1428303746,,service,false,0,5.0,false,false,false,0,38.6,Mushin and Surulere,1428303746
+W1428303747,,residential,false,0,7.5,false,false,false,0,26.1,Mushin and Surulere,1428303747
+W1428303748,,service,false,0,5.0,false,false,false,0,96.4,Mushin and Surulere,1428303748
+W1428303749,,service,false,0,5.0,false,false,false,0,77.5,Mushin and Surulere,1428303749
+W1428303750,,service,false,0,5.0,false,false,false,0,99.4,Mushin and Surulere,1428303750
+W1428303751,,service,false,0,5.0,false,false,false,0,68.7,Mushin and Surulere,1428303751
+W1432235529,,residential,false,0,7.5,false,false,false,0,7.7,Mushin and Surulere,1432235529
+W1432502360,,residential,false,0,7.5,false,false,false,0,11.9,Mushin and Surulere,1432502360
+W1448123001,,residential,false,0,7.5,false,false,false,0,159.3,Mushin and Surulere,1448123001
+W1449285617,,service,false,0,5.0,false,false,false,0,77.3,Mushin and Surulere,1449285617
+W1455154549,,service,false,0,5.0,false,false,false,0,58.4,Mushin and Surulere,1455154549
+W1455154550,,residential,false,0,7.5,false,false,false,0,65.4,Mushin and Surulere,1455154550
+W1455154551,,service,false,0,5.0,false,false,false,0,51.8,Mushin and Surulere,1455154551
+W1455154552,,service,false,0,5.0,false,false,false,0,34.8,Mushin and Surulere,1455154552
+W1455154553,,residential,false,0,7.5,false,false,false,0,42.3,Mushin and Surulere,1455154553
+W1455271593,,residential,false,0,7.5,false,false,false,0,64.4,Mushin and Surulere,1455271593
+W1458943058,,residential,false,0,7.5,false,false,false,0,66.4,Mushin and Surulere,1458943058
+W1458943059,,residential,false,0,7.5,false,false,false,0,97.3,Mushin and Surulere,1458943059
+W1460706400,,service,false,0,5.0,false,false,false,0,20.0,Mushin and Surulere,1460706400
+W1460706401,,service,false,0,5.0,false,false,false,0,44.3,Mushin and Surulere,1460706401
+W1460706402,,service,false,0,5.0,false,false,false,0,107.9,Mushin and Surulere,1460706402
+W1461244149,,service,false,0,5.0,true,false,false,0,57.7,Mushin and Surulere,1461244149
+W1461244150,,service,false,0,5.0,false,false,false,0,81.1,Mushin and Surulere,1461244150
+W1461244151,,service,false,0,5.0,false,false,false,0,54.1,Mushin and Surulere,1461244151
+W1463745415,,service,false,0,5.0,false,false,false,0,78.8,Mushin and Surulere,1463745415
+W1464318473,,residential,false,0,7.5,false,false,false,0,51.5,Mushin and Surulere,1464318473
+W1468791144,,service,false,0,5.0,false,false,false,0,22.8,Mushin and Surulere,1468791144
+W1468791145,,service,false,0,5.0,false,false,false,0,12.3,Mushin and Surulere,1468791145
+W1468791146,,service,false,0,5.0,false,false,false,0,23.4,Mushin and Surulere,1468791146
+W1469118982,,service,false,0,5.0,false,false,false,0,5.1,Mushin and Surulere,1469118982
+W1469118983,,service,false,0,5.0,false,false,false,0,23.8,Mushin and Surulere,1469118983
+W1469118984,,service,false,0,5.0,false,false,false,0,25.2,Mushin and Surulere,1469118984
+W1469118985,,service,false,0,5.0,false,false,false,0,30.2,Mushin and Surulere,1469118985
+W1469118986,,service,false,0,5.0,false,false,false,0,6.8,Mushin and Surulere,1469118986
+W1469118987,,service,false,0,5.0,false,false,false,0,31.4,Mushin and Surulere,1469118987
+W1469165757,,service,false,0,5.0,false,false,false,0,62.6,Mushin and Surulere,1469165757
+W1472012851,,secondary,false,0,13.0,false,false,false,0,6.8,Mushin and Surulere,1472012851
+W1483307173,,residential,false,0,7.5,false,false,false,0,6.0,Mushin and Surulere,1483307173
+W1483307174,,residential,false,0,7.5,false,true,false,0,4.6,Mushin and Surulere,1483307174
+W1483328658,,service,false,0,5.0,false,false,false,0,257.9,Mushin and Surulere,1483328658
+W1483328659,,service,false,0,5.0,false,false,false,0,63.6,Mushin and Surulere,1483328659
+W1486850638,,service,false,0,5.0,false,false,false,0,115.1,Mushin and Surulere,1486850638
+W1486850639,,service,false,0,5.0,false,false,false,0,42.7,Mushin and Surulere,1486850639
+W1486850640,,service,false,0,5.0,false,false,false,0,79.4,Mushin and Surulere,1486850640
+W1486850641,,service,false,0,5.0,false,false,false,0,73.7,Mushin and Surulere,1486850641
+W1486850642,,service,false,0,5.0,false,false,false,0,150.4,Mushin and Surulere,1486850642
+W1487981367,,secondary,true,0,7.5,false,false,false,0,7.9,Mushin and Surulere,1487981367
+W1488025049,,residential,false,0,7.5,false,false,false,0,7.9,Mushin and Surulere,1488025049
+W1488575665,,residential,false,0,7.5,false,false,false,0,33.0,Mushin and Surulere,1488575665
+W1489694032,,service,false,0,5.0,false,false,false,0,136.1,Mushin and Surulere,1489694032
+W1490040652,,service,false,0,5.0,false,false,false,0,42.4,Mushin and Surulere,1490040652
+W1490046965,,service,false,0,5.0,false,false,false,0,73.1,Mushin and Surulere,1490046965
+W1490046968,,residential,false,0,7.5,false,false,false,0,25.2,Mushin and Surulere,1490046968
+W1490046969,,service,false,0,5.0,false,false,false,0,49.3,Mushin and Surulere,1490046969
+W1490046970,,service,false,0,5.0,false,false,false,0,32.2,Mushin and Surulere,1490046970
+W1490219383,,residential,false,0,7.5,false,false,false,0,76.6,Mushin and Surulere,1490219383
+W1491847618,,service,false,0,5.0,false,false,false,0,40.5,Mushin and Surulere,1491847618
+W1491847619,,residential,false,0,7.5,false,false,false,0,70.6,Mushin and Surulere,1491847619
+W1491847620,,service,false,0,5.0,false,false,false,0,61.6,Mushin and Surulere,1491847620
+W1491847621,,service,false,0,5.0,false,false,false,0,63.9,Mushin and Surulere,1491847621
+W1501268880,,service,false,0,5.0,false,false,false,0,14.3,Mushin and Surulere,1501268880
+W1501268881,,service,false,0,5.0,false,false,false,0,17.1,Mushin and Surulere,1501268881
+W1501268882,,service,false,0,5.0,false,false,false,0,18.0,Mushin and Surulere,1501268882
+W1501268883,,service,false,0,5.0,false,false,false,0,11.2,Mushin and Surulere,1501268883
+W1501268884,,service,false,0,5.0,false,false,false,0,48.1,Mushin and Surulere,1501268884
+W1508770221,,residential,false,0,7.5,false,false,false,0,31.2,Mushin and Surulere,1508770221
+W1508770222,,residential,false,0,7.5,false,false,false,0,33.1,Mushin and Surulere,1508770222
+W1508770223,,residential,false,0,7.5,false,false,false,0,27.4,Mushin and Surulere,1508770223
+W1508770225,,residential,false,0,7.5,false,false,false,0,94.6,Mushin and Surulere,1508770225
+W1509674530,,service,false,0,5.0,false,false,false,0,28.6,Mushin and Surulere,1509674530
+W1509674531,,service,false,0,5.0,false,false,false,0,74.8,Mushin and Surulere,1509674531
+W1510196764,,residential,false,0,7.5,false,false,false,0,101.4,Mushin and Surulere,1510196764
+W1510466696,,service,false,0,5.0,false,false,false,0,33.1,Mushin and Surulere,1510466696
+W1511934888,,residential,false,0,7.5,false,false,false,0,51.8,Mushin and Surulere,1511934888
+W1511934889,,service,false,0,5.0,false,false,false,0,69.6,Mushin and Surulere,1511934889
+W1511934890,,residential,false,0,7.5,false,false,false,0,128.2,Mushin and Surulere,1511934890
+W1511938242,,service,false,0,5.0,false,false,false,0,52.7,Mushin and Surulere,1511938242
+W1511981448,,service,false,0,5.0,false,false,false,0,13.1,Mushin and Surulere,1511981448
+W1512383918,,service,false,0,5.0,false,false,false,0,57.9,Mushin and Surulere,1512383918
+W1512383919,,service,false,0,5.0,false,false,false,0,54.1,Mushin and Surulere,1512383919
+W1512422963,,service,false,0,5.0,false,false,false,0,120.9,Mushin and Surulere,1512422963
+W1512422964,,service,false,0,5.0,false,false,false,0,4.8,Mushin and Surulere,1512422964
+W152991833,,residential,false,0,7.5,false,false,false,0,487.1,Mushin and Surulere,152991833
+W152991834,,residential,false,0,7.5,false,false,false,0,914.0,Mushin and Surulere,152991834
+W152991837,,residential,false,0,7.5,false,false,false,0,604.4,Mushin and Surulere,152991837
+W152991838,,residential,false,0,7.5,false,false,false,0,924.3,Mushin and Surulere,152991838
+W152991839,,residential,false,0,7.5,false,false,false,0,492.1,Mushin and Surulere,152991839
+W152991840,,residential,false,0,7.5,false,false,false,0,490.0,Mushin and Surulere,152991840
+W152991841,,residential,false,0,7.5,false,false,false,0,841.8,Mushin and Surulere,152991841
+W152991844,,service,false,0,5.0,false,false,false,0,222.9,Mushin and Surulere,152991844
+W152991845,,residential,false,0,7.5,false,false,false,0,380.2,Mushin and Surulere,152991845
+W152991846,,residential,false,0,7.5,false,false,false,0,127.3,Mushin and Surulere,152991846
+W152991847,,service,false,0,5.0,false,false,false,0,70.4,Mushin and Surulere,152991847
+W152991849,,residential,false,0,7.5,false,false,false,0,131.9,Mushin and Surulere,152991849
+W152991850,,residential,false,0,7.5,false,false,false,0,91.3,Mushin and Surulere,152991850
+W152991851,,residential,false,0,7.5,false,false,false,0,83.6,Mushin and Surulere,152991851
+W152991852,,service,false,0,5.0,false,false,false,0,78.7,Mushin and Surulere,152991852
+W152991853,,residential,false,0,7.5,false,false,false,0,71.5,Mushin and Surulere,152991853
+W152991854,,service,false,0,5.0,false,false,false,0,85.4,Mushin and Surulere,152991854
+W152991856,,residential,false,0,7.5,false,false,false,0,76.5,Mushin and Surulere,152991856
+W152991857,,residential,false,0,7.5,false,false,false,0,129.4,Mushin and Surulere,152991857
+W152991859,,residential,false,0,7.5,false,false,false,0,206.4,Mushin and Surulere,152991859
+W152991860,,residential,false,0,7.5,false,false,false,0,128.1,Mushin and Surulere,152991860
+W152991861,,residential,false,0,7.5,false,false,false,0,70.0,Mushin and Surulere,152991861
+W152991862,,residential,false,0,7.5,false,false,false,0,83.7,Mushin and Surulere,152991862
+W152991864,,residential,false,0,7.5,false,false,false,0,209.5,Mushin and Surulere,152991864
+W152991867,,residential,false,0,7.5,false,false,false,0,269.1,Mushin and Surulere,152991867
+W152991870,,residential,false,0,7.5,false,false,false,0,189.1,Mushin and Surulere,152991870
+W152991874,,service,false,0,5.0,false,false,false,0,205.1,Mushin and Surulere,152991874
+W152991879,,residential,false,0,7.5,false,false,false,0,185.9,Mushin and Surulere,152991879
+W152991880,,residential,false,0,7.5,false,false,false,0,144.0,Mushin and Surulere,152991880
+W152991881,,residential,false,0,7.5,false,false,false,0,139.4,Mushin and Surulere,152991881
+W152991882,,service,false,0,5.0,false,false,false,0,206.4,Mushin and Surulere,152991882
+W152991884,,residential,false,0,7.5,false,false,false,0,164.8,Mushin and Surulere,152991884
+W152991886,,residential,false,0,7.5,false,false,false,0,321.3,Mushin and Surulere,152991886
+W152991887,,residential,false,0,7.5,false,false,false,0,167.2,Mushin and Surulere,152991887
+W152991888,,residential,false,0,7.5,false,false,false,0,512.8,Mushin and Surulere,152991888
+W152991892,,residential,false,0,7.5,false,false,false,0,208.0,Mushin and Surulere,152991892
+W152991893,,residential,false,0,7.5,false,false,false,0,207.8,Mushin and Surulere,152991893
+W152991894,,residential,false,0,7.5,false,false,false,0,201.6,Mushin and Surulere,152991894
+W152991895,,residential,false,0,7.5,false,false,false,0,258.2,Mushin and Surulere,152991895
+W152991896,,residential,false,0,7.5,false,false,false,0,158.6,Mushin and Surulere,152991896
+W152991897,,residential,false,0,7.5,false,false,false,0,127.6,Mushin and Surulere,152991897
+W152991898,,residential,false,0,7.5,false,false,false,0,226.6,Mushin and Surulere,152991898
+W152991899,,residential,false,0,7.5,false,false,false,0,296.5,Mushin and Surulere,152991899
+W152991900,,residential,false,0,7.5,false,false,false,0,206.6,Mushin and Surulere,152991900
+W152991906,,residential,false,0,7.5,false,false,false,0,225.8,Mushin and Surulere,152991906
+W152991909,,residential,false,0,7.5,false,false,false,0,264.2,Mushin and Surulere,152991909
+W152991910,,service,false,0,5.0,false,false,false,0,275.4,Mushin and Surulere,152991910
+W152991915,,residential,false,0,7.5,false,false,false,0,350.9,Mushin and Surulere,152991915
+W152991919,,residential,false,0,7.5,false,false,false,0,473.4,Mushin and Surulere,152991919
+W152991931,,residential,false,0,7.5,false,false,false,0,358.8,Mushin and Surulere,152991931
+W152991932,,residential,false,0,7.5,false,false,false,0,309.1,Mushin and Surulere,152991932
+W152991933,,residential,false,0,7.5,false,false,false,0,371.0,Mushin and Surulere,152991933
+W152991934,,residential,false,0,7.5,false,false,false,0,230.0,Mushin and Surulere,152991934
+W152991935,,residential,false,0,7.5,false,false,false,0,380.6,Mushin and Surulere,152991935
+W152991936,,residential,false,0,7.5,false,false,false,0,495.6,Mushin and Surulere,152991936
+W152991937,,residential,false,0,7.5,false,false,false,0,350.1,Mushin and Surulere,152991937
+W152991938,,residential,false,0,7.5,false,false,false,0,536.6,Mushin and Surulere,152991938
+W152991939,,residential,false,0,7.5,false,false,false,0,112.3,Mushin and Surulere,152991939
+W152991940,,residential,false,0,7.5,false,false,false,0,420.4,Mushin and Surulere,152991940
+W152991941,,residential,false,0,7.5,false,false,false,0,347.0,Mushin and Surulere,152991941
+W152991942,,residential,false,0,7.5,false,false,false,0,292.0,Mushin and Surulere,152991942
+W152991943,,residential,false,0,7.5,false,false,false,0,212.6,Mushin and Surulere,152991943
+W152991944,,residential,false,0,7.5,false,false,false,0,398.1,Mushin and Surulere,152991944
+W152991947,,residential,false,0,7.5,false,false,false,0,424.0,Mushin and Surulere,152991947
+W152991948,,residential,false,0,7.5,false,false,false,0,289.3,Mushin and Surulere,152991948
+W152991949,,residential,false,0,7.5,false,false,false,0,367.6,Mushin and Surulere,152991949
+W152991950,,residential,false,0,7.5,false,false,false,0,470.2,Mushin and Surulere,152991950
+W152991951,,residential,false,0,7.5,false,false,false,0,284.7,Mushin and Surulere,152991951
+W152991952,,residential,false,0,7.5,false,false,false,0,301.9,Mushin and Surulere,152991952
+W152991953,,tertiary,false,0,10.0,false,false,false,0,604.6,Mushin and Surulere,152991953
+W152991954,,residential,false,0,7.5,false,false,false,0,577.6,Mushin and Surulere,152991954
+W152991955,,residential,false,0,7.5,false,false,false,0,580.4,Mushin and Surulere,152991955
+W152991956,,residential,false,0,7.5,false,false,false,0,188.5,Mushin and Surulere,152991956
+W152991957,,residential,false,0,7.5,false,false,false,0,571.4,Mushin and Surulere,152991957
+W152991959,,residential,false,0,7.5,false,false,false,0,533.8,Mushin and Surulere,152991959
+W152991960,,residential,false,0,7.5,false,false,false,0,838.5,Mushin and Surulere,152991960
+W187529591,,residential,false,0,7.5,false,false,false,0,117.7,Mushin and Surulere,187529591
+W188184819,,residential,false,0,7.5,false,false,false,0,98.1,Mushin and Surulere,188184819
+W188184821,,residential,false,0,7.5,false,false,false,0,94.9,Mushin and Surulere,188184821
+W205396265,,residential,false,0,7.5,false,false,false,0,19.3,Mushin and Surulere,205396265
+W205694771,,residential,false,0,7.5,false,false,false,0,298.6,Mushin and Surulere,205694771
+W205694775,,residential,false,0,7.5,false,false,false,0,76.7,Mushin and Surulere,205694775
+W205887445,,residential,false,0,7.5,false,false,false,0,168.1,Mushin and Surulere,205887445
+W215641710,,secondary,false,0,13.0,true,false,false,0,572.6,Mushin and Surulere,215641710
+W215641712,,residential,false,0,7.5,false,false,false,0,299.7,Mushin and Surulere,215641712
+W215641721,,secondary,false,0,13.0,true,false,false,0,234.0,Mushin and Surulere,215641721
+W215641726,,primary,false,0,17.5,true,false,true,0,116.8,Mushin and Surulere,215641726
+W215641737,,secondary,false,0,13.0,true,false,false,0,687.3,Mushin and Surulere,215641737
+W215641750,,primary,false,2,7.6,true,true,false,0,415.7,Mushin and Surulere,215641750
+W215641751,,primary,false,2,7.6,true,true,false,0,440.1,Mushin and Surulere,215641751
+W215667086,,tertiary,false,1,4.3,true,false,false,0,408.5,Mushin and Surulere,215667086
+W215667087,,tertiary,false,1,4.3,true,false,false,0,186.4,Mushin and Surulere,215667087
+W215667091,,service,false,0,5.0,false,false,false,0,78.4,Mushin and Surulere,215667091
+W215667093,,tertiary,false,1,4.3,true,false,false,0,34.6,Mushin and Surulere,215667093
+W215667096,,secondary,false,0,13.0,true,false,true,0,125.4,Mushin and Surulere,215667096
+W215667106,,tertiary,false,1,4.3,true,false,false,0,210.6,Mushin and Surulere,215667106
+W215667114,,tertiary,false,1,4.3,true,false,false,0,32.5,Mushin and Surulere,215667114
+W215667116,,secondary,true,1,4.3,true,false,false,0,179.7,Mushin and Surulere,215667116
+W215667121,,tertiary,false,0,10.0,true,false,true,0,126.5,Mushin and Surulere,215667121
+W215667124,,secondary,true,1,4.3,true,false,false,0,193.0,Mushin and Surulere,215667124
+W215667126,,secondary,true,1,4.3,true,false,false,0,186.0,Mushin and Surulere,215667126
+W215667134,,secondary,true,1,4.3,true,false,false,0,183.7,Mushin and Surulere,215667134
+W217535625,,residential,false,0,7.5,false,false,false,0,211.7,Mushin and Surulere,217535625
+W217535626,,residential,false,0,7.5,false,false,false,0,339.9,Mushin and Surulere,217535626
+W217535627,,residential,false,0,7.5,false,false,false,0,560.2,Mushin and Surulere,217535627
+W217535629,,residential,false,0,7.5,false,false,false,0,301.8,Mushin and Surulere,217535629
+W217535633,,residential,false,0,7.5,false,false,false,0,174.0,Mushin and Surulere,217535633
+W217535635,,residential,false,0,7.5,false,false,false,0,379.2,Mushin and Surulere,217535635
+W217535644,,residential,false,0,7.5,false,false,false,0,263.0,Mushin and Surulere,217535644
+W217535645,,residential,false,0,7.5,false,false,false,0,249.8,Mushin and Surulere,217535645
+W217535648,,residential,false,0,7.5,false,false,false,0,64.7,Mushin and Surulere,217535648
+W217535649,,residential,false,0,7.5,false,false,false,0,423.3,Mushin and Surulere,217535649
+W217535650,,residential,false,0,7.5,false,false,false,0,180.1,Mushin and Surulere,217535650
+W217535652,,residential,false,0,7.5,false,false,false,0,156.8,Mushin and Surulere,217535652
+W217535654,,residential,false,0,7.5,false,false,false,0,112.6,Mushin and Surulere,217535654
+W218440814,,residential,false,0,7.5,false,false,false,0,132.4,Mushin and Surulere,218440814
+W218440819,,residential,false,0,7.5,false,false,false,0,79.7,Mushin and Surulere,218440819
+W218590474,,primary,true,0,7.5,true,false,false,0,63.8,Mushin and Surulere,218590474
+W220660797,,residential,false,0,7.5,false,false,false,0,449.4,Mushin and Surulere,220660797
+W220660798,,residential,false,0,7.5,false,false,false,0,805.3,Mushin and Surulere,220660798
+W220660799,,residential,false,0,7.5,false,false,false,0,317.1,Mushin and Surulere,220660799
+W220660800,,residential,false,0,7.5,false,false,false,0,139.9,Mushin and Surulere,220660800
+W220660801,,residential,false,0,7.5,false,false,false,0,124.0,Mushin and Surulere,220660801
+W220660802,,residential,false,0,7.5,false,false,false,0,182.4,Mushin and Surulere,220660802
+W220660803,,residential,false,0,7.5,false,false,false,0,15.3,Mushin and Surulere,220660803
+W220660804,,residential,false,0,7.5,false,false,false,0,114.7,Mushin and Surulere,220660804
+W220660805,,residential,false,0,7.5,false,false,false,0,118.5,Mushin and Surulere,220660805
+W220660806,,residential,false,0,7.5,false,false,false,0,70.4,Mushin and Surulere,220660806
+W220660807,,residential,false,0,7.5,false,false,false,0,276.4,Mushin and Surulere,220660807
+W220660808,,residential,false,0,7.5,false,false,false,0,75.8,Mushin and Surulere,220660808
+W220660809,,residential,false,0,7.5,false,false,false,0,123.0,Mushin and Surulere,220660809
+W220660810,,residential,false,0,7.5,false,false,false,0,122.2,Mushin and Surulere,220660810
+W220660811,,residential,false,0,7.5,false,false,false,0,199.0,Mushin and Surulere,220660811
+W220660812,,residential,false,0,7.5,false,false,false,0,309.1,Mushin and Surulere,220660812
+W220660814,,residential,false,0,7.5,false,false,false,0,269.0,Mushin and Surulere,220660814
+W220660816,,residential,false,0,7.5,false,false,false,0,194.9,Mushin and Surulere,220660816
+W220660817,,residential,false,0,7.5,false,false,false,0,187.1,Mushin and Surulere,220660817
+W220660818,,residential,false,0,7.5,false,false,false,0,238.2,Mushin and Surulere,220660818
+W220660821,,residential,false,0,7.5,false,false,false,0,175.3,Mushin and Surulere,220660821
+W220660822,,residential,false,0,7.5,false,false,false,0,289.2,Mushin and Surulere,220660822
+W220660823,,residential,false,0,7.5,false,false,false,0,139.3,Mushin and Surulere,220660823
+W220660824,,residential,false,0,7.5,false,false,false,0,157.8,Mushin and Surulere,220660824
+W220660825,,residential,false,0,7.5,false,false,false,0,191.5,Mushin and Surulere,220660825
+W220660826,,residential,false,0,7.5,false,false,false,0,216.3,Mushin and Surulere,220660826
+W220660827,,residential,false,0,7.5,false,false,false,0,148.5,Mushin and Surulere,220660827
+W220660828,,residential,false,0,7.5,false,false,false,0,287.5,Mushin and Surulere,220660828
+W220660830,,residential,false,0,7.5,false,false,false,0,201.5,Mushin and Surulere,220660830
+W220660831,,residential,false,0,7.5,false,false,false,0,262.4,Mushin and Surulere,220660831
+W220660832,,residential,false,0,7.5,false,false,false,0,195.3,Mushin and Surulere,220660832
+W220660834,,residential,false,0,7.5,false,false,false,0,160.4,Mushin and Surulere,220660834
+W220660835,,residential,false,0,7.5,false,false,false,0,153.0,Mushin and Surulere,220660835
+W220660837,,residential,false,0,7.5,false,false,false,0,228.7,Mushin and Surulere,220660837
+W220660838,,residential,false,0,7.5,false,false,false,0,506.5,Mushin and Surulere,220660838
+W220660839,,residential,false,0,7.5,false,false,false,0,167.2,Mushin and Surulere,220660839
+W220660840,,residential,false,0,7.5,false,false,false,0,259.6,Mushin and Surulere,220660840
+W220660843,,residential,false,0,7.5,false,false,false,0,236.2,Mushin and Surulere,220660843
+W220660844,,residential,false,0,7.5,false,false,false,0,307.9,Mushin and Surulere,220660844
+W220660846,,residential,false,0,7.5,false,false,false,0,332.6,Mushin and Surulere,220660846
+W220660848,,residential,false,0,7.5,false,false,false,0,15.9,Mushin and Surulere,220660848
+W220660849,,residential,false,0,7.5,false,false,false,0,187.6,Mushin and Surulere,220660849
+W220660850,,residential,false,0,7.5,false,false,false,0,253.2,Mushin and Surulere,220660850
+W220660852,,residential,false,0,7.5,false,false,false,0,214.4,Mushin and Surulere,220660852
+W220660853,,residential,false,0,7.5,false,false,false,0,341.6,Mushin and Surulere,220660853
+W220660855,,residential,false,0,7.5,false,false,false,0,327.9,Mushin and Surulere,220660855
+W220660857,,residential,false,0,7.5,false,false,false,0,564.6,Mushin and Surulere,220660857
+W220660858,,residential,false,0,7.5,false,false,false,0,227.9,Mushin and Surulere,220660858
+W220660859,,residential,false,0,7.5,false,false,false,0,400.2,Mushin and Surulere,220660859
+W220660861,,residential,false,0,7.5,false,false,false,0,558.6,Mushin and Surulere,220660861
+W220662745,,residential,false,0,7.5,false,false,false,0,115.6,Mushin and Surulere,220662745
+W220662750,,residential,false,0,7.5,false,false,false,0,168.7,Mushin and Surulere,220662750
+W220662767,,residential,false,0,7.5,false,false,false,0,252.7,Mushin and Surulere,220662767
+W220662770,,residential,false,0,7.5,false,false,false,0,376.2,Mushin and Surulere,220662770
+W220662774,,residential,false,0,7.5,false,false,false,0,107.8,Mushin and Surulere,220662774
+W220662782,,residential,false,0,7.5,false,false,false,0,258.9,Mushin and Surulere,220662782
+W220663178,,residential,false,0,7.5,false,false,false,0,206.0,Mushin and Surulere,220663178
+W231756304,,motorway,true,0,7.5,true,false,false,0,87.9,Mushin and Surulere,231756304
+W237214654,,residential,false,0,7.5,true,false,false,0,84.3,Mushin and Surulere,237214654
+W237215337,,residential,false,0,7.5,false,false,false,0,87.0,Mushin and Surulere,237215337
+W280363717,,residential,false,0,7.5,false,false,false,0,336.8,Mushin and Surulere,280363717
+W280363720,,residential,false,0,7.5,false,false,false,0,722.7,Mushin and Surulere,280363720
+W280363722,,residential,false,0,7.5,false,false,false,0,489.4,Mushin and Surulere,280363722
+W280363723,,residential,false,0,7.5,false,false,false,0,656.1,Mushin and Surulere,280363723
+W280363725,,residential,false,0,7.5,false,false,false,0,731.1,Mushin and Surulere,280363725
+W280363726,,residential,false,0,7.5,false,false,false,0,418.9,Mushin and Surulere,280363726
+W280363728,,residential,false,0,7.5,false,false,false,0,601.8,Mushin and Surulere,280363728
+W280363736,,residential,false,0,7.5,false,true,false,0,21.9,Mushin and Surulere,280363736
+W280363740,,residential,false,0,7.5,false,false,false,0,37.2,Mushin and Surulere,280363740
+W280363741,,residential,false,0,7.5,false,false,false,0,582.1,Mushin and Surulere,280363741
+W280363743,,residential,false,0,7.5,false,false,false,0,316.8,Mushin and Surulere,280363743
+W280363744,,residential,false,0,7.5,false,false,false,0,124.8,Mushin and Surulere,280363744
+W280363746,,residential,false,0,7.5,false,false,false,0,230.7,Mushin and Surulere,280363746
+W280363750,,residential,false,0,7.5,false,false,false,0,348.7,Mushin and Surulere,280363750
+W280363752,,residential,false,0,7.5,false,false,false,0,142.4,Mushin and Surulere,280363752
+W280363754,,residential,false,0,7.5,false,false,false,0,258.1,Mushin and Surulere,280363754
+W280363755,,residential,false,0,7.5,false,false,false,0,231.2,Mushin and Surulere,280363755
+W280363757,,residential,false,0,7.5,false,false,false,0,224.3,Mushin and Surulere,280363757
+W280363758,,residential,false,0,7.5,false,false,false,0,242.2,Mushin and Surulere,280363758
+W280363760,,residential,false,0,7.5,false,false,false,0,237.6,Mushin and Surulere,280363760
+W280363761,,residential,false,0,7.5,true,false,false,0,593.1,Mushin and Surulere,280363761
+W280363763,,residential,false,0,7.5,false,false,false,0,304.0,Mushin and Surulere,280363763
+W280363766,,residential,false,0,7.5,false,false,false,0,277.8,Mushin and Surulere,280363766
+W280363767,,residential,false,0,7.5,false,false,false,0,478.6,Mushin and Surulere,280363767
+W280374813,,residential,false,0,7.5,false,false,false,0,218.0,Mushin and Surulere,280374813
+W280374817,,residential,false,0,7.5,false,false,false,0,207.5,Mushin and Surulere,280374817
+W280374822,,residential,false,0,7.5,false,false,false,0,324.3,Mushin and Surulere,280374822
+W280398159,,residential,false,0,7.5,true,false,false,0,82.6,Mushin and Surulere,280398159
+W280481964,,residential,false,0,7.5,false,false,false,0,65.3,Mushin and Surulere,280481964
+W280481968,,residential,false,0,7.5,false,false,false,0,147.0,Mushin and Surulere,280481968
+W280481970,,residential,false,0,7.5,false,false,false,0,102.2,Mushin and Surulere,280481970
+W280481974,,residential,false,0,7.5,false,false,false,0,156.6,Mushin and Surulere,280481974
+W280481975,,residential,false,0,7.5,false,false,false,0,161.0,Mushin and Surulere,280481975
+W280570916,,residential,false,0,7.5,false,true,false,0,2.7,Mushin and Surulere,280570916
+W280570918,,residential,false,0,7.5,false,false,false,0,98.3,Mushin and Surulere,280570918
+W280588452,,residential,false,0,7.5,false,false,false,0,110.2,Mushin and Surulere,280588452
+W280588453,,residential,false,0,7.5,false,false,false,0,106.6,Mushin and Surulere,280588453
+W280588467,,residential,false,0,7.5,false,false,false,0,65.9,Mushin and Surulere,280588467
+W280588476,,residential,false,0,7.5,false,false,false,0,69.3,Mushin and Surulere,280588476
+W280588484,,residential,false,0,7.5,false,false,false,0,267.7,Mushin and Surulere,280588484
+W280588485,,residential,false,0,7.5,false,false,false,0,143.0,Mushin and Surulere,280588485
+W280588486,,residential,false,0,7.5,false,false,false,0,62.4,Mushin and Surulere,280588486
+W280588488,,residential,false,0,7.5,false,false,false,0,60.8,Mushin and Surulere,280588488
+W280588490,,residential,false,0,7.5,false,false,false,0,121.1,Mushin and Surulere,280588490
+W280588491,,residential,false,0,7.5,false,false,false,0,94.6,Mushin and Surulere,280588491
+W280588496,,residential,false,0,7.5,false,false,false,0,327.9,Mushin and Surulere,280588496
+W280588499,,residential,false,0,7.5,false,false,false,0,232.7,Mushin and Surulere,280588499
+W280588500,,residential,false,0,7.5,false,false,false,0,104.1,Mushin and Surulere,280588500
+W280588501,,residential,false,0,7.5,false,false,false,0,131.8,Mushin and Surulere,280588501
+W280588503,,residential,false,0,7.5,false,false,false,0,152.1,Mushin and Surulere,280588503
+W280588508,,residential,false,0,7.5,false,false,false,0,198.6,Mushin and Surulere,280588508
+W280588515,,residential,false,0,7.5,false,false,false,0,250.0,Mushin and Surulere,280588515
+W280588518,,residential,false,0,7.5,false,false,false,0,72.3,Mushin and Surulere,280588518
+W280596091,,residential,false,0,7.5,false,false,false,0,213.6,Mushin and Surulere,280596091
+W280596094,,residential,false,0,7.5,false,false,false,0,229.8,Mushin and Surulere,280596094
+W280596120,,residential,false,0,7.5,false,false,false,0,126.8,Mushin and Surulere,280596120
+W280596123,,residential,false,0,7.5,false,false,false,0,128.4,Mushin and Surulere,280596123
+W280602478,,residential,false,0,7.5,false,true,false,0,20.6,Mushin and Surulere,280602478
+W280602480,,residential,false,0,7.5,false,false,false,0,130.2,Mushin and Surulere,280602480
+W281423971,,residential,false,0,7.5,false,false,false,0,111.6,Mushin and Surulere,281423971
+W281423980,,residential,false,0,7.5,false,false,false,0,116.6,Mushin and Surulere,281423980
+W281423994,,residential,false,0,7.5,false,false,false,0,138.9,Mushin and Surulere,281423994
+W353946852,,residential,false,0,7.5,false,false,false,0,182.8,Mushin and Surulere,353946852
+W362159629,,residential,false,0,7.5,false,false,false,0,379.4,Mushin and Surulere,362159629
+W370047598,,residential,false,0,7.5,false,false,false,0,264.4,Mushin and Surulere,370047598
+W370047599,,residential,false,0,7.5,false,false,false,0,304.8,Mushin and Surulere,370047599
+W370047601,,residential,false,0,7.5,false,false,false,0,348.7,Mushin and Surulere,370047601
+W370047603,,residential,false,0,7.5,false,false,false,0,183.1,Mushin and Surulere,370047603
+W370558334,,residential,false,0,7.5,false,false,false,0,749.8,Mushin and Surulere,370558334
+W370566937,,service,false,0,5.0,false,false,false,0,360.0,Mushin and Surulere,370566937
+W370566938,,residential,false,0,7.5,false,false,false,0,415.3,Mushin and Surulere,370566938
+W370566939,,service,false,0,5.0,false,false,false,0,174.9,Mushin and Surulere,370566939
+W370566944,,residential,false,0,7.5,false,false,false,0,542.5,Mushin and Surulere,370566944
+W370566949,,residential,false,0,7.5,false,false,false,0,92.8,Mushin and Surulere,370566949
+W370566953,,residential,false,0,7.5,false,false,false,0,601.5,Mushin and Surulere,370566953
+W370566958,,residential,false,0,7.5,false,false,false,0,87.4,Mushin and Surulere,370566958
+W370566959,,residential,false,0,7.5,false,false,false,0,220.4,Mushin and Surulere,370566959
+W370566973,,service,false,0,5.0,false,false,false,0,409.0,Mushin and Surulere,370566973
+W370566975,,service,false,0,5.0,false,false,false,0,436.5,Mushin and Surulere,370566975
+W370566976,,residential,false,0,7.5,false,false,false,0,331.0,Mushin and Surulere,370566976
+W370566979,,residential,false,0,7.5,false,false,false,0,256.1,Mushin and Surulere,370566979
+W370566981,,residential,false,0,7.5,false,false,false,0,406.5,Mushin and Surulere,370566981
+W370566982,,residential,false,0,7.5,false,false,false,0,233.4,Mushin and Surulere,370566982
+W434259988,,tertiary,false,0,10.0,true,false,false,0,498.7,Mushin and Surulere,434259988
+W437188464,,residential,false,0,7.5,false,false,false,0,142.9,Mushin and Surulere,437188464
+W437188465,,residential,false,0,7.5,false,false,false,0,123.1,Mushin and Surulere,437188465
+W437188468,,residential,false,0,7.5,false,false,false,0,130.7,Mushin and Surulere,437188468
+W437188475,,residential,false,0,7.5,false,false,false,0,228.6,Mushin and Surulere,437188475
+W437188477,,residential,false,0,7.5,false,false,false,0,160.0,Mushin and Surulere,437188477
+W437188478,,residential,false,0,7.5,false,false,false,0,132.1,Mushin and Surulere,437188478
+W437188481,,residential,false,0,7.5,false,false,false,0,210.6,Mushin and Surulere,437188481
+W437188482,,residential,false,0,7.5,false,false,false,0,179.0,Mushin and Surulere,437188482
+W437188483,,residential,false,0,7.5,false,false,false,0,139.4,Mushin and Surulere,437188483
+W441712291,,residential,false,0,7.5,false,false,false,0,223.6,Mushin and Surulere,441712291
+W441712294,,residential,false,0,7.5,false,false,false,0,201.5,Mushin and Surulere,441712294
+W441712297,,residential,false,0,7.5,false,false,false,0,211.7,Mushin and Surulere,441712297
+W441712299,,residential,false,0,7.5,false,false,false,0,139.3,Mushin and Surulere,441712299
+W441712300,,residential,false,0,7.5,false,false,false,0,360.2,Mushin and Surulere,441712300
+W441712304,,residential,false,0,7.5,false,false,false,0,144.2,Mushin and Surulere,441712304
+W441712305,,residential,false,0,7.5,false,false,false,0,247.7,Mushin and Surulere,441712305
+W441712306,,residential,false,0,7.5,false,false,false,0,117.4,Mushin and Surulere,441712306
+W441712308,,residential,false,0,7.5,false,false,false,0,147.8,Mushin and Surulere,441712308
+W441712309,,residential,false,0,7.5,false,false,false,0,195.0,Mushin and Surulere,441712309
+W441712310,,residential,false,0,7.5,false,false,false,0,399.0,Mushin and Surulere,441712310
+W441712311,,residential,false,0,7.5,false,false,false,0,204.2,Mushin and Surulere,441712311
+W441712312,,residential,false,0,7.5,false,false,false,0,60.0,Mushin and Surulere,441712312
+W441712313,,tertiary,false,0,10.0,false,false,false,0,130.2,Mushin and Surulere,441712313
+W441712314,,residential,false,0,7.5,false,false,false,0,147.8,Mushin and Surulere,441712314
+W441712315,,residential,false,0,7.5,false,false,false,0,93.1,Mushin and Surulere,441712315
+W441712316,,residential,false,0,7.5,false,false,false,0,101.4,Mushin and Surulere,441712316
+W441841521,,residential,false,0,7.5,false,false,false,0,89.2,Mushin and Surulere,441841521
+W441841522,,residential,false,0,7.5,false,false,false,0,73.3,Mushin and Surulere,441841522
+W441841523,,residential,false,0,7.5,false,false,false,0,79.2,Mushin and Surulere,441841523
+W441841524,,residential,false,0,7.5,false,false,false,0,74.2,Mushin and Surulere,441841524
+W441841526,,residential,false,0,7.5,false,false,false,0,72.7,Mushin and Surulere,441841526
+W441841535,,residential,false,0,7.5,false,false,false,0,116.3,Mushin and Surulere,441841535
+W441841538,,residential,false,0,7.5,false,false,false,0,176.3,Mushin and Surulere,441841538
+W441841539,,residential,false,0,7.5,false,false,false,0,104.8,Mushin and Surulere,441841539
+W441841540,,residential,false,0,7.5,false,false,false,0,117.3,Mushin and Surulere,441841540
+W441841541,,residential,false,0,7.5,false,false,false,0,127.3,Mushin and Surulere,441841541
+W441841543,,residential,false,0,7.5,false,false,false,0,115.2,Mushin and Surulere,441841543
+W441841544,,service,false,0,5.0,false,false,false,0,226.8,Mushin and Surulere,441841544
+W441841545,,service,false,0,5.0,false,false,false,0,183.8,Mushin and Surulere,441841545
+W441841546,,residential,false,0,7.5,false,false,false,0,100.4,Mushin and Surulere,441841546
+W441841547,,residential,false,0,7.5,false,false,false,0,289.0,Mushin and Surulere,441841547
+W441841548,,residential,false,0,7.5,false,false,false,0,110.4,Mushin and Surulere,441841548
+W441841549,,residential,false,0,7.5,false,false,false,0,53.2,Mushin and Surulere,441841549
+W441841550,,residential,false,0,7.5,false,false,false,0,69.8,Mushin and Surulere,441841550
+W441841551,,residential,false,0,7.5,false,false,false,0,285.4,Mushin and Surulere,441841551
+W441841552,,residential,false,0,7.5,false,false,false,0,228.6,Mushin and Surulere,441841552
+W441841553,,residential,false,0,7.5,false,false,false,0,90.7,Mushin and Surulere,441841553
+W441841558,,residential,false,0,7.5,false,false,false,0,87.2,Mushin and Surulere,441841558
+W441841559,,residential,false,0,7.5,false,false,false,0,227.3,Mushin and Surulere,441841559
+W441841560,,residential,false,0,7.5,false,false,false,0,140.7,Mushin and Surulere,441841560
+W441841563,,residential,false,0,7.5,false,false,false,0,95.3,Mushin and Surulere,441841563
+W441841564,,residential,false,0,7.5,false,false,false,0,52.5,Mushin and Surulere,441841564
+W441841565,,residential,false,0,7.5,false,false,false,0,143.9,Mushin and Surulere,441841565
+W441841566,,service,false,0,5.0,false,false,false,0,43.0,Mushin and Surulere,441841566
+W441841573,,residential,false,0,7.5,false,false,false,0,1.6,Mushin and Surulere,441841573
+W441841574,,residential,false,0,7.5,false,false,false,0,162.7,Mushin and Surulere,441841574
+W441841575,,residential,false,0,7.5,false,false,false,0,22.6,Mushin and Surulere,441841575
+W441859316,,residential,false,0,7.5,false,false,false,0,142.8,Mushin and Surulere,441859316
+W441859317,,tertiary,false,0,10.0,false,false,false,0,228.3,Mushin and Surulere,441859317
+W441859318,,residential,false,0,7.5,false,false,false,0,118.6,Mushin and Surulere,441859318
+W441859319,,tertiary,false,0,10.0,false,false,false,0,884.4,Mushin and Surulere,441859319
+W441859323,,residential,false,0,7.5,false,false,false,0,715.6,Mushin and Surulere,441859323
+W441859324,,residential,false,0,7.5,false,false,false,0,598.8,Mushin and Surulere,441859324
+W441859325,,residential,false,0,7.5,false,false,false,0,270.6,Mushin and Surulere,441859325
+W441859327,,residential,false,0,7.5,false,false,false,0,337.5,Mushin and Surulere,441859327
+W441859328,,residential,false,0,7.5,false,false,false,0,564.1,Mushin and Surulere,441859328
+W441859329,,residential,false,0,7.5,false,false,false,0,82.2,Mushin and Surulere,441859329
+W441859330,,tertiary,false,0,10.0,false,false,false,0,222.7,Mushin and Surulere,441859330
+W441860181,,residential,false,0,7.5,false,false,false,0,151.1,Mushin and Surulere,441860181
+W441860182,,residential,false,0,7.5,false,false,false,0,103.6,Mushin and Surulere,441860182
+W441860183,,residential,false,0,7.5,false,false,false,0,104.7,Mushin and Surulere,441860183
+W441860184,,residential,false,0,7.5,false,false,false,0,302.3,Mushin and Surulere,441860184
+W441860185,,residential,false,0,7.5,false,false,false,0,198.0,Mushin and Surulere,441860185
+W441860186,,residential,false,0,7.5,false,false,false,0,142.3,Mushin and Surulere,441860186
+W441860187,,residential,false,0,7.5,false,false,false,0,133.1,Mushin and Surulere,441860187
+W441860188,,residential,false,0,7.5,false,false,false,0,141.6,Mushin and Surulere,441860188
+W441860189,,residential,false,0,7.5,false,false,false,0,176.5,Mushin and Surulere,441860189
+W441860190,,residential,false,0,7.5,false,false,false,0,99.0,Mushin and Surulere,441860190
+W441860195,,residential,false,0,7.5,false,false,false,0,125.8,Mushin and Surulere,441860195
+W441860196,,residential,false,0,7.5,false,false,false,0,106.0,Mushin and Surulere,441860196
+W441860199,,residential,false,0,7.5,false,false,false,0,149.0,Mushin and Surulere,441860199
+W441860202,,residential,false,0,7.5,false,false,false,0,428.2,Mushin and Surulere,441860202
+W441860203,,residential,false,0,7.5,false,false,false,0,104.1,Mushin and Surulere,441860203
+W441860204,,residential,false,0,7.5,false,false,false,0,286.9,Mushin and Surulere,441860204
+W441860205,,residential,false,0,7.5,false,false,false,0,78.2,Mushin and Surulere,441860205
+W441860206,,residential,false,0,7.5,false,false,false,0,78.1,Mushin and Surulere,441860206
+W441860207,,residential,false,0,7.5,false,false,false,0,66.1,Mushin and Surulere,441860207
+W441860208,,residential,false,0,7.5,false,false,false,0,67.1,Mushin and Surulere,441860208
+W441860209,,residential,false,0,7.5,false,false,false,0,58.6,Mushin and Surulere,441860209
+W441860210,,residential,false,0,7.5,false,false,false,0,47.5,Mushin and Surulere,441860210
+W441860211,,residential,false,0,7.5,false,false,false,0,114.6,Mushin and Surulere,441860211
+W441860212,,residential,false,0,7.5,false,false,false,0,71.3,Mushin and Surulere,441860212
+W441860213,,residential,false,0,7.5,false,false,false,0,108.1,Mushin and Surulere,441860213
+W441860214,,residential,false,0,7.5,false,false,false,0,60.1,Mushin and Surulere,441860214
+W441860215,,residential,false,0,7.5,false,false,false,0,145.0,Mushin and Surulere,441860215
+W441860216,,residential,false,0,7.5,false,false,false,0,60.9,Mushin and Surulere,441860216
+W441860217,,residential,false,0,7.5,false,false,false,0,35.5,Mushin and Surulere,441860217
+W441860218,,residential,false,0,7.5,false,false,false,0,124.0,Mushin and Surulere,441860218
+W441860219,,residential,false,0,7.5,false,false,false,0,97.2,Mushin and Surulere,441860219
+W441860220,,residential,false,0,7.5,false,false,false,0,91.4,Mushin and Surulere,441860220
+W441860221,,residential,false,0,7.5,true,false,false,0,219.0,Mushin and Surulere,441860221
+W441860222,,residential,false,0,7.5,false,false,false,0,140.6,Mushin and Surulere,441860222
+W441860223,,residential,false,0,7.5,false,false,false,0,170.7,Mushin and Surulere,441860223
+W441860224,,residential,false,0,7.5,false,false,false,0,75.3,Mushin and Surulere,441860224
+W441860226,,residential,false,0,7.5,false,false,false,0,74.1,Mushin and Surulere,441860226
+W441860227,,residential,false,0,7.5,false,false,false,0,80.6,Mushin and Surulere,441860227
+W441860228,,residential,false,0,7.5,false,false,false,0,77.2,Mushin and Surulere,441860228
+W441860229,,residential,false,0,7.5,false,false,false,0,78.4,Mushin and Surulere,441860229
+W441860230,,residential,false,0,7.5,false,false,false,0,95.2,Mushin and Surulere,441860230
+W441860231,,residential,false,0,7.5,false,false,false,0,39.4,Mushin and Surulere,441860231
+W441860232,,residential,false,0,7.5,false,false,false,0,167.9,Mushin and Surulere,441860232
+W441860233,,residential,false,0,7.5,false,false,false,0,130.0,Mushin and Surulere,441860233
+W441860234,,residential,false,0,7.5,false,false,false,0,71.4,Mushin and Surulere,441860234
+W441860235,,residential,false,0,7.5,false,false,false,0,113.9,Mushin and Surulere,441860235
+W441860236,,residential,false,0,7.5,false,false,false,0,153.3,Mushin and Surulere,441860236
+W441860237,,residential,false,0,7.5,false,false,false,0,166.1,Mushin and Surulere,441860237
+W441860238,,residential,false,0,7.5,false,false,false,0,241.6,Mushin and Surulere,441860238
+W441897766,,residential,false,0,7.5,false,false,false,0,174.6,Mushin and Surulere,441897766
+W441897767,,residential,false,0,7.5,false,false,false,0,168.4,Mushin and Surulere,441897767
+W441897769,,residential,false,0,7.5,false,false,false,0,539.9,Mushin and Surulere,441897769
+W441897770,,residential,false,0,7.5,false,false,false,0,303.4,Mushin and Surulere,441897770
+W441897771,,tertiary,false,0,10.0,false,false,false,0,544.4,Mushin and Surulere,441897771
+W441897772,,residential,false,0,7.5,false,false,false,0,269.7,Mushin and Surulere,441897772
+W441897773,,residential,false,0,7.5,false,false,false,0,198.4,Mushin and Surulere,441897773
+W441897774,,residential,false,0,7.5,false,false,false,0,263.6,Mushin and Surulere,441897774
+W441897775,,residential,false,0,7.5,false,false,false,0,100.4,Mushin and Surulere,441897775
+W441897776,,residential,false,0,7.5,false,false,false,0,348.4,Mushin and Surulere,441897776
+W441897777,,residential,false,0,7.5,false,false,false,0,361.1,Mushin and Surulere,441897777
+W441897778,,residential,false,0,7.5,false,false,false,0,141.3,Mushin and Surulere,441897778
+W441897781,,residential,false,0,7.5,false,false,false,0,280.3,Mushin and Surulere,441897781
+W441897782,,residential,false,0,7.5,false,false,false,0,205.4,Mushin and Surulere,441897782
+W441897783,,residential,false,0,7.5,false,false,false,0,185.8,Mushin and Surulere,441897783
+W441897785,,residential,false,0,7.5,false,false,false,0,101.3,Mushin and Surulere,441897785
+W441897787,,residential,false,0,7.5,false,false,false,0,193.2,Mushin and Surulere,441897787
+W441897788,,residential,false,0,7.5,false,false,false,0,61.6,Mushin and Surulere,441897788
+W441897790,,residential,false,0,7.5,false,false,false,0,31.8,Mushin and Surulere,441897790
+W441897792,,residential,false,0,7.5,false,false,false,0,289.7,Mushin and Surulere,441897792
+W441897795,,residential,false,0,7.5,false,false,false,0,91.8,Mushin and Surulere,441897795
+W441897796,,residential,false,0,7.5,false,false,false,0,68.1,Mushin and Surulere,441897796
+W441897797,,residential,false,0,7.5,false,false,false,0,169.5,Mushin and Surulere,441897797
+W441897798,,residential,false,0,7.5,false,false,false,0,350.0,Mushin and Surulere,441897798
+W441897799,,residential,false,0,7.5,false,false,false,0,139.4,Mushin and Surulere,441897799
+W441897800,,residential,false,0,7.5,false,false,false,0,27.9,Mushin and Surulere,441897800
+W441897802,,residential,false,0,7.5,false,false,false,0,570.5,Mushin and Surulere,441897802
+W441897805,,residential,false,0,7.5,false,false,false,0,313.5,Mushin and Surulere,441897805
+W441897806,,residential,false,0,7.5,false,false,false,0,103.5,Mushin and Surulere,441897806
+W441897807,,residential,false,0,7.5,false,false,false,0,128.1,Mushin and Surulere,441897807
+W441897808,,residential,false,0,7.5,false,false,false,0,106.8,Mushin and Surulere,441897808
+W441897809,,residential,false,0,7.5,false,false,false,0,165.1,Mushin and Surulere,441897809
+W441897811,,residential,false,0,7.5,false,false,false,0,156.1,Mushin and Surulere,441897811
+W441897812,,residential,false,0,7.5,false,false,false,0,501.6,Mushin and Surulere,441897812
+W441897813,,residential,false,0,7.5,false,false,false,0,590.2,Mushin and Surulere,441897813
+W441897814,,residential,false,0,7.5,false,false,false,0,163.5,Mushin and Surulere,441897814
+W441897817,,residential,false,0,7.5,false,false,false,0,169.0,Mushin and Surulere,441897817
+W441897818,,residential,false,0,7.5,false,false,false,0,397.0,Mushin and Surulere,441897818
+W441897819,,residential,false,0,7.5,false,false,false,0,144.5,Mushin and Surulere,441897819
+W441897820,,residential,false,0,7.5,false,false,false,0,113.1,Mushin and Surulere,441897820
+W441897822,,residential,false,0,7.5,false,false,false,0,178.1,Mushin and Surulere,441897822
+W441897823,,residential,false,0,7.5,false,false,false,0,94.3,Mushin and Surulere,441897823
+W441897824,,residential,false,0,7.5,false,false,false,0,264.5,Mushin and Surulere,441897824
+W441897825,,residential,false,0,7.5,false,false,false,0,256.6,Mushin and Surulere,441897825
+W441897826,,residential,false,0,7.5,false,false,false,0,105.0,Mushin and Surulere,441897826
+W441897827,,residential,false,0,7.5,false,false,false,0,97.5,Mushin and Surulere,441897827
+W441897828,,residential,false,0,7.5,false,false,false,0,127.0,Mushin and Surulere,441897828
+W441897829,,residential,false,0,7.5,false,false,false,0,159.9,Mushin and Surulere,441897829
+W441897830,,residential,false,0,7.5,false,false,false,0,175.0,Mushin and Surulere,441897830
+W441897831,,residential,false,0,7.5,false,false,false,0,150.2,Mushin and Surulere,441897831
+W441900869,,residential,false,0,7.5,false,false,false,0,134.4,Mushin and Surulere,441900869
+W441900870,,residential,false,0,7.5,false,false,false,0,675.9,Mushin and Surulere,441900870
+W441900871,,residential,false,0,7.5,false,false,false,0,157.3,Mushin and Surulere,441900871
+W441900875,,residential,false,0,7.5,false,false,false,0,71.0,Mushin and Surulere,441900875
+W441900876,,residential,false,0,7.5,false,false,false,0,120.7,Mushin and Surulere,441900876
+W441900877,,residential,false,0,7.5,false,false,false,0,244.2,Mushin and Surulere,441900877
+W441900878,,residential,false,0,7.5,false,false,false,0,50.5,Mushin and Surulere,441900878
+W441900879,,residential,false,0,7.5,false,false,false,0,168.1,Mushin and Surulere,441900879
+W441900880,,residential,false,0,7.5,false,false,false,0,112.0,Mushin and Surulere,441900880
+W441900881,,residential,false,0,7.5,false,false,false,0,65.6,Mushin and Surulere,441900881
+W441900882,,residential,false,0,7.5,false,false,false,0,111.4,Mushin and Surulere,441900882
+W441900883,,residential,false,0,7.5,false,false,false,0,132.3,Mushin and Surulere,441900883
+W441900887,,residential,false,0,7.5,false,false,false,0,59.4,Mushin and Surulere,441900887
+W441900918,,residential,false,0,7.5,false,false,false,0,139.2,Mushin and Surulere,441900918
+W441900919,,residential,false,0,7.5,false,false,false,0,97.9,Mushin and Surulere,441900919
+W441900920,,residential,false,0,7.5,false,false,false,0,55.4,Mushin and Surulere,441900920
+W441903769,,residential,false,0,7.5,false,false,false,0,273.1,Mushin and Surulere,441903769
+W457676504,,residential,false,0,7.5,false,false,false,0,153.5,Mushin and Surulere,457676504
+W457676508,,residential,false,0,7.5,false,false,false,0,193.3,Mushin and Surulere,457676508
+W457942306,,service,false,0,5.0,false,false,false,0,731.7,Mushin and Surulere,457942306
+W457942307,,service,false,0,5.0,false,false,false,0,387.2,Mushin and Surulere,457942307
+W461597755,,residential,false,0,7.5,false,false,false,0,77.9,Mushin and Surulere,461597755
+W461597756,,residential,false,0,7.5,false,false,false,0,78.2,Mushin and Surulere,461597756
+W461597757,,residential,false,0,7.5,false,false,false,0,119.6,Mushin and Surulere,461597757
+W461597758,,residential,false,0,7.5,false,false,false,0,111.4,Mushin and Surulere,461597758
+W461597759,,residential,false,0,7.5,false,false,false,0,105.8,Mushin and Surulere,461597759
+W461597760,,residential,false,0,7.5,false,false,false,0,44.7,Mushin and Surulere,461597760
+W461597761,,residential,false,0,7.5,false,false,false,0,69.2,Mushin and Surulere,461597761
+W461597762,,residential,false,0,7.5,false,false,false,0,152.4,Mushin and Surulere,461597762
+W461597763,,residential,false,0,7.5,false,false,false,0,58.5,Mushin and Surulere,461597763
+W461597764,,residential,false,0,7.5,false,false,false,0,145.2,Mushin and Surulere,461597764
+W461597765,,residential,false,0,7.5,false,false,false,0,118.5,Mushin and Surulere,461597765
+W461597766,,residential,false,0,7.5,false,false,false,0,97.7,Mushin and Surulere,461597766
+W461597771,,service,false,0,5.0,false,false,false,0,57.0,Mushin and Surulere,461597771
+W461597772,,service,false,0,5.0,false,false,false,0,75.5,Mushin and Surulere,461597772
+W461597773,,service,false,0,5.0,false,false,false,0,592.1,Mushin and Surulere,461597773
+W461597774,,service,false,0,5.0,false,false,false,0,61.5,Mushin and Surulere,461597774
+W461597775,,residential,false,0,7.5,false,false,false,0,157.1,Mushin and Surulere,461597775
+W461597778,,service,false,0,5.0,false,false,false,0,208.1,Mushin and Surulere,461597778
+W461599064,,residential,false,0,7.5,false,false,false,0,272.1,Mushin and Surulere,461599064
+W461599065,,residential,false,0,7.5,false,false,false,0,84.0,Mushin and Surulere,461599065
+W461599066,,residential,false,0,7.5,false,false,false,0,76.4,Mushin and Surulere,461599066
+W461599067,,residential,false,0,7.5,false,false,false,0,138.5,Mushin and Surulere,461599067
+W461599068,,residential,false,0,7.5,false,false,false,0,152.4,Mushin and Surulere,461599068
+W461599069,,residential,false,0,7.5,false,false,false,0,168.2,Mushin and Surulere,461599069
+W461599070,,residential,false,0,7.5,false,false,false,0,46.1,Mushin and Surulere,461599070
+W461599071,,residential,false,0,7.5,false,false,false,0,190.5,Mushin and Surulere,461599071
+W461599072,,service,false,0,5.0,false,false,false,0,153.0,Mushin and Surulere,461599072
+W461599073,,residential,false,0,7.5,false,false,false,0,186.6,Mushin and Surulere,461599073
+W461599075,,service,false,0,5.0,false,false,false,0,113.5,Mushin and Surulere,461599075
+W461600372,,service,false,0,5.0,false,false,false,0,248.1,Mushin and Surulere,461600372
+W461600373,,residential,false,0,7.5,false,false,false,0,68.4,Mushin and Surulere,461600373
+W461600375,,residential,false,0,7.5,false,false,false,0,386.1,Mushin and Surulere,461600375
+W461600376,,residential,false,0,7.5,false,false,false,0,48.0,Mushin and Surulere,461600376
+W461600377,,residential,false,0,7.5,false,false,false,0,193.9,Mushin and Surulere,461600377
+W461600378,,residential,false,0,7.5,false,false,false,0,156.6,Mushin and Surulere,461600378
+W461600379,,residential,false,0,7.5,false,false,false,0,57.5,Mushin and Surulere,461600379
+W461600380,,residential,false,0,7.5,false,false,false,0,75.7,Mushin and Surulere,461600380
+W461600381,,residential,false,0,7.5,false,false,false,0,227.1,Mushin and Surulere,461600381
+W461600382,,service,false,0,5.0,false,false,false,0,201.4,Mushin and Surulere,461600382
+W461600383,,residential,false,0,7.5,false,false,false,0,268.0,Mushin and Surulere,461600383
+W461600384,,residential,false,0,7.5,false,false,false,0,62.1,Mushin and Surulere,461600384
+W461600385,,residential,false,0,7.5,false,false,false,0,330.0,Mushin and Surulere,461600385
+W461600386,,residential,false,0,7.5,false,false,false,0,544.1,Mushin and Surulere,461600386
+W461600387,,residential,false,0,7.5,false,false,false,0,230.8,Mushin and Surulere,461600387
+W461600388,,residential,false,0,7.5,false,false,false,0,67.6,Mushin and Surulere,461600388
+W461600389,,residential,false,0,7.5,false,false,false,0,89.4,Mushin and Surulere,461600389
+W461600392,,residential,false,0,7.5,false,false,false,0,277.3,Mushin and Surulere,461600392
+W461600393,,residential,false,0,7.5,false,false,false,0,372.2,Mushin and Surulere,461600393
+W461600395,,residential,false,0,7.5,false,false,false,0,536.5,Mushin and Surulere,461600395
+W461600396,,residential,false,0,7.5,false,false,false,0,121.2,Mushin and Surulere,461600396
+W461600397,,residential,false,0,7.5,false,false,false,0,364.4,Mushin and Surulere,461600397
+W461600398,,residential,false,0,7.5,false,false,false,0,85.3,Mushin and Surulere,461600398
+W461600399,,residential,false,0,7.5,false,false,false,0,71.7,Mushin and Surulere,461600399
+W461600400,,residential,false,0,7.5,false,false,false,0,74.1,Mushin and Surulere,461600400
+W461600401,,residential,false,0,7.5,false,false,false,0,72.7,Mushin and Surulere,461600401
+W461600402,,residential,false,0,7.5,false,false,false,0,71.4,Mushin and Surulere,461600402
+W461600403,,residential,false,0,7.5,false,false,false,0,189.4,Mushin and Surulere,461600403
+W461600404,,residential,false,0,7.5,false,false,false,0,35.5,Mushin and Surulere,461600404
+W461600405,,residential,false,0,7.5,false,false,false,0,67.8,Mushin and Surulere,461600405
+W461600406,,residential,false,0,7.5,false,false,false,0,185.5,Mushin and Surulere,461600406
+W461600407,,residential,false,0,7.5,false,false,false,0,74.2,Mushin and Surulere,461600407
+W461600408,,residential,false,0,7.5,false,false,false,0,67.0,Mushin and Surulere,461600408
+W461600411,,residential,false,0,7.5,false,false,false,0,101.8,Mushin and Surulere,461600411
+W461600412,,service,false,0,5.0,false,false,false,0,142.5,Mushin and Surulere,461600412
+W461600413,,residential,false,0,7.5,false,false,false,0,251.7,Mushin and Surulere,461600413
+W461600414,,residential,false,0,7.5,false,false,false,0,42.4,Mushin and Surulere,461600414
+W461600415,,residential,false,0,7.5,false,false,false,0,110.0,Mushin and Surulere,461600415
+W480852199,,residential,false,0,7.5,false,false,false,0,16.7,Mushin and Surulere,480852199
+W521873444,,residential,false,0,7.5,false,false,false,0,390.4,Mushin and Surulere,521873444
+W535357581,,residential,false,0,7.5,false,false,false,0,117.7,Mushin and Surulere,535357581
+W535669619,,residential,false,0,7.5,false,false,false,0,209.5,Mushin and Surulere,535669619
+W535992604,,service,false,0,5.0,false,false,false,0,48.3,Mushin and Surulere,535992604
+W535992613,,tertiary,false,0,10.0,true,false,false,0,219.5,Mushin and Surulere,535992613
+W535992614,,residential,false,0,7.5,false,false,false,0,42.6,Mushin and Surulere,535992614
+W559326566,,primary,false,0,17.5,true,false,false,0,23.8,Mushin and Surulere,559326566
+W559326567,,primary,false,0,17.5,true,false,false,0,26.2,Mushin and Surulere,559326567
+W559358545,,secondary,true,0,7.5,false,false,false,0,7.1,Mushin and Surulere,559358545
+W559358546,,secondary,true,0,7.5,false,false,false,0,8.3,Mushin and Surulere,559358546
+W559358550,,residential,false,0,7.5,false,false,false,0,21.1,Mushin and Surulere,559358550
+W559358552,,residential,false,0,7.5,false,false,false,0,578.0,Mushin and Surulere,559358552
+W559379273,,tertiary,true,0,7.5,true,false,false,0,37.2,Mushin and Surulere,559379273
+W559379275,,secondary,false,0,13.0,true,false,false,0,52.2,Mushin and Surulere,559379275
+W559382424,,tertiary,true,0,7.5,true,false,false,0,37.0,Mushin and Surulere,559382424
+W564918053,,residential,false,0,7.5,true,false,false,0,592.8,Mushin and Surulere,564918053
+W564924602,,residential,false,0,7.5,false,false,false,0,40.1,Mushin and Surulere,564924602
+W564931538,,residential,false,0,7.5,false,false,false,0,114.1,Mushin and Surulere,564931538
+W564954672,,residential,false,0,7.5,false,false,false,0,255.1,Mushin and Surulere,564954672
+W564954673,,residential,false,0,7.5,false,false,false,0,246.8,Mushin and Surulere,564954673
+W564963993,,residential,false,0,7.5,false,false,false,0,69.3,Mushin and Surulere,564963993
+W582931117,,residential,false,0,7.5,false,false,false,0,117.5,Mushin and Surulere,582931117
+W582969752,,service,false,0,5.0,false,false,false,0,61.2,Mushin and Surulere,582969752
+W582973692,,residential,false,0,7.5,false,false,false,0,48.7,Mushin and Surulere,582973692
+W583063209,,residential,false,0,7.5,false,false,false,0,97.2,Mushin and Surulere,583063209
+W583063210,,residential,false,0,7.5,false,false,false,0,68.1,Mushin and Surulere,583063210
+W583064625,,residential,false,0,7.5,false,false,false,0,133.3,Mushin and Surulere,583064625
+W583093206,,residential,false,0,7.5,false,false,false,0,79.8,Mushin and Surulere,583093206
+W583107020,,service,false,0,5.0,false,false,false,0,271.1,Mushin and Surulere,583107020
+W583113441,,residential,false,0,7.5,false,false,false,0,94.9,Mushin and Surulere,583113441
+W583113442,,residential,false,0,7.5,false,false,false,0,76.2,Mushin and Surulere,583113442
+W583113444,,residential,false,0,7.5,false,false,false,0,59.4,Mushin and Surulere,583113444
+W583113445,,residential,false,0,7.5,false,false,false,0,83.2,Mushin and Surulere,583113445
+W583113446,,residential,false,0,7.5,false,false,false,0,223.9,Mushin and Surulere,583113446
+W583140942,,residential,false,0,7.5,false,false,false,0,94.5,Mushin and Surulere,583140942
+W583292496,,residential,false,0,7.5,false,false,false,0,70.1,Mushin and Surulere,583292496
+W583306479,,residential,false,0,7.5,false,false,false,0,71.0,Mushin and Surulere,583306479
+W583323039,,unclassified,false,0,7.5,false,false,false,0,10.2,Mushin and Surulere,583323039
+W583323042,,residential,false,0,7.5,false,false,false,0,7.3,Mushin and Surulere,583323042
+W583323045,,residential,false,0,7.5,false,false,false,0,7.4,Mushin and Surulere,583323045
+W583323047,,residential,false,0,7.5,false,false,false,0,4.1,Mushin and Surulere,583323047
+W583328784,,residential,false,0,7.5,false,false,false,0,6.5,Mushin and Surulere,583328784
+W583328785,,tertiary,false,0,10.0,false,false,false,0,5.8,Mushin and Surulere,583328785
+W583328786,,residential,false,0,7.5,false,false,false,0,12.3,Mushin and Surulere,583328786
+W583328787,,tertiary,false,0,10.0,true,false,false,0,8.8,Mushin and Surulere,583328787
+W583328788,,tertiary,false,0,10.0,true,false,false,0,8.8,Mushin and Surulere,583328788
+W583328789,,tertiary,false,0,10.0,true,true,false,0,5.6,Mushin and Surulere,583328789
+W583328790,,tertiary,false,0,10.0,true,false,false,0,556.5,Mushin and Surulere,583328790
+W583328791,,tertiary,false,0,10.0,true,true,false,0,12.4,Mushin and Surulere,583328791
+W583328792,,tertiary,false,0,10.0,true,false,false,0,217.4,Mushin and Surulere,583328792
+W583328793,,residential,false,0,7.5,false,false,false,0,7.9,Mushin and Surulere,583328793
+W583328794,,residential,false,0,7.5,false,false,false,0,8.1,Mushin and Surulere,583328794
+W583328795,,unclassified,false,0,7.5,false,false,false,0,8.6,Mushin and Surulere,583328795
+W583328796,,residential,false,0,7.5,false,false,false,0,7.4,Mushin and Surulere,583328796
+W583328797,,secondary,false,0,13.0,true,false,false,0,8.5,Mushin and Surulere,583328797
+W583328798,,secondary,false,0,13.0,true,false,false,0,8.1,Mushin and Surulere,583328798
+W583688457,,residential,false,0,7.5,false,false,false,0,103.9,Mushin and Surulere,583688457
+W583688459,,residential,false,0,7.5,false,true,false,0,23.6,Mushin and Surulere,583688459
+W583688463,,residential,false,0,7.5,true,false,false,0,15.9,Mushin and Surulere,583688463
+W583688465,,residential,false,0,7.5,true,false,false,0,16.6,Mushin and Surulere,583688465
+W583688467,,residential,false,0,7.5,false,false,false,0,37.6,Mushin and Surulere,583688467
+W583688469,,residential,false,0,7.5,true,false,false,0,16.3,Mushin and Surulere,583688469
+W583688471,,residential,false,0,7.5,true,false,false,0,15.3,Mushin and Surulere,583688471
+W583688473,,tertiary,false,0,10.0,false,false,false,0,6.1,Mushin and Surulere,583688473
+W583709123,,residential,false,0,7.5,false,false,false,0,36.9,Mushin and Surulere,583709123
+W583709124,,residential,false,0,7.5,false,true,false,0,13.0,Mushin and Surulere,583709124
+W583709125,,residential,false,0,7.5,false,true,false,0,8.8,Mushin and Surulere,583709125
+W583709126,,residential,false,0,7.5,false,false,false,0,413.2,Mushin and Surulere,583709126
+W584880106,,residential,false,0,7.5,false,false,false,0,70.8,Mushin and Surulere,584880106
+W584882767,,tertiary,true,0,7.5,false,false,false,0,17.2,Mushin and Surulere,584882767
+W584882769,,tertiary,true,0,7.5,false,false,false,0,12.8,Mushin and Surulere,584882769
+W584882771,,residential,false,0,7.5,false,false,false,0,67.1,Mushin and Surulere,584882771
+W584887057,,residential,false,0,7.5,true,false,false,0,17.2,Mushin and Surulere,584887057
+W584887058,,residential,false,0,7.5,true,false,false,0,17.4,Mushin and Surulere,584887058
+W584887059,,residential,false,0,7.5,true,false,false,0,16.7,Mushin and Surulere,584887059
+W584887060,,residential,false,0,7.5,true,false,false,0,18.7,Mushin and Surulere,584887060
+W584894624,,residential,false,0,7.5,false,false,false,0,65.3,Mushin and Surulere,584894624
+W584900104,,residential,false,0,7.5,false,false,false,0,8.7,Mushin and Surulere,584900104
+W584900106,,residential,false,0,7.5,false,false,false,0,7.7,Mushin and Surulere,584900106
+W584900108,,residential,false,0,7.5,false,false,false,0,8.0,Mushin and Surulere,584900108
+W584900110,,residential,false,0,7.5,false,false,false,0,8.3,Mushin and Surulere,584900110
+W584900112,,residential,false,0,7.5,false,false,false,0,66.7,Mushin and Surulere,584900112
+W584900115,,residential,false,0,7.5,false,false,false,0,8.6,Mushin and Surulere,584900115
+W584900121,,residential,false,0,7.5,false,false,false,0,8.1,Mushin and Surulere,584900121
+W584905482,,residential,false,0,7.5,false,false,false,0,39.1,Mushin and Surulere,584905482
+W584929614,,unclassified,false,0,7.5,true,false,false,0,19.5,Mushin and Surulere,584929614
+W584929617,,unclassified,false,0,7.5,true,false,false,0,19.9,Mushin and Surulere,584929617
+W585104313,,tertiary,false,0,10.0,false,false,false,0,23.2,Mushin and Surulere,585104313
+W585104314,,tertiary,false,0,10.0,false,false,false,0,364.2,Mushin and Surulere,585104314
+W585144011,,service,false,0,5.0,false,false,false,0,276.2,Mushin and Surulere,585144011
+W585144012,,service,false,0,5.0,false,false,false,0,53.4,Mushin and Surulere,585144012
+W585144013,,service,false,0,5.0,false,false,false,0,304.8,Mushin and Surulere,585144013
+W585144014,,residential,false,0,7.5,false,false,false,0,214.7,Mushin and Surulere,585144014
+W585144015,,residential,false,0,7.5,false,false,false,0,227.1,Mushin and Surulere,585144015
+W585149735,,service,false,0,5.0,false,false,false,0,8.2,Mushin and Surulere,585149735
+W585149737,,service,false,0,5.0,true,false,false,0,5.5,Mushin and Surulere,585149737
+W585149738,,service,false,0,5.0,true,false,false,0,5.5,Mushin and Surulere,585149738
+W585149744,,residential,false,0,7.5,false,false,false,0,7.6,Mushin and Surulere,585149744
+W585149746,,unclassified,false,0,7.5,false,false,false,0,8.9,Mushin and Surulere,585149746
+W585161923,,residential,false,0,7.5,false,false,false,0,74.8,Mushin and Surulere,585161923
+W585161924,,service,false,0,5.0,false,false,false,0,108.6,Mushin and Surulere,585161924
+W585161925,,residential,false,0,7.5,false,false,false,0,9.4,Mushin and Surulere,585161925
+W585161926,,residential,false,0,7.5,false,false,false,0,75.3,Mushin and Surulere,585161926
+W585171623,,residential,false,0,7.5,false,false,false,0,68.8,Mushin and Surulere,585171623
+W585171624,,residential,false,0,7.5,false,false,false,0,52.0,Mushin and Surulere,585171624
+W585171626,,residential,false,0,7.5,false,false,false,0,113.1,Mushin and Surulere,585171626
+W585187767,,residential,false,0,7.5,false,false,false,0,206.9,Mushin and Surulere,585187767
+W585187768,,residential,false,0,7.5,false,false,false,0,51.2,Mushin and Surulere,585187768
+W585187769,,residential,false,0,7.5,false,false,false,0,61.2,Mushin and Surulere,585187769
+W585187771,,service,false,0,5.0,false,false,false,0,227.8,Mushin and Surulere,585187771
+W585187772,,service,false,0,5.0,false,false,false,0,136.9,Mushin and Surulere,585187772
+W585187779,,residential,false,0,7.5,false,false,false,0,79.2,Mushin and Surulere,585187779
+W585193449,,residential,false,0,7.5,false,false,false,0,194.7,Mushin and Surulere,585193449
+W585731340,,residential,false,0,7.5,false,false,false,0,177.4,Mushin and Surulere,585731340
+W585731341,,residential,false,0,7.5,false,false,false,0,131.9,Mushin and Surulere,585731341
+W585731344,,residential,false,0,7.5,false,false,false,0,64.0,Mushin and Surulere,585731344
+W585736130,,residential,false,0,7.5,false,false,false,0,5.2,Mushin and Surulere,585736130
+W585736132,,residential,false,0,7.5,false,false,false,0,367.4,Mushin and Surulere,585736132
+W585736821,,service,false,0,5.0,false,false,false,0,162.8,Mushin and Surulere,585736821
+W585736826,,service,false,0,5.0,false,false,false,0,268.8,Mushin and Surulere,585736826
+W588715372,,residential,false,0,7.5,false,false,false,0,66.6,Mushin and Surulere,588715372
+W588727832,,residential,false,0,7.5,false,false,false,0,51.1,Mushin and Surulere,588727832
+W588734769,,residential,false,0,7.5,false,false,false,0,25.4,Mushin and Surulere,588734769
+W588734770,,residential,false,0,7.5,false,false,false,0,20.7,Mushin and Surulere,588734770
+W589046876,,service,false,0,5.0,false,false,false,0,78.2,Mushin and Surulere,589046876
+W589046878,,service,false,0,5.0,false,false,false,0,238.2,Mushin and Surulere,589046878
+W589219715,,service,false,0,5.0,false,false,false,0,106.5,Mushin and Surulere,589219715
+W589219716,,residential,false,0,7.5,false,false,false,0,43.2,Mushin and Surulere,589219716
+W589883151,,service,false,0,5.0,false,false,false,0,279.1,Mushin and Surulere,589883151
+W589883153,,service,false,0,5.0,false,false,false,0,608.9,Mushin and Surulere,589883153
+W590830567,,residential,false,0,7.5,false,false,false,0,32.4,Mushin and Surulere,590830567
+W591782251,,residential,false,0,7.5,false,false,false,0,58.0,Mushin and Surulere,591782251
+W592368557,,service,false,0,5.0,false,false,false,0,188.5,Mushin and Surulere,592368557
+W592368558,,service,false,0,5.0,false,false,false,0,174.9,Mushin and Surulere,592368558
+W605476217,,motorway,true,0,7.5,true,false,false,0,88.2,Mushin and Surulere,605476217
+W605476219,,motorway,true,0,7.5,true,false,false,0,81.4,Mushin and Surulere,605476219
+W605476661,,motorway,true,0,7.5,true,false,false,0,77.1,Mushin and Surulere,605476661
+W605476662,,motorway,true,0,7.5,true,false,false,0,83.1,Mushin and Surulere,605476662
+W706082452,,service,false,0,5.0,false,false,false,0,336.0,Mushin and Surulere,706082452
+W706082454,,service,false,0,5.0,false,false,false,0,161.6,Mushin and Surulere,706082454
+W707834206,,service,false,0,5.0,false,false,false,0,78.1,Mushin and Surulere,707834206
+W707834207,,service,false,0,5.0,false,false,false,0,359.2,Mushin and Surulere,707834207
+W707848335,,residential,false,0,7.5,false,false,false,0,1105.7,Mushin and Surulere,707848335
+W707848348,,service,false,0,5.0,false,false,false,0,165.6,Mushin and Surulere,707848348
+W726189566,,residential,false,0,7.5,false,false,false,0,153.4,Mushin and Surulere,726189566
+W726605955,,service,false,0,5.0,false,false,false,0,113.3,Mushin and Surulere,726605955
+W726605956,,service,false,0,5.0,false,false,false,0,42.3,Mushin and Surulere,726605956
+W726607946,,service,false,0,5.0,false,false,false,0,704.1,Mushin and Surulere,726607946
+W726625703,,service,false,0,5.0,false,false,false,0,230.9,Mushin and Surulere,726625703
+W726625704,,service,false,0,5.0,false,false,false,0,19.3,Mushin and Surulere,726625704
+W726638497,,service,false,0,5.0,false,false,false,0,239.3,Mushin and Surulere,726638497
+W726707527,,service,false,0,5.0,false,false,false,0,98.5,Mushin and Surulere,726707527
+W726770140,,service,false,0,5.0,false,false,false,0,85.9,Mushin and Surulere,726770140
+W726770141,,service,false,0,5.0,false,false,false,0,122.8,Mushin and Surulere,726770141
+W727350397,,service,false,0,5.0,false,false,false,0,304.3,Mushin and Surulere,727350397
+W727350398,,service,false,0,5.0,false,false,false,0,150.1,Mushin and Surulere,727350398
+W727350399,,service,false,0,5.0,false,false,false,0,339.0,Mushin and Surulere,727350399
+W727383593,,residential,false,0,7.5,false,false,false,0,391.2,Mushin and Surulere,727383593
+W727717043,,service,false,0,5.0,false,false,false,0,70.2,Mushin and Surulere,727717043
+W735006425,,service,false,0,5.0,false,false,false,0,294.4,Mushin and Surulere,735006425
+W783485093,,residential,false,0,7.5,false,false,false,0,178.3,Mushin and Surulere,783485093
+W783814470,,service,false,0,5.0,false,false,false,0,73.4,Mushin and Surulere,783814470
+W783815080,,service,false,0,5.0,false,false,false,0,127.3,Mushin and Surulere,783815080
+W783973372,,residential,false,0,7.5,false,false,false,0,351.2,Mushin and Surulere,783973372
+W783973373,,residential,false,0,7.5,false,false,false,0,40.9,Mushin and Surulere,783973373
+W784697191,,service,false,0,5.0,false,false,false,0,83.4,Mushin and Surulere,784697191
+W784701543,,service,false,0,5.0,false,false,false,0,74.8,Mushin and Surulere,784701543
+W784704229,,service,false,0,5.0,false,false,false,0,110.8,Mushin and Surulere,784704229
+W784711539,,service,false,0,5.0,false,false,false,0,69.5,Mushin and Surulere,784711539
+W784712679,,residential,false,0,7.5,false,false,false,0,129.6,Mushin and Surulere,784712679
+W784737744,,service,false,0,5.0,false,false,false,0,54.6,Mushin and Surulere,784737744
+W784737745,,service,false,0,5.0,false,false,false,0,13.3,Mushin and Surulere,784737745
+W784965334,,service,false,0,5.0,false,false,false,0,80.5,Mushin and Surulere,784965334
+W784966319,,service,false,0,5.0,false,false,false,0,240.1,Mushin and Surulere,784966319
+W784967713,,service,false,0,5.0,false,true,false,0,9.6,Mushin and Surulere,784967713
+W784967714,,service,false,0,5.0,false,false,false,0,88.4,Mushin and Surulere,784967714
+W784967715,,service,false,0,5.0,false,false,false,0,34.0,Mushin and Surulere,784967715
+W784967716,,service,false,0,5.0,false,false,false,0,41.3,Mushin and Surulere,784967716
+W784990572,,service,false,0,5.0,false,false,false,0,60.8,Mushin and Surulere,784990572
+W795793645,,service,false,0,5.0,false,false,false,0,70.1,Mushin and Surulere,795793645
+W795793675,,service,false,0,5.0,false,false,false,0,96.1,Mushin and Surulere,795793675
+W795793676,,service,false,0,5.0,false,false,false,0,95.9,Mushin and Surulere,795793676
+W795793684,,service,false,0,5.0,false,false,false,0,434.3,Mushin and Surulere,795793684
+W795793685,,service,false,0,5.0,false,false,false,0,82.5,Mushin and Surulere,795793685
+W795831069,,residential,false,0,7.5,false,false,false,0,12.1,Mushin and Surulere,795831069
+W795831070,,residential,false,0,7.5,false,false,false,0,26.5,Mushin and Surulere,795831070
+W795831100,,residential,false,0,7.5,false,false,false,0,150.4,Mushin and Surulere,795831100
+W795831104,,residential,false,0,7.5,false,false,false,0,250.1,Mushin and Surulere,795831104
+W795831224,,service,false,0,5.0,true,false,false,0,144.5,Mushin and Surulere,795831224
+W795831225,,service,false,0,5.0,true,false,false,0,80.1,Mushin and Surulere,795831225
+W795831246,,residential,false,0,7.5,false,false,false,0,150.1,Mushin and Surulere,795831246
+W795831247,,residential,false,0,7.5,false,false,false,0,271.6,Mushin and Surulere,795831247
+W829125119,,service,false,0,5.0,false,false,false,0,94.1,Mushin and Surulere,829125119
+W829125120,,service,false,0,5.0,false,false,false,0,8.3,Mushin and Surulere,829125120
+W8475045,,service,false,0,5.0,false,false,false,0,146.6,Mushin and Surulere,8475045
+W850110105,,service,false,0,5.0,false,false,false,0,34.3,Mushin and Surulere,850110105
+W850110954,,service,false,0,5.0,false,false,false,0,60.6,Mushin and Surulere,850110954
+W850110955,,service,false,0,5.0,false,false,false,0,43.3,Mushin and Surulere,850110955
+W879993854,,residential,false,0,7.5,false,false,false,0,150.5,Mushin and Surulere,879993854
+W879993855,,residential,false,0,7.5,false,false,false,0,37.9,Mushin and Surulere,879993855
+W90288314,,residential,false,0,7.5,false,false,false,0,148.1,Mushin and Surulere,90288314
+W90288315,,residential,false,0,7.5,false,false,false,0,379.6,Mushin and Surulere,90288315
+W90288329,,residential,false,0,7.5,true,false,false,0,645.6,Mushin and Surulere,90288329
+W90288332,,residential,false,0,7.5,false,false,false,0,67.3,Mushin and Surulere,90288332
+W90288338,,residential,false,0,7.5,false,false,false,0,362.0,Mushin and Surulere,90288338
+W90288368,,residential,false,0,7.5,false,false,false,0,338.0,Mushin and Surulere,90288368
+W90288381,,residential,false,0,7.5,false,false,false,0,481.2,Mushin and Surulere,90288381
+W90288383,,residential,false,0,7.5,false,false,false,0,105.9,Mushin and Surulere,90288383
+W90288390,,residential,false,0,7.5,false,false,false,0,301.4,Mushin and Surulere,90288390
+W90288408,,residential,false,0,7.5,false,false,false,0,97.1,Mushin and Surulere,90288408
+W90288413,,residential,false,0,7.5,false,false,false,0,380.7,Mushin and Surulere,90288413
+W90288420,,residential,false,0,7.5,false,false,false,0,353.6,Mushin and Surulere,90288420
+W909686836,,residential,false,0,7.5,false,false,false,0,60.2,Mushin and Surulere,909686836
+W912536417,,residential,false,0,7.5,false,false,false,0,53.8,Mushin and Surulere,912536417
+W912536418,,residential,false,0,7.5,false,false,false,0,73.5,Mushin and Surulere,912536418
+W913611449,,residential,false,0,7.5,false,false,false,0,76.5,Mushin and Surulere,913611449
+W92439805,,residential,false,0,7.5,false,false,false,0,229.0,Mushin and Surulere,92439805
+W92439835,,residential,false,0,7.5,false,false,false,0,1076.1,Mushin and Surulere,92439835
+W964188875,,residential,false,0,7.5,false,false,false,0,70.4,Mushin and Surulere,964188875
+W964188876,,residential,false,0,7.5,false,false,false,0,60.9,Mushin and Surulere,964188876
+W964194222,,residential,false,0,7.5,false,false,false,0,69.2,Mushin and Surulere,964194222
+W964194223,,residential,false,0,7.5,false,false,false,0,68.4,Mushin and Surulere,964194223
+W964194224,,service,false,0,5.0,false,false,false,0,31.5,Mushin and Surulere,964194224
+W964194225,,service,false,0,5.0,false,false,false,0,91.4,Mushin and Surulere,964194225
+W964194226,,service,false,0,5.0,false,false,false,0,29.9,Mushin and Surulere,964194226
+W964194227,,service,false,0,5.0,false,false,false,0,69.3,Mushin and Surulere,964194227
+W964194229,,service,false,0,5.0,false,false,false,0,100.1,Mushin and Surulere,964194229
+W964217496,,service,false,0,5.0,false,false,false,0,70.3,Mushin and Surulere,964217496
+W964217499,,service,false,0,5.0,false,false,false,0,47.6,Mushin and Surulere,964217499
+W964492681,,residential,false,0,7.5,false,false,false,0,106.4,Mushin and Surulere,964492681
+W964492682,,residential,false,0,7.5,false,false,false,0,91.3,Mushin and Surulere,964492682
+W964497958,,service,false,0,5.0,false,false,false,0,82.4,Mushin and Surulere,964497958
+W964497959,,service,false,0,5.0,false,false,false,0,84.0,Mushin and Surulere,964497959
+W964531055,,service,false,0,5.0,false,false,false,0,82.4,Mushin and Surulere,964531055
+W964560423,,service,false,0,5.0,false,false,false,0,227.5,Mushin and Surulere,964560423
+W964855386,,service,false,0,5.0,false,false,false,0,44.6,Mushin and Surulere,964855386
+W964855969,,service,false,0,5.0,false,false,false,0,28.0,Mushin and Surulere,964855969
+W964857786,,service,false,0,5.0,false,false,false,0,66.2,Mushin and Surulere,964857786
+W964869294,,residential,false,0,7.5,false,false,false,0,47.2,Mushin and Surulere,964869294
+W964883816,,service,false,0,5.0,false,false,false,0,55.5,Mushin and Surulere,964883816
+W964887414,,service,false,0,5.0,false,false,false,0,28.3,Mushin and Surulere,964887414
+W964887415,,service,false,0,5.0,false,false,false,0,90.9,Mushin and Surulere,964887415
+W964896062,,residential,false,0,7.5,false,false,false,0,34.5,Mushin and Surulere,964896062
+W964896063,,service,false,0,5.0,false,false,false,0,27.7,Mushin and Surulere,964896063
+W964896064,,service,false,0,5.0,false,false,false,0,58.4,Mushin and Surulere,964896064
+W964896065,,residential,false,0,7.5,false,false,false,0,46.8,Mushin and Surulere,964896065
+W964896929,,service,false,0,5.0,false,false,false,0,33.5,Mushin and Surulere,964896929
+W964899868,,service,false,0,5.0,false,false,false,0,62.3,Mushin and Surulere,964899868
+W964899869,,residential,false,0,7.5,false,false,false,0,115.0,Mushin and Surulere,964899869
+W964901356,,service,false,0,5.0,false,false,false,0,17.8,Mushin and Surulere,964901356
+W964901357,,service,false,0,5.0,false,false,false,0,51.6,Mushin and Surulere,964901357
+W964901358,,service,false,0,5.0,false,false,false,0,49.8,Mushin and Surulere,964901358
+W964903131,,service,false,0,5.0,false,false,false,0,42.1,Mushin and Surulere,964903131
+W964903132,,residential,false,0,7.5,false,false,false,0,135.0,Mushin and Surulere,964903132
+W964903133,,residential,false,0,7.5,false,false,false,0,82.8,Mushin and Surulere,964903133
+W964903134,,residential,false,0,7.5,false,false,false,0,78.4,Mushin and Surulere,964903134
+W964903135,,residential,false,0,7.5,false,false,false,0,82.0,Mushin and Surulere,964903135
+W964903136,,residential,false,0,7.5,false,false,false,0,127.4,Mushin and Surulere,964903136
+W964903451,,residential,false,0,7.5,false,false,false,0,43.5,Mushin and Surulere,964903451
+W964925019,,service,false,0,5.0,false,false,false,0,9.2,Mushin and Surulere,964925019
+W965538466,,service,false,0,5.0,false,false,false,0,34.7,Mushin and Surulere,965538466
+W965557416,,residential,false,0,7.5,false,false,false,0,56.7,Mushin and Surulere,965557416
+W965558480,,residential,false,0,7.5,false,false,false,0,184.4,Mushin and Surulere,965558480
+W965559241,,service,false,0,5.0,false,false,false,0,79.3,Mushin and Surulere,965559241
+W965559969,,service,false,0,5.0,false,false,false,0,120.3,Mushin and Surulere,965559969
+W965575012,,residential,false,0,7.5,false,false,false,0,97.3,Mushin and Surulere,965575012
+W965577245,,service,false,0,5.0,false,false,false,0,32.1,Mushin and Surulere,965577245
+W965577246,,service,false,0,5.0,true,false,false,0,45.2,Mushin and Surulere,965577246
+W965813426,,residential,false,0,7.5,false,false,false,0,186.9,Mushin and Surulere,965813426
+W965813427,,residential,false,0,7.5,false,false,false,0,56.3,Mushin and Surulere,965813427
+W965823095,,service,false,0,5.0,false,false,false,0,53.6,Mushin and Surulere,965823095
+W965825752,,service,false,0,5.0,false,false,false,0,80.2,Mushin and Surulere,965825752

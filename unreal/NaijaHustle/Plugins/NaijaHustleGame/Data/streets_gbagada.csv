@@ -1,0 +1,1785 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W222760405,Abass Street,residential,false,0,7.5,false,false,false,0,642.9,Gbagada,222760405
+W535263517,Abbi Street,residential,false,0,7.5,false,false,false,0,375.2,Gbagada,535263517
+W1561077545,Abdulrahman Abdulrasaq Close,residential,false,0,7.5,false,false,false,20,7.2,Gbagada,1561077545
+W226068917,Abdulrahman Abdulrasaq Close,residential,false,0,7.5,false,false,false,20,195.7,Gbagada,226068917
+W94891497,Abeokuta St,residential,false,0,7.5,false,false,false,0,215.8,Gbagada,94891497
+W135176604,Abike Close,residential,false,0,7.5,false,false,false,0,167.9,Gbagada,135176604
+W135178788,Abiodun Odeseye Street,residential,false,2,7.6,false,false,false,40,483.7,Gbagada,135178788
+W10294858,Abiodun Street,residential,false,2,7.6,false,false,false,40,554.4,Gbagada,10294858
+W94968495,Abiodun Street,residential,false,0,7.5,false,true,false,0,23.9,Gbagada,94968495
+W94968504,Abiodun Street,residential,false,0,7.5,false,false,false,0,173.4,Gbagada,94968504
+W134223820,Abiola Street,residential,false,0,7.5,false,false,false,0,212.9,Gbagada,134223820
+W134223827,Abiola Street,residential,false,0,7.5,false,false,false,0,108.7,Gbagada,134223827
+W135176615,Abiola Street,residential,false,0,7.5,false,false,false,0,148.5,Gbagada,135176615
+W136430396,Abiola Street,residential,false,0,7.5,false,false,false,0,194.9,Gbagada,136430396
+W222760441,Abudu Street,residential,false,0,7.5,false,false,false,0,137.6,Gbagada,222760441
+W525043236,Abule Okuta Road,residential,false,0,7.5,false,false,false,0,651.9,Gbagada,525043236
+W134223816,Adabale Street,residential,false,0,7.5,false,false,false,0,191.3,Gbagada,134223816
+W656066128,Adams Street,tertiary,false,0,10.0,false,false,false,0,142.7,Gbagada,656066128
+W828131609,Adams Street,tertiary,false,0,10.0,true,false,false,0,70.9,Gbagada,828131609
+W13656285,Ade Akinsanya Avenue,residential,false,0,7.5,false,false,false,0,152.2,Gbagada,13656285
+W134223818,Ade Sheke Street,residential,false,0,7.5,false,false,false,0,293.6,Gbagada,134223818
+W586489174,Adebayo Lawal Close,residential,false,0,7.5,false,false,false,0,86.5,Gbagada,586489174
+W16369513,Adebayo Mokuolu Street,residential,false,0,7.5,false,false,false,0,962.5,Gbagada,16369513
+W134223835,Adebayo Street,residential,false,0,7.5,false,false,false,0,76.3,Gbagada,134223835
+W535263515,Adediran Ajao Crescent,residential,false,0,7.5,false,false,false,0,933.3,Gbagada,535263515
+W23711280,Adedotun Dina Crescent,residential,false,0,7.5,false,false,false,0,264.0,Gbagada,23711280
+W226251909,Adedotun Dina Street,residential,false,0,7.5,false,false,false,0,190.4,Gbagada,226251909
+W16369517,Adefemi Lawal Street,residential,false,0,7.5,false,false,false,0,140.7,Gbagada,16369517
+W16369510,Adefiyibi Street,residential,false,0,7.5,false,false,false,0,344.3,Gbagada,16369510
+W113522962,Adefowope Street,residential,false,0,7.5,false,false,false,0,212.8,Gbagada,113522962
+W135178785,Adeite Ogunsanya,residential,false,0,7.5,false,false,false,0,592.8,Gbagada,135178785
+W226251916,Adekayode Street,residential,false,0,7.5,false,false,false,0,492.9,Gbagada,226251916
+W535263524,Adekunle Osomo Street,residential,false,0,7.5,false,false,false,0,519.4,Gbagada,535263524
+W135178735,Adeleye Street,residential,false,0,7.5,false,false,false,0,328.0,Gbagada,135178735
+W588825692,Ademolu St,residential,false,0,7.5,false,false,false,0,162.4,Gbagada,588825692
+W219900867,Adeniji Street,residential,false,0,7.5,false,false,false,0,198.1,Gbagada,219900867
+W135178797,Adenuga Street,residential,false,0,7.5,false,false,false,0,282.3,Gbagada,135178797
+W134223829,Adeokun Street,residential,false,0,7.5,false,false,false,0,292.1,Gbagada,134223829
+W113522964,Adeola Adeleye Street,residential,false,0,7.5,false,false,false,0,495.7,Gbagada,113522964
+W226379055,Adeola Raji Street,residential,false,0,7.5,false,false,false,0,501.4,Gbagada,226379055
+W1411937771,Adeola Street,residential,false,0,7.5,false,false,false,0,16.3,Gbagada,1411937771
+W441901598,Adeola Street,residential,false,0,7.5,false,false,false,0,1001.4,Gbagada,441901598
+W219516260,Adepeju Street,residential,false,0,7.5,false,false,false,0,252.4,Gbagada,219516260
+W8064807,Aderibigbe Shitta Street,residential,false,0,7.5,false,false,false,0,380.9,Gbagada,8064807
+W23711276,Adesoye Street,residential,false,2,7.6,false,false,false,30,237.8,Gbagada,23711276
+W219055671,Adetoke Street,residential,false,0,7.5,false,false,false,0,213.7,Gbagada,219055671
+W219055723,Adetoke Street,residential,false,0,7.5,false,true,false,0,9.6,Gbagada,219055723
+W219055749,Adetoke Street,residential,false,0,7.5,false,false,false,0,108.2,Gbagada,219055749
+W226379019,Adewale Kuku Street,residential,false,0,7.5,false,false,false,0,358.5,Gbagada,226379019
+W219900874,Adewale Street,residential,false,0,7.5,false,false,false,0,141.2,Gbagada,219900874
+W525043234,Adewunmi Street,residential,false,0,7.5,false,false,false,0,228.1,Gbagada,525043234
+W524191043,Adeyera Adeyemo Street,residential,false,0,7.5,false,false,false,0,360.6,Gbagada,524191043
+W742218014,Adeyera Adeyemo Street,residential,false,0,7.5,false,false,false,0,60.5,Gbagada,742218014
+W222303754,Adeyewun Street,residential,false,0,7.5,false,false,false,0,425.0,Gbagada,222303754
+W226379046,Adeyeye Street,tertiary,false,0,10.0,false,false,false,0,628.5,Gbagada,226379046
+W784961091,Adeyeye Street,residential,false,0,7.5,false,true,false,0,26.8,Gbagada,784961091
+W784961092,Adeyeye Street,tertiary,false,0,10.0,false,false,false,0,7.0,Gbagada,784961092
+W652803432,Adeyiga Odunukan Street,residential,false,0,7.5,false,false,false,0,303.9,Gbagada,652803432
+W134223830,Agberin Street,residential,false,0,7.5,false,false,false,0,374.1,Gbagada,134223830
+W135176587,Agbolade Oguniyi Street,residential,false,2,7.6,false,false,false,0,298.4,Gbagada,135176587
+W134230090,Agboyi Road,secondary,false,0,13.0,false,true,false,0,91.0,Gbagada,134230090
+W134230126,Agboyi Road,secondary,false,0,13.0,false,false,false,0,96.7,Gbagada,134230126
+W135178790,Agboyi Road,secondary,false,0,13.0,false,false,false,0,121.6,Gbagada,135178790
+W1413605240,Agboyi Road,secondary,false,0,13.0,false,false,false,0,21.3,Gbagada,1413605240
+W221886734,Agboyi Road,secondary,false,0,13.0,false,false,false,0,267.6,Gbagada,221886734
+W524191037,Agboyi Road,tertiary,false,0,10.0,false,false,false,0,176.0,Gbagada,524191037
+W607640765,Agboyi Road,secondary,false,0,13.0,true,false,false,0,40.2,Gbagada,607640765
+W607640766,Agboyi Road,secondary,false,0,13.0,true,false,false,0,39.3,Gbagada,607640766
+W370301928,Agunbiade Street,residential,false,0,7.5,false,false,false,0,436.9,Gbagada,370301928
+W220465508,Aina Close,residential,false,0,7.5,false,false,false,0,107.6,Gbagada,220465508
+W8064880,Aina Eleko Lane,residential,false,0,7.5,false,false,false,0,172.9,Gbagada,8064880
+W16369702,Aina Eleko Street,residential,false,0,7.5,false,false,false,0,247.0,Gbagada,16369702
+W441712339,Aina George Street,residential,false,0,7.5,false,false,false,0,384.0,Gbagada,441712339
+W219055689,Aiyedun Street,residential,false,0,7.5,false,false,false,0,487.6,Gbagada,219055689
+W17505862,Ajayi Aina Street,tertiary,false,0,10.0,false,false,false,0,366.7,Gbagada,17505862
+W588275462,Ajayi Aina Street,tertiary,false,0,10.0,true,false,false,0,61.7,Gbagada,588275462
+W226251891,Ajayi Street,residential,false,0,7.5,false,false,false,0,147.3,Gbagada,226251891
+W94965108,Ajayi Street,residential,false,0,7.5,false,false,false,0,150.1,Gbagada,94965108
+W528999505,Ajidagan Street,residential,false,0,7.5,false,false,false,0,230.8,Gbagada,528999505
+W23711279,Ajose Street,residential,false,0,7.5,false,false,false,0,834.3,Gbagada,23711279
+W23711112,Akanni Street,residential,false,0,7.5,false,false,false,0,63.6,Gbagada,23711112
+W94968513,Akanni Street,residential,false,0,7.5,false,false,false,0,162.4,Gbagada,94968513
+W94891532,Akeju Street,residential,false,0,7.5,false,false,false,0,555.5,Gbagada,94891532
+W135176601,Akerele Street,residential,false,0,7.5,false,false,false,0,329.4,Gbagada,135176601
+W136433582,Akerele Street,residential,false,0,7.5,false,false,false,0,309.8,Gbagada,136433582
+W441860177,Akerele Street,residential,false,0,7.5,false,false,false,0,141.3,Gbagada,441860177
+W134223832,Akewusola Street,residential,false,0,7.5,false,false,false,0,346.9,Gbagada,134223832
+W595880632,Akin Adekomaya Close,residential,false,0,7.5,false,false,false,0,139.1,Gbagada,595880632
+W1230267159,Akinfe Street,residential,false,0,7.5,false,false,false,0,4.8,Gbagada,1230267159
+W1230267160,Akinfe Street,residential,false,0,7.5,false,true,false,0,7.3,Gbagada,1230267160
+W1383913254,Akinfe Street,residential,false,0,7.5,false,false,false,0,8.7,Gbagada,1383913254
+W1383913255,Akinfe Street,residential,false,0,7.5,false,false,false,0,122.5,Gbagada,1383913255
+W226251920,Akinfe Street,residential,false,0,7.5,false,false,false,0,446.9,Gbagada,226251920
+W135176606,Akinlabake Close,residential,false,0,7.5,false,false,false,0,111.5,Gbagada,135176606
+W441860172,Akinola Adeniyi,residential,false,0,7.5,false,false,false,0,257.8,Gbagada,441860172
+W219516271,Akinola Street,residential,false,0,7.5,false,false,false,0,617.2,Gbagada,219516271
+W219900871,Akinromola St,residential,false,0,7.5,false,false,false,0,176.7,Gbagada,219900871
+W94891521,Akinsanya St,residential,false,0,7.5,false,false,false,0,217.2,Gbagada,94891521
+W219900864,Akinwale Street,residential,false,0,7.5,false,false,false,0,132.6,Gbagada,219900864
+W226251856,Akinwunmi Street,residential,false,0,7.5,false,false,false,0,621.4,Gbagada,226251856
+W135178772,Akiosho Street,residential,false,2,7.6,false,false,false,20,116.6,Gbagada,135178772
+W135176612,Alabi Owoyemi Street,residential,false,0,7.5,false,false,false,0,212.1,Gbagada,135176612
+W134223823,Alabi Street,residential,false,0,7.5,false,false,false,0,337.3,Gbagada,134223823
+W408685224,Alafia Lane,residential,false,0,7.5,false,false,false,0,99.3,Gbagada,408685224
+W220332239,Alake Onile Ere Street,residential,false,0,7.5,false,false,false,0,452.9,Gbagada,220332239
+W135178766,Albert Adekoya St,residential,false,0,7.5,false,false,false,0,6.9,Gbagada,135178766
+W1411917624,Albert Adekoya St,residential,false,0,7.5,false,false,false,0,140.9,Gbagada,1411917624
+W487757394,Alegbe Close,residential,false,0,7.5,false,false,false,20,115.4,Gbagada,487757394
+W94891481,Alfa Aminu St,residential,false,0,7.5,false,false,false,0,252.4,Gbagada,94891481
+W94891503,Alh Adeyemi Street,residential,false,0,7.5,false,false,false,0,116.0,Gbagada,94891503
+W653000744,Alh Ariyo Street,residential,false,0,7.5,false,false,false,0,75.2,Gbagada,653000744
+W135178779,Alh. Alli-Owe Street,residential,false,0,7.5,false,false,false,0,179.0,Gbagada,135178779
+W784246087,Alhaji Adebesin Street,residential,false,0,7.5,false,false,false,0,125.8,Gbagada,784246087
+W135176593,Alo Crescent,residential,false,0,7.5,false,false,false,0,165.7,Gbagada,135176593
+W220332218,Alubarika Street,residential,false,0,7.5,false,false,false,0,308.4,Gbagada,220332218
+W1383907294,Amoda Alli Street,tertiary,false,0,10.0,false,false,false,0,152.2,Gbagada,1383907294
+W226379009,Amoda Alli Street,residential,false,0,7.5,false,false,false,0,328.3,Gbagada,226379009
+W94968526,Anifowoshe Street,residential,false,0,7.5,false,false,false,0,523.0,Gbagada,94968526
+W441901620,Anipole Crescent,residential,false,0,7.5,false,false,false,0,894.3,Gbagada,441901620
+W1062805450,Anthony Village Road,residential,false,0,7.5,false,false,false,0,73.1,Gbagada,1062805450
+W133875225,Anthony Village Road,primary,false,0,17.5,false,false,false,0,262.7,Gbagada,133875225
+W16369521,Anthony Village Road,residential,false,0,7.5,false,false,false,0,125.4,Gbagada,16369521
+W133875247,Apapa Road,primary,false,0,17.5,false,false,false,0,185.7,Gbagada,133875247
+W133875222,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,true,false,0,148.5,Gbagada,133875222
+W133875231,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,410.8,Gbagada,133875231
+W133875240,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,996.7,Gbagada,133875240
+W133875251,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,1528.0,Gbagada,133875251
+W133875258,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,545.5,Gbagada,133875258
+W134221209,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,1617.9,Gbagada,134221209
+W220332219,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,1598.5,Gbagada,220332219
+W220332220,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,true,false,0,25.4,Gbagada,220332220
+W220332221,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,870.1,Gbagada,220332221
+W220332226,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,true,false,0,24.9,Gbagada,220332226
+W220332242,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,1031.2,Gbagada,220332242
+W5133247,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,1519.2,Gbagada,5133247
+W560546966,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,true,false,0,348.3,Gbagada,560546966
+W560546968,Apapa-Oworonshoki Expressway,motorway,false,0,24.0,true,false,false,0,555.2,Gbagada,560546968
+W560546969,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,false,false,0,468.3,Gbagada,560546969
+W560546970,Apapa-Oworonshoki Expressway,primary,false,0,17.5,true,true,false,0,349.6,Gbagada,560546970
+W589139285,Apapa-Oworonshoki Expressway,secondary,false,0,13.0,true,false,false,0,399.0,Gbagada,589139285
+W133875243,Apapa-Oworonsoki Expressway,motorway,false,0,24.0,true,true,false,0,168.1,Gbagada,133875243
+W220332236,Apapa-Oworonsoki Expressway,motorway,false,0,24.0,true,false,false,0,873.4,Gbagada,220332236
+W220332246,Apapa-Oworonsoki Expressway,motorway,false,0,24.0,true,true,false,0,26.5,Gbagada,220332246
+W220332247,Apapa-Oworonsoki Expressway,motorway,false,0,24.0,true,true,false,0,26.9,Gbagada,220332247
+W560546967,Apapa-Oworonsoki Expressway,motorway,false,0,24.0,true,true,false,0,348.6,Gbagada,560546967
+W560546971,Apapa-Oworonsoki Expressway,motorway,false,0,24.0,true,true,false,0,349.4,Gbagada,560546971
+W560546972,Apapa-Oworonsoki Expressway,motorway,false,0,24.0,true,false,false,0,881.8,Gbagada,560546972
+W560546973,Apapa-Oworonsoki Expressway,primary,false,0,17.5,true,false,false,0,888.7,Gbagada,560546973
+W10294867,Apata Street,residential,false,0,7.5,false,false,false,0,339.1,Gbagada,10294867
+W588326031,Apata Street,residential,false,0,7.5,false,true,false,0,8.5,Gbagada,588326031
+W588326032,Apata Street,residential,false,0,7.5,false,false,false,0,358.3,Gbagada,588326032
+W94891540,Apata Street,residential,false,0,7.5,false,false,false,0,648.7,Gbagada,94891540
+W136433544,Araromi Street,residential,false,0,7.5,false,false,false,0,293.2,Gbagada,136433544
+W1383907293,Arowolo Adeyemo Avenue,residential,false,0,7.5,false,false,false,0,8.1,Gbagada,1383907293
+W226379043,Arowolo Adeyemo Avenue,residential,false,0,7.5,false,false,false,0,208.4,Gbagada,226379043
+W370306117,Asa Estate,residential,false,0,7.5,false,false,false,0,227.1,Gbagada,370306117
+W135178762,Ashafa Tijani Street,residential,false,2,7.6,false,false,false,40,292.9,Gbagada,135178762
+W220332233,Ashimowu Street,residential,false,0,7.5,false,false,false,0,99.7,Gbagada,220332233
+W959681031,Ashimowu Street,residential,false,0,7.5,true,false,false,0,216.0,Gbagada,959681031
+W589735061,Asses Avenue,residential,false,0,7.5,false,false,false,0,252.5,Gbagada,589735061
+W226251854,Atiba Osborne Street,residential,false,0,7.5,false,false,false,0,344.5,Gbagada,226251854
+W94891508,Awofeso Street,residential,false,0,7.5,false,false,false,0,543.4,Gbagada,94891508
+W135176607,Awolowo Street,residential,false,2,7.6,false,false,false,0,375.7,Gbagada,135176607
+W94968502,Awomodu Street,residential,false,0,7.5,false,false,false,0,922.0,Gbagada,94968502
+W1324283714,Awoyokun St,residential,false,0,7.5,false,false,false,0,245.5,Gbagada,1324283714
+W219900868,Ayinke Street,residential,false,0,7.5,false,false,false,0,356.2,Gbagada,219900868
+W135176594,Ayo Odungbesan Street,residential,false,0,7.5,false,false,false,0,285.2,Gbagada,135176594
+W220332248,Ayodeji Otegbola Street,residential,false,0,7.5,false,false,false,0,365.3,Gbagada,220332248
+W528999511,Ayodele Okeowo Street,residential,false,0,7.5,false,false,false,0,619.8,Gbagada,528999511
+W135176579,Ayoola Street,residential,false,0,7.5,false,false,false,0,200.6,Gbagada,135176579
+W135178791,Babalola Street,residential,false,0,7.5,false,false,false,0,167.7,Gbagada,135178791
+W135176608,Babayemi Street,residential,false,0,7.5,false,false,false,0,321.3,Gbagada,135176608
+W10294874,Bakare Ave,residential,false,0,7.5,false,false,false,0,101.2,Gbagada,10294874
+W135178784,Bakare Dawodu Street,residential,false,0,7.5,false,false,false,0,532.6,Gbagada,135178784
+W226068928,Ball Umeh Street,residential,false,0,7.5,false,false,false,30,186.9,Gbagada,226068928
+W135176568,Balogun Close,residential,false,0,7.5,false,false,false,0,58.4,Gbagada,135176568
+W94968498,Balogun Street,residential,false,0,7.5,false,false,false,0,456.4,Gbagada,94968498
+W1383913257,Bamidele Adebule Street,residential,false,0,7.5,false,true,false,0,29.2,Gbagada,1383913257
+W1383913258,Bamidele Adebule Street,residential,false,0,7.5,false,false,false,0,102.8,Gbagada,1383913258
+W1557825748,Bamidele Adebule Street,residential,false,0,7.5,false,false,false,0,178.4,Gbagada,1557825748
+W23711277,Bamidele Adebule Street,tertiary,false,0,10.0,false,false,false,0,439.5,Gbagada,23711277
+W135176580,Bamidele Street,residential,false,0,7.5,false,false,false,0,315.3,Gbagada,135176580
+W219055746,Bamiji Lawal Street,residential,false,0,7.5,false,false,false,0,13.6,Gbagada,219055746
+W219055761,Bamiji Lawal Street,residential,false,0,7.5,false,false,false,0,537.9,Gbagada,219055761
+W219055764,Bamiji Lawal Street,residential,false,0,7.5,false,true,false,0,11.5,Gbagada,219055764
+W95045711,Banjo St,residential,false,0,7.5,false,false,false,0,102.9,Gbagada,95045711
+W219900854,Banjo Street,residential,false,0,7.5,false,false,false,0,170.7,Gbagada,219900854
+W528999506,Bankole Street,residential,false,0,7.5,false,false,false,0,345.2,Gbagada,528999506
+W94965103,Bawala Street,residential,false,0,7.5,false,false,false,0,557.9,Gbagada,94965103
+W535263521,Beckley Avenue,residential,false,0,7.5,false,false,false,0,467.4,Gbagada,535263521
+W219055729,Bello Street,residential,false,0,7.5,false,false,false,0,92.3,Gbagada,219055729
+W1383907290,Bode Peters Street,residential,false,0,7.5,false,false,false,0,211.7,Gbagada,1383907290
+W1383907291,Bode Peters Street,residential,false,0,7.5,false,false,false,0,9.0,Gbagada,1383907291
+W226068941,Bode Peters Street,residential,false,0,7.5,false,false,false,0,12.3,Gbagada,226068941
+W11102855,Bode Thomas Street,residential,false,0,7.5,false,false,false,0,393.6,Gbagada,11102855
+W1265490377,Bode Thomas Street,residential,false,0,7.5,false,false,false,0,330.8,Gbagada,1265490377
+W1411937769,Bola Arowolo,residential,false,0,7.5,false,false,false,0,148.3,Gbagada,1411937769
+W528999510,Bola Arowolo,residential,false,0,7.5,false,false,false,0,180.5,Gbagada,528999510
+W222303781,Bola Sonoiki Avenue,residential,false,0,7.5,false,false,false,0,306.5,Gbagada,222303781
+W135178733,Bolajide Avenue,residential,false,0,7.5,false,false,false,0,284.0,Gbagada,135178733
+W134230141,Buari Street,residential,false,0,7.5,false,false,false,0,703.1,Gbagada,134230141
+W220332251,Buraimon Street,residential,false,0,7.5,false,false,false,0,243.5,Gbagada,220332251
+W16369525,Bush Street,residential,false,0,7.5,false,false,false,0,1024.6,Gbagada,16369525
+W226251832,Campground Road,residential,false,0,7.5,false,false,false,0,373.5,Gbagada,226251832
+W135176595,Church Street,residential,false,0,7.5,false,false,false,0,244.1,Gbagada,135176595
+W394119619,Church Street,residential,false,1,4.3,true,false,false,0,243.8,Gbagada,394119619
+W652902508,Church Street,residential,false,0,7.5,false,false,false,0,160.4,Gbagada,652902508
+W135176561,Community Street,residential,false,0,7.5,false,false,false,0,396.3,Gbagada,135176561
+W441901622,Dapo Adeoye Street,residential,false,0,7.5,false,false,false,0,636.8,Gbagada,441901622
+W964503127,David Shopeju street,residential,false,0,7.5,false,false,false,0,137.7,Gbagada,964503127
+W441918066,Deji Olamiju Street,residential,false,0,7.5,false,false,false,0,273.9,Gbagada,441918066
+W134221196,Diya Street,primary,false,0,17.5,false,false,false,0,327.5,Gbagada,134221196
+W134221198,Diya Street,secondary,false,0,13.0,false,true,false,0,424.4,Gbagada,134221198
+W134221207,Diya Street,secondary,false,0,13.0,false,false,false,0,194.8,Gbagada,134221207
+W134221211,Diya Street,primary,false,0,17.5,false,true,false,0,78.1,Gbagada,134221211
+W1460817656,Diya Street,secondary,false,0,13.0,true,false,false,0,509.7,Gbagada,1460817656
+W1460817657,Diya Street,primary,false,0,17.5,false,false,false,0,102.6,Gbagada,1460817657
+W528999513,Diya Street,secondary,false,0,13.0,true,false,false,0,511.9,Gbagada,528999513
+W588314500,Diya Street,primary,false,0,17.5,false,false,false,0,80.8,Gbagada,588314500
+W693550883,Diya Street,primary,false,0,17.5,false,false,false,0,124.0,Gbagada,693550883
+W94968528,Duro Cl,residential,false,0,7.5,false,false,false,0,114.0,Gbagada,94968528
+W370301926,Durosimi Street,residential,false,0,7.5,false,false,false,0,413.6,Gbagada,370301926
+W528999508,Ebinpejo Street,residential,false,0,7.5,false,false,false,0,598.4,Gbagada,528999508
+W226251923,Ebun Otti Estate,residential,false,0,7.5,false,false,false,0,315.1,Gbagada,226251923
+W94965123,Ebunolorun Street,residential,false,0,7.5,false,false,false,0,550.2,Gbagada,94965123
+W219516253,Emmanuel Road,residential,false,0,7.5,false,false,false,0,676.3,Gbagada,219516253
+W94891493,Emmanuel Street,residential,false,0,7.5,false,false,false,0,741.1,Gbagada,94891493
+W370306114,Estaport Avenue,residential,false,0,7.5,false,false,false,0,878.0,Gbagada,370306114
+W226251857,Esubiyi street,residential,false,0,7.5,false,false,false,0,156.6,Gbagada,226251857
+W134230107,Eyiaro Street,residential,false,0,7.5,false,false,false,0,262.8,Gbagada,134230107
+W94891480,Eyo Street,residential,false,0,7.5,false,false,false,0,490.5,Gbagada,94891480
+W94891542,Fadipe Street,residential,false,0,7.5,false,false,false,0,418.3,Gbagada,94891542
+W652827727,Farajoye Street,residential,false,0,7.5,false,false,false,0,477.0,Gbagada,652827727
+W219516259,Farayibi Street,residential,false,0,7.5,false,false,false,0,225.1,Gbagada,219516259
+W222628293,Femi Soluade Street,residential,false,0,7.5,false,false,false,0,271.6,Gbagada,222628293
+W219900875,Fetuga Street,residential,false,0,7.5,false,false,false,0,477.7,Gbagada,219900875
+W134221192,Finbarr road,primary,false,0,17.5,true,false,false,0,2835.8,Gbagada,134221192
+W1508800992,Finbarr road,primary,false,0,17.5,true,false,false,0,2837.5,Gbagada,1508800992
+W220465516,Fola Jinadu Crescent,residential,false,0,7.5,false,false,false,0,426.9,Gbagada,220465516
+W135176556,Francis Olatunji Street,residential,false,0,7.5,false,false,false,0,284.2,Gbagada,135176556
+W219055733,GGY Street,residential,false,0,7.5,false,false,false,0,657.5,Gbagada,219055733
+W134230149,Gafari Balogun Street,residential,false,0,7.5,false,false,false,0,247.8,Gbagada,134230149
+W528999503,Gbagada Road,residential,false,0,7.5,false,false,false,0,393.5,Gbagada,528999503
+W441901605,Gbala street,residential,false,0,7.5,false,false,false,0,280.8,Gbagada,441901605
+W652803430,Gbenga Shabi Street,residential,false,0,7.5,false,false,false,0,255.9,Gbagada,652803430
+W226251894,Grace Ntuko Street,residential,false,0,7.5,false,false,false,0,248.0,Gbagada,226251894
+W226379012,Hospital Road,residential,false,0,7.5,false,false,false,0,670.3,Gbagada,226379012
+W222628289,Hundeyin Street,residential,false,0,7.5,false,false,false,0,200.3,Gbagada,222628289
+W17066317,Ibadiaran Street,residential,false,0,7.5,false,false,false,0,568.5,Gbagada,17066317
+W226251835,Ibironke Crescent,residential,false,0,7.5,false,false,false,30,427.5,Gbagada,226251835
+W94891512,Ibiyemi Street,residential,false,0,7.5,false,false,false,0,211.3,Gbagada,94891512
+W652827722,Idera Street,residential,false,0,7.5,false,false,false,0,368.5,Gbagada,652827722
+W8064881,Idiroko Estate,residential,false,0,7.5,false,false,false,0,328.0,Gbagada,8064881
+W226251904,Idowu Ajao Street,residential,false,0,7.5,false,false,false,0,372.9,Gbagada,226251904
+W1411937773,Idowu Ajayi,residential,false,0,7.5,false,false,false,0,9.6,Gbagada,1411937773
+W1411937774,Idowu Ajayi,residential,false,0,7.5,false,false,false,0,10.1,Gbagada,1411937774
+W441903764,Idowu Ajayi,residential,false,0,7.5,false,false,false,0,204.2,Gbagada,441903764
+W135178767,Ifateludo Street,residential,false,0,7.5,false,false,false,0,352.6,Gbagada,135178767
+W219055669,Ifelodun Street,residential,false,0,7.5,false,false,false,0,534.4,Gbagada,219055669
+W94891536,Igbeyin Adun Street,residential,false,0,7.5,false,false,false,0,442.6,Gbagada,94891536
+W226251924,Igbile street,residential,false,0,7.5,false,false,false,0,189.9,Gbagada,226251924
+W219900877,Igbo Egunrin Street,residential,false,0,7.5,false,false,false,0,378.7,Gbagada,219900877
+W94965117,Igbo Egurin Street,residential,false,0,7.5,false,false,false,0,300.3,Gbagada,94965117
+W94891498,Ige Street,residential,false,0,7.5,false,false,false,0,126.8,Gbagada,94891498
+W525043232,Igi Olugbin Street,tertiary,false,0,10.0,false,false,false,0,492.3,Gbagada,525043232
+W525043230,Ijagbemi Street,residential,false,0,7.5,false,false,false,0,462.5,Gbagada,525043230
+W136432600,Ijaola Street,residential,false,0,7.5,false,false,false,0,739.4,Gbagada,136432600
+W653000748,Ikija Street,residential,false,0,7.5,false,false,false,0,108.1,Gbagada,653000748
+W1059940890,Ikorodu Road,primary,false,0,17.5,true,false,false,0,26.7,Gbagada,1059940890
+W1059940891,Ikorodu Road,primary,false,0,17.5,true,false,false,0,13.9,Gbagada,1059940891
+W133805242,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,5356.2,Gbagada,133805242
+W133870581,Ikorodu Road,primary,false,0,17.5,true,false,false,0,827.9,Gbagada,133870581
+W133876575,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,55.3,Gbagada,133876575
+W133876577,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,215.4,Gbagada,133876577
+W133876578,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,222.9,Gbagada,133876578
+W133876579,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,223.4,Gbagada,133876579
+W133876581,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,5361.5,Gbagada,133876581
+W133876582,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,55.5,Gbagada,133876582
+W133876585,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,217.9,Gbagada,133876585
+W133879436,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,578.1,Gbagada,133879436
+W133879446,Ikorodu Road,primary,false,0,17.5,true,false,false,0,3692.2,Gbagada,133879446
+W1420862255,Ikorodu Road,primary,false,0,17.5,true,false,false,0,821.2,Gbagada,1420862255
+W1567029718,Ikorodu Road,primary,false,0,17.5,true,false,false,0,1817.0,Gbagada,1567029718
+W215667101,Ikorodu Road,primary,false,0,17.5,true,false,false,0,5379.7,Gbagada,215667101
+W8064804,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,580.6,Gbagada,8064804
+W652827724,Ikumola Close,residential,false,0,7.5,false,false,false,0,342.8,Gbagada,652827724
+W441712352,Ilaka Street,residential,false,0,7.5,false,false,false,0,388.8,Gbagada,441712352
+W226251881,Ilesanmi Street,residential,false,0,7.5,false,false,false,0,351.3,Gbagada,226251881
+W11140724,Immanuel Street,residential,false,0,7.5,false,false,false,0,433.7,Gbagada,11140724
+W222628288,Ina Obasi Street,residential,false,0,7.5,false,false,false,0,411.2,Gbagada,222628288
+W340005244,Ireku Street,residential,false,0,7.5,false,false,false,0,291.9,Gbagada,340005244
+W134230156,Isaac Okomo Street,residential,false,0,7.5,false,false,false,0,660.0,Gbagada,134230156
+W133872493,Isijiola Street,residential,false,0,7.5,false,false,false,0,125.6,Gbagada,133872493
+W8064832,Iya Oloye Crescent,residential,false,0,7.5,false,false,false,0,373.4,Gbagada,8064832
+W441917973,Jacob Nwazota Street,residential,false,0,7.5,false,false,false,0,327.0,Gbagada,441917973
+W702363330,Jagun Molu St,primary,false,0,17.5,true,false,false,0,37.0,Gbagada,702363330
+W702363331,Jagun Molu St,primary,false,0,17.5,true,false,false,0,38.7,Gbagada,702363331
+W653000746,James Esu Street,residential,false,0,7.5,false,false,false,0,128.6,Gbagada,653000746
+W219055702,Jehovah Emmanuel Church Street,residential,false,0,7.5,false,false,false,0,295.7,Gbagada,219055702
+W219055753,Jide Street,residential,false,0,7.5,false,false,false,0,155.1,Gbagada,219055753
+W135178724,Jimoh Bajulaiye,residential,false,0,7.5,false,false,false,0,112.9,Gbagada,135178724
+W1509678500,Jimoh Bajulaiye,residential,false,0,7.5,false,false,false,0,74.4,Gbagada,1509678500
+W528999509,Johnson Oguntuyo Street,residential,false,0,7.5,false,false,false,0,289.6,Gbagada,528999509
+W441712347,Johnson Street,residential,false,0,7.5,false,false,false,0,398.0,Gbagada,441712347
+W226251858,Kajola street,residential,false,0,7.5,false,false,false,0,172.0,Gbagada,226251858
+W135178789,Kiniun-Ifa Street,residential,false,0,7.5,false,false,false,0,496.3,Gbagada,135178789
+W226251847,Kode Street,residential,false,0,7.5,false,false,false,0,176.2,Gbagada,226251847
+W1411937770,Kolade James Street,residential,false,0,7.5,false,false,false,0,11.8,Gbagada,1411937770
+W441900968,Kolade James Street,residential,false,0,7.5,false,false,false,0,462.5,Gbagada,441900968
+W94965115,Kusa Street,residential,false,0,7.5,false,false,false,0,506.4,Gbagada,94965115
+W220332234,Lanre Awolokun,residential,false,0,7.5,false,false,false,0,1155.1,Gbagada,220332234
+W135178770,Lateef Onigemo Street,residential,false,0,7.5,false,false,false,0,356.8,Gbagada,135178770
+W226251908,Lizzy Ogbe Street,residential,false,0,7.5,false,false,false,0,315.3,Gbagada,226251908
+W135176618,Lone Street,residential,false,0,7.5,false,false,false,0,473.3,Gbagada,135176618
+W134223843,Mabawonku Street,residential,false,0,7.5,false,false,false,0,224.4,Gbagada,134223843
+W220465502,Mabinuori Street,residential,false,0,7.5,false,false,false,0,446.2,Gbagada,220465502
+W441712365,Marconi Road,residential,false,0,7.5,false,false,false,0,292.9,Gbagada,441712365
+W23711275,Mende Road,residential,false,0,7.5,false,false,false,0,440.1,Gbagada,23711275
+W1383907292,Michael Okafors Close,residential,false,0,7.5,false,false,false,0,5.0,Gbagada,1383907292
+W226068934,Michael Okafors Close,residential,false,0,7.5,false,false,false,0,208.5,Gbagada,226068934
+W1557825749,Millenium Estate,tertiary,false,0,10.0,false,false,false,0,76.3,Gbagada,1557825749
+W226379049,Millenium Estate,tertiary,false,0,10.0,false,false,false,0,347.8,Gbagada,226379049
+W135176575,Miyaki Road,tertiary,false,0,10.0,false,false,false,0,365.8,Gbagada,135176575
+W652803431,Miyaki Road,tertiary,false,0,10.0,false,false,false,0,567.9,Gbagada,652803431
+W1059940892,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,42.4,Gbagada,1059940892
+W1059940893,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,44.0,Gbagada,1059940893
+W1059941003,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,1216.1,Gbagada,1059941003
+W828817900,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,1137.2,Gbagada,828817900
+W226251893,Mojola Street,residential,false,0,7.5,false,false,false,0,279.8,Gbagada,226251893
+W135178801,Moshalashi Street,residential,false,0,7.5,false,false,false,0,462.8,Gbagada,135178801
+W221600795,Muri Folami Street,residential,false,0,7.5,true,false,false,0,1365.0,Gbagada,221600795
+W219900852,Obanlearo St,residential,false,0,7.5,false,false,false,0,126.8,Gbagada,219900852
+W135178763,Obazur Street,residential,false,0,7.5,false,false,false,0,278.7,Gbagada,135178763
+W1510188792,Oduduwa,residential,false,0,7.5,false,true,false,0,9.8,Gbagada,1510188792
+W1510188793,Oduduwa,residential,false,0,7.5,false,false,false,0,326.5,Gbagada,1510188793
+W491576880,Oduduwa,residential,false,0,7.5,false,false,false,0,66.5,Gbagada,491576880
+W135176597,Odugbemi Street,residential,false,0,7.5,false,false,false,0,133.5,Gbagada,135176597
+W219900855,Odungunwa Street,residential,false,0,7.5,false,false,false,0,363.9,Gbagada,219900855
+W94891485,Odunlade Street,residential,false,0,7.5,false,false,false,0,444.9,Gbagada,94891485
+W219055706,Odunsi Street,residential,false,0,7.5,false,false,false,0,678.5,Gbagada,219055706
+W219055720,Odunsi Street,residential,false,0,7.5,false,false,false,0,207.4,Gbagada,219055720
+W653000747,Odunsi Street,residential,false,0,7.5,false,false,false,0,126.8,Gbagada,653000747
+W219900850,Oduse Street,residential,false,0,7.5,false,false,false,0,248.4,Gbagada,219900850
+W226251843,Ofo Street,residential,false,0,7.5,false,false,false,0,414.2,Gbagada,226251843
+W135176588,Ogo-oluwa Street,residential,false,0,7.5,false,false,false,0,486.0,Gbagada,135176588
+W394119617,Ogotun Close,residential,false,1,4.3,false,false,false,0,66.6,Gbagada,394119617
+W221600790,Ogudu Road,secondary,false,0,13.0,true,false,false,80,2575.3,Gbagada,221600790
+W221600798,Ogudu Road,secondary,false,0,13.0,true,false,false,0,2566.8,Gbagada,221600798
+W94968539,Ogunbadejo St,residential,false,1,4.3,true,false,false,40,200.7,Gbagada,94968539
+W94965145,Ogunbekun Street,residential,false,0,7.5,false,false,false,0,602.7,Gbagada,94965145
+W219900865,Ogunbule Street,residential,false,0,7.5,false,false,false,0,158.4,Gbagada,219900865
+W588852782,Ogundiaro Street,residential,false,0,7.5,false,false,false,0,160.1,Gbagada,588852782
+W441917970,Ogunjiri Street,residential,false,0,7.5,false,false,false,0,366.4,Gbagada,441917970
+W94965110,Ogunmefun Street,residential,false,0,7.5,false,false,false,0,369.6,Gbagada,94965110
+W1237939941,Ogunnaike St,residential,false,0,7.5,false,false,false,0,71.9,Gbagada,1237939941
+W94891520,Ogunnaike Street,residential,false,0,7.5,false,false,false,0,220.3,Gbagada,94891520
+W134223814,Ogunnioki Street,residential,false,0,7.5,false,false,false,0,364.7,Gbagada,134223814
+W10294869,Oguntolu Street,residential,false,0,7.5,false,false,false,0,105.1,Gbagada,10294869
+W828113425,Oguntolu Street,residential,false,0,7.5,true,false,false,0,81.1,Gbagada,828113425
+W828113426,Oguntolu Street,residential,false,0,7.5,false,false,false,0,477.9,Gbagada,828113426
+W220465491,Oguntona Street,residential,false,0,7.5,false,false,false,0,725.0,Gbagada,220465491
+W588317278,Ogunyomi,residential,false,0,7.5,false,false,false,0,170.7,Gbagada,588317278
+W135176600,Oja Oba Street,residential,false,0,7.5,false,false,false,0,468.5,Gbagada,135176600
+W219055726,Oja Oba Street,residential,false,0,7.5,false,false,false,0,127.8,Gbagada,219055726
+W135176557,Oja oba Street,residential,false,0,7.5,false,false,false,0,203.2,Gbagada,135176557
+W219055770,Ojekale St,residential,false,0,7.5,false,false,false,0,299.4,Gbagada,219055770
+W135178780,Okanlawon Street,residential,false,0,7.5,false,false,false,0,144.2,Gbagada,135178780
+W652902503,Oke Eri Street,residential,false,0,7.5,false,false,false,0,467.3,Gbagada,652902503
+W94965118,Oke Street,residential,false,0,7.5,false,false,false,0,336.0,Gbagada,94965118
+W135178726,Okeowo Street,residential,false,0,7.5,false,false,false,0,553.1,Gbagada,135178726
+W226251845,Oki Lane,residential,false,0,7.5,false,false,false,0,552.4,Gbagada,226251845
+W586759387,Oki Lane,residential,false,0,7.5,false,false,false,0,86.0,Gbagada,586759387
+W535263519,Okugade Okunneye Street,residential,false,0,7.5,false,false,false,0,684.2,Gbagada,535263519
+W94965112,Okuneye Avenue,residential,false,0,7.5,false,false,false,0,151.8,Gbagada,94965112
+W226068951,Okunfolami Street,residential,false,0,7.5,false,false,false,0,283.9,Gbagada,226068951
+W1517758037,Okunola Aina Street,residential,false,0,7.5,false,false,false,30,19.4,Gbagada,1517758037
+W226251906,Okunola Aina Street,residential,false,0,7.5,false,false,false,30,520.8,Gbagada,226251906
+W441918069,Ola Adebiyi Street,residential,false,0,7.5,false,false,false,0,121.4,Gbagada,441918069
+W461601173,Olabisi Close,residential,false,0,7.5,false,false,false,20,172.4,Gbagada,461601173
+W135176613,Olabode Aluko Street,residential,false,0,7.5,false,false,false,0,377.8,Gbagada,135176613
+W832184385,Olabode Aluko Street,residential,false,0,7.5,false,false,false,0,120.9,Gbagada,832184385
+W219055674,Olajide Street,residential,false,0,7.5,false,false,false,0,365.0,Gbagada,219055674
+W135178765,Olaleye Street,residential,false,0,7.5,false,false,false,0,673.7,Gbagada,135178765
+W407091050,Olaleye Street,residential,false,0,7.5,false,false,false,0,350.0,Gbagada,407091050
+W135176591,Olaolude Adekola Street,residential,false,0,7.5,false,false,false,0,277.3,Gbagada,135176591
+W1455138505,Olaperi Street,residential,false,0,7.5,false,false,false,0,47.4,Gbagada,1455138505
+W1230267157,Olasani Owoseje Street,residential,false,0,7.5,false,false,false,0,2.9,Gbagada,1230267157
+W1230267158,Olasani Owoseje Street,residential,false,0,7.5,false,true,false,0,4.4,Gbagada,1230267158
+W226251874,Olasani Owoseje Street,residential,false,0,7.5,false,false,false,0,278.8,Gbagada,226251874
+W136430376,Olatunbosun Street,residential,false,0,7.5,false,false,false,0,637.5,Gbagada,136430376
+W135178781,Olawale Dawodu Street,residential,false,0,7.5,false,false,false,0,492.6,Gbagada,135178781
+W652803429,Olayemi Ogunlana Street,residential,false,0,7.5,false,false,false,0,85.5,Gbagada,652803429
+W441901614,Olayinka Street,residential,false,0,7.5,false,false,false,0,607.3,Gbagada,441901614
+W134223840,Olayiwola Owoiya Street,residential,false,0,7.5,false,false,false,0,272.9,Gbagada,134223840
+W219516266,Olokodana Street,residential,false,0,7.5,false,false,false,0,189.7,Gbagada,219516266
+W220332235,Olokodana Street,residential,false,0,7.5,false,false,false,0,259.8,Gbagada,220332235
+W220332238,Olokodana Street,residential,false,0,7.5,false,true,false,0,13.0,Gbagada,220332238
+W226251879,Olori Adekemi Ajibola Street,residential,false,2,7.6,false,false,false,20,246.5,Gbagada,226251879
+W94965142,Olorunfunmi Street,residential,false,0,7.5,false,false,false,0,206.2,Gbagada,94965142
+W94968555,Olorunkemi Street,residential,false,0,7.5,false,false,false,0,852.5,Gbagada,94968555
+W94891491,Olorunsogo Street,residential,false,0,7.5,false,false,false,0,225.7,Gbagada,94891491
+W219055742,Oloruntoyin Street,residential,false,0,7.5,false,false,false,0,544.8,Gbagada,219055742
+W219055748,Olowolagba Street,residential,false,0,7.5,false,false,false,0,140.2,Gbagada,219055748
+W226251850,Olu Ogunyemi Road,residential,false,0,7.5,false,false,false,0,174.7,Gbagada,226251850
+W364595141,Olu Ogunyemi Road,residential,false,0,7.5,false,false,false,0,85.9,Gbagada,364595141
+W1026833419,Oludele Fakunle Street,residential,false,0,7.5,false,false,false,0,122.3,Gbagada,1026833419
+W226379031,Olufemi Apara Close,residential,false,0,7.5,false,false,false,0,173.7,Gbagada,226379031
+W134223834,Olufeyisan,residential,false,0,7.5,false,false,false,0,218.9,Gbagada,134223834
+W220465514,Olumoroti Jaiyesimi,residential,false,0,7.5,false,false,false,0,328.3,Gbagada,220465514
+W134223821,Olurunfunmi Street,residential,false,0,7.5,false,false,false,0,454.8,Gbagada,134223821
+W13644685,Olusoji Idowu Street,residential,false,0,7.5,false,false,false,0,833.2,Gbagada,13644685
+W219516272,Olusoji Street,residential,false,0,7.5,false,false,false,0,245.2,Gbagada,219516272
+W13656289,Olutanda Street,residential,false,0,7.5,false,false,false,0,391.1,Gbagada,13656289
+W1034474820,Oluwafere St,residential,false,0,7.5,false,false,false,0,183.5,Gbagada,1034474820
+W94965137,Oluwalogbon Street,residential,false,0,7.5,false,false,false,0,271.9,Gbagada,94965137
+W219055676,Oluwanisola,residential,false,0,7.5,false,false,false,0,333.9,Gbagada,219055676
+W844424506,Oluwaseun Street,residential,false,0,7.5,false,false,false,0,482.9,Gbagada,844424506
+W844424507,Oluwaseun Street,residential,false,0,7.5,false,true,false,0,9.2,Gbagada,844424507
+W1324288732,Oluwatoyin St,residential,false,0,7.5,false,false,false,0,65.5,Gbagada,1324288732
+W221886737,Omo Ighodalo Street,residential,false,0,7.5,false,false,false,0,820.7,Gbagada,221886737
+W94891502,Omoalade Alafia St,residential,false,0,7.5,false,false,false,0,436.3,Gbagada,94891502
+W135176610,Onabanjo Street,residential,false,0,7.5,false,false,false,0,86.1,Gbagada,135176610
+W832184384,Onabanjo Street,residential,false,0,7.5,true,false,false,0,167.4,Gbagada,832184384
+W94965138,Onabola Street,residential,false,0,7.5,false,false,false,0,299.4,Gbagada,94965138
+W135176571,Ondo Street,residential,false,0,7.5,false,false,false,0,287.1,Gbagada,135176571
+W525043229,Onisemo Street,tertiary,false,0,10.0,false,false,false,0,213.6,Gbagada,525043229
+W525043231,Onisemo Street,tertiary,false,0,10.0,false,false,false,0,392.2,Gbagada,525043231
+W528999507,Onisemo Street,tertiary,false,0,10.0,false,false,false,0,292.0,Gbagada,528999507
+W791933195,Onisemo Street,tertiary,false,0,10.0,false,true,false,0,11.8,Gbagada,791933195
+W791933196,Onisemo Street,tertiary,false,0,10.0,false,false,false,0,201.8,Gbagada,791933196
+W1372259606,Opeifa Crescent,residential,false,0,7.5,false,false,false,0,1.9,Gbagada,1372259606
+W1372259607,Opeifa Crescent,residential,false,0,7.5,false,true,false,0,3.5,Gbagada,1372259607
+W1383913256,Opeifa Crescent,residential,false,0,7.5,false,false,false,0,211.4,Gbagada,1383913256
+W226251888,Opeifa Crescent,residential,false,0,7.5,false,false,false,0,95.0,Gbagada,226251888
+W219055757,Opeloyeru Street,residential,false,0,7.5,false,false,false,0,384.2,Gbagada,219055757
+W441903761,Ora Ekpen,residential,false,0,7.5,false,false,false,0,310.9,Gbagada,441903761
+W23711217,Oremeji Street,residential,false,0,7.5,false,false,false,0,278.1,Gbagada,23711217
+W219900856,Oremerin Street,residential,false,2,7.6,false,false,false,10,168.3,Gbagada,219900856
+W94965107,Oshineye Street,residential,false,0,7.5,false,false,false,0,176.1,Gbagada,94965107
+W1240337428,Oshipitan Street,residential,false,0,7.5,false,false,false,0,156.8,Gbagada,1240337428
+W94965120,Oshipitan Street,residential,false,0,7.5,false,false,false,0,467.4,Gbagada,94965120
+W219055692,Ososa Avenue,residential,false,0,7.5,false,false,false,0,868.7,Gbagada,219055692
+W135176577,Ososa Street,residential,false,0,7.5,false,false,false,0,248.7,Gbagada,135176577
+W134223846,Otunba Bakare Avenue,residential,false,0,7.5,false,false,false,0,419.8,Gbagada,134223846
+W725848319,Otunba Sobowale Street,residential,false,0,7.5,false,false,false,0,677.8,Gbagada,725848319
+W725848320,Otunba Sobowale Street,residential,false,0,7.5,false,false,false,0,96.2,Gbagada,725848320
+W94968558,Owooso Street,residential,false,0,7.5,false,false,false,0,811.6,Gbagada,94968558
+W134223844,Oworo Road,tertiary,false,0,10.0,false,false,false,0,579.4,Gbagada,134223844
+W588314503,Oworo Road,tertiary,false,0,10.0,false,false,false,0,240.0,Gbagada,588314503
+W588314504,Oworo Road,tertiary,false,0,10.0,false,false,false,0,290.9,Gbagada,588314504
+W16369538,Oyedele Ogunniyi Street,residential,false,0,7.5,false,false,false,0,742.8,Gbagada,16369538
+W95045704,Oyefeso Avenue,residential,false,0,7.5,false,false,false,0,248.3,Gbagada,95045704
+W1324285068,Oyegunwa St,residential,false,0,7.5,false,false,false,0,134.0,Gbagada,1324285068
+W134223841,Oyenubi Street,residential,false,0,7.5,false,false,false,0,219.3,Gbagada,134223841
+W441860174,Oyewole Habeeb St,residential,false,0,7.5,false,false,false,0,361.0,Gbagada,441860174
+W135176596,Palace Way,residential,false,0,7.5,false,false,false,0,352.1,Gbagada,135176596
+W221886727,Pariola Street,residential,false,0,7.5,false,false,false,0,685.3,Gbagada,221886727
+W407091049,Party Street,residential,false,0,7.5,false,false,false,0,133.9,Gbagada,407091049
+W134223839,Peluola Street,residential,false,0,7.5,false,false,false,0,181.0,Gbagada,134223839
+W226251861,Peter Eruteya Street,residential,false,0,7.5,false,false,false,0,293.9,Gbagada,226251861
+W94965135,Popoola Street,residential,false,0,7.5,false,false,false,0,611.9,Gbagada,94965135
+W1383901244,Primate Adejobi Crescent,residential,false,0,7.5,false,false,false,0,217.7,Gbagada,1383901244
+W222303770,Ramat Crescent,residential,false,0,7.5,false,false,false,0,919.8,Gbagada,222303770
+W441901596,Ramotu Oluwakemi Street,residential,false,0,7.5,false,false,false,0,617.8,Gbagada,441901596
+W226379029,Redemption Crescent,tertiary,false,0,10.0,false,false,false,0,835.0,Gbagada,226379029
+W94891495,Rufai Street,residential,false,0,7.5,false,false,false,0,141.1,Gbagada,94891495
+W94968519,SOYINKA STREET,residential,false,0,7.5,false,false,false,0,160.4,Gbagada,94968519
+W222760398,Sadiku Street,residential,false,0,7.5,false,false,false,0,212.3,Gbagada,222760398
+W1409217885,Safuratu Sekoni Street,residential,false,0,7.5,true,false,false,0,217.1,Gbagada,1409217885
+W220332231,Safuratu Sekoni Street,residential,false,0,7.5,false,false,false,0,320.9,Gbagada,220332231
+W226068939,Saji Ayangade Street,residential,false,0,7.5,false,false,false,0,717.1,Gbagada,226068939
+W135176569,Salami Ogejo,residential,false,0,7.5,false,false,false,0,1258.4,Gbagada,135176569
+W1562995599,Salami Ogejo,residential,false,0,7.5,false,false,false,0,58.9,Gbagada,1562995599
+W1563002845,Salami Ogejo,residential,false,0,7.5,false,false,false,0,302.9,Gbagada,1563002845
+W94891516,Salami Shuaibu Street,tertiary,false,0,10.0,false,false,false,0,646.4,Gbagada,94891516
+W1465608823,Salami Street,residential,false,0,7.5,false,false,false,0,145.7,Gbagada,1465608823
+W221600797,Salaudeen Akano Street,residential,false,0,7.5,true,false,false,0,1359.1,Gbagada,221600797
+W226251901,Sanya Ogunbanjo Street,residential,false,0,7.5,false,false,false,0,200.8,Gbagada,226251901
+W95045696,Selesi Street,residential,false,0,7.5,false,false,false,0,174.4,Gbagada,95045696
+W219055678,Seriki Street,residential,false,0,7.5,false,false,false,0,303.1,Gbagada,219055678
+W10294873,Shipeolu Street,tertiary,false,0,10.0,false,false,false,0,1320.9,Gbagada,10294873
+W226251912,Shitta-bey Street,residential,false,0,7.5,false,false,false,0,356.2,Gbagada,226251912
+W528999504,Shittu Animashaun Street,residential,false,0,7.5,false,false,false,0,1076.7,Gbagada,528999504
+W370301918,Shodeke Street,residential,false,0,7.5,false,false,false,0,178.8,Gbagada,370301918
+W870597708,Shodimu Street,residential,false,0,7.5,false,true,false,0,65.1,Gbagada,870597708
+W94891483,Shodimu Street,residential,false,0,7.5,false,false,false,0,420.4,Gbagada,94891483
+W135176617,Shokoya Street,residential,false,0,7.5,false,false,false,0,158.6,Gbagada,135176617
+W136430398,Shonny Highway,residential,false,0,7.5,false,false,false,0,934.7,Gbagada,136430398
+W11102850,Shyllon Street,residential,false,0,7.5,false,false,false,0,408.2,Gbagada,11102850
+W226251838,Sobo Siffre Road,residential,false,0,7.5,false,false,false,0,389.4,Gbagada,226251838
+W94891514,Soji Oshodi St,residential,false,0,7.5,false,false,false,0,403.4,Gbagada,94891514
+W441917962,Solaru Street,residential,false,0,7.5,false,false,false,0,265.6,Gbagada,441917962
+W441917965,Sosanya Street,residential,false,0,7.5,false,false,false,0,430.6,Gbagada,441917965
+W588322386,Sunday Dejo Close,residential,false,0,7.5,false,false,false,0,71.6,Gbagada,588322386
+W1409217884,Sunday Ogunyade Street,residential,false,0,7.5,false,false,false,0,204.3,Gbagada,1409217884
+W220332230,Sunday Ogunyade Street,residential,false,0,7.5,true,false,false,0,219.6,Gbagada,220332230
+W226068918,Sunmola Street,tertiary,false,0,10.0,false,false,false,0,1272.7,Gbagada,226068918
+W226068948,Sunmola Street,tertiary,false,0,10.0,false,true,false,0,31.5,Gbagada,226068948
+W340005245,Surulere Street,residential,false,0,7.5,false,false,false,0,223.7,Gbagada,340005245
+W1560212597,Sylvia Crescent,residential,false,0,7.5,false,false,false,0,340.4,Gbagada,1560212597
+W1560212600,Sylvia Crescent,residential,false,0,7.5,false,false,false,0,133.8,Gbagada,1560212600
+W226068933,Sylvia Crescent,residential,false,0,7.5,false,false,false,0,212.6,Gbagada,226068933
+W135176582,Teledalase Street,residential,false,0,7.5,false,false,false,0,215.2,Gbagada,135176582
+W219516254,Temple Street,residential,false,0,7.5,false,false,false,0,182.8,Gbagada,219516254
+W134230098,Third Axial Road,motorway,false,0,24.0,true,false,false,0,707.8,Gbagada,134230098
+W134230112,Third Axial Road,motorway,false,0,24.0,true,false,false,0,1801.1,Gbagada,134230112
+W134230116,Third Axial Road,motorway,false,0,24.0,true,true,false,0,862.4,Gbagada,134230116
+W134230137,Third Axial Road,motorway,false,0,24.0,true,true,false,0,862.7,Gbagada,134230137
+W215492896,Third Axial Road,motorway,false,0,24.0,true,false,false,0,1884.6,Gbagada,215492896
+W221871382,Third Axial Road,motorway,false,0,24.0,true,false,false,0,693.9,Gbagada,221871382
+W134222253,Third Mainland Bridge,motorway,false,0,24.0,true,true,false,100,9501.6,Gbagada,134222253
+W93855614,Third Mainland Bridge,motorway,false,0,24.0,true,true,false,100,9497.9,Gbagada,93855614
+W16369576,Thomas Laniyan Street,residential,false,0,7.5,false,false,false,0,201.2,Gbagada,16369576
+W226251865,Tiamiyu Street,residential,false,0,7.5,false,false,false,30,205.0,Gbagada,226251865
+W219055695,Toluwalase Street,residential,false,0,7.5,false,false,false,0,119.1,Gbagada,219055695
+W441918063,Tony Enyinna Street,residential,false,0,7.5,false,false,false,0,226.2,Gbagada,441918063
+W1473521975,Town Planning Way,secondary,false,0,13.0,true,false,false,0,255.3,Gbagada,1473521975
+W589109948,Town Planning Way,secondary,false,0,13.0,true,false,false,0,254.8,Gbagada,589109948
+W441901603,Toyibat Yusuf Street,residential,false,0,7.5,false,false,false,0,552.3,Gbagada,441901603
+W136433548,Trailhead Pl.,residential,false,2,7.6,false,false,false,40,998.7,Gbagada,136433548
+W136433552,Trailhead Rd,residential,false,2,7.6,false,false,false,40,341.7,Gbagada,136433552
+W135178739,Tunde Hassan Street,residential,false,0,7.5,false,false,false,0,198.2,Gbagada,135178739
+W394119618,Uche Ezikoha Close,residential,false,0,7.5,false,false,false,0,62.3,Gbagada,394119618
+W135178778,Walter Sieffre Street,residential,false,0,7.5,false,false,false,50,703.3,Gbagada,135178778
+W219900863,Wemimo Street,residential,false,0,7.5,false,false,false,0,445.5,Gbagada,219900863
+W135176605,William Ayameh Street,residential,false,0,7.5,false,false,false,0,202.8,Gbagada,135176605
+W135178798,Williams Street,residential,false,0,7.5,false,false,false,0,712.6,Gbagada,135178798
+W364595140,Wilson Mba Street,residential,false,0,7.5,false,false,false,0,162.4,Gbagada,364595140
+W1383913252,Yemi Ogunniyi Street,residential,false,0,7.5,false,false,false,0,223.8,Gbagada,1383913252
+W1383913253,Yemi Ogunniyi Street,residential,false,0,7.5,false,false,false,0,10.3,Gbagada,1383913253
+W226251922,Yemi Ogunniyi Street,residential,false,0,7.5,false,false,false,0,67.4,Gbagada,226251922
+W586557449,Yemi Ogunniyi Street,service,false,0,5.0,false,false,false,0,133.0,Gbagada,586557449
+W135178776,Yetunde Brown,residential,false,2,7.6,false,false,false,0,556.4,Gbagada,135178776
+W441901600,Zainab Crescent,residential,false,0,7.5,false,false,false,0,884.5,Gbagada,441901600
+W1415615775,igbehin Adun Street,residential,false,0,7.5,false,false,false,0,55.9,Gbagada,1415615775
+W340005242,igbehin Adun Street,residential,false,0,7.5,false,false,false,0,199.2,Gbagada,340005242
+W135178754,kunle otukoya / banjoko street,residential,false,0,7.5,false,false,false,20,336.8,Gbagada,135178754
+W135176576,modina street,residential,false,0,7.5,false,false,false,0,174.8,Gbagada,135176576
+W1018708436,,service,false,0,5.0,false,false,false,0,35.2,Gbagada,1018708436
+W1018977838,,service,false,0,5.0,false,false,false,0,140.5,Gbagada,1018977838
+W1018977881,,service,false,0,5.0,false,false,false,0,233.3,Gbagada,1018977881
+W1019923002,,service,false,0,5.0,false,false,false,0,86.1,Gbagada,1019923002
+W1019923071,,service,false,0,5.0,false,false,false,0,35.9,Gbagada,1019923071
+W1019980408,,residential,false,0,7.5,false,false,false,0,161.4,Gbagada,1019980408
+W1019980514,,residential,false,0,7.5,false,false,false,0,57.3,Gbagada,1019980514
+W1019980658,,service,false,0,5.0,false,false,false,0,75.1,Gbagada,1019980658
+W1019980695,,service,false,0,5.0,false,false,false,0,55.4,Gbagada,1019980695
+W1019981155,,residential,false,0,7.5,false,false,false,0,66.1,Gbagada,1019981155
+W1019981612,,service,false,0,5.0,false,false,false,0,10.3,Gbagada,1019981612
+W1020472415,,residential,false,0,7.5,false,false,false,0,91.7,Gbagada,1020472415
+W1020472416,,service,false,0,5.0,false,false,false,0,74.5,Gbagada,1020472416
+W1034132991,,service,false,0,5.0,false,false,false,0,148.5,Gbagada,1034132991
+W1034373056,,service,false,0,5.0,false,false,false,0,44.5,Gbagada,1034373056
+W1034473544,,residential,false,0,7.5,false,false,false,0,106.2,Gbagada,1034473544
+W1034475552,,service,false,0,5.0,false,false,false,0,19.8,Gbagada,1034475552
+W1034475553,,service,false,0,5.0,false,false,false,0,55.8,Gbagada,1034475553
+W1034476667,,service,false,0,5.0,false,false,false,0,92.6,Gbagada,1034476667
+W1034477171,,service,false,0,5.0,false,false,false,0,52.8,Gbagada,1034477171
+W1034704790,,service,false,0,5.0,false,false,false,0,141.8,Gbagada,1034704790
+W1034707706,,service,false,0,5.0,false,false,false,0,246.7,Gbagada,1034707706
+W1034982742,,service,false,0,5.0,false,false,false,0,98.2,Gbagada,1034982742
+W1035022424,,service,false,0,5.0,false,false,false,0,61.3,Gbagada,1035022424
+W1035916391,,residential,false,0,7.5,false,false,false,0,113.8,Gbagada,1035916391
+W10561238,,tertiary,false,0,10.0,true,false,false,0,224.9,Gbagada,10561238
+W1063231829,,service,false,0,5.0,false,false,false,0,205.6,Gbagada,1063231829
+W1063233007,,service,false,0,5.0,false,false,false,0,78.6,Gbagada,1063233007
+W1064244171,,service,false,0,5.0,false,false,false,0,10.3,Gbagada,1064244171
+W1064244566,,service,false,0,5.0,false,false,false,0,66.0,Gbagada,1064244566
+W1064258155,,service,false,0,5.0,false,false,false,0,67.7,Gbagada,1064258155
+W1064271339,,service,false,0,5.0,false,false,false,0,69.8,Gbagada,1064271339
+W1064273530,,service,false,0,5.0,false,false,false,0,119.0,Gbagada,1064273530
+W1064280569,,service,false,0,5.0,false,false,false,0,44.6,Gbagada,1064280569
+W1064281140,,service,false,0,5.0,false,false,false,0,22.5,Gbagada,1064281140
+W1075089415,,motorway,true,0,7.5,true,false,false,0,20.8,Gbagada,1075089415
+W1077866419,,service,false,0,5.0,false,false,false,0,139.0,Gbagada,1077866419
+W1082831637,,service,false,0,5.0,false,false,false,0,170.0,Gbagada,1082831637
+W1082831919,,service,false,0,5.0,false,false,false,0,52.0,Gbagada,1082831919
+W1083109965,,service,false,0,5.0,true,false,false,0,106.6,Gbagada,1083109965
+W1085737912,,service,false,0,5.0,false,false,false,0,75.2,Gbagada,1085737912
+W1088384702,,service,false,0,5.0,false,false,false,0,54.8,Gbagada,1088384702
+W1096776837,,service,false,0,5.0,false,false,false,0,172.0,Gbagada,1096776837
+W1096876244,,service,false,0,5.0,false,false,false,0,49.4,Gbagada,1096876244
+W1096886128,,service,false,0,5.0,false,false,false,0,31.7,Gbagada,1096886128
+W1097170119,,service,false,0,5.0,false,false,false,0,37.5,Gbagada,1097170119
+W1097862138,,service,false,0,5.0,false,false,false,0,120.2,Gbagada,1097862138
+W1097862139,,service,false,0,5.0,false,false,false,0,141.7,Gbagada,1097862139
+W1099969854,,residential,false,0,7.5,false,false,false,0,117.1,Gbagada,1099969854
+W1102518715,,service,false,0,5.0,false,false,false,0,60.3,Gbagada,1102518715
+W1102518716,,service,false,0,5.0,false,false,false,0,37.0,Gbagada,1102518716
+W1102518717,,service,false,0,5.0,false,false,false,0,19.2,Gbagada,1102518717
+W1102518718,,service,false,0,5.0,false,false,false,0,73.0,Gbagada,1102518718
+W1102518719,,service,false,0,5.0,false,false,false,0,30.7,Gbagada,1102518719
+W1111885761,,service,false,0,5.0,false,false,false,0,94.5,Gbagada,1111885761
+W1111947013,,residential,false,0,7.5,false,false,false,0,40.9,Gbagada,1111947013
+W1111950307,,residential,false,0,7.5,false,false,false,0,50.2,Gbagada,1111950307
+W1111953748,,service,false,0,5.0,false,false,false,0,105.7,Gbagada,1111953748
+W1112201369,,residential,false,0,7.5,false,false,false,0,70.1,Gbagada,1112201369
+W1130838251,,service,false,0,5.0,true,false,false,0,84.2,Gbagada,1130838251
+W1130838255,,service,false,0,5.0,true,false,false,0,103.3,Gbagada,1130838255
+W1130838256,,service,false,0,5.0,false,false,false,0,40.1,Gbagada,1130838256
+W1130838257,,residential,false,0,7.5,false,false,false,0,96.7,Gbagada,1130838257
+W1130838258,,residential,false,0,7.5,false,false,false,0,255.2,Gbagada,1130838258
+W1133360275,,service,false,0,5.0,false,false,false,0,76.4,Gbagada,1133360275
+W1134423509,,service,false,0,5.0,false,false,false,0,68.7,Gbagada,1134423509
+W1134423512,,service,false,0,5.0,false,false,false,0,72.4,Gbagada,1134423512
+W1134423513,,service,false,0,5.0,false,false,false,0,34.7,Gbagada,1134423513
+W1134423514,,service,false,0,5.0,false,false,false,0,21.4,Gbagada,1134423514
+W1134423515,,service,false,0,5.0,false,false,false,0,11.9,Gbagada,1134423515
+W1136013144,,residential,false,0,7.5,false,false,false,0,45.5,Gbagada,1136013144
+W1136371672,,residential,false,0,7.5,false,false,false,0,84.3,Gbagada,1136371672
+W1136371674,,residential,false,0,7.5,false,false,false,0,116.7,Gbagada,1136371674
+W1136371675,,service,false,0,5.0,false,false,false,0,164.0,Gbagada,1136371675
+W1136374771,,residential,false,0,7.5,false,false,false,0,47.5,Gbagada,1136374771
+W1136374772,,service,false,0,5.0,false,false,false,0,81.8,Gbagada,1136374772
+W1136374773,,service,false,0,5.0,false,false,false,0,39.6,Gbagada,1136374773
+W1136376332,,service,false,0,5.0,false,false,false,0,5.3,Gbagada,1136376332
+W1136376333,,residential,false,0,7.5,false,false,false,0,114.2,Gbagada,1136376333
+W1136376334,,residential,false,0,7.5,false,false,false,0,105.9,Gbagada,1136376334
+W1144644741,,service,false,0,5.0,false,false,false,0,128.5,Gbagada,1144644741
+W1144644742,,residential,false,0,7.5,false,false,false,0,106.0,Gbagada,1144644742
+W1148719836,,residential,false,0,7.5,false,false,false,0,43.9,Gbagada,1148719836
+W1164075932,,service,false,0,5.0,false,false,false,0,39.5,Gbagada,1164075932
+W1165344441,,service,false,0,5.0,false,false,false,0,50.9,Gbagada,1165344441
+W1166264685,,service,false,0,5.0,false,false,false,0,95.3,Gbagada,1166264685
+W1166264686,,service,false,0,5.0,false,false,false,0,40.0,Gbagada,1166264686
+W1166264687,,service,false,0,5.0,false,false,false,0,78.5,Gbagada,1166264687
+W1167892142,,service,false,0,5.0,false,false,false,0,47.2,Gbagada,1167892142
+W1171880899,,residential,false,0,7.5,false,false,false,0,89.1,Gbagada,1171880899
+W1171880900,,residential,false,0,7.5,false,false,false,0,1680.4,Gbagada,1171880900
+W1175612767,,residential,false,0,7.5,false,false,false,0,45.1,Gbagada,1175612767
+W1175616986,,service,false,0,5.0,false,false,false,0,167.0,Gbagada,1175616986
+W1175616987,,service,false,0,5.0,false,false,false,0,86.8,Gbagada,1175616987
+W1175616988,,service,false,0,5.0,false,false,false,0,79.8,Gbagada,1175616988
+W1175625937,,service,false,0,5.0,false,false,false,0,47.4,Gbagada,1175625937
+W1175625938,,service,false,0,5.0,false,false,false,0,86.2,Gbagada,1175625938
+W1175625939,,service,false,0,5.0,false,false,false,0,35.8,Gbagada,1175625939
+W1175625940,,service,false,0,5.0,false,false,false,0,36.1,Gbagada,1175625940
+W1175629732,,service,false,0,5.0,false,false,false,0,67.2,Gbagada,1175629732
+W1175629734,,service,false,0,5.0,false,false,false,0,164.6,Gbagada,1175629734
+W1175629735,,service,false,0,5.0,false,false,false,0,13.3,Gbagada,1175629735
+W1175629737,,service,false,0,5.0,false,false,false,0,87.6,Gbagada,1175629737
+W1175629738,,service,false,0,5.0,false,false,false,0,29.2,Gbagada,1175629738
+W1175632665,,unclassified,false,0,7.5,false,false,false,0,96.9,Gbagada,1175632665
+W1177474062,,residential,false,0,7.5,false,false,false,0,50.5,Gbagada,1177474062
+W1177474063,,service,false,0,5.0,false,false,false,0,55.7,Gbagada,1177474063
+W1179641990,,service,false,0,5.0,false,false,false,0,49.2,Gbagada,1179641990
+W1183326402,,service,false,0,5.0,false,false,false,0,43.4,Gbagada,1183326402
+W1183326403,,service,false,0,5.0,false,false,false,0,37.6,Gbagada,1183326403
+W1183326404,,service,false,0,5.0,false,false,false,0,67.3,Gbagada,1183326404
+W1183326405,,service,false,0,5.0,false,false,false,0,11.2,Gbagada,1183326405
+W1183326406,,service,false,0,5.0,false,false,false,0,18.2,Gbagada,1183326406
+W1183326407,,service,false,0,5.0,false,false,false,0,20.5,Gbagada,1183326407
+W1183326408,,service,false,0,5.0,false,false,false,0,41.6,Gbagada,1183326408
+W1183606822,,service,false,0,5.0,true,false,false,0,57.7,Gbagada,1183606822
+W1183606823,,service,false,0,5.0,true,false,false,0,101.0,Gbagada,1183606823
+W1184101678,,residential,false,0,7.5,false,false,false,0,139.6,Gbagada,1184101678
+W1187985507,,service,false,0,5.0,false,false,false,0,39.8,Gbagada,1187985507
+W1187985508,,service,false,0,5.0,false,false,false,0,22.6,Gbagada,1187985508
+W1187985509,,service,false,0,5.0,false,false,false,0,38.9,Gbagada,1187985509
+W1187985510,,service,false,0,5.0,false,false,false,0,49.4,Gbagada,1187985510
+W1190303319,,service,false,0,5.0,false,false,false,0,82.6,Gbagada,1190303319
+W1190303320,,service,false,0,5.0,false,false,false,0,115.2,Gbagada,1190303320
+W1190303321,,service,false,0,5.0,false,false,false,0,48.9,Gbagada,1190303321
+W1190303322,,service,false,0,5.0,false,false,false,0,125.2,Gbagada,1190303322
+W1192221078,,service,false,0,5.0,false,false,false,0,31.9,Gbagada,1192221078
+W1192221079,,service,false,0,5.0,false,false,false,0,32.7,Gbagada,1192221079
+W1192221080,,service,false,0,5.0,false,false,false,0,39.3,Gbagada,1192221080
+W1192221081,,service,false,0,5.0,false,false,false,0,91.7,Gbagada,1192221081
+W1225339636,,service,false,0,5.0,false,false,false,0,25.3,Gbagada,1225339636
+W1225339637,,service,false,0,5.0,false,false,false,0,10.9,Gbagada,1225339637
+W1225339638,,residential,false,0,7.5,false,false,false,0,41.3,Gbagada,1225339638
+W1225339639,,service,false,0,5.0,false,false,false,0,26.8,Gbagada,1225339639
+W1225339640,,residential,false,0,7.5,false,false,false,0,62.0,Gbagada,1225339640
+W1225339641,,residential,false,0,7.5,false,false,false,0,82.8,Gbagada,1225339641
+W1225342268,,residential,false,0,7.5,false,false,false,0,41.5,Gbagada,1225342268
+W1225342274,,residential,false,0,7.5,false,false,false,0,54.6,Gbagada,1225342274
+W1225611516,,residential,false,0,7.5,false,false,false,0,126.4,Gbagada,1225611516
+W1227260209,,service,false,0,5.0,false,false,false,0,53.0,Gbagada,1227260209
+W1228756888,,residential,false,0,7.5,false,false,false,0,85.1,Gbagada,1228756888
+W1229010119,,service,false,0,5.0,false,false,false,0,50.5,Gbagada,1229010119
+W1229010120,,service,false,0,5.0,false,false,false,0,109.9,Gbagada,1229010120
+W1229212648,,residential,false,0,7.5,false,false,false,0,102.1,Gbagada,1229212648
+W1229223902,,service,false,0,5.0,false,false,false,0,75.0,Gbagada,1229223902
+W1229223903,,service,false,0,5.0,false,false,false,0,87.3,Gbagada,1229223903
+W1230267161,,residential,false,0,7.5,false,false,false,0,230.6,Gbagada,1230267161
+W1234496987,,residential,false,0,7.5,false,false,false,0,85.2,Gbagada,1234496987
+W1237209744,,service,false,0,5.0,false,false,false,0,38.3,Gbagada,1237209744
+W1240909691,,residential,false,0,7.5,false,false,false,0,103.0,Gbagada,1240909691
+W1240909692,,residential,false,0,7.5,false,false,false,0,94.9,Gbagada,1240909692
+W1256025307,,service,false,0,5.0,false,false,false,0,8.6,Gbagada,1256025307
+W1256025308,,service,false,0,5.0,false,false,false,0,12.7,Gbagada,1256025308
+W1256493577,,residential,false,0,7.5,false,false,false,0,37.6,Gbagada,1256493577
+W1265490376,,residential,false,0,7.5,false,false,false,0,55.4,Gbagada,1265490376
+W1307456194,,residential,false,0,7.5,false,false,false,0,61.9,Gbagada,1307456194
+W1314558884,,service,false,0,5.0,false,false,false,0,49.7,Gbagada,1314558884
+W1315927278,,residential,false,0,7.5,false,false,false,0,322.6,Gbagada,1315927278
+W1315927279,,residential,false,0,7.5,false,false,false,0,36.0,Gbagada,1315927279
+W1316461121,,residential,false,0,7.5,false,false,false,0,42.0,Gbagada,1316461121
+W1316461122,,residential,false,0,7.5,false,false,false,0,107.2,Gbagada,1316461122
+W1321849363,,residential,false,0,7.5,false,false,false,0,52.7,Gbagada,1321849363
+W133872483,,motorway,true,0,7.5,true,false,false,0,87.6,Gbagada,133872483
+W133872486,,motorway,true,0,7.5,true,false,false,0,148.6,Gbagada,133872486
+W133872487,,motorway,true,0,7.5,true,false,false,0,54.2,Gbagada,133872487
+W133872490,,service,false,0,5.0,true,false,false,0,289.0,Gbagada,133872490
+W133872494,,motorway,true,0,7.5,true,false,false,0,151.0,Gbagada,133872494
+W133872497,,tertiary,false,1,4.3,false,false,false,0,497.7,Gbagada,133872497
+W133872498,,motorway,true,0,7.5,true,false,false,0,62.6,Gbagada,133872498
+W133872500,,motorway,true,0,7.5,true,false,false,0,22.4,Gbagada,133872500
+W133875220,,residential,false,0,7.5,false,false,false,0,354.9,Gbagada,133875220
+W133875221,,motorway,true,0,7.5,true,false,false,0,77.9,Gbagada,133875221
+W133875224,,motorway,true,0,7.5,true,false,false,0,59.7,Gbagada,133875224
+W133875228,,motorway,true,0,7.5,true,false,false,0,49.3,Gbagada,133875228
+W133875230,,motorway,true,0,7.5,true,false,false,0,88.2,Gbagada,133875230
+W133875233,,motorway,true,0,7.5,true,false,false,0,79.1,Gbagada,133875233
+W133875238,,motorway,true,0,7.5,true,false,false,0,137.6,Gbagada,133875238
+W133875241,,motorway,true,0,7.5,true,false,false,0,55.7,Gbagada,133875241
+W133875242,,motorway,true,0,7.5,true,false,false,0,144.1,Gbagada,133875242
+W133875253,,motorway,true,0,7.5,true,false,false,0,62.1,Gbagada,133875253
+W133875254,,motorway,true,0,7.5,true,false,false,0,235.0,Gbagada,133875254
+W133875257,,motorway,true,0,7.5,true,false,false,0,77.3,Gbagada,133875257
+W133875265,,motorway,true,0,7.5,true,false,false,0,65.2,Gbagada,133875265
+W133875266,,motorway,true,0,7.5,true,false,false,0,69.8,Gbagada,133875266
+W133876576,,motorway,true,0,7.5,true,false,false,0,49.4,Gbagada,133876576
+W133876583,,motorway,true,0,7.5,true,false,false,0,69.3,Gbagada,133876583
+W133879425,,primary,true,0,7.5,true,false,false,0,55.5,Gbagada,133879425
+W133879431,,primary,true,0,7.5,true,false,false,0,56.6,Gbagada,133879431
+W133879435,,motorway,true,0,7.5,true,false,false,0,31.5,Gbagada,133879435
+W133879441,,motorway,true,0,7.5,true,false,false,0,43.9,Gbagada,133879441
+W133879445,,primary,true,0,7.5,true,false,false,0,48.2,Gbagada,133879445
+W133879452,,primary,true,0,7.5,true,false,false,0,59.3,Gbagada,133879452
+W1340076822,,service,false,0,5.0,false,false,false,0,49.5,Gbagada,1340076822
+W1340076823,,residential,false,0,7.5,false,false,false,0,70.5,Gbagada,1340076823
+W1340076824,,residential,false,0,7.5,false,false,false,0,238.9,Gbagada,1340076824
+W134221191,,motorway,false,0,24.0,true,false,false,0,56.5,Gbagada,134221191
+W134221193,,primary,true,0,7.5,true,true,false,0,84.8,Gbagada,134221193
+W134221194,,motorway,true,0,7.5,true,false,false,0,200.6,Gbagada,134221194
+W134221195,,primary,true,0,7.5,true,false,false,0,176.2,Gbagada,134221195
+W134221197,,motorway,true,0,7.5,true,false,false,0,54.8,Gbagada,134221197
+W134221199,,motorway,true,0,7.5,true,false,false,0,66.3,Gbagada,134221199
+W134221200,,motorway,true,0,7.5,true,false,false,0,55.2,Gbagada,134221200
+W134221201,,motorway,true,0,7.5,true,false,false,0,226.9,Gbagada,134221201
+W134221203,,primary,true,0,7.5,true,false,false,0,66.4,Gbagada,134221203
+W134221204,,primary,false,0,17.5,false,false,false,0,66.9,Gbagada,134221204
+W134221205,,primary,false,0,17.5,false,false,false,0,86.3,Gbagada,134221205
+W134221206,,motorway,true,0,7.5,true,false,false,0,72.9,Gbagada,134221206
+W134221208,,motorway,true,0,7.5,true,false,false,0,59.1,Gbagada,134221208
+W134221210,,motorway,true,0,7.5,true,false,false,0,50.0,Gbagada,134221210
+W134221212,,motorway,true,0,7.5,true,false,false,0,59.3,Gbagada,134221212
+W134222236,,motorway,true,0,7.5,true,false,false,0,59.7,Gbagada,134222236
+W134222242,,motorway,true,0,7.5,true,false,false,0,286.4,Gbagada,134222242
+W134222244,,motorway,true,0,7.5,true,false,false,0,89.1,Gbagada,134222244
+W134222246,,motorway,true,0,7.5,true,false,false,0,105.6,Gbagada,134222246
+W134222247,,motorway,true,0,7.5,true,true,false,0,207.7,Gbagada,134222247
+W134222248,,motorway,true,0,7.5,true,false,false,0,141.5,Gbagada,134222248
+W134222249,,motorway,true,0,7.5,true,false,false,0,195.9,Gbagada,134222249
+W134222251,,motorway,true,0,7.5,true,true,false,0,93.4,Gbagada,134222251
+W134222252,,motorway,true,0,7.5,true,false,false,0,81.0,Gbagada,134222252
+W134222254,,motorway,true,0,7.5,true,true,false,0,51.5,Gbagada,134222254
+W134222255,,motorway,false,0,24.0,true,false,false,0,304.8,Gbagada,134222255
+W134222256,,motorway,true,0,7.5,true,false,false,0,312.3,Gbagada,134222256
+W134222257,,motorway,true,0,7.5,true,false,false,0,41.9,Gbagada,134222257
+W134222260,,motorway,true,0,7.5,true,false,false,0,102.2,Gbagada,134222260
+W134222261,,motorway,true,0,7.5,true,false,false,0,87.7,Gbagada,134222261
+W134222262,,motorway,true,0,7.5,true,true,false,0,125.1,Gbagada,134222262
+W134222263,,motorway,true,0,7.5,true,true,false,0,321.8,Gbagada,134222263
+W134222265,,motorway,true,0,7.5,true,true,false,0,377.2,Gbagada,134222265
+W134223813,,residential,false,0,7.5,false,false,false,0,271.3,Gbagada,134223813
+W134223815,,residential,false,0,7.5,false,false,false,0,108.0,Gbagada,134223815
+W134223817,,residential,false,0,7.5,false,true,false,0,8.9,Gbagada,134223817
+W134223819,,residential,false,0,7.5,false,false,false,0,155.8,Gbagada,134223819
+W134223822,,residential,false,0,7.5,false,false,false,0,409.9,Gbagada,134223822
+W134223824,,residential,false,0,7.5,false,false,false,0,178.0,Gbagada,134223824
+W134223825,,residential,false,0,7.5,false,false,false,0,115.3,Gbagada,134223825
+W134223826,,residential,false,0,7.5,false,false,false,0,261.4,Gbagada,134223826
+W134223828,,residential,false,0,7.5,false,false,false,0,304.0,Gbagada,134223828
+W134223831,,residential,false,0,7.5,false,false,false,0,126.9,Gbagada,134223831
+W134223833,,residential,false,0,7.5,false,false,false,0,184.3,Gbagada,134223833
+W134223836,,residential,false,0,7.5,false,false,false,0,203.6,Gbagada,134223836
+W134223837,,residential,false,0,7.5,false,false,false,0,251.8,Gbagada,134223837
+W134223838,,residential,false,0,7.5,false,false,false,0,260.7,Gbagada,134223838
+W134223842,,residential,false,0,7.5,false,false,false,0,167.3,Gbagada,134223842
+W134230083,,residential,false,0,7.5,false,false,false,0,468.2,Gbagada,134230083
+W134230091,,residential,false,0,7.5,false,false,false,0,127.0,Gbagada,134230091
+W134230092,,tertiary,false,0,10.0,true,false,false,0,265.4,Gbagada,134230092
+W134230095,,residential,false,0,7.5,false,false,false,0,286.8,Gbagada,134230095
+W134230119,,residential,false,0,7.5,false,false,false,0,111.8,Gbagada,134230119
+W134230120,,residential,false,0,7.5,false,false,false,0,76.8,Gbagada,134230120
+W134230122,,tertiary,false,0,10.0,true,false,false,0,38.0,Gbagada,134230122
+W134230124,,tertiary,false,0,10.0,true,false,false,0,352.1,Gbagada,134230124
+W134230127,,residential,false,0,7.5,false,false,false,0,93.7,Gbagada,134230127
+W134230128,,residential,false,0,7.5,false,false,false,0,409.6,Gbagada,134230128
+W134230134,,residential,false,0,7.5,false,false,false,0,209.3,Gbagada,134230134
+W134230135,,residential,false,0,7.5,false,false,false,0,127.1,Gbagada,134230135
+W134230148,,residential,false,0,7.5,false,false,false,0,89.9,Gbagada,134230148
+W134230150,,tertiary,false,0,10.0,true,false,false,0,34.3,Gbagada,134230150
+W1343965577,,residential,false,0,7.5,false,false,false,0,324.2,Gbagada,1343965577
+W1343965578,,residential,false,0,7.5,false,true,false,0,24.5,Gbagada,1343965578
+W1343965579,,residential,false,0,7.5,false,false,false,0,444.0,Gbagada,1343965579
+W135176555,,residential,false,0,7.5,false,false,false,0,229.4,Gbagada,135176555
+W135176559,,residential,false,0,7.5,false,true,false,0,8.5,Gbagada,135176559
+W135176560,,residential,false,0,7.5,false,false,false,0,113.9,Gbagada,135176560
+W135176563,,residential,false,0,7.5,false,false,false,0,131.3,Gbagada,135176563
+W135176572,,residential,false,0,7.5,false,false,false,0,204.3,Gbagada,135176572
+W135176573,,residential,false,0,7.5,false,false,false,0,143.8,Gbagada,135176573
+W135176574,,residential,false,0,7.5,false,false,false,0,125.9,Gbagada,135176574
+W135176578,,residential,false,0,7.5,false,false,false,0,217.7,Gbagada,135176578
+W135176583,,residential,false,0,7.5,false,false,false,0,54.9,Gbagada,135176583
+W135176584,,residential,false,0,7.5,false,false,false,0,212.3,Gbagada,135176584
+W135176585,,residential,false,0,7.5,false,false,false,0,102.6,Gbagada,135176585
+W135176589,,residential,false,0,7.5,false,false,false,0,167.8,Gbagada,135176589
+W135176592,,residential,false,0,7.5,false,false,false,0,217.6,Gbagada,135176592
+W135176598,,residential,false,0,7.5,false,false,false,0,67.3,Gbagada,135176598
+W135176609,,residential,false,0,7.5,false,false,false,0,158.5,Gbagada,135176609
+W135176611,,residential,false,0,7.5,false,false,false,0,131.8,Gbagada,135176611
+W135176614,,residential,false,0,7.5,false,false,false,0,160.1,Gbagada,135176614
+W135176616,,residential,false,0,7.5,false,false,false,0,85.9,Gbagada,135176616
+W135178727,,residential,false,0,7.5,false,false,false,0,304.7,Gbagada,135178727
+W135178730,,residential,false,0,7.5,false,false,false,0,153.2,Gbagada,135178730
+W135178732,,residential,false,0,7.5,false,false,false,0,245.8,Gbagada,135178732
+W135178737,,residential,false,0,7.5,false,false,false,0,332.5,Gbagada,135178737
+W135178741,,residential,false,0,7.5,false,false,false,0,140.0,Gbagada,135178741
+W135178742,,residential,false,0,7.5,false,false,false,0,697.3,Gbagada,135178742
+W135178747,,residential,false,0,7.5,false,false,false,0,112.9,Gbagada,135178747
+W135178749,,residential,false,0,7.5,false,false,false,0,73.1,Gbagada,135178749
+W135178750,,residential,false,0,7.5,false,false,false,0,131.3,Gbagada,135178750
+W135178751,,residential,false,0,7.5,false,false,false,0,362.1,Gbagada,135178751
+W135178753,,residential,false,0,7.5,false,false,false,0,294.6,Gbagada,135178753
+W135178757,,residential,false,0,7.5,false,false,false,0,320.7,Gbagada,135178757
+W135178761,,residential,false,0,7.5,false,false,false,0,232.1,Gbagada,135178761
+W135178769,,residential,false,0,7.5,false,false,false,0,89.4,Gbagada,135178769
+W135178771,,residential,false,0,7.5,false,false,false,0,447.9,Gbagada,135178771
+W135178773,,residential,false,0,7.5,false,false,false,0,196.5,Gbagada,135178773
+W135178774,,residential,false,0,7.5,false,false,false,0,589.0,Gbagada,135178774
+W135178775,,residential,false,0,7.5,false,false,false,0,118.3,Gbagada,135178775
+W135178777,,residential,false,0,7.5,false,false,false,0,477.0,Gbagada,135178777
+W135178783,,residential,false,0,7.5,true,false,false,0,74.4,Gbagada,135178783
+W135178786,,residential,false,0,7.5,false,false,false,0,319.5,Gbagada,135178786
+W135178787,,residential,false,0,7.5,false,false,false,0,363.3,Gbagada,135178787
+W135178792,,residential,false,0,7.5,false,false,false,0,109.2,Gbagada,135178792
+W135178793,,residential,false,0,7.5,false,false,false,0,70.5,Gbagada,135178793
+W135178794,,residential,false,0,7.5,false,false,false,0,610.5,Gbagada,135178794
+W135178795,,residential,false,0,7.5,false,false,false,0,83.6,Gbagada,135178795
+W135178796,,residential,false,0,7.5,false,false,false,0,268.3,Gbagada,135178796
+W135178799,,residential,false,0,7.5,false,false,false,0,366.4,Gbagada,135178799
+W135178800,,residential,false,0,7.5,false,false,false,0,423.1,Gbagada,135178800
+W135178803,,residential,false,0,7.5,false,false,false,0,147.8,Gbagada,135178803
+W135178804,,residential,false,0,7.5,false,false,false,0,292.8,Gbagada,135178804
+W135178806,,residential,false,0,7.5,false,false,false,0,207.6,Gbagada,135178806
+W135178807,,residential,false,0,7.5,false,false,false,0,105.5,Gbagada,135178807
+W135178808,,residential,false,0,7.5,false,false,false,0,182.6,Gbagada,135178808
+W1351975516,,service,false,0,5.0,false,false,false,0,55.6,Gbagada,1351975516
+W1351975517,,residential,false,0,7.5,false,false,false,0,68.3,Gbagada,1351975517
+W1357797318,,service,false,0,5.0,false,false,false,0,47.9,Gbagada,1357797318
+W1357797319,,service,false,0,5.0,false,false,false,0,85.0,Gbagada,1357797319
+W1357797320,,service,false,0,5.0,false,false,false,0,47.4,Gbagada,1357797320
+W1359113833,,service,false,0,5.0,false,false,false,0,30.4,Gbagada,1359113833
+W1364259926,,residential,false,0,7.5,false,false,false,0,161.6,Gbagada,1364259926
+W136432594,,residential,false,0,7.5,false,false,false,0,124.3,Gbagada,136432594
+W136433555,,residential,false,0,7.5,false,false,false,0,149.9,Gbagada,136433555
+W136433565,,residential,false,0,7.5,false,false,false,0,110.1,Gbagada,136433565
+W136433573,,residential,false,0,7.5,false,false,false,0,194.2,Gbagada,136433573
+W136433580,,residential,false,0,7.5,false,false,false,0,52.0,Gbagada,136433580
+W1364704583,,service,false,0,5.0,false,false,false,0,17.2,Gbagada,1364704583
+W1364704584,,service,false,0,5.0,false,false,false,0,66.4,Gbagada,1364704584
+W1367075093,,service,false,0,5.0,false,false,false,0,31.9,Gbagada,1367075093
+W1368649755,,service,false,0,5.0,false,false,false,0,41.0,Gbagada,1368649755
+W1369154973,,service,false,0,5.0,false,false,false,0,34.0,Gbagada,1369154973
+W1369154974,,service,false,0,5.0,false,false,false,0,147.4,Gbagada,1369154974
+W1369425243,,service,false,0,5.0,false,false,false,0,43.7,Gbagada,1369425243
+W1371016511,,residential,false,0,7.5,false,false,false,0,250.8,Gbagada,1371016511
+W1371016675,,service,false,0,5.0,false,false,false,0,68.3,Gbagada,1371016675
+W1372250964,,residential,false,0,7.5,false,false,false,0,42.3,Gbagada,1372250964
+W1372259608,,service,false,0,5.0,false,false,false,0,21.9,Gbagada,1372259608
+W1373564275,,residential,false,0,7.5,false,false,false,0,69.1,Gbagada,1373564275
+W1380585354,,service,false,0,5.0,false,false,false,0,40.7,Gbagada,1380585354
+W1383715645,,residential,false,0,7.5,false,false,false,0,95.9,Gbagada,1383715645
+W1383907287,,residential,false,0,7.5,false,false,false,0,5.1,Gbagada,1383907287
+W1383907288,,residential,false,0,7.5,false,false,false,0,7.5,Gbagada,1383907288
+W1383907289,,residential,false,0,7.5,false,false,false,0,7.8,Gbagada,1383907289
+W1383907295,,residential,false,0,7.5,false,false,false,0,19.7,Gbagada,1383907295
+W1383907296,,residential,false,0,7.5,false,false,false,0,11.1,Gbagada,1383907296
+W1383913249,,residential,false,0,7.5,false,false,false,0,34.8,Gbagada,1383913249
+W1383913251,,residential,false,0,7.5,false,false,false,0,31.3,Gbagada,1383913251
+W1387124389,,residential,false,0,7.5,false,true,false,0,31.2,Gbagada,1387124389
+W1387124390,,residential,false,0,7.5,false,false,false,0,70.0,Gbagada,1387124390
+W1387124391,,residential,false,0,7.5,false,false,false,0,120.5,Gbagada,1387124391
+W1387199473,,residential,false,0,7.5,false,false,false,0,68.4,Gbagada,1387199473
+W1387199474,,service,false,0,5.0,false,false,false,0,48.1,Gbagada,1387199474
+W1387199475,,service,false,0,5.0,false,false,false,0,21.0,Gbagada,1387199475
+W1387199476,,service,false,0,5.0,false,false,false,0,49.5,Gbagada,1387199476
+W1387199477,,residential,false,0,7.5,false,false,false,0,56.7,Gbagada,1387199477
+W1387199478,,residential,false,0,7.5,false,false,false,0,84.2,Gbagada,1387199478
+W1387199479,,residential,false,0,7.5,false,false,false,0,43.4,Gbagada,1387199479
+W1387199480,,residential,false,0,7.5,false,false,false,0,48.4,Gbagada,1387199480
+W1387199481,,residential,false,0,7.5,false,false,false,0,75.2,Gbagada,1387199481
+W1390990612,,residential,false,0,7.5,false,false,false,0,51.3,Gbagada,1390990612
+W1390990613,,service,false,0,5.0,false,false,false,0,27.1,Gbagada,1390990613
+W1390990614,,residential,false,0,7.5,false,false,false,0,154.8,Gbagada,1390990614
+W1390990615,,residential,false,0,7.5,false,false,false,0,82.6,Gbagada,1390990615
+W1392173761,,service,false,0,5.0,false,false,false,0,43.0,Gbagada,1392173761
+W1392173762,,service,false,0,5.0,false,false,false,0,75.4,Gbagada,1392173762
+W1394924706,,service,false,0,5.0,false,false,false,0,19.4,Gbagada,1394924706
+W1394924707,,service,false,0,5.0,false,false,false,0,34.0,Gbagada,1394924707
+W1394924708,,service,false,0,5.0,false,false,false,0,37.0,Gbagada,1394924708
+W1394924709,,service,false,0,5.0,false,false,false,0,33.4,Gbagada,1394924709
+W1394924710,,service,false,0,5.0,false,false,false,0,111.6,Gbagada,1394924710
+W1394924714,,residential,false,0,7.5,false,false,false,0,7.7,Gbagada,1394924714
+W1394924715,,service,false,0,5.0,false,false,false,0,69.6,Gbagada,1394924715
+W1394924716,,service,false,0,5.0,false,false,false,0,95.9,Gbagada,1394924716
+W1395647714,,residential,false,0,7.5,false,false,false,0,7.9,Gbagada,1395647714
+W1395647716,,service,false,0,5.0,false,false,false,0,25.4,Gbagada,1395647716
+W1395647717,,residential,false,0,7.5,false,false,false,0,34.6,Gbagada,1395647717
+W1395647718,,service,false,0,5.0,false,false,false,0,40.4,Gbagada,1395647718
+W1396128116,,service,false,0,5.0,false,false,false,0,43.6,Gbagada,1396128116
+W1396177916,,residential,false,0,7.5,false,false,false,0,5.9,Gbagada,1396177916
+W1396827072,,residential,false,0,7.5,false,false,false,0,44.1,Gbagada,1396827072
+W1409217886,,service,false,0,5.0,false,false,false,0,12.1,Gbagada,1409217886
+W1410896861,,service,false,0,5.0,false,false,false,0,36.2,Gbagada,1410896861
+W1410896862,,service,false,0,5.0,false,false,false,0,154.0,Gbagada,1410896862
+W1411471214,,service,false,0,5.0,false,false,false,0,19.1,Gbagada,1411471214
+W1411471215,,service,false,0,5.0,false,false,false,0,72.0,Gbagada,1411471215
+W1411471216,,service,false,0,5.0,false,false,false,0,32.3,Gbagada,1411471216
+W1411471217,,service,false,0,5.0,false,false,false,0,134.0,Gbagada,1411471217
+W1411471218,,service,false,0,5.0,false,false,false,0,34.7,Gbagada,1411471218
+W1411471219,,service,false,0,5.0,false,false,false,0,76.6,Gbagada,1411471219
+W1411471220,,service,false,0,5.0,false,false,false,0,42.2,Gbagada,1411471220
+W1411471221,,service,false,0,5.0,false,false,false,0,60.1,Gbagada,1411471221
+W1411917625,,service,false,0,5.0,false,false,false,0,65.0,Gbagada,1411917625
+W1411917626,,service,false,0,5.0,false,false,false,0,51.7,Gbagada,1411917626
+W1411917627,,service,false,0,5.0,false,false,false,0,53.5,Gbagada,1411917627
+W1411917628,,service,false,0,5.0,false,false,false,0,47.6,Gbagada,1411917628
+W1411917629,,service,false,0,5.0,false,false,false,0,74.7,Gbagada,1411917629
+W1411917630,,service,false,0,5.0,false,false,false,0,50.2,Gbagada,1411917630
+W1411917631,,service,false,0,5.0,false,false,false,0,16.2,Gbagada,1411917631
+W1411937772,,residential,false,0,7.5,false,false,false,0,89.9,Gbagada,1411937772
+W1411937775,,service,false,0,5.0,false,false,false,0,35.7,Gbagada,1411937775
+W1412204128,,residential,false,0,7.5,false,false,false,0,11.1,Gbagada,1412204128
+W1412210282,,service,false,0,5.0,false,false,false,0,33.7,Gbagada,1412210282
+W1415615774,,residential,false,0,7.5,false,false,false,0,74.3,Gbagada,1415615774
+W1418565161,,service,false,0,5.0,false,false,false,0,24.9,Gbagada,1418565161
+W1418565162,,service,false,0,5.0,false,false,false,0,11.4,Gbagada,1418565162
+W1418565163,,service,false,0,5.0,false,false,false,0,26.3,Gbagada,1418565163
+W1418565164,,residential,false,0,7.5,false,false,false,0,41.6,Gbagada,1418565164
+W1423562077,,service,false,0,5.0,false,false,false,0,43.3,Gbagada,1423562077
+W1423562078,,service,false,0,5.0,false,false,false,0,190.0,Gbagada,1423562078
+W1423562079,,service,false,0,5.0,false,false,false,0,94.1,Gbagada,1423562079
+W1423562080,,residential,false,0,7.5,false,false,false,0,74.0,Gbagada,1423562080
+W1426804462,,residential,false,0,7.5,false,false,false,0,73.8,Gbagada,1426804462
+W1426804463,,service,false,0,5.0,false,false,false,0,389.7,Gbagada,1426804463
+W1427022403,,service,false,0,5.0,false,false,false,0,29.3,Gbagada,1427022403
+W1427022404,,service,false,0,5.0,false,false,false,0,26.7,Gbagada,1427022404
+W1427246978,,service,false,0,5.0,false,false,false,0,69.4,Gbagada,1427246978
+W1427249842,,residential,false,0,7.5,false,false,false,0,52.5,Gbagada,1427249842
+W1430943770,,service,false,0,5.0,true,false,false,0,46.1,Gbagada,1430943770
+W1430943771,,service,false,0,5.0,true,false,false,0,55.6,Gbagada,1430943771
+W1430943772,,service,false,0,5.0,true,false,false,0,67.3,Gbagada,1430943772
+W1430943773,,service,false,0,5.0,true,false,false,0,75.7,Gbagada,1430943773
+W1433253630,,service,false,0,5.0,true,false,false,0,6.5,Gbagada,1433253630
+W1433253631,,service,false,0,5.0,true,false,false,0,18.6,Gbagada,1433253631
+W1433253632,,service,false,0,5.0,true,false,false,0,19.0,Gbagada,1433253632
+W1433253633,,service,false,0,5.0,true,false,false,0,6.5,Gbagada,1433253633
+W1433996732,,service,false,0,5.0,false,false,false,0,58.0,Gbagada,1433996732
+W1449572917,,service,false,0,5.0,false,false,false,0,46.5,Gbagada,1449572917
+W1449922074,,residential,false,0,7.5,false,false,false,0,73.1,Gbagada,1449922074
+W1450698069,,residential,false,0,7.5,false,false,false,0,10.6,Gbagada,1450698069
+W1452593444,,service,false,0,5.0,false,false,false,0,102.0,Gbagada,1452593444
+W1452593445,,residential,false,0,7.5,false,false,false,0,82.6,Gbagada,1452593445
+W1452593446,,residential,false,0,7.5,false,false,false,0,133.6,Gbagada,1452593446
+W1453636205,,service,false,0,5.0,false,false,false,0,111.2,Gbagada,1453636205
+W1456064078,,service,false,0,5.0,false,false,false,0,113.4,Gbagada,1456064078
+W1462494390,,service,false,0,5.0,false,false,false,0,59.2,Gbagada,1462494390
+W1462494391,,tertiary,false,0,10.0,true,false,false,0,15.6,Gbagada,1462494391
+W1462494392,,tertiary,false,0,10.0,true,false,false,0,17.1,Gbagada,1462494392
+W1462494393,,motorway,true,0,7.5,true,false,false,0,28.0,Gbagada,1462494393
+W1472654243,,service,false,0,5.0,false,false,false,0,44.6,Gbagada,1472654243
+W1472654244,,service,false,0,5.0,false,false,false,0,150.4,Gbagada,1472654244
+W1473552155,,service,false,0,5.0,false,false,false,0,47.3,Gbagada,1473552155
+W1483262216,,residential,false,0,7.5,false,false,false,0,51.7,Gbagada,1483262216
+W1483307793,,residential,false,0,7.5,false,false,false,0,25.1,Gbagada,1483307793
+W1483307794,,residential,false,0,7.5,false,false,false,0,21.1,Gbagada,1483307794
+W1490045529,,service,false,0,5.0,false,false,false,0,50.4,Gbagada,1490045529
+W1490045530,,service,false,0,5.0,false,false,false,0,34.4,Gbagada,1490045530
+W1490045531,,service,false,0,5.0,false,false,false,0,47.1,Gbagada,1490045531
+W1490045532,,service,false,0,5.0,false,false,false,0,9.9,Gbagada,1490045532
+W1490045533,,service,false,0,5.0,false,false,false,0,5.7,Gbagada,1490045533
+W1498207597,,residential,false,0,7.5,false,false,false,0,216.7,Gbagada,1498207597
+W1498207773,,residential,false,0,7.5,false,false,false,0,136.9,Gbagada,1498207773
+W1498207774,,residential,false,0,7.5,false,false,false,0,105.0,Gbagada,1498207774
+W1499356173,,residential,false,0,7.5,false,false,false,0,142.2,Gbagada,1499356173
+W1499356484,,residential,false,0,7.5,false,false,false,0,12.0,Gbagada,1499356484
+W1499356485,,residential,false,0,7.5,false,false,false,0,108.9,Gbagada,1499356485
+W1499356486,,residential,false,0,7.5,false,false,false,0,131.2,Gbagada,1499356486
+W1508800990,,primary,true,0,7.5,false,false,false,0,7.5,Gbagada,1508800990
+W1509667105,,service,false,0,5.0,false,false,false,0,153.5,Gbagada,1509667105
+W1509667106,,service,false,0,5.0,false,false,false,0,110.5,Gbagada,1509667106
+W1509667107,,service,false,0,5.0,false,false,false,0,126.5,Gbagada,1509667107
+W1509667108,,service,false,0,5.0,false,false,false,0,45.5,Gbagada,1509667108
+W1509678501,,residential,false,0,7.5,false,true,false,0,12.7,Gbagada,1509678501
+W1509678502,,residential,false,0,7.5,false,false,false,0,34.3,Gbagada,1509678502
+W1510173086,,service,false,0,5.0,true,false,false,0,21.9,Gbagada,1510173086
+W1510173087,,service,false,0,5.0,true,false,false,0,19.8,Gbagada,1510173087
+W1510173088,,service,false,0,5.0,true,false,false,0,21.1,Gbagada,1510173088
+W1510178395,,service,false,0,5.0,false,false,false,0,207.9,Gbagada,1510178395
+W1510181542,,service,false,0,5.0,true,false,false,0,21.4,Gbagada,1510181542
+W1510181543,,service,false,0,5.0,true,false,false,0,15.7,Gbagada,1510181543
+W1510181544,,service,false,0,5.0,true,false,false,0,22.4,Gbagada,1510181544
+W1510188794,,tertiary,false,0,10.0,true,false,false,0,10.6,Gbagada,1510188794
+W1510199623,,motorway,true,0,7.5,true,false,false,0,20.2,Gbagada,1510199623
+W1510204009,,service,false,0,5.0,false,false,false,0,4.5,Gbagada,1510204009
+W1510204010,,service,false,0,5.0,false,false,false,0,34.5,Gbagada,1510204010
+W1510204011,,service,false,0,5.0,false,false,false,0,42.7,Gbagada,1510204011
+W1510204013,,service,false,0,5.0,false,false,false,0,33.7,Gbagada,1510204013
+W1510431628,,residential,false,0,7.5,false,false,false,0,60.6,Gbagada,1510431628
+W1510431629,,residential,false,0,7.5,false,false,false,0,48.6,Gbagada,1510431629
+W1511788519,,service,false,0,5.0,false,false,false,0,6.6,Gbagada,1511788519
+W1511788520,,service,false,0,5.0,false,false,false,0,14.6,Gbagada,1511788520
+W1511788521,,service,false,0,5.0,false,false,false,0,36.7,Gbagada,1511788521
+W1511788522,,service,false,0,5.0,false,false,false,0,6.7,Gbagada,1511788522
+W1512345260,,service,false,0,5.0,false,false,false,0,64.6,Gbagada,1512345260
+W1512458868,,service,false,0,5.0,false,false,false,0,58.0,Gbagada,1512458868
+W1517170520,,service,false,0,5.0,false,false,false,0,9.7,Gbagada,1517170520
+W1517170521,,service,false,0,5.0,false,false,false,0,8.7,Gbagada,1517170521
+W1517197404,,service,false,0,5.0,false,false,false,0,4.8,Gbagada,1517197404
+W1539478015,,service,false,0,5.0,false,false,false,0,51.6,Gbagada,1539478015
+W1539714708,,service,false,0,5.0,false,false,false,0,54.1,Gbagada,1539714708
+W1539933440,,service,false,0,5.0,false,false,false,0,15.5,Gbagada,1539933440
+W1539933441,,service,false,0,5.0,false,false,false,0,17.0,Gbagada,1539933441
+W1539933442,,service,false,0,5.0,false,false,false,0,18.5,Gbagada,1539933442
+W1557825750,,tertiary,false,0,10.0,false,false,false,0,27.5,Gbagada,1557825750
+W1557825751,,tertiary,false,0,10.0,false,false,false,0,31.5,Gbagada,1557825751
+W1557825752,,residential,false,0,7.5,false,false,false,0,36.4,Gbagada,1557825752
+W1557825753,,tertiary,false,0,10.0,false,false,false,0,82.9,Gbagada,1557825753
+W1560212598,,residential,false,0,7.5,false,false,false,0,95.2,Gbagada,1560212598
+W1560212599,,residential,false,0,7.5,false,false,false,0,5.0,Gbagada,1560212599
+W1561004437,,service,false,0,5.0,false,false,false,0,46.4,Gbagada,1561004437
+W1561015563,,service,false,0,5.0,false,false,false,0,52.1,Gbagada,1561015563
+W1561015564,,service,false,0,5.0,false,false,false,0,88.8,Gbagada,1561015564
+W1562106951,,residential,false,0,7.5,false,false,false,0,62.4,Gbagada,1562106951
+W1562106953,,residential,false,0,7.5,false,false,false,0,93.3,Gbagada,1562106953
+W1563002844,,residential,false,0,7.5,false,false,false,0,244.8,Gbagada,1563002844
+W1567022335,,service,false,0,5.0,false,false,false,0,9.9,Gbagada,1567022335
+W1567022336,,service,false,0,5.0,false,false,false,0,13.4,Gbagada,1567022336
+W1567022337,,service,false,0,5.0,false,false,false,0,12.6,Gbagada,1567022337
+W1567022338,,service,false,0,5.0,false,false,false,0,60.7,Gbagada,1567022338
+W1567022339,,service,false,0,5.0,false,false,false,0,10.9,Gbagada,1567022339
+W1567022340,,service,false,0,5.0,false,false,false,0,120.3,Gbagada,1567022340
+W1567022341,,service,false,0,5.0,false,false,false,0,61.2,Gbagada,1567022341
+W1567022342,,service,false,0,5.0,false,false,false,0,12.0,Gbagada,1567022342
+W1567022343,,service,false,0,5.0,false,false,false,0,16.7,Gbagada,1567022343
+W1567022344,,service,false,0,5.0,false,false,false,0,29.7,Gbagada,1567022344
+W1567022345,,service,false,0,5.0,false,false,false,0,11.2,Gbagada,1567022345
+W1567022346,,service,false,0,5.0,false,false,false,0,17.6,Gbagada,1567022346
+W1567022347,,service,false,0,5.0,false,false,false,0,10.5,Gbagada,1567022347
+W1567022348,,service,false,0,5.0,false,false,false,0,18.3,Gbagada,1567022348
+W1567022349,,service,false,0,5.0,false,false,false,0,10.3,Gbagada,1567022349
+W1567022350,,service,false,0,5.0,false,false,false,0,6.9,Gbagada,1567022350
+W1567022351,,service,false,0,5.0,false,false,false,0,6.4,Gbagada,1567022351
+W1567022352,,service,false,0,5.0,false,false,false,0,11.0,Gbagada,1567022352
+W1567022355,,service,false,0,5.0,false,false,false,0,5.2,Gbagada,1567022355
+W1567022356,,service,false,0,5.0,false,false,false,0,6.6,Gbagada,1567022356
+W1567022357,,service,false,0,5.0,false,false,false,0,6.4,Gbagada,1567022357
+W1567022358,,service,false,0,5.0,false,false,false,0,11.8,Gbagada,1567022358
+W1567029700,,service,false,0,5.0,false,false,false,0,14.7,Gbagada,1567029700
+W1567029701,,service,false,0,5.0,false,false,false,0,5.6,Gbagada,1567029701
+W1567029702,,service,false,0,5.0,false,false,false,0,30.3,Gbagada,1567029702
+W1567029703,,service,false,0,5.0,false,false,false,0,6.7,Gbagada,1567029703
+W1567029704,,service,false,0,5.0,false,false,false,0,23.0,Gbagada,1567029704
+W1567029705,,service,false,0,5.0,false,false,false,0,2.7,Gbagada,1567029705
+W1567029706,,service,false,0,5.0,false,false,false,0,2.9,Gbagada,1567029706
+W1567029707,,service,false,0,5.0,false,false,false,0,27.9,Gbagada,1567029707
+W1567029708,,service,false,0,5.0,false,false,false,0,27.6,Gbagada,1567029708
+W1567029709,,service,false,0,5.0,false,false,false,0,4.4,Gbagada,1567029709
+W1567029710,,service,false,0,5.0,false,false,false,0,6.5,Gbagada,1567029710
+W1567029711,,service,false,0,5.0,false,false,false,0,2.0,Gbagada,1567029711
+W1567029712,,service,false,0,5.0,false,false,false,0,46.8,Gbagada,1567029712
+W1567029713,,service,false,0,5.0,false,false,false,0,3.7,Gbagada,1567029713
+W1567029714,,service,false,0,5.0,false,false,false,0,34.9,Gbagada,1567029714
+W1567029715,,service,false,0,5.0,false,false,false,0,13.7,Gbagada,1567029715
+W1567029716,,service,false,0,5.0,false,false,false,0,48.6,Gbagada,1567029716
+W1567029717,,service,false,0,5.0,false,false,false,0,14.9,Gbagada,1567029717
+W1567029719,,service,false,0,5.0,false,false,false,0,15.1,Gbagada,1567029719
+W1567029720,,service,false,0,5.0,false,false,false,0,6.3,Gbagada,1567029720
+W1567029721,,service,false,0,5.0,false,false,false,0,6.2,Gbagada,1567029721
+W1567029722,,service,false,0,5.0,false,false,false,0,5.5,Gbagada,1567029722
+W1567029723,,service,false,0,5.0,false,false,false,0,35.6,Gbagada,1567029723
+W1567031922,,service,false,0,5.0,false,false,false,0,141.2,Gbagada,1567031922
+W16369628,,residential,false,0,7.5,false,false,false,0,72.1,Gbagada,16369628
+W16369657,,residential,false,0,7.5,false,false,false,0,71.2,Gbagada,16369657
+W215492892,,motorway,false,0,24.0,true,false,false,0,400.8,Gbagada,215492892
+W219055660,,residential,false,0,7.5,false,false,false,0,204.7,Gbagada,219055660
+W219055662,,residential,false,0,7.5,false,false,false,0,167.4,Gbagada,219055662
+W219055663,,residential,false,0,7.5,false,false,false,0,260.5,Gbagada,219055663
+W219055664,,residential,false,0,7.5,false,false,false,0,245.1,Gbagada,219055664
+W219055665,,residential,false,0,7.5,false,false,false,0,139.1,Gbagada,219055665
+W219055666,,residential,false,0,7.5,false,false,false,0,51.7,Gbagada,219055666
+W219055667,,residential,false,0,7.5,false,true,false,0,11.4,Gbagada,219055667
+W219055668,,residential,false,0,7.5,false,false,false,0,218.6,Gbagada,219055668
+W219055675,,residential,false,0,7.5,false,false,false,0,126.8,Gbagada,219055675
+W219055677,,residential,false,0,7.5,false,false,false,0,144.4,Gbagada,219055677
+W219055679,,residential,false,0,7.5,false,false,false,0,297.2,Gbagada,219055679
+W219055681,,residential,false,0,7.5,false,false,false,0,212.0,Gbagada,219055681
+W219055684,,residential,false,0,7.5,false,false,false,0,266.1,Gbagada,219055684
+W219055685,,residential,false,0,7.5,false,false,false,0,76.9,Gbagada,219055685
+W219055686,,residential,false,0,7.5,false,true,false,0,9.2,Gbagada,219055686
+W219055688,,residential,false,0,7.5,false,false,false,0,240.9,Gbagada,219055688
+W219055694,,residential,false,0,7.5,true,false,false,0,135.2,Gbagada,219055694
+W219055697,,residential,false,0,7.5,false,false,false,0,206.6,Gbagada,219055697
+W219055698,,residential,false,0,7.5,false,false,false,0,138.7,Gbagada,219055698
+W219055699,,residential,false,0,7.5,false,false,false,0,126.4,Gbagada,219055699
+W219055700,,residential,false,0,7.5,false,false,false,0,234.9,Gbagada,219055700
+W219055703,,residential,false,0,7.5,false,false,false,0,142.8,Gbagada,219055703
+W219055704,,residential,false,0,7.5,false,false,false,0,81.0,Gbagada,219055704
+W219055713,,residential,false,0,7.5,false,false,false,0,272.5,Gbagada,219055713
+W219055714,,residential,false,0,7.5,false,false,false,0,410.6,Gbagada,219055714
+W219055715,,residential,false,0,7.5,false,false,false,0,181.5,Gbagada,219055715
+W219055716,,residential,false,0,7.5,false,true,false,0,13.2,Gbagada,219055716
+W219055718,,residential,false,0,7.5,false,false,false,0,68.9,Gbagada,219055718
+W219055719,,residential,false,0,7.5,false,false,false,0,128.1,Gbagada,219055719
+W219055722,,residential,false,0,7.5,false,true,false,0,8.9,Gbagada,219055722
+W219055727,,residential,false,0,7.5,false,false,false,0,149.1,Gbagada,219055727
+W219055728,,residential,false,0,7.5,false,false,false,0,35.4,Gbagada,219055728
+W219055735,,residential,false,0,7.5,false,false,false,0,267.8,Gbagada,219055735
+W219055737,,residential,false,0,7.5,false,false,false,0,73.5,Gbagada,219055737
+W219055738,,residential,false,0,7.5,false,false,false,0,98.2,Gbagada,219055738
+W219055739,,residential,false,0,7.5,false,false,false,0,177.6,Gbagada,219055739
+W219055744,,residential,false,0,7.5,false,false,false,0,295.9,Gbagada,219055744
+W219055747,,residential,false,0,7.5,false,false,false,0,135.2,Gbagada,219055747
+W219055750,,residential,false,0,7.5,false,true,false,0,7.0,Gbagada,219055750
+W219055751,,residential,false,0,7.5,false,false,false,0,127.7,Gbagada,219055751
+W219055754,,motorway,true,0,7.5,true,false,false,0,22.7,Gbagada,219055754
+W219055755,,residential,false,0,7.5,false,false,false,0,161.1,Gbagada,219055755
+W219055758,,residential,false,0,7.5,false,false,false,0,246.5,Gbagada,219055758
+W219055763,,residential,false,0,7.5,false,false,false,0,170.9,Gbagada,219055763
+W219055765,,residential,false,0,7.5,false,false,false,0,210.3,Gbagada,219055765
+W219055767,,residential,false,0,7.5,false,false,false,0,209.7,Gbagada,219055767
+W219055769,,residential,false,0,7.5,false,false,false,0,125.4,Gbagada,219055769
+W219056607,,residential,false,0,7.5,false,false,false,0,196.7,Gbagada,219056607
+W219056608,,residential,false,0,7.5,false,false,false,0,152.0,Gbagada,219056608
+W219056613,,tertiary,false,0,10.0,false,false,false,0,60.8,Gbagada,219056613
+W219056614,,residential,false,0,7.5,false,false,false,0,261.4,Gbagada,219056614
+W219516255,,residential,false,0,7.5,false,false,false,0,102.3,Gbagada,219516255
+W219516256,,residential,false,0,7.5,false,false,false,0,154.6,Gbagada,219516256
+W219516257,,residential,false,0,7.5,false,false,false,0,269.5,Gbagada,219516257
+W219516258,,residential,false,0,7.5,false,false,false,0,191.6,Gbagada,219516258
+W219516261,,residential,false,0,7.5,false,false,false,0,84.9,Gbagada,219516261
+W219516262,,residential,false,0,7.5,false,false,false,0,78.0,Gbagada,219516262
+W219516263,,residential,false,0,7.5,false,false,false,0,186.2,Gbagada,219516263
+W219516264,,residential,false,0,7.5,false,false,false,0,40.0,Gbagada,219516264
+W219516265,,residential,false,0,7.5,false,false,false,0,75.1,Gbagada,219516265
+W219516267,,residential,false,0,7.5,true,false,false,0,122.1,Gbagada,219516267
+W219516268,,residential,false,0,7.5,false,false,false,0,89.4,Gbagada,219516268
+W219516269,,residential,false,0,7.5,false,false,false,0,157.5,Gbagada,219516269
+W219516270,,residential,false,0,7.5,false,false,false,0,154.0,Gbagada,219516270
+W219516273,,residential,false,0,7.5,false,false,false,0,318.5,Gbagada,219516273
+W219900849,,residential,false,0,7.5,false,false,false,0,51.4,Gbagada,219900849
+W219900851,,residential,false,0,7.5,false,false,false,0,70.7,Gbagada,219900851
+W219900853,,residential,false,0,7.5,false,false,false,0,108.7,Gbagada,219900853
+W219900857,,residential,false,0,7.5,false,false,false,0,198.2,Gbagada,219900857
+W219900858,,residential,false,0,7.5,false,false,false,0,366.7,Gbagada,219900858
+W219900859,,residential,false,0,7.5,false,false,false,0,234.4,Gbagada,219900859
+W219900860,,residential,false,0,7.5,false,false,false,0,67.8,Gbagada,219900860
+W219900861,,residential,false,0,7.5,false,false,false,0,65.6,Gbagada,219900861
+W219900866,,residential,false,0,7.5,false,false,false,0,69.1,Gbagada,219900866
+W219900869,,residential,false,0,7.5,false,false,false,0,330.9,Gbagada,219900869
+W219900870,,residential,false,0,7.5,false,false,false,0,466.8,Gbagada,219900870
+W219900872,,residential,false,0,7.5,false,false,false,0,120.5,Gbagada,219900872
+W219900876,,residential,false,0,7.5,false,false,false,0,114.5,Gbagada,219900876
+W219900878,,residential,false,0,7.5,false,false,false,0,275.1,Gbagada,219900878
+W219900879,,residential,false,0,7.5,false,false,false,0,329.7,Gbagada,219900879
+W220332222,,residential,false,0,7.5,true,true,false,0,24.4,Gbagada,220332222
+W220332223,,residential,false,0,7.5,false,false,false,0,75.4,Gbagada,220332223
+W220332225,,residential,false,0,7.5,true,false,false,0,205.7,Gbagada,220332225
+W220332227,,residential,false,0,7.5,true,false,false,0,121.5,Gbagada,220332227
+W220332228,,residential,false,0,7.5,true,false,false,0,139.1,Gbagada,220332228
+W220332232,,residential,false,0,7.5,false,true,false,0,6.6,Gbagada,220332232
+W220332237,,residential,false,0,7.5,false,false,false,0,19.5,Gbagada,220332237
+W220332240,,residential,false,0,7.5,false,true,false,0,7.9,Gbagada,220332240
+W220332241,,residential,false,0,7.5,false,false,false,0,394.8,Gbagada,220332241
+W220332243,,residential,false,0,7.5,false,true,false,0,11.2,Gbagada,220332243
+W220332244,,residential,false,0,7.5,false,false,false,0,38.5,Gbagada,220332244
+W220332245,,residential,false,0,7.5,false,true,false,0,9.6,Gbagada,220332245
+W220332249,,residential,false,0,7.5,false,false,false,0,159.8,Gbagada,220332249
+W220332250,,residential,false,0,7.5,false,false,false,0,282.2,Gbagada,220332250
+W220465485,,residential,false,0,7.5,false,false,false,0,81.7,Gbagada,220465485
+W220465486,,residential,false,0,7.5,false,false,false,0,6.3,Gbagada,220465486
+W220465487,,residential,false,0,7.5,false,false,false,0,334.4,Gbagada,220465487
+W220465488,,residential,false,0,7.5,false,false,false,0,155.1,Gbagada,220465488
+W220465489,,residential,false,0,7.5,false,false,false,0,100.2,Gbagada,220465489
+W220465490,,residential,false,0,7.5,false,false,false,0,145.1,Gbagada,220465490
+W220465492,,residential,false,0,7.5,false,false,false,0,79.5,Gbagada,220465492
+W220465493,,residential,false,0,7.5,false,false,false,0,192.2,Gbagada,220465493
+W220465494,,residential,false,0,7.5,false,false,false,0,6.2,Gbagada,220465494
+W220465495,,residential,false,0,7.5,false,false,false,0,121.1,Gbagada,220465495
+W220465496,,residential,false,0,7.5,false,false,false,0,119.2,Gbagada,220465496
+W220465497,,residential,false,0,7.5,false,false,false,0,207.2,Gbagada,220465497
+W220465498,,residential,false,0,7.5,false,false,false,0,178.1,Gbagada,220465498
+W220465499,,residential,false,0,7.5,false,false,false,0,81.2,Gbagada,220465499
+W220465500,,residential,false,0,7.5,false,false,false,0,90.3,Gbagada,220465500
+W220465501,,residential,false,0,7.5,false,true,false,0,5.9,Gbagada,220465501
+W220465503,,residential,false,0,7.5,false,false,false,0,177.6,Gbagada,220465503
+W220465504,,residential,false,0,7.5,false,false,false,0,345.8,Gbagada,220465504
+W220465505,,residential,false,0,7.5,false,true,false,0,7.9,Gbagada,220465505
+W220465506,,residential,false,0,7.5,false,false,false,0,87.1,Gbagada,220465506
+W220465507,,residential,false,0,7.5,false,false,false,0,92.3,Gbagada,220465507
+W220465509,,residential,false,0,7.5,false,true,false,0,15.7,Gbagada,220465509
+W220465510,,residential,false,0,7.5,false,false,false,0,90.0,Gbagada,220465510
+W220465511,,residential,false,0,7.5,false,false,false,0,77.8,Gbagada,220465511
+W220465512,,residential,false,0,7.5,false,false,false,0,68.2,Gbagada,220465512
+W220465513,,residential,false,0,7.5,false,false,false,0,96.7,Gbagada,220465513
+W220465515,,residential,false,0,7.5,false,false,false,0,88.2,Gbagada,220465515
+W221600783,,residential,false,0,7.5,false,false,false,0,196.6,Gbagada,221600783
+W221600787,,residential,false,0,7.5,false,false,false,0,121.2,Gbagada,221600787
+W221871380,,secondary,false,0,13.0,true,false,false,0,55.6,Gbagada,221871380
+W221871385,,secondary,false,0,13.0,true,false,false,0,62.0,Gbagada,221871385
+W221871386,,secondary,false,0,13.0,true,false,true,0,56.4,Gbagada,221871386
+W221886741,,residential,false,0,7.5,false,false,false,0,364.8,Gbagada,221886741
+W221886743,,residential,false,0,7.5,false,false,false,0,593.3,Gbagada,221886743
+W221886745,,residential,false,0,7.5,false,false,false,0,174.1,Gbagada,221886745
+W221886753,,residential,false,0,7.5,false,false,false,0,65.1,Gbagada,221886753
+W222303755,,residential,false,0,7.5,false,false,false,0,281.4,Gbagada,222303755
+W222303772,,residential,false,0,7.5,false,false,false,0,109.9,Gbagada,222303772
+W222303778,,residential,false,0,7.5,false,false,false,0,72.8,Gbagada,222303778
+W222303780,,residential,false,0,7.5,false,false,false,0,470.3,Gbagada,222303780
+W222303782,,residential,false,0,7.5,false,false,false,0,370.8,Gbagada,222303782
+W222303783,,residential,false,0,7.5,false,false,false,0,89.1,Gbagada,222303783
+W222303784,,residential,false,0,7.5,false,false,false,0,63.5,Gbagada,222303784
+W222628284,,residential,false,0,7.5,false,false,false,0,299.7,Gbagada,222628284
+W222628285,,residential,false,0,7.5,false,false,false,0,357.5,Gbagada,222628285
+W222628286,,residential,false,0,7.5,false,false,false,0,142.7,Gbagada,222628286
+W222628287,,residential,false,0,7.5,false,false,false,0,174.7,Gbagada,222628287
+W222628290,,residential,false,0,7.5,false,false,false,0,35.4,Gbagada,222628290
+W222628291,,residential,false,0,7.5,false,false,false,0,180.5,Gbagada,222628291
+W222628292,,residential,false,0,7.5,false,false,false,0,85.7,Gbagada,222628292
+W222628294,,service,false,0,5.0,false,false,false,0,147.4,Gbagada,222628294
+W222628295,,residential,false,0,7.5,false,false,false,0,119.1,Gbagada,222628295
+W222628297,,residential,false,0,7.5,false,false,false,0,104.6,Gbagada,222628297
+W222628298,,residential,false,0,7.5,false,false,false,0,108.5,Gbagada,222628298
+W222628299,,residential,false,0,7.5,false,false,false,0,234.6,Gbagada,222628299
+W222760397,,residential,false,0,7.5,false,false,false,0,143.0,Gbagada,222760397
+W222760400,,residential,false,0,7.5,false,false,false,0,158.6,Gbagada,222760400
+W222760403,,residential,false,0,7.5,false,false,false,0,263.9,Gbagada,222760403
+W222760410,,residential,false,0,7.5,false,false,false,0,295.4,Gbagada,222760410
+W222760415,,residential,false,0,7.5,false,false,false,0,100.1,Gbagada,222760415
+W222760420,,residential,false,0,7.5,false,false,false,0,258.3,Gbagada,222760420
+W222760422,,residential,false,0,7.5,false,false,false,0,312.2,Gbagada,222760422
+W222760424,,residential,false,0,7.5,false,false,false,0,213.6,Gbagada,222760424
+W222760427,,residential,false,0,7.5,false,false,false,0,145.8,Gbagada,222760427
+W222760428,,residential,false,0,7.5,false,false,false,0,127.5,Gbagada,222760428
+W222760429,,residential,false,0,7.5,false,false,false,0,546.0,Gbagada,222760429
+W222760432,,residential,false,0,7.5,false,false,false,0,71.1,Gbagada,222760432
+W222760434,,residential,false,0,7.5,false,false,false,0,405.7,Gbagada,222760434
+W222760436,,residential,false,0,7.5,false,false,false,0,79.4,Gbagada,222760436
+W222760437,,tertiary,false,0,10.0,true,false,false,0,113.6,Gbagada,222760437
+W222760438,,residential,false,0,7.5,false,false,false,0,135.9,Gbagada,222760438
+W222760439,,residential,false,0,7.5,false,false,false,0,203.7,Gbagada,222760439
+W222760440,,residential,false,0,7.5,false,false,false,0,205.5,Gbagada,222760440
+W222760443,,residential,false,0,7.5,false,false,false,0,215.6,Gbagada,222760443
+W226068915,,residential,false,0,7.5,false,false,false,0,415.2,Gbagada,226068915
+W226068916,,residential,false,0,7.5,false,false,false,0,72.1,Gbagada,226068916
+W226068920,,residential,false,0,7.5,false,false,false,0,216.9,Gbagada,226068920
+W226068922,,residential,false,0,7.5,false,false,false,0,143.4,Gbagada,226068922
+W226068923,,residential,false,0,7.5,false,false,false,0,302.3,Gbagada,226068923
+W226068925,,residential,false,0,7.5,false,false,false,0,21.2,Gbagada,226068925
+W226068926,,residential,false,0,7.5,false,false,false,0,68.9,Gbagada,226068926
+W226068927,,residential,false,0,7.5,false,false,false,0,130.0,Gbagada,226068927
+W226068929,,residential,false,0,7.5,false,false,false,0,108.3,Gbagada,226068929
+W226068930,,residential,false,0,7.5,false,false,false,0,150.2,Gbagada,226068930
+W226068931,,residential,false,0,7.5,false,false,false,0,244.2,Gbagada,226068931
+W226068932,,residential,false,0,7.5,false,false,false,0,133.4,Gbagada,226068932
+W226068935,,residential,false,0,7.5,false,false,false,0,141.8,Gbagada,226068935
+W226068936,,residential,false,0,7.5,false,false,false,0,73.5,Gbagada,226068936
+W226068937,,residential,false,0,7.5,false,false,false,0,56.2,Gbagada,226068937
+W226068938,,residential,false,0,7.5,false,false,false,0,198.6,Gbagada,226068938
+W226068940,,residential,false,0,7.5,false,false,false,0,138.3,Gbagada,226068940
+W226068942,,residential,false,0,7.5,false,false,false,0,238.4,Gbagada,226068942
+W226068943,,residential,false,0,7.5,false,false,false,0,152.9,Gbagada,226068943
+W226068944,,residential,false,0,7.5,false,false,false,0,118.3,Gbagada,226068944
+W226068945,,residential,false,0,7.5,false,false,false,0,14.6,Gbagada,226068945
+W226068946,,residential,false,0,7.5,false,false,false,0,144.9,Gbagada,226068946
+W226068947,,residential,false,0,7.5,false,false,false,0,230.0,Gbagada,226068947
+W226068949,,residential,false,0,7.5,false,false,false,0,147.5,Gbagada,226068949
+W226068950,,residential,false,0,7.5,false,false,false,0,220.9,Gbagada,226068950
+W226068952,,residential,false,0,7.5,false,false,false,0,137.9,Gbagada,226068952
+W226068953,,residential,false,0,7.5,false,false,false,0,110.1,Gbagada,226068953
+W226251831,,residential,false,0,7.5,false,false,false,0,147.0,Gbagada,226251831
+W226251837,,residential,false,0,7.5,false,false,false,0,195.7,Gbagada,226251837
+W226251840,,residential,false,0,7.5,false,false,false,0,240.5,Gbagada,226251840
+W226251849,,residential,false,0,7.5,false,false,false,0,73.6,Gbagada,226251849
+W226251852,,residential,false,0,7.5,false,false,false,0,229.6,Gbagada,226251852
+W226251853,,residential,false,0,7.5,false,false,false,0,272.3,Gbagada,226251853
+W226251855,,residential,false,0,7.5,false,false,false,0,76.7,Gbagada,226251855
+W226251859,,residential,false,0,7.5,false,false,false,0,93.1,Gbagada,226251859
+W226251860,,residential,false,0,7.5,false,false,false,0,120.1,Gbagada,226251860
+W226251862,,residential,false,0,7.5,false,false,false,0,212.3,Gbagada,226251862
+W226251863,,residential,false,0,7.5,false,false,false,0,65.4,Gbagada,226251863
+W226251867,,residential,false,0,7.5,false,false,false,0,236.0,Gbagada,226251867
+W226251868,,residential,false,0,7.5,false,false,false,0,444.6,Gbagada,226251868
+W226251870,,residential,false,0,7.5,false,false,false,0,182.4,Gbagada,226251870
+W226251876,,residential,false,0,7.5,false,false,false,0,210.1,Gbagada,226251876
+W226251877,,residential,false,0,7.5,false,false,false,0,99.4,Gbagada,226251877
+W226251883,,residential,false,0,7.5,false,false,false,0,188.2,Gbagada,226251883
+W226251884,,residential,false,0,7.5,false,false,false,0,72.4,Gbagada,226251884
+W226251890,,service,false,0,5.0,false,false,false,0,146.8,Gbagada,226251890
+W226251896,,residential,false,0,7.5,false,false,false,0,118.6,Gbagada,226251896
+W226251898,,residential,false,0,7.5,false,false,false,0,81.4,Gbagada,226251898
+W226251899,,residential,false,0,7.5,false,false,false,0,164.0,Gbagada,226251899
+W226251900,,residential,false,0,7.5,false,false,false,0,156.6,Gbagada,226251900
+W226251902,,residential,false,0,7.5,false,false,false,0,198.6,Gbagada,226251902
+W226251903,,residential,false,0,7.5,false,false,false,0,51.3,Gbagada,226251903
+W226251911,,residential,false,0,7.5,false,false,false,0,158.4,Gbagada,226251911
+W226251913,,residential,false,0,7.5,false,false,false,0,157.2,Gbagada,226251913
+W226251914,,residential,false,0,7.5,false,false,false,0,136.6,Gbagada,226251914
+W226251917,,residential,false,0,7.5,false,false,false,0,191.1,Gbagada,226251917
+W226251918,,residential,false,0,7.5,false,false,false,0,154.0,Gbagada,226251918
+W226251919,,residential,false,0,7.5,false,false,false,0,162.7,Gbagada,226251919
+W226251921,,residential,false,0,7.5,false,false,false,0,249.7,Gbagada,226251921
+W226379002,,residential,false,0,7.5,false,false,false,0,160.5,Gbagada,226379002
+W226379005,,residential,false,0,7.5,false,false,false,0,112.1,Gbagada,226379005
+W226379006,,residential,false,0,7.5,false,false,false,0,93.3,Gbagada,226379006
+W226379010,,residential,false,0,7.5,false,false,false,0,102.7,Gbagada,226379010
+W226379016,,residential,false,0,7.5,false,false,false,0,437.8,Gbagada,226379016
+W226379017,,residential,false,0,7.5,false,false,false,0,79.1,Gbagada,226379017
+W226379020,,residential,false,0,7.5,false,false,false,0,120.4,Gbagada,226379020
+W226379022,,residential,false,0,7.5,false,false,false,0,161.0,Gbagada,226379022
+W226379023,,residential,false,0,7.5,false,false,false,0,283.2,Gbagada,226379023
+W226379027,,residential,false,0,7.5,false,false,false,0,157.4,Gbagada,226379027
+W226379034,,residential,false,0,7.5,false,false,false,0,344.1,Gbagada,226379034
+W226379035,,residential,false,0,7.5,false,false,false,0,96.0,Gbagada,226379035
+W226379037,,service,false,0,5.0,false,false,false,0,36.4,Gbagada,226379037
+W226379038,,residential,false,0,7.5,false,false,false,0,177.0,Gbagada,226379038
+W226379040,,residential,false,0,7.5,false,false,false,0,545.5,Gbagada,226379040
+W226379044,,residential,false,0,7.5,false,false,false,0,74.8,Gbagada,226379044
+W226379048,,residential,false,0,7.5,false,false,false,0,234.8,Gbagada,226379048
+W226379052,,residential,false,0,7.5,false,false,false,0,139.9,Gbagada,226379052
+W226379054,,residential,false,0,7.5,false,false,false,0,218.4,Gbagada,226379054
+W23711219,,residential,false,0,7.5,false,false,false,0,625.1,Gbagada,23711219
+W340005243,,residential,false,0,7.5,false,false,false,0,120.2,Gbagada,340005243
+W370301911,,residential,false,0,7.5,true,false,false,0,174.9,Gbagada,370301911
+W370301919,,residential,false,0,7.5,false,false,false,0,142.0,Gbagada,370301919
+W370306115,,residential,false,0,7.5,false,false,false,0,109.7,Gbagada,370306115
+W370306118,,residential,false,0,7.5,false,false,false,0,259.4,Gbagada,370306118
+W394119620,,residential,false,1,4.3,false,false,false,0,157.6,Gbagada,394119620
+W394120127,,tertiary,false,0,10.0,true,false,false,0,59.8,Gbagada,394120127
+W407091048,,residential,false,0,7.5,false,false,false,0,157.7,Gbagada,407091048
+W407091052,,residential,false,0,7.5,false,false,false,0,142.7,Gbagada,407091052
+W407091053,,residential,false,0,7.5,false,false,false,0,70.5,Gbagada,407091053
+W408443712,,residential,false,0,7.5,true,false,false,0,22.8,Gbagada,408443712
+W441712281,,residential,false,0,7.5,false,false,false,0,929.9,Gbagada,441712281
+W441712295,,residential,false,0,7.5,false,false,false,0,175.0,Gbagada,441712295
+W441712296,,residential,false,0,7.5,false,false,false,0,158.7,Gbagada,441712296
+W441712318,,residential,false,0,7.5,false,false,false,0,407.0,Gbagada,441712318
+W441712319,,residential,false,0,7.5,false,false,false,0,978.7,Gbagada,441712319
+W441712320,,residential,false,0,7.5,false,false,false,0,334.6,Gbagada,441712320
+W441712321,,residential,false,0,7.5,false,false,false,0,848.7,Gbagada,441712321
+W441712323,,residential,false,0,7.5,false,false,false,0,245.5,Gbagada,441712323
+W441712351,,residential,false,0,7.5,false,false,false,0,277.2,Gbagada,441712351
+W441712375,,residential,false,0,7.5,false,false,false,0,242.4,Gbagada,441712375
+W441712376,,residential,false,0,7.5,false,false,false,0,444.8,Gbagada,441712376
+W441712377,,residential,false,0,7.5,false,false,false,0,228.4,Gbagada,441712377
+W441712379,,residential,false,0,7.5,false,false,false,0,72.6,Gbagada,441712379
+W441712380,,residential,false,0,7.5,false,false,false,0,52.3,Gbagada,441712380
+W441712381,,residential,false,0,7.5,false,false,false,0,110.8,Gbagada,441712381
+W441712382,,residential,false,0,7.5,false,false,false,0,208.5,Gbagada,441712382
+W441712386,,residential,false,0,7.5,true,false,false,0,71.5,Gbagada,441712386
+W441712389,,residential,false,0,7.5,false,false,false,0,61.5,Gbagada,441712389
+W441712390,,residential,false,0,7.5,false,false,false,0,92.1,Gbagada,441712390
+W441712392,,residential,false,0,7.5,false,false,false,0,39.6,Gbagada,441712392
+W441712394,,residential,false,0,7.5,false,false,false,0,291.8,Gbagada,441712394
+W441712396,,residential,false,0,7.5,false,false,false,0,48.9,Gbagada,441712396
+W441712397,,residential,false,0,7.5,false,false,false,0,29.5,Gbagada,441712397
+W441860173,,residential,false,0,7.5,false,false,false,0,243.3,Gbagada,441860173
+W441860175,,residential,false,0,7.5,false,false,false,0,71.1,Gbagada,441860175
+W441860176,,residential,false,0,7.5,false,false,false,0,171.4,Gbagada,441860176
+W441860178,,residential,false,0,7.5,false,false,false,0,522.0,Gbagada,441860178
+W441900964,,residential,false,0,7.5,false,false,false,0,69.6,Gbagada,441900964
+W441900965,,residential,false,0,7.5,false,false,false,0,99.2,Gbagada,441900965
+W441900966,,residential,false,0,7.5,false,false,false,0,99.8,Gbagada,441900966
+W441900967,,residential,false,0,7.5,false,false,false,0,87.2,Gbagada,441900967
+W441901594,,residential,false,0,7.5,false,false,false,0,52.6,Gbagada,441901594
+W441901595,,residential,false,0,7.5,false,false,false,0,108.0,Gbagada,441901595
+W441901601,,residential,false,0,7.5,false,false,false,0,84.7,Gbagada,441901601
+W441901602,,residential,false,0,7.5,false,false,false,0,53.4,Gbagada,441901602
+W441901604,,residential,false,0,7.5,false,false,false,0,370.2,Gbagada,441901604
+W441901606,,residential,false,0,7.5,false,false,false,0,194.8,Gbagada,441901606
+W441901607,,residential,false,0,7.5,false,false,false,0,295.9,Gbagada,441901607
+W441901608,,residential,false,0,7.5,false,false,false,0,86.9,Gbagada,441901608
+W441901609,,residential,false,0,7.5,false,false,false,0,321.4,Gbagada,441901609
+W441901610,,residential,false,0,7.5,false,false,false,0,272.0,Gbagada,441901610
+W441901611,,residential,false,0,7.5,false,false,false,0,114.9,Gbagada,441901611
+W441901612,,residential,false,0,7.5,false,false,false,0,86.6,Gbagada,441901612
+W441901613,,residential,false,0,7.5,false,false,false,0,115.2,Gbagada,441901613
+W441901615,,residential,false,0,7.5,false,false,false,0,239.3,Gbagada,441901615
+W441901616,,residential,false,0,7.5,false,false,false,0,199.8,Gbagada,441901616
+W441901617,,residential,false,0,7.5,false,false,false,0,62.8,Gbagada,441901617
+W441901618,,residential,false,0,7.5,false,false,false,0,69.3,Gbagada,441901618
+W441901619,,residential,false,0,7.5,false,false,false,0,382.7,Gbagada,441901619
+W441901621,,residential,false,0,7.5,false,false,false,0,153.7,Gbagada,441901621
+W441901623,,residential,false,0,7.5,false,false,false,0,101.3,Gbagada,441901623
+W441901624,,residential,false,0,7.5,false,false,false,0,104.5,Gbagada,441901624
+W441901625,,residential,false,0,7.5,false,false,false,0,304.8,Gbagada,441901625
+W441901626,,residential,false,0,7.5,false,false,false,0,74.5,Gbagada,441901626
+W441901627,,residential,false,0,7.5,false,false,false,0,166.3,Gbagada,441901627
+W441901628,,residential,false,0,7.5,false,false,false,0,70.3,Gbagada,441901628
+W441901629,,residential,false,0,7.5,false,false,false,0,189.4,Gbagada,441901629
+W441901630,,residential,false,0,7.5,false,false,false,0,133.2,Gbagada,441901630
+W441901632,,residential,false,0,7.5,false,false,false,0,64.2,Gbagada,441901632
+W441903762,,residential,false,0,7.5,false,false,false,0,94.1,Gbagada,441903762
+W441903763,,residential,false,0,7.5,false,false,false,0,180.0,Gbagada,441903763
+W441903765,,residential,false,0,7.5,false,false,false,0,54.7,Gbagada,441903765
+W441903766,,residential,false,0,7.5,false,false,false,0,95.4,Gbagada,441903766
+W441903767,,residential,false,0,7.5,false,false,false,0,87.6,Gbagada,441903767
+W441903768,,residential,false,0,7.5,false,false,false,0,66.8,Gbagada,441903768
+W441917948,,residential,false,0,7.5,false,false,false,0,168.2,Gbagada,441917948
+W441917949,,residential,false,0,7.5,false,false,false,0,342.7,Gbagada,441917949
+W441917950,,residential,false,0,7.5,false,false,false,0,128.3,Gbagada,441917950
+W441917952,,tertiary,false,0,10.0,false,false,false,0,223.1,Gbagada,441917952
+W441917953,,service,false,0,5.0,false,false,false,0,212.1,Gbagada,441917953
+W441917954,,residential,false,0,7.5,false,false,false,0,76.1,Gbagada,441917954
+W441917955,,residential,false,0,7.5,false,false,false,0,180.4,Gbagada,441917955
+W441917956,,residential,false,0,7.5,false,false,false,0,55.8,Gbagada,441917956
+W441917957,,residential,false,0,7.5,false,false,false,0,50.6,Gbagada,441917957
+W441917958,,residential,false,0,7.5,false,false,false,0,47.5,Gbagada,441917958
+W441917959,,residential,false,0,7.5,false,false,false,0,71.6,Gbagada,441917959
+W441917960,,residential,false,0,7.5,false,false,false,0,94.1,Gbagada,441917960
+W441917961,,residential,false,0,7.5,false,false,false,0,56.1,Gbagada,441917961
+W441917963,,residential,false,0,7.5,false,false,false,0,238.9,Gbagada,441917963
+W441917964,,residential,false,0,7.5,false,false,false,0,79.6,Gbagada,441917964
+W441917966,,residential,false,0,7.5,false,false,false,0,383.4,Gbagada,441917966
+W441917967,,residential,false,0,7.5,false,false,false,0,124.2,Gbagada,441917967
+W441917968,,residential,false,0,7.5,false,false,false,0,125.6,Gbagada,441917968
+W441917969,,residential,false,0,7.5,false,false,false,0,51.1,Gbagada,441917969
+W441917971,,residential,false,0,7.5,false,false,false,0,112.7,Gbagada,441917971
+W441917972,,residential,false,0,7.5,false,false,false,0,65.3,Gbagada,441917972
+W441918064,,residential,false,0,7.5,false,false,false,0,271.1,Gbagada,441918064
+W441918065,,residential,false,0,7.5,false,false,false,0,80.8,Gbagada,441918065
+W441918068,,residential,false,0,7.5,false,false,false,0,171.5,Gbagada,441918068
+W441918070,,residential,false,0,7.5,false,false,false,0,182.0,Gbagada,441918070
+W441918331,,residential,false,0,7.5,false,false,false,0,136.5,Gbagada,441918331
+W441918332,,residential,false,0,7.5,false,false,false,0,47.1,Gbagada,441918332
+W441918333,,residential,false,0,7.5,false,false,false,0,70.9,Gbagada,441918333
+W441918334,,residential,false,0,7.5,false,false,false,0,196.7,Gbagada,441918334
+W461601171,,residential,false,0,7.5,false,false,false,0,80.8,Gbagada,461601171
+W461601172,,residential,false,0,7.5,false,false,false,0,88.2,Gbagada,461601172
+W461601174,,residential,false,0,7.5,false,false,false,0,97.0,Gbagada,461601174
+W525043235,,tertiary,false,0,10.0,false,false,false,0,267.7,Gbagada,525043235
+W528999512,,residential,false,0,7.5,false,false,false,0,725.2,Gbagada,528999512
+W560546956,,primary,true,0,7.5,true,false,false,0,173.3,Gbagada,560546956
+W560546957,,primary,true,0,7.5,true,false,false,0,72.3,Gbagada,560546957
+W583637501,,residential,false,0,7.5,false,false,false,0,79.8,Gbagada,583637501
+W583647541,,residential,false,0,7.5,false,false,false,0,150.7,Gbagada,583647541
+W583647542,,residential,false,0,7.5,false,false,false,0,63.5,Gbagada,583647542
+W586474306,,residential,false,0,7.5,false,false,false,0,20.6,Gbagada,586474306
+W586474307,,residential,false,0,7.5,false,false,false,0,70.4,Gbagada,586474307
+W586479006,,residential,false,0,7.5,false,false,false,0,88.1,Gbagada,586479006
+W586557457,,residential,false,0,7.5,false,false,false,0,40.4,Gbagada,586557457
+W586557458,,residential,false,0,7.5,false,false,false,0,34.6,Gbagada,586557458
+W586557459,,residential,false,0,7.5,false,false,false,0,63.1,Gbagada,586557459
+W586579713,,residential,false,0,7.5,false,false,false,0,151.2,Gbagada,586579713
+W586759379,,residential,false,0,7.5,false,false,false,0,329.6,Gbagada,586759379
+W588260774,,residential,false,0,7.5,false,false,false,0,73.0,Gbagada,588260774
+W588262811,,service,false,0,5.0,false,false,false,0,147.7,Gbagada,588262811
+W588262812,,service,false,0,5.0,false,false,false,0,137.0,Gbagada,588262812
+W588275463,,residential,false,0,7.5,false,false,false,0,262.5,Gbagada,588275463
+W588275464,,tertiary,false,0,10.0,true,false,false,0,26.5,Gbagada,588275464
+W588289995,,service,false,0,5.0,false,false,false,0,117.6,Gbagada,588289995
+W588289996,,service,false,0,5.0,false,false,false,0,148.0,Gbagada,588289996
+W588289997,,service,false,0,5.0,false,false,false,0,126.5,Gbagada,588289997
+W588289998,,service,false,0,5.0,false,false,false,0,103.9,Gbagada,588289998
+W588289999,,service,false,0,5.0,false,false,false,0,88.9,Gbagada,588289999
+W588290000,,service,false,0,5.0,false,false,false,0,19.8,Gbagada,588290000
+W588314498,,service,false,0,5.0,false,false,false,0,242.7,Gbagada,588314498
+W588314499,,service,false,0,5.0,false,false,false,0,29.9,Gbagada,588314499
+W588314502,,residential,false,0,7.5,false,false,false,0,267.6,Gbagada,588314502
+W588314505,,primary,true,0,7.5,true,false,false,0,360.8,Gbagada,588314505
+W588314506,,primary,true,0,7.5,true,false,false,0,319.8,Gbagada,588314506
+W588317277,,residential,false,0,7.5,false,false,false,0,76.4,Gbagada,588317277
+W588317281,,primary,true,0,7.5,true,false,false,0,38.5,Gbagada,588317281
+W588320745,,residential,false,0,7.5,false,true,false,0,8.1,Gbagada,588320745
+W588320746,,residential,false,0,7.5,false,false,false,0,39.1,Gbagada,588320746
+W588320747,,residential,false,0,7.5,false,true,false,0,12.2,Gbagada,588320747
+W588320748,,residential,false,0,7.5,false,false,false,0,209.2,Gbagada,588320748
+W588320749,,residential,false,0,7.5,false,true,false,0,13.3,Gbagada,588320749
+W588320750,,residential,false,0,7.5,false,false,false,0,146.7,Gbagada,588320750
+W588320751,,service,false,0,5.0,true,false,false,0,64.5,Gbagada,588320751
+W588320752,,residential,false,0,7.5,false,false,false,0,61.0,Gbagada,588320752
+W588326030,,residential,false,0,7.5,false,false,false,0,66.7,Gbagada,588326030
+W588328046,,residential,false,0,7.5,false,false,false,0,59.8,Gbagada,588328046
+W588328047,,residential,false,0,7.5,false,false,false,0,77.7,Gbagada,588328047
+W588515452,,residential,false,0,7.5,false,false,false,0,14.7,Gbagada,588515452
+W588515453,,residential,false,0,7.5,false,false,false,0,70.4,Gbagada,588515453
+W588515454,,residential,false,0,7.5,false,false,false,0,81.8,Gbagada,588515454
+W588515455,,residential,false,0,7.5,false,false,false,0,40.7,Gbagada,588515455
+W588521503,,residential,false,0,7.5,false,false,false,0,9.8,Gbagada,588521503
+W588521504,,residential,false,0,7.5,false,false,false,0,52.1,Gbagada,588521504
+W588521505,,residential,false,0,7.5,true,false,false,0,138.6,Gbagada,588521505
+W588528215,,primary,true,0,7.5,true,false,false,0,32.3,Gbagada,588528215
+W588528216,,residential,false,0,7.5,false,false,false,0,66.8,Gbagada,588528216
+W588528217,,residential,false,0,7.5,false,false,false,0,56.3,Gbagada,588528217
+W588528218,,residential,false,0,7.5,false,false,false,0,63.3,Gbagada,588528218
+W588529982,,residential,false,0,7.5,false,false,false,0,67.7,Gbagada,588529982
+W588535343,,residential,false,0,7.5,false,false,false,0,71.6,Gbagada,588535343
+W588556977,,residential,false,0,7.5,false,false,false,0,232.4,Gbagada,588556977
+W588556978,,residential,false,0,7.5,false,false,false,0,299.0,Gbagada,588556978
+W588604030,,residential,false,0,7.5,false,false,false,0,70.7,Gbagada,588604030
+W588820418,,residential,false,0,7.5,false,false,false,0,150.3,Gbagada,588820418
+W588820419,,service,false,0,5.0,false,false,false,0,234.2,Gbagada,588820419
+W588820420,,service,false,0,5.0,false,false,false,0,65.2,Gbagada,588820420
+W588820421,,service,false,0,5.0,false,false,false,0,280.2,Gbagada,588820421
+W588827525,,service,false,0,5.0,false,false,false,0,94.5,Gbagada,588827525
+W588827526,,service,false,0,5.0,false,false,false,0,182.2,Gbagada,588827526
+W588827527,,service,false,0,5.0,false,false,false,0,136.7,Gbagada,588827527
+W588827528,,service,false,0,5.0,false,false,false,0,262.6,Gbagada,588827528
+W588827529,,service,false,0,5.0,false,false,false,0,310.2,Gbagada,588827529
+W588827530,,service,false,0,5.0,false,false,false,0,29.5,Gbagada,588827530
+W588851346,,residential,false,0,7.5,false,false,false,0,244.7,Gbagada,588851346
+W588851347,,residential,false,0,7.5,false,false,false,0,252.4,Gbagada,588851347
+W589111682,,residential,false,0,7.5,false,false,false,0,107.6,Gbagada,589111682
+W589111684,,residential,false,0,7.5,false,false,false,0,87.7,Gbagada,589111684
+W589111685,,residential,false,0,7.5,false,false,false,0,81.5,Gbagada,589111685
+W589124504,,residential,false,0,7.5,false,false,false,0,295.5,Gbagada,589124504
+W589139287,,residential,false,0,7.5,false,false,false,0,88.4,Gbagada,589139287
+W589139288,,residential,false,0,7.5,true,false,false,0,19.8,Gbagada,589139288
+W589734202,,residential,false,0,7.5,false,false,false,0,62.0,Gbagada,589734202
+W589735059,,residential,false,0,7.5,false,false,false,0,75.1,Gbagada,589735059
+W589735060,,residential,false,0,7.5,false,false,false,0,44.9,Gbagada,589735060
+W589737115,,residential,false,0,7.5,false,false,false,0,109.8,Gbagada,589737115
+W589737116,,residential,false,0,7.5,false,false,false,0,50.4,Gbagada,589737116
+W589737117,,residential,false,0,7.5,false,false,false,0,66.4,Gbagada,589737117
+W589739790,,residential,false,0,7.5,false,false,false,0,72.3,Gbagada,589739790
+W589739791,,residential,false,0,7.5,false,true,false,0,17.3,Gbagada,589739791
+W607640767,,secondary,false,0,13.0,true,false,true,0,39.4,Gbagada,607640767
+W652902506,,residential,false,0,7.5,false,false,false,0,170.2,Gbagada,652902506
+W653000745,,residential,false,0,7.5,false,false,false,0,305.0,Gbagada,653000745
+W653000749,,residential,false,0,7.5,false,false,false,0,133.8,Gbagada,653000749
+W693550314,,residential,false,0,7.5,false,false,false,0,17.9,Gbagada,693550314
+W693665542,,residential,false,0,7.5,false,false,false,0,55.4,Gbagada,693665542
+W702354521,,primary,false,0,17.5,true,false,false,0,36.2,Gbagada,702354521
+W702354522,,primary,false,0,17.5,true,false,false,0,36.5,Gbagada,702354522
+W702354523,,primary,false,0,17.5,true,false,false,0,44.9,Gbagada,702354523
+W702354524,,primary,false,0,17.5,true,false,false,0,43.2,Gbagada,702354524
+W702354576,,primary,true,0,7.5,true,false,false,0,40.5,Gbagada,702354576
+W702363329,,primary,true,0,7.5,true,false,false,0,28.3,Gbagada,702363329
+W726124064,,residential,false,0,7.5,false,false,false,0,95.7,Gbagada,726124064
+W726126696,,service,false,0,5.0,false,false,false,0,373.7,Gbagada,726126696
+W726616237,,residential,false,0,7.5,false,false,false,0,49.2,Gbagada,726616237
+W726616238,,residential,false,0,7.5,false,false,false,0,192.8,Gbagada,726616238
+W726629390,,service,false,0,5.0,false,false,false,0,39.0,Gbagada,726629390
+W726629391,,service,false,0,5.0,false,false,false,0,294.7,Gbagada,726629391
+W726629866,,service,false,0,5.0,false,false,false,0,123.8,Gbagada,726629866
+W726771627,,residential,false,0,7.5,false,false,false,0,163.7,Gbagada,726771627
+W726773330,,residential,false,0,7.5,false,false,false,0,65.1,Gbagada,726773330
+W726836808,,service,false,0,5.0,false,false,false,0,520.8,Gbagada,726836808
+W727399933,,service,false,0,5.0,false,false,false,0,406.6,Gbagada,727399933
+W727637763,,residential,false,0,7.5,false,false,false,0,48.7,Gbagada,727637763
+W727686339,,residential,false,0,7.5,false,false,false,0,237.2,Gbagada,727686339
+W727956421,,service,false,0,5.0,false,false,false,0,57.2,Gbagada,727956421
+W735024472,,residential,false,0,7.5,false,false,false,0,148.9,Gbagada,735024472
+W735024473,,residential,false,0,7.5,false,false,false,0,199.8,Gbagada,735024473
+W735024480,,residential,false,0,7.5,false,false,false,0,351.3,Gbagada,735024480
+W738080546,,service,false,0,5.0,false,false,false,0,98.9,Gbagada,738080546
+W738106051,,service,false,0,5.0,false,false,false,0,97.0,Gbagada,738106051
+W738382398,,service,false,0,5.0,false,false,false,0,85.9,Gbagada,738382398
+W739708827,,service,false,0,5.0,false,false,false,0,157.8,Gbagada,739708827
+W741212633,,residential,false,2,7.6,false,true,false,20,61.9,Gbagada,741212633
+W742218013,,residential,false,0,7.5,false,false,false,0,115.6,Gbagada,742218013
+W742218015,,service,false,0,5.0,false,false,false,0,378.4,Gbagada,742218015
+W744420360,,residential,false,0,7.5,false,false,false,0,44.1,Gbagada,744420360
+W761185908,,service,false,0,5.0,false,false,false,0,94.4,Gbagada,761185908
+W770068772,,residential,false,0,7.5,false,false,false,0,41.8,Gbagada,770068772
+W770068773,,service,false,0,5.0,false,false,false,0,188.9,Gbagada,770068773
+W783785790,,service,false,0,5.0,false,false,false,0,57.0,Gbagada,783785790
+W784672546,,residential,false,0,7.5,false,false,false,0,158.4,Gbagada,784672546
+W784673261,,service,false,0,5.0,false,false,false,0,46.7,Gbagada,784673261
+W784673918,,residential,false,0,7.5,false,false,false,0,87.9,Gbagada,784673918
+W784674060,,service,false,0,5.0,false,false,false,0,88.2,Gbagada,784674060
+W784674954,,service,false,0,5.0,false,false,false,0,428.3,Gbagada,784674954
+W784676016,,residential,false,0,7.5,false,false,false,0,99.1,Gbagada,784676016
+W784686660,,service,false,0,5.0,false,false,false,0,206.8,Gbagada,784686660
+W784687211,,service,false,0,5.0,false,false,false,0,45.6,Gbagada,784687211
+W784687212,,service,false,0,5.0,false,false,false,0,131.2,Gbagada,784687212
+W784688854,,residential,false,0,7.5,false,false,false,0,138.5,Gbagada,784688854
+W784689639,,service,false,0,5.0,false,false,false,0,96.4,Gbagada,784689639
+W784705524,,residential,false,0,7.5,false,false,false,0,141.2,Gbagada,784705524
+W784959556,,service,false,0,5.0,false,false,false,0,56.6,Gbagada,784959556
+W784959557,,service,false,0,5.0,false,false,false,0,111.7,Gbagada,784959557
+W784959858,,service,false,0,5.0,false,false,false,0,150.8,Gbagada,784959858
+W784960102,,service,false,0,5.0,false,false,false,0,82.6,Gbagada,784960102
+W784960103,,service,false,0,5.0,false,false,false,0,96.4,Gbagada,784960103
+W784960392,,service,false,0,5.0,true,false,false,0,78.6,Gbagada,784960392
+W784960513,,service,false,0,5.0,false,false,false,0,180.3,Gbagada,784960513
+W784961090,,residential,false,0,7.5,false,false,false,0,130.7,Gbagada,784961090
+W784961245,,residential,false,0,7.5,false,false,false,0,110.9,Gbagada,784961245
+W784961482,,residential,false,0,7.5,false,false,false,0,100.7,Gbagada,784961482
+W784967709,,service,false,0,5.0,false,false,false,0,30.5,Gbagada,784967709
+W784967710,,service,false,0,5.0,false,false,false,0,13.2,Gbagada,784967710
+W784967942,,service,false,0,5.0,false,false,false,0,122.2,Gbagada,784967942
+W784969123,,service,false,0,5.0,false,false,false,0,178.2,Gbagada,784969123
+W784975078,,residential,false,0,7.5,false,true,false,0,20.3,Gbagada,784975078
+W784975079,,residential,false,0,7.5,false,false,false,0,200.3,Gbagada,784975079
+W785004341,,residential,false,0,7.5,false,false,false,0,135.3,Gbagada,785004341
+W785004342,,residential,false,0,7.5,false,false,false,0,153.4,Gbagada,785004342
+W788672489,,residential,false,0,7.5,false,false,false,0,380.2,Gbagada,788672489
+W788672490,,residential,false,0,7.5,false,false,false,0,100.8,Gbagada,788672490
+W788672494,,residential,false,0,7.5,false,false,false,0,117.7,Gbagada,788672494
+W788672495,,residential,false,0,7.5,false,false,false,0,81.9,Gbagada,788672495
+W788672496,,residential,false,0,7.5,false,false,false,0,79.5,Gbagada,788672496
+W788672497,,residential,false,0,7.5,false,false,false,0,81.1,Gbagada,788672497
+W788672498,,residential,false,0,7.5,false,false,false,0,133.0,Gbagada,788672498
+W788692842,,service,false,0,5.0,true,false,false,0,113.2,Gbagada,788692842
+W788692843,,service,false,0,5.0,true,false,false,0,137.1,Gbagada,788692843
+W788692848,,residential,false,0,7.5,false,false,false,0,353.4,Gbagada,788692848
+W788692852,,residential,false,0,7.5,false,false,false,0,832.4,Gbagada,788692852
+W788692853,,residential,false,0,7.5,false,false,false,0,240.9,Gbagada,788692853
+W791933193,,residential,false,0,7.5,false,false,false,0,223.9,Gbagada,791933193
+W794157413,,residential,false,0,7.5,false,false,false,0,5.7,Gbagada,794157413
+W794157414,,residential,false,0,7.5,false,true,false,0,10.7,Gbagada,794157414
+W794157415,,residential,false,0,7.5,false,false,false,0,5.1,Gbagada,794157415
+W794157416,,residential,false,0,7.5,false,false,false,0,94.2,Gbagada,794157416
+W794157417,,residential,false,0,7.5,false,false,false,0,283.3,Gbagada,794157417
+W794157418,,residential,false,0,7.5,false,false,false,0,101.2,Gbagada,794157418
+W794157419,,residential,false,0,7.5,false,false,false,0,129.6,Gbagada,794157419
+W794157420,,residential,false,0,7.5,false,false,false,0,149.5,Gbagada,794157420
+W8064879,,residential,false,0,7.5,false,false,false,0,116.3,Gbagada,8064879
+W828126103,,tertiary,false,0,10.0,true,false,false,0,198.5,Gbagada,828126103
+W828710001,,service,false,0,5.0,false,false,false,0,83.2,Gbagada,828710001
+W828725307,,residential,false,0,7.5,false,false,false,0,79.6,Gbagada,828725307
+W828725308,,residential,false,0,7.5,false,false,false,0,83.5,Gbagada,828725308
+W828725309,,residential,false,0,7.5,false,false,false,0,246.3,Gbagada,828725309
+W828794811,,service,false,0,5.0,false,false,false,0,92.4,Gbagada,828794811
+W828794812,,service,false,0,5.0,false,false,false,0,41.6,Gbagada,828794812
+W828794813,,service,false,0,5.0,false,false,false,0,34.4,Gbagada,828794813
+W829104005,,service,false,0,5.0,true,false,false,0,43.8,Gbagada,829104005
+W829104006,,service,false,0,5.0,false,false,false,0,22.5,Gbagada,829104006
+W829245372,,service,false,0,5.0,true,false,false,0,111.7,Gbagada,829245372
+W829245373,,service,false,0,5.0,false,false,false,0,43.8,Gbagada,829245373
+W829245374,,service,false,0,5.0,false,false,false,0,43.2,Gbagada,829245374
+W832524022,,residential,false,0,7.5,false,false,false,0,397.3,Gbagada,832524022
+W848739847,,service,false,0,5.0,false,false,false,0,127.1,Gbagada,848739847
+W848739848,,service,false,0,5.0,false,false,false,0,50.4,Gbagada,848739848
+W848739849,,service,false,0,5.0,false,false,false,0,99.7,Gbagada,848739849
+W848739850,,service,false,0,5.0,false,false,false,0,171.7,Gbagada,848739850
+W848739851,,service,false,0,5.0,false,false,false,0,66.6,Gbagada,848739851
+W848739852,,service,false,0,5.0,false,false,false,0,18.2,Gbagada,848739852
+W848739853,,service,false,0,5.0,false,false,false,0,72.4,Gbagada,848739853
+W848739854,,service,false,0,5.0,false,false,false,0,28.8,Gbagada,848739854
+W848739855,,service,false,0,5.0,false,false,false,0,198.6,Gbagada,848739855
+W848739856,,service,false,0,5.0,false,false,false,0,165.1,Gbagada,848739856
+W848739857,,service,false,0,5.0,false,false,false,0,31.7,Gbagada,848739857
+W848739858,,service,false,0,5.0,false,false,false,0,102.7,Gbagada,848739858
+W848745126,,service,false,0,5.0,false,false,false,0,53.3,Gbagada,848745126
+W848745127,,service,false,0,5.0,false,false,false,0,105.7,Gbagada,848745127
+W848745128,,service,false,0,5.0,false,false,false,0,42.9,Gbagada,848745128
+W848745129,,service,false,0,5.0,false,false,false,0,79.1,Gbagada,848745129
+W848745130,,service,false,0,5.0,false,false,false,0,156.5,Gbagada,848745130
+W848774613,,service,false,0,5.0,false,false,false,0,265.5,Gbagada,848774613
+W848774614,,service,false,0,5.0,false,false,false,0,48.5,Gbagada,848774614
+W848774615,,service,false,0,5.0,false,false,false,0,48.6,Gbagada,848774615
+W848774616,,service,false,0,5.0,false,false,false,0,166.4,Gbagada,848774616
+W865563781,,tertiary,false,0,10.0,true,false,false,0,115.5,Gbagada,865563781
+W866250743,,primary,false,0,17.5,false,false,false,0,4.3,Gbagada,866250743
+W870659854,,residential,false,0,7.5,true,false,false,0,46.0,Gbagada,870659854
+W874870439,,residential,false,0,7.5,false,false,false,0,83.1,Gbagada,874870439
+W874870440,,residential,false,0,7.5,false,false,false,0,39.9,Gbagada,874870440
+W918373377,,residential,false,0,7.5,false,false,false,0,200.0,Gbagada,918373377
+W918373378,,residential,false,0,7.5,false,false,false,0,126.9,Gbagada,918373378
+W918373381,,residential,false,0,7.5,false,false,false,0,95.2,Gbagada,918373381
+W918373382,,residential,false,0,7.5,false,false,false,0,307.8,Gbagada,918373382
+W918373383,,residential,false,0,7.5,false,false,false,0,64.8,Gbagada,918373383
+W918373384,,residential,false,0,7.5,false,false,false,0,200.0,Gbagada,918373384
+W926751094,,residential,false,0,7.5,false,false,false,0,61.1,Gbagada,926751094
+W926760839,,residential,false,0,7.5,false,false,false,0,35.0,Gbagada,926760839
+W926777283,,residential,false,0,7.5,false,false,false,0,85.6,Gbagada,926777283
+W926777284,,residential,false,0,7.5,false,false,false,0,173.9,Gbagada,926777284
+W926777285,,residential,false,0,7.5,false,false,false,0,54.5,Gbagada,926777285
+W926777286,,residential,false,0,7.5,false,false,false,0,33.0,Gbagada,926777286
+W926777287,,residential,false,0,7.5,false,false,false,0,49.2,Gbagada,926777287
+W926777288,,residential,false,0,7.5,false,false,false,0,77.4,Gbagada,926777288
+W928459944,,residential,false,0,7.5,false,false,false,0,121.2,Gbagada,928459944
+W928459946,,residential,false,0,7.5,false,false,false,0,130.0,Gbagada,928459946
+W928464006,,residential,false,0,7.5,false,false,false,0,105.5,Gbagada,928464006
+W928464007,,residential,false,0,7.5,false,false,false,0,64.7,Gbagada,928464007
+W94891486,,residential,false,0,7.5,false,false,false,0,89.4,Gbagada,94891486
+W94891488,,residential,false,0,7.5,false,false,false,0,259.1,Gbagada,94891488
+W94891490,,residential,false,0,7.5,false,false,false,0,264.1,Gbagada,94891490
+W94891500,,residential,false,0,7.5,false,false,false,0,591.2,Gbagada,94891500
+W94891505,,residential,false,0,7.5,false,false,false,0,107.3,Gbagada,94891505
+W94891507,,residential,false,0,7.5,false,false,false,0,183.2,Gbagada,94891507
+W94891510,,residential,false,0,7.5,false,false,false,0,242.6,Gbagada,94891510
+W94891511,,residential,false,0,7.5,false,false,false,0,190.1,Gbagada,94891511
+W94891523,,residential,false,0,7.5,false,false,false,0,184.2,Gbagada,94891523
+W94891525,,residential,false,0,7.5,false,false,false,0,227.6,Gbagada,94891525
+W94891526,,residential,false,0,7.5,false,false,false,0,288.6,Gbagada,94891526
+W94891527,,residential,false,0,7.5,false,false,false,0,209.6,Gbagada,94891527
+W94891529,,residential,false,0,7.5,false,false,false,0,389.3,Gbagada,94891529
+W94891531,,residential,false,0,7.5,false,false,false,0,486.6,Gbagada,94891531
+W94891534,,residential,false,0,7.5,false,false,false,0,113.8,Gbagada,94891534
+W94891537,,residential,false,0,7.5,false,false,false,0,74.7,Gbagada,94891537
+W94891539,,residential,false,0,7.5,false,false,false,0,275.8,Gbagada,94891539
+W94891546,,residential,false,0,7.5,false,false,false,0,329.6,Gbagada,94891546
+W94965105,,residential,false,0,7.5,false,false,false,0,498.3,Gbagada,94965105
+W94965106,,residential,false,0,7.5,false,false,false,0,347.8,Gbagada,94965106
+W94965109,,residential,false,0,7.5,false,false,false,0,147.8,Gbagada,94965109
+W94965111,,residential,false,0,7.5,false,false,false,0,114.4,Gbagada,94965111
+W94965113,,residential,false,0,7.5,false,false,false,0,100.8,Gbagada,94965113
+W94965114,,residential,false,0,7.5,false,false,false,0,151.6,Gbagada,94965114
+W94965116,,residential,false,0,7.5,false,false,false,0,245.8,Gbagada,94965116
+W94965119,,residential,false,0,7.5,false,false,false,0,270.6,Gbagada,94965119
+W94965121,,residential,false,0,7.5,false,false,false,0,153.5,Gbagada,94965121
+W94965122,,residential,false,0,7.5,false,false,false,0,145.9,Gbagada,94965122
+W94965125,,residential,false,0,7.5,false,false,false,0,235.4,Gbagada,94965125
+W94965126,,residential,false,0,7.5,false,false,false,0,230.1,Gbagada,94965126
+W94965128,,residential,false,0,7.5,false,false,false,0,517.1,Gbagada,94965128
+W94965130,,residential,false,0,7.5,false,false,false,0,208.7,Gbagada,94965130
+W94965132,,residential,false,0,7.5,false,false,false,0,209.2,Gbagada,94965132
+W94965134,,residential,false,0,7.5,false,false,false,0,444.5,Gbagada,94965134
+W94965141,,residential,false,0,7.5,false,false,false,0,140.9,Gbagada,94965141
+W94965143,,residential,false,0,7.5,false,false,false,0,206.3,Gbagada,94965143
+W94965149,,residential,false,0,7.5,false,false,false,0,175.1,Gbagada,94965149
+W94965150,,residential,false,0,7.5,false,false,false,0,115.5,Gbagada,94965150
+W94968490,,residential,false,0,7.5,false,false,false,0,78.8,Gbagada,94968490
+W94968492,,residential,false,0,7.5,false,true,false,0,23.2,Gbagada,94968492
+W94968494,,residential,false,0,7.5,false,false,false,0,137.4,Gbagada,94968494
+W94968507,,residential,false,0,7.5,false,false,false,0,185.4,Gbagada,94968507
+W94968516,,residential,false,0,7.5,false,false,false,0,146.9,Gbagada,94968516
+W94968520,,residential,false,0,7.5,false,false,false,0,155.1,Gbagada,94968520
+W94968524,,residential,false,0,7.5,false,false,false,0,179.1,Gbagada,94968524
+W94968532,,residential,false,0,7.5,false,true,false,0,18.5,Gbagada,94968532
+W94968533,,residential,false,0,7.5,false,false,false,0,151.5,Gbagada,94968533
+W94968538,,residential,false,0,7.5,false,false,false,0,61.5,Gbagada,94968538
+W94968541,,residential,false,0,7.5,false,false,false,0,300.0,Gbagada,94968541
+W94968545,,residential,false,0,7.5,false,false,false,0,268.2,Gbagada,94968545
+W94968549,,residential,false,0,7.5,false,false,false,0,92.1,Gbagada,94968549
+W94968551,,residential,false,0,7.5,false,true,false,0,29.4,Gbagada,94968551
+W94968553,,residential,false,0,7.5,false,false,false,0,164.2,Gbagada,94968553
+W94968557,,residential,false,0,7.5,false,true,false,0,21.0,Gbagada,94968557
+W94968559,,residential,false,0,7.5,false,true,false,0,25.4,Gbagada,94968559
+W94968560,,residential,false,0,7.5,false,false,false,0,116.9,Gbagada,94968560
+W94968563,,residential,false,0,7.5,false,false,false,0,519.0,Gbagada,94968563
+W94968565,,residential,false,0,7.5,false,false,false,0,335.6,Gbagada,94968565
+W95045675,,residential,false,0,7.5,false,false,false,0,95.3,Gbagada,95045675
+W95045678,,residential,false,0,7.5,false,false,false,0,112.1,Gbagada,95045678
+W95045680,,residential,false,0,7.5,false,false,false,0,340.8,Gbagada,95045680
+W95045681,,residential,false,0,7.5,false,false,false,0,102.8,Gbagada,95045681
+W95045684,,service,false,0,5.0,false,false,false,0,108.2,Gbagada,95045684
+W95045687,,residential,false,0,7.5,false,false,false,0,51.0,Gbagada,95045687
+W95045688,,residential,false,0,7.5,false,false,false,0,108.8,Gbagada,95045688
+W95045698,,residential,false,0,7.5,false,false,false,0,440.4,Gbagada,95045698
+W95045699,,residential,false,0,7.5,false,false,false,0,289.2,Gbagada,95045699
+W95045700,,residential,false,0,7.5,false,false,false,0,253.0,Gbagada,95045700
+W95045701,,residential,false,0,7.5,false,false,false,0,390.7,Gbagada,95045701
+W95045702,,residential,false,0,7.5,false,false,false,0,364.3,Gbagada,95045702
+W95045703,,residential,false,0,7.5,false,false,false,0,231.9,Gbagada,95045703
+W95045705,,residential,false,0,7.5,false,false,false,0,311.8,Gbagada,95045705
+W95045707,,residential,false,0,7.5,false,false,false,0,142.1,Gbagada,95045707
+W95045708,,residential,false,0,7.5,false,false,false,0,405.3,Gbagada,95045708
+W95045709,,residential,false,0,7.5,false,false,false,0,169.4,Gbagada,95045709
+W953300250,,residential,false,0,7.5,false,false,false,0,321.7,Gbagada,953300250
+W959638496,,residential,false,0,7.5,false,false,false,0,10.5,Gbagada,959638496
+W964207725,,residential,false,0,7.5,false,false,false,0,123.0,Gbagada,964207725
+W964207726,,service,false,0,5.0,false,false,false,0,66.8,Gbagada,964207726
+W964207727,,residential,false,0,7.5,false,false,false,0,274.8,Gbagada,964207727
+W964207728,,residential,false,0,7.5,false,false,false,0,113.4,Gbagada,964207728
+W964244836,,service,false,0,5.0,false,false,false,0,71.4,Gbagada,964244836
+W964244837,,residential,false,0,7.5,false,false,false,0,65.3,Gbagada,964244837
+W964244838,,service,false,0,5.0,false,false,false,0,72.1,Gbagada,964244838
+W964244839,,residential,false,0,7.5,false,false,false,0,107.6,Gbagada,964244839
+W964244840,,service,false,0,5.0,false,false,false,0,146.8,Gbagada,964244840
+W964245907,,residential,false,0,7.5,false,false,false,0,194.9,Gbagada,964245907
+W964507796,,service,false,0,5.0,false,false,false,0,31.9,Gbagada,964507796
+W964507797,,service,false,0,5.0,false,false,false,0,51.5,Gbagada,964507797
+W964508471,,service,false,0,5.0,false,false,false,0,36.1,Gbagada,964508471
+W964508472,,service,false,0,5.0,false,false,false,0,33.9,Gbagada,964508472
+W964508473,,residential,false,0,7.5,false,false,false,0,65.8,Gbagada,964508473
+W965855727,,service,false,0,5.0,false,false,false,0,110.1,Gbagada,965855727
+W966410876,,residential,false,0,7.5,false,false,false,0,73.7,Gbagada,966410876
+W966410877,,residential,false,0,7.5,false,false,false,0,133.4,Gbagada,966410877
+W966410878,,service,false,0,5.0,false,false,false,0,120.8,Gbagada,966410878
+W966410879,,tertiary,false,0,10.0,false,false,false,0,138.3,Gbagada,966410879
+W975943904,,residential,false,0,7.5,false,false,false,0,84.8,Gbagada,975943904
+W975947090,,residential,false,0,7.5,false,false,false,0,7.7,Gbagada,975947090
+W978510146,,residential,false,0,7.5,false,false,false,0,70.6,Gbagada,978510146
+W987534582,,residential,false,0,7.5,false,false,false,0,78.6,Gbagada,987534582
+W987534583,,residential,false,0,7.5,false,false,false,0,51.2,Gbagada,987534583
+W990246278,,residential,false,0,7.5,false,false,false,0,61.3,Gbagada,990246278

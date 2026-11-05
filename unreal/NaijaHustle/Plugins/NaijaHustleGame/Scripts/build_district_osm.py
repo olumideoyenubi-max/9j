@@ -34,7 +34,16 @@ import urllib.parse
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DISTRICTS = {"oshodi": ("Oshodi", (6.535, 3.325, 6.575, 3.365))}     # name, (south, west, north, east)
+# name, (south, west, north, east). Squares about 4.4 km a side that do not overlap, so no street is in two of them.
+DISTRICTS = {"oshodi": ("Oshodi", (6.535, 3.325, 6.575, 3.365)),
+             "ikeja": ("Ikeja", (6.575, 3.325, 6.615, 3.365)), "maryland": ("Maryland", (6.575, 3.365, 6.615, 3.405)), "gbagada": ("Gbagada", (6.535, 3.365, 6.575, 3.405)),
+             "mushin": ("Mushin and Surulere", (6.495, 3.325, 6.535, 3.365)), "yaba": ("Yaba", (6.495, 3.365, 6.535, 3.405)),
+             "iganmu": ("Iganmu and Ijora", (6.455, 3.325, 6.495, 3.365)), "ebutemetta": ("Ebute Metta", (6.455, 3.365, 6.495, 3.405)),
+             "apapa": ("Apapa", (6.415, 3.345, 6.455, 3.385)), "island": ("Lagos Island and Eko Atlantic", (6.40, 3.385, 6.455, 3.425)),
+             "ikoyi": ("Ikoyi and Victoria Island", (6.415, 3.425, 6.455, 3.465)), "lekki": ("Lekki Phase 1", (6.415, 3.465, 6.455, 3.505))}
+# Building footprints are only fetched where the building generator uses them: tens of thousands a district otherwise,
+# for nothing. "python3 build_district_osm.py all" builds every district that has no Data/osm_<district>.json yet.
+WITH_BUILDINGS = {"oshodi"}
 DISTRICT = sys.argv[1] if len(sys.argv) > 1 else "oshodi"
 CACHE = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.expanduser("~"), "Downloads", "map lagos", "OSM")
 LON0, LAT0, KX, KY = 3.40, 6.47, 110611.0, 110574.0
@@ -49,14 +58,31 @@ def fetch(name, bbox):
     path = os.path.join(CACHE, f"{name}.json")
     if not os.path.exists(path):
         box = ",".join(str(v) for v in bbox)
+        buildings = f'way["building"]({box});' if name in WITH_BUILDINGS else ""
         query = (f'[out:json][timeout:240];(way["highway"]({box});way["railway"]({box});way["waterway"]({box});way["natural"="water"]({box});'
-                 f'way["leisure"~"park|pitch|garden|playground"]({box});way["building"]({box});node["highway"~"bus_stop|traffic_signals|crossing"]({box});'
+                 f'way["leisure"~"park|pitch|garden|playground"]({box});{buildings}node["highway"~"bus_stop|traffic_signals|crossing"]({box});'
                  f'node["public_transport"]({box});node["amenity"~"bus_station|fuel|marketplace"]({box}););out body geom;')
         os.makedirs(CACHE, exist_ok=True)
-        request = urllib.request.Request("https://overpass-api.de/api/interpreter", data=urllib.parse.urlencode({"data": query}).encode(),
-                                         headers={"User-Agent": "NaijaHustle-map-import/1.0 (personal game project)", "Accept": "*/*"})
-        with urllib.request.urlopen(request, timeout=300) as reply, open(path, "wb") as out:
-            out.write(reply.read())
+        # the public map servers are often busy: each is tried in turn, three rounds, before giving up
+        import time
+        servers = ("https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter", "https://overpass.private.coffee/api/interpreter")
+        reply_bytes = None
+        for attempt in range(9):
+            request = urllib.request.Request(servers[attempt % len(servers)], data=urllib.parse.urlencode({"data": query}).encode(),
+                                             headers={"User-Agent": "NaijaHustle-map-import/1.0 (personal game project)", "Accept": "*/*"})
+            try:
+                with urllib.request.urlopen(request, timeout=300) as reply:
+                    reply_bytes = reply.read()
+                json.loads(reply_bytes)["elements"]
+                break
+            except Exception as error:
+                print(f"  {name}: {servers[attempt % len(servers)].split('/')[2]} said {error}; trying again")
+                reply_bytes = None
+                time.sleep(10 + 10 * (attempt // len(servers)))
+        if reply_bytes is None:
+            raise RuntimeError(f"no map server answered for {name}")
+        with open(path, "wb") as out:
+            out.write(reply_bytes)
     with open(path, encoding="utf-8") as fh:
         return json.load(fh)["elements"]
 
@@ -167,4 +193,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if DISTRICT == "all":
+        import time
+        for key in DISTRICTS:
+            if not os.path.exists(os.path.join(HERE, "..", "Data", f"osm_{key}.json")):
+                DISTRICT = key
+                main()
+                time.sleep(8)          # the map server asks for a pause between big questions
+    else:
+        main()

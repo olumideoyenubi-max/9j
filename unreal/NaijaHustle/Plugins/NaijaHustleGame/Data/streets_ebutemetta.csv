@@ -1,0 +1,1234 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W112513505,Abeokuta Street,unclassified,false,0,7.5,true,false,false,0,957.6,Ebute Metta,112513505
+W588631114,Abeokuta Street,residential,false,0,7.5,false,false,false,0,185.4,Ebute Metta,588631114
+W1533750144,Abubakar Road,residential,false,0,7.5,false,false,false,0,189.5,Ebute Metta,1533750144
+W1533750145,Abubakar Road,residential,false,0,7.5,false,false,false,0,170.5,Ebute Metta,1533750145
+W90288307,Abule-Nla Road,unclassified,false,0,7.5,false,false,false,0,665.6,Ebute Metta,90288307
+W507242108,Acacia Drive,unclassified,false,0,7.5,false,false,false,0,383.9,Ebute Metta,507242108
+W586367388,Acacia Drive,residential,false,0,7.5,false,false,false,0,82.9,Ebute Metta,586367388
+W138057955,Adekunle Street,unclassified,false,0,7.5,false,false,false,0,332.8,Ebute Metta,138057955
+W135342422,Ademuyiwa Road,residential,false,0,7.5,false,false,false,0,206.5,Ebute Metta,135342422
+W133766190,Adeniji Adele Road,primary,false,1,4.3,true,true,false,0,364.8,Ebute Metta,133766190
+W1418964599,Adeniji Adele Road,tertiary,false,2,7.6,true,false,false,0,65.4,Ebute Metta,1418964599
+W1459438681,Adeniji Adele Road,unclassified,false,0,7.5,true,false,false,0,1281.5,Ebute Metta,1459438681
+W328558526,Adeniji Adele Road,primary,false,2,7.6,true,false,false,0,1045.9,Ebute Metta,328558526
+W530737592,Adeniji Adele Road,unclassified,false,0,7.5,true,false,false,0,1276.2,Ebute Metta,530737592
+W654211003,Adeniji Adele Road,tertiary,false,2,7.6,false,false,false,0,815.7,Ebute Metta,654211003
+W88260970,Adeniji Adele Road,primary,false,0,17.5,true,false,false,0,495.3,Ebute Metta,88260970
+W88273960,Adeniji Adele Road,secondary,false,0,13.0,false,false,false,0,90.8,Ebute Metta,88273960
+W280479713,Adeyemi Street,residential,false,0,7.5,false,false,false,0,106.2,Ebute Metta,280479713
+W1112195384,Afric Road,unclassified,false,0,7.5,false,false,false,0,215.3,Ebute Metta,1112195384
+W90288372,Afric Road,unclassified,false,0,7.5,false,false,false,0,293.1,Ebute Metta,90288372
+W88270779,Agarawu Street,unclassified,false,0,7.5,false,false,false,0,102.6,Ebute Metta,88270779
+W129534218,Agodo Street,residential,false,0,7.5,false,false,false,0,183.0,Ebute Metta,129534218
+W129534221,Agoro Street,residential,false,0,7.5,false,false,false,0,159.4,Ebute Metta,129534221
+W138057958,Ahmadu Bello Road,residential,false,0,7.5,false,false,false,0,790.6,Ebute Metta,138057958
+W587479955,Ahmadu Bello Road,residential,false,0,7.5,false,false,false,0,67.3,Ebute Metta,587479955
+W129535579,Ajayi Benbe Street,residential,false,0,7.5,false,false,false,0,87.0,Ebute Metta,129535579
+W138057961,Akintola Road,residential,false,0,7.5,false,false,false,0,464.3,Ebute Metta,138057961
+W129556773,Alagbeji Street,service,false,0,5.0,false,false,false,0,284.3,Ebute Metta,129556773
+W133772459,Alakoro Marina Street,unclassified,false,0,7.5,true,false,false,0,54.3,Ebute Metta,133772459
+W133772485,Alakoro Marina Street,unclassified,false,0,7.5,true,false,false,0,72.4,Ebute Metta,133772485
+W87807836,Alakoro Marina Street,unclassified,false,0,7.5,false,false,false,0,131.8,Ebute Metta,87807836
+W559095422,Ali Balogun Street,residential,false,0,7.5,false,false,false,0,119.9,Ebute Metta,559095422
+W129535578,Alli Street,residential,false,0,7.5,false,false,false,0,213.6,Ebute Metta,129535578
+W129556788,Alof Street,residential,false,0,7.5,false,false,false,0,107.3,Ebute Metta,129556788
+W558864246,Amuto Street,residential,false,0,7.5,false,false,false,0,80.9,Ebute Metta,558864246
+W280346482,Andrew Street,residential,false,0,7.5,false,false,false,0,110.3,Ebute Metta,280346482
+W1071098801,Apapa Road,motorway,false,0,24.0,true,true,false,0,356.6,Ebute Metta,1071098801
+W1157080490,Apapa Road,tertiary,false,0,10.0,false,false,false,0,124.3,Ebute Metta,1157080490
+W1287699024,Apapa Road,motorway,false,0,24.0,true,true,false,0,317.6,Ebute Metta,1287699024
+W1287699025,Apapa Road,motorway,false,0,24.0,true,true,false,0,24.6,Ebute Metta,1287699025
+W133795061,Apapa Road,motorway,false,0,24.0,true,true,false,0,437.1,Ebute Metta,133795061
+W133795062,Apapa Road,motorway,false,0,24.0,true,true,false,0,1684.1,Ebute Metta,133795062
+W133795077,Apapa Road,motorway,false,0,24.0,true,true,false,0,321.5,Ebute Metta,133795077
+W133795089,Apapa Road,motorway,false,0,24.0,true,false,false,0,742.2,Ebute Metta,133795089
+W133797418,Apapa Road,tertiary,false,0,10.0,true,false,false,0,50.0,Ebute Metta,133797418
+W133797429,Apapa Road,tertiary,false,0,10.0,true,false,false,0,33.3,Ebute Metta,133797429
+W1465598398,Apapa Road,tertiary,false,0,10.0,true,false,false,0,30.3,Ebute Metta,1465598398
+W207402240,Apapa Road,tertiary,false,0,10.0,false,false,false,0,487.7,Ebute Metta,207402240
+W264916642,Apapa Road,motorway,false,0,24.0,true,false,false,0,602.6,Ebute Metta,264916642
+W530724619,Apapa Road,tertiary,false,0,10.0,false,false,false,0,764.3,Ebute Metta,530724619
+W642340877,Apapa Road,motorway,false,0,24.0,true,true,false,0,179.0,Ebute Metta,642340877
+W642340880,Apapa Road,motorway,false,0,24.0,true,true,false,0,129.3,Ebute Metta,642340880
+W89929130,Apapa Road,motorway,false,0,24.0,true,true,false,0,544.9,Ebute Metta,89929130
+W558796896,Apatira Street,residential,false,0,7.5,false,false,false,0,100.7,Ebute Metta,558796896
+W559095424,Apatira Street,unclassified,false,0,7.5,false,false,false,0,243.9,Ebute Metta,559095424
+W10561241,Apogbon Bridge,motorway,false,0,24.0,true,true,false,0,689.2,Ebute Metta,10561241
+W133764001,Apogbon Bridge,motorway,false,0,24.0,true,true,false,0,637.1,Ebute Metta,133764001
+W133763998,Apogbon Street,motorway,false,0,24.0,true,false,false,0,208.3,Ebute Metta,133763998
+W93858643,Apogbon Street,motorway,false,0,24.0,true,false,false,0,202.7,Ebute Metta,93858643
+W87807834,Ashogbon Street,residential,false,0,7.5,false,false,false,0,333.5,Ebute Metta,87807834
+W166893828,Atitebi Street,residential,false,0,7.5,false,false,false,0,166.7,Ebute Metta,166893828
+W217793792,Ayodele Street,residential,false,0,7.5,false,false,false,0,242.6,Ebute Metta,217793792
+W90288400,Babani Street,residential,false,0,7.5,false,false,false,0,261.4,Ebute Metta,90288400
+W133772445,Balogun Street,secondary,false,0,13.0,true,false,false,0,17.8,Ebute Metta,133772445
+W215113173,Balogun Street,secondary,false,0,13.0,true,false,false,0,85.8,Ebute Metta,215113173
+W530737585,Balogun Street,secondary,false,0,13.0,true,false,false,0,129.9,Ebute Metta,530737585
+W530737589,Balogun Street,secondary,false,0,13.0,true,false,false,0,125.7,Ebute Metta,530737589
+W530737591,Balogun Street,secondary,false,0,13.0,true,false,false,0,654.9,Ebute Metta,530737591
+W129534219,Bankole Street,residential,false,0,7.5,false,false,false,0,279.7,Ebute Metta,129534219
+W558803344,Bankole Street,residential,false,0,7.5,false,false,false,0,153.8,Ebute Metta,558803344
+W91102655,Barracks Road,residential,false,0,7.5,false,false,false,0,662.7,Ebute Metta,91102655
+W166893846,Berkley Street,residential,false,0,7.5,false,false,false,0,369.4,Ebute Metta,166893846
+W129535569,Binuyo Street,residential,false,0,7.5,false,false,false,0,150.5,Ebute Metta,129535569
+W130601955,Bola Street,residential,false,0,7.5,false,false,false,0,1036.5,Ebute Metta,130601955
+W112513469,Borno Way,unclassified,false,0,7.5,true,false,false,0,496.1,Ebute Metta,112513469
+W114912304,Borno Way,unclassified,false,0,7.5,false,false,false,0,1726.3,Ebute Metta,114912304
+W832527294,Borno Way,unclassified,false,0,7.5,true,false,false,0,330.3,Ebute Metta,832527294
+W530737584,Breadfruit Street,residential,false,0,7.5,true,false,false,0,442.5,Ebute Metta,530737584
+W135342423,Brickfield Road,residential,false,0,7.5,false,false,false,0,872.5,Ebute Metta,135342423
+W328558543,Broad Street,primary,false,0,17.5,true,false,false,0,1077.2,Ebute Metta,328558543
+W133766187,Carter Bridge,primary,false,0,17.5,true,true,false,0,473.3,Ebute Metta,133766187
+W133766188,Carter Bridge,trunk,true,0,7.5,true,true,false,0,229.7,Ebute Metta,133766188
+W207402234,Carter Bridge,primary,false,0,17.5,true,true,false,0,663.8,Ebute Metta,207402234
+W328558538,Carter Bridge,secondary,false,0,13.0,true,true,false,0,299.4,Ebute Metta,328558538
+W328558539,Carter Bridge,primary,false,0,17.5,true,true,false,0,228.8,Ebute Metta,328558539
+W87805666,Carter Bridge,secondary,false,0,13.0,true,true,false,0,338.1,Ebute Metta,87805666
+W112513458,Carter Street,residential,false,0,7.5,false,false,false,0,601.6,Ebute Metta,112513458
+W108050111,Cemetry Street,residential,false,0,7.5,false,false,false,0,1073.4,Ebute Metta,108050111
+W1413206846,Cemetry Street,residential,false,0,7.5,false,false,false,0,4.8,Ebute Metta,1413206846
+W1413206847,Cemetry Street,residential,false,0,7.5,false,false,false,0,134.9,Ebute Metta,1413206847
+W217755403,Cemetry Street,residential,false,0,7.5,false,false,false,0,158.0,Ebute Metta,217755403
+W87807832,Church Street,residential,false,0,7.5,false,false,false,0,255.7,Ebute Metta,87807832
+W134234993,Clinic Road Lagos Mainland,primary,false,0,17.5,true,false,false,80,600.6,Ebute Metta,134234993
+W207402242,Clinic Road Lagos Mainland,primary,false,0,17.5,true,false,false,80,595.3,Ebute Metta,207402242
+W407972966,Clinic Road Lagos Mainland,primary,false,0,17.5,true,false,false,80,301.1,Ebute Metta,407972966
+W407972969,Clinic Road Lagos Mainland,primary,false,0,17.5,true,false,false,80,327.3,Ebute Metta,407972969
+W407972976,Clinic Road Lagos Mainland,primary,false,0,17.5,true,true,false,80,61.2,Ebute Metta,407972976
+W407972980,Clinic Road Lagos Mainland,primary,false,0,17.5,true,true,false,80,61.0,Ebute Metta,407972980
+W588150731,Clinic Road Lagos Mainland,primary,false,0,17.5,true,false,false,80,20.4,Ebute Metta,588150731
+W112513496,Coates Street,residential,false,0,7.5,false,false,false,0,711.7,Ebute Metta,112513496
+W534989417,Coates Street,residential,false,0,7.5,true,false,false,0,205.1,Ebute Metta,534989417
+W129534178,Cole Street,residential,false,0,7.5,false,false,false,0,101.2,Ebute Metta,129534178
+W166721546,Cole Street,residential,false,0,7.5,false,false,false,0,111.4,Ebute Metta,166721546
+W87807833,Daddy Alaja Street,residential,false,0,7.5,false,false,false,0,296.4,Ebute Metta,87807833
+W138040469,Daramola Street,residential,false,0,7.5,false,false,false,0,128.3,Ebute Metta,138040469
+W133764004,Davies Offin Canal,residential,false,0,7.5,false,false,false,0,137.7,Ebute Metta,133764004
+W133764007,Davies Offin Canal,residential,false,0,7.5,false,false,false,0,64.2,Ebute Metta,133764007
+W88260926,Davies Street,residential,false,0,7.5,true,false,false,0,231.1,Ebute Metta,88260926
+W135342413,Dawodu Street,residential,false,0,7.5,false,false,false,0,225.3,Ebute Metta,135342413
+W280570893,Denton Street,residential,false,0,7.5,false,false,false,0,514.8,Ebute Metta,280570893
+W135342414,Desalu Street,residential,false,0,7.5,false,false,false,0,219.3,Ebute Metta,135342414
+W129534183,Docemo Street,tertiary,false,0,10.0,false,false,false,0,447.1,Ebute Metta,129534183
+W215649060,Dockyard Road,unclassified,false,2,7.6,false,false,false,0,1622.9,Ebute Metta,215649060
+W87807835,Doherty Street,residential,false,0,7.5,false,false,false,0,281.3,Ebute Metta,87807835
+W166721532,Dolphin Estate IV Phase II Road,residential,false,0,7.5,false,false,false,0,58.8,Ebute Metta,166721532
+W280346476,Dumaresque Street,residential,false,0,7.5,false,false,false,0,95.1,Ebute Metta,280346476
+W88274555,Dumaresque Street,residential,false,0,7.5,false,false,false,0,104.5,Ebute Metta,88274555
+W133764005,Ebute-Ero Street,tertiary,false,0,10.0,true,false,false,0,36.3,Ebute Metta,133764005
+W133772465,Ebute-Ero Street,tertiary,false,0,10.0,false,false,false,0,220.5,Ebute Metta,133772465
+W10561240,Eko Bridge,motorway,false,0,24.0,true,true,false,0,3499.2,Ebute Metta,10561240
+W133795072,Eko Bridge,motorway,false,0,24.0,true,true,false,0,3049.0,Ebute Metta,133795072
+W133795074,Eko Bridge,motorway,false,0,24.0,true,true,false,0,299.3,Ebute Metta,133795074
+W133795093,Eko Bridge,motorway,false,0,24.0,true,true,false,0,262.8,Ebute Metta,133795093
+W129534222,Elegbata Street,residential,false,0,7.5,false,false,false,0,200.9,Ebute Metta,129534222
+W88260980,Eletu Iwashe Street,residential,false,0,7.5,false,false,false,0,141.9,Ebute Metta,88260980
+W87807838,Enuowa Street,unclassified,false,0,7.5,false,false,false,0,673.5,Ebute Metta,87807838
+W129586406,Epe Street,residential,false,0,7.5,false,false,false,0,120.5,Ebute Metta,129586406
+W129556782,Evans Street,residential,false,0,7.5,false,false,false,0,431.5,Ebute Metta,129556782
+W129556783,Evans Street,residential,false,0,7.5,false,false,false,0,290.7,Ebute Metta,129556783
+W91328861,Eyinle Street,residential,false,0,7.5,false,false,false,0,142.8,Ebute Metta,91328861
+W138057973,Federal Road,unclassified,false,0,7.5,false,false,false,0,501.9,Ebute Metta,138057973
+W1409458571,Federal Road,residential,false,0,7.5,false,false,false,0,17.3,Ebute Metta,1409458571
+W1545148110,Federal Road,unclassified,false,0,7.5,false,false,false,0,195.2,Ebute Metta,1545148110
+W1545148111,Federal Road,unclassified,false,0,7.5,false,true,false,0,22.7,Ebute Metta,1545148111
+W135342408,Franklin Road,residential,false,0,7.5,false,false,false,0,357.8,Ebute Metta,135342408
+W166893832,Freeman Street,residential,false,0,7.5,false,false,false,0,923.7,Ebute Metta,166893832
+W88273961,Freeman Street,unclassified,false,0,7.5,false,false,false,0,150.4,Ebute Metta,88273961
+W112513521,Glover Street,unclassified,false,0,7.5,false,false,false,0,848.9,Ebute Metta,112513521
+W93145289,Glover Street,residential,false,0,7.5,false,false,false,0,399.3,Ebute Metta,93145289
+W129534205,Griffin Street,residential,false,0,7.5,false,false,false,0,100.0,Ebute Metta,129534205
+W108050110,Griffith Street,residential,false,0,7.5,false,false,false,0,553.0,Ebute Metta,108050110
+W1134437477,Harbour Road,service,false,0,5.0,false,false,false,0,140.4,Ebute Metta,1134437477
+W1566975976,Harbour Road,service,false,0,5.0,false,false,false,0,7.6,Ebute Metta,1566975976
+W166893830,Herbert Macaulay Street,residential,false,0,7.5,false,false,false,0,562.7,Ebute Metta,166893830
+W328558537,Herbert Macaulay Street,residential,false,0,7.5,true,false,false,0,59.5,Ebute Metta,328558537
+W133805222,Herbert Macaulay Way,trunk,false,0,11.5,true,false,false,0,534.3,Ebute Metta,133805222
+W215667122,Herbert Macaulay Way,trunk,false,0,11.5,true,false,false,0,3727.0,Ebute Metta,215667122
+W534993359,Herbert Macaulay Way,trunk,false,0,11.5,true,false,false,0,4161.8,Ebute Metta,534993359
+W91328858,Holloway Street,residential,false,0,7.5,false,false,false,0,342.1,Ebute Metta,91328858
+W129535572,Horo Pedro Street,residential,false,0,7.5,false,false,false,0,72.5,Ebute Metta,129535572
+W129535584,Horo Pedro Street,residential,false,0,7.5,false,false,false,0,50.8,Ebute Metta,129535584
+W112513799,Ibadan Street,residential,false,0,7.5,true,false,false,0,107.2,Ebute Metta,112513799
+W217636585,Ibadan Street,residential,false,0,7.5,false,false,false,0,524.9,Ebute Metta,217636585
+W832527293,Ibadan Street,residential,false,0,7.5,false,false,false,0,921.2,Ebute Metta,832527293
+W166721525,Ibomo Street,residential,false,0,7.5,false,false,false,0,138.6,Ebute Metta,166721525
+W112513501,Iddo Road,trunk,false,0,11.5,true,false,false,0,1212.1,Ebute Metta,112513501
+W215667118,Iddo Road,trunk,false,0,11.5,true,false,false,0,1241.5,Ebute Metta,215667118
+W280343611,Idi-Omo Street,residential,false,0,7.5,false,false,false,0,108.4,Ebute Metta,280343611
+W129534182,Idita Street,unclassified,false,0,7.5,false,false,false,0,168.5,Ebute Metta,129534182
+W1566991933,Idita Street,residential,false,0,7.5,false,false,false,0,86.9,Ebute Metta,1566991933
+W705789473,Idita Street,unclassified,false,0,7.5,false,false,false,0,692.5,Ebute Metta,705789473
+W88260952,Idoluwo Steet,residential,false,0,7.5,false,false,false,0,496.9,Ebute Metta,88260952
+W129535577,Idumagbo Avenue,secondary,false,0,13.0,false,false,false,0,635.7,Ebute Metta,129535577
+W215118922,Idumagbo Avenue,secondary,false,0,13.0,true,true,false,0,222.5,Ebute Metta,215118922
+W88683371,Idumagbo Avenue,secondary,false,0,13.0,true,false,false,0,147.8,Ebute Metta,88683371
+W93855590,Idumagbo Avenue,secondary,false,0,13.0,true,false,false,0,126.5,Ebute Metta,93855590
+W93855625,Idumagbo Avenue,secondary,false,0,13.0,true,true,false,0,188.8,Ebute Metta,93855625
+W1313134904,Idumoyineo Street,residential,false,0,7.5,false,false,false,0,73.7,Ebute Metta,1313134904
+W129534200,Idunshagbe Street,residential,false,0,7.5,false,false,false,0,215.6,Ebute Metta,129534200
+W559106893,Iduntafa Street,residential,false,0,7.5,false,false,false,0,108.6,Ebute Metta,559106893
+W129535583,Iga Idunganran Street,unclassified,false,0,7.5,false,false,false,0,219.1,Ebute Metta,129535583
+W129556781,Iga Idunganran Street,unclassified,false,0,7.5,false,false,false,0,160.3,Ebute Metta,129556781
+W559103157,Iga Idunganran Street,unclassified,false,0,7.5,false,false,false,0,168.5,Ebute Metta,559103157
+W87805658,Iga Idunganran Street,unclassified,false,0,7.5,false,false,false,0,209.9,Ebute Metta,87805658
+W133766198,Ijora Causeway,primary,false,0,17.5,true,false,false,0,579.3,Ebute Metta,133766198
+W133766199,Ijora Causeway,primary,false,0,17.5,true,true,false,0,300.1,Ebute Metta,133766199
+W133792632,Ijora Causeway,primary,false,0,17.5,true,true,false,0,408.4,Ebute Metta,133792632
+W133792636,Ijora Causeway,primary,false,0,17.5,true,false,false,0,231.1,Ebute Metta,133792636
+W133795063,Ijora Causeway,primary,false,0,17.5,true,false,false,0,208.3,Ebute Metta,133795063
+W133795067,Ijora Causeway,primary,false,0,17.5,true,true,false,0,77.0,Ebute Metta,133795067
+W133795079,Ijora Causeway,primary,false,0,17.5,true,true,false,0,70.4,Ebute Metta,133795079
+W133795081,Ijora Causeway,primary,false,0,17.5,true,false,false,0,60.2,Ebute Metta,133795081
+W133795083,Ijora Causeway,primary,false,0,17.5,true,false,false,0,662.9,Ebute Metta,133795083
+W559174568,Ijora Causeway,primary,false,0,17.5,true,false,false,0,168.7,Ebute Metta,559174568
+W559174569,Ijora Causeway,primary,false,0,17.5,true,false,false,0,241.4,Ebute Metta,559174569
+W138058000,Ikejiani Road,residential,false,0,7.5,false,false,false,0,383.3,Ebute Metta,138058000
+W1546255562,Ilubirin Entrance Way,residential,false,1,4.3,true,false,false,0,184.1,Ebute Metta,1546255562
+W1545873458,Ilubirin Road,residential,false,0,7.5,true,false,false,0,297.0,Ebute Metta,1545873458
+W87805664,Isale Agbede Street,residential,false,0,7.5,false,false,false,0,132.1,Ebute Metta,87805664
+W87808308,Isale Agbede Street,residential,false,0,7.5,false,false,false,0,158.9,Ebute Metta,87808308
+W215113169,Issa Williams Street,secondary,false,0,13.0,true,false,false,0,80.2,Ebute Metta,215113169
+W281437244,Jamiu Ali Balogun Street,residential,false,0,7.5,false,false,false,0,279.0,Ebute Metta,281437244
+W112513473,Jebba Street,residential,false,0,7.5,false,false,false,0,1109.6,Ebute Metta,112513473
+W12335219,Jebba Street (West),residential,false,0,7.5,false,false,false,0,213.5,Ebute Metta,12335219
+W87807837,John Street,residential,false,0,7.5,false,false,false,0,305.3,Ebute Metta,87807837
+W108050112,Kadara Street,residential,false,0,7.5,false,false,false,0,782.6,Ebute Metta,108050112
+W112513511,Kano Street,residential,false,0,7.5,false,false,false,0,747.4,Ebute Metta,112513511
+W166721547,Koilo Street,residential,false,0,7.5,false,false,false,0,31.1,Ebute Metta,166721547
+W129534217,Kosoko Street,residential,false,0,7.5,false,false,false,0,250.6,Ebute Metta,129534217
+W133763997,Kosoko Street,residential,false,0,7.5,false,false,false,0,370.1,Ebute Metta,133763997
+W217793785,Ladipo Street,residential,false,0,7.5,false,false,false,0,241.4,Ebute Metta,217793785
+W112513462,Lagos Street,residential,false,0,7.5,false,false,false,0,317.6,Ebute Metta,112513462
+W1547823089,Lagos Street,residential,false,0,7.5,false,false,false,0,105.5,Ebute Metta,1547823089
+W534993360,Lagos Street,residential,false,0,7.5,false,false,false,0,390.5,Ebute Metta,534993360
+W588173932,Lagos Street,unclassified,false,0,7.5,false,false,false,0,108.5,Ebute Metta,588173932
+W129534216,Lake Street,residential,false,0,7.5,false,false,false,0,365.2,Ebute Metta,129534216
+W138058036,Latunde Street,residential,false,0,7.5,false,false,false,0,247.6,Ebute Metta,138058036
+W129534179,Layeni Street,service,false,0,5.0,false,false,false,0,95.1,Ebute Metta,129534179
+W114912311,Makoko Road,tertiary,false,0,10.0,false,false,false,0,526.8,Ebute Metta,114912311
+W90288311,Makurdi Street,residential,false,0,7.5,false,false,false,0,351.9,Ebute Metta,90288311
+W166721549,Marina Road,unclassified,false,0,7.5,false,false,false,0,296.5,Ebute Metta,166721549
+W328558542,Marina Road,primary,false,2,7.6,true,false,false,0,123.6,Ebute Metta,328558542
+W558803341,Marina Road,unclassified,false,0,7.5,true,false,false,0,23.1,Ebute Metta,558803341
+W133761018,Marina Roundabout,primary,false,0,17.5,true,false,true,0,272.4,Ebute Metta,133761018
+W108050114,Market Street,residential,false,0,7.5,false,false,false,0,824.7,Ebute Metta,108050114
+W87805656,Martin Street,tertiary,false,0,10.0,true,false,false,0,583.3,Ebute Metta,87805656
+W166721548,Massey Street,unclassified,false,0,7.5,false,false,false,0,481.9,Ebute Metta,166721548
+W217755405,McCollum Street,residential,false,0,7.5,false,false,false,0,320.7,Ebute Metta,217755405
+W217755404,Moloney Street,residential,false,0,7.5,false,false,false,0,460.6,Ebute Metta,217755404
+W91102658,Mosalashi Street,residential,false,0,7.5,false,false,false,0,603.0,Ebute Metta,91102658
+W87808312,Mosha Lashi Street,residential,false,0,7.5,false,false,false,0,261.7,Ebute Metta,87808312
+W1222843737,Murtula Muhammed Way,trunk,false,0,11.5,true,false,false,0,1197.7,Ebute Metta,1222843737
+W215667111,Murtula Muhammed Way,primary,false,0,17.5,true,false,false,0,3021.8,Ebute Metta,215667111
+W869774674,Musiliu Smith Street,unclassified,false,0,7.5,false,false,false,0,245.2,Ebute Metta,869774674
+W133761008,New Marina Road,motorway,true,0,7.5,true,false,false,0,430.2,Ebute Metta,133761008
+W90288341,Nnamdi Azikiwe Road,residential,false,0,7.5,false,false,false,0,688.1,Ebute Metta,90288341
+W133772455,Nnamdi Azikiwe Street,secondary,false,0,13.0,true,false,false,0,343.3,Ebute Metta,133772455
+W133772464,Nnamdi Azikiwe Street,secondary,false,0,13.0,true,false,false,0,55.8,Ebute Metta,133772464
+W133772482,Nnamdi Azikiwe Street,secondary,false,0,13.0,true,false,false,0,71.1,Ebute Metta,133772482
+W264916646,Nnamdi Azikiwe Street,secondary,false,0,13.0,true,false,false,0,614.7,Ebute Metta,264916646
+W133792627,Oba Fatai Aromire Way,tertiary,false,0,10.0,false,false,false,0,343.9,Ebute Metta,133792627
+W559106888,Oba Fatai Aromire Way,residential,false,0,7.5,false,false,false,0,316.1,Ebute Metta,559106888
+W166893838,Oba Odesanya Ganiu Way,residential,false,0,7.5,false,false,false,0,785.8,Ebute Metta,166893838
+W12335295,Odalike Street,residential,false,0,7.5,false,false,false,0,891.1,Ebute Metta,12335295
+W88273962,Odunea Street,residential,false,0,7.5,false,false,false,0,289.0,Ebute Metta,88273962
+W91328842,Odunea Street,residential,false,0,7.5,false,false,false,0,248.0,Ebute Metta,91328842
+W112513525,Odunfa Street,residential,false,0,7.5,false,false,false,0,561.2,Ebute Metta,112513525
+W1547823090,Odunfa Street,residential,false,0,7.5,false,false,false,0,105.7,Ebute Metta,1547823090
+W166721522,Oja-Oba Road,service,false,0,5.0,false,false,false,0,154.8,Ebute Metta,166721522
+W559106889,Oja-Oba Road,service,false,0,5.0,false,false,false,0,535.2,Ebute Metta,559106889
+W87808310,Ojo Giwa Street,residential,false,0,7.5,false,false,false,0,236.8,Ebute Metta,87808310
+W166721553,Oju Olokun Street,residential,false,0,7.5,false,false,false,0,111.5,Ebute Metta,166721553
+W742147487,Oju Olokun Street,service,false,0,5.0,false,false,false,0,224.1,Ebute Metta,742147487
+W12335233,Oke-Ira Road,unclassified,false,0,7.5,false,false,false,0,1300.8,Ebute Metta,12335233
+W587479956,Oke-Ira Road,residential,false,0,7.5,false,false,false,0,734.4,Ebute Metta,587479956
+W588409510,Oke-Ira Road,unclassified,false,0,7.5,false,true,false,0,17.3,Ebute Metta,588409510
+W588409511,Oke-Ira Road,unclassified,false,0,7.5,false,false,false,0,15.4,Ebute Metta,588409511
+W138040474,Oke-Olu Street,residential,false,0,7.5,false,false,false,0,344.3,Ebute Metta,138040474
+W337156147,Okepopo Street,unclassified,false,0,7.5,false,false,false,0,524.2,Ebute Metta,337156147
+W88260954,Oki Street,residential,false,0,7.5,false,false,false,0,286.6,Ebute Metta,88260954
+W112513478,Oko-Baba Street,residential,false,0,7.5,false,false,false,0,323.5,Ebute Metta,112513478
+W588631113,Oko-Baba Street,unclassified,false,0,7.5,false,false,false,0,103.3,Ebute Metta,588631113
+W671135893,Olaleye Road,residential,false,0,7.5,false,false,false,0,154.2,Ebute Metta,671135893
+W217793807,Olayinka Street,residential,false,0,7.5,false,false,false,0,244.4,Ebute Metta,217793807
+W215113163,Old Marina Street,primary,false,3,10.9,true,false,false,0,1930.8,Ebute Metta,215113163
+W215113165,Old Marina Street,secondary,false,2,7.6,true,false,false,0,38.2,Ebute Metta,215113165
+W215113167,Old Marina Street,secondary,false,1,4.3,true,false,false,0,50.3,Ebute Metta,215113167
+W215113171,Old Marina Street,primary,false,1,4.3,true,false,false,0,72.8,Ebute Metta,215113171
+W129556774,Olorogun Street,residential,false,0,7.5,false,false,false,0,133.3,Ebute Metta,129556774
+W166893829,Oloto Street,residential,false,0,7.5,false,false,false,0,533.7,Ebute Metta,166893829
+W88273968,Olowu Street,residential,false,0,7.5,false,false,false,0,372.8,Ebute Metta,88273968
+W129556785,Olushi Street,residential,false,0,7.5,false,false,false,0,253.1,Ebute Metta,129556785
+W91328866,Olushi Street,unclassified,false,0,7.5,false,false,false,0,366.6,Ebute Metta,91328866
+W88273966,Omidi Dum Street,residential,false,0,7.5,false,false,false,0,409.3,Ebute Metta,88273966
+W112513482,Ondo Street,residential,false,0,7.5,false,false,false,0,1132.3,Ebute Metta,112513482
+W90288346,Ondo Street (West),residential,false,0,7.5,true,false,false,0,468.5,Ebute Metta,90288346
+W88270788,Onikepo,residential,false,0,7.5,false,false,false,0,101.4,Ebute Metta,88270788
+W91328864,Onilegbale Street,residential,false,0,7.5,false,false,false,0,192.8,Ebute Metta,91328864
+W91328869,Orisan Street,residential,false,0,7.5,false,false,false,0,129.7,Ebute Metta,91328869
+W129556786,Orogiri Street,residential,false,0,7.5,false,false,false,0,84.2,Ebute Metta,129556786
+W87808307,Oroyinyin Street,unclassified,false,0,7.5,false,false,false,0,566.6,Ebute Metta,87808307
+W558796894,Oshodi Street,unclassified,false,0,7.5,false,false,false,0,181.7,Ebute Metta,558796894
+W559142308,Oshodi Street,unclassified,false,0,7.5,true,false,false,0,7.4,Ebute Metta,559142308
+W559142309,Oshodi Street,unclassified,false,0,7.5,true,false,false,0,8.0,Ebute Metta,559142309
+W112513520,Osholake Street,residential,false,0,7.5,false,false,false,0,965.0,Ebute Metta,112513520
+W138040486,Owukori Crescent,residential,false,0,7.5,false,false,false,0,661.0,Ebute Metta,138040486
+W1157080487,Oyingbo Flyover Bridge,tertiary,false,0,10.0,false,true,false,0,109.4,Ebute Metta,1157080487
+W215667104,Oyingbo Street,trunk,false,0,11.5,true,false,false,0,299.7,Ebute Metta,215667104
+W534989419,Oyingbo Street,trunk,false,0,11.5,true,false,false,0,158.3,Ebute Metta,534989419
+W166721551,Palm Church Street,unclassified,false,0,7.5,false,false,false,0,237.0,Ebute Metta,166721551
+W588157844,Park Road,residential,false,0,7.5,true,false,false,0,17.4,Ebute Metta,588157844
+W588157845,Park Road,residential,false,0,7.5,true,false,false,0,31.3,Ebute Metta,588157845
+W588157849,Park Road,residential,false,0,7.5,false,false,false,0,207.1,Ebute Metta,588157849
+W734446301,Park Road,residential,false,0,7.5,false,true,false,0,5.8,Ebute Metta,734446301
+W734446302,Park Road,residential,false,0,7.5,false,false,false,0,171.7,Ebute Metta,734446302
+W90288343,Park Road,residential,false,0,7.5,false,false,false,0,76.0,Ebute Metta,90288343
+W129556770,Patey Street,residential,false,0,7.5,false,false,false,0,313.2,Ebute Metta,129556770
+W586626134,Patey Street,residential,false,0,7.5,false,false,false,0,113.8,Ebute Metta,586626134
+W1207723666,Princess Street,tertiary,false,0,10.0,false,false,false,0,31.5,Ebute Metta,1207723666
+W1207723667,Princess Street,tertiary,false,0,10.0,false,true,false,0,11.2,Ebute Metta,1207723667
+W129556765,Princess Street,tertiary,false,0,10.0,false,false,false,0,226.3,Ebute Metta,129556765
+W558867033,Princess Street,tertiary,false,0,10.0,false,false,false,0,73.2,Ebute Metta,558867033
+W558867034,Princess Street,tertiary,false,0,10.0,false,false,false,0,47.6,Ebute Metta,558867034
+W559174564,Princess Street,tertiary,false,0,10.0,true,false,false,0,12.6,Ebute Metta,559174564
+W559174565,Princess Street,tertiary,false,0,10.0,true,false,false,0,13.6,Ebute Metta,559174565
+W337156146,Razaki Okoya Street,unclassified,false,0,7.5,false,false,false,0,453.4,Ebute Metta,337156146
+W215118921,Ring Road,motorway,false,0,24.0,true,false,false,0,119.6,Ebute Metta,215118921
+W215118924,Ring Road,primary,false,2,7.6,true,false,false,0,469.1,Ebute Metta,215118924
+W215492885,Ring Road,motorway,false,3,10.9,true,false,false,0,224.0,Ebute Metta,215492885
+W328558520,Ring Road,primary,false,2,7.6,true,true,false,0,613.7,Ebute Metta,328558520
+W328558523,Ring Road,primary,false,2,7.6,true,false,false,0,216.9,Ebute Metta,328558523
+W328558525,Ring Road,primary,false,2,7.6,true,true,false,0,219.7,Ebute Metta,328558525
+W328558540,Ring Road,primary,false,0,17.5,true,true,false,0,282.7,Ebute Metta,328558540
+W5150133,Ring Road,motorway,false,0,24.0,true,false,false,0,477.0,Ebute Metta,5150133
+W559174570,Ring Road,primary,false,0,17.5,true,true,false,0,571.8,Ebute Metta,559174570
+W640507513,Ring Road,primary,false,0,17.5,true,false,false,0,569.5,Ebute Metta,640507513
+W8474550,Ring Road,motorway,false,0,24.0,true,true,false,0,69.2,Ebute Metta,8474550
+W8564555,Ring Road,motorway,false,0,24.0,true,false,false,0,554.6,Ebute Metta,8564555
+W88260945,Ring Road,primary,false,0,17.5,true,false,false,0,599.4,Ebute Metta,88260945
+W93855613,Ring Road,motorway,false,0,24.0,true,true,false,0,21.8,Ebute Metta,93855613
+W93855616,Ring Road,motorway,false,0,24.0,true,false,false,0,481.0,Ebute Metta,93855616
+W93855617,Ring Road,motorway,false,0,24.0,true,true,false,0,327.3,Ebute Metta,93855617
+W93855618,Ring Road,motorway,false,0,24.0,true,true,false,0,22.5,Ebute Metta,93855618
+W93855627,Ring Road,primary,false,0,17.5,true,true,false,0,267.4,Ebute Metta,93855627
+W328558517,Savage Lane,residential,false,0,7.5,false,false,false,0,125.2,Ebute Metta,328558517
+W559103163,Savage Lane,residential,false,0,7.5,false,false,false,0,101.4,Ebute Metta,559103163
+W12335197,Savage Street,unclassified,false,0,7.5,true,false,false,0,211.7,Ebute Metta,12335197
+W946957852,Saviour Street,residential,false,0,7.5,false,false,false,0,63.3,Ebute Metta,946957852
+W88260978,Shagbemi Street,residential,false,0,7.5,false,false,false,0,48.7,Ebute Metta,88260978
+W90288335,Shofuntere Street,residential,false,0,7.5,false,false,false,0,220.9,Ebute Metta,90288335
+W114912303,Simpson Street,residential,false,0,7.5,false,false,false,0,888.1,Ebute Metta,114912303
+W586645793,Simpson Street,primary,false,0,17.5,true,false,false,0,119.5,Ebute Metta,586645793
+W93855592,Simpson Street,primary,false,0,17.5,true,false,false,0,305.8,Ebute Metta,93855592
+W559103156,Simu Johnson Street,residential,false,0,7.5,false,false,false,0,232.8,Ebute Metta,559103156
+W88270777,Solusi Street,unclassified,false,0,7.5,false,false,false,0,398.8,Ebute Metta,88270777
+W138040479,Sonata Street,residential,false,0,7.5,false,false,false,0,215.0,Ebute Metta,138040479
+W88270785,St John Pachi Street,residential,false,0,7.5,false,false,false,0,267.4,Ebute Metta,88270785
+W588173933,Tapa Street,residential,false,0,7.5,false,false,false,0,613.9,Ebute Metta,588173933
+W588173934,Tapa Street,unclassified,false,0,7.5,false,false,false,0,107.5,Ebute Metta,588173934
+W88273967,Tapa Street,unclassified,false,0,7.5,false,false,false,0,95.0,Ebute Metta,88273967
+W88274551,Tapa Street,unclassified,false,0,7.5,false,false,false,0,369.3,Ebute Metta,88274551
+W138040480,Temple Street,residential,false,0,7.5,false,false,false,0,312.2,Ebute Metta,138040480
+W215118920,Third Axial Road,motorway,false,0,24.0,true,true,false,0,250.0,Ebute Metta,215118920
+W93855619,Third Axial Road,motorway,false,0,24.0,true,false,false,0,327.9,Ebute Metta,93855619
+W93855621,Third Axial Road,motorway,false,0,24.0,true,false,false,0,440.3,Ebute Metta,93855621
+W134222253,Third Mainland Bridge,motorway,false,0,24.0,true,true,false,100,9501.6,Ebute Metta,134222253
+W93855614,Third Mainland Bridge,motorway,false,0,24.0,true,true,false,100,9497.9,Ebute Metta,93855614
+W1505613950,Thomas Street,service,false,0,5.0,false,false,false,0,103.2,Ebute Metta,1505613950
+W90288351,Thomas Street,residential,false,0,7.5,false,false,false,0,429.6,Ebute Metta,90288351
+W91328850,Thomas Street,residential,false,0,7.5,false,false,false,0,432.1,Ebute Metta,91328850
+W88270778,Upper Offin Street,residential,false,0,7.5,false,false,false,0,139.3,Ebute Metta,88270778
+W217636589,Vaugham Street,residential,false,0,7.5,false,false,false,0,233.6,Ebute Metta,217636589
+W138040481,Wero Street,residential,false,0,7.5,false,false,false,0,228.5,Ebute Metta,138040481
+W133795057,Western Avenue,motorway,false,2,7.6,true,true,false,80,382.0,Ebute Metta,133795057
+W133795071,Western Avenue,primary,false,0,17.5,true,false,false,80,889.5,Ebute Metta,133795071
+W231756330,Western Avenue,primary,false,0,17.5,true,false,false,80,902.5,Ebute Metta,231756330
+W907495983,Western Avenue,primary,false,0,17.5,true,true,false,0,72.9,Ebute Metta,907495983
+W907495984,Western Avenue,primary,false,0,17.5,true,true,false,0,71.0,Ebute Metta,907495984
+W907495985,Western Avenue,primary,false,0,17.5,true,false,false,0,190.1,Ebute Metta,907495985
+W907495986,Western Avenue,primary,false,0,17.5,true,false,false,0,181.6,Ebute Metta,907495986
+W108050115,Willoughby Street,residential,false,0,7.5,false,false,false,0,728.7,Ebute Metta,108050115
+W1473952038,Willoughby Street,residential,false,0,7.5,true,false,false,0,34.2,Ebute Metta,1473952038
+W180448479,Wright Street,trunk,false,0,11.5,true,false,false,0,342.6,Ebute Metta,180448479
+W114912308,Yaba Road,unclassified,false,0,7.5,false,false,false,0,888.5,Ebute Metta,114912308
+W707240934,llubirin Exit Way,residential,false,1,4.3,true,false,false,0,333.6,Ebute Metta,707240934
+W1558315925,llubirin Road,residential,false,1,4.3,true,false,false,0,369.3,Ebute Metta,1558315925
+W707240932,llubirin Road,residential,false,1,4.3,true,false,false,0,350.1,Ebute Metta,707240932
+W1017054938,,service,false,0,5.0,false,false,false,0,64.2,Ebute Metta,1017054938
+W1017054939,,service,false,0,5.0,false,false,false,0,165.4,Ebute Metta,1017054939
+W1017735164,,service,false,0,5.0,false,false,false,0,38.9,Ebute Metta,1017735164
+W1017735602,,service,false,0,5.0,false,false,false,0,10.8,Ebute Metta,1017735602
+W1017735603,,service,false,0,5.0,false,false,false,0,11.8,Ebute Metta,1017735603
+W1017735604,,service,false,0,5.0,false,false,false,0,204.5,Ebute Metta,1017735604
+W1017735862,,residential,false,0,7.5,false,false,false,0,31.8,Ebute Metta,1017735862
+W1017736359,,service,false,0,5.0,false,false,false,0,19.1,Ebute Metta,1017736359
+W1017736360,,service,false,0,5.0,false,false,false,0,58.1,Ebute Metta,1017736360
+W1017738177,,service,false,0,5.0,false,false,false,0,61.5,Ebute Metta,1017738177
+W1017740862,,residential,false,0,7.5,false,false,false,0,185.5,Ebute Metta,1017740862
+W1017819835,,residential,false,0,7.5,false,false,false,0,57.4,Ebute Metta,1017819835
+W1017821447,,service,false,0,5.0,false,false,false,0,47.7,Ebute Metta,1017821447
+W1017821841,,residential,false,0,7.5,false,false,false,0,30.4,Ebute Metta,1017821841
+W1018245787,,service,false,0,5.0,false,false,false,0,38.2,Ebute Metta,1018245787
+W1018947917,,service,false,0,5.0,false,false,false,0,124.8,Ebute Metta,1018947917
+W1019903920,,service,false,0,5.0,false,false,false,0,221.7,Ebute Metta,1019903920
+W1019982406,,service,false,0,5.0,false,false,false,0,57.0,Ebute Metta,1019982406
+W1019982807,,residential,false,0,7.5,false,false,false,0,76.3,Ebute Metta,1019982807
+W1019984007,,service,false,0,5.0,false,false,false,0,173.1,Ebute Metta,1019984007
+W1019984208,,service,false,0,5.0,false,false,false,0,205.5,Ebute Metta,1019984208
+W1020467197,,service,false,0,5.0,false,false,false,0,183.7,Ebute Metta,1020467197
+W1028634130,,service,false,0,5.0,false,false,false,0,76.0,Ebute Metta,1028634130
+W1028634131,,service,false,0,5.0,false,false,false,0,56.6,Ebute Metta,1028634131
+W1032453628,,service,false,0,5.0,false,false,false,0,50.9,Ebute Metta,1032453628
+W1032453629,,service,false,0,5.0,false,false,false,0,77.2,Ebute Metta,1032453629
+W1032780479,,service,false,0,5.0,false,false,false,0,37.4,Ebute Metta,1032780479
+W1034058149,,service,false,0,5.0,false,false,false,0,116.1,Ebute Metta,1034058149
+W1034058150,,service,false,0,5.0,false,false,false,0,52.7,Ebute Metta,1034058150
+W1034365435,,service,false,0,5.0,false,false,false,0,11.5,Ebute Metta,1034365435
+W1034365436,,service,false,0,5.0,false,false,false,0,32.7,Ebute Metta,1034365436
+W1034366372,,service,false,0,5.0,false,false,false,0,180.6,Ebute Metta,1034366372
+W1034466796,,service,false,0,5.0,false,false,false,0,117.5,Ebute Metta,1034466796
+W1034467370,,service,false,0,5.0,false,false,false,0,104.1,Ebute Metta,1034467370
+W1034467810,,service,false,0,5.0,false,false,false,0,133.5,Ebute Metta,1034467810
+W1034706633,,residential,false,0,7.5,false,false,false,0,237.6,Ebute Metta,1034706633
+W1034706634,,residential,false,0,7.5,false,false,false,0,38.4,Ebute Metta,1034706634
+W1034737959,,residential,false,0,7.5,false,false,false,0,58.0,Ebute Metta,1034737959
+W1034738783,,service,false,0,5.0,false,false,false,0,74.8,Ebute Metta,1034738783
+W1035065932,,service,false,0,5.0,true,false,false,0,30.2,Ebute Metta,1035065932
+W1035914322,,residential,false,0,7.5,false,false,false,0,198.2,Ebute Metta,1035914322
+W1035914323,,residential,false,0,7.5,false,false,false,0,214.5,Ebute Metta,1035914323
+W1035914324,,residential,false,0,7.5,false,false,false,0,81.3,Ebute Metta,1035914324
+W1036408006,,residential,false,0,7.5,false,false,false,0,203.6,Ebute Metta,1036408006
+W1063216743,,service,false,0,5.0,false,false,false,0,59.8,Ebute Metta,1063216743
+W1063218212,,service,false,0,5.0,false,false,false,0,191.9,Ebute Metta,1063218212
+W1063219455,,service,false,0,5.0,false,false,false,0,69.8,Ebute Metta,1063219455
+W1063220800,,service,false,0,5.0,false,false,false,0,68.4,Ebute Metta,1063220800
+W1063221050,,service,false,0,5.0,false,false,false,0,56.8,Ebute Metta,1063221050
+W1063223060,,service,false,0,5.0,false,false,false,0,302.7,Ebute Metta,1063223060
+W1063472781,,service,false,0,5.0,false,false,false,0,76.1,Ebute Metta,1063472781
+W1063473007,,service,false,0,5.0,false,false,false,0,40.1,Ebute Metta,1063473007
+W1063473099,,service,false,0,5.0,true,false,false,0,72.5,Ebute Metta,1063473099
+W1063475228,,service,false,0,5.0,false,false,false,0,39.4,Ebute Metta,1063475228
+W1063913287,,service,false,0,5.0,false,false,false,0,59.7,Ebute Metta,1063913287
+W1063917236,,service,false,0,5.0,false,false,false,0,60.4,Ebute Metta,1063917236
+W1063922062,,residential,false,0,7.5,false,false,false,0,41.3,Ebute Metta,1063922062
+W1064238688,,service,false,0,5.0,false,false,false,0,146.2,Ebute Metta,1064238688
+W1064273820,,service,false,0,5.0,false,false,false,0,15.8,Ebute Metta,1064273820
+W1065393560,,residential,false,0,7.5,false,false,false,0,50.0,Ebute Metta,1065393560
+W1071098800,,residential,false,0,7.5,true,false,false,0,92.8,Ebute Metta,1071098800
+W1082804765,,service,false,0,5.0,false,false,false,0,26.7,Ebute Metta,1082804765
+W1082804766,,service,false,0,5.0,false,false,false,0,27.3,Ebute Metta,1082804766
+W1083106319,,service,false,0,5.0,false,false,false,0,172.0,Ebute Metta,1083106319
+W1083125732,,service,false,0,5.0,false,false,false,0,163.0,Ebute Metta,1083125732
+W1090001741,,service,false,0,5.0,false,false,false,0,9.7,Ebute Metta,1090001741
+W1096884748,,service,false,0,5.0,false,false,false,0,179.1,Ebute Metta,1096884748
+W1097166161,,service,false,0,5.0,false,false,false,0,32.4,Ebute Metta,1097166161
+W1112196269,,service,false,0,5.0,false,false,false,0,145.3,Ebute Metta,1112196269
+W1112197485,,service,false,0,5.0,false,false,false,0,33.0,Ebute Metta,1112197485
+W1112219106,,service,false,0,5.0,false,false,false,0,20.5,Ebute Metta,1112219106
+W1112219107,,service,false,0,5.0,false,false,false,0,42.0,Ebute Metta,1112219107
+W1112239219,,service,false,0,5.0,false,false,false,0,37.4,Ebute Metta,1112239219
+W1116495243,,service,false,0,5.0,false,false,false,0,59.8,Ebute Metta,1116495243
+W1116495244,,service,false,0,5.0,false,false,false,0,13.7,Ebute Metta,1116495244
+W1118817533,,residential,false,0,7.5,false,false,false,0,9.5,Ebute Metta,1118817533
+W1123857551,,service,false,0,5.0,false,false,false,0,20.7,Ebute Metta,1123857551
+W1123857552,,service,false,0,5.0,false,false,false,0,32.7,Ebute Metta,1123857552
+W1123857553,,service,false,0,5.0,false,false,false,0,39.1,Ebute Metta,1123857553
+W1123857554,,service,false,0,5.0,false,false,false,0,67.7,Ebute Metta,1123857554
+W112513510,,residential,false,0,7.5,false,false,false,0,462.8,Ebute Metta,112513510
+W1127722154,,service,false,0,5.0,false,false,false,0,31.9,Ebute Metta,1127722154
+W1127722155,,service,false,0,5.0,false,false,false,0,36.9,Ebute Metta,1127722155
+W1130556464,,service,false,0,5.0,false,false,false,0,42.5,Ebute Metta,1130556464
+W1130556465,,service,false,0,5.0,false,false,false,0,50.6,Ebute Metta,1130556465
+W1130556466,,service,false,0,5.0,false,false,false,0,42.5,Ebute Metta,1130556466
+W1133362116,,residential,false,0,7.5,false,false,false,0,108.0,Ebute Metta,1133362116
+W1133654262,,service,false,0,5.0,false,false,false,0,53.3,Ebute Metta,1133654262
+W1134437478,,service,false,0,5.0,false,false,false,0,1070.5,Ebute Metta,1134437478
+W1135217831,,residential,false,0,7.5,false,false,false,0,57.2,Ebute Metta,1135217831
+W1145099190,,service,false,0,5.0,false,false,false,0,144.5,Ebute Metta,1145099190
+W1148424647,,service,false,0,5.0,false,false,false,0,68.5,Ebute Metta,1148424647
+W1148432150,,service,false,0,5.0,false,false,false,0,95.3,Ebute Metta,1148432150
+W1150644726,,service,false,0,5.0,false,false,false,0,31.3,Ebute Metta,1150644726
+W1150644727,,residential,false,0,7.5,false,false,false,0,45.4,Ebute Metta,1150644727
+W1150644729,,service,false,0,5.0,false,false,false,0,56.5,Ebute Metta,1150644729
+W1150644730,,service,false,0,5.0,false,false,false,0,37.9,Ebute Metta,1150644730
+W1150644731,,service,false,0,5.0,false,false,false,0,89.4,Ebute Metta,1150644731
+W1156866569,,residential,false,0,7.5,true,false,false,0,38.4,Ebute Metta,1156866569
+W1156866570,,service,false,0,5.0,false,false,false,0,49.7,Ebute Metta,1156866570
+W1156866571,,service,false,0,5.0,false,false,false,0,53.5,Ebute Metta,1156866571
+W1156866573,,residential,false,0,7.5,false,false,false,0,26.2,Ebute Metta,1156866573
+W1156866574,,service,false,0,5.0,false,false,false,0,56.1,Ebute Metta,1156866574
+W1156866576,,service,false,0,5.0,false,false,false,0,79.7,Ebute Metta,1156866576
+W1157080491,,tertiary,false,0,10.0,true,true,false,0,266.0,Ebute Metta,1157080491
+W1157080492,,tertiary,false,0,10.0,true,false,false,0,36.5,Ebute Metta,1157080492
+W1157080493,,tertiary,false,0,10.0,true,false,false,0,44.4,Ebute Metta,1157080493
+W1157080494,,tertiary,false,0,10.0,true,false,false,0,109.3,Ebute Metta,1157080494
+W1157080495,,tertiary,false,0,10.0,true,false,false,0,18.4,Ebute Metta,1157080495
+W1157505499,,service,false,0,5.0,false,false,false,0,53.0,Ebute Metta,1157505499
+W1168461162,,service,false,0,5.0,false,false,false,0,65.5,Ebute Metta,1168461162
+W1168461163,,service,false,0,5.0,false,false,false,0,119.9,Ebute Metta,1168461163
+W1168461164,,service,false,0,5.0,false,false,false,0,73.1,Ebute Metta,1168461164
+W1170465071,,service,false,0,5.0,false,false,false,0,34.0,Ebute Metta,1170465071
+W1170465072,,service,false,0,5.0,false,false,false,0,303.6,Ebute Metta,1170465072
+W1170470857,,service,false,0,5.0,false,false,false,0,22.9,Ebute Metta,1170470857
+W1170470858,,service,false,0,5.0,false,true,false,0,13.3,Ebute Metta,1170470858
+W1170470859,,service,false,0,5.0,false,false,false,0,131.4,Ebute Metta,1170470859
+W1171883316,,service,false,0,5.0,false,false,false,0,40.5,Ebute Metta,1171883316
+W1171883317,,service,false,0,5.0,false,false,false,0,47.0,Ebute Metta,1171883317
+W1171883318,,service,false,0,5.0,false,false,false,0,44.4,Ebute Metta,1171883318
+W1171883319,,service,false,0,5.0,false,false,false,0,24.9,Ebute Metta,1171883319
+W1171883321,,service,false,0,5.0,false,false,false,0,22.0,Ebute Metta,1171883321
+W1177170158,,service,false,0,5.0,false,false,false,0,111.2,Ebute Metta,1177170158
+W1177170159,,service,false,0,5.0,false,false,false,0,43.0,Ebute Metta,1177170159
+W1177170160,,service,false,0,5.0,false,false,false,0,35.9,Ebute Metta,1177170160
+W1177170161,,service,false,0,5.0,false,false,false,0,143.7,Ebute Metta,1177170161
+W1177170162,,service,false,0,5.0,false,false,false,0,67.7,Ebute Metta,1177170162
+W1177426571,,service,false,0,5.0,false,false,false,0,49.7,Ebute Metta,1177426571
+W1177426572,,residential,false,0,7.5,false,false,false,0,68.6,Ebute Metta,1177426572
+W1177523237,,service,false,0,5.0,false,false,false,0,45.9,Ebute Metta,1177523237
+W1177523238,,service,false,0,5.0,false,false,false,0,59.5,Ebute Metta,1177523238
+W1177523239,,service,false,0,5.0,false,false,false,0,48.2,Ebute Metta,1177523239
+W1177523240,,service,false,0,5.0,false,false,false,0,54.0,Ebute Metta,1177523240
+W1177523241,,service,false,0,5.0,false,false,false,0,20.7,Ebute Metta,1177523241
+W1177523242,,service,false,0,5.0,false,false,false,0,47.7,Ebute Metta,1177523242
+W1180377861,,service,false,0,5.0,false,false,false,0,35.6,Ebute Metta,1180377861
+W1187190269,,service,false,0,5.0,false,false,false,0,64.3,Ebute Metta,1187190269
+W1187190270,,service,false,0,5.0,false,false,false,0,67.2,Ebute Metta,1187190270
+W1198554569,,residential,false,0,7.5,false,false,false,0,253.0,Ebute Metta,1198554569
+W1207723671,,motorway,true,0,7.5,true,false,false,0,30.5,Ebute Metta,1207723671
+W1216150989,,service,false,0,5.0,false,false,false,0,60.1,Ebute Metta,1216150989
+W1216150990,,service,false,0,5.0,false,false,false,0,44.9,Ebute Metta,1216150990
+W1216150991,,service,false,0,5.0,false,false,false,0,38.6,Ebute Metta,1216150991
+W1216150992,,service,false,0,5.0,false,false,false,0,80.4,Ebute Metta,1216150992
+W1216150993,,service,false,0,5.0,false,false,false,0,100.4,Ebute Metta,1216150993
+W1222390333,,motorway,true,0,7.5,true,true,false,0,485.5,Ebute Metta,1222390333
+W1222391766,,service,false,0,5.0,false,false,false,0,31.5,Ebute Metta,1222391766
+W1222391767,,service,false,0,5.0,false,false,false,0,38.5,Ebute Metta,1222391767
+W1222391769,,service,false,0,5.0,false,false,false,0,25.8,Ebute Metta,1222391769
+W1222391770,,service,false,0,5.0,false,false,false,0,45.0,Ebute Metta,1222391770
+W1222391771,,service,false,0,5.0,false,false,false,0,60.9,Ebute Metta,1222391771
+W1222391772,,service,false,0,5.0,false,false,false,0,44.9,Ebute Metta,1222391772
+W1222548746,,primary,true,0,7.5,true,false,false,0,62.7,Ebute Metta,1222548746
+W1224042266,,service,false,0,5.0,false,false,false,0,59.7,Ebute Metta,1224042266
+W1224042267,,service,false,0,5.0,false,false,false,0,34.6,Ebute Metta,1224042267
+W1224042268,,service,false,0,5.0,false,false,false,0,18.7,Ebute Metta,1224042268
+W1224042269,,service,false,0,5.0,false,false,false,0,30.3,Ebute Metta,1224042269
+W1227960790,,service,false,0,5.0,false,false,false,0,130.2,Ebute Metta,1227960790
+W1228544931,,service,false,0,5.0,false,false,false,0,78.1,Ebute Metta,1228544931
+W1228997707,,service,false,0,5.0,false,false,false,0,484.8,Ebute Metta,1228997707
+W1228998176,,service,false,0,5.0,false,false,false,0,66.1,Ebute Metta,1228998176
+W1229195575,,service,false,0,5.0,false,false,false,0,153.2,Ebute Metta,1229195575
+W1229205354,,service,false,0,5.0,false,false,false,0,111.2,Ebute Metta,1229205354
+W1229239622,,service,false,0,5.0,false,false,false,0,53.6,Ebute Metta,1229239622
+W1229239623,,service,false,0,5.0,false,false,false,0,341.5,Ebute Metta,1229239623
+W1230226617,,service,false,0,5.0,false,false,false,0,25.4,Ebute Metta,1230226617
+W1230226618,,service,false,0,5.0,false,false,false,0,11.3,Ebute Metta,1230226618
+W1230226619,,service,false,0,5.0,false,false,false,0,69.4,Ebute Metta,1230226619
+W1230226620,,service,false,0,5.0,false,false,false,0,23.2,Ebute Metta,1230226620
+W1230226621,,service,false,0,5.0,false,false,false,0,67.2,Ebute Metta,1230226621
+W1230226622,,service,false,0,5.0,false,false,false,0,119.1,Ebute Metta,1230226622
+W1230226623,,service,false,0,5.0,false,false,false,0,65.0,Ebute Metta,1230226623
+W1230228965,,service,false,0,5.0,false,false,false,0,103.7,Ebute Metta,1230228965
+W1230229568,,service,false,0,5.0,false,false,false,0,481.6,Ebute Metta,1230229568
+W1231268469,,service,false,0,5.0,false,false,false,0,88.2,Ebute Metta,1231268469
+W1240951623,,service,false,0,5.0,false,false,false,0,23.1,Ebute Metta,1240951623
+W1242100148,,service,false,0,5.0,false,false,false,0,63.9,Ebute Metta,1242100148
+W1242100151,,service,false,0,5.0,false,false,false,0,78.3,Ebute Metta,1242100151
+W1253618187,,service,false,0,5.0,false,false,false,0,57.8,Ebute Metta,1253618187
+W1254499043,,residential,false,0,7.5,false,false,false,0,29.4,Ebute Metta,1254499043
+W1254499044,,residential,false,0,7.5,false,false,false,0,61.7,Ebute Metta,1254499044
+W1254499045,,residential,false,0,7.5,false,false,false,0,21.6,Ebute Metta,1254499045
+W1254499046,,residential,false,0,7.5,false,false,false,0,19.2,Ebute Metta,1254499046
+W1254499047,,residential,false,0,7.5,false,false,false,0,33.2,Ebute Metta,1254499047
+W1254501710,,service,false,0,5.0,false,false,false,0,44.8,Ebute Metta,1254501710
+W1254842400,,residential,false,0,7.5,false,false,false,0,112.3,Ebute Metta,1254842400
+W1254949221,,service,false,0,5.0,false,false,false,0,44.1,Ebute Metta,1254949221
+W1290010333,,residential,false,0,7.5,false,true,false,0,4.5,Ebute Metta,1290010333
+W1290010334,,residential,false,0,7.5,false,false,false,0,245.4,Ebute Metta,1290010334
+W1290010335,,residential,false,0,7.5,false,false,false,0,205.3,Ebute Metta,1290010335
+W1293625664,,residential,false,0,7.5,false,false,false,0,212.1,Ebute Metta,1293625664
+W1293625665,,residential,false,0,7.5,false,true,false,0,5.2,Ebute Metta,1293625665
+W129534180,,residential,false,0,7.5,false,false,false,0,34.3,Ebute Metta,129534180
+W129534184,,residential,false,0,7.5,false,false,false,0,88.0,Ebute Metta,129534184
+W129534186,,residential,false,0,7.5,false,false,false,0,141.0,Ebute Metta,129534186
+W129534201,,service,false,0,5.0,false,false,false,0,211.7,Ebute Metta,129534201
+W129534210,,residential,false,0,7.5,false,false,false,0,98.1,Ebute Metta,129534210
+W129534212,,residential,false,0,7.5,false,false,false,0,91.9,Ebute Metta,129534212
+W129535570,,residential,false,0,7.5,false,false,false,0,137.4,Ebute Metta,129535570
+W129535571,,residential,false,0,7.5,false,false,false,0,166.2,Ebute Metta,129535571
+W129535574,,service,false,0,5.0,false,false,false,0,172.5,Ebute Metta,129535574
+W129535576,,service,false,0,5.0,false,false,false,0,98.4,Ebute Metta,129535576
+W129535581,,service,false,0,5.0,false,false,false,0,93.2,Ebute Metta,129535581
+W129556767,,residential,false,0,7.5,false,false,false,0,85.5,Ebute Metta,129556767
+W129556769,,residential,false,0,7.5,false,false,false,0,71.7,Ebute Metta,129556769
+W129556784,,residential,false,0,7.5,false,false,false,0,146.0,Ebute Metta,129556784
+W129586381,,residential,false,0,7.5,false,false,false,0,77.3,Ebute Metta,129586381
+W129586385,,residential,false,0,7.5,false,false,false,0,157.7,Ebute Metta,129586385
+W129586394,,residential,false,0,7.5,false,false,false,0,189.3,Ebute Metta,129586394
+W129586399,,residential,false,0,7.5,false,false,false,0,54.1,Ebute Metta,129586399
+W129586401,,residential,false,0,7.5,false,false,false,0,83.3,Ebute Metta,129586401
+W129586403,,residential,false,0,7.5,false,false,false,0,61.5,Ebute Metta,129586403
+W1298270067,,residential,false,0,7.5,false,false,false,0,17.7,Ebute Metta,1298270067
+W1298270068,,residential,false,0,7.5,false,false,false,0,142.3,Ebute Metta,1298270068
+W1304443399,,residential,false,0,7.5,false,false,false,0,192.6,Ebute Metta,1304443399
+W1304443400,,residential,false,0,7.5,false,false,false,0,296.2,Ebute Metta,1304443400
+W1313134903,,residential,false,0,7.5,false,false,false,0,76.8,Ebute Metta,1313134903
+W1313134905,,service,false,0,5.0,false,false,false,0,100.4,Ebute Metta,1313134905
+W1313134906,,service,false,0,5.0,false,false,false,0,106.3,Ebute Metta,1313134906
+W1313134907,,residential,false,0,7.5,false,false,false,0,395.0,Ebute Metta,1313134907
+W1313134908,,service,false,0,5.0,false,false,false,0,44.9,Ebute Metta,1313134908
+W1313134909,,service,false,0,5.0,false,false,false,0,36.3,Ebute Metta,1313134909
+W1313134910,,service,false,0,5.0,false,false,false,0,43.4,Ebute Metta,1313134910
+W1313134911,,service,false,0,5.0,false,false,false,0,70.3,Ebute Metta,1313134911
+W1313134912,,service,false,0,5.0,false,false,false,0,108.1,Ebute Metta,1313134912
+W1313134913,,residential,false,0,7.5,false,false,false,0,51.9,Ebute Metta,1313134913
+W1313134914,,service,false,0,5.0,false,false,false,0,117.7,Ebute Metta,1313134914
+W1313134915,,service,false,0,5.0,false,false,false,0,237.7,Ebute Metta,1313134915
+W1313134916,,service,false,0,5.0,false,false,false,0,104.5,Ebute Metta,1313134916
+W133764003,,primary,false,0,17.5,true,false,false,0,423.0,Ebute Metta,133764003
+W133764009,,primary,false,0,17.5,true,false,false,0,415.5,Ebute Metta,133764009
+W133766185,,trunk,true,0,7.5,true,false,false,0,80.3,Ebute Metta,133766185
+W133766186,,primary,true,0,7.5,true,true,false,0,104.4,Ebute Metta,133766186
+W133766189,,primary,false,0,17.5,true,false,false,0,17.9,Ebute Metta,133766189
+W133766191,,trunk,true,0,7.5,true,true,false,0,54.0,Ebute Metta,133766191
+W133766192,,trunk,true,0,7.5,true,false,false,0,386.9,Ebute Metta,133766192
+W133766194,,primary,true,0,7.5,true,false,false,0,73.5,Ebute Metta,133766194
+W133766195,,primary,false,0,17.5,true,true,false,0,279.7,Ebute Metta,133766195
+W133766196,,primary,true,0,7.5,true,true,false,0,106.8,Ebute Metta,133766196
+W133766200,,trunk,true,0,7.5,true,false,false,0,43.7,Ebute Metta,133766200
+W133766201,,primary,true,0,7.5,true,true,false,0,201.8,Ebute Metta,133766201
+W133772447,,motorway,true,0,7.5,true,true,false,0,113.9,Ebute Metta,133772447
+W133772449,,motorway,true,0,7.5,true,true,false,0,219.9,Ebute Metta,133772449
+W133772451,,motorway,true,0,7.5,true,false,false,0,228.5,Ebute Metta,133772451
+W133772462,,motorway,true,0,7.5,true,false,false,0,62.7,Ebute Metta,133772462
+W133772467,,motorway,true,0,7.5,true,false,false,0,94.1,Ebute Metta,133772467
+W133772469,,motorway,true,0,7.5,true,true,false,0,132.1,Ebute Metta,133772469
+W133772471,,primary,false,0,17.5,true,false,false,0,148.7,Ebute Metta,133772471
+W133772476,,unclassified,false,0,7.5,false,false,false,0,41.5,Ebute Metta,133772476
+W133772477,,motorway,true,0,7.5,true,false,false,0,353.1,Ebute Metta,133772477
+W133772480,,motorway,true,0,7.5,true,false,false,0,219.4,Ebute Metta,133772480
+W133792617,,motorway,true,0,7.5,true,false,false,0,143.5,Ebute Metta,133792617
+W133792618,,primary,true,0,7.5,true,false,false,0,53.1,Ebute Metta,133792618
+W133792619,,motorway,true,0,7.5,true,false,false,0,288.6,Ebute Metta,133792619
+W133792620,,motorway,true,0,7.5,true,true,false,0,338.7,Ebute Metta,133792620
+W133792621,,motorway,true,0,7.5,true,true,false,0,341.9,Ebute Metta,133792621
+W133792622,,primary,true,0,7.5,true,false,false,0,28.0,Ebute Metta,133792622
+W133792624,,motorway,true,0,7.5,true,false,false,0,87.7,Ebute Metta,133792624
+W133792625,,motorway,true,0,7.5,true,true,false,0,256.6,Ebute Metta,133792625
+W133792626,,primary,true,0,7.5,true,false,false,0,44.7,Ebute Metta,133792626
+W133792628,,primary,true,0,7.5,true,false,false,0,106.5,Ebute Metta,133792628
+W133792629,,motorway,true,0,7.5,true,true,false,0,178.3,Ebute Metta,133792629
+W133792631,,unclassified,false,0,7.5,false,false,false,0,307.7,Ebute Metta,133792631
+W133792633,,motorway,true,0,7.5,true,true,false,0,214.7,Ebute Metta,133792633
+W133792634,,primary,true,0,7.5,true,false,false,0,28.0,Ebute Metta,133792634
+W133792635,,motorway,true,0,7.5,true,false,false,0,72.3,Ebute Metta,133792635
+W133795056,,tertiary,false,0,10.0,true,false,false,0,735.8,Ebute Metta,133795056
+W133795058,,motorway,true,0,7.5,true,true,false,0,259.6,Ebute Metta,133795058
+W133795064,,motorway,true,0,7.5,true,false,false,0,46.4,Ebute Metta,133795064
+W133795065,,motorway,true,0,7.5,true,true,false,0,190.6,Ebute Metta,133795065
+W133795068,,service,false,0,5.0,false,false,false,0,262.6,Ebute Metta,133795068
+W133795073,,primary,false,0,17.5,true,false,true,0,444.3,Ebute Metta,133795073
+W133795076,,primary,true,0,7.5,true,false,false,0,164.0,Ebute Metta,133795076
+W133795080,,motorway,true,0,7.5,true,true,false,0,248.9,Ebute Metta,133795080
+W133795082,,tertiary,false,0,10.0,true,false,false,0,237.2,Ebute Metta,133795082
+W133795084,,unclassified,false,0,7.5,true,false,false,0,64.3,Ebute Metta,133795084
+W133795085,,motorway,true,0,7.5,true,true,false,0,361.0,Ebute Metta,133795085
+W133795086,,tertiary,false,0,10.0,true,true,false,0,45.0,Ebute Metta,133795086
+W133795087,,motorway,true,0,7.5,true,false,false,0,113.3,Ebute Metta,133795087
+W133795088,,unclassified,false,0,7.5,true,false,false,0,18.3,Ebute Metta,133795088
+W133795090,,tertiary,false,0,10.0,true,false,false,0,487.4,Ebute Metta,133795090
+W133795092,,unclassified,false,0,7.5,true,true,false,0,82.9,Ebute Metta,133795092
+W133795094,,tertiary,false,0,10.0,true,false,false,0,133.1,Ebute Metta,133795094
+W133797414,,unclassified,false,0,7.5,true,false,false,0,202.0,Ebute Metta,133797414
+W133797421,,unclassified,false,0,7.5,true,true,false,0,172.8,Ebute Metta,133797421
+W133797424,,unclassified,false,0,7.5,true,true,false,0,189.3,Ebute Metta,133797424
+W133797426,,unclassified,false,0,7.5,true,false,false,0,218.4,Ebute Metta,133797426
+W133797427,,unclassified,false,0,7.5,true,false,true,0,1130.9,Ebute Metta,133797427
+W133799115,,primary,false,0,17.5,true,false,false,0,136.3,Ebute Metta,133799115
+W133799120,,primary,true,0,7.5,true,false,false,0,81.0,Ebute Metta,133799120
+W133799121,,unclassified,false,0,7.5,true,false,false,0,217.0,Ebute Metta,133799121
+W133799124,,unclassified,false,0,7.5,true,false,false,0,217.3,Ebute Metta,133799124
+W133799125,,trunk,true,0,7.5,true,false,false,0,68.0,Ebute Metta,133799125
+W133800602,,motorway,true,0,7.5,true,true,false,0,454.9,Ebute Metta,133800602
+W133800606,,unclassified,false,0,7.5,false,false,false,0,795.5,Ebute Metta,133800606
+W133800620,,motorway,true,0,7.5,true,false,false,0,235.6,Ebute Metta,133800620
+W133800630,,motorway,true,0,7.5,true,false,false,0,453.6,Ebute Metta,133800630
+W133800631,,motorway,true,0,7.5,true,true,false,0,193.1,Ebute Metta,133800631
+W133801176,,motorway,true,0,7.5,true,true,false,0,175.4,Ebute Metta,133801176
+W133801183,,motorway,true,0,7.5,true,true,false,0,87.4,Ebute Metta,133801183
+W133801187,,motorway,true,0,7.5,true,true,false,0,125.3,Ebute Metta,133801187
+W134234987,,motorway,true,0,7.5,true,true,false,0,748.3,Ebute Metta,134234987
+W134234988,,primary,false,0,17.5,true,true,false,0,254.2,Ebute Metta,134234988
+W134234990,,motorway,true,0,7.5,true,true,false,0,424.0,Ebute Metta,134234990
+W134234991,,motorway,true,0,7.5,true,true,false,0,419.4,Ebute Metta,134234991
+W134234994,,motorway,true,0,7.5,true,true,false,0,901.2,Ebute Metta,134234994
+W134234995,,motorway,true,0,7.5,true,true,false,0,457.8,Ebute Metta,134234995
+W134234996,,motorway,true,0,7.5,true,false,false,0,407.4,Ebute Metta,134234996
+W134234997,,motorway,true,0,7.5,true,false,false,0,168.3,Ebute Metta,134234997
+W134234998,,primary,false,0,17.5,true,true,false,0,36.5,Ebute Metta,134234998
+W134234999,,primary,true,0,7.5,true,false,false,0,231.1,Ebute Metta,134234999
+W134235000,,motorway,true,0,7.5,true,true,false,0,385.5,Ebute Metta,134235000
+W135342407,,residential,false,0,7.5,false,false,false,0,141.8,Ebute Metta,135342407
+W135342411,,residential,false,0,7.5,false,false,false,0,71.5,Ebute Metta,135342411
+W135342412,,residential,false,0,7.5,false,false,false,0,69.2,Ebute Metta,135342412
+W135342415,,residential,false,0,7.5,false,false,false,0,115.9,Ebute Metta,135342415
+W135342416,,residential,false,0,7.5,false,false,false,0,353.4,Ebute Metta,135342416
+W135342417,,residential,false,0,7.5,false,false,false,0,243.5,Ebute Metta,135342417
+W135342418,,residential,false,0,7.5,false,false,false,0,514.5,Ebute Metta,135342418
+W135342419,,residential,false,0,7.5,false,false,false,0,440.9,Ebute Metta,135342419
+W135342420,,unclassified,false,0,7.5,true,false,false,0,309.8,Ebute Metta,135342420
+W135342421,,unclassified,false,0,7.5,true,false,false,0,306.1,Ebute Metta,135342421
+W135342424,,residential,false,0,7.5,false,false,false,0,558.1,Ebute Metta,135342424
+W1364689949,,residential,false,0,7.5,false,false,false,0,127.2,Ebute Metta,1364689949
+W1364706904,,service,false,0,5.0,false,false,false,0,166.3,Ebute Metta,1364706904
+W1364706905,,service,false,0,5.0,false,false,false,0,11.9,Ebute Metta,1364706905
+W1364930857,,service,false,0,5.0,false,false,false,0,56.2,Ebute Metta,1364930857
+W1364945146,,residential,false,0,7.5,false,false,false,0,77.1,Ebute Metta,1364945146
+W1364945147,,service,false,0,5.0,false,false,false,0,71.6,Ebute Metta,1364945147
+W1364958135,,residential,false,0,7.5,false,false,false,0,35.6,Ebute Metta,1364958135
+W1364958136,,residential,false,0,7.5,false,false,false,0,98.1,Ebute Metta,1364958136
+W1365128953,,residential,false,0,7.5,false,false,false,0,99.2,Ebute Metta,1365128953
+W1365139317,,service,false,0,5.0,false,false,false,0,46.9,Ebute Metta,1365139317
+W1365139318,,service,false,0,5.0,false,false,false,0,79.4,Ebute Metta,1365139318
+W1365139319,,service,false,0,5.0,false,false,false,0,55.0,Ebute Metta,1365139319
+W1365139320,,residential,false,0,7.5,false,false,false,0,50.2,Ebute Metta,1365139320
+W1365139321,,residential,false,0,7.5,false,false,false,0,73.7,Ebute Metta,1365139321
+W1365139322,,residential,false,0,7.5,false,false,false,0,701.0,Ebute Metta,1365139322
+W1366969473,,service,false,0,5.0,false,false,false,0,51.7,Ebute Metta,1366969473
+W1378279404,,residential,false,0,7.5,false,false,false,0,20.6,Ebute Metta,1378279404
+W138040506,,residential,false,0,7.5,false,false,false,0,77.9,Ebute Metta,138040506
+W138040560,,residential,false,0,7.5,false,false,false,0,261.1,Ebute Metta,138040560
+W138058022,,residential,false,0,7.5,false,false,false,0,83.1,Ebute Metta,138058022
+W138058025,,residential,false,0,7.5,false,false,false,0,53.8,Ebute Metta,138058025
+W138058039,,residential,false,0,7.5,false,false,false,0,97.2,Ebute Metta,138058039
+W1383724885,,residential,false,0,7.5,false,false,false,0,61.8,Ebute Metta,1383724885
+W1383724886,,service,false,0,5.0,false,false,false,0,53.6,Ebute Metta,1383724886
+W1383724887,,service,false,0,5.0,false,false,false,0,119.8,Ebute Metta,1383724887
+W1383724888,,service,false,0,5.0,false,false,false,0,216.4,Ebute Metta,1383724888
+W1383724889,,residential,false,0,7.5,false,false,false,0,100.0,Ebute Metta,1383724889
+W1383914306,,residential,false,0,7.5,false,false,false,0,57.6,Ebute Metta,1383914306
+W1392352253,,residential,false,0,7.5,false,false,false,0,290.3,Ebute Metta,1392352253
+W1392352256,,residential,false,0,7.5,false,false,false,0,90.8,Ebute Metta,1392352256
+W1392352257,,residential,false,0,7.5,false,false,false,0,93.5,Ebute Metta,1392352257
+W1392352258,,residential,false,0,7.5,false,false,false,0,26.4,Ebute Metta,1392352258
+W1392352259,,residential,false,0,7.5,false,false,false,0,97.1,Ebute Metta,1392352259
+W1392352260,,residential,false,0,7.5,false,false,false,0,70.5,Ebute Metta,1392352260
+W1392352261,,residential,false,0,7.5,false,false,false,0,82.8,Ebute Metta,1392352261
+W1409181284,,service,false,0,5.0,false,false,false,0,25.9,Ebute Metta,1409181284
+W1413206848,,service,false,0,5.0,false,false,false,0,37.6,Ebute Metta,1413206848
+W1413206849,,service,false,0,5.0,false,false,false,0,41.4,Ebute Metta,1413206849
+W1413206850,,service,false,0,5.0,false,false,false,0,114.2,Ebute Metta,1413206850
+W1413206851,,service,false,0,5.0,false,false,false,0,47.7,Ebute Metta,1413206851
+W1413432064,,service,false,0,5.0,false,false,false,0,32.0,Ebute Metta,1413432064
+W1415415222,,service,false,0,5.0,false,false,false,0,61.1,Ebute Metta,1415415222
+W1415415223,,service,false,0,5.0,false,false,false,0,62.4,Ebute Metta,1415415223
+W1418095694,,residential,false,0,7.5,false,false,false,0,140.4,Ebute Metta,1418095694
+W1426396560,,service,false,0,5.0,false,false,false,0,11.7,Ebute Metta,1426396560
+W1428081699,,residential,false,0,7.5,false,false,false,0,368.6,Ebute Metta,1428081699
+W1428082962,,service,false,0,5.0,false,false,false,0,43.5,Ebute Metta,1428082962
+W1428277970,,service,false,0,5.0,false,false,false,0,93.2,Ebute Metta,1428277970
+W1428277971,,service,false,0,5.0,false,false,false,0,104.7,Ebute Metta,1428277971
+W1428277972,,service,false,0,5.0,false,false,false,0,47.0,Ebute Metta,1428277972
+W1428277973,,service,false,0,5.0,false,false,false,0,36.4,Ebute Metta,1428277973
+W1428277974,,service,false,0,5.0,false,false,false,0,39.8,Ebute Metta,1428277974
+W1428277975,,service,false,0,5.0,false,false,false,0,76.9,Ebute Metta,1428277975
+W1428277976,,service,false,0,5.0,false,false,false,0,46.6,Ebute Metta,1428277976
+W1428277977,,service,false,0,5.0,false,false,false,0,60.4,Ebute Metta,1428277977
+W1428278648,,service,false,0,5.0,false,false,false,0,22.6,Ebute Metta,1428278648
+W1428278649,,service,false,0,5.0,false,false,false,0,78.1,Ebute Metta,1428278649
+W1428278650,,service,false,0,5.0,false,false,false,0,41.3,Ebute Metta,1428278650
+W1434130732,,service,false,0,5.0,false,false,false,0,33.7,Ebute Metta,1434130732
+W1434130733,,service,false,0,5.0,false,false,false,0,98.5,Ebute Metta,1434130733
+W1434130734,,service,false,0,5.0,false,false,false,0,55.2,Ebute Metta,1434130734
+W1434130735,,residential,false,0,7.5,false,false,false,0,75.6,Ebute Metta,1434130735
+W1434130736,,service,false,0,5.0,false,false,false,0,42.6,Ebute Metta,1434130736
+W1434130741,,service,false,0,5.0,false,false,false,0,70.9,Ebute Metta,1434130741
+W1447513490,,service,false,0,5.0,false,false,false,0,65.5,Ebute Metta,1447513490
+W144840449,,tertiary,false,0,10.0,false,false,false,0,206.0,Ebute Metta,144840449
+W144840471,,tertiary,false,0,10.0,true,false,false,0,275.5,Ebute Metta,144840471
+W1453338389,,service,false,0,5.0,false,false,false,0,107.1,Ebute Metta,1453338389
+W1459438680,,residential,false,0,7.5,false,false,false,0,161.5,Ebute Metta,1459438680
+W1463071352,,service,false,0,5.0,false,false,false,0,64.0,Ebute Metta,1463071352
+W1465598397,,primary,false,0,17.5,true,false,true,0,30.1,Ebute Metta,1465598397
+W1465598399,,motorway,true,0,7.5,true,false,false,0,17.3,Ebute Metta,1465598399
+W1466336969,,residential,false,0,7.5,false,false,false,0,462.6,Ebute Metta,1466336969
+W1484661584,,service,false,0,5.0,false,false,false,0,58.9,Ebute Metta,1484661584
+W1484661585,,service,false,0,5.0,false,false,false,0,57.6,Ebute Metta,1484661585
+W1484661586,,service,false,0,5.0,false,false,false,0,99.8,Ebute Metta,1484661586
+W1485335788,,service,false,0,5.0,false,true,false,0,28.4,Ebute Metta,1485335788
+W1485335789,,service,false,0,5.0,false,false,false,0,3.7,Ebute Metta,1485335789
+W1485335790,,service,false,0,5.0,false,false,false,0,28.7,Ebute Metta,1485335790
+W1489522161,,service,false,0,5.0,false,false,false,0,63.9,Ebute Metta,1489522161
+W1489522162,,service,false,0,5.0,false,false,false,0,96.8,Ebute Metta,1489522162
+W1489522163,,service,false,0,5.0,false,false,false,0,62.2,Ebute Metta,1489522163
+W1489522739,,service,false,0,5.0,false,false,false,0,231.0,Ebute Metta,1489522739
+W1490210791,,service,false,0,5.0,false,false,false,0,12.4,Ebute Metta,1490210791
+W1497130496,,service,false,0,5.0,false,false,false,0,36.8,Ebute Metta,1497130496
+W1499334981,,service,false,0,5.0,false,false,false,0,258.2,Ebute Metta,1499334981
+W1505474687,,residential,false,0,7.5,false,false,false,0,38.3,Ebute Metta,1505474687
+W1505563372,,service,false,0,5.0,false,false,false,0,26.6,Ebute Metta,1505563372
+W1505563373,,service,false,0,5.0,false,false,false,0,45.8,Ebute Metta,1505563373
+W1505563374,,service,false,0,5.0,false,false,false,0,75.5,Ebute Metta,1505563374
+W1505613951,,service,false,0,5.0,false,false,false,0,71.7,Ebute Metta,1505613951
+W1505613952,,service,false,0,5.0,false,false,false,0,28.3,Ebute Metta,1505613952
+W1505613953,,service,false,0,5.0,false,false,false,0,19.8,Ebute Metta,1505613953
+W1505613954,,service,false,0,5.0,false,false,false,0,85.1,Ebute Metta,1505613954
+W1505613955,,service,false,0,5.0,false,false,false,0,26.2,Ebute Metta,1505613955
+W1505613956,,service,false,0,5.0,false,false,false,0,32.4,Ebute Metta,1505613956
+W1505613957,,service,false,0,5.0,false,false,false,0,34.6,Ebute Metta,1505613957
+W1505613958,,service,false,0,5.0,false,false,false,0,24.9,Ebute Metta,1505613958
+W1505613959,,service,false,0,5.0,false,false,false,0,24.6,Ebute Metta,1505613959
+W1505613960,,service,false,0,5.0,false,false,false,0,23.4,Ebute Metta,1505613960
+W1505761374,,service,false,0,5.0,false,false,false,0,95.1,Ebute Metta,1505761374
+W1510178919,,service,false,0,5.0,false,false,false,0,70.9,Ebute Metta,1510178919
+W1510208571,,service,false,0,5.0,false,false,false,0,33.7,Ebute Metta,1510208571
+W1510208572,,service,false,0,5.0,false,false,false,0,85.1,Ebute Metta,1510208572
+W1510208573,,service,false,0,5.0,false,false,false,0,61.3,Ebute Metta,1510208573
+W1510210623,,service,false,0,5.0,false,false,false,0,74.5,Ebute Metta,1510210623
+W1510210624,,service,false,0,5.0,false,false,false,0,71.6,Ebute Metta,1510210624
+W1510217828,,service,false,0,5.0,false,false,false,0,7.4,Ebute Metta,1510217828
+W1510217829,,service,false,0,5.0,false,false,false,0,13.3,Ebute Metta,1510217829
+W1510217830,,service,false,0,5.0,false,false,false,0,129.5,Ebute Metta,1510217830
+W1517063329,,service,false,0,5.0,false,false,false,0,39.8,Ebute Metta,1517063329
+W1518637311,,service,false,0,5.0,false,false,false,0,110.3,Ebute Metta,1518637311
+W1518642847,,residential,false,0,7.5,false,false,false,0,129.7,Ebute Metta,1518642847
+W1518642848,,residential,false,0,7.5,false,false,false,0,54.1,Ebute Metta,1518642848
+W1518642849,,residential,false,0,7.5,false,false,false,0,65.5,Ebute Metta,1518642849
+W1518642850,,residential,false,0,7.5,false,false,false,0,55.1,Ebute Metta,1518642850
+W1518642851,,residential,false,0,7.5,false,false,false,0,112.0,Ebute Metta,1518642851
+W1524327390,,service,false,0,5.0,false,false,false,0,72.8,Ebute Metta,1524327390
+W1524327391,,service,false,0,5.0,false,false,false,0,33.8,Ebute Metta,1524327391
+W1524327392,,service,false,0,5.0,false,false,false,0,51.1,Ebute Metta,1524327392
+W1524327393,,service,false,0,5.0,false,false,false,0,77.6,Ebute Metta,1524327393
+W1524327394,,residential,false,0,7.5,false,false,false,0,448.7,Ebute Metta,1524327394
+W1524335971,,service,false,0,5.0,false,false,false,0,47.1,Ebute Metta,1524335971
+W1524335972,,service,false,0,5.0,false,false,false,0,42.1,Ebute Metta,1524335972
+W1524335973,,service,false,0,5.0,false,false,false,0,193.3,Ebute Metta,1524335973
+W1524337074,,service,false,0,5.0,false,false,false,0,89.9,Ebute Metta,1524337074
+W1533780383,,service,false,0,5.0,false,false,false,0,185.0,Ebute Metta,1533780383
+W1533780384,,service,false,0,5.0,false,false,false,0,32.5,Ebute Metta,1533780384
+W1533780385,,service,false,0,5.0,false,false,false,0,38.7,Ebute Metta,1533780385
+W1533805412,,residential,false,0,7.5,false,false,false,0,10.7,Ebute Metta,1533805412
+W1533812721,,service,false,0,5.0,false,false,false,0,86.0,Ebute Metta,1533812721
+W1533852659,,service,false,0,5.0,false,false,false,0,65.2,Ebute Metta,1533852659
+W1534120298,,service,false,0,5.0,false,false,false,0,26.0,Ebute Metta,1534120298
+W1534155053,,residential,false,0,7.5,false,false,false,0,19.8,Ebute Metta,1534155053
+W1534155054,,service,false,0,5.0,false,false,false,0,58.0,Ebute Metta,1534155054
+W1534155055,,service,false,0,5.0,false,false,false,0,6.3,Ebute Metta,1534155055
+W1534155056,,service,false,0,5.0,false,false,false,0,6.6,Ebute Metta,1534155056
+W1534181999,,service,false,0,5.0,false,false,false,0,57.4,Ebute Metta,1534181999
+W1534182000,,service,false,0,5.0,false,false,false,0,96.8,Ebute Metta,1534182000
+W1534765560,,service,false,0,5.0,false,false,false,0,10.1,Ebute Metta,1534765560
+W1534765561,,service,false,0,5.0,false,false,false,0,28.5,Ebute Metta,1534765561
+W1534765562,,service,false,0,5.0,false,false,false,0,10.9,Ebute Metta,1534765562
+W1545148030,,service,false,0,5.0,false,false,false,0,66.2,Ebute Metta,1545148030
+W1545148032,,service,false,0,5.0,false,false,false,0,63.0,Ebute Metta,1545148032
+W1545462866,,service,false,0,5.0,false,false,false,0,244.1,Ebute Metta,1545462866
+W1546942175,,service,false,0,5.0,false,false,false,0,254.6,Ebute Metta,1546942175
+W1547581201,,service,false,0,5.0,false,false,false,0,91.4,Ebute Metta,1547581201
+W1547581202,,residential,false,0,7.5,false,false,false,0,47.7,Ebute Metta,1547581202
+W1547662014,,service,false,0,5.0,false,false,false,0,165.5,Ebute Metta,1547662014
+W1547825072,,service,false,0,5.0,false,false,false,0,184.8,Ebute Metta,1547825072
+W1547826317,,service,false,0,5.0,false,false,false,0,56.5,Ebute Metta,1547826317
+W1547826318,,service,false,0,5.0,false,false,false,0,9.5,Ebute Metta,1547826318
+W1547826319,,service,false,0,5.0,false,false,false,0,129.1,Ebute Metta,1547826319
+W1547826320,,service,false,0,5.0,false,false,false,0,9.4,Ebute Metta,1547826320
+W1547826321,,service,false,0,5.0,false,false,false,0,140.5,Ebute Metta,1547826321
+W1547826322,,service,false,0,5.0,false,false,false,0,6.3,Ebute Metta,1547826322
+W1547836794,,service,false,0,5.0,false,false,false,0,46.1,Ebute Metta,1547836794
+W1547836796,,service,false,0,5.0,false,false,false,0,149.5,Ebute Metta,1547836796
+W1547836797,,service,false,0,5.0,false,false,false,0,272.5,Ebute Metta,1547836797
+W1547836798,,service,false,0,5.0,false,false,false,0,15.2,Ebute Metta,1547836798
+W1547836799,,service,false,0,5.0,false,false,false,0,104.0,Ebute Metta,1547836799
+W1547852622,,service,false,0,5.0,false,false,false,0,32.3,Ebute Metta,1547852622
+W1547854094,,motorway,true,0,7.5,true,false,false,0,44.5,Ebute Metta,1547854094
+W1548590788,,residential,false,0,7.5,false,false,false,0,23.3,Ebute Metta,1548590788
+W1548590789,,service,false,0,5.0,false,false,false,0,46.5,Ebute Metta,1548590789
+W1549234445,,service,false,0,5.0,true,false,false,0,17.8,Ebute Metta,1549234445
+W1549234446,,service,false,0,5.0,true,false,false,0,23.5,Ebute Metta,1549234446
+W1549234447,,service,false,0,5.0,false,false,false,0,98.9,Ebute Metta,1549234447
+W1551332445,,service,false,0,5.0,false,false,false,0,63.0,Ebute Metta,1551332445
+W1551984954,,service,false,0,5.0,false,false,false,0,57.5,Ebute Metta,1551984954
+W1551984955,,service,false,0,5.0,false,false,false,0,103.1,Ebute Metta,1551984955
+W1558315922,,residential,false,1,4.3,true,false,false,0,242.1,Ebute Metta,1558315922
+W1558315924,,residential,false,1,4.3,true,false,false,0,264.9,Ebute Metta,1558315924
+W1558348562,,residential,false,1,4.3,true,false,false,0,235.5,Ebute Metta,1558348562
+W1558348563,,residential,false,1,4.3,true,false,false,0,82.5,Ebute Metta,1558348563
+W1558348564,,residential,false,1,4.3,true,false,false,0,233.2,Ebute Metta,1558348564
+W1563959829,,service,false,0,5.0,false,false,false,0,95.0,Ebute Metta,1563959829
+W1563959830,,service,false,0,5.0,true,false,false,0,44.1,Ebute Metta,1563959830
+W1566704071,,service,false,0,5.0,false,false,false,0,54.9,Ebute Metta,1566704071
+W1566713052,,service,false,0,5.0,false,false,false,0,82.5,Ebute Metta,1566713052
+W1566713053,,service,false,0,5.0,false,false,false,0,7.5,Ebute Metta,1566713053
+W1566713054,,service,false,0,5.0,false,false,false,0,78.6,Ebute Metta,1566713054
+W1566713055,,service,false,0,5.0,false,false,false,0,238.3,Ebute Metta,1566713055
+W1566733080,,residential,false,0,7.5,false,false,false,0,31.0,Ebute Metta,1566733080
+W1566736056,,service,false,0,5.0,false,false,false,0,60.8,Ebute Metta,1566736056
+W1566740533,,service,false,0,5.0,false,false,false,0,92.3,Ebute Metta,1566740533
+W1566741465,,service,false,0,5.0,false,false,false,0,149.8,Ebute Metta,1566741465
+W1566741466,,service,false,0,5.0,false,false,false,0,98.1,Ebute Metta,1566741466
+W1566975966,,service,false,0,5.0,false,false,false,0,37.4,Ebute Metta,1566975966
+W1566975970,,service,false,0,5.0,false,false,false,0,63.8,Ebute Metta,1566975970
+W1566975971,,service,false,0,5.0,false,false,false,0,11.8,Ebute Metta,1566975971
+W1566975972,,service,false,0,5.0,false,false,false,0,15.9,Ebute Metta,1566975972
+W1566975975,,service,false,0,5.0,false,false,false,0,11.0,Ebute Metta,1566975975
+W1566983699,,service,false,0,5.0,false,false,false,0,32.9,Ebute Metta,1566983699
+W1566984121,,service,false,0,5.0,false,false,false,0,443.4,Ebute Metta,1566984121
+W1566985436,,service,false,0,5.0,false,false,false,0,60.4,Ebute Metta,1566985436
+W1566985437,,service,false,0,5.0,false,false,false,0,75.7,Ebute Metta,1566985437
+W1566985438,,service,false,0,5.0,false,false,false,0,71.3,Ebute Metta,1566985438
+W1566985439,,service,false,0,5.0,false,false,false,0,74.3,Ebute Metta,1566985439
+W1566985440,,service,false,0,5.0,false,false,false,0,75.2,Ebute Metta,1566985440
+W1566991325,,service,false,0,5.0,false,false,false,0,15.5,Ebute Metta,1566991325
+W1566991897,,service,false,0,5.0,false,false,false,0,73.9,Ebute Metta,1566991897
+W1566991898,,service,false,0,5.0,false,false,false,0,95.2,Ebute Metta,1566991898
+W1566991899,,service,false,0,5.0,false,false,false,0,21.8,Ebute Metta,1566991899
+W1566991900,,service,false,0,5.0,false,false,false,0,6.2,Ebute Metta,1566991900
+W1566991901,,service,false,0,5.0,false,false,false,0,47.7,Ebute Metta,1566991901
+W1566991934,,service,false,0,5.0,false,false,false,0,42.1,Ebute Metta,1566991934
+W1566994905,,service,false,0,5.0,false,false,false,0,46.2,Ebute Metta,1566994905
+W1567019291,,service,false,0,5.0,false,false,false,0,23.6,Ebute Metta,1567019291
+W1567019292,,service,false,0,5.0,false,false,false,0,128.4,Ebute Metta,1567019292
+W1567019293,,service,false,0,5.0,false,false,false,0,15.0,Ebute Metta,1567019293
+W1567019294,,service,false,0,5.0,false,false,false,0,103.2,Ebute Metta,1567019294
+W1567019295,,service,false,0,5.0,false,false,false,0,14.0,Ebute Metta,1567019295
+W1567019299,,service,false,0,5.0,false,false,false,0,12.6,Ebute Metta,1567019299
+W1567019300,,service,false,0,5.0,false,false,false,0,11.7,Ebute Metta,1567019300
+W1567019301,,service,false,0,5.0,false,false,false,0,75.9,Ebute Metta,1567019301
+W1567019302,,service,false,0,5.0,false,false,false,0,159.4,Ebute Metta,1567019302
+W1567030094,,service,false,0,5.0,false,false,false,0,12.6,Ebute Metta,1567030094
+W1567030095,,service,false,0,5.0,false,false,false,0,13.3,Ebute Metta,1567030095
+W166721524,,service,false,0,5.0,false,false,false,0,78.2,Ebute Metta,166721524
+W166721526,,residential,false,0,7.5,false,false,false,0,45.8,Ebute Metta,166721526
+W166721530,,residential,false,0,7.5,false,false,false,0,175.5,Ebute Metta,166721530
+W166721535,,residential,false,0,7.5,false,false,false,0,81.1,Ebute Metta,166721535
+W166721537,,service,false,0,5.0,false,false,false,0,53.1,Ebute Metta,166721537
+W166721538,,residential,false,0,7.5,false,false,false,0,52.1,Ebute Metta,166721538
+W166721539,,service,false,0,5.0,false,false,false,0,26.5,Ebute Metta,166721539
+W166721541,,residential,false,0,7.5,false,false,false,0,198.9,Ebute Metta,166721541
+W166721542,,service,false,0,5.0,false,false,false,0,77.4,Ebute Metta,166721542
+W166721543,,residential,false,0,7.5,false,false,false,0,21.5,Ebute Metta,166721543
+W166721552,,service,false,0,5.0,false,false,false,0,228.0,Ebute Metta,166721552
+W166721555,,residential,false,0,7.5,false,false,false,0,151.5,Ebute Metta,166721555
+W166721557,,residential,false,0,7.5,false,false,false,0,222.5,Ebute Metta,166721557
+W166893833,,service,false,0,5.0,false,false,false,0,243.5,Ebute Metta,166893833
+W166893839,,residential,false,0,7.5,false,false,false,0,504.6,Ebute Metta,166893839
+W166893840,,residential,false,0,7.5,false,false,false,0,147.8,Ebute Metta,166893840
+W166893841,,residential,false,0,7.5,false,false,false,0,108.3,Ebute Metta,166893841
+W166893842,,service,false,0,5.0,false,false,false,0,130.4,Ebute Metta,166893842
+W166893843,,residential,false,0,7.5,false,false,false,0,181.3,Ebute Metta,166893843
+W166893844,,residential,false,0,7.5,false,false,false,0,75.8,Ebute Metta,166893844
+W166893845,,service,false,0,5.0,false,false,false,0,307.2,Ebute Metta,166893845
+W166893847,,service,false,0,5.0,false,false,false,0,51.6,Ebute Metta,166893847
+W207402238,,trunk,true,0,7.5,true,false,false,0,57.7,Ebute Metta,207402238
+W207402239,,trunk,true,0,7.5,true,false,false,0,32.0,Ebute Metta,207402239
+W207402246,,primary,false,0,17.5,true,false,false,0,133.6,Ebute Metta,207402246
+W215649058,,motorway,true,0,7.5,true,false,false,0,77.2,Ebute Metta,215649058
+W217138677,,service,false,0,5.0,false,false,false,0,901.5,Ebute Metta,217138677
+W217138678,,unclassified,false,0,7.5,false,false,false,0,677.5,Ebute Metta,217138678
+W217138682,,service,false,0,5.0,false,false,false,0,844.3,Ebute Metta,217138682
+W217574048,,unclassified,false,0,7.5,true,true,false,0,182.8,Ebute Metta,217574048
+W217574049,,unclassified,false,0,7.5,true,true,false,0,173.3,Ebute Metta,217574049
+W217574050,,motorway,true,0,7.5,true,false,false,0,187.1,Ebute Metta,217574050
+W217574052,,residential,false,0,7.5,true,false,false,0,15.2,Ebute Metta,217574052
+W217574053,,residential,false,0,7.5,true,false,false,0,18.5,Ebute Metta,217574053
+W217574054,,residential,false,0,7.5,true,false,false,0,17.8,Ebute Metta,217574054
+W217574055,,primary,true,0,7.5,true,false,false,0,31.3,Ebute Metta,217574055
+W217574056,,residential,false,0,7.5,true,false,false,0,132.1,Ebute Metta,217574056
+W217574057,,residential,false,0,7.5,true,false,false,0,22.7,Ebute Metta,217574057
+W217574058,,residential,false,0,7.5,false,false,false,0,345.0,Ebute Metta,217574058
+W217574059,,residential,false,0,7.5,false,false,false,0,287.1,Ebute Metta,217574059
+W217574061,,residential,false,0,7.5,false,false,false,0,107.0,Ebute Metta,217574061
+W217574063,,residential,false,0,7.5,false,false,false,0,89.5,Ebute Metta,217574063
+W217574064,,residential,false,0,7.5,false,false,false,0,87.5,Ebute Metta,217574064
+W217574065,,residential,false,0,7.5,false,false,false,0,193.2,Ebute Metta,217574065
+W217574067,,residential,false,0,7.5,false,false,false,0,306.7,Ebute Metta,217574067
+W217574068,,unclassified,false,0,7.5,false,false,false,0,240.3,Ebute Metta,217574068
+W217574069,,residential,false,0,7.5,true,false,false,0,53.7,Ebute Metta,217574069
+W217574070,,unclassified,false,0,7.5,true,true,false,0,41.5,Ebute Metta,217574070
+W217574071,,unclassified,false,0,7.5,true,true,false,0,40.7,Ebute Metta,217574071
+W217574072,,residential,false,0,7.5,false,false,false,0,10.6,Ebute Metta,217574072
+W217574073,,service,false,0,5.0,false,false,false,0,92.6,Ebute Metta,217574073
+W217574074,,residential,false,0,7.5,true,false,false,0,18.9,Ebute Metta,217574074
+W217574076,,unclassified,false,0,7.5,true,false,false,0,150.4,Ebute Metta,217574076
+W217574077,,service,false,0,5.0,false,false,false,0,270.9,Ebute Metta,217574077
+W217636582,,residential,false,0,7.5,false,false,false,0,406.5,Ebute Metta,217636582
+W217636584,,residential,false,0,7.5,false,false,false,0,109.7,Ebute Metta,217636584
+W217636586,,residential,false,0,7.5,false,false,false,0,252.3,Ebute Metta,217636586
+W217636587,,residential,false,0,7.5,false,false,false,0,114.3,Ebute Metta,217636587
+W217636591,,residential,false,0,7.5,false,false,false,0,102.4,Ebute Metta,217636591
+W217636592,,residential,false,0,7.5,false,false,false,0,124.8,Ebute Metta,217636592
+W217636594,,residential,false,0,7.5,false,false,false,0,143.2,Ebute Metta,217636594
+W217793783,,residential,false,0,7.5,false,false,false,0,291.3,Ebute Metta,217793783
+W217793786,,residential,false,0,7.5,false,false,false,0,198.4,Ebute Metta,217793786
+W217793796,,residential,false,0,7.5,false,false,false,0,365.5,Ebute Metta,217793796
+W217793823,,residential,false,0,7.5,false,false,false,0,80.1,Ebute Metta,217793823
+W218716713,,residential,false,0,7.5,false,false,false,0,51.0,Ebute Metta,218716713
+W218716714,,residential,false,0,7.5,false,false,false,0,220.5,Ebute Metta,218716714
+W218716720,,residential,false,0,7.5,false,false,false,0,118.4,Ebute Metta,218716720
+W218716723,,residential,false,0,7.5,false,false,false,0,94.8,Ebute Metta,218716723
+W218716724,,residential,false,0,7.5,false,false,false,0,46.6,Ebute Metta,218716724
+W218716726,,residential,false,0,7.5,false,false,false,0,108.7,Ebute Metta,218716726
+W218716728,,residential,false,0,7.5,false,false,false,0,164.3,Ebute Metta,218716728
+W218716734,,residential,false,0,7.5,false,false,false,0,107.6,Ebute Metta,218716734
+W218716735,,residential,false,0,7.5,false,false,false,0,259.4,Ebute Metta,218716735
+W218716736,,residential,false,0,7.5,false,false,false,0,91.5,Ebute Metta,218716736
+W218716737,,track,false,0,4.0,false,false,false,0,125.5,Ebute Metta,218716737
+W264916670,,primary,false,0,17.5,true,false,false,0,852.5,Ebute Metta,264916670
+W264916674,,trunk,true,0,7.5,true,true,false,0,158.1,Ebute Metta,264916674
+W264916675,,primary,false,0,17.5,false,false,false,0,449.4,Ebute Metta,264916675
+W280342855,,residential,false,0,7.5,false,false,false,0,62.0,Ebute Metta,280342855
+W280342861,,service,false,0,5.0,false,false,false,0,116.4,Ebute Metta,280342861
+W280343608,,residential,false,0,7.5,false,false,false,0,143.2,Ebute Metta,280343608
+W280343613,,service,false,0,5.0,false,false,false,0,158.4,Ebute Metta,280343613
+W280346478,,residential,false,0,7.5,false,false,false,0,91.5,Ebute Metta,280346478
+W280346480,,residential,false,0,7.5,false,false,false,0,112.2,Ebute Metta,280346480
+W280346483,,residential,false,0,7.5,false,false,false,0,141.2,Ebute Metta,280346483
+W280485686,,residential,false,0,7.5,false,false,false,0,63.2,Ebute Metta,280485686
+W280485687,,residential,false,0,7.5,false,false,false,0,115.5,Ebute Metta,280485687
+W280485688,,residential,false,0,7.5,false,false,false,0,253.8,Ebute Metta,280485688
+W280570911,,primary,false,0,17.5,true,true,false,0,22.4,Ebute Metta,280570911
+W280570915,,primary,false,0,17.5,true,true,false,0,21.9,Ebute Metta,280570915
+W280570922,,primary,false,0,17.5,true,false,false,0,53.7,Ebute Metta,280570922
+W280579872,,residential,false,0,7.5,false,false,false,0,499.2,Ebute Metta,280579872
+W281436826,,service,false,0,5.0,false,false,false,0,362.8,Ebute Metta,281436826
+W281436827,,service,false,0,5.0,false,false,false,0,408.4,Ebute Metta,281436827
+W281436830,,residential,false,0,7.5,false,false,false,0,51.6,Ebute Metta,281436830
+W281436831,,service,false,0,5.0,false,false,false,0,94.1,Ebute Metta,281436831
+W281436832,,residential,false,0,7.5,false,false,false,0,91.1,Ebute Metta,281436832
+W281436833,,residential,false,0,7.5,false,false,false,0,234.7,Ebute Metta,281436833
+W281436834,,service,false,0,5.0,false,false,false,0,83.0,Ebute Metta,281436834
+W281436835,,residential,false,0,7.5,false,false,false,0,35.9,Ebute Metta,281436835
+W281436837,,service,false,0,5.0,false,false,false,0,100.8,Ebute Metta,281436837
+W281436839,,residential,false,0,7.5,false,false,false,0,286.7,Ebute Metta,281436839
+W281436841,,residential,false,0,7.5,false,false,false,0,151.1,Ebute Metta,281436841
+W281436842,,service,false,0,5.0,false,false,false,0,128.1,Ebute Metta,281436842
+W281436843,,residential,false,0,7.5,false,false,false,0,181.9,Ebute Metta,281436843
+W281436845,,residential,false,0,7.5,false,false,false,0,175.7,Ebute Metta,281436845
+W281437245,,residential,false,0,7.5,false,false,false,0,218.0,Ebute Metta,281437245
+W328558532,,service,false,0,5.0,false,false,false,0,56.2,Ebute Metta,328558532
+W328558544,,secondary,true,0,7.5,true,false,false,0,35.0,Ebute Metta,328558544
+W407972967,,residential,false,0,7.5,false,false,false,0,545.7,Ebute Metta,407972967
+W407972968,,residential,false,0,7.5,false,false,false,0,247.5,Ebute Metta,407972968
+W407972972,,residential,false,0,7.5,false,true,false,0,14.2,Ebute Metta,407972972
+W407972984,,residential,false,0,7.5,false,false,false,0,46.8,Ebute Metta,407972984
+W407972985,,service,false,0,5.0,false,false,false,0,167.5,Ebute Metta,407972985
+W407972986,,residential,false,0,7.5,false,false,false,0,110.4,Ebute Metta,407972986
+W441713758,,residential,false,0,7.5,false,false,false,0,87.9,Ebute Metta,441713758
+W441713759,,residential,false,0,7.5,false,false,false,0,113.9,Ebute Metta,441713759
+W441713760,,residential,false,0,7.5,false,false,false,0,76.9,Ebute Metta,441713760
+W441713761,,residential,false,0,7.5,false,false,false,0,77.9,Ebute Metta,441713761
+W441713762,,residential,false,0,7.5,false,false,false,0,117.9,Ebute Metta,441713762
+W441713763,,residential,false,0,7.5,false,false,false,0,80.6,Ebute Metta,441713763
+W441713764,,residential,false,0,7.5,false,false,false,0,356.4,Ebute Metta,441713764
+W441713766,,residential,false,0,7.5,false,false,false,0,132.9,Ebute Metta,441713766
+W441713767,,residential,false,0,7.5,false,false,false,0,188.7,Ebute Metta,441713767
+W441713768,,residential,false,0,7.5,false,false,false,0,99.7,Ebute Metta,441713768
+W505392468,,residential,false,0,7.5,false,false,false,0,84.5,Ebute Metta,505392468
+W5153487,,primary,true,0,7.5,true,true,false,0,242.9,Ebute Metta,5153487
+W530737586,,residential,false,0,7.5,false,false,false,0,39.3,Ebute Metta,530737586
+W558803342,,unclassified,false,0,7.5,true,false,false,0,19.7,Ebute Metta,558803342
+W558864242,,residential,false,0,7.5,false,false,false,0,64.8,Ebute Metta,558864242
+W558864248,,residential,false,0,7.5,false,false,false,0,39.4,Ebute Metta,558864248
+W558864249,,service,false,0,5.0,false,false,false,0,42.6,Ebute Metta,558864249
+W558864251,,residential,false,0,7.5,false,false,false,0,59.6,Ebute Metta,558864251
+W559069076,,residential,false,0,7.5,false,false,false,0,42.0,Ebute Metta,559069076
+W559069082,,residential,false,0,7.5,false,false,false,0,130.7,Ebute Metta,559069082
+W559069084,,service,false,0,5.0,false,false,false,0,61.5,Ebute Metta,559069084
+W559069085,,service,false,0,5.0,true,false,true,0,47.3,Ebute Metta,559069085
+W559069086,,service,false,0,5.0,false,false,false,0,63.3,Ebute Metta,559069086
+W559069087,,service,false,0,5.0,false,false,false,0,65.9,Ebute Metta,559069087
+W559069088,,residential,false,0,7.5,false,true,false,0,7.4,Ebute Metta,559069088
+W559069089,,residential,false,0,7.5,false,false,false,0,179.2,Ebute Metta,559069089
+W559069091,,residential,false,0,7.5,false,true,false,0,30.4,Ebute Metta,559069091
+W559069092,,residential,false,0,7.5,false,false,false,0,4.5,Ebute Metta,559069092
+W559095427,,residential,false,0,7.5,false,false,false,0,102.3,Ebute Metta,559095427
+W559103158,,residential,false,0,7.5,false,false,false,0,37.2,Ebute Metta,559103158
+W559103159,,residential,false,0,7.5,false,false,false,0,50.3,Ebute Metta,559103159
+W559103162,,residential,false,0,7.5,false,false,false,0,57.7,Ebute Metta,559103162
+W559103164,,residential,false,0,7.5,false,false,false,0,98.7,Ebute Metta,559103164
+W559103165,,residential,false,0,7.5,false,false,false,0,58.8,Ebute Metta,559103165
+W559106892,,residential,false,0,7.5,false,false,false,0,64.8,Ebute Metta,559106892
+W559106894,,service,false,0,5.0,false,false,false,0,59.0,Ebute Metta,559106894
+W559106896,,service,false,0,5.0,false,false,false,0,171.4,Ebute Metta,559106896
+W559142310,,service,false,0,5.0,false,false,false,0,64.9,Ebute Metta,559142310
+W559142320,,residential,false,0,7.5,false,false,false,0,55.2,Ebute Metta,559142320
+W559142323,,service,false,0,5.0,false,false,false,0,233.6,Ebute Metta,559142323
+W559142324,,service,false,0,5.0,false,false,false,0,149.0,Ebute Metta,559142324
+W559174566,,tertiary,false,0,10.0,true,false,true,0,44.8,Ebute Metta,559174566
+W559174567,,motorway,true,0,7.5,true,false,false,0,60.0,Ebute Metta,559174567
+W559174571,,primary,false,0,17.5,true,false,false,0,153.7,Ebute Metta,559174571
+W567791463,,trunk,true,0,7.5,true,false,false,0,54.9,Ebute Metta,567791463
+W586367387,,unclassified,false,0,7.5,false,false,false,0,124.2,Ebute Metta,586367387
+W586373556,,service,false,0,5.0,false,false,false,0,203.1,Ebute Metta,586373556
+W586373558,,service,false,0,5.0,false,false,false,0,222.0,Ebute Metta,586373558
+W586656930,,service,false,0,5.0,false,false,false,0,77.4,Ebute Metta,586656930
+W586656933,,service,false,0,5.0,false,false,false,0,135.0,Ebute Metta,586656933
+W586656934,,service,false,0,5.0,false,false,false,0,21.2,Ebute Metta,586656934
+W586656935,,service,false,0,5.0,false,false,false,0,224.2,Ebute Metta,586656935
+W587090407,,tertiary,false,0,10.0,true,false,false,0,434.3,Ebute Metta,587090407
+W587090409,,tertiary,true,0,7.5,true,false,false,0,21.5,Ebute Metta,587090409
+W588143430,,residential,false,0,7.5,false,false,false,0,99.0,Ebute Metta,588143430
+W588143433,,residential,false,0,7.5,false,false,false,0,107.5,Ebute Metta,588143433
+W588143435,,residential,false,0,7.5,false,false,false,0,206.5,Ebute Metta,588143435
+W588150732,,residential,false,0,7.5,false,false,false,0,26.2,Ebute Metta,588150732
+W588150735,,residential,false,0,7.5,false,false,false,0,42.1,Ebute Metta,588150735
+W588150736,,residential,false,0,7.5,false,true,false,0,12.9,Ebute Metta,588150736
+W588150737,,residential,false,0,7.5,false,false,false,0,69.1,Ebute Metta,588150737
+W588155904,,residential,false,0,7.5,false,false,false,0,78.4,Ebute Metta,588155904
+W588157846,,residential,false,0,7.5,true,false,false,0,19.3,Ebute Metta,588157846
+W588157847,,residential,false,0,7.5,true,false,false,0,30.6,Ebute Metta,588157847
+W588157848,,residential,false,0,7.5,true,false,true,0,36.5,Ebute Metta,588157848
+W588171846,,residential,false,0,7.5,false,false,false,0,224.5,Ebute Metta,588171846
+W588185875,,residential,false,0,7.5,true,false,false,0,43.7,Ebute Metta,588185875
+W588347783,,residential,false,0,7.5,false,false,false,0,79.9,Ebute Metta,588347783
+W588351113,,residential,false,0,7.5,false,false,false,0,94.7,Ebute Metta,588351113
+W588357256,,residential,false,0,7.5,false,false,false,0,284.5,Ebute Metta,588357256
+W588409514,,residential,false,0,7.5,false,false,false,0,100.5,Ebute Metta,588409514
+W588422088,,residential,false,0,7.5,false,false,false,0,193.6,Ebute Metta,588422088
+W588422089,,residential,false,0,7.5,false,false,false,0,92.2,Ebute Metta,588422089
+W588422091,,residential,false,0,7.5,false,false,false,0,167.8,Ebute Metta,588422091
+W588631112,,residential,false,0,7.5,false,false,false,0,78.1,Ebute Metta,588631112
+W588668067,,service,false,0,5.0,false,false,false,0,291.3,Ebute Metta,588668067
+W588668068,,unclassified,false,0,7.5,true,true,false,0,67.4,Ebute Metta,588668068
+W588668069,,unclassified,false,0,7.5,true,false,false,0,102.4,Ebute Metta,588668069
+W588730852,,unclassified,false,0,7.5,true,false,false,0,35.8,Ebute Metta,588730852
+W589273594,,residential,false,0,7.5,false,false,false,0,16.6,Ebute Metta,589273594
+W589273595,,residential,false,0,7.5,false,false,false,0,27.5,Ebute Metta,589273595
+W592395870,,unclassified,false,0,7.5,true,false,false,0,137.5,Ebute Metta,592395870
+W592395872,,unclassified,false,0,7.5,true,false,false,0,149.9,Ebute Metta,592395872
+W592415156,,primary,true,0,7.5,true,false,false,0,67.1,Ebute Metta,592415156
+W592423666,,unclassified,false,0,7.5,true,false,false,0,44.5,Ebute Metta,592423666
+W592423667,,residential,false,0,7.5,false,false,false,0,31.8,Ebute Metta,592423667
+W592428445,,unclassified,false,0,7.5,false,false,false,0,9.9,Ebute Metta,592428445
+W606870724,,trunk,true,0,7.5,true,false,false,0,108.8,Ebute Metta,606870724
+W690784222,,residential,false,0,7.5,false,false,false,0,89.0,Ebute Metta,690784222
+W705957740,,service,false,0,5.0,false,false,false,0,110.8,Ebute Metta,705957740
+W707240935,,residential,false,0,7.5,false,true,false,0,19.0,Ebute Metta,707240935
+W724180027,,residential,false,0,7.5,false,false,false,0,10.3,Ebute Metta,724180027
+W726605685,,service,false,0,5.0,false,false,false,0,544.0,Ebute Metta,726605685
+W726610820,,residential,false,0,7.5,false,false,false,0,102.4,Ebute Metta,726610820
+W726625448,,service,false,0,5.0,false,false,false,0,121.9,Ebute Metta,726625448
+W726628235,,service,false,0,5.0,false,false,false,0,32.2,Ebute Metta,726628235
+W726630289,,residential,false,0,7.5,false,false,false,0,35.7,Ebute Metta,726630289
+W726630290,,residential,false,0,7.5,false,false,false,0,37.6,Ebute Metta,726630290
+W726630291,,residential,false,0,7.5,false,false,false,0,330.6,Ebute Metta,726630291
+W727634603,,residential,false,0,7.5,false,false,false,0,43.4,Ebute Metta,727634603
+W727634604,,residential,false,0,7.5,false,false,false,0,48.3,Ebute Metta,727634604
+W727634605,,residential,false,0,7.5,false,false,false,0,45.9,Ebute Metta,727634605
+W727634606,,residential,false,0,7.5,false,false,false,0,43.7,Ebute Metta,727634606
+W727714363,,service,false,0,5.0,false,false,false,0,192.5,Ebute Metta,727714363
+W735339491,,service,false,0,5.0,true,false,false,0,106.0,Ebute Metta,735339491
+W738399150,,service,false,0,5.0,false,false,false,0,44.1,Ebute Metta,738399150
+W738399151,,service,false,0,5.0,false,false,false,0,102.7,Ebute Metta,738399151
+W742443974,,service,false,0,5.0,true,false,false,0,550.1,Ebute Metta,742443974
+W742443979,,service,false,0,5.0,false,false,false,0,255.0,Ebute Metta,742443979
+W745980955,,residential,false,0,7.5,false,false,false,0,45.0,Ebute Metta,745980955
+W748842497,,service,false,0,5.0,false,false,false,0,157.9,Ebute Metta,748842497
+W752842530,,motorway,true,2,7.6,true,false,false,0,165.3,Ebute Metta,752842530
+W761663418,,service,false,0,5.0,false,false,false,0,56.0,Ebute Metta,761663418
+W761663419,,service,false,0,5.0,false,false,false,0,126.9,Ebute Metta,761663419
+W761873309,,service,false,0,5.0,false,false,false,0,117.3,Ebute Metta,761873309
+W761889660,,service,false,0,5.0,false,false,false,0,251.9,Ebute Metta,761889660
+W761889661,,service,false,0,5.0,false,false,false,0,155.0,Ebute Metta,761889661
+W761889662,,service,false,0,5.0,false,false,false,0,338.2,Ebute Metta,761889662
+W781859451,,residential,false,0,7.5,false,false,false,0,169.7,Ebute Metta,781859451
+W784100221,,service,false,0,5.0,false,false,false,0,219.0,Ebute Metta,784100221
+W784100222,,service,false,0,5.0,false,false,false,0,74.9,Ebute Metta,784100222
+W784100223,,service,false,0,5.0,false,false,false,0,108.5,Ebute Metta,784100223
+W784100224,,service,false,0,5.0,false,false,false,0,142.5,Ebute Metta,784100224
+W784100225,,service,false,0,5.0,false,false,false,0,306.2,Ebute Metta,784100225
+W784133163,,service,false,0,5.0,false,false,false,0,38.8,Ebute Metta,784133163
+W784133164,,service,false,0,5.0,false,false,false,0,194.2,Ebute Metta,784133164
+W784657834,,service,false,0,5.0,false,false,false,0,128.0,Ebute Metta,784657834
+W784967047,,service,false,0,5.0,false,false,false,0,12.4,Ebute Metta,784967047
+W784969937,,service,false,0,5.0,false,false,false,0,187.4,Ebute Metta,784969937
+W784970063,,service,false,0,5.0,false,false,false,0,360.9,Ebute Metta,784970063
+W784986896,,service,false,0,5.0,false,false,false,0,323.1,Ebute Metta,784986896
+W784991214,,service,false,0,5.0,false,false,false,0,82.1,Ebute Metta,784991214
+W784991734,,service,false,0,5.0,true,false,false,0,146.7,Ebute Metta,784991734
+W784991844,,service,false,0,5.0,true,false,false,0,109.7,Ebute Metta,784991844
+W786535513,,service,false,0,5.0,false,false,false,0,82.5,Ebute Metta,786535513
+W786535514,,service,false,0,5.0,false,false,false,0,83.1,Ebute Metta,786535514
+W786535515,,service,false,0,5.0,false,false,false,0,612.5,Ebute Metta,786535515
+W786535526,,unclassified,false,0,7.5,true,false,false,0,88.0,Ebute Metta,786535526
+W786535527,,unclassified,false,0,7.5,true,false,false,0,89.1,Ebute Metta,786535527
+W786535528,,unclassified,false,0,7.5,true,false,false,0,151.8,Ebute Metta,786535528
+W786535529,,unclassified,false,0,7.5,true,true,false,0,70.0,Ebute Metta,786535529
+W786535530,,unclassified,false,0,7.5,true,false,false,0,106.5,Ebute Metta,786535530
+W786535531,,unclassified,false,0,7.5,true,false,false,0,175.2,Ebute Metta,786535531
+W786535532,,service,false,0,5.0,false,false,false,0,256.1,Ebute Metta,786535532
+W786535533,,service,false,0,5.0,false,false,false,0,248.3,Ebute Metta,786535533
+W786535534,,service,false,0,5.0,false,false,false,0,284.2,Ebute Metta,786535534
+W786535535,,service,false,0,5.0,false,false,false,0,251.0,Ebute Metta,786535535
+W786552738,,residential,false,0,7.5,false,false,false,0,97.2,Ebute Metta,786552738
+W786552741,,residential,false,0,7.5,false,false,false,0,162.4,Ebute Metta,786552741
+W786552748,,unclassified,false,0,7.5,true,false,false,0,80.3,Ebute Metta,786552748
+W786552749,,unclassified,false,0,7.5,true,false,false,0,78.3,Ebute Metta,786552749
+W786552750,,unclassified,false,0,7.5,true,false,false,0,104.8,Ebute Metta,786552750
+W786552751,,unclassified,false,0,7.5,true,false,false,0,103.7,Ebute Metta,786552751
+W787279944,,service,false,0,5.0,false,false,false,0,338.3,Ebute Metta,787279944
+W787279959,,residential,false,0,7.5,false,false,false,0,317.9,Ebute Metta,787279959
+W792738600,,residential,false,0,7.5,false,false,false,0,51.3,Ebute Metta,792738600
+W792738602,,residential,false,0,7.5,false,false,false,0,79.1,Ebute Metta,792738602
+W792738603,,residential,false,0,7.5,false,false,false,0,46.3,Ebute Metta,792738603
+W795831173,,residential,false,0,7.5,false,false,false,0,323.5,Ebute Metta,795831173
+W828711015,,service,false,0,5.0,false,false,false,0,35.5,Ebute Metta,828711015
+W848292100,,service,false,0,5.0,false,false,false,0,124.5,Ebute Metta,848292100
+W848292101,,service,false,0,5.0,false,false,false,0,11.3,Ebute Metta,848292101
+W848292102,,service,false,0,5.0,false,false,false,0,98.0,Ebute Metta,848292102
+W848292103,,service,false,0,5.0,false,false,false,0,124.6,Ebute Metta,848292103
+W848292104,,service,false,0,5.0,false,false,false,0,95.0,Ebute Metta,848292104
+W848292105,,service,false,0,5.0,false,false,false,0,39.2,Ebute Metta,848292105
+W848292106,,service,false,0,5.0,false,false,false,0,55.2,Ebute Metta,848292106
+W848476972,,service,false,0,5.0,false,false,false,0,81.9,Ebute Metta,848476972
+W850102848,,service,false,0,5.0,false,false,false,0,159.9,Ebute Metta,850102848
+W87807828,,residential,false,0,7.5,false,false,false,0,152.2,Ebute Metta,87807828
+W87807830,,residential,false,0,7.5,false,false,false,0,205.3,Ebute Metta,87807830
+W88260919,,motorway,true,2,7.6,true,false,false,0,295.5,Ebute Metta,88260919
+W88260924,,motorway,true,2,7.6,true,false,false,0,148.1,Ebute Metta,88260924
+W88260932,,motorway,true,2,7.6,true,true,false,0,177.0,Ebute Metta,88260932
+W88260938,,residential,false,0,7.5,false,false,false,0,147.4,Ebute Metta,88260938
+W88260957,,residential,false,0,7.5,false,false,false,0,65.4,Ebute Metta,88260957
+W88260959,,motorway,true,2,7.6,true,false,false,0,309.0,Ebute Metta,88260959
+W88260974,,motorway,true,2,7.6,true,true,false,0,168.2,Ebute Metta,88260974
+W88270775,,unclassified,false,0,7.5,false,false,false,0,233.6,Ebute Metta,88270775
+W88270784,,residential,false,0,7.5,false,false,false,0,243.6,Ebute Metta,88270784
+W88273963,,residential,false,0,7.5,false,false,false,0,379.6,Ebute Metta,88273963
+W88273965,,residential,false,0,7.5,false,false,false,0,120.4,Ebute Metta,88273965
+W886281417,,residential,false,0,7.5,false,false,false,0,78.1,Ebute Metta,886281417
+W88669570,,motorway,true,0,7.5,true,false,false,0,393.8,Ebute Metta,88669570
+W88669639,,primary,false,0,17.5,true,false,false,0,324.2,Ebute Metta,88669639
+W88683339,,motorway,true,0,7.5,true,false,false,0,451.9,Ebute Metta,88683339
+W88683345,,motorway,true,0,7.5,true,true,false,0,500.7,Ebute Metta,88683345
+W893293882,,primary,false,0,17.5,true,false,false,0,417.8,Ebute Metta,893293882
+W90288353,,residential,false,0,7.5,false,false,false,0,272.3,Ebute Metta,90288353
+W90288379,,residential,false,0,7.5,false,false,false,0,89.0,Ebute Metta,90288379
+W90288391,,residential,false,0,7.5,false,false,false,0,383.7,Ebute Metta,90288391
+W90288394,,residential,false,0,7.5,false,false,false,0,541.6,Ebute Metta,90288394
+W91328841,,residential,false,0,7.5,false,false,false,0,148.8,Ebute Metta,91328841
+W91328845,,residential,false,0,7.5,false,false,false,0,157.0,Ebute Metta,91328845
+W91328846,,residential,false,0,7.5,false,false,false,0,295.4,Ebute Metta,91328846
+W91328849,,residential,false,0,7.5,false,false,false,0,158.1,Ebute Metta,91328849
+W91328855,,service,false,0,5.0,false,false,false,0,242.4,Ebute Metta,91328855
+W91328857,,residential,false,0,7.5,false,false,false,0,102.3,Ebute Metta,91328857
+W91328867,,service,false,0,5.0,false,false,false,0,84.8,Ebute Metta,91328867
+W91328868,,service,false,0,5.0,false,false,false,0,140.2,Ebute Metta,91328868
+W91328870,,service,false,0,5.0,false,false,false,0,332.0,Ebute Metta,91328870
+W91328871,,residential,false,0,7.5,false,false,false,0,148.0,Ebute Metta,91328871
+W93145291,,service,false,0,5.0,false,false,false,0,176.7,Ebute Metta,93145291
+W93855606,,motorway,true,0,7.5,true,false,false,0,455.8,Ebute Metta,93855606
+W93855609,,motorway,true,0,7.5,true,true,false,0,212.0,Ebute Metta,93855609
+W93855622,,motorway,true,2,7.6,true,false,false,0,254.5,Ebute Metta,93855622
+W93855623,,motorway,true,2,7.6,true,true,false,0,72.7,Ebute Metta,93855623
+W93855624,,motorway,true,2,7.6,true,true,false,0,166.4,Ebute Metta,93855624
+W946957853,,unclassified,false,0,7.5,false,false,false,0,120.1,Ebute Metta,946957853
+W964252831,,service,false,0,5.0,false,false,false,0,188.5,Ebute Metta,964252831
+W964455005,,service,false,0,5.0,false,false,false,0,74.8,Ebute Metta,964455005
+W964538107,,service,false,0,5.0,false,false,false,0,7.9,Ebute Metta,964538107
+W964538108,,service,false,0,5.0,false,false,false,0,42.1,Ebute Metta,964538108
+W965570381,,service,false,0,5.0,false,false,false,0,46.4,Ebute Metta,965570381
+W966404810,,service,false,0,5.0,false,false,false,0,97.4,Ebute Metta,966404810
+W966404811,,service,false,0,5.0,false,false,false,0,288.2,Ebute Metta,966404811
+W966405929,,service,false,0,5.0,false,false,false,0,48.7,Ebute Metta,966405929

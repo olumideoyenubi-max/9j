@@ -39,6 +39,14 @@ PEOPLE = {
     "Baba": dict(gender=1.0, race=(0, 0, 1), age=0.95, muscle=0.3, weight=0.6, skin="middleage_african_male", hair="short04", tint=GREY,
                  clothes=["elvs_male_shirt_untucked_bd1", "elvs_male_trouser", "elvs_male_flip_flop_sandals1"],
                  wear=("Fade", "UntuckedShirt", "SmartTrousers", "Slippers"), face=["grinsegold_full_beard"]),
+    # Sule: an area boy (agbero), for the parts that pick ENHCast::Man. Lean and hard, with a face of his own (shape: MakeHuman
+    # face targets and their weights) and slight asymmetry, since an even face looks generated.
+    "Sule": dict(gender=1.0, race=(0, 0, 1), age=0.56, muscle=0.8, weight=0.3, skin="young_african_male", hair="short04", tint=BLACK,
+                 clothes=["elvs_male_muscle_shirt1", "punkduck_male_classic_jeans", "elvs_male_flip_flop_sandals1"],
+                 wear=("Fade", "MuscleShirt", "ClassicJeans", "Slippers"), face=["grinsegold_moustache"],
+                 shape={"head/head-rectangular": 0.45, "cheek/l-cheek-bones-incr": 0.55, "cheek/r-cheek-bones-incr": 0.42, "chin/chin-prominent-incr": 0.3,
+                        "chin/chin-width-incr": 0.35, "nose/nose-flaring-incr": 0.35, "nose/nose-hump-incr": 0.25, "mouth/mouth-lowerlip-volume-incr": 0.3,
+                        "eyes/l-eye-scale-decr": 0.25, "eyes/r-eye-scale-decr": 0.15, "ears/l-ear-scale-incr": 0.2, "ears/r-ear-scale-incr": 0.28}),
     "Dayo": dict(gender=1.0, race=(0, 0, 1), age=0.4, muscle=0.6, weight=0.4, skin="young_african_male", hair="elvs_braided_rows", tint=BLACK,
                  clothes=["drednicolson_short-tail_camo_tee", "cortu_jeans_shorts", "shoes03"], wear=("Cornrows", "CamoTee", "DenimShorts", "BlackBoots")),
     "Mark": dict(gender=1.0, race=(0, 1, 0), age=0.5, muscle=0.6, weight=0.5, skin="young_caucasian_male", hair="short02", tint=BROWN,
@@ -191,6 +199,8 @@ def make_human(who):
     macro["race"] = dict(zip(("asian", "caucasian", "african"), who["race"]))
     base = HumanService.create_human(scale=0.1, macro_detail_dict=macro)
     base.name = "Body"
+    for target, weight in who.get("shape", {}).items():
+        TargetService.load_target(base, os.path.join(LocationService.get_mpfb_data("targets"), target + ".target.gz"), weight=weight, name=target.split("/")[1])
     rig = HumanService.add_builtin_rig(base, "game_engine")
 
     # The mannequin's animation Blueprint plants the feet using IK bones, which this rig does not have: add them,

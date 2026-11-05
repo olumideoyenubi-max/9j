@@ -1,0 +1,2124 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W708939699,Abba Johnson Street,residential,false,0,7.5,false,false,false,0,519.1,Ikeja,708939699
+W136341455,Abel Oreniyi St,residential,false,0,7.5,false,false,false,0,449.2,Ikeja,136341455
+W134404798,Abeokuta Street,residential,false,0,7.5,false,false,false,0,203.9,Ikeja,134404798
+W570278102,Abeokuta Street,residential,false,0,7.5,false,false,false,0,188.3,Ikeja,570278102
+W570278103,Abeokuta Street,residential,false,0,7.5,false,false,false,0,259.6,Ikeja,570278103
+W570278104,Abeokuta Street,residential,false,0,7.5,false,false,false,0,226.9,Ikeja,570278104
+W23711679,Adebayo Akande Street,unclassified,false,0,7.5,false,false,false,0,328.4,Ikeja,23711679
+W136338246,Adeboye Solanke Avenue,residential,false,0,7.5,false,false,false,0,174.0,Ikeja,136338246
+W136338289,Adedayo Banjo Street,residential,false,0,7.5,false,false,false,0,75.2,Ikeja,136338289
+W10302853,Adefolu Drive,residential,false,0,7.5,false,false,false,0,444.1,Ikeja,10302853
+W570278066,Adegbite Street,residential,false,0,7.5,false,false,false,0,189.4,Ikeja,570278066
+W144455471,Adegbola Street,residential,false,0,7.5,false,false,false,0,128.6,Ikeja,144455471
+W513644934,Adegbola Street,tertiary,false,0,10.0,false,false,false,0,495.1,Ikeja,513644934
+W7650792,Adekunle Fajuyi Way,tertiary,false,2,7.6,false,false,false,0,3029.4,Ikeja,7650792
+W583202721,Adeleke Street,residential,false,0,7.5,false,false,false,0,156.7,Ikeja,583202721
+W625093280,Adeleke Street,residential,false,0,7.5,false,false,false,0,144.9,Ikeja,625093280
+W23711680,Adeniyi Jones Avenue,tertiary,false,0,10.0,false,false,false,0,2368.8,Ikeja,23711680
+W574497982,Adeniyi Jones Avenue,tertiary,false,0,10.0,false,false,false,0,7.4,Ikeja,574497982
+W136416579,Adenubi Close,residential,false,0,7.5,false,false,false,0,141.2,Ikeja,136416579
+W282443808,Adeojo Street,residential,false,0,7.5,false,false,false,0,313.7,Ikeja,282443808
+W144455478,Adepeju Street,residential,false,0,7.5,false,false,false,0,479.5,Ikeja,144455478
+W16369547,Adepeju Street,residential,false,0,7.5,false,false,false,0,349.9,Ikeja,16369547
+W134404803,Adepele Street,residential,false,0,7.5,false,false,false,0,178.5,Ikeja,134404803
+W688953684,Adeshina Street,residential,false,0,7.5,false,false,false,0,246.9,Ikeja,688953684
+W136426168,Adeyemo Alakija Street,residential,false,0,7.5,false,false,false,0,740.1,Ikeja,136426168
+W135619501,Afariogun Street,residential,false,0,7.5,false,false,false,0,248.6,Ikeja,135619501
+W144455499,Afolabi Lawal Street,residential,false,0,7.5,false,false,false,0,101.6,Ikeja,144455499
+W136338279,Agbaoku Street,residential,false,0,7.5,false,false,false,0,545.7,Ikeja,136338279
+W1321712201,Agege Motor Road,trunk,false,2,7.6,true,true,false,0,696.0,Ikeja,1321712201
+W1321712202,Agege Motor Road,trunk,false,2,7.6,true,false,false,0,358.0,Ikeja,1321712202
+W133805221,Agege Motor Road,trunk,false,2,7.6,true,false,false,0,9629.8,Ikeja,133805221
+W133805230,Agege Motor Road,trunk,false,2,7.6,true,false,false,0,2883.7,Ikeja,133805230
+W134400939,Agege Motor Road,primary,false,0,17.5,true,false,false,0,550.8,Ikeja,134400939
+W144455405,Agege Motor Road,primary,false,0,17.5,false,false,false,0,1500.1,Ikeja,144455405
+W574545003,Agege Motor Road,primary,false,0,17.5,false,false,false,0,973.2,Ikeja,574545003
+W746512955,Agege Motor Road,trunk,false,2,7.6,true,false,false,0,7893.3,Ikeja,746512955
+W93148235,Ago Owu Street,residential,false,0,7.5,false,false,false,0,294.6,Ikeja,93148235
+W134396665,Airport Road,primary,false,2,7.6,true,false,false,0,393.7,Ikeja,134396665
+W134396673,Airport Road,primary,false,2,7.6,true,false,false,0,395.1,Ikeja,134396673
+W134398956,Airport Road,secondary,false,2,7.6,true,false,false,0,1016.4,Ikeja,134398956
+W134398957,Airport Road,secondary,false,2,7.6,true,false,false,0,347.8,Ikeja,134398957
+W134398958,Airport Road,secondary,false,2,7.6,true,false,false,0,296.1,Ikeja,134398958
+W134398963,Airport Road,secondary,false,2,7.6,true,false,false,0,1019.8,Ikeja,134398963
+W134398966,Airport Road,secondary,false,2,7.6,true,false,false,0,286.2,Ikeja,134398966
+W134398967,Airport Road,secondary,false,2,7.6,true,false,false,0,349.4,Ikeja,134398967
+W144455386,Ajakaiye Street,residential,false,0,7.5,false,false,false,0,290.0,Ikeja,144455386
+W144455486,Ajakaiye Street,residential,false,0,7.5,false,false,false,0,454.4,Ikeja,144455486
+W5046000,Ajanaku Street,residential,false,1,4.3,false,false,false,0,919.5,Ikeja,5046000
+W135619413,Ajao Road,residential,false,0,7.5,false,false,false,0,866.0,Ikeja,135619413
+W144455470,Ajayi Ologidan Street,residential,false,0,7.5,false,false,false,0,208.6,Ikeja,144455470
+W136426192,Ajisafe Street,residential,false,0,7.5,false,false,false,0,584.8,Ikeja,136426192
+W136416628,Ajoke Akinbami Street,residential,false,0,7.5,true,false,false,0,134.5,Ikeja,136416628
+W135619491,Akanni Doherty Street,tertiary,false,0,10.0,false,false,false,0,771.5,Ikeja,135619491
+W987499811,Akanni Doherty Street,tertiary,false,0,10.0,false,false,false,0,20.3,Ikeja,987499811
+W987499812,Akanni Doherty Street,tertiary,false,0,10.0,false,false,false,0,25.9,Ikeja,987499812
+W135619414,Akinola Cole Crescent,residential,false,0,7.5,false,false,false,0,487.5,Ikeja,135619414
+W134404804,Akinremi Street,tertiary,false,0,10.0,false,false,false,0,536.6,Ikeja,134404804
+W529024427,Akinremi Street,tertiary,false,0,10.0,false,false,false,0,304.4,Ikeja,529024427
+W136416567,Alade Avenue,residential,false,0,7.5,false,false,false,0,209.2,Ikeja,136416567
+W136416573,Alade Avenue,residential,false,0,7.5,false,false,false,0,74.4,Ikeja,136416573
+W136338319,Alayode Close,residential,false,0,7.5,false,false,false,0,134.9,Ikeja,136338319
+W136341472,Alfred Olaiya Street,residential,false,0,7.5,false,false,false,0,413.0,Ikeja,136341472
+W135619379,Alh. Kofoworola Crescent,residential,false,0,7.5,false,false,false,0,359.1,Ikeja,135619379
+W135619505,Alhaji Jimoh street,residential,false,0,7.5,false,false,false,0,494.6,Ikeja,135619505
+W550436987,Alhaji Jimoh street,residential,false,1,4.3,false,false,false,50,88.7,Ikeja,550436987
+W135619446,Ali Balogun Street,residential,false,0,7.5,false,false,false,0,270.2,Ikeja,135619446
+W134404795,Allen Avenue,secondary,false,0,13.0,true,false,false,0,1402.3,Ikeja,134404795
+W136338240,Allen Avenue,secondary,false,0,13.0,true,false,false,0,1411.3,Ikeja,136338240
+W136338312,Allen Lane,residential,false,0,7.5,false,false,false,0,93.9,Ikeja,136338312
+W136415215,Amore Street,residential,false,0,7.5,false,false,false,0,450.4,Ikeja,136415215
+W136416566,Anike Apena Street,residential,false,0,7.5,false,false,false,0,142.2,Ikeja,136416566
+W1056135544,Anuoluwapo Close,residential,false,1,4.3,false,false,false,40,116.0,Ikeja,1056135544
+W136338278,Anuoluwapo Close,residential,false,0,7.5,false,false,false,0,103.2,Ikeja,136338278
+W144455396,Arigidi Street,residential,false,0,7.5,false,false,false,0,241.0,Ikeja,144455396
+W570278128,Arigidi Street,residential,false,0,7.5,false,false,false,0,222.1,Ikeja,570278128
+W135617573,Aromire Street,tertiary,false,0,10.0,true,false,false,0,64.8,Ikeja,135617573
+W135617577,Aromire Street,tertiary,false,0,10.0,true,false,false,0,63.1,Ikeja,135617577
+W135617580,Aromire Street,tertiary,false,0,10.0,false,false,false,0,539.8,Ikeja,135617580
+W1283468936,Asenuga Street,residential,false,0,7.5,false,false,false,0,5.1,Ikeja,1283468936
+W136338305,Asenuga Street,residential,false,0,7.5,false,false,false,0,144.0,Ikeja,136338305
+W144455401,Ashiata street,residential,false,0,7.5,false,false,false,0,40.3,Ikeja,144455401
+W135619467,Ashogbon Street,residential,false,0,7.5,false,false,false,0,17.5,Ikeja,135619467
+W1510185780,Ashogbon Street,residential,false,0,7.5,false,false,false,0,217.5,Ikeja,1510185780
+W136416562,Atunwa Street,residential,false,0,7.5,false,false,false,0,133.4,Ikeja,136416562
+W135619424,Awosika Avenue,service,false,0,5.0,false,false,false,0,762.1,Ikeja,135619424
+W136415214,Ayinde Street,tertiary,false,0,10.0,true,false,false,0,389.1,Ikeja,136415214
+W136415239,Ayinde Street,tertiary,false,0,10.0,true,false,false,0,393.0,Ikeja,136415239
+W93148232,Ayinke Street,residential,false,0,7.5,false,false,false,0,460.1,Ikeja,93148232
+W135619435,Ayodele Diyan Road,service,false,0,5.0,false,false,false,0,741.8,Ikeja,135619435
+W136426173,Ayoola Coker Street,residential,false,0,7.5,false,false,false,0,596.6,Ikeja,136426173
+W1157269478,BRT Lane,service,false,0,5.0,false,false,false,0,1545.0,Ikeja,1157269478
+W1157269481,BRT Lane,service,false,0,5.0,false,false,false,0,396.4,Ikeja,1157269481
+W1157269482,BRT Lane,service,false,0,5.0,true,false,false,0,161.6,Ikeja,1157269482
+W1157269483,BRT Lane,service,false,0,5.0,true,false,false,0,161.9,Ikeja,1157269483
+W694317075,BRT Lane,service,false,0,5.0,true,false,false,0,240.2,Ikeja,694317075
+W746512963,BRT Lane,service,false,0,5.0,false,false,false,0,3617.1,Ikeja,746512963
+W746512964,BRT Lane,service,false,0,5.0,true,false,false,0,235.4,Ikeja,746512964
+W746512965,BRT Lane,service,false,0,5.0,false,false,false,0,219.4,Ikeja,746512965
+W144455481,Baba Ponmile Street,residential,false,0,7.5,false,false,false,0,347.2,Ikeja,144455481
+W570278126,Baba Ponmile Street,residential,false,0,7.5,false,false,false,0,112.7,Ikeja,570278126
+W570278127,Baba Ponmile Street,residential,false,0,7.5,false,false,false,0,450.7,Ikeja,570278127
+W134404809,Babatola Close,residential,false,0,7.5,false,false,false,0,136.3,Ikeja,134404809
+W136338323,Balogun Street,residential,false,0,7.5,false,false,false,0,205.6,Ikeja,136338323
+W5198069,Balogun Street,residential,false,0,7.5,false,false,false,0,219.5,Ikeja,5198069
+W726007093,Balogun Street,residential,false,0,7.5,true,false,false,0,72.2,Ikeja,726007093
+W8563766,Balogun Street,residential,false,0,7.5,false,false,false,0,64.7,Ikeja,8563766
+W8064833,Bamishile Street,residential,false,0,7.5,false,false,false,0,570.8,Ikeja,8064833
+W136415226,Bayode Oluwole Street,residential,false,0,7.5,false,false,false,0,226.5,Ikeja,136415226
+W441897743,Ben Enzuenlen Road,residential,false,0,7.5,false,false,false,0,253.5,Ikeja,441897743
+W583221529,Billingsway Road,unclassified,false,0,7.5,false,false,false,0,1099.2,Ikeja,583221529
+W136415207,Bisi Ogabi Street,residential,false,0,7.5,false,false,false,0,249.8,Ikeja,136415207
+W8064744,Bola Ajibola Street,residential,false,0,7.5,false,false,false,0,265.7,Ikeja,8064744
+W144455438,Capitol Road,primary,false,0,17.5,true,false,false,0,941.3,Ikeja,144455438
+W144455483,Capitol Road,primary,false,0,17.5,true,false,false,0,932.0,Ikeja,144455483
+W136338296,Church Street,residential,false,0,7.5,false,false,false,0,641.9,Ikeja,136338296
+W8064742,Community Road,residential,false,0,7.5,false,false,false,0,676.1,Ikeja,8064742
+W16369670,Dipeolu Street,residential,false,0,7.5,false,false,false,0,273.8,Ikeja,16369670
+W136182568,Dotun JolaOsho Close,residential,false,0,7.5,false,false,false,0,295.4,Ikeja,136182568
+W282443811,Elebuwa Street,residential,false,0,7.5,false,false,false,0,394.7,Ikeja,282443811
+W144455458,Elicana Street,residential,false,0,7.5,false,false,false,0,120.7,Ikeja,144455458
+W144455445,Elkanah Street,residential,false,0,7.5,false,false,false,0,89.4,Ikeja,144455445
+W136415222,Emina Crescent,residential,false,0,7.5,false,false,false,0,515.2,Ikeja,136415222
+W136426166,Esugbayi Street,residential,false,0,7.5,false,false,false,0,634.9,Ikeja,136426166
+W134400951,Ezekiel Aiyeilagbe Street,service,false,0,5.0,false,false,false,0,727.7,Ikeja,134400951
+W136415230,Ezekiel Street,residential,false,0,7.5,false,false,false,0,344.2,Ikeja,136415230
+W570036064,Famuyiwa Street,residential,false,0,7.5,false,false,false,0,168.9,Ikeja,570036064
+W10302854,Felicia Koleosho Street,residential,false,0,7.5,false,false,false,0,321.7,Ikeja,10302854
+W8064743,Folawewo Street,residential,false,0,7.5,false,false,false,0,294.6,Ikeja,8064743
+W4964446,Francis Oremeji Street,residential,false,0,7.5,false,false,false,0,220.3,Ikeja,4964446
+W136430379,G. Cappa Estate,residential,false,0,7.5,false,false,false,0,183.6,Ikeja,136430379
+W1373630709,G. Cappa Estate,residential,false,0,7.5,false,false,false,0,22.2,Ikeja,1373630709
+W136415237,Gbemisola Street,residential,false,0,7.5,false,false,false,0,580.6,Ikeja,136415237
+W136338293,Governor's Avenue,tertiary,false,0,10.0,true,false,false,0,615.6,Ikeja,136338293
+W610896827,Governor's Avenue,tertiary,false,0,10.0,true,false,false,0,611.6,Ikeja,610896827
+W136338286,Governor's Road,tertiary,false,0,10.0,true,false,false,0,430.8,Ikeja,136338286
+W136338306,Governor's Road,tertiary,false,0,10.0,true,false,false,0,430.4,Ikeja,136338306
+W4930690,Harold Sodipo Crescent,residential,false,2,7.6,false,false,false,0,973.8,Ikeja,4930690
+W136426184,Herbert Maculay Crescent,residential,false,0,7.5,false,false,false,0,423.5,Ikeja,136426184
+W535191753,Idi Maina Street,service,false,0,5.0,false,false,false,0,203.3,Ikeja,535191753
+W582890507,Idowu Lane,residential,false,0,7.5,false,false,false,0,76.9,Ikeja,582890507
+W1262784042,Ikeja Flyover Bridge,primary,false,0,17.5,true,true,false,0,28.3,Ikeja,1262784042
+W1262784043,Ikeja Flyover Bridge,primary,false,0,17.5,true,true,false,0,30.6,Ikeja,1262784043
+W134400934,Ikeja Flyover Bridge,primary,false,0,17.5,true,true,false,0,245.8,Ikeja,134400934
+W1433685136,Ikeja Flyover Bridge,primary,false,0,17.5,true,true,false,0,245.1,Ikeja,1433685136
+W1343275452,Ikosi Road,tertiary,false,0,10.0,true,false,false,0,77.3,Ikeja,1343275452
+W1343275453,Ikosi Road,tertiary,false,0,10.0,true,false,false,0,72.3,Ikeja,1343275453
+W136416581,Ilo Street,residential,false,0,7.5,false,false,false,0,115.9,Ikeja,136416581
+W136416621,Ilori Moses Street,residential,false,0,7.5,false,false,false,0,213.6,Ikeja,136416621
+W136416568,Ipodo Street,residential,false,0,7.5,false,false,false,0,276.8,Ikeja,136416568
+W832331427,Irewole Avenue,residential,false,0,7.5,false,false,false,0,44.6,Ikeja,832331427
+W4904959,Isaac John Street,residential,false,1,4.3,false,false,false,0,1590.2,Ikeja,4904959
+W282446563,Jacob Banjoko,residential,false,0,7.5,false,false,false,0,66.1,Ikeja,282446563
+W136341459,Jo' Babs Dare Close,residential,false,0,7.5,false,false,false,0,78.3,Ikeja,136341459
+W514562551,Joel Ogunnaike Street,tertiary,false,2,7.6,false,false,false,0,1110.1,Ikeja,514562551
+W136338251,Jogunsimi Street,residential,false,0,7.5,false,false,false,0,305.1,Ikeja,136338251
+W282446562,John Akinjide Street,residential,false,0,7.5,false,false,false,0,136.1,Ikeja,282446562
+W136415241,John Olugbo Street,residential,false,0,7.5,false,false,false,0,583.0,Ikeja,136415241
+W144455426,Kamoru Alimi Street,residential,false,0,7.5,false,false,false,0,184.4,Ikeja,144455426
+W134396680,Kodesoh Street,secondary,false,0,13.0,true,false,false,0,370.3,Ikeja,134396680
+W540869115,Kodesoh Street,secondary,false,0,13.0,true,false,false,0,366.2,Ikeja,540869115
+W461601175,Koforowola Crescent,service,false,0,5.0,true,false,false,0,38.6,Ikeja,461601175
+W581982680,Koforowola Crescent,service,false,0,5.0,true,false,false,0,57.4,Ikeja,581982680
+W610011052,Koforowola Crescent,service,false,0,5.0,false,false,false,0,17.7,Ikeja,610011052
+W610011064,Koforowola Crescent,service,false,0,5.0,true,false,false,0,15.9,Ikeja,610011064
+W610011065,Koforowola Crescent,service,false,0,5.0,false,false,false,0,132.0,Ikeja,610011065
+W610011066,Koforowola Crescent,service,false,0,5.0,true,false,false,0,16.4,Ikeja,610011066
+W136416587,Kolawole Odunsi Street,residential,false,0,7.5,false,false,false,0,132.3,Ikeja,136416587
+W136326593,Kudirat Abiola Way,secondary,false,0,13.0,true,false,false,0,3888.7,Ikeja,136326593
+W136333548,Kudirat Abiola Way,secondary,false,0,13.0,true,false,false,0,3907.1,Ikeja,136333548
+W134400930,L.R. Blocks Road,service,false,0,5.0,false,false,false,0,776.8,Ikeja,134400930
+W135619463,Ladipo Oluwole Street,residential,false,0,7.5,false,false,false,0,1144.5,Ikeja,135619463
+W8166369,Ladoke Akintola Street,residential,false,2,7.6,false,false,false,0,1406.5,Ikeja,8166369
+W134400948,Lagos-Abeokuta Expressway,trunk,false,2,7.6,true,false,false,0,1421.0,Ikeja,134400948
+W134414164,Lagos-Abeokuta Expressway,trunk,false,2,7.6,true,false,false,0,1404.6,Ikeja,134414164
+W135199762,Lateef Jakande Road,secondary,false,0,13.0,false,false,false,0,696.0,Ikeja,135199762
+W136415236,Majekodunmi Street,residential,false,0,7.5,false,false,false,0,416.8,Ikeja,136415236
+W144455413,Majekwu Close,residential,false,0,7.5,false,false,false,0,139.8,Ikeja,144455413
+W136432608,Maryland Crescent,residential,false,0,7.5,false,false,false,0,422.1,Ikeja,136432608
+W144455448,Mayaka Street,residential,false,0,7.5,false,false,false,0,161.5,Ikeja,144455448
+W136341463,Methodist Church Street,residential,false,0,7.5,false,false,false,0,226.5,Ikeja,136341463
+W136426190,Micheal Ogun Street,residential,false,0,7.5,false,false,false,0,470.0,Ikeja,136426190
+W1059941000,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,106.4,Ikeja,1059941000
+W1059941001,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,970.8,Ikeja,1059941001
+W1059941002,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,17.8,Ikeja,1059941002
+W1059941003,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,1216.1,Ikeja,1059941003
+W134396660,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,358.0,Ikeja,134396660
+W134396661,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,356.8,Ikeja,134396661
+W134396662,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,true,false,0,419.0,Ikeja,134396662
+W134396664,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,true,false,0,57.8,Ikeja,134396664
+W134396668,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,true,false,0,59.2,Ikeja,134396668
+W134396671,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,1647.1,Ikeja,134396671
+W134396672,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,true,false,0,419.8,Ikeja,134396672
+W8164363,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,2644.6,Ikeja,8164363
+W828817900,Mobolaji Bank-Anthony Way,primary,false,2,7.6,true,false,false,0,1137.2,Ikeja,828817900
+W136333561,Mobolaji Johnson Way,tertiary,false,2,7.6,true,false,false,0,2427.7,Ikeja,136333561
+W1566370311,Mobolaji Johnson Way,tertiary,false,2,7.6,true,false,false,0,896.2,Ikeja,1566370311
+W134404815,Modupe Street,residential,false,0,7.5,false,false,false,0,169.3,Ikeja,134404815
+W441897749,Mohammed Ahmad CLose,residential,false,0,7.5,false,false,false,0,290.5,Ikeja,441897749
+W136333537,Mopelola Alabi Close,residential,false,0,7.5,false,false,false,30,182.7,Ikeja,136333537
+W136416609,Moshood Abiola Crescent,residential,false,0,7.5,false,false,false,0,214.8,Ikeja,136416609
+W136420244,Muiz Banire Street,residential,false,0,7.5,false,false,false,0,813.5,Ikeja,136420244
+W136420255,Muiz Banire Street,residential,false,0,7.5,false,false,false,0,576.9,Ikeja,136420255
+W135619398,Niwil Close,unclassified,false,0,7.5,false,false,false,0,430.0,Ikeja,135619398
+W441897747,Nurani Yusuf Road,residential,false,0,7.5,false,false,false,0,312.8,Ikeja,441897747
+W136420242,Oba Akinjobi Street,tertiary,false,0,10.0,true,false,false,0,21.5,Ikeja,136420242
+W136420243,Oba Akinjobi Street,tertiary,false,0,10.0,true,false,false,0,26.5,Ikeja,136420243
+W4931419,Oba Akinjobi Street,tertiary,false,2,7.6,false,false,false,0,1421.0,Ikeja,4931419
+W540869124,Oba Akinjobi Street,tertiary,false,2,7.6,true,false,false,0,241.2,Ikeja,540869124
+W136420246,Oba Akinola Crescent,residential,false,2,7.6,false,false,false,0,469.2,Ikeja,136420246
+W136420257,Oba Akinola Crescent,residential,false,0,7.5,true,false,false,0,27.4,Ikeja,136420257
+W136420258,Oba Akinola Crescent,residential,false,0,7.5,true,false,false,0,30.6,Ikeja,136420258
+W134396677,Oba Akran Avenue,secondary,false,0,13.0,true,true,false,0,354.9,Ikeja,134396677
+W134396678,Oba Akran Avenue,secondary,false,0,13.0,true,true,false,0,352.6,Ikeja,134396678
+W135617575,Oba Akran Avenue,secondary,false,0,13.0,true,false,false,0,2135.3,Ikeja,135617575
+W135617582,Oba Akran Avenue,secondary,false,0,13.0,true,false,false,0,2127.7,Ikeja,135617582
+W4930359,Oba Aladejobi Street,residential,false,2,7.6,false,false,false,0,494.3,Ikeja,4930359
+W136426182,Oba Delemo Street,residential,false,0,7.5,true,false,false,0,23.1,Ikeja,136426182
+W136426188,Oba Delemo Street,residential,false,0,7.5,true,false,false,0,24.5,Ikeja,136426188
+W136426209,Oba Delemo Street,residential,false,0,7.5,true,false,false,0,21.1,Ikeja,136426209
+W136426219,Oba Delemo Street,residential,false,0,7.5,true,false,false,0,25.6,Ikeja,136426219
+W8166368,Oba Dosumu Street,residential,false,2,7.6,false,false,false,0,445.5,Ikeja,8166368
+W1157269486,Obafemi Awolowo Way,primary,false,0,17.5,true,false,false,0,139.2,Ikeja,1157269486
+W1157269489,Obafemi Awolowo Way,primary,false,0,17.5,true,false,false,0,105.1,Ikeja,1157269489
+W1306493110,Obafemi Awolowo Way,primary,false,0,17.5,true,false,false,0,99.3,Ikeja,1306493110
+W134404770,Obafemi Awolowo Way,primary,false,2,7.6,true,false,false,0,1480.0,Ikeja,134404770
+W134404792,Obafemi Awolowo Way,primary,false,2,7.6,true,false,false,0,1444.3,Ikeja,134404792
+W135195291,Obafemi Awolowo Way,primary,false,2,7.6,true,false,false,0,214.4,Ikeja,135195291
+W135195294,Obafemi Awolowo Way,primary,false,2,7.6,true,false,false,0,1704.0,Ikeja,135195294
+W1433685133,Obafemi Awolowo Way,primary,false,2,7.6,true,false,false,0,108.7,Ikeja,1433685133
+W1433685137,Obafemi Awolowo Way,primary,false,0,17.5,true,false,false,0,148.4,Ikeja,1433685137
+W610011085,Obafemi Awolowo Way,primary,false,2,7.6,true,false,false,0,1701.2,Ikeja,610011085
+W610011090,Obafemi Awolowo Way,primary,false,2,7.6,true,true,false,0,81.9,Ikeja,610011090
+W610011091,Obafemi Awolowo Way,primary,false,2,7.6,true,true,false,0,82.5,Ikeja,610011091
+W610011092,Obafemi Awolowo Way,primary,false,2,7.6,true,false,false,0,180.8,Ikeja,610011092
+W135619440,Obanta Avenue,residential,false,0,7.5,false,false,false,0,252.8,Ikeja,135619440
+W134404802,Obasa Road,residential,false,0,7.5,false,false,false,0,469.4,Ikeja,134404802
+W574497983,Obasa Road,residential,false,0,7.5,false,false,false,0,9.5,Ikeja,574497983
+W135619489,Obe Street,residential,false,0,7.5,false,false,false,0,298.0,Ikeja,135619489
+W136338269,Odewale Street,residential,false,0,7.5,false,false,false,0,530.3,Ikeja,136338269
+W7650790,Oduduwa Crescent,residential,false,2,7.6,false,false,false,0,1899.0,Ikeja,7650790
+W1176121311,Oduyemi Street,residential,false,0,7.5,false,false,false,0,92.6,Ikeja,1176121311
+W8064723,Oduyemi Street,residential,false,0,7.5,true,false,false,0,261.9,Ikeja,8064723
+W828112839,Oduyemi Street,residential,false,0,7.5,false,false,false,0,123.3,Ikeja,828112839
+W144455508,Ogabi Square,residential,false,0,7.5,false,false,false,0,92.2,Ikeja,144455508
+W442662010,Ogabi Street,residential,false,0,7.5,false,false,false,0,100.7,Ikeja,442662010
+W8064741,Ogundana Street,residential,false,0,7.5,false,false,false,0,885.9,Ikeja,8064741
+W282443810,Ogunlowo Street,residential,false,0,7.5,false,false,false,0,476.0,Ikeja,282443810
+W135619474,Ogunmade Street,residential,false,0,7.5,false,false,false,0,131.5,Ikeja,135619474
+W136338313,Ogunmodede Street,residential,false,0,7.5,false,false,false,0,78.1,Ikeja,136338313
+W582899641,Ogunmodede Street,residential,false,0,7.5,false,false,false,0,273.0,Ikeja,582899641
+W136333550,Oje Imianvan street,residential,false,0,7.5,false,false,false,30,121.9,Ikeja,136333550
+W136333569,Oje Imianvan street,residential,false,0,7.5,false,false,false,30,124.5,Ikeja,136333569
+W135619453,Ojora Avenue,residential,false,0,7.5,false,false,false,0,113.9,Ikeja,135619453
+W282443809,Ojora Street,residential,false,0,7.5,false,false,false,0,205.8,Ikeja,282443809
+W144455447,Oke Street,residential,false,0,7.5,false,false,false,0,120.4,Ikeja,144455447
+W535191749,Okechukwu Ewuzie Road,residential,false,0,7.5,false,false,false,0,277.7,Ikeja,535191749
+W134404777,Ola Ayeni Street,residential,false,0,7.5,false,false,false,0,329.1,Ikeja,134404777
+W5021957,Oladipo Bateye Street,residential,false,2,7.6,false,false,false,0,1161.1,Ikeja,5021957
+W4964444,Olaide Tomori Street,residential,false,0,7.5,false,false,false,0,168.4,Ikeja,4964444
+W316504634,Olaniji Street,residential,false,0,7.5,false,false,false,30,350.8,Ikeja,316504634
+W136430403,Olaniyan Close,residential,false,0,7.5,false,false,false,0,462.6,Ikeja,136430403
+W586347840,Olaniyan Close,residential,false,2,7.6,false,false,false,20,133.0,Ikeja,586347840
+W136432591,Olaperi Street,residential,false,0,7.5,false,false,false,0,354.9,Ikeja,136432591
+W136430376,Olatunbosun Street,residential,false,0,7.5,false,false,false,0,637.5,Ikeja,136430376
+W136420253,Old Secretariat Road,residential,false,0,7.5,false,false,false,0,491.9,Ikeja,136420253
+W746512954,Olori Street,residential,false,0,7.5,false,false,false,0,352.3,Ikeja,746512954
+W135619447,Olorunmbe Street,residential,false,0,7.5,false,false,false,0,351.9,Ikeja,135619447
+W134404782,Olowu Street,residential,false,0,7.5,true,false,false,0,7.3,Ikeja,134404782
+W582985847,Olowu Street,residential,false,0,7.5,true,false,false,0,41.1,Ikeja,582985847
+W832572293,Olowu Street,residential,false,0,7.5,false,false,false,0,571.5,Ikeja,832572293
+W832572294,Olowu Street,residential,false,0,7.5,true,false,false,0,19.6,Ikeja,832572294
+W136333531,Olufunke Atitebi Street,residential,false,0,7.5,false,false,false,30,184.2,Ikeja,136333531
+W136415217,Oluwaleimu Street,residential,false,0,7.5,false,false,false,0,436.9,Ikeja,136415217
+W136415224,Omotayo Ojo Street,residential,false,0,7.5,false,false,false,0,323.7,Ikeja,136415224
+W136338276,Ondo Close,residential,false,0,7.5,false,false,false,0,183.5,Ikeja,136338276
+W136333529,Opebi Link Road,secondary,false,0,13.0,true,true,false,0,593.1,Ikeja,136333529
+W136333538,Opebi Link Road,secondary,false,0,13.0,true,false,false,0,325.1,Ikeja,136333538
+W136341461,Opebi Link Road,primary,false,0,17.5,true,false,false,0,35.5,Ikeja,136341461
+W136341467,Opebi Link Road,primary,false,0,17.5,true,true,false,0,222.7,Ikeja,136341467
+W136341468,Opebi Link Road,primary,false,0,17.5,true,true,false,0,224.8,Ikeja,136341468
+W136341470,Opebi Link Road,primary,false,0,17.5,true,false,false,0,39.4,Ikeja,136341470
+W136341479,Opebi Link Road,primary,false,0,17.5,true,false,false,0,416.6,Ikeja,136341479
+W136341482,Opebi Link Road,primary,false,0,17.5,true,false,false,0,420.9,Ikeja,136341482
+W1567009377,Opebi Link Road,secondary,false,0,13.0,true,true,false,0,592.5,Ikeja,1567009377
+W583700617,Opebi Link Road,secondary,false,0,13.0,false,false,false,0,13.6,Ikeja,583700617
+W583700626,Opebi Link Road,secondary,false,0,13.0,true,false,false,0,11.7,Ikeja,583700626
+W583700627,Opebi Link Road,secondary,false,0,13.0,true,false,false,0,11.7,Ikeja,583700627
+W583700628,Opebi Link Road,secondary,false,0,13.0,true,false,false,0,325.7,Ikeja,583700628
+W1137207824,Opebi Road,primary,false,0,17.5,true,false,false,0,443.4,Ikeja,1137207824
+W1137207825,Opebi Road,primary,false,0,17.5,true,false,false,0,433.3,Ikeja,1137207825
+W136341474,Opebi Road,primary,false,0,17.5,true,false,false,0,1318.7,Ikeja,136341474
+W136341477,Opebi Road,primary,false,0,17.5,true,false,false,0,1324.7,Ikeja,136341477
+W1445758062,Opebi Road,primary,false,0,17.5,true,false,false,0,150.0,Ikeja,1445758062
+W1445758063,Opebi Road,primary,false,0,17.5,true,false,false,0,123.8,Ikeja,1445758063
+W144455402,Oredapo Street,residential,false,0,7.5,false,false,false,0,392.6,Ikeja,144455402
+W582936538,Orishe Street,residential,false,0,7.5,false,false,false,0,214.1,Ikeja,582936538
+W8064720,Orishe Street,residential,false,0,7.5,false,false,false,0,426.2,Ikeja,8064720
+W136415213,Oriyomi Street,residential,false,0,7.5,false,false,false,0,630.1,Ikeja,136415213
+W134404784,Oshitelu Street,residential,false,0,7.5,false,false,false,0,137.9,Ikeja,134404784
+W441897748,Osita Okeke Drive,residential,false,0,7.5,false,false,false,0,325.5,Ikeja,441897748
+W134404813,Otigba Street,residential,false,0,7.5,false,false,false,0,453.6,Ikeja,134404813
+W144455451,Ottun Street,residential,false,0,7.5,false,false,false,0,135.8,Ikeja,144455451
+W144455450,Otunba Oludare Lane,residential,false,0,7.5,false,false,false,0,72.0,Ikeja,144455450
+W136338270,Oyediran Close,residential,false,1,4.3,false,false,false,40,103.3,Ikeja,136338270
+W136341452,Oyetola Street,residential,false,0,7.5,false,false,false,0,201.8,Ikeja,136341452
+W134404767,Pepple Street,residential,false,0,7.5,false,false,false,0,174.7,Ikeja,134404767
+W441897750,Pius Nwajero Road,residential,false,0,7.5,false,false,false,0,404.0,Ikeja,441897750
+W4964443,Planking Street,residential,false,2,7.6,false,false,false,0,302.3,Ikeja,4964443
+W570278099,Planking Street,residential,false,2,7.6,false,false,false,0,10.1,Ikeja,570278099
+W570278100,Planking Street,residential,false,2,7.6,false,false,false,0,88.9,Ikeja,570278100
+W575629194,Planking Street,residential,false,2,7.6,false,false,false,0,89.7,Ikeja,575629194
+W575629195,Planking Street,residential,false,2,7.6,false,false,false,0,8.2,Ikeja,575629195
+W134400942,R.S Blocks Road,service,false,0,5.0,false,false,false,0,816.6,Ikeja,134400942
+W1056135542,Regina Omolara Street,residential,false,0,7.5,false,false,false,0,121.6,Ikeja,1056135542
+W1056135543,Regina Omolara Street,residential,false,1,4.3,false,false,false,40,103.1,Ikeja,1056135543
+W7651403,Remi Fani-Kayode Avenue,residential,false,2,7.6,false,false,false,0,1672.9,Ikeja,7651403
+W136420252,Reverend Ogunbiyi Street,residential,false,0,7.5,false,false,false,0,434.8,Ikeja,136420252
+W535194642,Saka Street,residential,false,0,7.5,false,false,false,0,345.4,Ikeja,535194642
+W7652237,Salvation Road,residential,false,1,4.3,false,false,false,0,611.9,Ikeja,7652237
+W327964558,Samuel Awoniyi Street,residential,false,0,7.5,false,false,false,0,265.3,Ikeja,327964558
+W135619393,Sapara Street,service,false,0,5.0,false,false,false,0,217.0,Ikeja,135619393
+W135619415,Sapara Street,service,false,0,5.0,false,false,false,0,187.2,Ikeja,135619415
+W135619434,Sapara Williams Street,service,false,0,5.0,false,false,false,0,804.9,Ikeja,135619434
+W136420247,Sasegbon Street,residential,false,0,7.5,false,false,false,0,315.9,Ikeja,136420247
+W136420260,Sasegbon Street,residential,false,2,7.6,false,false,false,0,332.5,Ikeja,136420260
+W136426197,Sasegbon Street,residential,false,0,7.5,true,false,false,0,24.9,Ikeja,136426197
+W136426200,Sasegbon Street,residential,false,0,7.5,true,false,false,0,27.7,Ikeja,136426200
+W136426211,Sasegbon Street,residential,false,0,7.5,true,false,false,0,28.3,Ikeja,136426211
+W136426214,Sasegbon Street,residential,false,0,7.5,true,false,false,0,31.3,Ikeja,136426214
+W136426220,Sasegbon Street,residential,false,0,7.5,true,false,false,0,28.4,Ikeja,136426220
+W136426226,Sasegbon Street,residential,false,0,7.5,true,false,false,0,32.3,Ikeja,136426226
+W144455464,Sebiotimo Street,residential,false,0,7.5,false,false,false,0,209.0,Ikeja,144455464
+W570278064,Sebiotimo Street,residential,false,0,7.5,false,false,false,0,104.1,Ikeja,570278064
+W570278129,Sebiotimo Street,residential,false,0,7.5,false,false,false,0,167.5,Ikeja,570278129
+W570278130,Sebiotimo Street,residential,false,0,7.5,false,false,false,0,72.8,Ikeja,570278130
+W135619380,Seriki Aro Avenue,residential,false,0,7.5,false,false,false,0,626.8,Ikeja,135619380
+W282446560,Seriki Aro Link,residential,false,0,7.5,false,false,false,0,77.0,Ikeja,282446560
+W135619445,Shanu Street,residential,false,0,7.5,false,false,false,0,165.9,Ikeja,135619445
+W441897734,Shittu Alao Way,service,false,0,5.0,false,false,false,0,456.4,Ikeja,441897734
+W144455427,Shobayo Street,residential,false,0,7.5,false,false,false,0,275.4,Ikeja,144455427
+W144455430,Shomide Street,residential,false,0,7.5,false,false,false,0,247.8,Ikeja,144455430
+W136430398,Shonny Highway,residential,false,0,7.5,false,false,false,0,934.7,Ikeja,136430398
+W1168446796,Simbiat Abiola Road,tertiary,false,2,7.6,true,false,false,0,22.9,Ikeja,1168446796
+W134404820,Simbiat Abiola Road,tertiary,false,2,7.6,true,false,false,0,272.9,Ikeja,134404820
+W570278097,Simbiat Abiola Road,tertiary,false,2,7.6,true,false,false,0,113.0,Ikeja,570278097
+W570278098,Simbiat Abiola Road,tertiary,false,2,7.6,true,false,false,0,150.4,Ikeja,570278098
+W1059940999,Sobo Arobiodu Street,tertiary,false,2,7.6,false,false,false,0,14.3,Ikeja,1059940999
+W136420249,Sobo Arobiodu Street,tertiary,false,0,10.0,true,false,false,0,26.5,Ikeja,136420249
+W136420250,Sobo Arobiodu Street,tertiary,false,2,7.6,false,false,false,0,963.2,Ikeja,136420250
+W136420251,Sobo Arobiodu Street,tertiary,false,0,10.0,true,false,false,0,30.4,Ikeja,136420251
+W136426177,Sobo Arobiodu Street,tertiary,false,0,10.0,true,false,false,0,28.1,Ikeja,136426177
+W136426198,Sobo Arobiodu Street,tertiary,false,0,10.0,true,false,false,0,24.6,Ikeja,136426198
+W136426204,Sobo Arobiodu Street,tertiary,false,0,10.0,true,false,false,0,30.9,Ikeja,136426204
+W136426225,Sobo Arobiodu Street,tertiary,false,0,10.0,true,false,false,0,25.5,Ikeja,136426225
+W8156468,Sobo Arobiodu Street,tertiary,false,2,7.6,false,false,false,0,550.5,Ikeja,8156468
+W136430397,Sogunle Street,residential,false,0,7.5,false,false,false,0,244.8,Ikeja,136430397
+W136420256,Sowemimo Street,residential,false,0,7.5,true,false,false,0,16.0,Ikeja,136420256
+W136420259,Sowemimo Street,residential,false,0,7.5,true,false,false,0,19.4,Ikeja,136420259
+W7651396,Sowemimo Street,residential,false,2,7.6,false,false,false,0,551.0,Ikeja,7651396
+W521865190,St. Michael Close,residential,false,0,7.5,false,false,false,0,149.3,Ikeja,521865190
+W5198066,Sule Road,tertiary,false,0,10.0,false,false,false,0,668.9,Ikeja,5198066
+W136338244,Taiwo Close,residential,false,0,7.5,false,false,false,0,119.9,Ikeja,136338244
+W582992240,Taiwo Close,residential,false,0,7.5,false,false,false,0,9.7,Ikeja,582992240
+W570278065,Talabi Street,residential,false,0,7.5,false,false,false,0,173.9,Ikeja,570278065
+W423799812,Thomas Ajufo Street,residential,false,0,7.5,false,false,false,0,103.9,Ikeja,423799812
+W441897745,Tijani Ahmed Way,residential,false,0,7.5,false,false,false,0,550.9,Ikeja,441897745
+W136416610,Tinuade Street,residential,false,0,7.5,false,false,false,0,91.2,Ikeja,136416610
+W10297952,Tiwalade Close,residential,false,0,7.5,false,false,false,0,171.8,Ikeja,10297952
+W513643939,Tonade Street,residential,false,0,7.5,false,false,false,0,272.0,Ikeja,513643939
+W136415209,Toyin Street,residential,false,0,7.5,true,false,false,0,13.1,Ikeja,136415209
+W136415218,Toyin Street,tertiary,false,2,7.6,true,false,false,0,868.2,Ikeja,136415218
+W136415219,Toyin Street,tertiary,false,2,7.6,true,false,false,0,867.3,Ikeja,136415219
+W136415240,Toyin Street,residential,false,0,7.5,true,false,false,0,11.9,Ikeja,136415240
+W136415228,Unity Road,residential,false,0,7.5,false,false,false,0,342.9,Ikeja,136415228
+W136415231,Unity Road,residential,false,2,7.6,false,false,false,0,328.1,Ikeja,136415231
+W1034706274,Victory Hall Road,residential,false,2,7.6,false,false,false,20,59.1,Ikeja,1034706274
+W7650798,Works Road,secondary,false,1,4.3,false,false,false,0,732.4,Ikeja,7650798
+W1300274449,Yakubu Lane,residential,false,0,7.5,false,false,false,0,120.5,Ikeja,1300274449
+W1185155001,oluwaleimu road,residential,false,0,7.5,false,false,false,0,337.5,Ikeja,1185155001
+W1185423926,oluwaleimu road,residential,false,0,7.5,false,false,false,0,215.7,Ikeja,1185423926
+W1002580323,,service,false,0,5.0,false,false,false,0,204.2,Ikeja,1002580323
+W1002580324,,service,false,0,5.0,false,false,false,0,25.2,Ikeja,1002580324
+W1002580325,,service,false,0,5.0,false,false,false,0,24.7,Ikeja,1002580325
+W1002580326,,service,false,0,5.0,false,false,false,0,51.4,Ikeja,1002580326
+W1002580327,,service,false,0,5.0,false,false,false,0,207.7,Ikeja,1002580327
+W1002580328,,service,false,0,5.0,false,false,false,0,4196.2,Ikeja,1002580328
+W1006051056,,service,false,0,5.0,false,false,false,0,66.7,Ikeja,1006051056
+W1006051057,,service,false,0,5.0,false,false,false,0,383.1,Ikeja,1006051057
+W1006108666,,residential,false,0,7.5,false,false,false,0,125.9,Ikeja,1006108666
+W1016776268,,service,false,0,5.0,false,false,false,0,121.7,Ikeja,1016776268
+W1016836574,,service,false,0,5.0,false,false,false,0,54.9,Ikeja,1016836574
+W1018171968,,service,false,0,5.0,false,false,false,0,72.0,Ikeja,1018171968
+W1018445390,,service,false,0,5.0,false,false,false,0,50.3,Ikeja,1018445390
+W1018445391,,service,false,0,5.0,false,false,false,0,138.0,Ikeja,1018445391
+W1018458122,,service,false,0,5.0,false,false,false,0,90.1,Ikeja,1018458122
+W1018458203,,service,false,0,5.0,false,false,false,0,137.5,Ikeja,1018458203
+W1018458204,,service,false,0,5.0,false,false,false,0,149.5,Ikeja,1018458204
+W1018458205,,service,false,0,5.0,false,false,false,0,61.0,Ikeja,1018458205
+W1018459366,,service,false,0,5.0,false,false,false,0,62.7,Ikeja,1018459366
+W1018459367,,service,false,0,5.0,false,false,false,0,61.8,Ikeja,1018459367
+W1018460697,,service,false,0,5.0,false,false,false,0,17.8,Ikeja,1018460697
+W1018460698,,service,false,0,5.0,false,false,false,0,238.7,Ikeja,1018460698
+W1018460699,,service,false,0,5.0,false,false,false,0,114.7,Ikeja,1018460699
+W1018460700,,service,false,0,5.0,false,false,false,0,304.9,Ikeja,1018460700
+W1018472788,,service,false,0,5.0,false,false,false,0,21.3,Ikeja,1018472788
+W1018472789,,service,false,0,5.0,false,false,false,0,193.4,Ikeja,1018472789
+W1018694771,,service,false,0,5.0,false,false,false,0,45.1,Ikeja,1018694771
+W1018694772,,service,false,0,5.0,false,false,false,0,11.4,Ikeja,1018694772
+W1018694773,,service,false,0,5.0,false,false,false,0,161.0,Ikeja,1018694773
+W1018694774,,service,false,0,5.0,false,false,false,0,286.5,Ikeja,1018694774
+W1018694775,,service,false,0,5.0,false,false,false,0,547.2,Ikeja,1018694775
+W1018698044,,service,false,0,5.0,false,false,false,0,63.0,Ikeja,1018698044
+W1018698045,,service,false,0,5.0,false,false,false,0,178.9,Ikeja,1018698045
+W1018698107,,service,false,0,5.0,false,false,false,0,146.8,Ikeja,1018698107
+W1018698824,,service,false,0,5.0,false,false,false,0,168.7,Ikeja,1018698824
+W1018698825,,service,false,0,5.0,false,false,false,0,38.1,Ikeja,1018698825
+W1018698826,,service,false,0,5.0,false,false,false,0,71.7,Ikeja,1018698826
+W1018698827,,service,false,0,5.0,false,false,false,0,104.0,Ikeja,1018698827
+W1018698828,,service,false,0,5.0,false,false,false,0,173.5,Ikeja,1018698828
+W1018698880,,service,false,0,5.0,false,false,false,0,161.7,Ikeja,1018698880
+W1018698882,,service,false,0,5.0,false,false,false,0,61.0,Ikeja,1018698882
+W1018702739,,service,false,0,5.0,false,false,false,0,65.0,Ikeja,1018702739
+W1018702740,,service,false,0,5.0,false,false,false,0,203.5,Ikeja,1018702740
+W1018702954,,service,false,0,5.0,false,false,false,0,47.5,Ikeja,1018702954
+W1018702973,,service,false,0,5.0,false,false,false,0,74.1,Ikeja,1018702973
+W1018702974,,service,false,0,5.0,false,false,false,0,52.9,Ikeja,1018702974
+W1018704265,,service,false,0,5.0,false,false,false,0,50.7,Ikeja,1018704265
+W1018704275,,residential,false,0,7.5,false,false,false,0,60.2,Ikeja,1018704275
+W1018707958,,service,false,0,5.0,false,false,false,0,28.0,Ikeja,1018707958
+W1018986849,,service,false,0,5.0,false,false,false,0,151.6,Ikeja,1018986849
+W1018986850,,service,false,0,5.0,false,false,false,0,68.1,Ikeja,1018986850
+W1018986863,,service,false,0,5.0,false,false,false,0,126.6,Ikeja,1018986863
+W1018987220,,service,false,0,5.0,false,false,false,0,61.6,Ikeja,1018987220
+W1018987221,,service,false,0,5.0,false,false,false,0,63.2,Ikeja,1018987221
+W1018987222,,service,false,0,5.0,false,false,false,0,159.6,Ikeja,1018987222
+W1018987472,,service,false,0,5.0,false,false,false,0,41.0,Ikeja,1018987472
+W1018987474,,service,false,0,5.0,false,false,false,0,303.6,Ikeja,1018987474
+W1018987475,,service,false,0,5.0,false,false,false,0,292.7,Ikeja,1018987475
+W1018987573,,service,false,0,5.0,false,false,false,0,63.2,Ikeja,1018987573
+W1018987759,,service,false,0,5.0,false,false,false,0,21.6,Ikeja,1018987759
+W1018987760,,service,false,0,5.0,false,false,false,0,25.8,Ikeja,1018987760
+W1018987761,,service,false,0,5.0,false,false,false,0,101.8,Ikeja,1018987761
+W1018988470,,service,false,0,5.0,false,false,false,0,299.9,Ikeja,1018988470
+W1018988471,,service,false,0,5.0,false,false,false,0,144.3,Ikeja,1018988471
+W1018988472,,service,false,0,5.0,false,false,false,0,443.4,Ikeja,1018988472
+W1018988533,,service,false,0,5.0,false,false,false,0,87.3,Ikeja,1018988533
+W1018988585,,service,false,0,5.0,false,false,false,0,174.3,Ikeja,1018988585
+W1018989116,,service,false,0,5.0,true,false,false,0,75.2,Ikeja,1018989116
+W1018989117,,service,false,0,5.0,false,false,false,0,89.8,Ikeja,1018989117
+W1018989181,,service,false,0,5.0,false,false,false,0,164.4,Ikeja,1018989181
+W1018989491,,service,false,0,5.0,false,false,false,0,151.7,Ikeja,1018989491
+W1018989492,,service,false,0,5.0,false,false,false,0,85.1,Ikeja,1018989492
+W1018989735,,service,false,0,5.0,false,false,false,0,201.2,Ikeja,1018989735
+W1018989771,,service,false,0,5.0,false,false,false,0,18.1,Ikeja,1018989771
+W1018989940,,service,false,0,5.0,false,false,false,0,27.4,Ikeja,1018989940
+W1018990254,,service,false,0,5.0,false,false,false,0,40.1,Ikeja,1018990254
+W1018990255,,service,false,0,5.0,false,false,false,0,248.6,Ikeja,1018990255
+W1018990479,,service,false,0,5.0,false,false,false,0,114.2,Ikeja,1018990479
+W1018990612,,service,false,0,5.0,false,false,false,0,95.9,Ikeja,1018990612
+W1018990876,,service,false,0,5.0,false,false,false,0,11.4,Ikeja,1018990876
+W1018991068,,service,false,0,5.0,false,false,false,0,13.1,Ikeja,1018991068
+W1018991074,,service,false,0,5.0,false,false,false,0,55.6,Ikeja,1018991074
+W1018995302,,residential,false,0,7.5,false,false,false,0,38.3,Ikeja,1018995302
+W1018995317,,residential,false,0,7.5,false,false,false,0,54.2,Ikeja,1018995317
+W1018995442,,service,false,0,5.0,false,false,false,0,40.5,Ikeja,1018995442
+W1018995443,,service,false,0,5.0,false,false,false,0,133.5,Ikeja,1018995443
+W1019044490,,service,false,0,5.0,false,false,false,0,74.4,Ikeja,1019044490
+W1019044894,,service,false,0,5.0,false,false,false,0,46.1,Ikeja,1019044894
+W1019044895,,service,false,0,5.0,false,false,false,0,171.3,Ikeja,1019044895
+W1019045139,,residential,false,0,7.5,false,false,false,0,59.6,Ikeja,1019045139
+W1019045543,,residential,false,0,7.5,false,false,false,0,116.7,Ikeja,1019045543
+W1019045654,,service,false,0,5.0,false,false,false,0,21.8,Ikeja,1019045654
+W1019045655,,service,false,0,5.0,false,false,false,0,94.6,Ikeja,1019045655
+W1019045908,,service,false,0,5.0,false,false,false,0,50.1,Ikeja,1019045908
+W1019046955,,residential,false,0,7.5,false,false,false,0,68.8,Ikeja,1019046955
+W1019048846,,service,false,0,5.0,false,false,false,0,71.5,Ikeja,1019048846
+W1019048943,,service,false,0,5.0,false,false,false,0,72.0,Ikeja,1019048943
+W1019049138,,service,false,0,5.0,false,false,false,0,50.1,Ikeja,1019049138
+W1019049139,,service,false,0,5.0,false,false,false,0,82.1,Ikeja,1019049139
+W1019049295,,service,false,0,5.0,false,false,false,0,39.8,Ikeja,1019049295
+W1019049296,,service,false,0,5.0,false,false,false,0,89.5,Ikeja,1019049296
+W1019049358,,service,false,0,5.0,false,false,false,0,84.9,Ikeja,1019049358
+W1019049742,,service,false,0,5.0,false,false,false,0,37.8,Ikeja,1019049742
+W10297950,,residential,false,0,7.5,false,false,false,0,400.2,Ikeja,10297950
+W1032831964,,service,false,0,5.0,false,false,false,0,83.3,Ikeja,1032831964
+W1032831978,,service,false,0,5.0,false,false,false,0,39.1,Ikeja,1032831978
+W1033732622,,service,false,0,5.0,false,false,false,0,35.2,Ikeja,1033732622
+W1033732623,,service,false,0,5.0,false,false,false,0,70.9,Ikeja,1033732623
+W1033732624,,residential,false,0,7.5,false,false,false,0,136.9,Ikeja,1033732624
+W1033732625,,service,false,0,5.0,false,false,false,0,6.4,Ikeja,1033732625
+W1033732626,,service,false,0,5.0,false,false,false,0,35.7,Ikeja,1033732626
+W1033732627,,service,false,0,5.0,false,false,false,0,99.7,Ikeja,1033732627
+W1033734168,,service,false,0,5.0,false,false,false,0,59.7,Ikeja,1033734168
+W1034045148,,service,false,0,5.0,false,false,false,0,53.5,Ikeja,1034045148
+W1034045149,,service,false,0,5.0,false,false,false,0,84.3,Ikeja,1034045149
+W1034057483,,service,false,0,5.0,false,false,false,0,74.8,Ikeja,1034057483
+W1034057672,,service,false,0,5.0,false,false,false,0,12.6,Ikeja,1034057672
+W1034057673,,service,false,0,5.0,false,false,false,0,11.2,Ikeja,1034057673
+W1034057674,,service,false,0,5.0,false,false,false,0,48.0,Ikeja,1034057674
+W1034085485,,service,false,0,5.0,false,false,false,0,11.3,Ikeja,1034085485
+W1034085486,,service,false,0,5.0,false,false,false,0,29.7,Ikeja,1034085486
+W1034085487,,service,false,0,5.0,false,false,false,0,50.8,Ikeja,1034085487
+W1034085488,,service,false,0,5.0,false,false,false,0,20.1,Ikeja,1034085488
+W1034090730,,service,false,0,5.0,false,false,false,0,104.8,Ikeja,1034090730
+W1034094321,,service,false,0,5.0,false,false,false,0,56.9,Ikeja,1034094321
+W1034094722,,service,false,0,5.0,false,false,false,0,83.6,Ikeja,1034094722
+W1034106491,,service,false,0,5.0,false,false,false,0,34.9,Ikeja,1034106491
+W1034106867,,service,false,0,5.0,false,false,false,0,36.9,Ikeja,1034106867
+W1034107685,,service,false,0,5.0,false,false,false,0,32.0,Ikeja,1034107685
+W1034107686,,service,false,0,5.0,false,false,false,0,32.2,Ikeja,1034107686
+W1034107687,,service,false,0,5.0,false,false,false,0,75.1,Ikeja,1034107687
+W1034130652,,residential,false,0,7.5,false,false,false,0,26.0,Ikeja,1034130652
+W1034131230,,residential,false,0,7.5,false,false,false,0,114.9,Ikeja,1034131230
+W1034360201,,service,false,0,5.0,false,false,false,0,144.3,Ikeja,1034360201
+W1034360280,,service,false,0,5.0,false,false,false,0,165.3,Ikeja,1034360280
+W1034361728,,service,false,0,5.0,false,false,false,0,98.8,Ikeja,1034361728
+W1034361729,,service,false,0,5.0,false,false,false,0,92.7,Ikeja,1034361729
+W1034362317,,service,false,0,5.0,false,false,false,0,106.9,Ikeja,1034362317
+W1034362915,,service,false,0,5.0,false,false,false,0,53.1,Ikeja,1034362915
+W1034385971,,service,false,0,5.0,false,false,false,0,165.9,Ikeja,1034385971
+W1034417510,,service,false,0,5.0,false,false,false,0,49.5,Ikeja,1034417510
+W1034417511,,service,false,0,5.0,false,false,false,0,50.0,Ikeja,1034417511
+W1034417966,,service,false,0,5.0,false,false,false,0,407.0,Ikeja,1034417966
+W1034418593,,service,false,0,5.0,false,false,false,0,219.7,Ikeja,1034418593
+W1034419172,,service,false,0,5.0,false,false,false,0,16.9,Ikeja,1034419172
+W1034419173,,service,false,0,5.0,false,false,false,0,24.5,Ikeja,1034419173
+W1034419174,,service,false,0,5.0,false,false,false,0,53.7,Ikeja,1034419174
+W1034419553,,service,false,0,5.0,false,false,false,0,107.5,Ikeja,1034419553
+W1034419554,,service,false,0,5.0,false,false,false,0,62.0,Ikeja,1034419554
+W1034420160,,service,false,0,5.0,false,false,false,0,63.2,Ikeja,1034420160
+W1034420161,,service,false,0,5.0,false,false,false,0,64.7,Ikeja,1034420161
+W1034420162,,service,false,0,5.0,false,false,false,0,66.8,Ikeja,1034420162
+W1034420163,,service,false,0,5.0,false,false,false,0,176.5,Ikeja,1034420163
+W1034421002,,service,false,0,5.0,false,false,false,0,113.7,Ikeja,1034421002
+W1034421633,,service,false,0,5.0,false,false,false,0,24.9,Ikeja,1034421633
+W1034421634,,service,false,0,5.0,false,false,false,0,97.3,Ikeja,1034421634
+W1034421635,,service,false,0,5.0,false,false,false,0,96.1,Ikeja,1034421635
+W1034706187,,service,false,0,5.0,false,false,false,0,48.8,Ikeja,1034706187
+W1034706739,,service,false,0,5.0,false,false,false,0,198.5,Ikeja,1034706739
+W1035913741,,service,false,0,5.0,false,false,false,0,114.2,Ikeja,1035913741
+W1035913742,,service,false,0,5.0,false,false,false,0,111.0,Ikeja,1035913742
+W1063126215,,service,false,0,5.0,false,false,false,0,32.0,Ikeja,1063126215
+W1063126216,,service,false,0,5.0,false,false,false,0,14.2,Ikeja,1063126216
+W1063126217,,service,false,0,5.0,false,false,false,0,34.3,Ikeja,1063126217
+W1063181003,,service,false,0,5.0,false,false,false,0,50.3,Ikeja,1063181003
+W1063181004,,service,false,0,5.0,false,false,false,0,48.7,Ikeja,1063181004
+W1063181005,,service,false,0,5.0,false,false,false,0,5.2,Ikeja,1063181005
+W1063181006,,service,false,0,5.0,true,false,false,0,38.6,Ikeja,1063181006
+W1063181007,,service,false,0,5.0,false,false,false,0,9.5,Ikeja,1063181007
+W1063459511,,service,false,0,5.0,false,false,false,0,89.9,Ikeja,1063459511
+W1063471396,,service,false,0,5.0,false,false,false,0,54.9,Ikeja,1063471396
+W1063472083,,service,false,0,5.0,false,false,false,0,52.2,Ikeja,1063472083
+W1063472084,,service,false,0,5.0,false,false,false,0,12.9,Ikeja,1063472084
+W1063472085,,service,false,0,5.0,false,false,false,0,34.6,Ikeja,1063472085
+W1063476719,,service,false,0,5.0,false,false,false,0,65.3,Ikeja,1063476719
+W1063476721,,service,false,0,5.0,false,false,false,0,82.9,Ikeja,1063476721
+W1063484505,,service,false,0,5.0,false,false,false,0,48.7,Ikeja,1063484505
+W1063484626,,service,false,0,5.0,false,false,false,0,40.1,Ikeja,1063484626
+W1063484627,,service,false,0,5.0,false,false,false,0,8.2,Ikeja,1063484627
+W1063486715,,service,false,0,5.0,false,false,false,0,195.2,Ikeja,1063486715
+W1063486716,,service,false,0,5.0,false,false,false,0,11.7,Ikeja,1063486716
+W1063489658,,service,false,0,5.0,false,false,false,0,6.8,Ikeja,1063489658
+W1063490016,,service,false,0,5.0,false,false,false,0,42.6,Ikeja,1063490016
+W1063490017,,service,false,0,5.0,false,false,false,0,56.2,Ikeja,1063490017
+W1063490018,,service,false,0,5.0,false,false,false,0,66.8,Ikeja,1063490018
+W1063490019,,service,false,0,5.0,false,false,false,0,68.9,Ikeja,1063490019
+W1063490020,,service,false,0,5.0,false,false,false,0,61.3,Ikeja,1063490020
+W1063508488,,residential,false,0,7.5,false,false,false,0,86.6,Ikeja,1063508488
+W1063509130,,service,false,0,5.0,false,false,false,0,28.2,Ikeja,1063509130
+W1063800331,,service,false,0,5.0,false,false,false,0,90.0,Ikeja,1063800331
+W1063804119,,service,false,0,5.0,false,false,false,0,20.9,Ikeja,1063804119
+W1063806682,,service,false,0,5.0,false,false,false,0,148.9,Ikeja,1063806682
+W1063809054,,service,false,0,5.0,false,false,false,0,65.6,Ikeja,1063809054
+W1063817290,,service,false,0,5.0,false,false,false,0,112.0,Ikeja,1063817290
+W1063830992,,service,false,0,5.0,false,false,false,0,59.1,Ikeja,1063830992
+W1063916434,,service,false,0,5.0,false,false,false,0,57.3,Ikeja,1063916434
+W1063916435,,service,false,0,5.0,false,false,false,0,116.4,Ikeja,1063916435
+W1063918995,,service,false,0,5.0,false,false,false,0,30.1,Ikeja,1063918995
+W1063918996,,service,false,0,5.0,false,false,false,0,45.4,Ikeja,1063918996
+W1063918997,,service,false,0,5.0,false,false,false,0,14.0,Ikeja,1063918997
+W1063918998,,service,false,0,5.0,false,false,false,0,35.4,Ikeja,1063918998
+W1063918999,,service,false,0,5.0,false,false,false,0,30.0,Ikeja,1063918999
+W1063919000,,service,false,0,5.0,false,false,false,0,211.8,Ikeja,1063919000
+W1063919001,,service,false,0,5.0,false,false,false,0,37.1,Ikeja,1063919001
+W1064240731,,service,false,0,5.0,false,false,false,0,45.2,Ikeja,1064240731
+W1064240939,,service,false,0,5.0,false,false,false,0,25.3,Ikeja,1064240939
+W1064243980,,service,false,0,5.0,false,false,false,0,50.6,Ikeja,1064243980
+W1064248489,,service,false,0,5.0,false,false,false,0,65.7,Ikeja,1064248489
+W1064248490,,service,false,0,5.0,false,false,false,0,57.4,Ikeja,1064248490
+W1064248491,,service,false,0,5.0,false,false,false,0,71.5,Ikeja,1064248491
+W1064248492,,service,false,0,5.0,false,false,false,0,49.4,Ikeja,1064248492
+W1064248493,,service,false,0,5.0,false,false,false,0,18.9,Ikeja,1064248493
+W1064248494,,service,false,0,5.0,false,false,false,0,87.5,Ikeja,1064248494
+W1064248495,,service,false,0,5.0,false,false,false,0,91.6,Ikeja,1064248495
+W1064248496,,service,false,0,5.0,false,false,false,0,90.6,Ikeja,1064248496
+W1064248497,,service,false,0,5.0,false,false,false,0,89.9,Ikeja,1064248497
+W1064248498,,service,false,0,5.0,false,false,false,0,84.8,Ikeja,1064248498
+W1064248499,,service,false,0,5.0,false,false,false,0,105.4,Ikeja,1064248499
+W1064271882,,service,false,0,5.0,true,false,false,0,129.3,Ikeja,1064271882
+W1064289176,,residential,false,0,7.5,false,false,false,0,63.9,Ikeja,1064289176
+W1065058674,,service,false,0,5.0,false,false,false,0,74.4,Ikeja,1065058674
+W1065062514,,service,false,0,5.0,false,false,false,0,40.1,Ikeja,1065062514
+W1065066351,,residential,false,0,7.5,false,false,false,0,42.2,Ikeja,1065066351
+W1065760657,,service,false,0,5.0,false,false,false,0,29.1,Ikeja,1065760657
+W1065760658,,service,false,0,5.0,false,false,false,0,43.9,Ikeja,1065760658
+W1065760764,,service,false,0,5.0,false,false,false,0,55.8,Ikeja,1065760764
+W1065761849,,service,false,0,5.0,false,false,false,0,63.3,Ikeja,1065761849
+W1076806689,,service,false,0,5.0,false,false,false,0,33.6,Ikeja,1076806689
+W1077609107,,service,false,0,5.0,false,false,false,0,116.5,Ikeja,1077609107
+W1077609162,,service,false,0,5.0,false,false,false,0,50.5,Ikeja,1077609162
+W1077610108,,service,false,0,5.0,false,false,false,0,91.2,Ikeja,1077610108
+W1078445277,,residential,false,0,7.5,false,false,false,0,35.6,Ikeja,1078445277
+W1078764080,,service,false,0,5.0,false,false,false,0,71.1,Ikeja,1078764080
+W1081324965,,service,false,0,5.0,false,false,false,0,112.8,Ikeja,1081324965
+W1081324966,,service,false,0,5.0,false,false,false,0,148.9,Ikeja,1081324966
+W1081324967,,service,false,0,5.0,false,false,false,0,79.7,Ikeja,1081324967
+W1081324968,,service,false,0,5.0,false,false,false,0,63.3,Ikeja,1081324968
+W1081324969,,service,false,0,5.0,false,false,false,0,152.4,Ikeja,1081324969
+W1081324970,,service,false,0,5.0,false,false,false,0,62.4,Ikeja,1081324970
+W1081324971,,service,false,0,5.0,false,false,false,0,10.8,Ikeja,1081324971
+W1081324972,,residential,false,0,7.5,false,false,false,0,42.1,Ikeja,1081324972
+W1081324973,,service,false,0,5.0,false,false,false,0,110.4,Ikeja,1081324973
+W1081324974,,service,false,0,5.0,false,false,false,0,88.5,Ikeja,1081324974
+W1081324975,,service,false,0,5.0,false,false,false,0,47.0,Ikeja,1081324975
+W1081324976,,service,false,0,5.0,false,false,false,0,49.6,Ikeja,1081324976
+W1081324977,,service,false,0,5.0,false,false,false,0,18.8,Ikeja,1081324977
+W1081324978,,service,false,0,5.0,false,false,false,0,2.6,Ikeja,1081324978
+W1081324979,,service,false,0,5.0,false,false,false,0,2.7,Ikeja,1081324979
+W1081324980,,service,false,0,5.0,false,false,false,0,53.7,Ikeja,1081324980
+W1081324981,,residential,false,0,7.5,false,false,false,0,52.2,Ikeja,1081324981
+W1081324982,,service,false,0,5.0,false,false,false,0,113.1,Ikeja,1081324982
+W1081324983,,service,false,0,5.0,false,false,false,0,16.5,Ikeja,1081324983
+W1081324984,,service,false,0,5.0,false,false,false,0,12.3,Ikeja,1081324984
+W1081324985,,service,false,0,5.0,false,false,false,0,127.3,Ikeja,1081324985
+W1081324986,,service,false,0,5.0,false,false,false,0,94.9,Ikeja,1081324986
+W1081324988,,service,false,0,5.0,false,false,false,0,86.7,Ikeja,1081324988
+W1081324989,,service,false,0,5.0,false,false,false,0,58.0,Ikeja,1081324989
+W1081324990,,service,false,0,5.0,false,false,false,0,30.8,Ikeja,1081324990
+W1081324991,,service,false,0,5.0,false,false,false,0,185.9,Ikeja,1081324991
+W1081324992,,service,false,0,5.0,false,false,false,0,44.1,Ikeja,1081324992
+W1081324993,,service,false,0,5.0,false,false,false,0,90.6,Ikeja,1081324993
+W1081324994,,service,false,0,5.0,false,false,false,0,75.9,Ikeja,1081324994
+W1082252062,,service,false,0,5.0,false,false,false,0,63.1,Ikeja,1082252062
+W1082801261,,service,false,0,5.0,false,false,false,0,56.9,Ikeja,1082801261
+W1083501862,,service,false,0,5.0,false,false,false,0,44.0,Ikeja,1083501862
+W1085743073,,service,false,0,5.0,false,false,false,0,53.1,Ikeja,1085743073
+W1091145661,,service,false,0,5.0,false,false,false,0,31.4,Ikeja,1091145661
+W1091145662,,service,false,0,5.0,false,false,false,0,61.8,Ikeja,1091145662
+W1091145663,,service,false,0,5.0,false,false,false,0,28.7,Ikeja,1091145663
+W1091145664,,service,false,0,5.0,false,false,false,0,193.8,Ikeja,1091145664
+W1091145665,,residential,false,0,7.5,false,false,false,0,135.4,Ikeja,1091145665
+W1091145666,,service,false,0,5.0,false,false,false,0,113.5,Ikeja,1091145666
+W1091145667,,service,false,0,5.0,false,false,false,0,29.3,Ikeja,1091145667
+W1091145668,,service,false,0,5.0,false,false,false,0,84.6,Ikeja,1091145668
+W1091145669,,service,false,0,5.0,false,false,false,0,59.0,Ikeja,1091145669
+W1096888279,,service,false,0,5.0,false,false,false,0,70.1,Ikeja,1096888279
+W1096894669,,service,false,0,5.0,false,false,false,0,69.6,Ikeja,1096894669
+W1097208595,,service,false,0,5.0,false,false,false,0,98.9,Ikeja,1097208595
+W1097229307,,service,false,0,5.0,false,false,false,0,42.2,Ikeja,1097229307
+W1097262368,,residential,false,0,7.5,false,false,false,0,35.4,Ikeja,1097262368
+W1100803898,,service,false,0,5.0,false,false,false,0,95.2,Ikeja,1100803898
+W1100805147,,service,false,0,5.0,false,false,false,0,55.0,Ikeja,1100805147
+W1100805148,,service,false,0,5.0,false,false,false,0,52.6,Ikeja,1100805148
+W1100805149,,service,false,0,5.0,false,false,false,0,51.0,Ikeja,1100805149
+W1100805150,,service,false,0,5.0,false,false,false,0,120.7,Ikeja,1100805150
+W1100805151,,service,false,0,5.0,false,false,false,0,121.2,Ikeja,1100805151
+W1105471471,,residential,false,0,7.5,false,false,false,0,45.6,Ikeja,1105471471
+W1108452019,,residential,false,0,7.5,false,false,false,0,225.3,Ikeja,1108452019
+W1108521518,,service,false,0,5.0,false,false,false,0,81.7,Ikeja,1108521518
+W1108521519,,service,false,0,5.0,false,false,false,0,52.8,Ikeja,1108521519
+W1108521521,,residential,false,0,7.5,false,false,false,0,89.6,Ikeja,1108521521
+W1108521522,,residential,false,0,7.5,false,false,false,0,144.7,Ikeja,1108521522
+W1108521523,,residential,false,0,7.5,false,false,false,0,3.1,Ikeja,1108521523
+W1111683955,,service,false,0,5.0,false,false,false,0,48.5,Ikeja,1111683955
+W1111737410,,service,false,0,5.0,false,false,false,0,83.2,Ikeja,1111737410
+W1111738377,,track,false,0,4.0,false,false,false,0,154.7,Ikeja,1111738377
+W1111932970,,residential,false,0,7.5,false,false,false,0,52.0,Ikeja,1111932970
+W1111933628,,residential,false,0,7.5,false,false,false,0,28.0,Ikeja,1111933628
+W1111934029,,service,false,0,5.0,false,false,false,0,38.5,Ikeja,1111934029
+W1111943690,,service,false,0,5.0,false,false,false,0,7.3,Ikeja,1111943690
+W1111944514,,service,false,0,5.0,false,false,false,0,82.4,Ikeja,1111944514
+W1111949288,,service,false,0,5.0,false,false,false,0,86.1,Ikeja,1111949288
+W1111949469,,service,false,0,5.0,false,false,false,0,72.5,Ikeja,1111949469
+W1111949781,,service,false,0,5.0,false,false,false,0,34.7,Ikeja,1111949781
+W1111962966,,service,false,0,5.0,false,false,false,0,50.4,Ikeja,1111962966
+W1111962985,,service,false,0,5.0,false,false,false,0,24.6,Ikeja,1111962985
+W1111962986,,service,false,0,5.0,false,false,false,0,37.5,Ikeja,1111962986
+W1111975638,,service,false,0,5.0,false,false,false,0,75.1,Ikeja,1111975638
+W1112015464,,residential,false,0,7.5,false,false,false,0,35.4,Ikeja,1112015464
+W1112190926,,service,false,0,5.0,false,false,false,0,37.9,Ikeja,1112190926
+W1112193428,,service,false,0,5.0,false,false,false,0,27.7,Ikeja,1112193428
+W1112829306,,service,false,0,5.0,false,false,false,0,148.6,Ikeja,1112829306
+W1120475656,,service,false,0,5.0,false,false,false,0,84.2,Ikeja,1120475656
+W1120475657,,service,false,0,5.0,false,false,false,0,188.3,Ikeja,1120475657
+W1120478675,,service,false,0,5.0,false,false,false,0,59.1,Ikeja,1120478675
+W1120541693,,service,false,0,5.0,false,false,false,0,24.3,Ikeja,1120541693
+W1120541694,,service,false,0,5.0,false,false,false,0,59.8,Ikeja,1120541694
+W1120541695,,residential,false,0,7.5,false,false,false,0,43.0,Ikeja,1120541695
+W1120545209,,service,false,0,5.0,false,false,false,0,20.9,Ikeja,1120545209
+W1120545210,,service,false,0,5.0,false,false,false,0,22.7,Ikeja,1120545210
+W1120545211,,service,false,0,5.0,false,false,false,0,57.0,Ikeja,1120545211
+W1120545212,,residential,false,0,7.5,false,false,false,0,66.2,Ikeja,1120545212
+W1120547116,,service,false,0,5.0,false,false,false,0,88.8,Ikeja,1120547116
+W1120547119,,service,false,0,5.0,false,false,false,0,78.8,Ikeja,1120547119
+W1120547120,,service,false,0,5.0,false,false,false,0,164.2,Ikeja,1120547120
+W1120547123,,service,false,0,5.0,false,false,false,0,19.2,Ikeja,1120547123
+W1120547124,,service,false,0,5.0,false,false,false,0,15.4,Ikeja,1120547124
+W1120547125,,service,false,0,5.0,false,false,false,0,34.0,Ikeja,1120547125
+W1120547126,,service,false,0,5.0,false,false,false,0,50.3,Ikeja,1120547126
+W1120547127,,service,false,0,5.0,false,false,false,0,51.6,Ikeja,1120547127
+W1122223965,,residential,false,0,7.5,false,false,false,0,57.1,Ikeja,1122223965
+W1122223966,,service,false,0,5.0,false,false,false,0,95.3,Ikeja,1122223966
+W1122223967,,service,false,0,5.0,false,false,false,0,21.5,Ikeja,1122223967
+W1122223968,,service,false,0,5.0,false,false,false,0,12.6,Ikeja,1122223968
+W1122224304,,service,false,0,5.0,false,false,false,0,40.2,Ikeja,1122224304
+W1122224305,,service,false,0,5.0,false,false,false,0,23.6,Ikeja,1122224305
+W1122224306,,service,false,0,5.0,false,false,false,0,45.5,Ikeja,1122224306
+W1131431698,,service,false,0,5.0,false,false,false,0,46.1,Ikeja,1131431698
+W1131431699,,service,false,0,5.0,false,false,false,0,41.3,Ikeja,1131431699
+W1131431700,,service,false,0,5.0,false,false,false,0,41.4,Ikeja,1131431700
+W1133114000,,residential,false,2,7.6,false,false,false,0,457.4,Ikeja,1133114000
+W1133115583,,residential,false,0,7.5,false,false,false,0,59.6,Ikeja,1133115583
+W1133115584,,service,false,0,5.0,false,false,false,0,68.4,Ikeja,1133115584
+W1133115585,,residential,false,0,7.5,false,false,false,0,58.4,Ikeja,1133115585
+W1133354991,,service,false,0,5.0,false,false,false,0,69.4,Ikeja,1133354991
+W1133355134,,service,false,0,5.0,false,false,false,0,45.6,Ikeja,1133355134
+W1133355135,,service,false,0,5.0,false,false,false,0,53.8,Ikeja,1133355135
+W1133430286,,secondary,false,0,13.0,true,false,false,0,13.9,Ikeja,1133430286
+W1133430287,,secondary,false,0,13.0,true,false,false,0,16.6,Ikeja,1133430287
+W1133438420,,service,false,0,5.0,false,false,false,0,59.3,Ikeja,1133438420
+W1133447940,,service,false,0,5.0,true,false,false,0,111.4,Ikeja,1133447940
+W1133447941,,service,false,0,5.0,true,false,false,0,22.7,Ikeja,1133447941
+W1133447942,,service,false,0,5.0,true,false,false,0,19.5,Ikeja,1133447942
+W1133621879,,service,false,0,5.0,false,false,false,0,58.1,Ikeja,1133621879
+W1133623693,,residential,false,0,7.5,false,false,false,0,89.5,Ikeja,1133623693
+W1133623694,,residential,false,0,7.5,false,false,false,0,76.1,Ikeja,1133623694
+W1133623695,,service,false,0,5.0,false,false,false,0,82.2,Ikeja,1133623695
+W1133628420,,service,false,0,5.0,false,false,false,0,52.0,Ikeja,1133628420
+W1134420734,,service,false,0,5.0,false,false,false,0,54.1,Ikeja,1134420734
+W1134421693,,service,false,0,5.0,false,false,false,0,42.0,Ikeja,1134421693
+W1145016207,,service,false,0,5.0,false,false,false,0,6.2,Ikeja,1145016207
+W1145016208,,service,false,0,5.0,false,false,false,0,5.6,Ikeja,1145016208
+W1145018398,,service,false,0,5.0,false,false,false,0,38.8,Ikeja,1145018398
+W1145018399,,service,false,0,5.0,false,false,false,0,34.9,Ikeja,1145018399
+W1145018400,,service,false,0,5.0,false,false,false,0,89.9,Ikeja,1145018400
+W1145018401,,service,false,0,5.0,false,false,false,0,90.8,Ikeja,1145018401
+W1145018402,,service,false,0,5.0,false,false,false,0,58.9,Ikeja,1145018402
+W1145025644,,residential,false,0,7.5,false,false,false,0,58.6,Ikeja,1145025644
+W1145025645,,residential,false,0,7.5,false,false,false,0,28.3,Ikeja,1145025645
+W1150076320,,service,false,0,5.0,false,false,false,0,13.3,Ikeja,1150076320
+W1150076321,,service,false,0,5.0,false,false,false,0,60.9,Ikeja,1150076321
+W1150115494,,service,false,0,5.0,false,false,false,0,50.0,Ikeja,1150115494
+W1150115495,,service,false,0,5.0,false,false,false,0,76.6,Ikeja,1150115495
+W1150115496,,residential,false,0,7.5,false,false,false,0,102.5,Ikeja,1150115496
+W1150115497,,service,false,0,5.0,false,false,false,0,57.9,Ikeja,1150115497
+W1151673450,,service,false,0,5.0,false,false,false,0,6.0,Ikeja,1151673450
+W1151673451,,service,false,0,5.0,false,false,false,0,105.0,Ikeja,1151673451
+W1151673452,,service,false,0,5.0,false,false,false,0,75.7,Ikeja,1151673452
+W1151673453,,service,false,0,5.0,false,false,false,0,96.5,Ikeja,1151673453
+W1157269487,,tertiary,false,0,10.0,true,false,false,0,385.7,Ikeja,1157269487
+W1157269488,,tertiary,false,0,10.0,true,false,false,0,400.2,Ikeja,1157269488
+W1157269490,,primary,false,0,17.5,true,false,false,0,59.9,Ikeja,1157269490
+W1160128603,,service,false,0,5.0,false,false,false,0,6.0,Ikeja,1160128603
+W1160128604,,service,false,0,5.0,false,false,false,0,55.9,Ikeja,1160128604
+W1160128605,,service,false,0,5.0,false,false,false,0,101.2,Ikeja,1160128605
+W1160128606,,service,false,0,5.0,false,false,false,0,50.8,Ikeja,1160128606
+W1160128607,,service,false,0,5.0,false,false,false,0,9.1,Ikeja,1160128607
+W1160128608,,residential,false,0,7.5,false,false,false,0,75.3,Ikeja,1160128608
+W1160128609,,service,false,0,5.0,false,false,false,0,62.0,Ikeja,1160128609
+W1160128610,,residential,false,0,7.5,false,false,false,0,4.1,Ikeja,1160128610
+W1160128611,,residential,false,0,7.5,false,false,false,0,11.7,Ikeja,1160128611
+W1160128612,,residential,false,0,7.5,false,false,false,0,88.3,Ikeja,1160128612
+W1160128613,,residential,false,0,7.5,false,false,false,0,5.8,Ikeja,1160128613
+W1160128614,,residential,false,0,7.5,false,false,false,0,51.3,Ikeja,1160128614
+W1160128615,,residential,false,0,7.5,false,false,false,0,56.5,Ikeja,1160128615
+W1160128616,,residential,false,0,7.5,false,false,false,0,107.9,Ikeja,1160128616
+W1168938173,,service,false,0,5.0,false,false,false,0,8.4,Ikeja,1168938173
+W1168938174,,residential,false,0,7.5,false,false,false,0,111.6,Ikeja,1168938174
+W1168959246,,service,false,0,5.0,false,false,false,0,103.8,Ikeja,1168959246
+W1168959247,,service,false,0,5.0,false,false,false,0,10.6,Ikeja,1168959247
+W1169793673,,track,false,0,4.0,false,false,false,0,102.1,Ikeja,1169793673
+W1169895712,,service,false,0,5.0,false,false,false,0,51.8,Ikeja,1169895712
+W1170462745,,service,false,0,5.0,false,false,false,0,73.7,Ikeja,1170462745
+W1170482181,,service,false,0,5.0,false,false,false,0,35.2,Ikeja,1170482181
+W1170504398,,service,false,0,5.0,false,false,false,0,44.6,Ikeja,1170504398
+W1173551461,,service,false,0,5.0,false,false,false,0,116.2,Ikeja,1173551461
+W1173551462,,service,false,0,5.0,false,false,false,0,46.1,Ikeja,1173551462
+W1173551463,,service,false,0,5.0,false,false,false,0,5.1,Ikeja,1173551463
+W1175213728,,service,false,0,5.0,false,false,false,0,46.6,Ikeja,1175213728
+W1175213729,,service,false,0,5.0,false,false,false,0,68.3,Ikeja,1175213729
+W1177186307,,service,false,0,5.0,false,false,false,0,58.0,Ikeja,1177186307
+W1177186308,,service,false,0,5.0,false,false,false,0,5.7,Ikeja,1177186308
+W1180368978,,service,false,0,5.0,false,false,false,0,60.6,Ikeja,1180368978
+W1180373484,,service,false,0,5.0,false,false,false,0,6.2,Ikeja,1180373484
+W1180373485,,service,false,0,5.0,false,false,false,0,8.9,Ikeja,1180373485
+W1180374276,,service,false,0,5.0,false,false,false,0,62.7,Ikeja,1180374276
+W1180375822,,service,false,0,5.0,false,false,false,0,51.8,Ikeja,1180375822
+W1180380349,,residential,false,0,7.5,false,false,false,0,82.7,Ikeja,1180380349
+W1180384344,,service,false,0,5.0,false,false,false,0,38.6,Ikeja,1180384344
+W1180561636,,service,false,0,5.0,false,false,false,0,765.9,Ikeja,1180561636
+W1181906182,,service,false,0,5.0,false,false,false,0,54.4,Ikeja,1181906182
+W1181906183,,residential,false,0,7.5,false,false,false,0,25.1,Ikeja,1181906183
+W1181906184,,residential,false,0,7.5,false,false,false,0,49.7,Ikeja,1181906184
+W1181906185,,residential,false,0,7.5,false,false,false,0,61.1,Ikeja,1181906185
+W1181906186,,service,false,0,5.0,false,false,false,0,62.0,Ikeja,1181906186
+W1181906187,,service,false,0,5.0,false,false,false,0,5.6,Ikeja,1181906187
+W1181906188,,service,false,0,5.0,false,false,false,0,59.8,Ikeja,1181906188
+W1181906189,,residential,false,0,7.5,false,false,false,0,5.1,Ikeja,1181906189
+W1181906190,,residential,false,0,7.5,false,false,false,0,91.7,Ikeja,1181906190
+W1181906191,,residential,false,0,7.5,false,false,false,0,56.8,Ikeja,1181906191
+W1181906192,,service,false,0,5.0,false,false,false,0,6.8,Ikeja,1181906192
+W1181906193,,service,false,0,5.0,false,false,false,0,5.8,Ikeja,1181906193
+W1181906194,,residential,false,0,7.5,false,false,false,0,148.9,Ikeja,1181906194
+W1181906195,,service,false,0,5.0,false,false,false,0,6.7,Ikeja,1181906195
+W1181906196,,service,false,0,5.0,false,false,false,0,6.6,Ikeja,1181906196
+W1181906197,,service,false,0,5.0,false,false,false,0,6.5,Ikeja,1181906197
+W1185408896,,residential,false,0,7.5,false,false,false,0,70.2,Ikeja,1185408896
+W1192784582,,service,false,0,5.0,false,false,false,0,196.6,Ikeja,1192784582
+W1192784583,,service,false,0,5.0,false,false,false,0,119.2,Ikeja,1192784583
+W1192784585,,service,false,0,5.0,false,false,false,0,102.0,Ikeja,1192784585
+W1192784586,,service,false,0,5.0,false,false,false,0,152.6,Ikeja,1192784586
+W1192784587,,service,false,0,5.0,false,false,false,0,45.7,Ikeja,1192784587
+W1192784588,,service,false,0,5.0,false,false,false,0,46.7,Ikeja,1192784588
+W1192784589,,service,false,0,5.0,false,false,false,0,132.9,Ikeja,1192784589
+W1192784596,,service,false,0,5.0,false,false,false,0,90.1,Ikeja,1192784596
+W1192784597,,service,false,0,5.0,false,false,false,0,64.7,Ikeja,1192784597
+W1192784598,,service,false,0,5.0,false,false,false,0,527.4,Ikeja,1192784598
+W1192784601,,service,false,0,5.0,false,false,false,0,20.2,Ikeja,1192784601
+W1192784602,,service,false,0,5.0,false,false,false,0,14.3,Ikeja,1192784602
+W1192784603,,service,false,0,5.0,false,false,false,0,106.0,Ikeja,1192784603
+W1192784604,,service,false,0,5.0,true,false,false,0,94.2,Ikeja,1192784604
+W1192784605,,service,false,0,5.0,true,false,false,0,17.5,Ikeja,1192784605
+W1207061625,,residential,false,0,7.5,false,false,false,0,44.7,Ikeja,1207061625
+W1207061626,,service,false,0,5.0,false,false,false,0,64.3,Ikeja,1207061626
+W1216144494,,service,false,0,5.0,false,false,false,0,105.1,Ikeja,1216144494
+W1216144495,,service,false,0,5.0,false,false,false,0,147.8,Ikeja,1216144495
+W1216144496,,service,false,0,5.0,false,false,false,0,10.3,Ikeja,1216144496
+W1216144497,,service,false,0,5.0,false,false,false,0,66.0,Ikeja,1216144497
+W1216144498,,service,false,0,5.0,false,false,false,0,6.9,Ikeja,1216144498
+W1216144499,,service,false,0,5.0,false,false,false,0,161.9,Ikeja,1216144499
+W1216144500,,service,false,0,5.0,false,false,false,0,61.4,Ikeja,1216144500
+W1216144501,,service,false,0,5.0,false,false,false,0,51.1,Ikeja,1216144501
+W1216144502,,service,false,0,5.0,false,false,false,0,15.6,Ikeja,1216144502
+W1216144503,,service,false,0,5.0,false,false,false,0,8.1,Ikeja,1216144503
+W1216149967,,service,false,0,5.0,false,false,false,0,38.7,Ikeja,1216149967
+W1216149968,,service,false,0,5.0,false,false,false,0,57.2,Ikeja,1216149968
+W1216715625,,service,false,0,5.0,false,false,false,0,56.7,Ikeja,1216715625
+W1222449102,,service,false,0,5.0,false,false,false,0,35.4,Ikeja,1222449102
+W1222449103,,residential,false,0,7.5,false,false,false,0,40.0,Ikeja,1222449103
+W1223369257,,service,false,0,5.0,false,false,false,0,78.6,Ikeja,1223369257
+W1223369258,,service,false,0,5.0,false,false,false,0,59.7,Ikeja,1223369258
+W1223369259,,service,false,0,5.0,false,false,false,0,26.7,Ikeja,1223369259
+W1223369260,,service,false,0,5.0,false,false,false,0,47.7,Ikeja,1223369260
+W1223369261,,service,false,0,5.0,false,false,false,0,33.3,Ikeja,1223369261
+W1223369262,,service,false,0,5.0,false,false,false,0,15.3,Ikeja,1223369262
+W1223369263,,service,false,0,5.0,false,false,false,0,53.1,Ikeja,1223369263
+W1223675500,,service,false,0,5.0,false,false,false,0,33.1,Ikeja,1223675500
+W1223675501,,service,false,0,5.0,false,false,false,0,17.9,Ikeja,1223675501
+W1223675502,,service,false,0,5.0,false,false,false,0,32.2,Ikeja,1223675502
+W1223675503,,service,false,0,5.0,false,false,false,0,39.0,Ikeja,1223675503
+W1223675504,,service,false,0,5.0,false,false,false,0,3.6,Ikeja,1223675504
+W1223675505,,service,false,0,5.0,false,false,false,0,24.4,Ikeja,1223675505
+W1223675506,,residential,false,0,7.5,false,false,false,0,66.3,Ikeja,1223675506
+W1224011255,,service,false,0,5.0,false,false,false,0,111.3,Ikeja,1224011255
+W1224011256,,service,false,0,5.0,false,false,false,0,112.5,Ikeja,1224011256
+W1227927158,,service,false,0,5.0,false,false,false,0,369.3,Ikeja,1227927158
+W1227966705,,residential,false,0,7.5,false,false,false,0,94.4,Ikeja,1227966705
+W1228585957,,service,false,0,5.0,false,false,false,0,18.7,Ikeja,1228585957
+W1228585958,,service,false,0,5.0,false,false,false,0,75.5,Ikeja,1228585958
+W1228585959,,service,false,0,5.0,false,false,false,0,133.9,Ikeja,1228585959
+W1228587004,,service,false,0,5.0,false,false,false,0,126.1,Ikeja,1228587004
+W1228773149,,service,false,0,5.0,false,false,false,0,55.1,Ikeja,1228773149
+W1228773150,,service,false,0,5.0,false,false,false,0,11.6,Ikeja,1228773150
+W1228803091,,service,false,0,5.0,false,false,false,0,67.7,Ikeja,1228803091
+W1229198590,,service,false,0,5.0,false,false,false,0,13.6,Ikeja,1229198590
+W1229198591,,service,false,0,5.0,false,false,false,0,129.4,Ikeja,1229198591
+W1229199254,,service,false,0,5.0,false,false,false,0,11.8,Ikeja,1229199254
+W1229199255,,service,false,0,5.0,false,false,false,0,93.4,Ikeja,1229199255
+W1229199545,,service,false,0,5.0,true,false,false,0,6.3,Ikeja,1229199545
+W1229199546,,service,false,0,5.0,true,false,false,0,11.6,Ikeja,1229199546
+W1229199547,,service,false,0,5.0,false,false,false,0,159.5,Ikeja,1229199547
+W1229200154,,residential,false,0,7.5,false,false,false,0,77.2,Ikeja,1229200154
+W1229200546,,residential,false,0,7.5,false,false,false,0,107.2,Ikeja,1229200546
+W1229200547,,service,false,0,5.0,false,false,false,0,203.3,Ikeja,1229200547
+W1229205220,,service,false,0,5.0,false,false,false,0,118.8,Ikeja,1229205220
+W1229221371,,service,false,0,5.0,false,false,false,0,41.2,Ikeja,1229221371
+W1229221372,,service,false,0,5.0,false,false,false,0,65.9,Ikeja,1229221372
+W1229221373,,service,false,0,5.0,false,false,false,0,19.0,Ikeja,1229221373
+W1229587675,,service,false,0,5.0,false,false,false,0,28.6,Ikeja,1229587675
+W1229587676,,service,false,0,5.0,false,false,false,0,151.0,Ikeja,1229587676
+W1229592182,,service,false,0,5.0,false,false,false,0,103.7,Ikeja,1229592182
+W1230233277,,service,false,0,5.0,false,false,false,0,61.6,Ikeja,1230233277
+W1230247817,,service,false,0,5.0,false,false,false,0,41.3,Ikeja,1230247817
+W1230248815,,service,false,0,5.0,false,false,false,0,125.6,Ikeja,1230248815
+W1232808694,,service,false,0,5.0,false,false,false,0,85.5,Ikeja,1232808694
+W1239005724,,trunk,true,0,7.5,true,false,false,0,31.8,Ikeja,1239005724
+W1239005725,,trunk,true,0,7.5,true,false,false,0,31.1,Ikeja,1239005725
+W1255672051,,service,false,0,5.0,false,false,false,0,209.3,Ikeja,1255672051
+W1268285860,,service,false,0,5.0,false,false,false,0,27.0,Ikeja,1268285860
+W1274994993,,service,false,0,5.0,false,false,false,0,56.4,Ikeja,1274994993
+W1280413057,,residential,false,0,7.5,false,false,false,0,153.5,Ikeja,1280413057
+W1291695378,,residential,false,0,7.5,false,false,false,0,6.1,Ikeja,1291695378
+W1291949426,,service,false,0,5.0,false,false,false,0,45.3,Ikeja,1291949426
+W1291949427,,residential,false,0,7.5,false,false,false,0,54.6,Ikeja,1291949427
+W1291949433,,residential,false,0,7.5,false,false,false,0,9.7,Ikeja,1291949433
+W1291949434,,service,false,0,5.0,false,false,false,0,28.6,Ikeja,1291949434
+W1291949435,,service,false,0,5.0,false,false,false,0,41.5,Ikeja,1291949435
+W1291949436,,service,false,0,5.0,false,false,false,0,41.6,Ikeja,1291949436
+W1291949437,,service,false,0,5.0,false,false,false,0,37.4,Ikeja,1291949437
+W1291949438,,service,false,0,5.0,false,false,false,0,52.3,Ikeja,1291949438
+W1291949439,,service,false,0,5.0,false,false,false,0,31.8,Ikeja,1291949439
+W1291949440,,service,false,0,5.0,false,false,false,0,46.1,Ikeja,1291949440
+W1291949441,,service,false,0,5.0,false,false,false,0,46.8,Ikeja,1291949441
+W1291949442,,residential,false,0,7.5,false,false,false,0,53.9,Ikeja,1291949442
+W1291949443,,service,false,0,5.0,false,false,false,0,25.1,Ikeja,1291949443
+W1291949444,,service,false,0,5.0,false,false,false,0,63.1,Ikeja,1291949444
+W1293773207,,primary,true,0,7.5,false,false,false,0,9.8,Ikeja,1293773207
+W1300274448,,residential,false,0,7.5,false,false,false,0,85.4,Ikeja,1300274448
+W1303377499,,trunk,true,0,7.5,false,false,false,0,20.6,Ikeja,1303377499
+W1306493106,,primary,true,0,7.5,true,false,false,0,43.7,Ikeja,1306493106
+W1306493107,,primary,true,0,7.5,true,false,false,0,56.6,Ikeja,1306493107
+W1306493108,,primary,true,0,7.5,true,false,false,0,39.6,Ikeja,1306493108
+W1306493109,,primary,false,0,17.5,true,false,false,0,56.1,Ikeja,1306493109
+W1313159343,,service,false,0,5.0,false,false,false,0,5.2,Ikeja,1313159343
+W1313159344,,service,false,0,5.0,false,false,false,0,3.1,Ikeja,1313159344
+W1313159345,,service,false,0,5.0,false,false,false,0,6.0,Ikeja,1313159345
+W1313159346,,service,false,0,5.0,false,false,false,0,59.0,Ikeja,1313159346
+W1313159347,,service,false,0,5.0,false,false,false,0,94.8,Ikeja,1313159347
+W1313159348,,residential,false,0,7.5,false,false,false,0,67.9,Ikeja,1313159348
+W1313159349,,residential,false,0,7.5,false,false,false,0,8.9,Ikeja,1313159349
+W1313159350,,residential,false,0,7.5,false,false,false,0,8.2,Ikeja,1313159350
+W1313159351,,service,false,0,5.0,false,false,false,0,37.8,Ikeja,1313159351
+W1313159352,,residential,false,0,7.5,false,false,false,0,41.7,Ikeja,1313159352
+W1313159353,,residential,false,0,7.5,false,false,false,0,43.2,Ikeja,1313159353
+W1313159354,,residential,false,0,7.5,false,false,false,0,51.0,Ikeja,1313159354
+W1313159355,,residential,false,0,7.5,false,false,false,0,45.9,Ikeja,1313159355
+W1313159356,,residential,false,0,7.5,false,false,false,0,43.7,Ikeja,1313159356
+W1313159357,,service,false,0,5.0,false,false,false,0,4.9,Ikeja,1313159357
+W1313159358,,residential,false,0,7.5,false,false,false,0,9.1,Ikeja,1313159358
+W1321761461,,service,false,0,5.0,false,false,false,0,19.3,Ikeja,1321761461
+W1321761462,,service,false,0,5.0,false,false,false,0,54.5,Ikeja,1321761462
+W1321761463,,service,false,0,5.0,false,false,false,0,14.8,Ikeja,1321761463
+W1321761464,,service,false,0,5.0,false,false,false,0,126.1,Ikeja,1321761464
+W134396669,,tertiary,false,0,10.0,true,false,false,0,229.0,Ikeja,134396669
+W134396670,,primary,true,0,7.5,true,false,false,0,56.9,Ikeja,134396670
+W134396675,,primary,false,0,17.5,true,false,false,0,240.6,Ikeja,134396675
+W134396679,,primary,false,0,17.5,true,false,false,0,200.9,Ikeja,134396679
+W134398952,,secondary,false,0,13.0,true,false,true,0,102.8,Ikeja,134398952
+W134398953,,trunk,true,0,7.5,true,false,false,0,285.7,Ikeja,134398953
+W134398959,,secondary,true,0,7.5,true,false,false,0,22.7,Ikeja,134398959
+W134398960,,trunk,true,0,7.5,true,false,false,0,312.2,Ikeja,134398960
+W134398962,,primary,false,0,17.5,true,false,true,0,85.3,Ikeja,134398962
+W134398964,,trunk,true,0,7.5,true,false,false,0,281.0,Ikeja,134398964
+W134398968,,trunk,true,0,7.5,true,false,false,0,340.0,Ikeja,134398968
+W134400929,,trunk,true,0,7.5,true,false,false,0,92.8,Ikeja,134400929
+W134400932,,primary,false,0,17.5,true,false,false,0,187.0,Ikeja,134400932
+W134400933,,primary,false,0,17.5,true,false,false,0,104.3,Ikeja,134400933
+W134400937,,service,false,0,5.0,true,false,false,0,56.6,Ikeja,134400937
+W134400941,,primary,false,0,17.5,true,false,false,0,81.1,Ikeja,134400941
+W134400943,,trunk,true,0,7.5,true,false,false,0,98.4,Ikeja,134400943
+W134400944,,primary,false,0,17.5,true,false,false,0,60.7,Ikeja,134400944
+W134404768,,secondary,false,0,13.0,true,false,false,0,206.9,Ikeja,134404768
+W134404775,,residential,false,0,7.5,false,false,false,0,73.1,Ikeja,134404775
+W134404776,,residential,false,0,7.5,false,false,false,0,217.6,Ikeja,134404776
+W134404783,,secondary,false,0,13.0,true,false,false,0,229.6,Ikeja,134404783
+W134404785,,primary,false,0,17.5,true,false,false,0,34.3,Ikeja,134404785
+W134404786,,residential,false,0,7.5,false,false,false,0,237.5,Ikeja,134404786
+W134404787,,residential,false,0,7.5,false,false,false,0,124.4,Ikeja,134404787
+W134404796,,residential,false,0,7.5,false,false,false,0,138.4,Ikeja,134404796
+W134404801,,primary,false,0,17.5,true,false,false,0,37.0,Ikeja,134404801
+W134404807,,residential,false,0,7.5,false,false,false,0,148.4,Ikeja,134404807
+W134404811,,residential,false,0,7.5,false,false,false,0,216.4,Ikeja,134404811
+W134404817,,secondary,false,0,13.0,true,false,false,0,211.6,Ikeja,134404817
+W134404818,,secondary,false,0,13.0,true,false,false,0,214.5,Ikeja,134404818
+W134404819,,residential,false,0,7.5,false,false,false,0,159.1,Ikeja,134404819
+W1347907412,,residential,false,0,7.5,false,false,false,0,154.8,Ikeja,1347907412
+W135199748,,secondary,true,0,7.5,true,false,false,0,83.5,Ikeja,135199748
+W135199756,,secondary,true,0,7.5,true,false,false,0,64.8,Ikeja,135199756
+W1353188846,,service,false,0,5.0,false,false,false,0,58.2,Ikeja,1353188846
+W1353188847,,service,false,0,5.0,false,false,false,0,63.5,Ikeja,1353188847
+W1353355631,,residential,false,0,7.5,false,false,false,0,49.8,Ikeja,1353355631
+W135619377,,residential,false,0,7.5,false,false,false,0,72.8,Ikeja,135619377
+W135619378,,residential,false,0,7.5,false,false,false,0,413.3,Ikeja,135619378
+W135619381,,residential,false,0,7.5,false,false,false,0,216.8,Ikeja,135619381
+W135619383,,residential,false,0,7.5,false,false,false,0,287.9,Ikeja,135619383
+W135619386,,residential,false,0,7.5,false,false,false,0,244.6,Ikeja,135619386
+W135619388,,service,false,0,5.0,false,false,false,0,136.2,Ikeja,135619388
+W135619399,,residential,false,0,7.5,false,false,false,0,292.1,Ikeja,135619399
+W135619402,,residential,false,0,7.5,false,false,false,0,174.3,Ikeja,135619402
+W135619404,,residential,false,0,7.5,false,false,false,0,157.6,Ikeja,135619404
+W135619418,,residential,false,0,7.5,false,false,false,0,872.3,Ikeja,135619418
+W135619419,,residential,false,0,7.5,false,false,false,0,23.6,Ikeja,135619419
+W135619421,,residential,false,0,7.5,false,false,false,0,178.8,Ikeja,135619421
+W135619422,,residential,false,0,7.5,false,false,false,0,91.9,Ikeja,135619422
+W135619427,,residential,false,0,7.5,false,false,false,0,142.2,Ikeja,135619427
+W135619429,,residential,false,0,7.5,false,false,false,0,72.1,Ikeja,135619429
+W135619430,,residential,false,0,7.5,false,false,false,0,153.2,Ikeja,135619430
+W135619431,,residential,false,0,7.5,true,false,false,0,248.3,Ikeja,135619431
+W135619432,,residential,false,0,7.5,false,false,false,0,62.2,Ikeja,135619432
+W135619448,,residential,false,0,7.5,false,false,false,0,123.3,Ikeja,135619448
+W135619451,,residential,false,0,7.5,false,false,false,0,90.6,Ikeja,135619451
+W135619452,,residential,false,0,7.5,false,false,false,0,173.8,Ikeja,135619452
+W135619456,,residential,false,0,7.5,false,false,false,0,157.6,Ikeja,135619456
+W135619460,,residential,false,0,7.5,false,false,false,0,80.2,Ikeja,135619460
+W135619465,,residential,false,0,7.5,false,false,false,0,191.6,Ikeja,135619465
+W135619472,,residential,false,0,7.5,false,false,false,0,143.6,Ikeja,135619472
+W135619473,,residential,false,0,7.5,false,false,false,0,251.1,Ikeja,135619473
+W135619475,,residential,false,0,7.5,false,false,false,0,155.3,Ikeja,135619475
+W135619477,,residential,false,0,7.5,false,false,false,0,201.6,Ikeja,135619477
+W135619478,,residential,false,0,7.5,false,false,false,0,15.2,Ikeja,135619478
+W135619483,,residential,false,0,7.5,false,false,false,0,513.3,Ikeja,135619483
+W135619484,,residential,false,0,7.5,false,false,false,0,115.8,Ikeja,135619484
+W135619486,,residential,false,0,7.5,false,false,false,0,501.5,Ikeja,135619486
+W135619487,,residential,false,0,7.5,false,false,false,0,179.1,Ikeja,135619487
+W135619490,,service,false,0,5.0,false,false,false,0,611.3,Ikeja,135619490
+W135619493,,residential,false,0,7.5,false,false,false,0,125.3,Ikeja,135619493
+W135619500,,residential,false,0,7.5,false,false,false,0,171.5,Ikeja,135619500
+W135619506,,residential,false,0,7.5,false,false,false,0,193.5,Ikeja,135619506
+W135619508,,residential,false,0,7.5,false,false,false,0,267.6,Ikeja,135619508
+W135655782,,residential,false,0,7.5,false,false,false,0,109.1,Ikeja,135655782
+W1357150509,,service,false,0,5.0,false,false,false,0,10.5,Ikeja,1357150509
+W1357150510,,service,false,0,5.0,false,false,false,0,14.4,Ikeja,1357150510
+W1357150511,,service,false,0,5.0,false,false,false,0,136.9,Ikeja,1357150511
+W1357150512,,service,false,0,5.0,false,false,false,0,43.9,Ikeja,1357150512
+W1358998746,,service,false,0,5.0,false,false,false,0,72.9,Ikeja,1358998746
+W1358998747,,service,false,0,5.0,false,false,false,0,99.6,Ikeja,1358998747
+W1358998748,,service,false,0,5.0,false,false,false,0,58.7,Ikeja,1358998748
+W1358998749,,service,false,0,5.0,false,false,false,0,77.4,Ikeja,1358998749
+W1358998750,,service,false,0,5.0,false,false,false,0,54.8,Ikeja,1358998750
+W1358998751,,service,false,0,5.0,false,false,false,0,60.4,Ikeja,1358998751
+W1359246567,,service,false,0,5.0,false,false,false,0,177.7,Ikeja,1359246567
+W136182564,,residential,false,0,7.5,false,false,false,0,192.2,Ikeja,136182564
+W136182566,,residential,false,0,7.5,false,false,false,0,228.2,Ikeja,136182566
+W136182570,,residential,false,0,7.5,false,false,false,0,278.7,Ikeja,136182570
+W136182576,,service,false,0,5.0,false,false,false,0,484.5,Ikeja,136182576
+W136182587,,residential,false,0,7.5,false,false,false,0,230.1,Ikeja,136182587
+W136326592,,primary,true,0,7.5,true,false,false,0,54.7,Ikeja,136326592
+W136326594,,service,false,0,5.0,false,false,false,0,1064.5,Ikeja,136326594
+W136333521,,residential,false,0,7.5,false,false,false,0,162.2,Ikeja,136333521
+W136333522,,residential,false,0,7.5,false,false,false,0,171.4,Ikeja,136333522
+W136333523,,residential,false,0,7.5,false,false,false,0,276.4,Ikeja,136333523
+W136333526,,service,false,0,5.0,false,false,false,0,185.9,Ikeja,136333526
+W136333527,,residential,false,0,7.5,false,false,false,0,550.4,Ikeja,136333527
+W136333533,,residential,false,0,7.5,false,false,false,0,449.2,Ikeja,136333533
+W136333534,,residential,false,0,7.5,false,false,false,0,236.5,Ikeja,136333534
+W136333536,,residential,false,0,7.5,false,false,false,0,209.5,Ikeja,136333536
+W136333540,,residential,false,0,7.5,false,false,false,0,351.7,Ikeja,136333540
+W136333541,,unclassified,false,0,7.5,false,false,false,0,524.5,Ikeja,136333541
+W136333543,,residential,false,0,7.5,false,false,false,0,278.8,Ikeja,136333543
+W136333546,,residential,false,0,7.5,false,false,false,0,115.5,Ikeja,136333546
+W136333547,,residential,false,0,7.5,false,false,false,0,86.7,Ikeja,136333547
+W136333549,,residential,false,0,7.5,false,false,false,0,150.9,Ikeja,136333549
+W136333551,,residential,false,0,7.5,false,false,false,0,471.1,Ikeja,136333551
+W136333552,,residential,false,0,7.5,false,false,false,0,177.0,Ikeja,136333552
+W136333553,,residential,false,0,7.5,false,false,false,0,278.6,Ikeja,136333553
+W136333554,,residential,false,0,7.5,false,false,false,0,354.3,Ikeja,136333554
+W136333555,,residential,false,0,7.5,false,false,false,0,146.3,Ikeja,136333555
+W136333556,,residential,false,0,7.5,false,false,false,0,100.3,Ikeja,136333556
+W136333557,,residential,false,0,7.5,false,false,false,0,69.3,Ikeja,136333557
+W136333558,,residential,false,0,7.5,false,false,false,0,358.6,Ikeja,136333558
+W136333559,,residential,false,0,7.5,false,false,false,0,241.3,Ikeja,136333559
+W136333562,,residential,false,0,7.5,false,false,false,0,205.5,Ikeja,136333562
+W136333563,,residential,false,0,7.5,false,false,false,0,327.5,Ikeja,136333563
+W136333566,,residential,false,0,7.5,false,false,false,0,309.7,Ikeja,136333566
+W136333567,,residential,false,0,7.5,false,false,false,0,120.3,Ikeja,136333567
+W136333568,,residential,false,0,7.5,false,false,false,0,364.1,Ikeja,136333568
+W136338237,,residential,false,0,7.5,false,false,false,0,52.1,Ikeja,136338237
+W136338238,,residential,false,0,7.5,false,false,false,0,437.0,Ikeja,136338238
+W136338242,,residential,false,0,7.5,false,false,false,0,462.9,Ikeja,136338242
+W136338243,,service,false,0,5.0,false,false,false,0,64.4,Ikeja,136338243
+W136338247,,residential,false,0,7.5,false,false,false,0,124.0,Ikeja,136338247
+W136338250,,residential,false,0,7.5,false,false,false,0,46.1,Ikeja,136338250
+W136338253,,residential,false,0,7.5,false,false,false,0,223.0,Ikeja,136338253
+W136338254,,residential,false,0,7.5,false,false,false,0,156.2,Ikeja,136338254
+W136338255,,residential,false,0,7.5,false,false,false,0,222.7,Ikeja,136338255
+W136338257,,residential,false,0,7.5,false,false,false,0,257.6,Ikeja,136338257
+W136338258,,residential,false,0,7.5,false,false,false,0,148.4,Ikeja,136338258
+W136338261,,service,false,0,5.0,false,false,false,0,173.3,Ikeja,136338261
+W136338263,,residential,false,0,7.5,false,false,false,0,331.9,Ikeja,136338263
+W136338265,,residential,false,0,7.5,false,false,false,0,295.3,Ikeja,136338265
+W136338267,,service,false,0,5.0,true,false,false,0,315.7,Ikeja,136338267
+W136338268,,residential,false,0,7.5,false,false,false,0,45.9,Ikeja,136338268
+W136338272,,residential,false,0,7.5,false,false,false,0,78.8,Ikeja,136338272
+W136338275,,residential,false,0,7.5,false,false,false,0,367.2,Ikeja,136338275
+W136338280,,service,false,0,5.0,false,false,false,0,482.4,Ikeja,136338280
+W136338283,,residential,false,0,7.5,false,false,false,0,167.5,Ikeja,136338283
+W136338284,,residential,false,0,7.5,false,false,false,0,221.7,Ikeja,136338284
+W136338285,,residential,false,0,7.5,false,false,false,0,334.9,Ikeja,136338285
+W136338291,,residential,false,0,7.5,false,false,false,0,554.6,Ikeja,136338291
+W136338294,,residential,false,0,7.5,false,false,false,0,120.2,Ikeja,136338294
+W136338297,,residential,false,0,7.5,false,false,false,0,118.9,Ikeja,136338297
+W136338299,,residential,false,0,7.5,false,false,false,0,132.7,Ikeja,136338299
+W136338300,,residential,false,0,7.5,false,false,false,0,131.7,Ikeja,136338300
+W136338303,,residential,false,0,7.5,true,false,false,0,35.6,Ikeja,136338303
+W136338304,,residential,false,0,7.5,false,false,false,0,407.6,Ikeja,136338304
+W136338307,,residential,false,0,7.5,false,false,false,0,53.5,Ikeja,136338307
+W136338308,,service,false,0,5.0,false,false,false,0,367.9,Ikeja,136338308
+W136338309,,residential,false,0,7.5,false,false,false,0,420.3,Ikeja,136338309
+W136338317,,residential,false,0,7.5,false,false,false,0,171.8,Ikeja,136338317
+W136341450,,residential,false,0,7.5,false,false,false,0,45.7,Ikeja,136341450
+W136341451,,residential,false,0,7.5,false,false,false,0,122.6,Ikeja,136341451
+W136341453,,residential,false,0,7.5,false,false,false,0,141.2,Ikeja,136341453
+W136341454,,residential,false,1,4.3,false,false,false,0,476.4,Ikeja,136341454
+W136341456,,residential,false,0,7.5,false,false,false,0,246.4,Ikeja,136341456
+W136341457,,primary,true,0,7.5,true,false,false,0,123.7,Ikeja,136341457
+W136341458,,residential,false,0,7.5,false,false,false,0,63.7,Ikeja,136341458
+W136341462,,residential,false,0,7.5,false,false,false,0,113.5,Ikeja,136341462
+W136341465,,residential,false,0,7.5,false,false,false,0,280.4,Ikeja,136341465
+W136341469,,residential,false,0,7.5,false,false,false,0,106.4,Ikeja,136341469
+W136341471,,residential,false,0,7.5,false,false,false,0,245.7,Ikeja,136341471
+W136341473,,residential,false,0,7.5,false,false,false,0,443.2,Ikeja,136341473
+W136341475,,residential,false,0,7.5,false,false,false,0,236.3,Ikeja,136341475
+W136341476,,residential,false,0,7.5,false,false,false,0,89.7,Ikeja,136341476
+W136341480,,residential,false,0,7.5,false,false,false,0,52.6,Ikeja,136341480
+W136341484,,residential,false,0,7.5,false,false,false,0,111.9,Ikeja,136341484
+W136341485,,residential,false,0,7.5,false,false,false,0,110.1,Ikeja,136341485
+W136415210,,tertiary,false,0,10.0,true,false,true,0,35.0,Ikeja,136415210
+W136415211,,residential,false,0,7.5,false,false,false,0,313.6,Ikeja,136415211
+W136415212,,residential,false,0,7.5,false,false,false,0,80.6,Ikeja,136415212
+W136415216,,residential,false,0,7.5,false,false,false,0,186.0,Ikeja,136415216
+W136415220,,residential,false,0,7.5,false,false,false,0,86.1,Ikeja,136415220
+W136415221,,residential,false,0,7.5,false,false,false,0,336.4,Ikeja,136415221
+W136415223,,residential,false,0,7.5,false,false,false,0,262.1,Ikeja,136415223
+W136415225,,residential,false,0,7.5,false,false,false,0,198.6,Ikeja,136415225
+W136415227,,residential,false,0,7.5,false,false,false,0,142.6,Ikeja,136415227
+W136415229,,residential,false,0,7.5,false,false,false,0,196.6,Ikeja,136415229
+W136415232,,residential,false,0,7.5,false,false,false,0,66.4,Ikeja,136415232
+W136415234,,residential,false,0,7.5,false,false,false,0,185.4,Ikeja,136415234
+W136415235,,residential,false,0,7.5,false,false,false,0,137.1,Ikeja,136415235
+W136415238,,residential,false,0,7.5,false,false,false,0,341.4,Ikeja,136415238
+W136415242,,residential,false,0,7.5,false,false,false,0,151.1,Ikeja,136415242
+W136416560,,service,false,0,5.0,true,false,false,0,88.4,Ikeja,136416560
+W136416561,,service,false,0,5.0,false,false,false,0,36.1,Ikeja,136416561
+W136416563,,residential,false,0,7.5,false,false,false,0,371.8,Ikeja,136416563
+W136416565,,residential,false,0,7.5,false,false,false,0,212.5,Ikeja,136416565
+W136416569,,residential,false,0,7.5,false,false,false,0,90.8,Ikeja,136416569
+W136416570,,residential,false,0,7.5,false,false,false,0,158.3,Ikeja,136416570
+W136416571,,residential,false,0,7.5,false,false,false,0,330.2,Ikeja,136416571
+W136416572,,service,false,0,5.0,false,false,false,0,112.7,Ikeja,136416572
+W136416574,,service,false,0,5.0,false,false,false,0,252.6,Ikeja,136416574
+W136416575,,residential,false,0,7.5,false,false,false,0,126.0,Ikeja,136416575
+W136416576,,residential,false,0,7.5,false,false,false,0,167.5,Ikeja,136416576
+W136416578,,residential,false,0,7.5,false,false,false,0,226.0,Ikeja,136416578
+W136416580,,residential,false,0,7.5,false,false,false,0,350.1,Ikeja,136416580
+W136416583,,residential,false,0,7.5,false,false,false,0,196.8,Ikeja,136416583
+W136416585,,service,false,0,5.0,false,false,false,0,183.2,Ikeja,136416585
+W136416588,,residential,false,0,7.5,false,false,false,0,156.3,Ikeja,136416588
+W136416592,,residential,false,0,7.5,false,false,false,0,361.2,Ikeja,136416592
+W136416593,,residential,false,0,7.5,false,false,false,0,74.8,Ikeja,136416593
+W136416595,,residential,false,0,7.5,false,false,false,0,80.7,Ikeja,136416595
+W136416601,,residential,false,0,7.5,false,false,false,0,83.1,Ikeja,136416601
+W136416602,,residential,false,0,7.5,false,false,false,0,139.8,Ikeja,136416602
+W136416603,,residential,false,0,7.5,false,false,false,0,147.3,Ikeja,136416603
+W136416604,,residential,false,0,7.5,false,false,false,0,202.7,Ikeja,136416604
+W136416608,,residential,false,0,7.5,false,false,false,0,176.5,Ikeja,136416608
+W136416613,,residential,false,0,7.5,false,false,false,0,58.0,Ikeja,136416613
+W136416614,,residential,false,0,7.5,false,false,false,0,71.1,Ikeja,136416614
+W136416615,,residential,false,0,7.5,false,false,false,0,185.1,Ikeja,136416615
+W136416617,,residential,false,0,7.5,false,false,false,0,103.6,Ikeja,136416617
+W136416620,,residential,false,0,7.5,true,false,false,0,132.9,Ikeja,136416620
+W136416622,,service,false,0,5.0,false,false,false,0,244.4,Ikeja,136416622
+W136416625,,residential,false,0,7.5,false,false,false,0,143.8,Ikeja,136416625
+W136416627,,residential,false,0,7.5,false,false,false,0,196.8,Ikeja,136416627
+W136416629,,service,false,0,5.0,false,false,false,0,193.1,Ikeja,136416629
+W136416633,,service,false,0,5.0,false,false,false,0,112.6,Ikeja,136416633
+W136416635,,residential,false,0,7.5,false,false,false,0,128.7,Ikeja,136416635
+W136420254,,residential,false,0,7.5,false,false,false,0,233.5,Ikeja,136420254
+W136420262,,residential,false,0,7.5,false,false,false,0,259.5,Ikeja,136420262
+W136420263,,tertiary,false,0,10.0,true,false,true,0,87.3,Ikeja,136420263
+W136420264,,residential,false,0,7.5,true,false,true,0,90.1,Ikeja,136420264
+W136420265,,tertiary,false,0,10.0,true,false,true,0,106.2,Ikeja,136420265
+W136426164,,residential,false,0,7.5,false,false,false,0,116.1,Ikeja,136426164
+W136426171,,residential,false,0,7.5,false,false,false,0,421.2,Ikeja,136426171
+W136426180,,residential,false,0,7.5,false,false,false,0,143.9,Ikeja,136426180
+W136426186,,residential,false,0,7.5,false,false,false,0,141.4,Ikeja,136426186
+W136426194,,residential,false,0,7.5,false,false,false,0,196.0,Ikeja,136426194
+W136426223,,residential,false,0,7.5,false,false,false,0,269.6,Ikeja,136426223
+W136430368,,residential,false,0,7.5,false,false,false,0,675.8,Ikeja,136430368
+W136430371,,service,false,0,5.0,false,false,false,0,179.3,Ikeja,136430371
+W136430372,,service,false,0,5.0,false,false,false,0,143.3,Ikeja,136430372
+W136430373,,residential,false,0,7.5,false,false,false,0,409.8,Ikeja,136430373
+W136430378,,service,false,0,5.0,false,false,false,0,434.1,Ikeja,136430378
+W136430380,,service,false,0,5.0,false,false,false,0,115.3,Ikeja,136430380
+W136430382,,residential,false,0,7.5,false,false,false,0,315.2,Ikeja,136430382
+W136430383,,primary,true,2,7.6,true,false,false,0,31.6,Ikeja,136430383
+W136430384,,service,false,0,5.0,false,false,false,0,323.3,Ikeja,136430384
+W136430385,,service,false,0,5.0,false,false,false,0,114.2,Ikeja,136430385
+W136430386,,service,false,0,5.0,false,false,false,0,293.8,Ikeja,136430386
+W136430387,,service,false,0,5.0,false,false,false,0,645.2,Ikeja,136430387
+W136430388,,residential,false,0,7.5,false,false,false,0,248.2,Ikeja,136430388
+W136430389,,service,false,0,5.0,false,false,false,0,376.1,Ikeja,136430389
+W136430391,,residential,false,0,7.5,false,false,false,0,123.4,Ikeja,136430391
+W136430392,,residential,false,0,7.5,false,false,false,0,138.8,Ikeja,136430392
+W136430394,,service,false,0,5.0,false,false,false,0,352.7,Ikeja,136430394
+W136430395,,residential,false,0,7.5,false,false,false,0,102.9,Ikeja,136430395
+W136430399,,residential,false,0,7.5,false,false,false,0,211.8,Ikeja,136430399
+W136430400,,residential,false,0,7.5,false,false,false,0,94.7,Ikeja,136430400
+W136430401,,residential,false,0,7.5,false,false,false,0,82.7,Ikeja,136430401
+W136430402,,residential,false,0,7.5,false,false,false,0,358.7,Ikeja,136430402
+W136430404,,service,false,0,5.0,false,false,false,0,268.3,Ikeja,136430404
+W136430405,,service,false,0,5.0,false,false,false,0,53.1,Ikeja,136430405
+W136430406,,service,false,0,5.0,false,false,false,0,165.7,Ikeja,136430406
+W136430407,,residential,false,0,7.5,false,false,false,0,97.9,Ikeja,136430407
+W136430408,,service,false,0,5.0,false,false,false,0,76.0,Ikeja,136430408
+W136430409,,residential,false,0,7.5,false,false,false,0,75.1,Ikeja,136430409
+W136430410,,service,false,0,5.0,true,false,false,0,214.2,Ikeja,136430410
+W136430412,,service,false,0,5.0,false,false,false,0,166.7,Ikeja,136430412
+W136430413,,service,false,0,5.0,false,false,false,0,290.5,Ikeja,136430413
+W136430414,,service,false,0,5.0,false,false,false,0,780.6,Ikeja,136430414
+W136430415,,service,false,0,5.0,false,false,false,0,193.3,Ikeja,136430415
+W136432578,,residential,false,0,7.5,false,false,false,0,127.1,Ikeja,136432578
+W136432579,,residential,false,0,7.5,false,false,false,0,177.8,Ikeja,136432579
+W136432580,,residential,false,0,7.5,false,false,false,0,564.2,Ikeja,136432580
+W136432588,,residential,false,0,7.5,false,false,false,0,762.1,Ikeja,136432588
+W136432595,,service,false,0,5.0,false,false,false,0,42.5,Ikeja,136432595
+W136432602,,residential,false,0,7.5,false,false,false,0,60.3,Ikeja,136432602
+W1364922407,,service,false,0,5.0,false,false,false,0,64.4,Ikeja,1364922407
+W1368689567,,residential,false,0,7.5,false,false,false,0,4.8,Ikeja,1368689567
+W1368700003,,residential,false,0,7.5,false,false,false,0,23.5,Ikeja,1368700003
+W1372135235,,service,false,0,5.0,false,false,false,0,14.6,Ikeja,1372135235
+W1372258098,,residential,false,0,7.5,false,false,false,0,41.8,Ikeja,1372258098
+W1372258099,,service,false,0,5.0,false,false,false,0,59.4,Ikeja,1372258099
+W1372258100,,residential,false,0,7.5,false,false,false,0,12.0,Ikeja,1372258100
+W1372258101,,residential,false,0,7.5,false,false,false,0,9.9,Ikeja,1372258101
+W1372258102,,service,false,0,5.0,false,false,false,0,18.0,Ikeja,1372258102
+W1372258103,,service,false,0,5.0,false,false,false,0,7.9,Ikeja,1372258103
+W1372258104,,residential,false,0,7.5,false,false,false,0,4.9,Ikeja,1372258104
+W1372258105,,service,false,0,5.0,false,false,false,0,9.4,Ikeja,1372258105
+W1372258106,,service,false,0,5.0,false,false,false,0,43.6,Ikeja,1372258106
+W1372258107,,service,false,0,5.0,false,false,false,0,69.0,Ikeja,1372258107
+W1372258108,,residential,false,0,7.5,false,false,false,0,8.8,Ikeja,1372258108
+W1372258109,,service,false,0,5.0,false,false,false,0,6.8,Ikeja,1372258109
+W1372258110,,residential,false,0,7.5,false,false,false,0,70.3,Ikeja,1372258110
+W1372258111,,service,false,0,5.0,true,false,false,0,11.9,Ikeja,1372258111
+W1372258112,,service,false,0,5.0,true,false,false,0,7.3,Ikeja,1372258112
+W1372260088,,residential,false,0,7.5,false,false,false,0,3.0,Ikeja,1372260088
+W1372260089,,residential,false,0,7.5,false,false,false,0,49.8,Ikeja,1372260089
+W1372260090,,service,false,0,5.0,false,false,false,0,40.5,Ikeja,1372260090
+W1372260091,,service,false,0,5.0,false,false,false,0,6.2,Ikeja,1372260091
+W1372260092,,service,false,0,5.0,false,false,false,0,9.6,Ikeja,1372260092
+W1372260093,,service,false,0,5.0,false,false,false,0,9.7,Ikeja,1372260093
+W1372260094,,service,false,0,5.0,false,false,false,0,17.7,Ikeja,1372260094
+W1372260095,,residential,false,0,7.5,false,false,false,0,3.8,Ikeja,1372260095
+W1372262437,,service,false,0,5.0,false,false,false,0,10.1,Ikeja,1372262437
+W1372262438,,service,false,0,5.0,false,false,false,0,10.5,Ikeja,1372262438
+W1372262439,,residential,false,0,7.5,false,false,false,0,7.6,Ikeja,1372262439
+W1372262440,,service,false,0,5.0,false,false,false,0,7.0,Ikeja,1372262440
+W1372262441,,service,false,0,5.0,false,false,false,0,7.4,Ikeja,1372262441
+W1372262442,,service,false,0,5.0,false,false,false,0,7.0,Ikeja,1372262442
+W1372262443,,residential,false,0,7.5,false,false,false,0,60.1,Ikeja,1372262443
+W1372262444,,residential,false,0,7.5,false,false,false,0,7.4,Ikeja,1372262444
+W1372262445,,residential,false,0,7.5,false,false,false,0,5.6,Ikeja,1372262445
+W1372262446,,residential,false,0,7.5,false,false,false,0,8.1,Ikeja,1372262446
+W1372262447,,service,false,0,5.0,false,false,false,0,31.9,Ikeja,1372262447
+W1372262448,,residential,false,0,7.5,false,false,false,0,6.7,Ikeja,1372262448
+W1372262449,,residential,false,0,7.5,false,false,false,0,9.2,Ikeja,1372262449
+W1372270698,,residential,false,0,7.5,false,false,false,0,4.6,Ikeja,1372270698
+W1372270699,,service,false,0,5.0,false,false,false,0,38.0,Ikeja,1372270699
+W1372270700,,service,false,0,5.0,false,false,false,0,36.0,Ikeja,1372270700
+W1372270701,,service,false,0,5.0,false,false,false,0,9.6,Ikeja,1372270701
+W1372270702,,residential,false,0,7.5,false,false,false,0,52.8,Ikeja,1372270702
+W1372270703,,residential,false,0,7.5,false,false,false,0,53.5,Ikeja,1372270703
+W1372270704,,service,false,0,5.0,false,false,false,0,6.3,Ikeja,1372270704
+W1372270705,,service,false,0,5.0,false,false,false,0,61.3,Ikeja,1372270705
+W1372270706,,service,false,0,5.0,false,false,false,0,40.0,Ikeja,1372270706
+W1372270707,,service,false,0,5.0,false,false,false,0,32.7,Ikeja,1372270707
+W1372270708,,service,false,0,5.0,false,false,false,0,31.6,Ikeja,1372270708
+W1372270709,,service,false,0,5.0,false,false,false,0,44.0,Ikeja,1372270709
+W1372270710,,residential,false,0,7.5,false,false,false,0,5.6,Ikeja,1372270710
+W1372270711,,residential,false,0,7.5,false,false,false,0,65.3,Ikeja,1372270711
+W1372270712,,service,false,0,5.0,false,false,false,0,14.8,Ikeja,1372270712
+W1372270713,,service,false,0,5.0,false,false,false,0,18.5,Ikeja,1372270713
+W1372276466,,service,false,0,5.0,false,false,false,0,44.4,Ikeja,1372276466
+W1372276467,,service,false,0,5.0,false,false,false,0,9.7,Ikeja,1372276467
+W1372276468,,service,false,0,5.0,false,false,false,0,21.1,Ikeja,1372276468
+W1372276469,,service,false,0,5.0,false,false,false,0,39.1,Ikeja,1372276469
+W1372276470,,service,false,0,5.0,false,false,false,0,16.7,Ikeja,1372276470
+W1372276471,,service,false,0,5.0,false,false,false,0,16.7,Ikeja,1372276471
+W1372276472,,service,false,0,5.0,false,false,false,0,56.5,Ikeja,1372276472
+W1372276473,,service,false,0,5.0,false,false,false,0,6.9,Ikeja,1372276473
+W1372276474,,residential,false,0,7.5,false,false,false,0,8.2,Ikeja,1372276474
+W1372276475,,residential,false,0,7.5,false,false,false,0,10.4,Ikeja,1372276475
+W1372276476,,service,false,0,5.0,false,false,false,0,55.5,Ikeja,1372276476
+W1372276477,,service,false,0,5.0,false,false,false,0,7.4,Ikeja,1372276477
+W1372276478,,service,false,0,5.0,false,false,false,0,6.3,Ikeja,1372276478
+W1372276479,,service,false,0,5.0,false,false,false,0,6.7,Ikeja,1372276479
+W1372276480,,service,false,0,5.0,false,false,false,0,47.1,Ikeja,1372276480
+W1373625195,,service,false,0,5.0,false,false,false,0,13.9,Ikeja,1373625195
+W1373625196,,service,false,0,5.0,false,false,false,0,6.8,Ikeja,1373625196
+W1373625197,,service,false,0,5.0,false,false,false,0,55.2,Ikeja,1373625197
+W1373625198,,residential,false,0,7.5,false,false,false,0,8.6,Ikeja,1373625198
+W1373625199,,service,false,0,5.0,false,false,false,0,62.1,Ikeja,1373625199
+W1373634324,,residential,false,0,7.5,false,false,false,0,2.1,Ikeja,1373634324
+W1373634325,,residential,false,0,7.5,false,false,false,0,98.3,Ikeja,1373634325
+W1373634326,,residential,false,0,7.5,false,false,false,0,23.7,Ikeja,1373634326
+W1373931187,,service,false,0,5.0,false,false,false,0,39.3,Ikeja,1373931187
+W1373937039,,service,false,0,5.0,false,false,false,0,34.7,Ikeja,1373937039
+W1373937040,,service,false,0,5.0,false,false,false,0,40.7,Ikeja,1373937040
+W1373937041,,service,false,0,5.0,false,false,false,0,40.5,Ikeja,1373937041
+W1373937042,,service,false,0,5.0,false,false,false,0,48.9,Ikeja,1373937042
+W1373937043,,residential,false,0,7.5,false,false,false,0,275.7,Ikeja,1373937043
+W1373937044,,service,false,0,5.0,false,false,false,0,26.8,Ikeja,1373937044
+W1373937045,,service,false,0,5.0,false,false,false,0,40.2,Ikeja,1373937045
+W1373999378,,service,false,0,5.0,false,false,false,0,111.5,Ikeja,1373999378
+W1374003322,,service,false,0,5.0,false,false,false,0,16.9,Ikeja,1374003322
+W1374003323,,service,false,0,5.0,false,false,false,0,126.9,Ikeja,1374003323
+W1374003324,,service,false,0,5.0,false,false,false,0,120.3,Ikeja,1374003324
+W1374006420,,residential,false,0,7.5,false,false,false,0,64.0,Ikeja,1374006420
+W1374006421,,residential,false,0,7.5,false,false,false,0,6.4,Ikeja,1374006421
+W1374006422,,service,false,0,5.0,false,false,false,0,37.4,Ikeja,1374006422
+W1374006423,,residential,false,0,7.5,false,false,false,0,4.9,Ikeja,1374006423
+W1374313268,,residential,false,0,7.5,false,false,false,0,13.3,Ikeja,1374313268
+W1374620574,,residential,false,0,7.5,false,false,false,0,5.5,Ikeja,1374620574
+W1391794471,,service,false,0,5.0,false,false,false,0,5.0,Ikeja,1391794471
+W1391794472,,service,false,0,5.0,false,false,false,0,3.2,Ikeja,1391794472
+W1391794473,,service,false,0,5.0,false,false,false,0,4.9,Ikeja,1391794473
+W1391794474,,service,false,0,5.0,false,false,false,0,36.3,Ikeja,1391794474
+W1391794475,,service,false,0,5.0,false,false,false,0,33.7,Ikeja,1391794475
+W1391794477,,service,false,0,5.0,false,false,false,0,145.4,Ikeja,1391794477
+W1391794478,,residential,false,0,7.5,false,false,false,0,72.9,Ikeja,1391794478
+W1391794479,,residential,false,0,7.5,false,false,false,0,41.2,Ikeja,1391794479
+W1409707977,,service,false,0,5.0,false,false,false,0,9.1,Ikeja,1409707977
+W1409707978,,service,false,0,5.0,false,false,false,0,3.4,Ikeja,1409707978
+W1411601469,,residential,false,0,7.5,false,true,false,0,9.7,Ikeja,1411601469
+W1413225844,,residential,false,0,7.5,false,false,false,0,7.7,Ikeja,1413225844
+W1416924324,,service,false,0,5.0,false,false,false,0,81.9,Ikeja,1416924324
+W1417086504,,service,false,0,5.0,false,false,false,0,51.4,Ikeja,1417086504
+W1417135355,,service,false,0,5.0,false,false,false,0,45.7,Ikeja,1417135355
+W1417135356,,service,false,0,5.0,false,false,false,0,40.7,Ikeja,1417135356
+W1417135357,,service,false,0,5.0,false,false,false,0,47.4,Ikeja,1417135357
+W1417135358,,service,false,0,5.0,false,false,false,0,62.3,Ikeja,1417135358
+W1424164833,,service,false,0,5.0,false,false,false,0,59.8,Ikeja,1424164833
+W1428451596,,service,false,0,5.0,false,false,false,0,59.7,Ikeja,1428451596
+W1428451597,,service,false,0,5.0,false,false,false,0,2.9,Ikeja,1428451597
+W1428451598,,service,false,0,5.0,false,false,false,0,51.0,Ikeja,1428451598
+W1428451599,,service,false,0,5.0,false,false,false,0,148.4,Ikeja,1428451599
+W1428451600,,service,false,0,5.0,false,false,false,0,189.6,Ikeja,1428451600
+W1430897262,,service,false,0,5.0,false,false,false,0,86.1,Ikeja,1430897262
+W1433193505,,primary,false,0,17.5,true,false,false,0,32.7,Ikeja,1433193505
+W1433258007,,service,false,0,5.0,false,false,false,0,13.5,Ikeja,1433258007
+W1433258008,,service,false,0,5.0,false,false,false,0,12.9,Ikeja,1433258008
+W1433258009,,service,false,0,5.0,false,false,false,0,19.0,Ikeja,1433258009
+W1433258010,,service,false,0,5.0,false,false,false,0,42.7,Ikeja,1433258010
+W1433258011,,service,false,0,5.0,false,false,false,0,23.0,Ikeja,1433258011
+W1433258012,,service,false,0,5.0,false,false,false,0,48.5,Ikeja,1433258012
+W1433685135,,secondary,false,0,13.0,true,false,false,0,3.5,Ikeja,1433685135
+W1434338421,,service,false,0,5.0,false,false,false,0,69.0,Ikeja,1434338421
+W1435826279,,service,false,0,5.0,false,false,false,0,57.8,Ikeja,1435826279
+W1435826280,,service,false,0,5.0,false,false,false,0,26.2,Ikeja,1435826280
+W1435826281,,service,false,0,5.0,false,false,false,0,63.3,Ikeja,1435826281
+W1435826282,,service,false,0,5.0,false,false,false,0,50.4,Ikeja,1435826282
+W1435826283,,service,false,0,5.0,false,false,false,0,77.6,Ikeja,1435826283
+W1435826284,,service,false,0,5.0,false,false,false,0,59.2,Ikeja,1435826284
+W1435826285,,service,false,0,5.0,false,false,false,0,119.7,Ikeja,1435826285
+W1435826286,,service,false,0,5.0,false,false,false,0,119.0,Ikeja,1435826286
+W1435826287,,service,false,0,5.0,false,false,false,0,125.0,Ikeja,1435826287
+W1435826290,,service,false,0,5.0,false,false,false,0,184.3,Ikeja,1435826290
+W1435826291,,service,false,0,5.0,false,false,false,0,56.8,Ikeja,1435826291
+W1435826292,,service,false,0,5.0,false,false,false,0,38.9,Ikeja,1435826292
+W1435826293,,service,false,0,5.0,false,false,false,0,68.0,Ikeja,1435826293
+W1435845660,,service,false,0,5.0,false,false,false,0,95.8,Ikeja,1435845660
+W1436096832,,service,false,0,5.0,false,false,false,0,107.0,Ikeja,1436096832
+W1436096833,,service,false,0,5.0,false,false,false,0,33.2,Ikeja,1436096833
+W1436096834,,service,false,0,5.0,false,false,false,0,37.9,Ikeja,1436096834
+W1436103045,,service,false,0,5.0,false,false,false,0,94.2,Ikeja,1436103045
+W1436103046,,service,false,0,5.0,false,false,false,0,242.0,Ikeja,1436103046
+W1436103047,,service,false,0,5.0,false,false,false,0,57.4,Ikeja,1436103047
+W1436103048,,service,false,0,5.0,false,false,false,0,90.5,Ikeja,1436103048
+W1436140672,,service,false,0,5.0,false,false,false,0,36.8,Ikeja,1436140672
+W1436373399,,service,false,0,5.0,false,false,false,0,9.1,Ikeja,1436373399
+W1436373400,,service,false,0,5.0,false,false,false,0,33.1,Ikeja,1436373400
+W1436384376,,service,false,0,5.0,false,false,false,0,36.3,Ikeja,1436384376
+W1436598315,,service,false,0,5.0,false,false,false,0,10.2,Ikeja,1436598315
+W144455365,,residential,false,0,7.5,false,false,false,0,213.9,Ikeja,144455365
+W144455366,,residential,false,0,7.5,false,true,false,0,9.8,Ikeja,144455366
+W144455368,,residential,false,0,7.5,false,false,false,0,270.5,Ikeja,144455368
+W144455375,,residential,false,0,7.5,false,false,false,0,150.3,Ikeja,144455375
+W144455394,,residential,false,0,7.5,false,true,false,0,14.4,Ikeja,144455394
+W144455419,,residential,false,0,7.5,false,false,false,0,119.5,Ikeja,144455419
+W144455428,,residential,false,0,7.5,false,false,false,0,138.8,Ikeja,144455428
+W144455433,,residential,false,0,7.5,false,false,false,0,48.1,Ikeja,144455433
+W144455435,,residential,false,0,7.5,false,false,false,0,73.2,Ikeja,144455435
+W144455467,,residential,false,0,7.5,false,true,false,0,9.8,Ikeja,144455467
+W144455475,,residential,false,0,7.5,false,false,false,0,76.4,Ikeja,144455475
+W144455489,,residential,false,0,7.5,false,false,false,0,315.7,Ikeja,144455489
+W144455501,,residential,false,0,7.5,false,false,false,0,379.2,Ikeja,144455501
+W144455504,,residential,false,0,7.5,false,false,false,0,58.2,Ikeja,144455504
+W144455505,,residential,false,0,7.5,false,false,false,0,96.5,Ikeja,144455505
+W1450691291,,service,false,0,5.0,false,false,false,0,87.7,Ikeja,1450691291
+W1454189596,,service,false,0,5.0,false,false,false,0,43.5,Ikeja,1454189596
+W1454189597,,residential,false,0,7.5,false,false,false,0,70.2,Ikeja,1454189597
+W1454189943,,service,false,0,5.0,false,false,false,0,57.1,Ikeja,1454189943
+W1459615393,,service,false,0,5.0,false,false,false,0,48.4,Ikeja,1459615393
+W1459615394,,service,false,0,5.0,false,false,false,0,66.0,Ikeja,1459615394
+W1459615395,,service,false,0,5.0,false,false,false,0,47.2,Ikeja,1459615395
+W1459615396,,service,false,0,5.0,false,false,false,0,118.6,Ikeja,1459615396
+W1459615397,,service,false,0,5.0,false,false,false,0,20.1,Ikeja,1459615397
+W1459615398,,service,false,0,5.0,false,false,false,0,108.8,Ikeja,1459615398
+W1459615399,,service,false,0,5.0,false,false,false,0,86.6,Ikeja,1459615399
+W1459615400,,service,false,0,5.0,false,false,false,0,97.8,Ikeja,1459615400
+W1459615401,,service,false,0,5.0,false,false,false,0,180.7,Ikeja,1459615401
+W1459615402,,service,false,0,5.0,false,false,false,0,151.9,Ikeja,1459615402
+W1466052767,,service,false,0,5.0,false,false,false,0,40.5,Ikeja,1466052767
+W1466052768,,service,false,0,5.0,false,false,false,0,61.6,Ikeja,1466052768
+W1468426462,,service,false,0,5.0,false,false,false,0,71.5,Ikeja,1468426462
+W1468426463,,service,false,0,5.0,false,false,false,0,63.6,Ikeja,1468426463
+W1483298714,,service,false,0,5.0,false,false,false,0,13.9,Ikeja,1483298714
+W1483298715,,service,false,0,5.0,false,false,false,0,72.2,Ikeja,1483298715
+W1486126081,,service,false,0,5.0,false,false,false,0,3.7,Ikeja,1486126081
+W1486916387,,service,false,0,5.0,false,false,false,0,89.7,Ikeja,1486916387
+W1486916388,,service,false,0,5.0,false,false,false,0,84.5,Ikeja,1486916388
+W1486916389,,service,false,0,5.0,false,false,false,0,82.2,Ikeja,1486916389
+W1486916390,,service,false,0,5.0,false,false,false,0,33.8,Ikeja,1486916390
+W1486916391,,service,false,0,5.0,false,false,false,0,84.9,Ikeja,1486916391
+W1486916392,,service,false,0,5.0,false,false,false,0,90.7,Ikeja,1486916392
+W1488064255,,service,false,0,5.0,false,false,false,0,8.3,Ikeja,1488064255
+W1488075588,,service,false,0,5.0,false,false,false,0,6.5,Ikeja,1488075588
+W1488538700,,service,false,0,5.0,false,false,false,0,11.2,Ikeja,1488538700
+W1488538701,,service,false,0,5.0,false,false,false,0,14.9,Ikeja,1488538701
+W1490171792,,service,false,0,5.0,false,false,false,0,11.0,Ikeja,1490171792
+W1499247367,,residential,false,0,7.5,false,false,false,0,54.6,Ikeja,1499247367
+W1499265301,,service,false,0,5.0,false,false,false,0,25.2,Ikeja,1499265301
+W1499265302,,service,false,0,5.0,false,false,false,0,77.3,Ikeja,1499265302
+W1505811537,,service,false,0,5.0,false,false,false,0,47.2,Ikeja,1505811537
+W1506070394,,service,false,0,5.0,false,false,false,0,9.0,Ikeja,1506070394
+W1506070395,,service,false,0,5.0,false,false,false,0,9.8,Ikeja,1506070395
+W1506502870,,service,false,0,5.0,false,false,false,0,75.6,Ikeja,1506502870
+W1509433030,,service,false,0,5.0,false,false,false,0,49.4,Ikeja,1509433030
+W1509433031,,service,false,0,5.0,false,false,false,0,103.2,Ikeja,1509433031
+W1509433032,,residential,false,0,7.5,false,false,false,0,220.3,Ikeja,1509433032
+W1509437293,,service,false,0,5.0,true,false,false,0,15.6,Ikeja,1509437293
+W1509437294,,service,false,0,5.0,true,false,false,0,270.4,Ikeja,1509437294
+W1509663295,,service,false,0,5.0,false,false,false,0,47.8,Ikeja,1509663295
+W1509666114,,service,false,0,5.0,false,false,false,0,36.9,Ikeja,1509666114
+W1509666115,,service,false,0,5.0,false,false,false,0,7.3,Ikeja,1509666115
+W1509674707,,service,false,0,5.0,false,false,false,0,84.4,Ikeja,1509674707
+W1509674708,,service,false,0,5.0,false,false,false,0,91.0,Ikeja,1509674708
+W1509674709,,service,false,0,5.0,false,false,false,0,48.8,Ikeja,1509674709
+W1509674710,,service,false,0,5.0,false,false,false,0,234.2,Ikeja,1509674710
+W1509674711,,service,false,0,5.0,true,false,false,0,11.4,Ikeja,1509674711
+W1509674712,,service,false,0,5.0,true,false,false,0,52.9,Ikeja,1509674712
+W1509715178,,service,false,0,5.0,false,false,false,0,67.5,Ikeja,1509715178
+W1509715179,,service,false,0,5.0,false,false,false,0,49.2,Ikeja,1509715179
+W1509719520,,service,false,0,5.0,false,false,false,0,24.2,Ikeja,1509719520
+W1509719521,,service,false,0,5.0,false,false,false,0,98.6,Ikeja,1509719521
+W1510170593,,residential,false,0,7.5,false,false,false,0,59.2,Ikeja,1510170593
+W1510170594,,service,false,0,5.0,false,false,false,0,197.5,Ikeja,1510170594
+W1510170595,,service,false,0,5.0,false,false,false,0,52.1,Ikeja,1510170595
+W1510170596,,service,false,0,5.0,false,false,false,0,184.9,Ikeja,1510170596
+W1510174293,,service,false,0,5.0,false,false,false,0,8.8,Ikeja,1510174293
+W1510174294,,service,false,0,5.0,false,false,false,0,240.6,Ikeja,1510174294
+W1510174295,,service,false,0,5.0,false,false,false,0,53.1,Ikeja,1510174295
+W1510174296,,service,false,0,5.0,false,false,false,0,93.8,Ikeja,1510174296
+W1510174297,,service,false,0,5.0,false,false,false,0,22.3,Ikeja,1510174297
+W1510174298,,service,false,0,5.0,false,false,false,0,187.6,Ikeja,1510174298
+W1510174299,,service,false,0,5.0,false,false,false,0,27.8,Ikeja,1510174299
+W1510174300,,service,false,0,5.0,false,false,false,0,24.5,Ikeja,1510174300
+W1510174301,,service,false,0,5.0,false,false,false,0,4.8,Ikeja,1510174301
+W1510174302,,service,false,0,5.0,false,false,false,0,105.4,Ikeja,1510174302
+W1510178399,,service,false,0,5.0,false,false,false,0,111.6,Ikeja,1510178399
+W1510178400,,service,false,0,5.0,false,false,false,0,196.7,Ikeja,1510178400
+W1510178401,,service,false,0,5.0,false,false,false,0,11.1,Ikeja,1510178401
+W1510178402,,service,false,0,5.0,false,false,false,0,117.5,Ikeja,1510178402
+W1510178403,,service,false,0,5.0,false,false,false,0,220.7,Ikeja,1510178403
+W1510178404,,service,false,0,5.0,false,false,false,0,50.5,Ikeja,1510178404
+W1510178405,,service,false,0,5.0,false,false,false,0,10.2,Ikeja,1510178405
+W1510178406,,service,false,0,5.0,false,false,false,0,54.5,Ikeja,1510178406
+W1510178407,,service,false,0,5.0,false,false,false,0,283.8,Ikeja,1510178407
+W1510185781,,service,false,0,5.0,false,false,false,0,34.0,Ikeja,1510185781
+W1510185782,,residential,false,0,7.5,false,false,false,0,182.0,Ikeja,1510185782
+W1510185783,,service,false,0,5.0,false,false,false,0,71.6,Ikeja,1510185783
+W1510185784,,service,false,0,5.0,false,false,false,0,7.6,Ikeja,1510185784
+W1510185785,,service,false,0,5.0,false,false,false,0,42.8,Ikeja,1510185785
+W1510185786,,service,false,0,5.0,false,false,false,0,7.0,Ikeja,1510185786
+W1510185787,,service,false,0,5.0,false,false,false,0,67.2,Ikeja,1510185787
+W1510185788,,service,false,0,5.0,false,false,false,0,7.5,Ikeja,1510185788
+W1510185789,,service,false,0,5.0,false,false,false,0,79.9,Ikeja,1510185789
+W1510185790,,service,false,0,5.0,false,false,false,0,6.7,Ikeja,1510185790
+W1510185791,,service,false,0,5.0,false,false,false,0,215.7,Ikeja,1510185791
+W1510185792,,service,false,0,5.0,false,false,false,0,7.5,Ikeja,1510185792
+W1510185793,,service,false,0,5.0,false,false,false,0,108.5,Ikeja,1510185793
+W1510435637,,residential,false,0,7.5,false,false,false,0,55.6,Ikeja,1510435637
+W1517166945,,service,false,0,5.0,false,false,false,0,9.7,Ikeja,1517166945
+W1518590443,,service,false,0,5.0,false,false,false,0,370.9,Ikeja,1518590443
+W1518590444,,service,false,0,5.0,false,false,false,0,18.7,Ikeja,1518590444
+W1518590445,,service,false,0,5.0,false,false,false,0,28.4,Ikeja,1518590445
+W1518590446,,service,false,0,5.0,false,false,false,0,21.0,Ikeja,1518590446
+W1518590447,,service,false,0,5.0,false,false,false,0,31.2,Ikeja,1518590447
+W1518590448,,service,false,0,5.0,false,false,false,0,5.7,Ikeja,1518590448
+W1518590449,,service,false,0,5.0,false,false,false,0,38.2,Ikeja,1518590449
+W1518590450,,service,false,0,5.0,false,false,false,0,10.5,Ikeja,1518590450
+W1518590451,,service,false,0,5.0,false,false,false,0,39.5,Ikeja,1518590451
+W1518593220,,residential,false,0,7.5,false,false,false,0,183.2,Ikeja,1518593220
+W1518593221,,service,false,0,5.0,false,false,false,0,34.8,Ikeja,1518593221
+W1518593222,,service,false,0,5.0,false,false,false,0,49.5,Ikeja,1518593222
+W1518593223,,service,false,0,5.0,false,false,false,0,15.1,Ikeja,1518593223
+W1518593224,,residential,false,0,7.5,false,false,false,0,70.0,Ikeja,1518593224
+W1518593225,,residential,false,0,7.5,false,false,false,0,105.3,Ikeja,1518593225
+W1518634380,,service,false,0,5.0,false,false,false,0,43.0,Ikeja,1518634380
+W1518634381,,service,false,0,5.0,false,false,false,0,2.9,Ikeja,1518634381
+W1518634382,,service,false,0,5.0,false,false,false,0,25.0,Ikeja,1518634382
+W1518637202,,service,false,0,5.0,false,false,false,0,16.6,Ikeja,1518637202
+W1518642569,,service,false,0,5.0,false,false,false,0,47.0,Ikeja,1518642569
+W1521419099,,residential,false,0,7.5,false,false,false,0,16.6,Ikeja,1521419099
+W1521419103,,service,false,0,5.0,false,false,false,0,11.9,Ikeja,1521419103
+W1521419104,,service,false,0,5.0,false,false,false,0,9.0,Ikeja,1521419104
+W1521419105,,service,false,0,5.0,true,false,false,0,22.1,Ikeja,1521419105
+W1521419106,,service,false,0,5.0,true,false,false,0,22.2,Ikeja,1521419106
+W1527526416,,service,false,0,5.0,false,false,false,0,60.2,Ikeja,1527526416
+W1530038902,,service,false,0,5.0,false,false,false,0,61.8,Ikeja,1530038902
+W1530038903,,service,false,0,5.0,false,false,false,0,97.5,Ikeja,1530038903
+W1530038904,,service,false,0,5.0,false,false,false,0,74.8,Ikeja,1530038904
+W1530408280,,service,false,0,5.0,false,false,false,0,56.4,Ikeja,1530408280
+W1532720101,,service,false,0,5.0,false,false,false,0,46.9,Ikeja,1532720101
+W1532720102,,service,false,0,5.0,false,false,false,0,140.0,Ikeja,1532720102
+W1532720103,,residential,false,0,7.5,false,false,false,0,43.5,Ikeja,1532720103
+W1532720104,,residential,false,0,7.5,false,false,false,0,83.5,Ikeja,1532720104
+W1532720105,,service,false,0,5.0,false,false,false,0,30.8,Ikeja,1532720105
+W1532720106,,service,false,0,5.0,false,false,false,0,46.4,Ikeja,1532720106
+W1532720107,,service,false,0,5.0,false,false,false,0,57.4,Ikeja,1532720107
+W1532720108,,service,false,0,5.0,false,false,false,0,43.7,Ikeja,1532720108
+W1532720109,,service,false,0,5.0,false,false,false,0,50.6,Ikeja,1532720109
+W1532720110,,service,false,0,5.0,false,false,false,0,48.2,Ikeja,1532720110
+W1532739169,,secondary,true,0,7.5,true,false,false,0,63.2,Ikeja,1532739169
+W1532739170,,primary,true,0,7.5,true,false,false,0,69.3,Ikeja,1532739170
+W1532764142,,service,false,0,5.0,false,false,false,0,338.5,Ikeja,1532764142
+W1532764143,,service,false,0,5.0,false,false,false,0,54.5,Ikeja,1532764143
+W1532764144,,service,false,0,5.0,false,false,false,0,33.0,Ikeja,1532764144
+W1532764145,,service,false,0,5.0,false,false,false,0,69.8,Ikeja,1532764145
+W1532764146,,residential,false,0,7.5,false,false,false,0,75.7,Ikeja,1532764146
+W1532764147,,service,false,0,5.0,false,false,false,0,42.5,Ikeja,1532764147
+W1532764148,,service,false,0,5.0,false,false,false,0,64.1,Ikeja,1532764148
+W1532764149,,service,false,0,5.0,false,false,false,0,64.4,Ikeja,1532764149
+W1532764150,,service,false,0,5.0,false,false,false,0,74.8,Ikeja,1532764150
+W1532764151,,service,false,0,5.0,false,false,false,0,80.0,Ikeja,1532764151
+W1532764152,,service,false,0,5.0,false,false,false,0,82.3,Ikeja,1532764152
+W1532764153,,service,false,0,5.0,false,false,false,0,22.0,Ikeja,1532764153
+W1532764154,,service,false,0,5.0,false,false,false,0,55.3,Ikeja,1532764154
+W1533549967,,service,false,0,5.0,false,false,false,0,42.4,Ikeja,1533549967
+W1533549968,,service,false,0,5.0,false,false,false,0,59.4,Ikeja,1533549968
+W1533549969,,service,false,0,5.0,false,false,false,0,43.7,Ikeja,1533549969
+W1533549970,,service,false,0,5.0,false,false,false,0,18.0,Ikeja,1533549970
+W1533549971,,service,false,0,5.0,false,false,false,0,115.5,Ikeja,1533549971
+W1533549972,,service,false,0,5.0,false,false,false,0,79.2,Ikeja,1533549972
+W1546996428,,residential,false,0,7.5,false,false,false,0,170.5,Ikeja,1546996428
+W1550761828,,service,false,0,5.0,false,false,false,0,10.4,Ikeja,1550761828
+W1550958915,,service,false,0,5.0,false,false,false,0,293.5,Ikeja,1550958915
+W1551953935,,residential,false,0,7.5,false,false,false,0,10.4,Ikeja,1551953935
+W1551953936,,tertiary,false,0,10.0,true,false,false,0,13.4,Ikeja,1551953936
+W1561029533,,service,false,0,5.0,false,false,false,0,12.3,Ikeja,1561029533
+W1561322008,,service,false,0,5.0,false,false,false,0,34.0,Ikeja,1561322008
+W1563354410,,service,false,0,5.0,false,false,false,0,59.4,Ikeja,1563354410
+W1565344111,,residential,false,0,7.5,false,false,false,0,38.1,Ikeja,1565344111
+W1565733724,,service,false,0,5.0,false,false,false,0,115.6,Ikeja,1565733724
+W1565733725,,service,false,0,5.0,false,false,false,0,6.1,Ikeja,1565733725
+W1565733726,,service,false,0,5.0,false,false,false,0,142.8,Ikeja,1565733726
+W1565733727,,service,false,0,5.0,false,false,false,0,6.0,Ikeja,1565733727
+W1565733728,,service,false,0,5.0,false,false,false,0,7.0,Ikeja,1565733728
+W1565733729,,service,false,0,5.0,false,false,false,0,13.1,Ikeja,1565733729
+W1565733730,,service,false,0,5.0,false,false,false,0,14.3,Ikeja,1565733730
+W1565733731,,service,false,0,5.0,false,false,false,0,11.5,Ikeja,1565733731
+W1565733732,,service,false,0,5.0,false,false,false,0,12.9,Ikeja,1565733732
+W1565733733,,service,false,0,5.0,false,false,false,0,12.5,Ikeja,1565733733
+W1565733734,,service,false,0,5.0,false,false,false,0,13.0,Ikeja,1565733734
+W1565733735,,service,false,0,5.0,false,false,false,0,13.3,Ikeja,1565733735
+W1565733736,,service,false,0,5.0,false,false,false,0,26.9,Ikeja,1565733736
+W1565750256,,service,false,0,5.0,false,false,false,0,8.4,Ikeja,1565750256
+W1565750257,,service,false,0,5.0,false,false,false,0,30.3,Ikeja,1565750257
+W1565750258,,service,false,0,5.0,false,false,false,0,106.6,Ikeja,1565750258
+W1566382581,,service,false,0,5.0,false,false,false,0,8.6,Ikeja,1566382581
+W1566382582,,service,false,0,5.0,false,false,false,0,14.1,Ikeja,1566382582
+W1566382583,,service,false,0,5.0,false,false,false,0,23.1,Ikeja,1566382583
+W1566382584,,service,false,0,5.0,false,false,false,0,14.5,Ikeja,1566382584
+W1566382585,,service,false,0,5.0,false,false,false,0,17.1,Ikeja,1566382585
+W1566382586,,service,false,0,5.0,false,false,false,0,9.9,Ikeja,1566382586
+W1566382587,,service,false,0,5.0,false,false,false,0,55.4,Ikeja,1566382587
+W1566382588,,service,false,0,5.0,false,false,false,0,16.3,Ikeja,1566382588
+W1566382590,,service,false,0,5.0,false,false,false,0,97.3,Ikeja,1566382590
+W1566390128,,service,false,0,5.0,false,false,false,0,6.1,Ikeja,1566390128
+W1566390129,,service,false,0,5.0,false,false,false,0,58.9,Ikeja,1566390129
+W1566733696,,service,false,0,5.0,false,false,false,0,30.6,Ikeja,1566733696
+W1566737997,,service,false,0,5.0,false,false,false,0,10.5,Ikeja,1566737997
+W1566737998,,service,false,0,5.0,false,false,false,0,11.7,Ikeja,1566737998
+W1566737999,,service,false,0,5.0,false,false,false,0,10.8,Ikeja,1566737999
+W1566738000,,service,false,0,5.0,false,false,false,0,99.2,Ikeja,1566738000
+W1566738002,,service,false,0,5.0,true,false,false,0,41.7,Ikeja,1566738002
+W1566971790,,service,false,0,5.0,false,false,false,0,8.0,Ikeja,1566971790
+W23711676,,tertiary,false,0,10.0,true,false,false,0,410.4,Ikeja,23711676
+W295321710,,service,false,0,5.0,true,false,false,0,178.4,Ikeja,295321710
+W295321711,,service,false,0,5.0,true,false,false,0,369.7,Ikeja,295321711
+W295321712,,service,false,0,5.0,true,false,false,0,151.4,Ikeja,295321712
+W295321713,,service,false,0,5.0,true,false,false,0,606.3,Ikeja,295321713
+W295321714,,service,false,0,5.0,true,false,false,0,116.1,Ikeja,295321714
+W297477586,,service,false,0,5.0,true,false,false,0,92.3,Ikeja,297477586
+W370661412,,service,false,0,5.0,false,false,false,0,756.9,Ikeja,370661412
+W370661413,,service,false,0,5.0,false,false,false,0,935.7,Ikeja,370661413
+W370661414,,service,false,0,5.0,false,false,false,0,2084.0,Ikeja,370661414
+W441859145,,residential,false,0,7.5,false,false,false,0,1073.4,Ikeja,441859145
+W441859146,,residential,false,0,7.5,false,false,false,0,186.0,Ikeja,441859146
+W441859147,,residential,false,0,7.5,false,false,false,0,69.5,Ikeja,441859147
+W441859148,,residential,false,0,7.5,false,false,false,0,149.0,Ikeja,441859148
+W441859149,,residential,false,0,7.5,false,false,false,0,124.9,Ikeja,441859149
+W441859150,,residential,false,0,7.5,false,false,false,0,122.2,Ikeja,441859150
+W441897735,,service,false,0,5.0,false,false,false,0,224.4,Ikeja,441897735
+W441897736,,service,false,0,5.0,false,false,false,0,203.9,Ikeja,441897736
+W441897737,,service,false,0,5.0,false,false,false,0,173.5,Ikeja,441897737
+W441897738,,service,false,0,5.0,false,false,false,0,622.6,Ikeja,441897738
+W441897739,,service,false,0,5.0,false,false,false,0,537.4,Ikeja,441897739
+W441897740,,service,false,0,5.0,false,false,false,0,259.7,Ikeja,441897740
+W441897741,,service,false,0,5.0,false,false,false,0,64.4,Ikeja,441897741
+W441897742,,service,false,0,5.0,false,false,false,0,94.2,Ikeja,441897742
+W441897744,,residential,false,0,7.5,false,false,false,0,244.4,Ikeja,441897744
+W441897746,,residential,false,0,7.5,false,false,false,0,48.8,Ikeja,441897746
+W441897751,,residential,false,0,7.5,false,false,false,0,266.8,Ikeja,441897751
+W442662011,,residential,false,0,7.5,false,false,false,0,53.9,Ikeja,442662011
+W442671941,,residential,false,0,7.5,false,false,false,0,297.2,Ikeja,442671941
+W444035615,,residential,false,0,7.5,false,false,false,0,65.0,Ikeja,444035615
+W444035616,,residential,false,0,7.5,false,false,false,0,45.2,Ikeja,444035616
+W461601176,,residential,false,0,7.5,false,false,false,0,201.6,Ikeja,461601176
+W461601177,,residential,false,0,7.5,false,false,false,0,178.7,Ikeja,461601177
+W461601178,,residential,false,0,7.5,false,false,false,0,128.0,Ikeja,461601178
+W461601179,,service,false,0,5.0,false,false,false,0,209.6,Ikeja,461601179
+W461601180,,service,false,0,5.0,false,false,false,0,125.8,Ikeja,461601180
+W461601181,,service,false,0,5.0,false,false,false,0,231.1,Ikeja,461601181
+W461601182,,service,false,0,5.0,false,false,false,0,401.3,Ikeja,461601182
+W461601183,,service,false,0,5.0,false,false,false,0,89.8,Ikeja,461601183
+W461601184,,service,false,0,5.0,false,false,false,0,194.2,Ikeja,461601184
+W461601185,,service,false,0,5.0,false,false,false,0,162.1,Ikeja,461601185
+W461601186,,service,false,0,5.0,false,false,false,0,172.3,Ikeja,461601186
+W461601187,,residential,false,0,7.5,false,false,false,0,196.2,Ikeja,461601187
+W461601188,,residential,false,0,7.5,false,false,false,0,44.1,Ikeja,461601188
+W461601189,,residential,false,0,7.5,false,false,false,0,160.5,Ikeja,461601189
+W461601192,,residential,false,0,7.5,false,false,false,0,317.1,Ikeja,461601192
+W461601193,,residential,false,0,7.5,false,false,false,0,174.4,Ikeja,461601193
+W461601194,,residential,false,0,7.5,false,false,false,0,34.7,Ikeja,461601194
+W461601195,,residential,false,0,7.5,false,false,false,0,60.7,Ikeja,461601195
+W461601196,,residential,false,0,7.5,false,false,false,0,175.1,Ikeja,461601196
+W485409428,,service,false,0,5.0,false,false,false,0,198.6,Ikeja,485409428
+W513636334,,primary,true,2,7.6,true,false,false,0,25.6,Ikeja,513636334
+W514558869,,primary,true,0,7.5,true,false,false,0,40.5,Ikeja,514558869
+W514558870,,primary,true,0,7.5,true,false,false,0,47.0,Ikeja,514558870
+W523056137,,residential,false,0,7.5,false,false,false,0,258.7,Ikeja,523056137
+W523056139,,service,false,0,5.0,false,false,false,0,183.1,Ikeja,523056139
+W523056140,,service,false,0,5.0,false,false,false,0,127.3,Ikeja,523056140
+W523056141,,service,false,0,5.0,false,false,false,0,113.9,Ikeja,523056141
+W523056142,,service,false,0,5.0,false,false,false,0,57.2,Ikeja,523056142
+W523056143,,service,false,0,5.0,false,false,false,0,78.7,Ikeja,523056143
+W523056144,,service,false,0,5.0,false,false,false,0,220.3,Ikeja,523056144
+W531929380,,tertiary,false,0,10.0,false,false,false,0,492.7,Ikeja,531929380
+W535191751,,residential,false,0,7.5,false,false,false,0,601.3,Ikeja,535191751
+W535191759,,tertiary,false,0,10.0,false,false,false,0,1297.6,Ikeja,535191759
+W540661847,,service,false,0,5.0,false,false,false,0,96.0,Ikeja,540661847
+W540869082,,service,false,0,5.0,true,false,false,0,7.7,Ikeja,540869082
+W540869096,,service,false,0,5.0,false,false,false,0,11.4,Ikeja,540869096
+W540869098,,service,false,0,5.0,true,false,false,0,44.7,Ikeja,540869098
+W540869100,,service,false,0,5.0,false,false,false,0,19.2,Ikeja,540869100
+W540869101,,service,false,0,5.0,true,false,false,0,82.3,Ikeja,540869101
+W540869109,,secondary,true,0,7.5,true,false,false,0,21.5,Ikeja,540869109
+W540869111,,secondary,true,0,7.5,true,false,false,0,22.5,Ikeja,540869111
+W540869113,,primary,false,0,17.5,true,false,false,0,223.3,Ikeja,540869113
+W540869118,,primary,false,0,17.5,true,false,false,0,194.9,Ikeja,540869118
+W540869119,,primary,false,0,17.5,true,false,true,0,100.5,Ikeja,540869119
+W540869121,,primary,true,0,7.5,true,false,false,0,42.4,Ikeja,540869121
+W540869122,,tertiary,false,0,10.0,true,false,false,0,19.3,Ikeja,540869122
+W540869125,,primary,true,0,7.5,true,false,false,0,22.9,Ikeja,540869125
+W540869126,,primary,true,0,7.5,true,false,false,0,22.5,Ikeja,540869126
+W541769980,,service,false,0,5.0,false,false,false,0,21.3,Ikeja,541769980
+W570246033,,residential,false,0,7.5,false,false,false,0,114.1,Ikeja,570246033
+W570246036,,residential,false,0,7.5,false,false,false,0,189.4,Ikeja,570246036
+W570268610,,residential,false,0,7.5,false,true,false,0,9.9,Ikeja,570268610
+W570268611,,residential,false,0,7.5,false,false,false,0,6.2,Ikeja,570268611
+W570278063,,residential,false,0,7.5,false,false,false,0,92.8,Ikeja,570278063
+W570278090,,residential,false,0,7.5,false,false,false,0,73.7,Ikeja,570278090
+W570278101,,residential,false,0,7.5,false,false,false,0,113.0,Ikeja,570278101
+W570278105,,residential,false,0,7.5,false,false,false,0,174.8,Ikeja,570278105
+W570278124,,residential,false,0,7.5,false,false,false,0,94.5,Ikeja,570278124
+W574497981,,service,false,0,5.0,false,false,false,0,78.6,Ikeja,574497981
+W574518665,,service,false,0,5.0,false,false,false,0,39.9,Ikeja,574518665
+W574518667,,service,false,0,5.0,false,false,false,0,128.6,Ikeja,574518667
+W574518669,,residential,false,0,7.5,false,false,false,0,46.2,Ikeja,574518669
+W574518671,,residential,false,0,7.5,false,false,false,0,45.9,Ikeja,574518671
+W574518673,,residential,false,0,7.5,false,false,false,0,281.2,Ikeja,574518673
+W574518675,,residential,false,0,7.5,false,false,false,0,230.7,Ikeja,574518675
+W574518677,,residential,false,0,7.5,false,false,false,0,338.7,Ikeja,574518677
+W574518679,,residential,false,0,7.5,false,false,false,0,100.1,Ikeja,574518679
+W574545004,,service,false,0,5.0,false,false,false,0,247.3,Ikeja,574545004
+W574545005,,service,false,0,5.0,false,false,false,0,285.1,Ikeja,574545005
+W574545006,,service,false,0,5.0,false,false,false,0,284.2,Ikeja,574545006
+W574545017,,primary,false,0,17.5,true,false,false,0,41.8,Ikeja,574545017
+W575629196,,tertiary,false,0,10.0,true,false,false,0,21.1,Ikeja,575629196
+W575629198,,tertiary,false,0,10.0,true,false,false,0,540.9,Ikeja,575629198
+W581903852,,primary,true,0,7.5,true,false,false,0,32.3,Ikeja,581903852
+W581903853,,primary,true,0,7.5,false,false,false,0,16.2,Ikeja,581903853
+W581903854,,primary,true,0,7.5,false,false,false,0,9.2,Ikeja,581903854
+W581930563,,service,false,0,5.0,false,false,false,0,126.3,Ikeja,581930563
+W581967262,,residential,false,0,7.5,false,false,false,0,53.3,Ikeja,581967262
+W581967268,,service,false,0,5.0,false,false,false,0,336.2,Ikeja,581967268
+W581967270,,service,false,0,5.0,false,false,false,0,78.5,Ikeja,581967270
+W581967271,,service,false,0,5.0,false,false,false,0,282.2,Ikeja,581967271
+W581982677,,service,false,0,5.0,false,false,false,0,36.1,Ikeja,581982677
+W581982678,,service,false,0,5.0,false,false,false,0,182.9,Ikeja,581982678
+W581985717,,residential,false,0,7.5,false,false,false,0,153.2,Ikeja,581985717
+W581995021,,residential,false,0,7.5,false,false,false,0,134.8,Ikeja,581995021
+W582859227,,residential,false,0,7.5,false,false,false,0,230.4,Ikeja,582859227
+W582859228,,residential,false,0,7.5,false,false,false,0,30.6,Ikeja,582859228
+W582862395,,residential,false,0,7.5,false,false,false,0,59.0,Ikeja,582862395
+W582875526,,residential,false,0,7.5,false,false,false,0,93.9,Ikeja,582875526
+W582875527,,residential,false,0,7.5,false,false,false,0,208.1,Ikeja,582875527
+W582875528,,residential,false,0,7.5,true,false,false,0,31.8,Ikeja,582875528
+W582890500,,service,false,0,5.0,true,false,false,0,14.2,Ikeja,582890500
+W582890501,,service,false,0,5.0,true,false,false,0,13.5,Ikeja,582890501
+W582890508,,residential,false,0,7.5,false,false,false,0,123.9,Ikeja,582890508
+W582899636,,service,false,0,5.0,false,false,false,0,237.0,Ikeja,582899636
+W582899637,,service,false,0,5.0,true,false,false,0,22.6,Ikeja,582899637
+W582899638,,service,false,0,5.0,true,false,false,0,18.9,Ikeja,582899638
+W582899639,,service,false,0,5.0,false,false,false,0,301.4,Ikeja,582899639
+W582899640,,residential,false,0,7.5,false,false,false,0,163.0,Ikeja,582899640
+W582899642,,residential,false,0,7.5,false,false,false,0,101.6,Ikeja,582899642
+W582936528,,service,false,0,5.0,false,false,false,0,411.5,Ikeja,582936528
+W582936529,,service,false,0,5.0,false,false,false,0,8.1,Ikeja,582936529
+W582936530,,service,false,0,5.0,true,false,false,0,445.4,Ikeja,582936530
+W582936533,,service,false,0,5.0,false,false,false,0,218.4,Ikeja,582936533
+W582936535,,service,false,0,5.0,true,false,false,0,458.7,Ikeja,582936535
+W582936536,,service,false,0,5.0,false,false,false,0,7.7,Ikeja,582936536
+W582936537,,service,false,0,5.0,true,false,false,0,87.8,Ikeja,582936537
+W582936542,,residential,false,0,7.5,false,false,false,0,11.6,Ikeja,582936542
+W582936543,,residential,false,0,7.5,false,false,false,0,383.5,Ikeja,582936543
+W582939495,,service,false,0,5.0,false,false,false,0,144.2,Ikeja,582939495
+W582939497,,service,false,0,5.0,false,false,false,0,150.3,Ikeja,582939497
+W582939498,,service,false,0,5.0,false,false,false,0,152.7,Ikeja,582939498
+W582939499,,service,false,0,5.0,false,false,false,0,323.6,Ikeja,582939499
+W582939501,,service,false,0,5.0,false,false,false,0,85.7,Ikeja,582939501
+W582939502,,service,false,0,5.0,false,false,false,0,150.2,Ikeja,582939502
+W582939503,,service,false,0,5.0,false,false,false,0,53.3,Ikeja,582939503
+W582957275,,residential,false,0,7.5,false,false,false,0,45.4,Ikeja,582957275
+W582985850,,residential,false,0,7.5,false,false,false,0,5.8,Ikeja,582985850
+W582992239,,residential,false,0,7.5,false,false,false,0,8.9,Ikeja,582992239
+W583221524,,tertiary,true,0,7.5,false,false,false,0,22.5,Ikeja,583221524
+W583700614,,primary,true,0,7.5,true,false,false,0,83.9,Ikeja,583700614
+W583700615,,service,false,0,5.0,false,false,false,0,66.1,Ikeja,583700615
+W583700618,,secondary,true,0,7.5,true,false,false,0,32.2,Ikeja,583700618
+W583700621,,secondary,true,0,7.5,true,false,false,0,27.8,Ikeja,583700621
+W583700624,,residential,false,0,7.5,true,false,false,0,8.1,Ikeja,583700624
+W583700625,,residential,false,0,7.5,true,false,false,0,7.7,Ikeja,583700625
+W586293779,,service,false,0,5.0,true,false,true,0,52.7,Ikeja,586293779
+W586293780,,service,false,0,5.0,false,false,false,0,70.8,Ikeja,586293780
+W586293781,,service,false,0,5.0,false,false,false,0,130.1,Ikeja,586293781
+W586293782,,service,false,0,5.0,true,false,true,0,34.8,Ikeja,586293782
+W586293783,,service,false,0,5.0,false,false,false,0,227.5,Ikeja,586293783
+W586306630,,primary,true,0,7.5,false,false,false,0,14.1,Ikeja,586306630
+W586336661,,service,false,0,5.0,false,false,false,0,129.0,Ikeja,586336661
+W586347836,,service,false,0,5.0,false,false,false,0,90.8,Ikeja,586347836
+W586347837,,service,false,0,5.0,false,false,false,0,190.1,Ikeja,586347837
+W586347838,,service,false,0,5.0,false,false,false,0,62.4,Ikeja,586347838
+W586351450,,residential,false,0,7.5,false,false,false,0,6.3,Ikeja,586351450
+W586388015,,residential,false,0,7.5,false,false,false,0,144.7,Ikeja,586388015
+W586579712,,residential,false,0,7.5,false,false,false,0,147.4,Ikeja,586579712
+W586623951,,residential,false,0,7.5,false,false,false,0,217.3,Ikeja,586623951
+W587373167,,service,false,0,5.0,false,false,false,0,119.9,Ikeja,587373167
+W587373168,,service,false,0,5.0,false,false,false,0,753.1,Ikeja,587373168
+W591781999,,service,false,0,5.0,true,false,false,0,38.7,Ikeja,591781999
+W591782001,,service,false,0,5.0,true,false,false,0,39.5,Ikeja,591782001
+W591782003,,service,false,0,5.0,true,false,false,0,61.2,Ikeja,591782003
+W591782004,,service,false,0,5.0,false,false,false,0,18.1,Ikeja,591782004
+W591782005,,service,false,0,5.0,false,false,false,0,204.6,Ikeja,591782005
+W591782006,,service,false,0,5.0,false,false,false,0,198.6,Ikeja,591782006
+W591782007,,service,false,0,5.0,false,false,false,0,32.6,Ikeja,591782007
+W591782008,,service,false,0,5.0,false,false,false,0,34.7,Ikeja,591782008
+W591782009,,service,false,0,5.0,false,false,false,0,125.6,Ikeja,591782009
+W591782010,,service,false,0,5.0,false,false,false,0,125.4,Ikeja,591782010
+W591782011,,service,false,0,5.0,false,false,false,0,18.4,Ikeja,591782011
+W591782012,,service,false,0,5.0,false,false,false,0,38.3,Ikeja,591782012
+W591782013,,service,false,0,5.0,false,false,false,0,46.9,Ikeja,591782013
+W591782014,,service,false,0,5.0,false,false,false,0,32.4,Ikeja,591782014
+W591782015,,service,false,0,5.0,false,false,false,0,32.2,Ikeja,591782015
+W591782016,,service,false,0,5.0,false,false,false,0,35.5,Ikeja,591782016
+W591782017,,service,false,0,5.0,false,false,false,0,101.8,Ikeja,591782017
+W591782018,,service,false,0,5.0,false,false,false,0,37.8,Ikeja,591782018
+W591782019,,service,false,0,5.0,false,false,false,0,37.4,Ikeja,591782019
+W591782020,,service,false,0,5.0,false,false,false,0,36.9,Ikeja,591782020
+W591782021,,service,false,0,5.0,false,false,false,0,36.5,Ikeja,591782021
+W591782022,,service,false,0,5.0,false,false,false,0,36.0,Ikeja,591782022
+W591782023,,service,false,0,5.0,false,false,false,0,33.7,Ikeja,591782023
+W607633295,,service,false,0,5.0,false,false,false,0,8.7,Ikeja,607633295
+W610896844,,service,false,0,5.0,true,false,false,0,24.7,Ikeja,610896844
+W610896845,,service,false,0,5.0,true,false,false,0,23.4,Ikeja,610896845
+W610896846,,service,false,0,5.0,true,false,false,0,7.9,Ikeja,610896846
+W610896847,,service,false,0,5.0,true,false,false,0,7.3,Ikeja,610896847
+W610896848,,service,false,0,5.0,true,true,false,0,174.6,Ikeja,610896848
+W610896849,,service,false,0,5.0,true,false,false,0,193.9,Ikeja,610896849
+W613947886,,secondary,false,0,13.0,true,false,false,0,26.7,Ikeja,613947886
+W613947887,,secondary,false,0,13.0,true,false,false,0,30.4,Ikeja,613947887
+W613947888,,secondary,true,0,7.5,true,false,false,0,25.7,Ikeja,613947888
+W622382667,,service,false,0,5.0,false,false,false,0,108.7,Ikeja,622382667
+W624281141,,primary,true,0,7.5,true,false,false,0,71.6,Ikeja,624281141
+W624281142,,primary,true,0,7.5,true,false,false,0,40.3,Ikeja,624281142
+W624281144,,primary,true,0,7.5,true,false,false,0,43.4,Ikeja,624281144
+W624281145,,primary,true,0,7.5,true,false,false,0,151.0,Ikeja,624281145
+W625093271,,primary,true,0,7.5,true,false,false,0,83.2,Ikeja,625093271
+W626246883,,service,false,0,5.0,false,false,false,0,39.8,Ikeja,626246883
+W626246884,,service,false,0,5.0,false,false,false,0,62.3,Ikeja,626246884
+W637662953,,service,false,0,5.0,false,false,false,0,66.3,Ikeja,637662953
+W637662954,,service,false,0,5.0,false,false,false,0,60.5,Ikeja,637662954
+W656066131,,service,false,0,5.0,false,false,false,0,139.5,Ikeja,656066131
+W659370439,,service,false,0,5.0,true,false,false,0,5.3,Ikeja,659370439
+W704979169,,service,false,0,5.0,false,false,false,0,260.2,Ikeja,704979169
+W704979170,,service,false,0,5.0,false,false,false,0,186.2,Ikeja,704979170
+W704991080,,service,false,0,5.0,true,false,false,0,208.2,Ikeja,704991080
+W704991081,,service,false,0,5.0,true,false,false,0,133.4,Ikeja,704991081
+W704991082,,service,false,0,5.0,true,false,false,0,156.3,Ikeja,704991082
+W704991086,,service,false,0,5.0,true,false,false,0,207.4,Ikeja,704991086
+W704991087,,service,false,0,5.0,false,false,false,0,128.4,Ikeja,704991087
+W704995746,,residential,false,0,7.5,false,false,false,0,23.6,Ikeja,704995746
+W707630000,,service,false,0,5.0,false,false,false,0,174.3,Ikeja,707630000
+W725265265,,service,false,0,5.0,false,false,false,0,37.3,Ikeja,725265265
+W725265267,,service,false,0,5.0,false,false,false,0,55.5,Ikeja,725265267
+W725265268,,service,false,0,5.0,false,false,false,0,50.8,Ikeja,725265268
+W725320531,,service,false,0,5.0,false,false,false,0,83.5,Ikeja,725320531
+W725320532,,service,false,0,5.0,false,false,false,0,75.1,Ikeja,725320532
+W725320533,,service,false,0,5.0,false,false,false,0,51.4,Ikeja,725320533
+W725320534,,service,false,0,5.0,false,false,false,0,66.5,Ikeja,725320534
+W725320535,,service,false,0,5.0,false,false,false,0,52.6,Ikeja,725320535
+W725320536,,service,false,0,5.0,false,false,false,0,69.4,Ikeja,725320536
+W725320537,,service,false,0,5.0,false,false,false,0,136.6,Ikeja,725320537
+W725320538,,service,false,0,5.0,false,false,false,0,66.4,Ikeja,725320538
+W725320539,,service,false,0,5.0,false,false,false,0,135.1,Ikeja,725320539
+W725320540,,service,false,0,5.0,false,false,false,0,68.5,Ikeja,725320540
+W726063032,,service,false,0,5.0,false,false,false,0,10.9,Ikeja,726063032
+W726063033,,service,false,0,5.0,true,false,false,0,140.0,Ikeja,726063033
+W726125134,,service,false,0,5.0,false,false,false,0,157.5,Ikeja,726125134
+W726170839,,service,false,0,5.0,false,false,false,0,387.4,Ikeja,726170839
+W726611344,,residential,false,0,7.5,false,false,false,0,173.1,Ikeja,726611344
+W726613334,,service,false,0,5.0,false,false,false,0,56.2,Ikeja,726613334
+W726615265,,service,false,0,5.0,false,false,false,0,216.7,Ikeja,726615265
+W726616427,,service,false,0,5.0,true,false,false,0,13.2,Ikeja,726616427
+W726626857,,service,false,0,5.0,false,false,false,0,31.7,Ikeja,726626857
+W726626858,,service,false,0,5.0,false,false,false,0,44.9,Ikeja,726626858
+W726626859,,service,false,0,5.0,false,false,false,0,31.0,Ikeja,726626859
+W726626860,,service,false,0,5.0,false,false,false,0,70.0,Ikeja,726626860
+W726626861,,service,false,0,5.0,false,false,false,0,46.2,Ikeja,726626861
+W726626862,,service,false,0,5.0,false,false,false,0,45.4,Ikeja,726626862
+W726626863,,service,false,0,5.0,false,false,false,0,53.2,Ikeja,726626863
+W726763180,,service,false,0,5.0,false,false,false,0,143.2,Ikeja,726763180
+W726763181,,service,false,0,5.0,false,false,false,0,106.8,Ikeja,726763181
+W726766309,,service,false,0,5.0,true,false,false,0,59.4,Ikeja,726766309
+W726766310,,service,false,0,5.0,false,false,false,0,258.6,Ikeja,726766310
+W726766311,,service,false,0,5.0,true,false,false,0,48.6,Ikeja,726766311
+W726769135,,residential,false,0,7.5,false,false,false,0,232.7,Ikeja,726769135
+W726771649,,service,false,0,5.0,true,false,false,0,32.4,Ikeja,726771649
+W726771650,,service,false,0,5.0,true,false,false,0,13.2,Ikeja,726771650
+W726771651,,service,false,0,5.0,true,false,false,0,73.7,Ikeja,726771651
+W726771653,,service,false,0,5.0,true,false,false,0,48.2,Ikeja,726771653
+W726771654,,service,false,0,5.0,true,false,false,0,73.8,Ikeja,726771654
+W726771655,,service,false,0,5.0,true,false,false,0,73.7,Ikeja,726771655
+W726772546,,residential,false,0,7.5,false,false,false,0,143.3,Ikeja,726772546
+W726784015,,service,false,0,5.0,false,false,false,0,140.2,Ikeja,726784015
+W726784455,,service,false,0,5.0,false,false,false,0,186.8,Ikeja,726784455
+W726823656,,service,false,0,5.0,false,false,false,0,162.0,Ikeja,726823656
+W726823657,,service,false,0,5.0,false,false,false,0,209.9,Ikeja,726823657
+W727395360,,service,false,0,5.0,false,false,false,0,177.8,Ikeja,727395360
+W727407942,,service,false,0,5.0,false,false,false,0,86.3,Ikeja,727407942
+W727407943,,service,false,0,5.0,false,false,false,0,95.4,Ikeja,727407943
+W727631513,,residential,false,0,7.5,false,false,false,0,76.1,Ikeja,727631513
+W727631514,,residential,false,0,7.5,false,false,false,0,7.8,Ikeja,727631514
+W727632300,,residential,false,0,7.5,false,false,false,0,135.2,Ikeja,727632300
+W727639657,,residential,false,0,7.5,false,false,false,0,122.6,Ikeja,727639657
+W727639658,,residential,false,0,7.5,false,false,false,0,30.1,Ikeja,727639658
+W727639659,,residential,false,0,7.5,false,false,false,0,7.1,Ikeja,727639659
+W727639660,,residential,false,0,7.5,false,false,false,0,335.6,Ikeja,727639660
+W727639661,,service,false,0,5.0,false,false,false,0,137.7,Ikeja,727639661
+W727657835,,service,false,0,5.0,false,false,false,0,43.8,Ikeja,727657835
+W727664357,,service,false,0,5.0,false,false,false,0,13.8,Ikeja,727664357
+W727664358,,service,false,0,5.0,false,false,false,0,56.3,Ikeja,727664358
+W727678699,,service,false,0,5.0,false,false,false,0,103.7,Ikeja,727678699
+W727678700,,service,false,0,5.0,false,false,false,0,321.3,Ikeja,727678700
+W727696389,,service,false,0,5.0,false,false,false,0,56.0,Ikeja,727696389
+W727696390,,residential,false,0,7.5,false,false,false,0,130.6,Ikeja,727696390
+W727714183,,residential,false,0,7.5,false,false,false,0,1.7,Ikeja,727714183
+W727714185,,residential,false,0,7.5,false,false,false,0,131.9,Ikeja,727714185
+W727727743,,service,false,0,5.0,false,false,false,0,377.7,Ikeja,727727743
+W727744585,,service,false,0,5.0,false,false,false,0,126.8,Ikeja,727744585
+W727951071,,service,false,0,5.0,false,false,false,0,85.3,Ikeja,727951071
+W727951072,,service,false,0,5.0,false,false,false,0,74.2,Ikeja,727951072
+W727951073,,service,false,0,5.0,false,false,false,0,124.4,Ikeja,727951073
+W738105433,,service,false,0,5.0,false,false,false,0,160.5,Ikeja,738105433
+W738172504,,service,false,0,5.0,false,false,false,0,75.4,Ikeja,738172504
+W738379356,,service,false,0,5.0,false,false,false,0,36.7,Ikeja,738379356
+W738379357,,service,false,0,5.0,true,false,false,0,72.2,Ikeja,738379357
+W738379851,,service,false,0,5.0,false,false,false,0,37.0,Ikeja,738379851
+W738393590,,residential,false,0,7.5,false,false,false,0,185.7,Ikeja,738393590
+W746758284,,residential,false,0,7.5,false,false,false,0,145.1,Ikeja,746758284
+W747302243,,residential,false,0,7.5,true,false,false,0,168.2,Ikeja,747302243
+W747302253,,residential,false,0,7.5,false,false,false,0,52.9,Ikeja,747302253
+W761183257,,service,false,0,5.0,false,false,false,0,28.9,Ikeja,761183257
+W761399133,,service,false,0,5.0,false,false,false,0,41.0,Ikeja,761399133
+W761422634,,service,false,0,5.0,false,false,false,0,54.0,Ikeja,761422634
+W761422635,,service,false,0,5.0,false,false,false,0,74.6,Ikeja,761422635
+W761436103,,service,false,0,5.0,false,false,false,0,31.1,Ikeja,761436103
+W761436104,,service,false,0,5.0,false,false,false,0,35.1,Ikeja,761436104
+W761436105,,service,false,0,5.0,false,false,false,0,36.8,Ikeja,761436105
+W761597153,,residential,false,0,7.5,false,false,false,0,59.9,Ikeja,761597153
+W761597154,,residential,false,0,7.5,false,false,false,0,5.3,Ikeja,761597154
+W761634022,,service,false,0,5.0,false,false,false,0,214.9,Ikeja,761634022
+W761889383,,service,false,0,5.0,false,false,false,0,128.4,Ikeja,761889383
+W776928921,,service,false,0,5.0,false,false,false,0,18.1,Ikeja,776928921
+W776928922,,service,false,0,5.0,false,false,false,0,7.2,Ikeja,776928922
+W776928923,,service,false,0,5.0,true,false,false,0,48.9,Ikeja,776928923
+W776928924,,service,false,0,5.0,false,false,false,0,4.4,Ikeja,776928924
+W776928925,,service,false,0,5.0,true,false,false,0,5.2,Ikeja,776928925
+W776928926,,service,false,0,5.0,true,false,false,0,239.9,Ikeja,776928926
+W776931151,,service,false,0,5.0,true,false,false,0,28.7,Ikeja,776931151
+W776931152,,service,false,0,5.0,true,false,false,0,11.1,Ikeja,776931152
+W776931153,,service,false,0,5.0,true,false,false,0,13.8,Ikeja,776931153
+W781366087,,residential,false,0,7.5,false,false,false,0,128.6,Ikeja,781366087
+W783255013,,service,false,0,5.0,false,false,false,0,53.5,Ikeja,783255013
+W783259265,,service,false,0,5.0,false,false,false,0,88.8,Ikeja,783259265
+W783259266,,service,false,0,5.0,false,false,false,0,74.6,Ikeja,783259266
+W784114481,,residential,false,0,7.5,false,false,false,0,127.6,Ikeja,784114481
+W784130099,,residential,false,0,7.5,false,false,false,0,122.9,Ikeja,784130099
+W784131487,,residential,false,0,7.5,false,false,false,0,10.7,Ikeja,784131487
+W784132459,,residential,false,0,7.5,false,false,false,0,33.7,Ikeja,784132459
+W784132460,,residential,false,0,7.5,false,false,false,0,47.6,Ikeja,784132460
+W784149529,,service,false,0,5.0,false,false,false,0,36.9,Ikeja,784149529
+W784149530,,service,false,0,5.0,false,false,false,0,25.3,Ikeja,784149530
+W784149531,,service,false,0,5.0,false,false,false,0,106.3,Ikeja,784149531
+W784149532,,service,false,0,5.0,false,false,false,0,183.1,Ikeja,784149532
+W784151527,,service,false,0,5.0,false,false,false,0,42.6,Ikeja,784151527
+W784151528,,service,false,0,5.0,false,false,false,0,210.9,Ikeja,784151528
+W784151529,,service,false,0,5.0,false,false,false,0,89.3,Ikeja,784151529
+W784155910,,residential,false,0,7.5,false,false,false,0,98.9,Ikeja,784155910
+W784156683,,residential,false,0,7.5,false,false,false,0,69.5,Ikeja,784156683
+W784156684,,residential,false,0,7.5,false,false,false,0,66.2,Ikeja,784156684
+W784649181,,residential,false,0,7.5,false,false,false,0,146.0,Ikeja,784649181
+W784655785,,service,false,0,5.0,false,false,false,0,131.5,Ikeja,784655785
+W784656300,,service,false,0,5.0,false,false,false,0,457.2,Ikeja,784656300
+W784656301,,service,false,0,5.0,false,false,false,0,191.3,Ikeja,784656301
+W784656302,,service,false,0,5.0,false,false,false,0,185.0,Ikeja,784656302
+W784657038,,residential,false,0,7.5,false,false,false,0,112.8,Ikeja,784657038
+W784657238,,residential,false,0,7.5,false,false,false,0,56.5,Ikeja,784657238
+W784657239,,residential,false,0,7.5,false,false,false,0,73.6,Ikeja,784657239
+W784660580,,service,false,0,5.0,false,false,false,0,208.0,Ikeja,784660580
+W784660581,,service,false,0,5.0,false,false,false,0,153.6,Ikeja,784660581
+W784660775,,service,false,0,5.0,false,false,false,0,12.1,Ikeja,784660775
+W784661283,,service,false,0,5.0,false,false,false,0,88.5,Ikeja,784661283
+W784661596,,residential,false,0,7.5,false,false,false,0,80.2,Ikeja,784661596
+W784661710,,service,false,0,5.0,false,false,false,0,121.5,Ikeja,784661710
+W784662497,,service,false,0,5.0,false,false,false,0,13.3,Ikeja,784662497
+W784662498,,service,false,0,5.0,false,false,false,0,87.4,Ikeja,784662498
+W784663051,,service,false,0,5.0,false,false,false,0,60.1,Ikeja,784663051
+W784664651,,service,false,0,5.0,false,false,false,0,107.7,Ikeja,784664651
+W784665643,,residential,false,0,7.5,false,false,false,0,81.3,Ikeja,784665643
+W784665655,,service,false,0,5.0,false,false,false,0,167.0,Ikeja,784665655
+W784665902,,service,false,0,5.0,false,false,false,0,126.2,Ikeja,784665902
+W784668881,,residential,false,0,7.5,false,false,false,0,48.6,Ikeja,784668881
+W784669501,,service,false,0,5.0,false,false,false,0,36.2,Ikeja,784669501
+W784669502,,service,false,0,5.0,false,false,false,0,57.4,Ikeja,784669502
+W784670285,,residential,false,0,7.5,false,false,false,0,37.4,Ikeja,784670285
+W784670286,,residential,false,0,7.5,false,false,false,0,73.8,Ikeja,784670286
+W784677221,,service,false,0,5.0,false,false,false,0,35.0,Ikeja,784677221
+W784962987,,service,false,0,5.0,false,false,false,0,361.6,Ikeja,784962987
+W784965249,,residential,false,0,7.5,false,false,false,0,93.2,Ikeja,784965249
+W784965250,,residential,false,0,7.5,false,false,false,0,120.6,Ikeja,784965250
+W784965251,,residential,false,0,7.5,false,false,false,0,74.3,Ikeja,784965251
+W784965252,,service,false,0,5.0,false,false,false,0,88.5,Ikeja,784965252
+W784966918,,service,false,0,5.0,false,false,false,0,68.6,Ikeja,784966918
+W788861862,,service,false,0,5.0,false,false,false,0,280.6,Ikeja,788861862
+W788861863,,service,false,0,5.0,false,false,false,0,94.7,Ikeja,788861863
+W794420724,,service,false,0,5.0,true,false,false,0,15.0,Ikeja,794420724
+W794420725,,service,false,0,5.0,true,false,false,0,19.1,Ikeja,794420725
+W794420726,,service,false,0,5.0,true,false,false,0,5.9,Ikeja,794420726
+W794420727,,service,false,0,5.0,true,false,false,0,21.2,Ikeja,794420727
+W794420728,,service,false,0,5.0,true,false,false,0,36.0,Ikeja,794420728
+W794420729,,service,false,0,5.0,true,false,false,0,35.8,Ikeja,794420729
+W795085140,,service,false,0,5.0,false,false,false,0,41.3,Ikeja,795085140
+W795207418,,service,false,0,5.0,false,false,false,0,10.6,Ikeja,795207418
+W795207419,,service,false,0,5.0,false,false,false,0,77.3,Ikeja,795207419
+W799493338,,service,false,0,5.0,false,false,false,0,158.9,Ikeja,799493338
+W8064698,,residential,false,0,7.5,false,false,false,0,115.4,Ikeja,8064698
+W8064745,,residential,false,0,7.5,false,false,false,0,82.5,Ikeja,8064745
+W828714091,,service,false,0,5.0,false,false,false,0,97.1,Ikeja,828714091
+W828717596,,service,false,0,5.0,false,false,false,0,84.3,Ikeja,828717596
+W828717597,,service,false,0,5.0,false,false,false,0,90.9,Ikeja,828717597
+W828717598,,service,false,0,5.0,false,false,false,0,44.2,Ikeja,828717598
+W828717599,,service,false,0,5.0,false,false,false,0,258.9,Ikeja,828717599
+W828726230,,service,false,0,5.0,false,false,false,0,91.6,Ikeja,828726230
+W828775916,,service,false,0,5.0,false,false,false,0,73.8,Ikeja,828775916
+W828795241,,service,false,0,5.0,false,false,false,0,96.6,Ikeja,828795241
+W828795242,,service,false,0,5.0,false,false,false,0,33.8,Ikeja,828795242
+W828795243,,service,false,0,5.0,false,false,false,0,43.5,Ikeja,828795243
+W828806429,,service,false,0,5.0,false,false,false,0,77.2,Ikeja,828806429
+W828806430,,service,false,0,5.0,false,false,false,0,23.6,Ikeja,828806430
+W828806431,,service,false,0,5.0,false,false,false,0,18.1,Ikeja,828806431
+W828817901,,service,false,0,5.0,true,false,false,0,10.5,Ikeja,828817901
+W828817902,,service,false,0,5.0,false,false,false,0,39.0,Ikeja,828817902
+W828817903,,service,false,0,5.0,false,false,false,0,9.9,Ikeja,828817903
+W828817904,,service,false,0,5.0,false,false,false,0,10.5,Ikeja,828817904
+W828826274,,service,false,0,5.0,false,false,false,0,34.2,Ikeja,828826274
+W828834271,,service,false,0,5.0,true,false,false,0,7.8,Ikeja,828834271
+W829101323,,service,false,0,5.0,false,false,false,0,137.7,Ikeja,829101323
+W829101324,,service,false,0,5.0,false,false,false,0,46.9,Ikeja,829101324
+W829101325,,service,false,0,5.0,false,false,false,0,7.3,Ikeja,829101325
+W829208569,,service,false,0,5.0,false,false,false,0,122.1,Ikeja,829208569
+W829208570,,service,false,0,5.0,false,false,false,0,77.9,Ikeja,829208570
+W829208571,,service,false,0,5.0,false,false,false,0,20.8,Ikeja,829208571
+W829214961,,service,false,0,5.0,false,false,false,0,97.0,Ikeja,829214961
+W829214962,,service,false,0,5.0,false,false,false,0,30.4,Ikeja,829214962
+W829218461,,service,false,0,5.0,false,false,false,0,45.3,Ikeja,829218461
+W829218462,,service,false,0,5.0,false,false,false,0,30.3,Ikeja,829218462
+W829218463,,service,false,0,5.0,false,false,false,0,46.9,Ikeja,829218463
+W829243489,,service,false,0,5.0,false,false,false,0,43.5,Ikeja,829243489
+W829246690,,service,false,0,5.0,false,false,false,0,136.4,Ikeja,829246690
+W829255021,,service,false,0,5.0,false,false,false,0,45.1,Ikeja,829255021
+W829255022,,service,false,0,5.0,false,false,false,0,34.1,Ikeja,829255022
+W829261665,,service,false,0,5.0,false,false,false,0,119.6,Ikeja,829261665
+W829261666,,service,false,0,5.0,false,false,false,0,47.1,Ikeja,829261666
+W829267763,,service,false,0,5.0,false,false,false,0,24.2,Ikeja,829267763
+W832274032,,residential,false,0,7.5,true,false,false,0,97.6,Ikeja,832274032
+W832592064,,residential,false,0,7.5,true,false,false,0,80.9,Ikeja,832592064
+W832592065,,residential,false,0,7.5,true,false,false,0,303.7,Ikeja,832592065
+W847942909,,service,false,0,5.0,false,false,false,0,111.7,Ikeja,847942909
+W848748894,,service,false,0,5.0,false,false,false,0,78.6,Ikeja,848748894
+W848749845,,service,false,0,5.0,true,false,false,0,76.7,Ikeja,848749845
+W848749846,,service,false,0,5.0,false,false,false,0,40.2,Ikeja,848749846
+W848749847,,service,false,0,5.0,false,false,false,0,82.3,Ikeja,848749847
+W848750534,,service,false,0,5.0,true,false,false,0,69.1,Ikeja,848750534
+W848875288,,service,false,0,5.0,false,false,false,0,46.7,Ikeja,848875288
+W848875289,,service,false,0,5.0,false,false,false,0,129.5,Ikeja,848875289
+W848875290,,service,false,0,5.0,false,false,false,0,24.2,Ikeja,848875290
+W848875291,,service,false,0,5.0,false,false,false,0,71.3,Ikeja,848875291
+W848875292,,service,false,0,5.0,false,false,false,0,14.8,Ikeja,848875292
+W848875293,,service,false,0,5.0,false,false,false,0,8.5,Ikeja,848875293
+W850104292,,service,false,0,5.0,false,false,false,0,79.6,Ikeja,850104292
+W850104293,,service,false,0,5.0,false,false,false,0,46.0,Ikeja,850104293
+W850114931,,service,false,0,5.0,false,false,false,0,42.2,Ikeja,850114931
+W850114932,,service,false,0,5.0,false,false,false,0,67.9,Ikeja,850114932
+W850125288,,service,false,0,5.0,true,false,false,0,20.7,Ikeja,850125288
+W850125289,,service,false,0,5.0,false,false,false,0,77.3,Ikeja,850125289
+W850125290,,service,false,0,5.0,true,false,false,0,21.2,Ikeja,850125290
+W850125291,,service,false,0,5.0,false,false,false,0,118.7,Ikeja,850125291
+W864162426,,service,false,0,5.0,false,false,false,0,88.4,Ikeja,864162426
+W864162427,,service,false,0,5.0,true,false,false,0,9.7,Ikeja,864162427
+W870636405,,primary,true,0,7.5,false,false,false,0,5.3,Ikeja,870636405
+W87510877,,residential,false,0,7.5,false,false,false,0,102.2,Ikeja,87510877
+W93148226,,residential,false,0,7.5,false,false,false,0,137.2,Ikeja,93148226
+W93148228,,residential,false,0,7.5,false,false,false,0,360.1,Ikeja,93148228
+W93148229,,residential,false,0,7.5,false,false,false,0,317.6,Ikeja,93148229
+W93148231,,residential,false,0,7.5,false,false,false,0,294.2,Ikeja,93148231
+W93149421,,service,false,0,5.0,false,false,false,0,418.5,Ikeja,93149421
+W964169122,,service,false,0,5.0,false,false,false,0,48.7,Ikeja,964169122
+W964169123,,service,false,0,5.0,false,false,false,0,65.2,Ikeja,964169123
+W964169124,,service,false,0,5.0,false,false,false,0,151.0,Ikeja,964169124
+W964169125,,service,false,0,5.0,false,false,false,0,40.3,Ikeja,964169125
+W964169126,,service,false,0,5.0,false,false,false,0,32.6,Ikeja,964169126
+W964169127,,service,false,0,5.0,false,false,false,0,50.9,Ikeja,964169127
+W964169128,,service,false,0,5.0,false,false,false,0,59.3,Ikeja,964169128
+W964169129,,service,false,0,5.0,false,false,false,0,263.5,Ikeja,964169129
+W964169130,,service,false,0,5.0,false,false,false,0,79.6,Ikeja,964169130
+W964169131,,residential,false,0,7.5,false,false,false,0,92.5,Ikeja,964169131
+W964170055,,service,false,0,5.0,false,false,false,0,45.3,Ikeja,964170055
+W964170056,,service,false,0,5.0,false,false,false,0,73.7,Ikeja,964170056
+W964170057,,service,false,0,5.0,false,false,false,0,74.2,Ikeja,964170057
+W964170058,,service,false,0,5.0,false,false,false,0,33.2,Ikeja,964170058
+W964170059,,service,false,0,5.0,false,false,false,0,93.9,Ikeja,964170059
+W964191950,,service,false,0,5.0,false,false,false,0,28.2,Ikeja,964191950
+W964191951,,service,false,0,5.0,false,false,false,0,6.6,Ikeja,964191951
+W964191952,,service,false,0,5.0,false,false,false,0,84.5,Ikeja,964191952
+W964191953,,service,false,0,5.0,false,false,false,0,56.0,Ikeja,964191953
+W964191954,,service,false,0,5.0,false,false,false,0,51.4,Ikeja,964191954
+W964191955,,service,false,0,5.0,false,false,false,0,133.9,Ikeja,964191955
+W964191956,,service,false,0,5.0,false,false,false,0,75.0,Ikeja,964191956
+W964207720,,service,false,0,5.0,false,false,false,0,48.8,Ikeja,964207720
+W964207721,,service,false,0,5.0,false,false,false,0,47.1,Ikeja,964207721
+W964207722,,service,false,0,5.0,false,false,false,0,109.1,Ikeja,964207722
+W964244367,,service,false,0,5.0,false,false,false,0,33.2,Ikeja,964244367
+W964244368,,service,false,0,5.0,false,false,false,0,16.6,Ikeja,964244368
+W964244369,,residential,false,0,7.5,false,false,false,0,40.2,Ikeja,964244369
+W964244370,,residential,false,0,7.5,false,false,false,0,58.6,Ikeja,964244370
+W964244371,,service,false,0,5.0,false,false,false,0,48.5,Ikeja,964244371
+W964244372,,service,false,0,5.0,false,false,false,0,60.7,Ikeja,964244372
+W964244373,,service,false,0,5.0,false,false,false,0,8.6,Ikeja,964244373
+W964483338,,residential,false,0,7.5,false,false,false,0,67.4,Ikeja,964483338
+W964816653,,service,false,0,5.0,false,false,false,0,35.1,Ikeja,964816653
+W964816654,,service,false,0,5.0,false,false,false,0,52.0,Ikeja,964816654
+W964816655,,service,false,0,5.0,false,false,false,0,42.1,Ikeja,964816655
+W964816749,,service,false,0,5.0,false,false,false,0,93.4,Ikeja,964816749
+W964817713,,service,false,0,5.0,false,false,false,0,33.5,Ikeja,964817713
+W964817714,,service,false,0,5.0,false,false,false,0,67.6,Ikeja,964817714
+W964817715,,service,false,0,5.0,false,false,false,0,33.6,Ikeja,964817715
+W964817716,,service,false,0,5.0,true,false,false,0,50.4,Ikeja,964817716
+W964819055,,service,false,0,5.0,false,false,false,0,56.1,Ikeja,964819055
+W964821295,,service,false,0,5.0,false,false,false,0,236.3,Ikeja,964821295
+W964834837,,service,false,0,5.0,false,false,false,0,19.2,Ikeja,964834837
+W964834838,,service,false,0,5.0,false,false,false,0,21.5,Ikeja,964834838
+W964841883,,service,false,0,5.0,false,false,false,0,33.8,Ikeja,964841883
+W964841884,,service,false,0,5.0,false,false,false,0,81.0,Ikeja,964841884
+W964841885,,service,false,0,5.0,false,false,false,0,114.8,Ikeja,964841885
+W964841886,,service,false,0,5.0,false,false,false,0,46.1,Ikeja,964841886
+W964841887,,service,false,0,5.0,false,false,false,0,194.2,Ikeja,964841887
+W964851864,,service,false,0,5.0,false,false,false,0,67.0,Ikeja,964851864
+W964852750,,service,false,0,5.0,false,false,false,0,48.7,Ikeja,964852750
+W964863381,,service,false,0,5.0,false,false,false,0,107.8,Ikeja,964863381
+W964863996,,service,false,0,5.0,false,false,false,0,48.9,Ikeja,964863996
+W964864988,,service,false,0,5.0,false,false,false,0,56.2,Ikeja,964864988
+W964864989,,service,false,0,5.0,false,false,false,0,68.8,Ikeja,964864989
+W964866612,,service,false,0,5.0,false,false,false,0,90.2,Ikeja,964866612
+W964888424,,service,false,0,5.0,false,false,false,0,142.3,Ikeja,964888424
+W964888425,,service,false,0,5.0,false,false,false,0,67.3,Ikeja,964888425
+W964888426,,service,false,0,5.0,false,false,false,0,80.4,Ikeja,964888426
+W964888427,,service,false,0,5.0,false,false,false,0,47.9,Ikeja,964888427
+W964912887,,service,false,0,5.0,false,false,false,0,92.4,Ikeja,964912887
+W964912888,,service,false,0,5.0,false,false,false,0,39.7,Ikeja,964912888
+W964913462,,service,false,0,5.0,false,false,false,0,86.7,Ikeja,964913462
+W964913463,,service,false,0,5.0,false,false,false,0,50.1,Ikeja,964913463
+W964916607,,residential,false,0,7.5,false,false,false,0,102.3,Ikeja,964916607
+W965515617,,service,false,0,5.0,false,false,false,0,83.0,Ikeja,965515617
+W965515618,,service,false,0,5.0,false,false,false,0,65.1,Ikeja,965515618
+W965515619,,service,false,0,5.0,false,false,false,0,98.7,Ikeja,965515619
+W965549915,,service,false,0,5.0,false,false,false,0,5.1,Ikeja,965549915
+W965549916,,service,false,0,5.0,false,false,false,0,53.4,Ikeja,965549916
+W965550178,,service,false,0,5.0,false,false,false,0,24.9,Ikeja,965550178
+W965572733,,service,false,0,5.0,false,false,false,0,65.5,Ikeja,965572733
+W965572734,,service,false,0,5.0,false,false,false,0,112.8,Ikeja,965572734
+W987499814,,trunk,true,0,7.5,true,false,false,0,53.7,Ikeja,987499814

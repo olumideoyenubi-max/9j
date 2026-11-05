@@ -1,0 +1,2119 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W370880341,Abayomi Owulade Ave,residential,false,0,7.5,false,false,false,0,1067.7,Maryland,370880341
+W221600800,Abebi Close,residential,false,0,7.5,false,false,false,0,79.4,Maryland,221600800
+W136341455,Abel Oreniyi St,residential,false,0,7.5,false,false,false,0,449.2,Maryland,136341455
+W221338625,Abibat Ajose Street,residential,false,0,7.5,false,false,false,0,461.6,Maryland,221338625
+W524191022,Adamson Street,residential,false,0,7.5,false,false,false,0,401.2,Maryland,524191022
+W221338615,Ade Ajayi Street,residential,false,0,7.5,false,false,false,0,464.6,Maryland,221338615
+W1227806877,Adebakin Cresent,residential,false,1,4.3,false,false,false,20,116.0,Maryland,1227806877
+W110157836,Adebola Idowu Street,residential,false,0,7.5,false,false,false,0,180.1,Maryland,110157836
+W442670329,Adekoya Okunleye Cresc,residential,false,0,7.5,false,false,false,0,125.4,Maryland,442670329
+W135193147,Adekunle Banjo Avenue,residential,false,0,7.5,true,false,false,0,591.2,Maryland,135193147
+W135193151,Adekunle Banjo Avenue,residential,false,0,7.5,true,false,false,0,572.7,Maryland,135193151
+W135193156,Adekunle Banjo Avenue,residential,false,0,7.5,true,false,false,0,886.2,Maryland,135193156
+W587374368,Adekunle Banjo Avenue,residential,false,0,7.5,true,false,false,0,879.2,Maryland,587374368
+W1150046308,Adekunle Bisi Street,residential,false,0,7.5,false,false,false,0,21.1,Maryland,1150046308
+W221338638,Adekunle Bisi Street,residential,false,0,7.5,false,false,false,0,746.7,Maryland,221338638
+W975945049,Adekunle Bisi Street,service,false,0,5.0,false,false,false,0,60.2,Maryland,975945049
+W442670348,Adekunle Street,residential,false,0,7.5,false,false,false,0,387.5,Maryland,442670348
+W136433581,Ademola Alabi Street,residential,false,0,7.5,false,false,false,0,326.1,Maryland,136433581
+W370880332,Ademola Taiwo Street,residential,false,0,7.5,false,false,false,0,403.1,Maryland,370880332
+W110156018,Adenola Street,residential,false,0,7.5,false,false,false,0,504.8,Maryland,110156018
+W136432585,Adeoye Aderemi Road,residential,false,0,7.5,false,false,false,0,284.0,Maryland,136432585
+W524191026,Adepitan Street,residential,false,0,7.5,false,false,false,0,636.4,Maryland,524191026
+W224228766,Adepoju Street,residential,false,0,7.5,false,false,false,0,157.5,Maryland,224228766
+W8064807,Aderibigbe Shitta Street,residential,false,0,7.5,false,false,false,0,380.9,Maryland,8064807
+W136341466,Aderoju Adewuyi Street,residential,false,0,7.5,false,false,false,0,367.7,Maryland,136341466
+W334656222,Adetayo Street,residential,false,0,7.5,false,false,false,0,317.0,Maryland,334656222
+W582985852,Adetoro Adelaja,residential,false,0,7.5,false,false,false,0,417.8,Maryland,582985852
+W443985918,Adewunmi Close,residential,false,1,4.3,false,false,false,20,135.0,Maryland,443985918
+W110156061,Adeye Street,residential,false,0,7.5,false,false,false,0,212.2,Maryland,110156061
+W370880303,Adeyemi Odukomaya,residential,false,0,7.5,false,false,false,0,368.3,Maryland,370880303
+W443985902,Adeyemi Street,residential,false,0,7.5,false,false,false,0,294.4,Maryland,443985902
+W135181733,Adeyiga Street,residential,false,0,7.5,false,false,false,0,449.7,Maryland,135181733
+W110155796,Adisa Akintoye Street,residential,false,0,7.5,true,false,false,0,316.8,Maryland,110155796
+W225234886,Adisa Akintoye Street,residential,false,0,7.5,false,false,false,0,493.1,Maryland,225234886
+W832174303,Adisa Akintoye Street,residential,false,0,7.5,false,false,false,0,303.1,Maryland,832174303
+W224485040,Agboyi Road,tertiary,false,0,10.0,false,false,false,0,1569.5,Maryland,224485040
+W524191037,Agboyi Road,tertiary,false,0,10.0,false,false,false,0,176.0,Maryland,524191037
+W1503332742,Agidi Road,tertiary,false,0,10.0,true,false,false,0,905.5,Maryland,1503332742
+W223403429,Agidi Road,tertiary,false,0,10.0,true,false,false,0,910.3,Maryland,223403429
+W221600791,Aina Street,residential,false,0,7.5,false,false,false,0,476.4,Maryland,221600791
+W221338636,Aina Street ,residential,false,0,7.5,false,false,false,0,686.2,Maryland,221338636
+W135181751,Ajagungbade Street,residential,false,0,7.5,false,false,false,0,260.7,Maryland,135181751
+W5046000,Ajanaku Street,residential,false,1,4.3,false,false,false,0,919.5,Maryland,5046000
+W1410897125,Ajelogo Market Street,tertiary,false,0,10.0,true,false,false,0,495.8,Maryland,1410897125
+W224737343,Ajelogo Market Street,tertiary,false,0,10.0,true,false,false,0,174.1,Maryland,224737343
+W224737345,Ajelogo Market Street,tertiary,false,0,10.0,true,false,false,0,492.4,Maryland,224737345
+W224737348,Ajelogo Market Street,tertiary,false,0,10.0,true,false,false,0,172.3,Maryland,224737348
+W223403404,Ajibola Crescent,tertiary,false,0,10.0,false,false,false,0,445.2,Maryland,223403404
+W524191029,Ajibola Crescent,residential,false,0,7.5,false,false,false,0,239.4,Maryland,524191029
+W1300160657,Ajiboye Street,tertiary,false,0,10.0,false,false,false,0,11.4,Maryland,1300160657
+W1300160661,Ajiboye Street,tertiary,false,0,10.0,true,false,false,0,338.5,Maryland,1300160661
+W223533483,Ajiboye Street,tertiary,false,0,10.0,true,false,false,0,341.7,Maryland,223533483
+W23711279,Ajose Street,residential,false,0,7.5,false,false,false,0,834.3,Maryland,23711279
+W1410911329,Akanimodo Street,residential,false,0,7.5,true,false,false,0,55.5,Maryland,1410911329
+W1410911330,Akanimodo Street,residential,false,0,7.5,true,false,false,0,59.9,Maryland,1410911330
+W224737351,Akanimodo Street,residential,false,0,7.5,false,false,false,0,350.4,Maryland,224737351
+W569385027,Akanimodo Street,residential,false,0,7.5,false,false,false,0,445.3,Maryland,569385027
+W370880321,Akinbode Street,residential,false,0,7.5,false,false,false,0,243.8,Maryland,370880321
+W110159609,Akintan Street,residential,false,0,7.5,false,false,false,0,329.4,Maryland,110159609
+W443985898,Akintola Cl,residential,false,0,7.5,false,false,false,0,109.5,Maryland,443985898
+W442670328,Akinwale Street,residential,false,0,7.5,false,false,false,0,233.3,Maryland,442670328
+W226251856,Akinwunmi Street,residential,false,0,7.5,false,false,false,0,621.4,Maryland,226251856
+W524191031,Akinyemi Street,residential,false,0,7.5,false,false,false,0,476.0,Maryland,524191031
+W224353586,Alade Street,residential,false,0,7.5,false,false,false,0,172.1,Maryland,224353586
+W135181730,Aladelola Street,residential,false,0,7.5,false,false,false,0,1309.2,Maryland,135181730
+W1372272695,Aladelola Street,residential,false,0,7.5,false,false,false,0,335.5,Maryland,1372272695
+W1372272696,Aladelola Street,residential,false,0,7.5,false,true,false,0,28.1,Maryland,1372272696
+W223672735,Alapere Street,residential,false,0,7.5,false,false,false,0,338.1,Maryland,223672735
+W136341472,Alfred Olaiya Street,residential,false,0,7.5,false,false,false,0,413.0,Maryland,136341472
+W136333532,Alh Abayomi Adelaja Dr,service,false,0,5.0,false,false,false,0,232.4,Maryland,136333532
+W1565697021,Alh Abayomi Adelaja Dr,service,false,0,5.0,false,false,false,0,9.7,Maryland,1565697021
+W221338643,Alhaji Amoo Street,residential,false,0,7.5,false,false,false,0,1281.8,Maryland,221338643
+W223403402,Alhaji Lambo Street,residential,false,0,7.5,false,false,false,0,64.7,Maryland,223403402
+W524191039,Alhaji Lambo Street,residential,false,0,7.5,false,false,false,0,74.6,Maryland,524191039
+W110156715,Allied Street,residential,false,0,7.5,false,false,false,0,331.6,Maryland,110156715
+W370880296,Anibaba Street,residential,false,2,7.6,false,false,false,0,819.6,Maryland,370880296
+W442670327,Araromi Iwo Street,residential,false,0,7.5,false,false,false,0,238.4,Maryland,442670327
+W370880346,Association Avenue,residential,false,0,7.5,false,false,false,0,638.6,Maryland,370880346
+W134230154,Association Close,residential,false,0,7.5,false,false,false,0,335.1,Maryland,134230154
+W442670341,Atimo Street,residential,false,0,7.5,false,false,false,0,244.0,Maryland,442670341
+W370881164,Ayetoro Street,residential,false,0,7.5,false,false,false,0,145.7,Maryland,370881164
+W222303768,Ayinde Street,residential,false,0,7.5,false,false,false,0,318.9,Maryland,222303768
+W396876173,Babs Osibo Street,residential,false,0,7.5,false,false,false,0,270.6,Maryland,396876173
+W223672738,Bakare Street,residential,false,0,7.5,false,false,false,0,372.7,Maryland,223672738
+W223533486,Balogun Ilawe,residential,false,0,7.5,false,false,false,0,287.6,Maryland,223533486
+W524191020,Barbington Street,residential,false,0,7.5,false,false,false,0,199.6,Maryland,524191020
+W136432599,Bayo Adejonwo Street,residential,false,0,7.5,false,false,false,0,504.7,Maryland,136432599
+W443985904,Bello Folawiyo Crescent,residential,false,0,7.5,false,false,false,0,587.8,Maryland,443985904
+W1565709329,Billingsway Road,unclassified,false,0,7.5,false,false,false,0,82.8,Maryland,1565709329
+W23711678,Billingsway Road,unclassified,false,0,7.5,true,false,false,0,327.6,Maryland,23711678
+W583221526,Billingsway Road,unclassified,false,0,7.5,true,false,false,0,59.0,Maryland,583221526
+W583221528,Billingsway Road,unclassified,false,0,7.5,true,false,false,0,57.9,Maryland,583221528
+W583221529,Billingsway Road,unclassified,false,0,7.5,false,false,false,0,1099.2,Maryland,583221529
+W588028322,Billingsway Road,unclassified,false,0,7.5,true,false,false,0,69.6,Maryland,588028322
+W588028323,Billingsway Road,unclassified,false,0,7.5,true,false,false,0,337.2,Maryland,588028323
+W588028324,Billingsway Road,unclassified,false,0,7.5,true,false,false,0,68.6,Maryland,588028324
+W588028326,Billingsway Road,unclassified,false,0,7.5,false,false,false,0,191.5,Maryland,588028326
+W222303777,Biola Fadayomi Street,residential,false,0,7.5,false,false,false,0,221.1,Maryland,222303777
+W225234892,C.A.C Street,residential,false,0,7.5,false,false,false,0,810.9,Maryland,225234892
+W135193159,CMD Avenue,tertiary,false,0,10.0,false,false,false,0,1438.8,Maryland,135193159
+W292634016,CMD Road Magodo GRA Phase 2,tertiary,false,2,7.6,false,false,false,0,2297.8,Maryland,292634016
+W224485045,Church Street,residential,false,0,7.5,false,false,false,0,728.3,Maryland,224485045
+W370880344,Dairo Street,residential,false,0,7.5,false,false,false,0,635.8,Maryland,370880344
+W224633986,Daramola Close,residential,false,0,7.5,false,false,false,0,243.2,Maryland,224633986
+W1046941949,Davies Street,tertiary,false,0,10.0,false,false,false,0,204.7,Maryland,1046941949
+W224737346,Davies Street,tertiary,false,0,10.0,false,false,false,0,356.6,Maryland,224737346
+W110158489,Demurin Street,tertiary,false,0,10.0,true,false,false,0,189.5,Maryland,110158489
+W1395990962,Demurin Street,tertiary,false,0,10.0,true,false,false,0,35.4,Maryland,1395990962
+W1395990963,Demurin Street,tertiary,false,0,10.0,true,false,false,0,31.9,Maryland,1395990963
+W1503331424,Demurin Street,tertiary,false,0,10.0,true,false,false,0,650.6,Maryland,1503331424
+W1503331425,Demurin Street,tertiary,false,0,10.0,true,true,false,0,8.0,Maryland,1503331425
+W1503331426,Demurin Street,tertiary,false,0,10.0,true,false,false,0,714.8,Maryland,1503331426
+W1503331427,Demurin Street,tertiary,false,0,10.0,true,true,false,0,14.1,Maryland,1503331427
+W1503331428,Demurin Street,tertiary,false,0,10.0,true,false,false,0,191.2,Maryland,1503331428
+W223533477,Demurin Street,tertiary,false,0,10.0,true,false,false,0,716.9,Maryland,223533477
+W223533492,Demurin Street,tertiary,false,0,10.0,true,true,false,0,14.1,Maryland,223533492
+W223672720,Demurin Street,tertiary,false,0,10.0,true,false,false,0,660.7,Maryland,223672720
+W223672739,Demurin Street,tertiary,false,0,10.0,true,true,false,0,8.1,Maryland,223672739
+W223403408,Emannuel St,residential,false,0,7.5,false,false,false,0,295.3,Maryland,223403408
+W221338623,Emmanuel Street,residential,false,0,7.5,false,false,false,0,732.5,Maryland,221338623
+W221338631,Emmanuel Street,residential,false,0,7.5,false,false,false,0,963.1,Maryland,221338631
+W586557460,Emmanuel Street,residential,false,0,7.5,true,false,false,0,63.4,Maryland,586557460
+W110156660,Fadiya Street,residential,false,0,7.5,true,false,false,0,249.9,Maryland,110156660
+W832179187,Fadiya Street,residential,false,0,7.5,false,false,false,0,175.9,Maryland,832179187
+W370880319,Femi Ogun Street,residential,false,0,7.5,false,false,false,0,198.4,Maryland,370880319
+W221600799,Gbadebo Street ,residential,false,0,7.5,false,false,false,0,293.6,Maryland,221600799
+W223403426,Goodluck St,tertiary,false,0,10.0,false,false,false,0,241.3,Maryland,223403426
+W442670352,Grace Close,residential,false,0,7.5,false,false,false,0,202.1,Maryland,442670352
+W225234885,Gregory Street,residential,false,0,7.5,false,false,false,0,343.6,Maryland,225234885
+W221338633,Hakeem Ajala Street,residential,false,0,7.5,false,false,false,0,254.9,Maryland,221338633
+W442670330,Hassan Street,residential,false,0,7.5,false,false,false,0,258.0,Maryland,442670330
+W136341460,Henry Adefowope,residential,false,0,7.5,false,false,false,0,435.8,Maryland,136341460
+W878224586,Ibefu Street,residential,false,0,7.5,false,false,false,10,209.8,Maryland,878224586
+W224353591,Idofian,residential,false,0,7.5,false,false,false,0,358.3,Maryland,224353591
+W747161010,Idofian,residential,false,0,7.5,false,false,false,0,44.4,Maryland,747161010
+W747161011,Idofian,residential,false,0,7.5,false,true,false,0,7.8,Maryland,747161011
+W222760433,Ifesowapo Street,residential,false,0,7.5,false,false,false,0,329.3,Maryland,222760433
+W828126102,Ifesowapo Street,tertiary,false,0,10.0,true,false,false,0,22.6,Maryland,828126102
+W223403401,Igoho Street,residential,false,0,7.5,false,false,false,0,374.9,Maryland,223403401
+W133870581,Ikorodu Road,primary,false,0,17.5,true,false,false,0,827.9,Maryland,133870581
+W133879433,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,577.2,Maryland,133879433
+W133879436,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,578.1,Maryland,133879436
+W133879440,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,547.8,Maryland,133879440
+W133882114,Ikorodu Road,primary,false,0,17.5,true,false,false,0,1989.8,Maryland,133882114
+W133882117,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,2087.1,Maryland,133882117
+W133882118,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,1928.3,Maryland,133882118
+W133882127,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,292.0,Maryland,133882127
+W133882129,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,1910.7,Maryland,133882129
+W133882130,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,330.7,Maryland,133882130
+W133882133,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,331.0,Maryland,133882133
+W133882135,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,53.1,Maryland,133882135
+W133882136,Ikorodu Road,trunk,false,2,7.6,true,false,false,0,344.1,Maryland,133882136
+W133882137,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,52.6,Maryland,133882137
+W133882138,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,292.2,Maryland,133882138
+W1355682103,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,114.2,Maryland,1355682103
+W1355682104,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,142.1,Maryland,1355682104
+W1420862253,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,51.5,Maryland,1420862253
+W1420862255,Ikorodu Road,primary,false,0,17.5,true,false,false,0,821.2,Maryland,1420862255
+W1420862257,Ikorodu Road,primary,false,0,17.5,true,false,false,0,82.9,Maryland,1420862257
+W1433195980,Ikorodu Road,motorway,false,3,10.9,true,false,false,0,36.4,Maryland,1433195980
+W1465194309,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,24.5,Maryland,1465194309
+W224737357,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,137.1,Maryland,224737357
+W224737372,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,155.3,Maryland,224737372
+W231644576,Ikorodu Road,trunk,false,2,7.6,true,false,false,0,353.6,Maryland,231644576
+W231694752,Ikorodu Road,primary,false,0,17.5,true,false,false,0,1945.5,Maryland,231694752
+W26234520,Ikorodu Road,motorway,false,3,10.9,true,false,false,0,2075.3,Maryland,26234520
+W579520841,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,83.2,Maryland,579520841
+W579520844,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,241.9,Maryland,579520844
+W671811990,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,135.4,Maryland,671811990
+W671811995,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,127.6,Maryland,671811995
+W671812216,Ikorodu Road,tertiary,false,0,10.0,true,true,false,0,52.4,Maryland,671812216
+W671812218,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,112.8,Maryland,671812218
+W671812220,Ikorodu Road,tertiary,false,0,10.0,true,true,false,0,53.4,Maryland,671812220
+W671812222,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,144.7,Maryland,671812222
+W671812269,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,397.5,Maryland,671812269
+W671841248,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,1982.1,Maryland,671841248
+W671841252,Ikorodu Road,tertiary,false,0,10.0,true,false,false,0,1927.4,Maryland,671841252
+W8064804,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,580.6,Maryland,8064804
+W1343275452,Ikosi Road,tertiary,false,0,10.0,true,false,false,0,77.3,Maryland,1343275452
+W1343275453,Ikosi Road,tertiary,false,0,10.0,true,false,false,0,72.3,Maryland,1343275453
+W135181732,Ikosi Road,tertiary,false,0,10.0,false,false,false,0,931.7,Maryland,135181732
+W136333530,Ikosi Road,tertiary,false,0,10.0,false,false,false,0,1125.5,Maryland,136333530
+W224353573,Ila Oragun Street,residential,false,0,7.5,false,false,false,0,203.2,Maryland,224353573
+W11140724,Immanuel Street,residential,false,0,7.5,false,false,false,0,433.7,Maryland,11140724
+W442670350,Irepodun Street,residential,false,0,7.5,false,false,false,0,216.2,Maryland,442670350
+W1411165157,Iyase Street,residential,false,0,7.5,false,false,false,0,4.9,Maryland,1411165157
+W1411165160,Iyase Street,residential,false,0,7.5,false,false,false,0,334.8,Maryland,1411165160
+W224737373,Iyase Street,residential,false,0,7.5,false,false,false,0,182.3,Maryland,224737373
+W136338264,Jagal Close,service,false,0,5.0,false,false,false,0,372.8,Maryland,136338264
+W223403431,Jegede Street,residential,false,0,7.5,false,false,false,0,238.0,Maryland,223403431
+W1433254720,Jemibewon Street,residential,false,0,7.5,false,false,false,0,212.4,Maryland,1433254720
+W221338639,Jemibewon Street,residential,false,0,7.5,false,false,false,0,191.8,Maryland,221338639
+W135181755,Jimoh Balogun Street,residential,false,0,7.5,false,false,false,30,512.8,Maryland,135181755
+W223672747,Julius Elebiju Street,tertiary,false,0,10.0,false,false,false,0,520.0,Maryland,223672747
+W222303752,Jumat Olukoya,residential,false,0,7.5,false,false,false,0,295.9,Maryland,222303752
+W524013074,Kasumu Street,residential,false,0,7.5,false,false,false,0,293.1,Maryland,524013074
+W223672757,Kazeem Street,residential,false,0,7.5,false,false,false,0,440.7,Maryland,223672757
+W135181747,Kola Adeyeye Street,residential,false,0,7.5,false,false,false,0,230.5,Maryland,135181747
+W136326593,Kudirat Abiola Way,secondary,false,0,13.0,true,false,false,0,3888.7,Maryland,136326593
+W136333548,Kudirat Abiola Way,secondary,false,0,13.0,true,false,false,0,3907.1,Maryland,136333548
+W221600784,Kujore Street,residential,false,0,7.5,false,false,false,0,1314.6,Maryland,221600784
+W223672742,Ladejobi Ogunsanya Street,residential,false,0,7.5,false,false,false,0,111.1,Maryland,223672742
+W135199746,Lagos-Ibadan Expressway,motorway,false,3,10.9,true,false,false,0,4457.8,Maryland,135199746
+W25115329,Lagos-Ibadan Expressway,motorway,false,3,10.9,true,false,false,0,4437.7,Maryland,25115329
+W88683342,Lagos-Ibadan Expressway,motorway,false,0,24.0,true,true,false,0,116.0,Maryland,88683342
+W88683362,Lagos-Ibadan Expressway,motorway,false,0,24.0,true,true,false,0,117.4,Maryland,88683362
+W224228762,Lakefront Street,residential,false,0,7.5,false,false,false,0,187.2,Maryland,224228762
+W225234879,Lawal Street,residential,false,0,7.5,false,false,false,0,253.7,Maryland,225234879
+W370880337,Mabinuori Street,residential,false,0,7.5,false,false,false,0,416.7,Maryland,370880337
+W136432608,Maryland Crescent,residential,false,0,7.5,false,false,false,0,422.1,Maryland,136432608
+W1420862250,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,true,false,0,654.7,Maryland,1420862250
+W1420862251,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,true,false,0,285.8,Maryland,1420862251
+W1420862254,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,true,false,0,628.3,Maryland,1420862254
+W1420862256,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,true,false,0,241.6,Maryland,1420862256
+W1420862259,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,false,false,0,91.4,Maryland,1420862259
+W1420948880,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,false,false,0,264.1,Maryland,1420948880
+W1420948882,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,true,false,0,271.5,Maryland,1420948882
+W1433195978,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,true,false,0,130.6,Maryland,1433195978
+W1433195979,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,true,false,0,59.6,Maryland,1433195979
+W1465194307,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,true,false,0,76.3,Maryland,1465194307
+W1465194308,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,false,false,0,129.8,Maryland,1465194308
+W1465194311,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,false,false,0,126.6,Maryland,1465194311
+W1465194312,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,false,false,0,70.1,Maryland,1465194312
+W1465194313,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,true,false,0,30.6,Maryland,1465194313
+W1465194314,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,false,false,0,44.0,Maryland,1465194314
+W1465377779,Maryland-Opebi-Ojota Link Bridge,primary,false,0,17.5,true,false,false,0,18.5,Maryland,1465377779
+W588252339,Mebilewo,residential,false,0,7.5,false,false,false,0,102.1,Maryland,588252339
+W136333528,Mobolaji Johnson Way,tertiary,false,2,7.6,true,false,false,0,1520.6,Maryland,136333528
+W136333561,Mobolaji Johnson Way,tertiary,false,2,7.6,true,false,false,0,2427.7,Maryland,136333561
+W1566370311,Mobolaji Johnson Way,tertiary,false,2,7.6,true,false,false,0,896.2,Maryland,1566370311
+W135193160,Moses Iguodala Street,residential,false,0,7.5,false,false,false,0,259.1,Maryland,135193160
+W135181744,Moshood Street,residential,false,0,7.5,false,false,false,0,267.7,Maryland,135181744
+W1372243380,Moshood Street,residential,false,0,7.5,false,false,false,0,114.2,Maryland,1372243380
+W396876172,Mudasiru Owoyele St,residential,false,0,7.5,false,false,false,0,272.0,Maryland,396876172
+W1136384415,Muri Folami Street,residential,false,0,7.5,true,false,false,0,42.9,Maryland,1136384415
+W221600795,Muri Folami Street,residential,false,0,7.5,true,false,false,0,1365.0,Maryland,221600795
+W222303753,Musa Adewokun St,residential,false,0,7.5,false,false,false,0,255.6,Maryland,222303753
+W221886732,Niyi Adedeji St,residential,false,0,7.5,false,false,false,0,320.7,Maryland,221886732
+W222303767,Niyi Ogunleye St,residential,false,0,7.5,false,false,false,0,269.6,Maryland,222303767
+W370881172,Oduntan Street,residential,false,0,7.5,false,false,false,0,733.2,Maryland,370881172
+W226251843,Ofo Street,residential,false,0,7.5,false,false,false,0,414.2,Maryland,226251843
+W221600790,Ogudu Road,secondary,false,0,13.0,true,false,false,80,2575.3,Maryland,221600790
+W221600798,Ogudu Road,secondary,false,0,13.0,true,false,false,0,2566.8,Maryland,221600798
+W110155915,Ogunbanwo Street,residential,false,0,7.5,false,false,false,0,355.3,Maryland,110155915
+W370880345,Ogunlana Street,residential,false,0,7.5,false,false,false,0,568.7,Maryland,370880345
+W221600788,Ogunleti Street ,residential,false,0,7.5,false,false,false,0,298.4,Maryland,221600788
+W110156026,Ogunseyinde Street,residential,false,0,7.5,false,false,false,0,396.8,Maryland,110156026
+W110156928,Ogunsowobo Street,residential,false,0,7.5,false,false,false,0,213.9,Maryland,110156928
+W224353572,Ogunsowobo Street,residential,false,0,7.5,false,true,false,0,10.3,Maryland,224353572
+W224353577,Ogunsowobo Street,residential,false,0,7.5,false,false,false,0,78.3,Maryland,224353577
+W396884661,Ogunyadewo St,residential,false,0,7.5,false,false,false,0,178.2,Maryland,396884661
+W110157538,Ogunyemi Street,residential,false,0,7.5,false,false,false,0,205.7,Maryland,110157538
+W226251845,Oki Lane,residential,false,0,7.5,false,false,false,0,552.4,Maryland,226251845
+W110158138,Olabinjo Olukoya Street,residential,false,0,7.5,false,false,false,0,74.9,Maryland,110158138
+W1372256684,Olabisi Balogun Street,residential,false,1,4.3,false,false,false,20,134.5,Maryland,1372256684
+W442670340,Olabisi Balogun Street,residential,false,1,4.3,false,false,false,20,344.7,Maryland,442670340
+W221600802,Olabisi Street,residential,false,0,7.5,false,false,false,0,487.9,Maryland,221600802
+W442671970,Oladega Street,residential,false,0,7.5,false,false,false,0,214.7,Maryland,442671970
+W225234877,Oladele Street,residential,false,0,7.5,false,false,false,0,216.7,Maryland,225234877
+W370880343,Oladogba Street,residential,false,0,7.5,false,false,false,0,698.3,Maryland,370880343
+W878224360,Olaitan Oshinuga St,residential,false,0,7.5,false,false,false,10,160.1,Maryland,878224360
+W222303774,Olakunle Ajibade,residential,false,0,7.5,false,false,false,0,310.8,Maryland,222303774
+W135181745,Olanipekun Street,residential,false,0,7.5,false,false,false,0,269.4,Maryland,135181745
+W136432591,Olaperi Street,residential,false,0,7.5,false,false,false,0,354.9,Maryland,136432591
+W443977869,Olatunbosun Ajidele Street,residential,false,0,7.5,false,false,false,0,283.2,Maryland,443977869
+W135181754,Olatunji Ladipo Street,residential,false,0,7.5,false,false,false,0,248.1,Maryland,135181754
+W221600803,Olatunji Street,residential,false,0,7.5,false,false,false,0,1327.1,Maryland,221600803
+W1256496003,Olorunfunmi Street,residential,false,0,7.5,false,false,false,0,221.3,Maryland,1256496003
+W98983545,Olorunfunmi Street,residential,false,0,7.5,false,false,false,0,835.9,Maryland,98983545
+W442670344,Olufowobi Street,residential,false,0,7.5,false,false,false,0,173.7,Maryland,442670344
+W1300160660,Oluwakemi Street,tertiary,false,0,10.0,true,false,false,0,280.7,Maryland,1300160660
+W524191024,Oluwakemi Street,tertiary,false,0,10.0,true,false,false,0,282.7,Maryland,524191024
+W370880339,Oluwalogbon Street,residential,false,0,7.5,false,false,false,0,653.9,Maryland,370880339
+W370880298,Oluyombo Street,residential,false,0,7.5,false,false,false,0,1437.4,Maryland,370880298
+W442671951,Omo Disu Close,residential,false,1,4.3,false,false,false,20,111.8,Maryland,442671951
+W221886737,Omo Ighodalo Street,residential,false,0,7.5,false,false,false,0,820.7,Maryland,221886737
+W136341478,Omodara Street,residential,false,0,7.5,false,false,false,0,491.7,Maryland,136341478
+W370880334,Omoniyi Street,residential,false,0,7.5,false,false,false,0,290.0,Maryland,370880334
+W1018954282,Onadipe Close,residential,false,0,7.5,false,false,false,0,42.7,Maryland,1018954282
+W1188553028,Onakoya Street,residential,false,0,7.5,false,false,false,0,153.3,Maryland,1188553028
+W370880305,Onakoya Street,residential,false,0,7.5,false,false,false,0,254.5,Maryland,370880305
+W370880294,Ondun Street,residential,false,0,7.5,false,false,false,0,158.5,Maryland,370880294
+W136333524,Opebi Link Road,secondary,false,0,13.0,true,false,false,0,125.2,Maryland,136333524
+W136333529,Opebi Link Road,secondary,false,0,13.0,true,true,false,0,593.1,Maryland,136333529
+W1567009377,Opebi Link Road,secondary,false,0,13.0,true,true,false,0,592.5,Maryland,1567009377
+W1567009378,Opebi Link Road,secondary,false,0,13.0,true,false,false,0,125.5,Maryland,1567009378
+W583700619,Opebi Link Road,secondary,false,0,13.0,true,false,false,0,40.8,Maryland,583700619
+W583700620,Opebi Link Road,secondary,false,0,13.0,true,false,false,0,40.2,Maryland,583700620
+W583700622,Opebi Link Road,secondary,false,0,13.0,true,false,false,0,10.3,Maryland,583700622
+W583700623,Opebi Link Road,secondary,false,0,13.0,true,false,false,0,9.5,Maryland,583700623
+W1137207824,Opebi Road,primary,false,0,17.5,true,false,false,0,443.4,Maryland,1137207824
+W1137207825,Opebi Road,primary,false,0,17.5,true,false,false,0,433.3,Maryland,1137207825
+W1445758060,Opebi Road,primary,false,0,17.5,true,false,false,0,19.6,Maryland,1445758060
+W1445758061,Opebi Road,primary,false,0,17.5,true,false,false,0,11.2,Maryland,1445758061
+W136333545,Oregunwa Street,residential,false,0,7.5,false,false,false,0,180.9,Maryland,136333545
+W224633998,Oremeji Street,residential,false,0,7.5,false,false,false,0,279.9,Maryland,224633998
+W223672737,Oriola Street,tertiary,false,0,10.0,false,false,false,0,495.6,Maryland,223672737
+W1411165155,Orishigun Street,residential,false,0,7.5,false,false,false,0,324.4,Maryland,1411165155
+W1411165156,Orishigun Street,residential,false,0,7.5,false,false,false,0,462.0,Maryland,1411165156
+W225092683,Orishigun Street,residential,false,0,7.5,false,false,false,0,374.4,Maryland,225092683
+W135181753,Oshikomaya Street,residential,false,0,7.5,false,false,false,0,281.5,Maryland,135181753
+W224228764,Oshunkentan Street,residential,false,0,7.5,false,false,false,0,113.6,Maryland,224228764
+W442671968,Osokoya Street,residential,false,0,7.5,false,false,false,0,308.1,Maryland,442671968
+W110156607,Owode Oyelaja Drive,residential,false,0,7.5,false,false,false,0,116.2,Maryland,110156607
+W370880331,Owodunni Street,residential,false,0,7.5,false,false,false,0,536.5,Maryland,370880331
+W224228759,Oyarinu Street,residential,false,0,7.5,false,false,false,0,324.8,Maryland,224228759
+W370880315,Oyefesobi Street,residential,false,0,7.5,false,false,false,0,159.5,Maryland,370880315
+W370881170,Oyero Street,residential,false,0,7.5,false,false,false,0,370.5,Maryland,370881170
+W223533463,Oyesiku Road,residential,false,0,7.5,false,false,false,0,202.5,Maryland,223533463
+W136341452,Oyetola Street,residential,false,0,7.5,false,false,false,0,201.8,Maryland,136341452
+W221886727,Pariola Street,residential,false,0,7.5,false,false,false,0,685.3,Maryland,221886727
+W1411165158,Phillip Onashile St,residential,false,0,7.5,false,false,false,0,11.2,Maryland,1411165158
+W1411165159,Phillip Onashile St,residential,false,0,7.5,false,false,false,0,291.2,Maryland,1411165159
+W225234884,Phillip Onashile St,residential,false,0,7.5,false,false,false,0,8.6,Maryland,225234884
+W110156363,Rashidi Oyekan,residential,false,0,7.5,false,false,false,0,104.9,Maryland,110156363
+W587425932,Rashidi Oyekan,residential,false,0,7.5,false,false,false,0,115.1,Maryland,587425932
+W110157294,Remilekun Street,residential,false,0,7.5,false,false,false,0,216.5,Maryland,110157294
+W524037766,Rufai Close,residential,false,0,7.5,false,false,false,0,179.4,Maryland,524037766
+W1136384414,Salaudeen Akano Street,residential,false,0,7.5,true,false,false,0,42.5,Maryland,1136384414
+W221600797,Salaudeen Akano Street,residential,false,0,7.5,true,false,false,0,1359.1,Maryland,221600797
+W7652237,Salvation Road,residential,false,1,4.3,false,false,false,0,611.9,Maryland,7652237
+W135193150,Samuel Durojaiye Street,residential,false,0,7.5,false,false,false,0,246.6,Maryland,135193150
+W370880330,Sebastian Street,residential,false,0,7.5,false,false,false,0,227.3,Maryland,370880330
+W135181738,Segun Kujore Street,residential,false,0,7.5,false,false,false,0,210.7,Maryland,135181738
+W370880320,Segun Salau Street,residential,false,0,7.5,false,false,false,0,193.9,Maryland,370880320
+W224633978,Soga Tikare Cl,residential,false,0,7.5,false,false,false,0,111.7,Maryland,224633978
+W521865190,St. Michael Close,residential,false,0,7.5,false,false,false,0,149.3,Maryland,521865190
+W222303775,Taiwo Street,residential,false,0,7.5,false,false,false,0,696.4,Maryland,222303775
+W134230098,Third Axial Road,motorway,false,0,24.0,true,false,false,0,707.8,Maryland,134230098
+W221871381,Third Axial Road,motorway,false,0,24.0,true,false,false,0,2194.8,Maryland,221871381
+W221871382,Third Axial Road,motorway,false,0,24.0,true,false,false,0,693.9,Maryland,221871382
+W221871383,Third Axial Road,motorway,false,0,24.0,true,true,false,0,96.3,Maryland,221871383
+W221871388,Third Axial Road,motorway,false,0,24.0,true,true,false,0,98.5,Maryland,221871388
+W88683341,Third Axial Road,motorway,false,0,24.0,true,false,false,0,2182.6,Maryland,88683341
+W370880333,Tokunbo Macaulay Street,residential,false,0,7.5,false,false,false,0,815.7,Maryland,370880333
+W136432610,Tola Adewunmi Close,residential,false,0,7.5,false,false,false,0,227.5,Maryland,136432610
+W221886748,Unity Close,residential,false,0,7.5,false,false,false,0,170.0,Maryland,221886748
+W221338635,Victoria Street,residential,false,0,7.5,false,false,false,0,1237.9,Maryland,221338635
+W135181731,Yakubu Street,residential,false,0,7.5,false,false,false,0,464.3,Maryland,135181731
+W1006109197,,service,false,0,5.0,false,false,false,0,15.7,Maryland,1006109197
+W1006109198,,service,false,0,5.0,false,false,false,0,190.5,Maryland,1006109198
+W1017063995,,service,false,0,5.0,false,false,false,0,46.5,Maryland,1017063995
+W1017063996,,service,false,0,5.0,false,false,false,0,28.1,Maryland,1017063996
+W1017063997,,service,false,0,5.0,false,false,false,0,25.2,Maryland,1017063997
+W1017063998,,service,false,0,5.0,false,false,false,0,30.9,Maryland,1017063998
+W1017719654,,service,false,0,5.0,false,false,false,0,48.6,Maryland,1017719654
+W1017748860,,service,false,0,5.0,false,false,false,0,82.9,Maryland,1017748860
+W1017749944,,service,false,0,5.0,true,false,false,0,38.2,Maryland,1017749944
+W1017749945,,service,false,0,5.0,true,false,false,0,87.5,Maryland,1017749945
+W1017750944,,service,false,0,5.0,true,false,false,0,61.5,Maryland,1017750944
+W1017751494,,service,false,0,5.0,false,false,false,0,43.9,Maryland,1017751494
+W1017751778,,residential,false,0,7.5,false,false,false,0,102.6,Maryland,1017751778
+W1018180592,,residential,false,0,7.5,false,false,false,0,72.9,Maryland,1018180592
+W1018180810,,service,false,0,5.0,false,false,false,0,46.0,Maryland,1018180810
+W1018181187,,service,false,0,5.0,false,false,false,0,45.9,Maryland,1018181187
+W1018181207,,service,false,0,5.0,false,false,false,0,61.7,Maryland,1018181207
+W1018205305,,residential,false,0,7.5,false,false,false,0,48.9,Maryland,1018205305
+W1018706410,,service,false,0,5.0,false,false,false,0,102.4,Maryland,1018706410
+W1018706411,,service,false,0,5.0,false,false,false,0,134.5,Maryland,1018706411
+W1018706412,,service,false,0,5.0,false,false,false,0,116.1,Maryland,1018706412
+W1018706413,,service,false,0,5.0,false,false,false,0,63.3,Maryland,1018706413
+W1018706414,,service,false,0,5.0,false,false,false,0,50.5,Maryland,1018706414
+W1018706415,,service,false,0,5.0,false,false,false,0,112.8,Maryland,1018706415
+W1018706416,,service,false,0,5.0,false,false,false,0,23.9,Maryland,1018706416
+W1018711212,,service,false,0,5.0,false,false,false,0,121.5,Maryland,1018711212
+W1018711850,,service,false,0,5.0,false,false,false,0,60.6,Maryland,1018711850
+W1018948351,,service,false,0,5.0,false,false,false,0,90.9,Maryland,1018948351
+W1018951134,,service,false,0,5.0,false,false,false,0,62.6,Maryland,1018951134
+W1018951646,,residential,false,0,7.5,false,false,false,0,64.4,Maryland,1018951646
+W1018952946,,service,false,0,5.0,false,false,false,0,39.3,Maryland,1018952946
+W1019905540,,residential,false,0,7.5,false,false,false,0,55.2,Maryland,1019905540
+W1019905541,,residential,false,0,7.5,false,false,false,0,59.6,Maryland,1019905541
+W1019922423,,residential,false,0,7.5,false,false,false,0,26.7,Maryland,1019922423
+W1019922424,,residential,false,0,7.5,false,false,false,0,91.5,Maryland,1019922424
+W1019923194,,residential,false,0,7.5,false,false,false,0,45.9,Maryland,1019923194
+W1019923349,,service,false,0,5.0,false,false,false,0,55.4,Maryland,1019923349
+W1019978890,,residential,false,0,7.5,true,false,false,0,133.8,Maryland,1019978890
+W1019979399,,service,false,0,5.0,false,false,false,0,74.4,Maryland,1019979399
+W1019979400,,service,false,0,5.0,false,false,false,0,184.3,Maryland,1019979400
+W1019979401,,service,false,0,5.0,false,false,false,0,246.0,Maryland,1019979401
+W1024676822,,tertiary,false,0,10.0,true,false,false,0,280.9,Maryland,1024676822
+W1032816556,,service,false,0,5.0,false,false,false,0,153.3,Maryland,1032816556
+W1032816557,,service,false,0,5.0,false,false,false,0,80.6,Maryland,1032816557
+W1032816558,,service,false,0,5.0,false,false,false,0,136.0,Maryland,1032816558
+W1032816559,,service,false,0,5.0,false,false,false,0,123.6,Maryland,1032816559
+W1032816560,,service,false,0,5.0,false,false,false,0,203.9,Maryland,1032816560
+W1032819436,,residential,false,0,7.5,false,false,false,0,65.1,Maryland,1032819436
+W1032820130,,service,false,0,5.0,false,false,false,0,126.1,Maryland,1032820130
+W1033682888,,residential,false,0,7.5,false,false,false,0,31.7,Maryland,1033682888
+W1033683671,,residential,false,0,7.5,false,false,false,0,53.7,Maryland,1033683671
+W1033684174,,service,false,0,5.0,false,false,false,0,29.8,Maryland,1033684174
+W1033686299,,service,false,0,5.0,false,false,false,0,37.1,Maryland,1033686299
+W1034045147,,service,false,0,5.0,false,false,false,0,49.0,Maryland,1034045147
+W1034061859,,service,false,0,5.0,false,false,false,0,466.6,Maryland,1034061859
+W1034061860,,service,false,0,5.0,false,false,false,0,33.6,Maryland,1034061860
+W1034061861,,service,false,0,5.0,false,false,false,0,29.8,Maryland,1034061861
+W1034061862,,service,false,0,5.0,false,false,false,0,26.3,Maryland,1034061862
+W1034061863,,service,false,0,5.0,false,false,false,0,84.9,Maryland,1034061863
+W1034354009,,service,false,0,5.0,false,false,false,0,35.4,Maryland,1034354009
+W1034354430,,service,false,0,5.0,false,false,false,0,227.7,Maryland,1034354430
+W1034354987,,service,false,0,5.0,false,false,false,0,197.2,Maryland,1034354987
+W1034453754,,service,false,0,5.0,false,false,false,0,9.8,Maryland,1034453754
+W1034454222,,service,false,0,5.0,false,false,false,0,42.6,Maryland,1034454222
+W1034454630,,service,false,0,5.0,true,false,false,0,21.7,Maryland,1034454630
+W1034454631,,service,false,0,5.0,false,false,false,0,49.9,Maryland,1034454631
+W1034457604,,service,false,0,5.0,false,false,false,0,27.7,Maryland,1034457604
+W1034458526,,service,false,0,5.0,false,false,false,0,84.9,Maryland,1034458526
+W1034459282,,service,false,0,5.0,false,false,false,0,30.8,Maryland,1034459282
+W1034982052,,service,false,0,5.0,false,false,false,0,59.3,Maryland,1034982052
+W1034982053,,service,false,0,5.0,false,false,false,0,88.2,Maryland,1034982053
+W1034982054,,service,false,0,5.0,false,false,false,0,423.2,Maryland,1034982054
+W1034982183,,service,false,0,5.0,false,false,false,0,8.5,Maryland,1034982183
+W1034982184,,service,false,0,5.0,false,false,false,0,8.5,Maryland,1034982184
+W1034982185,,service,false,0,5.0,false,false,false,0,340.8,Maryland,1034982185
+W1035022833,,service,false,0,5.0,false,false,false,0,76.0,Maryland,1035022833
+W1035023513,,service,false,0,5.0,false,false,false,0,50.3,Maryland,1035023513
+W1035025144,,service,false,0,5.0,false,false,false,0,70.6,Maryland,1035025144
+W1035025145,,service,false,0,5.0,false,false,false,0,61.4,Maryland,1035025145
+W1036406903,,service,false,0,5.0,true,false,false,0,13.9,Maryland,1036406903
+W1036406904,,service,false,0,5.0,true,false,false,0,14.5,Maryland,1036406904
+W1062012252,,residential,false,0,7.5,false,false,false,0,68.1,Maryland,1062012252
+W1063458527,,service,false,0,5.0,false,false,false,0,45.4,Maryland,1063458527
+W1063458631,,service,false,0,5.0,false,false,false,0,45.8,Maryland,1063458631
+W1063459042,,service,false,0,5.0,false,false,false,0,50.4,Maryland,1063459042
+W1064235908,,service,false,0,5.0,false,false,false,0,10.3,Maryland,1064235908
+W1064238270,,service,false,0,5.0,false,false,false,0,200.4,Maryland,1064238270
+W1064238963,,service,false,0,5.0,false,false,false,0,47.0,Maryland,1064238963
+W1064239362,,service,false,0,5.0,false,false,false,0,40.7,Maryland,1064239362
+W1064239748,,service,false,0,5.0,false,false,false,0,284.2,Maryland,1064239748
+W1064240213,,service,false,0,5.0,false,false,false,0,10.0,Maryland,1064240213
+W1064240214,,service,false,0,5.0,false,false,false,0,60.8,Maryland,1064240214
+W1064240529,,service,false,0,5.0,false,false,false,0,76.8,Maryland,1064240529
+W1064244561,,service,false,0,5.0,false,false,false,0,92.5,Maryland,1064244561
+W1064250336,,service,false,0,5.0,false,false,false,0,13.5,Maryland,1064250336
+W1064260469,,service,false,0,5.0,false,false,false,0,41.0,Maryland,1064260469
+W1064261303,,service,false,0,5.0,false,false,false,0,71.5,Maryland,1064261303
+W1064261304,,service,false,0,5.0,false,false,false,0,44.0,Maryland,1064261304
+W1064261776,,service,false,0,5.0,false,false,false,0,102.0,Maryland,1064261776
+W1064261777,,service,false,0,5.0,false,false,false,0,282.9,Maryland,1064261777
+W1064262659,,service,false,0,5.0,false,false,false,0,59.5,Maryland,1064262659
+W1064264533,,service,false,0,5.0,false,false,false,0,27.4,Maryland,1064264533
+W1064264534,,service,false,0,5.0,false,false,false,0,8.9,Maryland,1064264534
+W1064264535,,service,false,0,5.0,false,false,false,0,21.8,Maryland,1064264535
+W1064264536,,service,false,0,5.0,false,false,false,0,45.3,Maryland,1064264536
+W1064276132,,service,false,0,5.0,false,false,false,0,139.5,Maryland,1064276132
+W1064276133,,service,false,0,5.0,false,false,false,0,232.5,Maryland,1064276133
+W1064278844,,service,false,0,5.0,false,false,false,0,8.4,Maryland,1064278844
+W1064278845,,service,false,0,5.0,true,false,false,0,13.9,Maryland,1064278845
+W1064278846,,service,false,0,5.0,true,false,false,0,52.6,Maryland,1064278846
+W1065031751,,service,false,0,5.0,false,false,false,0,43.2,Maryland,1065031751
+W1065031752,,residential,false,0,7.5,false,false,false,0,23.5,Maryland,1065031752
+W1065400961,,service,false,0,5.0,false,false,false,0,74.0,Maryland,1065400961
+W1065476644,,service,false,0,5.0,false,false,false,0,62.2,Maryland,1065476644
+W1065765970,,service,false,0,5.0,false,false,false,0,100.8,Maryland,1065765970
+W1065766543,,service,false,0,5.0,false,false,false,0,87.5,Maryland,1065766543
+W1065766670,,service,false,0,5.0,false,false,false,0,44.2,Maryland,1065766670
+W1077625255,,service,false,0,5.0,false,false,false,0,111.9,Maryland,1077625255
+W1077871440,,residential,false,0,7.5,false,false,false,0,43.2,Maryland,1077871440
+W1078112104,,service,false,0,5.0,false,false,false,0,108.0,Maryland,1078112104
+W1081981669,,service,false,0,5.0,false,false,false,0,75.5,Maryland,1081981669
+W1081981670,,service,false,0,5.0,false,false,false,0,27.6,Maryland,1081981670
+W1081981671,,service,false,0,5.0,false,false,false,0,33.9,Maryland,1081981671
+W1081981672,,service,false,0,5.0,false,false,false,0,39.1,Maryland,1081981672
+W1081981673,,service,false,0,5.0,false,false,false,0,22.0,Maryland,1081981673
+W1081981674,,service,false,0,5.0,false,false,false,0,49.7,Maryland,1081981674
+W1081981675,,service,false,0,5.0,false,false,false,0,34.2,Maryland,1081981675
+W1082243738,,service,false,0,5.0,false,false,false,0,47.5,Maryland,1082243738
+W1082799076,,service,false,0,5.0,false,false,false,0,85.9,Maryland,1082799076
+W1082799512,,service,false,0,5.0,true,false,false,0,170.4,Maryland,1082799512
+W1082799687,,service,false,0,5.0,false,false,false,0,24.6,Maryland,1082799687
+W1082799788,,service,false,0,5.0,false,false,false,0,6.3,Maryland,1082799788
+W1082799896,,service,false,0,5.0,false,false,false,0,33.0,Maryland,1082799896
+W1082800334,,service,false,0,5.0,false,false,false,0,42.2,Maryland,1082800334
+W1082801354,,service,false,0,5.0,false,false,false,0,78.0,Maryland,1082801354
+W1082801621,,service,false,0,5.0,false,false,false,0,122.1,Maryland,1082801621
+W1082801799,,service,false,0,5.0,false,false,false,0,57.6,Maryland,1082801799
+W1082802632,,residential,false,0,7.5,false,false,false,0,43.4,Maryland,1082802632
+W1082827969,,service,false,0,5.0,false,false,false,0,15.6,Maryland,1082827969
+W1082830184,,residential,false,0,7.5,false,false,false,0,47.5,Maryland,1082830184
+W1083084405,,residential,false,0,7.5,false,false,false,0,66.5,Maryland,1083084405
+W1083404969,,service,false,0,5.0,false,false,false,0,56.9,Maryland,1083404969
+W1083437715,,service,false,0,5.0,false,false,false,0,53.6,Maryland,1083437715
+W1083502237,,residential,false,0,7.5,false,false,false,0,38.5,Maryland,1083502237
+W1097166952,,service,false,0,5.0,false,false,false,0,43.3,Maryland,1097166952
+W1099972780,,service,false,0,5.0,false,false,false,0,56.2,Maryland,1099972780
+W1099972781,,service,false,0,5.0,false,false,false,0,427.5,Maryland,1099972781
+W1099972782,,service,false,0,5.0,false,false,false,0,10.2,Maryland,1099972782
+W1099972783,,service,false,0,5.0,false,false,false,0,187.6,Maryland,1099972783
+W1099972784,,service,false,0,5.0,false,false,false,0,50.0,Maryland,1099972784
+W1099972785,,service,false,0,5.0,false,false,false,0,132.9,Maryland,1099972785
+W1099972786,,service,false,0,5.0,false,false,false,0,81.0,Maryland,1099972786
+W1099972787,,residential,false,0,7.5,false,false,false,0,81.6,Maryland,1099972787
+W1099972788,,service,false,0,5.0,false,false,false,0,52.8,Maryland,1099972788
+W1099972789,,service,false,0,5.0,false,false,false,0,264.2,Maryland,1099972789
+W1099976078,,service,false,0,5.0,false,false,false,0,193.3,Maryland,1099976078
+W1099976079,,tertiary,false,0,10.0,true,false,false,0,403.9,Maryland,1099976079
+W1099978426,,service,false,0,5.0,false,false,false,0,44.0,Maryland,1099978426
+W1107002975,,service,false,0,5.0,false,false,false,0,50.7,Maryland,1107002975
+W1111936072,,service,false,0,5.0,false,false,false,0,32.7,Maryland,1111936072
+W1111948927,,service,false,0,5.0,false,false,false,0,28.9,Maryland,1111948927
+W1111959986,,service,false,0,5.0,false,false,false,0,95.9,Maryland,1111959986
+W1111960692,,service,false,0,5.0,false,false,false,0,180.7,Maryland,1111960692
+W1111961805,,service,false,0,5.0,true,false,false,0,55.9,Maryland,1111961805
+W1112185844,,service,false,0,5.0,false,false,false,0,39.4,Maryland,1112185844
+W1112199567,,service,false,0,5.0,false,false,false,0,42.4,Maryland,1112199567
+W1112199736,,service,false,0,5.0,false,false,false,0,18.2,Maryland,1112199736
+W1112204475,,service,false,0,5.0,false,false,false,0,36.5,Maryland,1112204475
+W1112219610,,residential,false,0,7.5,false,false,false,0,44.5,Maryland,1112219610
+W1112220586,,residential,false,0,7.5,false,false,false,0,45.5,Maryland,1112220586
+W1119521960,,residential,false,0,7.5,true,false,false,0,16.0,Maryland,1119521960
+W1119521961,,residential,false,0,7.5,true,false,false,0,5.4,Maryland,1119521961
+W1120009796,,residential,false,0,7.5,true,false,false,0,45.9,Maryland,1120009796
+W1123250857,,residential,false,0,7.5,false,false,false,0,78.3,Maryland,1123250857
+W1123250858,,service,false,0,5.0,false,false,false,0,20.4,Maryland,1123250858
+W1123250859,,service,false,0,5.0,false,false,false,0,14.0,Maryland,1123250859
+W1123250860,,service,false,0,5.0,false,false,false,0,53.8,Maryland,1123250860
+W1123250861,,service,false,0,5.0,false,false,false,0,56.1,Maryland,1123250861
+W1123250862,,service,false,0,5.0,false,false,false,0,194.9,Maryland,1123250862
+W1123250863,,service,false,0,5.0,false,false,false,0,120.8,Maryland,1123250863
+W1123250864,,service,false,0,5.0,false,false,false,0,83.2,Maryland,1123250864
+W1131431697,,service,false,0,5.0,false,false,false,0,50.9,Maryland,1131431697
+W1131431699,,service,false,0,5.0,false,false,false,0,41.3,Maryland,1131431699
+W1131431786,,service,false,0,5.0,false,false,false,0,38.8,Maryland,1131431786
+W1133623884,,service,false,0,5.0,false,false,false,0,60.5,Maryland,1133623884
+W1134420615,,service,false,0,5.0,false,false,false,0,50.2,Maryland,1134420615
+W1134420681,,service,false,0,5.0,false,false,false,0,57.8,Maryland,1134420681
+W1134423510,,service,false,0,5.0,false,false,false,0,23.6,Maryland,1134423510
+W1134423511,,service,false,0,5.0,false,false,false,0,45.0,Maryland,1134423511
+W1134423516,,residential,false,0,7.5,false,false,false,0,114.8,Maryland,1134423516
+W1134687576,,service,false,0,5.0,false,false,false,0,27.1,Maryland,1134687576
+W1134687577,,service,false,0,5.0,false,false,false,0,55.8,Maryland,1134687577
+W1135607731,,service,false,0,5.0,false,false,false,0,33.6,Maryland,1135607731
+W1137492439,,service,false,0,5.0,true,false,false,0,8.5,Maryland,1137492439
+W1137540885,,service,false,0,5.0,true,false,false,0,8.6,Maryland,1137540885
+W1137583362,,secondary,true,0,7.5,false,false,false,0,10.6,Maryland,1137583362
+W1144660767,,service,false,0,5.0,false,false,false,0,140.8,Maryland,1144660767
+W1154922024,,service,false,0,5.0,false,false,false,0,49.4,Maryland,1154922024
+W1154922025,,residential,false,0,7.5,false,false,false,0,25.6,Maryland,1154922025
+W1165523243,,service,false,0,5.0,false,false,false,0,96.2,Maryland,1165523243
+W1165523244,,service,false,0,5.0,false,false,false,0,60.1,Maryland,1165523244
+W1165523245,,service,false,0,5.0,false,false,false,0,9.0,Maryland,1165523245
+W1165523246,,service,false,0,5.0,false,false,false,0,56.9,Maryland,1165523246
+W1165532922,,residential,false,0,7.5,true,true,false,0,77.6,Maryland,1165532922
+W1169792455,,service,false,0,5.0,false,false,false,0,88.0,Maryland,1169792455
+W1170466533,,service,false,0,5.0,false,false,false,0,35.5,Maryland,1170466533
+W1170485956,,service,false,0,5.0,false,false,false,0,78.0,Maryland,1170485956
+W1170485957,,service,false,0,5.0,false,false,false,0,146.5,Maryland,1170485957
+W1170485958,,service,false,0,5.0,false,false,false,0,269.1,Maryland,1170485958
+W1170489042,,service,false,0,5.0,false,false,false,0,30.4,Maryland,1170489042
+W1170489043,,service,false,0,5.0,false,false,false,0,25.3,Maryland,1170489043
+W1172878888,,service,false,0,5.0,false,false,false,0,204.8,Maryland,1172878888
+W1177126567,,residential,false,0,7.5,false,false,false,0,41.8,Maryland,1177126567
+W1177126568,,residential,false,0,7.5,false,false,false,0,46.2,Maryland,1177126568
+W1177126569,,service,false,0,5.0,false,false,false,0,60.7,Maryland,1177126569
+W1177126570,,service,false,0,5.0,false,false,false,0,110.9,Maryland,1177126570
+W1177126571,,service,false,0,5.0,false,false,false,0,49.0,Maryland,1177126571
+W1177126572,,service,false,0,5.0,false,false,false,0,52.4,Maryland,1177126572
+W1177126573,,service,false,0,5.0,false,false,false,0,94.8,Maryland,1177126573
+W1177126574,,service,false,0,5.0,false,false,false,0,137.5,Maryland,1177126574
+W1179690929,,service,false,0,5.0,false,false,false,0,5.1,Maryland,1179690929
+W1180369541,,service,false,0,5.0,false,false,false,0,30.8,Maryland,1180369541
+W1180377284,,service,false,0,5.0,false,false,false,0,175.1,Maryland,1180377284
+W1180379065,,service,false,0,5.0,false,false,false,0,41.7,Maryland,1180379065
+W1182162142,,residential,false,0,7.5,false,false,false,0,10.4,Maryland,1182162142
+W1184918397,,service,false,0,5.0,false,false,false,0,32.5,Maryland,1184918397
+W1184918398,,service,false,0,5.0,false,false,false,0,40.6,Maryland,1184918398
+W1184918399,,service,false,0,5.0,false,false,false,0,41.7,Maryland,1184918399
+W1184918400,,service,false,0,5.0,false,false,false,0,80.3,Maryland,1184918400
+W1188553029,,residential,false,0,7.5,false,false,false,0,216.7,Maryland,1188553029
+W1191727363,,service,false,0,5.0,false,false,false,0,24.7,Maryland,1191727363
+W1191727364,,service,false,0,5.0,false,false,false,0,31.2,Maryland,1191727364
+W1191727365,,service,false,0,5.0,false,false,false,0,30.0,Maryland,1191727365
+W1191727366,,service,false,0,5.0,false,false,false,0,12.3,Maryland,1191727366
+W1191727367,,residential,false,0,7.5,false,false,false,0,19.7,Maryland,1191727367
+W1192784598,,service,false,0,5.0,false,false,false,0,527.4,Maryland,1192784598
+W1192784599,,service,false,0,5.0,false,false,false,0,95.3,Maryland,1192784599
+W1192784600,,service,false,0,5.0,false,false,false,0,174.0,Maryland,1192784600
+W1209308095,,residential,false,0,7.5,false,false,false,0,35.0,Maryland,1209308095
+W1211717033,,service,false,0,5.0,false,false,false,0,53.7,Maryland,1211717033
+W1211717034,,service,false,0,5.0,true,false,false,0,20.4,Maryland,1211717034
+W1211717035,,service,false,0,5.0,true,false,false,0,20.0,Maryland,1211717035
+W1211717036,,service,false,0,5.0,true,false,false,0,19.7,Maryland,1211717036
+W1219708395,,service,false,0,5.0,false,false,false,0,23.9,Maryland,1219708395
+W1219708396,,residential,false,0,7.5,false,false,false,0,41.5,Maryland,1219708396
+W1221907021,,service,false,0,5.0,false,false,false,0,22.5,Maryland,1221907021
+W1221907022,,service,false,0,5.0,false,false,false,0,70.4,Maryland,1221907022
+W1221907023,,service,false,0,5.0,true,false,false,0,127.5,Maryland,1221907023
+W1221907024,,service,false,0,5.0,false,false,false,0,35.3,Maryland,1221907024
+W1222413329,,service,false,0,5.0,false,false,false,0,40.3,Maryland,1222413329
+W1222413330,,service,false,0,5.0,false,false,false,0,538.9,Maryland,1222413330
+W1222413331,,service,false,0,5.0,false,false,false,0,171.8,Maryland,1222413331
+W1222416226,,service,false,0,5.0,false,false,false,0,266.4,Maryland,1222416226
+W1222416227,,service,false,0,5.0,false,false,false,0,14.3,Maryland,1222416227
+W1222416228,,service,false,0,5.0,false,false,false,0,16.9,Maryland,1222416228
+W1223659634,,residential,false,0,7.5,false,false,false,0,158.8,Maryland,1223659634
+W1223659637,,service,false,0,5.0,false,false,false,0,36.9,Maryland,1223659637
+W1223659638,,service,false,0,5.0,false,false,false,0,55.7,Maryland,1223659638
+W1223659639,,service,false,0,5.0,false,false,false,0,30.2,Maryland,1223659639
+W1223659640,,service,false,0,5.0,false,false,false,0,25.1,Maryland,1223659640
+W1223659641,,service,false,0,5.0,false,false,false,0,30.8,Maryland,1223659641
+W1223659642,,service,false,0,5.0,false,false,false,0,37.7,Maryland,1223659642
+W1223659643,,service,false,0,5.0,false,false,false,0,68.2,Maryland,1223659643
+W1225342269,,service,false,0,5.0,false,false,false,0,63.3,Maryland,1225342269
+W1225342270,,service,false,0,5.0,false,false,false,0,39.4,Maryland,1225342270
+W1225342271,,service,false,0,5.0,false,false,false,0,40.3,Maryland,1225342271
+W1225342272,,service,false,0,5.0,false,false,false,0,24.7,Maryland,1225342272
+W1225342275,,service,false,0,5.0,false,false,false,0,39.8,Maryland,1225342275
+W1225342276,,service,false,0,5.0,false,false,false,0,71.2,Maryland,1225342276
+W1225342277,,service,false,0,5.0,false,false,false,0,56.5,Maryland,1225342277
+W1227260209,,service,false,0,5.0,false,false,false,0,53.0,Maryland,1227260209
+W1227260210,,service,false,0,5.0,false,false,false,0,51.7,Maryland,1227260210
+W1227260211,,service,false,0,5.0,false,false,false,0,36.4,Maryland,1227260211
+W1227260212,,service,false,0,5.0,false,false,false,0,45.6,Maryland,1227260212
+W1227260214,,residential,false,0,7.5,false,false,false,0,73.0,Maryland,1227260214
+W1227260215,,service,false,0,5.0,false,false,false,0,45.0,Maryland,1227260215
+W1227260216,,service,false,0,5.0,false,false,false,0,74.6,Maryland,1227260216
+W1227260217,,service,false,0,5.0,false,false,false,0,39.0,Maryland,1227260217
+W1227260218,,residential,false,0,7.5,false,false,false,0,36.9,Maryland,1227260218
+W1227260219,,residential,false,0,7.5,false,false,false,0,54.6,Maryland,1227260219
+W1227930139,,service,false,0,5.0,false,false,false,0,158.2,Maryland,1227930139
+W1227937747,,service,false,0,5.0,false,false,false,0,130.5,Maryland,1227937747
+W1228777507,,service,false,0,5.0,false,false,false,0,49.2,Maryland,1228777507
+W1228777508,,service,false,0,5.0,false,false,false,0,16.5,Maryland,1228777508
+W1228778449,,service,false,0,5.0,false,false,false,0,70.8,Maryland,1228778449
+W1228965932,,service,false,0,5.0,false,false,false,0,41.2,Maryland,1228965932
+W1228965933,,service,false,0,5.0,false,false,false,0,26.4,Maryland,1228965933
+W1228965934,,service,false,0,5.0,false,false,false,0,43.8,Maryland,1228965934
+W1228965935,,service,false,0,5.0,false,false,false,0,41.4,Maryland,1228965935
+W1228965936,,service,false,0,5.0,false,false,false,0,33.6,Maryland,1228965936
+W1228965937,,service,false,0,5.0,false,false,false,0,29.9,Maryland,1228965937
+W1228965938,,service,false,0,5.0,false,false,false,0,58.1,Maryland,1228965938
+W1229199658,,residential,false,0,7.5,false,false,false,0,5.4,Maryland,1229199658
+W1229209129,,service,false,0,5.0,false,false,false,0,53.7,Maryland,1229209129
+W1229209130,,service,false,0,5.0,false,false,false,0,71.2,Maryland,1229209130
+W1229248902,,residential,false,0,7.5,false,false,false,0,97.2,Maryland,1229248902
+W1229629965,,service,false,0,5.0,false,false,false,0,197.3,Maryland,1229629965
+W1230228025,,service,false,0,5.0,false,false,false,0,45.3,Maryland,1230228025
+W1230228027,,service,false,0,5.0,false,false,false,0,50.2,Maryland,1230228027
+W1236753909,,service,false,0,5.0,false,false,false,0,4.7,Maryland,1236753909
+W1237958360,,service,false,0,5.0,false,false,false,0,55.7,Maryland,1237958360
+W1237958361,,service,false,0,5.0,false,false,false,0,155.5,Maryland,1237958361
+W1237958362,,residential,false,0,7.5,false,false,false,0,139.4,Maryland,1237958362
+W1237958363,,residential,false,0,7.5,false,false,false,0,60.4,Maryland,1237958363
+W1251130215,,residential,false,0,7.5,false,false,false,0,54.4,Maryland,1251130215
+W1261325905,,service,false,0,5.0,false,false,false,0,56.1,Maryland,1261325905
+W1261325906,,service,false,0,5.0,false,false,false,0,125.3,Maryland,1261325906
+W1261325907,,service,false,0,5.0,false,false,false,0,41.9,Maryland,1261325907
+W1261325908,,service,false,0,5.0,false,false,false,0,51.6,Maryland,1261325908
+W1261325909,,service,false,0,5.0,false,false,false,0,30.2,Maryland,1261325909
+W1261325910,,service,false,0,5.0,false,false,false,0,88.5,Maryland,1261325910
+W1262795971,,service,false,0,5.0,false,false,false,0,1115.7,Maryland,1262795971
+W1284773890,,residential,false,0,7.5,false,false,false,0,151.2,Maryland,1284773890
+W1300160658,,residential,false,0,7.5,false,false,false,0,85.5,Maryland,1300160658
+W1300160659,,tertiary,false,0,10.0,true,true,false,0,18.2,Maryland,1300160659
+W1300843492,,residential,false,0,7.5,false,false,false,0,80.3,Maryland,1300843492
+W1314557151,,service,false,0,5.0,false,false,false,0,8.8,Maryland,1314557151
+W1314557152,,service,false,0,5.0,false,false,false,0,18.4,Maryland,1314557152
+W1314557153,,service,false,0,5.0,false,false,false,0,22.9,Maryland,1314557153
+W1314557154,,service,false,0,5.0,false,false,false,0,28.4,Maryland,1314557154
+W1314557155,,service,false,0,5.0,false,false,false,0,48.3,Maryland,1314557155
+W1320212297,,residential,false,0,7.5,false,false,false,0,57.5,Maryland,1320212297
+W1320212298,,residential,false,0,7.5,false,false,false,0,40.4,Maryland,1320212298
+W1321772899,,service,false,0,5.0,false,false,false,0,53.1,Maryland,1321772899
+W1323807931,,service,false,0,5.0,false,false,false,0,50.6,Maryland,1323807931
+W1323807932,,service,false,0,5.0,false,false,false,0,50.2,Maryland,1323807932
+W1323807933,,service,false,0,5.0,false,false,false,0,75.3,Maryland,1323807933
+W1323807934,,residential,false,0,7.5,false,false,false,0,80.0,Maryland,1323807934
+W1324223737,,service,false,0,5.0,false,false,false,0,110.1,Maryland,1324223737
+W133879426,,motorway,true,0,7.5,true,false,false,0,56.7,Maryland,133879426
+W133879429,,motorway,true,0,7.5,true,false,false,0,56.7,Maryland,133879429
+W133882113,,motorway,true,0,7.5,true,false,false,0,434.2,Maryland,133882113
+W133882115,,motorway,true,0,7.5,true,false,false,0,385.9,Maryland,133882115
+W133882116,,motorway,true,0,7.5,true,false,false,0,296.0,Maryland,133882116
+W133882119,,motorway,true,0,7.5,true,true,false,0,116.5,Maryland,133882119
+W133882120,,motorway,true,0,7.5,true,false,false,0,405.2,Maryland,133882120
+W133882121,,motorway,true,0,7.5,true,false,false,0,384.4,Maryland,133882121
+W133882122,,motorway,true,0,7.5,true,false,false,0,613.4,Maryland,133882122
+W133882123,,motorway,true,0,7.5,true,false,false,0,367.1,Maryland,133882123
+W133882124,,motorway,true,0,7.5,true,false,false,0,359.4,Maryland,133882124
+W133882125,,motorway,true,0,7.5,true,true,false,0,120.2,Maryland,133882125
+W133882128,,motorway,true,0,7.5,true,false,false,0,239.8,Maryland,133882128
+W133882131,,motorway,true,0,7.5,true,false,false,0,334.6,Maryland,133882131
+W133882132,,motorway,true,0,7.5,true,false,false,0,520.9,Maryland,133882132
+W133882134,,motorway,true,0,7.5,true,false,false,0,465.2,Maryland,133882134
+W1341201102,,service,false,0,5.0,false,false,false,0,22.1,Maryland,1341201102
+W1341201103,,service,false,0,5.0,false,false,false,0,55.2,Maryland,1341201103
+W1341201104,,service,false,0,5.0,false,false,false,0,29.5,Maryland,1341201104
+W1341201105,,service,false,0,5.0,false,false,false,0,53.0,Maryland,1341201105
+W1341230566,,service,false,0,5.0,false,false,false,0,233.7,Maryland,1341230566
+W1341230567,,residential,false,0,7.5,false,false,false,0,13.4,Maryland,1341230567
+W1341430468,,residential,false,0,7.5,false,false,false,0,54.9,Maryland,1341430468
+W1341430469,,residential,false,0,7.5,false,false,false,0,136.5,Maryland,1341430469
+W1341430470,,residential,false,0,7.5,false,false,false,0,216.2,Maryland,1341430470
+W1341430471,,residential,false,0,7.5,false,false,false,0,34.9,Maryland,1341430471
+W1341430472,,residential,false,0,7.5,false,false,false,0,199.7,Maryland,1341430472
+W1341430473,,residential,false,0,7.5,false,false,false,0,177.4,Maryland,1341430473
+W1341438079,,tertiary,false,0,10.0,true,false,false,0,8.5,Maryland,1341438079
+W1341438080,,tertiary,false,0,10.0,true,false,false,0,19.9,Maryland,1341438080
+W1341797541,,residential,false,0,7.5,false,false,false,0,136.7,Maryland,1341797541
+W134230092,,tertiary,false,0,10.0,true,false,false,0,265.4,Maryland,134230092
+W134230144,,tertiary,false,0,10.0,false,false,false,0,227.0,Maryland,134230144
+W134230155,,tertiary,false,0,10.0,true,false,false,0,122.5,Maryland,134230155
+W1347535958,,service,false,0,5.0,false,false,false,0,22.8,Maryland,1347535958
+W1347535959,,residential,false,0,7.5,false,false,false,0,62.9,Maryland,1347535959
+W1347535960,,residential,false,0,7.5,false,false,false,0,178.1,Maryland,1347535960
+W1347535961,,residential,false,0,7.5,false,false,false,0,70.3,Maryland,1347535961
+W1348009027,,residential,false,0,7.5,false,false,false,0,170.4,Maryland,1348009027
+W1348009028,,residential,false,0,7.5,false,false,false,0,116.2,Maryland,1348009028
+W1348009029,,residential,false,0,7.5,false,false,false,0,122.9,Maryland,1348009029
+W135181735,,motorway,true,2,7.6,true,false,false,0,168.1,Maryland,135181735
+W135181737,,motorway,true,1,4.3,true,false,false,0,57.3,Maryland,135181737
+W135181739,,motorway,true,2,7.6,true,false,false,0,64.5,Maryland,135181739
+W135181740,,motorway,true,1,4.3,true,false,false,0,60.8,Maryland,135181740
+W135181741,,motorway,true,1,4.3,true,false,false,0,52.8,Maryland,135181741
+W135181743,,motorway,true,2,7.6,true,false,false,0,125.7,Maryland,135181743
+W135181746,,residential,false,0,7.5,false,false,false,0,264.1,Maryland,135181746
+W135181748,,residential,false,0,7.5,false,false,false,0,98.1,Maryland,135181748
+W135181750,,residential,false,0,7.5,false,false,false,0,167.4,Maryland,135181750
+W135193148,,residential,false,0,7.5,false,false,false,0,186.4,Maryland,135193148
+W135193149,,residential,false,0,7.5,false,false,false,0,88.1,Maryland,135193149
+W135193152,,residential,false,0,7.5,false,false,false,0,82.6,Maryland,135193152
+W135193153,,residential,false,0,7.5,false,false,false,0,645.4,Maryland,135193153
+W135193158,,residential,false,0,7.5,false,false,false,0,94.1,Maryland,135193158
+W135193161,,residential,false,0,7.5,false,false,false,0,234.5,Maryland,135193161
+W1355682099,,motorway,true,0,7.5,true,false,false,0,49.9,Maryland,1355682099
+W1355682100,,motorway,true,0,7.5,true,false,false,0,60.0,Maryland,1355682100
+W1355682101,,motorway,true,0,7.5,true,false,false,0,50.4,Maryland,1355682101
+W1355682102,,motorway,true,0,7.5,true,false,false,0,49.6,Maryland,1355682102
+W1357146462,,residential,false,0,7.5,false,false,false,0,65.1,Maryland,1357146462
+W136333522,,residential,false,0,7.5,false,false,false,0,171.4,Maryland,136333522
+W136333523,,residential,false,0,7.5,false,false,false,0,276.4,Maryland,136333523
+W136333525,,residential,false,0,7.5,false,false,false,0,153.4,Maryland,136333525
+W136333526,,service,false,0,5.0,false,false,false,0,185.9,Maryland,136333526
+W136333533,,residential,false,0,7.5,false,false,false,0,449.2,Maryland,136333533
+W136333535,,residential,false,0,7.5,false,false,false,0,301.9,Maryland,136333535
+W136333539,,residential,false,0,7.5,false,false,false,0,228.9,Maryland,136333539
+W136333541,,unclassified,false,0,7.5,false,false,false,0,524.5,Maryland,136333541
+W136333542,,residential,false,0,7.5,false,false,false,0,180.5,Maryland,136333542
+W136333543,,residential,false,0,7.5,false,false,false,0,278.8,Maryland,136333543
+W136333544,,residential,false,0,7.5,false,false,false,0,332.5,Maryland,136333544
+W136333551,,residential,false,0,7.5,false,false,false,0,471.1,Maryland,136333551
+W136333553,,residential,false,0,7.5,false,false,false,0,278.6,Maryland,136333553
+W136333560,,residential,false,0,7.5,false,false,false,0,63.1,Maryland,136333560
+W136333563,,residential,false,0,7.5,false,false,false,0,327.5,Maryland,136333563
+W136333564,,residential,false,0,7.5,false,false,false,0,78.4,Maryland,136333564
+W136333565,,residential,false,0,7.5,true,false,false,0,133.6,Maryland,136333565
+W136333566,,residential,false,0,7.5,false,false,false,0,309.7,Maryland,136333566
+W136333570,,residential,false,0,7.5,false,false,false,0,79.1,Maryland,136333570
+W136333571,,unclassified,false,0,7.5,false,false,false,0,412.7,Maryland,136333571
+W136338261,,service,false,0,5.0,false,false,false,0,173.3,Maryland,136338261
+W136338267,,service,false,0,5.0,true,false,false,0,315.7,Maryland,136338267
+W136338280,,service,false,0,5.0,false,false,false,0,482.4,Maryland,136338280
+W136338281,,service,false,0,5.0,false,false,false,0,325.1,Maryland,136338281
+W136338290,,service,false,0,5.0,false,false,false,0,220.7,Maryland,136338290
+W136341454,,residential,false,1,4.3,false,false,false,0,476.4,Maryland,136341454
+W136341464,,residential,false,0,7.5,false,false,false,0,351.3,Maryland,136341464
+W136341473,,residential,false,0,7.5,false,false,false,0,443.2,Maryland,136341473
+W136341481,,residential,false,0,7.5,false,false,false,0,105.0,Maryland,136341481
+W136341483,,residential,false,0,7.5,false,false,false,0,216.4,Maryland,136341483
+W136432571,,residential,false,0,7.5,false,false,false,0,140.0,Maryland,136432571
+W136432578,,residential,false,0,7.5,false,false,false,0,127.1,Maryland,136432578
+W136432580,,residential,false,0,7.5,false,false,false,0,564.2,Maryland,136432580
+W136432581,,residential,false,0,7.5,false,false,false,0,109.9,Maryland,136432581
+W136432588,,residential,false,0,7.5,false,false,false,0,762.1,Maryland,136432588
+W136432589,,residential,false,0,7.5,false,false,false,0,197.0,Maryland,136432589
+W136432605,,residential,false,0,7.5,false,false,false,0,170.0,Maryland,136432605
+W136433545,,service,false,0,5.0,false,false,false,0,18.9,Maryland,136433545
+W136433546,,service,false,0,5.0,false,false,false,0,271.6,Maryland,136433546
+W136433551,,residential,false,0,7.5,false,false,false,0,279.1,Maryland,136433551
+W136433553,,residential,false,0,7.5,false,false,false,0,191.1,Maryland,136433553
+W136433558,,service,false,0,5.0,false,false,false,0,10.1,Maryland,136433558
+W136433559,,residential,false,0,7.5,false,false,false,0,97.3,Maryland,136433559
+W136433563,,residential,false,0,7.5,false,false,false,0,235.9,Maryland,136433563
+W136433564,,residential,false,0,7.5,false,false,false,0,103.3,Maryland,136433564
+W136433566,,residential,false,0,7.5,false,false,false,0,184.7,Maryland,136433566
+W136433567,,residential,false,0,7.5,false,false,false,0,185.7,Maryland,136433567
+W136433568,,residential,false,0,7.5,false,false,false,0,115.3,Maryland,136433568
+W136433572,,residential,false,0,7.5,false,false,false,0,95.5,Maryland,136433572
+W136433575,,residential,false,0,7.5,false,false,false,0,99.8,Maryland,136433575
+W136433576,,service,false,0,5.0,false,false,false,0,32.8,Maryland,136433576
+W136433577,,residential,false,0,7.5,false,false,false,0,113.1,Maryland,136433577
+W136433578,,residential,false,0,7.5,false,false,false,0,56.5,Maryland,136433578
+W136433579,,service,false,0,5.0,false,false,false,0,12.4,Maryland,136433579
+W136433584,,residential,false,0,7.5,false,false,false,0,260.0,Maryland,136433584
+W1364941446,,service,false,0,5.0,true,false,false,0,19.9,Maryland,1364941446
+W1364941447,,service,false,0,5.0,false,false,false,0,32.2,Maryland,1364941447
+W1364948574,,residential,false,0,7.5,true,false,false,0,367.4,Maryland,1364948574
+W1364948575,,service,false,0,5.0,false,false,false,0,112.3,Maryland,1364948575
+W1365118063,,service,false,0,5.0,true,false,false,0,49.8,Maryland,1365118063
+W1365118064,,service,false,0,5.0,true,false,false,0,14.6,Maryland,1365118064
+W1365118065,,service,false,0,5.0,true,false,false,0,13.4,Maryland,1365118065
+W1365118066,,service,false,0,5.0,true,false,false,0,13.0,Maryland,1365118066
+W1365889326,,service,false,0,5.0,false,false,false,0,31.3,Maryland,1365889326
+W1365889327,,residential,false,0,7.5,false,false,false,0,8.3,Maryland,1365889327
+W1366519487,,residential,false,0,7.5,true,true,false,0,77.6,Maryland,1366519487
+W1366519488,,residential,false,0,7.5,true,false,false,0,171.2,Maryland,1366519488
+W1370802036,,service,false,0,5.0,false,false,false,0,106.0,Maryland,1370802036
+W1370802037,,residential,false,0,7.5,false,false,false,0,209.8,Maryland,1370802037
+W1371612841,,residential,false,0,7.5,true,false,false,0,196.1,Maryland,1371612841
+W1371612842,,residential,false,0,7.5,true,false,false,0,21.8,Maryland,1371612842
+W1371612843,,residential,false,0,7.5,false,false,false,0,167.8,Maryland,1371612843
+W1371612844,,residential,false,0,7.5,false,false,false,0,284.0,Maryland,1371612844
+W1371612845,,residential,false,0,7.5,false,false,false,0,204.9,Maryland,1371612845
+W1371620525,,residential,false,0,7.5,false,false,false,0,74.5,Maryland,1371620525
+W1371620526,,residential,false,0,7.5,false,false,false,0,31.3,Maryland,1371620526
+W1371622686,,residential,false,0,7.5,false,false,false,0,145.3,Maryland,1371622686
+W1372246095,,residential,false,0,7.5,false,false,false,0,11.6,Maryland,1372246095
+W1372256685,,residential,false,0,7.5,false,false,false,0,12.7,Maryland,1372256685
+W1372272697,,residential,false,0,7.5,false,false,false,0,32.8,Maryland,1372272697
+W1373621679,,service,false,0,5.0,false,false,false,0,4.7,Maryland,1373621679
+W1373621680,,residential,false,0,7.5,false,false,false,0,4.8,Maryland,1373621680
+W1373621681,,residential,false,0,7.5,false,false,false,0,135.1,Maryland,1373621681
+W1373621682,,service,false,0,5.0,false,false,false,0,6.6,Maryland,1373621682
+W1373621683,,residential,false,0,7.5,false,false,false,0,24.9,Maryland,1373621683
+W1373621684,,residential,false,0,7.5,false,false,false,0,10.4,Maryland,1373621684
+W1373621685,,service,false,0,5.0,false,false,false,0,27.7,Maryland,1373621685
+W1373621686,,residential,false,0,7.5,false,false,false,0,15.2,Maryland,1373621686
+W1373621687,,residential,false,0,7.5,false,false,false,0,10.7,Maryland,1373621687
+W1373621688,,residential,false,0,7.5,false,false,false,0,9.6,Maryland,1373621688
+W1373621689,,residential,false,0,7.5,false,false,false,0,17.1,Maryland,1373621689
+W1373621690,,residential,false,0,7.5,false,false,false,0,62.3,Maryland,1373621690
+W1373634002,,residential,false,0,7.5,false,false,false,0,15.3,Maryland,1373634002
+W1377489715,,service,false,0,5.0,false,false,false,0,47.6,Maryland,1377489715
+W1386968428,,service,false,0,5.0,false,false,false,0,42.5,Maryland,1386968428
+W1386968429,,service,false,0,5.0,false,false,false,0,20.0,Maryland,1386968429
+W1386968430,,service,false,0,5.0,false,false,false,0,53.2,Maryland,1386968430
+W1386968431,,service,false,0,5.0,false,false,false,0,28.2,Maryland,1386968431
+W1386968432,,service,false,0,5.0,false,false,false,0,60.6,Maryland,1386968432
+W1386968433,,service,false,0,5.0,false,false,false,0,219.6,Maryland,1386968433
+W1386968434,,service,false,0,5.0,false,false,false,0,108.8,Maryland,1386968434
+W1386968435,,service,false,0,5.0,false,false,false,0,167.9,Maryland,1386968435
+W1394924711,,service,false,0,5.0,false,false,false,0,74.3,Maryland,1394924711
+W1394924712,,service,false,0,5.0,false,false,false,0,73.5,Maryland,1394924712
+W1394924716,,service,false,0,5.0,false,false,false,0,95.9,Maryland,1394924716
+W1394924717,,service,false,0,5.0,false,false,false,0,27.5,Maryland,1394924717
+W1396128115,,residential,false,0,7.5,false,false,false,0,71.1,Maryland,1396128115
+W1410118455,,service,false,0,5.0,false,false,false,0,60.9,Maryland,1410118455
+W1410118456,,service,false,0,5.0,false,false,false,0,32.7,Maryland,1410118456
+W1410118458,,service,false,0,5.0,false,false,false,0,85.3,Maryland,1410118458
+W1410133805,,residential,false,0,7.5,false,false,false,0,42.6,Maryland,1410133805
+W1410821561,,residential,false,0,7.5,false,false,false,0,90.3,Maryland,1410821561
+W1410911331,,service,false,0,5.0,false,false,false,0,37.3,Maryland,1410911331
+W1410911332,,service,false,0,5.0,false,false,false,0,46.7,Maryland,1410911332
+W1410943088,,residential,false,0,7.5,false,false,false,0,126.4,Maryland,1410943088
+W1410943089,,residential,false,0,7.5,false,false,false,0,220.0,Maryland,1410943089
+W1410943090,,residential,false,0,7.5,false,false,false,0,9.1,Maryland,1410943090
+W1410953471,,service,false,0,5.0,false,false,false,0,90.8,Maryland,1410953471
+W1410953473,,service,false,0,5.0,false,false,false,0,25.9,Maryland,1410953473
+W1410953474,,residential,false,0,7.5,false,false,false,0,41.8,Maryland,1410953474
+W1410953475,,service,false,0,5.0,false,false,false,0,29.4,Maryland,1410953475
+W1410953476,,service,false,0,5.0,false,false,false,0,46.6,Maryland,1410953476
+W1410953477,,service,false,0,5.0,false,false,false,0,80.2,Maryland,1410953477
+W1410963114,,service,false,0,5.0,false,false,false,0,42.7,Maryland,1410963114
+W1410963115,,service,false,0,5.0,false,false,false,0,44.6,Maryland,1410963115
+W1410963116,,residential,false,0,7.5,false,false,false,0,104.5,Maryland,1410963116
+W1410972940,,residential,false,0,7.5,false,false,false,0,7.7,Maryland,1410972940
+W1410972942,,residential,false,0,7.5,false,false,false,0,114.7,Maryland,1410972942
+W1411165154,,residential,false,0,7.5,false,false,false,0,81.4,Maryland,1411165154
+W1415435978,,tertiary,true,0,7.5,false,false,false,0,6.2,Maryland,1415435978
+W1415435979,,tertiary,true,0,7.5,false,false,false,0,6.1,Maryland,1415435979
+W1415435980,,service,false,0,5.0,false,false,false,0,4.9,Maryland,1415435980
+W1420948877,,primary,false,0,17.5,true,true,false,0,216.6,Maryland,1420948877
+W1420948878,,primary,false,0,17.5,true,true,false,0,234.0,Maryland,1420948878
+W1426376968,,service,false,0,5.0,false,false,false,0,140.4,Maryland,1426376968
+W1426420789,,service,false,0,5.0,false,false,false,0,141.1,Maryland,1426420789
+W1426420790,,service,false,0,5.0,false,false,false,0,17.2,Maryland,1426420790
+W1432506189,,residential,false,0,7.5,false,false,false,0,43.7,Maryland,1432506189
+W1432506190,,service,false,0,5.0,false,false,false,0,169.2,Maryland,1432506190
+W1432506191,,residential,false,0,7.5,false,false,false,0,211.7,Maryland,1432506191
+W1432506192,,tertiary,false,0,10.0,false,false,false,0,31.8,Maryland,1432506192
+W1432701263,,residential,false,0,7.5,false,false,false,0,120.8,Maryland,1432701263
+W1432708508,,residential,false,0,7.5,false,false,false,0,75.6,Maryland,1432708508
+W1432708509,,residential,false,0,7.5,false,false,false,0,18.5,Maryland,1432708509
+W1432708510,,service,false,0,5.0,false,false,false,0,55.7,Maryland,1432708510
+W1432736114,,service,false,0,5.0,false,false,false,0,15.5,Maryland,1432736114
+W1432736115,,service,false,0,5.0,false,false,false,0,39.4,Maryland,1432736115
+W1432736116,,service,false,0,5.0,false,false,false,0,9.4,Maryland,1432736116
+W1433196987,,service,false,0,5.0,false,false,false,0,31.7,Maryland,1433196987
+W1433196988,,residential,false,0,7.5,false,false,false,0,17.4,Maryland,1433196988
+W1433196989,,residential,false,0,7.5,false,false,false,0,6.1,Maryland,1433196989
+W1433196990,,residential,false,0,7.5,false,false,false,0,2.9,Maryland,1433196990
+W1433196991,,residential,false,0,7.5,false,false,false,0,1.3,Maryland,1433196991
+W1433200981,,service,false,0,5.0,false,false,false,0,41.4,Maryland,1433200981
+W1433200982,,service,false,0,5.0,false,false,false,0,17.5,Maryland,1433200982
+W1433254718,,service,false,0,5.0,false,false,false,0,32.0,Maryland,1433254718
+W1433254719,,service,false,0,5.0,false,false,false,0,10.7,Maryland,1433254719
+W1433254721,,service,false,0,5.0,false,false,false,0,17.8,Maryland,1433254721
+W1433254722,,service,false,0,5.0,false,false,false,0,39.1,Maryland,1433254722
+W1433257978,,residential,false,0,7.5,false,false,false,0,272.3,Maryland,1433257978
+W1433257979,,residential,false,0,7.5,false,false,false,0,283.9,Maryland,1433257979
+W1433257980,,service,false,0,5.0,false,false,false,0,14.5,Maryland,1433257980
+W1433257981,,service,false,0,5.0,false,false,false,0,48.7,Maryland,1433257981
+W1433940810,,service,false,0,5.0,false,false,false,0,24.3,Maryland,1433940810
+W1433966061,,service,false,0,5.0,false,false,false,0,12.0,Maryland,1433966061
+W1433966062,,service,false,0,5.0,false,false,false,0,21.2,Maryland,1433966062
+W1433966063,,service,false,0,5.0,false,false,false,0,5.0,Maryland,1433966063
+W1433966064,,residential,false,0,7.5,false,false,false,0,5.4,Maryland,1433966064
+W1433966065,,residential,false,0,7.5,false,false,false,0,28.4,Maryland,1433966065
+W1433966066,,service,false,0,5.0,false,false,false,0,7.0,Maryland,1433966066
+W1433966067,,service,false,0,5.0,false,false,false,0,41.4,Maryland,1433966067
+W1434013372,,service,false,0,5.0,false,false,false,0,196.1,Maryland,1434013372
+W1434013373,,service,false,0,5.0,true,false,false,0,10.1,Maryland,1434013373
+W1434013374,,service,false,0,5.0,true,false,false,0,31.5,Maryland,1434013374
+W1434013375,,service,false,0,5.0,true,false,false,0,31.0,Maryland,1434013375
+W1434338422,,service,false,0,5.0,false,false,false,0,85.4,Maryland,1434338422
+W1434338423,,service,false,0,5.0,false,false,false,0,102.2,Maryland,1434338423
+W1434509202,,service,false,0,5.0,true,false,false,0,20.6,Maryland,1434509202
+W1434509203,,service,false,0,5.0,true,false,false,0,18.5,Maryland,1434509203
+W1434509204,,service,false,0,5.0,true,false,false,0,18.8,Maryland,1434509204
+W1434510110,,service,false,0,5.0,false,false,false,0,16.6,Maryland,1434510110
+W1434510111,,residential,false,0,7.5,false,false,false,0,12.9,Maryland,1434510111
+W1434510112,,residential,false,0,7.5,false,false,false,0,14.5,Maryland,1434510112
+W1435795816,,secondary,true,0,7.5,false,false,false,0,9.9,Maryland,1435795816
+W1435795817,,service,false,0,5.0,false,false,false,0,10.5,Maryland,1435795817
+W1436096549,,service,false,0,5.0,false,false,false,0,87.4,Maryland,1436096549
+W1451624572,,service,false,0,5.0,false,false,false,0,26.5,Maryland,1451624572
+W1451624573,,service,false,0,5.0,false,false,false,0,3.6,Maryland,1451624573
+W1451624574,,service,false,0,5.0,true,false,false,0,8.3,Maryland,1451624574
+W1451624575,,service,false,0,5.0,true,false,false,0,4.2,Maryland,1451624575
+W1451624576,,service,false,0,5.0,true,false,false,0,58.3,Maryland,1451624576
+W1451624577,,service,false,0,5.0,true,false,false,0,102.2,Maryland,1451624577
+W1465194306,,primary,false,0,17.5,true,false,false,0,108.3,Maryland,1465194306
+W1465194315,,service,false,0,5.0,false,false,false,0,172.4,Maryland,1465194315
+W1465194316,,service,false,0,5.0,false,false,false,0,231.5,Maryland,1465194316
+W1465305596,,service,false,0,5.0,false,false,false,0,69.4,Maryland,1465305596
+W1465305597,,service,false,0,5.0,false,false,false,0,60.6,Maryland,1465305597
+W1465305598,,residential,false,0,7.5,false,false,false,0,222.9,Maryland,1465305598
+W1466443326,,service,false,0,5.0,false,false,false,0,65.2,Maryland,1466443326
+W1469083990,,residential,false,0,7.5,false,false,false,0,91.6,Maryland,1469083990
+W1469083991,,residential,false,0,7.5,false,false,false,0,55.2,Maryland,1469083991
+W1471643422,,residential,false,0,7.5,false,false,false,0,74.4,Maryland,1471643422
+W1474616897,,service,false,0,5.0,false,false,false,0,20.7,Maryland,1474616897
+W1476417586,,residential,false,0,7.5,false,false,false,0,22.3,Maryland,1476417586
+W1476417587,,residential,false,0,7.5,false,false,false,0,34.6,Maryland,1476417587
+W1476417588,,residential,false,0,7.5,false,false,false,0,196.9,Maryland,1476417588
+W1476417589,,residential,false,0,7.5,false,false,false,0,120.6,Maryland,1476417589
+W1476417590,,residential,false,0,7.5,false,false,false,0,129.1,Maryland,1476417590
+W1476714985,,residential,false,0,7.5,false,false,false,0,39.7,Maryland,1476714985
+W1476714986,,residential,false,0,7.5,false,false,false,0,4.3,Maryland,1476714986
+W1476714990,,residential,false,0,7.5,false,false,false,0,41.9,Maryland,1476714990
+W1476714991,,residential,false,0,7.5,false,false,false,0,39.2,Maryland,1476714991
+W1476752693,,service,false,0,5.0,false,false,false,0,22.2,Maryland,1476752693
+W1476752694,,service,false,0,5.0,false,false,false,0,41.5,Maryland,1476752694
+W1476752695,,residential,false,0,7.5,false,false,false,0,71.5,Maryland,1476752695
+W1476752696,,residential,false,0,7.5,false,false,false,0,48.3,Maryland,1476752696
+W1476752697,,residential,false,0,7.5,false,false,false,0,52.0,Maryland,1476752697
+W1476776990,,residential,false,0,7.5,false,false,false,0,39.3,Maryland,1476776990
+W1476776991,,service,false,0,5.0,false,false,false,0,39.1,Maryland,1476776991
+W1476776992,,service,false,0,5.0,false,false,false,0,31.0,Maryland,1476776992
+W1476776993,,residential,false,0,7.5,false,false,false,0,31.9,Maryland,1476776993
+W1476776994,,residential,false,0,7.5,false,false,false,0,51.1,Maryland,1476776994
+W1476776995,,residential,false,0,7.5,false,false,false,0,9.4,Maryland,1476776995
+W1477340640,,service,false,0,5.0,false,false,false,0,20.1,Maryland,1477340640
+W1477340641,,service,false,0,5.0,false,false,false,0,21.5,Maryland,1477340641
+W1477340642,,service,false,0,5.0,false,false,false,0,44.3,Maryland,1477340642
+W1477340643,,residential,false,0,7.5,false,false,false,0,50.1,Maryland,1477340643
+W1484626254,,service,false,0,5.0,false,false,false,0,303.3,Maryland,1484626254
+W1484626255,,service,false,0,5.0,false,false,false,0,63.1,Maryland,1484626255
+W1484626256,,service,false,0,5.0,false,false,false,0,69.8,Maryland,1484626256
+W1487973416,,residential,false,0,7.5,true,false,false,0,12.1,Maryland,1487973416
+W1488088146,,service,false,0,5.0,false,false,false,0,7.8,Maryland,1488088146
+W1488088147,,service,false,0,5.0,false,false,false,0,13.8,Maryland,1488088147
+W1488088148,,service,false,0,5.0,false,false,false,0,15.1,Maryland,1488088148
+W1488644216,,service,false,0,5.0,false,false,false,0,6.8,Maryland,1488644216
+W1492491824,,service,false,0,5.0,false,false,false,0,41.4,Maryland,1492491824
+W1492491825,,residential,false,0,7.5,false,false,false,0,353.0,Maryland,1492491825
+W1499177376,,residential,false,0,7.5,false,false,false,0,31.6,Maryland,1499177376
+W1499177377,,residential,false,0,7.5,false,false,false,0,117.0,Maryland,1499177377
+W1503332741,,tertiary,true,0,7.5,false,false,false,0,5.1,Maryland,1503332741
+W1505592050,,residential,false,0,7.5,false,false,false,0,65.5,Maryland,1505592050
+W1506496724,,service,false,0,5.0,false,false,false,0,161.1,Maryland,1506496724
+W1506496725,,service,false,0,5.0,false,false,false,0,277.1,Maryland,1506496725
+W1506496726,,service,false,0,5.0,false,false,false,0,17.8,Maryland,1506496726
+W1506496727,,service,false,0,5.0,false,false,false,0,96.8,Maryland,1506496727
+W1506496728,,service,false,0,5.0,false,false,false,0,203.7,Maryland,1506496728
+W1506496729,,service,false,0,5.0,false,false,false,0,312.2,Maryland,1506496729
+W1506496730,,residential,false,0,7.5,false,false,false,0,11.5,Maryland,1506496730
+W1506496731,,service,false,0,5.0,false,false,false,0,3.9,Maryland,1506496731
+W1506496732,,service,false,0,5.0,false,false,false,0,23.9,Maryland,1506496732
+W1506496733,,residential,false,0,7.5,false,false,false,0,15.0,Maryland,1506496733
+W1506655528,,service,false,0,5.0,false,false,false,0,57.0,Maryland,1506655528
+W1506655529,,service,false,0,5.0,false,false,false,0,138.7,Maryland,1506655529
+W1508657562,,service,false,0,5.0,false,false,false,0,94.5,Maryland,1508657562
+W1508657563,,service,false,0,5.0,false,false,false,0,12.5,Maryland,1508657563
+W1508657564,,service,false,0,5.0,false,false,false,0,16.8,Maryland,1508657564
+W1508657565,,service,false,0,5.0,false,false,false,0,41.7,Maryland,1508657565
+W1508747069,,residential,false,0,7.5,false,false,false,0,49.4,Maryland,1508747069
+W1508747070,,residential,false,0,7.5,false,false,false,0,220.4,Maryland,1508747070
+W1510442512,,residential,false,0,7.5,false,false,false,0,11.3,Maryland,1510442512
+W1510442513,,residential,false,0,7.5,false,false,false,0,61.2,Maryland,1510442513
+W1510442514,,residential,false,0,7.5,false,false,false,0,171.7,Maryland,1510442514
+W1510450812,,residential,false,0,7.5,false,true,false,0,9.1,Maryland,1510450812
+W1517168398,,service,false,0,5.0,false,false,false,0,15.3,Maryland,1517168398
+W1518591536,,residential,false,0,7.5,false,false,false,0,230.7,Maryland,1518591536
+W1518591537,,residential,false,0,7.5,false,false,false,0,99.1,Maryland,1518591537
+W1518636274,,residential,false,0,7.5,false,false,false,0,47.6,Maryland,1518636274
+W1518642270,,service,false,0,5.0,false,false,false,0,26.0,Maryland,1518642270
+W1518642271,,service,false,0,5.0,false,false,false,0,203.1,Maryland,1518642271
+W1518642272,,service,false,0,5.0,false,false,false,0,7.7,Maryland,1518642272
+W1529493694,,primary,false,0,17.5,true,true,false,0,225.3,Maryland,1529493694
+W1529493695,,primary,false,0,17.5,true,true,false,0,113.2,Maryland,1529493695
+W1529493696,,primary,false,0,17.5,true,true,false,0,228.9,Maryland,1529493696
+W1529493697,,primary,false,0,17.5,true,true,false,0,129.6,Maryland,1529493697
+W1533487171,,service,false,0,5.0,false,false,false,0,178.2,Maryland,1533487171
+W1533489745,,service,false,0,5.0,false,false,false,0,543.1,Maryland,1533489745
+W1533559024,,residential,false,0,7.5,false,false,false,0,112.0,Maryland,1533559024
+W1546072516,,service,false,0,5.0,false,false,false,0,67.9,Maryland,1546072516
+W1546072517,,service,false,0,5.0,false,false,false,0,100.1,Maryland,1546072517
+W1557824758,,tertiary,false,0,10.0,false,false,false,0,186.6,Maryland,1557824758
+W1557824759,,tertiary,false,0,10.0,false,false,false,0,150.8,Maryland,1557824759
+W1561056918,,residential,false,0,7.5,false,false,false,0,87.5,Maryland,1561056918
+W1561486372,,residential,false,0,7.5,false,false,false,0,61.4,Maryland,1561486372
+W1561488810,,residential,false,0,7.5,false,false,false,0,149.9,Maryland,1561488810
+W1561503665,,service,false,0,5.0,false,false,false,0,26.9,Maryland,1561503665
+W1561506210,,service,false,0,5.0,false,false,false,0,39.1,Maryland,1561506210
+W1561506211,,service,false,0,5.0,false,false,false,0,36.3,Maryland,1561506211
+W1561506578,,service,false,0,5.0,false,false,false,0,65.9,Maryland,1561506578
+W1563357865,,service,false,0,5.0,false,false,false,0,53.1,Maryland,1563357865
+W1563357866,,service,false,0,5.0,false,false,false,0,15.2,Maryland,1563357866
+W1563357867,,service,false,0,5.0,false,false,false,0,44.2,Maryland,1563357867
+W1563357868,,service,false,0,5.0,false,false,false,0,13.4,Maryland,1563357868
+W1563357869,,service,false,0,5.0,false,false,false,0,69.3,Maryland,1563357869
+W1563357870,,service,false,0,5.0,false,false,false,0,49.7,Maryland,1563357870
+W1563357871,,service,false,0,5.0,false,false,false,0,52.2,Maryland,1563357871
+W1563357872,,service,false,0,5.0,false,false,false,0,20.6,Maryland,1563357872
+W1563357873,,service,false,0,5.0,false,false,false,0,41.9,Maryland,1563357873
+W1563411406,,residential,false,0,7.5,false,false,false,0,7.0,Maryland,1563411406
+W1563411407,,residential,false,0,7.5,false,false,false,0,73.3,Maryland,1563411407
+W1563411408,,service,false,0,5.0,false,false,false,0,41.9,Maryland,1563411408
+W1563411409,,residential,false,0,7.5,false,false,false,0,174.4,Maryland,1563411409
+W1563411410,,service,false,0,5.0,false,false,false,0,26.0,Maryland,1563411410
+W1563411411,,service,false,0,5.0,false,false,false,0,46.4,Maryland,1563411411
+W1563449083,,service,false,0,5.0,false,false,false,0,8.8,Maryland,1563449083
+W1563449084,,service,false,0,5.0,false,false,false,0,8.8,Maryland,1563449084
+W1563449085,,service,false,0,5.0,false,false,false,0,21.3,Maryland,1563449085
+W1563449086,,service,false,0,5.0,false,false,false,0,96.7,Maryland,1563449086
+W1563677161,,service,false,0,5.0,false,false,false,0,2.4,Maryland,1563677161
+W1565697022,,service,false,0,5.0,false,false,false,0,136.9,Maryland,1565697022
+W1565697023,,service,false,0,5.0,false,false,false,0,194.6,Maryland,1565697023
+W1565706087,,service,false,0,5.0,false,false,false,0,22.8,Maryland,1565706087
+W1565706088,,service,false,0,5.0,false,false,false,0,12.2,Maryland,1565706088
+W1565706089,,service,false,0,5.0,false,false,false,0,34.2,Maryland,1565706089
+W1565706090,,service,false,0,5.0,false,false,false,0,129.8,Maryland,1565706090
+W1565706091,,service,false,0,5.0,false,false,false,0,19.6,Maryland,1565706091
+W1565706092,,service,false,0,5.0,false,false,false,0,79.0,Maryland,1565706092
+W1565706093,,service,false,0,5.0,false,false,false,0,37.1,Maryland,1565706093
+W1565709325,,service,false,0,5.0,false,false,false,0,234.2,Maryland,1565709325
+W1565709326,,service,false,0,5.0,false,false,false,0,45.5,Maryland,1565709326
+W1565709327,,service,false,0,5.0,false,false,false,0,38.8,Maryland,1565709327
+W1565709328,,service,false,0,5.0,false,false,false,0,27.1,Maryland,1565709328
+W1565709330,,service,false,0,5.0,false,false,false,0,23.0,Maryland,1565709330
+W1565717396,,service,false,0,5.0,false,false,false,0,15.8,Maryland,1565717396
+W1565717397,,service,false,0,5.0,false,false,false,0,85.1,Maryland,1565717397
+W1565717398,,service,false,0,5.0,false,false,false,0,15.2,Maryland,1565717398
+W1565717399,,service,false,0,5.0,false,false,false,0,5.1,Maryland,1565717399
+W1565717400,,service,false,0,5.0,false,false,false,0,6.7,Maryland,1565717400
+W1565717401,,service,false,0,5.0,false,false,false,0,14.4,Maryland,1565717401
+W1565717402,,service,false,0,5.0,false,false,false,0,20.2,Maryland,1565717402
+W1565717403,,service,false,0,5.0,false,false,false,0,11.1,Maryland,1565717403
+W1565733737,,service,false,0,5.0,false,false,false,0,15.4,Maryland,1565733737
+W1565733738,,service,false,0,5.0,false,false,false,0,20.9,Maryland,1565733738
+W1565733739,,service,false,0,5.0,false,false,false,0,9.2,Maryland,1565733739
+W1565733740,,service,false,0,5.0,false,false,false,0,28.6,Maryland,1565733740
+W1565750238,,service,false,0,5.0,false,false,false,0,10.0,Maryland,1565750238
+W1565750239,,service,false,0,5.0,false,false,false,0,111.9,Maryland,1565750239
+W1565750240,,service,false,0,5.0,false,false,false,0,12.8,Maryland,1565750240
+W1565750241,,service,false,0,5.0,false,false,false,0,10.9,Maryland,1565750241
+W1565750242,,service,false,0,5.0,false,false,false,0,9.1,Maryland,1565750242
+W1565750243,,service,false,0,5.0,false,false,false,0,10.5,Maryland,1565750243
+W1565750244,,service,false,0,5.0,false,false,false,0,38.8,Maryland,1565750244
+W1565750245,,service,false,0,5.0,false,false,false,0,55.5,Maryland,1565750245
+W1565750246,,service,false,0,5.0,false,false,false,0,67.8,Maryland,1565750246
+W1565750247,,service,false,0,5.0,false,false,false,0,9.1,Maryland,1565750247
+W1565750248,,service,false,0,5.0,false,false,false,0,41.9,Maryland,1565750248
+W1565750249,,service,false,0,5.0,false,false,false,0,26.5,Maryland,1565750249
+W1565750250,,service,false,0,5.0,false,false,false,0,8.0,Maryland,1565750250
+W1565750251,,service,false,0,5.0,false,false,false,0,29.6,Maryland,1565750251
+W1565750252,,service,false,0,5.0,false,false,false,0,42.0,Maryland,1565750252
+W1565750253,,service,false,0,5.0,false,false,false,0,7.9,Maryland,1565750253
+W1565750254,,service,false,0,5.0,false,false,false,0,30.0,Maryland,1565750254
+W1565750255,,service,false,0,5.0,false,false,false,0,7.0,Maryland,1565750255
+W1565750256,,service,false,0,5.0,false,false,false,0,8.4,Maryland,1565750256
+W1565750257,,service,false,0,5.0,false,false,false,0,30.3,Maryland,1565750257
+W1565751459,,service,false,0,5.0,false,false,false,0,38.3,Maryland,1565751459
+W1565751460,,service,false,0,5.0,false,false,false,0,5.9,Maryland,1565751460
+W1565751461,,service,false,0,5.0,false,false,false,0,10.3,Maryland,1565751461
+W1565751462,,service,false,0,5.0,false,false,false,0,11.9,Maryland,1565751462
+W1565751463,,service,false,0,5.0,false,false,false,0,20.5,Maryland,1565751463
+W1565751464,,service,false,0,5.0,false,false,false,0,11.5,Maryland,1565751464
+W1565751465,,service,false,0,5.0,false,false,false,0,98.3,Maryland,1565751465
+W1565751466,,service,false,0,5.0,false,false,false,0,47.0,Maryland,1565751466
+W1565751467,,service,false,0,5.0,false,false,false,0,6.7,Maryland,1565751467
+W1565751468,,service,false,0,5.0,false,false,false,0,6.0,Maryland,1565751468
+W1565751469,,service,false,0,5.0,false,false,false,0,284.4,Maryland,1565751469
+W1565751470,,service,false,0,5.0,false,false,false,0,16.5,Maryland,1565751470
+W1565751471,,service,false,0,5.0,false,false,false,0,14.8,Maryland,1565751471
+W1565751472,,service,false,0,5.0,false,false,false,0,8.7,Maryland,1565751472
+W1565751473,,service,false,0,5.0,false,false,false,0,172.3,Maryland,1565751473
+W1565751474,,service,false,0,5.0,false,false,false,0,137.2,Maryland,1565751474
+W1565751475,,service,false,0,5.0,false,false,false,0,77.6,Maryland,1565751475
+W1565752305,,service,false,0,5.0,false,false,false,0,41.3,Maryland,1565752305
+W1565752306,,service,false,0,5.0,false,false,false,0,16.4,Maryland,1565752306
+W1565752307,,service,false,0,5.0,false,false,false,0,84.0,Maryland,1565752307
+W1565752308,,service,false,0,5.0,false,false,false,0,16.8,Maryland,1565752308
+W1565752309,,service,false,0,5.0,false,false,false,0,17.2,Maryland,1565752309
+W1566348675,,service,false,0,5.0,false,false,false,0,21.3,Maryland,1566348675
+W1566348676,,service,false,0,5.0,false,false,false,0,48.6,Maryland,1566348676
+W1566348677,,service,false,0,5.0,false,false,false,0,7.3,Maryland,1566348677
+W1566348678,,service,false,0,5.0,false,false,false,0,25.7,Maryland,1566348678
+W1566348679,,service,false,0,5.0,false,false,false,0,10.2,Maryland,1566348679
+W1566348680,,service,false,0,5.0,false,false,false,0,10.4,Maryland,1566348680
+W1566348681,,service,false,0,5.0,false,false,false,0,40.6,Maryland,1566348681
+W1566348682,,service,false,0,5.0,false,false,false,0,5.8,Maryland,1566348682
+W1566348683,,service,false,0,5.0,false,false,false,0,11.8,Maryland,1566348683
+W1566351155,,service,false,0,5.0,false,false,false,0,18.7,Maryland,1566351155
+W1566351156,,service,false,0,5.0,false,false,false,0,20.8,Maryland,1566351156
+W1566351157,,service,false,0,5.0,false,false,false,0,21.3,Maryland,1566351157
+W1566351158,,service,false,0,5.0,false,false,false,0,18.2,Maryland,1566351158
+W1566351159,,service,false,0,5.0,false,false,false,0,14.6,Maryland,1566351159
+W1566351160,,service,false,0,5.0,false,false,false,0,17.4,Maryland,1566351160
+W1566351161,,service,false,0,5.0,false,false,false,0,14.6,Maryland,1566351161
+W1566351162,,service,false,0,5.0,true,false,false,0,11.8,Maryland,1566351162
+W1566351163,,service,false,0,5.0,true,false,false,0,13.9,Maryland,1566351163
+W1566351164,,service,false,0,5.0,false,false,false,0,27.9,Maryland,1566351164
+W1566351165,,service,false,0,5.0,false,false,false,0,12.2,Maryland,1566351165
+W1566351166,,service,false,0,5.0,false,false,false,0,13.1,Maryland,1566351166
+W1566351167,,service,false,0,5.0,false,false,false,0,8.9,Maryland,1566351167
+W1566351168,,service,false,0,5.0,false,false,false,0,39.7,Maryland,1566351168
+W1566351169,,service,false,0,5.0,false,false,false,0,20.5,Maryland,1566351169
+W1566351170,,service,false,0,5.0,false,false,false,0,13.5,Maryland,1566351170
+W1566351171,,service,false,0,5.0,false,false,false,0,73.1,Maryland,1566351171
+W1566351172,,service,false,0,5.0,false,false,false,0,89.2,Maryland,1566351172
+W1566352101,,residential,false,0,7.5,false,false,false,0,10.2,Maryland,1566352101
+W1566352102,,residential,false,0,7.5,false,false,false,0,10.2,Maryland,1566352102
+W1566352103,,residential,false,0,7.5,false,false,false,0,10.9,Maryland,1566352103
+W1566352104,,residential,false,0,7.5,false,false,false,0,11.5,Maryland,1566352104
+W1566352105,,service,false,0,5.0,false,false,false,0,11.2,Maryland,1566352105
+W1566352106,,service,false,0,5.0,false,false,false,0,65.3,Maryland,1566352106
+W1566354271,,service,false,0,5.0,false,false,false,0,35.6,Maryland,1566354271
+W1566354272,,service,false,0,5.0,false,false,false,0,19.3,Maryland,1566354272
+W1566354273,,service,false,0,5.0,false,false,false,0,23.7,Maryland,1566354273
+W1566354274,,service,false,0,5.0,false,false,false,0,9.4,Maryland,1566354274
+W1566354275,,service,false,0,5.0,false,false,false,0,9.1,Maryland,1566354275
+W1566354276,,service,false,0,5.0,false,false,false,0,14.7,Maryland,1566354276
+W1566354277,,service,false,0,5.0,false,false,false,0,6.4,Maryland,1566354277
+W1566354278,,service,false,0,5.0,false,false,false,0,16.6,Maryland,1566354278
+W1566354279,,service,false,0,5.0,false,false,false,0,24.0,Maryland,1566354279
+W1566354280,,service,false,0,5.0,false,false,false,0,10.5,Maryland,1566354280
+W1566354281,,service,false,0,5.0,false,false,false,0,22.5,Maryland,1566354281
+W1566354282,,service,false,0,5.0,false,false,false,0,1.7,Maryland,1566354282
+W1566354283,,service,false,0,5.0,false,false,false,0,44.3,Maryland,1566354283
+W1566354284,,service,false,0,5.0,false,false,false,0,25.7,Maryland,1566354284
+W1566354285,,service,false,0,5.0,false,false,false,0,31.1,Maryland,1566354285
+W1566354286,,service,false,0,5.0,false,false,false,0,33.5,Maryland,1566354286
+W1566354287,,service,false,0,5.0,false,false,false,0,30.9,Maryland,1566354287
+W1566354288,,service,false,0,5.0,false,false,false,0,18.6,Maryland,1566354288
+W1566354486,,service,false,0,5.0,false,false,false,0,5.2,Maryland,1566354486
+W1566354487,,service,false,0,5.0,false,false,false,0,47.8,Maryland,1566354487
+W1566354488,,service,false,0,5.0,false,false,false,0,19.3,Maryland,1566354488
+W1566354489,,service,false,0,5.0,false,false,false,0,30.5,Maryland,1566354489
+W1566354490,,service,false,0,5.0,false,false,false,0,4.8,Maryland,1566354490
+W1566354491,,service,false,0,5.0,false,false,false,0,11.7,Maryland,1566354491
+W1566354492,,service,false,0,5.0,false,false,false,0,7.7,Maryland,1566354492
+W1566354493,,service,false,0,5.0,false,false,false,0,29.9,Maryland,1566354493
+W1566354494,,service,false,0,5.0,false,false,false,0,7.2,Maryland,1566354494
+W1566354495,,service,false,0,5.0,false,false,false,0,25.9,Maryland,1566354495
+W1566354496,,service,false,0,5.0,false,false,false,0,30.4,Maryland,1566354496
+W1566354497,,service,false,0,5.0,true,false,false,0,8.0,Maryland,1566354497
+W1566354498,,service,false,0,5.0,true,false,false,0,6.4,Maryland,1566354498
+W1566354499,,service,false,0,5.0,true,false,false,0,7.1,Maryland,1566354499
+W1566354500,,service,false,0,5.0,true,false,false,0,11.0,Maryland,1566354500
+W1566354501,,service,false,0,5.0,true,false,false,0,16.9,Maryland,1566354501
+W1566354502,,service,false,0,5.0,false,false,false,0,10.8,Maryland,1566354502
+W1566354503,,service,false,0,5.0,false,false,false,0,90.8,Maryland,1566354503
+W1566370034,,service,false,0,5.0,false,false,false,0,29.5,Maryland,1566370034
+W1566370035,,service,false,0,5.0,false,false,false,0,54.7,Maryland,1566370035
+W1566370036,,service,false,0,5.0,false,false,false,0,74.3,Maryland,1566370036
+W1566370037,,service,false,0,5.0,false,false,false,0,11.7,Maryland,1566370037
+W1566370038,,service,false,0,5.0,false,false,false,0,77.8,Maryland,1566370038
+W1566370039,,service,false,0,5.0,false,false,false,0,208.4,Maryland,1566370039
+W1566370040,,service,false,0,5.0,false,false,false,0,43.4,Maryland,1566370040
+W1566370041,,service,false,0,5.0,false,false,false,0,45.8,Maryland,1566370041
+W1566370042,,service,false,0,5.0,false,false,false,0,86.6,Maryland,1566370042
+W1566370043,,service,false,0,5.0,false,false,false,0,10.9,Maryland,1566370043
+W1566370044,,service,false,0,5.0,false,false,false,0,52.9,Maryland,1566370044
+W1566370045,,service,false,0,5.0,false,false,false,0,76.6,Maryland,1566370045
+W1566370046,,service,false,0,5.0,false,false,false,0,244.9,Maryland,1566370046
+W1566370047,,service,false,0,5.0,false,false,false,0,17.0,Maryland,1566370047
+W1566370048,,service,false,0,5.0,false,false,false,0,97.3,Maryland,1566370048
+W1566370049,,service,false,0,5.0,false,false,false,0,91.5,Maryland,1566370049
+W1566370050,,service,false,0,5.0,false,false,false,0,42.5,Maryland,1566370050
+W1566370051,,service,false,0,5.0,false,false,false,0,46.9,Maryland,1566370051
+W1566370052,,service,false,0,5.0,false,false,false,0,139.4,Maryland,1566370052
+W1566370053,,service,false,0,5.0,false,false,false,0,37.2,Maryland,1566370053
+W1566370293,,service,false,0,5.0,false,false,false,0,224.9,Maryland,1566370293
+W1566370294,,service,false,0,5.0,false,false,false,0,8.3,Maryland,1566370294
+W1566370295,,service,false,0,5.0,false,false,false,0,142.1,Maryland,1566370295
+W1566370296,,service,false,0,5.0,false,false,false,0,8.0,Maryland,1566370296
+W1566370297,,service,false,0,5.0,false,false,false,0,82.7,Maryland,1566370297
+W1566370298,,service,false,0,5.0,false,false,false,0,13.2,Maryland,1566370298
+W1566370299,,service,false,0,5.0,false,false,false,0,5.9,Maryland,1566370299
+W1566370300,,service,false,0,5.0,false,false,false,0,15.8,Maryland,1566370300
+W1566370301,,service,false,0,5.0,false,false,false,0,8.1,Maryland,1566370301
+W1566370302,,service,false,0,5.0,false,false,false,0,11.3,Maryland,1566370302
+W1566370303,,service,false,0,5.0,false,false,false,0,8.3,Maryland,1566370303
+W1566370304,,service,false,0,5.0,false,false,false,0,30.9,Maryland,1566370304
+W1566370305,,service,false,0,5.0,false,false,false,0,25.2,Maryland,1566370305
+W1566370306,,service,false,0,5.0,false,false,false,0,22.4,Maryland,1566370306
+W1566370307,,service,false,0,5.0,false,false,false,0,14.5,Maryland,1566370307
+W1566370308,,service,false,0,5.0,true,false,false,0,10.6,Maryland,1566370308
+W1566370309,,service,false,0,5.0,true,false,false,0,4.1,Maryland,1566370309
+W1566370310,,service,false,0,5.0,true,false,false,0,8.5,Maryland,1566370310
+W1566370312,,service,false,0,5.0,true,false,false,0,10.2,Maryland,1566370312
+W1566370313,,service,false,0,5.0,false,false,false,0,17.1,Maryland,1566370313
+W1566370314,,service,false,0,5.0,false,false,false,0,139.7,Maryland,1566370314
+W1566370315,,service,false,0,5.0,false,false,false,0,29.9,Maryland,1566370315
+W1566370316,,service,false,0,5.0,false,false,false,0,12.2,Maryland,1566370316
+W1566370317,,service,false,0,5.0,false,false,false,0,13.2,Maryland,1566370317
+W1566370318,,service,false,0,5.0,false,false,false,0,2.8,Maryland,1566370318
+W1566373974,,service,false,0,5.0,false,false,false,0,34.5,Maryland,1566373974
+W1566373975,,service,false,0,5.0,false,false,false,0,45.7,Maryland,1566373975
+W1566382578,,service,false,0,5.0,false,false,false,0,9.1,Maryland,1566382578
+W1566382579,,service,false,0,5.0,false,false,false,0,15.2,Maryland,1566382579
+W1566382580,,service,false,0,5.0,false,false,false,0,15.0,Maryland,1566382580
+W1566382587,,service,false,0,5.0,false,false,false,0,55.4,Maryland,1566382587
+W1566382589,,service,false,0,5.0,false,false,false,0,11.9,Maryland,1566382589
+W1566382590,,service,false,0,5.0,false,false,false,0,97.3,Maryland,1566382590
+W1566382591,,service,false,0,5.0,false,false,false,0,9.7,Maryland,1566382591
+W1566382592,,service,false,0,5.0,false,false,false,0,30.6,Maryland,1566382592
+W1566382593,,service,false,0,5.0,false,false,false,0,8.4,Maryland,1566382593
+W1566382594,,service,false,0,5.0,false,false,false,0,12.3,Maryland,1566382594
+W1566382595,,service,false,0,5.0,false,false,false,0,13.5,Maryland,1566382595
+W1566382596,,service,false,0,5.0,false,false,false,0,12.1,Maryland,1566382596
+W1566382597,,service,false,0,5.0,false,false,false,0,83.3,Maryland,1566382597
+W1566390130,,service,false,0,5.0,false,false,false,0,41.9,Maryland,1566390130
+W1566390131,,service,false,0,5.0,false,false,false,0,33.0,Maryland,1566390131
+W1566390132,,service,false,0,5.0,false,false,false,0,193.0,Maryland,1566390132
+W1566390133,,service,false,0,5.0,false,false,false,0,53.4,Maryland,1566390133
+W1566390134,,service,false,0,5.0,false,false,false,0,15.2,Maryland,1566390134
+W1566390135,,service,false,0,5.0,false,false,false,0,83.9,Maryland,1566390135
+W1566390136,,service,false,0,5.0,false,false,false,0,99.5,Maryland,1566390136
+W1566390137,,service,false,0,5.0,false,false,false,0,12.5,Maryland,1566390137
+W1566391900,,service,false,0,5.0,false,false,false,0,138.6,Maryland,1566391900
+W1566391901,,service,false,0,5.0,false,false,false,0,22.6,Maryland,1566391901
+W1566706072,,service,false,0,5.0,false,false,false,0,84.8,Maryland,1566706072
+W1566706073,,service,false,0,5.0,false,false,false,0,30.9,Maryland,1566706073
+W1566717324,,service,false,0,5.0,false,false,false,0,101.2,Maryland,1566717324
+W1566717325,,service,false,0,5.0,false,false,false,0,52.8,Maryland,1566717325
+W1566717326,,service,false,0,5.0,false,false,false,0,84.9,Maryland,1566717326
+W1566717327,,service,false,0,5.0,false,false,false,0,18.5,Maryland,1566717327
+W1566717328,,service,false,0,5.0,false,false,false,0,12.5,Maryland,1566717328
+W1566717329,,residential,false,0,7.5,false,false,false,0,290.3,Maryland,1566717329
+W1566737995,,service,false,0,5.0,true,false,false,0,8.2,Maryland,1566737995
+W1566737996,,service,false,0,5.0,false,false,false,0,19.9,Maryland,1566737996
+W1566973872,,service,false,0,5.0,false,false,false,0,80.4,Maryland,1566973872
+W1566986279,,service,false,0,5.0,false,false,false,0,89.6,Maryland,1566986279
+W1566986280,,service,false,0,5.0,false,false,false,0,79.2,Maryland,1566986280
+W1566986281,,service,false,0,5.0,false,false,false,0,318.2,Maryland,1566986281
+W1566986282,,service,false,0,5.0,false,false,false,0,124.9,Maryland,1566986282
+W1566986283,,service,false,0,5.0,false,false,false,0,141.3,Maryland,1566986283
+W1567016380,,service,false,0,5.0,false,false,false,0,28.0,Maryland,1567016380
+W1567016381,,service,false,0,5.0,false,false,false,0,11.7,Maryland,1567016381
+W1567016382,,service,false,0,5.0,false,false,false,0,59.8,Maryland,1567016382
+W1567016383,,service,false,0,5.0,false,false,false,0,63.2,Maryland,1567016383
+W1567016384,,service,false,0,5.0,false,false,false,0,25.5,Maryland,1567016384
+W1567016385,,service,false,0,5.0,true,false,false,0,9.1,Maryland,1567016385
+W1567016386,,service,false,0,5.0,true,false,false,0,7.9,Maryland,1567016386
+W1567016387,,service,false,0,5.0,false,false,false,0,8.3,Maryland,1567016387
+W1567016388,,service,false,0,5.0,false,false,false,0,90.8,Maryland,1567016388
+W1567016389,,service,false,0,5.0,false,false,false,0,33.7,Maryland,1567016389
+W1567021427,,service,false,0,5.0,false,false,false,0,31.3,Maryland,1567021427
+W1567021428,,service,false,0,5.0,false,false,false,0,15.1,Maryland,1567021428
+W1567021429,,service,false,0,5.0,false,false,false,0,10.5,Maryland,1567021429
+W1567021430,,service,false,0,5.0,false,false,false,0,11.2,Maryland,1567021430
+W1567021431,,service,false,0,5.0,false,false,false,0,16.5,Maryland,1567021431
+W1567021432,,service,false,0,5.0,false,false,false,0,5.0,Maryland,1567021432
+W221338614,,residential,false,0,7.5,false,false,false,0,104.1,Maryland,221338614
+W221338616,,residential,false,0,7.5,false,false,false,0,98.5,Maryland,221338616
+W221338617,,residential,false,0,7.5,false,false,false,0,104.8,Maryland,221338617
+W221338618,,residential,false,0,7.5,false,false,false,0,233.7,Maryland,221338618
+W221338619,,residential,false,0,7.5,false,false,false,0,145.1,Maryland,221338619
+W221338620,,residential,false,0,7.5,false,false,false,0,106.0,Maryland,221338620
+W221338622,,residential,false,0,7.5,false,false,false,0,96.0,Maryland,221338622
+W221338626,,residential,false,0,7.5,false,false,false,0,84.0,Maryland,221338626
+W221338627,,residential,false,0,7.5,false,false,false,0,222.7,Maryland,221338627
+W221338629,,residential,false,0,7.5,false,false,false,0,156.2,Maryland,221338629
+W221338630,,residential,false,0,7.5,false,false,false,0,390.0,Maryland,221338630
+W221338634,,residential,false,0,7.5,false,false,false,0,103.2,Maryland,221338634
+W221338637,,residential,false,0,7.5,false,false,false,0,100.7,Maryland,221338637
+W221338640,,residential,false,0,7.5,false,false,false,0,147.9,Maryland,221338640
+W221338641,,residential,false,0,7.5,false,false,false,0,82.3,Maryland,221338641
+W221338642,,residential,false,0,7.5,false,false,false,0,105.0,Maryland,221338642
+W221600783,,residential,false,0,7.5,false,false,false,0,196.6,Maryland,221600783
+W221600785,,residential,false,0,7.5,false,false,false,0,139.7,Maryland,221600785
+W221600786,,residential,false,0,7.5,false,false,false,0,141.3,Maryland,221600786
+W221600792,,residential,false,0,7.5,false,false,false,0,224.0,Maryland,221600792
+W221600793,,residential,false,0,7.5,false,false,false,0,102.5,Maryland,221600793
+W221600794,,residential,false,0,7.5,false,false,false,0,134.2,Maryland,221600794
+W221600796,,residential,false,0,7.5,false,false,false,0,466.9,Maryland,221600796
+W221600801,,residential,false,0,7.5,false,false,false,0,185.7,Maryland,221600801
+W221886729,,residential,false,0,7.5,false,false,false,0,11.3,Maryland,221886729
+W221886731,,service,false,0,5.0,false,false,false,0,56.8,Maryland,221886731
+W221886739,,residential,false,0,7.5,true,false,false,0,180.2,Maryland,221886739
+W221886741,,residential,false,0,7.5,false,false,false,0,364.8,Maryland,221886741
+W221886743,,residential,false,0,7.5,false,false,false,0,593.3,Maryland,221886743
+W221886745,,residential,false,0,7.5,false,false,false,0,174.1,Maryland,221886745
+W221886746,,residential,false,0,7.5,false,false,false,0,85.4,Maryland,221886746
+W221886747,,tertiary,false,0,10.0,false,true,false,0,24.0,Maryland,221886747
+W221886749,,residential,false,0,7.5,false,false,false,0,760.6,Maryland,221886749
+W221886750,,residential,false,0,7.5,false,false,false,0,200.6,Maryland,221886750
+W221886751,,residential,false,0,7.5,false,false,false,0,145.7,Maryland,221886751
+W222303755,,residential,false,0,7.5,false,false,false,0,281.4,Maryland,222303755
+W222303757,,residential,false,0,7.5,false,false,false,0,55.0,Maryland,222303757
+W222303758,,residential,false,0,7.5,false,false,false,0,346.3,Maryland,222303758
+W222303762,,residential,false,0,7.5,false,false,false,0,176.7,Maryland,222303762
+W222303773,,residential,false,0,7.5,false,false,false,0,143.4,Maryland,222303773
+W222628284,,residential,false,0,7.5,false,false,false,0,299.7,Maryland,222628284
+W222628285,,residential,false,0,7.5,false,false,false,0,357.5,Maryland,222628285
+W222628296,,residential,false,0,7.5,false,false,false,0,116.4,Maryland,222628296
+W222760396,,residential,false,0,7.5,false,false,false,0,106.0,Maryland,222760396
+W222760399,,residential,false,0,7.5,false,false,false,0,427.7,Maryland,222760399
+W222760400,,residential,false,0,7.5,false,false,false,0,158.6,Maryland,222760400
+W222760413,,residential,false,0,7.5,false,false,false,0,167.6,Maryland,222760413
+W222760418,,residential,false,0,7.5,false,false,false,0,57.0,Maryland,222760418
+W222760425,,residential,false,0,7.5,false,false,false,0,79.0,Maryland,222760425
+W222760426,,residential,false,0,7.5,false,false,false,0,112.7,Maryland,222760426
+W222760430,,residential,false,0,7.5,false,false,false,0,218.8,Maryland,222760430
+W222760431,,residential,false,0,7.5,false,false,false,0,224.6,Maryland,222760431
+W222760437,,tertiary,false,0,10.0,true,false,false,0,113.6,Maryland,222760437
+W222760438,,residential,false,0,7.5,false,false,false,0,135.9,Maryland,222760438
+W222760442,,residential,false,0,7.5,false,false,false,0,84.0,Maryland,222760442
+W223403403,,residential,false,0,7.5,false,false,false,0,333.2,Maryland,223403403
+W223403405,,tertiary,false,0,10.0,true,false,false,0,38.0,Maryland,223403405
+W223403406,,residential,false,0,7.5,false,false,false,0,9.6,Maryland,223403406
+W223403407,,tertiary,false,0,10.0,true,false,false,0,37.0,Maryland,223403407
+W223403409,,residential,false,0,7.5,false,false,false,0,106.6,Maryland,223403409
+W223403410,,residential,false,0,7.5,false,false,false,0,114.8,Maryland,223403410
+W223403411,,tertiary,false,0,10.0,true,true,false,0,17.1,Maryland,223403411
+W223403414,,residential,false,0,7.5,false,false,false,0,144.6,Maryland,223403414
+W223403415,,residential,false,0,7.5,false,false,false,0,245.9,Maryland,223403415
+W223403416,,residential,false,0,7.5,false,false,false,0,34.7,Maryland,223403416
+W223403417,,residential,false,0,7.5,false,false,false,0,331.8,Maryland,223403417
+W223403418,,residential,false,0,7.5,false,false,false,0,241.8,Maryland,223403418
+W223403419,,residential,false,0,7.5,false,false,false,0,260.7,Maryland,223403419
+W223403421,,tertiary,false,0,10.0,false,false,false,0,461.0,Maryland,223403421
+W223403422,,residential,false,0,7.5,false,false,false,0,215.0,Maryland,223403422
+W223403423,,tertiary,false,0,10.0,false,false,false,0,268.4,Maryland,223403423
+W223403424,,residential,false,0,7.5,false,false,false,0,228.2,Maryland,223403424
+W223403427,,residential,false,0,7.5,false,false,false,0,152.2,Maryland,223403427
+W223403428,,residential,false,0,7.5,false,false,false,0,78.0,Maryland,223403428
+W223403430,,residential,false,0,7.5,false,false,false,0,272.1,Maryland,223403430
+W223533454,,residential,false,0,7.5,false,false,false,0,183.4,Maryland,223533454
+W223533456,,residential,false,0,7.5,false,false,false,0,106.7,Maryland,223533456
+W223533457,,residential,false,0,7.5,false,false,false,0,107.3,Maryland,223533457
+W223533459,,residential,false,0,7.5,false,true,false,0,10.9,Maryland,223533459
+W223533460,,residential,false,0,7.5,false,false,false,0,88.4,Maryland,223533460
+W223533461,,residential,false,0,7.5,false,false,false,0,59.5,Maryland,223533461
+W223533462,,residential,false,0,7.5,false,false,false,0,107.5,Maryland,223533462
+W223533464,,residential,false,0,7.5,false,false,false,0,89.1,Maryland,223533464
+W223533467,,residential,false,0,7.5,false,false,false,0,137.3,Maryland,223533467
+W223533468,,residential,false,0,7.5,false,false,false,0,47.8,Maryland,223533468
+W223533469,,residential,false,0,7.5,false,false,false,0,101.9,Maryland,223533469
+W223533470,,residential,false,0,7.5,false,false,false,0,71.8,Maryland,223533470
+W223533471,,residential,false,0,7.5,false,false,false,0,154.1,Maryland,223533471
+W223533472,,residential,false,0,7.5,false,false,false,0,115.7,Maryland,223533472
+W223533473,,residential,false,0,7.5,false,false,false,0,283.4,Maryland,223533473
+W223533474,,residential,false,0,7.5,false,false,false,0,108.5,Maryland,223533474
+W223533475,,residential,false,0,7.5,false,false,false,0,195.5,Maryland,223533475
+W223533476,,residential,false,0,7.5,false,false,false,0,291.3,Maryland,223533476
+W223533478,,residential,false,0,7.5,false,false,false,0,81.4,Maryland,223533478
+W223533479,,residential,false,0,7.5,false,false,false,0,310.5,Maryland,223533479
+W223533480,,residential,false,0,7.5,false,false,false,0,144.3,Maryland,223533480
+W223533482,,residential,false,0,7.5,false,false,false,0,198.8,Maryland,223533482
+W223533485,,tertiary,false,0,10.0,false,true,false,0,101.0,Maryland,223533485
+W223533489,,residential,false,0,7.5,false,false,false,0,190.8,Maryland,223533489
+W223672718,,residential,false,0,7.5,false,false,false,0,84.4,Maryland,223672718
+W223672721,,tertiary,false,0,10.0,false,false,false,0,383.9,Maryland,223672721
+W223672722,,residential,false,0,7.5,false,false,false,0,57.5,Maryland,223672722
+W223672723,,residential,false,0,7.5,false,false,false,0,124.5,Maryland,223672723
+W223672726,,residential,false,0,7.5,false,false,false,0,81.1,Maryland,223672726
+W223672727,,residential,false,0,7.5,false,false,false,0,211.9,Maryland,223672727
+W223672728,,residential,false,0,7.5,false,false,false,0,96.8,Maryland,223672728
+W223672729,,residential,false,0,7.5,false,false,false,0,150.6,Maryland,223672729
+W223672730,,residential,false,0,7.5,false,false,false,0,220.5,Maryland,223672730
+W223672731,,residential,false,0,7.5,false,false,false,0,198.9,Maryland,223672731
+W223672732,,residential,false,0,7.5,false,false,false,0,174.1,Maryland,223672732
+W223672733,,residential,false,0,7.5,false,false,false,0,109.4,Maryland,223672733
+W223672734,,residential,false,0,7.5,false,false,false,0,109.6,Maryland,223672734
+W223672736,,residential,false,0,7.5,false,false,false,0,66.9,Maryland,223672736
+W223672740,,residential,false,0,7.5,false,false,false,0,80.1,Maryland,223672740
+W223672741,,tertiary,false,0,10.0,false,true,false,0,11.0,Maryland,223672741
+W223672744,,residential,false,0,7.5,false,false,false,0,332.1,Maryland,223672744
+W223672745,,residential,false,0,7.5,false,false,false,0,167.5,Maryland,223672745
+W223672746,,residential,false,0,7.5,false,false,false,0,72.1,Maryland,223672746
+W223672748,,residential,false,0,7.5,false,false,false,0,167.8,Maryland,223672748
+W223672750,,tertiary,false,0,10.0,false,true,false,0,15.3,Maryland,223672750
+W223672751,,residential,false,0,7.5,false,false,false,0,100.4,Maryland,223672751
+W223672752,,residential,false,0,7.5,false,false,false,0,110.8,Maryland,223672752
+W223672753,,residential,false,0,7.5,false,false,false,0,127.0,Maryland,223672753
+W223672754,,residential,false,0,7.5,false,false,false,0,333.8,Maryland,223672754
+W223672755,,residential,false,0,7.5,false,false,false,0,538.1,Maryland,223672755
+W223672756,,residential,false,0,7.5,false,false,false,0,151.3,Maryland,223672756
+W224228756,,residential,false,0,7.5,false,false,false,0,208.0,Maryland,224228756
+W224228757,,residential,false,0,7.5,false,false,false,0,94.7,Maryland,224228757
+W224228758,,residential,false,0,7.5,false,false,false,0,190.8,Maryland,224228758
+W224228760,,residential,false,0,7.5,false,true,false,0,16.2,Maryland,224228760
+W224228761,,residential,false,0,7.5,false,true,false,0,14.6,Maryland,224228761
+W224228763,,residential,false,0,7.5,false,false,false,0,140.2,Maryland,224228763
+W224228765,,residential,false,0,7.5,false,false,false,0,107.4,Maryland,224228765
+W224228767,,residential,false,0,7.5,false,false,false,0,141.0,Maryland,224228767
+W224228768,,residential,false,0,7.5,false,false,false,0,70.8,Maryland,224228768
+W224228769,,residential,false,0,7.5,false,false,false,0,91.8,Maryland,224228769
+W224228770,,residential,false,0,7.5,false,false,false,0,93.9,Maryland,224228770
+W224228771,,residential,false,0,7.5,false,false,false,0,114.2,Maryland,224228771
+W224228772,,residential,false,0,7.5,false,false,false,0,106.8,Maryland,224228772
+W224228773,,residential,false,0,7.5,false,false,false,0,172.3,Maryland,224228773
+W224228774,,residential,false,0,7.5,false,false,false,0,452.3,Maryland,224228774
+W224228775,,residential,false,0,7.5,false,false,false,0,156.6,Maryland,224228775
+W224228776,,residential,false,0,7.5,false,false,false,0,190.3,Maryland,224228776
+W224228777,,residential,false,0,7.5,false,false,false,0,91.3,Maryland,224228777
+W224228778,,residential,false,0,7.5,false,false,false,0,68.1,Maryland,224228778
+W224228779,,residential,false,0,7.5,false,false,false,0,546.7,Maryland,224228779
+W224228780,,residential,false,0,7.5,false,false,false,0,117.4,Maryland,224228780
+W224228781,,residential,false,0,7.5,false,false,false,0,135.1,Maryland,224228781
+W224228782,,unclassified,false,0,7.5,false,false,false,0,571.5,Maryland,224228782
+W224228783,,residential,false,0,7.5,false,false,false,0,74.1,Maryland,224228783
+W224228784,,residential,false,0,7.5,false,false,false,0,119.1,Maryland,224228784
+W224228785,,residential,false,0,7.5,false,false,false,0,243.1,Maryland,224228785
+W224228786,,residential,false,0,7.5,false,false,false,0,85.0,Maryland,224228786
+W224228787,,residential,false,0,7.5,false,false,false,0,227.6,Maryland,224228787
+W224228788,,residential,false,0,7.5,false,false,false,0,46.8,Maryland,224228788
+W224228789,,residential,false,0,7.5,false,false,false,0,294.1,Maryland,224228789
+W224353567,,residential,false,0,7.5,false,false,false,0,83.7,Maryland,224353567
+W224353568,,residential,false,0,7.5,false,false,false,0,256.7,Maryland,224353568
+W224353569,,residential,false,0,7.5,false,false,false,0,417.4,Maryland,224353569
+W224353570,,residential,false,0,7.5,false,false,false,0,160.5,Maryland,224353570
+W224353571,,residential,false,0,7.5,false,false,false,0,117.6,Maryland,224353571
+W224353574,,residential,false,0,7.5,false,false,false,0,184.7,Maryland,224353574
+W224353575,,residential,false,0,7.5,false,false,false,0,165.0,Maryland,224353575
+W224353576,,residential,false,0,7.5,false,false,false,0,258.0,Maryland,224353576
+W224353578,,residential,false,0,7.5,false,false,false,0,253.3,Maryland,224353578
+W224353579,,residential,false,0,7.5,false,false,false,0,481.9,Maryland,224353579
+W224353580,,residential,false,0,7.5,false,false,false,0,273.0,Maryland,224353580
+W224353582,,residential,false,0,7.5,false,false,false,0,120.4,Maryland,224353582
+W224353583,,residential,false,0,7.5,false,false,false,0,56.8,Maryland,224353583
+W224353584,,residential,false,0,7.5,false,true,false,0,12.0,Maryland,224353584
+W224353585,,residential,false,0,7.5,false,false,false,0,129.9,Maryland,224353585
+W224353587,,residential,false,0,7.5,false,false,false,0,117.2,Maryland,224353587
+W224353588,,residential,false,0,7.5,false,false,false,0,251.4,Maryland,224353588
+W224353589,,residential,false,0,7.5,false,false,false,0,207.9,Maryland,224353589
+W224353590,,residential,false,0,7.5,false,false,false,0,232.1,Maryland,224353590
+W224353592,,residential,false,0,7.5,false,false,false,0,299.4,Maryland,224353592
+W224353593,,residential,false,0,7.5,false,false,false,0,162.9,Maryland,224353593
+W224353594,,residential,false,0,7.5,false,true,false,0,14.5,Maryland,224353594
+W224353595,,residential,false,0,7.5,false,false,false,0,195.4,Maryland,224353595
+W224485036,,residential,false,0,7.5,false,false,false,0,235.3,Maryland,224485036
+W224485038,,residential,false,0,7.5,false,false,false,0,372.3,Maryland,224485038
+W224485039,,residential,false,0,7.5,false,false,false,0,638.4,Maryland,224485039
+W224485041,,residential,false,0,7.5,false,false,false,0,91.4,Maryland,224485041
+W224485042,,residential,false,0,7.5,false,false,false,0,77.3,Maryland,224485042
+W224485043,,residential,false,0,7.5,false,false,false,0,194.5,Maryland,224485043
+W224485046,,residential,false,0,7.5,false,false,false,0,334.2,Maryland,224485046
+W224485048,,residential,false,0,7.5,false,false,false,0,290.2,Maryland,224485048
+W224633954,,residential,false,0,7.5,false,false,false,0,69.0,Maryland,224633954
+W224633955,,residential,false,0,7.5,false,false,false,0,198.7,Maryland,224633955
+W224633956,,residential,false,0,7.5,false,false,false,0,117.8,Maryland,224633956
+W224633959,,residential,false,0,7.5,false,false,false,0,307.6,Maryland,224633959
+W224633961,,residential,false,0,7.5,false,false,false,0,74.0,Maryland,224633961
+W224633962,,residential,false,0,7.5,false,false,false,0,77.3,Maryland,224633962
+W224633963,,residential,false,0,7.5,false,false,false,0,65.3,Maryland,224633963
+W224633964,,residential,false,0,7.5,false,false,false,0,135.0,Maryland,224633964
+W224633965,,residential,false,0,7.5,false,false,false,0,428.9,Maryland,224633965
+W224633966,,residential,false,0,7.5,false,false,false,0,173.1,Maryland,224633966
+W224633967,,residential,false,0,7.5,false,false,false,0,282.1,Maryland,224633967
+W224633968,,residential,false,0,7.5,false,false,false,0,48.7,Maryland,224633968
+W224633969,,residential,false,0,7.5,false,false,false,0,507.4,Maryland,224633969
+W224633970,,residential,false,0,7.5,false,false,false,0,138.7,Maryland,224633970
+W224633971,,residential,false,0,7.5,false,false,false,0,52.2,Maryland,224633971
+W224633972,,residential,false,0,7.5,false,false,false,0,66.3,Maryland,224633972
+W224633974,,residential,false,0,7.5,false,false,false,0,106.4,Maryland,224633974
+W224633976,,residential,false,0,7.5,false,false,false,0,94.9,Maryland,224633976
+W224633977,,residential,false,0,7.5,false,false,false,0,54.2,Maryland,224633977
+W224633979,,residential,false,0,7.5,false,false,false,0,249.2,Maryland,224633979
+W224633980,,residential,false,0,7.5,false,false,false,0,45.2,Maryland,224633980
+W224633981,,residential,false,0,7.5,false,false,false,0,117.0,Maryland,224633981
+W224633982,,residential,false,0,7.5,false,false,false,0,274.3,Maryland,224633982
+W224633983,,residential,false,0,7.5,false,false,false,0,56.8,Maryland,224633983
+W224633984,,residential,false,0,7.5,false,false,false,0,170.1,Maryland,224633984
+W224633985,,residential,false,0,7.5,false,false,false,0,161.7,Maryland,224633985
+W224633987,,residential,false,0,7.5,false,false,false,0,98.3,Maryland,224633987
+W224633988,,residential,false,0,7.5,false,false,false,0,38.3,Maryland,224633988
+W224633989,,residential,false,0,7.5,false,false,false,0,273.4,Maryland,224633989
+W224633990,,residential,false,0,7.5,false,false,false,0,121.2,Maryland,224633990
+W224633991,,residential,false,0,7.5,false,false,false,0,191.6,Maryland,224633991
+W224633992,,residential,false,0,7.5,false,false,false,0,227.0,Maryland,224633992
+W224633993,,residential,false,0,7.5,false,false,false,0,56.5,Maryland,224633993
+W224633994,,residential,false,0,7.5,false,false,false,0,140.0,Maryland,224633994
+W224633996,,residential,false,0,7.5,false,false,false,0,398.3,Maryland,224633996
+W224633997,,residential,false,0,7.5,false,false,false,0,71.2,Maryland,224633997
+W224633999,,residential,false,0,7.5,false,false,false,0,254.0,Maryland,224633999
+W224634000,,residential,false,0,7.5,false,false,false,0,159.0,Maryland,224634000
+W224634001,,residential,false,0,7.5,false,false,false,0,182.8,Maryland,224634001
+W224634002,,residential,false,0,7.5,false,false,false,0,203.6,Maryland,224634002
+W224634003,,residential,false,0,7.5,false,false,false,0,97.6,Maryland,224634003
+W224634004,,residential,false,0,7.5,false,false,false,0,243.0,Maryland,224634004
+W224634005,,residential,false,0,7.5,false,false,false,0,166.8,Maryland,224634005
+W224634007,,residential,false,0,7.5,false,false,false,0,153.9,Maryland,224634007
+W224634008,,residential,false,0,7.5,false,false,false,0,78.9,Maryland,224634008
+W224634009,,residential,false,0,7.5,false,false,false,0,135.1,Maryland,224634009
+W224634010,,residential,false,0,7.5,false,false,false,0,472.9,Maryland,224634010
+W224634011,,residential,false,0,7.5,false,false,false,0,53.9,Maryland,224634011
+W224634012,,residential,false,0,7.5,false,false,false,0,265.5,Maryland,224634012
+W224634013,,residential,false,0,7.5,false,false,false,0,541.9,Maryland,224634013
+W224634014,,residential,false,0,7.5,false,false,false,0,188.3,Maryland,224634014
+W224634015,,residential,false,0,7.5,false,false,false,0,344.9,Maryland,224634015
+W224634016,,residential,false,0,7.5,false,false,false,0,477.9,Maryland,224634016
+W224634018,,residential,false,0,7.5,false,false,false,0,216.0,Maryland,224634018
+W224634019,,residential,false,0,7.5,false,false,false,0,158.2,Maryland,224634019
+W224634020,,residential,false,0,7.5,false,false,false,0,221.8,Maryland,224634020
+W224634021,,residential,false,0,7.5,false,false,false,0,203.0,Maryland,224634021
+W224634022,,residential,false,0,7.5,false,false,false,0,206.7,Maryland,224634022
+W224634023,,residential,false,0,7.5,false,false,false,0,162.5,Maryland,224634023
+W224737331,,residential,false,0,7.5,false,false,false,0,72.6,Maryland,224737331
+W224737332,,residential,false,0,7.5,false,false,false,0,210.4,Maryland,224737332
+W224737333,,residential,false,0,7.5,false,false,false,0,227.9,Maryland,224737333
+W224737334,,residential,false,0,7.5,false,false,false,0,147.3,Maryland,224737334
+W224737335,,residential,false,0,7.5,false,false,false,0,158.9,Maryland,224737335
+W224737336,,residential,false,0,7.5,false,false,false,0,162.0,Maryland,224737336
+W224737338,,residential,false,0,7.5,false,false,false,0,330.4,Maryland,224737338
+W224737339,,residential,false,0,7.5,false,false,false,0,94.6,Maryland,224737339
+W224737340,,residential,false,0,7.5,false,false,false,0,143.8,Maryland,224737340
+W224737341,,residential,false,0,7.5,false,false,false,0,186.2,Maryland,224737341
+W224737344,,residential,false,0,7.5,false,false,false,0,183.5,Maryland,224737344
+W224737350,,residential,false,0,7.5,false,false,false,0,135.2,Maryland,224737350
+W224737352,,residential,false,0,7.5,false,false,false,0,337.1,Maryland,224737352
+W224737353,,residential,false,0,7.5,false,false,false,0,32.4,Maryland,224737353
+W224737359,,residential,false,0,7.5,false,false,false,0,90.1,Maryland,224737359
+W224737360,,residential,false,0,7.5,false,false,false,0,85.6,Maryland,224737360
+W224737361,,residential,false,0,7.5,false,false,false,0,363.8,Maryland,224737361
+W224737362,,residential,false,0,7.5,false,false,false,0,114.5,Maryland,224737362
+W224737364,,residential,false,0,7.5,false,false,false,0,566.0,Maryland,224737364
+W224737365,,residential,false,0,7.5,false,false,false,0,70.1,Maryland,224737365
+W224737368,,residential,false,0,7.5,false,false,false,0,75.5,Maryland,224737368
+W224737369,,residential,false,0,7.5,false,false,false,0,262.5,Maryland,224737369
+W224737370,,residential,false,0,7.5,false,false,false,0,361.1,Maryland,224737370
+W224737371,,residential,false,0,7.5,false,false,false,0,245.9,Maryland,224737371
+W225092682,,residential,false,0,7.5,false,false,false,0,299.0,Maryland,225092682
+W225092684,,residential,false,0,7.5,false,false,false,0,143.1,Maryland,225092684
+W225092685,,residential,false,0,7.5,false,false,false,0,100.0,Maryland,225092685
+W225092686,,residential,false,0,7.5,false,false,false,0,143.4,Maryland,225092686
+W225092687,,residential,false,0,7.5,false,false,false,0,136.1,Maryland,225092687
+W225092688,,residential,false,0,7.5,false,false,false,0,116.1,Maryland,225092688
+W225092689,,residential,false,0,7.5,false,false,false,0,92.6,Maryland,225092689
+W225092690,,residential,false,0,7.5,false,false,false,0,526.1,Maryland,225092690
+W225092691,,residential,false,0,7.5,false,false,false,0,197.3,Maryland,225092691
+W225234878,,residential,false,0,7.5,false,false,false,0,108.3,Maryland,225234878
+W225234880,,residential,false,0,7.5,false,false,false,0,127.8,Maryland,225234880
+W225234881,,residential,false,0,7.5,false,false,false,0,98.4,Maryland,225234881
+W225234882,,residential,false,0,7.5,false,false,false,0,154.3,Maryland,225234882
+W225234883,,residential,false,0,7.5,false,false,false,0,147.4,Maryland,225234883
+W225234887,,residential,false,0,7.5,false,false,false,0,82.9,Maryland,225234887
+W225234888,,residential,false,0,7.5,false,false,false,0,78.3,Maryland,225234888
+W225234890,,residential,false,0,7.5,false,false,false,0,11.4,Maryland,225234890
+W225234894,,residential,false,0,7.5,false,false,false,0,64.2,Maryland,225234894
+W225234896,,residential,false,0,7.5,false,false,false,0,45.8,Maryland,225234896
+W225234898,,residential,false,0,7.5,false,false,false,0,68.0,Maryland,225234898
+W225410238,,service,false,0,5.0,false,false,false,0,72.4,Maryland,225410238
+W225410239,,residential,false,0,7.5,false,false,false,0,165.3,Maryland,225410239
+W225410240,,residential,false,0,7.5,false,false,false,0,196.8,Maryland,225410240
+W225410241,,residential,false,0,7.5,false,false,false,0,98.7,Maryland,225410241
+W225410245,,residential,false,0,7.5,false,false,false,0,220.9,Maryland,225410245
+W225410247,,residential,false,0,7.5,false,false,false,0,96.8,Maryland,225410247
+W225410248,,residential,false,0,7.5,false,false,false,0,196.0,Maryland,225410248
+W226251837,,residential,false,0,7.5,false,false,false,0,195.7,Maryland,226251837
+W226251853,,residential,false,0,7.5,false,false,false,0,272.3,Maryland,226251853
+W226251864,,residential,false,0,7.5,false,false,false,0,337.5,Maryland,226251864
+W226251868,,residential,false,0,7.5,false,false,false,0,444.6,Maryland,226251868
+W231694750,,residential,false,0,7.5,false,false,false,0,427.6,Maryland,231694750
+W231694755,,residential,false,0,7.5,false,false,false,0,365.5,Maryland,231694755
+W292633997,,tertiary,false,0,10.0,true,false,false,0,11.8,Maryland,292633997
+W292634000,,tertiary,false,0,10.0,true,false,false,0,17.8,Maryland,292634000
+W292634003,,motorway,true,1,4.3,true,false,false,0,36.6,Maryland,292634003
+W292634011,,unclassified,false,0,7.5,true,false,false,0,306.9,Maryland,292634011
+W292634012,,service,false,0,5.0,false,false,false,0,188.0,Maryland,292634012
+W292634026,,motorway,true,1,4.3,true,false,false,0,406.5,Maryland,292634026
+W292634036,,tertiary,false,0,10.0,true,false,false,0,46.4,Maryland,292634036
+W292634043,,tertiary,false,0,10.0,true,false,false,0,38.7,Maryland,292634043
+W292634052,,motorway,true,1,4.3,true,false,false,0,38.3,Maryland,292634052
+W292634054,,unclassified,false,0,7.5,true,false,true,0,36.4,Maryland,292634054
+W292634059,,motorway,true,1,4.3,true,false,false,0,24.8,Maryland,292634059
+W292634061,,motorway,true,1,4.3,true,false,false,0,36.8,Maryland,292634061
+W334656223,,residential,false,0,7.5,true,false,true,0,53.0,Maryland,334656223
+W334656224,,residential,false,0,7.5,true,false,false,0,23.5,Maryland,334656224
+W334656225,,residential,false,0,7.5,true,false,false,0,13.9,Maryland,334656225
+W334656226,,residential,false,0,7.5,true,false,false,0,11.9,Maryland,334656226
+W334656227,,residential,false,0,7.5,true,false,false,0,20.0,Maryland,334656227
+W370880295,,residential,false,0,7.5,false,false,false,0,229.9,Maryland,370880295
+W370880297,,residential,false,0,7.5,false,false,false,0,467.1,Maryland,370880297
+W370880299,,residential,false,0,7.5,false,false,false,0,125.5,Maryland,370880299
+W370880301,,residential,false,0,7.5,false,false,false,0,118.4,Maryland,370880301
+W370880304,,residential,false,0,7.5,false,false,false,0,200.6,Maryland,370880304
+W370880306,,residential,false,0,7.5,false,false,false,0,173.6,Maryland,370880306
+W370880307,,residential,false,0,7.5,false,false,false,0,209.5,Maryland,370880307
+W370880308,,residential,false,0,7.5,false,false,false,0,146.3,Maryland,370880308
+W370880309,,residential,false,0,7.5,false,false,false,0,85.5,Maryland,370880309
+W370880310,,residential,false,0,7.5,false,false,false,0,176.1,Maryland,370880310
+W370880312,,residential,false,0,7.5,false,false,false,0,123.6,Maryland,370880312
+W370880313,,residential,false,0,7.5,false,false,false,0,97.5,Maryland,370880313
+W370880314,,tertiary,false,0,10.0,true,false,false,0,1359.7,Maryland,370880314
+W370880322,,residential,false,0,7.5,false,false,false,0,511.6,Maryland,370880322
+W370880324,,residential,false,0,7.5,false,false,false,0,393.2,Maryland,370880324
+W370880325,,residential,false,0,7.5,false,false,false,0,159.6,Maryland,370880325
+W370880326,,residential,false,0,7.5,false,false,false,0,335.5,Maryland,370880326
+W370880328,,residential,false,0,7.5,false,false,false,0,70.3,Maryland,370880328
+W370880329,,residential,false,0,7.5,false,false,false,0,199.4,Maryland,370880329
+W370880335,,residential,false,0,7.5,false,false,false,0,382.5,Maryland,370880335
+W370880340,,residential,false,0,7.5,false,false,false,0,793.2,Maryland,370880340
+W370880342,,residential,false,0,7.5,false,false,false,0,207.9,Maryland,370880342
+W370881158,,residential,false,0,7.5,false,false,false,0,62.6,Maryland,370881158
+W370881174,,residential,false,0,7.5,false,false,false,0,503.7,Maryland,370881174
+W396869753,,residential,false,0,7.5,false,false,false,0,139.2,Maryland,396869753
+W396870116,,residential,false,0,7.5,false,false,false,0,109.1,Maryland,396870116
+W396870581,,residential,false,0,7.5,false,false,false,0,196.5,Maryland,396870581
+W396873400,,residential,false,0,7.5,false,false,false,0,176.2,Maryland,396873400
+W396880376,,residential,false,0,7.5,false,false,false,0,185.6,Maryland,396880376
+W396881199,,residential,false,0,7.5,false,false,false,0,90.8,Maryland,396881199
+W396881200,,residential,false,0,7.5,false,false,false,0,75.9,Maryland,396881200
+W396883039,,residential,false,0,7.5,false,false,false,0,223.5,Maryland,396883039
+W396883066,,residential,false,0,7.5,false,false,false,0,108.9,Maryland,396883066
+W396884697,,residential,false,0,7.5,false,false,false,0,81.5,Maryland,396884697
+W396884984,,residential,false,0,7.5,false,false,false,0,147.6,Maryland,396884984
+W396885229,,residential,false,0,7.5,false,false,false,0,161.9,Maryland,396885229
+W396885683,,residential,false,0,7.5,false,false,false,0,74.3,Maryland,396885683
+W396885831,,residential,false,0,7.5,false,false,false,0,77.7,Maryland,396885831
+W396886265,,residential,false,0,7.5,false,false,false,0,103.9,Maryland,396886265
+W396886291,,residential,false,0,7.5,false,false,false,0,38.7,Maryland,396886291
+W396886329,,residential,false,0,7.5,false,false,false,0,94.5,Maryland,396886329
+W396886331,,residential,false,0,7.5,false,false,false,0,81.0,Maryland,396886331
+W396886389,,residential,false,0,7.5,false,false,false,0,121.2,Maryland,396886389
+W396886457,,residential,false,0,7.5,false,false,false,0,181.6,Maryland,396886457
+W396886464,,residential,false,0,7.5,false,false,false,0,79.0,Maryland,396886464
+W396886730,,residential,false,0,7.5,false,false,false,0,139.1,Maryland,396886730
+W396886922,,residential,false,0,7.5,true,false,false,0,108.2,Maryland,396886922
+W396891925,,residential,false,0,7.5,false,false,false,0,51.8,Maryland,396891925
+W437207127,,residential,false,0,7.5,false,false,false,0,362.0,Maryland,437207127
+W442670318,,residential,false,0,7.5,false,false,false,0,305.9,Maryland,442670318
+W442670319,,residential,false,0,7.5,false,false,false,0,187.5,Maryland,442670319
+W442670320,,residential,false,0,7.5,false,false,false,0,233.9,Maryland,442670320
+W442670321,,residential,false,0,7.5,false,false,false,0,354.1,Maryland,442670321
+W442670323,,residential,false,0,7.5,false,false,false,0,39.5,Maryland,442670323
+W442670324,,residential,false,0,7.5,false,false,false,0,119.9,Maryland,442670324
+W442670325,,residential,false,0,7.5,false,false,false,0,323.3,Maryland,442670325
+W442670326,,residential,false,0,7.5,false,false,false,0,189.9,Maryland,442670326
+W442670331,,residential,false,0,7.5,false,false,false,0,169.0,Maryland,442670331
+W442670332,,residential,false,0,7.5,false,false,false,0,101.9,Maryland,442670332
+W442670333,,residential,false,0,7.5,false,false,false,0,83.1,Maryland,442670333
+W442670334,,residential,false,0,7.5,false,false,false,0,413.8,Maryland,442670334
+W442670335,,residential,false,0,7.5,false,false,false,0,215.8,Maryland,442670335
+W442670336,,residential,false,0,7.5,false,false,false,0,108.1,Maryland,442670336
+W442670337,,residential,false,0,7.5,false,false,false,0,103.5,Maryland,442670337
+W442670338,,residential,false,0,7.5,false,false,false,0,106.0,Maryland,442670338
+W442670339,,residential,false,0,7.5,false,false,false,0,326.5,Maryland,442670339
+W442670342,,residential,false,0,7.5,false,false,false,0,7.3,Maryland,442670342
+W442670343,,residential,false,0,7.5,false,false,false,0,8.4,Maryland,442670343
+W442670345,,residential,false,0,7.5,false,false,false,0,183.9,Maryland,442670345
+W442670346,,residential,false,0,7.5,false,false,false,0,192.5,Maryland,442670346
+W442670347,,residential,false,0,7.5,false,false,false,0,538.6,Maryland,442670347
+W442670349,,residential,false,0,7.5,false,false,false,0,303.6,Maryland,442670349
+W442670351,,residential,false,0,7.5,false,false,false,0,166.2,Maryland,442670351
+W442671929,,residential,false,0,7.5,false,false,false,0,59.0,Maryland,442671929
+W442671934,,residential,false,0,7.5,false,false,false,0,116.9,Maryland,442671934
+W442671935,,residential,false,0,7.5,false,false,false,0,67.3,Maryland,442671935
+W442671936,,residential,false,0,7.5,false,false,false,0,81.0,Maryland,442671936
+W442671937,,residential,false,0,7.5,false,false,false,0,65.9,Maryland,442671937
+W442671939,,residential,false,0,7.5,false,false,false,0,220.7,Maryland,442671939
+W442671940,,residential,false,0,7.5,false,false,false,0,619.7,Maryland,442671940
+W442671941,,residential,false,0,7.5,false,false,false,0,297.2,Maryland,442671941
+W442671942,,residential,false,0,7.5,false,false,false,0,120.8,Maryland,442671942
+W442671943,,residential,false,0,7.5,false,false,false,0,258.0,Maryland,442671943
+W442671944,,residential,false,0,7.5,false,false,false,0,219.2,Maryland,442671944
+W442671945,,residential,false,0,7.5,false,false,false,0,189.9,Maryland,442671945
+W442671948,,residential,false,0,7.5,true,false,false,0,125.0,Maryland,442671948
+W442671949,,service,false,0,5.0,false,false,false,0,143.8,Maryland,442671949
+W442671950,,residential,false,0,7.5,false,false,false,0,124.4,Maryland,442671950
+W442671952,,residential,false,0,7.5,false,false,false,0,62.9,Maryland,442671952
+W442671953,,residential,false,0,7.5,false,false,false,0,287.8,Maryland,442671953
+W442671954,,residential,false,0,7.5,false,false,false,0,103.0,Maryland,442671954
+W442671956,,residential,false,0,7.5,false,false,false,0,118.6,Maryland,442671956
+W442671957,,residential,false,0,7.5,false,false,false,0,180.7,Maryland,442671957
+W442671958,,residential,false,0,7.5,false,false,false,0,123.2,Maryland,442671958
+W442671960,,residential,false,0,7.5,false,false,false,0,22.4,Maryland,442671960
+W442671961,,residential,false,0,7.5,false,false,false,0,403.5,Maryland,442671961
+W442671962,,residential,false,0,7.5,false,false,false,0,165.3,Maryland,442671962
+W442671963,,residential,false,0,7.5,false,false,false,0,120.9,Maryland,442671963
+W442671964,,residential,false,0,7.5,false,false,false,0,149.0,Maryland,442671964
+W442671965,,residential,false,0,7.5,false,false,false,0,80.2,Maryland,442671965
+W442671966,,service,false,0,5.0,false,false,false,0,46.8,Maryland,442671966
+W442671967,,residential,false,0,7.5,false,false,false,0,58.4,Maryland,442671967
+W442671969,,residential,false,0,7.5,false,false,false,0,124.4,Maryland,442671969
+W442671971,,residential,false,0,7.5,false,false,false,0,131.5,Maryland,442671971
+W442959199,,residential,false,0,7.5,false,false,false,0,58.0,Maryland,442959199
+W443628508,,residential,false,0,7.5,false,false,false,0,345.4,Maryland,443628508
+W443628510,,residential,false,0,7.5,false,false,false,0,619.3,Maryland,443628510
+W443628511,,residential,false,0,7.5,false,false,false,0,284.9,Maryland,443628511
+W443628512,,residential,false,0,7.5,false,false,false,0,92.4,Maryland,443628512
+W443628513,,residential,false,0,7.5,false,false,false,0,133.2,Maryland,443628513
+W443628556,,residential,false,0,7.5,false,false,false,0,114.7,Maryland,443628556
+W443977867,,residential,false,0,7.5,false,false,false,0,147.2,Maryland,443977867
+W443977868,,residential,false,0,7.5,false,false,false,0,170.7,Maryland,443977868
+W443977873,,residential,false,0,7.5,false,false,false,0,311.8,Maryland,443977873
+W443977898,,residential,false,0,7.5,false,false,false,0,193.1,Maryland,443977898
+W443977899,,residential,false,0,7.5,false,false,false,0,141.8,Maryland,443977899
+W443977900,,residential,false,0,7.5,false,false,false,0,197.8,Maryland,443977900
+W443977901,,residential,false,0,7.5,false,false,false,0,189.2,Maryland,443977901
+W443977902,,residential,false,0,7.5,false,false,false,0,270.7,Maryland,443977902
+W443977903,,residential,false,0,7.5,false,false,false,0,427.7,Maryland,443977903
+W443977905,,residential,false,0,7.5,false,false,false,0,341.8,Maryland,443977905
+W443977906,,residential,false,0,7.5,false,false,false,0,127.3,Maryland,443977906
+W443977907,,residential,false,0,7.5,false,false,false,0,349.3,Maryland,443977907
+W443977908,,residential,false,0,7.5,false,false,false,0,91.7,Maryland,443977908
+W443977909,,residential,false,0,7.5,false,false,false,0,252.5,Maryland,443977909
+W443977910,,residential,false,0,7.5,false,false,false,0,185.1,Maryland,443977910
+W443977911,,residential,false,0,7.5,false,false,false,0,218.2,Maryland,443977911
+W443977912,,residential,false,0,7.5,false,false,false,0,460.1,Maryland,443977912
+W443977914,,residential,false,0,7.5,false,false,false,0,722.4,Maryland,443977914
+W443977915,,residential,false,0,7.5,false,false,false,0,341.1,Maryland,443977915
+W443977916,,residential,false,0,7.5,false,false,false,0,332.0,Maryland,443977916
+W443977917,,residential,false,0,7.5,false,false,false,0,401.4,Maryland,443977917
+W443977918,,residential,false,0,7.5,false,false,false,0,289.6,Maryland,443977918
+W443977919,,residential,false,0,7.5,false,false,false,0,167.2,Maryland,443977919
+W443977926,,residential,false,0,7.5,false,false,false,0,742.1,Maryland,443977926
+W443977931,,residential,false,0,7.5,false,false,false,0,481.6,Maryland,443977931
+W443977932,,residential,false,0,7.5,false,false,false,0,285.8,Maryland,443977932
+W443977933,,residential,false,0,7.5,false,false,false,0,128.9,Maryland,443977933
+W443977934,,residential,false,0,7.5,false,false,false,0,556.7,Maryland,443977934
+W443977935,,residential,false,0,7.5,false,false,false,0,110.4,Maryland,443977935
+W443977936,,residential,false,0,7.5,false,false,false,0,231.1,Maryland,443977936
+W443983920,,residential,false,0,7.5,false,false,false,0,189.4,Maryland,443983920
+W443983921,,residential,false,0,7.5,false,false,false,0,161.3,Maryland,443983921
+W443985900,,residential,false,0,7.5,false,false,false,0,97.4,Maryland,443985900
+W443985901,,residential,false,0,7.5,false,false,false,0,97.7,Maryland,443985901
+W443985903,,residential,false,0,7.5,false,false,false,0,67.0,Maryland,443985903
+W443985905,,residential,false,0,7.5,false,false,false,0,76.4,Maryland,443985905
+W443985906,,residential,false,0,7.5,false,false,false,0,516.6,Maryland,443985906
+W443985907,,residential,false,0,7.5,false,false,false,0,69.7,Maryland,443985907
+W443985908,,residential,false,0,7.5,false,false,false,0,173.9,Maryland,443985908
+W443985909,,residential,false,0,7.5,false,false,false,0,93.1,Maryland,443985909
+W443985910,,residential,false,0,7.5,false,false,false,0,175.4,Maryland,443985910
+W443985911,,residential,false,0,7.5,false,false,false,0,138.4,Maryland,443985911
+W443985912,,residential,false,0,7.5,false,false,false,0,65.8,Maryland,443985912
+W443985913,,residential,false,0,7.5,false,false,false,0,283.0,Maryland,443985913
+W443985914,,residential,false,0,7.5,false,false,false,0,618.1,Maryland,443985914
+W443985915,,residential,false,0,7.5,false,false,false,0,131.8,Maryland,443985915
+W443985916,,residential,false,0,7.5,false,false,false,0,112.7,Maryland,443985916
+W443985917,,residential,false,0,7.5,false,false,false,0,118.0,Maryland,443985917
+W443985919,,residential,false,0,7.5,false,false,false,0,89.7,Maryland,443985919
+W443985920,,residential,false,0,7.5,false,false,false,0,78.3,Maryland,443985920
+W443985921,,residential,false,0,7.5,false,false,false,0,52.5,Maryland,443985921
+W443985922,,residential,false,0,7.5,false,false,false,0,66.4,Maryland,443985922
+W443985923,,residential,false,0,7.5,false,false,false,0,941.1,Maryland,443985923
+W443985924,,residential,false,0,7.5,false,false,false,0,110.8,Maryland,443985924
+W443985933,,residential,false,0,7.5,false,false,false,0,93.6,Maryland,443985933
+W443985934,,residential,false,0,7.5,false,false,false,0,128.4,Maryland,443985934
+W443985935,,residential,false,0,7.5,false,false,false,0,65.1,Maryland,443985935
+W443985936,,residential,false,0,7.5,false,false,false,0,268.6,Maryland,443985936
+W443985937,,residential,false,0,7.5,false,false,false,0,142.3,Maryland,443985937
+W443985938,,tertiary,false,0,10.0,true,false,false,0,282.5,Maryland,443985938
+W443985939,,residential,false,0,7.5,false,false,false,0,165.9,Maryland,443985939
+W443985940,,residential,false,0,7.5,false,false,false,0,154.9,Maryland,443985940
+W443985942,,residential,false,0,7.5,false,false,false,0,189.4,Maryland,443985942
+W443985943,,residential,false,0,7.5,false,false,false,0,255.2,Maryland,443985943
+W443985944,,residential,false,0,7.5,false,false,false,0,388.6,Maryland,443985944
+W443985945,,residential,false,0,7.5,false,false,false,0,58.2,Maryland,443985945
+W443985946,,residential,false,0,7.5,false,false,false,0,166.4,Maryland,443985946
+W443985947,,residential,false,0,7.5,false,false,false,0,40.2,Maryland,443985947
+W443985948,,residential,false,0,7.5,false,false,false,0,99.6,Maryland,443985948
+W443985949,,residential,false,0,7.5,false,false,false,0,41.2,Maryland,443985949
+W444014715,,residential,false,0,7.5,false,false,false,0,139.6,Maryland,444014715
+W444035602,,residential,false,0,7.5,true,false,false,0,15.2,Maryland,444035602
+W444035603,,residential,false,0,7.5,false,false,false,0,375.3,Maryland,444035603
+W444035604,,residential,false,0,7.5,false,false,false,0,106.2,Maryland,444035604
+W444035605,,residential,false,0,7.5,false,false,false,0,95.2,Maryland,444035605
+W444035606,,residential,false,0,7.5,false,false,false,0,108.5,Maryland,444035606
+W444035607,,residential,false,0,7.5,false,false,false,0,100.2,Maryland,444035607
+W444035608,,residential,false,0,7.5,false,false,false,0,95.3,Maryland,444035608
+W444035609,,residential,false,0,7.5,false,false,false,0,87.3,Maryland,444035609
+W444035610,,residential,false,0,7.5,false,false,false,0,75.6,Maryland,444035610
+W444035611,,residential,false,0,7.5,false,false,false,0,93.2,Maryland,444035611
+W444035612,,service,false,0,5.0,false,false,false,0,130.1,Maryland,444035612
+W444035613,,service,false,0,5.0,false,false,false,0,338.6,Maryland,444035613
+W444035614,,service,false,0,5.0,false,false,false,0,240.6,Maryland,444035614
+W444035617,,residential,false,0,7.5,false,false,false,0,96.2,Maryland,444035617
+W444035619,,residential,false,0,7.5,false,false,false,0,71.4,Maryland,444035619
+W444035623,,service,false,0,5.0,false,false,false,0,221.5,Maryland,444035623
+W444035624,,residential,false,0,7.5,false,false,false,0,86.8,Maryland,444035624
+W444035625,,residential,false,0,7.5,false,false,false,0,48.4,Maryland,444035625
+W444035626,,residential,false,0,7.5,false,false,false,0,211.1,Maryland,444035626
+W444035627,,service,false,0,5.0,false,false,false,0,57.2,Maryland,444035627
+W444035628,,residential,false,0,7.5,false,false,false,0,45.9,Maryland,444035628
+W444163051,,residential,false,0,7.5,false,false,false,0,59.7,Maryland,444163051
+W444300592,,residential,false,0,7.5,false,false,false,0,80.2,Maryland,444300592
+W521865192,,service,false,0,5.0,false,false,false,0,734.6,Maryland,521865192
+W524191034,,residential,false,0,7.5,false,false,false,0,92.0,Maryland,524191034
+W524191035,,residential,false,0,7.5,false,false,false,0,533.3,Maryland,524191035
+W524191041,,residential,false,0,7.5,false,false,false,0,310.4,Maryland,524191041
+W569642081,,residential,false,0,7.5,false,false,false,0,274.3,Maryland,569642081
+W569642082,,residential,false,0,7.5,false,false,false,0,114.7,Maryland,569642082
+W569693015,,residential,false,0,7.5,false,false,false,0,107.6,Maryland,569693015
+W569693023,,residential,false,0,7.5,false,false,false,0,166.5,Maryland,569693023
+W569693025,,residential,false,0,7.5,false,false,false,0,44.2,Maryland,569693025
+W569693042,,residential,false,0,7.5,false,false,false,0,332.4,Maryland,569693042
+W569698407,,residential,false,0,7.5,false,false,false,0,88.9,Maryland,569698407
+W569698409,,residential,false,0,7.5,false,false,false,0,25.3,Maryland,569698409
+W569698410,,residential,false,0,7.5,false,false,false,0,127.4,Maryland,569698410
+W569698412,,residential,false,0,7.5,false,false,false,0,88.0,Maryland,569698412
+W569698415,,residential,false,0,7.5,false,false,false,0,60.7,Maryland,569698415
+W569698416,,residential,false,0,7.5,false,false,false,0,40.7,Maryland,569698416
+W569698417,,residential,false,0,7.5,false,false,false,0,126.4,Maryland,569698417
+W569698419,,residential,false,0,7.5,false,false,false,0,41.5,Maryland,569698419
+W579520834,,residential,false,0,7.5,false,false,false,0,49.4,Maryland,579520834
+W579520835,,residential,false,0,7.5,false,false,false,0,122.9,Maryland,579520835
+W579520838,,residential,false,0,7.5,false,false,false,0,224.4,Maryland,579520838
+W581903855,,service,false,0,5.0,false,false,false,0,331.0,Maryland,581903855
+W581995022,,residential,false,0,7.5,false,false,false,0,7.3,Maryland,581995022
+W581995023,,residential,false,0,7.5,false,false,false,0,106.9,Maryland,581995023
+W582936528,,service,false,0,5.0,false,false,false,0,411.5,Maryland,582936528
+W582936533,,service,false,0,5.0,false,false,false,0,218.4,Maryland,582936533
+W583221531,,residential,false,0,7.5,true,false,false,0,49.2,Maryland,583221531
+W583637503,,residential,false,0,7.5,false,false,false,0,147.9,Maryland,583637503
+W586351452,,residential,false,0,7.5,false,false,false,0,339.5,Maryland,586351452
+W586460514,,residential,false,0,7.5,true,false,false,0,47.5,Maryland,586460514
+W586479007,,residential,false,0,7.5,false,false,false,0,10.8,Maryland,586479007
+W586557443,,residential,false,0,7.5,false,true,false,0,14.0,Maryland,586557443
+W586557444,,residential,false,0,7.5,false,false,false,0,36.7,Maryland,586557444
+W586557447,,residential,false,0,7.5,true,false,false,0,20.6,Maryland,586557447
+W586557448,,residential,false,0,7.5,true,false,false,0,15.0,Maryland,586557448
+W586557450,,residential,false,0,7.5,false,false,false,0,578.1,Maryland,586557450
+W586557452,,residential,false,0,7.5,false,false,false,0,215.9,Maryland,586557452
+W586557453,,residential,false,0,7.5,false,false,false,0,735.1,Maryland,586557453
+W586557456,,residential,false,0,7.5,true,false,false,0,364.6,Maryland,586557456
+W586557461,,residential,false,0,7.5,true,false,false,0,56.6,Maryland,586557461
+W586759373,,service,false,0,5.0,false,false,false,0,12.6,Maryland,586759373
+W586759374,,service,false,0,5.0,false,false,false,0,53.1,Maryland,586759374
+W586759375,,service,false,0,5.0,false,false,false,0,61.5,Maryland,586759375
+W586759376,,service,false,0,5.0,false,false,false,0,74.1,Maryland,586759376
+W586759377,,service,false,0,5.0,false,false,false,0,12.3,Maryland,586759377
+W586759378,,residential,false,0,7.5,false,false,false,0,30.5,Maryland,586759378
+W586759379,,residential,false,0,7.5,false,false,false,0,329.6,Maryland,586759379
+W586759380,,residential,false,0,7.5,false,false,false,0,327.9,Maryland,586759380
+W586759381,,residential,false,0,7.5,false,false,false,0,39.3,Maryland,586759381
+W586759382,,residential,false,0,7.5,false,false,false,0,84.9,Maryland,586759382
+W586759383,,residential,false,0,7.5,false,false,false,0,189.2,Maryland,586759383
+W586759384,,service,false,0,5.0,false,false,false,0,111.2,Maryland,586759384
+W586759385,,motorway,true,0,7.5,true,false,false,0,42.1,Maryland,586759385
+W586759386,,service,false,0,5.0,false,false,false,0,98.9,Maryland,586759386
+W586759388,,service,false,0,5.0,false,false,false,0,10.1,Maryland,586759388
+W586763263,,service,false,0,5.0,false,false,false,0,81.9,Maryland,586763263
+W586763264,,service,false,0,5.0,false,false,false,0,11.8,Maryland,586763264
+W586763265,,service,false,0,5.0,true,false,false,0,142.8,Maryland,586763265
+W586763266,,service,false,0,5.0,true,false,false,0,137.0,Maryland,586763266
+W586763267,,residential,false,0,7.5,false,false,false,0,107.5,Maryland,586763267
+W586763268,,service,false,0,5.0,false,false,false,0,10.7,Maryland,586763268
+W587370627,,residential,false,0,7.5,false,false,false,0,56.1,Maryland,587370627
+W587378729,,residential,false,0,7.5,false,false,false,0,38.3,Maryland,587378729
+W587388854,,residential,false,0,7.5,false,true,false,0,18.0,Maryland,587388854
+W587388855,,residential,false,0,7.5,false,false,false,0,480.1,Maryland,587388855
+W587410875,,tertiary,false,0,10.0,true,false,false,0,268.0,Maryland,587410875
+W587979411,,motorway,true,0,7.5,true,false,false,0,21.7,Maryland,587979411
+W587990729,,residential,false,0,7.5,false,false,false,0,347.9,Maryland,587990729
+W587990730,,residential,false,0,7.5,false,false,false,0,118.5,Maryland,587990730
+W587990731,,unclassified,false,0,7.5,true,false,false,0,781.7,Maryland,587990731
+W587990732,,residential,false,0,7.5,false,false,false,0,225.3,Maryland,587990732
+W587995549,,service,false,0,5.0,false,false,false,0,22.9,Maryland,587995549
+W587995550,,service,false,0,5.0,false,false,false,0,189.7,Maryland,587995550
+W588000025,,service,false,0,5.0,false,false,false,0,149.1,Maryland,588000025
+W588000026,,service,false,0,5.0,false,false,false,0,298.9,Maryland,588000026
+W588000027,,service,false,0,5.0,false,false,false,0,81.1,Maryland,588000027
+W588000028,,service,false,0,5.0,false,false,false,0,220.6,Maryland,588000028
+W588000029,,service,false,0,5.0,false,false,false,0,133.5,Maryland,588000029
+W588000030,,service,false,0,5.0,false,false,false,0,107.1,Maryland,588000030
+W588000031,,service,false,0,5.0,false,false,false,0,114.3,Maryland,588000031
+W588028320,,unclassified,false,0,7.5,true,false,false,0,7.5,Maryland,588028320
+W588028321,,unclassified,false,0,7.5,true,false,false,0,7.7,Maryland,588028321
+W588028325,,unclassified,false,0,7.5,true,false,true,0,58.4,Maryland,588028325
+W588252342,,residential,false,0,7.5,false,false,false,0,56.3,Maryland,588252342
+W588252343,,residential,false,0,7.5,false,false,false,0,138.7,Maryland,588252343
+W588252344,,residential,false,0,7.5,false,false,false,0,120.9,Maryland,588252344
+W588252345,,service,false,0,5.0,false,false,false,0,221.4,Maryland,588252345
+W588252346,,residential,false,0,7.5,false,false,false,0,258.8,Maryland,588252346
+W588252347,,residential,false,0,7.5,false,false,false,0,107.9,Maryland,588252347
+W588252348,,residential,false,0,7.5,false,false,false,0,169.3,Maryland,588252348
+W588252349,,residential,false,0,7.5,false,false,false,0,230.3,Maryland,588252349
+W588252350,,service,false,0,5.0,false,false,false,0,115.8,Maryland,588252350
+W591626793,,service,false,0,5.0,false,false,false,0,14.4,Maryland,591626793
+W606289850,,motorway,true,0,7.5,true,false,false,0,44.3,Maryland,606289850
+W671812135,,service,false,0,5.0,true,false,false,0,95.3,Maryland,671812135
+W671812223,,service,false,0,5.0,true,false,false,0,353.5,Maryland,671812223
+W671812266,,motorway,true,0,7.5,true,false,false,0,33.7,Maryland,671812266
+W671812267,,motorway,true,0,7.5,true,false,false,0,32.8,Maryland,671812267
+W671812268,,motorway,true,0,7.5,true,false,false,0,37.4,Maryland,671812268
+W671812270,,residential,false,0,7.5,false,false,false,0,131.1,Maryland,671812270
+W671841246,,motorway,true,0,7.5,true,false,false,0,18.3,Maryland,671841246
+W707630000,,service,false,0,5.0,false,false,false,0,174.3,Maryland,707630000
+W707630001,,service,false,0,5.0,false,false,false,0,17.5,Maryland,707630001
+W707630002,,service,false,0,5.0,false,false,false,0,17.5,Maryland,707630002
+W707649854,,service,false,0,5.0,true,false,false,0,123.9,Maryland,707649854
+W707649855,,service,false,0,5.0,true,false,false,0,117.2,Maryland,707649855
+W707649857,,service,false,0,5.0,false,false,false,0,478.8,Maryland,707649857
+W707733145,,residential,false,0,7.5,false,false,false,0,230.7,Maryland,707733145
+W726602327,,service,false,0,5.0,false,false,false,0,117.4,Maryland,726602327
+W726602328,,service,false,0,5.0,false,false,false,0,134.3,Maryland,726602328
+W726602743,,service,false,0,5.0,false,false,false,0,182.7,Maryland,726602743
+W726603668,,service,false,0,5.0,false,false,false,0,308.1,Maryland,726603668
+W726603669,,service,false,0,5.0,false,false,false,0,307.3,Maryland,726603669
+W726605040,,service,false,0,5.0,false,false,false,0,227.3,Maryland,726605040
+W726609862,,service,false,0,5.0,false,false,false,0,138.9,Maryland,726609862
+W726609863,,service,false,0,5.0,false,false,false,0,120.9,Maryland,726609863
+W726609864,,service,false,0,5.0,false,false,false,0,183.6,Maryland,726609864
+W726609865,,service,false,0,5.0,false,false,false,0,274.7,Maryland,726609865
+W726610045,,service,false,0,5.0,false,false,false,0,68.6,Maryland,726610045
+W726626594,,service,false,0,5.0,true,false,false,0,116.2,Maryland,726626594
+W726626595,,service,false,0,5.0,false,false,false,0,404.7,Maryland,726626595
+W726722529,,service,false,0,5.0,false,false,false,0,49.7,Maryland,726722529
+W726722530,,service,false,0,5.0,false,false,false,0,43.0,Maryland,726722530
+W726722531,,service,false,0,5.0,false,false,false,0,27.7,Maryland,726722531
+W726722532,,service,false,0,5.0,true,false,false,0,111.0,Maryland,726722532
+W726722533,,service,false,0,5.0,true,false,false,0,56.7,Maryland,726722533
+W726722535,,service,false,0,5.0,true,false,false,0,43.1,Maryland,726722535
+W726774890,,service,false,0,5.0,false,false,false,0,91.6,Maryland,726774890
+W726774891,,service,false,0,5.0,false,false,false,0,262.9,Maryland,726774891
+W726802789,,service,false,0,5.0,false,false,false,0,29.1,Maryland,726802789
+W726802790,,service,false,0,5.0,false,false,false,0,100.7,Maryland,726802790
+W727424662,,service,false,0,5.0,false,false,false,0,98.3,Maryland,727424662
+W727424663,,service,false,0,5.0,false,false,false,0,93.1,Maryland,727424663
+W727644046,,service,false,0,5.0,false,false,false,0,79.4,Maryland,727644046
+W727647363,,service,false,0,5.0,true,false,false,0,98.7,Maryland,727647363
+W727662453,,service,false,0,5.0,false,false,false,0,55.4,Maryland,727662453
+W727662454,,service,false,0,5.0,false,false,false,0,74.5,Maryland,727662454
+W727662455,,service,false,0,5.0,false,false,false,0,158.9,Maryland,727662455
+W727682385,,service,false,0,5.0,false,false,false,0,28.5,Maryland,727682385
+W727682386,,service,false,0,5.0,false,false,false,0,101.3,Maryland,727682386
+W727694950,,service,false,0,5.0,false,false,false,0,12.7,Maryland,727694950
+W727705503,,service,false,0,5.0,false,false,false,0,35.5,Maryland,727705503
+W727705504,,service,false,0,5.0,false,false,false,0,167.0,Maryland,727705504
+W727710263,,service,false,0,5.0,false,false,false,0,12.9,Maryland,727710263
+W727710264,,service,false,0,5.0,false,false,false,0,145.5,Maryland,727710264
+W727744585,,service,false,0,5.0,false,false,false,0,126.8,Maryland,727744585
+W728254893,,service,false,0,5.0,false,false,false,0,86.7,Maryland,728254893
+W728254894,,service,false,0,5.0,false,false,false,0,44.0,Maryland,728254894
+W728254895,,service,false,0,5.0,false,false,false,0,118.3,Maryland,728254895
+W731796699,,residential,false,0,7.5,false,false,false,0,139.8,Maryland,731796699
+W731796700,,residential,false,0,7.5,false,false,false,0,84.8,Maryland,731796700
+W731796701,,residential,false,0,7.5,false,false,false,0,78.3,Maryland,731796701
+W733621334,,residential,false,0,7.5,false,true,false,0,7.6,Maryland,733621334
+W733621335,,residential,false,0,7.5,false,false,false,0,124.5,Maryland,733621335
+W733621336,,residential,false,0,7.5,false,false,false,0,7.1,Maryland,733621336
+W733621337,,residential,false,0,7.5,false,true,false,0,11.3,Maryland,733621337
+W733621339,,residential,false,0,7.5,false,true,false,0,9.1,Maryland,733621339
+W733621340,,residential,false,0,7.5,false,false,false,0,211.4,Maryland,733621340
+W733621342,,residential,false,0,7.5,false,false,false,0,182.3,Maryland,733621342
+W733621343,,residential,false,0,7.5,false,false,false,0,98.5,Maryland,733621343
+W733621374,,service,false,0,5.0,true,false,false,0,115.0,Maryland,733621374
+W733621375,,service,false,0,5.0,true,false,false,0,92.4,Maryland,733621375
+W733621376,,service,false,0,5.0,true,false,false,0,85.4,Maryland,733621376
+W733621378,,residential,false,0,7.5,false,false,false,0,452.5,Maryland,733621378
+W733621379,,service,false,0,5.0,false,false,false,0,46.1,Maryland,733621379
+W733621388,,residential,false,0,7.5,false,false,false,0,74.4,Maryland,733621388
+W733621404,,service,false,0,5.0,false,false,false,0,47.5,Maryland,733621404
+W738103642,,service,false,0,5.0,true,false,false,0,92.0,Maryland,738103642
+W738110826,,residential,false,0,7.5,false,false,false,0,116.9,Maryland,738110826
+W741206986,,service,false,0,5.0,true,false,false,0,103.2,Maryland,741206986
+W741206989,,service,false,0,5.0,false,false,false,0,59.9,Maryland,741206989
+W741206990,,service,false,0,5.0,false,false,false,0,11.5,Maryland,741206990
+W741207022,,service,false,0,5.0,true,false,false,0,105.8,Maryland,741207022
+W741208575,,residential,false,0,7.5,false,false,false,0,193.0,Maryland,741208575
+W741208576,,residential,false,0,7.5,false,false,false,0,441.9,Maryland,741208576
+W741208577,,residential,false,0,7.5,false,true,false,0,12.3,Maryland,741208577
+W741212610,,tertiary,false,0,10.0,true,false,false,0,281.1,Maryland,741212610
+W741212614,,residential,false,0,7.5,false,false,false,0,135.2,Maryland,741212614
+W741212615,,tertiary,false,0,10.0,true,true,false,0,118.5,Maryland,741212615
+W741212616,,tertiary,false,0,10.0,true,true,false,0,120.5,Maryland,741212616
+W741212617,,tertiary,false,0,10.0,true,false,false,0,1373.8,Maryland,741212617
+W741212618,,service,false,0,5.0,false,false,false,0,334.0,Maryland,741212618
+W742218015,,service,false,0,5.0,false,false,false,0,378.4,Maryland,742218015
+W742228361,,residential,false,0,7.5,true,false,false,0,5.9,Maryland,742228361
+W742228362,,residential,false,0,7.5,false,false,false,0,275.5,Maryland,742228362
+W747279123,,residential,false,0,7.5,false,false,false,0,117.8,Maryland,747279123
+W747279129,,service,false,0,5.0,true,false,false,0,88.4,Maryland,747279129
+W747279131,,service,false,0,5.0,true,false,false,0,134.0,Maryland,747279131
+W747279135,,service,false,0,5.0,true,false,false,0,121.2,Maryland,747279135
+W753859849,,service,false,0,5.0,false,false,false,0,80.8,Maryland,753859849
+W753859850,,service,false,0,5.0,false,false,false,0,208.0,Maryland,753859850
+W754164485,,service,false,0,5.0,false,false,false,0,221.5,Maryland,754164485
+W754164486,,service,false,0,5.0,false,false,false,0,138.8,Maryland,754164486
+W761378823,,service,false,0,5.0,false,false,false,0,17.3,Maryland,761378823
+W772430720,,service,false,0,5.0,false,false,false,0,258.1,Maryland,772430720
+W780383042,,service,false,0,5.0,false,false,false,0,58.0,Maryland,780383042
+W780384511,,residential,false,0,7.5,false,false,false,0,151.7,Maryland,780384511
+W780974099,,service,false,0,5.0,false,false,false,0,90.2,Maryland,780974099
+W784100301,,service,false,0,5.0,false,false,false,0,83.0,Maryland,784100301
+W784100448,,service,false,0,5.0,false,false,false,0,85.7,Maryland,784100448
+W784100765,,service,false,0,5.0,false,false,false,0,23.9,Maryland,784100765
+W784100766,,service,false,0,5.0,false,false,false,0,73.5,Maryland,784100766
+W784101532,,service,false,0,5.0,false,false,false,0,129.7,Maryland,784101532
+W784101533,,service,false,0,5.0,false,false,false,0,110.9,Maryland,784101533
+W784102363,,service,false,0,5.0,false,false,false,0,196.3,Maryland,784102363
+W784102673,,service,false,0,5.0,false,false,false,0,139.8,Maryland,784102673
+W784124138,,residential,false,0,7.5,false,false,false,0,211.1,Maryland,784124138
+W784126021,,service,false,0,5.0,false,false,false,0,58.0,Maryland,784126021
+W784127348,,service,false,0,5.0,false,false,false,0,183.2,Maryland,784127348
+W784127349,,service,false,0,5.0,false,false,false,0,23.7,Maryland,784127349
+W784127350,,service,false,0,5.0,false,false,false,0,37.1,Maryland,784127350
+W784127351,,service,false,0,5.0,false,false,false,0,68.1,Maryland,784127351
+W784127352,,service,false,0,5.0,false,false,false,0,111.6,Maryland,784127352
+W784149642,,service,false,0,5.0,false,false,false,0,23.7,Maryland,784149642
+W784149643,,residential,false,0,7.5,false,false,false,0,122.7,Maryland,784149643
+W784151143,,service,false,0,5.0,false,false,false,0,174.6,Maryland,784151143
+W784658486,,service,false,0,5.0,false,false,false,0,58.7,Maryland,784658486
+W784658487,,service,false,0,5.0,false,false,false,0,215.9,Maryland,784658487
+W784658488,,service,false,0,5.0,false,false,false,0,171.3,Maryland,784658488
+W784658489,,service,false,0,5.0,false,false,false,0,242.4,Maryland,784658489
+W784658764,,service,false,0,5.0,false,false,false,0,33.2,Maryland,784658764
+W784658765,,service,false,0,5.0,false,false,false,0,63.8,Maryland,784658765
+W784658766,,service,false,0,5.0,false,false,false,0,104.2,Maryland,784658766
+W784659002,,service,false,0,5.0,false,false,false,0,107.3,Maryland,784659002
+W784660716,,service,false,0,5.0,false,false,false,0,99.4,Maryland,784660716
+W784660717,,service,false,0,5.0,false,false,false,0,117.4,Maryland,784660717
+W784670971,,residential,false,0,7.5,false,false,false,0,196.4,Maryland,784670971
+W784671636,,service,false,0,5.0,false,false,false,0,47.8,Maryland,784671636
+W784671637,,service,false,0,5.0,false,false,false,0,49.5,Maryland,784671637
+W784672546,,residential,false,0,7.5,false,false,false,0,158.4,Maryland,784672546
+W784705524,,residential,false,0,7.5,false,false,false,0,141.2,Maryland,784705524
+W784967283,,residential,false,0,7.5,false,false,false,0,115.2,Maryland,784967283
+W784972592,,residential,false,0,7.5,false,false,false,0,264.2,Maryland,784972592
+W784972593,,residential,false,0,7.5,false,false,false,0,107.7,Maryland,784972593
+W788309891,,residential,false,0,7.5,false,false,false,0,69.1,Maryland,788309891
+W788309902,,residential,false,0,7.5,false,false,false,0,96.5,Maryland,788309902
+W788309904,,residential,false,0,7.5,false,false,false,0,77.2,Maryland,788309904
+W788309905,,residential,false,0,7.5,false,false,false,0,121.0,Maryland,788309905
+W788309906,,residential,false,0,7.5,false,false,false,0,133.2,Maryland,788309906
+W788311260,,residential,false,0,7.5,false,false,false,0,218.0,Maryland,788311260
+W788692770,,residential,false,0,7.5,false,false,false,0,61.7,Maryland,788692770
+W788692774,,residential,false,0,7.5,false,false,false,0,121.6,Maryland,788692774
+W788692776,,residential,false,0,7.5,false,false,false,0,49.9,Maryland,788692776
+W788692778,,residential,false,0,7.5,false,false,false,0,78.0,Maryland,788692778
+W788692779,,residential,false,0,7.5,false,false,false,0,23.0,Maryland,788692779
+W788692780,,residential,false,0,7.5,false,false,false,0,30.3,Maryland,788692780
+W788692793,,service,false,0,5.0,false,false,false,0,55.5,Maryland,788692793
+W788692807,,residential,false,0,7.5,false,false,false,0,22.3,Maryland,788692807
+W788708294,,residential,false,0,7.5,false,false,false,0,24.5,Maryland,788708294
+W789336907,,residential,false,0,7.5,false,false,false,0,98.6,Maryland,789336907
+W828126103,,tertiary,false,0,10.0,true,false,false,0,198.5,Maryland,828126103
+W828785626,,service,false,0,5.0,false,false,false,0,19.2,Maryland,828785626
+W828785627,,service,false,0,5.0,false,false,false,0,137.4,Maryland,828785627
+W828785628,,service,false,0,5.0,false,false,false,0,34.5,Maryland,828785628
+W828786194,,service,false,0,5.0,true,false,false,0,119.2,Maryland,828786194
+W828786195,,service,false,0,5.0,false,false,false,0,45.1,Maryland,828786195
+W828786196,,service,false,0,5.0,true,false,false,0,129.5,Maryland,828786196
+W828807804,,service,false,0,5.0,false,false,false,0,121.5,Maryland,828807804
+W828807805,,service,false,0,5.0,false,false,false,0,45.5,Maryland,828807805
+W828807806,,service,false,0,5.0,false,false,false,0,19.4,Maryland,828807806
+W828807807,,service,false,0,5.0,false,false,false,0,20.2,Maryland,828807807
+W832592064,,residential,false,0,7.5,true,false,false,0,80.9,Maryland,832592064
+W832592065,,residential,false,0,7.5,true,false,false,0,303.7,Maryland,832592065
+W844423378,,tertiary,false,0,10.0,true,false,false,0,102.5,Maryland,844423378
+W844423379,,tertiary,false,0,10.0,true,true,false,0,25.5,Maryland,844423379
+W850020494,,service,false,0,5.0,false,false,false,0,192.5,Maryland,850020494
+W850020495,,service,false,0,5.0,false,false,false,0,67.4,Maryland,850020495
+W850020496,,service,false,0,5.0,false,false,false,0,12.5,Maryland,850020496
+W850020497,,service,false,0,5.0,false,false,false,0,22.5,Maryland,850020497
+W850020498,,service,false,0,5.0,false,false,false,0,21.6,Maryland,850020498
+W850020499,,service,false,0,5.0,false,false,false,0,30.8,Maryland,850020499
+W850074401,,service,false,0,5.0,false,false,false,0,38.6,Maryland,850074401
+W865563778,,tertiary,false,0,10.0,true,false,false,0,90.4,Maryland,865563778
+W865563779,,tertiary,false,0,10.0,false,false,false,0,52.0,Maryland,865563779
+W865563780,,tertiary,false,0,10.0,true,true,false,0,24.7,Maryland,865563780
+W865563781,,tertiary,false,0,10.0,true,false,false,0,115.5,Maryland,865563781
+W950117810,,residential,false,0,7.5,false,false,false,0,70.2,Maryland,950117810
+W950117818,,residential,false,0,7.5,false,false,false,0,45.5,Maryland,950117818
+W964207722,,service,false,0,5.0,false,false,false,0,109.1,Maryland,964207722
+W964207723,,service,false,0,5.0,false,false,false,0,85.9,Maryland,964207723
+W964207724,,service,false,0,5.0,false,false,false,0,86.9,Maryland,964207724
+W964250640,,residential,false,0,7.5,false,false,false,0,98.5,Maryland,964250640
+W964250641,,residential,false,0,7.5,false,false,false,0,51.6,Maryland,964250641
+W964250642,,residential,false,0,7.5,false,false,false,0,9.3,Maryland,964250642
+W964250643,,residential,false,0,7.5,false,false,false,0,40.2,Maryland,964250643
+W964250644,,residential,false,0,7.5,false,false,false,0,45.7,Maryland,964250644
+W964250645,,service,false,0,5.0,false,false,false,0,38.2,Maryland,964250645
+W964482721,,service,false,0,5.0,false,false,false,0,305.8,Maryland,964482721
+W964485987,,service,false,0,5.0,false,false,false,0,32.2,Maryland,964485987
+W964488515,,service,false,0,5.0,false,false,false,0,58.9,Maryland,964488515
+W964491691,,service,false,0,5.0,false,false,false,0,77.2,Maryland,964491691
+W964491692,,residential,false,0,7.5,false,false,false,0,69.9,Maryland,964491692
+W964491693,,service,false,0,5.0,false,false,false,0,116.9,Maryland,964491693
+W964525236,,residential,false,0,7.5,false,false,false,0,41.1,Maryland,964525236
+W964525237,,service,false,0,5.0,false,false,false,0,76.7,Maryland,964525237
+W964525238,,service,false,0,5.0,false,false,false,0,87.1,Maryland,964525238
+W964525239,,service,false,0,5.0,false,false,false,0,110.9,Maryland,964525239
+W964528980,,service,false,0,5.0,false,false,false,0,82.7,Maryland,964528980
+W964528981,,service,false,0,5.0,false,false,false,0,32.3,Maryland,964528981
+W964528982,,service,false,0,5.0,true,false,false,0,61.2,Maryland,964528982
+W964528983,,service,false,0,5.0,true,false,false,0,64.3,Maryland,964528983
+W964528984,,service,false,0,5.0,true,false,true,0,41.1,Maryland,964528984
+W964528985,,service,false,0,5.0,false,false,false,0,47.6,Maryland,964528985
+W964528986,,service,false,0,5.0,false,false,false,0,102.7,Maryland,964528986
+W964528987,,service,false,0,5.0,false,false,false,0,89.3,Maryland,964528987
+W964819293,,service,false,0,5.0,false,false,false,0,233.1,Maryland,964819293
+W964819294,,service,false,0,5.0,true,false,false,0,83.8,Maryland,964819294
+W964819790,,residential,false,0,7.5,false,false,false,0,44.4,Maryland,964819790
+W964819791,,residential,false,0,7.5,false,false,false,0,66.4,Maryland,964819791
+W964820012,,service,false,0,5.0,false,false,false,0,58.4,Maryland,964820012
+W964820013,,service,false,0,5.0,false,false,false,0,97.0,Maryland,964820013
+W964820604,,service,false,0,5.0,false,false,false,0,41.1,Maryland,964820604
+W964820605,,service,false,0,5.0,true,false,false,0,118.3,Maryland,964820605
+W964820835,,service,false,0,5.0,false,false,false,0,146.4,Maryland,964820835
+W975943905,,service,false,0,5.0,false,false,false,0,46.1,Maryland,975943905
+W975945685,,service,false,0,5.0,false,false,false,0,39.0,Maryland,975945685
+W977821882,,residential,false,0,7.5,false,false,false,0,62.3,Maryland,977821882

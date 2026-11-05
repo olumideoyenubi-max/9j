@@ -1,0 +1,1717 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W217949992,Abdul Atta Road,residential,false,0,7.5,false,false,false,0,258.7,Yaba,217949992
+W217853778,Abdul Karimu Street,residential,false,0,7.5,false,false,false,0,610.3,Yaba,217853778
+W370566980,Abdullahi Street,residential,false,0,7.5,false,false,false,0,262.0,Yaba,370566980
+W219056602,Abiodun Close,residential,false,0,7.5,false,false,false,0,147.1,Yaba,219056602
+W10294858,Abiodun Street,residential,false,2,7.6,false,false,false,40,554.4,Yaba,10294858
+W353946837,Abudu Street,residential,false,0,7.5,false,false,false,0,155.9,Yaba,353946837
+W828121042,Abudu Street,residential,false,0,7.5,true,false,false,0,160.5,Yaba,828121042
+W1396583582,Abule Ijesha Street,residential,false,0,7.5,false,false,false,0,75.3,Yaba,1396583582
+W207402241,Adams Street,unclassified,false,0,7.5,false,false,false,0,206.6,Yaba,207402241
+W138057953,Adebisi Street,unclassified,false,0,7.5,false,false,false,0,323.4,Yaba,138057953
+W138058023,Adebiyi Street,residential,false,0,7.5,false,false,false,0,140.4,Yaba,138058023
+W217801540,Adebiyi Street,residential,false,0,7.5,false,false,false,0,204.0,Yaba,217801540
+W370566983,Adebiyi Street,residential,false,2,7.6,false,false,false,40,323.7,Yaba,370566983
+W407091042,Adebiyi Street,residential,false,0,7.5,false,false,false,0,114.6,Yaba,407091042
+W218914798,Adeboye Street,residential,false,0,7.5,false,false,false,0,634.2,Yaba,218914798
+W535029725,Adedapo Street,residential,false,0,7.5,false,false,false,0,134.7,Yaba,535029725
+W217853792,Adegbenro Street,residential,false,0,7.5,false,false,false,0,204.9,Yaba,217853792
+W407091040,Adekoga Street,residential,false,0,7.5,false,false,false,0,138.3,Yaba,407091040
+W219056594,Adenuga Kajero Street,residential,false,0,7.5,false,false,false,0,145.0,Yaba,219056594
+W1559109790,Aderibigbe Street,living_street,false,0,6.0,false,false,false,0,201.8,Yaba,1559109790
+W138058068,Aderupoko Street,residential,false,0,7.5,false,false,false,0,276.8,Yaba,138058068
+W217535635,Adesina Street,residential,false,0,7.5,false,false,false,0,379.2,Yaba,217535635
+W217801519,Adesina Street,residential,false,0,7.5,false,false,false,0,477.5,Yaba,217801519
+W17066355,Adetayo Osho Street,residential,false,0,7.5,false,false,false,0,232.2,Yaba,17066355
+W217793789,Adetia Olulu Street,residential,false,0,7.5,false,false,false,0,240.8,Yaba,217793789
+W217535646,Adewusi Street,residential,false,0,7.5,false,false,false,0,242.2,Yaba,217535646
+W218869585,Adeyinka Osijo Street,residential,false,0,7.5,false,false,false,0,1085.0,Yaba,218869585
+W10294863,Adurosakin Street,residential,false,0,7.5,true,false,false,0,444.2,Yaba,10294863
+W218869597,Afolabi Brown Street,residential,false,0,7.5,false,false,false,0,596.2,Yaba,218869597
+W218010801,Agard Street,residential,false,0,7.5,false,false,false,0,148.6,Yaba,218010801
+W133805221,Agege Motor Road,trunk,false,2,7.6,true,false,false,0,9629.8,Yaba,133805221
+W746512955,Agege Motor Road,trunk,false,2,7.6,true,false,false,0,7893.3,Yaba,746512955
+W12335269,Ageshin Street,residential,false,0,7.5,true,false,false,0,156.4,Yaba,12335269
+W334647318,Aggrey Avenue,tertiary,false,0,10.0,false,false,false,0,905.5,Yaba,334647318
+W370301928,Agunbiade Street,residential,false,0,7.5,false,false,false,0,436.9,Yaba,370301928
+W90288382,Agunbiade Street,residential,false,0,7.5,false,false,false,0,173.0,Yaba,90288382
+W138057958,Ahmadu Bello Road,residential,false,0,7.5,false,false,false,0,790.6,Yaba,138057958
+W219055689,Aiyedun Street,residential,false,0,7.5,false,false,false,0,487.6,Yaba,219055689
+W441860191,Aiyeleto Street,residential,false,0,7.5,false,false,false,0,126.8,Yaba,441860191
+W10294859,Aiyepe Street,residential,false,0,7.5,false,false,false,0,431.3,Yaba,10294859
+W217535649,Aiyetoro Street,residential,false,0,7.5,false,false,false,0,212.0,Yaba,217535649
+W353946836,Ajayi Benbe,residential,false,0,7.5,false,false,false,0,197.5,Yaba,353946836
+W1345120058,Aje Street,tertiary,false,0,10.0,false,false,false,0,229.9,Yaba,1345120058
+W218010779,Aje Street,tertiary,false,0,10.0,true,false,false,0,217.5,Yaba,218010779
+W218440815,Ajibode Street,residential,false,0,7.5,false,false,false,0,149.2,Yaba,218440815
+W219055661,Ajileye Street,residential,false,0,7.5,false,false,false,0,358.1,Yaba,219055661
+W441860193,Ajogbe Street,residential,false,0,7.5,false,false,false,0,124.9,Yaba,441860193
+W217801500,Akanbi Crescent,residential,false,0,7.5,false,false,false,0,327.8,Yaba,217801500
+W23711112,Akanni Street,residential,false,0,7.5,false,false,false,0,63.6,Yaba,23711112
+W1559087226,Akinlehin Close,residential,false,0,7.5,false,false,false,0,85.4,Yaba,1559087226
+W1560120255,Akinola Street,residential,false,0,7.5,false,false,false,0,211.3,Yaba,1560120255
+W217853780,Akinpelu Adesola Road,tertiary,false,0,10.0,true,false,false,0,703.6,Yaba,217853780
+W217853789,Akinpelu Adesola Road,tertiary,false,0,10.0,true,false,false,0,705.0,Yaba,217853789
+W219056612,Akinrinlo Street,residential,false,0,7.5,false,true,false,0,360.8,Yaba,219056612
+W353946847,Akinsola Street,residential,false,0,7.5,false,false,false,0,395.4,Yaba,353946847
+W586296112,Akinsola Street,unclassified,false,0,7.5,false,false,false,0,13.0,Yaba,586296112
+W138057961,Akintola Road,residential,false,0,7.5,false,false,false,0,464.3,Yaba,138057961
+W217801538,Akintunde Street,residential,false,0,7.5,false,false,false,0,240.2,Yaba,217801538
+W138057962,Akinwumi Street,residential,false,0,7.5,false,false,false,0,620.8,Yaba,138057962
+W218010778,Akitove Street,residential,false,0,7.5,false,false,false,0,190.3,Yaba,218010778
+W216470250,Akoka Road,primary,false,0,17.5,true,false,false,0,804.6,Yaba,216470250
+W217535638,Akorohunfayo Street,residential,false,0,7.5,false,false,false,0,321.3,Yaba,217535638
+W370566960,Alade Street,residential,false,0,7.5,false,false,false,0,259.7,Yaba,370566960
+W408685224,Alafia Lane,residential,false,0,7.5,false,false,false,0,99.3,Yaba,408685224
+W12335494,Alakija Street,secondary,false,0,13.0,false,false,false,0,193.5,Yaba,12335494
+W530724622,Alakija Street,secondary,false,0,13.0,true,false,false,0,27.3,Yaba,530724622
+W585433466,Alakija Street,secondary,false,0,13.0,true,false,false,0,31.3,Yaba,585433466
+W217801511,Alara Street,residential,false,0,7.5,false,false,false,0,613.9,Yaba,217801511
+W217801608,Alara Street,residential,false,0,7.5,false,false,false,0,189.5,Yaba,217801608
+W1560120249,Alhaji Alarape Street,residential,false,0,7.5,false,false,false,0,73.9,Yaba,1560120249
+W219056604,Along Street,residential,false,0,7.5,false,false,false,0,124.2,Yaba,219056604
+W326135851,Alvan Ikoku,residential,false,0,7.5,false,false,false,0,422.7,Yaba,326135851
+W525043222,Ameen Street,residential,false,0,7.5,false,false,false,0,261.5,Yaba,525043222
+W441900884,Aminu Close,residential,false,0,7.5,false,false,false,0,100.3,Yaba,441900884
+W1227258215,Amusa Street,residential,false,0,7.5,false,false,false,0,119.7,Yaba,1227258215
+W965832881,Amusa Street,residential,false,0,7.5,false,false,false,0,34.0,Yaba,965832881
+W217801495,Andoyi Street,residential,false,0,7.5,false,false,false,0,233.5,Yaba,217801495
+W94968526,Anifowoshe Street,residential,false,0,7.5,false,false,false,0,523.0,Yaba,94968526
+W441900950,Animashaun Close,residential,false,0,7.5,false,false,false,0,111.2,Yaba,441900950
+W217801536,Anthony Ajayi Street,residential,false,0,7.5,false,false,false,0,333.8,Yaba,217801536
+W370566962,Anuoluwapo Street,residential,false,0,7.5,false,false,false,0,237.5,Yaba,370566962
+W407091044,Anuoluwapo Street,residential,false,0,7.5,false,false,false,0,115.7,Yaba,407091044
+W10294862,Apata Street,residential,false,0,7.5,true,false,false,0,142.1,Yaba,10294862
+W10294867,Apata Street,residential,false,0,7.5,false,false,false,0,339.1,Yaba,10294867
+W408685219,Apata Street,residential,false,0,7.5,false,false,false,0,347.7,Yaba,408685219
+W106100748,Aralile Street,residential,false,0,7.5,false,false,false,0,302.3,Yaba,106100748
+W217801605,Araromi Street,residential,false,0,7.5,false,false,false,0,339.8,Yaba,217801605
+W23711110,Araromi Street,residential,false,0,7.5,false,false,false,0,390.5,Yaba,23711110
+W693550312,Araromi Street,residential,false,0,7.5,false,false,false,0,72.6,Yaba,693550312
+W693550313,Araromi Street,residential,false,0,7.5,false,false,false,0,41.7,Yaba,693550313
+W217535628,Aridegbe Street,residential,false,0,7.5,false,false,false,0,82.7,Yaba,217535628
+W217801557,Arowolo Street,residential,false,0,7.5,false,false,false,0,414.0,Yaba,217801557
+W106100729,Asopo Street,residential,false,0,7.5,false,false,false,0,110.6,Yaba,106100729
+W441900947,Asubiaro Drive,residential,false,0,7.5,false,false,false,0,88.9,Yaba,441900947
+W218440550,Atan Road,residential,false,0,7.5,false,false,false,0,175.0,Yaba,218440550
+W217801568,Audu Baale Street,residential,false,0,7.5,false,false,false,0,409.7,Yaba,217801568
+W1547323856,Awolaja Street,residential,false,0,7.5,false,false,false,0,41.3,Yaba,1547323856
+W1547323858,Awolaja Street,residential,false,0,7.5,false,false,false,0,116.7,Yaba,1547323858
+W219056605,Awolaja Street,residential,false,0,7.5,false,false,false,0,66.8,Yaba,219056605
+W138057964,Awolowo Road,residential,false,0,7.5,false,false,false,0,597.5,Yaba,138057964
+W94968502,Awomodu Street,residential,false,0,7.5,false,false,false,0,922.0,Yaba,94968502
+W218716719,Awonaike Crescent,residential,false,0,7.5,false,false,false,0,177.2,Yaba,218716719
+W370566969,Awoseyin Street,residential,false,0,7.5,false,false,false,0,261.9,Yaba,370566969
+W407091041,Awoseyin Street,residential,false,0,7.5,false,false,false,0,123.6,Yaba,407091041
+W138057965,Ayato Street,residential,false,0,7.5,false,false,false,0,271.3,Yaba,138057965
+W461912462,Ayemowa Close,residential,false,0,7.5,false,false,false,0,91.6,Yaba,461912462
+W138057967,Ayinde Street,residential,false,0,7.5,false,false,false,0,185.2,Yaba,138057967
+W1547323857,Ayinke Street,residential,false,0,7.5,false,false,false,0,63.2,Yaba,1547323857
+W219056617,Ayinke Street,residential,false,0,7.5,false,false,false,0,249.4,Yaba,219056617
+W217801597,Ayodele Street,residential,false,0,7.5,false,false,false,0,84.3,Yaba,217801597
+W370566964,Ayodele Street,residential,false,0,7.5,false,false,false,0,191.9,Yaba,370566964
+W1560120250,Ayonuga Street,residential,false,0,7.5,false,false,false,0,71.5,Yaba,1560120250
+W1560120254,Ayonuga Street,residential,false,0,7.5,false,false,false,0,79.8,Yaba,1560120254
+W217535647,Ayonuga Street,residential,false,0,7.5,false,false,false,0,339.7,Yaba,217535647
+W525043225,Bailey Street,unclassified,false,0,7.5,false,false,false,0,289.6,Yaba,525043225
+W585203606,Bailey Street,unclassified,false,0,7.5,false,false,false,0,63.7,Yaba,585203606
+W10294857,Bajulaiye Street,secondary,false,0,13.0,false,false,false,0,1225.1,Yaba,10294857
+W94968543,Bajulaiye Street,tertiary,false,0,10.0,false,true,false,0,28.6,Yaba,94968543
+W17066401,Bajulaye Road,secondary,false,0,13.0,false,false,false,0,917.0,Yaba,17066401
+W525043227,Bajulaye Road,secondary,false,0,13.0,true,false,false,0,28.7,Yaba,525043227
+W217853797,Balogun Street,residential,false,0,7.5,false,false,false,0,212.0,Yaba,217853797
+W94968498,Balogun Street,residential,false,0,7.5,false,false,false,0,456.4,Yaba,94968498
+W353946841,Bamgbopa Street,residential,false,0,7.5,false,false,false,0,147.5,Yaba,353946841
+W586296111,Bamgbopa Street,unclassified,false,0,7.5,false,false,false,0,110.2,Yaba,586296111
+W219055761,Bamiji Lawal Street,residential,false,0,7.5,false,false,false,0,537.9,Yaba,219055761
+W219056603,Banji Adewole Street,residential,false,0,7.5,true,false,false,0,67.4,Yaba,219056603
+W218716725,Banjo Street,residential,false,0,7.5,false,false,false,0,233.7,Yaba,218716725
+W94968501,Bariga Road,tertiary,false,0,10.0,false,false,false,0,387.0,Yaba,94968501
+W370566940,Bashua Road,residential,false,0,7.5,false,false,false,0,653.6,Yaba,370566940
+W407091045,Bashua Street,residential,false,0,7.5,false,false,false,0,184.5,Yaba,407091045
+W10294839,Birikisu Iyede Street,tertiary,false,0,10.0,false,false,false,0,380.7,Yaba,10294839
+W1292528580,Birikisu Iyede Street,tertiary,false,0,10.0,false,false,false,0,225.0,Yaba,1292528580
+W1298345471,Birikisu Iyede Street,tertiary,false,0,10.0,true,false,false,0,41.1,Yaba,1298345471
+W1298345474,Birikisu Iyede Street,tertiary,false,0,10.0,true,false,false,0,42.5,Yaba,1298345474
+W286142727,Birikisu Iyede Street,tertiary,false,0,10.0,false,false,false,0,204.0,Yaba,286142727
+W217801603,Birrel Avenue,tertiary,false,0,10.0,false,false,false,0,200.9,Yaba,217801603
+W11102855,Bode Thomas Street,residential,false,0,7.5,false,false,false,0,393.6,Yaba,11102855
+W114912304,Borno Way,unclassified,false,0,7.5,false,false,false,0,1726.3,Yaba,114912304
+W407091051,Boyle Street,residential,false,0,7.5,false,false,false,0,218.5,Yaba,407091051
+W1365141424,Central Avenue,residential,false,0,7.5,true,false,false,0,87.9,Yaba,1365141424
+W1365141425,Central Avenue,residential,false,0,7.5,true,false,false,0,87.4,Yaba,1365141425
+W353946829,Central Avenue,residential,false,0,7.5,false,false,false,0,617.4,Yaba,353946829
+W218869596,Chief Bright Oridami Street,residential,false,0,7.5,false,false,false,0,142.0,Yaba,218869596
+W219055752,Chief Ifeanyi Street,residential,false,0,7.5,false,false,false,0,279.6,Yaba,219055752
+W413033515,Church Street,residential,false,2,7.6,false,false,false,40,313.0,Yaba,413033515
+W745665068,Church Street,tertiary,false,0,10.0,false,false,false,0,115.8,Yaba,745665068
+W745665069,Church Street,tertiary,false,0,10.0,false,false,false,0,262.8,Yaba,745665069
+W133803788,Clegg Street,residential,false,0,7.5,false,false,false,0,215.7,Yaba,133803788
+W353946830,Club Rd,residential,false,0,7.5,false,false,false,0,415.3,Yaba,353946830
+W217535644,Cole Street,residential,false,0,7.5,false,false,false,0,263.0,Yaba,217535644
+W217949996,College of Medicine Road,residential,false,0,7.5,false,false,false,0,300.0,Yaba,217949996
+W218010797,Commercial Avenue,tertiary,false,0,10.0,false,false,false,0,489.8,Yaba,218010797
+W217853784,Commercial Road,tertiary,false,0,10.0,true,false,false,0,698.0,Yaba,217853784
+W217853798,Commercial Road,tertiary,false,0,10.0,true,false,false,0,694.7,Yaba,217853798
+W218869589,Community Road,residential,false,0,7.5,false,false,false,0,712.7,Yaba,218869589
+W217853782,DLI Road,residential,false,0,7.5,false,false,false,0,283.6,Yaba,217853782
+W707234135,DLI Road,residential,false,0,7.5,false,false,false,0,39.2,Yaba,707234135
+W1559087225,Da-Costa Street,residential,false,0,7.5,false,false,false,0,168.9,Yaba,1559087225
+W218010787,Dapo Bode-Thomas Street,residential,false,0,7.5,false,false,false,0,146.7,Yaba,218010787
+W10294846,Davis Street,residential,false,0,7.5,false,false,false,0,62.6,Yaba,10294846
+W217801499,Dele Olaoye,residential,false,0,7.5,false,false,false,0,100.7,Yaba,217801499
+W370301926,Durosimi Street,residential,false,0,7.5,false,false,false,0,413.6,Yaba,370301926
+W1365248676,Ebun Street,residential,false,0,7.5,false,false,false,0,87.8,Yaba,1365248676
+W353946831,Ebun Street,residential,false,0,7.5,false,false,false,0,375.6,Yaba,353946831
+W1567014616,Edmund Crescent,unclassified,false,0,7.5,true,false,false,0,14.2,Yaba,1567014616
+W1567014617,Edmund Crescent,unclassified,false,0,7.5,true,false,false,0,12.4,Yaba,1567014617
+W218010781,Edmund Crescent,unclassified,false,0,7.5,false,false,false,0,539.6,Yaba,218010781
+W353946835,Eleji Street,residential,false,0,7.5,false,false,false,0,170.3,Yaba,353946835
+W525043223,Eletu Odibo Street,residential,false,0,7.5,false,false,false,0,129.3,Yaba,525043223
+W585400693,Eletu Odibo Street,tertiary,false,0,10.0,false,false,false,0,193.4,Yaba,585400693
+W218869583,Emily Akinola Street,residential,false,0,7.5,false,false,false,0,602.6,Yaba,218869583
+W413033526,Emmanuel Kolawole Street,residential,false,0,7.5,false,false,false,0,251.4,Yaba,413033526
+W539288375,Eni-Njoku Road,residential,false,0,7.5,false,false,false,0,115.9,Yaba,539288375
+W441897789,Eniola Lane,residential,false,0,7.5,false,false,false,0,55.6,Yaba,441897789
+W217535629,Ereko Street,residential,false,0,7.5,false,false,false,0,227.9,Yaba,217535629
+W94968529,Esanogbogun Street,residential,false,0,7.5,false,false,false,0,581.1,Yaba,94968529
+W1560120252,Euba Street,residential,false,0,7.5,false,false,false,0,265.8,Yaba,1560120252
+W587463009,FBA Walkway,service,false,0,5.0,false,false,false,0,213.6,Yaba,587463009
+W217801572,FFF Road,residential,false,0,7.5,false,false,false,0,261.3,Yaba,217801572
+W585114347,Fadeyi Street,residential,false,0,7.5,false,false,false,0,106.9,Yaba,585114347
+W218716717,Fagbile Street,residential,false,0,7.5,false,false,false,0,255.1,Yaba,218716717
+W23711111,Fakorede Street,residential,false,0,7.5,true,false,false,0,497.4,Yaba,23711111
+W413033512,Fakunle Street,residential,false,0,7.5,false,false,false,0,500.3,Yaba,413033512
+W138057968,Falodun Street,residential,false,0,7.5,false,false,false,0,76.8,Yaba,138057968
+W138057970,Falodun Street,residential,false,0,7.5,false,false,false,0,277.0,Yaba,138057970
+W114912306,Faneye Street,residential,false,0,7.5,false,false,false,0,152.4,Yaba,114912306
+W588131681,Faneye Street,unclassified,false,0,7.5,false,false,false,0,78.5,Yaba,588131681
+W217535632,Fansaya Street,residential,false,0,7.5,false,false,false,0,79.5,Yaba,217535632
+W217853783,Fashina Street,residential,false,0,7.5,false,false,false,0,175.9,Yaba,217853783
+W1070947182,Federal Road,service,false,0,5.0,false,false,false,0,358.4,Yaba,1070947182
+W1409179639,Federal Road,service,false,0,5.0,false,false,false,0,18.6,Yaba,1409179639
+W138057976,Fifth Lane,residential,false,0,7.5,false,false,false,0,254.2,Yaba,138057976
+W134221192,Finbarr road,primary,false,0,17.5,true,false,false,0,2835.8,Yaba,134221192
+W1508800992,Finbarr road,primary,false,0,17.5,true,false,false,0,2837.5,Yaba,1508800992
+W10294856,Fola Agoro Street,tertiary,false,0,10.0,false,false,false,0,719.8,Yaba,10294856
+W586621042,Fola Agoro Street,tertiary,false,0,10.0,false,true,false,0,12.4,Yaba,586621042
+W586621043,Fola Agoro Street,tertiary,false,0,10.0,false,false,false,0,135.7,Yaba,586621043
+W218869595,Funmilayo Onaronke Street,residential,false,0,7.5,false,false,false,0,321.1,Yaba,218869595
+W217801599,Funsho Street Link,residential,false,0,7.5,false,false,false,0,68.4,Yaba,217801599
+W138057979,Gbede Street,residential,false,0,7.5,false,false,false,0,210.2,Yaba,138057979
+W138058034,Gbeto Street,residential,false,0,7.5,false,false,false,0,210.8,Yaba,138058034
+W10294861,George Street,residential,false,0,7.5,true,false,false,0,539.4,Yaba,10294861
+W585428138,George Street,tertiary,false,0,10.0,true,false,false,0,117.2,Yaba,585428138
+W217535626,Giwa Street,residential,false,0,7.5,false,false,false,0,342.3,Yaba,217535626
+W217801532,Gray Street,residential,false,0,7.5,false,false,false,0,82.7,Yaba,217801532
+W114912315,Harvey Road,unclassified,false,0,7.5,false,false,false,0,610.9,Yaba,114912315
+W218010808,Harvey Road,residential,false,0,7.5,false,false,false,0,145.0,Yaba,218010808
+W585484496,Harvey Road,unclassified,false,0,7.5,false,false,false,0,9.1,Yaba,585484496
+W585484497,Harvey Road,residential,false,0,7.5,false,false,false,0,412.5,Yaba,585484497
+W133805229,Herbert Macaulay Street,trunk,false,0,11.5,true,false,false,0,401.0,Yaba,133805229
+W215667088,Herbert Macaulay Street,trunk,false,0,11.5,true,false,false,0,397.1,Yaba,215667088
+W585731337,Herbert Macaulay Street,trunk,false,0,11.5,true,false,false,0,18.0,Yaba,585731337
+W585731338,Herbert Macaulay Street,trunk,false,0,11.5,true,false,false,0,18.5,Yaba,585731338
+W215667122,Herbert Macaulay Way,trunk,false,0,11.5,true,false,false,0,3727.0,Yaba,215667122
+W534993359,Herbert Macaulay Way,trunk,false,0,11.5,true,false,false,0,4161.8,Yaba,534993359
+W218440817,Hooper Road,residential,false,0,7.5,false,false,false,0,276.6,Yaba,218440817
+W10294813,Hughes Avenue,unclassified,false,2,7.6,false,false,false,0,410.1,Yaba,10294813
+W133805238,Hussey Road,secondary,false,0,13.0,false,false,false,0,121.4,Yaba,133805238
+W370566952,Hussey Road,residential,false,0,7.5,false,false,false,0,602.0,Yaba,370566952
+W17066349,Ibukun Olu Street,residential,false,0,7.5,true,false,false,0,72.8,Yaba,17066349
+W828114633,Ibukun Olu Street,residential,false,0,7.5,false,false,false,0,551.9,Yaba,828114633
+W106100740,Ibukun Street,residential,false,0,7.5,false,false,false,0,324.3,Yaba,106100740
+W441860192,Idera Street,residential,false,0,7.5,false,false,false,0,110.7,Yaba,441860192
+W218869617,Igbaja Street,residential,false,0,7.5,false,false,false,0,839.9,Yaba,218869617
+W138057980,Igbehinadun Street,tertiary,false,0,10.0,false,false,false,0,280.0,Yaba,138057980
+W530724620,Igbobi Sabe Street,residential,false,0,7.5,false,false,false,0,231.3,Yaba,530724620
+W832260773,Igbobi Sabe Street,residential,false,0,7.5,true,false,false,0,129.1,Yaba,832260773
+W870629934,Igbobi Sabe Street,residential,false,0,7.5,false,false,false,0,15.0,Yaba,870629934
+W217801564,Igbore Street,residential,false,0,7.5,false,false,false,0,160.4,Yaba,217801564
+W217801602,Igbore Street,residential,false,0,7.5,false,false,false,0,192.3,Yaba,217801602
+W23711102,Ijaoye Street,residential,false,0,7.5,false,false,false,0,267.4,Yaba,23711102
+W138058000,Ikejiani Road,residential,false,0,7.5,false,false,false,0,383.3,Yaba,138058000
+W133803796,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,713.5,Yaba,133803796
+W133805242,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,5356.2,Yaba,133805242
+W133870586,Ikorodu Road,primary,false,0,17.5,true,false,false,0,483.7,Yaba,133870586
+W133876581,Ikorodu Road,motorway,false,2,7.6,true,false,false,0,5361.5,Yaba,133876581
+W133879446,Ikorodu Road,primary,false,0,17.5,true,false,false,0,3692.2,Yaba,133879446
+W16369687,Ikorodu Road,motorway,false,2,7.6,true,true,false,0,710.6,Yaba,16369687
+W215667094,Ikorodu Road,primary,false,0,17.5,true,false,false,0,374.4,Yaba,215667094
+W215667101,Ikorodu Road,primary,false,0,17.5,true,false,false,0,5379.7,Yaba,215667101
+W218914795,Ilaje Road,tertiary,false,0,10.0,false,false,false,0,1209.9,Yaba,218914795
+W441860180,Iletunmi Street,residential,false,0,7.5,false,false,false,0,155.7,Yaba,441860180
+W1559087229,Imoru Street,residential,false,0,7.5,false,false,false,0,174.7,Yaba,1559087229
+W10294836,Industrial Avenue,service,false,0,5.0,false,false,false,0,413.3,Yaba,10294836
+W585446624,Industrial Avenue,unclassified,false,0,7.5,false,false,false,0,300.0,Yaba,585446624
+W10294830,Industrial Street,unclassified,false,0,7.5,false,false,false,0,250.8,Yaba,10294830
+W217853787,International School Road,tertiary,false,0,10.0,true,true,false,0,32.7,Yaba,217853787
+W217853790,International School Road,tertiary,false,0,10.0,true,false,false,0,280.7,Yaba,217853790
+W217853791,International School Road,tertiary,false,0,10.0,true,true,false,0,32.2,Yaba,217853791
+W217853795,International School Road,tertiary,false,0,10.0,true,false,false,0,279.2,Yaba,217853795
+W217853799,International School Road,tertiary,false,0,10.0,true,false,false,0,23.5,Yaba,217853799
+W217853802,International School Road,tertiary,false,0,10.0,true,false,false,0,23.6,Yaba,217853802
+W218010807,Ireti Street,residential,false,0,7.5,false,false,false,0,562.1,Yaba,218010807
+W370566943,Isaac John Street,unclassified,false,0,7.5,false,false,false,0,781.2,Yaba,370566943
+W10294827,Ishola Street,unclassified,false,0,7.5,false,false,false,0,78.7,Yaba,10294827
+W138057982,Ishola Street,residential,false,0,7.5,false,false,false,0,369.0,Yaba,138057982
+W138057985,Iwaya Road,tertiary,false,0,10.0,false,false,false,0,632.2,Yaba,138057985
+W217793812,Iwaya Road,tertiary,false,0,10.0,false,false,false,0,38.1,Yaba,217793812
+W217801533,Iwaya Road,tertiary,false,0,10.0,false,false,false,0,582.2,Yaba,217801533
+W1292531494,Iyaomole Street,residential,false,0,7.5,false,false,false,0,641.9,Yaba,1292531494
+W1547328779,Iyiola Olawale Street,residential,false,0,7.5,false,false,false,0,126.7,Yaba,1547328779
+W218716733,Iyun Road,residential,false,0,7.5,false,false,false,0,322.9,Yaba,218716733
+W216228559,Iyun Street,service,false,0,5.0,false,false,false,0,366.0,Yaba,216228559
+W535027938,Jacob street,residential,false,2,7.6,false,false,false,0,274.0,Yaba,535027938
+W586290962,Jagun Molu Street,primary,false,0,17.5,true,false,false,0,16.4,Yaba,586290962
+W586296115,Jagun Molu Street,primary,false,0,17.5,true,false,false,0,18.4,Yaba,586296115
+W539288373,Jibowu Close,residential,false,0,7.5,false,false,false,0,59.1,Yaba,539288373
+W23711098,Jibowu Street,residential,false,0,7.5,false,false,false,0,409.4,Yaba,23711098
+W217801530,Johnson Street,residential,false,0,7.5,false,false,false,0,216.4,Yaba,217801530
+W441900955,Johnson Street,residential,false,2,7.6,false,false,false,40,98.1,Yaba,441900955
+W217793825,Joseph Harrison Street,residential,false,0,7.5,false,false,false,0,463.2,Yaba,217793825
+W217801525,Joseph Harrison Street,residential,false,0,7.5,false,false,false,0,442.4,Yaba,217801525
+W217535639,Kadiri Street,residential,false,0,7.5,false,false,false,0,174.9,Yaba,217535639
+W138057987,Karimu Ikotun Street,residential,false,0,7.5,false,false,false,0,689.2,Yaba,138057987
+W1421774045,Kayode Street,tertiary,false,0,10.0,false,false,false,0,111.7,Yaba,1421774045
+W584905481,Kayode Street,secondary,false,1,4.3,false,false,false,0,239.0,Yaba,584905481
+W218716738,Kelani Lane,residential,false,0,7.5,false,false,false,0,141.9,Yaba,218716738
+W217949994,Kosoko Drive,residential,false,0,7.5,true,false,false,0,476.3,Yaba,217949994
+W217949995,Kosoko Drive,residential,false,0,7.5,false,false,false,0,33.0,Yaba,217949995
+W217950002,Kosoko Drive,residential,false,0,7.5,false,false,false,0,129.7,Yaba,217950002
+W10294816,Kufeji Street,unclassified,false,0,7.5,false,false,false,0,317.2,Yaba,10294816
+W217801496,Lancaster Street,residential,false,0,7.5,false,false,false,0,92.1,Yaba,217801496
+W585689529,Lancaster Street,unclassified,false,0,7.5,false,false,false,0,260.8,Yaba,585689529
+W219055691,Lateef Fagbemi Street,residential,false,0,7.5,false,false,false,0,355.6,Yaba,219055691
+W138058036,Latunde Street,residential,false,0,7.5,false,false,false,0,247.6,Yaba,138058036
+W218914800,Laula Ibrahim Street,residential,false,0,7.5,false,false,false,0,143.8,Yaba,218914800
+W12335192,Lawani Street,residential,false,0,7.5,false,false,false,0,310.8,Yaba,12335192
+W217535631,Lawani Street,residential,false,0,7.5,false,false,false,0,147.1,Yaba,217535631
+W286142728,Lawani Street,residential,false,0,7.5,false,false,false,0,184.8,Yaba,286142728
+W217535655,Lawanson Crescent,residential,false,0,7.5,false,false,false,0,332.2,Yaba,217535655
+W218440820,Leigh Street,residential,false,0,7.5,false,false,false,0,230.8,Yaba,218440820
+W1289028018,Lisabi Street,residential,false,0,7.5,false,false,false,0,65.3,Yaba,1289028018
+W218716718,Lisabi Street,residential,false,0,7.5,false,false,false,0,112.3,Yaba,218716718
+W218716732,Lisabi Street,residential,false,0,7.5,false,false,false,0,88.1,Yaba,218716732
+W218010788,Little Road,residential,false,0,7.5,false,false,false,0,417.9,Yaba,218010788
+W1547320964,Mafowoku Street,residential,false,0,7.5,false,false,false,0,160.5,Yaba,1547320964
+W90288374,Maja Street,residential,false,0,7.5,false,false,false,0,163.3,Yaba,90288374
+W585456791,Majaro Street,residential,false,0,7.5,false,false,false,0,788.0,Yaba,585456791
+W13644677,Majolate St,secondary,false,0,13.0,false,false,false,0,363.7,Yaba,13644677
+W114912311,Makoko Road,tertiary,false,0,10.0,false,false,false,0,526.8,Yaba,114912311
+W217793801,Makoko Road,residential,false,0,7.5,false,false,false,0,522.2,Yaba,217793801
+W217793808,Makoko Road,tertiary,false,0,10.0,false,true,false,0,26.4,Yaba,217793808
+W585456787,Makoko Road,tertiary,false,0,10.0,false,false,false,0,120.9,Yaba,585456787
+W10294866,Market Street,residential,false,0,7.5,true,false,false,0,1018.0,Yaba,10294866
+W218440821,Martins Street,residential,false,0,7.5,false,false,false,0,168.8,Yaba,218440821
+W90288345,Matthew Street,residential,false,0,7.5,false,false,false,0,490.9,Yaba,90288345
+W218010785,Maye Street,residential,false,0,7.5,false,false,false,0,550.1,Yaba,218010785
+W10294823,McEwen Street,residential,false,0,7.5,false,false,false,0,104.8,Yaba,10294823
+W585689530,McEwen Street,unclassified,false,0,7.5,false,false,false,0,187.0,Yaba,585689530
+W114912314,McNeil Road,residential,false,0,7.5,false,false,false,0,534.9,Yaba,114912314
+W441900928,Merret Rd,residential,false,0,7.5,false,false,false,0,179.5,Yaba,441900928
+W793621175,Merret Rd,service,false,0,5.0,false,false,false,0,144.6,Yaba,793621175
+W114912310,Moleye Street,residential,false,0,7.5,false,false,false,0,607.0,Yaba,114912310
+W218010791,Montgomery Road,residential,false,0,7.5,true,false,false,0,642.7,Yaba,218010791
+W217801562,Moore Road,unclassified,false,0,7.5,false,false,false,0,414.0,Yaba,217801562
+W1461753418,Morocco Road,residential,false,0,7.5,true,false,false,0,20.5,Yaba,1461753418
+W1530365809,Morocco Road,residential,false,0,7.5,true,false,false,0,20.5,Yaba,1530365809
+W23711108,Morocco Road,residential,false,0,7.5,false,false,false,0,156.4,Yaba,23711108
+W17066346,Moronfolu Street,residential,false,0,7.5,false,false,false,0,967.3,Yaba,17066346
+W525043224,Mosuro Street,residential,false,0,7.5,false,false,false,0,111.7,Yaba,525043224
+W133870580,Murtala Mohammed Way,secondary,false,0,13.0,true,false,false,0,50.4,Yaba,133870580
+W133870582,Murtala Mohammed Way,secondary,false,0,13.0,true,true,false,0,189.4,Yaba,133870582
+W133870576,Murtula Muhammed Way,primary,false,0,17.5,true,false,false,0,276.7,Yaba,133870576
+W207402235,Murtula Muhammed Way,primary,false,0,17.5,true,false,false,0,232.7,Yaba,207402235
+W215667111,Murtula Muhammed Way,primary,false,0,17.5,true,false,false,0,3021.8,Yaba,215667111
+W215667119,Murtula Muhammed Way,secondary,false,0,13.0,true,false,false,0,198.0,Yaba,215667119
+W441860200,Muse Street,residential,false,0,7.5,false,false,false,0,61.8,Yaba,441860200
+W869774674,Musiliu Smith Street,unclassified,false,0,7.5,false,false,false,0,245.2,Yaba,869774674
+W10294849,Musuru Street,residential,false,0,7.5,false,false,false,0,155.8,Yaba,10294849
+W90288356,Nathan Street,residential,false,0,7.5,false,false,false,0,520.0,Yaba,90288356
+W216228558,National Stadium Complex,service,false,0,5.0,false,false,false,0,965.7,Yaba,216228558
+W217535625,New Balogun Street,residential,false,0,7.5,false,false,false,0,211.7,Yaba,217535625
+W138057988,Noble Street,residential,false,0,7.5,false,false,false,0,140.2,Yaba,138057988
+W218869584,Obadiah Street,residential,false,0,7.5,false,false,false,0,491.3,Yaba,218869584
+W353946834,Obadina Street,residential,false,0,7.5,false,false,false,0,256.3,Yaba,353946834
+W138057990,Obalowu Street,residential,false,0,7.5,false,false,false,0,186.6,Yaba,138057990
+W218869607,Obayan Street,residential,false,0,7.5,false,false,false,0,722.7,Yaba,218869607
+W413033516,Obiwunmi Street,residential,false,0,7.5,false,false,false,0,194.3,Yaba,413033516
+W219055687,Odukoya Street,residential,false,0,7.5,false,false,false,0,347.4,Yaba,219055687
+W94891485,Odunlade Street,residential,false,0,7.5,false,false,false,0,444.9,Yaba,94891485
+W94968489,Odunlami Street,residential,false,2,7.6,false,false,false,40,351.1,Yaba,94968489
+W353946851,Odunnukan Street,unclassified,false,0,7.5,false,false,false,0,201.0,Yaba,353946851
+W585400691,Odunnukan Street,residential,false,0,7.5,false,true,false,0,7.0,Yaba,585400691
+W585400692,Odunnukan Street,residential,false,0,7.5,false,false,false,0,235.5,Yaba,585400692
+W586376686,Odunnukan Street,residential,false,0,7.5,false,false,false,0,63.8,Yaba,586376686
+W525043221,Ogabi Street,unclassified,false,0,7.5,false,false,false,0,121.9,Yaba,525043221
+W586296114,Ogabi Street,residential,false,0,7.5,false,false,false,0,124.2,Yaba,586296114
+W217793814,Ogayemi Street,residential,false,0,7.5,false,false,false,0,234.7,Yaba,217793814
+W745969397,Ogayemi Street,residential,false,0,7.5,false,false,false,0,107.3,Yaba,745969397
+W603615379,Ogbere Street,residential,false,0,7.5,false,false,false,0,68.1,Yaba,603615379
+W94968539,Ogunbadejo St,residential,false,1,4.3,true,false,false,40,200.7,Yaba,94968539
+W217535641,Ogunjobi Street,residential,false,0,7.5,false,false,false,0,270.8,Yaba,217535641
+W1376635805,Ogunkoya Street,residential,false,0,7.5,false,false,false,0,55.8,Yaba,1376635805
+W219055705,Ogunleye Street,residential,false,0,7.5,false,false,false,0,257.5,Yaba,219055705
+W370566950,Oguntuga Street,residential,false,0,7.5,false,false,false,0,55.9,Yaba,370566950
+W370566972,Oguntuga Street,residential,false,0,7.5,false,false,false,0,187.3,Yaba,370566972
+W217801551,Ojelabi Awolola Street,residential,false,0,7.5,false,false,false,0,266.8,Yaba,217801551
+W219056592,Ojo Street,residential,false,0,7.5,false,false,false,0,306.1,Yaba,219056592
+W219056606,Ojo Street,residential,false,0,7.5,false,false,false,0,59.9,Yaba,219056606
+W1157078040,Ojuelegba Road,primary,false,0,17.5,false,true,false,0,131.2,Yaba,1157078040
+W1489667624,Ojuelegba Road,primary,false,0,17.5,false,false,false,0,9.2,Yaba,1489667624
+W218590473,Ojuelegba Road,primary,false,0,17.5,true,false,false,0,431.6,Yaba,218590473
+W218590475,Ojuelegba Road,primary,false,0,17.5,true,false,false,0,464.6,Yaba,218590475
+W535027935,Ojuelegba Road,primary,false,0,17.5,true,false,false,0,65.6,Yaba,535027935
+W583270859,Ojuelegba Road,primary,false,0,17.5,true,false,false,0,32.6,Yaba,583270859
+W583270860,Ojuelegba Road,primary,false,0,17.5,true,false,false,0,65.8,Yaba,583270860
+W94968510,Okesuna Street,residential,false,2,7.6,false,false,false,40,584.4,Yaba,94968510
+W525043219,Olaboye Olaleye Street,residential,false,0,7.5,false,false,false,0,188.9,Yaba,525043219
+W106100699,Olaitan Street,residential,false,0,7.5,false,false,false,0,275.5,Yaba,106100699
+W218440818,Olajuwon Street,residential,false,0,7.5,false,false,false,0,333.6,Yaba,218440818
+W280481971,Olajuwon Street,residential,false,0,7.5,false,false,false,0,206.1,Yaba,280481971
+W585736129,Olajuwon Street,residential,false,0,7.5,false,false,false,0,24.9,Yaba,585736129
+W407091050,Olaleye Street,residential,false,0,7.5,false,false,false,0,350.0,Yaba,407091050
+W218914794,Olanrewaju Street,residential,false,0,7.5,false,false,false,0,170.3,Yaba,218914794
+W219055740,Olawale Lawal Street,residential,false,0,7.5,false,false,false,0,204.2,Yaba,219055740
+W114912309,Olonode Street,residential,false,0,7.5,false,false,false,0,835.3,Yaba,114912309
+W441900963,Olorunjare Street,residential,false,0,7.5,false,false,false,0,65.4,Yaba,441900963
+W94968555,Olorunkemi Street,residential,false,0,7.5,false,false,false,0,852.5,Yaba,94968555
+W138058007,Olubi Street,residential,false,0,7.5,false,false,false,0,149.8,Yaba,138058007
+W138058030,Olubi Street,residential,false,0,7.5,false,false,false,0,149.3,Yaba,138058030
+W946912147,Olubi Street,unclassified,false,0,7.5,false,false,false,0,145.8,Yaba,946912147
+W218440552,Olufemi Street,residential,false,0,7.5,false,false,false,0,301.0,Yaba,218440552
+W219056591,Olugbemi Lane,residential,false,0,7.5,false,false,false,0,64.1,Yaba,219056591
+W217801607,Olumo Street,tertiary,false,0,10.0,false,false,false,0,488.0,Yaba,217801607
+W585456788,Olumo Street,tertiary,false,0,10.0,true,false,false,0,11.6,Yaba,585456788
+W94965137,Oluwalogbon Street,residential,false,0,7.5,false,false,false,0,271.9,Yaba,94965137
+W1547320963,Oluwole Street,residential,false,0,7.5,false,false,false,0,355.2,Yaba,1547320963
+W1292416600,Omotola Street,residential,false,0,7.5,false,false,false,0,231.1,Yaba,1292416600
+W1559087228,Omotola Street,residential,false,0,7.5,false,false,false,0,170.3,Yaba,1559087228
+W219056610,Onafeko Street,residential,false,0,7.5,false,false,false,0,168.8,Yaba,219056610
+W370566977,Oniya Street,residential,false,0,7.5,false,false,false,0,287.7,Yaba,370566977
+W23711105,Onoyade Street,residential,false,0,7.5,false,false,false,0,424.9,Yaba,23711105
+W353946849,Opayemi Street,residential,false,0,7.5,false,false,false,0,244.1,Yaba,353946849
+W219055659,Oremeji Street,residential,false,0,7.5,false,false,false,0,385.6,Yaba,219055659
+W219056598,Osayinpeju Street,residential,false,0,7.5,false,false,false,0,169.1,Yaba,219056598
+W218869586,Osenatu Street,residential,false,0,7.5,false,false,false,0,424.7,Yaba,218869586
+W219055701,Osinfolarin Street,residential,false,0,7.5,false,false,false,0,479.7,Yaba,219055701
+W1369174718,Otunba Payne Street,residential,false,0,7.5,false,false,false,0,47.2,Yaba,1369174718
+W539288376,Otunba Payne Street,residential,false,0,7.5,false,false,false,0,462.2,Yaba,539288376
+W525043226,Oweh Street,unclassified,false,0,7.5,false,false,false,0,330.7,Yaba,525043226
+W138058051,Owodunni Street,residential,false,0,7.5,false,false,false,0,633.8,Yaba,138058051
+W218440816,Oyabiyi Street,residential,false,0,7.5,false,false,false,0,264.5,Yaba,218440816
+W370566971,Oyebajo Street,residential,false,0,7.5,false,false,false,0,110.6,Yaba,370566971
+W828128651,Oyebajo Street,residential,false,0,7.5,false,false,false,0,60.4,Yaba,828128651
+W828128811,Oyebajo Street,residential,false,0,7.5,true,false,false,0,69.6,Yaba,828128811
+W138058059,Oyediran Street,tertiary,false,0,10.0,false,false,false,0,819.6,Yaba,138058059
+W218869602,Oyenuga Street,residential,false,0,7.5,false,false,false,0,1106.8,Yaba,218869602
+W106100720,Oyerokun Street,residential,false,0,7.5,false,false,false,0,316.7,Yaba,106100720
+W217950011,Ozolua Road,residential,false,0,7.5,false,false,false,0,311.8,Yaba,217950011
+W219056611,Pako Bustop,residential,false,0,7.5,false,false,false,0,77.9,Yaba,219056611
+W441900897,Park Lane,residential,false,0,7.5,false,false,false,0,201.6,Yaba,441900897
+W407091049,Party Street,residential,false,0,7.5,false,false,false,0,133.9,Yaba,407091049
+W218716716,Pearse Lane,residential,false,0,7.5,false,false,false,0,239.2,Yaba,218716716
+W441860201,Pearse Street,residential,false,0,7.5,false,false,false,0,83.9,Yaba,441860201
+W217801584,Pedro Street,residential,false,0,7.5,false,false,false,0,251.3,Yaba,217801584
+W138058069,Petgrave Street,unclassified,false,0,7.5,false,false,false,0,247.9,Yaba,138058069
+W535027937,Popo Street,residential,false,0,7.5,false,false,false,0,263.3,Yaba,535027937
+W10294819,Queens Street,unclassified,false,0,7.5,false,false,false,0,646.6,Yaba,10294819
+W217793822,Ramotu Street,residential,false,0,7.5,false,false,false,0,458.2,Yaba,217793822
+W1229244911,Ransom Kuti Road,residential,false,0,7.5,false,false,false,0,267.5,Yaba,1229244911
+W217853793,Ransome Kuti Road,residential,false,0,7.5,false,false,false,0,354.5,Yaba,217853793
+W218010783,Raymond Street,residential,false,0,7.5,false,false,false,0,408.9,Yaba,218010783
+W218440555,Rotimi Street,residential,false,0,7.5,false,false,false,0,294.4,Yaba,218440555
+W441900913,Safebirth Street,residential,false,0,7.5,false,false,false,0,140.8,Yaba,441900913
+W135176569,Salami Ogejo,residential,false,0,7.5,false,false,false,0,1258.4,Yaba,135176569
+W1554279966,Salami Street,residential,false,0,7.5,false,false,false,0,69.4,Yaba,1554279966
+W1559087227,Salami Street,residential,false,0,7.5,false,false,false,0,76.2,Yaba,1559087227
+W370566989,Sanusi Street,residential,false,2,7.6,false,false,false,40,235.9,Yaba,370566989
+W407091043,Sanusi Street,residential,false,0,7.5,false,false,false,0,116.6,Yaba,407091043
+W219055760,Sanyaolu Street,residential,false,0,7.5,false,false,false,0,239.6,Yaba,219055760
+W1341588337,Sapara Road,service,false,0,5.0,false,false,false,0,98.0,Yaba,1341588337
+W1370063041,Sapara Road,service,false,0,5.0,false,false,false,0,9.5,Yaba,1370063041
+W1370063042,Sapara Road,service,false,0,5.0,false,false,false,0,26.2,Yaba,1370063042
+W138057991,Sariyu Street,tertiary,false,0,10.0,false,false,false,0,464.2,Yaba,138057991
+W218010799,Sawyer Street,residential,false,0,7.5,false,false,false,0,186.7,Yaba,218010799
+W10294873,Shipeolu Street,tertiary,false,0,10.0,false,false,false,0,1320.9,Yaba,10294873
+W12335257,Shiro Street,residential,false,0,7.5,false,false,false,0,202.9,Yaba,12335257
+W585433459,Shiro Street,unclassified,false,0,7.5,false,false,false,0,200.1,Yaba,585433459
+W219056595,Shobande Street,residential,false,0,7.5,false,false,false,0,367.8,Yaba,219056595
+W219056601,Shobande Street,residential,false,0,7.5,false,false,false,0,52.3,Yaba,219056601
+W138057993,Shodipe Street,residential,false,0,7.5,false,false,false,0,160.7,Yaba,138057993
+W832506256,Sholanke Street,residential,false,0,7.5,false,false,false,0,645.1,Yaba,832506256
+W114912303,Simpson Street,residential,false,0,7.5,false,false,false,0,888.1,Yaba,114912303
+W370566970,Soyinka Street,residential,false,0,7.5,false,false,false,0,301.8,Yaba,370566970
+W114912305,Spencer Street,residential,false,0,7.5,false,false,false,0,245.0,Yaba,114912305
+W207402236,Spencer Street,residential,false,0,7.5,false,false,false,0,81.2,Yaba,207402236
+W217801578,St Agnes Street,residential,false,0,7.5,false,false,false,0,221.8,Yaba,217801578
+W217950012,Tafawa Balewa Way,tertiary,false,0,10.0,false,false,false,0,587.6,Yaba,217950012
+W218716715,Tejuosho Avenue,residential,false,0,7.5,false,false,false,0,358.0,Yaba,218716715
+W587479953,Tejuosho Avenue,residential,false,0,7.5,false,false,false,0,177.6,Yaba,587479953
+W133803795,Tejuoso Street,unclassified,false,0,7.5,false,false,false,0,533.4,Yaba,133803795
+W587479952,Tejuoso Street,residential,false,0,7.5,false,false,false,0,249.7,Yaba,587479952
+W217535653,Thani-Olodo Street,residential,false,0,7.5,false,false,false,0,248.7,Yaba,217535653
+W134222253,Third Mainland Bridge,motorway,false,0,24.0,true,true,false,100,9501.6,Yaba,134222253
+W93855614,Third Mainland Bridge,motorway,false,0,24.0,true,true,false,100,9497.9,Yaba,93855614
+W218010786,Thorborn Avenue,residential,false,0,7.5,false,false,false,0,569.7,Yaba,218010786
+W334647370,Tobi Lawal Rd,unclassified,false,0,7.5,false,false,false,0,273.5,Yaba,334647370
+W441900926,Tobun Street,residential,false,0,7.5,false,false,false,0,119.5,Yaba,441900926
+W138057995,Tokunbo Street,residential,false,0,7.5,false,false,false,0,585.5,Yaba,138057995
+W217793790,Tunde Ajaga Street,residential,false,0,7.5,false,false,false,0,183.7,Yaba,217793790
+W218869616,Tunde Bello Street,residential,false,0,7.5,false,false,false,0,69.9,Yaba,218869616
+W218869620,Tunde Bello Street,residential,false,0,7.5,false,false,false,0,267.0,Yaba,218869620
+W218010810,Turton Street,residential,false,0,7.5,false,false,false,0,147.7,Yaba,218010810
+W207402243,University Road,primary,false,0,17.5,false,false,false,0,588.7,Yaba,207402243
+W216470248,University Road,secondary,false,0,13.0,true,false,false,0,804.2,Yaba,216470248
+W216470253,University Road,secondary,false,0,13.0,true,false,false,0,829.9,Yaba,216470253
+W217950003,University Road,secondary,false,0,13.0,true,false,false,0,409.6,Yaba,217950003
+W217950007,University Road,secondary,false,0,13.0,true,false,false,0,407.8,Yaba,217950007
+W587221957,University Road,secondary,false,0,13.0,true,false,false,0,129.2,Yaba,587221957
+W587221958,University Road,secondary,false,0,13.0,true,false,false,0,152.4,Yaba,587221958
+W605212419,University Road,secondary,false,0,13.0,true,false,false,0,195.7,Yaba,605212419
+W605212420,University Road,secondary,false,0,13.0,true,false,false,0,202.3,Yaba,605212420
+W693550311,University Road,primary,false,0,17.5,false,true,false,0,18.2,Yaba,693550311
+W828120717,University Road,primary,false,0,17.5,false,false,false,0,124.9,Yaba,828120717
+W828120718,University Road,primary,false,0,17.5,false,false,false,0,171.7,Yaba,828120718
+W1333283437,Victoria Street,residential,false,0,7.5,false,false,false,0,361.8,Yaba,1333283437
+W585460396,Wegbo Street,residential,false,0,7.5,false,false,false,0,212.6,Yaba,585460396
+W133805213,Western Avenue,primary,false,0,17.5,true,false,false,0,401.7,Yaba,133805213
+W207402244,Western Avenue,primary,false,0,17.5,true,false,false,0,192.0,Yaba,207402244
+W1489667625,Yaba Flyover Bridge,primary,false,0,17.5,true,true,false,0,26.8,Yaba,1489667625
+W1489667626,Yaba Flyover Bridge,primary,false,0,17.5,true,true,false,0,26.0,Yaba,1489667626
+W535027936,Yaba Flyover Bridge,primary,false,0,17.5,false,true,false,0,131.0,Yaba,535027936
+W114912308,Yaba Road,unclassified,false,0,7.5,false,false,false,0,888.5,Yaba,114912308
+W138058060,Yovi Street,residential,false,0,7.5,false,false,false,0,299.2,Yaba,138058060
+W217793798,Zansi Close,residential,false,0,7.5,false,false,false,0,254.9,Yaba,217793798
+W217950010,Zenith Bank Drive,residential,false,0,7.5,true,false,false,0,366.7,Yaba,217950010
+W587494341,Zion Compound,residential,false,0,7.5,false,false,false,0,75.0,Yaba,587494341
+W1341588338,Zoology,service,false,0,5.0,false,false,false,0,141.9,Yaba,1341588338
+W1017057387,,service,false,0,5.0,false,false,false,0,23.3,Yaba,1017057387
+W1017057388,,service,false,0,5.0,false,false,false,0,35.6,Yaba,1017057388
+W1017726394,,service,false,0,5.0,true,false,false,0,57.6,Yaba,1017726394
+W1017729032,,service,false,0,5.0,true,false,false,0,9.4,Yaba,1017729032
+W1017729033,,service,false,0,5.0,true,false,false,0,9.4,Yaba,1017729033
+W1017729034,,service,false,0,5.0,true,false,false,0,27.1,Yaba,1017729034
+W1017729035,,service,false,0,5.0,false,false,false,0,42.0,Yaba,1017729035
+W1017739634,,service,false,0,5.0,false,false,false,0,36.4,Yaba,1017739634
+W1017739848,,service,false,0,5.0,false,false,false,0,52.3,Yaba,1017739848
+W1017740787,,service,false,0,5.0,true,false,false,0,38.2,Yaba,1017740787
+W1017740969,,service,false,0,5.0,false,false,false,0,28.0,Yaba,1017740969
+W1017740970,,service,false,0,5.0,false,false,false,0,48.7,Yaba,1017740970
+W1017740971,,service,false,0,5.0,false,false,false,0,55.2,Yaba,1017740971
+W1017740972,,service,false,0,5.0,false,false,false,0,12.4,Yaba,1017740972
+W1017740973,,service,false,0,5.0,false,false,false,0,88.7,Yaba,1017740973
+W1017750204,,service,false,0,5.0,false,false,false,0,83.7,Yaba,1017750204
+W1017750205,,residential,false,0,7.5,false,false,false,0,115.9,Yaba,1017750205
+W1017814958,,service,false,0,5.0,false,false,false,0,43.9,Yaba,1017814958
+W1017816161,,service,false,0,5.0,false,false,false,0,135.0,Yaba,1017816161
+W1017816283,,residential,false,0,7.5,false,false,false,0,38.7,Yaba,1017816283
+W1017816435,,residential,false,0,7.5,false,false,false,0,49.0,Yaba,1017816435
+W1017816436,,residential,false,0,7.5,false,false,false,0,61.6,Yaba,1017816436
+W1017816627,,residential,false,0,7.5,false,false,false,0,67.9,Yaba,1017816627
+W1018226088,,service,false,0,5.0,true,false,false,0,37.4,Yaba,1018226088
+W1018705097,,residential,false,0,7.5,false,false,false,0,100.2,Yaba,1018705097
+W1018712042,,residential,false,0,7.5,false,false,false,0,65.3,Yaba,1018712042
+W1019930993,,service,false,0,5.0,false,false,false,0,48.7,Yaba,1019930993
+W1019931425,,service,false,0,5.0,false,false,false,0,115.0,Yaba,1019931425
+W1019931814,,service,false,0,5.0,false,false,false,0,38.9,Yaba,1019931814
+W1019931815,,service,false,0,5.0,false,false,false,0,385.7,Yaba,1019931815
+W1019932353,,service,false,0,5.0,false,false,false,0,44.9,Yaba,1019932353
+W1032446089,,service,false,0,5.0,false,false,false,0,33.0,Yaba,1032446089
+W1032446090,,service,false,0,5.0,false,false,false,0,31.1,Yaba,1032446090
+W1032446270,,service,false,0,5.0,false,false,false,0,36.5,Yaba,1032446270
+W1032767859,,service,false,0,5.0,false,false,false,0,56.9,Yaba,1032767859
+W1032767860,,service,false,0,5.0,false,false,false,0,9.8,Yaba,1032767860
+W1032772903,,residential,false,0,7.5,false,false,false,0,59.5,Yaba,1032772903
+W1032772914,,service,false,0,5.0,false,false,false,0,61.9,Yaba,1032772914
+W1032773073,,service,false,0,5.0,false,false,false,0,47.7,Yaba,1032773073
+W1032790023,,service,false,0,5.0,false,false,false,0,37.4,Yaba,1032790023
+W1032791315,,service,false,0,5.0,false,false,false,0,38.3,Yaba,1032791315
+W1032791316,,service,false,0,5.0,false,false,false,0,87.6,Yaba,1032791316
+W1032791317,,service,false,0,5.0,false,false,false,0,83.6,Yaba,1032791317
+W1032791318,,service,false,0,5.0,false,false,false,0,26.5,Yaba,1032791318
+W1032791319,,service,false,0,5.0,false,false,false,0,78.4,Yaba,1032791319
+W1032791320,,service,false,0,5.0,false,false,false,0,67.2,Yaba,1032791320
+W1034048456,,residential,false,0,7.5,false,false,false,0,116.0,Yaba,1034048456
+W1034054787,,residential,false,0,7.5,false,false,false,0,281.1,Yaba,1034054787
+W1034054788,,residential,false,0,7.5,false,false,false,0,62.2,Yaba,1034054788
+W1034054789,,service,false,0,5.0,false,false,false,0,54.3,Yaba,1034054789
+W1034054790,,residential,false,0,7.5,false,false,false,0,522.1,Yaba,1034054790
+W1034058148,,service,false,0,5.0,false,false,false,0,96.3,Yaba,1034058148
+W1034058149,,service,false,0,5.0,false,false,false,0,116.1,Yaba,1034058149
+W1034464234,,service,false,0,5.0,false,false,false,0,30.4,Yaba,1034464234
+W1034464235,,service,false,0,5.0,false,false,false,0,66.8,Yaba,1034464235
+W1034465456,,service,false,0,5.0,false,false,false,0,30.4,Yaba,1034465456
+W1034465457,,service,false,0,5.0,false,false,false,0,79.1,Yaba,1034465457
+W1034467810,,service,false,0,5.0,false,false,false,0,133.5,Yaba,1034467810
+W1034698234,,service,false,0,5.0,false,false,false,0,65.8,Yaba,1034698234
+W1034698235,,service,false,0,5.0,false,false,false,0,70.6,Yaba,1034698235
+W1034705162,,service,false,0,5.0,false,false,false,0,75.2,Yaba,1034705162
+W1034705190,,service,false,0,5.0,false,false,false,0,48.0,Yaba,1034705190
+W1034705242,,service,false,0,5.0,false,false,false,0,64.9,Yaba,1034705242
+W1034705243,,service,false,0,5.0,false,false,false,0,34.3,Yaba,1034705243
+W1034990989,,service,false,0,5.0,false,false,false,0,67.3,Yaba,1034990989
+W1034992921,,service,false,0,5.0,false,false,false,0,55.3,Yaba,1034992921
+W1034993846,,service,false,0,5.0,false,false,false,0,12.2,Yaba,1034993846
+W1034993847,,service,false,0,5.0,false,false,false,0,28.5,Yaba,1034993847
+W1034993848,,service,false,0,5.0,false,false,false,0,27.1,Yaba,1034993848
+W1034993849,,service,false,0,5.0,false,false,false,0,93.7,Yaba,1034993849
+W1034994887,,service,false,0,5.0,false,false,false,0,69.8,Yaba,1034994887
+W1034995060,,service,false,0,5.0,false,false,false,0,113.3,Yaba,1034995060
+W1034995061,,service,false,0,5.0,false,false,false,0,113.5,Yaba,1034995061
+W1034995092,,service,false,0,5.0,false,false,false,0,47.3,Yaba,1034995092
+W1034995093,,service,false,0,5.0,false,false,false,0,57.4,Yaba,1034995093
+W1034995273,,service,false,0,5.0,false,false,false,0,26.4,Yaba,1034995273
+W1034999723,,service,false,0,5.0,false,false,false,0,87.6,Yaba,1034999723
+W1035000333,,service,false,0,5.0,false,false,false,0,95.3,Yaba,1035000333
+W1035000548,,service,false,0,5.0,false,false,false,0,66.7,Yaba,1035000548
+W1035001115,,service,false,0,5.0,false,false,false,0,34.0,Yaba,1035001115
+W1035067876,,service,false,0,5.0,false,false,false,0,64.6,Yaba,1035067876
+W1035067877,,service,false,0,5.0,false,false,false,0,23.3,Yaba,1035067877
+W1035067878,,service,false,0,5.0,false,false,false,0,15.2,Yaba,1035067878
+W1035067879,,service,false,0,5.0,false,false,false,0,63.8,Yaba,1035067879
+W1035891594,,service,false,0,5.0,false,false,false,0,44.2,Yaba,1035891594
+W1035891715,,service,false,0,5.0,false,false,false,0,38.9,Yaba,1035891715
+W1037027910,,residential,false,0,7.5,false,false,false,0,66.2,Yaba,1037027910
+W106100731,,residential,false,0,7.5,false,false,false,0,163.5,Yaba,106100731
+W1063476458,,service,false,0,5.0,false,false,false,0,32.5,Yaba,1063476458
+W1063497397,,service,false,0,5.0,false,false,false,0,33.2,Yaba,1063497397
+W1063497602,,residential,false,0,7.5,false,false,false,0,60.1,Yaba,1063497602
+W1063499262,,service,false,0,5.0,false,false,false,0,29.4,Yaba,1063499262
+W1063527954,,service,false,0,5.0,false,false,false,0,19.3,Yaba,1063527954
+W1064252601,,service,false,0,5.0,false,false,false,0,72.2,Yaba,1064252601
+W1064266457,,service,false,0,5.0,false,false,false,0,107.7,Yaba,1064266457
+W1064267358,,service,false,0,5.0,false,false,false,0,37.5,Yaba,1064267358
+W1064267875,,service,false,0,5.0,false,false,false,0,133.0,Yaba,1064267875
+W1064268964,,service,false,0,5.0,false,false,false,0,40.6,Yaba,1064268964
+W1065051018,,service,false,0,5.0,false,false,false,0,52.1,Yaba,1065051018
+W1065051019,,service,false,0,5.0,false,false,false,0,67.8,Yaba,1065051019
+W1065051020,,service,false,0,5.0,false,false,false,0,82.0,Yaba,1065051020
+W1065412800,,service,false,0,5.0,false,false,false,0,45.8,Yaba,1065412800
+W1065765233,,service,false,0,5.0,false,false,false,0,88.7,Yaba,1065765233
+W1065769824,,service,false,0,5.0,false,false,false,0,64.0,Yaba,1065769824
+W1065769825,,service,false,0,5.0,false,false,false,0,22.7,Yaba,1065769825
+W1067771731,,service,false,0,5.0,false,false,false,0,58.6,Yaba,1067771731
+W1067771732,,service,false,0,5.0,true,false,false,0,25.6,Yaba,1067771732
+W1077595192,,service,false,0,5.0,false,false,false,0,32.8,Yaba,1077595192
+W1077622554,,service,false,0,5.0,false,false,false,0,89.7,Yaba,1077622554
+W1077623061,,residential,false,0,7.5,false,false,false,0,28.4,Yaba,1077623061
+W1077872473,,service,false,0,5.0,false,false,false,0,48.2,Yaba,1077872473
+W1077874220,,service,false,0,5.0,false,false,false,0,28.1,Yaba,1077874220
+W1077874221,,service,false,0,5.0,false,false,false,0,38.2,Yaba,1077874221
+W1077892670,,service,false,0,5.0,false,false,false,0,58.2,Yaba,1077892670
+W1078118669,,service,false,0,5.0,false,false,false,0,28.8,Yaba,1078118669
+W1078119788,,service,false,0,5.0,false,false,false,0,32.6,Yaba,1078119788
+W1078119889,,service,false,0,5.0,false,false,false,0,53.3,Yaba,1078119889
+W1078422659,,service,false,0,5.0,false,false,false,0,39.7,Yaba,1078422659
+W1082228348,,service,false,0,5.0,false,false,false,0,43.6,Yaba,1082228348
+W1083438765,,service,false,0,5.0,false,false,false,0,123.2,Yaba,1083438765
+W1083459496,,service,false,0,5.0,false,false,false,0,80.8,Yaba,1083459496
+W1083502725,,service,false,0,5.0,false,false,false,0,62.6,Yaba,1083502725
+W1083503063,,service,false,0,5.0,false,false,false,0,68.9,Yaba,1083503063
+W1096291385,,residential,false,0,7.5,false,false,false,0,70.8,Yaba,1096291385
+W1096291386,,residential,false,0,7.5,false,false,false,0,90.2,Yaba,1096291386
+W1096888403,,service,false,0,5.0,false,false,false,0,43.4,Yaba,1096888403
+W1096901484,,service,false,0,5.0,false,false,false,0,43.4,Yaba,1096901484
+W1096909343,,service,false,0,5.0,false,false,false,0,30.8,Yaba,1096909343
+W1096909453,,service,false,0,5.0,false,false,false,0,39.3,Yaba,1096909453
+W1096909876,,service,false,0,5.0,false,false,false,0,40.3,Yaba,1096909876
+W1096909883,,service,false,0,5.0,false,false,false,0,62.3,Yaba,1096909883
+W1097877424,,service,false,0,5.0,false,false,false,0,65.2,Yaba,1097877424
+W1097878176,,service,false,0,5.0,false,false,false,0,37.7,Yaba,1097878176
+W1101393193,,service,false,0,5.0,false,false,false,0,44.3,Yaba,1101393193
+W1101678913,,service,false,0,5.0,false,false,false,0,92.2,Yaba,1101678913
+W1111950335,,service,false,0,5.0,false,false,false,0,27.6,Yaba,1111950335
+W1111953105,,service,false,0,5.0,false,false,false,0,80.5,Yaba,1111953105
+W1111954535,,service,false,0,5.0,false,false,false,0,54.3,Yaba,1111954535
+W1111994237,,service,false,0,5.0,false,false,false,0,43.5,Yaba,1111994237
+W1111994778,,service,false,0,5.0,false,false,false,0,61.8,Yaba,1111994778
+W1111995099,,service,false,0,5.0,false,false,false,0,34.7,Yaba,1111995099
+W1111995413,,service,false,0,5.0,false,false,false,0,39.6,Yaba,1111995413
+W1112188514,,service,false,0,5.0,false,false,false,0,13.2,Yaba,1112188514
+W1112188515,,service,false,0,5.0,false,false,false,0,44.3,Yaba,1112188515
+W1112188516,,service,false,0,5.0,false,false,false,0,58.9,Yaba,1112188516
+W1112194358,,service,false,0,5.0,false,false,false,0,21.2,Yaba,1112194358
+W1112197372,,service,false,0,5.0,false,false,false,0,49.2,Yaba,1112197372
+W1112199590,,residential,false,0,7.5,false,false,false,0,39.1,Yaba,1112199590
+W1112200201,,service,false,0,5.0,false,false,false,0,50.6,Yaba,1112200201
+W1112200470,,service,false,0,5.0,false,false,false,0,14.7,Yaba,1112200470
+W1112200612,,service,false,0,5.0,false,false,false,0,58.4,Yaba,1112200612
+W1112201863,,service,false,0,5.0,false,false,false,0,69.8,Yaba,1112201863
+W1112201864,,service,false,0,5.0,false,false,false,0,64.7,Yaba,1112201864
+W1112204885,,service,false,0,5.0,false,false,false,0,42.5,Yaba,1112204885
+W1112205196,,service,false,0,5.0,false,false,false,0,32.6,Yaba,1112205196
+W1112205253,,service,false,0,5.0,false,false,false,0,64.2,Yaba,1112205253
+W1112205768,,service,false,0,5.0,false,false,false,0,52.0,Yaba,1112205768
+W1112206159,,service,false,0,5.0,false,false,false,0,36.6,Yaba,1112206159
+W1112206268,,service,false,0,5.0,false,false,false,0,79.3,Yaba,1112206268
+W1112207091,,service,false,0,5.0,false,false,false,0,83.5,Yaba,1112207091
+W1112215979,,service,false,0,5.0,false,false,false,0,95.3,Yaba,1112215979
+W1112216477,,service,false,0,5.0,false,false,false,0,20.0,Yaba,1112216477
+W1112216758,,service,false,0,5.0,false,false,false,0,49.1,Yaba,1112216758
+W1112216759,,service,false,0,5.0,false,false,false,0,42.8,Yaba,1112216759
+W1112836350,,service,false,0,5.0,false,false,false,0,17.7,Yaba,1112836350
+W1112836606,,service,false,0,5.0,false,false,false,0,16.5,Yaba,1112836606
+W1112839137,,service,false,0,5.0,false,false,false,0,30.2,Yaba,1112839137
+W1112841389,,service,false,0,5.0,false,false,false,0,36.8,Yaba,1112841389
+W1125343062,,service,false,0,5.0,false,false,false,0,71.8,Yaba,1125343062
+W1125343063,,service,false,0,5.0,false,false,false,0,5.0,Yaba,1125343063
+W1125343064,,service,false,0,5.0,false,false,false,0,24.9,Yaba,1125343064
+W1125343065,,service,false,0,5.0,false,false,false,0,39.4,Yaba,1125343065
+W1125343066,,service,false,0,5.0,false,false,false,0,19.3,Yaba,1125343066
+W1125343067,,service,false,0,5.0,false,false,false,0,56.7,Yaba,1125343067
+W1125344586,,service,false,0,5.0,false,false,false,0,265.7,Yaba,1125344586
+W1126839335,,service,false,0,5.0,false,false,false,0,29.7,Yaba,1126839335
+W1131115779,,service,false,0,5.0,false,false,false,0,63.3,Yaba,1131115779
+W1133637801,,service,false,0,5.0,false,false,false,0,39.2,Yaba,1133637801
+W1135645132,,service,false,0,5.0,false,false,false,0,26.5,Yaba,1135645132
+W1136371673,,residential,false,0,7.5,false,false,false,0,83.5,Yaba,1136371673
+W1136371675,,service,false,0,5.0,false,false,false,0,164.0,Yaba,1136371675
+W1152803327,,service,false,0,5.0,false,false,false,0,61.0,Yaba,1152803327
+W1152803328,,service,false,0,5.0,false,false,false,0,37.3,Yaba,1152803328
+W1152803329,,service,false,0,5.0,false,false,false,0,55.6,Yaba,1152803329
+W1157078038,,service,false,0,5.0,false,false,false,0,186.6,Yaba,1157078038
+W1157078039,,service,false,0,5.0,false,false,false,0,152.0,Yaba,1157078039
+W1157078041,,primary,false,0,17.5,true,false,false,0,131.4,Yaba,1157078041
+W1157078042,,primary,false,0,17.5,true,false,false,0,56.7,Yaba,1157078042
+W1157078043,,primary,false,0,17.5,true,false,false,0,54.6,Yaba,1157078043
+W1157078044,,primary,false,0,17.5,true,false,false,0,131.0,Yaba,1157078044
+W1157078045,,primary,false,0,17.5,true,true,false,0,125.2,Yaba,1157078045
+W1158388137,,service,false,0,5.0,false,false,false,0,71.4,Yaba,1158388137
+W1158388138,,trunk,true,0,7.5,false,false,false,0,19.3,Yaba,1158388138
+W1158390093,,service,false,0,5.0,false,false,false,0,71.7,Yaba,1158390093
+W1168186934,,service,false,0,5.0,false,false,false,0,48.9,Yaba,1168186934
+W1168186935,,service,false,0,5.0,false,false,false,0,47.3,Yaba,1168186935
+W1168186936,,service,false,0,5.0,false,false,false,0,33.6,Yaba,1168186936
+W1168186937,,service,false,0,5.0,false,false,false,0,17.8,Yaba,1168186937
+W1168186938,,service,false,0,5.0,false,false,false,0,41.5,Yaba,1168186938
+W1169785445,,service,false,0,5.0,false,false,false,0,86.1,Yaba,1169785445
+W1169902957,,service,false,0,5.0,false,false,false,0,305.2,Yaba,1169902957
+W1169906819,,residential,false,0,7.5,false,false,false,0,43.2,Yaba,1169906819
+W1172898863,,service,false,0,5.0,false,false,false,0,20.8,Yaba,1172898863
+W1172898864,,residential,false,0,7.5,false,false,false,0,48.6,Yaba,1172898864
+W1172898865,,service,false,0,5.0,false,false,false,0,118.4,Yaba,1172898865
+W1177427378,,service,false,0,5.0,false,false,false,0,34.5,Yaba,1177427378
+W1177427379,,residential,false,0,7.5,false,false,false,0,39.8,Yaba,1177427379
+W1180367151,,residential,false,0,7.5,false,false,false,0,44.7,Yaba,1180367151
+W1182386363,,residential,false,0,7.5,false,false,false,0,15.4,Yaba,1182386363
+W1182386364,,service,false,0,5.0,false,false,false,0,21.3,Yaba,1182386364
+W1183349104,,service,false,0,5.0,false,false,false,0,30.5,Yaba,1183349104
+W1183349105,,service,false,0,5.0,false,false,false,0,49.1,Yaba,1183349105
+W1183349106,,service,false,0,5.0,false,false,false,0,24.2,Yaba,1183349106
+W1183349107,,service,false,0,5.0,false,false,false,0,35.7,Yaba,1183349107
+W1183349108,,service,false,0,5.0,false,false,false,0,37.8,Yaba,1183349108
+W1187196682,,residential,false,0,7.5,false,false,false,0,29.6,Yaba,1187196682
+W1187196683,,service,false,0,5.0,false,false,false,0,85.9,Yaba,1187196683
+W1187196684,,service,false,0,5.0,false,false,false,0,59.4,Yaba,1187196684
+W1187196685,,residential,false,0,7.5,false,false,false,0,19.7,Yaba,1187196685
+W1193688131,,service,false,0,5.0,false,false,false,0,8.4,Yaba,1193688131
+W1195573085,,residential,false,0,7.5,false,false,false,0,542.5,Yaba,1195573085
+W1195985658,,service,false,0,5.0,false,false,false,0,44.2,Yaba,1195985658
+W1196660199,,service,false,0,5.0,false,false,false,0,74.1,Yaba,1196660199
+W1196660200,,service,false,0,5.0,false,false,false,0,83.8,Yaba,1196660200
+W1197097298,,residential,false,0,7.5,false,false,false,0,101.8,Yaba,1197097298
+W1207646041,,service,false,0,5.0,false,false,false,0,58.9,Yaba,1207646041
+W1214957978,,service,false,0,5.0,false,false,false,0,53.7,Yaba,1214957978
+W1214957979,,service,false,0,5.0,false,false,false,0,48.3,Yaba,1214957979
+W1216150599,,service,false,0,5.0,false,false,false,0,39.6,Yaba,1216150599
+W1221904683,,service,false,0,5.0,true,false,false,0,7.7,Yaba,1221904683
+W1221904684,,service,false,0,5.0,true,false,false,0,12.6,Yaba,1221904684
+W1221904685,,service,false,0,5.0,true,false,false,0,287.3,Yaba,1221904685
+W1221904686,,service,false,0,5.0,false,false,false,0,8.3,Yaba,1221904686
+W1225346171,,service,false,0,5.0,false,false,false,0,39.0,Yaba,1225346171
+W1227915484,,service,false,0,5.0,false,false,false,0,48.5,Yaba,1227915484
+W1227915485,,service,false,0,5.0,false,false,false,0,67.0,Yaba,1227915485
+W1227915486,,service,false,0,5.0,false,false,false,0,48.3,Yaba,1227915486
+W1227915487,,service,false,0,5.0,false,false,false,0,43.8,Yaba,1227915487
+W1228557495,,service,false,0,5.0,false,false,false,0,94.6,Yaba,1228557495
+W1228593768,,service,false,0,5.0,false,false,false,0,61.1,Yaba,1228593768
+W1228755572,,service,false,0,5.0,false,false,false,0,49.7,Yaba,1228755572
+W1228755573,,service,false,0,5.0,false,false,false,0,95.3,Yaba,1228755573
+W1228999204,,service,false,0,5.0,false,false,false,0,69.7,Yaba,1228999204
+W1229001604,,service,false,0,5.0,false,false,false,0,46.8,Yaba,1229001604
+W1229001605,,service,false,0,5.0,false,false,false,0,65.4,Yaba,1229001605
+W1229237192,,service,false,0,5.0,false,false,false,0,72.3,Yaba,1229237192
+W1229244910,,residential,false,0,7.5,true,false,false,0,87.2,Yaba,1229244910
+W1229244912,,residential,false,0,7.5,false,false,false,0,59.7,Yaba,1229244912
+W1229244913,,residential,false,0,7.5,true,false,false,0,99.4,Yaba,1229244913
+W1229604264,,service,false,0,5.0,true,false,false,0,88.9,Yaba,1229604264
+W1229626578,,service,false,0,5.0,false,false,false,0,9.7,Yaba,1229626578
+W1229626579,,service,false,0,5.0,false,false,false,0,85.4,Yaba,1229626579
+W1229628157,,service,false,0,5.0,false,false,false,0,74.8,Yaba,1229628157
+W1230470864,,service,false,0,5.0,false,false,false,0,46.5,Yaba,1230470864
+W1230470865,,service,false,0,5.0,false,false,false,0,258.9,Yaba,1230470865
+W12335253,,secondary,false,0,13.0,true,false,false,0,37.9,Yaba,12335253
+W12335291,,secondary,false,0,13.0,true,false,false,0,35.2,Yaba,12335291
+W12335298,,service,false,0,5.0,true,false,false,0,568.1,Yaba,12335298
+W1253595828,,service,false,0,5.0,false,false,false,0,17.2,Yaba,1253595828
+W1253603779,,service,false,0,5.0,false,false,false,0,79.0,Yaba,1253603779
+W1254496866,,residential,false,0,7.5,false,false,false,0,32.4,Yaba,1254496866
+W1254496939,,service,false,0,5.0,false,false,false,0,44.5,Yaba,1254496939
+W1254497116,,service,false,0,5.0,false,false,false,0,34.1,Yaba,1254497116
+W1254497531,,residential,false,0,7.5,false,false,false,0,53.9,Yaba,1254497531
+W1254497845,,service,false,0,5.0,false,false,false,0,50.1,Yaba,1254497845
+W1254499042,,residential,false,0,7.5,false,false,false,0,30.7,Yaba,1254499042
+W1254499043,,residential,false,0,7.5,false,false,false,0,29.4,Yaba,1254499043
+W1254499044,,residential,false,0,7.5,false,false,false,0,61.7,Yaba,1254499044
+W1254499047,,residential,false,0,7.5,false,false,false,0,33.2,Yaba,1254499047
+W1254499049,,residential,false,0,7.5,false,false,false,0,25.5,Yaba,1254499049
+W1254499050,,residential,false,0,7.5,false,false,false,0,36.1,Yaba,1254499050
+W1254499051,,residential,false,0,7.5,false,false,false,0,21.7,Yaba,1254499051
+W1257354934,,residential,false,0,7.5,false,false,false,0,27.1,Yaba,1257354934
+W1257354943,,residential,false,0,7.5,false,false,false,0,21.7,Yaba,1257354943
+W1257497678,,residential,false,0,7.5,false,false,false,0,22.0,Yaba,1257497678
+W1257528288,,residential,false,0,7.5,false,false,false,0,19.3,Yaba,1257528288
+W1287357395,,residential,false,0,7.5,false,false,false,0,320.4,Yaba,1287357395
+W1289028019,,service,false,0,5.0,false,false,false,0,11.8,Yaba,1289028019
+W1289028020,,residential,false,0,7.5,false,false,false,0,43.0,Yaba,1289028020
+W1292528579,,service,false,0,5.0,false,false,false,0,437.5,Yaba,1292528579
+W1292528741,,residential,false,0,7.5,false,false,false,0,131.7,Yaba,1292528741
+W1296647620,,service,false,0,5.0,false,false,false,0,180.7,Yaba,1296647620
+W1298345472,,tertiary,false,0,10.0,true,false,false,0,47.5,Yaba,1298345472
+W1298345473,,tertiary,false,0,10.0,true,false,false,0,40.7,Yaba,1298345473
+W1298345475,,tertiary,false,0,10.0,false,false,false,0,331.2,Yaba,1298345475
+W1333283436,,residential,false,0,7.5,false,false,false,0,67.0,Yaba,1333283436
+W1335008708,,service,false,0,5.0,false,false,false,0,28.3,Yaba,1335008708
+W1335008709,,service,false,0,5.0,false,false,false,0,29.2,Yaba,1335008709
+W1335008710,,service,false,0,5.0,false,false,false,0,59.3,Yaba,1335008710
+W1335008711,,service,false,0,5.0,false,false,false,0,43.6,Yaba,1335008711
+W133805224,,trunk,true,0,7.5,true,false,false,0,53.6,Yaba,133805224
+W133805235,,trunk,true,0,7.5,true,false,false,0,58.1,Yaba,133805235
+W133870573,,trunk,true,0,7.5,true,false,false,0,57.6,Yaba,133870573
+W133870574,,motorway,true,0,7.5,true,false,false,0,112.2,Yaba,133870574
+W133870575,,primary,true,0,7.5,true,false,false,0,49.3,Yaba,133870575
+W133870578,,primary,true,0,7.5,true,false,false,0,69.9,Yaba,133870578
+W133870579,,primary,true,0,7.5,true,false,false,0,51.0,Yaba,133870579
+W133870583,,motorway,true,0,7.5,true,false,false,0,140.8,Yaba,133870583
+W133870585,,trunk,true,0,7.5,true,false,false,0,51.5,Yaba,133870585
+W133872484,,motorway,true,0,7.5,true,false,false,0,157.0,Yaba,133872484
+W133872488,,motorway,true,0,7.5,true,false,false,0,115.2,Yaba,133872488
+W133872491,,motorway,true,0,7.5,true,false,false,0,81.2,Yaba,133872491
+W133872492,,motorway,true,0,7.5,true,false,false,0,73.0,Yaba,133872492
+W133872496,,motorway,true,0,7.5,true,false,false,0,94.2,Yaba,133872496
+W1340076823,,residential,false,0,7.5,false,false,false,0,70.5,Yaba,1340076823
+W1340076824,,residential,false,0,7.5,false,false,false,0,238.9,Yaba,1340076824
+W1340076825,,residential,false,0,7.5,false,false,false,0,37.3,Yaba,1340076825
+W1348025716,,residential,false,0,7.5,false,false,false,0,56.5,Yaba,1348025716
+W1362782692,,service,false,0,5.0,false,false,false,0,40.3,Yaba,1362782692
+W1362782693,,service,false,0,5.0,false,false,false,0,71.3,Yaba,1362782693
+W1365141423,,residential,false,0,7.5,false,false,false,0,6.7,Yaba,1365141423
+W1365199046,,residential,false,0,7.5,true,false,false,0,121.6,Yaba,1365199046
+W1365199047,,residential,false,0,7.5,false,false,false,0,43.4,Yaba,1365199047
+W1365199048,,residential,false,0,7.5,false,false,false,0,19.1,Yaba,1365199048
+W1365213183,,service,false,0,5.0,false,false,false,0,24.3,Yaba,1365213183
+W1365213184,,service,false,0,5.0,false,false,false,0,36.1,Yaba,1365213184
+W1365221022,,service,false,0,5.0,false,false,false,0,128.8,Yaba,1365221022
+W1365248677,,residential,false,0,7.5,false,false,false,0,55.9,Yaba,1365248677
+W1365255258,,service,false,0,5.0,true,false,false,0,12.7,Yaba,1365255258
+W1365260035,,service,false,0,5.0,false,false,false,0,52.1,Yaba,1365260035
+W1365864474,,residential,false,0,7.5,true,false,false,0,6.2,Yaba,1365864474
+W1365864475,,residential,false,0,7.5,false,false,false,0,34.2,Yaba,1365864475
+W1365870394,,residential,false,0,7.5,false,false,false,0,55.7,Yaba,1365870394
+W1365870395,,service,false,0,5.0,true,false,false,0,14.2,Yaba,1365870395
+W1365870396,,service,false,0,5.0,true,false,false,0,13.8,Yaba,1365870396
+W1365871467,,residential,false,0,7.5,false,false,false,0,164.1,Yaba,1365871467
+W1366486372,,residential,false,0,7.5,true,false,false,0,47.9,Yaba,1366486372
+W1366486373,,residential,false,0,7.5,true,false,false,0,102.1,Yaba,1366486373
+W1369171048,,residential,false,0,7.5,false,false,false,0,12.8,Yaba,1369171048
+W1369171049,,residential,false,0,7.5,false,false,false,0,11.0,Yaba,1369171049
+W1369171050,,residential,false,0,7.5,false,false,false,0,43.6,Yaba,1369171050
+W1374322661,,residential,false,0,7.5,false,false,false,0,111.7,Yaba,1374322661
+W1374361067,,residential,false,0,7.5,false,false,false,0,64.1,Yaba,1374361067
+W1375567055,,service,false,0,5.0,false,false,false,0,149.0,Yaba,1375567055
+W1376635802,,residential,false,0,7.5,false,false,false,0,214.6,Yaba,1376635802
+W1376635803,,residential,false,0,7.5,false,false,false,0,45.4,Yaba,1376635803
+W1376635804,,residential,false,0,7.5,false,false,false,0,115.9,Yaba,1376635804
+W1376636028,,residential,false,0,7.5,false,false,false,0,62.2,Yaba,1376636028
+W138057981,,residential,false,0,7.5,false,false,false,0,118.9,Yaba,138057981
+W138058001,,residential,false,0,7.5,false,false,false,0,89.8,Yaba,138058001
+W138058009,,residential,false,0,7.5,false,false,false,0,72.7,Yaba,138058009
+W138058010,,residential,false,0,7.5,false,false,false,0,71.7,Yaba,138058010
+W138058016,,residential,false,0,7.5,false,false,false,0,194.2,Yaba,138058016
+W138058024,,residential,false,0,7.5,false,false,false,0,222.9,Yaba,138058024
+W138058040,,residential,false,0,7.5,false,false,false,0,146.3,Yaba,138058040
+W138058053,,residential,false,0,7.5,false,false,false,0,164.5,Yaba,138058053
+W138058062,,residential,false,0,7.5,false,false,false,0,237.0,Yaba,138058062
+W1386035165,,service,false,0,5.0,false,false,false,0,44.9,Yaba,1386035165
+W1386035166,,service,false,0,5.0,false,false,false,0,41.5,Yaba,1386035166
+W1413059469,,service,false,0,5.0,false,false,false,0,85.3,Yaba,1413059469
+W1414044302,,service,false,0,5.0,false,false,false,0,13.8,Yaba,1414044302
+W1414044303,,service,false,0,5.0,false,false,false,0,65.5,Yaba,1414044303
+W1424790497,,residential,false,0,7.5,false,false,false,0,62.1,Yaba,1424790497
+W1424790498,,residential,false,0,7.5,false,false,false,0,67.0,Yaba,1424790498
+W1424790499,,residential,false,0,7.5,false,false,false,0,69.0,Yaba,1424790499
+W1424790501,,residential,false,0,7.5,false,false,false,0,290.9,Yaba,1424790501
+W1424790502,,residential,false,0,7.5,false,false,false,0,155.0,Yaba,1424790502
+W1426625931,,residential,false,0,7.5,false,false,false,0,18.4,Yaba,1426625931
+W1426625932,,residential,false,0,7.5,false,true,false,0,9.5,Yaba,1426625932
+W1426792582,,service,false,0,5.0,false,false,false,0,11.6,Yaba,1426792582
+W1426804463,,service,false,0,5.0,false,false,false,0,389.7,Yaba,1426804463
+W1426882113,,residential,false,0,7.5,true,false,false,0,17.1,Yaba,1426882113
+W1426882114,,residential,false,0,7.5,true,false,false,0,14.6,Yaba,1426882114
+W1427022401,,service,false,0,5.0,false,false,false,0,14.7,Yaba,1427022401
+W1427022402,,service,false,0,5.0,false,false,false,0,77.7,Yaba,1427022402
+W1427232623,,service,false,0,5.0,false,false,false,0,110.8,Yaba,1427232623
+W1430931643,,service,false,0,5.0,false,false,false,0,198.8,Yaba,1430931643
+W1432227362,,service,false,0,5.0,false,false,false,0,56.3,Yaba,1432227362
+W1432227365,,service,false,0,5.0,false,false,false,0,213.5,Yaba,1432227365
+W1432476460,,service,false,0,5.0,false,false,false,0,13.3,Yaba,1432476460
+W1432476461,,service,false,0,5.0,false,false,false,0,1.0,Yaba,1432476461
+W1432476462,,service,false,0,5.0,false,false,false,0,21.2,Yaba,1432476462
+W1432476463,,service,false,0,5.0,false,false,false,0,16.9,Yaba,1432476463
+W1432476464,,service,false,0,5.0,false,false,false,0,11.4,Yaba,1432476464
+W1432500765,,service,false,0,5.0,false,false,false,0,14.9,Yaba,1432500765
+W1434301569,,residential,false,0,7.5,false,false,false,0,81.5,Yaba,1434301569
+W1436821759,,service,false,0,5.0,true,false,false,0,8.7,Yaba,1436821759
+W1436821760,,service,false,0,5.0,true,false,false,0,41.3,Yaba,1436821760
+W1442064400,,service,false,0,5.0,false,false,false,0,6.2,Yaba,1442064400
+W1442064401,,service,false,0,5.0,false,false,false,0,18.6,Yaba,1442064401
+W1450673886,,service,false,0,5.0,false,false,false,0,71.3,Yaba,1450673886
+W1451357860,,service,false,0,5.0,false,false,false,0,15.0,Yaba,1451357860
+W1451357861,,service,false,0,5.0,false,false,false,0,64.3,Yaba,1451357861
+W1451357862,,service,false,0,5.0,false,false,false,0,48.7,Yaba,1451357862
+W1453541531,,trunk,true,0,7.5,true,false,false,0,176.0,Yaba,1453541531
+W1453541532,,service,false,0,5.0,true,false,false,0,11.4,Yaba,1453541532
+W1453541533,,service,false,0,5.0,true,false,false,0,27.6,Yaba,1453541533
+W1453541534,,service,false,0,5.0,true,false,false,0,39.8,Yaba,1453541534
+W1457783405,,service,false,0,5.0,false,false,false,0,49.9,Yaba,1457783405
+W1460568683,,service,false,0,5.0,false,false,false,0,50.0,Yaba,1460568683
+W1460705971,,service,false,0,5.0,false,false,false,0,39.9,Yaba,1460705971
+W1460705973,,residential,false,0,7.5,false,false,false,0,81.0,Yaba,1460705973
+W1460895531,,service,false,0,5.0,false,false,false,0,19.4,Yaba,1460895531
+W1460895532,,residential,false,0,7.5,false,false,false,0,131.5,Yaba,1460895532
+W1460917922,,service,false,0,5.0,false,false,false,0,52.0,Yaba,1460917922
+W1460965389,,service,false,0,5.0,true,false,false,0,25.9,Yaba,1460965389
+W1460965390,,service,false,0,5.0,true,false,false,0,15.3,Yaba,1460965390
+W1460965394,,service,false,0,5.0,true,false,false,0,27.9,Yaba,1460965394
+W1461703426,,residential,false,0,7.5,false,false,false,0,30.0,Yaba,1461703426
+W1461748466,,service,false,0,5.0,true,false,false,0,42.7,Yaba,1461748466
+W1461748468,,residential,false,0,7.5,false,false,false,0,57.5,Yaba,1461748468
+W1461748470,,service,false,0,5.0,false,false,false,0,20.3,Yaba,1461748470
+W1461748472,,service,false,0,5.0,false,false,false,0,46.8,Yaba,1461748472
+W1461748473,,service,false,0,5.0,false,false,false,0,79.0,Yaba,1461748473
+W1461748474,,service,false,0,5.0,false,false,false,0,21.9,Yaba,1461748474
+W1461748475,,residential,false,0,7.5,false,false,false,0,22.5,Yaba,1461748475
+W1461748476,,residential,false,0,7.5,false,false,false,0,32.8,Yaba,1461748476
+W1461748477,,service,false,0,5.0,false,false,false,0,26.4,Yaba,1461748477
+W1461748478,,service,false,0,5.0,false,false,false,0,33.4,Yaba,1461748478
+W1461753419,,residential,false,0,7.5,false,false,false,0,45.6,Yaba,1461753419
+W1462520434,,service,false,0,5.0,false,false,false,0,21.8,Yaba,1462520434
+W1462520435,,service,false,0,5.0,false,false,false,0,27.7,Yaba,1462520435
+W1462520436,,service,false,0,5.0,false,false,false,0,6.2,Yaba,1462520436
+W1462520437,,residential,false,0,7.5,false,false,false,0,56.6,Yaba,1462520437
+W1462520438,,service,false,0,5.0,false,false,false,0,40.8,Yaba,1462520438
+W1462520439,,residential,false,0,7.5,false,false,false,0,56.5,Yaba,1462520439
+W1462520440,,residential,false,0,7.5,false,false,false,0,33.9,Yaba,1462520440
+W1462798135,,residential,false,0,7.5,false,false,false,0,61.5,Yaba,1462798135
+W1462798136,,residential,false,0,7.5,false,false,false,0,56.2,Yaba,1462798136
+W1462798137,,service,false,0,5.0,false,false,false,0,31.9,Yaba,1462798137
+W1462798138,,service,false,0,5.0,false,false,false,0,35.3,Yaba,1462798138
+W1462798139,,service,false,0,5.0,false,false,false,0,35.3,Yaba,1462798139
+W1462798140,,service,false,0,5.0,false,false,false,0,216.7,Yaba,1462798140
+W1473522089,,service,false,0,5.0,false,false,false,0,88.8,Yaba,1473522089
+W1473522090,,service,false,0,5.0,false,false,false,0,93.3,Yaba,1473522090
+W1473522091,,service,false,0,5.0,false,false,false,0,114.8,Yaba,1473522091
+W1473552154,,residential,false,0,7.5,false,false,false,0,105.7,Yaba,1473552154
+W1482131888,,service,false,0,5.0,false,false,false,0,50.3,Yaba,1482131888
+W1484800852,,service,false,0,5.0,false,false,false,0,52.7,Yaba,1484800852
+W1484800853,,service,false,0,5.0,false,false,false,0,35.1,Yaba,1484800853
+W1484820251,,service,false,0,5.0,false,false,false,0,41.8,Yaba,1484820251
+W1484820252,,residential,false,0,7.5,false,false,false,0,85.8,Yaba,1484820252
+W1490046963,,service,false,0,5.0,false,false,false,0,6.0,Yaba,1490046963
+W1490046964,,service,false,0,5.0,false,false,false,0,34.6,Yaba,1490046964
+W1490046966,,service,false,0,5.0,false,false,false,0,36.5,Yaba,1490046966
+W1490046967,,service,false,0,5.0,false,false,false,0,45.7,Yaba,1490046967
+W1490046969,,service,false,0,5.0,false,false,false,0,49.3,Yaba,1490046969
+W1490046971,,residential,false,0,7.5,false,false,false,0,38.3,Yaba,1490046971
+W1490046972,,residential,false,0,7.5,false,false,false,0,37.6,Yaba,1490046972
+W1490046973,,residential,false,0,7.5,false,false,false,0,14.1,Yaba,1490046973
+W1497822511,,service,false,0,5.0,false,false,false,0,57.5,Yaba,1497822511
+W1497822512,,service,false,0,5.0,false,false,false,0,44.5,Yaba,1497822512
+W1497822513,,residential,false,0,7.5,false,false,false,0,86.9,Yaba,1497822513
+W1497822514,,residential,false,0,7.5,false,false,false,0,73.5,Yaba,1497822514
+W1497822515,,residential,false,0,7.5,false,false,false,0,60.0,Yaba,1497822515
+W1497822516,,residential,false,0,7.5,false,false,false,0,129.2,Yaba,1497822516
+W1497822517,,residential,false,0,7.5,false,false,false,0,54.4,Yaba,1497822517
+W1497822518,,residential,false,0,7.5,false,false,false,0,60.6,Yaba,1497822518
+W1498207595,,service,false,0,5.0,false,false,false,0,172.8,Yaba,1498207595
+W1498207597,,residential,false,0,7.5,false,false,false,0,216.7,Yaba,1498207597
+W1498207774,,residential,false,0,7.5,false,false,false,0,105.0,Yaba,1498207774
+W1499237070,,residential,false,0,7.5,false,false,false,0,134.6,Yaba,1499237070
+W1504592789,,service,false,0,5.0,false,false,false,0,63.0,Yaba,1504592789
+W1508726306,,service,false,0,5.0,false,false,false,0,116.7,Yaba,1508726306
+W1508726307,,service,false,0,5.0,false,false,false,0,170.8,Yaba,1508726307
+W1508800989,,secondary,true,0,7.5,false,false,false,0,6.4,Yaba,1508800989
+W1508800991,,secondary,true,0,7.5,false,false,false,0,7.7,Yaba,1508800991
+W1510172843,,residential,false,0,7.5,false,false,false,0,39.8,Yaba,1510172843
+W1510172844,,residential,false,0,7.5,false,false,false,0,116.5,Yaba,1510172844
+W1510172845,,residential,false,0,7.5,false,false,false,0,163.6,Yaba,1510172845
+W1510172846,,residential,false,0,7.5,false,false,false,0,45.2,Yaba,1510172846
+W1510172847,,service,false,0,5.0,false,false,false,0,167.9,Yaba,1510172847
+W1510190358,,service,false,0,5.0,false,false,false,0,59.2,Yaba,1510190358
+W1510190359,,service,false,0,5.0,false,false,false,0,39.8,Yaba,1510190359
+W1510200860,,service,false,0,5.0,false,false,false,0,32.8,Yaba,1510200860
+W1510200861,,service,false,0,5.0,false,false,false,0,25.0,Yaba,1510200861
+W1510200862,,service,false,0,5.0,false,false,false,0,35.4,Yaba,1510200862
+W1510200863,,service,false,0,5.0,false,false,false,0,151.3,Yaba,1510200863
+W1510200864,,tertiary,true,0,7.5,true,false,false,0,18.3,Yaba,1510200864
+W1510470918,,service,false,0,5.0,false,false,false,0,14.6,Yaba,1510470918
+W1512357411,,service,false,0,5.0,false,false,false,0,7.5,Yaba,1512357411
+W1512357412,,service,false,0,5.0,false,false,false,0,24.3,Yaba,1512357412
+W1512357413,,service,false,0,5.0,false,false,false,0,22.6,Yaba,1512357413
+W1533780383,,service,false,0,5.0,false,false,false,0,185.0,Yaba,1533780383
+W1533812719,,service,false,0,5.0,false,false,false,0,27.8,Yaba,1533812719
+W1533812720,,service,false,0,5.0,false,false,false,0,208.0,Yaba,1533812720
+W1534151248,,service,false,0,5.0,false,false,false,0,155.0,Yaba,1534151248
+W1538420430,,service,false,0,5.0,false,false,false,0,67.4,Yaba,1538420430
+W1538420431,,residential,false,0,7.5,false,false,false,0,7.7,Yaba,1538420431
+W1538422010,,service,false,0,5.0,false,false,false,0,23.9,Yaba,1538422010
+W1547662014,,service,false,0,5.0,false,false,false,0,165.5,Yaba,1547662014
+W1551971941,,service,false,0,5.0,false,false,false,0,73.8,Yaba,1551971941
+W1560120251,,residential,false,0,7.5,false,false,false,0,69.3,Yaba,1560120251
+W1560120256,,residential,false,0,7.5,false,false,false,0,57.0,Yaba,1560120256
+W1561034576,,service,false,0,5.0,false,false,false,0,6.1,Yaba,1561034576
+W1561034577,,service,false,0,5.0,false,false,false,0,13.8,Yaba,1561034577
+W1561299197,,service,false,0,5.0,false,false,false,0,21.6,Yaba,1561299197
+W1561299198,,service,false,0,5.0,false,false,false,0,33.3,Yaba,1561299198
+W1561487076,,service,false,0,5.0,false,false,false,0,9.3,Yaba,1561487076
+W1561487077,,service,false,0,5.0,false,false,false,0,15.1,Yaba,1561487077
+W1561489309,,service,false,0,5.0,false,false,false,0,163.4,Yaba,1561489309
+W1561489809,,service,false,0,5.0,false,false,false,0,1.3,Yaba,1561489809
+W1561489810,,service,false,0,5.0,false,false,false,0,46.8,Yaba,1561489810
+W1561489811,,service,false,0,5.0,false,false,false,0,46.0,Yaba,1561489811
+W1561495161,,service,false,0,5.0,false,false,false,0,38.5,Yaba,1561495161
+W1561495162,,service,false,0,5.0,false,false,false,0,86.7,Yaba,1561495162
+W1561497493,,service,false,0,5.0,false,false,false,0,4.1,Yaba,1561497493
+W1561497494,,service,false,0,5.0,false,false,false,0,47.8,Yaba,1561497494
+W1561500326,,service,false,0,5.0,false,false,false,0,98.9,Yaba,1561500326
+W1561500327,,service,false,0,5.0,false,false,false,0,39.2,Yaba,1561500327
+W1561502022,,service,false,0,5.0,false,false,false,0,31.2,Yaba,1561502022
+W1561502023,,service,false,0,5.0,false,false,false,0,24.3,Yaba,1561502023
+W1561502024,,service,false,0,5.0,false,false,false,0,36.7,Yaba,1561502024
+W1561505275,,service,false,0,5.0,false,false,false,0,70.0,Yaba,1561505275
+W1563345853,,service,false,0,5.0,false,false,false,0,121.1,Yaba,1563345853
+W1563351482,,service,false,0,5.0,false,false,false,0,82.0,Yaba,1563351482
+W1563351484,,residential,false,0,7.5,false,false,false,0,59.8,Yaba,1563351484
+W1563448815,,residential,false,0,7.5,false,false,false,0,66.1,Yaba,1563448815
+W1566337424,,service,false,0,5.0,false,false,false,0,55.8,Yaba,1566337424
+W1566337425,,service,false,0,5.0,false,false,false,0,23.4,Yaba,1566337425
+W1566337426,,service,false,0,5.0,false,false,false,0,54.9,Yaba,1566337426
+W1566337427,,service,false,0,5.0,false,false,false,0,27.2,Yaba,1566337427
+W1567026478,,service,false,0,5.0,false,false,false,0,28.5,Yaba,1567026478
+W1567031815,,service,false,0,5.0,false,false,false,0,7.4,Yaba,1567031815
+W1567031816,,service,false,0,5.0,true,false,false,0,47.3,Yaba,1567031816
+W207402237,,unclassified,false,0,7.5,true,false,false,0,26.6,Yaba,207402237
+W207402245,,unclassified,false,0,7.5,true,false,false,0,25.0,Yaba,207402245
+W215667125,,primary,false,0,17.5,true,false,false,0,163.0,Yaba,215667125
+W216228554,,service,false,0,5.0,true,false,true,0,43.7,Yaba,216228554
+W216470252,,primary,false,0,17.5,true,false,false,0,793.6,Yaba,216470252
+W217535633,,residential,false,0,7.5,false,false,false,0,174.4,Yaba,217535633
+W217535636,,residential,false,0,7.5,false,false,false,0,118.6,Yaba,217535636
+W217535637,,residential,false,0,7.5,false,false,false,0,138.1,Yaba,217535637
+W217535640,,residential,false,0,7.5,false,false,false,0,163.2,Yaba,217535640
+W217535642,,residential,false,0,7.5,false,false,false,0,191.7,Yaba,217535642
+W217535643,,residential,false,0,7.5,false,false,false,0,115.6,Yaba,217535643
+W217793783,,residential,false,0,7.5,false,false,false,0,291.3,Yaba,217793783
+W217793786,,residential,false,0,7.5,false,false,false,0,198.4,Yaba,217793786
+W217793787,,residential,false,0,7.5,false,false,false,0,76.9,Yaba,217793787
+W217793788,,service,false,0,5.0,false,false,false,0,63.2,Yaba,217793788
+W217793791,,residential,false,0,7.5,false,false,false,0,97.6,Yaba,217793791
+W217793794,,service,false,0,5.0,false,false,false,0,80.5,Yaba,217793794
+W217793795,,service,false,0,5.0,false,false,false,0,91.7,Yaba,217793795
+W217793796,,residential,false,0,7.5,false,false,false,0,365.5,Yaba,217793796
+W217793797,,residential,false,0,7.5,false,false,false,0,282.0,Yaba,217793797
+W217793799,,residential,false,0,7.5,false,false,false,0,53.4,Yaba,217793799
+W217793800,,residential,false,0,7.5,false,false,false,0,338.8,Yaba,217793800
+W217793803,,residential,false,0,7.5,false,false,false,0,203.0,Yaba,217793803
+W217793804,,residential,false,0,7.5,false,false,false,0,48.2,Yaba,217793804
+W217793806,,residential,false,0,7.5,false,false,false,0,104.6,Yaba,217793806
+W217793809,,residential,false,0,7.5,false,false,false,0,185.3,Yaba,217793809
+W217793810,,residential,false,0,7.5,false,false,false,0,283.8,Yaba,217793810
+W217793811,,residential,false,0,7.5,false,false,false,0,151.5,Yaba,217793811
+W217793813,,residential,false,0,7.5,false,false,false,0,120.7,Yaba,217793813
+W217793815,,residential,false,0,7.5,false,false,false,0,183.1,Yaba,217793815
+W217793816,,residential,false,0,7.5,false,false,false,0,233.0,Yaba,217793816
+W217793817,,tertiary,false,0,10.0,false,true,false,0,23.8,Yaba,217793817
+W217793818,,residential,false,0,7.5,false,false,false,0,192.5,Yaba,217793818
+W217793819,,residential,false,0,7.5,false,false,false,0,175.9,Yaba,217793819
+W217793826,,residential,false,0,7.5,false,false,false,0,110.6,Yaba,217793826
+W217793827,,residential,false,0,7.5,false,false,false,0,72.6,Yaba,217793827
+W217801497,,service,false,0,5.0,false,false,false,0,482.8,Yaba,217801497
+W217801501,,tertiary,false,0,10.0,true,false,false,0,31.7,Yaba,217801501
+W217801502,,service,false,0,5.0,false,false,false,0,243.4,Yaba,217801502
+W217801504,,service,false,0,5.0,false,false,false,0,102.8,Yaba,217801504
+W217801507,,residential,false,0,7.5,false,true,false,0,10.8,Yaba,217801507
+W217801509,,residential,false,0,7.5,false,false,false,0,261.0,Yaba,217801509
+W217801521,,residential,false,0,7.5,false,false,false,0,248.3,Yaba,217801521
+W217801528,,tertiary,false,0,10.0,true,false,false,0,41.0,Yaba,217801528
+W217801545,,residential,false,0,7.5,false,false,false,0,71.4,Yaba,217801545
+W217801547,,tertiary,true,0,7.5,true,false,false,0,46.3,Yaba,217801547
+W217801549,,residential,false,0,7.5,false,false,false,0,48.0,Yaba,217801549
+W217801554,,tertiary,true,0,7.5,true,false,false,0,32.0,Yaba,217801554
+W217801558,,tertiary,false,0,10.0,true,false,false,0,27.7,Yaba,217801558
+W217801566,,residential,false,0,7.5,false,false,false,0,169.8,Yaba,217801566
+W217801570,,residential,false,0,7.5,false,false,false,0,459.2,Yaba,217801570
+W217801582,,service,false,0,5.0,false,false,false,0,260.2,Yaba,217801582
+W217801588,,tertiary,false,0,10.0,true,false,false,0,42.3,Yaba,217801588
+W217801591,,tertiary,false,0,10.0,true,false,true,0,111.1,Yaba,217801591
+W217801606,,residential,false,0,7.5,false,false,false,0,91.0,Yaba,217801606
+W217853773,,residential,false,0,7.5,false,false,false,0,113.1,Yaba,217853773
+W217853774,,residential,false,0,7.5,false,false,false,0,189.2,Yaba,217853774
+W217853776,,residential,false,0,7.5,false,false,false,0,160.3,Yaba,217853776
+W217853777,,tertiary,false,0,10.0,true,false,true,0,79.4,Yaba,217853777
+W217853779,,residential,false,0,7.5,false,false,false,0,96.0,Yaba,217853779
+W217853786,,residential,false,0,7.5,false,false,false,0,85.2,Yaba,217853786
+W217853788,,residential,false,0,7.5,false,false,false,0,105.3,Yaba,217853788
+W217853800,,residential,false,0,7.5,false,false,false,0,186.8,Yaba,217853800
+W217853803,,residential,false,0,7.5,false,false,false,0,82.9,Yaba,217853803
+W217949991,,residential,false,0,7.5,false,false,false,0,111.8,Yaba,217949991
+W217949993,,secondary,false,0,13.0,true,false,true,0,51.0,Yaba,217949993
+W217949997,,service,false,0,5.0,false,false,false,0,29.3,Yaba,217949997
+W217949998,,residential,false,0,7.5,false,false,false,0,38.5,Yaba,217949998
+W217949999,,service,false,0,5.0,false,false,false,0,104.6,Yaba,217949999
+W217950001,,residential,false,0,7.5,false,false,false,0,261.0,Yaba,217950001
+W217950004,,residential,false,0,7.5,false,false,false,0,120.7,Yaba,217950004
+W217950005,,residential,false,0,7.5,true,false,true,0,89.9,Yaba,217950005
+W217950008,,residential,false,0,7.5,false,false,false,0,426.5,Yaba,217950008
+W218010780,,residential,false,0,7.5,false,false,false,0,126.0,Yaba,218010780
+W218010782,,tertiary,false,0,10.0,true,false,false,0,34.1,Yaba,218010782
+W218010784,,residential,false,0,7.5,false,false,false,0,277.4,Yaba,218010784
+W218010789,,residential,false,0,7.5,false,false,false,0,76.8,Yaba,218010789
+W218010790,,residential,false,0,7.5,false,false,false,0,201.0,Yaba,218010790
+W218010792,,residential,false,0,7.5,false,false,false,0,209.0,Yaba,218010792
+W218010793,,residential,false,0,7.5,false,false,false,0,166.4,Yaba,218010793
+W218010794,,residential,false,0,7.5,false,false,false,0,245.1,Yaba,218010794
+W218010795,,residential,false,0,7.5,false,false,false,0,73.1,Yaba,218010795
+W218010796,,residential,false,0,7.5,false,false,false,0,246.7,Yaba,218010796
+W218010798,,residential,false,0,7.5,false,false,false,0,266.1,Yaba,218010798
+W218010800,,residential,false,0,7.5,false,false,false,0,73.9,Yaba,218010800
+W218010802,,residential,false,0,7.5,false,false,false,0,71.1,Yaba,218010802
+W218010803,,residential,false,0,7.5,false,false,false,0,286.8,Yaba,218010803
+W218010804,,residential,false,0,7.5,false,false,false,0,126.4,Yaba,218010804
+W218010805,,residential,false,0,7.5,false,false,false,0,136.6,Yaba,218010805
+W218010806,,residential,false,0,7.5,false,false,false,0,77.4,Yaba,218010806
+W218010809,,residential,false,0,7.5,false,false,false,0,305.8,Yaba,218010809
+W218440549,,residential,false,0,7.5,false,false,false,0,232.7,Yaba,218440549
+W218440551,,residential,false,0,7.5,false,false,false,0,138.3,Yaba,218440551
+W218440553,,residential,false,0,7.5,false,false,false,0,74.1,Yaba,218440553
+W218440554,,residential,false,0,7.5,false,false,false,0,362.4,Yaba,218440554
+W218440814,,residential,false,0,7.5,false,false,false,0,132.4,Yaba,218440814
+W218716721,,residential,false,0,7.5,false,false,false,0,485.7,Yaba,218716721
+W218716722,,residential,false,0,7.5,false,false,false,0,103.4,Yaba,218716722
+W218716730,,residential,false,0,7.5,false,false,false,0,228.7,Yaba,218716730
+W218716731,,residential,false,0,7.5,false,false,false,0,176.8,Yaba,218716731
+W218869588,,residential,false,0,7.5,false,false,false,0,70.2,Yaba,218869588
+W218869590,,residential,false,0,7.5,false,false,false,0,68.4,Yaba,218869590
+W218869591,,residential,false,0,7.5,false,false,false,0,211.9,Yaba,218869591
+W218869592,,residential,false,0,7.5,false,false,false,0,68.5,Yaba,218869592
+W218869593,,residential,false,0,7.5,false,false,false,0,145.0,Yaba,218869593
+W218869594,,residential,false,0,7.5,false,false,false,0,79.7,Yaba,218869594
+W218869598,,residential,false,0,7.5,false,false,false,0,78.4,Yaba,218869598
+W218869599,,residential,false,0,7.5,false,false,false,0,76.5,Yaba,218869599
+W218869600,,residential,false,0,7.5,false,false,false,0,67.3,Yaba,218869600
+W218869601,,residential,false,0,7.5,false,false,false,0,77.4,Yaba,218869601
+W218869603,,residential,false,0,7.5,false,false,false,0,70.6,Yaba,218869603
+W218869604,,residential,false,0,7.5,false,false,false,0,158.2,Yaba,218869604
+W218869606,,residential,false,0,7.5,false,false,false,0,65.6,Yaba,218869606
+W218869608,,residential,false,0,7.5,false,false,false,0,71.7,Yaba,218869608
+W218869609,,residential,false,0,7.5,false,false,false,0,69.9,Yaba,218869609
+W218869611,,residential,false,0,7.5,false,true,false,0,5.6,Yaba,218869611
+W218869612,,residential,false,0,7.5,false,false,false,0,258.0,Yaba,218869612
+W218869614,,residential,false,0,7.5,false,false,false,0,75.6,Yaba,218869614
+W218869618,,residential,false,0,7.5,false,false,false,0,77.2,Yaba,218869618
+W218869621,,residential,false,0,7.5,false,true,false,0,11.4,Yaba,218869621
+W218914778,,residential,false,0,7.5,false,false,false,0,60.4,Yaba,218914778
+W218914780,,residential,false,0,7.5,false,false,false,0,265.0,Yaba,218914780
+W218914781,,residential,false,0,7.5,false,false,false,0,133.3,Yaba,218914781
+W218914782,,residential,false,0,7.5,false,false,false,0,112.6,Yaba,218914782
+W218914783,,residential,false,0,7.5,false,false,false,0,415.1,Yaba,218914783
+W218914784,,residential,false,0,7.5,false,false,false,0,59.7,Yaba,218914784
+W218914785,,residential,false,0,7.5,false,false,false,0,183.8,Yaba,218914785
+W218914786,,residential,false,0,7.5,false,false,false,0,134.8,Yaba,218914786
+W218914787,,residential,false,0,7.5,false,false,false,0,67.3,Yaba,218914787
+W218914788,,residential,false,0,7.5,false,false,false,0,67.4,Yaba,218914788
+W218914789,,residential,false,0,7.5,false,false,false,0,200.7,Yaba,218914789
+W218914790,,residential,false,0,7.5,false,false,false,0,312.4,Yaba,218914790
+W218914791,,residential,false,0,7.5,false,false,false,0,513.8,Yaba,218914791
+W218914792,,residential,false,0,7.5,false,false,false,0,156.0,Yaba,218914792
+W218914793,,residential,false,0,7.5,false,false,false,0,267.3,Yaba,218914793
+W218914796,,residential,false,0,7.5,false,false,false,0,257.7,Yaba,218914796
+W218914797,,residential,false,0,7.5,false,false,false,0,199.0,Yaba,218914797
+W218914799,,residential,false,0,7.5,false,false,false,0,65.6,Yaba,218914799
+W218914801,,residential,false,0,7.5,false,false,false,0,445.2,Yaba,218914801
+W219055657,,residential,false,0,7.5,false,false,false,0,388.5,Yaba,219055657
+W219055658,,residential,false,0,7.5,false,false,false,0,263.9,Yaba,219055658
+W219055663,,residential,false,0,7.5,false,false,false,0,260.5,Yaba,219055663
+W219055670,,residential,false,0,7.5,false,false,false,0,436.1,Yaba,219055670
+W219055672,,residential,false,0,7.5,false,false,false,0,310.8,Yaba,219055672
+W219055679,,residential,false,0,7.5,false,false,false,0,297.2,Yaba,219055679
+W219055682,,residential,false,0,7.5,false,false,false,0,75.2,Yaba,219055682
+W219055690,,residential,false,0,7.5,false,false,false,0,281.8,Yaba,219055690
+W219055693,,residential,false,0,7.5,false,false,false,0,72.6,Yaba,219055693
+W219055696,,residential,false,0,7.5,false,false,false,0,466.5,Yaba,219055696
+W219055707,,residential,false,0,7.5,false,false,false,0,219.2,Yaba,219055707
+W219055708,,residential,false,0,7.5,false,false,false,0,467.9,Yaba,219055708
+W219055709,,residential,false,0,7.5,false,true,false,0,12.5,Yaba,219055709
+W219055710,,residential,false,0,7.5,false,false,false,0,153.6,Yaba,219055710
+W219055711,,residential,false,0,7.5,false,false,false,0,743.2,Yaba,219055711
+W219055712,,residential,false,0,7.5,false,true,false,0,16.4,Yaba,219055712
+W219055714,,residential,false,0,7.5,false,false,false,0,410.6,Yaba,219055714
+W219055715,,residential,false,0,7.5,false,false,false,0,181.5,Yaba,219055715
+W219055717,,residential,false,0,7.5,false,false,false,0,275.7,Yaba,219055717
+W219055721,,residential,false,0,7.5,false,false,false,0,153.8,Yaba,219055721
+W219055724,,residential,false,0,7.5,false,true,false,0,9.9,Yaba,219055724
+W219055725,,residential,false,0,7.5,false,false,false,0,263.9,Yaba,219055725
+W219055730,,residential,false,0,7.5,false,false,false,0,600.9,Yaba,219055730
+W219055736,,residential,false,0,7.5,false,false,false,0,60.6,Yaba,219055736
+W219055745,,residential,false,0,7.5,false,false,false,0,256.1,Yaba,219055745
+W219055758,,residential,false,0,7.5,false,false,false,0,246.5,Yaba,219055758
+W219055759,,residential,false,0,7.5,false,false,false,0,140.7,Yaba,219055759
+W219055766,,residential,false,0,7.5,false,true,false,0,7.8,Yaba,219055766
+W219055768,,residential,false,0,7.5,false,false,false,0,130.8,Yaba,219055768
+W219056593,,residential,false,0,7.5,false,false,false,0,69.9,Yaba,219056593
+W219056596,,residential,false,0,7.5,false,false,false,0,202.6,Yaba,219056596
+W219056597,,residential,false,0,7.5,false,true,false,0,25.6,Yaba,219056597
+W219056599,,residential,false,0,7.5,false,false,false,0,75.4,Yaba,219056599
+W219056600,,residential,false,0,7.5,false,false,false,0,362.8,Yaba,219056600
+W219056608,,residential,false,0,7.5,false,false,false,0,152.0,Yaba,219056608
+W219056609,,residential,false,0,7.5,false,false,false,0,396.9,Yaba,219056609
+W219056613,,tertiary,false,0,10.0,false,false,false,0,60.8,Yaba,219056613
+W219056614,,residential,false,0,7.5,false,false,false,0,261.4,Yaba,219056614
+W219056616,,residential,false,0,7.5,true,false,false,0,68.8,Yaba,219056616
+W23711100,,residential,false,0,7.5,false,false,false,0,80.4,Yaba,23711100
+W237234927,,residential,false,0,7.5,false,false,false,0,88.9,Yaba,237234927
+W298496913,,service,false,0,5.0,false,false,false,0,124.7,Yaba,298496913
+W353946832,,residential,false,0,7.5,false,false,false,0,25.4,Yaba,353946832
+W353946833,,residential,false,0,7.5,false,false,false,0,117.9,Yaba,353946833
+W353946838,,residential,false,0,7.5,false,false,false,0,96.3,Yaba,353946838
+W353946839,,residential,false,0,7.5,false,false,false,0,58.4,Yaba,353946839
+W353946840,,residential,false,0,7.5,false,false,false,0,72.8,Yaba,353946840
+W353946843,,residential,false,0,7.5,false,false,false,0,124.2,Yaba,353946843
+W353946844,,unclassified,false,0,7.5,false,false,false,0,164.2,Yaba,353946844
+W353946845,,residential,false,0,7.5,false,false,false,0,94.8,Yaba,353946845
+W353946846,,residential,false,0,7.5,false,false,false,0,102.1,Yaba,353946846
+W353946848,,residential,false,0,7.5,false,false,false,0,56.8,Yaba,353946848
+W353946850,,residential,false,0,7.5,false,false,false,0,233.2,Yaba,353946850
+W370301911,,residential,false,0,7.5,true,false,false,0,174.9,Yaba,370301911
+W370566936,,residential,false,0,7.5,false,false,false,0,729.4,Yaba,370566936
+W370566942,,residential,false,0,7.5,false,false,false,0,555.2,Yaba,370566942
+W370566945,,residential,false,0,7.5,false,false,false,0,860.4,Yaba,370566945
+W370566951,,residential,false,0,7.5,false,false,false,0,90.1,Yaba,370566951
+W370566954,,residential,false,0,7.5,false,false,false,0,130.9,Yaba,370566954
+W370566955,,residential,false,0,7.5,false,false,false,0,148.7,Yaba,370566955
+W370566956,,residential,false,0,7.5,false,false,false,0,82.6,Yaba,370566956
+W370566961,,service,false,0,5.0,false,false,false,0,298.8,Yaba,370566961
+W370566963,,residential,false,0,7.5,false,false,false,0,77.5,Yaba,370566963
+W370566965,,residential,false,0,7.5,false,false,false,0,248.9,Yaba,370566965
+W370566966,,residential,false,0,7.5,false,false,false,0,221.3,Yaba,370566966
+W370566978,,service,false,0,5.0,false,false,false,0,413.3,Yaba,370566978
+W370566985,,residential,false,0,7.5,false,false,false,0,369.2,Yaba,370566985
+W370566987,,residential,false,0,7.5,false,false,false,0,314.8,Yaba,370566987
+W370566988,,service,false,0,5.0,false,false,false,0,645.0,Yaba,370566988
+W370566990,,residential,false,0,7.5,false,false,false,0,414.1,Yaba,370566990
+W407091039,,residential,false,0,7.5,true,false,false,0,142.7,Yaba,407091039
+W407091046,,residential,false,0,7.5,false,false,false,0,136.1,Yaba,407091046
+W407091048,,residential,false,0,7.5,false,false,false,0,157.7,Yaba,407091048
+W407972970,,track,false,0,4.0,false,false,false,0,181.1,Yaba,407972970
+W407972985,,service,false,0,5.0,false,false,false,0,167.5,Yaba,407972985
+W413032079,,unclassified,false,0,7.5,false,false,false,0,282.4,Yaba,413032079
+W413033514,,residential,false,0,7.5,false,false,false,0,218.9,Yaba,413033514
+W413033518,,residential,false,0,7.5,false,false,false,0,119.9,Yaba,413033518
+W413033521,,residential,false,0,7.5,false,false,false,0,120.6,Yaba,413033521
+W413033523,,residential,false,0,7.5,false,false,false,0,148.7,Yaba,413033523
+W413033524,,residential,false,0,7.5,false,false,false,0,103.7,Yaba,413033524
+W413033525,,residential,false,0,7.5,false,false,false,0,159.6,Yaba,413033525
+W413033527,,residential,false,0,7.5,false,false,false,0,89.2,Yaba,413033527
+W413033528,,residential,false,0,7.5,false,false,false,0,72.5,Yaba,413033528
+W413033530,,residential,false,0,7.5,false,false,false,0,128.0,Yaba,413033530
+W413034296,,residential,false,0,7.5,false,false,false,0,145.4,Yaba,413034296
+W413034297,,residential,false,0,7.5,false,false,false,0,67.1,Yaba,413034297
+W413034298,,residential,false,0,7.5,false,false,false,0,433.7,Yaba,413034298
+W413034299,,residential,false,0,7.5,false,false,false,0,73.1,Yaba,413034299
+W441712281,,residential,false,0,7.5,false,false,false,0,929.9,Yaba,441712281
+W441712297,,residential,false,0,7.5,false,false,false,0,211.7,Yaba,441712297
+W441712298,,residential,false,0,7.5,false,false,false,0,128.5,Yaba,441712298
+W441712382,,residential,false,0,7.5,false,false,false,0,208.5,Yaba,441712382
+W441712383,,residential,false,0,7.5,false,false,false,0,61.7,Yaba,441712383
+W441712384,,residential,false,0,7.5,false,false,false,0,101.4,Yaba,441712384
+W441712385,,residential,false,0,7.5,false,false,false,0,149.0,Yaba,441712385
+W441713764,,residential,false,0,7.5,false,false,false,0,356.4,Yaba,441713764
+W441713765,,residential,false,0,7.5,false,false,false,0,85.1,Yaba,441713765
+W441860194,,residential,false,0,7.5,false,false,false,0,57.8,Yaba,441860194
+W441860195,,residential,false,0,7.5,false,false,false,0,125.8,Yaba,441860195
+W441860196,,residential,false,0,7.5,false,false,false,0,106.0,Yaba,441860196
+W441860197,,residential,false,0,7.5,false,false,false,0,67.8,Yaba,441860197
+W441860198,,residential,false,0,7.5,false,false,false,0,56.0,Yaba,441860198
+W441897787,,residential,false,0,7.5,false,false,false,0,193.2,Yaba,441897787
+W441900869,,residential,false,0,7.5,false,false,false,0,134.4,Yaba,441900869
+W441900872,,residential,false,0,7.5,false,false,false,0,90.5,Yaba,441900872
+W441900885,,residential,false,0,7.5,false,false,false,0,38.4,Yaba,441900885
+W441900886,,residential,false,0,7.5,false,false,false,0,43.4,Yaba,441900886
+W441900888,,residential,false,0,7.5,false,false,false,0,259.3,Yaba,441900888
+W441900889,,service,false,0,5.0,false,false,false,0,132.9,Yaba,441900889
+W441900890,,service,false,0,5.0,false,false,false,0,282.7,Yaba,441900890
+W441900891,,service,false,0,5.0,false,false,false,0,81.7,Yaba,441900891
+W441900892,,service,false,0,5.0,true,false,false,0,418.1,Yaba,441900892
+W441900893,,service,false,0,5.0,false,false,false,0,110.6,Yaba,441900893
+W441900894,,service,false,0,5.0,false,false,false,0,143.7,Yaba,441900894
+W441900895,,service,false,0,5.0,false,false,false,0,282.7,Yaba,441900895
+W441900896,,residential,false,0,7.5,false,false,false,0,151.3,Yaba,441900896
+W441900898,,service,false,0,5.0,false,false,false,0,118.6,Yaba,441900898
+W441900899,,service,false,0,5.0,false,false,false,0,116.3,Yaba,441900899
+W441900900,,residential,false,0,7.5,false,false,false,0,59.4,Yaba,441900900
+W441900901,,residential,false,0,7.5,false,false,false,0,159.7,Yaba,441900901
+W441900902,,residential,false,0,7.5,false,false,false,0,210.0,Yaba,441900902
+W441900903,,residential,false,0,7.5,false,false,false,0,161.8,Yaba,441900903
+W441900904,,residential,false,0,7.5,false,false,false,0,313.4,Yaba,441900904
+W441900905,,residential,false,0,7.5,false,false,false,0,101.8,Yaba,441900905
+W441900906,,residential,false,0,7.5,false,false,false,0,343.4,Yaba,441900906
+W441900907,,residential,false,0,7.5,false,false,false,0,135.6,Yaba,441900907
+W441900908,,residential,false,0,7.5,false,false,false,0,174.4,Yaba,441900908
+W441900909,,residential,false,0,7.5,false,false,false,0,88.9,Yaba,441900909
+W441900910,,residential,false,0,7.5,false,false,false,0,124.2,Yaba,441900910
+W441900911,,residential,false,0,7.5,false,false,false,0,97.9,Yaba,441900911
+W441900912,,service,false,0,5.0,false,false,false,0,204.0,Yaba,441900912
+W441900922,,residential,false,0,7.5,false,false,false,0,50.2,Yaba,441900922
+W441900923,,residential,false,0,7.5,false,false,false,0,157.5,Yaba,441900923
+W441900924,,residential,false,0,7.5,false,false,false,0,35.2,Yaba,441900924
+W441900925,,service,false,0,5.0,false,false,false,0,92.3,Yaba,441900925
+W441900927,,service,false,0,5.0,false,false,false,0,314.7,Yaba,441900927
+W441900929,,residential,false,0,7.5,false,false,false,0,98.2,Yaba,441900929
+W441900930,,residential,false,0,7.5,false,false,false,0,63.7,Yaba,441900930
+W441900931,,residential,false,0,7.5,false,false,false,0,80.2,Yaba,441900931
+W441900932,,residential,false,0,7.5,false,false,false,0,72.9,Yaba,441900932
+W441900933,,residential,false,0,7.5,false,false,false,0,232.0,Yaba,441900933
+W441900934,,service,false,0,5.0,false,false,false,0,69.9,Yaba,441900934
+W441900935,,service,false,0,5.0,false,false,false,0,52.5,Yaba,441900935
+W441900936,,residential,false,0,7.5,false,false,false,0,239.4,Yaba,441900936
+W441900937,,residential,false,0,7.5,false,false,false,0,84.3,Yaba,441900937
+W441900938,,residential,false,0,7.5,false,false,false,0,211.2,Yaba,441900938
+W441900939,,service,false,0,5.0,false,false,false,0,39.3,Yaba,441900939
+W441900940,,residential,false,0,7.5,false,false,false,0,201.1,Yaba,441900940
+W441900941,,residential,false,0,7.5,false,false,false,0,242.7,Yaba,441900941
+W441900942,,residential,false,0,7.5,false,false,false,0,81.8,Yaba,441900942
+W441900943,,residential,false,0,7.5,false,false,false,0,109.5,Yaba,441900943
+W441900944,,residential,false,0,7.5,false,false,false,0,106.0,Yaba,441900944
+W441900945,,residential,false,0,7.5,false,false,false,0,101.8,Yaba,441900945
+W441900946,,residential,false,0,7.5,false,false,false,0,48.7,Yaba,441900946
+W441900948,,residential,false,0,7.5,false,false,false,0,78.2,Yaba,441900948
+W441900949,,residential,false,0,7.5,false,false,false,0,97.2,Yaba,441900949
+W441900951,,residential,false,0,7.5,false,false,false,0,78.4,Yaba,441900951
+W441900952,,residential,false,0,7.5,false,false,false,0,93.0,Yaba,441900952
+W441900953,,residential,false,0,7.5,false,false,false,0,167.2,Yaba,441900953
+W441900954,,residential,false,0,7.5,false,false,false,0,53.2,Yaba,441900954
+W441900956,,residential,false,0,7.5,false,false,false,0,54.2,Yaba,441900956
+W441900957,,residential,false,0,7.5,false,false,false,0,176.2,Yaba,441900957
+W441900958,,residential,false,0,7.5,false,false,false,0,70.3,Yaba,441900958
+W441900959,,residential,false,0,7.5,false,false,false,0,70.7,Yaba,441900959
+W441900960,,residential,false,0,7.5,false,false,false,0,69.6,Yaba,441900960
+W441900961,,residential,false,0,7.5,false,false,false,0,69.9,Yaba,441900961
+W441900962,,service,false,0,5.0,false,false,false,0,67.1,Yaba,441900962
+W461912458,,residential,false,0,7.5,false,false,false,0,193.1,Yaba,461912458
+W461912461,,residential,false,0,7.5,false,false,false,0,51.2,Yaba,461912461
+W502716275,,service,false,0,5.0,false,false,false,0,9.9,Yaba,502716275
+W525043220,,residential,false,0,7.5,false,false,false,0,240.8,Yaba,525043220
+W525043237,,residential,false,0,7.5,false,false,false,0,118.6,Yaba,525043237
+W535002799,,service,false,0,5.0,false,false,false,0,222.0,Yaba,535002799
+W535002802,,residential,false,0,7.5,false,false,false,0,58.6,Yaba,535002802
+W535002804,,residential,false,0,7.5,false,false,false,0,125.9,Yaba,535002804
+W566340685,,residential,false,1,4.3,false,false,false,0,80.4,Yaba,566340685
+W566340688,,residential,false,0,7.5,false,false,false,0,69.6,Yaba,566340688
+W566355308,,residential,false,0,7.5,false,false,false,0,110.1,Yaba,566355308
+W566355309,,residential,false,0,7.5,false,false,false,0,40.7,Yaba,566355309
+W567577856,,residential,false,0,7.5,false,false,false,0,43.3,Yaba,567577856
+W567583066,,residential,false,0,7.5,false,false,false,0,62.1,Yaba,567583066
+W567583067,,residential,false,0,7.5,false,false,false,0,33.8,Yaba,567583067
+W571295522,,residential,false,0,7.5,false,false,false,0,27.2,Yaba,571295522
+W584907566,,residential,false,0,7.5,false,false,false,0,83.2,Yaba,584907566
+W584940688,,residential,false,0,7.5,false,false,false,0,64.9,Yaba,584940688
+W584946933,,primary,false,0,17.5,true,false,false,0,12.3,Yaba,584946933
+W585144008,,service,false,0,5.0,false,false,false,0,41.8,Yaba,585144008
+W585144009,,service,false,0,5.0,false,false,false,0,126.3,Yaba,585144009
+W585144010,,service,false,0,5.0,false,false,false,0,60.6,Yaba,585144010
+W585144011,,service,false,0,5.0,false,false,false,0,284.5,Yaba,585144011
+W585144013,,service,false,0,5.0,false,false,false,0,308.6,Yaba,585144013
+W585187773,,motorway,true,0,7.5,true,false,false,0,62.9,Yaba,585187773
+W585187774,,service,false,0,5.0,false,false,false,0,85.3,Yaba,585187774
+W585187775,,service,false,0,5.0,true,false,false,0,17.0,Yaba,585187775
+W585187776,,service,false,0,5.0,true,false,false,0,19.4,Yaba,585187776
+W585187777,,residential,false,0,7.5,false,false,false,0,82.8,Yaba,585187777
+W585187778,,service,false,0,5.0,false,false,false,0,219.9,Yaba,585187778
+W585197605,,residential,false,0,7.5,false,false,false,0,35.4,Yaba,585197605
+W585203602,,residential,false,0,7.5,false,false,false,0,28.8,Yaba,585203602
+W585203603,,residential,false,0,7.5,false,true,false,0,8.8,Yaba,585203603
+W585203605,,unclassified,false,0,7.5,false,true,false,0,6.5,Yaba,585203605
+W585394440,,residential,false,0,7.5,false,false,false,0,59.3,Yaba,585394440
+W585411590,,trunk,true,0,7.5,true,false,false,0,45.1,Yaba,585411590
+W585411591,,tertiary,false,0,10.0,true,false,false,0,44.8,Yaba,585411591
+W585411592,,tertiary,false,0,10.0,true,false,false,0,25.4,Yaba,585411592
+W585433462,,secondary,false,0,13.0,true,false,false,0,31.8,Yaba,585433462
+W585433469,,secondary,false,0,13.0,true,false,true,0,66.9,Yaba,585433469
+W585433474,,residential,false,0,7.5,false,false,false,0,120.6,Yaba,585433474
+W585446622,,service,false,0,5.0,false,false,false,0,496.2,Yaba,585446622
+W585446625,,residential,false,0,7.5,false,false,false,0,130.8,Yaba,585446625
+W585456780,,tertiary,false,0,10.0,true,false,false,0,35.4,Yaba,585456780
+W585456782,,tertiary,false,0,10.0,true,false,false,0,42.3,Yaba,585456782
+W585456783,,tertiary,false,0,10.0,true,false,false,0,10.6,Yaba,585456783
+W585456784,,tertiary,false,0,10.0,true,false,false,0,10.7,Yaba,585456784
+W585456786,,tertiary,false,0,10.0,true,false,false,0,43.0,Yaba,585456786
+W585456793,,tertiary,false,0,10.0,true,false,false,0,10.2,Yaba,585456793
+W585460393,,tertiary,false,0,10.0,false,false,false,0,47.2,Yaba,585460393
+W585460394,,tertiary,false,0,10.0,true,false,true,0,32.9,Yaba,585460394
+W585469946,,service,false,0,5.0,false,false,false,0,23.7,Yaba,585469946
+W585469947,,service,false,0,5.0,false,false,false,0,25.3,Yaba,585469947
+W585736821,,service,false,0,5.0,false,false,false,0,171.1,Yaba,585736821
+W585736823,,service,false,0,5.0,false,false,false,0,75.0,Yaba,585736823
+W585736826,,service,false,0,5.0,false,false,false,0,267.6,Yaba,585736826
+W585743844,,residential,false,0,7.5,false,false,false,0,50.7,Yaba,585743844
+W585743845,,residential,false,0,7.5,false,false,false,0,31.4,Yaba,585743845
+W585743846,,residential,false,0,7.5,false,false,false,0,74.8,Yaba,585743846
+W586287271,,residential,false,0,7.5,false,false,false,0,65.6,Yaba,586287271
+W586287273,,residential,false,0,7.5,false,false,false,0,77.5,Yaba,586287273
+W586287274,,residential,false,0,7.5,false,false,false,0,86.0,Yaba,586287274
+W586296113,,residential,false,0,7.5,false,false,false,0,138.6,Yaba,586296113
+W586342441,,residential,false,0,7.5,false,false,false,0,65.1,Yaba,586342441
+W586371493,,service,false,0,5.0,false,false,false,0,47.0,Yaba,586371493
+W586376681,,primary,false,0,17.5,true,false,false,0,23.0,Yaba,586376681
+W586376683,,primary,false,0,17.5,true,false,false,0,22.8,Yaba,586376683
+W586376687,,residential,false,0,7.5,false,false,false,0,196.1,Yaba,586376687
+W586384291,,residential,false,0,7.5,false,false,false,0,56.1,Yaba,586384291
+W586387935,,service,false,0,5.0,false,false,false,0,689.4,Yaba,586387935
+W586387936,,residential,false,0,7.5,false,false,false,0,93.1,Yaba,586387936
+W586387937,,residential,false,0,7.5,false,false,false,0,62.3,Yaba,586387937
+W586387938,,residential,false,0,7.5,false,false,false,0,135.9,Yaba,586387938
+W586387939,,residential,false,0,7.5,false,false,false,0,49.6,Yaba,586387939
+W586615802,,residential,false,0,7.5,false,false,false,0,84.7,Yaba,586615802
+W586621044,,residential,false,0,7.5,false,true,false,0,12.0,Yaba,586621044
+W586621045,,residential,false,0,7.5,false,false,false,0,151.5,Yaba,586621045
+W586621046,,residential,false,0,7.5,false,false,false,0,159.7,Yaba,586621046
+W587182997,,residential,false,0,7.5,false,false,false,0,128.7,Yaba,587182997
+W587182999,,service,false,0,5.0,false,false,false,0,91.2,Yaba,587182999
+W587183001,,service,false,0,5.0,false,false,false,0,10.5,Yaba,587183001
+W587183003,,service,false,0,5.0,false,false,false,0,90.5,Yaba,587183003
+W587183005,,service,false,0,5.0,false,false,false,0,168.9,Yaba,587183005
+W587183007,,service,false,0,5.0,false,false,false,0,60.4,Yaba,587183007
+W587183009,,service,false,0,5.0,false,false,false,0,252.4,Yaba,587183009
+W587183011,,service,false,0,5.0,false,false,false,0,207.9,Yaba,587183011
+W587195424,,service,false,0,5.0,false,false,false,0,59.8,Yaba,587195424
+W587195425,,service,false,0,5.0,false,false,false,0,210.5,Yaba,587195425
+W587195426,,service,false,0,5.0,false,false,false,0,197.3,Yaba,587195426
+W587195427,,service,false,0,5.0,false,false,false,0,207.5,Yaba,587195427
+W587195428,,service,false,0,5.0,false,false,false,0,366.0,Yaba,587195428
+W587195429,,service,false,0,5.0,false,false,false,0,675.8,Yaba,587195429
+W587195430,,service,false,0,5.0,false,false,false,0,346.1,Yaba,587195430
+W587195431,,service,false,0,5.0,false,false,false,0,489.1,Yaba,587195431
+W587212209,,residential,false,0,7.5,false,false,false,0,157.7,Yaba,587212209
+W587212210,,service,false,0,5.0,false,false,false,0,98.6,Yaba,587212210
+W587221955,,secondary,false,0,13.0,true,false,true,0,27.8,Yaba,587221955
+W587221959,,residential,false,0,7.5,false,false,false,0,125.5,Yaba,587221959
+W587457478,,service,false,0,5.0,false,false,false,0,7.3,Yaba,587457478
+W587457479,,track,false,0,4.0,false,false,false,0,207.3,Yaba,587457479
+W587457480,,service,false,0,5.0,false,false,false,0,184.5,Yaba,587457480
+W587457481,,service,false,0,5.0,false,false,false,0,3.4,Yaba,587457481
+W587457482,,service,false,0,5.0,false,false,false,0,100.1,Yaba,587457482
+W587457483,,service,false,0,5.0,false,false,false,0,8.8,Yaba,587457483
+W587463008,,residential,false,0,7.5,false,false,false,0,69.5,Yaba,587463008
+W587479951,,service,false,0,5.0,false,false,false,0,244.2,Yaba,587479951
+W587479954,,service,false,0,5.0,false,false,false,0,1409.1,Yaba,587479954
+W587479957,,residential,false,0,7.5,false,false,false,0,70.8,Yaba,587479957
+W587479958,,service,false,0,5.0,false,false,false,0,51.8,Yaba,587479958
+W587479959,,service,false,0,5.0,false,false,false,0,161.5,Yaba,587479959
+W587488324,,service,false,0,5.0,false,false,false,0,125.7,Yaba,587488324
+W587494343,,residential,false,0,7.5,false,false,false,0,30.1,Yaba,587494343
+W587494345,,unclassified,false,0,7.5,false,false,false,0,24.6,Yaba,587494345
+W587512826,,service,false,0,5.0,false,false,false,0,5.5,Yaba,587512826
+W587512827,,service,false,0,5.0,true,false,false,0,19.7,Yaba,587512827
+W587512828,,service,false,0,5.0,true,false,false,0,179.0,Yaba,587512828
+W587512829,,service,false,0,5.0,true,false,false,0,10.0,Yaba,587512829
+W587512830,,service,false,0,5.0,true,false,false,0,172.5,Yaba,587512830
+W587512831,,residential,false,0,7.5,false,false,false,0,56.2,Yaba,587512831
+W587512832,,service,false,0,5.0,false,false,false,0,88.0,Yaba,587512832
+W587523782,,service,false,0,5.0,false,false,false,0,5.8,Yaba,587523782
+W587529638,,residential,false,0,7.5,false,false,false,0,15.1,Yaba,587529638
+W588131680,,residential,false,0,7.5,false,false,false,0,79.6,Yaba,588131680
+W588143437,,residential,false,0,7.5,false,false,false,0,85.7,Yaba,588143437
+W588415330,,residential,false,0,7.5,false,false,false,0,102.1,Yaba,588415330
+W588552691,,service,false,0,5.0,true,false,false,0,14.7,Yaba,588552691
+W588552694,,service,false,0,5.0,true,false,false,0,15.3,Yaba,588552694
+W588552696,,service,false,0,5.0,false,false,false,0,42.4,Yaba,588552696
+W588552698,,service,false,0,5.0,false,false,false,0,52.6,Yaba,588552698
+W588552700,,service,false,0,5.0,false,false,false,0,37.0,Yaba,588552700
+W588552701,,service,false,0,5.0,false,false,false,0,104.3,Yaba,588552701
+W588552703,,service,false,0,5.0,false,false,false,0,59.3,Yaba,588552703
+W588552705,,service,false,0,5.0,true,false,false,0,92.3,Yaba,588552705
+W588552707,,service,false,0,5.0,true,false,false,0,92.1,Yaba,588552707
+W588552709,,service,false,0,5.0,true,false,true,0,31.5,Yaba,588552709
+W588552712,,service,false,0,5.0,false,false,false,0,414.2,Yaba,588552712
+W588552715,,residential,false,0,7.5,false,false,false,0,165.9,Yaba,588552715
+W588583594,,residential,false,0,7.5,false,false,false,0,71.8,Yaba,588583594
+W588825693,,service,false,0,5.0,false,false,false,0,7.6,Yaba,588825693
+W589237850,,residential,false,0,7.5,false,false,false,0,619.4,Yaba,589237850
+W589237851,,residential,false,0,7.5,false,false,false,0,119.8,Yaba,589237851
+W591633250,,residential,false,0,7.5,false,false,false,0,28.1,Yaba,591633250
+W592191532,,service,false,0,5.0,false,false,false,0,77.0,Yaba,592191532
+W602952317,,unclassified,false,0,7.5,false,false,false,0,12.6,Yaba,602952317
+W603631055,,unclassified,false,0,7.5,false,false,false,0,52.3,Yaba,603631055
+W603647259,,service,false,0,5.0,false,false,false,0,41.4,Yaba,603647259
+W603647720,,service,false,0,5.0,false,false,false,0,117.6,Yaba,603647720
+W603650957,,residential,false,0,7.5,false,false,false,0,50.7,Yaba,603650957
+W603652533,,service,false,0,5.0,false,false,false,0,52.4,Yaba,603652533
+W603653086,,service,false,0,5.0,false,false,false,0,30.5,Yaba,603653086
+W603655289,,residential,false,0,7.5,false,false,false,0,102.5,Yaba,603655289
+W603868049,,residential,false,0,7.5,false,false,false,0,44.6,Yaba,603868049
+W605212418,,secondary,false,0,13.0,true,false,true,0,32.8,Yaba,605212418
+W606212716,,motorway,true,0,7.5,true,false,false,0,40.3,Yaba,606212716
+W606214293,,motorway,true,0,7.5,true,false,false,0,37.5,Yaba,606214293
+W607289915,,primary,true,0,7.5,false,false,false,0,10.1,Yaba,607289915
+W693550308,,secondary,true,0,7.5,true,false,false,0,25.1,Yaba,693550308
+W693550309,,secondary,true,0,7.5,true,false,false,0,56.0,Yaba,693550309
+W693550310,,secondary,false,0,13.0,true,false,false,0,45.1,Yaba,693550310
+W707208532,,service,false,0,5.0,false,false,false,0,102.6,Yaba,707208532
+W707208540,,service,false,0,5.0,false,false,false,0,182.4,Yaba,707208540
+W707208545,,service,false,0,5.0,true,false,false,0,170.2,Yaba,707208545
+W707208550,,service,false,0,5.0,false,false,false,0,58.1,Yaba,707208550
+W707208551,,service,false,0,5.0,false,false,false,0,62.1,Yaba,707208551
+W707225657,,service,false,0,5.0,false,false,false,0,57.4,Yaba,707225657
+W707225658,,service,false,0,5.0,false,false,false,0,56.8,Yaba,707225658
+W707225672,,service,false,0,5.0,false,false,false,0,74.1,Yaba,707225672
+W707225673,,service,false,0,5.0,false,false,false,0,74.1,Yaba,707225673
+W707234084,,service,false,0,5.0,false,false,false,0,244.3,Yaba,707234084
+W707234124,,service,false,0,5.0,false,false,false,0,69.3,Yaba,707234124
+W707234125,,service,false,0,5.0,false,false,false,0,91.9,Yaba,707234125
+W707234126,,service,false,0,5.0,false,false,false,0,72.4,Yaba,707234126
+W707234170,,service,false,0,5.0,false,false,false,0,216.3,Yaba,707234170
+W707234171,,service,false,0,5.0,false,false,false,0,43.5,Yaba,707234171
+W707234210,,residential,false,0,7.5,false,false,false,0,65.5,Yaba,707234210
+W707240031,,service,false,0,5.0,false,false,false,0,280.4,Yaba,707240031
+W707240032,,service,false,0,5.0,false,false,false,0,44.5,Yaba,707240032
+W707240042,,service,false,0,5.0,false,false,false,0,107.8,Yaba,707240042
+W707240079,,service,false,0,5.0,false,false,false,0,75.6,Yaba,707240079
+W707240089,,service,false,0,5.0,false,false,false,0,45.0,Yaba,707240089
+W707240090,,service,false,0,5.0,false,false,false,0,51.5,Yaba,707240090
+W707240091,,service,false,0,5.0,false,false,false,0,51.5,Yaba,707240091
+W707240092,,service,false,0,5.0,false,false,false,0,41.1,Yaba,707240092
+W707240093,,service,false,0,5.0,false,false,false,0,50.5,Yaba,707240093
+W707240094,,service,false,0,5.0,false,false,false,0,51.5,Yaba,707240094
+W707240095,,service,false,0,5.0,false,false,false,0,54.4,Yaba,707240095
+W707240096,,service,false,0,5.0,false,false,false,0,60.4,Yaba,707240096
+W707240097,,service,false,0,5.0,false,false,false,0,51.5,Yaba,707240097
+W707240098,,service,false,0,5.0,false,false,false,0,51.5,Yaba,707240098
+W707240099,,service,false,0,5.0,false,false,false,0,66.4,Yaba,707240099
+W707240100,,service,false,0,5.0,false,false,false,0,67.4,Yaba,707240100
+W707240106,,service,false,0,5.0,false,false,false,0,299.4,Yaba,707240106
+W707240107,,service,false,0,5.0,false,false,false,0,50.6,Yaba,707240107
+W707240108,,service,false,0,5.0,false,false,false,0,42.1,Yaba,707240108
+W707240109,,service,false,0,5.0,false,false,false,0,30.6,Yaba,707240109
+W707240118,,service,false,0,5.0,false,false,false,0,151.9,Yaba,707240118
+W707240119,,service,false,0,5.0,false,false,false,0,103.6,Yaba,707240119
+W707240120,,service,false,0,5.0,false,false,false,0,57.4,Yaba,707240120
+W707610963,,service,false,0,5.0,false,false,false,0,304.5,Yaba,707610963
+W707858103,,service,false,0,5.0,false,false,false,0,353.2,Yaba,707858103
+W726123011,,service,false,0,5.0,false,false,false,0,63.2,Yaba,726123011
+W726605685,,service,false,0,5.0,false,false,false,0,544.0,Yaba,726605685
+W726605686,,service,false,0,5.0,false,false,false,0,241.9,Yaba,726605686
+W726607946,,service,false,0,5.0,false,false,false,0,704.1,Yaba,726607946
+W726612672,,residential,false,0,7.5,false,false,false,0,70.8,Yaba,726612672
+W726763340,,residential,false,0,7.5,false,false,false,0,38.6,Yaba,726763340
+W726763341,,residential,false,0,7.5,false,true,false,0,21.4,Yaba,726763341
+W726763342,,residential,false,0,7.5,false,false,false,0,197.3,Yaba,726763342
+W726767479,,residential,false,0,7.5,false,false,false,0,435.9,Yaba,726767479
+W727697435,,service,false,0,5.0,false,false,false,0,39.8,Yaba,727697435
+W727697436,,service,false,0,5.0,false,false,false,0,19.4,Yaba,727697436
+W727697437,,service,false,0,5.0,false,false,false,0,17.6,Yaba,727697437
+W727697438,,service,false,0,5.0,false,false,false,0,57.2,Yaba,727697438
+W727697439,,service,false,0,5.0,false,false,false,0,118.1,Yaba,727697439
+W727701870,,service,false,0,5.0,true,false,false,0,285.0,Yaba,727701870
+W727701871,,service,false,0,5.0,true,false,false,0,238.7,Yaba,727701871
+W735021281,,track,false,0,4.0,false,false,false,0,392.9,Yaba,735021281
+W735339451,,service,false,0,5.0,false,false,false,0,81.9,Yaba,735339451
+W738080206,,service,false,0,5.0,true,false,false,0,79.5,Yaba,738080206
+W738080207,,service,false,0,5.0,true,false,false,0,98.8,Yaba,738080207
+W738080208,,service,false,0,5.0,false,false,false,0,14.2,Yaba,738080208
+W738080209,,service,false,0,5.0,false,false,false,0,20.7,Yaba,738080209
+W738080210,,service,false,0,5.0,false,false,false,0,43.4,Yaba,738080210
+W738080211,,service,false,0,5.0,false,false,false,0,101.8,Yaba,738080211
+W738094217,,service,false,0,5.0,false,false,false,0,43.9,Yaba,738094217
+W738094218,,service,false,0,5.0,false,false,false,0,71.2,Yaba,738094218
+W738094219,,service,false,0,5.0,false,false,false,0,45.2,Yaba,738094219
+W738094220,,service,false,0,5.0,false,false,false,0,224.5,Yaba,738094220
+W738094221,,service,false,0,5.0,false,false,false,0,132.2,Yaba,738094221
+W738151575,,service,false,0,5.0,false,false,false,0,200.8,Yaba,738151575
+W738151576,,service,false,0,5.0,false,false,false,0,60.0,Yaba,738151576
+W738151577,,service,false,0,5.0,false,false,false,0,161.2,Yaba,738151577
+W741295049,,service,false,0,5.0,false,false,false,0,199.2,Yaba,741295049
+W744253022,,residential,false,0,7.5,true,false,false,0,6.0,Yaba,744253022
+W744253023,,residential,false,0,7.5,false,false,false,0,56.2,Yaba,744253023
+W745256492,,residential,false,0,7.5,false,false,false,0,32.3,Yaba,745256492
+W745373603,,residential,false,0,7.5,false,false,false,0,8.9,Yaba,745373603
+W745373604,,residential,false,0,7.5,false,false,false,0,38.1,Yaba,745373604
+W745376607,,service,false,0,5.0,false,false,false,0,151.9,Yaba,745376607
+W745376613,,service,false,0,5.0,false,false,false,0,49.5,Yaba,745376613
+W745400845,,residential,false,0,7.5,false,false,false,0,99.1,Yaba,745400845
+W745462896,,residential,false,0,7.5,false,false,false,0,75.4,Yaba,745462896
+W745665072,,residential,false,0,7.5,false,false,false,0,110.3,Yaba,745665072
+W745665073,,residential,false,0,7.5,false,false,false,0,39.7,Yaba,745665073
+W745997629,,residential,false,0,7.5,false,false,false,0,136.7,Yaba,745997629
+W746459146,,track,false,0,4.0,false,true,false,0,9.1,Yaba,746459146
+W746459147,,track,false,0,4.0,false,false,false,0,196.4,Yaba,746459147
+W746474671,,track,false,0,4.0,false,false,false,0,121.6,Yaba,746474671
+W761165368,,service,false,0,5.0,false,false,false,0,96.6,Yaba,761165368
+W761165369,,service,false,0,5.0,false,false,false,0,173.1,Yaba,761165369
+W761196197,,service,false,0,5.0,false,false,false,0,56.6,Yaba,761196197
+W761438572,,service,false,0,5.0,false,false,false,0,61.3,Yaba,761438572
+W761438573,,service,false,0,5.0,false,false,false,0,125.1,Yaba,761438573
+W784100221,,service,false,0,5.0,false,false,false,0,219.0,Yaba,784100221
+W784100225,,service,false,0,5.0,false,false,false,0,306.2,Yaba,784100225
+W784132882,,residential,false,0,7.5,false,false,false,0,82.2,Yaba,784132882
+W784132883,,residential,false,0,7.5,false,false,false,0,73.4,Yaba,784132883
+W784657618,,residential,false,0,7.5,false,false,false,0,57.1,Yaba,784657618
+W784657619,,residential,false,0,7.5,false,false,false,0,62.1,Yaba,784657619
+W784670776,,service,false,0,5.0,true,false,false,0,36.9,Yaba,784670776
+W784671731,,service,false,0,5.0,false,false,false,0,90.7,Yaba,784671731
+W784672561,,service,false,0,5.0,false,false,false,0,43.1,Yaba,784672561
+W784673411,,service,false,0,5.0,false,false,false,0,73.3,Yaba,784673411
+W784674031,,service,false,0,5.0,false,false,false,0,55.2,Yaba,784674031
+W784690826,,service,false,0,5.0,false,false,false,0,38.1,Yaba,784690826
+W784969114,,service,false,0,5.0,false,false,false,0,263.0,Yaba,784969114
+W784969726,,service,false,0,5.0,false,false,false,0,242.8,Yaba,784969726
+W784970105,,service,false,0,5.0,false,false,false,0,62.4,Yaba,784970105
+W784970656,,service,false,0,5.0,false,false,false,0,211.4,Yaba,784970656
+W784990395,,residential,false,0,7.5,false,false,false,0,60.7,Yaba,784990395
+W791944505,,residential,false,0,7.5,false,false,false,0,30.2,Yaba,791944505
+W791944506,,residential,false,0,7.5,false,false,false,0,34.1,Yaba,791944506
+W793477246,,residential,false,0,7.5,false,false,false,0,156.0,Yaba,793477246
+W793477249,,residential,false,0,7.5,false,false,false,0,75.0,Yaba,793477249
+W793621176,,service,false,0,5.0,false,false,false,0,124.3,Yaba,793621176
+W828128652,,residential,false,0,7.5,false,false,false,0,86.7,Yaba,828128652
+W828705442,,service,false,0,5.0,true,false,false,0,109.9,Yaba,828705442
+W828705443,,service,false,0,5.0,true,false,false,0,36.5,Yaba,828705443
+W828811028,,service,false,0,5.0,false,false,false,0,79.0,Yaba,828811028
+W828811029,,service,false,0,5.0,false,false,false,0,25.6,Yaba,828811029
+W832233705,,service,false,0,5.0,true,false,false,0,49.7,Yaba,832233705
+W832233706,,service,false,0,5.0,true,false,false,0,231.8,Yaba,832233706
+W832526324,,residential,false,0,7.5,true,false,false,0,77.3,Yaba,832526324
+W848755301,,service,false,0,5.0,false,false,false,0,104.8,Yaba,848755301
+W848755302,,service,false,0,5.0,false,false,false,0,31.7,Yaba,848755302
+W848755303,,service,false,0,5.0,false,false,false,0,36.5,Yaba,848755303
+W848757222,,service,false,0,5.0,false,false,false,0,28.4,Yaba,848757222
+W848757223,,residential,false,0,7.5,false,false,false,0,164.6,Yaba,848757223
+W848757224,,residential,false,0,7.5,false,false,false,0,22.0,Yaba,848757224
+W848757225,,service,false,0,5.0,false,false,false,0,70.0,Yaba,848757225
+W848757226,,service,false,0,5.0,false,false,false,0,63.0,Yaba,848757226
+W848757227,,service,false,0,5.0,false,false,false,0,57.7,Yaba,848757227
+W850025783,,service,false,0,5.0,true,false,false,0,95.1,Yaba,850025783
+W850081799,,service,false,0,5.0,false,false,false,0,65.2,Yaba,850081799
+W850081800,,service,false,0,5.0,false,false,false,0,43.2,Yaba,850081800
+W850081801,,service,false,0,5.0,false,false,false,0,36.8,Yaba,850081801
+W850081802,,residential,false,0,7.5,true,false,false,0,126.5,Yaba,850081802
+W850081803,,service,false,0,5.0,false,false,false,0,58.0,Yaba,850081803
+W850081804,,service,false,0,5.0,false,false,false,0,57.2,Yaba,850081804
+W850081805,,service,false,0,5.0,false,false,false,0,35.2,Yaba,850081805
+W850081806,,service,false,0,5.0,false,false,false,0,70.7,Yaba,850081806
+W850081807,,service,false,0,5.0,false,false,false,0,85.8,Yaba,850081807
+W850388935,,service,false,0,5.0,false,false,false,0,16.4,Yaba,850388935
+W850388936,,service,false,0,5.0,false,false,false,0,33.8,Yaba,850388936
+W869775959,,residential,false,0,7.5,false,false,false,0,186.8,Yaba,869775959
+W912533150,,service,false,0,5.0,false,false,false,0,5.9,Yaba,912533150
+W912533151,,service,false,0,5.0,false,false,false,0,36.4,Yaba,912533151
+W94891523,,residential,false,0,7.5,false,false,false,0,184.2,Yaba,94891523
+W94968494,,residential,false,0,7.5,false,false,false,0,137.4,Yaba,94968494
+W94968499,,residential,false,0,7.5,false,false,false,0,51.6,Yaba,94968499
+W94968505,,residential,false,0,7.5,false,false,false,0,197.4,Yaba,94968505
+W94968509,,residential,false,0,7.5,false,false,false,0,226.8,Yaba,94968509
+W94968516,,residential,false,0,7.5,false,false,false,0,146.9,Yaba,94968516
+W94968518,,residential,false,0,7.5,false,false,false,0,265.0,Yaba,94968518
+W94968522,,residential,false,0,7.5,false,true,false,0,26.2,Yaba,94968522
+W94968533,,residential,false,0,7.5,false,false,false,0,151.5,Yaba,94968533
+W94968536,,residential,false,0,7.5,false,false,false,0,87.5,Yaba,94968536
+W94968540,,residential,false,0,7.5,false,false,false,0,194.7,Yaba,94968540
+W94968541,,residential,false,0,7.5,false,false,false,0,300.0,Yaba,94968541
+W94968544,,residential,false,0,7.5,false,false,false,0,83.2,Yaba,94968544
+W94968547,,residential,false,0,7.5,false,false,false,0,64.0,Yaba,94968547
+W94968551,,residential,false,0,7.5,false,true,false,0,29.4,Yaba,94968551
+W94968552,,residential,false,0,7.5,false,false,false,0,102.8,Yaba,94968552
+W94968563,,residential,false,0,7.5,false,false,false,0,519.0,Yaba,94968563
+W964455004,,service,false,0,5.0,false,false,false,0,34.2,Yaba,964455004
+W964455091,,service,false,0,5.0,false,false,false,0,219.7,Yaba,964455091
+W964457202,,service,false,0,5.0,false,false,false,0,76.4,Yaba,964457202
+W964457203,,service,false,0,5.0,false,false,false,0,14.7,Yaba,964457203
+W964457204,,service,false,0,5.0,false,false,false,0,62.3,Yaba,964457204
+W964457205,,service,false,0,5.0,false,false,false,0,25.9,Yaba,964457205
+W964457206,,service,false,0,5.0,false,false,false,0,14.9,Yaba,964457206
+W964457207,,service,false,0,5.0,false,false,false,0,20.2,Yaba,964457207
+W964457208,,service,false,0,5.0,false,false,false,0,60.2,Yaba,964457208
+W964457209,,service,false,0,5.0,false,false,false,0,88.7,Yaba,964457209
+W964459549,,service,false,0,5.0,false,false,false,0,125.0,Yaba,964459549
+W964459550,,service,false,0,5.0,false,false,false,0,65.0,Yaba,964459550
+W964459818,,service,false,0,5.0,false,false,false,0,45.4,Yaba,964459818
+W964459819,,service,false,0,5.0,false,false,false,0,50.5,Yaba,964459819
+W964461007,,service,false,0,5.0,false,false,false,0,51.5,Yaba,964461007
+W964461009,,service,false,0,5.0,false,false,false,0,80.2,Yaba,964461009
+W964461702,,service,false,0,5.0,false,false,false,0,29.7,Yaba,964461702
+W964461703,,service,false,0,5.0,false,false,false,0,107.5,Yaba,964461703
+W964504702,,residential,false,0,7.5,false,false,false,0,90.6,Yaba,964504702
+W964507799,,service,false,0,5.0,false,false,false,0,75.2,Yaba,964507799
+W964507800,,service,false,0,5.0,false,false,false,0,247.5,Yaba,964507800
+W964507801,,service,false,0,5.0,false,false,false,0,69.9,Yaba,964507801
+W964507802,,service,false,0,5.0,false,false,false,0,81.5,Yaba,964507802
+W964907758,,service,false,0,5.0,false,false,false,0,10.5,Yaba,964907758
+W964907759,,service,false,0,5.0,false,false,false,0,51.9,Yaba,964907759
+W964918354,,service,false,0,5.0,false,false,false,0,47.5,Yaba,964918354
+W964918355,,service,false,0,5.0,false,false,false,0,59.4,Yaba,964918355
+W964918356,,service,false,0,5.0,false,false,false,0,36.7,Yaba,964918356
+W964918357,,service,false,0,5.0,false,false,false,0,19.7,Yaba,964918357
+W964918358,,service,false,0,5.0,false,false,false,0,29.0,Yaba,964918358
+W964918359,,service,false,0,5.0,false,false,false,0,74.4,Yaba,964918359
+W964918361,,service,false,0,5.0,false,false,false,0,61.2,Yaba,964918361
+W964918362,,service,false,0,5.0,false,false,false,0,170.8,Yaba,964918362
+W964918363,,service,false,0,5.0,false,false,false,0,68.1,Yaba,964918363
+W964918364,,service,false,0,5.0,false,false,false,0,116.6,Yaba,964918364
+W964918365,,service,false,0,5.0,false,false,false,0,27.3,Yaba,964918365
+W964918366,,service,false,0,5.0,false,false,false,0,58.5,Yaba,964918366
+W964918367,,service,false,0,5.0,false,false,false,0,80.2,Yaba,964918367
+W964918368,,service,false,0,5.0,false,false,false,0,74.8,Yaba,964918368
+W964918369,,service,false,0,5.0,false,false,false,0,49.3,Yaba,964918369
+W964926109,,service,false,0,5.0,false,false,false,0,110.5,Yaba,964926109
+W965519555,,service,false,0,5.0,false,false,false,0,125.5,Yaba,965519555
+W965522235,,service,false,0,5.0,false,false,false,0,30.4,Yaba,965522235
+W965522236,,service,false,0,5.0,false,false,false,0,106.2,Yaba,965522236
+W965522237,,residential,false,0,7.5,false,false,false,0,150.3,Yaba,965522237
+W965522238,,service,false,0,5.0,false,false,false,0,39.5,Yaba,965522238
+W965522239,,service,false,0,5.0,false,false,false,0,64.4,Yaba,965522239
+W965522240,,residential,false,0,7.5,false,false,false,0,76.1,Yaba,965522240
+W965522243,,service,false,0,5.0,false,false,false,0,52.1,Yaba,965522243
+W965522244,,service,false,0,5.0,false,false,false,0,93.4,Yaba,965522244
+W965522245,,service,false,0,5.0,false,false,false,0,48.8,Yaba,965522245
+W965522246,,service,false,0,5.0,false,false,false,0,37.6,Yaba,965522246
+W965524486,,service,false,0,5.0,false,false,false,0,61.8,Yaba,965524486
+W965524487,,service,false,0,5.0,false,false,false,0,82.7,Yaba,965524487
+W965524488,,service,false,0,5.0,false,false,false,0,155.5,Yaba,965524488
+W965525698,,service,false,0,5.0,false,false,false,0,71.9,Yaba,965525698
+W965525699,,service,false,0,5.0,false,false,false,0,118.4,Yaba,965525699
+W965525700,,service,false,0,5.0,false,false,false,0,23.4,Yaba,965525700
+W965525701,,service,false,0,5.0,false,false,false,0,98.9,Yaba,965525701
+W965528060,,residential,false,0,7.5,false,false,false,0,70.0,Yaba,965528060
+W965529158,,service,false,0,5.0,false,false,false,0,63.1,Yaba,965529158
+W965535950,,service,false,0,5.0,false,false,false,0,41.4,Yaba,965535950
+W965537152,,service,false,0,5.0,false,false,false,0,129.7,Yaba,965537152
+W965538206,,service,false,0,5.0,false,false,false,0,27.3,Yaba,965538206
+W965560558,,service,false,0,5.0,false,false,false,0,52.0,Yaba,965560558
+W965563327,,service,false,0,5.0,false,false,false,0,40.3,Yaba,965563327
+W965563328,,service,false,0,5.0,false,false,false,0,73.6,Yaba,965563328
+W965563329,,service,false,0,5.0,false,false,false,0,42.7,Yaba,965563329
+W965563330,,service,false,0,5.0,false,false,false,0,84.5,Yaba,965563330
+W965569410,,service,false,0,5.0,false,false,false,0,50.8,Yaba,965569410
+W965570402,,service,false,0,5.0,false,false,false,0,102.5,Yaba,965570402
+W965817504,,residential,false,0,7.5,false,false,false,0,72.0,Yaba,965817504
+W965817505,,residential,false,0,7.5,false,false,false,0,87.2,Yaba,965817505
+W965818104,,service,false,0,5.0,false,false,false,0,119.6,Yaba,965818104
+W965820018,,service,false,0,5.0,false,false,false,0,81.8,Yaba,965820018
+W965823094,,service,false,0,5.0,false,false,false,0,45.7,Yaba,965823094
+W965833265,,service,false,0,5.0,false,false,false,0,28.8,Yaba,965833265
+W965833948,,service,false,0,5.0,false,false,false,0,44.1,Yaba,965833948
+W965833949,,service,false,0,5.0,false,false,false,0,78.8,Yaba,965833949
+W975952471,,service,false,0,5.0,false,false,false,0,239.7,Yaba,975952471
+W975952472,,service,false,0,5.0,false,false,false,0,64.3,Yaba,975952472
+W987499835,,residential,false,0,7.5,false,false,false,0,108.2,Yaba,987499835

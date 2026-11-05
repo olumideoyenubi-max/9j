@@ -1,0 +1,1649 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W152898331,Aare Adedeji Okunnbi Street,residential,false,0,7.5,false,false,false,0,245.6,Lekki Phase 1,152898331
+W1502973426,Abayomi Durosinmi-Etti Street,residential,false,0,7.5,false,false,false,0,20.9,Lekki Phase 1,1502973426
+W152882202,Abayomi Durosinmi-Etti Street,residential,false,0,7.5,false,false,false,0,304.7,Lekki Phase 1,152882202
+W138040529,Abayomi Shonuga Crescent,residential,false,0,7.5,false,false,false,0,401.7,Lekki Phase 1,138040529
+W294599772,Abeke Ogunkoya Drive,residential,false,0,7.5,false,false,false,0,238.2,Lekki Phase 1,294599772
+W138040484,Abike Sulaiman Street,residential,false,0,7.5,false,false,false,0,473.8,Lekki Phase 1,138040484
+W294603100,Abimbola Close,residential,false,0,7.5,false,false,false,0,125.3,Lekki Phase 1,294603100
+W146602666,Abiodun Awosika Street,residential,false,0,7.5,false,false,false,0,176.8,Lekki Phase 1,146602666
+W146602667,Abiodun Ikomi Street,residential,false,0,7.5,false,false,false,0,223.8,Lekki Phase 1,146602667
+W351485520,Abiodun opeifa street,residential,false,0,7.5,false,false,false,20,414.6,Lekki Phase 1,351485520
+W294603114,Abioro Street,residential,false,0,7.5,false,false,false,0,362.2,Lekki Phase 1,294603114
+W294603131,Abioro Street,residential,false,0,7.5,false,false,false,0,58.7,Lekki Phase 1,294603131
+W294943620,Access Road,residential,false,0,7.5,false,false,false,0,661.9,Lekki Phase 1,294943620
+W588919058,Adebisi Ladejobi Close,residential,false,0,7.5,false,false,false,0,190.2,Lekki Phase 1,588919058
+W138040499,Adebisi Ogunniyi Crescent,residential,false,0,7.5,false,false,false,0,828.1,Lekki Phase 1,138040499
+W146602664,Adebisi Popoola Crescent,residential,false,0,7.5,false,false,false,0,718.1,Lekki Phase 1,146602664
+W152415203,Adedapo Williams Close,residential,false,0,7.5,false,false,false,0,127.8,Lekki Phase 1,152415203
+W294603087,Adedeji Adekola Street,residential,false,0,7.5,false,false,false,0,839.7,Lekki Phase 1,294603087
+W294996608,Ademi Adetayo Street,residential,false,0,7.5,false,false,false,0,125.1,Lekki Phase 1,294996608
+W294996609,Ademi Adetayo Street,residential,false,0,7.5,false,false,false,0,126.9,Lekki Phase 1,294996609
+W294996625,Ademi Adetayo Street,residential,false,0,7.5,false,false,false,0,319.8,Lekki Phase 1,294996625
+W294996627,Ademi Adetayo Street,residential,false,0,7.5,false,false,false,0,315.6,Lekki Phase 1,294996627
+W536506108,Adenike Wole Ajibode Street,residential,false,0,7.5,false,false,false,0,247.3,Lekki Phase 1,536506108
+W536506114,Adesegun Okunuga Street,residential,false,0,7.5,false,false,false,0,1045.0,Lekki Phase 1,536506114
+W536506122,Adetola Ayeni Street,residential,false,0,7.5,false,false,false,0,183.6,Lekki Phase 1,536506122
+W1441771881,Adewale Kolawole Crescent,residential,false,0,7.5,false,false,false,0,25.3,Lekki Phase 1,1441771881
+W1441771882,Adewale Kolawole Crescent,residential,false,0,7.5,false,false,false,0,7.8,Lekki Phase 1,1441771882
+W1441771883,Adewale Kolawole Crescent,residential,false,0,7.5,false,false,false,0,77.3,Lekki Phase 1,1441771883
+W294869751,Adewale Kolawole Crescent,residential,false,0,7.5,false,false,false,0,736.1,Lekki Phase 1,294869751
+W138040547,Adewole Kuku Street,residential,false,0,7.5,false,false,false,0,353.0,Lekki Phase 1,138040547
+W1426055783,Adewunmi Adebimpe Street,secondary,false,2,7.6,true,true,false,0,4.5,Lekki Phase 1,1426055783
+W1426055784,Adewunmi Adebimpe Street,secondary,false,2,7.6,true,false,false,0,5.6,Lekki Phase 1,1426055784
+W1426055785,Adewunmi Adebimpe Street,secondary,false,2,7.6,true,false,false,0,4.8,Lekki Phase 1,1426055785
+W1426055786,Adewunmi Adebimpe Street,secondary,false,2,7.6,true,true,false,0,4.9,Lekki Phase 1,1426055786
+W1426055787,Adewunmi Adebimpe Street,secondary,false,2,7.6,true,false,false,0,4.6,Lekki Phase 1,1426055787
+W1426055788,Adewunmi Adebimpe Street,secondary,false,2,7.6,true,false,false,0,5.7,Lekki Phase 1,1426055788
+W294869720,Adewunmi Adebimpe Street,secondary,false,2,7.6,true,false,false,0,634.3,Lekki Phase 1,294869720
+W294869777,Adewunmi Adebimpe Street,secondary,false,2,7.6,true,false,false,0,637.6,Lekki Phase 1,294869777
+W625147461,Adewunmi Adebimpe Street,secondary,false,0,13.0,true,false,false,0,14.6,Lekki Phase 1,625147461
+W625147462,Adewunmi Adebimpe Street,secondary,false,0,13.0,true,false,false,0,16.3,Lekki Phase 1,625147462
+W544212497,Adgboruwa Avenue,residential,false,0,7.5,false,false,false,0,126.6,Lekki Phase 1,544212497
+W294603128,Admiral Ayinla Way,residential,false,0,7.5,false,false,false,0,358.4,Lekki Phase 1,294603128
+W152882248,Admiral Gabriel Okoi Street,residential,false,0,7.5,false,false,false,0,361.2,Lekki Phase 1,152882248
+W152882239,Admiral Macaulay Close,residential,false,0,7.5,false,false,false,0,156.3,Lekki Phase 1,152882239
+W294599769,Admiralty Road,tertiary,false,0,10.0,true,false,false,0,1328.1,Lekki Phase 1,294599769
+W294599755,Admiralty Way,primary,false,2,7.6,true,false,false,0,528.4,Lekki Phase 1,294599755
+W294599763,Admiralty Way,primary,false,2,7.6,true,false,false,0,1718.7,Lekki Phase 1,294599763
+W294599766,Admiralty Way,primary,false,2,7.6,true,false,false,0,538.5,Lekki Phase 1,294599766
+W294599770,Admiralty Way,primary,false,2,7.6,true,false,false,0,1713.6,Lekki Phase 1,294599770
+W294599771,Admiralty Way,primary,false,2,7.6,true,true,false,0,30.1,Lekki Phase 1,294599771
+W294599773,Admiralty Way,primary,false,2,7.6,true,true,false,0,29.1,Lekki Phase 1,294599773
+W294603137,Ahmad Tijani Otton Street,residential,false,0,7.5,false,false,false,0,278.1,Lekki Phase 1,294603137
+W294996637,Ajifoluke Avenue,residential,false,0,7.5,false,false,false,0,331.1,Lekki Phase 1,294996637
+W152415217,Akanni Bashorun Street,residential,false,0,7.5,false,false,false,0,347.2,Lekki Phase 1,152415217
+W152898347,Akintola Ajeigbe Street,residential,false,0,7.5,false,false,false,0,224.4,Lekki Phase 1,152898347
+W294603138,Akintunde Adeyemi Drive,residential,false,0,7.5,false,false,false,0,747.2,Lekki Phase 1,294603138
+W294869728,Akinyemi Road,residential,false,0,7.5,false,false,false,0,492.7,Lekki Phase 1,294869728
+W1107058577,Alaka Way,residential,false,0,7.5,false,false,false,0,84.2,Lekki Phase 1,1107058577
+W536506123,Alaka Way,residential,false,0,7.5,false,false,false,0,184.1,Lekki Phase 1,536506123
+W152415212,Alh. Dr. Akami Azeez Street,residential,false,0,7.5,false,false,false,0,342.0,Lekki Phase 1,152415212
+W138040528,Alhaji Hakeen Odumosu Street,residential,false,0,7.5,false,false,false,0,251.1,Lekki Phase 1,138040528
+W294603158,Alhaji Kuburat Lawal,residential,false,0,7.5,false,false,false,0,111.0,Lekki Phase 1,294603158
+W599933048,Alhaji Muibi Daramola Road,unclassified,false,0,7.5,false,false,false,0,263.9,Lekki Phase 1,599933048
+W588862663,Aro Bamgbose Close,residential,false,0,7.5,false,false,false,0,32.6,Lekki Phase 1,588862663
+W146602660,Awudu Ekpekha Boulevard,residential,false,0,7.5,false,false,false,0,574.4,Lekki Phase 1,146602660
+W1342097650,Ayigoro Street,residential,false,0,7.5,false,false,false,0,17.3,Lekki Phase 1,1342097650
+W1342097651,Ayigoro Street,residential,false,0,7.5,false,false,false,0,8.6,Lekki Phase 1,1342097651
+W1342104724,Ayigoro Street,residential,false,0,7.5,false,false,false,0,17.4,Lekki Phase 1,1342104724
+W152882215,Ayigoro Street,residential,false,0,7.5,false,false,false,0,220.7,Lekki Phase 1,152882215
+W172235057,Ayinde Akinmade Street,residential,false,0,7.5,false,false,false,0,581.2,Lekki Phase 1,172235057
+W294996628,Ayo Ayedele Drive,residential,false,0,7.5,false,false,false,0,417.1,Lekki Phase 1,294996628
+W1073862963,BAYO DAHUNSI STREET,residential,false,2,7.6,false,false,false,20,19.9,Lekki Phase 1,1073862963
+W536506130,Baale Street,residential,false,0,7.5,false,false,false,0,214.9,Lekki Phase 1,536506130
+W587080728,Baale Street,residential,false,0,7.5,false,false,false,0,201.6,Lekki Phase 1,587080728
+W172235063,Babatope Bejide Crescent,residential,false,0,7.5,false,false,false,0,460.3,Lekki Phase 1,172235063
+W146602684,Babatunde Anjous Avenue,residential,false,0,7.5,false,false,false,0,862.8,Lekki Phase 1,146602684
+W138040546,Baderinwa Alabi Street,residential,false,0,7.5,false,false,false,0,819.3,Lekki Phase 1,138040546
+W146602675,Bashorun Okusanya Avenue,residential,false,0,7.5,false,false,false,0,641.6,Lekki Phase 1,146602675
+W138040488,Ben Okagbue Mba Street,residential,false,0,7.5,false,false,false,0,329.9,Lekki Phase 1,138040488
+W107551958,Bisola Durosimi Etti Drive,secondary,false,0,13.0,true,false,false,0,2019.0,Lekki Phase 1,107551958
+W568364485,Bisola Durotimi Etti Drive,secondary,false,0,13.0,true,false,false,30,2019.2,Lekki Phase 1,568364485
+W536506116,Bola Yussuph Street,residential,false,0,7.5,false,false,false,0,130.2,Lekki Phase 1,536506116
+W1502973425,Bunmi Olowude Street,residential,false,0,7.5,false,false,false,0,20.8,Lekki Phase 1,1502973425
+W152882241,Bunmi Olowude Street,residential,false,0,7.5,false,false,false,0,309.9,Lekki Phase 1,152882241
+W138040495,C&I Leasing Drive,residential,false,0,7.5,false,false,false,0,282.6,Lekki Phase 1,138040495
+W146602679,CBC Towers Street,unclassified,false,0,7.5,false,false,false,0,461.3,Lekki Phase 1,146602679
+W138040519,Charles Ifeanyi Street,residential,false,0,7.5,false,false,false,0,442.7,Lekki Phase 1,138040519
+W294603135,Chesachi Hani Okoroafor Close,residential,false,0,7.5,false,false,false,0,138.2,Lekki Phase 1,294603135
+W152415207,Chief Albert Iyorah Street,residential,false,0,7.5,false,false,false,0,465.6,Lekki Phase 1,152415207
+W536506125,Chief Charles Mba Street,residential,false,0,7.5,false,false,false,0,75.7,Lekki Phase 1,536506125
+W294599759,Chief Gbolahan Street,residential,false,0,7.5,false,false,false,0,524.9,Lekki Phase 1,294599759
+W172235060,Chief Hope Harriman Street,residential,false,0,7.5,false,false,false,0,350.0,Lekki Phase 1,172235060
+W536506121,Children's International School Road,residential,false,0,7.5,false,false,false,0,233.5,Lekki Phase 1,536506121
+W1107330483,Chinedu Moore Close,residential,false,0,7.5,false,false,false,0,86.4,Lekki Phase 1,1107330483
+W146602665,Christ Avenue,residential,false,0,7.5,false,false,false,0,936.5,Lekki Phase 1,146602665
+W146602657,Chuks Onyebuchi Drive,residential,false,0,7.5,false,false,false,0,671.7,Lekki Phase 1,146602657
+W536506107,Collins Uchidiuno St,residential,false,0,7.5,false,false,false,0,549.3,Lekki Phase 1,536506107
+W1159319248,DCS Street,residential,false,0,7.5,false,false,false,0,24.8,Lekki Phase 1,1159319248
+W294943615,DCS Street,residential,false,0,7.5,false,false,false,0,370.1,Lekki Phase 1,294943615
+W294603136,Dan Ogbeide Close,residential,false,0,7.5,false,false,false,0,138.9,Lekki Phase 1,294603136
+W964513537,Daniel Ayomike Street,residential,false,0,7.5,false,false,false,0,172.9,Lekki Phase 1,964513537
+W152898299,Daniyan Natalio Street,residential,false,0,7.5,false,false,false,0,454.0,Lekki Phase 1,152898299
+W152415216,Dapo Solanke Close,residential,false,0,7.5,false,false,false,0,192.9,Lekki Phase 1,152415216
+W152882204,Dauda Fasanya Street,residential,false,0,7.5,false,false,false,0,327.6,Lekki Phase 1,152882204
+W783773900,Daytona Street,residential,false,0,7.5,false,false,false,0,142.0,Lekki Phase 1,783773900
+W138040524,Dele Adedeji Street,residential,false,0,7.5,false,false,false,0,508.1,Lekki Phase 1,138040524
+W106497244,Dele Amuda Street,residential,false,0,7.5,false,false,false,0,368.5,Lekki Phase 1,106497244
+W152882159,Dolo Oyekan Street,residential,false,0,7.5,false,false,false,0,292.6,Lekki Phase 1,152882159
+W294996618,Donmanana Drive,residential,false,0,7.5,false,false,false,0,217.7,Lekki Phase 1,294996618
+W294603107,Dr. Adewale Oshin Street,residential,false,0,7.5,false,false,false,0,310.7,Lekki Phase 1,294603107
+W172235056,Dr. Ladi Alakija Street,residential,false,0,7.5,false,false,false,0,364.3,Lekki Phase 1,172235056
+W146602683,Dr. Onoh Ebhomenye Street,residential,false,0,7.5,false,false,false,0,480.2,Lekki Phase 1,146602683
+W152415209,Dr. S. Ezekuse Close,residential,false,0,7.5,false,false,false,0,171.0,Lekki Phase 1,152415209
+W152415215,Dupe Oguntade Street,residential,false,0,7.5,false,false,false,0,1127.7,Lekki Phase 1,152415215
+W599458820,Edith Asekun Close,residential,false,0,7.5,false,false,false,0,94.3,Lekki Phase 1,599458820
+W1450410161,Elegushi Beach Road,residential,false,0,7.5,true,false,false,0,171.6,Lekki Phase 1,1450410161
+W294869708,Elegushi Beach Road,residential,false,0,7.5,false,false,false,0,361.8,Lekki Phase 1,294869708
+W294943647,Elegushi Beach Road,trunk,true,0,7.5,true,false,false,0,59.6,Lekki Phase 1,294943647
+W530891123,Elegushi Beach Road,trunk,true,0,7.5,true,false,false,0,62.5,Lekki Phase 1,530891123
+W146602676,Emeka Nweze Street,residential,false,0,7.5,false,false,false,0,276.5,Lekki Phase 1,146602676
+W334645555,Emma Abimbola Cole Street,tertiary,false,0,10.0,false,false,false,0,1132.8,Lekki Phase 1,334645555
+W138040531,Emmanduel Adebayo Close,residential,false,0,7.5,false,false,false,0,132.2,Lekki Phase 1,138040531
+W536506132,Emmanuel Okotete Close,residential,false,0,7.5,false,false,false,0,101.5,Lekki Phase 1,536506132
+W152898351,Engineer George Enenmoh Crescent,residential,false,0,7.5,false,false,false,0,785.0,Lekki Phase 1,152898351
+W152882270,Eru-Ifa Street,residential,false,0,7.5,false,false,false,0,363.1,Lekki Phase 1,152882270
+W598412433,Esho Close,residential,false,0,7.5,false,false,false,0,86.7,Lekki Phase 1,598412433
+W146602663,Esther Adeleke Street,residential,false,0,7.5,false,false,false,0,587.8,Lekki Phase 1,146602663
+W599933049,Falailat Shomade Street,unclassified,false,0,7.5,false,false,false,0,476.3,Lekki Phase 1,599933049
+W294996649,Fameshe Kehinde Street,residential,false,0,7.5,false,false,false,0,159.4,Lekki Phase 1,294996649
+W294599768,Fatai Idowu Arobieke Street,residential,false,0,7.5,false,false,false,0,1235.0,Lekki Phase 1,294599768
+W87096525,Fatai Idowu Arobieke Street,tertiary,false,0,10.0,true,false,false,0,1322.6,Lekki Phase 1,87096525
+W536506106,Fola Daniel Close,residential,false,0,7.5,false,false,false,0,152.9,Lekki Phase 1,536506106
+W138040470,Fola Osibo Street,tertiary,false,0,10.0,false,false,false,0,787.8,Lekki Phase 1,138040470
+W294603096,Fola Osibo Street,tertiary,false,0,10.0,false,true,false,0,26.0,Lekki Phase 1,294603096
+W1096474989,Freedom Way,primary,false,0,17.5,true,false,false,40,675.8,Lekki Phase 1,1096474989
+W1096474990,Freedom Way,primary,false,0,17.5,true,false,false,0,675.1,Lekki Phase 1,1096474990
+W1096475422,Freedom Way,primary,false,0,17.5,true,false,false,40,233.9,Lekki Phase 1,1096475422
+W1096475423,Freedom Way,primary,false,0,17.5,true,false,false,0,474.6,Lekki Phase 1,1096475423
+W1096475740,Freedom Way,primary,false,0,17.5,true,false,false,40,207.0,Lekki Phase 1,1096475740
+W1096476460,Freedom Way,primary,false,0,17.5,true,false,false,40,136.8,Lekki Phase 1,1096476460
+W1427160041,Freedom Way,primary,false,0,17.5,true,false,false,0,122.6,Lekki Phase 1,1427160041
+W1427160042,Freedom Way,primary,false,0,17.5,true,false,false,0,680.0,Lekki Phase 1,1427160042
+W294599753,Freedom Way,trunk,true,0,7.5,true,false,false,0,81.6,Lekki Phase 1,294599753
+W294599762,Freedom Way,primary,false,0,17.5,true,false,false,0,438.0,Lekki Phase 1,294599762
+W334646086,Freedom Way,tertiary,false,0,10.0,false,false,false,0,12.5,Lekki Phase 1,334646086
+W530891113,Freedom Way,primary,false,0,17.5,true,false,false,0,52.2,Lekki Phase 1,530891113
+W530891119,Freedom Way,primary,false,0,17.5,true,false,false,0,36.7,Lekki Phase 1,530891119
+W530891121,Freedom Way,trunk,true,0,7.5,true,false,false,0,103.1,Lekki Phase 1,530891121
+W530891122,Freedom Way,primary,false,0,17.5,true,false,false,0,676.5,Lekki Phase 1,530891122
+W544212500,Freedom Way,primary,false,0,17.5,true,false,false,0,437.8,Lekki Phase 1,544212500
+W544212503,Freedom Way,primary,false,0,17.5,true,false,false,0,676.2,Lekki Phase 1,544212503
+W152898305,Fuzo Ezimora Street,residential,false,0,7.5,false,false,false,0,542.5,Lekki Phase 1,152898305
+W152882181,Gbangbala Street,residential,false,0,7.5,false,false,false,0,522.1,Lekki Phase 1,152882181
+W598412520,Gbenge Adeyinka 1st Street,residential,false,0,7.5,false,false,false,0,353.5,Lekki Phase 1,598412520
+W152898339,General Emdin Street,residential,false,0,7.5,false,false,false,0,206.5,Lekki Phase 1,152898339
+W152415213,General Ogomudia Road,residential,false,0,7.5,false,false,false,0,526.5,Lekki Phase 1,152415213
+W138040548,Godwin Omene Street,residential,false,0,7.5,false,false,false,0,346.3,Lekki Phase 1,138040548
+W138040483,Grace Anjos Drive,residential,false,0,7.5,false,false,false,0,757.6,Lekki Phase 1,138040483
+W146602658,Habitat Close,residential,false,0,7.5,false,false,false,0,146.8,Lekki Phase 1,146602658
+W1268607546,Hakeem Dickson Road,tertiary,false,0,10.0,false,false,false,0,241.7,Lekki Phase 1,1268607546
+W1268607547,Hakeem Dickson Road,tertiary,false,0,10.0,true,false,false,0,17.7,Lekki Phase 1,1268607547
+W1268607548,Hakeem Dickson Road,secondary,false,0,13.0,true,false,false,0,583.4,Lekki Phase 1,1268607548
+W1444628187,Hakeem Dickson Road,tertiary,false,0,10.0,true,false,false,0,16.2,Lekki Phase 1,1444628187
+W152415210,Hakeem Dickson Road,secondary,false,0,13.0,true,false,false,0,583.9,Lekki Phase 1,152415210
+W294603116,Hakeem Dickson Road,tertiary,false,0,10.0,false,true,false,0,30.9,Lekki Phase 1,294603116
+W294603117,Hakeem Dickson Road,tertiary,false,0,10.0,false,false,false,0,313.7,Lekki Phase 1,294603117
+W88273387,Hasan Housing Est. Road 1,residential,false,0,7.5,false,false,false,0,552.8,Lekki Phase 1,88273387
+W88273514,Hasan Housing Est. Road 2,residential,false,0,7.5,false,false,false,0,547.5,Lekki Phase 1,88273514
+W88273431,Hasan Housing Est. Road 3,residential,false,0,7.5,false,false,false,0,554.6,Lekki Phase 1,88273431
+W294996633,Hon. Ajayi Alaba Street,residential,false,0,7.5,false,false,false,0,366.0,Lekki Phase 1,294996633
+W152415219,Hunpunu-Wusu Road,residential,false,0,7.5,false,false,false,0,637.3,Lekki Phase 1,152415219
+W152882157,Idowu Emma Street,residential,false,0,7.5,false,false,false,0,239.8,Lekki Phase 1,152882157
+W106497222,Ilasan New Road,residential,false,0,7.5,false,false,false,0,1052.4,Lekki Phase 1,106497222
+W152882233,Iroko Awe Street,residential,false,0,7.5,false,false,false,0,203.6,Lekki Phase 1,152882233
+W294603121,Itumi Ogbonna Road,residential,false,0,7.5,false,false,false,0,298.2,Lekki Phase 1,294603121
+W294599775,James Adejumo Close,residential,false,0,7.5,false,false,false,0,130.8,Lekki Phase 1,294599775
+W536506113,Jeremiah Ugwu Street,residential,false,0,7.5,false,false,false,0,409.0,Lekki Phase 1,536506113
+W146602670,Jerry Iriabe Street,residential,false,0,7.5,false,false,false,0,557.9,Lekki Phase 1,146602670
+W138040535,Jide Sawyer Drive,residential,false,0,7.5,false,false,false,0,464.3,Lekki Phase 1,138040535
+W784987242,Jide Sawyer Drive,service,false,0,5.0,false,false,false,0,13.0,Lekki Phase 1,784987242
+W294812842,John Obasi Kalu Close,residential,false,0,7.5,false,false,false,0,105.9,Lekki Phase 1,294812842
+W1557275593,Jolayemi Street,residential,false,0,7.5,false,false,false,0,417.3,Lekki Phase 1,1557275593
+W152882224,Justice Rose Ukeje Street,residential,false,0,7.5,false,false,false,0,181.4,Lekki Phase 1,152882224
+W138040502,Kafayat Abdulrasaq Street,residential,false,0,7.5,false,false,false,0,512.5,Lekki Phase 1,138040502
+W152882266,Kate Elegushi Road,residential,false,0,7.5,false,false,false,0,211.4,Lekki Phase 1,152882266
+W193596797,Kate Elegushi Road,residential,false,0,7.5,true,false,false,0,45.8,Lekki Phase 1,193596797
+W294887123,Kate Elegushi Road,residential,false,0,7.5,true,false,false,0,49.3,Lekki Phase 1,294887123
+W146602673,Kayode Animashaun Street,unclassified,false,0,7.5,false,false,false,0,227.4,Lekki Phase 1,146602673
+W294603102,Kayode Animashaun Street,unclassified,false,0,7.5,false,false,false,0,312.4,Lekki Phase 1,294603102
+W294603119,Kayode Animashaun Street,unclassified,false,0,7.5,false,true,false,0,27.7,Lekki Phase 1,294603119
+W146602689,Kayode Otitoju Street,residential,false,0,7.5,false,false,false,0,515.5,Lekki Phase 1,146602689
+W138040498,Kingsley Odo Close,residential,false,0,7.5,false,false,false,0,93.2,Lekki Phase 1,138040498
+W146602662,Kola Adeyina Close,residential,false,0,7.5,false,false,false,0,135.8,Lekki Phase 1,146602662
+W152415206,Kunle Ogunba Street,residential,false,0,7.5,false,false,false,0,484.7,Lekki Phase 1,152415206
+W1066274592,Kusenla Road,tertiary,false,0,10.0,true,false,false,0,42.2,Lekki Phase 1,1066274592
+W1396560428,Kusenla Road,tertiary,false,0,10.0,true,false,false,0,47.2,Lekki Phase 1,1396560428
+W1396560429,Kusenla Road,tertiary,false,0,10.0,true,false,false,0,27.7,Lekki Phase 1,1396560429
+W1396560430,Kusenla Road,tertiary,false,0,10.0,true,false,false,0,47.6,Lekki Phase 1,1396560430
+W152882173,Kusenla Road,secondary,false,0,13.0,false,false,false,0,1879.9,Lekki Phase 1,152882173
+W146604023,Ladipo Omotesho Cole Street,residential,false,0,7.5,false,false,false,0,736.3,Lekki Phase 1,146604023
+W1434341606,Lagos-Calabar Coastal Highway,trunk,false,0,11.5,true,false,false,0,2445.2,Lekki Phase 1,1434341606
+W1434341608,Lagos-Calabar Coastal Highway,trunk,false,0,11.5,true,false,false,0,2185.2,Lekki Phase 1,1434341608
+W1450410158,Lagos-Calabar Coastal Highway,trunk,false,0,11.5,true,false,false,0,1292.7,Lekki Phase 1,1450410158
+W1450410159,Lagos-Calabar Coastal Highway,trunk,false,0,11.5,true,false,false,0,1562.3,Lekki Phase 1,1450410159
+W1450410163,Lagos-Calabar Coastal Highway,trunk,false,0,11.5,true,false,false,0,6880.2,Lekki Phase 1,1450410163
+W1450410164,Lagos-Calabar Coastal Highway,trunk,false,0,11.5,true,false,false,0,6864.5,Lekki Phase 1,1450410164
+W152898316,Lawrence Akande Close,residential,false,0,7.5,false,false,false,0,93.9,Lekki Phase 1,152898316
+W1240101688,Lekki Enclave Road,residential,false,0,7.5,false,false,false,0,443.7,Lekki Phase 1,1240101688
+W725287859,Lekki Enclave Road,residential,false,0,7.5,false,false,false,0,136.9,Lekki Phase 1,725287859
+W1066274589,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,0,200.3,Lekki Phase 1,1066274589
+W1066274590,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,122.3,Lekki Phase 1,1066274590
+W1066274593,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,50,157.2,Lekki Phase 1,1066274593
+W1066274594,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,202.4,Lekki Phase 1,1066274594
+W1066274595,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,631.8,Lekki Phase 1,1066274595
+W1066274596,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,217.7,Lekki Phase 1,1066274596
+W1066274599,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,499.0,Lekki Phase 1,1066274599
+W1066274600,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,749.9,Lekki Phase 1,1066274600
+W1097167753,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,1092.6,Lekki Phase 1,1097167753
+W1097170243,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,0,59.8,Lekki Phase 1,1097170243
+W1097171650,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,717.1,Lekki Phase 1,1097171650
+W1097171651,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,50,55.5,Lekki Phase 1,1097171651
+W1097281914,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,50,155.0,Lekki Phase 1,1097281914
+W1098501467,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,436.7,Lekki Phase 1,1098501467
+W1426055773,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,0,69.5,Lekki Phase 1,1426055773
+W1426055774,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,0,68.7,Lekki Phase 1,1426055774
+W1426055775,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,50,62.8,Lekki Phase 1,1426055775
+W1426055776,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,115.3,Lekki Phase 1,1426055776
+W216882043,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,1339.0,Lekki Phase 1,216882043
+W294869724,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,1391.9,Lekki Phase 1,294869724
+W294869754,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,2172.6,Lekki Phase 1,294869754
+W294887046,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,1808.0,Lekki Phase 1,294887046
+W294887049,Meadow Hall Way,tertiary,false,0,10.0,false,false,false,0,871.4,Lekki Phase 1,294887049
+W193596799,Meadow Holloway Street,tertiary,false,0,10.0,true,false,false,0,56.7,Lekki Phase 1,193596799
+W294887042,Meadow Holloway Street,tertiary,false,0,10.0,true,false,false,0,58.7,Lekki Phase 1,294887042
+W152898322,Mike Adegbite Avenue,residential,false,0,7.5,false,false,false,0,302.6,Lekki Phase 1,152898322
+W294603091,Mike Ajize Stret,residential,false,0,7.5,false,false,false,0,454.4,Lekki Phase 1,294603091
+W1136373637,Millenium Estate,residential,false,0,7.5,false,false,false,0,13.3,Lekki Phase 1,1136373637
+W146602682,Millenium Estate,residential,false,0,7.5,false,false,false,0,388.3,Lekki Phase 1,146602682
+W384584055,Mobolaji Johnson Place,residential,false,0,7.5,true,false,false,0,76.1,Lekki Phase 1,384584055
+W536506120,Modupe Adebayo Street,residential,false,0,7.5,false,false,false,0,236.6,Lekki Phase 1,536506120
+W138040496,Muiz Banire Street,residential,false,0,7.5,false,false,false,0,295.9,Lekki Phase 1,138040496
+W1561074622,Nicon Town Road,unclassified,false,0,7.5,true,false,false,0,31.4,Lekki Phase 1,1561074622
+W1561074623,Nicon Town Road,unclassified,false,0,7.5,true,false,false,0,25.6,Lekki Phase 1,1561074623
+W286066473,Nicon Town Road,unclassified,false,0,7.5,true,false,false,0,141.1,Lekki Phase 1,286066473
+W599933051,Nicon Town Road,unclassified,false,0,7.5,false,false,false,0,494.5,Lekki Phase 1,599933051
+W599933052,Nicon Town Road,unclassified,false,0,7.5,true,false,false,0,135.7,Lekki Phase 1,599933052
+W530891115,Nike Art Gallery,residential,false,0,7.5,true,false,false,0,84.9,Lekki Phase 1,530891115
+W1242735567,Nike Art Gallery Rd,residential,false,1,4.3,true,false,false,0,86.4,Lekki Phase 1,1242735567
+W294943626,Nike Art Gallery Road,residential,false,1,4.3,false,false,false,0,700.0,Lekki Phase 1,294943626
+W1073863932,OLADELE OJOGBEDE STREET,residential,false,2,7.6,false,false,false,20,117.1,Lekki Phase 1,1073863932
+W1181720029,Oba Adeyinka Estate,residential,false,0,7.5,false,false,false,0,10.9,Lekki Phase 1,1181720029
+W1181720030,Oba Adeyinka Estate,residential,false,0,7.5,false,false,false,0,9.2,Lekki Phase 1,1181720030
+W146602216,Oba Adeyinka Estate,residential,false,0,7.5,false,false,false,0,221.7,Lekki Phase 1,146602216
+W152882207,Oba Yekini Elegushi Road,residential,false,0,7.5,false,false,false,0,607.2,Lekki Phase 1,152882207
+W294603126,Odiyan Street,residential,false,0,7.5,false,false,false,0,309.5,Lekki Phase 1,294603126
+W146602685,Ogidi Crescent,residential,false,0,7.5,false,false,false,0,588.4,Lekki Phase 1,146602685
+W294603140,Ojulari Road,residential,false,0,7.5,false,false,false,0,738.5,Lekki Phase 1,294603140
+W138040556,Olabanji Olajide Street,residential,false,0,7.5,false,false,false,0,711.0,Lekki Phase 1,138040556
+W558896017,Oladele Ojogbede Street,residential,false,0,7.5,false,false,false,0,220.5,Lekki Phase 1,558896017
+W138040564,Oladimeji Alo Street,residential,false,0,7.5,false,false,false,0,803.1,Lekki Phase 1,138040564
+W294943645,Olajide Awosedo Avenue,residential,false,0,7.5,false,false,false,0,461.1,Lekki Phase 1,294943645
+W138040476,Olarenwaju Ninalowo Crescent,residential,false,0,7.5,false,false,false,0,665.7,Lekki Phase 1,138040476
+W146602672,Olawale Cole Ontiri Avenue,residential,false,0,7.5,false,false,false,0,503.8,Lekki Phase 1,146602672
+W152898314,Olori Muyibat Oyefusi Street,residential,false,0,7.5,false,false,false,0,302.2,Lekki Phase 1,152898314
+W138040493,Olubunmi Rotimi Street,residential,false,0,7.5,false,false,false,0,413.5,Lekki Phase 1,138040493
+W152898342,Oluwakayode Jacobs Crescent,residential,false,0,7.5,false,false,false,0,497.8,Lekki Phase 1,152898342
+W138040494,Oluwole Street,residential,false,0,7.5,false,false,false,0,243.2,Lekki Phase 1,138040494
+W138040487,Omorinre Johnson Street,residential,false,0,7.5,false,false,false,0,1315.5,Lekki Phase 1,138040487
+W536506118,Opeyensi Bamidele Drive,residential,false,0,7.5,false,false,false,0,350.9,Lekki Phase 1,536506118
+W152415208,Osaro Isokpan Street,residential,false,0,7.5,false,false,false,0,194.7,Lekki Phase 1,152415208
+W294603147,Ota-Iku Street,residential,false,0,7.5,false,false,false,0,262.7,Lekki Phase 1,294603147
+W294996654,Otunba Steve Ajose Drive,residential,false,0,7.5,false,false,false,0,143.2,Lekki Phase 1,294996654
+W1369731246,Oye Balogun Street,residential,false,0,7.5,false,false,false,0,37.4,Lekki Phase 1,1369731246
+W334645552,Oye Balogun Street,residential,false,0,7.5,false,false,false,0,362.2,Lekki Phase 1,334645552
+W172235054,Oyibo Adjarho Street,residential,false,0,7.5,false,false,false,0,575.8,Lekki Phase 1,172235054
+W1409185396,Palm Springs Road,residential,false,0,7.5,true,false,false,0,13.8,Lekki Phase 1,1409185396
+W1409185397,Palm Springs Road,residential,false,0,7.5,true,false,false,0,11.9,Lekki Phase 1,1409185397
+W1409185398,Palm Springs Road,residential,false,0,7.5,true,false,false,0,15.0,Lekki Phase 1,1409185398
+W1409185399,Palm Springs Road,residential,false,0,7.5,true,false,false,0,17.0,Lekki Phase 1,1409185399
+W1409185400,Palm Springs Road,residential,false,0,7.5,false,false,false,0,511.4,Lekki Phase 1,1409185400
+W294603094,Palm Springs Road,tertiary,false,0,10.0,true,false,false,0,44.8,Lekki Phase 1,294603094
+W294603130,Palm Springs Road,tertiary,false,0,10.0,false,false,false,0,583.3,Lekki Phase 1,294603130
+W294603150,Palm Springs Road,tertiary,false,0,10.0,true,false,false,0,46.1,Lekki Phase 1,294603150
+W364381108,Palm Springs Road,residential,false,0,7.5,false,false,false,0,1458.6,Lekki Phase 1,364381108
+W294603108,Perez Drive,residential,false,0,7.5,false,false,false,0,169.0,Lekki Phase 1,294603108
+W536506119,Pinewood Court Road,residential,false,0,7.5,false,false,false,0,484.3,Lekki Phase 1,536506119
+W588745036,Platinum Street,unclassified,false,0,7.5,false,false,false,0,275.3,Lekki Phase 1,588745036
+W286066471,Platinum Way,tertiary,false,0,10.0,false,false,false,0,1549.9,Lekki Phase 1,286066471
+W599933046,Platinum Way,tertiary,false,0,10.0,true,false,false,0,34.7,Lekki Phase 1,599933046
+W599933047,Platinum Way,tertiary,false,0,10.0,true,false,false,0,27.1,Lekki Phase 1,599933047
+W536506115,Preince Sanmi Harrison Avenue,residential,false,0,7.5,false,false,false,0,238.0,Lekki Phase 1,536506115
+W138040561,Prince Boe Adebowale Crescent,residential,false,0,7.5,false,false,false,0,491.1,Lekki Phase 1,138040561
+W1315774074,Prince Olanrewaju A. Elegushi Street,unclassified,false,0,7.5,false,false,false,0,277.7,Lekki Phase 1,1315774074
+W1315774075,Prince Olanrewaju A. Elegushi Street,unclassified,false,0,7.5,false,true,false,0,7.6,Lekki Phase 1,1315774075
+W294603148,Prince Olanrewaju A. Elegushi Street,unclassified,false,0,7.5,false,false,false,0,5.3,Lekki Phase 1,294603148
+W294996658,Prince Olarenwu Elegushi Road,residential,false,0,7.5,false,false,false,0,643.1,Lekki Phase 1,294996658
+W294996620,Prince Salisu Elegushi Road,residential,false,0,7.5,false,false,false,0,296.1,Lekki Phase 1,294996620
+W294943616,Prince Samuel Adedoyin Street,residential,false,0,7.5,false,false,false,0,276.6,Lekki Phase 1,294943616
+W1159319249,Princess Dolo Oyekan Street,residential,false,0,7.5,false,false,false,0,18.4,Lekki Phase 1,1159319249
+W1213255617,Princess Dolo Oyekan Street,residential,false,0,7.5,false,false,false,0,27.6,Lekki Phase 1,1213255617
+W138040491,Princess Dolo Oyekan Street,residential,false,0,7.5,false,false,false,0,418.2,Lekki Phase 1,138040491
+W294603160,Princess Folashade Ojutalayo Close,residential,false,0,7.5,false,false,false,0,135.0,Lekki Phase 1,294603160
+W152898336,Professor Kiumi Akingbehin Street,residential,false,0,7.5,false,false,false,0,409.5,Lekki Phase 1,152898336
+W1213255618,Professor Olagoke Olabisi street,residential,false,0,7.5,false,false,false,0,342.7,Lekki Phase 1,1213255618
+W138040539,Rahman Adeboyejo Street,residential,false,0,7.5,false,false,false,0,369.5,Lekki Phase 1,138040539
+W725281507,Redwood Close,residential,false,0,7.5,false,false,false,0,51.4,Lekki Phase 1,725281507
+W138040532,Remi Olowude Way,secondary,false,1,4.3,true,false,false,0,593.4,Lekki Phase 1,138040532
+W152882219,Remi Olowude Way,residential,false,2,7.6,false,false,false,0,332.0,Lekki Phase 1,152882219
+W294869735,Remi Olowude Way,residential,false,1,4.3,true,false,false,0,27.0,Lekki Phase 1,294869735
+W294869749,Remi Olowude Way,residential,false,1,4.3,true,false,false,0,23.9,Lekki Phase 1,294869749
+W536457597,Remi Olowude Way,secondary,false,1,4.3,true,false,false,0,590.6,Lekki Phase 1,536457597
+W294996616,Remilade Opadokun Street,residential,false,0,7.5,false,false,false,0,248.5,Lekki Phase 1,294996616
+W294996615,Resurrection Drive,residential,false,0,7.5,false,false,false,0,770.1,Lekki Phase 1,294996615
+W1436889715,Richmond Pearl Road,residential,false,0,7.5,false,false,false,0,8.2,Lekki Phase 1,1436889715
+W1436889716,Richmond Pearl Road,residential,false,0,7.5,false,true,false,0,10.3,Lekki Phase 1,1436889716
+W1436889717,Richmond Pearl Road,residential,false,0,7.5,false,false,false,0,266.7,Lekki Phase 1,1436889717
+W1436889718,Richmond Pearl Road,residential,false,0,7.5,false,false,false,0,431.5,Lekki Phase 1,1436889718
+W1492040151,Richmond Pearl Road,residential,false,0,7.5,false,false,false,0,201.2,Lekki Phase 1,1492040151
+W375465920,Richmond Pearl Road,residential,false,0,7.5,false,false,false,0,138.9,Lekki Phase 1,375465920
+W375465925,Richmond Pearl Road,residential,false,0,7.5,false,false,false,0,41.8,Lekki Phase 1,375465925
+W585607502,Richmond Pearl Road,residential,false,0,7.5,false,false,false,0,159.4,Lekki Phase 1,585607502
+W585607503,Richmond Pearl Road,residential,false,0,7.5,false,false,false,0,186.9,Lekki Phase 1,585607503
+W585607504,Richmond Pearl Road,residential,false,0,7.5,false,false,false,0,206.5,Lekki Phase 1,585607504
+W1161957303,Romay Road,residential,false,0,7.5,true,false,false,0,21.8,Lekki Phase 1,1161957303
+W1161957304,Romay Road,residential,false,0,7.5,true,false,false,0,19.9,Lekki Phase 1,1161957304
+W294996605,Romay Road,residential,false,0,7.5,true,false,false,0,58.2,Lekki Phase 1,294996605
+W294996622,Romay Road,service,false,0,5.0,false,false,false,0,52.0,Lekki Phase 1,294996622
+W588757581,Romay Road,residential,false,0,7.5,true,false,false,0,54.6,Lekki Phase 1,588757581
+W536506127,Sabitex Hotel Road,residential,false,0,7.5,false,false,false,0,129.9,Lekki Phase 1,536506127
+W599933050,Sadiku Erinfolami Street,unclassified,false,0,7.5,false,false,false,0,133.9,Lekki Phase 1,599933050
+W294603141,Saheed Ola-Adelekan Close,residential,false,0,7.5,false,false,false,0,98.9,Lekki Phase 1,294603141
+W334645553,Salvation Road,residential,false,1,4.3,false,false,false,40,211.0,Lekki Phase 1,334645553
+W294599767,Sarumoh Oladosu Close,residential,false,0,7.5,false,false,false,0,88.6,Lekki Phase 1,294599767
+W152882234,Seed Education Center Road,residential,false,0,7.5,false,false,false,0,287.2,Lekki Phase 1,152882234
+W294599776,Segun Oshin Close,residential,false,0,7.5,false,false,false,0,130.3,Lekki Phase 1,294599776
+W146602688,Shakiru Anjorin Street,residential,false,0,7.5,false,false,false,0,588.4,Lekki Phase 1,146602688
+W138040542,Sikiru Alade Oloko Crescent,residential,false,0,7.5,false,false,false,0,331.1,Lekki Phase 1,138040542
+W1450410175,Silverbird Road,residential,false,0,7.5,false,false,false,0,884.3,Lekki Phase 1,1450410175
+W1557850816,Silverbird Road,tertiary,false,0,10.0,true,false,false,0,43.9,Lekki Phase 1,1557850816
+W1559266872,Silverbird Road,tertiary,false,0,10.0,true,false,false,0,1002.4,Lekki Phase 1,1559266872
+W294887047,Silverbird Road,tertiary,false,0,10.0,true,false,false,0,1001.5,Lekki Phase 1,294887047
+W588745038,Sir Theophilus Okonkwo Way,unclassified,false,0,7.5,false,false,false,0,226.0,Lekki Phase 1,588745038
+W138040489,Sola Oguntade Close,residential,false,0,7.5,false,false,false,0,176.7,Lekki Phase 1,138040489
+W294943625,Still Water Garden Road,residential,false,0,7.5,false,false,false,0,850.0,Lekki Phase 1,294943625
+W536506131,Sunday Dare Close,residential,false,0,7.5,false,false,false,0,99.6,Lekki Phase 1,536506131
+W107551932,T.F. Kuboye Road,tertiary,false,0,10.0,false,false,false,0,1219.1,Lekki Phase 1,107551932
+W138040516,Taiwo Ishola Street,residential,false,0,7.5,false,false,false,0,243.9,Lekki Phase 1,138040516
+W152898326,The Providence Street,tertiary,false,0,10.0,true,false,false,0,951.6,Lekki Phase 1,152898326
+W536506100,The Providence Street,tertiary,false,0,10.0,true,false,false,0,960.3,Lekki Phase 1,536506100
+W294603157,The Rock Drive,residential,false,0,7.5,false,false,false,0,911.5,Lekki Phase 1,294603157
+W138040497,Theophilus Oji Street,residential,false,0,7.5,false,false,false,0,511.3,Lekki Phase 1,138040497
+W334645554,Tom Ogboi Way,residential,false,0,7.5,false,false,false,0,337.7,Lekki Phase 1,334645554
+W294603143,Tunde Fisayo Street,residential,false,0,7.5,false,false,false,0,208.8,Lekki Phase 1,294603143
+W536506117,Tunde Laitan Drive,residential,false,0,7.5,false,false,false,0,132.1,Lekki Phase 1,536506117
+W294943619,UPDC Estate Road,residential,false,0,7.5,false,false,false,0,186.4,Lekki Phase 1,294943619
+W294603122,Utomi Aire Avenue,residential,false,0,7.5,false,false,false,0,451.0,Lekki Phase 1,294603122
+W146602674,Victoria Arobieke Street,unclassified,false,0,7.5,false,false,false,0,447.7,Lekki Phase 1,146602674
+W774617196,Victoria Arobieke Street,unclassified,false,0,7.5,false,false,false,0,134.3,Lekki Phase 1,774617196
+W294869726,Waterside Road,residential,false,0,7.5,false,false,false,0,144.3,Lekki Phase 1,294869726
+W294869729,Waterside Road,residential,false,0,7.5,true,false,false,0,27.0,Lekki Phase 1,294869729
+W294869734,Waterside Road,residential,false,0,7.5,true,false,false,0,392.4,Lekki Phase 1,294869734
+W294869757,Waterside Road,residential,false,0,7.5,true,false,false,0,22.5,Lekki Phase 1,294869757
+W294869764,Waterside Road,residential,false,1,4.3,true,false,false,0,33.5,Lekki Phase 1,294869764
+W294869765,Waterside Road,residential,false,2,7.6,false,false,false,0,95.3,Lekki Phase 1,294869765
+W294869767,Waterside Road,residential,false,0,7.5,true,false,false,0,328.8,Lekki Phase 1,294869767
+W294869772,Waterside Road,residential,false,1,4.3,true,false,false,0,30.4,Lekki Phase 1,294869772
+W152415204,Wumego Crescent,residential,false,0,7.5,false,false,false,0,487.0,Lekki Phase 1,152415204
+W1450410176,Yemi Adetayo Street,tertiary,false,0,10.0,false,false,false,0,637.1,Lekki Phase 1,1450410176
+W152882256,Yemi Adetayo Street,residential,false,0,7.5,false,false,false,0,1451.7,Lekki Phase 1,152882256
+W1552639482,Yemi Adetayo Street,residential,false,0,7.5,false,false,false,0,497.3,Lekki Phase 1,1552639482
+W1016805233,,residential,false,0,7.5,false,false,false,0,137.8,Lekki Phase 1,1016805233
+W1017057907,,service,false,0,5.0,false,false,false,0,37.3,Lekki Phase 1,1017057907
+W1017722458,,service,false,0,5.0,false,false,false,0,38.0,Lekki Phase 1,1017722458
+W1017722459,,service,false,0,5.0,false,false,false,0,20.0,Lekki Phase 1,1017722459
+W1017723165,,service,false,0,5.0,false,false,false,0,98.9,Lekki Phase 1,1017723165
+W1017730841,,residential,false,0,7.5,false,false,false,0,30.7,Lekki Phase 1,1017730841
+W1017730842,,residential,false,0,7.5,false,false,false,0,56.1,Lekki Phase 1,1017730842
+W1017730843,,residential,false,0,7.5,false,false,false,0,59.0,Lekki Phase 1,1017730843
+W1017755831,,service,false,0,5.0,false,false,false,0,94.5,Lekki Phase 1,1017755831
+W1017755832,,service,false,0,5.0,false,false,false,0,278.4,Lekki Phase 1,1017755832
+W1017756564,,service,false,0,5.0,false,false,false,0,29.5,Lekki Phase 1,1017756564
+W1017756565,,service,false,0,5.0,false,false,false,0,62.0,Lekki Phase 1,1017756565
+W1017795830,,service,false,0,5.0,false,false,false,0,36.3,Lekki Phase 1,1017795830
+W1017795831,,service,false,0,5.0,false,false,false,0,27.3,Lekki Phase 1,1017795831
+W1017795832,,service,false,0,5.0,false,false,false,0,258.0,Lekki Phase 1,1017795832
+W1017796440,,service,false,0,5.0,false,false,false,0,20.7,Lekki Phase 1,1017796440
+W1017796441,,service,false,0,5.0,false,false,false,0,150.9,Lekki Phase 1,1017796441
+W1017822157,,service,false,0,5.0,false,false,false,0,31.6,Lekki Phase 1,1017822157
+W1017822609,,service,false,0,5.0,false,false,false,0,37.3,Lekki Phase 1,1017822609
+W1017822610,,service,false,0,5.0,false,false,false,0,143.6,Lekki Phase 1,1017822610
+W1018980062,,service,false,0,5.0,false,false,false,0,42.3,Lekki Phase 1,1018980062
+W1018980328,,service,false,0,5.0,false,false,false,0,91.6,Lekki Phase 1,1018980328
+W1018980514,,service,false,0,5.0,false,false,false,0,58.1,Lekki Phase 1,1018980514
+W1018980515,,service,false,0,5.0,false,false,false,0,31.6,Lekki Phase 1,1018980515
+W1018980516,,service,false,0,5.0,false,false,false,0,84.4,Lekki Phase 1,1018980516
+W1018980517,,service,false,0,5.0,false,false,false,0,105.1,Lekki Phase 1,1018980517
+W1018986762,,residential,false,0,7.5,false,false,false,0,159.6,Lekki Phase 1,1018986762
+W1018986763,,residential,false,0,7.5,false,false,false,0,75.7,Lekki Phase 1,1018986763
+W1018986764,,residential,false,0,7.5,false,false,false,0,43.3,Lekki Phase 1,1018986764
+W1019005670,,service,false,0,5.0,false,false,false,0,104.4,Lekki Phase 1,1019005670
+W1019005671,,service,false,0,5.0,false,false,false,0,128.8,Lekki Phase 1,1019005671
+W1020201279,,residential,false,0,7.5,false,false,false,0,36.5,Lekki Phase 1,1020201279
+W1020202807,,service,false,0,5.0,false,false,false,0,21.2,Lekki Phase 1,1020202807
+W1020202808,,service,false,0,5.0,false,false,false,0,90.7,Lekki Phase 1,1020202808
+W1020202861,,service,false,0,5.0,false,false,false,0,38.3,Lekki Phase 1,1020202861
+W1020203152,,service,false,0,5.0,false,false,false,0,78.0,Lekki Phase 1,1020203152
+W1020203746,,service,false,0,5.0,false,false,false,0,91.5,Lekki Phase 1,1020203746
+W1020203765,,service,false,0,5.0,false,false,false,0,41.7,Lekki Phase 1,1020203765
+W1020203836,,service,false,0,5.0,false,false,false,0,47.2,Lekki Phase 1,1020203836
+W1020204337,,residential,false,0,7.5,false,false,false,0,185.1,Lekki Phase 1,1020204337
+W1020204839,,service,false,0,5.0,false,false,false,0,48.3,Lekki Phase 1,1020204839
+W1020205009,,service,false,0,5.0,false,false,false,0,85.8,Lekki Phase 1,1020205009
+W1020205278,,service,false,0,5.0,false,false,false,0,92.9,Lekki Phase 1,1020205278
+W1020206089,,unclassified,false,0,7.5,false,false,false,0,74.8,Lekki Phase 1,1020206089
+W1020206121,,residential,false,0,7.5,false,false,false,0,61.9,Lekki Phase 1,1020206121
+W1020206197,,service,false,0,5.0,false,false,false,0,94.5,Lekki Phase 1,1020206197
+W1020206560,,residential,false,0,7.5,false,false,false,0,173.3,Lekki Phase 1,1020206560
+W1020514235,,residential,false,0,7.5,false,false,false,0,74.4,Lekki Phase 1,1020514235
+W1032483264,,service,false,0,5.0,false,false,false,0,50.5,Lekki Phase 1,1032483264
+W1032483265,,service,false,0,5.0,false,false,false,0,67.6,Lekki Phase 1,1032483265
+W1032484238,,service,false,0,5.0,false,false,false,0,50.7,Lekki Phase 1,1032484238
+W1032484493,,service,false,0,5.0,false,false,false,0,65.4,Lekki Phase 1,1032484493
+W1032485739,,service,false,0,5.0,false,false,false,0,63.4,Lekki Phase 1,1032485739
+W1032485740,,service,false,0,5.0,false,false,false,0,62.1,Lekki Phase 1,1032485740
+W1032485741,,service,false,0,5.0,false,false,false,0,67.8,Lekki Phase 1,1032485741
+W1032487099,,service,false,0,5.0,false,false,false,0,82.6,Lekki Phase 1,1032487099
+W1032487217,,service,false,0,5.0,false,false,false,0,55.4,Lekki Phase 1,1032487217
+W1032545448,,service,false,0,5.0,false,false,false,0,33.3,Lekki Phase 1,1032545448
+W1032545555,,service,false,0,5.0,false,false,false,0,41.0,Lekki Phase 1,1032545555
+W1032546780,,service,false,0,5.0,false,false,false,0,36.7,Lekki Phase 1,1032546780
+W1032547265,,service,false,0,5.0,false,false,false,0,38.4,Lekki Phase 1,1032547265
+W1032788844,,service,false,0,5.0,false,false,false,0,83.1,Lekki Phase 1,1032788844
+W1032788845,,service,false,0,5.0,false,false,false,0,45.7,Lekki Phase 1,1032788845
+W1032788846,,residential,false,0,7.5,false,false,false,0,161.8,Lekki Phase 1,1032788846
+W1032788847,,residential,false,0,7.5,false,false,false,0,176.9,Lekki Phase 1,1032788847
+W1032788848,,residential,false,0,7.5,false,false,false,0,164.3,Lekki Phase 1,1032788848
+W1034389253,,service,false,0,5.0,true,false,false,0,19.4,Lekki Phase 1,1034389253
+W1034777178,,service,false,0,5.0,false,false,false,0,59.8,Lekki Phase 1,1034777178
+W1034777429,,service,false,0,5.0,false,false,false,0,47.6,Lekki Phase 1,1034777429
+W1034778360,,service,false,0,5.0,false,false,false,0,106.1,Lekki Phase 1,1034778360
+W1034780114,,service,false,0,5.0,false,false,false,0,36.7,Lekki Phase 1,1034780114
+W1034780115,,service,false,0,5.0,false,false,false,0,10.4,Lekki Phase 1,1034780115
+W1034780116,,service,false,0,5.0,false,false,false,0,595.3,Lekki Phase 1,1034780116
+W1034974359,,residential,false,0,7.5,false,false,false,0,101.3,Lekki Phase 1,1034974359
+W1034974360,,service,false,0,5.0,false,false,false,0,46.9,Lekki Phase 1,1034974360
+W1034974361,,service,false,0,5.0,false,false,false,0,173.9,Lekki Phase 1,1034974361
+W1034974362,,service,false,0,5.0,false,false,false,0,141.6,Lekki Phase 1,1034974362
+W1034974363,,service,false,0,5.0,false,false,false,0,91.0,Lekki Phase 1,1034974363
+W1034974364,,service,false,0,5.0,false,false,false,0,141.6,Lekki Phase 1,1034974364
+W1034974365,,service,false,0,5.0,false,false,false,0,70.9,Lekki Phase 1,1034974365
+W1035922701,,service,false,0,5.0,false,false,false,0,56.2,Lekki Phase 1,1035922701
+W1035922702,,service,false,0,5.0,false,false,false,0,79.8,Lekki Phase 1,1035922702
+W1035923017,,service,false,0,5.0,false,false,false,0,67.7,Lekki Phase 1,1035923017
+W1035923106,,service,false,0,5.0,false,false,false,0,37.0,Lekki Phase 1,1035923106
+W1064257018,,service,false,0,5.0,false,false,false,0,143.6,Lekki Phase 1,1064257018
+W1064259488,,service,false,0,5.0,false,false,false,0,70.0,Lekki Phase 1,1064259488
+W1064261296,,service,false,0,5.0,false,false,false,0,47.9,Lekki Phase 1,1064261296
+W1065026316,,service,false,0,5.0,false,false,false,0,43.8,Lekki Phase 1,1065026316
+W1065026750,,service,false,0,5.0,false,false,false,0,39.8,Lekki Phase 1,1065026750
+W1065027780,,service,false,0,5.0,false,false,false,0,56.3,Lekki Phase 1,1065027780
+W1065029157,,service,false,0,5.0,false,false,false,0,31.8,Lekki Phase 1,1065029157
+W1065029483,,service,false,0,5.0,false,false,false,0,16.8,Lekki Phase 1,1065029483
+W1065029484,,service,false,0,5.0,false,false,false,0,29.0,Lekki Phase 1,1065029484
+W1065031791,,service,false,0,5.0,false,false,false,0,63.4,Lekki Phase 1,1065031791
+W1065035834,,service,false,0,5.0,false,false,false,0,37.6,Lekki Phase 1,1065035834
+W1065399637,,service,false,0,5.0,false,false,false,0,76.7,Lekki Phase 1,1065399637
+W1065765842,,service,false,0,5.0,false,false,false,0,99.9,Lekki Phase 1,1065765842
+W1065766792,,residential,false,0,7.5,false,false,false,0,83.1,Lekki Phase 1,1065766792
+W1066274597,,tertiary,false,0,10.0,false,false,false,0,6.9,Lekki Phase 1,1066274597
+W1066274598,,tertiary,false,0,10.0,true,false,false,0,48.0,Lekki Phase 1,1066274598
+W1066296453,,service,false,0,5.0,false,false,false,0,39.2,Lekki Phase 1,1066296453
+W1066296615,,service,false,0,5.0,false,false,false,0,45.0,Lekki Phase 1,1066296615
+W1066296900,,service,false,0,5.0,false,false,false,0,59.5,Lekki Phase 1,1066296900
+W1066297926,,service,false,0,5.0,false,false,false,0,49.7,Lekki Phase 1,1066297926
+W1066298230,,service,false,0,5.0,false,false,false,0,49.0,Lekki Phase 1,1066298230
+W1066298231,,service,false,0,5.0,false,false,false,0,49.3,Lekki Phase 1,1066298231
+W1066299668,,residential,false,0,7.5,false,false,false,0,51.5,Lekki Phase 1,1066299668
+W1066299669,,residential,false,0,7.5,false,false,false,0,53.9,Lekki Phase 1,1066299669
+W1066299670,,residential,false,0,7.5,false,false,false,0,51.9,Lekki Phase 1,1066299670
+W1066299671,,residential,false,0,7.5,false,false,false,0,189.3,Lekki Phase 1,1066299671
+W1066301519,,service,false,0,5.0,false,false,false,0,71.5,Lekki Phase 1,1066301519
+W1066301520,,service,false,0,5.0,false,false,false,0,35.9,Lekki Phase 1,1066301520
+W1066301521,,service,false,0,5.0,false,false,false,0,42.6,Lekki Phase 1,1066301521
+W1066301522,,service,false,0,5.0,false,false,false,0,42.3,Lekki Phase 1,1066301522
+W1066301523,,service,false,0,5.0,false,false,false,0,80.1,Lekki Phase 1,1066301523
+W1067055364,,service,false,0,5.0,false,false,false,0,82.4,Lekki Phase 1,1067055364
+W1067055365,,service,false,0,5.0,false,false,false,0,82.4,Lekki Phase 1,1067055365
+W1076504006,,residential,false,0,7.5,false,false,false,0,333.6,Lekki Phase 1,1076504006
+W1077872699,,service,false,0,5.0,false,false,false,0,82.4,Lekki Phase 1,1077872699
+W1078124601,,residential,false,0,7.5,false,false,false,0,55.3,Lekki Phase 1,1078124601
+W1078124972,,residential,false,0,7.5,false,false,false,0,49.1,Lekki Phase 1,1078124972
+W1078124973,,residential,false,0,7.5,false,false,false,0,141.5,Lekki Phase 1,1078124973
+W1078125023,,service,false,0,5.0,false,false,false,0,43.5,Lekki Phase 1,1078125023
+W1078126950,,residential,false,0,7.5,false,false,false,0,45.9,Lekki Phase 1,1078126950
+W1078126951,,residential,false,0,7.5,false,false,false,0,44.2,Lekki Phase 1,1078126951
+W1078126952,,residential,false,0,7.5,false,false,false,0,42.0,Lekki Phase 1,1078126952
+W1078385012,,service,false,0,5.0,false,false,false,0,31.2,Lekki Phase 1,1078385012
+W1078720294,,service,false,0,5.0,false,false,false,0,60.5,Lekki Phase 1,1078720294
+W1078720295,,service,false,0,5.0,false,false,false,0,62.0,Lekki Phase 1,1078720295
+W1078720296,,service,false,0,5.0,false,false,false,0,100.5,Lekki Phase 1,1078720296
+W1078720297,,service,false,0,5.0,false,false,false,0,11.9,Lekki Phase 1,1078720297
+W1078767434,,residential,false,0,7.5,false,false,false,0,80.3,Lekki Phase 1,1078767434
+W1078768646,,residential,false,0,7.5,false,false,false,0,58.5,Lekki Phase 1,1078768646
+W1082796627,,service,false,0,5.0,false,false,false,0,124.3,Lekki Phase 1,1082796627
+W1082807356,,residential,false,0,7.5,false,false,false,0,102.6,Lekki Phase 1,1082807356
+W1082807357,,residential,false,0,7.5,false,false,false,0,153.7,Lekki Phase 1,1082807357
+W1082807358,,residential,false,0,7.5,false,false,false,0,107.8,Lekki Phase 1,1082807358
+W1082833507,,service,false,0,5.0,false,false,false,0,41.3,Lekki Phase 1,1082833507
+W1082833508,,residential,false,0,7.5,false,false,false,0,97.8,Lekki Phase 1,1082833508
+W1082833509,,residential,false,0,7.5,false,false,false,0,45.6,Lekki Phase 1,1082833509
+W1082833510,,service,false,0,5.0,false,false,false,0,138.3,Lekki Phase 1,1082833510
+W1082834356,,service,false,0,5.0,false,false,false,0,81.3,Lekki Phase 1,1082834356
+W1082834357,,service,false,0,5.0,false,false,false,0,42.9,Lekki Phase 1,1082834357
+W1082834358,,service,false,0,5.0,false,false,false,0,43.7,Lekki Phase 1,1082834358
+W1082834359,,service,false,0,5.0,false,false,false,0,43.5,Lekki Phase 1,1082834359
+W1082834360,,service,false,0,5.0,false,false,false,0,153.4,Lekki Phase 1,1082834360
+W1082835334,,service,false,0,5.0,false,false,false,0,161.3,Lekki Phase 1,1082835334
+W1082835335,,service,false,0,5.0,false,false,false,0,94.9,Lekki Phase 1,1082835335
+W1082835336,,service,false,0,5.0,false,false,false,0,52.1,Lekki Phase 1,1082835336
+W1082835337,,service,false,0,5.0,false,false,false,0,54.6,Lekki Phase 1,1082835337
+W1082835338,,service,false,0,5.0,false,false,false,0,149.8,Lekki Phase 1,1082835338
+W1082835339,,service,false,0,5.0,false,false,false,0,53.9,Lekki Phase 1,1082835339
+W1082835340,,service,false,0,5.0,false,false,false,0,62.9,Lekki Phase 1,1082835340
+W1082835726,,service,false,0,5.0,false,false,false,0,186.9,Lekki Phase 1,1082835726
+W1082836767,,residential,false,0,7.5,false,false,false,0,51.7,Lekki Phase 1,1082836767
+W1082838317,,service,false,0,5.0,false,false,false,0,42.4,Lekki Phase 1,1082838317
+W1082838318,,service,false,0,5.0,false,false,false,0,42.1,Lekki Phase 1,1082838318
+W1082845170,,service,false,0,5.0,false,false,false,0,82.7,Lekki Phase 1,1082845170
+W1083161056,,service,false,0,5.0,false,false,false,0,94.0,Lekki Phase 1,1083161056
+W1083162469,,residential,false,0,7.5,false,false,false,0,35.2,Lekki Phase 1,1083162469
+W1083162470,,residential,false,0,7.5,false,false,false,0,127.9,Lekki Phase 1,1083162470
+W1083396052,,service,false,0,5.0,false,false,false,0,36.7,Lekki Phase 1,1083396052
+W1083396245,,service,false,0,5.0,false,false,false,0,38.1,Lekki Phase 1,1083396245
+W1083396246,,service,false,0,5.0,false,false,false,0,47.0,Lekki Phase 1,1083396246
+W1083397027,,service,false,0,5.0,false,false,false,0,45.2,Lekki Phase 1,1083397027
+W1083399117,,service,false,0,5.0,false,false,false,0,25.8,Lekki Phase 1,1083399117
+W1083402000,,service,false,0,5.0,false,false,false,0,38.9,Lekki Phase 1,1083402000
+W1083463857,,service,false,0,5.0,true,false,false,0,72.0,Lekki Phase 1,1083463857
+W1083463858,,service,false,0,5.0,false,false,false,0,36.6,Lekki Phase 1,1083463858
+W1083463859,,service,false,0,5.0,true,false,false,0,72.4,Lekki Phase 1,1083463859
+W1083465777,,service,false,0,5.0,false,false,false,0,45.1,Lekki Phase 1,1083465777
+W1083465778,,service,false,0,5.0,false,false,false,0,32.7,Lekki Phase 1,1083465778
+W1089450034,,residential,false,0,7.5,false,false,false,0,117.5,Lekki Phase 1,1089450034
+W1089450035,,residential,false,0,7.5,false,false,false,0,195.6,Lekki Phase 1,1089450035
+W1090438951,,service,false,0,5.0,false,false,false,0,148.7,Lekki Phase 1,1090438951
+W1096928668,,service,false,0,5.0,false,false,false,0,184.8,Lekki Phase 1,1096928668
+W1096928886,,service,false,0,5.0,false,false,false,0,43.8,Lekki Phase 1,1096928886
+W1097212416,,service,false,0,5.0,false,false,false,0,40.4,Lekki Phase 1,1097212416
+W1097214050,,service,false,0,5.0,false,false,false,0,42.0,Lekki Phase 1,1097214050
+W1097215186,,service,false,0,5.0,false,false,false,0,57.8,Lekki Phase 1,1097215186
+W1097251994,,residential,false,0,7.5,false,false,false,0,45.1,Lekki Phase 1,1097251994
+W1097256184,,service,false,0,5.0,false,false,false,0,25.7,Lekki Phase 1,1097256184
+W1097256952,,service,false,0,5.0,false,false,false,0,35.0,Lekki Phase 1,1097256952
+W1097256953,,service,false,0,5.0,false,false,false,0,34.7,Lekki Phase 1,1097256953
+W1097256954,,service,false,0,5.0,false,false,false,0,66.2,Lekki Phase 1,1097256954
+W1097256955,,service,false,0,5.0,false,false,false,0,50.4,Lekki Phase 1,1097256955
+W1097256956,,service,false,0,5.0,false,false,false,0,44.4,Lekki Phase 1,1097256956
+W1097879271,,service,false,0,5.0,false,false,false,0,31.9,Lekki Phase 1,1097879271
+W1103382198,,service,false,0,5.0,false,false,false,0,238.4,Lekki Phase 1,1103382198
+W1103382199,,service,false,0,5.0,false,false,false,0,63.5,Lekki Phase 1,1103382199
+W1103382200,,service,false,0,5.0,false,false,false,0,100.7,Lekki Phase 1,1103382200
+W1103382201,,service,false,0,5.0,false,false,false,0,87.9,Lekki Phase 1,1103382201
+W1103382205,,service,false,0,5.0,false,false,false,0,79.9,Lekki Phase 1,1103382205
+W1103382206,,service,false,0,5.0,false,false,false,0,112.6,Lekki Phase 1,1103382206
+W1105462255,,residential,false,0,7.5,false,false,false,0,49.2,Lekki Phase 1,1105462255
+W1105462256,,service,false,0,5.0,false,false,false,0,28.1,Lekki Phase 1,1105462256
+W1107330482,,service,false,0,5.0,false,false,false,0,32.8,Lekki Phase 1,1107330482
+W1107330484,,residential,false,0,7.5,false,false,false,0,40.6,Lekki Phase 1,1107330484
+W1111254765,,service,false,0,5.0,false,false,false,0,40.9,Lekki Phase 1,1111254765
+W1111254766,,service,false,0,5.0,false,false,false,0,40.8,Lekki Phase 1,1111254766
+W1111254767,,service,false,0,5.0,false,false,false,0,40.6,Lekki Phase 1,1111254767
+W1111254768,,service,false,0,5.0,false,false,false,0,89.9,Lekki Phase 1,1111254768
+W1111683896,,residential,false,0,7.5,false,false,false,0,237.1,Lekki Phase 1,1111683896
+W1111683897,,residential,false,0,7.5,false,false,false,0,132.5,Lekki Phase 1,1111683897
+W1111684528,,residential,false,0,7.5,false,false,false,0,59.4,Lekki Phase 1,1111684528
+W1111685118,,service,false,0,5.0,false,false,false,0,51.2,Lekki Phase 1,1111685118
+W1111955147,,service,false,0,5.0,false,false,false,0,52.7,Lekki Phase 1,1111955147
+W1111955736,,service,false,0,5.0,false,false,false,0,45.9,Lekki Phase 1,1111955736
+W1111972078,,service,false,0,5.0,false,false,false,0,91.5,Lekki Phase 1,1111972078
+W1111973056,,service,false,0,5.0,false,false,false,0,313.8,Lekki Phase 1,1111973056
+W1112199982,,service,false,0,5.0,false,false,false,0,36.7,Lekki Phase 1,1112199982
+W1112202175,,residential,false,0,7.5,false,false,false,0,59.7,Lekki Phase 1,1112202175
+W1112209744,,service,false,0,5.0,false,false,false,0,41.7,Lekki Phase 1,1112209744
+W1112211076,,service,false,0,5.0,false,false,false,0,46.8,Lekki Phase 1,1112211076
+W1112211395,,service,false,0,5.0,false,false,false,0,28.7,Lekki Phase 1,1112211395
+W1112211530,,service,false,0,5.0,false,false,false,0,58.4,Lekki Phase 1,1112211530
+W1112212307,,service,false,0,5.0,false,false,false,0,45.6,Lekki Phase 1,1112212307
+W1112214588,,service,false,0,5.0,false,false,false,0,212.6,Lekki Phase 1,1112214588
+W1112214875,,service,false,0,5.0,false,false,false,0,78.7,Lekki Phase 1,1112214875
+W1112215722,,service,false,0,5.0,false,false,false,0,113.1,Lekki Phase 1,1112215722
+W1112216038,,service,false,0,5.0,false,false,false,0,101.7,Lekki Phase 1,1112216038
+W1112224314,,service,false,0,5.0,false,false,false,0,36.9,Lekki Phase 1,1112224314
+W1112226208,,service,false,0,5.0,false,false,false,0,36.5,Lekki Phase 1,1112226208
+W1112227937,,service,false,0,5.0,false,false,false,0,38.5,Lekki Phase 1,1112227937
+W1112228563,,service,false,0,5.0,false,false,false,0,28.0,Lekki Phase 1,1112228563
+W1112234404,,service,false,0,5.0,false,false,false,0,21.7,Lekki Phase 1,1112234404
+W1112236652,,service,false,0,5.0,false,false,false,0,43.4,Lekki Phase 1,1112236652
+W1112237110,,service,false,0,5.0,false,false,false,0,54.7,Lekki Phase 1,1112237110
+W1112237460,,service,false,0,5.0,false,false,false,0,450.5,Lekki Phase 1,1112237460
+W1112254137,,service,false,0,5.0,false,false,false,0,23.3,Lekki Phase 1,1112254137
+W1112255200,,residential,false,0,7.5,false,false,false,0,40.1,Lekki Phase 1,1112255200
+W1112255464,,service,false,0,5.0,false,false,false,0,49.9,Lekki Phase 1,1112255464
+W1112256146,,service,false,0,5.0,false,false,false,0,43.9,Lekki Phase 1,1112256146
+W1112836840,,service,false,0,5.0,false,false,false,0,44.8,Lekki Phase 1,1112836840
+W1112836841,,service,false,0,5.0,false,false,false,0,45.4,Lekki Phase 1,1112836841
+W1112837191,,service,false,0,5.0,false,false,false,0,49.0,Lekki Phase 1,1112837191
+W1112837410,,service,false,0,5.0,false,false,false,0,91.3,Lekki Phase 1,1112837410
+W1112842318,,service,false,0,5.0,false,false,false,0,48.0,Lekki Phase 1,1112842318
+W1112849171,,service,false,0,5.0,false,false,false,0,58.3,Lekki Phase 1,1112849171
+W1112855873,,service,false,0,5.0,false,false,false,0,42.3,Lekki Phase 1,1112855873
+W1112856457,,service,false,0,5.0,false,false,false,0,68.2,Lekki Phase 1,1112856457
+W1112857076,,service,false,0,5.0,false,false,false,0,49.7,Lekki Phase 1,1112857076
+W1112858921,,service,false,0,5.0,false,false,false,0,50.4,Lekki Phase 1,1112858921
+W1112859975,,service,false,0,5.0,false,false,false,0,48.0,Lekki Phase 1,1112859975
+W1112861863,,service,false,0,5.0,false,false,false,0,20.7,Lekki Phase 1,1112861863
+W1112861864,,service,false,0,5.0,false,false,false,0,51.3,Lekki Phase 1,1112861864
+W1114865721,,trunk,true,0,7.5,true,false,false,0,50.9,Lekki Phase 1,1114865721
+W1114865722,,residential,false,0,7.5,false,false,false,0,22.5,Lekki Phase 1,1114865722
+W1114865723,,residential,false,0,7.5,false,false,false,0,18.8,Lekki Phase 1,1114865723
+W1114865724,,residential,false,0,7.5,false,false,false,0,126.3,Lekki Phase 1,1114865724
+W1114865725,,trunk,true,0,7.5,true,false,false,0,36.1,Lekki Phase 1,1114865725
+W1117791103,,residential,false,0,7.5,false,false,false,0,51.1,Lekki Phase 1,1117791103
+W1120189821,,residential,false,0,7.5,false,false,false,0,455.6,Lekki Phase 1,1120189821
+W1120189822,,service,false,0,5.0,false,false,false,0,118.6,Lekki Phase 1,1120189822
+W1120189823,,service,false,0,5.0,false,false,false,0,277.7,Lekki Phase 1,1120189823
+W1120189830,,residential,false,0,7.5,false,false,false,0,418.7,Lekki Phase 1,1120189830
+W1120189831,,service,false,0,5.0,false,false,false,0,428.5,Lekki Phase 1,1120189831
+W1120189832,,service,false,0,5.0,false,false,false,0,164.8,Lekki Phase 1,1120189832
+W1120189834,,service,false,0,5.0,false,false,false,0,90.5,Lekki Phase 1,1120189834
+W1120197963,,residential,false,0,7.5,true,false,false,0,51.1,Lekki Phase 1,1120197963
+W1120197964,,residential,false,0,7.5,true,false,false,0,421.8,Lekki Phase 1,1120197964
+W1120197965,,residential,false,0,7.5,false,false,false,0,92.9,Lekki Phase 1,1120197965
+W1120197966,,residential,false,0,7.5,false,false,false,0,100.9,Lekki Phase 1,1120197966
+W1120197967,,residential,false,0,7.5,false,false,false,0,94.8,Lekki Phase 1,1120197967
+W1120197968,,residential,false,0,7.5,false,false,false,0,73.9,Lekki Phase 1,1120197968
+W1120197969,,residential,false,0,7.5,false,false,false,0,93.6,Lekki Phase 1,1120197969
+W1122572140,,residential,false,0,7.5,false,false,false,0,28.7,Lekki Phase 1,1122572140
+W1122572141,,residential,false,0,7.5,false,false,false,0,59.4,Lekki Phase 1,1122572141
+W1122572142,,service,false,0,5.0,false,false,false,0,51.6,Lekki Phase 1,1122572142
+W1122572143,,residential,false,0,7.5,false,false,false,0,28.4,Lekki Phase 1,1122572143
+W1124086191,,service,false,0,5.0,false,false,false,0,51.8,Lekki Phase 1,1124086191
+W1124086192,,service,false,0,5.0,false,false,false,0,103.1,Lekki Phase 1,1124086192
+W1124086193,,service,false,0,5.0,false,false,false,0,103.8,Lekki Phase 1,1124086193
+W1124089180,,service,false,0,5.0,false,false,false,0,60.4,Lekki Phase 1,1124089180
+W1124089181,,service,false,0,5.0,false,false,false,0,245.9,Lekki Phase 1,1124089181
+W1124089182,,service,false,0,5.0,false,false,false,0,55.4,Lekki Phase 1,1124089182
+W1124089183,,service,false,0,5.0,false,false,false,0,49.5,Lekki Phase 1,1124089183
+W1124089184,,service,false,0,5.0,false,false,false,0,49.6,Lekki Phase 1,1124089184
+W1124089185,,service,false,0,5.0,false,false,false,0,49.6,Lekki Phase 1,1124089185
+W1124089186,,service,false,0,5.0,false,false,false,0,49.6,Lekki Phase 1,1124089186
+W1124089187,,service,false,0,5.0,false,false,false,0,49.7,Lekki Phase 1,1124089187
+W1124089188,,service,false,0,5.0,false,false,false,0,49.7,Lekki Phase 1,1124089188
+W1124089189,,service,false,0,5.0,false,false,false,0,49.8,Lekki Phase 1,1124089189
+W1124089190,,service,false,0,5.0,false,false,false,0,50.4,Lekki Phase 1,1124089190
+W1124089191,,service,false,0,5.0,false,false,false,0,51.2,Lekki Phase 1,1124089191
+W1124089192,,service,false,0,5.0,false,false,false,0,51.6,Lekki Phase 1,1124089192
+W1124089193,,service,false,0,5.0,false,false,false,0,52.1,Lekki Phase 1,1124089193
+W1124089194,,service,false,0,5.0,false,false,false,0,52.5,Lekki Phase 1,1124089194
+W1124089195,,service,false,0,5.0,false,false,false,0,52.8,Lekki Phase 1,1124089195
+W1124089196,,service,false,0,5.0,false,false,false,0,52.6,Lekki Phase 1,1124089196
+W1124089197,,service,false,0,5.0,false,false,false,0,51.6,Lekki Phase 1,1124089197
+W1124089198,,service,false,0,5.0,false,false,false,0,50.0,Lekki Phase 1,1124089198
+W1124089199,,service,false,0,5.0,false,false,false,0,241.3,Lekki Phase 1,1124089199
+W1127734280,,residential,false,0,7.5,false,false,false,0,99.3,Lekki Phase 1,1127734280
+W1133675646,,residential,false,0,7.5,false,false,false,0,96.4,Lekki Phase 1,1133675646
+W1133685173,,service,false,0,5.0,false,false,false,0,40.4,Lekki Phase 1,1133685173
+W1134425790,,service,false,0,5.0,false,false,false,0,14.6,Lekki Phase 1,1134425790
+W1134425791,,service,false,0,5.0,false,false,false,0,30.2,Lekki Phase 1,1134425791
+W1134429705,,service,false,0,5.0,false,false,false,0,94.5,Lekki Phase 1,1134429705
+W1134430171,,service,false,0,5.0,false,false,false,0,88.0,Lekki Phase 1,1134430171
+W1134432112,,service,false,0,5.0,false,false,false,0,47.1,Lekki Phase 1,1134432112
+W1134432644,,service,false,0,5.0,false,false,false,0,43.7,Lekki Phase 1,1134432644
+W1134693946,,service,false,0,5.0,false,false,false,0,19.7,Lekki Phase 1,1134693946
+W1134693947,,service,false,0,5.0,false,false,false,0,27.3,Lekki Phase 1,1134693947
+W1135615397,,service,false,0,5.0,false,false,false,0,53.4,Lekki Phase 1,1135615397
+W1136684412,,service,false,0,5.0,false,false,false,0,302.3,Lekki Phase 1,1136684412
+W1138569610,,service,false,0,5.0,false,false,false,0,28.5,Lekki Phase 1,1138569610
+W1146237997,,residential,false,0,7.5,false,false,false,0,69.8,Lekki Phase 1,1146237997
+W1147827920,,residential,false,0,7.5,false,false,false,0,89.8,Lekki Phase 1,1147827920
+W1148404483,,residential,false,0,7.5,false,false,false,0,56.4,Lekki Phase 1,1148404483
+W1154210129,,service,false,0,5.0,false,false,false,0,34.1,Lekki Phase 1,1154210129
+W1158655696,,residential,false,0,7.5,true,false,false,0,20.7,Lekki Phase 1,1158655696
+W1158655697,,residential,false,0,7.5,true,false,false,0,15.2,Lekki Phase 1,1158655697
+W1159276528,,residential,false,0,7.5,false,false,false,0,14.7,Lekki Phase 1,1159276528
+W1160999271,,residential,false,0,7.5,false,false,false,0,95.1,Lekki Phase 1,1160999271
+W1168933092,,service,false,0,5.0,false,false,false,0,40.5,Lekki Phase 1,1168933092
+W1169796566,,service,false,0,5.0,false,false,false,0,88.0,Lekki Phase 1,1169796566
+W1169819584,,service,false,0,5.0,false,false,false,0,18.0,Lekki Phase 1,1169819584
+W1169819585,,service,false,0,5.0,false,false,false,0,92.0,Lekki Phase 1,1169819585
+W1169819586,,service,false,0,5.0,false,false,false,0,258.5,Lekki Phase 1,1169819586
+W1169825241,,service,false,0,5.0,false,false,false,0,26.9,Lekki Phase 1,1169825241
+W1169825242,,service,false,0,5.0,false,false,false,0,26.2,Lekki Phase 1,1169825242
+W1169826765,,service,false,0,5.0,false,false,false,0,47.8,Lekki Phase 1,1169826765
+W1170454824,,service,false,0,5.0,false,false,false,0,41.8,Lekki Phase 1,1170454824
+W1170457449,,service,false,0,5.0,false,false,false,0,15.3,Lekki Phase 1,1170457449
+W1170457450,,service,false,0,5.0,false,false,false,0,15.4,Lekki Phase 1,1170457450
+W1170457451,,service,false,0,5.0,false,false,false,0,25.8,Lekki Phase 1,1170457451
+W1170457452,,service,false,0,5.0,false,false,false,0,42.3,Lekki Phase 1,1170457452
+W1170457453,,service,false,0,5.0,false,false,false,0,47.3,Lekki Phase 1,1170457453
+W1170458726,,service,false,0,5.0,false,false,false,0,91.0,Lekki Phase 1,1170458726
+W1170460639,,residential,false,0,7.5,false,false,false,0,134.0,Lekki Phase 1,1170460639
+W1170475246,,service,false,0,5.0,false,false,false,0,20.0,Lekki Phase 1,1170475246
+W1170475247,,service,false,0,5.0,false,false,false,0,73.4,Lekki Phase 1,1170475247
+W1170475248,,service,false,0,5.0,false,false,false,0,16.6,Lekki Phase 1,1170475248
+W1170498493,,service,false,0,5.0,false,false,false,0,46.4,Lekki Phase 1,1170498493
+W1170507278,,service,false,0,5.0,false,false,false,0,43.8,Lekki Phase 1,1170507278
+W1170508518,,service,false,0,5.0,false,false,false,0,62.0,Lekki Phase 1,1170508518
+W1177522562,,service,false,0,5.0,false,false,false,0,10.7,Lekki Phase 1,1177522562
+W1177522563,,service,false,0,5.0,false,false,false,0,45.5,Lekki Phase 1,1177522563
+W1177522564,,service,false,0,5.0,false,false,false,0,31.3,Lekki Phase 1,1177522564
+W1177522565,,service,false,0,5.0,false,false,false,0,40.3,Lekki Phase 1,1177522565
+W1177522567,,service,false,0,5.0,false,false,false,0,19.1,Lekki Phase 1,1177522567
+W1177522569,,service,false,0,5.0,false,false,false,0,82.0,Lekki Phase 1,1177522569
+W1177522570,,service,false,0,5.0,false,false,false,0,16.0,Lekki Phase 1,1177522570
+W1177522571,,service,false,0,5.0,false,false,false,0,104.9,Lekki Phase 1,1177522571
+W1177522572,,service,false,0,5.0,false,false,false,0,82.1,Lekki Phase 1,1177522572
+W1177522573,,service,false,0,5.0,false,false,false,0,62.0,Lekki Phase 1,1177522573
+W1177522574,,service,false,0,5.0,false,false,false,0,45.9,Lekki Phase 1,1177522574
+W1177522575,,service,false,0,5.0,false,false,false,0,89.6,Lekki Phase 1,1177522575
+W1179689179,,service,false,0,5.0,false,false,false,0,25.4,Lekki Phase 1,1179689179
+W1179689180,,service,false,0,5.0,false,false,false,0,32.5,Lekki Phase 1,1179689180
+W1180367590,,service,false,0,5.0,false,false,false,0,15.0,Lekki Phase 1,1180367590
+W1180369094,,residential,false,0,7.5,false,false,false,0,42.2,Lekki Phase 1,1180369094
+W1180369144,,service,false,0,5.0,false,false,false,0,43.1,Lekki Phase 1,1180369144
+W1180369754,,service,false,0,5.0,false,false,false,0,62.6,Lekki Phase 1,1180369754
+W1180373657,,service,false,0,5.0,false,false,false,0,33.7,Lekki Phase 1,1180373657
+W1180379250,,service,false,0,5.0,false,false,false,0,85.5,Lekki Phase 1,1180379250
+W1180391650,,service,false,0,5.0,false,false,false,0,42.4,Lekki Phase 1,1180391650
+W1181703002,,residential,false,0,7.5,true,false,false,0,46.6,Lekki Phase 1,1181703002
+W1181703003,,residential,false,0,7.5,true,false,false,0,47.4,Lekki Phase 1,1181703003
+W1181714304,,residential,false,0,7.5,false,false,false,0,9.6,Lekki Phase 1,1181714304
+W1181714305,,residential,false,0,7.5,false,false,false,0,8.7,Lekki Phase 1,1181714305
+W1183293822,,service,false,0,5.0,false,false,false,0,107.7,Lekki Phase 1,1183293822
+W1183293823,,residential,false,0,7.5,false,false,false,0,135.2,Lekki Phase 1,1183293823
+W1183293824,,residential,false,0,7.5,false,false,false,0,137.0,Lekki Phase 1,1183293824
+W1183293825,,residential,false,0,7.5,false,false,false,0,411.6,Lekki Phase 1,1183293825
+W1187063758,,residential,false,0,7.5,false,false,false,0,50.0,Lekki Phase 1,1187063758
+W1189281884,,service,false,0,5.0,false,false,false,0,82.4,Lekki Phase 1,1189281884
+W1189281885,,service,false,0,5.0,false,false,false,0,82.4,Lekki Phase 1,1189281885
+W1189281886,,service,false,0,5.0,false,false,false,0,82.4,Lekki Phase 1,1189281886
+W1189281887,,service,false,0,5.0,false,false,false,0,73.6,Lekki Phase 1,1189281887
+W1189281888,,service,false,0,5.0,false,false,false,0,323.0,Lekki Phase 1,1189281888
+W1189281889,,service,false,0,5.0,false,false,false,0,34.8,Lekki Phase 1,1189281889
+W1189281890,,service,false,0,5.0,false,false,false,0,43.6,Lekki Phase 1,1189281890
+W1189586361,,service,false,0,5.0,false,false,false,0,62.4,Lekki Phase 1,1189586361
+W1189586362,,service,false,0,5.0,false,false,false,0,55.7,Lekki Phase 1,1189586362
+W1189586363,,service,false,0,5.0,false,false,false,0,57.6,Lekki Phase 1,1189586363
+W1192335890,,service,false,0,5.0,false,false,false,0,153.2,Lekki Phase 1,1192335890
+W1192335891,,service,false,0,5.0,false,false,false,0,70.3,Lekki Phase 1,1192335891
+W1192335892,,service,false,0,5.0,false,false,false,0,69.1,Lekki Phase 1,1192335892
+W1213183070,,residential,false,0,7.5,false,false,false,0,14.0,Lekki Phase 1,1213183070
+W1214460428,,residential,false,0,7.5,false,false,false,0,76.8,Lekki Phase 1,1214460428
+W1218719816,,service,false,0,5.0,false,false,false,0,71.2,Lekki Phase 1,1218719816
+W1218719817,,service,false,0,5.0,false,false,false,0,63.3,Lekki Phase 1,1218719817
+W1218719818,,residential,false,0,7.5,false,false,false,0,126.9,Lekki Phase 1,1218719818
+W1218719819,,residential,false,0,7.5,false,false,false,0,109.5,Lekki Phase 1,1218719819
+W1218719820,,residential,false,0,7.5,false,false,false,0,159.7,Lekki Phase 1,1218719820
+W1218720277,,service,false,0,5.0,false,false,false,0,92.5,Lekki Phase 1,1218720277
+W1218720278,,residential,false,0,7.5,false,false,false,0,198.2,Lekki Phase 1,1218720278
+W1218720279,,residential,false,0,7.5,false,false,false,0,210.4,Lekki Phase 1,1218720279
+W1218910340,,service,false,0,5.0,false,false,false,0,70.3,Lekki Phase 1,1218910340
+W1227059712,,service,false,0,5.0,false,false,false,0,23.3,Lekki Phase 1,1227059712
+W1227059713,,service,false,0,5.0,false,false,false,0,53.3,Lekki Phase 1,1227059713
+W1227059714,,service,false,0,5.0,false,false,false,0,147.2,Lekki Phase 1,1227059714
+W1227276832,,service,false,0,5.0,false,false,false,0,67.6,Lekki Phase 1,1227276832
+W1227917489,,service,false,0,5.0,false,false,false,0,174.5,Lekki Phase 1,1227917489
+W1227930341,,service,false,0,5.0,false,false,false,0,57.6,Lekki Phase 1,1227930341
+W1227934456,,residential,false,0,7.5,true,false,false,0,223.4,Lekki Phase 1,1227934456
+W1227935067,,service,false,0,5.0,false,false,false,0,53.3,Lekki Phase 1,1227935067
+W1227936321,,residential,false,0,7.5,false,false,false,0,64.0,Lekki Phase 1,1227936321
+W1227936587,,residential,false,0,7.5,false,false,false,0,207.8,Lekki Phase 1,1227936587
+W1227936588,,residential,false,0,7.5,false,false,false,0,65.6,Lekki Phase 1,1227936588
+W1227936607,,service,false,0,5.0,false,false,false,0,82.2,Lekki Phase 1,1227936607
+W1227937500,,residential,false,0,7.5,false,false,false,0,84.4,Lekki Phase 1,1227937500
+W1227937501,,residential,false,0,7.5,false,false,false,0,84.5,Lekki Phase 1,1227937501
+W1227937502,,residential,false,0,7.5,false,false,false,0,184.0,Lekki Phase 1,1227937502
+W1229199102,,service,false,0,5.0,false,false,false,0,62.7,Lekki Phase 1,1229199102
+W1229244473,,service,false,0,5.0,false,false,false,0,76.0,Lekki Phase 1,1229244473
+W1229245508,,residential,false,0,7.5,false,false,false,0,45.1,Lekki Phase 1,1229245508
+W1229245509,,residential,false,0,7.5,false,false,false,0,16.5,Lekki Phase 1,1229245509
+W1229592512,,residential,false,0,7.5,false,false,false,0,97.9,Lekki Phase 1,1229592512
+W1229601973,,residential,false,0,7.5,false,false,false,0,45.5,Lekki Phase 1,1229601973
+W1229601974,,residential,false,0,7.5,false,false,false,0,43.6,Lekki Phase 1,1229601974
+W1229601975,,residential,false,0,7.5,false,false,false,0,12.5,Lekki Phase 1,1229601975
+W1229601976,,residential,false,0,7.5,false,false,false,0,12.3,Lekki Phase 1,1229601976
+W1229602455,,service,false,0,5.0,false,false,false,0,64.4,Lekki Phase 1,1229602455
+W1229603389,,service,false,0,5.0,false,false,false,0,23.8,Lekki Phase 1,1229603389
+W1229603390,,service,false,0,5.0,false,false,false,0,166.0,Lekki Phase 1,1229603390
+W1229624552,,residential,false,0,7.5,false,false,false,0,201.3,Lekki Phase 1,1229624552
+W1229625452,,service,false,0,5.0,false,false,false,0,41.2,Lekki Phase 1,1229625452
+W1229625453,,service,false,0,5.0,false,false,false,0,41.2,Lekki Phase 1,1229625453
+W1229633103,,service,false,0,5.0,false,false,false,0,75.1,Lekki Phase 1,1229633103
+W1229633197,,service,false,0,5.0,true,false,false,0,46.5,Lekki Phase 1,1229633197
+W1230468637,,service,false,0,5.0,false,false,false,0,8.0,Lekki Phase 1,1230468637
+W1230468638,,service,false,0,5.0,false,false,false,0,145.2,Lekki Phase 1,1230468638
+W1231014134,,service,false,0,5.0,false,false,false,0,34.1,Lekki Phase 1,1231014134
+W1234513360,,service,false,0,5.0,false,false,false,0,297.6,Lekki Phase 1,1234513360
+W1236465115,,service,false,0,5.0,false,false,false,0,83.2,Lekki Phase 1,1236465115
+W1242735566,,trunk,true,1,4.3,true,false,false,0,27.0,Lekki Phase 1,1242735566
+W1252754601,,residential,false,0,7.5,false,false,false,0,20.9,Lekki Phase 1,1252754601
+W1252754602,,residential,false,0,7.5,false,false,false,0,20.9,Lekki Phase 1,1252754602
+W1252754603,,residential,false,0,7.5,false,false,false,0,20.2,Lekki Phase 1,1252754603
+W1253336882,,service,false,0,5.0,false,false,false,0,34.8,Lekki Phase 1,1253336882
+W1253336883,,service,false,0,5.0,false,false,false,0,28.2,Lekki Phase 1,1253336883
+W1253336884,,service,false,0,5.0,false,false,false,0,28.3,Lekki Phase 1,1253336884
+W1253336885,,service,false,0,5.0,false,false,false,0,9.9,Lekki Phase 1,1253336885
+W1253375614,,service,false,0,5.0,false,false,false,0,84.5,Lekki Phase 1,1253375614
+W1253631554,,service,false,0,5.0,false,false,false,0,58.5,Lekki Phase 1,1253631554
+W1253633403,,service,false,0,5.0,false,false,false,0,48.7,Lekki Phase 1,1253633403
+W1254486395,,residential,false,0,7.5,false,false,false,0,42.9,Lekki Phase 1,1254486395
+W1254486461,,residential,false,0,7.5,false,false,false,0,96.1,Lekki Phase 1,1254486461
+W1254488623,,residential,false,0,7.5,false,false,false,0,106.9,Lekki Phase 1,1254488623
+W1254488898,,residential,false,0,7.5,false,false,false,0,54.0,Lekki Phase 1,1254488898
+W1254491033,,service,false,0,5.0,false,false,false,0,281.3,Lekki Phase 1,1254491033
+W1254491034,,service,false,0,5.0,true,false,false,0,60.4,Lekki Phase 1,1254491034
+W1254491035,,service,false,0,5.0,true,false,false,0,60.6,Lekki Phase 1,1254491035
+W1254491234,,service,false,0,5.0,false,false,false,0,71.0,Lekki Phase 1,1254491234
+W1254491235,,service,false,0,5.0,false,false,false,0,25.4,Lekki Phase 1,1254491235
+W1254491236,,service,false,0,5.0,false,false,false,0,14.5,Lekki Phase 1,1254491236
+W1254491237,,service,false,0,5.0,false,false,false,0,24.1,Lekki Phase 1,1254491237
+W1254491238,,service,false,0,5.0,false,false,false,0,25.5,Lekki Phase 1,1254491238
+W1255927279,,service,false,0,5.0,false,false,false,0,50.8,Lekki Phase 1,1255927279
+W1255943247,,service,false,0,5.0,false,false,false,0,5.9,Lekki Phase 1,1255943247
+W1255948270,,service,false,0,5.0,false,false,false,0,21.7,Lekki Phase 1,1255948270
+W1255950998,,residential,false,0,7.5,false,false,false,0,344.0,Lekki Phase 1,1255950998
+W1268599101,,residential,false,0,7.5,false,true,false,0,6.6,Lekki Phase 1,1268599101
+W1268599102,,residential,false,0,7.5,false,false,false,0,3.8,Lekki Phase 1,1268599102
+W1268599103,,residential,false,0,7.5,false,false,false,0,55.8,Lekki Phase 1,1268599103
+W1268599104,,residential,false,0,7.5,false,false,false,0,112.9,Lekki Phase 1,1268599104
+W1271398665,,residential,false,0,7.5,false,false,false,0,27.2,Lekki Phase 1,1271398665
+W1271398666,,residential,false,0,7.5,false,false,false,0,70.7,Lekki Phase 1,1271398666
+W1279067696,,residential,false,0,7.5,false,false,false,0,105.1,Lekki Phase 1,1279067696
+W1279067697,,service,false,0,5.0,false,false,false,0,650.2,Lekki Phase 1,1279067697
+W1279067698,,residential,false,0,7.5,false,false,false,0,114.7,Lekki Phase 1,1279067698
+W1279068546,,service,false,0,5.0,false,false,false,0,152.3,Lekki Phase 1,1279068546
+W1279069170,,service,false,0,5.0,false,false,false,0,224.4,Lekki Phase 1,1279069170
+W1286179286,,residential,false,0,7.5,false,false,false,0,16.8,Lekki Phase 1,1286179286
+W1289022463,,tertiary,true,0,7.5,false,false,false,0,7.0,Lekki Phase 1,1289022463
+W1290193459,,service,false,0,5.0,false,false,false,0,38.3,Lekki Phase 1,1290193459
+W1292979699,,residential,false,0,7.5,false,false,false,0,45.6,Lekki Phase 1,1292979699
+W1298676226,,service,false,0,5.0,false,false,false,0,54.6,Lekki Phase 1,1298676226
+W1298676227,,residential,false,0,7.5,true,false,false,0,31.9,Lekki Phase 1,1298676227
+W1298676228,,residential,false,0,7.5,true,false,false,0,29.9,Lekki Phase 1,1298676228
+W1304498966,,service,false,0,5.0,false,false,false,0,10.5,Lekki Phase 1,1304498966
+W1304498967,,service,false,0,5.0,false,false,false,0,10.2,Lekki Phase 1,1304498967
+W1304896389,,residential,false,0,7.5,false,false,false,0,10.4,Lekki Phase 1,1304896389
+W1304896390,,residential,false,0,7.5,false,false,false,0,9.9,Lekki Phase 1,1304896390
+W1305974057,,service,false,0,5.0,false,false,false,0,15.9,Lekki Phase 1,1305974057
+W1312809424,,residential,false,0,7.5,false,false,false,0,36.6,Lekki Phase 1,1312809424
+W1314875499,,service,false,0,5.0,false,false,false,0,27.2,Lekki Phase 1,1314875499
+W1315057800,,residential,false,0,7.5,false,false,false,0,94.6,Lekki Phase 1,1315057800
+W1315074939,,service,false,0,5.0,false,false,false,0,29.4,Lekki Phase 1,1315074939
+W1315074940,,service,false,0,5.0,false,false,false,0,83.8,Lekki Phase 1,1315074940
+W1336436019,,service,false,0,5.0,false,false,false,0,15.1,Lekki Phase 1,1336436019
+W1336847557,,service,false,0,5.0,false,false,false,0,115.7,Lekki Phase 1,1336847557
+W1339744534,,service,false,0,5.0,false,false,false,0,61.7,Lekki Phase 1,1339744534
+W1339744535,,service,false,0,5.0,false,false,false,0,57.1,Lekki Phase 1,1339744535
+W1339744536,,residential,false,0,7.5,false,false,false,0,57.6,Lekki Phase 1,1339744536
+W1339978908,,service,false,0,5.0,false,false,false,0,13.8,Lekki Phase 1,1339978908
+W1347606451,,residential,false,0,7.5,false,false,false,0,119.2,Lekki Phase 1,1347606451
+W1347606997,,service,false,0,5.0,false,false,false,0,78.0,Lekki Phase 1,1347606997
+W1347998902,,residential,false,0,7.5,false,false,false,0,49.6,Lekki Phase 1,1347998902
+W1347998903,,residential,false,0,7.5,false,false,false,0,77.3,Lekki Phase 1,1347998903
+W1347998904,,residential,false,0,7.5,false,false,false,0,111.8,Lekki Phase 1,1347998904
+W1347998905,,residential,false,0,7.5,false,false,false,0,105.0,Lekki Phase 1,1347998905
+W1348014563,,service,false,0,5.0,false,false,false,0,88.1,Lekki Phase 1,1348014563
+W1348014564,,residential,false,0,7.5,false,false,false,0,36.7,Lekki Phase 1,1348014564
+W1348014565,,service,false,0,5.0,false,false,false,0,159.7,Lekki Phase 1,1348014565
+W1374323613,,residential,false,0,7.5,false,false,false,0,26.1,Lekki Phase 1,1374323613
+W138040504,,residential,false,0,7.5,false,false,false,0,344.1,Lekki Phase 1,138040504
+W138040508,,residential,false,0,7.5,false,false,false,0,220.9,Lekki Phase 1,138040508
+W138040534,,residential,false,0,7.5,false,false,false,0,51.1,Lekki Phase 1,138040534
+W138040540,,residential,false,0,7.5,false,false,false,0,758.0,Lekki Phase 1,138040540
+W138040562,,residential,false,0,7.5,false,false,false,0,231.4,Lekki Phase 1,138040562
+W1386908608,,service,false,0,5.0,false,false,false,0,7.4,Lekki Phase 1,1386908608
+W1386908609,,service,false,0,5.0,false,false,false,0,12.0,Lekki Phase 1,1386908609
+W1386908610,,service,false,0,5.0,false,false,false,0,31.8,Lekki Phase 1,1386908610
+W1391747354,,service,false,0,5.0,false,false,false,0,7.3,Lekki Phase 1,1391747354
+W1391747355,,service,false,0,5.0,false,false,false,0,9.0,Lekki Phase 1,1391747355
+W1391747356,,service,false,0,5.0,false,true,false,0,13.1,Lekki Phase 1,1391747356
+W1391747357,,service,false,0,5.0,false,false,false,0,8.9,Lekki Phase 1,1391747357
+W1391747358,,service,false,0,5.0,false,false,false,0,44.9,Lekki Phase 1,1391747358
+W1391747359,,service,false,0,5.0,false,false,false,0,209.3,Lekki Phase 1,1391747359
+W1391747360,,service,false,0,5.0,false,true,false,0,16.3,Lekki Phase 1,1391747360
+W1396560427,,tertiary,false,0,10.0,true,false,false,0,62.6,Lekki Phase 1,1396560427
+W1408913374,,residential,false,0,7.5,false,false,false,0,33.6,Lekki Phase 1,1408913374
+W1409185389,,residential,false,0,7.5,false,false,false,0,118.9,Lekki Phase 1,1409185389
+W1409185390,,residential,false,0,7.5,true,false,false,0,11.5,Lekki Phase 1,1409185390
+W1409185391,,residential,false,0,7.5,true,false,false,0,12.8,Lekki Phase 1,1409185391
+W1409185392,,residential,false,0,7.5,false,false,false,0,79.4,Lekki Phase 1,1409185392
+W1409185393,,residential,false,0,7.5,true,false,false,0,43.7,Lekki Phase 1,1409185393
+W1409185394,,residential,false,0,7.5,false,false,false,0,98.9,Lekki Phase 1,1409185394
+W1409185395,,residential,false,0,7.5,true,false,false,0,441.8,Lekki Phase 1,1409185395
+W1415647126,,residential,false,0,7.5,false,false,false,0,168.8,Lekki Phase 1,1415647126
+W1417190423,,service,false,0,5.0,false,false,false,0,31.0,Lekki Phase 1,1417190423
+W1417190424,,service,false,0,5.0,false,false,false,0,76.4,Lekki Phase 1,1417190424
+W1423040931,,service,false,0,5.0,false,false,false,0,36.9,Lekki Phase 1,1423040931
+W1423040932,,service,false,0,5.0,false,false,false,0,72.9,Lekki Phase 1,1423040932
+W1425609778,,residential,false,0,7.5,false,false,false,0,6.8,Lekki Phase 1,1425609778
+W1425636266,,service,false,0,5.0,false,false,false,0,5.4,Lekki Phase 1,1425636266
+W1425640812,,service,false,0,5.0,false,false,false,0,7.5,Lekki Phase 1,1425640812
+W1426368530,,residential,false,0,7.5,false,false,false,0,95.9,Lekki Phase 1,1426368530
+W1426370385,,residential,false,0,7.5,false,false,false,0,258.5,Lekki Phase 1,1426370385
+W1426995273,,trunk,true,0,7.5,true,false,false,0,120.5,Lekki Phase 1,1426995273
+W1426995274,,trunk,true,0,7.5,true,false,false,0,123.4,Lekki Phase 1,1426995274
+W1426995275,,trunk,true,0,7.5,true,false,false,0,123.4,Lekki Phase 1,1426995275
+W1426995276,,trunk,true,0,7.5,true,false,false,0,78.7,Lekki Phase 1,1426995276
+W1426995277,,trunk,true,0,7.5,true,false,false,0,101.6,Lekki Phase 1,1426995277
+W1426995278,,trunk,true,0,7.5,true,false,false,0,153.7,Lekki Phase 1,1426995278
+W1426995279,,trunk,true,0,7.5,true,false,false,0,103.2,Lekki Phase 1,1426995279
+W1426995280,,trunk,true,0,7.5,true,false,false,0,120.9,Lekki Phase 1,1426995280
+W1426995281,,trunk,true,0,7.5,true,false,false,0,81.1,Lekki Phase 1,1426995281
+W1426995282,,trunk,true,0,7.5,true,false,false,0,127.4,Lekki Phase 1,1426995282
+W1436920365,,residential,false,0,7.5,false,false,false,0,32.0,Lekki Phase 1,1436920365
+W1436926911,,service,false,0,5.0,false,false,false,0,41.0,Lekki Phase 1,1436926911
+W1446571682,,service,false,0,5.0,false,false,false,0,11.5,Lekki Phase 1,1446571682
+W1446571683,,service,false,0,5.0,false,false,false,0,83.2,Lekki Phase 1,1446571683
+W1446571685,,service,false,0,5.0,false,false,false,0,49.8,Lekki Phase 1,1446571685
+W1446571686,,service,false,0,5.0,false,false,false,0,200.5,Lekki Phase 1,1446571686
+W1446571687,,service,false,0,5.0,false,false,false,0,75.3,Lekki Phase 1,1446571687
+W1446571688,,service,false,0,5.0,false,false,false,0,183.3,Lekki Phase 1,1446571688
+W1446571689,,residential,false,0,7.5,false,false,false,0,41.8,Lekki Phase 1,1446571689
+W1446571690,,residential,false,0,7.5,false,false,false,0,334.5,Lekki Phase 1,1446571690
+W1448563030,,residential,false,0,7.5,false,false,false,0,96.7,Lekki Phase 1,1448563030
+W1450285758,,residential,false,0,7.5,false,false,false,0,12.9,Lekki Phase 1,1450285758
+W1450317903,,service,false,0,5.0,false,false,false,0,3.6,Lekki Phase 1,1450317903
+W1450410160,,trunk,true,0,7.5,false,false,false,0,61.2,Lekki Phase 1,1450410160
+W1460480520,,residential,false,0,7.5,false,false,false,0,55.1,Lekki Phase 1,1460480520
+W1460480521,,service,false,0,5.0,false,false,false,0,17.5,Lekki Phase 1,1460480521
+W1460480522,,service,false,0,5.0,false,false,false,0,181.2,Lekki Phase 1,1460480522
+W146602209,,residential,false,0,7.5,false,false,false,0,63.7,Lekki Phase 1,146602209
+W146602211,,residential,false,0,7.5,false,false,false,0,101.1,Lekki Phase 1,146602211
+W146602212,,residential,false,0,7.5,false,false,false,0,85.4,Lekki Phase 1,146602212
+W146602213,,residential,false,0,7.5,false,false,false,0,91.9,Lekki Phase 1,146602213
+W146602214,,residential,false,0,7.5,false,false,false,0,276.0,Lekki Phase 1,146602214
+W1482712932,,service,false,0,5.0,false,false,false,0,200.5,Lekki Phase 1,1482712932
+W1482712933,,service,false,0,5.0,false,false,false,0,110.9,Lekki Phase 1,1482712933
+W1482712934,,residential,false,0,7.5,false,false,false,0,46.4,Lekki Phase 1,1482712934
+W1484542811,,residential,false,0,7.5,false,false,false,0,135.1,Lekki Phase 1,1484542811
+W1484542812,,residential,false,0,7.5,false,false,false,0,16.6,Lekki Phase 1,1484542812
+W1485420840,,service,false,0,5.0,true,false,false,0,16.7,Lekki Phase 1,1485420840
+W1485420841,,service,false,0,5.0,true,false,false,0,17.4,Lekki Phase 1,1485420841
+W1487214539,,service,false,0,5.0,false,false,false,0,35.8,Lekki Phase 1,1487214539
+W1490260030,,service,false,0,5.0,false,false,false,0,38.2,Lekki Phase 1,1490260030
+W1490260031,,service,false,0,5.0,false,false,false,0,6.5,Lekki Phase 1,1490260031
+W1490962823,,service,false,0,5.0,false,false,false,0,5.5,Lekki Phase 1,1490962823
+W1490962824,,service,false,0,5.0,false,false,false,0,5.1,Lekki Phase 1,1490962824
+W1490962825,,service,false,0,5.0,false,false,false,0,260.1,Lekki Phase 1,1490962825
+W1492204762,,service,false,0,5.0,false,false,false,0,70.1,Lekki Phase 1,1492204762
+W1499244327,,residential,false,0,7.5,false,false,false,0,76.2,Lekki Phase 1,1499244327
+W1499276948,,service,false,0,5.0,false,false,false,0,5.1,Lekki Phase 1,1499276948
+W1499276949,,service,false,0,5.0,false,false,false,0,86.1,Lekki Phase 1,1499276949
+W1499278583,,service,false,0,5.0,false,false,false,0,14.5,Lekki Phase 1,1499278583
+W1499278584,,service,false,0,5.0,false,false,false,0,18.9,Lekki Phase 1,1499278584
+W1499278585,,service,false,0,5.0,false,false,false,0,148.4,Lekki Phase 1,1499278585
+W1499299371,,service,false,0,5.0,false,false,false,0,72.4,Lekki Phase 1,1499299371
+W1499301040,,service,false,0,5.0,false,false,false,0,7.8,Lekki Phase 1,1499301040
+W1499301041,,service,false,0,5.0,false,false,false,0,110.5,Lekki Phase 1,1499301041
+W1499301042,,service,false,0,5.0,false,false,false,0,110.7,Lekki Phase 1,1499301042
+W1499301043,,service,false,0,5.0,false,false,false,0,108.1,Lekki Phase 1,1499301043
+W1499302892,,service,false,0,5.0,false,false,false,0,6.7,Lekki Phase 1,1499302892
+W1499302893,,service,false,0,5.0,false,false,false,0,73.0,Lekki Phase 1,1499302893
+W1499302894,,service,false,0,5.0,false,false,false,0,161.9,Lekki Phase 1,1499302894
+W1499320319,,service,false,0,5.0,false,false,false,0,193.9,Lekki Phase 1,1499320319
+W1499325353,,service,false,0,5.0,false,false,false,0,5.1,Lekki Phase 1,1499325353
+W1499325354,,service,false,0,5.0,false,false,false,0,100.7,Lekki Phase 1,1499325354
+W1499403518,,residential,false,0,7.5,false,false,false,0,57.1,Lekki Phase 1,1499403518
+W1499405446,,service,false,0,5.0,true,false,false,0,12.0,Lekki Phase 1,1499405446
+W1499405447,,service,false,0,5.0,false,false,false,0,205.7,Lekki Phase 1,1499405447
+W1499405448,,service,false,0,5.0,false,false,false,0,154.7,Lekki Phase 1,1499405448
+W1499405449,,service,false,0,5.0,true,false,false,0,27.4,Lekki Phase 1,1499405449
+W1504932737,,service,false,0,5.0,false,false,false,0,8.9,Lekki Phase 1,1504932737
+W1505008077,,service,false,0,5.0,false,false,false,0,280.4,Lekki Phase 1,1505008077
+W1505008273,,residential,false,0,7.5,false,false,false,0,14.3,Lekki Phase 1,1505008273
+W1505011565,,residential,false,0,7.5,false,false,false,0,73.1,Lekki Phase 1,1505011565
+W1512038003,,service,false,0,5.0,true,false,false,0,16.9,Lekki Phase 1,1512038003
+W1512038004,,service,false,0,5.0,true,false,false,0,28.6,Lekki Phase 1,1512038004
+W1512038005,,service,false,0,5.0,false,false,false,0,13.8,Lekki Phase 1,1512038005
+W1512038818,,service,false,0,5.0,false,false,false,0,373.9,Lekki Phase 1,1512038818
+W1512038821,,service,false,0,5.0,false,false,false,0,121.5,Lekki Phase 1,1512038821
+W1512038822,,service,false,0,5.0,false,false,false,0,87.4,Lekki Phase 1,1512038822
+W1516252604,,service,false,0,5.0,false,false,false,0,83.7,Lekki Phase 1,1516252604
+W1516252605,,service,false,0,5.0,false,false,false,0,51.0,Lekki Phase 1,1516252605
+W1516252606,,service,false,0,5.0,false,false,false,0,45.1,Lekki Phase 1,1516252606
+W1516252607,,service,false,0,5.0,false,false,false,0,45.0,Lekki Phase 1,1516252607
+W1516252608,,service,false,0,5.0,false,false,false,0,35.3,Lekki Phase 1,1516252608
+W1516252609,,service,false,0,5.0,false,false,false,0,99.4,Lekki Phase 1,1516252609
+W1516252610,,service,false,0,5.0,false,false,false,0,168.8,Lekki Phase 1,1516252610
+W1516252611,,service,false,0,5.0,false,false,false,0,47.7,Lekki Phase 1,1516252611
+W1516252612,,service,false,0,5.0,false,false,false,0,108.5,Lekki Phase 1,1516252612
+W1516252613,,residential,false,0,7.5,false,false,false,0,103.0,Lekki Phase 1,1516252613
+W1516252614,,residential,false,0,7.5,false,false,false,0,178.7,Lekki Phase 1,1516252614
+W1516252615,,service,false,0,5.0,false,false,false,0,67.1,Lekki Phase 1,1516252615
+W1516252616,,service,false,0,5.0,false,false,false,0,84.2,Lekki Phase 1,1516252616
+W1517085798,,service,false,0,5.0,false,false,false,0,87.1,Lekki Phase 1,1517085798
+W1517085799,,residential,false,0,7.5,false,false,false,0,30.5,Lekki Phase 1,1517085799
+W1517085800,,residential,false,0,7.5,false,false,false,0,108.1,Lekki Phase 1,1517085800
+W1518223412,,service,false,0,5.0,false,false,false,0,19.1,Lekki Phase 1,1518223412
+W152415205,,residential,false,0,7.5,false,false,false,0,118.8,Lekki Phase 1,152415205
+W1525133640,,service,false,0,5.0,false,false,false,0,162.4,Lekki Phase 1,1525133640
+W1525133641,,service,false,0,5.0,false,false,false,0,24.8,Lekki Phase 1,1525133641
+W1525133642,,service,false,0,5.0,false,false,false,0,57.1,Lekki Phase 1,1525133642
+W1525133643,,service,false,0,5.0,false,false,false,0,43.8,Lekki Phase 1,1525133643
+W1525133644,,service,false,0,5.0,false,false,false,0,137.5,Lekki Phase 1,1525133644
+W1525133645,,service,false,0,5.0,false,false,false,0,6.8,Lekki Phase 1,1525133645
+W1525133646,,service,false,0,5.0,false,false,false,0,225.6,Lekki Phase 1,1525133646
+W1525133647,,service,false,0,5.0,false,false,false,0,118.3,Lekki Phase 1,1525133647
+W1525133648,,service,false,0,5.0,false,false,false,0,133.9,Lekki Phase 1,1525133648
+W1525133649,,service,false,0,5.0,false,false,false,0,84.0,Lekki Phase 1,1525133649
+W1525133650,,residential,false,0,7.5,false,false,false,0,74.0,Lekki Phase 1,1525133650
+W1525133651,,residential,false,0,7.5,false,false,false,0,118.9,Lekki Phase 1,1525133651
+W1525133652,,residential,false,0,7.5,false,false,false,0,88.3,Lekki Phase 1,1525133652
+W1525133653,,residential,false,0,7.5,false,false,false,0,229.8,Lekki Phase 1,1525133653
+W1525133654,,residential,false,0,7.5,false,false,false,0,268.3,Lekki Phase 1,1525133654
+W1525133655,,residential,false,0,7.5,false,false,false,0,515.1,Lekki Phase 1,1525133655
+W1525185852,,service,false,0,5.0,false,false,false,0,31.4,Lekki Phase 1,1525185852
+W1525185853,,service,false,0,5.0,false,false,false,0,65.7,Lekki Phase 1,1525185853
+W1525185854,,track,false,0,4.0,false,false,false,0,58.7,Lekki Phase 1,1525185854
+W1525185855,,service,false,0,5.0,false,false,false,0,65.3,Lekki Phase 1,1525185855
+W1525185856,,residential,false,0,7.5,false,false,false,0,86.4,Lekki Phase 1,1525185856
+W1525185857,,service,false,0,5.0,false,false,false,0,85.6,Lekki Phase 1,1525185857
+W152870416,,residential,false,0,7.5,true,false,false,0,16.7,Lekki Phase 1,152870416
+W152882153,,residential,false,0,7.5,false,false,false,0,754.4,Lekki Phase 1,152882153
+W152882156,,residential,false,0,7.5,false,false,false,0,113.9,Lekki Phase 1,152882156
+W152882164,,residential,false,0,7.5,false,false,false,0,467.9,Lekki Phase 1,152882164
+W152882172,,residential,false,0,7.5,false,false,false,0,222.2,Lekki Phase 1,152882172
+W152882180,,residential,false,0,7.5,false,false,false,0,111.8,Lekki Phase 1,152882180
+W152882182,,residential,false,0,7.5,false,false,false,0,243.9,Lekki Phase 1,152882182
+W152882191,,residential,false,0,7.5,false,false,false,0,265.8,Lekki Phase 1,152882191
+W152882197,,residential,false,0,7.5,false,false,false,0,400.8,Lekki Phase 1,152882197
+W152882212,,residential,false,0,7.5,false,false,false,0,174.8,Lekki Phase 1,152882212
+W152882213,,residential,false,0,7.5,false,false,false,0,1052.9,Lekki Phase 1,152882213
+W152882225,,residential,false,0,7.5,false,false,false,0,100.0,Lekki Phase 1,152882225
+W152882237,,residential,false,0,7.5,false,false,false,0,106.9,Lekki Phase 1,152882237
+W152882249,,residential,false,0,7.5,false,false,false,0,238.3,Lekki Phase 1,152882249
+W152882257,,residential,false,0,7.5,false,false,false,0,41.8,Lekki Phase 1,152882257
+W152882262,,residential,false,0,7.5,false,false,false,0,49.2,Lekki Phase 1,152882262
+W152882265,,residential,false,0,7.5,false,false,false,0,242.6,Lekki Phase 1,152882265
+W152882269,,residential,false,0,7.5,false,false,false,0,141.6,Lekki Phase 1,152882269
+W152898301,,residential,false,0,7.5,false,false,false,0,174.1,Lekki Phase 1,152898301
+W152898307,,residential,false,0,7.5,true,false,false,0,76.0,Lekki Phase 1,152898307
+W152898363,,residential,false,0,7.5,false,false,false,0,196.1,Lekki Phase 1,152898363
+W152898372,,residential,false,0,7.5,false,false,false,0,199.2,Lekki Phase 1,152898372
+W1532314758,,service,false,0,5.0,false,false,false,0,61.2,Lekki Phase 1,1532314758
+W1532314759,,service,false,0,5.0,false,false,false,0,86.4,Lekki Phase 1,1532314759
+W1532314760,,residential,false,0,7.5,false,false,false,0,51.1,Lekki Phase 1,1532314760
+W1532314761,,residential,false,0,7.5,false,false,false,0,54.8,Lekki Phase 1,1532314761
+W1538316561,,service,false,0,5.0,false,true,false,0,12.3,Lekki Phase 1,1538316561
+W1538316562,,service,false,0,5.0,false,false,false,0,9.9,Lekki Phase 1,1538316562
+W1538316563,,service,false,0,5.0,false,false,false,0,50.3,Lekki Phase 1,1538316563
+W1538316564,,service,false,0,5.0,false,false,false,0,61.0,Lekki Phase 1,1538316564
+W1538316565,,service,false,0,5.0,false,false,false,0,44.2,Lekki Phase 1,1538316565
+W1538316566,,service,false,0,5.0,false,false,false,0,57.3,Lekki Phase 1,1538316566
+W1538316567,,service,false,0,5.0,false,false,false,0,39.5,Lekki Phase 1,1538316567
+W1538316568,,service,false,0,5.0,false,false,false,0,110.5,Lekki Phase 1,1538316568
+W1538316569,,service,false,0,5.0,false,false,false,0,68.7,Lekki Phase 1,1538316569
+W1538316570,,service,false,0,5.0,false,false,false,0,79.7,Lekki Phase 1,1538316570
+W1538316571,,service,false,0,5.0,false,false,false,0,47.4,Lekki Phase 1,1538316571
+W1538316572,,service,false,0,5.0,false,false,false,0,149.1,Lekki Phase 1,1538316572
+W1538316573,,service,false,0,5.0,false,false,false,0,45.4,Lekki Phase 1,1538316573
+W1538316574,,service,false,0,5.0,false,false,false,0,44.2,Lekki Phase 1,1538316574
+W1538316575,,service,false,0,5.0,false,false,false,0,43.0,Lekki Phase 1,1538316575
+W1538316576,,service,false,0,5.0,false,false,false,0,26.8,Lekki Phase 1,1538316576
+W1538318323,,service,false,0,5.0,false,false,false,0,11.0,Lekki Phase 1,1538318323
+W1552639476,,residential,false,0,7.5,false,false,false,0,251.2,Lekki Phase 1,1552639476
+W1552639477,,residential,false,0,7.5,false,false,false,0,264.0,Lekki Phase 1,1552639477
+W1552639478,,residential,false,0,7.5,false,false,false,0,280.8,Lekki Phase 1,1552639478
+W1552639479,,residential,false,0,7.5,false,false,false,0,767.6,Lekki Phase 1,1552639479
+W1552639480,,residential,false,0,7.5,false,false,false,0,998.0,Lekki Phase 1,1552639480
+W1552639481,,residential,false,0,7.5,false,false,false,0,22.0,Lekki Phase 1,1552639481
+W1552639483,,residential,false,0,7.5,false,false,false,0,97.5,Lekki Phase 1,1552639483
+W1557850814,,residential,false,0,7.5,false,false,false,0,97.9,Lekki Phase 1,1557850814
+W1557850815,,tertiary,false,0,10.0,true,false,false,0,40.3,Lekki Phase 1,1557850815
+W1557857535,,residential,false,0,7.5,false,false,false,0,21.1,Lekki Phase 1,1557857535
+W1559266871,,tertiary,false,0,10.0,false,false,false,0,5.8,Lekki Phase 1,1559266871
+W1560167393,,residential,false,0,7.5,false,false,false,0,12.6,Lekki Phase 1,1560167393
+W1560168281,,residential,false,0,7.5,false,false,false,0,23.5,Lekki Phase 1,1560168281
+W172235053,,residential,false,0,7.5,false,false,false,0,161.9,Lekki Phase 1,172235053
+W172235058,,residential,false,0,7.5,false,false,false,0,151.4,Lekki Phase 1,172235058
+W172235061,,residential,false,0,7.5,false,false,false,0,270.7,Lekki Phase 1,172235061
+W172235062,,residential,false,0,7.5,false,false,false,0,37.0,Lekki Phase 1,172235062
+W193596803,,residential,false,0,7.5,false,false,false,0,188.0,Lekki Phase 1,193596803
+W216882035,,residential,false,0,7.5,false,false,false,0,59.8,Lekki Phase 1,216882035
+W286066468,,service,false,0,5.0,false,false,false,0,385.3,Lekki Phase 1,286066468
+W286066469,,service,false,0,5.0,false,false,false,0,428.9,Lekki Phase 1,286066469
+W286066470,,residential,false,0,7.5,false,false,false,0,234.2,Lekki Phase 1,286066470
+W286066474,,service,false,0,5.0,false,false,false,0,161.8,Lekki Phase 1,286066474
+W286066475,,unclassified,false,0,7.5,false,false,false,0,784.0,Lekki Phase 1,286066475
+W286066476,,residential,false,0,7.5,false,false,false,0,217.2,Lekki Phase 1,286066476
+W286066478,,service,false,0,5.0,false,false,false,0,87.1,Lekki Phase 1,286066478
+W286066479,,residential,false,0,7.5,false,false,false,0,231.6,Lekki Phase 1,286066479
+W286066480,,residential,false,0,7.5,false,false,false,0,39.3,Lekki Phase 1,286066480
+W286066481,,residential,false,0,7.5,false,false,false,0,231.5,Lekki Phase 1,286066481
+W286066482,,residential,false,0,7.5,false,false,false,0,230.7,Lekki Phase 1,286066482
+W286066484,,service,false,0,5.0,false,false,false,0,299.8,Lekki Phase 1,286066484
+W294599754,,residential,false,0,7.5,false,false,false,0,110.4,Lekki Phase 1,294599754
+W294603083,,residential,false,0,7.5,false,false,false,0,62.3,Lekki Phase 1,294603083
+W294603086,,residential,false,0,7.5,false,false,false,0,224.9,Lekki Phase 1,294603086
+W294603088,,service,false,0,5.0,false,false,false,0,262.9,Lekki Phase 1,294603088
+W294603089,,residential,false,0,7.5,false,false,false,0,204.4,Lekki Phase 1,294603089
+W294603092,,residential,false,0,7.5,false,false,false,0,589.6,Lekki Phase 1,294603092
+W294603093,,service,false,0,5.0,false,false,false,0,263.8,Lekki Phase 1,294603093
+W294603095,,residential,false,0,7.5,false,false,false,0,202.3,Lekki Phase 1,294603095
+W294603097,,residential,false,0,7.5,false,false,false,0,51.0,Lekki Phase 1,294603097
+W294603098,,residential,false,0,7.5,false,false,false,0,738.2,Lekki Phase 1,294603098
+W294603099,,residential,false,0,7.5,false,false,false,0,294.5,Lekki Phase 1,294603099
+W294603103,,residential,false,0,7.5,false,false,false,0,163.7,Lekki Phase 1,294603103
+W294603104,,residential,false,0,7.5,false,false,false,0,308.1,Lekki Phase 1,294603104
+W294603106,,residential,false,0,7.5,false,false,false,0,226.1,Lekki Phase 1,294603106
+W294603110,,service,false,0,5.0,false,false,false,0,164.4,Lekki Phase 1,294603110
+W294603111,,residential,false,0,7.5,false,false,false,0,19.7,Lekki Phase 1,294603111
+W294603112,,residential,false,0,7.5,false,false,false,0,229.6,Lekki Phase 1,294603112
+W294603113,,residential,false,0,7.5,false,false,false,0,81.1,Lekki Phase 1,294603113
+W294603115,,unclassified,false,0,7.5,false,false,false,0,435.3,Lekki Phase 1,294603115
+W294603120,,residential,false,0,7.5,false,false,false,0,345.9,Lekki Phase 1,294603120
+W294603123,,residential,false,0,7.5,false,false,false,0,225.5,Lekki Phase 1,294603123
+W294603124,,residential,false,0,7.5,false,false,false,0,262.8,Lekki Phase 1,294603124
+W294603125,,residential,false,0,7.5,false,false,false,0,208.9,Lekki Phase 1,294603125
+W294603127,,residential,false,0,7.5,false,false,false,0,217.0,Lekki Phase 1,294603127
+W294603132,,residential,false,0,7.5,false,false,false,0,46.3,Lekki Phase 1,294603132
+W294603133,,service,false,0,5.0,false,false,false,0,391.5,Lekki Phase 1,294603133
+W294603134,,service,false,0,5.0,false,false,false,0,1285.0,Lekki Phase 1,294603134
+W294603139,,service,false,0,5.0,false,false,false,0,261.9,Lekki Phase 1,294603139
+W294603142,,residential,false,0,7.5,false,false,false,0,206.6,Lekki Phase 1,294603142
+W294603144,,tertiary,false,0,10.0,true,false,true,0,42.5,Lekki Phase 1,294603144
+W294603145,,residential,false,0,7.5,false,false,false,0,451.3,Lekki Phase 1,294603145
+W294603146,,residential,false,0,7.5,false,false,false,0,629.2,Lekki Phase 1,294603146
+W294603149,,residential,false,0,7.5,false,false,false,0,207.6,Lekki Phase 1,294603149
+W294603152,,residential,false,0,7.5,false,false,false,0,171.9,Lekki Phase 1,294603152
+W294603153,,residential,false,0,7.5,false,false,false,0,66.9,Lekki Phase 1,294603153
+W294603154,,residential,false,0,7.5,false,false,false,0,224.9,Lekki Phase 1,294603154
+W294603155,,residential,false,0,7.5,false,false,false,0,160.4,Lekki Phase 1,294603155
+W294603156,,residential,false,0,7.5,false,false,false,0,210.8,Lekki Phase 1,294603156
+W294603159,,residential,false,0,7.5,false,false,false,0,201.9,Lekki Phase 1,294603159
+W294603163,,tertiary,false,0,10.0,true,false,false,0,275.7,Lekki Phase 1,294603163
+W294869719,,residential,false,0,7.5,false,false,false,0,310.4,Lekki Phase 1,294869719
+W294869721,,service,false,0,5.0,false,false,false,0,96.7,Lekki Phase 1,294869721
+W294869732,,residential,false,0,7.5,true,false,true,0,97.3,Lekki Phase 1,294869732
+W294869737,,residential,false,0,7.5,true,false,false,0,24.3,Lekki Phase 1,294869737
+W294869738,,service,false,0,5.0,true,false,false,0,23.1,Lekki Phase 1,294869738
+W294869742,,residential,false,0,7.5,true,false,false,0,22.1,Lekki Phase 1,294869742
+W294869755,,residential,false,0,7.5,false,false,false,0,21.0,Lekki Phase 1,294869755
+W294869756,,residential,false,0,7.5,true,false,false,0,29.1,Lekki Phase 1,294869756
+W294869760,,residential,false,0,7.5,false,false,false,0,294.2,Lekki Phase 1,294869760
+W294869763,,service,false,0,5.0,true,false,false,0,24.6,Lekki Phase 1,294869763
+W294869766,,residential,false,0,7.5,false,false,false,0,124.4,Lekki Phase 1,294869766
+W294869768,,residential,false,0,7.5,true,false,true,0,46.5,Lekki Phase 1,294869768
+W294869770,,residential,false,0,7.5,false,false,false,0,95.4,Lekki Phase 1,294869770
+W294869773,,residential,false,0,7.5,true,false,false,0,24.0,Lekki Phase 1,294869773
+W294869775,,residential,false,0,7.5,false,false,false,0,137.3,Lekki Phase 1,294869775
+W294887131,,tertiary,false,0,10.0,true,false,false,0,60.5,Lekki Phase 1,294887131
+W294943617,,residential,false,0,7.5,false,false,false,0,84.4,Lekki Phase 1,294943617
+W294943618,,residential,false,0,7.5,false,false,false,0,195.7,Lekki Phase 1,294943618
+W294943622,,residential,false,0,7.5,false,false,false,0,71.8,Lekki Phase 1,294943622
+W294943623,,residential,false,0,7.5,false,false,false,0,331.3,Lekki Phase 1,294943623
+W294943624,,residential,false,0,7.5,false,false,false,0,67.5,Lekki Phase 1,294943624
+W294943628,,residential,false,0,7.5,false,false,false,0,51.4,Lekki Phase 1,294943628
+W294943629,,residential,false,0,7.5,false,false,false,0,505.0,Lekki Phase 1,294943629
+W294943630,,residential,false,0,7.5,true,false,true,0,128.4,Lekki Phase 1,294943630
+W294943631,,residential,false,0,7.5,false,false,false,0,452.1,Lekki Phase 1,294943631
+W294943632,,residential,false,0,7.5,false,false,false,0,233.1,Lekki Phase 1,294943632
+W294943633,,residential,false,0,7.5,false,false,false,0,133.2,Lekki Phase 1,294943633
+W294943634,,residential,false,0,7.5,false,false,false,0,52.5,Lekki Phase 1,294943634
+W294943636,,residential,false,0,7.5,false,false,false,0,70.2,Lekki Phase 1,294943636
+W294943637,,residential,false,0,7.5,false,false,false,0,175.6,Lekki Phase 1,294943637
+W294943639,,residential,false,0,7.5,false,false,false,0,129.8,Lekki Phase 1,294943639
+W294943641,,residential,false,0,7.5,false,false,false,0,99.5,Lekki Phase 1,294943641
+W294943643,,residential,false,0,7.5,false,false,false,0,143.9,Lekki Phase 1,294943643
+W294943646,,residential,false,0,7.5,false,false,false,0,213.6,Lekki Phase 1,294943646
+W294943648,,residential,false,0,7.5,false,false,false,0,144.3,Lekki Phase 1,294943648
+W294943649,,residential,false,0,7.5,false,false,false,0,372.1,Lekki Phase 1,294943649
+W294943650,,residential,false,0,7.5,false,false,false,0,286.4,Lekki Phase 1,294943650
+W294943651,,residential,false,0,7.5,false,false,false,0,75.6,Lekki Phase 1,294943651
+W294996603,,unclassified,false,0,7.5,false,false,false,0,354.4,Lekki Phase 1,294996603
+W294996604,,residential,false,0,7.5,false,false,false,0,122.0,Lekki Phase 1,294996604
+W294996606,,residential,false,0,7.5,false,false,false,0,260.2,Lekki Phase 1,294996606
+W294996607,,residential,false,0,7.5,false,false,false,0,819.0,Lekki Phase 1,294996607
+W294996610,,residential,false,0,7.5,false,false,false,0,326.0,Lekki Phase 1,294996610
+W294996611,,residential,false,0,7.5,false,false,false,0,210.8,Lekki Phase 1,294996611
+W294996612,,residential,false,0,7.5,false,false,false,0,103.7,Lekki Phase 1,294996612
+W294996614,,tertiary,false,0,10.0,false,false,false,0,891.4,Lekki Phase 1,294996614
+W294996617,,residential,false,0,7.5,false,false,false,0,109.3,Lekki Phase 1,294996617
+W294996619,,residential,false,0,7.5,false,false,false,0,541.0,Lekki Phase 1,294996619
+W294996623,,residential,false,0,7.5,false,false,false,0,177.3,Lekki Phase 1,294996623
+W294996624,,residential,false,0,7.5,false,false,false,0,297.7,Lekki Phase 1,294996624
+W294996626,,residential,false,0,7.5,false,false,false,0,86.5,Lekki Phase 1,294996626
+W294996629,,unclassified,false,0,7.5,false,false,false,0,535.7,Lekki Phase 1,294996629
+W294996630,,residential,false,0,7.5,false,false,false,0,186.0,Lekki Phase 1,294996630
+W294996634,,residential,false,0,7.5,false,false,false,0,193.5,Lekki Phase 1,294996634
+W294996635,,residential,false,0,7.5,false,false,false,0,150.6,Lekki Phase 1,294996635
+W294996636,,residential,false,0,7.5,false,false,false,0,98.8,Lekki Phase 1,294996636
+W294996638,,service,false,0,5.0,false,false,false,0,10.6,Lekki Phase 1,294996638
+W294996639,,residential,false,0,7.5,false,false,false,0,44.1,Lekki Phase 1,294996639
+W294996641,,service,false,0,5.0,false,false,false,0,281.6,Lekki Phase 1,294996641
+W294996643,,residential,false,0,7.5,false,false,false,0,240.4,Lekki Phase 1,294996643
+W294996645,,residential,false,0,7.5,false,false,false,0,47.0,Lekki Phase 1,294996645
+W294996648,,residential,false,0,7.5,false,false,false,0,112.9,Lekki Phase 1,294996648
+W294996651,,residential,false,0,7.5,false,false,false,0,104.3,Lekki Phase 1,294996651
+W294996655,,residential,false,0,7.5,false,false,false,0,115.1,Lekki Phase 1,294996655
+W294996656,,residential,false,0,7.5,false,false,false,0,60.2,Lekki Phase 1,294996656
+W294996657,,residential,false,0,7.5,false,false,false,0,96.8,Lekki Phase 1,294996657
+W294996660,,residential,false,0,7.5,false,false,false,0,208.4,Lekki Phase 1,294996660
+W294996661,,service,false,0,5.0,false,false,false,0,389.8,Lekki Phase 1,294996661
+W294996662,,tertiary,false,0,10.0,false,false,false,0,392.0,Lekki Phase 1,294996662
+W294996663,,residential,false,0,7.5,false,false,false,0,45.5,Lekki Phase 1,294996663
+W294996665,,residential,false,0,7.5,false,false,false,0,124.4,Lekki Phase 1,294996665
+W294996666,,residential,false,0,7.5,false,false,false,0,122.0,Lekki Phase 1,294996666
+W316707036,,residential,false,0,7.5,false,false,false,0,511.1,Lekki Phase 1,316707036
+W316707037,,residential,false,0,7.5,false,false,false,0,375.8,Lekki Phase 1,316707037
+W316707041,,service,false,0,5.0,true,false,false,0,87.0,Lekki Phase 1,316707041
+W316707042,,service,false,0,5.0,true,false,false,0,90.1,Lekki Phase 1,316707042
+W363284798,,unclassified,false,0,7.5,false,false,false,0,729.4,Lekki Phase 1,363284798
+W384584068,,residential,false,1,4.3,true,false,true,0,63.5,Lekki Phase 1,384584068
+W499920616,,residential,false,0,7.5,false,false,false,0,280.2,Lekki Phase 1,499920616
+W517114581,,residential,false,0,7.5,true,false,false,0,852.4,Lekki Phase 1,517114581
+W517114582,,residential,false,0,7.5,true,false,false,0,842.6,Lekki Phase 1,517114582
+W517114583,,residential,false,0,7.5,false,false,false,0,633.3,Lekki Phase 1,517114583
+W517114584,,residential,false,0,7.5,false,false,false,0,298.8,Lekki Phase 1,517114584
+W517114585,,residential,false,0,7.5,false,false,false,0,477.3,Lekki Phase 1,517114585
+W517114586,,residential,false,0,7.5,false,false,false,0,92.2,Lekki Phase 1,517114586
+W517114587,,unclassified,false,0,7.5,false,false,false,0,135.0,Lekki Phase 1,517114587
+W517114588,,residential,false,0,7.5,false,false,false,0,108.6,Lekki Phase 1,517114588
+W517114589,,residential,false,0,7.5,false,false,false,0,208.9,Lekki Phase 1,517114589
+W517114590,,residential,false,0,7.5,false,false,false,0,112.9,Lekki Phase 1,517114590
+W517114591,,residential,false,0,7.5,false,false,false,0,55.0,Lekki Phase 1,517114591
+W517114596,,service,false,0,5.0,false,false,false,0,415.3,Lekki Phase 1,517114596
+W517114597,,service,false,0,5.0,false,false,false,0,78.9,Lekki Phase 1,517114597
+W517114599,,service,false,0,5.0,false,false,false,0,85.9,Lekki Phase 1,517114599
+W517114600,,service,false,0,5.0,false,false,false,0,101.7,Lekki Phase 1,517114600
+W530891125,,trunk,true,0,7.5,true,false,false,0,34.5,Lekki Phase 1,530891125
+W530891126,,trunk,true,0,7.5,true,false,false,0,71.0,Lekki Phase 1,530891126
+W530891127,,trunk,true,0,7.5,true,false,false,0,164.6,Lekki Phase 1,530891127
+W530891128,,trunk,true,0,7.5,true,false,false,0,230.8,Lekki Phase 1,530891128
+W534625772,,trunk,true,0,7.5,true,false,false,0,182.2,Lekki Phase 1,534625772
+W534625773,,trunk,true,0,7.5,true,false,false,0,187.5,Lekki Phase 1,534625773
+W536457595,,residential,false,1,4.3,false,false,false,0,73.8,Lekki Phase 1,536457595
+W536506104,,service,false,0,5.0,false,false,false,0,8.7,Lekki Phase 1,536506104
+W536506105,,tertiary,true,0,7.5,false,false,false,0,8.8,Lekki Phase 1,536506105
+W536506124,,residential,false,0,7.5,false,false,false,0,375.5,Lekki Phase 1,536506124
+W536506126,,residential,false,0,7.5,false,false,false,0,406.8,Lekki Phase 1,536506126
+W536506128,,tertiary,false,0,10.0,true,false,false,0,266.6,Lekki Phase 1,536506128
+W536506129,,tertiary,false,0,10.0,true,false,true,0,68.3,Lekki Phase 1,536506129
+W536506133,,residential,false,0,7.5,false,false,false,0,107.6,Lekki Phase 1,536506133
+W544212496,,residential,false,0,7.5,false,false,false,0,11.7,Lekki Phase 1,544212496
+W544212505,,residential,false,0,7.5,false,false,false,0,11.6,Lekki Phase 1,544212505
+W544212506,,residential,false,0,7.5,false,false,false,0,12.3,Lekki Phase 1,544212506
+W558896010,,residential,false,0,7.5,false,false,false,0,200.7,Lekki Phase 1,558896010
+W585558175,,service,false,0,5.0,false,false,false,0,425.1,Lekki Phase 1,585558175
+W585558176,,service,false,0,5.0,false,false,false,0,224.2,Lekki Phase 1,585558176
+W585558177,,service,false,0,5.0,false,false,false,0,206.9,Lekki Phase 1,585558177
+W585558178,,service,false,0,5.0,false,false,false,0,204.5,Lekki Phase 1,585558178
+W585575327,,residential,false,0,7.5,false,false,false,0,466.6,Lekki Phase 1,585575327
+W585575328,,service,false,0,5.0,false,false,false,0,283.7,Lekki Phase 1,585575328
+W585607493,,residential,false,0,7.5,false,false,false,0,80.5,Lekki Phase 1,585607493
+W585607494,,residential,false,0,7.5,false,false,false,0,53.0,Lekki Phase 1,585607494
+W585607495,,residential,false,0,7.5,false,false,false,0,163.9,Lekki Phase 1,585607495
+W585607496,,residential,false,0,7.5,false,false,false,0,261.3,Lekki Phase 1,585607496
+W585607498,,residential,false,0,7.5,false,false,false,0,282.1,Lekki Phase 1,585607498
+W585607499,,residential,false,0,7.5,false,false,false,0,448.0,Lekki Phase 1,585607499
+W585607500,,residential,false,0,7.5,false,false,false,0,88.3,Lekki Phase 1,585607500
+W585607501,,residential,false,0,7.5,false,false,false,0,252.4,Lekki Phase 1,585607501
+W585607506,,residential,false,0,7.5,false,false,false,0,232.6,Lekki Phase 1,585607506
+W585607507,,residential,false,0,7.5,false,false,false,0,337.2,Lekki Phase 1,585607507
+W585607509,,residential,false,0,7.5,false,false,false,0,291.9,Lekki Phase 1,585607509
+W585607510,,residential,false,0,7.5,false,false,false,0,331.5,Lekki Phase 1,585607510
+W585610154,,service,false,0,5.0,false,false,false,0,213.1,Lekki Phase 1,585610154
+W585610155,,service,false,0,5.0,false,false,false,0,9.0,Lekki Phase 1,585610155
+W585610157,,residential,false,0,7.5,false,false,false,0,439.3,Lekki Phase 1,585610157
+W586130213,,residential,false,0,7.5,false,false,false,0,201.9,Lekki Phase 1,586130213
+W586130214,,residential,false,0,7.5,false,false,false,0,373.4,Lekki Phase 1,586130214
+W586130215,,residential,false,0,7.5,false,false,false,0,205.4,Lekki Phase 1,586130215
+W586130216,,residential,false,0,7.5,false,false,false,0,41.0,Lekki Phase 1,586130216
+W586130217,,residential,false,0,7.5,false,false,false,0,99.8,Lekki Phase 1,586130217
+W586130218,,residential,false,0,7.5,false,false,false,0,108.8,Lekki Phase 1,586130218
+W586130219,,residential,false,0,7.5,false,false,false,0,137.4,Lekki Phase 1,586130219
+W586130220,,residential,false,0,7.5,false,false,false,0,214.4,Lekki Phase 1,586130220
+W586130221,,residential,false,0,7.5,false,false,false,0,62.2,Lekki Phase 1,586130221
+W586130222,,service,false,0,5.0,false,false,false,0,491.9,Lekki Phase 1,586130222
+W586130223,,service,false,0,5.0,false,false,false,0,154.5,Lekki Phase 1,586130223
+W586130224,,service,false,0,5.0,false,false,false,0,166.8,Lekki Phase 1,586130224
+W586130225,,service,false,0,5.0,false,false,false,0,122.6,Lekki Phase 1,586130225
+W586130226,,service,false,0,5.0,false,false,false,0,174.8,Lekki Phase 1,586130226
+W586130227,,service,false,0,5.0,false,false,false,0,228.6,Lekki Phase 1,586130227
+W586130228,,service,false,0,5.0,false,false,false,0,108.7,Lekki Phase 1,586130228
+W586130229,,service,false,0,5.0,false,false,false,0,111.1,Lekki Phase 1,586130229
+W586130230,,service,false,0,5.0,false,false,false,0,936.8,Lekki Phase 1,586130230
+W586130231,,service,false,0,5.0,false,false,false,0,598.0,Lekki Phase 1,586130231
+W586130232,,service,false,0,5.0,false,false,false,0,141.0,Lekki Phase 1,586130232
+W586130233,,service,false,0,5.0,false,false,false,0,16.8,Lekki Phase 1,586130233
+W586130234,,service,false,0,5.0,false,false,false,0,257.1,Lekki Phase 1,586130234
+W586130235,,service,false,0,5.0,false,false,false,0,294.1,Lekki Phase 1,586130235
+W586130236,,service,false,0,5.0,false,false,false,0,192.6,Lekki Phase 1,586130236
+W586130237,,service,false,0,5.0,false,false,false,0,227.7,Lekki Phase 1,586130237
+W586130238,,service,false,0,5.0,false,false,false,0,189.3,Lekki Phase 1,586130238
+W586130239,,service,false,0,5.0,false,false,false,0,121.4,Lekki Phase 1,586130239
+W586130240,,service,false,0,5.0,false,false,false,0,182.2,Lekki Phase 1,586130240
+W586130241,,service,false,0,5.0,false,false,false,0,171.9,Lekki Phase 1,586130241
+W586130242,,service,false,0,5.0,false,false,false,0,309.8,Lekki Phase 1,586130242
+W587075543,,primary,true,0,7.5,true,false,false,0,22.5,Lekki Phase 1,587075543
+W587075544,,primary,true,0,7.5,true,false,false,0,48.5,Lekki Phase 1,587075544
+W587075545,,primary,true,0,7.5,false,false,false,0,11.2,Lekki Phase 1,587075545
+W587080727,,residential,false,0,7.5,false,false,false,0,158.0,Lekki Phase 1,587080727
+W587080729,,residential,false,0,7.5,false,false,false,0,184.3,Lekki Phase 1,587080729
+W587080730,,residential,false,0,7.5,false,false,false,0,94.6,Lekki Phase 1,587080730
+W587081987,,residential,false,0,7.5,false,false,false,0,296.0,Lekki Phase 1,587081987
+W588710796,,residential,false,0,7.5,false,false,false,0,135.5,Lekki Phase 1,588710796
+W588710797,,service,false,0,5.0,false,false,false,0,190.0,Lekki Phase 1,588710797
+W588745031,,service,false,0,5.0,false,false,false,0,463.1,Lekki Phase 1,588745031
+W588745033,,unclassified,false,0,7.5,false,false,false,0,147.6,Lekki Phase 1,588745033
+W588745035,,unclassified,false,0,7.5,false,false,false,0,253.5,Lekki Phase 1,588745035
+W588745040,,service,false,0,5.0,false,false,false,0,333.8,Lekki Phase 1,588745040
+W588757572,,service,false,0,5.0,false,false,false,0,140.5,Lekki Phase 1,588757572
+W588757575,,service,false,0,5.0,false,false,false,0,170.0,Lekki Phase 1,588757575
+W588757578,,service,false,0,5.0,false,false,false,0,181.9,Lekki Phase 1,588757578
+W588862661,,residential,false,0,7.5,false,false,false,0,254.6,Lekki Phase 1,588862661
+W588862662,,residential,false,0,7.5,false,false,false,0,149.2,Lekki Phase 1,588862662
+W588862664,,residential,false,0,7.5,false,false,false,0,54.5,Lekki Phase 1,588862664
+W588864953,,residential,false,0,7.5,false,false,false,0,77.9,Lekki Phase 1,588864953
+W588866673,,residential,false,0,7.5,false,false,false,0,136.4,Lekki Phase 1,588866673
+W588919059,,service,false,0,5.0,false,false,false,0,136.9,Lekki Phase 1,588919059
+W589106139,,residential,false,0,7.5,false,false,false,0,87.8,Lekki Phase 1,589106139
+W589106140,,residential,false,0,7.5,false,false,false,0,87.5,Lekki Phase 1,589106140
+W589106141,,residential,false,0,7.5,false,false,false,0,62.2,Lekki Phase 1,589106141
+W589106143,,residential,false,0,7.5,false,false,false,0,63.5,Lekki Phase 1,589106143
+W591626853,,tertiary,true,0,7.5,false,false,false,0,10.6,Lekki Phase 1,591626853
+W599933053,,unclassified,false,0,7.5,false,false,false,0,7.2,Lekki Phase 1,599933053
+W599933054,,unclassified,false,0,7.5,false,false,false,0,10.2,Lekki Phase 1,599933054
+W599933055,,unclassified,false,0,7.5,true,false,false,0,41.2,Lekki Phase 1,599933055
+W599933056,,unclassified,false,0,7.5,true,false,false,0,29.2,Lekki Phase 1,599933056
+W599933057,,residential,false,0,7.5,true,false,false,0,28.0,Lekki Phase 1,599933057
+W599933058,,residential,false,0,7.5,true,false,false,0,32.2,Lekki Phase 1,599933058
+W599933059,,residential,false,0,7.5,false,false,false,0,574.2,Lekki Phase 1,599933059
+W599933060,,residential,false,0,7.5,false,false,false,0,194.6,Lekki Phase 1,599933060
+W599933061,,residential,false,0,7.5,false,false,false,0,96.9,Lekki Phase 1,599933061
+W599933062,,residential,false,0,7.5,false,false,false,0,234.1,Lekki Phase 1,599933062
+W606201195,,trunk,true,0,7.5,true,false,false,0,27.5,Lekki Phase 1,606201195
+W643481461,,service,false,0,5.0,false,false,false,0,125.5,Lekki Phase 1,643481461
+W643481462,,service,false,0,5.0,false,false,false,0,313.7,Lekki Phase 1,643481462
+W688456098,,residential,false,0,7.5,false,false,false,0,69.7,Lekki Phase 1,688456098
+W688456099,,residential,false,0,7.5,false,false,false,0,72.3,Lekki Phase 1,688456099
+W688456100,,residential,false,0,7.5,false,false,false,0,19.8,Lekki Phase 1,688456100
+W688456101,,residential,false,0,7.5,false,false,false,0,128.2,Lekki Phase 1,688456101
+W688456102,,residential,false,0,7.5,false,false,false,0,130.4,Lekki Phase 1,688456102
+W688456103,,residential,false,0,7.5,false,false,false,0,112.4,Lekki Phase 1,688456103
+W718432966,,residential,false,0,7.5,false,false,false,0,126.8,Lekki Phase 1,718432966
+W725260703,,residential,false,0,7.5,false,false,false,0,104.4,Lekki Phase 1,725260703
+W725260704,,residential,false,0,7.5,false,false,false,0,58.7,Lekki Phase 1,725260704
+W725260705,,residential,false,0,7.5,false,false,false,0,52.9,Lekki Phase 1,725260705
+W725274737,,residential,false,0,7.5,false,false,false,0,21.1,Lekki Phase 1,725274737
+W725274738,,residential,false,0,7.5,false,false,false,0,35.1,Lekki Phase 1,725274738
+W725274739,,residential,false,0,7.5,false,false,false,0,48.5,Lekki Phase 1,725274739
+W725274740,,residential,false,0,7.5,false,false,false,0,76.8,Lekki Phase 1,725274740
+W725274741,,residential,false,0,7.5,false,false,false,0,75.9,Lekki Phase 1,725274741
+W725281509,,residential,false,0,7.5,false,false,false,0,289.5,Lekki Phase 1,725281509
+W725281510,,residential,false,0,7.5,false,false,false,0,111.8,Lekki Phase 1,725281510
+W725281511,,residential,false,0,7.5,false,false,false,0,125.1,Lekki Phase 1,725281511
+W725281512,,residential,false,0,7.5,true,false,false,0,21.7,Lekki Phase 1,725281512
+W725281514,,residential,false,0,7.5,false,false,false,0,303.7,Lekki Phase 1,725281514
+W725284843,,residential,false,0,7.5,false,false,false,0,59.8,Lekki Phase 1,725284843
+W725287854,,residential,false,0,7.5,false,false,false,0,24.3,Lekki Phase 1,725287854
+W725287855,,residential,false,0,7.5,false,false,false,0,108.0,Lekki Phase 1,725287855
+W725287856,,residential,false,0,7.5,false,false,false,0,41.4,Lekki Phase 1,725287856
+W725287857,,residential,false,0,7.5,false,false,false,0,43.9,Lekki Phase 1,725287857
+W725287858,,residential,false,0,7.5,false,false,false,0,51.0,Lekki Phase 1,725287858
+W725287860,,residential,false,0,7.5,false,false,false,0,14.4,Lekki Phase 1,725287860
+W725317124,,service,false,0,5.0,false,false,false,0,99.0,Lekki Phase 1,725317124
+W725329250,,residential,false,0,7.5,false,false,false,0,120.2,Lekki Phase 1,725329250
+W725822363,,service,false,0,5.0,false,false,false,0,477.5,Lekki Phase 1,725822363
+W725824109,,residential,false,0,7.5,false,false,false,0,25.9,Lekki Phase 1,725824109
+W725843294,,residential,false,0,7.5,false,false,false,0,82.3,Lekki Phase 1,725843294
+W725843295,,residential,false,0,7.5,false,false,false,0,165.5,Lekki Phase 1,725843295
+W725843296,,residential,false,0,7.5,false,false,false,0,107.5,Lekki Phase 1,725843296
+W725852172,,residential,false,0,7.5,false,false,false,0,354.3,Lekki Phase 1,725852172
+W726032243,,service,false,0,5.0,true,false,false,0,19.5,Lekki Phase 1,726032243
+W726032244,,service,false,0,5.0,false,false,false,0,30.2,Lekki Phase 1,726032244
+W726032245,,service,false,0,5.0,false,false,false,0,65.7,Lekki Phase 1,726032245
+W726032246,,service,false,0,5.0,false,false,false,0,82.0,Lekki Phase 1,726032246
+W726037621,,service,false,0,5.0,false,false,false,0,190.9,Lekki Phase 1,726037621
+W726037622,,residential,false,0,7.5,false,false,false,0,226.0,Lekki Phase 1,726037622
+W726039160,,residential,false,0,7.5,false,false,false,0,216.4,Lekki Phase 1,726039160
+W726039161,,residential,false,0,7.5,false,false,false,0,299.5,Lekki Phase 1,726039161
+W726039162,,residential,false,0,7.5,false,false,false,0,386.2,Lekki Phase 1,726039162
+W726054641,,service,false,0,5.0,false,false,false,0,86.0,Lekki Phase 1,726054641
+W726054642,,service,false,0,5.0,false,false,false,0,37.6,Lekki Phase 1,726054642
+W726054643,,service,false,0,5.0,false,false,false,0,70.9,Lekki Phase 1,726054643
+W726054644,,service,false,0,5.0,false,false,false,0,72.4,Lekki Phase 1,726054644
+W726054645,,service,false,0,5.0,false,false,false,0,89.1,Lekki Phase 1,726054645
+W726054646,,service,false,0,5.0,false,false,false,0,72.1,Lekki Phase 1,726054646
+W726054647,,service,false,0,5.0,false,false,false,0,86.0,Lekki Phase 1,726054647
+W726083945,,service,false,0,5.0,false,false,false,0,98.2,Lekki Phase 1,726083945
+W726091871,,residential,false,0,7.5,false,false,false,0,381.8,Lekki Phase 1,726091871
+W726605600,,service,false,0,5.0,false,false,false,0,92.8,Lekki Phase 1,726605600
+W726606240,,service,false,0,5.0,false,false,false,0,69.9,Lekki Phase 1,726606240
+W726606241,,service,false,0,5.0,false,false,false,0,42.6,Lekki Phase 1,726606241
+W726614967,,service,false,0,5.0,false,false,false,0,25.3,Lekki Phase 1,726614967
+W726614968,,service,false,0,5.0,false,false,false,0,52.6,Lekki Phase 1,726614968
+W726618247,,service,false,0,5.0,false,false,false,0,17.3,Lekki Phase 1,726618247
+W726618248,,service,false,0,5.0,false,false,false,0,37.7,Lekki Phase 1,726618248
+W726618249,,service,false,0,5.0,false,false,false,0,14.9,Lekki Phase 1,726618249
+W726618250,,service,false,0,5.0,false,false,false,0,15.5,Lekki Phase 1,726618250
+W726618251,,service,false,0,5.0,false,false,false,0,56.3,Lekki Phase 1,726618251
+W726618252,,service,false,0,5.0,false,false,false,0,64.9,Lekki Phase 1,726618252
+W726618253,,service,false,0,5.0,false,false,false,0,138.6,Lekki Phase 1,726618253
+W726763786,,residential,false,0,7.5,false,false,false,0,88.7,Lekki Phase 1,726763786
+W726763787,,residential,false,0,7.5,false,false,false,0,262.0,Lekki Phase 1,726763787
+W726763788,,residential,false,0,7.5,false,false,false,0,178.6,Lekki Phase 1,726763788
+W726766555,,residential,false,0,7.5,false,false,false,0,42.8,Lekki Phase 1,726766555
+W726766556,,residential,false,0,7.5,false,false,false,0,6.1,Lekki Phase 1,726766556
+W726766557,,residential,false,0,7.5,false,false,false,0,67.3,Lekki Phase 1,726766557
+W726766558,,residential,false,0,7.5,false,false,false,0,66.6,Lekki Phase 1,726766558
+W726766559,,residential,false,0,7.5,false,false,false,0,47.5,Lekki Phase 1,726766559
+W726766560,,residential,false,0,7.5,false,false,false,0,181.0,Lekki Phase 1,726766560
+W726766561,,residential,false,0,7.5,false,false,false,0,39.1,Lekki Phase 1,726766561
+W726766562,,residential,false,0,7.5,false,false,false,0,38.4,Lekki Phase 1,726766562
+W726766563,,residential,false,0,7.5,false,false,false,0,141.1,Lekki Phase 1,726766563
+W726766565,,residential,false,0,7.5,false,false,false,0,137.7,Lekki Phase 1,726766565
+W726766566,,residential,false,0,7.5,false,false,false,0,75.8,Lekki Phase 1,726766566
+W726766567,,residential,false,0,7.5,false,false,false,0,74.6,Lekki Phase 1,726766567
+W726766568,,residential,false,0,7.5,false,false,false,0,104.6,Lekki Phase 1,726766568
+W726766569,,residential,false,0,7.5,false,false,false,0,141.8,Lekki Phase 1,726766569
+W726766766,,service,false,0,5.0,false,false,false,0,310.4,Lekki Phase 1,726766766
+W726774919,,service,false,0,5.0,false,false,false,0,51.6,Lekki Phase 1,726774919
+W726780803,,service,false,0,5.0,false,false,false,0,113.7,Lekki Phase 1,726780803
+W726781898,,residential,false,0,7.5,false,false,false,0,206.2,Lekki Phase 1,726781898
+W726784768,,service,false,0,5.0,false,false,false,0,154.6,Lekki Phase 1,726784768
+W726798850,,service,false,0,5.0,false,false,false,0,50.7,Lekki Phase 1,726798850
+W726824052,,service,false,0,5.0,false,false,false,0,108.5,Lekki Phase 1,726824052
+W726824869,,residential,false,0,7.5,false,false,false,0,67.6,Lekki Phase 1,726824869
+W726824870,,residential,false,0,7.5,false,false,false,0,68.8,Lekki Phase 1,726824870
+W726827946,,service,false,0,5.0,false,false,false,0,107.9,Lekki Phase 1,726827946
+W726827947,,service,false,0,5.0,false,false,false,0,87.1,Lekki Phase 1,726827947
+W726842520,,service,false,0,5.0,false,false,false,0,182.6,Lekki Phase 1,726842520
+W727415224,,residential,false,0,7.5,false,false,false,0,178.7,Lekki Phase 1,727415224
+W727415505,,unclassified,false,0,7.5,false,false,false,0,119.4,Lekki Phase 1,727415505
+W727415506,,unclassified,false,0,7.5,false,false,false,0,215.6,Lekki Phase 1,727415506
+W727415507,,unclassified,false,0,7.5,false,false,false,0,14.2,Lekki Phase 1,727415507
+W727636981,,service,false,0,5.0,false,false,false,0,17.5,Lekki Phase 1,727636981
+W727636982,,service,false,0,5.0,false,false,false,0,40.0,Lekki Phase 1,727636982
+W727636983,,service,false,0,5.0,false,false,false,0,64.9,Lekki Phase 1,727636983
+W727636984,,service,false,0,5.0,false,false,false,0,138.5,Lekki Phase 1,727636984
+W727643647,,service,false,0,5.0,false,false,false,0,132.2,Lekki Phase 1,727643647
+W727643648,,service,false,0,5.0,false,false,false,0,132.2,Lekki Phase 1,727643648
+W727643649,,service,false,0,5.0,false,false,false,0,146.3,Lekki Phase 1,727643649
+W727649037,,service,false,0,5.0,false,false,false,0,45.4,Lekki Phase 1,727649037
+W727649038,,service,false,0,5.0,false,false,false,0,56.3,Lekki Phase 1,727649038
+W727649039,,service,false,0,5.0,false,false,false,0,114.2,Lekki Phase 1,727649039
+W727649040,,service,false,0,5.0,false,false,false,0,94.0,Lekki Phase 1,727649040
+W727724611,,service,false,0,5.0,false,false,false,0,465.6,Lekki Phase 1,727724611
+W727749115,,service,false,0,5.0,false,false,false,0,65.2,Lekki Phase 1,727749115
+W727749116,,service,false,0,5.0,false,false,false,0,42.8,Lekki Phase 1,727749116
+W727749117,,service,false,0,5.0,false,false,false,0,50.1,Lekki Phase 1,727749117
+W727749118,,service,false,0,5.0,false,false,false,0,7.0,Lekki Phase 1,727749118
+W727749119,,service,false,0,5.0,false,true,false,0,29.3,Lekki Phase 1,727749119
+W727749120,,service,false,0,5.0,false,false,false,0,47.4,Lekki Phase 1,727749120
+W727749121,,service,false,0,5.0,false,false,false,0,14.1,Lekki Phase 1,727749121
+W727749122,,service,false,0,5.0,false,false,false,0,37.2,Lekki Phase 1,727749122
+W727749123,,service,false,0,5.0,false,false,false,0,74.8,Lekki Phase 1,727749123
+W737757416,,residential,false,0,7.5,false,false,false,0,105.1,Lekki Phase 1,737757416
+W737807247,,service,false,0,5.0,false,false,false,0,105.8,Lekki Phase 1,737807247
+W738089280,,residential,false,1,4.3,false,false,false,0,412.4,Lekki Phase 1,738089280
+W738094552,,service,false,0,5.0,false,false,false,0,102.4,Lekki Phase 1,738094552
+W738094553,,service,false,0,5.0,false,false,false,0,39.8,Lekki Phase 1,738094553
+W738109029,,service,false,0,5.0,false,false,false,0,111.6,Lekki Phase 1,738109029
+W738207413,,service,false,0,5.0,false,false,false,0,108.0,Lekki Phase 1,738207413
+W738382648,,service,false,0,5.0,false,false,false,0,120.6,Lekki Phase 1,738382648
+W754331501,,residential,false,0,7.5,false,false,false,0,113.0,Lekki Phase 1,754331501
+W756061536,,residential,false,0,7.5,false,false,false,0,90.2,Lekki Phase 1,756061536
+W756061537,,residential,false,0,7.5,false,false,false,0,140.4,Lekki Phase 1,756061537
+W756061538,,residential,false,0,7.5,false,false,false,0,73.1,Lekki Phase 1,756061538
+W761176267,,service,false,0,5.0,false,false,false,0,141.2,Lekki Phase 1,761176267
+W761604404,,service,false,0,5.0,false,false,false,0,81.0,Lekki Phase 1,761604404
+W761614265,,residential,false,0,7.5,false,false,false,0,103.5,Lekki Phase 1,761614265
+W761614266,,residential,false,0,7.5,false,false,false,0,138.7,Lekki Phase 1,761614266
+W761614267,,residential,false,0,7.5,false,false,false,0,134.9,Lekki Phase 1,761614267
+W761614268,,residential,false,0,7.5,false,false,false,0,145.7,Lekki Phase 1,761614268
+W761614269,,residential,false,0,7.5,false,false,false,0,145.3,Lekki Phase 1,761614269
+W761614270,,residential,false,0,7.5,false,false,false,0,424.4,Lekki Phase 1,761614270
+W761625616,,service,false,0,5.0,false,false,false,0,61.1,Lekki Phase 1,761625616
+W761627534,,residential,false,0,7.5,false,false,false,0,65.7,Lekki Phase 1,761627534
+W761627535,,residential,false,0,7.5,false,false,false,0,164.1,Lekki Phase 1,761627535
+W761868768,,service,false,0,5.0,false,false,false,0,173.0,Lekki Phase 1,761868768
+W761873020,,residential,false,0,7.5,false,false,false,0,32.9,Lekki Phase 1,761873020
+W761873021,,service,false,0,5.0,false,false,false,0,39.4,Lekki Phase 1,761873021
+W761873024,,service,false,0,5.0,false,false,false,0,33.0,Lekki Phase 1,761873024
+W761873025,,residential,false,0,7.5,false,false,false,0,155.1,Lekki Phase 1,761873025
+W761873026,,residential,false,0,7.5,false,false,false,0,10.7,Lekki Phase 1,761873026
+W761873027,,residential,false,0,7.5,false,false,false,0,149.5,Lekki Phase 1,761873027
+W771785855,,residential,false,0,7.5,false,false,false,0,316.1,Lekki Phase 1,771785855
+W773792797,,service,false,0,5.0,false,false,false,0,126.9,Lekki Phase 1,773792797
+W782695102,,service,false,0,5.0,false,false,false,0,521.5,Lekki Phase 1,782695102
+W783770982,,service,false,0,5.0,false,false,false,0,70.4,Lekki Phase 1,783770982
+W783774950,,service,false,0,5.0,false,false,false,0,103.9,Lekki Phase 1,783774950
+W783775119,,residential,false,0,7.5,false,false,false,0,149.7,Lekki Phase 1,783775119
+W783787411,,residential,false,0,7.5,false,false,false,0,197.2,Lekki Phase 1,783787411
+W783792652,,service,false,0,5.0,false,false,false,0,68.5,Lekki Phase 1,783792652
+W783792653,,service,false,0,5.0,false,false,false,0,71.9,Lekki Phase 1,783792653
+W783817106,,service,false,0,5.0,false,false,false,0,57.0,Lekki Phase 1,783817106
+W783817107,,residential,false,0,7.5,false,false,false,0,261.1,Lekki Phase 1,783817107
+W783817528,,residential,false,0,7.5,false,false,false,0,42.3,Lekki Phase 1,783817528
+W783826848,,residential,false,0,7.5,false,false,false,0,56.9,Lekki Phase 1,783826848
+W783828031,,service,false,0,5.0,false,false,false,0,65.1,Lekki Phase 1,783828031
+W783828032,,service,false,0,5.0,false,false,false,0,103.2,Lekki Phase 1,783828032
+W783828033,,service,false,0,5.0,false,false,false,0,83.2,Lekki Phase 1,783828033
+W783829148,,residential,false,0,7.5,false,false,false,0,97.9,Lekki Phase 1,783829148
+W783836210,,service,false,0,5.0,false,false,false,0,38.7,Lekki Phase 1,783836210
+W783836211,,service,false,0,5.0,false,false,false,0,38.0,Lekki Phase 1,783836211
+W783836212,,service,false,0,5.0,false,false,false,0,34.8,Lekki Phase 1,783836212
+W783836213,,service,false,0,5.0,false,false,false,0,197.2,Lekki Phase 1,783836213
+W783837629,,service,false,0,5.0,false,false,false,0,90.0,Lekki Phase 1,783837629
+W783838690,,service,false,0,5.0,false,false,false,0,226.7,Lekki Phase 1,783838690
+W783838691,,service,false,0,5.0,false,false,false,0,82.5,Lekki Phase 1,783838691
+W783839855,,residential,false,0,7.5,false,false,false,0,70.0,Lekki Phase 1,783839855
+W784122552,,service,false,0,5.0,false,false,false,0,111.8,Lekki Phase 1,784122552
+W784122553,,service,false,0,5.0,false,false,false,0,132.5,Lekki Phase 1,784122553
+W784126115,,service,false,0,5.0,false,false,false,0,109.0,Lekki Phase 1,784126115
+W784127410,,service,false,0,5.0,false,false,false,0,298.6,Lekki Phase 1,784127410
+W784127977,,service,false,0,5.0,false,false,false,0,60.0,Lekki Phase 1,784127977
+W784127978,,service,false,0,5.0,false,false,false,0,60.0,Lekki Phase 1,784127978
+W784127979,,service,false,0,5.0,false,false,false,0,151.9,Lekki Phase 1,784127979
+W784130078,,service,false,0,5.0,false,false,false,0,78.1,Lekki Phase 1,784130078
+W784131666,,service,false,0,5.0,false,false,false,0,138.5,Lekki Phase 1,784131666
+W784133946,,service,false,0,5.0,false,false,false,0,210.8,Lekki Phase 1,784133946
+W784135926,,residential,false,0,7.5,false,false,false,0,73.7,Lekki Phase 1,784135926
+W784138441,,service,false,0,5.0,false,false,false,0,62.6,Lekki Phase 1,784138441
+W784138442,,service,false,0,5.0,false,false,false,0,89.0,Lekki Phase 1,784138442
+W784138443,,service,false,0,5.0,false,false,false,0,81.4,Lekki Phase 1,784138443
+W784140276,,residential,false,0,7.5,false,false,false,0,79.1,Lekki Phase 1,784140276
+W784154215,,service,false,0,5.0,false,false,false,0,111.2,Lekki Phase 1,784154215
+W784154908,,residential,false,0,7.5,false,false,false,0,74.3,Lekki Phase 1,784154908
+W784155721,,service,false,0,5.0,false,false,false,0,177.8,Lekki Phase 1,784155721
+W784155722,,service,false,0,5.0,false,false,false,0,23.8,Lekki Phase 1,784155722
+W784155723,,service,false,0,5.0,false,false,false,0,131.7,Lekki Phase 1,784155723
+W784718790,,residential,false,0,7.5,false,false,false,0,80.3,Lekki Phase 1,784718790
+W784718791,,residential,false,0,7.5,false,false,false,0,33.5,Lekki Phase 1,784718791
+W784978948,,residential,false,0,7.5,false,false,false,0,66.7,Lekki Phase 1,784978948
+W785691798,,residential,false,0,7.5,false,false,false,0,163.4,Lekki Phase 1,785691798
+W785691859,,residential,false,0,7.5,true,false,false,0,14.1,Lekki Phase 1,785691859
+W785691860,,residential,false,0,7.5,true,false,false,0,9.5,Lekki Phase 1,785691860
+W785691861,,residential,false,0,7.5,false,false,false,0,59.6,Lekki Phase 1,785691861
+W785691862,,unclassified,false,0,7.5,true,false,false,0,10.7,Lekki Phase 1,785691862
+W785691863,,unclassified,false,0,7.5,true,false,false,0,23.1,Lekki Phase 1,785691863
+W785691865,,service,false,0,5.0,false,false,false,0,40.7,Lekki Phase 1,785691865
+W785691866,,service,false,0,5.0,false,false,false,0,64.1,Lekki Phase 1,785691866
+W785691870,,unclassified,false,0,7.5,false,false,false,0,74.8,Lekki Phase 1,785691870
+W785691891,,residential,false,0,7.5,false,false,false,0,360.4,Lekki Phase 1,785691891
+W790900892,,residential,false,0,7.5,false,false,false,0,265.6,Lekki Phase 1,790900892
+W790900893,,residential,false,0,7.5,true,false,false,0,16.1,Lekki Phase 1,790900893
+W790900894,,residential,false,0,7.5,false,false,false,0,64.9,Lekki Phase 1,790900894
+W790900896,,residential,false,0,7.5,false,false,false,0,157.4,Lekki Phase 1,790900896
+W790902551,,residential,false,0,7.5,false,false,false,0,205.6,Lekki Phase 1,790902551
+W790902554,,residential,false,0,7.5,false,false,false,0,232.3,Lekki Phase 1,790902554
+W790902555,,residential,false,0,7.5,false,false,false,0,305.4,Lekki Phase 1,790902555
+W790902556,,residential,false,0,7.5,false,false,false,0,347.4,Lekki Phase 1,790902556
+W790902557,,residential,false,0,7.5,false,false,false,0,203.9,Lekki Phase 1,790902557
+W790902560,,residential,false,0,7.5,false,false,false,0,258.1,Lekki Phase 1,790902560
+W791334292,,residential,false,0,7.5,false,false,false,0,71.4,Lekki Phase 1,791334292
+W791334293,,residential,false,0,7.5,false,false,false,0,74.9,Lekki Phase 1,791334293
+W791334294,,residential,false,0,7.5,false,false,false,0,296.9,Lekki Phase 1,791334294
+W791334295,,residential,false,0,7.5,false,false,false,0,493.4,Lekki Phase 1,791334295
+W791334296,,residential,false,0,7.5,false,false,false,0,27.4,Lekki Phase 1,791334296
+W792771163,,service,false,0,5.0,false,false,false,0,118.9,Lekki Phase 1,792771163
+W792771164,,service,false,0,5.0,false,false,false,0,37.5,Lekki Phase 1,792771164
+W796421479,,service,false,0,5.0,false,false,false,0,73.5,Lekki Phase 1,796421479
+W796421480,,service,false,0,5.0,false,false,false,0,92.9,Lekki Phase 1,796421480
+W796421481,,service,false,0,5.0,false,false,false,0,82.4,Lekki Phase 1,796421481
+W796421487,,service,false,0,5.0,false,false,false,0,17.9,Lekki Phase 1,796421487
+W796421489,,service,false,0,5.0,false,false,false,0,12.0,Lekki Phase 1,796421489
+W796440275,,service,false,0,5.0,false,false,false,0,110.7,Lekki Phase 1,796440275
+W796440276,,service,false,0,5.0,false,false,false,0,59.3,Lekki Phase 1,796440276
+W796440277,,service,false,0,5.0,false,false,false,0,59.9,Lekki Phase 1,796440277
+W796440278,,service,false,0,5.0,false,false,false,0,58.9,Lekki Phase 1,796440278
+W796440279,,service,false,0,5.0,false,false,false,0,60.1,Lekki Phase 1,796440279
+W796440280,,service,false,0,5.0,false,false,false,0,50.4,Lekki Phase 1,796440280
+W806307186,,residential,false,0,7.5,false,false,false,0,80.5,Lekki Phase 1,806307186
+W848341717,,service,false,0,5.0,false,false,false,0,73.8,Lekki Phase 1,848341717
+W848341718,,service,false,0,5.0,false,false,false,0,51.7,Lekki Phase 1,848341718
+W848366719,,residential,false,0,7.5,false,false,false,0,33.3,Lekki Phase 1,848366719
+W848366720,,residential,false,0,7.5,false,false,false,0,25.6,Lekki Phase 1,848366720
+W848366721,,service,false,0,5.0,false,false,false,0,157.2,Lekki Phase 1,848366721
+W848366722,,service,false,0,5.0,false,false,false,0,32.5,Lekki Phase 1,848366722
+W848366723,,service,false,0,5.0,false,false,false,0,92.4,Lekki Phase 1,848366723
+W848848991,,residential,false,0,7.5,false,false,false,0,94.6,Lekki Phase 1,848848991
+W848848992,,residential,false,0,7.5,false,false,false,0,210.4,Lekki Phase 1,848848992
+W848848993,,residential,false,0,7.5,false,false,false,0,30.6,Lekki Phase 1,848848993
+W850084823,,service,false,0,5.0,false,false,false,0,199.9,Lekki Phase 1,850084823
+W850084824,,service,false,0,5.0,false,false,false,0,77.0,Lekki Phase 1,850084824
+W88273333,,tertiary,false,0,10.0,true,false,false,0,49.8,Lekki Phase 1,88273333
+W88273349,,residential,false,0,7.5,false,false,false,0,353.1,Lekki Phase 1,88273349
+W88273398,,residential,false,0,7.5,false,false,false,0,192.1,Lekki Phase 1,88273398
+W88273424,,residential,false,0,7.5,false,false,false,0,347.6,Lekki Phase 1,88273424
+W909718672,,residential,false,0,7.5,false,false,false,0,273.7,Lekki Phase 1,909718672
+W910645775,,residential,false,0,7.5,false,false,false,0,217.9,Lekki Phase 1,910645775
+W910645776,,residential,false,0,7.5,false,false,false,0,235.3,Lekki Phase 1,910645776
+W910645777,,residential,false,0,7.5,false,false,false,0,520.2,Lekki Phase 1,910645777
+W91332524,,residential,false,0,7.5,false,false,false,0,348.6,Lekki Phase 1,91332524
+W91332537,,residential,false,0,7.5,false,false,false,0,288.6,Lekki Phase 1,91332537
+W927965582,,residential,false,0,7.5,false,false,false,0,63.5,Lekki Phase 1,927965582
+W927965583,,residential,false,0,7.5,false,false,false,0,235.1,Lekki Phase 1,927965583
+W927965584,,residential,false,0,7.5,false,false,false,0,67.0,Lekki Phase 1,927965584
+W927965585,,residential,false,0,7.5,false,false,false,0,88.3,Lekki Phase 1,927965585
+W927965586,,residential,false,0,7.5,false,false,false,0,202.1,Lekki Phase 1,927965586
+W964513534,,service,false,0,5.0,false,false,false,0,68.9,Lekki Phase 1,964513534
+W964513535,,residential,false,0,7.5,false,false,false,0,267.1,Lekki Phase 1,964513535
+W964513536,,residential,false,0,7.5,false,false,false,0,201.2,Lekki Phase 1,964513536
+W964513538,,service,false,0,5.0,false,false,false,0,78.1,Lekki Phase 1,964513538
+W964513539,,service,false,0,5.0,false,false,false,0,71.8,Lekki Phase 1,964513539
+W965515329,,service,false,0,5.0,false,false,false,0,80.6,Lekki Phase 1,965515329
+W965517416,,service,false,0,5.0,false,false,false,0,117.8,Lekki Phase 1,965517416
+W965517417,,service,false,0,5.0,false,false,false,0,63.4,Lekki Phase 1,965517417
+W965517418,,service,false,0,5.0,false,false,false,0,52.7,Lekki Phase 1,965517418
+W965520645,,residential,false,0,7.5,false,false,false,0,118.2,Lekki Phase 1,965520645
+W965520647,,service,false,0,5.0,false,false,false,0,73.4,Lekki Phase 1,965520647
+W965559477,,residential,false,0,7.5,false,false,false,0,149.9,Lekki Phase 1,965559477
+W965559478,,unclassified,false,0,7.5,false,false,false,0,147.2,Lekki Phase 1,965559478
+W965582856,,service,false,0,5.0,false,false,false,0,180.1,Lekki Phase 1,965582856
+W965603568,,service,false,0,5.0,false,false,false,0,42.9,Lekki Phase 1,965603568
+W965813904,,service,false,0,5.0,false,false,false,0,42.7,Lekki Phase 1,965813904
+W965813905,,service,false,0,5.0,false,false,false,0,31.8,Lekki Phase 1,965813905
+W965815892,,service,false,0,5.0,false,false,false,0,41.9,Lekki Phase 1,965815892
+W965830839,,service,false,0,5.0,false,false,false,0,43.0,Lekki Phase 1,965830839
+W965830840,,service,false,0,5.0,false,false,false,0,29.5,Lekki Phase 1,965830840
+W965830841,,service,false,0,5.0,false,false,false,0,79.6,Lekki Phase 1,965830841
+W965830842,,service,false,0,5.0,false,false,false,0,20.8,Lekki Phase 1,965830842
+W965830843,,service,false,0,5.0,false,false,false,0,46.6,Lekki Phase 1,965830843
+W965830844,,service,false,0,5.0,false,false,false,0,22.3,Lekki Phase 1,965830844
+W965830845,,residential,false,0,7.5,false,false,false,0,128.0,Lekki Phase 1,965830845
+W965830846,,service,false,0,5.0,false,false,false,0,23.7,Lekki Phase 1,965830846
+W965830847,,service,false,0,5.0,false,false,false,0,62.3,Lekki Phase 1,965830847
+W965838492,,service,false,0,5.0,false,false,false,0,38.2,Lekki Phase 1,965838492
+W965838493,,service,false,0,5.0,false,false,false,0,85.4,Lekki Phase 1,965838493
+W965838494,,service,false,0,5.0,false,false,false,0,38.0,Lekki Phase 1,965838494
+W965838495,,service,false,0,5.0,false,false,false,0,40.1,Lekki Phase 1,965838495
+W965839071,,service,false,0,5.0,false,false,false,0,52.7,Lekki Phase 1,965839071
+W965849768,,service,false,0,5.0,false,false,false,0,62.7,Lekki Phase 1,965849768
+W965849769,,service,false,0,5.0,false,false,false,0,82.7,Lekki Phase 1,965849769
+W965849770,,residential,false,0,7.5,false,false,false,0,212.3,Lekki Phase 1,965849770
+W965849771,,service,false,0,5.0,false,false,false,0,90.2,Lekki Phase 1,965849771
+W965849772,,service,false,0,5.0,false,false,false,0,87.6,Lekki Phase 1,965849772
+W965849773,,service,false,0,5.0,false,false,false,0,88.0,Lekki Phase 1,965849773
+W965849774,,service,false,0,5.0,false,false,false,0,88.3,Lekki Phase 1,965849774
+W965849775,,residential,false,0,7.5,false,false,false,0,425.0,Lekki Phase 1,965849775
+W965865361,,service,false,0,5.0,false,false,false,0,5.7,Lekki Phase 1,965865361
+W965865362,,service,false,0,5.0,false,true,false,0,12.8,Lekki Phase 1,965865362
+W965865363,,service,false,0,5.0,false,false,false,0,135.3,Lekki Phase 1,965865363
+W966425459,,service,false,0,5.0,false,false,false,0,52.3,Lekki Phase 1,966425459
+W966425460,,service,false,0,5.0,false,false,false,0,42.2,Lekki Phase 1,966425460
+W966425461,,service,false,0,5.0,false,false,false,0,35.9,Lekki Phase 1,966425461
+W976916002,,service,false,0,5.0,false,false,false,0,214.3,Lekki Phase 1,976916002

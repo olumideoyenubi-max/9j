@@ -1,0 +1,1960 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W146603157,214 Close,service,false,0,5.0,false,false,false,0,49.2,Ikoyi and Victoria Island,146603157
+W146603169,215 Close,residential,false,0,7.5,false,false,false,0,66.3,Ikoyi and Victoria Island,146603169
+W146603168,216 Close,residential,false,0,7.5,false,false,false,0,51.7,Ikoyi and Victoria Island,146603168
+W146603161,217 Close,residential,false,0,7.5,false,false,false,0,104.6,Ikoyi and Victoria Island,146603161
+W146603176,218 Close,residential,false,0,7.5,false,false,false,0,73.3,Ikoyi and Victoria Island,146603176
+W146603174,219 Close,residential,false,0,7.5,false,false,false,0,81.7,Ikoyi and Victoria Island,146603174
+W146603142,220 Close,residential,false,0,7.5,false,false,false,0,99.6,Ikoyi and Victoria Island,146603142
+W146603179,221 Close,residential,false,0,7.5,false,false,false,0,215.8,Ikoyi and Victoria Island,146603179
+W146603160,222 Close,residential,false,0,7.5,false,false,false,0,88.2,Ikoyi and Victoria Island,146603160
+W146603170,223 Close,residential,false,0,7.5,false,false,false,0,228.0,Ikoyi and Victoria Island,146603170
+W146603139,2nd Avenue,tertiary,false,0,10.0,true,false,false,0,310.7,Ikoyi and Victoria Island,146603139
+W146603191,2nd Avenue,tertiary,false,0,10.0,true,false,false,0,1882.7,Ikoyi and Victoria Island,146603191
+W583257978,2nd Avenue,tertiary,false,0,10.0,true,false,false,0,1858.6,Ikoyi and Victoria Island,583257978
+W583523391,2nd Avenue,tertiary,false,0,10.0,true,false,false,0,164.1,Ikoyi and Victoria Island,583523391
+W107551962,402 Close,residential,false,0,7.5,false,false,false,0,169.7,Ikoyi and Victoria Island,107551962
+W107551966,A.J. Marinho Drive,residential,false,0,7.5,false,false,false,0,505.4,Ikoyi and Victoria Island,107551966
+W152407766,Abeke Animawun Street,residential,false,0,7.5,false,false,false,0,379.0,Ikoyi and Victoria Island,152407766
+W16369568,Abibu Adetoro Street,residential,false,0,7.5,false,false,false,0,207.3,Ikoyi and Victoria Island,16369568
+W138040484,Abike Sulaiman Street,residential,false,0,7.5,false,false,false,0,473.8,Ikoyi and Victoria Island,138040484
+W216689334,Abila Abiodun Oniru Road,residential,false,0,7.5,true,false,false,0,487.2,Ikoyi and Victoria Island,216689334
+W91332487,Abiola Segun Ajayi Street,residential,false,0,7.5,false,false,false,0,111.6,Ikoyi and Victoria Island,91332487
+W1181242542,Abisogun Road,residential,false,0,7.5,false,false,false,0,14.9,Ikoyi and Victoria Island,1181242542
+W1181242543,Abisogun Road,residential,false,0,7.5,false,false,false,0,12.1,Ikoyi and Victoria Island,1181242543
+W152870238,Abisogun Road,residential,false,0,7.5,false,false,false,0,476.2,Ikoyi and Victoria Island,152870238
+W294812835,Ade Adedeji Close,residential,false,0,7.5,false,false,false,0,156.3,Ikoyi and Victoria Island,294812835
+W138040465,Adebayo Doherty Road,tertiary,false,0,10.0,false,false,false,0,1121.6,Ikoyi and Victoria Island,138040465
+W91332553,Adebisi Omotola Close,residential,false,0,7.5,false,false,false,0,218.8,Ikoyi and Victoria Island,91332553
+W129730336,Adekunle Lawal Road,secondary,false,2,7.6,false,false,false,0,522.6,Ikoyi and Victoria Island,129730336
+W138040466,Adelowo Adedeji Street,residential,false,0,7.5,false,false,false,0,501.0,Ikoyi and Victoria Island,138040466
+W107569431,Adeniyi Coker Street,residential,false,0,7.5,false,false,false,0,478.9,Ikoyi and Victoria Island,107569431
+W146603791,Adeniyi Olanrewaju Street,residential,false,0,7.5,false,false,false,0,168.1,Ikoyi and Victoria Island,146603791
+W152870394,Adeola Hopewell Street,tertiary,false,0,10.0,true,false,false,0,931.1,Ikoyi and Victoria Island,152870394
+W518457028,Adeola Hopewell Street,tertiary,false,0,10.0,false,false,false,0,185.8,Ikoyi and Victoria Island,518457028
+W138040514,Adesola Akinnifesi Street,residential,false,0,7.5,false,false,false,0,290.9,Ikoyi and Victoria Island,138040514
+W1502973427,Adesola Akinnifesi Street,residential,false,0,7.5,false,false,false,0,24.5,Ikoyi and Victoria Island,1502973427
+W5196518,Adetokunbo Ademola Street,secondary,false,0,13.0,true,false,false,0,979.0,Ikoyi and Victoria Island,5196518
+W525026793,Adetokunbo Ademola Street,secondary,false,2,7.6,true,false,false,0,953.7,Ikoyi and Victoria Island,525026793
+W525200473,Adetokunbo Ademola Street,secondary,false,2,7.6,true,false,false,0,951.7,Ikoyi and Victoria Island,525200473
+W8564522,Adetokunbo Ademola Street,secondary,false,2,7.6,true,false,false,0,978.5,Ikoyi and Victoria Island,8564522
+W1502973429,Adewale Kolawole Crescent,residential,false,0,7.5,false,false,false,0,15.0,Ikoyi and Victoria Island,1502973429
+W294869751,Adewale Kolawole Crescent,residential,false,0,7.5,false,false,false,0,736.1,Ikoyi and Victoria Island,294869751
+W146603899,Adeyemi Lawson Street,residential,false,0,7.5,false,false,false,0,945.0,Ikoyi and Victoria Island,146603899
+W1061563111,Adeyemo Alakija Street,secondary,false,0,13.0,false,false,false,0,71.4,Ikoyi and Victoria Island,1061563111
+W11680597,Adeyemo Alakija Street,secondary,false,0,13.0,true,false,false,0,630.1,Ikoyi and Victoria Island,11680597
+W525198068,Adeyemo Alakija Street,secondary,false,0,13.0,true,false,false,0,43.8,Ikoyi and Victoria Island,525198068
+W559542313,Adeyemo Alakija Street,secondary,false,0,13.0,true,false,false,0,56.5,Ikoyi and Victoria Island,559542313
+W559542315,Adeyemo Alakija Street,secondary,false,0,13.0,true,false,false,0,56.1,Ikoyi and Victoria Island,559542315
+W828131207,Adeyemo Alakija Street,secondary,false,0,13.0,false,false,false,0,83.3,Ikoyi and Victoria Island,828131207
+W1024775163,Admiralty Way,primary,false,2,7.6,true,false,false,0,1200.4,Ikoyi and Victoria Island,1024775163
+W1024775165,Admiralty Way,primary,false,2,7.6,true,false,false,0,270.2,Ikoyi and Victoria Island,1024775165
+W1066545359,Admiralty Way,primary,false,2,7.6,true,false,false,0,227.6,Ikoyi and Victoria Island,1066545359
+W1066545891,Admiralty Way,primary,false,2,7.6,true,false,false,0,104.7,Ikoyi and Victoria Island,1066545891
+W1098282430,Admiralty Way,primary,false,2,7.6,true,false,false,30,241.9,Ikoyi and Victoria Island,1098282430
+W1426980357,Admiralty Way,primary,false,2,7.6,true,false,false,0,71.8,Ikoyi and Victoria Island,1426980357
+W1426980358,Admiralty Way,primary,false,2,7.6,true,false,false,0,62.0,Ikoyi and Victoria Island,1426980358
+W216882040,Admiralty Way,primary,false,2,7.6,true,false,false,0,43.1,Ikoyi and Victoria Island,216882040
+W216882041,Admiralty Way,primary,false,2,7.6,true,false,false,0,1346.5,Ikoyi and Victoria Island,216882041
+W294599755,Admiralty Way,primary,false,2,7.6,true,false,false,0,528.4,Ikoyi and Victoria Island,294599755
+W294599766,Admiralty Way,primary,false,2,7.6,true,false,false,0,538.5,Ikoyi and Victoria Island,294599766
+W91332511,Afribank Street,residential,false,0,7.5,false,false,false,0,185.2,Ikoyi and Victoria Island,91332511
+W133790502,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,387.0,Ikoyi and Victoria Island,133790502
+W16369652,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,379.3,Ikoyi and Victoria Island,16369652
+W152870291,Ahmed Onibudo Street,residential,false,0,7.5,false,false,false,50,463.4,Ikoyi and Victoria Island,152870291
+W566407678,Ajose Adeogun Roundabout,secondary,false,2,7.6,true,false,true,0,181.6,Ikoyi and Victoria Island,566407678
+W16369500,Ajose Adeogun Street,residential,false,0,7.5,false,false,false,0,66.7,Ikoyi and Victoria Island,16369500
+W16369591,Ajose Adeogun Street,tertiary,false,0,10.0,true,false,false,0,86.1,Ikoyi and Victoria Island,16369591
+W16369599,Ajose Adeogun Street,tertiary,false,0,10.0,true,false,false,0,1053.8,Ikoyi and Victoria Island,16369599
+W529444300,Ajose Adeogun Street,tertiary,false,0,10.0,true,true,false,0,18.8,Ikoyi and Victoria Island,529444300
+W529444301,Ajose Adeogun Street,tertiary,false,0,10.0,true,false,false,0,1053.8,Ikoyi and Victoria Island,529444301
+W529444302,Ajose Adeogun Street,tertiary,false,0,10.0,true,false,false,0,74.4,Ikoyi and Victoria Island,529444302
+W529444303,Ajose Adeogun Street,tertiary,false,0,10.0,true,true,false,0,18.6,Ikoyi and Victoria Island,529444303
+W152415217,Akanni Bashorun Street,residential,false,0,7.5,false,false,false,0,347.2,Ikoyi and Victoria Island,152415217
+W146603784,Akin Leigh Crescent,residential,false,0,7.5,false,false,false,0,92.9,Ikoyi and Victoria Island,146603784
+W146603789,Akin Leigh Crescent,residential,false,0,7.5,false,false,false,0,167.8,Ikoyi and Victoria Island,146603789
+W152870388,Akinbo Savage Street,residential,false,0,7.5,true,false,false,0,143.9,Ikoyi and Victoria Island,152870388
+W107569426,Akinbolagbe Street,tertiary,false,0,10.0,true,false,false,0,239.5,Ikoyi and Victoria Island,107569426
+W604051491,Akinbolagbe Street,tertiary,false,0,10.0,true,false,false,0,238.1,Ikoyi and Victoria Island,604051491
+W230421947,Akiogun Road,secondary,false,0,13.0,true,false,false,0,62.7,Ikoyi and Victoria Island,230421947
+W230421948,Akiogun Road,secondary,false,0,13.0,true,false,false,0,39.6,Ikoyi and Victoria Island,230421948
+W294869776,Akiogun Road,secondary,false,0,13.0,true,false,false,0,909.1,Ikoyi and Victoria Island,294869776
+W294603090,Alaiyelunwa Ologunkutere Street,residential,false,0,7.5,false,false,false,0,203.2,Ikoyi and Victoria Island,294603090
+W216689320,Alexander Avenue,primary,false,2,7.6,true,false,false,0,513.0,Ikoyi and Victoria Island,216689320
+W216689323,Alexander Avenue,primary,false,2,7.6,true,false,false,0,510.9,Ikoyi and Victoria Island,216689323
+W216689327,Alexander Avenue,primary,false,0,17.5,true,false,false,0,886.6,Ikoyi and Victoria Island,216689327
+W386837647,Alexander Avenue,secondary,true,2,7.6,false,false,false,0,8.7,Ikoyi and Victoria Island,386837647
+W538086581,Alexander Avenue,primary,false,0,17.5,true,false,false,0,876.3,Ikoyi and Victoria Island,538086581
+W529795584,Alexander Roundabout,primary,false,0,17.5,true,false,true,0,163.6,Ikoyi and Victoria Island,529795584
+W5150262,Alfred Rewane,primary,false,0,17.5,true,true,false,0,970.5,Ikoyi and Victoria Island,5150262
+W10739754,Alfred Rewane Road,primary,false,0,17.5,true,false,false,0,974.6,Ikoyi and Victoria Island,10739754
+W1095180655,Alfred Rewane Road,primary,false,0,17.5,true,false,false,50,132.0,Ikoyi and Victoria Island,1095180655
+W1095180656,Alfred Rewane Road,primary,false,0,17.5,true,false,false,0,275.9,Ikoyi and Victoria Island,1095180656
+W504468135,Alfred Rewane Road,primary,false,0,17.5,true,false,false,0,857.1,Ikoyi and Victoria Island,504468135
+W504468138,Alfred Rewane Road,primary,false,0,17.5,true,false,false,50,658.6,Ikoyi and Victoria Island,504468138
+W5150231,Alfred Rewane Road,primary,false,2,7.6,true,false,false,0,280.6,Ikoyi and Victoria Island,5150231
+W529444323,Alfred Rewane Road,primary,false,0,17.5,true,false,false,0,152.6,Ikoyi and Victoria Island,529444323
+W138040492,Alhaji Hussein Sunmonu Street,residential,false,0,7.5,false,false,false,0,300.8,Ikoyi and Victoria Island,138040492
+W91332503,Amodu Tijani Close,residential,false,0,7.5,false,false,false,0,297.6,Ikoyi and Victoria Island,91332503
+W91332479,Amodu Tinaji Close,residential,false,0,7.5,false,false,false,0,112.0,Ikoyi and Victoria Island,91332479
+W138040550,Anthony Etukudo Avenue,residential,false,0,7.5,false,false,false,0,414.3,Ikoyi and Victoria Island,138040550
+W152870309,Aremo Adesegun Oniru Crescent,residential,false,0,7.5,false,false,false,0,219.7,Ikoyi and Victoria Island,152870309
+W129730398,Aromire Road,residential,false,0,7.5,false,false,false,0,371.9,Ikoyi and Victoria Island,129730398
+W152898367,Awkuzu Street,residential,false,0,7.5,false,false,false,0,503.1,Ikoyi and Victoria Island,152898367
+W1059928623,Awolowo Road,secondary,false,0,13.0,true,false,false,0,146.6,Ikoyi and Victoria Island,1059928623
+W1059928624,Awolowo Road,secondary,false,1,4.3,true,false,false,0,157.3,Ikoyi and Victoria Island,1059928624
+W1059928626,Awolowo Road,secondary,false,2,7.6,true,false,false,0,126.7,Ikoyi and Victoria Island,1059928626
+W1059928627,Awolowo Road,secondary,false,0,13.0,true,false,false,0,58.2,Ikoyi and Victoria Island,1059928627
+W133751880,Awolowo Road,secondary,false,0,13.0,true,false,false,0,34.7,Ikoyi and Victoria Island,133751880
+W133753448,Awolowo Road,secondary,false,0,13.0,true,false,false,0,1213.1,Ikoyi and Victoria Island,133753448
+W588862665,Ayo Adebanjo Close,residential,false,0,7.5,false,false,false,0,96.1,Ikoyi and Victoria Island,588862665
+W152870345,Ayo Babatunde Crescent,residential,false,0,7.5,false,false,false,0,383.4,Ikoyi and Victoria Island,152870345
+W138040537,Ayo Jagun Street,residential,false,0,7.5,false,false,false,0,383.4,Ikoyi and Victoria Island,138040537
+W8564511,B.I.S. Way,residential,false,0,7.5,false,false,false,0,183.1,Ikoyi and Victoria Island,8564511
+W152898320,Baajiki Close,residential,false,0,7.5,false,false,false,0,63.5,Ikoyi and Victoria Island,152898320
+W152898338,Babatunde Dabiri Street,residential,false,0,7.5,false,false,false,0,360.7,Ikoyi and Victoria Island,152898338
+W152870397,Babatunde Jose Street,service,false,0,5.0,false,false,false,0,496.6,Ikoyi and Victoria Island,152870397
+W146603786,Babatunde Masha Street,residential,false,0,7.5,false,false,false,0,73.0,Ikoyi and Victoria Island,146603786
+W152406571,Balarabe Musa Crescent,residential,false,0,7.5,false,false,false,0,434.6,Ikoyi and Victoria Island,152406571
+W152406573,Balarabe Musa Crescent,residential,false,0,7.5,false,false,false,0,108.8,Ikoyi and Victoria Island,152406573
+W152406577,Balarabe Musa Crescent,residential,false,0,7.5,false,false,false,0,321.8,Ikoyi and Victoria Island,152406577
+W581943571,Balarabe Musa Crescent,residential,false,0,7.5,false,false,false,0,215.2,Ikoyi and Victoria Island,581943571
+W133748765,Bankole Cardoso Avenue,residential,false,0,7.5,false,false,false,0,313.6,Ikoyi and Victoria Island,133748765
+W129730348,Bankole Oki Street,residential,false,0,7.5,false,false,false,0,303.3,Ikoyi and Victoria Island,129730348
+W138040559,Bendel Calle,residential,false,0,7.5,false,false,false,0,166.2,Ikoyi and Victoria Island,138040559
+W582795420,Bendel Calle,residential,false,0,7.5,false,true,false,0,29.0,Ikoyi and Victoria Island,582795420
+W107551969,Bendel Close,residential,false,0,7.5,false,false,false,0,166.1,Ikoyi and Victoria Island,107551969
+W625815429,Bishop Aboyade Cole Street,tertiary,false,0,10.0,true,false,false,0,1200.8,Ikoyi and Victoria Island,625815429
+W8166406,Bishop Aboyade Cole Street,tertiary,false,1,4.3,true,false,false,0,1205.3,Ikoyi and Victoria Island,8166406
+W107551958,Bisola Durosimi Etti Drive,secondary,false,0,13.0,true,false,false,0,2019.0,Ikoyi and Victoria Island,107551958
+W568364485,Bisola Durotimi Etti Drive,secondary,false,0,13.0,true,false,false,30,2019.2,Ikoyi and Victoria Island,568364485
+W146603893,Bose Enemoh Close,residential,false,0,7.5,false,false,false,0,173.2,Ikoyi and Victoria Island,146603893
+W152870322,Bosun Adekoya Street,residential,false,0,7.5,false,false,false,0,567.6,Ikoyi and Victoria Island,152870322
+W1059928726,Bourdillon Road,primary,false,2,7.6,true,false,false,0,133.5,Ikoyi and Victoria Island,1059928726
+W1059928727,Bourdillon Road,primary,false,2,7.6,true,false,false,0,157.9,Ikoyi and Victoria Island,1059928727
+W1059928728,Bourdillon Road,primary,false,2,7.6,true,false,false,0,157.7,Ikoyi and Victoria Island,1059928728
+W1059928729,Bourdillon Road,primary,false,2,7.6,true,false,false,0,42.8,Ikoyi and Victoria Island,1059928729
+W106497223,Bourdillon Road,primary,false,2,7.6,true,false,false,0,2393.4,Ikoyi and Victoria Island,106497223
+W294599764,Bourdillon Road,primary,false,2,7.6,true,false,false,0,1383.2,Ikoyi and Victoria Island,294599764
+W505413821,Bourdillon Road,primary,false,2,7.6,true,false,false,0,1085.7,Ikoyi and Victoria Island,505413821
+W1364680412,British International School Drive,service,false,0,5.0,true,false,false,0,27.6,Ikoyi and Victoria Island,1364680412
+W294869716,British International School Drive,service,false,0,5.0,false,false,false,0,281.1,Ikoyi and Victoria Island,294869716
+W484704058,British International School Drive,service,false,0,5.0,true,false,false,0,7.2,Ikoyi and Victoria Island,484704058
+W13656311,Buraimoh Kenku Street,residential,false,0,7.5,true,false,false,0,186.0,Ikoyi and Victoria Island,13656311
+W138040512,Captain Olajide George Street,residential,false,0,7.5,false,false,false,0,233.0,Ikoyi and Victoria Island,138040512
+W138040519,Charles Ifeanyi Street,residential,false,0,7.5,false,false,false,0,442.7,Ikoyi and Victoria Island,138040519
+W138040563,Chief Augustine Anozie Street,residential,false,0,7.5,false,false,false,0,469.9,Ikoyi and Victoria Island,138040563
+W138040500,Chief Okoro Avenue,residential,false,0,7.5,false,false,false,0,307.9,Ikoyi and Victoria Island,138040500
+W107551960,Chief Yesufu Abiodun Way,secondary,false,0,13.0,true,false,false,0,185.5,Ikoyi and Victoria Island,107551960
+W1156532562,Chief Yesufu Abiodun Way,secondary,false,0,13.0,true,false,false,0,27.1,Ikoyi and Victoria Island,1156532562
+W1156532563,Chief Yesufu Abiodun Way,secondary,false,0,13.0,true,false,false,0,72.3,Ikoyi and Victoria Island,1156532563
+W1444627432,Chief Yesufu Abiodun Way,secondary,false,0,13.0,true,false,false,0,43.2,Ikoyi and Victoria Island,1444627432
+W216689324,Chief Yesufu Abiodun Way,secondary,false,0,13.0,true,false,false,0,64.7,Ikoyi and Victoria Island,216689324
+W216689332,Chief Yesufu Abiodun Way,secondary,false,0,13.0,true,false,false,0,24.5,Ikoyi and Victoria Island,216689332
+W738388637,Choi Street,residential,false,0,7.5,false,false,false,0,272.3,Ikoyi and Victoria Island,738388637
+W138040468,Chris Madueke Drive,residential,false,0,7.5,false,false,false,0,726.0,Ikoyi and Victoria Island,138040468
+W91332507,Churchgate Street,tertiary,false,0,10.0,true,false,false,50,471.2,Ikoyi and Victoria Island,91332507
+W529219708,Cluster A,service,false,0,5.0,false,false,false,0,96.3,Ikoyi and Victoria Island,529219708
+W1425594381,Cluster B,service,false,0,5.0,false,false,false,0,13.8,Ikoyi and Victoria Island,1425594381
+W529219714,Cluster B,service,false,0,5.0,false,false,false,0,36.4,Ikoyi and Victoria Island,529219714
+W529219722,Cluster C,service,false,0,5.0,false,false,false,0,166.1,Ikoyi and Victoria Island,529219722
+W529219727,Cluster D,service,false,0,5.0,false,false,false,0,122.9,Ikoyi and Victoria Island,529219727
+W138040518,Cottage Drive,residential,false,0,7.5,false,false,false,0,203.6,Ikoyi and Victoria Island,138040518
+W138040507,Da-Silva Street,residential,false,0,7.5,false,false,false,0,285.1,Ikoyi and Victoria Island,138040507
+W583246857,Dr Akin Ogunlewe Street,residential,false,0,7.5,false,false,false,0,153.8,Ikoyi and Victoria Island,583246857
+W91332555,Dr Akin Ogunlewe Street,unclassified,false,0,7.5,false,false,false,0,479.5,Ikoyi and Victoria Island,91332555
+W216689337,Elegba Festival Drive,residential,false,0,7.5,false,false,false,0,198.2,Ikoyi and Victoria Island,216689337
+W420741634,Eleko Close,residential,false,0,7.5,false,false,false,0,179.6,Ikoyi and Victoria Island,420741634
+W529444305,Etim Iyang Crescent,residential,false,0,7.5,true,false,false,0,31.8,Ikoyi and Victoria Island,529444305
+W1458117961,Etim Iyang Cresent,residential,false,0,7.5,true,false,false,0,33.8,Ikoyi and Victoria Island,1458117961
+W91332529,Etim Iyang Cresent,residential,false,0,7.5,false,false,false,0,718.7,Ikoyi and Victoria Island,91332529
+W1061545449,Falomo Bridge,primary,false,0,17.5,true,true,false,0,295.3,Ikoyi and Victoria Island,1061545449
+W1061545450,Falomo Bridge,primary,false,0,17.5,true,true,false,0,185.6,Ikoyi and Victoria Island,1061545450
+W10740237,Falomo Bridge,primary,false,0,17.5,true,true,false,0,489.9,Ikoyi and Victoria Island,10740237
+W129730330,Falomo Close,residential,false,0,7.5,false,false,false,0,218.8,Ikoyi and Victoria Island,129730330
+W133751877,Falomo Roundabout,primary,false,0,17.5,true,false,true,0,215.8,Ikoyi and Victoria Island,133751877
+W107551964,Fatai Durosinmi-Etiti Crescent,residential,false,0,7.5,false,false,false,0,320.9,Ikoyi and Victoria Island,107551964
+W1540097207,Federal Housing Complex Road,unclassified,false,0,7.5,true,false,false,0,9.8,Ikoyi and Victoria Island,1540097207
+W1540097208,Federal Housing Complex Road,unclassified,false,0,7.5,true,false,false,0,14.5,Ikoyi and Victoria Island,1540097208
+W525200476,Federal Housing Complex Road,unclassified,false,0,7.5,false,false,false,0,10.4,Ikoyi and Victoria Island,525200476
+W91332513,Federal Housing Complex Road,unclassified,false,0,7.5,true,false,false,0,614.7,Ikoyi and Victoria Island,91332513
+W129730375,Femi Okunnu Road,residential,false,0,7.5,false,false,false,0,557.8,Ikoyi and Victoria Island,129730375
+W129730380,Femi Okunnu Road,residential,false,0,7.5,false,false,false,0,872.2,Ikoyi and Victoria Island,129730380
+W129730384,Femi Okunnu Road,residential,false,0,7.5,false,false,false,0,633.3,Ikoyi and Victoria Island,129730384
+W107569432,Femi Sule Street,residential,false,0,7.5,false,false,false,0,437.8,Ikoyi and Victoria Island,107569432
+W91332535,Festival Street,residential,false,0,7.5,false,false,false,0,503.4,Ikoyi and Victoria Island,91332535
+W138040470,Fola Osibo Street,tertiary,false,0,10.0,false,false,false,0,787.8,Ikoyi and Victoria Island,138040470
+W216768517,Foreshore Road,residential,false,0,7.5,false,false,false,0,721.0,Ikoyi and Victoria Island,216768517
+W216768525,Foreshore Road,residential,false,0,7.5,true,false,false,0,10.9,Ikoyi and Victoria Island,216768525
+W605533007,Foreshore Road,residential,false,0,7.5,true,false,false,0,11.3,Ikoyi and Victoria Island,605533007
+W606201196,Foreshore Road,residential,false,0,7.5,false,false,false,0,25.7,Ikoyi and Victoria Island,606201196
+W152898305,Fuzo Ezimora Street,residential,false,0,7.5,false,false,false,0,542.5,Ikoyi and Victoria Island,152898305
+W138040555,Gabby Adeosun Street,residential,false,0,7.5,false,false,false,0,378.0,Ikoyi and Victoria Island,138040555
+W91332492,Gafari Animashaun Street,residential,false,0,7.5,false,false,false,0,214.2,Ikoyi and Victoria Island,91332492
+W294869718,George Omonubi Street,residential,false,0,7.5,false,false,false,0,264.5,Ikoyi and Victoria Island,294869718
+W129730406,George Street,residential,false,0,7.5,false,false,false,0,311.0,Ikoyi and Victoria Island,129730406
+W538086580,Gerrard Road,primary,false,0,17.5,true,false,false,0,1378.2,Ikoyi and Victoria Island,538086580
+W504468145,Glover Court,residential,false,0,7.5,false,false,false,0,117.2,Ikoyi and Victoria Island,504468145
+W224328446,Glover Road,tertiary,false,0,10.0,false,false,false,0,2037.1,Ikoyi and Victoria Island,224328446
+W529795582,Glover Road,tertiary,false,0,10.0,true,false,false,0,44.6,Ikoyi and Victoria Island,529795582
+W529795583,Glover Road,tertiary,false,0,10.0,true,false,false,0,49.0,Ikoyi and Victoria Island,529795583
+W152870325,Godson Ilodianya Close,residential,false,0,7.5,false,false,false,0,111.0,Ikoyi and Victoria Island,152870325
+W138040483,Grace Anjos Drive,residential,false,0,7.5,false,false,false,0,757.6,Ikoyi and Victoria Island,138040483
+W138040566,Hakeen Dickson Drive,residential,false,0,7.5,false,false,false,0,348.7,Ikoyi and Victoria Island,138040566
+W146603788,Hilary Onukogu Crescent,residential,false,0,7.5,false,false,false,0,59.3,Ikoyi and Victoria Island,146603788
+W152407767,Ibile Close,residential,false,0,7.5,false,false,false,0,145.6,Ikoyi and Victoria Island,152407767
+W216689315,Ibile Close,residential,false,0,7.5,false,false,false,0,92.3,Ikoyi and Victoria Island,216689315
+W138040509,Ichie Kris Onyekwuje Street,residential,false,0,7.5,false,false,false,0,202.3,Ikoyi and Victoria Island,138040509
+W91332541,Idowu Taylor Street,tertiary,false,0,10.0,true,false,false,0,528.0,Ikoyi and Victoria Island,91332541
+W1181242541,Ihuntayi Road,residential,false,0,7.5,false,false,false,0,13.4,Ikoyi and Victoria Island,1181242541
+W216689322,Ihuntayi Road,residential,false,0,7.5,false,false,false,0,606.8,Ikoyi and Victoria Island,216689322
+W129730405,Ikoya Avenue,residential,false,0,7.5,false,false,false,0,290.4,Ikoyi and Victoria Island,129730405
+W216689339,Ikoyi Bridge Roundabout,primary,false,0,17.5,true,false,true,0,160.4,Ikoyi and Victoria Island,216689339
+W504468137,Ikoyi Club Road,secondary,false,0,13.0,false,false,false,0,17.4,Ikoyi and Victoria Island,504468137
+W5150235,Ikoyi Club Road,secondary,false,0,13.0,true,false,false,0,427.8,Ikoyi and Victoria Island,5150235
+W146603903,Ilabere Avenue,residential,false,0,7.5,false,false,false,0,802.8,Ikoyi and Victoria Island,146603903
+W146603897,Ilado Close,residential,false,0,7.5,false,false,false,0,192.5,Ikoyi and Victoria Island,146603897
+W146603895,Ilu Drive,residential,false,0,7.5,false,false,false,0,269.6,Ikoyi and Victoria Island,146603895
+W152870241,Imam Agusto Close,residential,false,0,7.5,false,false,false,0,100.5,Ikoyi and Victoria Island,152870241
+W146603900,Imoru Close,residential,false,0,7.5,false,false,false,0,179.0,Ikoyi and Victoria Island,146603900
+W146603898,Inupa Drive,residential,false,0,7.5,false,false,false,0,273.8,Ikoyi and Victoria Island,146603898
+W129730397,Ipeu Street,tertiary,false,0,10.0,false,false,false,0,135.6,Ikoyi and Victoria Island,129730397
+W138040471,Irochie Street,residential,false,0,7.5,false,false,false,0,243.5,Ikoyi and Victoria Island,138040471
+W146603901,Iru Close,residential,false,0,7.5,false,false,false,0,251.2,Ikoyi and Victoria Island,146603901
+W152870337,Itirin Court,residential,false,0,7.5,false,false,false,0,156.9,Ikoyi and Victoria Island,152870337
+W138040545,Iweanya Ugbogoh Crescent,residential,false,0,7.5,false,false,false,0,379.8,Ikoyi and Victoria Island,138040545
+W152339979,Jabita Close,residential,false,0,7.5,false,false,false,0,107.7,Ikoyi and Victoria Island,152339979
+W152870304,Jakande Crescent,residential,false,0,7.5,false,false,false,0,593.3,Ikoyi and Victoria Island,152870304
+W294869723,Jasper Ike Street,residential,false,0,7.5,false,false,false,0,376.5,Ikoyi and Victoria Island,294869723
+W91332509,Jide Oki Street,residential,false,0,7.5,false,false,false,0,481.6,Ikoyi and Victoria Island,91332509
+W294812842,John Obasi Kalu Close,residential,false,0,7.5,false,false,false,0,105.9,Ikoyi and Victoria Island,294812842
+W138040536,John-Vic Igboanugo Street,residential,false,0,7.5,false,false,false,0,284.3,Ikoyi and Victoria Island,138040536
+W216689330,Joseph Adu Street,residential,false,0,7.5,false,false,false,0,111.8,Ikoyi and Victoria Island,216689330
+W152870362,Joseph Nahman Close,residential,false,0,7.5,false,false,false,0,113.2,Ikoyi and Victoria Island,152870362
+W146603787,Josephine Fingesi Street,residential,false,0,7.5,false,false,false,0,104.4,Ikoyi and Victoria Island,146603787
+W294603109,Joshua Ebun Ojo Close,residential,false,0,7.5,false,false,false,0,100.3,Ikoyi and Victoria Island,294603109
+W138040511,Jubril Martins Street,unclassified,false,0,7.5,false,false,false,0,111.7,Ikoyi and Victoria Island,138040511
+W152882224,Justice Rose Ukeje Street,residential,false,0,7.5,false,false,false,0,181.4,Ikoyi and Victoria Island,152882224
+W1435168356,Kai Road,residential,false,0,7.5,false,false,false,0,42.4,Ikoyi and Victoria Island,1435168356
+W659370499,Kai Road,residential,false,0,7.5,false,false,false,0,357.7,Ikoyi and Victoria Island,659370499
+W583926252,Kalabari Close,residential,false,0,7.5,false,false,false,0,96.8,Ikoyi and Victoria Island,583926252
+W129730376,Karimu Giwa Street,residential,false,0,7.5,false,false,false,0,85.0,Ikoyi and Victoria Island,129730376
+W1364408152,Karimu Giwa Street,residential,false,0,7.5,false,false,false,0,50.8,Ikoyi and Victoria Island,1364408152
+W525026798,Karimu Kotun Street,tertiary,false,0,10.0,true,false,false,0,827.2,Ikoyi and Victoria Island,525026798
+W91332499,Kayode Abraham Street,residential,false,0,7.5,false,false,false,0,197.2,Ikoyi and Victoria Island,91332499
+W138040526,Kenneth Agbakaru Street,residential,false,0,7.5,false,false,false,0,394.7,Ikoyi and Victoria Island,138040526
+W91332504,Keystone Bank Crescent,residential,false,0,7.5,true,false,false,0,293.4,Ikoyi and Victoria Island,91332504
+W146603894,Kuramo Close,residential,false,0,7.5,false,false,false,0,186.5,Ikoyi and Victoria Island,146603894
+W529444312,Kuramo Waters Close,residential,false,0,7.5,false,false,false,0,82.3,Ikoyi and Victoria Island,529444312
+W146604023,Ladipo Omotesho Cole Street,residential,false,0,7.5,false,false,false,0,736.3,Ikoyi and Victoria Island,146604023
+W1450410163,Lagos-Calabar Coastal Highway,trunk,false,0,11.5,true,false,false,0,6880.2,Ikoyi and Victoria Island,1450410163
+W1450410164,Lagos-Calabar Coastal Highway,trunk,false,0,11.5,true,false,false,0,6864.5,Ikoyi and Victoria Island,1450410164
+W107551939,Land Bridge Avenue,residential,false,0,7.5,false,false,false,0,1367.0,Ikoyi and Victoria Island,107551939
+W216768515,Lasode Crescent,residential,false,0,7.5,false,false,false,0,277.1,Ikoyi and Victoria Island,216768515
+W216768523,Lasode Crescent,residential,false,0,7.5,true,false,false,0,44.3,Ikoyi and Victoria Island,216768523
+W129730359,Lateef Jakande Avenue,tertiary,false,0,10.0,false,false,false,0,601.6,Ikoyi and Victoria Island,129730359
+W294869730,Lawani Oduloye Road,residential,false,0,7.5,false,false,false,0,340.6,Ikoyi and Victoria Island,294869730
+W354701316,Lawrence Omole Close,residential,false,0,7.5,false,false,false,0,73.7,Ikoyi and Victoria Island,354701316
+W129730371,Lawrence Road,tertiary,false,0,10.0,false,false,false,0,457.4,Ikoyi and Victoria Island,129730371
+W529795580,Lawrence Road,tertiary,false,0,10.0,true,false,false,0,43.2,Ikoyi and Victoria Island,529795580
+W529795581,Lawrence Road,tertiary,false,0,10.0,true,false,false,0,49.8,Ikoyi and Victoria Island,529795581
+W146603441,Layi Yusuf Crescent,residential,false,0,7.5,false,false,false,0,284.3,Ikoyi and Victoria Island,146603441
+W783788505,Layi Yusuf Crescent,residential,false,0,7.5,false,false,false,0,287.9,Ikoyi and Victoria Island,783788505
+W783788506,Layi Yusuf Crescent,residential,false,0,7.5,false,false,false,0,82.7,Ikoyi and Victoria Island,783788506
+W499678924,Lekki - Ikoyi Bridge,primary,false,0,17.5,true,true,false,0,1372.5,Ikoyi and Victoria Island,499678924
+W499678925,Lekki - Ikoyi Bridge,primary,false,0,17.5,true,true,false,0,1362.5,Ikoyi and Victoria Island,499678925
+W1066545889,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,116.2,Ikoyi and Victoria Island,1066545889
+W1066545894,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,0,137.2,Ikoyi and Victoria Island,1066545894
+W1098502552,Lekki-Epe Expressway,trunk,false,2,7.6,true,false,false,100,100.8,Ikoyi and Victoria Island,1098502552
+W1098502553,Lekki-Epe Expressway,trunk,false,2,7.6,true,false,false,0,156.1,Ikoyi and Victoria Island,1098502553
+W1422598170,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,533.5,Ikoyi and Victoria Island,1422598170
+W1422598171,Lekki-Epe Expressway,trunk,false,2,7.6,true,false,false,100,491.5,Ikoyi and Victoria Island,1422598171
+W1422598172,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,230.6,Ikoyi and Victoria Island,1422598172
+W1426055778,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,0,78.5,Ikoyi and Victoria Island,1426055778
+W216882038,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,544.4,Ikoyi and Victoria Island,216882038
+W216882043,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,1339.0,Ikoyi and Victoria Island,216882043
+W294869724,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,1391.9,Ikoyi and Victoria Island,294869724
+W556245673,Lekki-Epe Expressway,trunk,false,2,7.6,true,false,false,100,666.4,Ikoyi and Victoria Island,556245673
+W606301070,Lekki-Epe Expressway,trunk,false,3,10.9,true,false,false,100,161.8,Ikoyi and Victoria Island,606301070
+W828782105,Lekki-Epe Expressway,trunk,true,3,10.9,true,false,false,100,490.4,Ikoyi and Victoria Island,828782105
+W828782106,Lekki-Epe Expressway,trunk,true,3,10.9,true,false,false,100,495.4,Ikoyi and Victoria Island,828782106
+W828782109,Lekki-Epe Expressway,trunk,true,3,10.9,true,false,false,100,545.1,Ikoyi and Victoria Island,828782109
+W828782110,Lekki-Epe Expressway,trunk,true,3,10.9,true,false,false,100,486.6,Ikoyi and Victoria Island,828782110
+W107569428,Ligali Ayorinde Street,tertiary,false,0,10.0,true,false,false,0,65.7,Ikoyi and Victoria Island,107569428
+W1156532564,Ligali Ayorinde Street,tertiary,false,0,10.0,true,false,false,0,15.8,Ikoyi and Victoria Island,1156532564
+W1156532565,Ligali Ayorinde Street,tertiary,false,0,10.0,true,false,false,0,15.2,Ikoyi and Victoria Island,1156532565
+W1156532566,Ligali Ayorinde Street,tertiary,false,0,10.0,true,false,false,0,62.8,Ikoyi and Victoria Island,1156532566
+W1156532567,Ligali Ayorinde Street,tertiary,false,0,10.0,true,true,false,0,14.7,Ikoyi and Victoria Island,1156532567
+W1156532568,Ligali Ayorinde Street,tertiary,false,0,10.0,true,false,false,0,371.3,Ikoyi and Victoria Island,1156532568
+W1156532569,Ligali Ayorinde Street,tertiary,false,0,10.0,true,false,false,0,278.1,Ikoyi and Victoria Island,1156532569
+W1156532570,Ligali Ayorinde Street,tertiary,false,0,10.0,true,false,false,0,376.7,Ikoyi and Victoria Island,1156532570
+W216768521,Ligali Ayorinde Street,tertiary,false,0,10.0,true,false,false,0,44.8,Ikoyi and Victoria Island,216768521
+W216768526,Ligali Ayorinde Street,tertiary,false,0,10.0,true,false,false,0,38.7,Ikoyi and Victoria Island,216768526
+W216768528,Ligali Ayorinde Street,tertiary,false,0,10.0,false,false,false,0,244.9,Ikoyi and Victoria Island,216768528
+W525377047,Ligali Ayorinde Street,tertiary,false,0,10.0,true,true,false,0,14.7,Ikoyi and Victoria Island,525377047
+W525377048,Ligali Ayorinde Street,tertiary,false,0,10.0,true,false,false,0,278.2,Ikoyi and Victoria Island,525377048
+W604051493,Ligali Ayorinde Street,unclassified,false,0,7.5,false,false,false,0,177.4,Ikoyi and Victoria Island,604051493
+W538086579,Lugard Avenue,residential,false,0,7.5,false,false,false,0,1200.4,Ikoyi and Victoria Island,538086579
+W1335926312,Mabogunje Road,residential,false,0,7.5,false,false,false,0,11.7,Ikoyi and Victoria Island,1335926312
+W1453570226,Mabogunje Road,residential,false,0,7.5,true,false,false,0,205.0,Ikoyi and Victoria Island,1453570226
+W1453570227,Mabogunje Road,residential,false,0,7.5,true,false,false,0,202.4,Ikoyi and Victoria Island,1453570227
+W1453570228,Mabogunje Road,residential,false,0,7.5,false,false,false,0,238.2,Ikoyi and Victoria Island,1453570228
+W1453571067,Mabogunje Road,residential,false,0,7.5,false,false,false,0,22.6,Ikoyi and Victoria Island,1453571067
+W152870339,Mabogunje Road,residential,false,0,7.5,false,false,false,0,269.0,Ikoyi and Victoria Island,152870339
+W129730335,MacPherson Avenue,tertiary,false,0,10.0,false,false,false,0,686.2,Ikoyi and Victoria Island,129730335
+W129730364,Macgregor Road,residential,false,0,7.5,false,false,false,0,629.6,Ikoyi and Victoria Island,129730364
+W129730383,Magbon Close,residential,false,0,7.5,false,false,false,0,163.3,Ikoyi and Victoria Island,129730383
+W11690130,Maitama Sule Street,residential,false,0,7.5,false,false,false,20,397.5,Ikoyi and Victoria Island,11690130
+W216689318,Maroko Road,trunk,false,3,10.9,true,false,false,0,339.5,Ikoyi and Victoria Island,216689318
+W216768516,Maroko Road,trunk,false,2,7.6,true,true,false,0,39.8,Ikoyi and Victoria Island,216768516
+W216768520,Maroko Road,trunk,false,2,7.6,true,true,false,0,43.4,Ikoyi and Victoria Island,216768520
+W556245674,Maroko Road,trunk,false,3,10.9,true,false,false,0,328.5,Ikoyi and Victoria Island,556245674
+W138040472,Mayaki Usman Crescent,residential,false,0,7.5,false,false,false,0,342.2,Ikoyi and Victoria Island,138040472
+W129730394,Mekunwen Road,tertiary,false,0,10.0,false,false,false,0,615.8,Ikoyi and Victoria Island,129730394
+W560190803,Mekunwen Road,tertiary,false,0,10.0,false,false,false,0,362.8,Ikoyi and Victoria Island,560190803
+W370693357,Milverton Road,tertiary,false,0,10.0,false,false,false,0,824.2,Ikoyi and Victoria Island,370693357
+W529795578,Milverton Road,tertiary,false,0,10.0,true,false,false,0,35.0,Ikoyi and Victoria Island,529795578
+W529795579,Milverton Road,tertiary,false,0,10.0,true,false,false,0,42.2,Ikoyi and Victoria Island,529795579
+W216768514,Mobil Lane,service,false,0,5.0,false,true,false,0,43.9,Ikoyi and Victoria Island,216768514
+W216768522,Mobil Lane,service,false,0,5.0,false,false,false,0,7.6,Ikoyi and Victoria Island,216768522
+W133748762,Mobolaji Johnson Road,secondary,false,0,13.0,false,false,false,0,1327.8,Ikoyi and Victoria Island,133748762
+W152870359,Modupe Odunlami Street,residential,false,0,7.5,false,false,false,0,377.9,Ikoyi and Victoria Island,152870359
+W16369573,Molade Okoya-Thomas Street,residential,false,0,7.5,false,false,false,0,721.2,Ikoyi and Victoria Island,16369573
+W129730332,Moor Road,residential,false,0,7.5,false,false,false,0,286.6,Ikoyi and Victoria Island,129730332
+W129730327,Mosafejo Close,residential,false,0,7.5,false,false,false,0,103.6,Ikoyi and Victoria Island,129730327
+W146603180,Moseley Road,residential,false,0,7.5,false,false,false,0,343.5,Ikoyi and Victoria Island,146603180
+W91332539,Moshood Olugbani Street,residential,false,0,7.5,false,false,false,0,390.7,Ikoyi and Victoria Island,91332539
+W107569433,Muri Okunola Street,unclassified,false,0,7.5,true,false,false,0,212.8,Ikoyi and Victoria Island,107569433
+W1156532561,Muri Okunola Street,unclassified,false,0,7.5,true,false,false,0,212.3,Ikoyi and Victoria Island,1156532561
+W448988898,Muri Okunola Street,unclassified,false,0,7.5,true,false,false,0,331.9,Ikoyi and Victoria Island,448988898
+W448988900,Muri Okunola Street,unclassified,false,0,7.5,true,false,false,0,333.7,Ikoyi and Victoria Island,448988900
+W583246855,Muri Okunola Street,residential,false,0,7.5,false,false,false,0,183.1,Ikoyi and Victoria Island,583246855
+W91332527,Muri Okunola Street,unclassified,false,0,7.5,false,false,false,0,560.3,Ikoyi and Victoria Island,91332527
+W129730393,Murtala Muhammed Drive,secondary,false,0,13.0,false,false,false,0,721.1,Ikoyi and Victoria Island,129730393
+W138040473,Niyi Okunbi Street,residential,false,0,7.5,false,false,false,0,596.1,Ikoyi and Victoria Island,138040473
+W129730346,Oba Elegushi Road,residential,false,0,7.5,false,false,false,0,789.1,Ikoyi and Victoria Island,129730346
+W1293314649,Oba Idowu Abiodun Oniru Road,unclassified,false,0,7.5,true,false,false,0,185.3,Ikoyi and Victoria Island,1293314649
+W152870413,Oba Idowu Abiodun Oniru Road,residential,false,0,7.5,false,false,false,0,343.6,Ikoyi and Victoria Island,152870413
+W536234789,Obafemi Anibaba Street,residential,false,0,7.5,false,false,false,0,537.8,Ikoyi and Victoria Island,536234789
+W152870268,Odudu Eleyiwo Road,residential,false,0,7.5,false,false,false,0,500.9,Ikoyi and Victoria Island,152870268
+W536234786,Ogbunike Street,residential,false,0,7.5,false,false,false,0,524.0,Ikoyi and Victoria Island,536234786
+W107551961,Ogunyemi Road,residential,false,0,7.5,false,false,false,0,498.5,Ikoyi and Victoria Island,107551961
+W129730370,Ojomu Road,residential,false,0,7.5,false,false,false,0,162.5,Ikoyi and Victoria Island,129730370
+W152339970,Ojora Road,residential,false,0,7.5,false,false,false,0,469.7,Ikoyi and Victoria Island,152339970
+W107551942,Oko Awo Street,residential,false,0,7.5,true,false,false,0,458.6,Ikoyi and Victoria Island,107551942
+W133750716,Okotie Eboh Street,residential,false,0,7.5,false,false,false,0,160.1,Ikoyi and Victoria Island,133750716
+W598999087,Okotie Eboh Street,residential,false,0,7.5,false,false,false,0,317.6,Ikoyi and Victoria Island,598999087
+W16369585,Olabode George Street,residential,false,0,7.5,false,false,false,0,398.7,Ikoyi and Victoria Island,16369585
+W13656314,Oladele Olashore Street,residential,false,0,7.5,true,false,false,0,183.5,Ikoyi and Victoria Island,13656314
+W138040475,Olaitan Shebajo Street,residential,false,0,7.5,false,false,false,0,287.2,Ikoyi and Victoria Island,138040475
+W1499317974,Olaletan Street,residential,false,0,7.5,false,false,false,0,15.5,Ikoyi and Victoria Island,1499317974
+W1499317975,Olaletan Street,residential,false,0,7.5,false,false,false,0,195.5,Ikoyi and Victoria Island,1499317975
+W152870377,Olaletan Street,residential,false,0,7.5,false,false,false,0,11.6,Ikoyi and Victoria Island,152870377
+W138040501,Olatunji Moore Street,residential,false,0,7.5,false,false,false,0,288.0,Ikoyi and Victoria Island,138040501
+W1502973428,Olatunji Moore Street,residential,false,0,7.5,false,false,false,0,22.1,Ikoyi and Victoria Island,1502973428
+W640507501,Olawale Dawodu Road,residential,false,0,7.5,false,false,false,0,332.4,Ikoyi and Victoria Island,640507501
+W138040527,Olawale Idris Close,residential,false,0,7.5,false,false,false,0,113.8,Ikoyi and Victoria Island,138040527
+W481537474,Olosa Street,service,false,0,5.0,false,false,false,0,21.4,Ikoyi and Victoria Island,481537474
+W5150267,Olosa Street,residential,false,0,7.5,true,false,false,0,440.7,Ikoyi and Victoria Island,5150267
+W542328791,Olosa Street,residential,false,0,7.5,false,false,false,0,14.2,Ikoyi and Victoria Island,542328791
+W129730389,Oloto Road,tertiary,false,0,10.0,false,false,false,0,401.6,Ikoyi and Victoria Island,129730389
+W152870280,Olukunle Bakare Close,residential,false,0,7.5,false,false,false,0,73.6,Ikoyi and Victoria Island,152870280
+W129730367,Olumegbon Road,residential,false,0,7.5,false,false,false,0,389.7,Ikoyi and Victoria Island,129730367
+W138040533,Olushola Agbaje Street,residential,false,0,7.5,false,false,false,0,301.1,Ikoyi and Victoria Island,138040533
+W129730347,Oluwa Road,residential,false,0,7.5,false,false,false,0,370.4,Ikoyi and Victoria Island,129730347
+W138040487,Omorinre Johnson Street,residential,false,0,7.5,false,false,false,0,1315.5,Ikoyi and Victoria Island,138040487
+W1358985460,Onigefon Road,residential,false,0,7.5,false,false,false,0,5.5,Ikoyi and Victoria Island,1358985460
+W787960059,Onigefon Road,residential,false,0,7.5,true,false,false,0,721.4,Ikoyi and Victoria Island,787960059
+W788058757,Onigefon Road,residential,false,0,7.5,true,false,false,0,715.4,Ikoyi and Victoria Island,788058757
+W138040567,Onikepo Akande Street,residential,false,0,7.5,false,false,false,0,535.2,Ikoyi and Victoria Island,138040567
+W166767390,Onikoyi Road,tertiary,false,0,10.0,true,false,false,0,542.7,Ikoyi and Victoria Island,166767390
+W146603159,Onilegbale Road,residential,false,0,7.5,false,false,false,0,339.2,Ikoyi and Victoria Island,146603159
+W583490134,Oniru Close,residential,false,0,7.5,false,false,false,0,175.1,Ikoyi and Victoria Island,583490134
+W152407759,Oniru Estate,tertiary,false,0,10.0,true,false,false,0,991.2,Ikoyi and Victoria Island,152407759
+W294869711,Oniru Estate,tertiary,false,0,10.0,true,false,false,0,992.4,Ikoyi and Victoria Island,294869711
+W129730360,Oniru Road,residential,false,0,7.5,false,false,false,0,165.6,Ikoyi and Victoria Island,129730360
+W129730377,Oniru Road,residential,false,0,7.5,false,false,false,0,313.7,Ikoyi and Victoria Island,129730377
+W1539924028,Oniru Road,residential,false,0,7.5,true,false,false,0,28.0,Ikoyi and Victoria Island,1539924028
+W1539924029,Oniru Road,residential,false,0,7.5,true,false,false,0,28.6,Ikoyi and Victoria Island,1539924029
+W1539924032,Oniru Road,residential,false,0,7.5,true,false,false,0,26.2,Ikoyi and Victoria Island,1539924032
+W1539924033,Oniru Road,residential,false,0,7.5,true,false,false,0,25.2,Ikoyi and Victoria Island,1539924033
+W536234741,Oniru Road,residential,false,0,7.5,false,false,false,0,103.0,Ikoyi and Victoria Island,536234741
+W129730379,Onisiwo Road,residential,false,0,7.5,false,false,false,0,957.0,Ikoyi and Victoria Island,129730379
+W129730363,Onitana Road,residential,false,0,7.5,false,false,false,0,277.6,Ikoyi and Victoria Island,129730363
+W152870382,Orisa Sanya Street,residential,false,0,7.5,false,false,false,0,221.7,Ikoyi and Victoria Island,152870382
+W146603902,Oroke Drive,residential,false,0,7.5,false,false,false,0,454.2,Ikoyi and Victoria Island,146603902
+W1364212351,Orunbe Close,residential,false,0,7.5,false,false,false,0,9.0,Ikoyi and Victoria Island,1364212351
+W536457594,Orunbe Close,residential,false,0,7.5,false,false,false,0,198.9,Ikoyi and Victoria Island,536457594
+W216689317,Osborne Road,primary,false,0,17.5,true,false,false,0,1383.6,Ikoyi and Victoria Island,216689317
+W536506097,Otunba Adedoyin Ogungbe Crescent,tertiary,false,0,10.0,true,false,false,0,626.6,Ikoyi and Victoria Island,536506097
+W536506098,Otunba Adedoyin Ogungbe Crescent,tertiary,false,0,10.0,false,false,false,0,76.3,Ikoyi and Victoria Island,536506098
+W536506099,Otunba Adedoyin Ogungbe Crescent,tertiary,false,0,10.0,true,false,false,0,631.1,Ikoyi and Victoria Island,536506099
+W591608508,Otunba Adedoyin Ogungbe Crescent,tertiary,false,0,10.0,true,false,false,0,10.5,Ikoyi and Victoria Island,591608508
+W591608511,Otunba Adedoyin Ogungbe Crescent,tertiary,false,0,10.0,true,false,false,0,10.3,Ikoyi and Victoria Island,591608511
+W13656305,Oyin Jolayemi Street,residential,false,0,7.5,true,false,false,0,487.2,Ikoyi and Victoria Island,13656305
+W152339976,Oyinkan Abayomi Drive,tertiary,false,0,10.0,false,false,false,0,2904.0,Ikoyi and Victoria Island,152339976
+W559388105,Oyinkan Abayomi Drive,tertiary,false,0,10.0,false,false,false,0,8.0,Ikoyi and Victoria Island,559388105
+W1061563112,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,100,235.0,Ikoyi and Victoria Island,1061563112
+W1061563113,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,100,114.7,Ikoyi and Victoria Island,1061563113
+W1061563114,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,80,1028.5,Ikoyi and Victoria Island,1061563114
+W1061563115,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,100,153.7,Ikoyi and Victoria Island,1061563115
+W1066546778,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,80,312.9,Ikoyi and Victoria Island,1066546778
+W1066546779,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,80,50.7,Ikoyi and Victoria Island,1066546779
+W1066546780,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,80,130.9,Ikoyi and Victoria Island,1066546780
+W1066546781,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,80,366.6,Ikoyi and Victoria Island,1066546781
+W216768524,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,100,3256.1,Ikoyi and Victoria Island,216768524
+W107551936,Palace Road,residential,false,0,7.5,false,false,false,0,1479.4,Ikoyi and Victoria Island,107551936
+W146603136,Parkview Estate,residential,false,0,7.5,false,false,false,0,348.8,Ikoyi and Victoria Island,146603136
+W152406576,Patience Coker Street,unclassified,false,0,7.5,false,false,false,0,97.1,Ikoyi and Victoria Island,152406576
+W91332534,Prince Ade Odedina Street,residential,false,0,7.5,false,false,false,0,199.5,Ikoyi and Victoria Island,91332534
+W725263208,Prince Ademola Oniru Road,residential,false,0,7.5,false,false,false,0,676.6,Ikoyi and Victoria Island,725263208
+W107551943,Prince Alabe Abiodun Oniru Road,unclassified,false,0,7.5,true,false,false,0,450.1,Ikoyi and Victoria Island,107551943
+W152407765,Prince Yomi Daramola Street,unclassified,false,0,7.5,false,false,false,0,191.6,Ikoyi and Victoria Island,152407765
+W152870243,Princely Court Road,secondary,false,0,13.0,true,false,false,0,798.2,Ikoyi and Victoria Island,152870243
+W129730340,Probyn Close,residential,false,0,7.5,false,false,false,0,166.8,Ikoyi and Victoria Island,129730340
+W152898336,Professor Kiumi Akingbehin Street,residential,false,0,7.5,false,false,false,0,409.5,Ikoyi and Victoria Island,152898336
+W294603129,Rachel Nwangwu Close,residential,false,0,7.5,false,false,false,0,131.9,Ikoyi and Victoria Island,294603129
+W294869704,Rafat Ayinke Tinudu Close,residential,false,0,7.5,false,false,false,0,105.4,Ikoyi and Victoria Island,294869704
+W138040477,Rasheed Alaba Williams Street,residential,false,0,7.5,false,false,false,0,687.7,Ikoyi and Victoria Island,138040477
+W1059928625,Raymond Njoku Street,residential,false,0,7.5,false,false,false,0,7.8,Ikoyi and Victoria Island,1059928625
+W529795585,Raymond Njoku Street,residential,false,0,7.5,false,false,false,0,1003.9,Ikoyi and Victoria Island,529795585
+W152339973,Reeve Road,residential,false,0,7.5,false,false,false,0,612.5,Ikoyi and Victoria Island,152339973
+W1019985292,Rumens,service,false,0,5.0,false,false,false,0,258.6,Ikoyi and Victoria Island,1019985292
+W106497240,Rumens Road,residential,false,0,7.5,false,false,false,0,622.8,Ikoyi and Victoria Island,106497240
+W146603189,Ruxton Street,residential,false,0,7.5,false,false,false,0,673.7,Ikoyi and Victoria Island,146603189
+W91332533,Samuel Adedoyin Street,residential,false,0,7.5,false,false,false,0,214.0,Ikoyi and Victoria Island,91332533
+W477552838,Sanusi Fafunwa Street,secondary,false,0,13.0,true,false,false,0,679.5,Ikoyi and Victoria Island,477552838
+W152870395,Saro Close,residential,false,0,7.5,false,false,false,0,131.6,Ikoyi and Victoria Island,152870395
+W610029924,Senrolu Street,residential,false,0,7.5,false,false,false,0,112.8,Ikoyi and Victoria Island,610029924
+W146603783,Shafi Sule Street,residential,false,0,7.5,false,false,false,0,200.1,Ikoyi and Victoria Island,146603783
+W294603101,Shalom Close,residential,false,0,7.5,false,false,false,0,46.4,Ikoyi and Victoria Island,294603101
+W138040478,Siji Soetan Street,residential,false,0,7.5,false,false,false,0,305.2,Ikoyi and Victoria Island,138040478
+W138040542,Sikiru Alade Oloko Crescent,residential,false,0,7.5,false,false,false,0,331.1,Ikoyi and Victoria Island,138040542
+W138040538,Simeon Akinlonu Crescent,residential,false,0,7.5,false,false,false,0,509.9,Ikoyi and Victoria Island,138040538
+W107551940,Sinari Daranijo Street,residential,false,0,7.5,false,false,false,0,1122.6,Ikoyi and Victoria Island,107551940
+W294603161,Sir Rufus Foluso Giwa Street,residential,false,0,7.5,false,false,false,0,195.1,Ikoyi and Victoria Island,294603161
+W1066546776,Sir Samuel Manuwa Street,unclassified,false,0,7.5,false,false,false,0,151.4,Ikoyi and Victoria Island,1066546776
+W1066546777,Sir Samuel Manuwa Street,unclassified,false,0,7.5,false,false,false,0,16.0,Ikoyi and Victoria Island,1066546777
+W91332476,Sir Samuel Manuwa Street,unclassified,false,0,7.5,false,false,false,0,404.5,Ikoyi and Victoria Island,91332476
+W294869746,Sogbesan Close,residential,false,0,7.5,false,false,false,0,95.9,Ikoyi and Victoria Island,294869746
+W152882220,Stella Ogunleye Street,residential,false,0,7.5,false,false,false,0,256.7,Ikoyi and Victoria Island,152882220
+W107551932,T.F. Kuboye Road,tertiary,false,0,10.0,false,false,false,0,1219.1,Ikoyi and Victoria Island,107551932
+W107569434,T.Y. Danjuma Street,tertiary,true,0,7.5,false,false,false,0,9.2,Ikoyi and Victoria Island,107569434
+W610029922,T.Y. Danjuma Street,residential,false,0,7.5,false,false,false,0,757.7,Ikoyi and Victoria Island,610029922
+W152898326,The Providence Street,tertiary,false,0,10.0,true,false,false,0,951.6,Ikoyi and Victoria Island,152898326
+W536506100,The Providence Street,tertiary,false,0,10.0,true,false,false,0,960.3,Ikoyi and Victoria Island,536506100
+W129730366,Thompson Avenue,tertiary,false,0,10.0,false,false,false,0,1123.5,Ikoyi and Victoria Island,129730366
+W129730399,Thompson Avenue,tertiary,false,0,10.0,false,false,false,0,332.3,Ikoyi and Victoria Island,129730399
+W1539924030,Thompson Avenue,tertiary,false,0,10.0,true,false,false,0,25.3,Ikoyi and Victoria Island,1539924030
+W1539924031,Thompson Avenue,tertiary,false,0,10.0,true,false,false,0,26.8,Ikoyi and Victoria Island,1539924031
+W1539924034,Thompson Avenue,tertiary,false,0,10.0,true,false,false,0,24.3,Ikoyi and Victoria Island,1539924034
+W1539924035,Thompson Avenue,tertiary,false,0,10.0,true,false,false,0,24.3,Ikoyi and Victoria Island,1539924035
+W129730338,Thompson Roundabout,tertiary,false,0,10.0,true,false,true,0,70.1,Ikoyi and Victoria Island,129730338
+W113755772,Tiyamu Savage Street,residential,false,0,7.5,false,false,false,0,609.5,Ikoyi and Victoria Island,113755772
+W146603792,Tokunbo Omisore Street,residential,false,0,7.5,false,false,false,0,402.3,Ikoyi and Victoria Island,146603792
+W91332505,Tony Anegbode Street,residential,false,0,7.5,false,false,false,0,188.6,Ikoyi and Victoria Island,91332505
+W152870288,Transit Village 1,residential,false,0,7.5,false,false,false,0,201.8,Ikoyi and Victoria Island,152870288
+W152870298,Transit Village 2,residential,false,0,7.5,false,false,false,0,200.9,Ikoyi and Victoria Island,152870298
+W152870284,Transit Village 3,residential,false,0,7.5,false,false,false,0,201.2,Ikoyi and Victoria Island,152870284
+W152870402,Transit Village 4,residential,false,0,7.5,false,false,false,0,202.1,Ikoyi and Victoria Island,152870402
+W152870378,Transit Village 5,residential,false,0,7.5,false,false,false,0,202.9,Ikoyi and Victoria Island,152870378
+W1450410172,Trinity Avenue,residential,false,0,7.5,false,false,false,0,301.2,Ikoyi and Victoria Island,1450410172
+W556872670,Trinity Avenue,tertiary,false,0,10.0,false,false,false,0,508.1,Ikoyi and Victoria Island,556872670
+W581990721,Violet Yough Close,residential,false,0,7.5,false,false,false,0,97.0,Ikoyi and Victoria Island,581990721
+W216689319,Wahab Ogunbambi Street,residential,false,0,7.5,false,false,false,0,111.4,Ikoyi and Victoria Island,216689319
+W294869747,Water Corporation Road,residential,false,0,7.5,false,false,false,0,37.3,Ikoyi and Victoria Island,294869747
+W583246854,Water Corporation Road,tertiary,false,0,10.0,false,false,false,0,801.1,Ikoyi and Victoria Island,583246854
+W591608515,Water Corporation Road,tertiary,false,0,10.0,true,false,false,0,18.3,Ikoyi and Victoria Island,591608515
+W639926915,Water Corporation Road,tertiary,false,0,10.0,false,false,false,0,8.8,Ikoyi and Victoria Island,639926915
+W1024775164,Wole Ariyo Street,residential,false,0,7.5,false,false,false,0,574.5,Ikoyi and Victoria Island,1024775164
+W138040482,Wole Ariyo Street,residential,false,0,7.5,false,false,false,0,10.2,Ikoyi and Victoria Island,138040482
+W146603782,Wole Olateju Crescent,residential,false,0,7.5,false,false,false,0,1233.4,Ikoyi and Victoria Island,146603782
+W138040544,Yeye Olofin Street,residential,false,0,7.5,false,false,false,0,301.7,Ikoyi and Victoria Island,138040544
+W138040503,Yinka Bello Street,residential,false,0,7.5,false,false,false,0,226.7,Ikoyi and Victoria Island,138040503
+W16369593,Younis Bashorun Street,unclassified,false,0,7.5,false,false,false,0,569.1,Ikoyi and Victoria Island,16369593
+W1017739667,,service,false,0,5.0,false,false,false,0,55.0,Ikoyi and Victoria Island,1017739667
+W1017739668,,service,false,0,5.0,false,false,false,0,88.1,Ikoyi and Victoria Island,1017739668
+W1017754488,,residential,false,0,7.5,false,false,false,0,51.1,Ikoyi and Victoria Island,1017754488
+W1017754489,,residential,false,0,7.5,false,false,false,0,40.4,Ikoyi and Victoria Island,1017754489
+W1017754490,,residential,false,0,7.5,false,false,false,0,46.6,Ikoyi and Victoria Island,1017754490
+W1017754491,,residential,false,0,7.5,false,false,false,0,133.8,Ikoyi and Victoria Island,1017754491
+W1017754793,,service,false,0,5.0,false,false,false,0,56.3,Ikoyi and Victoria Island,1017754793
+W1017755249,,service,false,0,5.0,false,false,false,0,45.9,Ikoyi and Victoria Island,1017755249
+W1018175670,,service,false,0,5.0,false,false,false,0,8.8,Ikoyi and Victoria Island,1018175670
+W1018175671,,service,false,0,5.0,false,false,false,0,63.5,Ikoyi and Victoria Island,1018175671
+W1019003287,,service,false,0,5.0,false,false,false,0,119.9,Ikoyi and Victoria Island,1019003287
+W1019003676,,service,false,0,5.0,false,false,false,0,29.1,Ikoyi and Victoria Island,1019003676
+W1019985809,,service,false,0,5.0,false,false,false,0,108.4,Ikoyi and Victoria Island,1019985809
+W1020196583,,service,false,0,5.0,false,false,false,0,60.2,Ikoyi and Victoria Island,1020196583
+W1020198282,,residential,false,0,7.5,false,false,false,0,51.9,Ikoyi and Victoria Island,1020198282
+W1020198283,,residential,false,0,7.5,false,false,false,0,82.8,Ikoyi and Victoria Island,1020198283
+W1020198284,,service,false,0,5.0,false,false,false,0,38.7,Ikoyi and Victoria Island,1020198284
+W1020198285,,service,false,0,5.0,false,false,false,0,77.2,Ikoyi and Victoria Island,1020198285
+W1020198286,,service,false,0,5.0,false,false,false,0,55.7,Ikoyi and Victoria Island,1020198286
+W1020198478,,service,false,0,5.0,false,false,false,0,119.7,Ikoyi and Victoria Island,1020198478
+W1020198673,,residential,false,0,7.5,false,false,false,0,40.1,Ikoyi and Victoria Island,1020198673
+W1032767512,,service,false,0,5.0,false,false,false,0,75.3,Ikoyi and Victoria Island,1032767512
+W1032776785,,service,false,0,5.0,false,false,false,0,63.5,Ikoyi and Victoria Island,1032776785
+W1034067997,,service,false,0,5.0,false,false,false,0,40.7,Ikoyi and Victoria Island,1034067997
+W1034067998,,service,false,0,5.0,false,false,false,0,114.1,Ikoyi and Victoria Island,1034067998
+W1034067999,,service,false,0,5.0,false,false,false,0,115.3,Ikoyi and Victoria Island,1034067999
+W1034068000,,service,false,0,5.0,false,false,false,0,121.1,Ikoyi and Victoria Island,1034068000
+W1034355012,,service,false,0,5.0,false,false,false,0,178.5,Ikoyi and Victoria Island,1034355012
+W1034355013,,service,false,0,5.0,false,false,false,0,135.0,Ikoyi and Victoria Island,1034355013
+W1034355014,,service,false,0,5.0,false,false,false,0,70.2,Ikoyi and Victoria Island,1034355014
+W1034709913,,service,false,0,5.0,false,false,false,0,62.7,Ikoyi and Victoria Island,1034709913
+W1034709914,,service,false,0,5.0,false,false,false,0,83.6,Ikoyi and Victoria Island,1034709914
+W1034710417,,service,false,0,5.0,false,false,false,0,106.8,Ikoyi and Victoria Island,1034710417
+W1034712168,,service,false,0,5.0,false,false,false,0,10.3,Ikoyi and Victoria Island,1034712168
+W1034714753,,service,false,0,5.0,false,false,false,0,51.7,Ikoyi and Victoria Island,1034714753
+W1034762240,,service,false,0,5.0,false,false,false,0,23.8,Ikoyi and Victoria Island,1034762240
+W1034762241,,service,false,0,5.0,false,false,false,0,158.3,Ikoyi and Victoria Island,1034762241
+W1034763157,,service,false,0,5.0,false,false,false,0,34.4,Ikoyi and Victoria Island,1034763157
+W1034763590,,service,false,0,5.0,false,false,false,0,67.6,Ikoyi and Victoria Island,1034763590
+W1034763929,,residential,false,0,7.5,false,false,false,0,51.3,Ikoyi and Victoria Island,1034763929
+W1034764460,,service,false,0,5.0,false,false,false,0,58.7,Ikoyi and Victoria Island,1034764460
+W1034772085,,service,false,0,5.0,false,false,false,0,32.4,Ikoyi and Victoria Island,1034772085
+W1034773372,,service,false,0,5.0,false,false,false,0,310.6,Ikoyi and Victoria Island,1034773372
+W1034774716,,service,false,0,5.0,false,false,false,0,45.3,Ikoyi and Victoria Island,1034774716
+W1034775249,,service,false,0,5.0,false,false,false,0,71.7,Ikoyi and Victoria Island,1034775249
+W1035029339,,service,false,0,5.0,false,false,false,0,67.8,Ikoyi and Victoria Island,1035029339
+W1035029340,,service,false,0,5.0,false,false,false,0,94.6,Ikoyi and Victoria Island,1035029340
+W1035029424,,service,false,0,5.0,false,false,false,0,58.7,Ikoyi and Victoria Island,1035029424
+W1035029807,,service,false,0,5.0,false,false,false,0,56.3,Ikoyi and Victoria Island,1035029807
+W106497230,,trunk,true,0,7.5,true,false,false,0,61.3,Ikoyi and Victoria Island,106497230
+W1065070995,,service,false,0,5.0,false,false,false,0,44.0,Ikoyi and Victoria Island,1065070995
+W1065395217,,service,false,0,5.0,false,false,false,0,46.6,Ikoyi and Victoria Island,1065395217
+W1065396699,,service,false,0,5.0,false,false,false,0,55.0,Ikoyi and Victoria Island,1065396699
+W1065397255,,service,false,0,5.0,false,false,false,0,63.5,Ikoyi and Victoria Island,1065397255
+W1065398687,,service,false,0,5.0,false,false,false,0,89.4,Ikoyi and Victoria Island,1065398687
+W1065425207,,service,false,0,5.0,false,false,false,0,74.8,Ikoyi and Victoria Island,1065425207
+W1065775614,,service,false,0,5.0,false,false,false,0,154.4,Ikoyi and Victoria Island,1065775614
+W1077860532,,service,false,0,5.0,false,false,false,0,10.4,Ikoyi and Victoria Island,1077860532
+W1077860533,,service,false,0,5.0,false,false,false,0,30.9,Ikoyi and Victoria Island,1077860533
+W1077916679,,service,false,0,5.0,true,false,false,0,8.1,Ikoyi and Victoria Island,1077916679
+W1077916680,,service,false,0,5.0,true,false,false,0,6.6,Ikoyi and Victoria Island,1077916680
+W1077916681,,service,false,0,5.0,true,false,false,0,61.2,Ikoyi and Victoria Island,1077916681
+W1077917858,,service,false,0,5.0,false,false,false,0,37.8,Ikoyi and Victoria Island,1077917858
+W1077919527,,service,false,0,5.0,false,false,false,0,7.7,Ikoyi and Victoria Island,1077919527
+W1077919528,,service,false,0,5.0,false,false,false,0,46.3,Ikoyi and Victoria Island,1077919528
+W1077919529,,service,false,0,5.0,false,false,false,0,59.6,Ikoyi and Victoria Island,1077919529
+W1077919530,,service,false,0,5.0,false,false,false,0,39.1,Ikoyi and Victoria Island,1077919530
+W1078114484,,service,false,0,5.0,false,false,false,0,38.3,Ikoyi and Victoria Island,1078114484
+W1078114718,,service,false,0,5.0,false,false,false,0,86.7,Ikoyi and Victoria Island,1078114718
+W1078133373,,residential,false,0,7.5,false,false,false,0,46.3,Ikoyi and Victoria Island,1078133373
+W1078133868,,service,false,0,5.0,false,false,false,0,35.3,Ikoyi and Victoria Island,1078133868
+W1078133869,,service,false,0,5.0,false,false,false,0,97.6,Ikoyi and Victoria Island,1078133869
+W1078719934,,residential,false,0,7.5,false,false,false,0,54.6,Ikoyi and Victoria Island,1078719934
+W1080246455,,service,false,0,5.0,false,false,false,0,12.4,Ikoyi and Victoria Island,1080246455
+W1082248145,,service,false,0,5.0,false,false,false,0,48.0,Ikoyi and Victoria Island,1082248145
+W1082288266,,service,false,0,5.0,false,false,false,0,63.1,Ikoyi and Victoria Island,1082288266
+W1082288267,,service,false,0,5.0,false,false,false,0,105.3,Ikoyi and Victoria Island,1082288267
+W1082288268,,service,false,0,5.0,false,false,false,0,57.5,Ikoyi and Victoria Island,1082288268
+W1082288269,,service,false,0,5.0,false,false,false,0,62.9,Ikoyi and Victoria Island,1082288269
+W1082289029,,service,false,0,5.0,false,false,false,0,37.2,Ikoyi and Victoria Island,1082289029
+W1082289030,,service,false,0,5.0,false,false,false,0,37.0,Ikoyi and Victoria Island,1082289030
+W1082796627,,service,false,0,5.0,false,false,false,0,124.3,Ikoyi and Victoria Island,1082796627
+W1082798170,,service,false,0,5.0,false,false,false,0,52.9,Ikoyi and Victoria Island,1082798170
+W1082798752,,service,false,0,5.0,false,false,false,0,105.4,Ikoyi and Victoria Island,1082798752
+W1082798753,,service,false,0,5.0,false,false,false,0,141.0,Ikoyi and Victoria Island,1082798753
+W1083109977,,service,false,0,5.0,false,false,false,0,25.6,Ikoyi and Victoria Island,1083109977
+W1083109978,,service,false,0,5.0,false,false,false,0,77.1,Ikoyi and Victoria Island,1083109978
+W1083161139,,service,false,0,5.0,false,false,false,0,123.6,Ikoyi and Victoria Island,1083161139
+W1083161271,,service,false,0,5.0,false,false,false,0,42.1,Ikoyi and Victoria Island,1083161271
+W1083161272,,service,false,0,5.0,false,false,false,0,111.3,Ikoyi and Victoria Island,1083161272
+W1083161479,,service,false,0,5.0,false,false,false,0,187.7,Ikoyi and Victoria Island,1083161479
+W1083397536,,residential,false,0,7.5,false,false,false,0,41.6,Ikoyi and Victoria Island,1083397536
+W1083398767,,service,false,0,5.0,false,false,false,0,35.3,Ikoyi and Victoria Island,1083398767
+W1083442298,,service,false,0,5.0,false,false,false,0,50.7,Ikoyi and Victoria Island,1083442298
+W1083442380,,service,false,0,5.0,false,false,false,0,48.3,Ikoyi and Victoria Island,1083442380
+W1083447008,,service,false,0,5.0,false,false,false,0,57.9,Ikoyi and Victoria Island,1083447008
+W1083461054,,service,false,0,5.0,false,false,false,0,30.7,Ikoyi and Victoria Island,1083461054
+W1083461726,,service,false,0,5.0,false,false,false,0,68.5,Ikoyi and Victoria Island,1083461726
+W1083461727,,service,false,0,5.0,false,false,false,0,69.4,Ikoyi and Victoria Island,1083461727
+W1083461728,,service,false,0,5.0,false,false,false,0,35.1,Ikoyi and Victoria Island,1083461728
+W1083461763,,service,false,0,5.0,false,false,false,0,69.6,Ikoyi and Victoria Island,1083461763
+W1083462129,,service,false,0,5.0,false,false,false,0,104.3,Ikoyi and Victoria Island,1083462129
+W1083462130,,service,false,0,5.0,false,false,false,0,88.6,Ikoyi and Victoria Island,1083462130
+W1083462780,,service,false,0,5.0,false,false,false,0,43.5,Ikoyi and Victoria Island,1083462780
+W1095140719,,service,false,0,5.0,true,false,false,0,11.7,Ikoyi and Victoria Island,1095140719
+W1096923084,,service,false,0,5.0,false,false,false,0,72.1,Ikoyi and Victoria Island,1096923084
+W1096923085,,residential,false,0,7.5,false,false,false,0,118.5,Ikoyi and Victoria Island,1096923085
+W1096951129,,service,false,0,5.0,false,false,false,0,14.8,Ikoyi and Victoria Island,1096951129
+W1096951130,,service,false,0,5.0,false,false,false,0,47.9,Ikoyi and Victoria Island,1096951130
+W1096951131,,service,false,0,5.0,false,false,false,0,63.9,Ikoyi and Victoria Island,1096951131
+W1096951586,,service,false,0,5.0,false,false,false,0,54.5,Ikoyi and Victoria Island,1096951586
+W1096951894,,service,false,0,5.0,false,false,false,0,184.1,Ikoyi and Victoria Island,1096951894
+W1097165536,,service,false,0,5.0,false,false,false,0,56.9,Ikoyi and Victoria Island,1097165536
+W1097165537,,service,false,0,5.0,false,false,false,0,50.7,Ikoyi and Victoria Island,1097165537
+W1097165538,,service,false,0,5.0,false,false,false,0,53.6,Ikoyi and Victoria Island,1097165538
+W1097165539,,service,false,0,5.0,false,false,false,0,50.9,Ikoyi and Victoria Island,1097165539
+W1097165540,,service,false,0,5.0,false,false,false,0,51.2,Ikoyi and Victoria Island,1097165540
+W1097165541,,service,false,0,5.0,false,false,false,0,72.5,Ikoyi and Victoria Island,1097165541
+W1097196054,,residential,false,0,7.5,false,false,false,0,99.1,Ikoyi and Victoria Island,1097196054
+W1097196684,,service,false,0,5.0,false,false,false,0,70.2,Ikoyi and Victoria Island,1097196684
+W1097196913,,service,false,0,5.0,false,false,false,0,50.6,Ikoyi and Victoria Island,1097196913
+W1103382197,,service,false,0,5.0,false,false,false,0,185.6,Ikoyi and Victoria Island,1103382197
+W1103382202,,service,false,0,5.0,false,false,false,0,56.5,Ikoyi and Victoria Island,1103382202
+W1103382203,,service,false,0,5.0,false,false,false,0,84.2,Ikoyi and Victoria Island,1103382203
+W1103382204,,service,false,0,5.0,false,false,false,0,53.0,Ikoyi and Victoria Island,1103382204
+W1107651145,,service,false,0,5.0,false,false,false,0,27.1,Ikoyi and Victoria Island,1107651145
+W1107651146,,service,false,0,5.0,false,false,false,0,53.3,Ikoyi and Victoria Island,1107651146
+W1107651147,,service,false,0,5.0,false,false,false,0,62.7,Ikoyi and Victoria Island,1107651147
+W1107651148,,service,false,0,5.0,false,false,false,0,16.2,Ikoyi and Victoria Island,1107651148
+W1107651149,,service,false,0,5.0,false,false,false,0,42.7,Ikoyi and Victoria Island,1107651149
+W1107651150,,service,false,0,5.0,false,false,false,0,76.4,Ikoyi and Victoria Island,1107651150
+W1111681706,,service,false,0,5.0,false,false,false,0,21.2,Ikoyi and Victoria Island,1111681706
+W1111681707,,service,false,0,5.0,false,false,false,0,58.4,Ikoyi and Victoria Island,1111681707
+W1111682344,,unclassified,false,0,7.5,false,false,false,0,150.2,Ikoyi and Victoria Island,1111682344
+W1111960569,,service,false,0,5.0,false,false,false,0,59.8,Ikoyi and Victoria Island,1111960569
+W1111960855,,service,false,0,5.0,false,false,false,0,41.3,Ikoyi and Victoria Island,1111960855
+W1111961163,,service,false,0,5.0,false,false,false,0,52.3,Ikoyi and Victoria Island,1111961163
+W1111961164,,service,false,0,5.0,false,false,false,0,45.4,Ikoyi and Victoria Island,1111961164
+W1112201866,,service,false,0,5.0,false,false,false,0,21.1,Ikoyi and Victoria Island,1112201866
+W1112201867,,service,false,0,5.0,false,false,false,0,16.0,Ikoyi and Victoria Island,1112201867
+W1112206388,,service,false,0,5.0,false,false,false,0,33.0,Ikoyi and Victoria Island,1112206388
+W1112206959,,service,false,0,5.0,false,false,false,0,31.7,Ikoyi and Victoria Island,1112206959
+W1112206962,,service,false,0,5.0,false,false,false,0,43.5,Ikoyi and Victoria Island,1112206962
+W1112207590,,service,false,0,5.0,false,false,false,0,44.5,Ikoyi and Victoria Island,1112207590
+W1112208185,,service,false,0,5.0,false,false,false,0,114.6,Ikoyi and Victoria Island,1112208185
+W1112208471,,service,false,0,5.0,false,false,false,0,24.0,Ikoyi and Victoria Island,1112208471
+W1112208472,,service,false,0,5.0,false,false,false,0,89.3,Ikoyi and Victoria Island,1112208472
+W1112208769,,service,false,0,5.0,false,false,false,0,43.6,Ikoyi and Victoria Island,1112208769
+W1112210089,,service,false,0,5.0,false,false,false,0,40.7,Ikoyi and Victoria Island,1112210089
+W1112210420,,service,false,0,5.0,false,false,false,0,98.9,Ikoyi and Victoria Island,1112210420
+W1112210421,,service,false,0,5.0,false,false,false,0,59.1,Ikoyi and Victoria Island,1112210421
+W1112210422,,service,false,0,5.0,false,false,false,0,36.9,Ikoyi and Victoria Island,1112210422
+W1112220263,,service,false,0,5.0,false,false,false,0,32.1,Ikoyi and Victoria Island,1112220263
+W1112222360,,service,false,0,5.0,false,false,false,0,42.8,Ikoyi and Victoria Island,1112222360
+W1112225202,,service,false,0,5.0,false,false,false,0,44.0,Ikoyi and Victoria Island,1112225202
+W1112225846,,service,false,0,5.0,false,false,false,0,80.5,Ikoyi and Victoria Island,1112225846
+W1112232845,,service,false,0,5.0,false,false,false,0,155.2,Ikoyi and Victoria Island,1112232845
+W1112232950,,service,false,0,5.0,false,false,false,0,54.2,Ikoyi and Victoria Island,1112232950
+W1112232951,,service,false,0,5.0,false,false,false,0,55.0,Ikoyi and Victoria Island,1112232951
+W1112245674,,service,false,0,5.0,false,false,false,0,62.4,Ikoyi and Victoria Island,1112245674
+W1112247205,,residential,false,0,7.5,false,false,false,0,152.1,Ikoyi and Victoria Island,1112247205
+W1112247206,,residential,false,0,7.5,false,false,false,0,96.3,Ikoyi and Victoria Island,1112247206
+W1112247393,,service,false,0,5.0,false,false,false,0,49.5,Ikoyi and Victoria Island,1112247393
+W1112248085,,service,false,0,5.0,false,false,false,0,53.8,Ikoyi and Victoria Island,1112248085
+W1112820815,,residential,false,0,7.5,false,false,false,0,53.4,Ikoyi and Victoria Island,1112820815
+W1112820865,,service,false,0,5.0,false,false,false,0,32.0,Ikoyi and Victoria Island,1112820865
+W1116517844,,service,false,0,5.0,false,false,false,0,41.3,Ikoyi and Victoria Island,1116517844
+W112513466,,service,false,0,5.0,true,false,false,0,50.3,Ikoyi and Victoria Island,112513466
+W112513475,,service,false,0,5.0,false,false,false,0,59.9,Ikoyi and Victoria Island,112513475
+W1126642489,,service,false,0,5.0,false,false,false,0,97.3,Ikoyi and Victoria Island,1126642489
+W1126642490,,service,false,0,5.0,false,false,false,0,70.1,Ikoyi and Victoria Island,1126642490
+W1126642491,,service,false,0,5.0,false,false,false,0,37.3,Ikoyi and Victoria Island,1126642491
+W1126642492,,service,false,0,5.0,false,false,false,0,15.5,Ikoyi and Victoria Island,1126642492
+W1126642493,,service,false,0,5.0,false,false,false,0,73.2,Ikoyi and Victoria Island,1126642493
+W1126642494,,service,false,0,5.0,false,false,false,0,38.4,Ikoyi and Victoria Island,1126642494
+W1126642495,,service,false,0,5.0,false,false,false,0,47.0,Ikoyi and Victoria Island,1126642495
+W1133399432,,service,false,0,5.0,false,false,false,0,72.8,Ikoyi and Victoria Island,1133399432
+W1133399433,,service,false,0,5.0,false,false,false,0,13.2,Ikoyi and Victoria Island,1133399433
+W1133675958,,service,false,0,5.0,true,false,false,0,33.4,Ikoyi and Victoria Island,1133675958
+W1133679428,,service,false,0,5.0,false,false,false,0,128.0,Ikoyi and Victoria Island,1133679428
+W1133679725,,service,false,0,5.0,false,false,false,0,77.7,Ikoyi and Victoria Island,1133679725
+W1133680728,,service,false,0,5.0,false,false,false,0,41.4,Ikoyi and Victoria Island,1133680728
+W1133763383,,service,false,0,5.0,false,false,false,0,48.8,Ikoyi and Victoria Island,1133763383
+W1136364629,,service,false,0,5.0,false,false,false,0,47.4,Ikoyi and Victoria Island,1136364629
+W1136365171,,service,false,0,5.0,false,false,false,0,39.9,Ikoyi and Victoria Island,1136365171
+W1136371010,,residential,false,0,7.5,false,false,false,0,13.6,Ikoyi and Victoria Island,1136371010
+W1136371011,,residential,false,0,7.5,false,false,false,0,13.8,Ikoyi and Victoria Island,1136371011
+W1148179069,,service,false,0,5.0,false,false,false,0,10.3,Ikoyi and Victoria Island,1148179069
+W1148179070,,service,false,0,5.0,false,false,false,0,16.7,Ikoyi and Victoria Island,1148179070
+W1150101851,,service,false,0,5.0,false,false,false,0,55.4,Ikoyi and Victoria Island,1150101851
+W1150101852,,service,false,0,5.0,false,false,false,0,93.9,Ikoyi and Victoria Island,1150101852
+W1150101853,,service,false,0,5.0,false,false,false,0,38.9,Ikoyi and Victoria Island,1150101853
+W1150101854,,service,false,0,5.0,false,false,false,0,29.3,Ikoyi and Victoria Island,1150101854
+W1150101855,,service,false,0,5.0,false,false,false,0,14.8,Ikoyi and Victoria Island,1150101855
+W1160082058,,residential,false,0,7.5,false,false,false,0,50.1,Ikoyi and Victoria Island,1160082058
+W1160082060,,residential,false,0,7.5,false,false,false,0,58.5,Ikoyi and Victoria Island,1160082060
+W1160082061,,residential,false,0,7.5,false,false,false,0,91.6,Ikoyi and Victoria Island,1160082061
+W1160082062,,service,false,0,5.0,false,false,false,0,48.5,Ikoyi and Victoria Island,1160082062
+W1160082064,,service,false,0,5.0,false,false,false,0,57.6,Ikoyi and Victoria Island,1160082064
+W1160109914,,service,false,0,5.0,false,false,false,0,112.1,Ikoyi and Victoria Island,1160109914
+W1160109915,,service,false,0,5.0,false,false,false,0,143.3,Ikoyi and Victoria Island,1160109915
+W1160109916,,service,false,0,5.0,false,false,false,0,130.3,Ikoyi and Victoria Island,1160109916
+W1160109917,,service,false,0,5.0,false,false,false,0,22.5,Ikoyi and Victoria Island,1160109917
+W1160109918,,service,false,0,5.0,false,false,false,0,76.9,Ikoyi and Victoria Island,1160109918
+W1160109919,,service,false,0,5.0,false,false,false,0,104.8,Ikoyi and Victoria Island,1160109919
+W1160109920,,service,false,0,5.0,false,false,false,0,67.8,Ikoyi and Victoria Island,1160109920
+W1160109921,,service,false,0,5.0,false,false,false,0,74.4,Ikoyi and Victoria Island,1160109921
+W1160109922,,service,false,0,5.0,false,false,false,0,99.0,Ikoyi and Victoria Island,1160109922
+W1160109923,,service,false,0,5.0,false,false,false,0,11.6,Ikoyi and Victoria Island,1160109923
+W1160109924,,service,false,0,5.0,false,false,false,0,93.8,Ikoyi and Victoria Island,1160109924
+W1160109925,,service,false,0,5.0,false,false,false,0,110.7,Ikoyi and Victoria Island,1160109925
+W1160109926,,service,false,0,5.0,false,false,false,0,20.3,Ikoyi and Victoria Island,1160109926
+W1160109927,,service,false,0,5.0,false,false,false,0,97.2,Ikoyi and Victoria Island,1160109927
+W1160109928,,service,false,0,5.0,false,false,false,0,59.1,Ikoyi and Victoria Island,1160109928
+W1160109929,,service,false,0,5.0,false,false,false,0,130.0,Ikoyi and Victoria Island,1160109929
+W1160109930,,service,false,0,5.0,false,false,false,0,13.1,Ikoyi and Victoria Island,1160109930
+W1160109931,,service,false,0,5.0,false,false,false,0,33.5,Ikoyi and Victoria Island,1160109931
+W1160987502,,residential,false,0,7.5,false,false,false,0,67.4,Ikoyi and Victoria Island,1160987502
+W1160987503,,service,false,0,5.0,false,false,false,0,62.5,Ikoyi and Victoria Island,1160987503
+W1160987504,,service,false,0,5.0,false,false,false,0,47.5,Ikoyi and Victoria Island,1160987504
+W1160987505,,service,false,0,5.0,false,false,false,0,35.6,Ikoyi and Victoria Island,1160987505
+W1160987506,,residential,false,0,7.5,false,false,false,0,59.4,Ikoyi and Victoria Island,1160987506
+W1160987507,,service,false,0,5.0,false,false,false,0,38.2,Ikoyi and Victoria Island,1160987507
+W1168448433,,service,false,0,5.0,false,false,false,0,56.1,Ikoyi and Victoria Island,1168448433
+W1169776465,,service,false,0,5.0,false,false,false,0,51.5,Ikoyi and Victoria Island,1169776465
+W1170485432,,service,false,0,5.0,false,false,false,0,57.5,Ikoyi and Victoria Island,1170485432
+W1170499080,,service,false,0,5.0,false,false,false,0,47.7,Ikoyi and Victoria Island,1170499080
+W1171095261,,service,false,0,5.0,false,false,false,0,36.7,Ikoyi and Victoria Island,1171095261
+W1171095262,,residential,false,0,7.5,false,false,false,0,43.2,Ikoyi and Victoria Island,1171095262
+W1171095263,,service,false,0,5.0,false,false,false,0,50.7,Ikoyi and Victoria Island,1171095263
+W1175245460,,service,false,0,5.0,false,false,false,0,14.2,Ikoyi and Victoria Island,1175245460
+W1175245461,,service,false,0,5.0,false,false,false,0,41.0,Ikoyi and Victoria Island,1175245461
+W1175245462,,service,false,0,5.0,false,false,false,0,45.2,Ikoyi and Victoria Island,1175245462
+W1175245463,,service,false,0,5.0,false,false,false,0,84.9,Ikoyi and Victoria Island,1175245463
+W1175245464,,service,false,0,5.0,false,false,false,0,54.3,Ikoyi and Victoria Island,1175245464
+W1179894241,,service,false,0,5.0,false,false,false,0,113.5,Ikoyi and Victoria Island,1179894241
+W1181899828,,residential,false,0,7.5,false,false,false,0,7.7,Ikoyi and Victoria Island,1181899828
+W1181899829,,residential,false,0,7.5,false,false,false,0,16.8,Ikoyi and Victoria Island,1181899829
+W1182142868,,service,false,0,5.0,false,false,false,0,64.2,Ikoyi and Victoria Island,1182142868
+W1182143161,,service,false,0,5.0,false,false,false,0,61.4,Ikoyi and Victoria Island,1182143161
+W1182143162,,service,false,0,5.0,false,false,false,0,69.6,Ikoyi and Victoria Island,1182143162
+W1182143163,,service,false,0,5.0,false,false,false,0,40.2,Ikoyi and Victoria Island,1182143163
+W1182143164,,service,false,0,5.0,false,false,false,0,33.7,Ikoyi and Victoria Island,1182143164
+W1182143165,,service,false,0,5.0,false,false,false,0,49.3,Ikoyi and Victoria Island,1182143165
+W1185417902,,service,false,0,5.0,false,false,false,0,87.1,Ikoyi and Victoria Island,1185417902
+W1185417903,,service,false,0,5.0,false,false,false,0,10.8,Ikoyi and Victoria Island,1185417903
+W1185417904,,service,false,0,5.0,false,false,false,0,248.3,Ikoyi and Victoria Island,1185417904
+W1185417905,,service,false,0,5.0,false,false,false,0,55.3,Ikoyi and Victoria Island,1185417905
+W1185417906,,service,false,0,5.0,false,false,false,0,105.6,Ikoyi and Victoria Island,1185417906
+W1185417907,,service,false,0,5.0,false,false,false,0,82.2,Ikoyi and Victoria Island,1185417907
+W1185418681,,service,false,0,5.0,false,false,false,0,64.2,Ikoyi and Victoria Island,1185418681
+W1188549643,,service,false,0,5.0,false,false,false,0,21.5,Ikoyi and Victoria Island,1188549643
+W1188549644,,service,false,0,5.0,false,false,false,0,74.5,Ikoyi and Victoria Island,1188549644
+W1188549645,,service,false,0,5.0,false,false,false,0,136.9,Ikoyi and Victoria Island,1188549645
+W1188549759,,service,false,0,5.0,false,false,false,0,39.5,Ikoyi and Victoria Island,1188549759
+W1188549760,,service,false,0,5.0,false,false,false,0,105.7,Ikoyi and Victoria Island,1188549760
+W1188549761,,service,false,0,5.0,false,false,false,0,28.2,Ikoyi and Victoria Island,1188549761
+W1192579866,,service,false,0,5.0,false,false,false,0,53.2,Ikoyi and Victoria Island,1192579866
+W1192579867,,service,false,0,5.0,false,false,false,0,12.2,Ikoyi and Victoria Island,1192579867
+W1192778402,,service,false,0,5.0,false,false,false,0,8.4,Ikoyi and Victoria Island,1192778402
+W1192778403,,residential,false,0,7.5,false,false,false,0,19.9,Ikoyi and Victoria Island,1192778403
+W1192778404,,residential,false,0,7.5,false,false,false,0,88.4,Ikoyi and Victoria Island,1192778404
+W1192778405,,residential,false,0,7.5,false,false,false,0,51.8,Ikoyi and Victoria Island,1192778405
+W1192778407,,residential,false,0,7.5,false,false,false,0,68.7,Ikoyi and Victoria Island,1192778407
+W1192778408,,service,false,0,5.0,false,false,false,0,59.8,Ikoyi and Victoria Island,1192778408
+W1192778409,,service,false,0,5.0,false,false,false,0,77.1,Ikoyi and Victoria Island,1192778409
+W1192778410,,service,false,0,5.0,false,false,false,0,6.5,Ikoyi and Victoria Island,1192778410
+W1205381190,,service,false,0,5.0,false,false,false,0,135.3,Ikoyi and Victoria Island,1205381190
+W1215898235,,service,false,0,5.0,false,false,false,0,64.3,Ikoyi and Victoria Island,1215898235
+W1215898236,,service,false,0,5.0,false,false,false,0,123.1,Ikoyi and Victoria Island,1215898236
+W1215898237,,service,false,0,5.0,false,false,false,0,54.5,Ikoyi and Victoria Island,1215898237
+W1215898238,,service,false,0,5.0,false,false,false,0,33.5,Ikoyi and Victoria Island,1215898238
+W1215898239,,service,false,0,5.0,false,false,false,0,300.8,Ikoyi and Victoria Island,1215898239
+W1215898240,,service,false,0,5.0,false,false,false,0,165.9,Ikoyi and Victoria Island,1215898240
+W1223718932,,service,false,0,5.0,false,false,false,0,70.0,Ikoyi and Victoria Island,1223718932
+W1223718933,,service,false,0,5.0,false,false,false,0,55.7,Ikoyi and Victoria Island,1223718933
+W1223718934,,service,false,0,5.0,false,false,false,0,84.3,Ikoyi and Victoria Island,1223718934
+W1223718935,,service,false,0,5.0,false,false,false,0,50.3,Ikoyi and Victoria Island,1223718935
+W1223718936,,residential,false,0,7.5,false,false,false,0,3.6,Ikoyi and Victoria Island,1223718936
+W1223718937,,service,false,0,5.0,false,false,false,0,30.6,Ikoyi and Victoria Island,1223718937
+W1223718938,,service,false,0,5.0,false,false,false,0,48.8,Ikoyi and Victoria Island,1223718938
+W1223718939,,service,false,0,5.0,false,false,false,0,41.3,Ikoyi and Victoria Island,1223718939
+W1223718940,,service,false,0,5.0,false,false,false,0,76.2,Ikoyi and Victoria Island,1223718940
+W1223718943,,service,false,0,5.0,false,false,false,0,35.9,Ikoyi and Victoria Island,1223718943
+W1223718944,,residential,false,0,7.5,false,false,false,0,17.3,Ikoyi and Victoria Island,1223718944
+W1225568276,,service,false,0,5.0,false,false,false,0,4.8,Ikoyi and Victoria Island,1225568276
+W1225568277,,service,false,0,5.0,false,false,false,0,102.1,Ikoyi and Victoria Island,1225568277
+W1227930442,,service,false,0,5.0,false,false,false,0,179.2,Ikoyi and Victoria Island,1227930442
+W1227944562,,service,false,0,5.0,false,false,false,0,80.5,Ikoyi and Victoria Island,1227944562
+W1227946413,,service,false,0,5.0,false,false,false,0,60.2,Ikoyi and Victoria Island,1227946413
+W1227951053,,residential,false,0,7.5,false,false,false,0,58.8,Ikoyi and Victoria Island,1227951053
+W1227951342,,service,false,0,5.0,false,false,false,0,75.7,Ikoyi and Victoria Island,1227951342
+W1227971935,,service,false,0,5.0,false,false,false,0,10.9,Ikoyi and Victoria Island,1227971935
+W1227973526,,service,false,0,5.0,false,false,false,0,267.1,Ikoyi and Victoria Island,1227973526
+W1228544496,,service,false,0,5.0,false,false,false,0,61.4,Ikoyi and Victoria Island,1228544496
+W1228581941,,service,false,0,5.0,false,false,false,0,9.9,Ikoyi and Victoria Island,1228581941
+W1228760373,,service,false,0,5.0,true,false,false,0,21.5,Ikoyi and Victoria Island,1228760373
+W1228760374,,service,false,0,5.0,true,false,false,0,90.9,Ikoyi and Victoria Island,1228760374
+W1228968590,,service,false,0,5.0,false,false,false,0,10.2,Ikoyi and Victoria Island,1228968590
+W1228968994,,service,false,0,5.0,false,false,false,0,21.0,Ikoyi and Victoria Island,1228968994
+W1228968995,,service,false,0,5.0,false,false,false,0,53.2,Ikoyi and Victoria Island,1228968995
+W1229204928,,residential,false,0,7.5,false,false,false,0,8.4,Ikoyi and Victoria Island,1229204928
+W1229213352,,service,false,0,5.0,false,false,false,0,130.3,Ikoyi and Victoria Island,1229213352
+W1229564465,,service,false,0,5.0,false,false,false,0,145.6,Ikoyi and Victoria Island,1229564465
+W1229564545,,service,false,0,5.0,false,false,false,0,46.4,Ikoyi and Victoria Island,1229564545
+W1229573362,,residential,false,0,7.5,false,false,false,0,45.3,Ikoyi and Victoria Island,1229573362
+W1229573363,,residential,false,0,7.5,false,false,false,0,59.0,Ikoyi and Victoria Island,1229573363
+W1229573639,,service,false,0,5.0,false,false,false,0,71.2,Ikoyi and Victoria Island,1229573639
+W1229573640,,service,false,0,5.0,false,false,false,0,97.1,Ikoyi and Victoria Island,1229573640
+W1229591132,,residential,false,0,7.5,false,false,false,0,8.1,Ikoyi and Victoria Island,1229591132
+W1229591133,,residential,false,0,7.5,false,false,false,0,78.2,Ikoyi and Victoria Island,1229591133
+W1229591829,,residential,false,0,7.5,false,false,false,0,9.0,Ikoyi and Victoria Island,1229591829
+W1229591830,,residential,false,0,7.5,false,false,false,0,69.4,Ikoyi and Victoria Island,1229591830
+W1229592301,,service,false,0,5.0,false,false,false,0,85.7,Ikoyi and Victoria Island,1229592301
+W1229593561,,residential,false,0,7.5,false,false,false,0,13.7,Ikoyi and Victoria Island,1229593561
+W1229593562,,residential,false,0,7.5,false,false,false,0,2.5,Ikoyi and Victoria Island,1229593562
+W1229593563,,residential,false,0,7.5,false,false,false,0,86.3,Ikoyi and Victoria Island,1229593563
+W1230261820,,service,false,0,5.0,false,false,false,0,88.9,Ikoyi and Victoria Island,1230261820
+W1230462202,,service,false,0,5.0,false,false,false,0,73.1,Ikoyi and Victoria Island,1230462202
+W1230464501,,service,false,0,5.0,false,false,false,0,53.0,Ikoyi and Victoria Island,1230464501
+W1230468996,,service,false,0,5.0,false,false,false,0,43.2,Ikoyi and Victoria Island,1230468996
+W1230778629,,tertiary,true,0,7.5,false,false,false,0,8.3,Ikoyi and Victoria Island,1230778629
+W1232381368,,residential,false,0,7.5,false,false,false,0,66.1,Ikoyi and Victoria Island,1232381368
+W1249918542,,service,false,0,5.0,false,false,false,0,21.2,Ikoyi and Victoria Island,1249918542
+W1249921999,,service,false,0,5.0,false,false,false,0,54.1,Ikoyi and Victoria Island,1249921999
+W1250514993,,residential,false,0,7.5,false,false,false,0,112.6,Ikoyi and Victoria Island,1250514993
+W1250517598,,service,false,0,5.0,false,false,false,0,53.4,Ikoyi and Victoria Island,1250517598
+W1250518113,,service,false,0,5.0,false,false,false,0,53.3,Ikoyi and Victoria Island,1250518113
+W1250525671,,service,false,0,5.0,false,false,false,0,37.3,Ikoyi and Victoria Island,1250525671
+W1250537688,,service,false,0,5.0,false,false,false,0,46.9,Ikoyi and Victoria Island,1250537688
+W1252013184,,living_street,false,0,6.0,false,false,false,0,55.8,Ikoyi and Victoria Island,1252013184
+W1252015767,,service,false,0,5.0,false,false,false,0,132.0,Ikoyi and Victoria Island,1252015767
+W1252017436,,living_street,false,0,6.0,false,false,false,0,38.1,Ikoyi and Victoria Island,1252017436
+W1252017437,,living_street,false,0,6.0,false,false,false,0,68.0,Ikoyi and Victoria Island,1252017437
+W1252019039,,living_street,false,0,6.0,false,false,false,0,8.2,Ikoyi and Victoria Island,1252019039
+W1252019040,,living_street,false,0,6.0,false,false,false,0,29.1,Ikoyi and Victoria Island,1252019040
+W1253613436,,service,false,0,5.0,false,false,false,0,99.7,Ikoyi and Victoria Island,1253613436
+W1254489490,,residential,false,0,7.5,false,false,false,0,30.6,Ikoyi and Victoria Island,1254489490
+W1254490753,,residential,false,0,7.5,false,false,false,0,57.8,Ikoyi and Victoria Island,1254490753
+W1264384860,,service,false,0,5.0,false,false,false,0,18.5,Ikoyi and Victoria Island,1264384860
+W129730349,,residential,false,0,7.5,false,false,false,0,150.4,Ikoyi and Victoria Island,129730349
+W129730351,,residential,false,0,7.5,false,false,false,0,99.9,Ikoyi and Victoria Island,129730351
+W1305293767,,service,false,0,5.0,false,false,false,0,36.9,Ikoyi and Victoria Island,1305293767
+W1309992312,,service,false,0,5.0,false,false,false,0,133.6,Ikoyi and Victoria Island,1309992312
+W1315072751,,service,false,0,5.0,false,false,false,0,77.1,Ikoyi and Victoria Island,1315072751
+W1318409783,,service,false,0,5.0,false,false,false,0,41.9,Ikoyi and Victoria Island,1318409783
+W1318409784,,service,false,0,5.0,false,false,false,0,44.9,Ikoyi and Victoria Island,1318409784
+W1318409785,,service,false,0,5.0,false,false,false,0,46.8,Ikoyi and Victoria Island,1318409785
+W1318409786,,service,false,0,5.0,false,false,false,0,198.1,Ikoyi and Victoria Island,1318409786
+W1323719118,,residential,false,0,7.5,false,false,false,0,836.1,Ikoyi and Victoria Island,1323719118
+W133750714,,primary,true,0,7.5,true,false,false,0,102.7,Ikoyi and Victoria Island,133750714
+W133750715,,primary,true,0,7.5,true,false,false,0,279.2,Ikoyi and Victoria Island,133750715
+W133750721,,primary,true,0,7.5,true,false,false,0,141.3,Ikoyi and Victoria Island,133750721
+W133751878,,primary,true,0,7.5,true,true,false,0,55.2,Ikoyi and Victoria Island,133751878
+W133751879,,primary,true,0,7.5,true,false,false,0,280.7,Ikoyi and Victoria Island,133751879
+W133751881,,primary,true,0,7.5,true,false,false,0,35.5,Ikoyi and Victoria Island,133751881
+W133751882,,primary,true,0,7.5,true,true,false,0,170.6,Ikoyi and Victoria Island,133751882
+W133751883,,primary,true,0,7.5,true,false,false,0,34.3,Ikoyi and Victoria Island,133751883
+W1359909324,,residential,false,0,7.5,false,false,false,0,133.1,Ikoyi and Victoria Island,1359909324
+W1364212348,,residential,false,0,7.5,false,false,false,0,50.3,Ikoyi and Victoria Island,1364212348
+W1364212349,,residential,false,0,7.5,false,false,false,0,37.3,Ikoyi and Victoria Island,1364212349
+W1364212350,,residential,false,0,7.5,false,false,false,0,52.9,Ikoyi and Victoria Island,1364212350
+W1364212352,,residential,false,0,7.5,false,false,false,0,10.5,Ikoyi and Victoria Island,1364212352
+W1364212353,,service,false,0,5.0,false,false,false,0,30.8,Ikoyi and Victoria Island,1364212353
+W1364212354,,service,false,0,5.0,false,false,false,0,8.7,Ikoyi and Victoria Island,1364212354
+W1364212355,,service,false,0,5.0,false,false,false,0,58.6,Ikoyi and Victoria Island,1364212355
+W1364212356,,service,false,0,5.0,false,false,false,0,7.6,Ikoyi and Victoria Island,1364212356
+W1364212357,,service,false,0,5.0,false,false,false,0,60.0,Ikoyi and Victoria Island,1364212357
+W1364212358,,service,false,0,5.0,false,false,false,0,7.8,Ikoyi and Victoria Island,1364212358
+W1364212359,,service,false,0,5.0,false,false,false,0,26.7,Ikoyi and Victoria Island,1364212359
+W1364212360,,service,false,0,5.0,false,false,false,0,10.2,Ikoyi and Victoria Island,1364212360
+W1364212361,,service,false,0,5.0,false,false,false,0,10.7,Ikoyi and Victoria Island,1364212361
+W1364212362,,service,false,0,5.0,false,false,false,0,10.3,Ikoyi and Victoria Island,1364212362
+W1364212485,,residential,false,0,7.5,false,false,false,0,9.2,Ikoyi and Victoria Island,1364212485
+W1364212486,,residential,false,0,7.5,false,false,false,0,31.5,Ikoyi and Victoria Island,1364212486
+W1364212487,,residential,false,0,7.5,false,false,false,0,33.1,Ikoyi and Victoria Island,1364212487
+W1364212488,,service,false,0,5.0,false,false,false,0,64.1,Ikoyi and Victoria Island,1364212488
+W1364212489,,residential,false,0,7.5,false,false,false,0,23.1,Ikoyi and Victoria Island,1364212489
+W1364212490,,residential,false,0,7.5,false,false,false,0,55.2,Ikoyi and Victoria Island,1364212490
+W1364212491,,residential,false,0,7.5,false,false,false,0,60.4,Ikoyi and Victoria Island,1364212491
+W1364212651,,residential,false,0,7.5,false,false,false,0,20.1,Ikoyi and Victoria Island,1364212651
+W1364220242,,service,false,0,5.0,false,false,false,0,45.5,Ikoyi and Victoria Island,1364220242
+W1364223478,,service,false,0,5.0,false,false,false,0,6.9,Ikoyi and Victoria Island,1364223478
+W1364223479,,service,false,0,5.0,false,false,false,0,39.5,Ikoyi and Victoria Island,1364223479
+W1364223480,,residential,false,0,7.5,false,false,false,0,6.3,Ikoyi and Victoria Island,1364223480
+W1364223481,,service,false,0,5.0,false,false,false,0,9.6,Ikoyi and Victoria Island,1364223481
+W1364223482,,service,false,0,5.0,false,false,false,0,10.1,Ikoyi and Victoria Island,1364223482
+W1364223483,,service,false,0,5.0,false,false,false,0,9.1,Ikoyi and Victoria Island,1364223483
+W1364223484,,residential,false,0,7.5,false,false,false,0,8.5,Ikoyi and Victoria Island,1364223484
+W1364393004,,service,false,0,5.0,false,false,false,0,42.0,Ikoyi and Victoria Island,1364393004
+W1364393005,,service,false,0,5.0,false,false,false,0,51.9,Ikoyi and Victoria Island,1364393005
+W1364393006,,service,false,0,5.0,false,false,false,0,40.8,Ikoyi and Victoria Island,1364393006
+W1364393007,,service,false,0,5.0,false,false,false,0,50.9,Ikoyi and Victoria Island,1364393007
+W1364393008,,service,false,0,5.0,false,false,false,0,55.6,Ikoyi and Victoria Island,1364393008
+W1364393009,,service,false,0,5.0,false,false,false,0,50.4,Ikoyi and Victoria Island,1364393009
+W1364393010,,service,false,0,5.0,false,false,false,0,44.6,Ikoyi and Victoria Island,1364393010
+W1364393011,,service,false,0,5.0,false,false,false,0,10.6,Ikoyi and Victoria Island,1364393011
+W1364393012,,service,false,0,5.0,false,false,false,0,47.5,Ikoyi and Victoria Island,1364393012
+W1364393013,,service,false,0,5.0,false,false,false,0,10.5,Ikoyi and Victoria Island,1364393013
+W1364393014,,service,false,0,5.0,false,false,false,0,26.2,Ikoyi and Victoria Island,1364393014
+W1364393015,,service,false,0,5.0,false,false,false,0,9.4,Ikoyi and Victoria Island,1364393015
+W1364403674,,service,false,0,5.0,false,false,false,0,51.9,Ikoyi and Victoria Island,1364403674
+W1364403675,,service,false,0,5.0,false,false,false,0,71.0,Ikoyi and Victoria Island,1364403675
+W1364403881,,service,false,0,5.0,false,false,false,0,55.4,Ikoyi and Victoria Island,1364403881
+W1364403882,,service,false,0,5.0,false,false,false,0,145.6,Ikoyi and Victoria Island,1364403882
+W1364403883,,service,false,0,5.0,false,false,false,0,6.6,Ikoyi and Victoria Island,1364403883
+W1364403884,,service,false,0,5.0,false,false,false,0,76.2,Ikoyi and Victoria Island,1364403884
+W1364403885,,service,false,0,5.0,false,false,false,0,51.8,Ikoyi and Victoria Island,1364403885
+W1364403886,,service,false,0,5.0,false,false,false,0,54.5,Ikoyi and Victoria Island,1364403886
+W1364403887,,service,false,0,5.0,false,false,false,0,50.3,Ikoyi and Victoria Island,1364403887
+W1364403888,,service,false,0,5.0,false,false,false,0,52.7,Ikoyi and Victoria Island,1364403888
+W1364403889,,service,false,0,5.0,false,false,false,0,75.7,Ikoyi and Victoria Island,1364403889
+W1364403890,,service,false,0,5.0,false,false,false,0,7.6,Ikoyi and Victoria Island,1364403890
+W1364403891,,service,false,0,5.0,false,false,false,0,47.3,Ikoyi and Victoria Island,1364403891
+W1364403892,,service,false,0,5.0,false,false,false,0,8.5,Ikoyi and Victoria Island,1364403892
+W1364403893,,service,false,0,5.0,false,false,false,0,63.5,Ikoyi and Victoria Island,1364403893
+W1364403894,,service,false,0,5.0,false,false,false,0,7.6,Ikoyi and Victoria Island,1364403894
+W1364403895,,service,false,0,5.0,false,false,false,0,31.7,Ikoyi and Victoria Island,1364403895
+W1364403896,,service,false,0,5.0,false,false,false,0,10.0,Ikoyi and Victoria Island,1364403896
+W1364403897,,service,false,0,5.0,false,false,false,0,9.7,Ikoyi and Victoria Island,1364403897
+W1364403898,,service,false,0,5.0,false,false,false,0,23.8,Ikoyi and Victoria Island,1364403898
+W1364410792,,service,false,0,5.0,false,false,false,0,37.9,Ikoyi and Victoria Island,1364410792
+W1364410793,,service,false,0,5.0,false,false,false,0,45.7,Ikoyi and Victoria Island,1364410793
+W1364410794,,unclassified,false,0,7.5,false,false,false,0,43.3,Ikoyi and Victoria Island,1364410794
+W1364410795,,service,false,0,5.0,false,false,false,0,5.9,Ikoyi and Victoria Island,1364410795
+W1364410796,,service,false,0,5.0,false,false,false,0,55.0,Ikoyi and Victoria Island,1364410796
+W1364410797,,service,false,0,5.0,false,false,false,0,10.1,Ikoyi and Victoria Island,1364410797
+W1364428030,,service,false,0,5.0,false,false,false,0,13.2,Ikoyi and Victoria Island,1364428030
+W1364428031,,service,false,0,5.0,false,false,false,0,248.1,Ikoyi and Victoria Island,1364428031
+W1364428032,,service,false,0,5.0,false,false,false,0,181.6,Ikoyi and Victoria Island,1364428032
+W1364439715,,service,false,0,5.0,false,false,false,0,4.1,Ikoyi and Victoria Island,1364439715
+W1364439716,,service,false,0,5.0,false,false,false,0,80.8,Ikoyi and Victoria Island,1364439716
+W1364680075,,service,false,0,5.0,false,false,false,0,11.9,Ikoyi and Victoria Island,1364680075
+W1364680076,,service,false,0,5.0,false,false,false,0,11.6,Ikoyi and Victoria Island,1364680076
+W1364680077,,service,false,0,5.0,false,false,false,0,12.4,Ikoyi and Victoria Island,1364680077
+W1364680078,,service,false,0,5.0,false,false,false,0,4.0,Ikoyi and Victoria Island,1364680078
+W1364680079,,service,false,0,5.0,false,false,false,0,3.6,Ikoyi and Victoria Island,1364680079
+W1364680080,,service,false,0,5.0,false,false,false,0,4.0,Ikoyi and Victoria Island,1364680080
+W1364680081,,service,false,0,5.0,false,false,false,0,3.4,Ikoyi and Victoria Island,1364680081
+W1364680082,,service,false,0,5.0,false,false,false,0,10.8,Ikoyi and Victoria Island,1364680082
+W1364680083,,service,false,0,5.0,false,false,false,0,9.6,Ikoyi and Victoria Island,1364680083
+W1364680084,,service,false,0,5.0,false,false,false,0,4.1,Ikoyi and Victoria Island,1364680084
+W1364680085,,service,false,0,5.0,false,false,false,0,4.3,Ikoyi and Victoria Island,1364680085
+W1364680086,,service,false,0,5.0,false,false,false,0,5.5,Ikoyi and Victoria Island,1364680086
+W1364680087,,service,false,0,5.0,false,false,false,0,6.1,Ikoyi and Victoria Island,1364680087
+W1364680088,,residential,false,0,7.5,false,false,false,0,11.5,Ikoyi and Victoria Island,1364680088
+W1364680089,,service,false,0,5.0,false,false,false,0,11.1,Ikoyi and Victoria Island,1364680089
+W1364680090,,residential,false,0,7.5,false,false,false,0,5.7,Ikoyi and Victoria Island,1364680090
+W1364680091,,service,false,0,5.0,false,false,false,0,6.4,Ikoyi and Victoria Island,1364680091
+W1364680092,,service,false,0,5.0,false,false,false,0,36.5,Ikoyi and Victoria Island,1364680092
+W1364680093,,service,false,0,5.0,false,false,false,0,10.3,Ikoyi and Victoria Island,1364680093
+W1364680094,,service,false,0,5.0,false,false,false,0,116.1,Ikoyi and Victoria Island,1364680094
+W1364680259,,residential,false,0,7.5,false,false,false,0,14.4,Ikoyi and Victoria Island,1364680259
+W1364680260,,residential,false,0,7.5,false,false,false,0,12.2,Ikoyi and Victoria Island,1364680260
+W1364680261,,service,false,0,5.0,false,false,false,0,96.7,Ikoyi and Victoria Island,1364680261
+W1364680411,,service,false,0,5.0,false,false,false,0,120.5,Ikoyi and Victoria Island,1364680411
+W1364680413,,service,false,0,5.0,true,false,false,0,27.3,Ikoyi and Victoria Island,1364680413
+W1364680414,,service,false,0,5.0,false,false,false,0,62.9,Ikoyi and Victoria Island,1364680414
+W1364680415,,service,false,0,5.0,false,false,false,0,93.0,Ikoyi and Victoria Island,1364680415
+W1364695457,,service,false,0,5.0,false,false,false,0,49.9,Ikoyi and Victoria Island,1364695457
+W1364695458,,service,false,0,5.0,false,false,false,0,104.2,Ikoyi and Victoria Island,1364695458
+W1364695459,,service,false,0,5.0,false,false,false,0,178.1,Ikoyi and Victoria Island,1364695459
+W1364695460,,service,false,0,5.0,false,false,false,0,67.8,Ikoyi and Victoria Island,1364695460
+W1364695461,,service,false,0,5.0,false,false,false,0,176.3,Ikoyi and Victoria Island,1364695461
+W1364712051,,service,false,0,5.0,false,false,false,0,6.8,Ikoyi and Victoria Island,1364712051
+W1364712052,,service,false,0,5.0,false,false,false,0,12.0,Ikoyi and Victoria Island,1364712052
+W1364712053,,service,false,0,5.0,false,false,false,0,13.5,Ikoyi and Victoria Island,1364712053
+W1364712054,,service,false,0,5.0,false,false,false,0,1.6,Ikoyi and Victoria Island,1364712054
+W1364712055,,service,false,0,5.0,false,false,false,0,1.6,Ikoyi and Victoria Island,1364712055
+W1364712056,,service,false,0,5.0,false,false,false,0,32.5,Ikoyi and Victoria Island,1364712056
+W1364712057,,service,false,3,10.9,true,false,false,0,9.9,Ikoyi and Victoria Island,1364712057
+W1364712058,,service,false,3,10.9,true,false,false,0,90.2,Ikoyi and Victoria Island,1364712058
+W1364712059,,service,false,2,7.6,true,false,false,0,6.9,Ikoyi and Victoria Island,1364712059
+W1364712060,,service,false,2,7.6,true,false,false,0,38.7,Ikoyi and Victoria Island,1364712060
+W1364712061,,service,false,2,7.6,true,false,false,0,4.7,Ikoyi and Victoria Island,1364712061
+W1364712062,,service,false,2,7.6,true,false,false,0,7.0,Ikoyi and Victoria Island,1364712062
+W1364908635,,residential,false,0,7.5,false,false,false,0,11.9,Ikoyi and Victoria Island,1364908635
+W1364908636,,residential,false,0,7.5,false,false,false,0,73.3,Ikoyi and Victoria Island,1364908636
+W1364963522,,residential,false,0,7.5,false,false,false,0,51.5,Ikoyi and Victoria Island,1364963522
+W1364963523,,residential,false,0,7.5,false,false,false,0,4.7,Ikoyi and Victoria Island,1364963523
+W1365136379,,service,false,0,5.0,false,false,false,0,11.5,Ikoyi and Victoria Island,1365136379
+W1365136380,,residential,false,0,7.5,false,false,false,0,7.9,Ikoyi and Victoria Island,1365136380
+W1368879845,,service,false,0,5.0,false,false,false,0,96.8,Ikoyi and Victoria Island,1368879845
+W1368879846,,service,false,0,5.0,false,false,false,0,170.9,Ikoyi and Victoria Island,1368879846
+W1370922200,,service,false,0,5.0,false,false,false,0,5.3,Ikoyi and Victoria Island,1370922200
+W1370922201,,service,false,0,5.0,false,false,false,0,5.8,Ikoyi and Victoria Island,1370922201
+W1370922202,,service,false,0,5.0,false,false,false,0,5.3,Ikoyi and Victoria Island,1370922202
+W1370922203,,service,false,0,5.0,false,false,false,0,5.9,Ikoyi and Victoria Island,1370922203
+W1370922204,,service,false,0,5.0,false,false,false,0,5.5,Ikoyi and Victoria Island,1370922204
+W1370922205,,service,false,0,5.0,false,false,false,0,5.9,Ikoyi and Victoria Island,1370922205
+W1370922206,,service,false,0,5.0,false,false,false,0,5.8,Ikoyi and Victoria Island,1370922206
+W1370922207,,service,false,0,5.0,false,false,false,0,5.6,Ikoyi and Victoria Island,1370922207
+W138040513,,residential,false,0,7.5,false,false,false,0,288.1,Ikoyi and Victoria Island,138040513
+W138040521,,residential,false,0,7.5,false,false,false,0,181.5,Ikoyi and Victoria Island,138040521
+W138040522,,residential,false,0,7.5,false,false,false,0,261.0,Ikoyi and Victoria Island,138040522
+W1380575963,,service,false,0,5.0,false,false,false,0,90.3,Ikoyi and Victoria Island,1380575963
+W1380575964,,service,false,0,5.0,false,false,false,0,90.2,Ikoyi and Victoria Island,1380575964
+W1380575965,,service,false,0,5.0,false,false,false,0,100.9,Ikoyi and Victoria Island,1380575965
+W1380575966,,service,false,0,5.0,false,false,false,0,110.0,Ikoyi and Victoria Island,1380575966
+W1384829732,,service,false,0,5.0,false,false,false,0,12.2,Ikoyi and Victoria Island,1384829732
+W1384829733,,service,false,0,5.0,false,false,false,0,10.2,Ikoyi and Victoria Island,1384829733
+W1392103446,,service,false,0,5.0,false,false,false,0,87.4,Ikoyi and Victoria Island,1392103446
+W1392103447,,service,false,0,5.0,false,false,false,0,36.3,Ikoyi and Victoria Island,1392103447
+W1392103448,,service,false,0,5.0,false,false,false,0,58.2,Ikoyi and Victoria Island,1392103448
+W1392103449,,service,false,0,5.0,false,false,false,0,85.5,Ikoyi and Victoria Island,1392103449
+W1394086330,,residential,false,0,7.5,false,false,false,0,61.0,Ikoyi and Victoria Island,1394086330
+W1394169966,,service,false,0,5.0,false,false,false,0,8.5,Ikoyi and Victoria Island,1394169966
+W1395867931,,service,false,0,5.0,false,false,false,0,14.2,Ikoyi and Victoria Island,1395867931
+W1395867937,,service,false,0,5.0,false,false,false,0,70.6,Ikoyi and Victoria Island,1395867937
+W1395867939,,residential,false,0,7.5,false,false,false,0,46.8,Ikoyi and Victoria Island,1395867939
+W1395875560,,service,false,0,5.0,false,false,false,0,32.7,Ikoyi and Victoria Island,1395875560
+W1395875561,,service,false,0,5.0,false,false,false,0,31.8,Ikoyi and Victoria Island,1395875561
+W1395875569,,residential,false,0,7.5,false,false,false,0,35.1,Ikoyi and Victoria Island,1395875569
+W1395875571,,service,false,0,5.0,false,false,false,0,40.8,Ikoyi and Victoria Island,1395875571
+W1396720953,,service,false,0,5.0,false,false,false,0,64.7,Ikoyi and Victoria Island,1396720953
+W1396722699,,service,false,0,5.0,false,false,false,0,6.3,Ikoyi and Victoria Island,1396722699
+W1396722700,,residential,false,0,7.5,false,false,false,0,7.8,Ikoyi and Victoria Island,1396722700
+W1411217447,,service,false,0,5.0,false,false,false,0,34.5,Ikoyi and Victoria Island,1411217447
+W1411217448,,service,false,0,5.0,false,false,false,0,144.6,Ikoyi and Victoria Island,1411217448
+W1411217449,,service,false,0,5.0,false,false,false,0,37.0,Ikoyi and Victoria Island,1411217449
+W1411238154,,residential,false,0,7.5,false,false,false,0,57.6,Ikoyi and Victoria Island,1411238154
+W1411583723,,service,false,0,5.0,false,false,false,0,36.6,Ikoyi and Victoria Island,1411583723
+W1411583724,,service,false,0,5.0,false,false,false,0,46.2,Ikoyi and Victoria Island,1411583724
+W1411583725,,service,false,0,5.0,false,false,false,0,52.8,Ikoyi and Victoria Island,1411583725
+W1411583726,,service,false,0,5.0,false,false,false,0,43.3,Ikoyi and Victoria Island,1411583726
+W1411583727,,service,false,0,5.0,false,false,false,0,29.4,Ikoyi and Victoria Island,1411583727
+W1411583728,,service,false,0,5.0,false,false,false,0,28.4,Ikoyi and Victoria Island,1411583728
+W1411583729,,service,false,0,5.0,false,false,false,0,24.2,Ikoyi and Victoria Island,1411583729
+W1411583730,,service,false,0,5.0,false,false,false,0,70.5,Ikoyi and Victoria Island,1411583730
+W1411583731,,service,false,0,5.0,false,false,false,0,39.3,Ikoyi and Victoria Island,1411583731
+W1411583732,,service,false,0,5.0,false,false,false,0,20.8,Ikoyi and Victoria Island,1411583732
+W1411583733,,service,false,0,5.0,false,false,false,0,74.9,Ikoyi and Victoria Island,1411583733
+W1411583734,,service,false,0,5.0,false,false,false,0,8.0,Ikoyi and Victoria Island,1411583734
+W1411583735,,service,false,0,5.0,false,false,false,0,41.4,Ikoyi and Victoria Island,1411583735
+W1411606943,,residential,false,0,7.5,false,false,false,0,5.1,Ikoyi and Victoria Island,1411606943
+W1411606944,,residential,false,0,7.5,false,false,false,0,57.3,Ikoyi and Victoria Island,1411606944
+W1411606945,,residential,false,0,7.5,false,false,false,0,4.9,Ikoyi and Victoria Island,1411606945
+W1411606946,,service,false,0,5.0,false,false,false,0,62.0,Ikoyi and Victoria Island,1411606946
+W1411606947,,service,false,0,5.0,false,false,false,0,56.6,Ikoyi and Victoria Island,1411606947
+W1411606948,,residential,false,0,7.5,false,false,false,0,89.5,Ikoyi and Victoria Island,1411606948
+W1411606949,,service,false,0,5.0,false,false,false,0,43.5,Ikoyi and Victoria Island,1411606949
+W1411606950,,service,false,0,5.0,false,false,false,0,197.2,Ikoyi and Victoria Island,1411606950
+W1411606951,,service,false,0,5.0,false,false,false,0,31.3,Ikoyi and Victoria Island,1411606951
+W1411606952,,service,false,0,5.0,false,false,false,0,77.1,Ikoyi and Victoria Island,1411606952
+W1411606953,,residential,false,0,7.5,false,false,false,0,98.3,Ikoyi and Victoria Island,1411606953
+W1411606954,,service,false,0,5.0,false,false,false,0,39.8,Ikoyi and Victoria Island,1411606954
+W1411606955,,service,false,0,5.0,false,false,false,0,12.6,Ikoyi and Victoria Island,1411606955
+W1411606956,,service,false,0,5.0,false,false,false,0,9.3,Ikoyi and Victoria Island,1411606956
+W1411606957,,service,false,0,5.0,false,false,false,0,26.3,Ikoyi and Victoria Island,1411606957
+W1411606958,,service,false,0,5.0,false,false,false,0,119.7,Ikoyi and Victoria Island,1411606958
+W1411606959,,residential,false,0,7.5,false,false,false,0,32.1,Ikoyi and Victoria Island,1411606959
+W1411606960,,service,false,0,5.0,false,false,false,0,4.9,Ikoyi and Victoria Island,1411606960
+W1411606961,,service,false,0,5.0,false,false,false,0,32.6,Ikoyi and Victoria Island,1411606961
+W1411606962,,service,false,0,5.0,false,false,false,0,52.0,Ikoyi and Victoria Island,1411606962
+W1411606963,,service,false,0,5.0,false,false,false,0,52.0,Ikoyi and Victoria Island,1411606963
+W1411606964,,service,false,0,5.0,false,false,false,0,27.7,Ikoyi and Victoria Island,1411606964
+W1411606965,,service,false,0,5.0,false,false,false,0,26.1,Ikoyi and Victoria Island,1411606965
+W1411606966,,service,false,0,5.0,false,false,false,0,38.1,Ikoyi and Victoria Island,1411606966
+W1411606967,,service,false,0,5.0,false,false,false,0,37.7,Ikoyi and Victoria Island,1411606967
+W1411606968,,service,false,0,5.0,false,false,false,0,71.3,Ikoyi and Victoria Island,1411606968
+W1411606969,,service,false,0,5.0,false,false,false,0,6.0,Ikoyi and Victoria Island,1411606969
+W1411606970,,service,false,0,5.0,false,false,false,0,8.6,Ikoyi and Victoria Island,1411606970
+W1411606971,,service,false,0,5.0,false,false,false,0,145.4,Ikoyi and Victoria Island,1411606971
+W1411606972,,service,false,0,5.0,false,false,false,0,10.0,Ikoyi and Victoria Island,1411606972
+W1411606973,,residential,false,0,7.5,false,false,false,0,12.8,Ikoyi and Victoria Island,1411606973
+W1411606974,,service,false,0,5.0,false,false,false,0,165.9,Ikoyi and Victoria Island,1411606974
+W1411606975,,service,false,0,5.0,false,false,false,0,150.4,Ikoyi and Victoria Island,1411606975
+W1411606976,,service,false,0,5.0,true,false,false,0,5.7,Ikoyi and Victoria Island,1411606976
+W1411606977,,service,false,0,5.0,true,false,false,0,5.9,Ikoyi and Victoria Island,1411606977
+W1411612967,,service,false,0,5.0,false,false,false,0,6.8,Ikoyi and Victoria Island,1411612967
+W1411612968,,service,false,0,5.0,false,false,false,0,107.0,Ikoyi and Victoria Island,1411612968
+W1411615541,,service,false,0,5.0,false,false,false,0,37.8,Ikoyi and Victoria Island,1411615541
+W1411615542,,service,false,0,5.0,false,false,false,0,106.0,Ikoyi and Victoria Island,1411615542
+W1411615543,,service,false,0,5.0,false,false,false,0,76.5,Ikoyi and Victoria Island,1411615543
+W1411615544,,service,false,0,5.0,false,false,false,0,12.7,Ikoyi and Victoria Island,1411615544
+W1411615545,,residential,false,0,7.5,false,false,false,0,89.8,Ikoyi and Victoria Island,1411615545
+W1411615546,,service,false,0,5.0,false,false,false,0,76.3,Ikoyi and Victoria Island,1411615546
+W1411620974,,residential,false,0,7.5,false,false,false,0,129.6,Ikoyi and Victoria Island,1411620974
+W1411620975,,residential,false,0,7.5,false,false,false,0,105.1,Ikoyi and Victoria Island,1411620975
+W1411802010,,residential,false,0,7.5,false,false,false,0,35.5,Ikoyi and Victoria Island,1411802010
+W1411814549,,service,false,0,5.0,false,false,false,0,166.9,Ikoyi and Victoria Island,1411814549
+W1413522556,,residential,false,0,7.5,false,false,false,0,1.3,Ikoyi and Victoria Island,1413522556
+W1413532443,,service,false,0,5.0,false,false,false,0,73.0,Ikoyi and Victoria Island,1413532443
+W1413532444,,service,false,0,5.0,false,false,false,0,11.0,Ikoyi and Victoria Island,1413532444
+W1413620202,,service,false,0,5.0,false,false,false,0,7.9,Ikoyi and Victoria Island,1413620202
+W1413620203,,service,false,0,5.0,false,false,false,0,10.0,Ikoyi and Victoria Island,1413620203
+W1413620204,,service,false,0,5.0,false,false,false,0,16.0,Ikoyi and Victoria Island,1413620204
+W1414589823,,service,false,0,5.0,false,false,false,0,13.9,Ikoyi and Victoria Island,1414589823
+W1414589824,,service,false,0,5.0,false,false,false,0,37.9,Ikoyi and Victoria Island,1414589824
+W1420873094,,residential,false,0,7.5,false,false,false,0,243.6,Ikoyi and Victoria Island,1420873094
+W1420873111,,residential,false,0,7.5,false,false,false,0,507.0,Ikoyi and Victoria Island,1420873111
+W1420873112,,residential,false,0,7.5,false,true,false,0,27.4,Ikoyi and Victoria Island,1420873112
+W1420873236,,residential,false,0,7.5,false,false,false,0,173.4,Ikoyi and Victoria Island,1420873236
+W1420998271,,residential,false,0,7.5,false,false,false,0,61.9,Ikoyi and Victoria Island,1420998271
+W1425558545,,service,false,0,5.0,false,false,false,0,7.1,Ikoyi and Victoria Island,1425558545
+W1425558546,,service,false,0,5.0,false,false,false,0,11.9,Ikoyi and Victoria Island,1425558546
+W1425558547,,service,false,0,5.0,false,false,false,0,10.0,Ikoyi and Victoria Island,1425558547
+W1425592310,,service,false,0,5.0,false,false,false,0,24.4,Ikoyi and Victoria Island,1425592310
+W1425594382,,service,false,0,5.0,false,false,false,0,11.7,Ikoyi and Victoria Island,1425594382
+W1426980353,,trunk,true,0,7.5,true,false,false,0,157.6,Ikoyi and Victoria Island,1426980353
+W1426980354,,trunk,true,0,7.5,true,false,false,0,118.9,Ikoyi and Victoria Island,1426980354
+W1426980355,,trunk,true,0,7.5,true,false,false,0,148.1,Ikoyi and Victoria Island,1426980355
+W1426980356,,trunk,true,1,4.3,true,false,false,0,82.8,Ikoyi and Victoria Island,1426980356
+W1426980359,,trunk,true,1,4.3,true,false,false,0,101.8,Ikoyi and Victoria Island,1426980359
+W1432071957,,service,false,0,5.0,false,false,false,0,27.3,Ikoyi and Victoria Island,1432071957
+W1432071958,,service,false,0,5.0,false,false,false,0,70.7,Ikoyi and Victoria Island,1432071958
+W1432071959,,service,false,0,5.0,false,false,false,0,60.8,Ikoyi and Victoria Island,1432071959
+W1432071960,,service,false,0,5.0,false,false,false,0,88.4,Ikoyi and Victoria Island,1432071960
+W1432071961,,service,false,0,5.0,false,false,false,0,37.2,Ikoyi and Victoria Island,1432071961
+W1432071962,,service,false,0,5.0,false,false,false,0,7.9,Ikoyi and Victoria Island,1432071962
+W1432071963,,service,false,0,5.0,false,false,false,0,6.4,Ikoyi and Victoria Island,1432071963
+W1433998517,,residential,false,0,7.5,false,false,false,0,70.0,Ikoyi and Victoria Island,1433998517
+W1434317717,,residential,false,0,7.5,false,false,false,0,552.3,Ikoyi and Victoria Island,1434317717
+W1434317718,,residential,false,0,7.5,false,false,false,0,1043.3,Ikoyi and Victoria Island,1434317718
+W1434317719,,residential,false,0,7.5,false,false,false,0,185.8,Ikoyi and Victoria Island,1434317719
+W1434317720,,residential,false,0,7.5,false,false,false,0,248.9,Ikoyi and Victoria Island,1434317720
+W1434317721,,residential,false,0,7.5,false,false,false,0,188.1,Ikoyi and Victoria Island,1434317721
+W1434320072,,service,false,0,5.0,false,false,false,0,54.5,Ikoyi and Victoria Island,1434320072
+W1434320073,,service,false,0,5.0,false,false,false,0,103.1,Ikoyi and Victoria Island,1434320073
+W1434320074,,residential,false,0,7.5,false,false,false,0,55.8,Ikoyi and Victoria Island,1434320074
+W1434320075,,residential,false,0,7.5,false,false,false,0,16.3,Ikoyi and Victoria Island,1434320075
+W1434388149,,service,false,0,5.0,false,false,false,0,203.4,Ikoyi and Victoria Island,1434388149
+W1434388150,,service,false,0,5.0,false,false,false,0,196.9,Ikoyi and Victoria Island,1434388150
+W1434388151,,service,false,0,5.0,false,false,false,0,372.4,Ikoyi and Victoria Island,1434388151
+W1434388159,,residential,false,0,7.5,false,false,false,0,230.1,Ikoyi and Victoria Island,1434388159
+W1434388160,,residential,false,0,7.5,false,false,false,0,223.1,Ikoyi and Victoria Island,1434388160
+W1434388161,,residential,false,0,7.5,false,false,false,0,502.3,Ikoyi and Victoria Island,1434388161
+W1434388162,,residential,false,0,7.5,false,false,false,0,132.2,Ikoyi and Victoria Island,1434388162
+W1434388163,,residential,false,0,7.5,false,false,false,0,229.2,Ikoyi and Victoria Island,1434388163
+W1434388170,,residential,false,0,7.5,false,false,false,0,228.2,Ikoyi and Victoria Island,1434388170
+W1434388172,,residential,false,0,7.5,false,false,false,0,227.9,Ikoyi and Victoria Island,1434388172
+W1434388174,,residential,false,0,7.5,true,false,false,0,601.1,Ikoyi and Victoria Island,1434388174
+W1434388184,,trunk,false,0,11.5,false,false,false,0,12.0,Ikoyi and Victoria Island,1434388184
+W1436097159,,service,false,0,5.0,false,false,false,0,7.6,Ikoyi and Victoria Island,1436097159
+W1436097160,,service,false,0,5.0,false,false,false,0,7.8,Ikoyi and Victoria Island,1436097160
+W1436097161,,service,false,0,5.0,false,false,false,0,9.1,Ikoyi and Victoria Island,1436097161
+W1436097162,,service,false,0,5.0,false,false,false,0,52.4,Ikoyi and Victoria Island,1436097162
+W1436097163,,service,false,0,5.0,false,false,false,0,38.2,Ikoyi and Victoria Island,1436097163
+W1436097164,,service,false,0,5.0,false,false,false,0,90.5,Ikoyi and Victoria Island,1436097164
+W1436097167,,service,false,0,5.0,false,false,false,0,68.0,Ikoyi and Victoria Island,1436097167
+W1436097168,,service,false,0,5.0,false,false,false,0,19.2,Ikoyi and Victoria Island,1436097168
+W1444627433,,trunk,false,0,11.5,true,false,false,0,25.1,Ikoyi and Victoria Island,1444627433
+W1450410169,,tertiary,false,0,10.0,true,false,false,0,87.3,Ikoyi and Victoria Island,1450410169
+W1450410170,,tertiary,false,0,10.0,true,false,false,0,52.1,Ikoyi and Victoria Island,1450410170
+W1450410173,,trunk,true,0,7.5,false,false,false,0,31.1,Ikoyi and Victoria Island,1450410173
+W1450410177,,tertiary,false,0,10.0,false,false,false,0,2692.8,Ikoyi and Victoria Island,1450410177
+W1453567667,,service,false,0,5.0,false,false,false,0,131.0,Ikoyi and Victoria Island,1453567667
+W1453606298,,residential,false,0,7.5,false,false,false,0,8.8,Ikoyi and Victoria Island,1453606298
+W1459305982,,secondary,true,0,7.5,false,false,false,0,11.1,Ikoyi and Victoria Island,1459305982
+W1459311144,,secondary,true,0,7.5,false,false,false,0,9.9,Ikoyi and Victoria Island,1459311144
+W1459319400,,residential,false,0,7.5,false,false,false,0,88.2,Ikoyi and Victoria Island,1459319400
+W1460717410,,service,false,0,5.0,true,false,false,0,16.9,Ikoyi and Victoria Island,1460717410
+W1460717411,,service,false,0,5.0,true,false,false,0,18.8,Ikoyi and Victoria Island,1460717411
+W1460717412,,service,false,0,5.0,false,false,false,0,30.4,Ikoyi and Victoria Island,1460717412
+W1460717413,,service,false,0,5.0,false,false,false,0,39.9,Ikoyi and Victoria Island,1460717413
+W1460717414,,service,false,0,5.0,false,false,false,0,28.8,Ikoyi and Victoria Island,1460717414
+W1460717415,,residential,false,0,7.5,false,false,false,0,62.7,Ikoyi and Victoria Island,1460717415
+W1460717468,,service,false,0,5.0,false,false,false,0,28.1,Ikoyi and Victoria Island,1460717468
+W1460718213,,service,false,0,5.0,false,false,false,0,66.2,Ikoyi and Victoria Island,1460718213
+W1460726768,,service,false,0,5.0,false,false,false,0,51.5,Ikoyi and Victoria Island,1460726768
+W1463604530,,residential,false,0,7.5,false,false,false,0,48.1,Ikoyi and Victoria Island,1463604530
+W1465189190,,trunk,true,0,7.5,false,false,false,0,47.9,Ikoyi and Victoria Island,1465189190
+W146603785,,residential,false,0,7.5,false,false,false,0,87.9,Ikoyi and Victoria Island,146603785
+W1466496235,,service,false,0,5.0,false,false,false,0,273.3,Ikoyi and Victoria Island,1466496235
+W1466496236,,service,false,0,5.0,false,false,false,0,70.7,Ikoyi and Victoria Island,1466496236
+W1466496237,,service,false,0,5.0,false,false,false,0,72.1,Ikoyi and Victoria Island,1466496237
+W1466496238,,service,false,0,5.0,false,false,false,0,72.4,Ikoyi and Victoria Island,1466496238
+W1466496239,,service,false,0,5.0,false,false,false,0,71.8,Ikoyi and Victoria Island,1466496239
+W1466496240,,service,false,0,5.0,false,false,false,0,38.4,Ikoyi and Victoria Island,1466496240
+W1468952710,,service,false,0,5.0,false,false,false,0,617.2,Ikoyi and Victoria Island,1468952710
+W1468952711,,service,false,0,5.0,false,false,false,0,106.1,Ikoyi and Victoria Island,1468952711
+W1468952712,,residential,false,0,7.5,false,false,false,0,229.4,Ikoyi and Victoria Island,1468952712
+W1468952713,,residential,false,0,7.5,false,false,false,0,229.2,Ikoyi and Victoria Island,1468952713
+W1468952716,,residential,false,0,7.5,false,false,false,0,232.6,Ikoyi and Victoria Island,1468952716
+W1474749509,,service,false,0,5.0,true,false,false,0,65.0,Ikoyi and Victoria Island,1474749509
+W1474749510,,service,false,0,5.0,false,false,false,0,65.1,Ikoyi and Victoria Island,1474749510
+W1485648547,,service,false,0,5.0,false,false,false,0,61.7,Ikoyi and Victoria Island,1485648547
+W1485648548,,service,false,0,5.0,false,false,false,0,38.3,Ikoyi and Victoria Island,1485648548
+W1486015346,,service,false,0,5.0,false,false,false,0,55.6,Ikoyi and Victoria Island,1486015346
+W1488509053,,service,false,0,5.0,false,false,false,0,5.6,Ikoyi and Victoria Island,1488509053
+W1488509054,,service,false,0,5.0,true,false,false,0,7.0,Ikoyi and Victoria Island,1488509054
+W1488509055,,service,false,0,5.0,true,false,false,0,11.7,Ikoyi and Victoria Island,1488509055
+W1488509056,,service,false,0,5.0,false,false,false,0,66.3,Ikoyi and Victoria Island,1488509056
+W1488509057,,service,false,0,5.0,false,false,false,0,27.9,Ikoyi and Victoria Island,1488509057
+W1488509058,,service,false,0,5.0,false,false,false,0,5.6,Ikoyi and Victoria Island,1488509058
+W1488509059,,service,false,0,5.0,true,false,false,0,8.5,Ikoyi and Victoria Island,1488509059
+W1488579810,,service,false,0,5.0,false,false,false,0,17.3,Ikoyi and Victoria Island,1488579810
+W1488579811,,service,false,0,5.0,false,false,false,0,33.6,Ikoyi and Victoria Island,1488579811
+W1490168478,,service,false,0,5.0,true,false,false,0,20.4,Ikoyi and Victoria Island,1490168478
+W1494334133,,service,false,0,5.0,false,false,false,0,45.7,Ikoyi and Victoria Island,1494334133
+W1494334134,,service,false,0,5.0,false,false,false,0,116.8,Ikoyi and Victoria Island,1494334134
+W1494334135,,service,false,0,5.0,false,false,false,0,64.0,Ikoyi and Victoria Island,1494334135
+W1494334136,,service,false,0,5.0,false,false,false,0,60.1,Ikoyi and Victoria Island,1494334136
+W1494334137,,service,false,0,5.0,false,false,false,0,8.3,Ikoyi and Victoria Island,1494334137
+W1494334138,,service,false,0,5.0,false,false,false,0,58.1,Ikoyi and Victoria Island,1494334138
+W1494565460,,service,false,0,5.0,false,false,false,0,8.6,Ikoyi and Victoria Island,1494565460
+W1499258857,,service,false,0,5.0,false,false,false,0,9.3,Ikoyi and Victoria Island,1499258857
+W1499258858,,service,false,0,5.0,false,false,false,0,4.1,Ikoyi and Victoria Island,1499258858
+W1499258859,,service,false,0,5.0,false,false,false,0,68.1,Ikoyi and Victoria Island,1499258859
+W1499317973,,service,false,0,5.0,false,false,false,0,108.6,Ikoyi and Victoria Island,1499317973
+W1499319558,,service,false,0,5.0,false,false,false,0,9.1,Ikoyi and Victoria Island,1499319558
+W1499319559,,service,false,0,5.0,false,false,false,0,43.8,Ikoyi and Victoria Island,1499319559
+W1499319560,,service,false,0,5.0,false,false,false,0,32.9,Ikoyi and Victoria Island,1499319560
+W1499319561,,service,false,0,5.0,false,false,false,0,98.5,Ikoyi and Victoria Island,1499319561
+W1499374718,,service,false,0,5.0,true,false,false,0,5.0,Ikoyi and Victoria Island,1499374718
+W1499374719,,service,false,0,5.0,true,false,false,0,5.1,Ikoyi and Victoria Island,1499374719
+W1499374720,,service,false,0,5.0,true,false,false,0,223.3,Ikoyi and Victoria Island,1499374720
+W1499486963,,service,false,0,5.0,true,false,false,0,12.3,Ikoyi and Victoria Island,1499486963
+W1499486964,,service,false,0,5.0,true,false,false,0,10.8,Ikoyi and Victoria Island,1499486964
+W1499486965,,service,false,0,5.0,false,false,false,0,10.8,Ikoyi and Victoria Island,1499486965
+W1499486966,,service,false,0,5.0,false,false,false,0,155.9,Ikoyi and Victoria Island,1499486966
+W1499517783,,service,false,0,5.0,false,false,false,0,7.4,Ikoyi and Victoria Island,1499517783
+W1502796569,,service,false,0,5.0,false,false,false,0,5.3,Ikoyi and Victoria Island,1502796569
+W1502827487,,service,false,0,5.0,false,false,false,0,45.9,Ikoyi and Victoria Island,1502827487
+W1503249214,,service,false,0,5.0,false,false,false,0,11.3,Ikoyi and Victoria Island,1503249214
+W1511952033,,service,false,0,5.0,false,false,false,0,304.0,Ikoyi and Victoria Island,1511952033
+W1512354030,,service,false,0,5.0,false,false,false,0,117.9,Ikoyi and Victoria Island,1512354030
+W1512354031,,service,false,0,5.0,false,false,false,0,50.2,Ikoyi and Victoria Island,1512354031
+W1512354032,,service,false,0,5.0,false,false,false,0,157.3,Ikoyi and Victoria Island,1512354032
+W1512354033,,service,false,0,5.0,false,false,false,0,33.4,Ikoyi and Victoria Island,1512354033
+W1512354034,,service,false,0,5.0,false,false,false,0,163.9,Ikoyi and Victoria Island,1512354034
+W1512359029,,service,false,0,5.0,false,false,false,0,19.6,Ikoyi and Victoria Island,1512359029
+W1512359030,,service,false,0,5.0,false,false,false,0,91.4,Ikoyi and Victoria Island,1512359030
+W1518591243,,service,false,0,5.0,false,false,false,0,14.9,Ikoyi and Victoria Island,1518591243
+W1518591244,,service,false,0,5.0,false,false,false,0,10.4,Ikoyi and Victoria Island,1518591244
+W1518591245,,service,false,0,5.0,false,false,false,0,40.8,Ikoyi and Victoria Island,1518591245
+W1518591246,,service,false,0,5.0,false,false,false,0,23.7,Ikoyi and Victoria Island,1518591246
+W1518591247,,service,false,0,5.0,false,false,false,0,20.6,Ikoyi and Victoria Island,1518591247
+W1518591248,,service,false,0,5.0,false,false,false,0,23.8,Ikoyi and Victoria Island,1518591248
+W1518591249,,residential,false,0,7.5,false,false,false,0,49.8,Ikoyi and Victoria Island,1518591249
+W1518594125,,residential,false,0,7.5,false,false,false,0,11.9,Ikoyi and Victoria Island,1518594125
+W1518594126,,residential,false,0,7.5,false,false,false,0,16.3,Ikoyi and Victoria Island,1518594126
+W1518594127,,residential,false,0,7.5,false,false,false,0,96.5,Ikoyi and Victoria Island,1518594127
+W1518594128,,residential,false,0,7.5,false,false,false,0,3.6,Ikoyi and Victoria Island,1518594128
+W1518594129,,residential,false,0,7.5,false,false,false,0,44.0,Ikoyi and Victoria Island,1518594129
+W1518634390,,residential,false,0,7.5,false,false,false,0,5.0,Ikoyi and Victoria Island,1518634390
+W1518634391,,residential,false,0,7.5,false,false,false,0,30.6,Ikoyi and Victoria Island,1518634391
+W1518634392,,residential,false,0,7.5,false,false,false,0,8.1,Ikoyi and Victoria Island,1518634392
+W1518634393,,residential,false,0,7.5,false,false,false,0,25.1,Ikoyi and Victoria Island,1518634393
+W1523271349,,residential,false,0,7.5,true,false,false,0,723.9,Ikoyi and Victoria Island,1523271349
+W1523271350,,residential,false,0,7.5,true,false,false,0,296.2,Ikoyi and Victoria Island,1523271350
+W152870264,,residential,false,0,7.5,false,false,false,0,144.2,Ikoyi and Victoria Island,152870264
+W152870275,,service,false,0,5.0,false,false,false,0,87.5,Ikoyi and Victoria Island,152870275
+W152870282,,residential,false,0,7.5,true,false,false,0,105.5,Ikoyi and Victoria Island,152870282
+W152870326,,service,false,0,5.0,false,false,false,0,45.7,Ikoyi and Victoria Island,152870326
+W152870332,,residential,false,0,7.5,false,false,false,0,93.8,Ikoyi and Victoria Island,152870332
+W152870389,,residential,false,0,7.5,false,false,false,0,337.8,Ikoyi and Victoria Island,152870389
+W152870400,,residential,false,0,7.5,false,false,false,0,97.4,Ikoyi and Victoria Island,152870400
+W152870408,,residential,false,0,7.5,false,false,false,0,78.7,Ikoyi and Victoria Island,152870408
+W152870415,,residential,false,0,7.5,false,false,false,0,193.0,Ikoyi and Victoria Island,152870415
+W152870422,,service,false,0,5.0,false,false,false,0,196.2,Ikoyi and Victoria Island,152870422
+W152898304,,residential,false,0,7.5,false,false,false,0,503.8,Ikoyi and Victoria Island,152898304
+W152898311,,residential,false,0,7.5,false,false,false,0,285.9,Ikoyi and Victoria Island,152898311
+W152898329,,residential,false,0,7.5,false,false,false,0,79.4,Ikoyi and Victoria Island,152898329
+W152898334,,residential,false,0,7.5,false,false,false,0,258.0,Ikoyi and Victoria Island,152898334
+W152898345,,residential,false,0,7.5,false,false,false,0,153.6,Ikoyi and Victoria Island,152898345
+W152898355,,residential,false,0,7.5,false,false,false,0,311.8,Ikoyi and Victoria Island,152898355
+W152898359,,residential,false,0,7.5,false,false,false,0,309.2,Ikoyi and Victoria Island,152898359
+W152898366,,residential,false,0,7.5,false,false,false,0,74.8,Ikoyi and Victoria Island,152898366
+W152898369,,residential,false,0,7.5,false,false,false,0,74.6,Ikoyi and Victoria Island,152898369
+W152898374,,residential,false,0,7.5,false,false,false,0,308.5,Ikoyi and Victoria Island,152898374
+W1533766260,,service,false,0,5.0,false,false,false,0,57.3,Ikoyi and Victoria Island,1533766260
+W1533766261,,service,false,0,5.0,false,false,false,0,13.6,Ikoyi and Victoria Island,1533766261
+W1533766262,,service,false,0,5.0,false,false,false,0,7.2,Ikoyi and Victoria Island,1533766262
+W1533766263,,service,false,0,5.0,false,false,false,0,5.5,Ikoyi and Victoria Island,1533766263
+W1533777078,,service,false,0,5.0,false,false,false,0,29.7,Ikoyi and Victoria Island,1533777078
+W1533777079,,service,false,0,5.0,false,false,false,0,10.6,Ikoyi and Victoria Island,1533777079
+W1533804684,,service,false,0,5.0,false,false,false,0,12.4,Ikoyi and Victoria Island,1533804684
+W1533804685,,service,false,0,5.0,false,false,false,0,6.2,Ikoyi and Victoria Island,1533804685
+W1533804686,,service,false,0,5.0,false,false,false,0,19.9,Ikoyi and Victoria Island,1533804686
+W1533804687,,service,false,0,5.0,false,false,false,0,75.4,Ikoyi and Victoria Island,1533804687
+W1533804688,,service,false,0,5.0,false,false,false,0,3.9,Ikoyi and Victoria Island,1533804688
+W1533804689,,service,false,0,5.0,false,false,false,0,37.2,Ikoyi and Victoria Island,1533804689
+W1533804690,,service,false,0,5.0,false,false,false,0,35.6,Ikoyi and Victoria Island,1533804690
+W1533804691,,service,false,0,5.0,false,false,false,0,10.7,Ikoyi and Victoria Island,1533804691
+W1533804692,,service,false,0,5.0,false,false,false,0,54.8,Ikoyi and Victoria Island,1533804692
+W1533817294,,service,false,0,5.0,false,false,false,0,46.2,Ikoyi and Victoria Island,1533817294
+W1533817295,,service,false,0,5.0,false,false,false,0,12.3,Ikoyi and Victoria Island,1533817295
+W1533817296,,service,false,0,5.0,false,false,false,0,12.1,Ikoyi and Victoria Island,1533817296
+W1533817297,,service,false,0,5.0,false,false,false,0,45.0,Ikoyi and Victoria Island,1533817297
+W1533817298,,service,false,0,5.0,false,false,false,0,5.6,Ikoyi and Victoria Island,1533817298
+W1533817299,,service,false,0,5.0,false,false,false,0,24.6,Ikoyi and Victoria Island,1533817299
+W1533817300,,service,false,0,5.0,false,false,false,0,63.1,Ikoyi and Victoria Island,1533817300
+W1533850410,,service,false,0,5.0,false,false,false,0,44.5,Ikoyi and Victoria Island,1533850410
+W1533850411,,service,false,0,5.0,false,false,false,0,19.4,Ikoyi and Victoria Island,1533850411
+W1533850412,,service,false,0,5.0,false,false,false,0,5.0,Ikoyi and Victoria Island,1533850412
+W1533850413,,residential,false,0,7.5,false,false,false,0,67.8,Ikoyi and Victoria Island,1533850413
+W1533850414,,residential,false,0,7.5,false,false,false,0,3.8,Ikoyi and Victoria Island,1533850414
+W1533850415,,service,false,0,5.0,false,false,false,0,33.1,Ikoyi and Victoria Island,1533850415
+W1534142087,,service,false,0,5.0,false,false,false,0,10.0,Ikoyi and Victoria Island,1534142087
+W1534142088,,service,false,0,5.0,false,false,false,0,9.2,Ikoyi and Victoria Island,1534142088
+W1534142089,,service,false,0,5.0,false,false,false,0,28.5,Ikoyi and Victoria Island,1534142089
+W1534142090,,service,false,0,5.0,false,false,false,0,42.1,Ikoyi and Victoria Island,1534142090
+W1534142091,,service,false,0,5.0,false,false,false,0,8.0,Ikoyi and Victoria Island,1534142091
+W1534151275,,service,false,0,5.0,false,false,false,0,16.3,Ikoyi and Victoria Island,1534151275
+W1534151276,,service,false,0,5.0,false,false,false,0,63.0,Ikoyi and Victoria Island,1534151276
+W1535734477,,service,false,0,5.0,false,false,false,0,60.6,Ikoyi and Victoria Island,1535734477
+W1535863418,,service,false,0,5.0,false,false,false,0,127.4,Ikoyi and Victoria Island,1535863418
+W1535863419,,service,false,0,5.0,false,false,false,0,104.0,Ikoyi and Victoria Island,1535863419
+W1535863420,,service,false,0,5.0,false,false,false,0,26.1,Ikoyi and Victoria Island,1535863420
+W1535863421,,service,false,0,5.0,false,false,false,0,25.6,Ikoyi and Victoria Island,1535863421
+W1535863422,,service,false,0,5.0,false,false,false,0,47.3,Ikoyi and Victoria Island,1535863422
+W1539535200,,secondary,true,0,7.5,true,false,false,0,54.3,Ikoyi and Victoria Island,1539535200
+W1539535201,,secondary,false,0,13.0,true,false,false,0,19.6,Ikoyi and Victoria Island,1539535201
+W1539924036,,residential,false,0,7.5,false,false,false,0,67.2,Ikoyi and Victoria Island,1539924036
+W1539924037,,residential,false,0,7.5,false,false,false,0,53.2,Ikoyi and Victoria Island,1539924037
+W1539924038,,residential,false,0,7.5,false,false,false,0,70.8,Ikoyi and Victoria Island,1539924038
+W1547832062,,service,false,0,5.0,false,false,false,0,154.1,Ikoyi and Victoria Island,1547832062
+W1547832063,,residential,false,0,7.5,false,false,false,0,65.2,Ikoyi and Victoria Island,1547832063
+W1547836791,,service,false,0,5.0,false,false,false,0,72.1,Ikoyi and Victoria Island,1547836791
+W1548511032,,service,false,0,5.0,false,false,false,0,13.8,Ikoyi and Victoria Island,1548511032
+W1548511033,,service,false,0,5.0,false,false,false,0,14.2,Ikoyi and Victoria Island,1548511033
+W1548511034,,service,false,0,5.0,false,false,false,0,11.6,Ikoyi and Victoria Island,1548511034
+W1549580654,,residential,false,0,7.5,false,false,false,0,228.0,Ikoyi and Victoria Island,1549580654
+W1549580655,,residential,false,0,7.5,true,false,false,0,175.1,Ikoyi and Victoria Island,1549580655
+W1549580656,,residential,false,0,7.5,false,false,false,0,146.6,Ikoyi and Victoria Island,1549580656
+W1549580657,,residential,false,0,7.5,false,false,false,0,135.2,Ikoyi and Victoria Island,1549580657
+W1549722541,,trunk,true,0,7.5,true,false,false,0,38.8,Ikoyi and Victoria Island,1549722541
+W1549722542,,trunk,true,0,7.5,true,false,false,0,33.9,Ikoyi and Victoria Island,1549722542
+W1549722543,,unclassified,false,0,7.5,false,false,false,0,14.4,Ikoyi and Victoria Island,1549722543
+W1549722544,,secondary,true,0,7.5,false,false,false,0,8.3,Ikoyi and Victoria Island,1549722544
+W1551010367,,residential,false,0,7.5,false,false,false,0,14.8,Ikoyi and Victoria Island,1551010367
+W1551010368,,residential,false,0,7.5,false,false,false,0,295.4,Ikoyi and Victoria Island,1551010368
+W1551215871,,residential,false,0,7.5,false,false,false,0,65.3,Ikoyi and Victoria Island,1551215871
+W1552747807,,service,false,0,5.0,false,false,false,0,63.7,Ikoyi and Victoria Island,1552747807
+W1557850810,,tertiary,false,0,10.0,false,false,false,0,209.8,Ikoyi and Victoria Island,1557850810
+W1562129941,,service,false,0,5.0,false,false,false,0,6.9,Ikoyi and Victoria Island,1562129941
+W1562129942,,service,false,0,5.0,false,false,false,0,109.9,Ikoyi and Victoria Island,1562129942
+W1562129943,,service,false,0,5.0,false,false,false,0,14.0,Ikoyi and Victoria Island,1562129943
+W1562129944,,service,false,0,5.0,false,false,false,0,75.4,Ikoyi and Victoria Island,1562129944
+W1563002278,,service,false,0,5.0,false,false,false,0,47.5,Ikoyi and Victoria Island,1563002278
+W1563002279,,service,false,0,5.0,false,false,false,0,15.3,Ikoyi and Victoria Island,1563002279
+W1563002280,,service,false,0,5.0,false,false,false,0,51.9,Ikoyi and Victoria Island,1563002280
+W1563002281,,service,false,0,5.0,false,false,false,0,50.3,Ikoyi and Victoria Island,1563002281
+W1563002282,,service,false,0,5.0,false,false,false,0,48.2,Ikoyi and Victoria Island,1563002282
+W1563002283,,service,false,0,5.0,false,false,false,0,47.5,Ikoyi and Victoria Island,1563002283
+W1563002284,,service,false,0,5.0,false,false,false,0,74.5,Ikoyi and Victoria Island,1563002284
+W1563002285,,service,false,0,5.0,false,false,false,0,200.4,Ikoyi and Victoria Island,1563002285
+W1563002286,,service,false,0,5.0,false,false,false,0,53.7,Ikoyi and Victoria Island,1563002286
+W1563005110,,service,false,0,5.0,false,false,false,0,82.5,Ikoyi and Victoria Island,1563005110
+W1563005111,,service,false,0,5.0,false,false,false,0,25.1,Ikoyi and Victoria Island,1563005111
+W1563005112,,service,false,0,5.0,false,false,false,0,76.6,Ikoyi and Victoria Island,1563005112
+W1563005113,,service,false,0,5.0,false,false,false,0,11.9,Ikoyi and Victoria Island,1563005113
+W1563005114,,service,false,0,5.0,false,false,false,0,9.8,Ikoyi and Victoria Island,1563005114
+W1563005115,,service,false,0,5.0,false,false,false,0,19.7,Ikoyi and Victoria Island,1563005115
+W1563005116,,service,false,0,5.0,false,false,false,0,43.2,Ikoyi and Victoria Island,1563005116
+W1563005117,,service,false,0,5.0,false,false,false,0,76.5,Ikoyi and Victoria Island,1563005117
+W1563005118,,service,false,0,5.0,false,false,false,0,6.9,Ikoyi and Victoria Island,1563005118
+W1563048258,,service,false,0,5.0,false,false,false,0,84.9,Ikoyi and Victoria Island,1563048258
+W1563048259,,service,false,0,5.0,false,false,false,0,25.6,Ikoyi and Victoria Island,1563048259
+W1566732804,,service,false,0,5.0,false,false,false,0,78.4,Ikoyi and Victoria Island,1566732804
+W1566732805,,service,false,0,5.0,false,false,false,0,145.3,Ikoyi and Victoria Island,1566732805
+W1566732806,,service,false,0,5.0,false,false,false,0,99.5,Ikoyi and Victoria Island,1566732806
+W1566732807,,service,false,0,5.0,false,false,false,0,157.4,Ikoyi and Victoria Island,1566732807
+W1566732808,,service,false,0,5.0,false,false,false,0,139.0,Ikoyi and Victoria Island,1566732808
+W1566732809,,service,false,0,5.0,false,false,false,0,66.1,Ikoyi and Victoria Island,1566732809
+W1566732985,,service,false,0,5.0,false,false,false,0,141.8,Ikoyi and Victoria Island,1566732985
+W1566732986,,service,false,0,5.0,false,false,false,0,166.1,Ikoyi and Victoria Island,1566732986
+W1566972896,,service,false,0,5.0,false,false,false,0,53.5,Ikoyi and Victoria Island,1566972896
+W1566972897,,service,false,0,5.0,false,false,false,0,15.1,Ikoyi and Victoria Island,1566972897
+W1566976136,,service,false,0,5.0,false,false,false,0,77.6,Ikoyi and Victoria Island,1566976136
+W1566976137,,service,false,0,5.0,false,false,false,0,30.6,Ikoyi and Victoria Island,1566976137
+W1566976138,,service,false,0,5.0,false,false,false,0,64.9,Ikoyi and Victoria Island,1566976138
+W1566976139,,service,false,0,5.0,false,false,false,0,90.9,Ikoyi and Victoria Island,1566976139
+W1566976140,,service,false,0,5.0,false,false,false,0,15.2,Ikoyi and Victoria Island,1566976140
+W1566976141,,service,false,0,5.0,false,false,false,0,29.2,Ikoyi and Victoria Island,1566976141
+W1566976142,,service,false,0,5.0,false,false,false,0,62.1,Ikoyi and Victoria Island,1566976142
+W1566976143,,service,false,0,5.0,false,false,false,0,59.1,Ikoyi and Victoria Island,1566976143
+W1566976144,,service,false,0,5.0,false,false,false,0,16.0,Ikoyi and Victoria Island,1566976144
+W1566976595,,service,false,0,5.0,false,false,false,0,14.1,Ikoyi and Victoria Island,1566976595
+W1566985582,,service,false,0,5.0,true,false,false,0,14.0,Ikoyi and Victoria Island,1566985582
+W1566985583,,service,false,0,5.0,true,false,false,0,13.6,Ikoyi and Victoria Island,1566985583
+W1566985584,,service,false,0,5.0,false,false,false,0,102.4,Ikoyi and Victoria Island,1566985584
+W1566985585,,service,false,0,5.0,false,false,false,0,52.4,Ikoyi and Victoria Island,1566985585
+W1566992631,,service,false,0,5.0,false,false,false,0,39.3,Ikoyi and Victoria Island,1566992631
+W1566995932,,service,false,0,5.0,true,false,false,0,2.4,Ikoyi and Victoria Island,1566995932
+W1566995933,,service,false,0,5.0,true,false,false,0,11.6,Ikoyi and Victoria Island,1566995933
+W1566995934,,service,false,0,5.0,false,false,false,0,2.1,Ikoyi and Victoria Island,1566995934
+W1566995935,,service,false,0,5.0,false,false,false,0,11.7,Ikoyi and Victoria Island,1566995935
+W1566995936,,service,false,0,5.0,false,false,false,0,6.1,Ikoyi and Victoria Island,1566995936
+W1566995937,,service,false,0,5.0,false,false,false,0,9.4,Ikoyi and Victoria Island,1566995937
+W1566995938,,service,false,0,5.0,false,false,false,0,9.6,Ikoyi and Victoria Island,1566995938
+W1566995939,,service,false,0,5.0,false,false,false,0,13.0,Ikoyi and Victoria Island,1566995939
+W1566995940,,service,false,0,5.0,false,false,false,0,84.9,Ikoyi and Victoria Island,1566995940
+W1566995941,,service,false,0,5.0,false,false,false,0,40.4,Ikoyi and Victoria Island,1566995941
+W1566995942,,service,false,0,5.0,false,false,false,0,3.0,Ikoyi and Victoria Island,1566995942
+W1566995943,,service,false,0,5.0,false,false,false,0,57.5,Ikoyi and Victoria Island,1566995943
+W1566995944,,service,false,0,5.0,false,false,false,0,5.7,Ikoyi and Victoria Island,1566995944
+W1566995945,,service,false,0,5.0,false,false,false,0,9.1,Ikoyi and Victoria Island,1566995945
+W1566995946,,service,false,0,5.0,false,false,false,0,9.2,Ikoyi and Victoria Island,1566995946
+W1566995947,,service,false,0,5.0,false,false,false,0,7.4,Ikoyi and Victoria Island,1566995947
+W1566995948,,service,false,0,5.0,true,false,false,0,23.6,Ikoyi and Victoria Island,1566995948
+W1566995949,,service,false,0,5.0,true,false,false,0,7.9,Ikoyi and Victoria Island,1566995949
+W1566995950,,service,false,0,5.0,false,false,false,0,13.7,Ikoyi and Victoria Island,1566995950
+W1566995951,,service,false,0,5.0,false,false,false,0,88.4,Ikoyi and Victoria Island,1566995951
+W1566995952,,service,false,0,5.0,false,false,false,0,45.2,Ikoyi and Victoria Island,1566995952
+W1566995953,,service,false,0,5.0,true,false,false,0,19.2,Ikoyi and Victoria Island,1566995953
+W1566995954,,service,false,0,5.0,false,false,false,0,30.5,Ikoyi and Victoria Island,1566995954
+W1566995955,,service,false,0,5.0,false,false,false,0,4.1,Ikoyi and Victoria Island,1566995955
+W1566995956,,service,false,0,5.0,false,false,false,0,9.6,Ikoyi and Victoria Island,1566995956
+W1566995957,,service,false,0,5.0,true,false,false,0,4.5,Ikoyi and Victoria Island,1566995957
+W1566995958,,service,false,0,5.0,true,false,false,0,11.1,Ikoyi and Victoria Island,1566995958
+W1566995959,,service,false,0,5.0,true,false,false,0,12.7,Ikoyi and Victoria Island,1566995959
+W1566995960,,service,false,0,5.0,false,false,false,0,86.4,Ikoyi and Victoria Island,1566995960
+W1566995961,,service,false,0,5.0,false,false,false,0,9.4,Ikoyi and Victoria Island,1566995961
+W1567014745,,service,false,0,5.0,false,false,false,0,7.7,Ikoyi and Victoria Island,1567014745
+W1567014746,,service,false,0,5.0,false,false,false,0,56.5,Ikoyi and Victoria Island,1567014746
+W1567014747,,service,false,0,5.0,false,false,false,0,4.8,Ikoyi and Victoria Island,1567014747
+W1567014748,,service,false,0,5.0,false,false,false,0,28.7,Ikoyi and Victoria Island,1567014748
+W1567014749,,service,false,0,5.0,false,false,false,0,12.3,Ikoyi and Victoria Island,1567014749
+W1567014750,,service,false,0,5.0,false,false,false,0,11.4,Ikoyi and Victoria Island,1567014750
+W1567014751,,service,false,0,5.0,false,false,false,0,12.5,Ikoyi and Victoria Island,1567014751
+W1567014752,,service,false,0,5.0,false,false,false,0,69.8,Ikoyi and Victoria Island,1567014752
+W1567014753,,service,false,0,5.0,false,false,false,0,40.3,Ikoyi and Victoria Island,1567014753
+W1567014754,,service,false,0,5.0,false,false,false,0,34.8,Ikoyi and Victoria Island,1567014754
+W1567014755,,service,false,0,5.0,false,false,false,0,15.1,Ikoyi and Victoria Island,1567014755
+W1567017996,,service,false,0,5.0,false,false,false,0,35.8,Ikoyi and Victoria Island,1567017996
+W1567017997,,service,false,0,5.0,false,false,false,0,9.0,Ikoyi and Victoria Island,1567017997
+W1567017998,,service,false,0,5.0,false,false,false,0,6.1,Ikoyi and Victoria Island,1567017998
+W1567017999,,service,false,0,5.0,false,false,false,0,28.4,Ikoyi and Victoria Island,1567017999
+W1567018000,,service,false,0,5.0,false,false,false,0,9.3,Ikoyi and Victoria Island,1567018000
+W1567018001,,service,false,0,5.0,false,false,false,0,46.4,Ikoyi and Victoria Island,1567018001
+W1567018002,,service,false,0,5.0,false,false,false,0,29.2,Ikoyi and Victoria Island,1567018002
+W1567018003,,service,false,0,5.0,false,false,false,0,11.5,Ikoyi and Victoria Island,1567018003
+W1567018004,,service,false,0,5.0,false,false,false,0,7.3,Ikoyi and Victoria Island,1567018004
+W1567019690,,service,false,0,5.0,true,false,false,0,27.5,Ikoyi and Victoria Island,1567019690
+W1567019691,,service,false,0,5.0,true,false,false,0,81.3,Ikoyi and Victoria Island,1567019691
+W1567019692,,residential,false,0,7.5,false,false,false,0,11.0,Ikoyi and Victoria Island,1567019692
+W1567026543,,service,false,0,5.0,false,false,false,0,10.2,Ikoyi and Victoria Island,1567026543
+W1567026544,,service,false,0,5.0,false,false,false,0,65.7,Ikoyi and Victoria Island,1567026544
+W1567026545,,service,false,0,5.0,false,false,false,0,69.2,Ikoyi and Victoria Island,1567026545
+W1567026546,,service,false,0,5.0,false,false,false,0,23.5,Ikoyi and Victoria Island,1567026546
+W1567026547,,service,false,0,5.0,false,false,false,0,7.5,Ikoyi and Victoria Island,1567026547
+W1567026548,,service,false,0,5.0,false,false,false,0,12.9,Ikoyi and Victoria Island,1567026548
+W1567026549,,service,false,0,5.0,false,false,false,0,7.2,Ikoyi and Victoria Island,1567026549
+W166891800,,service,false,0,5.0,false,false,false,0,60.7,Ikoyi and Victoria Island,166891800
+W216689321,,primary,false,0,17.5,true,false,false,0,24.9,Ikoyi and Victoria Island,216689321
+W216689325,,primary,false,0,17.5,true,false,false,0,25.6,Ikoyi and Victoria Island,216689325
+W216689331,,primary,false,0,17.5,true,false,false,0,30.5,Ikoyi and Victoria Island,216689331
+W216689338,,primary,false,0,17.5,true,false,false,0,29.7,Ikoyi and Victoria Island,216689338
+W216689342,,trunk,true,0,7.5,true,false,false,0,49.1,Ikoyi and Victoria Island,216689342
+W216882042,,trunk,false,2,7.6,true,false,false,0,129.4,Ikoyi and Victoria Island,216882042
+W216882044,,trunk,false,2,7.6,true,false,false,100,101.4,Ikoyi and Victoria Island,216882044
+W294603085,,residential,false,0,7.5,false,false,false,0,79.7,Ikoyi and Victoria Island,294603085
+W294812836,,unclassified,false,0,7.5,true,false,false,0,43.3,Ikoyi and Victoria Island,294812836
+W294812837,,unclassified,false,0,7.5,true,false,false,0,21.2,Ikoyi and Victoria Island,294812837
+W294812838,,unclassified,false,0,7.5,false,false,false,0,358.4,Ikoyi and Victoria Island,294812838
+W294812839,,residential,false,0,7.5,false,false,false,0,17.0,Ikoyi and Victoria Island,294812839
+W294812840,,unclassified,false,0,7.5,false,true,false,0,13.2,Ikoyi and Victoria Island,294812840
+W294812841,,residential,false,0,7.5,false,false,false,0,78.3,Ikoyi and Victoria Island,294812841
+W294812843,,residential,false,0,7.5,true,false,true,0,33.3,Ikoyi and Victoria Island,294812843
+W294812844,,residential,false,0,7.5,false,false,false,0,193.7,Ikoyi and Victoria Island,294812844
+W294812845,,unclassified,false,0,7.5,false,false,false,0,335.4,Ikoyi and Victoria Island,294812845
+W294812846,,residential,false,0,7.5,false,false,false,0,66.0,Ikoyi and Victoria Island,294812846
+W294869705,,secondary,false,0,13.0,true,false,false,0,2974.1,Ikoyi and Victoria Island,294869705
+W294869706,,residential,false,0,7.5,false,false,false,0,86.7,Ikoyi and Victoria Island,294869706
+W294869707,,residential,false,0,7.5,false,false,false,0,80.8,Ikoyi and Victoria Island,294869707
+W294869709,,residential,false,0,7.5,true,false,false,0,35.4,Ikoyi and Victoria Island,294869709
+W294869710,,residential,false,0,7.5,false,false,false,0,114.9,Ikoyi and Victoria Island,294869710
+W294869712,,residential,false,0,7.5,false,false,false,0,216.8,Ikoyi and Victoria Island,294869712
+W294869713,,residential,false,0,7.5,false,false,false,0,429.8,Ikoyi and Victoria Island,294869713
+W294869714,,residential,false,0,7.5,false,false,false,0,185.6,Ikoyi and Victoria Island,294869714
+W294869715,,residential,false,0,7.5,false,false,false,0,52.0,Ikoyi and Victoria Island,294869715
+W294869717,,residential,false,0,7.5,false,false,false,0,101.0,Ikoyi and Victoria Island,294869717
+W294869725,,secondary,false,0,13.0,true,false,false,0,1268.8,Ikoyi and Victoria Island,294869725
+W294869727,,residential,false,0,7.5,true,false,true,0,118.1,Ikoyi and Victoria Island,294869727
+W294869733,,residential,false,0,7.5,false,false,false,0,77.3,Ikoyi and Victoria Island,294869733
+W294869739,,residential,false,0,7.5,true,false,false,0,42.0,Ikoyi and Victoria Island,294869739
+W294869741,,residential,false,0,7.5,false,false,false,0,515.9,Ikoyi and Victoria Island,294869741
+W294869744,,residential,false,0,7.5,false,false,false,0,139.5,Ikoyi and Victoria Island,294869744
+W294869745,,residential,false,0,7.5,false,false,false,0,154.3,Ikoyi and Victoria Island,294869745
+W294869758,,residential,false,0,7.5,false,false,false,0,145.2,Ikoyi and Victoria Island,294869758
+W294869759,,residential,false,0,7.5,false,false,false,0,861.3,Ikoyi and Victoria Island,294869759
+W294869760,,residential,false,0,7.5,false,false,false,0,294.2,Ikoyi and Victoria Island,294869760
+W294869761,,residential,false,0,7.5,false,false,false,0,163.5,Ikoyi and Victoria Island,294869761
+W294869762,,residential,false,0,7.5,true,false,false,0,36.9,Ikoyi and Victoria Island,294869762
+W294869766,,residential,false,0,7.5,false,false,false,0,124.4,Ikoyi and Victoria Island,294869766
+W294869771,,residential,false,0,7.5,false,false,false,0,149.1,Ikoyi and Victoria Island,294869771
+W294869774,,residential,false,0,7.5,true,false,false,0,41.6,Ikoyi and Victoria Island,294869774
+W294869778,,residential,false,0,7.5,false,false,false,0,428.8,Ikoyi and Victoria Island,294869778
+W294869779,,residential,false,0,7.5,false,false,false,0,70.4,Ikoyi and Victoria Island,294869779
+W318002792,,trunk,true,0,7.5,true,false,false,0,165.9,Ikoyi and Victoria Island,318002792
+W406227367,,trunk,true,0,7.5,true,true,false,0,130.3,Ikoyi and Victoria Island,406227367
+W411651553,,service,false,2,7.6,true,false,false,0,37.1,Ikoyi and Victoria Island,411651553
+W448988895,,unclassified,false,0,7.5,true,false,true,0,76.5,Ikoyi and Victoria Island,448988895
+W448988896,,unclassified,false,0,7.5,true,false,false,0,45.8,Ikoyi and Victoria Island,448988896
+W448988897,,unclassified,false,0,7.5,true,false,false,0,48.8,Ikoyi and Victoria Island,448988897
+W448988901,,unclassified,false,0,7.5,true,false,false,0,36.2,Ikoyi and Victoria Island,448988901
+W448988902,,unclassified,false,0,7.5,true,false,false,0,36.3,Ikoyi and Victoria Island,448988902
+W479027106,,service,false,0,5.0,true,false,false,0,175.8,Ikoyi and Victoria Island,479027106
+W481337674,,service,false,3,10.9,true,false,false,0,11.9,Ikoyi and Victoria Island,481337674
+W481537473,,service,false,0,5.0,true,false,false,0,357.1,Ikoyi and Victoria Island,481537473
+W482055898,,service,false,0,5.0,true,false,false,0,43.3,Ikoyi and Victoria Island,482055898
+W482055899,,service,false,0,5.0,true,false,false,0,31.6,Ikoyi and Victoria Island,482055899
+W482055900,,service,false,0,5.0,true,false,false,0,171.2,Ikoyi and Victoria Island,482055900
+W482055901,,service,false,0,5.0,false,false,false,0,46.1,Ikoyi and Victoria Island,482055901
+W482055902,,service,false,0,5.0,false,false,false,0,30.6,Ikoyi and Victoria Island,482055902
+W484704055,,service,false,0,5.0,false,false,false,0,185.5,Ikoyi and Victoria Island,484704055
+W484704056,,service,false,0,5.0,false,false,false,0,16.5,Ikoyi and Victoria Island,484704056
+W484704057,,service,false,0,5.0,true,false,false,0,6.9,Ikoyi and Victoria Island,484704057
+W484704059,,service,false,0,5.0,false,false,false,0,17.0,Ikoyi and Victoria Island,484704059
+W504468134,,primary,true,0,7.5,true,false,false,0,17.4,Ikoyi and Victoria Island,504468134
+W504468136,,primary,true,0,7.5,true,false,false,0,18.3,Ikoyi and Victoria Island,504468136
+W504468139,,secondary,true,0,7.5,false,false,false,0,8.5,Ikoyi and Victoria Island,504468139
+W504468150,,service,false,0,5.0,true,false,false,0,87.9,Ikoyi and Victoria Island,504468150
+W505413822,,service,false,2,7.6,true,false,false,0,11.7,Ikoyi and Victoria Island,505413822
+W507665757,,residential,false,0,7.5,false,false,false,0,59.8,Ikoyi and Victoria Island,507665757
+W525377042,,service,false,0,5.0,false,false,false,0,14.0,Ikoyi and Victoria Island,525377042
+W525377043,,service,false,0,5.0,true,false,false,0,8.9,Ikoyi and Victoria Island,525377043
+W525377044,,service,false,0,5.0,false,false,false,0,221.4,Ikoyi and Victoria Island,525377044
+W525377045,,service,false,0,5.0,true,false,false,0,113.0,Ikoyi and Victoria Island,525377045
+W525377046,,service,false,0,5.0,true,false,false,0,104.0,Ikoyi and Victoria Island,525377046
+W529219710,,service,false,0,5.0,false,false,false,0,51.8,Ikoyi and Victoria Island,529219710
+W529219713,,service,false,0,5.0,false,false,false,0,259.5,Ikoyi and Victoria Island,529219713
+W529219716,,service,false,0,5.0,false,false,false,0,271.1,Ikoyi and Victoria Island,529219716
+W529219717,,service,false,0,5.0,false,false,false,0,89.8,Ikoyi and Victoria Island,529219717
+W529219718,,service,false,0,5.0,false,false,false,0,169.5,Ikoyi and Victoria Island,529219718
+W529219719,,service,false,0,5.0,false,false,false,0,119.9,Ikoyi and Victoria Island,529219719
+W529219721,,service,false,0,5.0,false,false,false,0,170.6,Ikoyi and Victoria Island,529219721
+W529219723,,service,false,0,5.0,false,false,false,0,156.5,Ikoyi and Victoria Island,529219723
+W529219725,,service,false,0,5.0,false,false,false,0,160.2,Ikoyi and Victoria Island,529219725
+W529219726,,service,false,0,5.0,false,false,false,0,67.8,Ikoyi and Victoria Island,529219726
+W529219728,,service,false,0,5.0,false,false,false,0,239.0,Ikoyi and Victoria Island,529219728
+W529219730,,service,false,0,5.0,false,false,false,0,63.0,Ikoyi and Victoria Island,529219730
+W529219731,,service,false,0,5.0,false,false,false,0,134.3,Ikoyi and Victoria Island,529219731
+W529219732,,service,false,0,5.0,false,false,false,0,117.8,Ikoyi and Victoria Island,529219732
+W529219733,,service,false,0,5.0,false,false,false,0,16.8,Ikoyi and Victoria Island,529219733
+W529444304,,residential,false,0,7.5,false,false,false,0,8.5,Ikoyi and Victoria Island,529444304
+W529444306,,residential,false,0,7.5,false,false,false,0,100.0,Ikoyi and Victoria Island,529444306
+W529444308,,service,false,0,5.0,true,false,false,0,147.8,Ikoyi and Victoria Island,529444308
+W529444316,,service,false,0,5.0,true,false,false,0,38.0,Ikoyi and Victoria Island,529444316
+W529444317,,service,false,0,5.0,true,false,false,0,38.4,Ikoyi and Victoria Island,529444317
+W529795566,,service,false,0,5.0,true,false,false,0,71.1,Ikoyi and Victoria Island,529795566
+W529795567,,service,false,0,5.0,true,false,false,0,69.8,Ikoyi and Victoria Island,529795567
+W529795568,,service,false,0,5.0,false,false,false,0,9.4,Ikoyi and Victoria Island,529795568
+W529795572,,service,false,0,5.0,false,false,false,0,36.1,Ikoyi and Victoria Island,529795572
+W529795573,,service,false,0,5.0,false,false,false,0,90.8,Ikoyi and Victoria Island,529795573
+W529795577,,tertiary,false,0,10.0,true,false,true,0,157.6,Ikoyi and Victoria Island,529795577
+W529795586,,service,false,0,5.0,false,false,false,0,23.3,Ikoyi and Victoria Island,529795586
+W529795587,,service,false,0,5.0,true,false,false,0,77.0,Ikoyi and Victoria Island,529795587
+W530073328,,service,false,0,5.0,false,false,false,0,68.3,Ikoyi and Victoria Island,530073328
+W530073329,,service,false,0,5.0,true,false,false,0,11.4,Ikoyi and Victoria Island,530073329
+W530073330,,service,false,0,5.0,false,false,false,0,23.2,Ikoyi and Victoria Island,530073330
+W530073331,,service,false,0,5.0,false,false,false,0,54.9,Ikoyi and Victoria Island,530073331
+W530073332,,service,false,0,5.0,false,false,false,0,39.2,Ikoyi and Victoria Island,530073332
+W530073333,,service,false,0,5.0,false,false,false,0,39.9,Ikoyi and Victoria Island,530073333
+W530073360,,service,false,0,5.0,false,false,false,0,215.8,Ikoyi and Victoria Island,530073360
+W530073361,,service,false,0,5.0,false,false,false,0,4.1,Ikoyi and Victoria Island,530073361
+W530073362,,service,false,0,5.0,true,false,false,0,17.9,Ikoyi and Victoria Island,530073362
+W531018600,,service,false,0,5.0,true,false,false,0,4.9,Ikoyi and Victoria Island,531018600
+W534108661,,service,false,0,5.0,false,false,false,0,325.8,Ikoyi and Victoria Island,534108661
+W534108662,,service,false,0,5.0,false,false,false,0,38.3,Ikoyi and Victoria Island,534108662
+W536457591,,residential,false,0,7.5,true,false,false,0,152.5,Ikoyi and Victoria Island,536457591
+W536506101,,tertiary,true,0,7.5,false,false,false,0,9.1,Ikoyi and Victoria Island,536506101
+W536506102,,tertiary,true,0,7.5,false,false,false,0,10.7,Ikoyi and Victoria Island,536506102
+W536506103,,tertiary,true,0,7.5,false,false,false,0,8.9,Ikoyi and Victoria Island,536506103
+W542328798,,service,false,0,5.0,true,false,false,0,41.8,Ikoyi and Victoria Island,542328798
+W542328799,,service,false,0,5.0,true,false,false,0,42.4,Ikoyi and Victoria Island,542328799
+W542328800,,service,false,0,5.0,true,false,false,0,151.9,Ikoyi and Victoria Island,542328800
+W542328801,,service,false,0,5.0,false,false,false,0,93.3,Ikoyi and Victoria Island,542328801
+W542328802,,service,false,0,5.0,false,false,false,0,98.9,Ikoyi and Victoria Island,542328802
+W544212452,,service,false,0,5.0,false,false,false,0,23.5,Ikoyi and Victoria Island,544212452
+W551350610,,service,false,0,5.0,false,false,false,0,150.8,Ikoyi and Victoria Island,551350610
+W554716658,,service,false,0,5.0,false,false,false,0,15.8,Ikoyi and Victoria Island,554716658
+W554716703,,service,false,0,5.0,false,false,false,0,27.9,Ikoyi and Victoria Island,554716703
+W554716704,,service,false,0,5.0,false,false,false,0,90.6,Ikoyi and Victoria Island,554716704
+W556508141,,service,false,2,7.6,true,false,false,0,4.8,Ikoyi and Victoria Island,556508141
+W556508147,,service,false,0,5.0,false,false,false,0,92.9,Ikoyi and Victoria Island,556508147
+W556508148,,service,false,0,5.0,false,false,false,0,79.4,Ikoyi and Victoria Island,556508148
+W556508149,,service,false,0,5.0,false,false,false,0,78.1,Ikoyi and Victoria Island,556508149
+W556508150,,service,false,0,5.0,false,false,false,0,16.6,Ikoyi and Victoria Island,556508150
+W556508151,,service,false,0,5.0,false,false,false,0,50.8,Ikoyi and Victoria Island,556508151
+W556508152,,service,false,0,5.0,false,false,false,0,87.8,Ikoyi and Victoria Island,556508152
+W556508153,,service,false,0,5.0,false,false,false,0,49.6,Ikoyi and Victoria Island,556508153
+W556508154,,service,false,0,5.0,false,false,false,0,93.4,Ikoyi and Victoria Island,556508154
+W556508155,,service,false,0,5.0,false,false,false,0,98.8,Ikoyi and Victoria Island,556508155
+W556508156,,service,false,0,5.0,false,false,false,0,102.6,Ikoyi and Victoria Island,556508156
+W556508157,,service,false,0,5.0,false,false,false,0,57.7,Ikoyi and Victoria Island,556508157
+W556508159,,service,false,0,5.0,false,false,false,0,6.6,Ikoyi and Victoria Island,556508159
+W556508160,,service,false,0,5.0,false,false,false,0,53.7,Ikoyi and Victoria Island,556508160
+W556508161,,service,false,0,5.0,false,false,false,0,112.7,Ikoyi and Victoria Island,556508161
+W556508162,,service,false,0,5.0,false,false,false,0,22.5,Ikoyi and Victoria Island,556508162
+W556508182,,unclassified,false,0,7.5,true,false,false,0,59.8,Ikoyi and Victoria Island,556508182
+W556508184,,unclassified,false,0,7.5,true,false,false,0,89.3,Ikoyi and Victoria Island,556508184
+W556508185,,residential,false,0,7.5,false,false,false,0,8.5,Ikoyi and Victoria Island,556508185
+W556508186,,residential,false,0,7.5,false,false,false,0,65.8,Ikoyi and Victoria Island,556508186
+W556508187,,residential,false,0,7.5,false,false,false,0,92.0,Ikoyi and Victoria Island,556508187
+W559542317,,trunk,true,0,7.5,true,false,false,0,73.6,Ikoyi and Victoria Island,559542317
+W559542319,,trunk,true,0,7.5,true,false,false,0,63.4,Ikoyi and Victoria Island,559542319
+W581961496,,residential,false,0,7.5,false,false,false,0,734.2,Ikoyi and Victoria Island,581961496
+W583246853,,residential,false,0,7.5,false,false,false,0,198.6,Ikoyi and Victoria Island,583246853
+W583246856,,trunk,true,0,7.5,true,false,false,0,38.2,Ikoyi and Victoria Island,583246856
+W583490120,,service,false,0,5.0,false,false,false,0,72.1,Ikoyi and Victoria Island,583490120
+W583490122,,service,false,0,5.0,false,false,false,0,136.0,Ikoyi and Victoria Island,583490122
+W583490124,,residential,false,0,7.5,false,false,false,0,57.5,Ikoyi and Victoria Island,583490124
+W583490126,,residential,false,0,7.5,false,false,false,0,197.0,Ikoyi and Victoria Island,583490126
+W583490128,,service,false,0,5.0,false,false,false,0,44.2,Ikoyi and Victoria Island,583490128
+W583490129,,service,false,0,5.0,false,false,false,0,64.7,Ikoyi and Victoria Island,583490129
+W583490130,,service,false,0,5.0,false,false,false,0,121.7,Ikoyi and Victoria Island,583490130
+W583490131,,service,false,0,5.0,false,false,false,0,46.9,Ikoyi and Victoria Island,583490131
+W583490132,,service,false,0,5.0,false,false,false,0,77.7,Ikoyi and Victoria Island,583490132
+W583490133,,residential,false,0,7.5,false,false,false,0,160.4,Ikoyi and Victoria Island,583490133
+W583490135,,residential,false,0,7.5,false,false,false,0,88.6,Ikoyi and Victoria Island,583490135
+W583490136,,residential,false,0,7.5,false,false,false,0,67.3,Ikoyi and Victoria Island,583490136
+W583497840,,residential,false,0,7.5,false,false,false,0,65.2,Ikoyi and Victoria Island,583497840
+W583497842,,service,false,0,5.0,false,false,false,0,107.4,Ikoyi and Victoria Island,583497842
+W583497848,,residential,false,0,7.5,false,false,false,0,91.6,Ikoyi and Victoria Island,583497848
+W583512660,,service,false,0,5.0,false,false,false,0,75.2,Ikoyi and Victoria Island,583512660
+W583775782,,residential,false,0,7.5,false,false,false,0,12.4,Ikoyi and Victoria Island,583775782
+W583775783,,residential,false,0,7.5,false,false,false,0,10.2,Ikoyi and Victoria Island,583775783
+W583926254,,service,false,0,5.0,false,false,false,0,67.0,Ikoyi and Victoria Island,583926254
+W583926255,,service,false,0,5.0,false,false,false,0,63.1,Ikoyi and Victoria Island,583926255
+W583929192,,service,false,0,5.0,false,false,false,0,85.5,Ikoyi and Victoria Island,583929192
+W583929193,,service,false,0,5.0,false,false,false,0,73.6,Ikoyi and Victoria Island,583929193
+W584629395,,residential,false,0,7.5,false,false,false,0,9.2,Ikoyi and Victoria Island,584629395
+W584729584,,residential,false,0,7.5,false,false,false,0,76.7,Ikoyi and Victoria Island,584729584
+W591608513,,service,false,0,5.0,false,false,false,0,270.9,Ikoyi and Victoria Island,591608513
+W591608516,,tertiary,false,0,10.0,true,false,false,0,16.9,Ikoyi and Victoria Island,591608516
+W591608517,,service,false,0,5.0,false,false,false,0,123.4,Ikoyi and Victoria Island,591608517
+W591626802,,service,false,0,5.0,true,false,false,0,130.0,Ikoyi and Victoria Island,591626802
+W591626803,,service,false,0,5.0,true,false,false,0,134.3,Ikoyi and Victoria Island,591626803
+W591626804,,service,false,0,5.0,true,false,false,0,43.2,Ikoyi and Victoria Island,591626804
+W591626805,,service,false,0,5.0,true,false,false,0,40.9,Ikoyi and Victoria Island,591626805
+W591626806,,service,false,0,5.0,true,false,false,0,42.0,Ikoyi and Victoria Island,591626806
+W591832789,,service,false,0,5.0,false,false,false,0,38.9,Ikoyi and Victoria Island,591832789
+W591832792,,service,false,0,5.0,false,false,false,0,7.8,Ikoyi and Victoria Island,591832792
+W594743273,,service,false,0,5.0,false,false,false,0,6.7,Ikoyi and Victoria Island,594743273
+W594743274,,service,false,0,5.0,false,false,false,0,113.6,Ikoyi and Victoria Island,594743274
+W594743275,,service,false,0,5.0,false,false,false,0,11.1,Ikoyi and Victoria Island,594743275
+W594743276,,service,false,0,5.0,false,false,false,0,11.2,Ikoyi and Victoria Island,594743276
+W594743277,,service,false,0,5.0,false,false,false,0,11.3,Ikoyi and Victoria Island,594743277
+W594743278,,service,false,0,5.0,false,false,false,0,11.5,Ikoyi and Victoria Island,594743278
+W594743279,,service,false,0,5.0,false,false,false,0,79.9,Ikoyi and Victoria Island,594743279
+W595597114,,service,false,0,5.0,false,false,false,0,14.2,Ikoyi and Victoria Island,595597114
+W595597123,,service,false,0,5.0,false,false,false,0,14.0,Ikoyi and Victoria Island,595597123
+W598412466,,service,false,0,5.0,false,false,false,0,48.8,Ikoyi and Victoria Island,598412466
+W598412468,,service,false,0,5.0,true,false,false,0,285.1,Ikoyi and Victoria Island,598412468
+W598999094,,secondary,true,0,7.5,false,false,false,0,9.8,Ikoyi and Victoria Island,598999094
+W598999101,,residential,false,0,7.5,false,false,false,0,9.5,Ikoyi and Victoria Island,598999101
+W598999117,,residential,false,0,7.5,false,false,false,0,92.4,Ikoyi and Victoria Island,598999117
+W598999120,,service,false,0,5.0,false,false,false,0,82.4,Ikoyi and Victoria Island,598999120
+W598999121,,service,false,0,5.0,false,false,false,0,36.3,Ikoyi and Victoria Island,598999121
+W598999122,,service,false,0,5.0,false,false,false,0,20.8,Ikoyi and Victoria Island,598999122
+W604715898,,residential,false,0,7.5,false,false,false,0,56.8,Ikoyi and Victoria Island,604715898
+W605533008,,service,false,0,5.0,true,false,false,0,13.0,Ikoyi and Victoria Island,605533008
+W606180995,,service,false,0,5.0,true,false,false,0,12.7,Ikoyi and Victoria Island,606180995
+W610896870,,primary,true,0,7.5,true,false,false,0,47.3,Ikoyi and Victoria Island,610896870
+W625815376,,residential,false,0,7.5,false,false,false,0,45.2,Ikoyi and Victoria Island,625815376
+W627612283,,primary,true,0,7.5,true,true,false,0,172.3,Ikoyi and Victoria Island,627612283
+W627612284,,primary,true,0,7.5,true,true,false,0,54.4,Ikoyi and Victoria Island,627612284
+W641988222,,secondary,true,0,7.5,false,false,false,0,10.8,Ikoyi and Victoria Island,641988222
+W659370488,,service,false,0,5.0,false,false,false,0,68.0,Ikoyi and Victoria Island,659370488
+W659370500,,service,false,0,5.0,true,false,false,0,75.1,Ikoyi and Victoria Island,659370500
+W659370501,,service,false,0,5.0,true,false,false,0,14.6,Ikoyi and Victoria Island,659370501
+W725263207,,residential,false,0,7.5,false,false,false,0,88.2,Ikoyi and Victoria Island,725263207
+W725263209,,residential,false,0,7.5,false,false,false,0,663.0,Ikoyi and Victoria Island,725263209
+W725263210,,residential,false,0,7.5,false,false,false,0,675.9,Ikoyi and Victoria Island,725263210
+W725296301,,service,false,0,5.0,false,false,false,0,14.8,Ikoyi and Victoria Island,725296301
+W725296302,,service,false,0,5.0,true,false,false,0,179.9,Ikoyi and Victoria Island,725296302
+W725299229,,service,false,0,5.0,false,false,false,0,22.1,Ikoyi and Victoria Island,725299229
+W725299230,,service,false,0,5.0,false,false,false,0,60.1,Ikoyi and Victoria Island,725299230
+W725299231,,service,false,0,5.0,false,false,false,0,139.7,Ikoyi and Victoria Island,725299231
+W725829890,,service,false,0,5.0,false,false,false,0,80.0,Ikoyi and Victoria Island,725829890
+W725829891,,service,false,0,5.0,false,false,false,0,86.8,Ikoyi and Victoria Island,725829891
+W725843989,,service,false,0,5.0,false,false,false,0,11.6,Ikoyi and Victoria Island,725843989
+W725843990,,service,false,0,5.0,false,false,false,0,37.7,Ikoyi and Victoria Island,725843990
+W725843991,,service,false,0,5.0,false,false,false,0,10.0,Ikoyi and Victoria Island,725843991
+W725843992,,service,false,0,5.0,false,false,false,0,182.1,Ikoyi and Victoria Island,725843992
+W725843993,,service,false,0,5.0,false,false,false,0,19.7,Ikoyi and Victoria Island,725843993
+W725843994,,service,false,0,5.0,false,false,false,0,27.4,Ikoyi and Victoria Island,725843994
+W725843995,,service,false,0,5.0,false,false,false,0,12.4,Ikoyi and Victoria Island,725843995
+W725843996,,service,false,0,5.0,true,false,false,0,87.8,Ikoyi and Victoria Island,725843996
+W725843997,,service,false,0,5.0,true,false,false,0,7.8,Ikoyi and Victoria Island,725843997
+W725843998,,service,false,0,5.0,true,false,false,0,70.4,Ikoyi and Victoria Island,725843998
+W725843999,,service,false,0,5.0,true,false,false,0,109.2,Ikoyi and Victoria Island,725843999
+W725844000,,service,false,0,5.0,true,false,false,0,57.2,Ikoyi and Victoria Island,725844000
+W726027900,,service,false,0,5.0,true,false,false,0,183.6,Ikoyi and Victoria Island,726027900
+W726029481,,service,false,0,5.0,false,false,false,0,36.8,Ikoyi and Victoria Island,726029481
+W726029482,,service,false,0,5.0,false,false,false,0,55.1,Ikoyi and Victoria Island,726029482
+W726047452,,service,false,0,5.0,false,false,false,0,164.7,Ikoyi and Victoria Island,726047452
+W726052008,,service,false,0,5.0,false,false,false,0,35.9,Ikoyi and Victoria Island,726052008
+W726054306,,service,false,0,5.0,false,false,false,0,87.1,Ikoyi and Victoria Island,726054306
+W726080904,,service,false,0,5.0,false,false,false,0,2.2,Ikoyi and Victoria Island,726080904
+W726080905,,service,false,0,5.0,false,false,false,0,74.6,Ikoyi and Victoria Island,726080905
+W726083945,,service,false,0,5.0,false,false,false,0,98.2,Ikoyi and Victoria Island,726083945
+W726083946,,service,false,0,5.0,false,false,false,0,182.6,Ikoyi and Victoria Island,726083946
+W726092392,,service,false,0,5.0,false,false,false,0,78.6,Ikoyi and Victoria Island,726092392
+W726092722,,residential,false,0,7.5,false,false,false,0,61.9,Ikoyi and Victoria Island,726092722
+W726104515,,service,false,0,5.0,false,false,false,0,55.0,Ikoyi and Victoria Island,726104515
+W726104516,,service,false,0,5.0,false,false,false,0,52.6,Ikoyi and Victoria Island,726104516
+W726104517,,service,false,0,5.0,false,false,false,0,16.3,Ikoyi and Victoria Island,726104517
+W726104518,,service,false,0,5.0,false,false,false,0,45.0,Ikoyi and Victoria Island,726104518
+W726104519,,service,false,0,5.0,false,false,false,0,94.2,Ikoyi and Victoria Island,726104519
+W726104520,,service,false,0,5.0,false,false,false,0,105.6,Ikoyi and Victoria Island,726104520
+W726119514,,residential,false,0,7.5,false,false,false,0,157.2,Ikoyi and Victoria Island,726119514
+W726132166,,service,false,0,5.0,false,false,false,0,101.5,Ikoyi and Victoria Island,726132166
+W726593538,,residential,false,0,7.5,false,false,false,0,193.8,Ikoyi and Victoria Island,726593538
+W726602190,,service,false,0,5.0,false,false,false,0,23.1,Ikoyi and Victoria Island,726602190
+W726602191,,service,false,0,5.0,false,false,false,0,8.5,Ikoyi and Victoria Island,726602191
+W726604720,,service,false,0,5.0,false,false,false,0,103.1,Ikoyi and Victoria Island,726604720
+W726605621,,service,false,0,5.0,false,false,false,0,124.9,Ikoyi and Victoria Island,726605621
+W726605622,,residential,false,0,7.5,false,false,false,0,204.7,Ikoyi and Victoria Island,726605622
+W726612178,,residential,false,0,7.5,false,false,false,0,75.6,Ikoyi and Victoria Island,726612178
+W726612179,,residential,false,0,7.5,false,false,false,0,161.4,Ikoyi and Victoria Island,726612179
+W726613467,,residential,false,0,7.5,false,false,false,0,143.7,Ikoyi and Victoria Island,726613467
+W726613468,,residential,false,0,7.5,false,false,false,0,228.2,Ikoyi and Victoria Island,726613468
+W726614967,,service,false,0,5.0,false,false,false,0,25.3,Ikoyi and Victoria Island,726614967
+W726614968,,service,false,0,5.0,false,false,false,0,52.6,Ikoyi and Victoria Island,726614968
+W726615473,,service,false,0,5.0,false,false,false,0,148.5,Ikoyi and Victoria Island,726615473
+W726625830,,service,false,0,5.0,false,false,false,0,193.7,Ikoyi and Victoria Island,726625830
+W726628913,,residential,false,0,7.5,false,false,false,0,132.8,Ikoyi and Victoria Island,726628913
+W726628914,,residential,false,0,7.5,false,false,false,0,457.2,Ikoyi and Victoria Island,726628914
+W726629769,,service,false,0,5.0,false,false,false,0,59.1,Ikoyi and Victoria Island,726629769
+W726629773,,service,false,0,5.0,false,false,false,0,72.4,Ikoyi and Victoria Island,726629773
+W726629774,,service,false,0,5.0,false,false,false,0,188.2,Ikoyi and Victoria Island,726629774
+W726738739,,service,false,0,5.0,false,false,false,0,133.2,Ikoyi and Victoria Island,726738739
+W726763594,,service,false,0,5.0,false,false,false,0,61.9,Ikoyi and Victoria Island,726763594
+W726763595,,service,false,0,5.0,false,false,false,0,67.0,Ikoyi and Victoria Island,726763595
+W726763596,,service,false,0,5.0,false,false,false,0,50.3,Ikoyi and Victoria Island,726763596
+W726763597,,service,false,0,5.0,false,false,false,0,55.5,Ikoyi and Victoria Island,726763597
+W726763598,,service,false,0,5.0,false,false,false,0,11.8,Ikoyi and Victoria Island,726763598
+W726763599,,service,false,0,5.0,false,false,false,0,4.5,Ikoyi and Victoria Island,726763599
+W726765939,,service,false,0,5.0,false,false,false,0,236.7,Ikoyi and Victoria Island,726765939
+W726770720,,residential,false,0,7.5,false,false,false,0,114.9,Ikoyi and Victoria Island,726770720
+W726783546,,residential,false,0,7.5,false,false,false,0,18.3,Ikoyi and Victoria Island,726783546
+W726823161,,residential,false,0,7.5,false,false,false,0,44.6,Ikoyi and Victoria Island,726823161
+W727351135,,service,false,0,5.0,false,false,false,0,18.8,Ikoyi and Victoria Island,727351135
+W727351137,,service,false,0,5.0,false,false,false,0,36.2,Ikoyi and Victoria Island,727351137
+W727351138,,service,false,0,5.0,false,false,false,0,26.8,Ikoyi and Victoria Island,727351138
+W727351139,,service,false,0,5.0,false,false,false,0,27.3,Ikoyi and Victoria Island,727351139
+W727351140,,service,false,0,5.0,false,false,false,0,26.9,Ikoyi and Victoria Island,727351140
+W727351141,,service,false,0,5.0,false,false,false,0,34.4,Ikoyi and Victoria Island,727351141
+W727351142,,service,false,0,5.0,false,false,false,0,84.3,Ikoyi and Victoria Island,727351142
+W727369412,,service,false,0,5.0,true,false,false,0,51.9,Ikoyi and Victoria Island,727369412
+W727369413,,service,false,0,5.0,true,false,false,0,35.8,Ikoyi and Victoria Island,727369413
+W727369414,,service,false,0,5.0,false,false,false,0,8.7,Ikoyi and Victoria Island,727369414
+W727401155,,service,false,0,5.0,false,false,false,0,176.6,Ikoyi and Victoria Island,727401155
+W727410285,,residential,false,0,7.5,false,false,false,0,156.7,Ikoyi and Victoria Island,727410285
+W727417265,,residential,false,0,7.5,false,false,false,0,60.5,Ikoyi and Victoria Island,727417265
+W727417266,,service,false,0,5.0,false,false,false,0,176.1,Ikoyi and Victoria Island,727417266
+W727430578,,residential,false,0,7.5,false,false,false,0,364.2,Ikoyi and Victoria Island,727430578
+W727430579,,residential,false,0,7.5,false,false,false,0,54.8,Ikoyi and Victoria Island,727430579
+W727430580,,residential,false,0,7.5,false,false,false,0,187.7,Ikoyi and Victoria Island,727430580
+W727644532,,service,false,0,5.0,true,false,false,0,27.2,Ikoyi and Victoria Island,727644532
+W727644533,,service,false,0,5.0,true,false,false,0,29.0,Ikoyi and Victoria Island,727644533
+W727644534,,service,false,0,5.0,false,false,false,0,87.0,Ikoyi and Victoria Island,727644534
+W727644535,,service,false,0,5.0,false,false,false,0,32.8,Ikoyi and Victoria Island,727644535
+W727644536,,service,false,0,5.0,false,false,false,0,31.6,Ikoyi and Victoria Island,727644536
+W727644537,,service,false,0,5.0,false,false,false,0,30.3,Ikoyi and Victoria Island,727644537
+W727644538,,service,false,0,5.0,false,false,false,0,181.5,Ikoyi and Victoria Island,727644538
+W727644539,,service,false,0,5.0,false,false,false,0,36.3,Ikoyi and Victoria Island,727644539
+W727644540,,service,false,0,5.0,false,false,false,0,126.0,Ikoyi and Victoria Island,727644540
+W727663669,,service,false,0,5.0,false,false,false,0,70.0,Ikoyi and Victoria Island,727663669
+W727663670,,service,false,0,5.0,false,false,false,0,41.5,Ikoyi and Victoria Island,727663670
+W727663671,,service,false,0,5.0,false,false,false,0,154.5,Ikoyi and Victoria Island,727663671
+W727695720,,residential,false,0,7.5,false,false,false,0,171.5,Ikoyi and Victoria Island,727695720
+W727958491,,service,false,0,5.0,false,false,false,0,55.0,Ikoyi and Victoria Island,727958491
+W727960502,,service,false,0,5.0,false,false,false,0,19.4,Ikoyi and Victoria Island,727960502
+W727960503,,service,false,0,5.0,false,false,false,0,93.4,Ikoyi and Victoria Island,727960503
+W727960504,,service,false,0,5.0,false,false,false,0,61.0,Ikoyi and Victoria Island,727960504
+W727960505,,service,false,0,5.0,false,false,false,0,125.1,Ikoyi and Victoria Island,727960505
+W727960506,,service,false,0,5.0,false,false,false,0,147.5,Ikoyi and Victoria Island,727960506
+W727960509,,service,false,0,5.0,false,false,false,0,129.3,Ikoyi and Victoria Island,727960509
+W728001797,,service,false,0,5.0,false,false,false,0,38.0,Ikoyi and Victoria Island,728001797
+W737778225,,service,false,0,5.0,false,false,false,0,87.5,Ikoyi and Victoria Island,737778225
+W737782901,,service,false,0,5.0,false,false,false,0,51.2,Ikoyi and Victoria Island,737782901
+W737782902,,service,false,0,5.0,false,false,false,0,127.3,Ikoyi and Victoria Island,737782902
+W737782904,,service,false,0,5.0,false,false,false,0,51.3,Ikoyi and Victoria Island,737782904
+W737782905,,service,false,0,5.0,false,false,false,0,126.5,Ikoyi and Victoria Island,737782905
+W737793227,,service,false,0,5.0,false,false,false,0,17.8,Ikoyi and Victoria Island,737793227
+W737793228,,service,false,0,5.0,false,false,false,0,79.4,Ikoyi and Victoria Island,737793228
+W738081456,,service,false,0,5.0,false,false,false,0,129.5,Ikoyi and Victoria Island,738081456
+W738081457,,service,false,0,5.0,false,false,false,0,90.1,Ikoyi and Victoria Island,738081457
+W738094262,,service,false,0,5.0,false,false,false,0,40.5,Ikoyi and Victoria Island,738094262
+W738094263,,service,false,0,5.0,false,false,false,0,151.8,Ikoyi and Victoria Island,738094263
+W738095877,,service,false,0,5.0,false,false,false,0,116.7,Ikoyi and Victoria Island,738095877
+W738106121,,service,false,0,5.0,false,false,false,0,22.1,Ikoyi and Victoria Island,738106121
+W738106122,,service,false,0,5.0,false,false,false,0,56.6,Ikoyi and Victoria Island,738106122
+W738106123,,service,false,0,5.0,false,false,false,0,22.5,Ikoyi and Victoria Island,738106123
+W738131986,,service,false,0,5.0,false,false,false,0,55.9,Ikoyi and Victoria Island,738131986
+W738160408,,service,false,0,5.0,false,false,false,0,26.8,Ikoyi and Victoria Island,738160408
+W738382648,,service,false,0,5.0,false,false,false,0,120.6,Ikoyi and Victoria Island,738382648
+W738383107,,service,false,0,5.0,false,false,false,0,198.9,Ikoyi and Victoria Island,738383107
+W738384858,,service,false,0,5.0,false,false,false,0,159.1,Ikoyi and Victoria Island,738384858
+W738384859,,service,false,0,5.0,false,false,false,0,5.6,Ikoyi and Victoria Island,738384859
+W738384860,,service,false,0,5.0,false,false,false,0,69.2,Ikoyi and Victoria Island,738384860
+W738384861,,service,false,0,5.0,false,false,false,0,124.8,Ikoyi and Victoria Island,738384861
+W738384862,,service,false,0,5.0,false,false,false,0,80.2,Ikoyi and Victoria Island,738384862
+W738384863,,service,false,0,5.0,false,false,false,0,14.8,Ikoyi and Victoria Island,738384863
+W738384864,,service,false,0,5.0,false,false,false,0,17.4,Ikoyi and Victoria Island,738384864
+W738384865,,service,false,0,5.0,false,false,false,0,16.2,Ikoyi and Victoria Island,738384865
+W738384866,,service,false,0,5.0,false,false,false,0,103.2,Ikoyi and Victoria Island,738384866
+W738384867,,service,false,0,5.0,false,false,false,0,18.9,Ikoyi and Victoria Island,738384867
+W738384868,,service,false,0,5.0,false,false,false,0,103.7,Ikoyi and Victoria Island,738384868
+W738384869,,service,false,0,5.0,false,false,false,0,24.0,Ikoyi and Victoria Island,738384869
+W738384870,,service,false,0,5.0,false,false,false,0,22.8,Ikoyi and Victoria Island,738384870
+W738384871,,service,false,0,5.0,false,false,false,0,83.5,Ikoyi and Victoria Island,738384871
+W738384872,,service,false,0,5.0,false,false,false,0,88.3,Ikoyi and Victoria Island,738384872
+W738384873,,service,false,0,5.0,false,false,false,0,92.0,Ikoyi and Victoria Island,738384873
+W738384874,,service,false,0,5.0,false,false,false,0,95.7,Ikoyi and Victoria Island,738384874
+W738384875,,service,false,0,5.0,false,false,false,0,100.5,Ikoyi and Victoria Island,738384875
+W738384876,,service,false,0,5.0,false,false,false,0,104.1,Ikoyi and Victoria Island,738384876
+W738384877,,service,false,0,5.0,false,false,false,0,103.2,Ikoyi and Victoria Island,738384877
+W738384878,,service,false,0,5.0,false,false,false,0,102.3,Ikoyi and Victoria Island,738384878
+W738384879,,service,false,0,5.0,false,false,false,0,125.1,Ikoyi and Victoria Island,738384879
+W738384880,,service,false,0,5.0,false,false,false,0,23.8,Ikoyi and Victoria Island,738384880
+W738384881,,service,false,0,5.0,false,false,false,0,40.8,Ikoyi and Victoria Island,738384881
+W738384882,,service,false,0,5.0,false,false,false,0,36.4,Ikoyi and Victoria Island,738384882
+W738384883,,service,false,0,5.0,false,false,false,0,38.0,Ikoyi and Victoria Island,738384883
+W738384884,,service,false,0,5.0,false,false,false,0,37.8,Ikoyi and Victoria Island,738384884
+W738384885,,service,false,0,5.0,false,false,false,0,37.0,Ikoyi and Victoria Island,738384885
+W738384886,,service,false,0,5.0,false,false,false,0,407.4,Ikoyi and Victoria Island,738384886
+W738402252,,service,false,0,5.0,false,false,false,0,19.5,Ikoyi and Victoria Island,738402252
+W738402253,,service,false,0,5.0,false,false,false,0,52.8,Ikoyi and Victoria Island,738402253
+W738465784,,service,false,0,5.0,false,false,false,0,48.2,Ikoyi and Victoria Island,738465784
+W739695865,,service,false,0,5.0,false,false,false,0,42.6,Ikoyi and Victoria Island,739695865
+W739696721,,service,false,0,5.0,false,false,false,0,67.7,Ikoyi and Victoria Island,739696721
+W739718584,,service,false,0,5.0,false,false,false,0,64.5,Ikoyi and Victoria Island,739718584
+W739721669,,service,false,0,5.0,false,false,false,0,22.4,Ikoyi and Victoria Island,739721669
+W739721670,,service,false,0,5.0,false,false,false,0,46.4,Ikoyi and Victoria Island,739721670
+W739721671,,service,false,0,5.0,false,false,false,0,136.1,Ikoyi and Victoria Island,739721671
+W739755923,,service,false,0,5.0,false,false,false,0,20.8,Ikoyi and Victoria Island,739755923
+W739755924,,service,false,0,5.0,false,false,false,0,112.5,Ikoyi and Victoria Island,739755924
+W744242349,,residential,false,0,7.5,false,false,false,0,75.0,Ikoyi and Victoria Island,744242349
+W744242350,,residential,false,0,7.5,false,false,false,0,100.1,Ikoyi and Victoria Island,744242350
+W761157705,,service,false,0,5.0,false,false,false,0,76.9,Ikoyi and Victoria Island,761157705
+W761187407,,service,false,0,5.0,false,false,false,0,71.3,Ikoyi and Victoria Island,761187407
+W761232747,,service,false,0,5.0,false,false,false,0,71.9,Ikoyi and Victoria Island,761232747
+W761385427,,residential,false,0,7.5,false,false,false,0,132.8,Ikoyi and Victoria Island,761385427
+W761416427,,service,false,0,5.0,false,false,false,0,53.4,Ikoyi and Victoria Island,761416427
+W761463724,,residential,false,0,7.5,false,false,false,0,177.8,Ikoyi and Victoria Island,761463724
+W761617893,,service,false,0,5.0,false,false,false,0,26.7,Ikoyi and Victoria Island,761617893
+W761617894,,service,false,0,5.0,false,false,false,0,13.5,Ikoyi and Victoria Island,761617894
+W761617895,,service,false,0,5.0,false,false,false,0,6.8,Ikoyi and Victoria Island,761617895
+W761617896,,service,false,0,5.0,false,false,false,0,19.8,Ikoyi and Victoria Island,761617896
+W761617897,,service,false,0,5.0,false,false,false,0,18.2,Ikoyi and Victoria Island,761617897
+W761617898,,service,false,0,5.0,false,false,false,0,22.0,Ikoyi and Victoria Island,761617898
+W761617899,,service,false,0,5.0,false,false,false,0,15.2,Ikoyi and Victoria Island,761617899
+W761617900,,service,false,0,5.0,false,false,false,0,27.0,Ikoyi and Victoria Island,761617900
+W761623692,,service,false,0,5.0,false,false,false,0,51.4,Ikoyi and Victoria Island,761623692
+W761624388,,service,false,0,5.0,false,false,false,0,66.4,Ikoyi and Victoria Island,761624388
+W761624389,,service,false,0,5.0,false,false,false,0,64.7,Ikoyi and Victoria Island,761624389
+W761624390,,service,false,0,5.0,false,false,false,0,139.9,Ikoyi and Victoria Island,761624390
+W761656829,,service,false,0,5.0,false,false,false,0,86.6,Ikoyi and Victoria Island,761656829
+W761657903,,service,false,0,5.0,false,false,false,0,126.1,Ikoyi and Victoria Island,761657903
+W761664503,,residential,false,0,7.5,false,false,false,0,95.7,Ikoyi and Victoria Island,761664503
+W761868419,,service,false,0,5.0,false,false,false,0,22.6,Ikoyi and Victoria Island,761868419
+W761868420,,service,false,0,5.0,false,false,false,0,32.6,Ikoyi and Victoria Island,761868420
+W761868421,,service,false,0,5.0,false,false,false,0,67.3,Ikoyi and Victoria Island,761868421
+W761873916,,service,false,0,5.0,false,false,false,0,149.0,Ikoyi and Victoria Island,761873916
+W761873917,,service,false,0,5.0,false,false,false,0,19.0,Ikoyi and Victoria Island,761873917
+W783772091,,residential,false,0,7.5,false,false,false,0,86.6,Ikoyi and Victoria Island,783772091
+W783772092,,residential,false,0,7.5,false,false,false,0,97.3,Ikoyi and Victoria Island,783772092
+W783772782,,service,false,0,5.0,false,false,false,0,84.7,Ikoyi and Victoria Island,783772782
+W783784403,,service,false,0,5.0,false,false,false,0,160.6,Ikoyi and Victoria Island,783784403
+W783784404,,service,false,0,5.0,false,false,false,0,95.4,Ikoyi and Victoria Island,783784404
+W783788398,,service,false,0,5.0,false,false,false,0,103.4,Ikoyi and Victoria Island,783788398
+W783788834,,service,false,0,5.0,false,false,false,0,73.1,Ikoyi and Victoria Island,783788834
+W783788835,,service,false,0,5.0,false,false,false,0,74.6,Ikoyi and Victoria Island,783788835
+W783789082,,service,false,0,5.0,false,false,false,0,79.2,Ikoyi and Victoria Island,783789082
+W783789622,,residential,false,0,7.5,false,false,false,0,58.9,Ikoyi and Victoria Island,783789622
+W783789623,,residential,false,0,7.5,false,false,false,0,165.1,Ikoyi and Victoria Island,783789623
+W783798243,,service,false,0,5.0,false,false,false,0,64.3,Ikoyi and Victoria Island,783798243
+W783800509,,service,false,0,5.0,false,false,false,0,58.9,Ikoyi and Victoria Island,783800509
+W783811624,,residential,false,0,7.5,false,false,false,0,64.6,Ikoyi and Victoria Island,783811624
+W783816004,,residential,false,0,7.5,false,false,false,0,54.3,Ikoyi and Victoria Island,783816004
+W783816005,,residential,false,0,7.5,false,false,false,0,83.2,Ikoyi and Victoria Island,783816005
+W783816006,,residential,false,0,7.5,false,false,false,0,55.0,Ikoyi and Victoria Island,783816006
+W783816007,,residential,false,0,7.5,false,false,false,0,73.7,Ikoyi and Victoria Island,783816007
+W783817329,,residential,false,0,7.5,false,false,false,0,84.2,Ikoyi and Victoria Island,783817329
+W783817330,,residential,false,0,7.5,false,false,false,0,45.9,Ikoyi and Victoria Island,783817330
+W783817331,,residential,false,0,7.5,false,false,false,0,81.8,Ikoyi and Victoria Island,783817331
+W783817332,,residential,false,0,7.5,false,false,false,0,83.5,Ikoyi and Victoria Island,783817332
+W783817333,,residential,false,0,7.5,false,false,false,0,76.0,Ikoyi and Victoria Island,783817333
+W784097027,,service,false,0,5.0,false,false,false,0,76.0,Ikoyi and Victoria Island,784097027
+W784158527,,service,false,0,5.0,false,false,false,0,104.8,Ikoyi and Victoria Island,784158527
+W784649595,,service,false,0,5.0,false,false,false,0,120.7,Ikoyi and Victoria Island,784649595
+W784653316,,service,false,0,5.0,false,false,false,0,74.8,Ikoyi and Victoria Island,784653316
+W784653397,,service,false,0,5.0,false,false,false,0,63.3,Ikoyi and Victoria Island,784653397
+W784656409,,residential,false,0,7.5,false,false,false,0,71.3,Ikoyi and Victoria Island,784656409
+W784657100,,residential,false,0,7.5,false,false,false,0,55.9,Ikoyi and Victoria Island,784657100
+W784683738,,service,false,0,5.0,false,false,false,0,50.9,Ikoyi and Victoria Island,784683738
+W784696611,,service,false,0,5.0,false,false,false,0,66.5,Ikoyi and Victoria Island,784696611
+W784705700,,service,false,0,5.0,false,false,false,0,53.5,Ikoyi and Victoria Island,784705700
+W784716658,,service,false,0,5.0,false,false,false,0,67.3,Ikoyi and Victoria Island,784716658
+W784717156,,service,false,0,5.0,false,false,false,0,54.5,Ikoyi and Victoria Island,784717156
+W784725166,,service,false,0,5.0,false,false,false,0,245.2,Ikoyi and Victoria Island,784725166
+W784978126,,service,false,0,5.0,false,false,false,0,40.2,Ikoyi and Victoria Island,784978126
+W784979818,,service,false,0,5.0,false,false,false,0,75.7,Ikoyi and Victoria Island,784979818
+W784981484,,service,false,0,5.0,false,false,false,0,50.2,Ikoyi and Victoria Island,784981484
+W784981486,,service,false,0,5.0,false,false,false,0,49.0,Ikoyi and Victoria Island,784981486
+W784981487,,residential,false,0,7.5,false,false,false,0,130.6,Ikoyi and Victoria Island,784981487
+W784981488,,service,false,0,5.0,false,false,false,0,298.9,Ikoyi and Victoria Island,784981488
+W784981489,,service,false,0,5.0,false,false,false,0,93.9,Ikoyi and Victoria Island,784981489
+W788058740,,service,false,0,5.0,false,false,false,0,41.0,Ikoyi and Victoria Island,788058740
+W788058741,,service,false,0,5.0,false,false,false,0,40.7,Ikoyi and Victoria Island,788058741
+W788058756,,residential,false,0,7.5,false,false,false,0,100.5,Ikoyi and Victoria Island,788058756
+W788058758,,service,false,0,5.0,false,false,false,0,70.8,Ikoyi and Victoria Island,788058758
+W788058759,,service,false,0,5.0,false,false,false,0,115.2,Ikoyi and Victoria Island,788058759
+W792352772,,service,false,0,5.0,false,false,false,0,73.3,Ikoyi and Victoria Island,792352772
+W792352773,,service,false,0,5.0,false,false,false,0,27.0,Ikoyi and Victoria Island,792352773
+W792723605,,track,false,0,4.0,false,false,false,0,239.5,Ikoyi and Victoria Island,792723605
+W792723606,,track,false,0,4.0,false,false,false,0,511.8,Ikoyi and Victoria Island,792723606
+W792771126,,service,false,0,5.0,false,false,false,0,76.7,Ikoyi and Victoria Island,792771126
+W794420723,,service,false,0,5.0,true,false,false,0,42.8,Ikoyi and Victoria Island,794420723
+W795833278,,residential,false,0,7.5,false,false,false,0,17.2,Ikoyi and Victoria Island,795833278
+W796421537,,service,false,0,5.0,false,false,false,0,57.8,Ikoyi and Victoria Island,796421537
+W796421538,,service,false,0,5.0,false,false,false,0,52.0,Ikoyi and Victoria Island,796421538
+W796421539,,service,false,0,5.0,false,false,false,0,58.9,Ikoyi and Victoria Island,796421539
+W796421542,,service,false,0,5.0,true,false,false,0,8.0,Ikoyi and Victoria Island,796421542
+W796421543,,service,false,0,5.0,true,false,false,0,14.6,Ikoyi and Victoria Island,796421543
+W796421544,,service,false,0,5.0,false,false,false,0,81.2,Ikoyi and Victoria Island,796421544
+W796421545,,service,false,0,5.0,false,false,false,0,24.8,Ikoyi and Victoria Island,796421545
+W828712457,,service,false,0,5.0,false,false,false,0,66.4,Ikoyi and Victoria Island,828712457
+W828713698,,service,false,0,5.0,false,false,false,0,63.9,Ikoyi and Victoria Island,828713698
+W828773421,,service,false,0,5.0,false,false,false,0,70.1,Ikoyi and Victoria Island,828773421
+W828782108,,service,false,0,5.0,false,false,false,0,122.8,Ikoyi and Victoria Island,828782108
+W828798131,,service,false,0,5.0,true,false,false,0,134.1,Ikoyi and Victoria Island,828798131
+W828798132,,service,false,0,5.0,true,false,false,0,4.4,Ikoyi and Victoria Island,828798132
+W828798133,,service,false,0,5.0,false,false,false,0,5.9,Ikoyi and Victoria Island,828798133
+W828807169,,service,false,0,5.0,true,false,false,0,101.5,Ikoyi and Victoria Island,828807169
+W829097812,,service,false,0,5.0,false,false,false,0,84.3,Ikoyi and Victoria Island,829097812
+W829105167,,service,false,0,5.0,false,false,false,0,101.0,Ikoyi and Victoria Island,829105167
+W829105168,,service,false,0,5.0,false,false,false,0,2.8,Ikoyi and Victoria Island,829105168
+W829105169,,service,false,0,5.0,false,false,false,0,2.6,Ikoyi and Victoria Island,829105169
+W829105170,,service,false,0,5.0,false,false,false,0,2.4,Ikoyi and Victoria Island,829105170
+W829105171,,service,false,0,5.0,false,false,false,0,2.5,Ikoyi and Victoria Island,829105171
+W829213037,,service,false,0,5.0,false,false,false,0,58.1,Ikoyi and Victoria Island,829213037
+W847952102,,service,false,0,5.0,false,false,false,0,41.2,Ikoyi and Victoria Island,847952102
+W848367709,,service,false,0,5.0,false,false,false,0,110.6,Ikoyi and Victoria Island,848367709
+W848367710,,service,false,0,5.0,false,false,false,0,27.1,Ikoyi and Victoria Island,848367710
+W848374711,,service,false,0,5.0,false,false,false,0,26.0,Ikoyi and Victoria Island,848374711
+W848374712,,service,false,0,5.0,false,false,false,0,9.6,Ikoyi and Victoria Island,848374712
+W848374713,,service,false,0,5.0,false,false,false,0,84.8,Ikoyi and Victoria Island,848374713
+W848374715,,service,false,0,5.0,false,false,false,0,20.9,Ikoyi and Victoria Island,848374715
+W848374717,,service,false,0,5.0,false,false,false,0,96.7,Ikoyi and Victoria Island,848374717
+W848458138,,service,false,0,5.0,false,false,false,0,74.8,Ikoyi and Victoria Island,848458138
+W848458139,,service,false,0,5.0,false,false,false,0,68.7,Ikoyi and Victoria Island,848458139
+W848458140,,service,false,0,5.0,false,false,false,0,81.8,Ikoyi and Victoria Island,848458140
+W848458141,,service,false,0,5.0,false,false,false,0,41.7,Ikoyi and Victoria Island,848458141
+W848458142,,service,false,0,5.0,false,false,false,0,16.6,Ikoyi and Victoria Island,848458142
+W848458143,,service,false,0,5.0,false,false,false,0,67.8,Ikoyi and Victoria Island,848458143
+W848458155,,service,false,0,5.0,false,false,false,0,90.1,Ikoyi and Victoria Island,848458155
+W848458156,,service,false,0,5.0,false,false,false,0,184.2,Ikoyi and Victoria Island,848458156
+W848458157,,service,false,0,5.0,false,false,false,0,7.9,Ikoyi and Victoria Island,848458157
+W848458158,,service,false,0,5.0,false,false,false,0,73.7,Ikoyi and Victoria Island,848458158
+W848458159,,service,false,0,5.0,false,false,false,0,24.3,Ikoyi and Victoria Island,848458159
+W848458160,,service,false,0,5.0,false,false,false,0,135.8,Ikoyi and Victoria Island,848458160
+W848872635,,service,false,0,5.0,false,false,false,0,30.2,Ikoyi and Victoria Island,848872635
+W848872636,,service,false,0,5.0,false,false,false,0,52.6,Ikoyi and Victoria Island,848872636
+W848872637,,service,false,0,5.0,false,false,false,0,191.7,Ikoyi and Victoria Island,848872637
+W848872638,,service,false,0,5.0,false,false,false,0,35.7,Ikoyi and Victoria Island,848872638
+W848872639,,service,false,0,5.0,false,false,false,0,77.3,Ikoyi and Victoria Island,848872639
+W848872640,,service,false,0,5.0,false,false,false,0,46.1,Ikoyi and Victoria Island,848872640
+W848872641,,service,false,0,5.0,false,false,false,0,45.9,Ikoyi and Victoria Island,848872641
+W848872642,,service,false,0,5.0,false,false,false,0,48.3,Ikoyi and Victoria Island,848872642
+W850124165,,service,false,0,5.0,false,false,false,0,77.8,Ikoyi and Victoria Island,850124165
+W850124166,,service,false,0,5.0,false,false,false,0,75.5,Ikoyi and Victoria Island,850124166
+W850124167,,service,false,0,5.0,false,false,false,0,68.1,Ikoyi and Victoria Island,850124167
+W850124168,,service,false,0,5.0,false,false,false,0,60.4,Ikoyi and Victoria Island,850124168
+W850124169,,service,false,0,5.0,false,false,false,0,21.1,Ikoyi and Victoria Island,850124169
+W850124170,,service,false,0,5.0,false,false,false,0,54.6,Ikoyi and Victoria Island,850124170
+W850124171,,service,false,0,5.0,false,false,false,0,43.0,Ikoyi and Victoria Island,850124171
+W850124172,,service,false,0,5.0,false,false,false,0,71.9,Ikoyi and Victoria Island,850124172
+W850124173,,service,false,0,5.0,false,false,false,0,28.2,Ikoyi and Victoria Island,850124173
+W850124174,,service,false,0,5.0,false,false,false,0,62.0,Ikoyi and Victoria Island,850124174
+W850124175,,service,false,0,5.0,false,false,false,0,62.4,Ikoyi and Victoria Island,850124175
+W850387743,,service,false,0,5.0,false,false,false,0,35.0,Ikoyi and Victoria Island,850387743
+W91332493,,residential,false,0,7.5,false,false,false,0,105.2,Ikoyi and Victoria Island,91332493
+W91332516,,residential,false,0,7.5,false,false,false,0,104.8,Ikoyi and Victoria Island,91332516
+W922935439,,residential,false,0,7.5,false,false,false,0,695.3,Ikoyi and Victoria Island,922935439
+W922935440,,residential,false,0,7.5,false,false,false,0,632.1,Ikoyi and Victoria Island,922935440
+W923043478,,service,false,0,5.0,false,false,false,0,67.5,Ikoyi and Victoria Island,923043478
+W960620072,,service,false,0,5.0,false,false,false,0,7.0,Ikoyi and Victoria Island,960620072
+W965509472,,service,false,0,5.0,false,false,false,0,62.6,Ikoyi and Victoria Island,965509472
+W965509473,,service,false,0,5.0,false,false,false,0,37.0,Ikoyi and Victoria Island,965509473
+W965512143,,service,false,0,5.0,false,false,false,0,52.8,Ikoyi and Victoria Island,965512143
+W965512144,,service,false,0,5.0,false,false,false,0,77.0,Ikoyi and Victoria Island,965512144
+W965515328,,service,false,0,5.0,false,false,false,0,34.8,Ikoyi and Victoria Island,965515328
+W965520646,,service,false,0,5.0,false,false,false,0,210.5,Ikoyi and Victoria Island,965520646
+W965840313,,service,false,0,5.0,false,false,false,0,89.7,Ikoyi and Victoria Island,965840313
+W965846680,,service,false,0,5.0,false,false,false,0,39.6,Ikoyi and Victoria Island,965846680
+W965846681,,service,false,0,5.0,false,false,false,0,61.6,Ikoyi and Victoria Island,965846681
+W965847041,,service,false,0,5.0,false,false,false,0,71.8,Ikoyi and Victoria Island,965847041
+W992678453,,service,false,0,5.0,false,false,false,0,46.8,Ikoyi and Victoria Island,992678453
+W992678456,,primary,true,0,7.5,false,false,false,0,12.8,Ikoyi and Victoria Island,992678456

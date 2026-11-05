@@ -1,0 +1,1750 @@
+Name,StreetName,RoadClass,bLink,Lanes,WidthM,bOneWay,bBridge,bRoundabout,SpeedLimitKmh,LengthM,District,OsmWayId
+W354700898,Abagbon Close,residential,false,0,7.5,false,false,false,0,109.4,Lagos Island and Eko Atlantic,354700898
+W354700899,Abagbon Close,residential,false,0,7.5,false,false,false,0,144.5,Lagos Island and Eko Atlantic,354700899
+W536457601,Abijo Close,residential,false,0,7.5,false,false,false,0,39.1,Lagos Island and Eko Atlantic,536457601
+W37958846,Abimbola Awoniyi Close,residential,false,0,7.5,false,false,false,0,135.7,Lagos Island and Eko Atlantic,37958846
+W134684103,Abudu Smith Street,residential,false,0,7.5,false,false,false,0,354.1,Lagos Island and Eko Atlantic,134684103
+W129730336,Adekunle Lawal Road,secondary,false,2,7.6,false,false,false,0,522.6,Lagos Island and Eko Atlantic,129730336
+W91332483,Adeleke Adedoyin Street,tertiary,false,0,10.0,false,false,false,0,433.4,Lagos Island and Eko Atlantic,91332483
+W11690118,Ademola Street,residential,false,0,7.5,false,false,false,0,664.8,Lagos Island and Eko Atlantic,11690118
+W134684101,Adeola Odeku Street,secondary,false,2,7.6,true,false,false,0,1704.2,Lagos Island and Eko Atlantic,134684101
+W5150268,Adeola Odeku Street,secondary,false,2,7.6,true,false,false,0,1704.4,Lagos Island and Eko Atlantic,5150268
+W11680597,Adeyemo Alakija Street,secondary,false,0,13.0,true,false,false,0,630.1,Lagos Island and Eko Atlantic,11680597
+W146604666,Agoro Odiyan Street,unclassified,false,0,7.5,false,false,false,0,350.7,Lagos Island and Eko Atlantic,146604666
+W1067200369,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,109.0,Lagos Island and Eko Atlantic,1067200369
+W133755470,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,356.0,Lagos Island and Eko Atlantic,133755470
+W133790489,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,2829.3,Lagos Island and Eko Atlantic,133790489
+W133790491,Ahmadu Bello Way,trunk,false,0,11.5,true,true,false,0,314.7,Lagos Island and Eko Atlantic,133790491
+W133790492,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,134.0,Lagos Island and Eko Atlantic,133790492
+W133790498,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,1152.6,Lagos Island and Eko Atlantic,133790498
+W133790499,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,389.8,Lagos Island and Eko Atlantic,133790499
+W133790500,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,130.7,Lagos Island and Eko Atlantic,133790500
+W133790502,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,387.0,Lagos Island and Eko Atlantic,133790502
+W133790503,Ahmadu Bello Way,trunk,false,0,11.5,true,true,false,0,314.1,Lagos Island and Eko Atlantic,133790503
+W16369652,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,379.3,Lagos Island and Eko Atlantic,16369652
+W505413824,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,1661.1,Lagos Island and Eko Atlantic,505413824
+W5150134,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,386.5,Lagos Island and Eko Atlantic,5150134
+W93858642,Ahmadu Bello Way,trunk,false,0,11.5,true,true,false,0,205.6,Lagos Island and Eko Atlantic,93858642
+W93858656,Ahmadu Bello Way,trunk,false,0,11.5,true,true,false,0,461.9,Lagos Island and Eko Atlantic,93858656
+W93858659,Ahmadu Bello Way,trunk,false,0,11.5,true,true,false,0,212.2,Lagos Island and Eko Atlantic,93858659
+W93858661,Ahmadu Bello Way,trunk,false,0,11.5,true,false,false,0,126.6,Lagos Island and Eko Atlantic,93858661
+W129586390,Ajasa Street,residential,false,0,7.5,false,false,false,0,193.7,Lagos Island and Eko Atlantic,129586390
+W129556776,Ajele Street,residential,false,0,7.5,false,false,false,0,52.6,Lagos Island and Eko Atlantic,129556776
+W88270786,Ajele Street,residential,false,0,7.5,false,false,false,0,275.6,Lagos Island and Eko Atlantic,88270786
+W88669634,Ajeniya Street,residential,false,0,7.5,false,false,false,0,563.1,Lagos Island and Eko Atlantic,88669634
+W91328839,Akanbi Danmole Street,residential,false,0,7.5,false,false,false,0,241.5,Lagos Island and Eko Atlantic,91328839
+W146604675,Akarigbere Street,residential,false,0,7.5,false,false,false,0,124.1,Lagos Island and Eko Atlantic,146604675
+W1061547106,Akin Adesola Street,primary,false,0,17.5,true,false,false,0,46.1,Lagos Island and Eko Atlantic,1061547106
+W10740235,Akin Adesola Street,primary,false,0,17.5,true,false,false,0,137.0,Lagos Island and Eko Atlantic,10740235
+W215492880,Akin Adesola Street,primary,false,0,17.5,true,false,false,0,1543.0,Lagos Island and Eko Atlantic,215492880
+W215492893,Akin Adesola Street,primary,false,2,7.6,true,false,false,0,122.6,Lagos Island and Eko Atlantic,215492893
+W416084175,Akin Adesola Street,primary,false,2,7.6,true,false,false,0,38.9,Lagos Island and Eko Atlantic,416084175
+W525026796,Akin Adesola Street,primary,false,2,7.6,true,false,false,0,1315.9,Lagos Island and Eko Atlantic,525026796
+W8160805,Akin Adesola Street,primary,false,2,7.6,true,false,false,0,246.2,Lagos Island and Eko Atlantic,8160805
+W224073230,Akin-Olugbade Street,tertiary,false,0,10.0,false,false,false,0,546.6,Lagos Island and Eko Atlantic,224073230
+W536457603,Akinfosile Street,residential,false,0,7.5,false,false,false,0,29.8,Lagos Island and Eko Atlantic,536457603
+W5150262,Alfred Rewane,primary,false,0,17.5,true,true,false,0,970.5,Lagos Island and Eko Atlantic,5150262
+W129725863,Alhaji Bashorun Street,residential,false,0,7.5,false,false,false,0,223.9,Lagos Island and Eko Atlantic,129725863
+W11690113,Alhaji Kanike Street,residential,false,0,7.5,false,false,false,0,171.2,Lagos Island and Eko Atlantic,11690113
+W592191591,Alhaji Masha Street,residential,false,0,7.5,false,false,false,0,35.9,Lagos Island and Eko Atlantic,592191591
+W530737593,Ali Street,secondary,false,0,13.0,true,false,false,0,25.9,Lagos Island and Eko Atlantic,530737593
+W129535578,Alli Street,residential,false,0,7.5,false,false,false,0,213.6,Lagos Island and Eko Atlantic,129535578
+W146604674,Amichi Close,residential,false,0,7.5,false,false,false,0,181.8,Lagos Island and Eko Atlantic,146604674
+W107554129,Amodu Ojikutu Street,tertiary,false,0,10.0,false,false,false,0,361.7,Lagos Island and Eko Atlantic,107554129
+W558864246,Amuto Street,residential,false,0,7.5,false,false,false,0,80.9,Lagos Island and Eko Atlantic,558864246
+W280346482,Andrew Street,residential,false,0,7.5,false,false,false,0,110.3,Lagos Island and Eko Atlantic,280346482
+W91328851,Andrew Street,residential,false,0,7.5,false,false,false,0,142.9,Lagos Island and Eko Atlantic,91328851
+W91332551,Anifowoshe Street,tertiary,false,0,10.0,false,false,false,0,533.0,Lagos Island and Eko Atlantic,91332551
+W129586383,Araromi Street,residential,false,0,7.5,false,false,false,0,223.4,Lagos Island and Eko Atlantic,129586383
+W1036461052,Avenue 1,secondary,false,3,10.9,true,false,false,0,17.1,Lagos Island and Eko Atlantic,1036461052
+W1036461053,Avenue 1,secondary,false,3,10.9,true,false,false,0,19.8,Lagos Island and Eko Atlantic,1036461053
+W399250122,Avenue 1,secondary,false,3,10.9,true,false,false,0,417.8,Lagos Island and Eko Atlantic,399250122
+W399254498,Avenue 1,secondary,false,3,10.9,true,false,false,0,374.4,Lagos Island and Eko Atlantic,399254498
+W399403548,Avenue 1,secondary,false,3,10.9,true,true,false,0,73.3,Lagos Island and Eko Atlantic,399403548
+W399403549,Avenue 1,secondary,false,3,10.9,true,false,false,0,415.1,Lagos Island and Eko Atlantic,399403549
+W399403550,Avenue 1,secondary,false,3,10.9,true,false,false,0,386.2,Lagos Island and Eko Atlantic,399403550
+W399403551,Avenue 1,secondary,false,3,10.9,true,true,false,0,71.9,Lagos Island and Eko Atlantic,399403551
+W399403559,Avenue 1,secondary,false,3,10.9,true,false,false,0,383.8,Lagos Island and Eko Atlantic,399403559
+W409545394,Avenue 1,secondary,false,3,10.9,true,false,false,0,372.3,Lagos Island and Eko Atlantic,409545394
+W1442146850,Avenue 2,secondary,false,3,10.9,true,false,false,0,12.2,Lagos Island and Eko Atlantic,1442146850
+W399250129,Avenue 2,secondary,false,3,10.9,true,false,false,0,229.5,Lagos Island and Eko Atlantic,399250129
+W399250130,Avenue 2,secondary,false,3,10.9,true,false,false,0,232.4,Lagos Island and Eko Atlantic,399250130
+W399254494,Avenue 2,secondary,false,3,10.9,true,false,false,0,420.8,Lagos Island and Eko Atlantic,399254494
+W399254499,Avenue 2,secondary,false,3,10.9,true,false,false,0,375.0,Lagos Island and Eko Atlantic,399254499
+W399403562,Avenue 2,secondary,false,3,10.9,true,false,false,0,188.8,Lagos Island and Eko Atlantic,399403562
+W399403563,Avenue 2,secondary,false,3,10.9,true,true,false,0,69.3,Lagos Island and Eko Atlantic,399403563
+W399403564,Avenue 2,secondary,false,3,10.9,true,true,false,0,66.3,Lagos Island and Eko Atlantic,399403564
+W399403565,Avenue 2,secondary,false,3,10.9,true,false,false,0,365.8,Lagos Island and Eko Atlantic,399403565
+W409545395,Avenue 2,secondary,false,3,10.9,true,false,false,0,370.5,Lagos Island and Eko Atlantic,409545395
+W513426498,Avenue 2,secondary,false,3,10.9,true,false,false,0,120.3,Lagos Island and Eko Atlantic,513426498
+W513426509,Avenue 2,secondary,false,3,10.9,true,false,false,0,133.0,Lagos Island and Eko Atlantic,513426509
+W626035336,Avenue 2,secondary,false,3,10.9,true,false,false,0,12.3,Lagos Island and Eko Atlantic,626035336
+W1059928624,Awolowo Road,secondary,false,1,4.3,true,false,false,0,157.3,Lagos Island and Eko Atlantic,1059928624
+W1061539536,Awolowo Road,secondary,false,0,13.0,true,false,false,0,35.3,Lagos Island and Eko Atlantic,1061539536
+W1061543655,Awolowo Road,secondary,false,2,7.6,true,false,false,0,38.0,Lagos Island and Eko Atlantic,1061543655
+W1061543656,Awolowo Road,secondary,false,2,7.6,true,false,false,0,14.5,Lagos Island and Eko Atlantic,1061543656
+W1061543659,Awolowo Road,secondary,false,2,7.6,true,false,false,0,106.6,Lagos Island and Eko Atlantic,1061543659
+W1061543660,Awolowo Road,secondary,false,2,7.6,true,false,false,0,156.2,Lagos Island and Eko Atlantic,1061543660
+W1113603142,Awolowo Road,secondary,false,2,7.6,true,false,false,0,677.3,Lagos Island and Eko Atlantic,1113603142
+W1113603144,Awolowo Road,secondary,false,0,13.0,true,false,false,0,714.0,Lagos Island and Eko Atlantic,1113603144
+W133753445,Awolowo Road,secondary,false,2,7.6,true,false,false,0,236.2,Lagos Island and Eko Atlantic,133753445
+W133753446,Awolowo Road,secondary,false,2,7.6,true,false,false,0,229.9,Lagos Island and Eko Atlantic,133753446
+W133753447,Awolowo Road,secondary,false,0,13.0,false,false,false,0,204.9,Lagos Island and Eko Atlantic,133753447
+W133753448,Awolowo Road,secondary,false,0,13.0,true,false,false,0,1213.1,Lagos Island and Eko Atlantic,133753448
+W598412509,Awolowo Road,secondary,false,2,7.6,true,false,false,0,1060.2,Lagos Island and Eko Atlantic,598412509
+W598412510,Awolowo Road,secondary,false,2,7.6,true,true,false,0,46.1,Lagos Island and Eko Atlantic,598412510
+W598412511,Awolowo Road,secondary,false,2,7.6,true,false,false,0,225.1,Lagos Island and Eko Atlantic,598412511
+W598412512,Awolowo Road,secondary,false,2,7.6,true,true,false,0,50.4,Lagos Island and Eko Atlantic,598412512
+W832537712,Awolowo Road,secondary,false,0,13.0,true,false,false,0,36.2,Lagos Island and Eko Atlantic,832537712
+W129534224,Balabina Street,residential,false,0,7.5,true,false,false,0,175.6,Lagos Island and Eko Atlantic,129534224
+W828125159,Balabina Street,residential,false,0,7.5,true,false,false,0,157.3,Lagos Island and Eko Atlantic,828125159
+W740626972,Bamgboshe Street,secondary,false,0,13.0,true,false,false,0,1166.5,Lagos Island and Eko Atlantic,740626972
+W129730348,Bankole Oki Street,residential,false,0,7.5,false,false,false,0,303.3,Lagos Island and Eko Atlantic,129730348
+W129556771,Beecroft street,residential,false,0,7.5,false,false,false,0,278.3,Lagos Island and Eko Atlantic,129556771
+W88274570,Beecroft street,residential,false,0,7.5,true,false,false,0,94.1,Lagos Island and Eko Atlantic,88274570
+W422212857,Benson Close,residential,false,0,7.5,false,false,false,0,38.4,Lagos Island and Eko Atlantic,422212857
+W129586397,Berkley Street,residential,false,0,7.5,false,false,false,0,374.2,Lagos Island and Eko Atlantic,129586397
+W146604664,Bhojsons Way,tertiary,false,0,10.0,false,false,false,0,119.2,Lagos Island and Eko Atlantic,146604664
+W129725832,Biaduo Street,residential,false,0,7.5,false,false,false,0,382.5,Lagos Island and Eko Atlantic,129725832
+W5196510,Bishop Kale Close,residential,false,0,7.5,false,false,false,0,113.6,Lagos Island and Eko Atlantic,5196510
+W8161447,Bishop Kale Close,residential,false,0,7.5,false,false,false,0,82.8,Lagos Island and Eko Atlantic,8161447
+W505413823,Bishop Oluwole Street,tertiary,false,0,10.0,false,false,false,0,1251.9,Lagos Island and Eko Atlantic,505413823
+W129586391,Boyle Street,residential,false,0,7.5,false,false,false,0,213.7,Lagos Island and Eko Atlantic,129586391
+W1353974309,Broad Street,secondary,false,0,13.0,true,false,false,0,60.1,Lagos Island and Eko Atlantic,1353974309
+W1353974310,Broad Street,secondary,false,0,13.0,true,false,false,0,53.5,Lagos Island and Eko Atlantic,1353974310
+W328558543,Broad Street,primary,false,0,17.5,true,false,false,0,1077.2,Lagos Island and Eko Atlantic,328558543
+W762582690,Broad Street,primary,false,0,17.5,true,false,false,0,1208.1,Lagos Island and Eko Atlantic,762582690
+W91328865,Broad Street,primary,false,0,17.5,true,false,false,0,150.6,Lagos Island and Eko Atlantic,91328865
+W10561262,Campbell Street,secondary,false,0,13.0,true,false,false,0,136.8,Lagos Island and Eko Atlantic,10561262
+W10561269,Campbell Street,residential,false,0,7.5,false,false,false,0,149.0,Lagos Island and Eko Atlantic,10561269
+W1353974308,Campbell Street,primary,false,0,17.5,true,false,false,0,50.2,Lagos Island and Eko Atlantic,1353974308
+W530740407,Campbell Street,residential,false,0,7.5,false,false,false,0,338.9,Lagos Island and Eko Atlantic,530740407
+W608838352,Campbell Street,residential,false,0,7.5,true,false,false,0,55.2,Lagos Island and Eko Atlantic,608838352
+W961575546,Campbell Street,residential,false,0,7.5,false,false,false,0,319.0,Lagos Island and Eko Atlantic,961575546
+W530740408,Campos Street,residential,false,0,7.5,true,false,false,0,242.2,Lagos Island and Eko Atlantic,530740408
+W10561265,Catholic Mission Street,unclassified,false,0,7.5,false,false,false,0,470.2,Lagos Island and Eko Atlantic,10561265
+W152870255,Chartered Bank Close,residential,false,0,7.5,false,false,false,0,76.9,Lagos Island and Eko Atlantic,152870255
+W786962823,Corporation Drive,residential,false,0,7.5,false,false,false,0,174.5,Lagos Island and Eko Atlantic,786962823
+W705875890,Custom Street,residential,false,0,7.5,true,false,false,0,162.5,Lagos Island and Eko Atlantic,705875890
+W91328848,Custom Street,residential,false,0,7.5,true,false,false,0,100.7,Lagos Island and Eko Atlantic,91328848
+W146604670,Danmole Street,residential,false,0,7.5,false,false,false,0,319.9,Lagos Island and Eko Atlantic,146604670
+W536457602,Dipcharima Close,residential,false,0,7.5,false,false,false,0,43.3,Lagos Island and Eko Atlantic,536457602
+W129556780,Dumaresque Street,residential,false,0,7.5,false,false,false,0,196.8,Lagos Island and Eko Atlantic,129556780
+W88274555,Dumaresque Street,residential,false,0,7.5,false,false,false,0,104.5,Lagos Island and Eko Atlantic,88274555
+W1421941810,Eko Boulevard,primary,false,4,14.2,true,false,false,0,241.4,Lagos Island and Eko Atlantic,1421941810
+W1421941811,Eko Boulevard,primary,false,4,14.2,true,false,false,0,425.9,Lagos Island and Eko Atlantic,1421941811
+W399250115,Eko Boulevard,primary,false,0,17.5,true,false,false,0,295.2,Lagos Island and Eko Atlantic,399250115
+W399250117,Eko Boulevard,primary,false,0,17.5,true,false,false,0,250.0,Lagos Island and Eko Atlantic,399250117
+W399250121,Eko Boulevard,primary,false,4,14.2,true,false,false,0,354.7,Lagos Island and Eko Atlantic,399250121
+W399254492,Eko Boulevard,primary,false,4,14.2,true,false,false,0,183.7,Lagos Island and Eko Atlantic,399254492
+W399403543,Eko Boulevard,primary,false,0,17.5,true,false,false,0,40.8,Lagos Island and Eko Atlantic,399403543
+W399403545,Eko Boulevard,primary,false,0,17.5,true,false,false,0,278.6,Lagos Island and Eko Atlantic,399403545
+W399403546,Eko Boulevard,primary,false,0,17.5,true,false,false,0,53.6,Lagos Island and Eko Atlantic,399403546
+W399403552,Eko Boulevard,primary,false,4,14.2,true,false,false,0,349.8,Lagos Island and Eko Atlantic,399403552
+W399403554,Eko Boulevard,primary,false,4,14.2,true,true,false,0,69.2,Lagos Island and Eko Atlantic,399403554
+W399403555,Eko Boulevard,primary,false,4,14.2,true,true,false,0,68.0,Lagos Island and Eko Atlantic,399403555
+W399403556,Eko Boulevard,primary,false,4,14.2,true,false,false,0,358.7,Lagos Island and Eko Atlantic,399403556
+W409545397,Eko Boulevard,primary,false,0,17.5,true,false,false,0,247.4,Lagos Island and Eko Atlantic,409545397
+W409545398,Eko Boulevard,primary,false,0,17.5,true,false,true,0,291.1,Lagos Island and Eko Atlantic,409545398
+W425750770,Eko Boulevard,primary,false,4,14.2,true,false,false,0,349.5,Lagos Island and Eko Atlantic,425750770
+W588736566,Eko Boulevard,tertiary,false,0,10.0,true,false,false,0,17.8,Lagos Island and Eko Atlantic,588736566
+W588736567,Eko Boulevard,tertiary,false,0,10.0,true,false,false,0,19.9,Lagos Island and Eko Atlantic,588736567
+W88669615,Eleshin Street,residential,false,0,7.5,false,false,false,0,561.5,Lagos Island and Eko Atlantic,88669615
+W107554130,Eletu Ogabi,tertiary,false,0,10.0,false,false,false,0,273.0,Lagos Island and Eko Atlantic,107554130
+W91332515,Elsie Femi Pearse Street,tertiary,false,0,10.0,false,false,false,0,648.3,Lagos Island and Eko Atlantic,91332515
+W129556782,Evans Street,residential,false,0,7.5,false,false,false,0,431.5,Lagos Island and Eko Atlantic,129556782
+W1061545450,Falomo Bridge,primary,false,0,17.5,true,true,false,0,185.6,Lagos Island and Eko Atlantic,1061545450
+W10561279,Force Road,primary,false,0,17.5,true,false,false,0,216.4,Lagos Island and Eko Atlantic,10561279
+W215135594,Forest Street,secondary,false,0,13.0,true,false,false,0,33.7,Lagos Island and Eko Atlantic,215135594
+W215135596,Forest Street,secondary,false,0,13.0,true,false,false,0,40.3,Lagos Island and Eko Atlantic,215135596
+W88274557,Forsythe Street,residential,false,0,7.5,false,false,false,0,595.4,Lagos Island and Eko Atlantic,88274557
+W152870364,Gabaro Close,residential,false,0,7.5,false,false,false,0,102.4,Lagos Island and Eko Atlantic,152870364
+W129730406,George Street,residential,false,0,7.5,false,false,false,0,311.0,Lagos Island and Eko Atlantic,129730406
+W407952529,Glover Street,service,false,0,5.0,false,false,false,0,120.2,Lagos Island and Eko Atlantic,407952529
+W559174562,Glover Street,residential,false,0,7.5,false,false,false,0,179.2,Lagos Island and Eko Atlantic,559174562
+W559174563,Glover Street,residential,false,0,7.5,false,false,false,0,8.4,Lagos Island and Eko Atlantic,559174563
+W93145289,Glover Street,residential,false,0,7.5,false,false,false,0,399.3,Lagos Island and Eko Atlantic,93145289
+W91332532,Goriola Street,residential,false,0,7.5,false,false,false,0,397.9,Lagos Island and Eko Atlantic,91332532
+W129730390,Grillo Street,residential,false,0,7.5,false,false,false,0,102.4,Lagos Island and Eko Atlantic,129730390
+W740626969,Hawley Street,unclassified,false,0,7.5,false,false,false,0,338.5,Lagos Island and Eko Atlantic,740626969
+W740626970,Hawley street,unclassified,false,0,7.5,false,false,false,0,121.4,Lagos Island and Eko Atlantic,740626970
+W10561264,Hospital Road,residential,false,0,7.5,false,false,false,0,359.3,Lagos Island and Eko Atlantic,10561264
+W152406584,Ibiyinka Olorunbe Close,residential,false,0,7.5,false,false,false,0,142.6,Lagos Island and Eko Atlantic,152406584
+W146604661,Idejo Street,residential,false,0,7.5,false,false,false,0,736.9,Lagos Island and Eko Atlantic,146604661
+W91332521,Idowu Martins Street,tertiary,false,0,10.0,false,false,false,0,645.3,Lagos Island and Eko Atlantic,91332521
+W91332541,Idowu Taylor Street,tertiary,false,0,10.0,true,false,false,0,528.0,Lagos Island and Eko Atlantic,91332541
+W11690128,Idungaran Street,residential,false,0,7.5,false,false,false,0,75.6,Lagos Island and Eko Atlantic,11690128
+W88669636,Igbo Street,residential,false,0,7.5,false,false,false,0,205.8,Lagos Island and Eko Atlantic,88669636
+W129556772,Igbosere Road,secondary,false,0,13.0,true,false,false,0,977.6,Lagos Island and Eko Atlantic,129556772
+W740626971,Igbosere Road,secondary,false,0,13.0,true,false,false,0,454.6,Lagos Island and Eko Atlantic,740626971
+W465174452,Ijeh Barrack Way,service,false,0,5.0,false,false,false,0,291.1,Lagos Island and Eko Atlantic,465174452
+W560577491,Ijeh Village Road,residential,false,0,7.5,false,false,false,0,416.7,Lagos Island and Eko Atlantic,560577491
+W129725866,Ikoyi Road,secondary,false,2,7.6,true,false,false,0,1377.6,Lagos Island and Eko Atlantic,129725866
+W215397533,Ikoyi Road,secondary,false,2,7.6,true,false,false,0,1244.8,Lagos Island and Eko Atlantic,215397533
+W536234737,Isiolaoyekan Close,residential,false,0,7.5,false,false,false,0,67.0,Lagos Island and Eko Atlantic,536234737
+W10561267,Joseph Street,residential,false,0,7.5,false,false,false,0,314.3,Lagos Island and Eko Atlantic,10561267
+W559095423,Joseph Street,residential,false,0,7.5,false,false,false,0,139.6,Lagos Island and Eko Atlantic,559095423
+W215113162,Kakawa Street,residential,false,0,7.5,true,false,false,0,108.9,Lagos Island and Eko Atlantic,215113162
+W828125160,Kakawa Street,residential,false,0,7.5,true,false,false,0,143.8,Lagos Island and Eko Atlantic,828125160
+W5150266,Karimu Kotun Street,tertiary,false,0,10.0,false,false,false,0,10.7,Lagos Island and Eko Atlantic,5150266
+W525026798,Karimu Kotun Street,tertiary,false,0,10.0,true,false,false,0,827.2,Lagos Island and Eko Atlantic,525026798
+W5196509,Kasumu Ekemode Street,tertiary,false,0,10.0,false,false,false,0,342.4,Lagos Island and Eko Atlantic,5196509
+W1113603143,Keffi Street,secondary,false,0,13.0,false,false,false,0,11.0,Lagos Island and Eko Atlantic,1113603143
+W11690136,Keffi Street,secondary,false,0,13.0,false,false,false,0,842.5,Lagos Island and Eko Atlantic,11690136
+W281436846,Keffi Street,residential,false,0,7.5,false,false,false,0,145.6,Lagos Island and Eko Atlantic,281436846
+W91332504,Keystone Bank Crescent,residential,false,0,7.5,true,false,false,0,293.4,Lagos Island and Eko Atlantic,91332504
+W133753449,King George V Road,unclassified,false,0,7.5,false,false,false,0,519.8,Lagos Island and Eko Atlantic,133753449
+W12335480,Kings College Road,residential,false,0,7.5,false,false,false,0,129.2,Lagos Island and Eko Atlantic,12335480
+W1413602255,Kings College Road,residential,false,0,7.5,true,false,false,0,26.6,Lagos Island and Eko Atlantic,1413602255
+W559142331,Kings College Road,residential,false,0,7.5,true,false,false,0,27.1,Lagos Island and Eko Atlantic,559142331
+W415781957,Kofo Abayomi Road,tertiary,false,0,10.0,false,false,false,0,1073.6,Lagos Island and Eko Atlantic,415781957
+W588736569,Kofo Abayomi Road,residential,false,0,7.5,false,false,false,0,188.9,Lagos Island and Eko Atlantic,588736569
+W91332506,Kofo Abayomi Road,tertiary,false,0,10.0,false,false,false,0,1053.2,Lagos Island and Eko Atlantic,91332506
+W152404233,Kofo Abayomi Street,tertiary,false,0,10.0,false,false,false,0,233.4,Lagos Island and Eko Atlantic,152404233
+W129725850,Lalupon Close,residential,false,0,7.5,false,false,false,0,209.1,Lagos Island and Eko Atlantic,129725850
+W88669645,Lanre Da-Silva Close,residential,false,0,7.5,false,false,false,0,196.4,Lagos Island and Eko Atlantic,88669645
+W976794867,Lewis Street,unclassified,false,0,7.5,false,false,false,0,129.6,Lagos Island and Eko Atlantic,976794867
+W146604678,Louis Solomon Close,residential,false,0,7.5,false,false,false,0,311.1,Lagos Island and Eko Atlantic,146604678
+W146604679,Louis Solomon Close,residential,false,0,7.5,false,false,false,0,121.6,Lagos Island and Eko Atlantic,146604679
+W1566993974,MUSON Access Road,service,false,0,5.0,false,false,false,0,10.7,Lagos Island and Eko Atlantic,1566993974
+W363803408,MUSON Access Road,service,false,0,5.0,false,false,false,0,208.4,Lagos Island and Eko Atlantic,363803408
+W129730364,Macgregor Road,residential,false,0,7.5,false,false,false,0,629.6,Lagos Island and Eko Atlantic,129730364
+W129725814,Maduike Street,residential,false,0,7.5,false,false,false,0,349.0,Lagos Island and Eko Atlantic,129725814
+W11690130,Maitama Sule Street,residential,false,0,7.5,false,false,false,20,397.5,Lagos Island and Eko Atlantic,11690130
+W129725815,Manuwa Street,residential,false,0,7.5,false,false,false,0,241.7,Lagos Island and Eko Atlantic,129725815
+W129534220,Market Street,residential,false,0,7.5,false,false,false,0,166.7,Lagos Island and Eko Atlantic,129534220
+W87805656,Martin Street,tertiary,false,0,10.0,true,false,false,0,583.3,Lagos Island and Eko Atlantic,87805656
+W740626968,Massey Bamgboshe Street,secondary,false,0,13.0,true,false,false,0,342.8,Lagos Island and Eko Atlantic,740626968
+W88270781,Massey Bamgboshe Street,secondary,false,0,13.0,true,false,false,0,461.6,Lagos Island and Eko Atlantic,88270781
+W166721548,Massey Street,unclassified,false,0,7.5,false,false,false,0,481.9,Lagos Island and Eko Atlantic,166721548
+W536457606,Mbu Close,residential,false,0,7.5,false,false,false,0,39.0,Lagos Island and Eko Atlantic,536457606
+W129586382,McCarthy Street,unclassified,false,0,7.5,false,false,false,0,105.9,Lagos Island and Eko Atlantic,129586382
+W586656936,McCarthy Street,residential,false,0,7.5,false,false,false,0,363.0,Lagos Island and Eko Atlantic,586656936
+W146604665,Mike Adenuga Close,residential,false,0,7.5,false,false,false,0,134.0,Lagos Island and Eko Atlantic,146604665
+W146604672,Mike Inegbese Close,residential,false,0,7.5,false,false,false,0,135.1,Lagos Island and Eko Atlantic,146604672
+W129586377,Military Street,unclassified,false,0,7.5,false,false,false,0,359.4,Lagos Island and Eko Atlantic,129586377
+W129586388,Moloney Street,unclassified,false,0,7.5,false,false,false,0,311.5,Lagos Island and Eko Atlantic,129586388
+W1353974311,Moloney Street,secondary,false,0,13.0,false,false,false,0,82.2,Lagos Island and Eko Atlantic,1353974311
+W1413602256,Moloney Street,unclassified,false,0,7.5,true,false,false,0,35.3,Lagos Island and Eko Atlantic,1413602256
+W1413602257,Moloney Street,unclassified,false,0,7.5,true,false,false,0,34.5,Lagos Island and Eko Atlantic,1413602257
+W88669654,Moshalashi Street,residential,false,0,7.5,true,false,false,0,561.0,Lagos Island and Eko Atlantic,88669654
+W129730393,Murtala Muhammed Drive,secondary,false,0,13.0,false,false,false,0,721.1,Lagos Island and Eko Atlantic,129730393
+W91332500,Musa Yardua Street,tertiary,false,0,10.0,false,false,false,0,678.0,Lagos Island and Eko Atlantic,91332500
+W152870384,Nepa Close,residential,false,0,7.5,false,false,false,0,73.5,Lagos Island and Eko Atlantic,152870384
+W536457592,Nepa Close,residential,false,0,7.5,false,false,false,0,241.8,Lagos Island and Eko Atlantic,536457592
+W1323096801,New Marina Road,motorway,false,0,24.0,true,false,false,0,162.2,Lagos Island and Eko Atlantic,1323096801
+W1323096802,New Marina Road,motorway,false,0,24.0,true,false,false,0,23.6,Lagos Island and Eko Atlantic,1323096802
+W133755474,New Marina Road,motorway,false,0,24.0,true,false,false,0,1953.7,Lagos Island and Eko Atlantic,133755474
+W215118923,New Marina Road,motorway,false,0,24.0,true,true,false,0,2421.9,Lagos Island and Eko Atlantic,215118923
+W93858646,New Marina Road,motorway,false,0,24.0,true,true,false,0,311.7,Lagos Island and Eko Atlantic,93858646
+W264916646,Nnamdi Azikiwe Street,secondary,false,0,13.0,true,false,false,0,614.7,Lagos Island and Eko Atlantic,264916646
+W11690140,Norman Williams Street,residential,false,0,7.5,false,false,false,0,743.2,Lagos Island and Eko Atlantic,11690140
+W1409472268,Norman Williams Street,residential,false,0,7.5,false,false,false,0,34.8,Lagos Island and Eko Atlantic,1409472268
+W1409472269,Norman Williams Street,residential,false,0,7.5,false,false,false,0,31.2,Lagos Island and Eko Atlantic,1409472269
+W558109881,Oba Adeyinka Oyekan Avenue,secondary,false,2,7.6,false,false,false,0,1250.7,Lagos Island and Eko Atlantic,558109881
+W133781034,Obalende Road,secondary,false,0,13.0,true,true,false,0,203.5,Lagos Island and Eko Atlantic,133781034
+W133781037,Obalende Road,secondary,false,0,13.0,true,false,false,0,567.8,Lagos Island and Eko Atlantic,133781037
+W133781050,Obalende Road,secondary,false,0,13.0,true,false,false,0,410.8,Lagos Island and Eko Atlantic,133781050
+W133781053,Obalende Road,secondary,false,0,13.0,true,false,false,0,185.7,Lagos Island and Eko Atlantic,133781053
+W133781055,Obalende Road,secondary,false,2,7.6,true,false,false,0,167.5,Lagos Island and Eko Atlantic,133781055
+W133781056,Obalende Road,secondary,false,0,13.0,true,false,false,0,44.6,Lagos Island and Eko Atlantic,133781056
+W1480490431,Obalende Road,secondary,false,2,7.6,true,true,false,0,81.8,Lagos Island and Eko Atlantic,1480490431
+W215397527,Obalende Road,secondary,false,2,7.6,true,false,false,0,30.5,Lagos Island and Eko Atlantic,215397527
+W215397528,Obalende Road,secondary,false,0,13.0,true,false,false,0,37.9,Lagos Island and Eko Atlantic,215397528
+W215397531,Obalende Road,secondary,false,0,13.0,true,false,false,0,32.9,Lagos Island and Eko Atlantic,215397531
+W543994214,Obalende Road,service,false,0,5.0,false,false,false,0,242.2,Lagos Island and Eko Atlantic,543994214
+W598412504,Obalende Road,secondary,false,2,7.6,true,false,false,0,54.4,Lagos Island and Eko Atlantic,598412504
+W598412505,Obalende Road,secondary,false,2,7.6,true,true,false,0,27.0,Lagos Island and Eko Atlantic,598412505
+W598412506,Obalende Road,secondary,false,2,7.6,true,false,false,0,73.3,Lagos Island and Eko Atlantic,598412506
+W598412507,Obalende Road,secondary,false,2,7.6,true,true,false,0,27.3,Lagos Island and Eko Atlantic,598412507
+W536457604,Obanodu Street,residential,false,0,7.5,false,false,false,0,129.1,Lagos Island and Eko Atlantic,536457604
+W88669612,Odo Street,residential,false,0,7.5,true,false,false,0,561.2,Lagos Island and Eko Atlantic,88669612
+W91328842,Odunea Street,residential,false,0,7.5,false,false,false,0,248.0,Lagos Island and Eko Atlantic,91328842
+W133761028,Odunlami Street,secondary,false,0,13.0,true,false,false,0,520.0,Lagos Island and Eko Atlantic,133761028
+W584729585,Ogalade Close,residential,false,0,7.5,false,false,false,0,122.3,Lagos Island and Eko Atlantic,584729585
+W129556790,Oil Mill Street,residential,false,0,7.5,false,false,false,0,344.0,Lagos Island and Eko Atlantic,129556790
+W1343490172,Oil Mill Street,residential,false,0,7.5,true,false,false,0,139.9,Lagos Island and Eko Atlantic,1343490172
+W88669569,Ojo Street,residential,false,0,7.5,false,false,false,0,560.7,Lagos Island and Eko Atlantic,88669569
+W152406580,Ojora Colony,residential,false,0,7.5,false,false,false,0,203.7,Lagos Island and Eko Atlantic,152406580
+W146604681,Oju Olobun Close,residential,false,0,7.5,false,false,false,0,652.6,Lagos Island and Eko Atlantic,146604681
+W88274564,Okesuna Street,unclassified,false,0,7.5,false,false,false,0,882.4,Lagos Island and Eko Atlantic,88274564
+W11690152,Okotie Eboh Street,residential,false,0,7.5,false,false,false,0,507.4,Lagos Island and Eko Atlantic,11690152
+W129730355,Okotie Eboh Street,residential,false,0,7.5,false,false,false,0,261.4,Lagos Island and Eko Atlantic,129730355
+W598999087,Okotie Eboh Street,residential,false,0,7.5,false,false,false,0,317.6,Lagos Island and Eko Atlantic,598999087
+W129730402,Okunola Martins Close,residential,false,0,7.5,false,false,false,0,83.6,Lagos Island and Eko Atlantic,129730402
+W1067200367,Old Marina Street,primary,false,2,7.6,true,false,false,0,34.0,Lagos Island and Eko Atlantic,1067200367
+W1067200368,Old Marina Street,primary,false,2,7.6,true,false,false,0,27.3,Lagos Island and Eko Atlantic,1067200368
+W133758773,Old Marina Street,primary,false,2,7.6,true,false,false,0,231.5,Lagos Island and Eko Atlantic,133758773
+W215113163,Old Marina Street,primary,false,3,10.9,true,false,false,0,1930.8,Lagos Island and Eko Atlantic,215113163
+W215113172,Old Marina Street,service,false,2,7.6,false,false,false,0,294.6,Lagos Island and Eko Atlantic,215113172
+W604386589,Old Marina Street,service,false,2,7.6,false,false,false,0,82.7,Lagos Island and Eko Atlantic,604386589
+W604386593,Old Marina Street,service,false,2,7.6,false,false,false,0,13.8,Lagos Island and Eko Atlantic,604386593
+W12335515,Olofin Street,residential,false,0,7.5,false,false,false,0,77.7,Lagos Island and Eko Atlantic,12335515
+W5196511,Ologun Agbeje Street,tertiary,false,0,10.0,false,false,false,0,776.1,Lagos Island and Eko Atlantic,5196511
+W592191594,Olokun Street,residential,false,0,7.5,false,false,false,0,34.2,Lagos Island and Eko Atlantic,592191594
+W146604676,Olubosi Close,residential,false,0,7.5,false,false,false,0,223.5,Lagos Island and Eko Atlantic,146604676
+W91328866,Olushi Street,unclassified,false,0,7.5,false,false,false,0,366.6,Lagos Island and Eko Atlantic,91328866
+W88273966,Omidi Dum Street,residential,false,0,7.5,false,false,false,0,409.3,Lagos Island and Eko Atlantic,88273966
+W608832626,Omo Osagie Street,residential,false,0,7.5,false,false,false,0,6.1,Lagos Island and Eko Atlantic,608832626
+W133758770,Onikan Road,secondary,false,0,13.0,true,false,false,0,44.4,Lagos Island and Eko Atlantic,133758770
+W133758774,Onikan Road,secondary,false,0,13.0,false,false,false,0,203.5,Lagos Island and Eko Atlantic,133758774
+W558796892,Oshodi Street,unclassified,false,0,7.5,true,false,false,0,260.2,Lagos Island and Eko Atlantic,558796892
+W558796893,Oshodi Street,unclassified,false,0,7.5,false,false,false,0,71.2,Lagos Island and Eko Atlantic,558796893
+W559142304,Oshodi Street,unclassified,false,0,7.5,true,false,false,0,14.2,Lagos Island and Eko Atlantic,559142304
+W559142305,Oshodi Street,unclassified,false,0,7.5,true,false,false,0,8.1,Lagos Island and Eko Atlantic,559142305
+W559142306,Oshodi Street,unclassified,false,0,7.5,true,false,false,0,14.3,Lagos Island and Eko Atlantic,559142306
+W559142307,Oshodi Street,unclassified,false,0,7.5,true,false,false,0,8.5,Lagos Island and Eko Atlantic,559142307
+W559142308,Oshodi Street,unclassified,false,0,7.5,true,false,false,0,7.4,Lagos Island and Eko Atlantic,559142308
+W559142309,Oshodi Street,unclassified,false,0,7.5,true,false,false,0,8.0,Lagos Island and Eko Atlantic,559142309
+W88273969,Oshodi Street,unclassified,false,0,7.5,true,false,false,0,254.7,Lagos Island and Eko Atlantic,88273969
+W129556791,Oso Street,residential,false,0,7.5,false,false,false,0,136.8,Lagos Island and Eko Atlantic,129556791
+W1061563115,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,100,153.7,Lagos Island and Eko Atlantic,1061563115
+W216768524,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,100,3256.1,Lagos Island and Eko Atlantic,216768524
+W8564506,Ozumba Mbadiwe Avenue,trunk,false,3,10.9,true,false,false,100,1841.4,Lagos Island and Eko Atlantic,8564506
+W129556770,Patey Street,residential,false,0,7.5,false,false,false,0,313.2,Lagos Island and Eko Atlantic,129556770
+W129534181,Phoeniex Lane,service,false,0,5.0,false,false,false,0,105.6,Lagos Island and Eko Atlantic,129534181
+W705875891,Phoeniex Lane,residential,false,0,7.5,false,false,false,0,115.9,Lagos Island and Eko Atlantic,705875891
+W129586378,Pike Street,residential,false,0,7.5,false,false,false,0,526.0,Lagos Island and Eko Atlantic,129586378
+W129730358,Polo Road,residential,false,0,7.5,false,false,false,0,99.9,Lagos Island and Eko Atlantic,129730358
+W1251525003,Raufu Taylor Close,service,false,0,5.0,false,false,false,0,88.8,Lagos Island and Eko Atlantic,1251525003
+W152870420,Raufu Taylor Close,service,false,0,5.0,false,false,false,0,162.2,Lagos Island and Eko Atlantic,152870420
+W529795585,Raymond Njoku Street,residential,false,0,7.5,false,false,false,0,1003.9,Lagos Island and Eko Atlantic,529795585
+W337156146,Razaki Okoya Street,unclassified,false,0,7.5,false,false,false,0,453.4,Lagos Island and Eko Atlantic,337156146
+W129725877,Ribadu Road,service,false,0,5.0,false,false,false,0,497.6,Lagos Island and Eko Atlantic,129725877
+W518456698,Ribadu Road,residential,false,0,7.5,false,false,false,0,693.8,Lagos Island and Eko Atlantic,518456698
+W91328840,Ricca Street,residential,false,0,7.5,false,false,false,0,248.8,Lagos Island and Eko Atlantic,91328840
+W16369732,Ring Road,motorway,false,0,24.0,true,true,false,0,1507.8,Lagos Island and Eko Atlantic,16369732
+W215492889,Ring Road,motorway,false,0,24.0,true,false,false,0,313.2,Lagos Island and Eko Atlantic,215492889
+W215573636,Ring Road,motorway,false,0,24.0,true,true,false,0,1513.5,Lagos Island and Eko Atlantic,215573636
+W93858653,Ring Road,motorway,false,0,24.0,true,false,false,0,675.1,Lagos Island and Eko Atlantic,93858653
+W481337672,Sada Tinubu Close,residential,false,0,7.5,false,false,false,0,110.3,Lagos Island and Eko Atlantic,481337672
+W146604663,Saka Jojo Street,residential,false,0,7.5,false,false,false,0,319.7,Lagos Island and Eko Atlantic,146604663
+W5196508,Saka Tinubu Street,tertiary,false,0,10.0,false,false,false,0,825.8,Lagos Island and Eko Atlantic,5196508
+W152406569,Sam Adegbite Close,residential,false,0,7.5,false,false,false,0,129.5,Lagos Island and Eko Atlantic,152406569
+W477552838,Sanusi Fafunwa Street,secondary,false,0,13.0,true,false,false,0,679.5,Lagos Island and Eko Atlantic,477552838
+W525198069,Sanusi Fafunwa Street,secondary,false,0,13.0,true,false,false,0,25.9,Lagos Island and Eko Atlantic,525198069
+W525198070,Sanusi Fafunwa Street,secondary,false,0,13.0,true,false,false,0,31.0,Lagos Island and Eko Atlantic,525198070
+W91332556,Sapara Williams Close,residential,false,0,7.5,false,false,false,0,237.5,Lagos Island and Eko Atlantic,91332556
+W152870395,Saro Close,residential,false,0,7.5,false,false,false,0,131.6,Lagos Island and Eko Atlantic,152870395
+W586645795,Simpson Street,residential,false,0,7.5,false,false,false,0,114.7,Lagos Island and Eko Atlantic,586645795
+W88274562,Simpson Street,primary,false,0,17.5,false,false,false,0,342.2,Lagos Island and Eko Atlantic,88274562
+W93855592,Simpson Street,primary,false,0,17.5,true,false,false,0,305.8,Lagos Island and Eko Atlantic,93855592
+W1061543657,St. Gregory's College Road,tertiary,false,0,10.0,false,false,false,0,167.3,Lagos Island and Eko Atlantic,1061543657
+W1061543658,St. Gregory's College Road,tertiary,false,0,10.0,false,false,false,0,6.9,Lagos Island and Eko Atlantic,1061543658
+W129725802,St. Gregory's College Road,tertiary,false,0,10.0,false,false,false,0,506.1,Lagos Island and Eko Atlantic,129725802
+W129725859,Sumbo Jibowu Street,residential,false,0,7.5,false,false,false,0,165.0,Lagos Island and Eko Atlantic,129725859
+W12335472,TBS Roundabout,unclassified,false,0,7.5,true,false,true,0,91.7,Lagos Island and Eko Atlantic,12335472
+W10561261,Tafawa Balewa Square,primary,false,0,17.5,true,false,false,0,397.6,Lagos Island and Eko Atlantic,10561261
+W10561263,Tafawa Balewa Square,residential,false,0,7.5,true,false,false,0,65.0,Lagos Island and Eko Atlantic,10561263
+W1413602254,Tafawa Balewa Square,unclassified,false,0,7.5,false,false,false,0,27.0,Lagos Island and Eko Atlantic,1413602254
+W1413602258,Tafawa Balewa Square,unclassified,false,0,7.5,true,false,false,0,47.7,Lagos Island and Eko Atlantic,1413602258
+W1413602259,Tafawa Balewa Square,unclassified,false,0,7.5,true,false,false,0,46.0,Lagos Island and Eko Atlantic,1413602259
+W544228975,Tafawa Balewa Square,primary,false,0,17.5,true,false,false,0,53.0,Lagos Island and Eko Atlantic,544228975
+W568364486,Tafawa Balewa Square,unclassified,false,0,7.5,false,false,false,0,481.6,Lagos Island and Eko Atlantic,568364486
+W129725818,Taofik Lawal Street,residential,false,0,7.5,false,false,false,0,161.5,Lagos Island and Eko Atlantic,129725818
+W586645799,Tapa Street,unclassified,false,0,7.5,false,false,false,0,147.4,Lagos Island and Eko Atlantic,586645799
+W88274551,Tapa Street,unclassified,false,0,7.5,false,false,false,0,369.3,Lagos Island and Eko Atlantic,88274551
+W146604680,Taslim Elias Close,residential,false,0,7.5,false,false,false,0,398.3,Lagos Island and Eko Atlantic,146604680
+W152404231,Taslim Elias Close,residential,false,0,7.5,false,false,false,0,116.8,Lagos Island and Eko Atlantic,152404231
+W583980119,Taslim Elias Close,residential,false,0,7.5,false,false,false,0,9.6,Lagos Island and Eko Atlantic,583980119
+W129556775,Tokunbo Street,unclassified,false,0,7.5,true,false,false,0,297.9,Lagos Island and Eko Atlantic,129556775
+W558796889,Tokunbo Street,unclassified,false,0,7.5,true,false,false,0,293.5,Lagos Island and Eko Atlantic,558796889
+W558796890,Tokunbo Street,unclassified,false,0,7.5,false,false,false,0,127.1,Lagos Island and Eko Atlantic,558796890
+W88669592,Toyan Street,residential,false,0,7.5,false,false,false,0,561.0,Lagos Island and Eko Atlantic,88669592
+W415781956,Walter Carrington Crescent,residential,false,0,7.5,true,false,false,0,1014.7,Lagos Island and Eko Atlantic,415781956
+W91332501,Walter Carrington Crescent,residential,false,0,7.5,false,false,false,0,339.3,Lagos Island and Eko Atlantic,91332501
+W152870302,Waziri Ibrahim Crescent,residential,false,0,7.5,false,false,false,0,541.5,Lagos Island and Eko Atlantic,152870302
+W91332508,Waziri Ibrahim Crescent,residential,false,0,7.5,false,false,false,0,146.1,Lagos Island and Eko Atlantic,91332508
+W152404227,Wilmot Point Road,residential,false,0,7.5,false,false,false,0,580.7,Lagos Island and Eko Atlantic,152404227
+W1018462454,,service,false,0,5.0,false,false,false,0,68.6,Lagos Island and Eko Atlantic,1018462454
+W1018978301,,service,false,0,5.0,false,false,false,0,35.8,Lagos Island and Eko Atlantic,1018978301
+W1018978387,,residential,false,0,7.5,false,false,false,0,131.5,Lagos Island and Eko Atlantic,1018978387
+W1018978950,,service,false,0,5.0,false,false,false,0,57.1,Lagos Island and Eko Atlantic,1018978950
+W1018979058,,service,false,0,5.0,false,false,false,0,74.4,Lagos Island and Eko Atlantic,1018979058
+W1018981832,,service,false,0,5.0,false,false,false,0,140.9,Lagos Island and Eko Atlantic,1018981832
+W1018982202,,service,false,0,5.0,false,false,false,0,32.3,Lagos Island and Eko Atlantic,1018982202
+W1018982203,,service,false,0,5.0,false,false,false,0,84.3,Lagos Island and Eko Atlantic,1018982203
+W1019002373,,service,false,0,5.0,false,false,false,0,85.9,Lagos Island and Eko Atlantic,1019002373
+W1019902725,,service,false,0,5.0,false,false,false,0,150.2,Lagos Island and Eko Atlantic,1019902725
+W1019902812,,service,false,0,5.0,false,false,false,0,48.6,Lagos Island and Eko Atlantic,1019902812
+W1019902813,,service,false,0,5.0,false,false,false,0,86.2,Lagos Island and Eko Atlantic,1019902813
+W1019902814,,service,false,0,5.0,false,false,false,0,36.3,Lagos Island and Eko Atlantic,1019902814
+W1019903008,,service,false,0,5.0,false,false,false,0,37.8,Lagos Island and Eko Atlantic,1019903008
+W1019903009,,service,false,0,5.0,false,false,false,0,60.2,Lagos Island and Eko Atlantic,1019903009
+W1019903010,,service,false,0,5.0,false,false,false,0,44.2,Lagos Island and Eko Atlantic,1019903010
+W1020196566,,service,false,0,5.0,false,false,false,0,59.3,Lagos Island and Eko Atlantic,1020196566
+W1032470703,,service,false,0,5.0,false,false,false,0,70.2,Lagos Island and Eko Atlantic,1032470703
+W1032473094,,service,false,0,5.0,false,false,false,0,109.9,Lagos Island and Eko Atlantic,1032473094
+W1032782033,,service,false,0,5.0,false,false,false,0,38.3,Lagos Island and Eko Atlantic,1032782033
+W1032782034,,service,false,0,5.0,false,false,false,0,44.6,Lagos Island and Eko Atlantic,1032782034
+W1032782496,,service,false,0,5.0,false,false,false,0,57.4,Lagos Island and Eko Atlantic,1032782496
+W1032783580,,service,false,0,5.0,false,false,false,0,67.7,Lagos Island and Eko Atlantic,1032783580
+W1032783750,,service,false,0,5.0,false,false,false,0,41.0,Lagos Island and Eko Atlantic,1032783750
+W1032783751,,service,false,0,5.0,false,false,false,0,51.5,Lagos Island and Eko Atlantic,1032783751
+W1032787150,,service,false,0,5.0,false,false,false,0,30.5,Lagos Island and Eko Atlantic,1032787150
+W1034067155,,residential,false,0,7.5,false,false,false,0,54.6,Lagos Island and Eko Atlantic,1034067155
+W1034068001,,residential,false,0,7.5,false,false,false,0,59.9,Lagos Island and Eko Atlantic,1034068001
+W1034378129,,service,false,0,5.0,false,false,false,0,86.2,Lagos Island and Eko Atlantic,1034378129
+W1034378625,,service,false,0,5.0,false,false,false,0,38.1,Lagos Island and Eko Atlantic,1034378625
+W1034710417,,service,false,0,5.0,false,false,false,0,106.8,Lagos Island and Eko Atlantic,1034710417
+W1034753687,,service,false,0,5.0,false,false,false,0,134.3,Lagos Island and Eko Atlantic,1034753687
+W1034753688,,service,false,0,5.0,false,false,false,0,48.8,Lagos Island and Eko Atlantic,1034753688
+W1034756724,,service,false,0,5.0,false,false,false,0,50.2,Lagos Island and Eko Atlantic,1034756724
+W1034757202,,service,false,0,5.0,false,false,false,0,73.2,Lagos Island and Eko Atlantic,1034757202
+W1034757203,,service,false,0,5.0,false,false,false,0,101.3,Lagos Island and Eko Atlantic,1034757203
+W1034757642,,service,false,0,5.0,false,false,false,0,66.7,Lagos Island and Eko Atlantic,1034757642
+W1034757963,,service,false,0,5.0,false,false,false,0,72.2,Lagos Island and Eko Atlantic,1034757963
+W1034758862,,service,false,0,5.0,true,false,false,0,66.6,Lagos Island and Eko Atlantic,1034758862
+W1034759190,,residential,false,0,7.5,false,false,false,0,29.0,Lagos Island and Eko Atlantic,1034759190
+W1034762241,,service,false,0,5.0,false,false,false,0,158.3,Lagos Island and Eko Atlantic,1034762241
+W1035028180,,service,false,0,5.0,false,false,false,0,152.3,Lagos Island and Eko Atlantic,1035028180
+W1035028288,,service,false,0,5.0,false,false,false,0,102.8,Lagos Island and Eko Atlantic,1035028288
+W1035921090,,service,false,0,5.0,false,false,false,0,57.5,Lagos Island and Eko Atlantic,1035921090
+W1036440009,,service,false,0,5.0,false,false,false,0,49.5,Lagos Island and Eko Atlantic,1036440009
+W1036440010,,service,false,0,5.0,true,false,false,0,15.3,Lagos Island and Eko Atlantic,1036440010
+W1036440011,,service,false,0,5.0,true,false,false,0,15.3,Lagos Island and Eko Atlantic,1036440011
+W1036621367,,residential,false,0,7.5,false,false,false,0,165.7,Lagos Island and Eko Atlantic,1036621367
+W1036621368,,residential,false,0,7.5,false,false,false,0,467.6,Lagos Island and Eko Atlantic,1036621368
+W1036621374,,tertiary,false,0,10.0,true,false,false,0,382.5,Lagos Island and Eko Atlantic,1036621374
+W1036621377,,tertiary,false,0,10.0,true,false,false,0,455.2,Lagos Island and Eko Atlantic,1036621377
+W1036621378,,tertiary,false,0,10.0,true,false,false,0,446.0,Lagos Island and Eko Atlantic,1036621378
+W1036621379,,tertiary,false,0,10.0,true,false,false,0,128.0,Lagos Island and Eko Atlantic,1036621379
+W1061547105,,trunk,true,1,4.3,true,false,false,0,70.9,Lagos Island and Eko Atlantic,1061547105
+W1062790932,,service,false,0,5.0,false,false,false,0,54.4,Lagos Island and Eko Atlantic,1062790932
+W1062790933,,service,false,0,5.0,true,false,false,0,33.5,Lagos Island and Eko Atlantic,1062790933
+W1063228372,,service,false,0,5.0,false,false,false,0,124.5,Lagos Island and Eko Atlantic,1063228372
+W1063230281,,service,false,0,5.0,false,false,false,0,160.4,Lagos Island and Eko Atlantic,1063230281
+W1063230282,,service,false,0,5.0,false,false,false,0,153.7,Lagos Island and Eko Atlantic,1063230282
+W1063230283,,service,false,0,5.0,false,false,false,0,100.0,Lagos Island and Eko Atlantic,1063230283
+W1064249969,,service,false,0,5.0,false,false,false,0,55.4,Lagos Island and Eko Atlantic,1064249969
+W1064250799,,service,false,0,5.0,false,false,false,0,68.9,Lagos Island and Eko Atlantic,1064250799
+W1064251375,,service,false,0,5.0,false,false,false,0,137.0,Lagos Island and Eko Atlantic,1064251375
+W1065026752,,service,false,0,5.0,false,false,false,0,29.0,Lagos Island and Eko Atlantic,1065026752
+W1065026753,,service,false,0,5.0,false,false,false,0,108.2,Lagos Island and Eko Atlantic,1065026753
+W1065394016,,service,false,0,5.0,false,false,false,0,69.5,Lagos Island and Eko Atlantic,1065394016
+W1065394017,,service,false,0,5.0,false,false,false,0,56.7,Lagos Island and Eko Atlantic,1065394017
+W1065394142,,service,false,0,5.0,false,false,false,0,68.5,Lagos Island and Eko Atlantic,1065394142
+W1065394143,,service,false,0,5.0,false,false,false,0,75.6,Lagos Island and Eko Atlantic,1065394143
+W1065424060,,residential,false,0,7.5,false,false,false,0,73.5,Lagos Island and Eko Atlantic,1065424060
+W1065424472,,service,false,0,5.0,false,false,false,0,44.9,Lagos Island and Eko Atlantic,1065424472
+W1065769619,,residential,false,0,7.5,false,false,false,0,78.8,Lagos Island and Eko Atlantic,1065769619
+W1065774609,,service,false,0,5.0,false,false,false,0,41.6,Lagos Island and Eko Atlantic,1065774609
+W1065775261,,service,false,0,5.0,false,false,false,0,55.3,Lagos Island and Eko Atlantic,1065775261
+W1065775262,,service,false,0,5.0,false,false,false,0,46.3,Lagos Island and Eko Atlantic,1065775262
+W1077859435,,service,false,0,5.0,false,false,false,0,51.2,Lagos Island and Eko Atlantic,1077859435
+W1077875550,,service,false,0,5.0,false,false,false,0,63.1,Lagos Island and Eko Atlantic,1077875550
+W1077875971,,service,false,0,5.0,false,false,false,0,45.6,Lagos Island and Eko Atlantic,1077875971
+W1077905316,,service,false,0,5.0,false,false,false,0,63.6,Lagos Island and Eko Atlantic,1077905316
+W1078113885,,service,false,0,5.0,false,false,false,0,95.6,Lagos Island and Eko Atlantic,1078113885
+W1078132406,,residential,false,0,7.5,false,false,false,0,67.9,Lagos Island and Eko Atlantic,1078132406
+W1078132407,,residential,false,0,7.5,false,false,false,0,33.1,Lagos Island and Eko Atlantic,1078132407
+W1078132408,,residential,false,0,7.5,false,false,false,0,125.3,Lagos Island and Eko Atlantic,1078132408
+W1078377579,,service,false,0,5.0,false,false,false,0,33.7,Lagos Island and Eko Atlantic,1078377579
+W1078424796,,service,false,0,5.0,false,false,false,0,77.4,Lagos Island and Eko Atlantic,1078424796
+W1081670613,,service,false,0,5.0,false,false,false,0,126.5,Lagos Island and Eko Atlantic,1081670613
+W1082814968,,service,false,0,5.0,false,false,false,0,65.9,Lagos Island and Eko Atlantic,1082814968
+W1082866987,,service,false,0,5.0,false,false,false,0,148.4,Lagos Island and Eko Atlantic,1082866987
+W1083108145,,service,false,0,5.0,false,false,false,0,34.0,Lagos Island and Eko Atlantic,1083108145
+W1083396060,,service,false,0,5.0,false,false,false,0,17.0,Lagos Island and Eko Atlantic,1083396060
+W1083396061,,service,false,0,5.0,false,false,false,0,15.3,Lagos Island and Eko Atlantic,1083396061
+W1083396062,,service,false,0,5.0,false,false,false,0,26.6,Lagos Island and Eko Atlantic,1083396062
+W1083396842,,service,false,0,5.0,false,false,false,0,66.8,Lagos Island and Eko Atlantic,1083396842
+W1083460929,,service,false,0,5.0,false,false,false,0,57.6,Lagos Island and Eko Atlantic,1083460929
+W1095064925,,service,false,0,5.0,false,false,false,0,9.3,Lagos Island and Eko Atlantic,1095064925
+W1095064926,,service,false,0,5.0,false,false,false,0,24.3,Lagos Island and Eko Atlantic,1095064926
+W1095064927,,service,false,0,5.0,false,false,false,0,91.9,Lagos Island and Eko Atlantic,1095064927
+W1095064928,,service,false,0,5.0,false,false,false,0,26.1,Lagos Island and Eko Atlantic,1095064928
+W1095064930,,service,false,0,5.0,false,false,false,0,70.7,Lagos Island and Eko Atlantic,1095064930
+W1096965127,,service,false,0,5.0,false,false,false,0,118.9,Lagos Island and Eko Atlantic,1096965127
+W1097210263,,service,false,0,5.0,false,false,false,0,69.4,Lagos Island and Eko Atlantic,1097210263
+W1099157101,,service,false,0,5.0,false,false,false,0,67.0,Lagos Island and Eko Atlantic,1099157101
+W1104860632,,service,false,0,5.0,false,false,false,0,10.9,Lagos Island and Eko Atlantic,1104860632
+W1104860633,,service,false,0,5.0,false,false,false,0,33.8,Lagos Island and Eko Atlantic,1104860633
+W1104860634,,service,false,0,5.0,false,false,false,0,57.8,Lagos Island and Eko Atlantic,1104860634
+W1104863972,,service,false,0,5.0,true,false,false,0,12.7,Lagos Island and Eko Atlantic,1104863972
+W1104863973,,service,false,0,5.0,true,false,false,0,79.6,Lagos Island and Eko Atlantic,1104863973
+W1111681114,,service,false,0,5.0,false,false,false,0,106.8,Lagos Island and Eko Atlantic,1111681114
+W1111681563,,service,false,0,5.0,false,false,false,0,468.7,Lagos Island and Eko Atlantic,1111681563
+W1111681564,,service,false,0,5.0,false,false,false,0,325.1,Lagos Island and Eko Atlantic,1111681564
+W1112197119,,service,false,0,5.0,false,false,false,0,63.0,Lagos Island and Eko Atlantic,1112197119
+W1112197424,,service,false,0,5.0,false,false,false,0,38.9,Lagos Island and Eko Atlantic,1112197424
+W1112197672,,service,false,0,5.0,false,false,false,0,59.7,Lagos Island and Eko Atlantic,1112197672
+W1112200050,,service,false,0,5.0,false,false,false,0,58.5,Lagos Island and Eko Atlantic,1112200050
+W1112213636,,service,false,0,5.0,false,false,false,0,75.9,Lagos Island and Eko Atlantic,1112213636
+W1112215662,,service,false,0,5.0,false,false,false,0,78.6,Lagos Island and Eko Atlantic,1112215662
+W1112220255,,service,false,0,5.0,false,false,false,0,112.5,Lagos Island and Eko Atlantic,1112220255
+W1112222395,,service,false,0,5.0,false,false,false,0,45.4,Lagos Island and Eko Atlantic,1112222395
+W1112223147,,service,false,0,5.0,false,false,false,0,41.7,Lagos Island and Eko Atlantic,1112223147
+W1112223259,,service,false,0,5.0,false,false,false,0,63.8,Lagos Island and Eko Atlantic,1112223259
+W1112223301,,service,false,0,5.0,false,false,false,0,89.1,Lagos Island and Eko Atlantic,1112223301
+W1112223308,,service,false,0,5.0,false,false,false,0,76.8,Lagos Island and Eko Atlantic,1112223308
+W1112224020,,service,false,0,5.0,false,false,false,0,73.6,Lagos Island and Eko Atlantic,1112224020
+W1112245825,,service,false,0,5.0,false,false,false,0,87.2,Lagos Island and Eko Atlantic,1112245825
+W1112247204,,service,false,0,5.0,false,false,false,0,58.1,Lagos Island and Eko Atlantic,1112247204
+W1112247651,,service,false,0,5.0,false,false,false,0,31.8,Lagos Island and Eko Atlantic,1112247651
+W1112838164,,service,false,0,5.0,false,false,false,0,83.4,Lagos Island and Eko Atlantic,1112838164
+W1112840091,,residential,false,0,7.5,false,false,false,0,80.5,Lagos Island and Eko Atlantic,1112840091
+W1112842288,,service,false,0,5.0,false,false,false,0,71.2,Lagos Island and Eko Atlantic,1112842288
+W1112842289,,service,false,0,5.0,false,false,false,0,27.1,Lagos Island and Eko Atlantic,1112842289
+W1112842470,,service,false,0,5.0,false,false,false,0,46.1,Lagos Island and Eko Atlantic,1112842470
+W1114808435,,residential,false,0,7.5,false,false,false,0,47.0,Lagos Island and Eko Atlantic,1114808435
+W1114808436,,service,false,0,5.0,false,false,false,0,67.7,Lagos Island and Eko Atlantic,1114808436
+W1114808437,,residential,false,0,7.5,false,false,false,0,29.8,Lagos Island and Eko Atlantic,1114808437
+W1114808438,,service,false,0,5.0,false,false,false,0,322.2,Lagos Island and Eko Atlantic,1114808438
+W1118019246,,service,false,0,5.0,false,false,false,0,21.6,Lagos Island and Eko Atlantic,1118019246
+W1118556709,,service,false,0,5.0,false,false,false,0,10.3,Lagos Island and Eko Atlantic,1118556709
+W1118594624,,service,false,0,5.0,true,false,false,0,30.0,Lagos Island and Eko Atlantic,1118594624
+W1118594625,,service,false,0,5.0,false,false,false,0,32.5,Lagos Island and Eko Atlantic,1118594625
+W1126639499,,service,false,0,5.0,false,false,false,0,24.4,Lagos Island and Eko Atlantic,1126639499
+W1126639500,,service,false,0,5.0,false,false,false,0,22.8,Lagos Island and Eko Atlantic,1126639500
+W1126639501,,service,false,0,5.0,false,false,false,0,28.2,Lagos Island and Eko Atlantic,1126639501
+W1133368480,,service,false,0,5.0,false,false,false,0,105.0,Lagos Island and Eko Atlantic,1133368480
+W1134431189,,service,false,0,5.0,false,false,false,0,26.6,Lagos Island and Eko Atlantic,1134431189
+W1134431190,,service,false,0,5.0,false,false,false,0,53.7,Lagos Island and Eko Atlantic,1134431190
+W1134431191,,service,false,0,5.0,false,false,false,0,33.7,Lagos Island and Eko Atlantic,1134431191
+W1134431192,,service,false,0,5.0,false,false,false,0,5.1,Lagos Island and Eko Atlantic,1134431192
+W1134431193,,service,false,0,5.0,false,false,false,0,52.4,Lagos Island and Eko Atlantic,1134431193
+W1134431196,,service,false,0,5.0,false,false,false,0,128.7,Lagos Island and Eko Atlantic,1134431196
+W1134431197,,service,false,0,5.0,false,false,false,0,54.9,Lagos Island and Eko Atlantic,1134431197
+W1134431198,,service,false,0,5.0,false,false,false,0,31.7,Lagos Island and Eko Atlantic,1134431198
+W1134431199,,service,false,0,5.0,false,false,false,0,10.4,Lagos Island and Eko Atlantic,1134431199
+W1134710384,,service,false,0,5.0,false,false,false,0,215.3,Lagos Island and Eko Atlantic,1134710384
+W1134710385,,service,false,0,5.0,false,false,false,0,103.7,Lagos Island and Eko Atlantic,1134710385
+W1137490966,,service,false,0,5.0,false,false,false,0,38.9,Lagos Island and Eko Atlantic,1137490966
+W1137490967,,service,false,0,5.0,false,false,false,0,70.8,Lagos Island and Eko Atlantic,1137490967
+W1137490968,,service,false,0,5.0,false,false,false,0,50.2,Lagos Island and Eko Atlantic,1137490968
+W1137490969,,service,false,0,5.0,false,false,false,0,186.8,Lagos Island and Eko Atlantic,1137490969
+W1137490970,,service,false,0,5.0,false,false,false,0,53.4,Lagos Island and Eko Atlantic,1137490970
+W1137490971,,service,false,0,5.0,false,false,false,0,65.7,Lagos Island and Eko Atlantic,1137490971
+W1146413501,,service,false,0,5.0,false,false,false,0,71.5,Lagos Island and Eko Atlantic,1146413501
+W1148408578,,service,false,0,5.0,false,false,false,0,229.9,Lagos Island and Eko Atlantic,1148408578
+W1148408579,,service,false,0,5.0,false,false,false,0,124.9,Lagos Island and Eko Atlantic,1148408579
+W1150644724,,service,false,0,5.0,false,false,false,0,46.4,Lagos Island and Eko Atlantic,1150644724
+W1150644725,,service,false,0,5.0,false,false,false,0,47.3,Lagos Island and Eko Atlantic,1150644725
+W1150644728,,service,false,0,5.0,false,false,false,0,4.5,Lagos Island and Eko Atlantic,1150644728
+W1159836128,,service,false,0,5.0,false,false,false,0,50.8,Lagos Island and Eko Atlantic,1159836128
+W1159836129,,service,false,0,5.0,false,false,false,0,48.4,Lagos Island and Eko Atlantic,1159836129
+W1159836130,,service,false,0,5.0,false,false,false,0,89.4,Lagos Island and Eko Atlantic,1159836130
+W1161561493,,service,false,0,5.0,false,false,false,0,48.0,Lagos Island and Eko Atlantic,1161561493
+W1161561494,,service,false,0,5.0,false,false,false,0,70.9,Lagos Island and Eko Atlantic,1161561494
+W1161561495,,service,false,0,5.0,false,false,false,0,56.9,Lagos Island and Eko Atlantic,1161561495
+W1163525563,,residential,false,0,7.5,false,false,false,0,4.6,Lagos Island and Eko Atlantic,1163525563
+W1163525564,,residential,false,0,7.5,false,false,false,0,29.8,Lagos Island and Eko Atlantic,1163525564
+W1163565015,,service,false,0,5.0,false,false,false,0,62.0,Lagos Island and Eko Atlantic,1163565015
+W1165003224,,service,false,0,5.0,false,false,false,0,128.7,Lagos Island and Eko Atlantic,1165003224
+W1165003225,,service,false,0,5.0,false,false,false,0,58.5,Lagos Island and Eko Atlantic,1165003225
+W1168461160,,service,false,0,5.0,false,false,false,0,32.9,Lagos Island and Eko Atlantic,1168461160
+W1169787826,,service,false,0,5.0,false,false,false,0,60.6,Lagos Island and Eko Atlantic,1169787826
+W1170520173,,service,false,0,5.0,false,false,false,0,41.3,Lagos Island and Eko Atlantic,1170520173
+W1175796522,,service,false,0,5.0,false,false,false,0,97.1,Lagos Island and Eko Atlantic,1175796522
+W1175796523,,service,false,0,5.0,false,false,false,0,103.9,Lagos Island and Eko Atlantic,1175796523
+W1175796524,,service,false,0,5.0,false,false,false,0,32.8,Lagos Island and Eko Atlantic,1175796524
+W1175796525,,service,false,0,5.0,false,false,false,0,89.2,Lagos Island and Eko Atlantic,1175796525
+W1180368345,,service,false,0,5.0,false,false,false,0,99.4,Lagos Island and Eko Atlantic,1180368345
+W1182143162,,service,false,0,5.0,false,false,false,0,69.6,Lagos Island and Eko Atlantic,1182143162
+W1192333572,,residential,false,0,7.5,false,false,false,0,9.4,Lagos Island and Eko Atlantic,1192333572
+W1192333573,,residential,false,0,7.5,false,false,false,0,8.9,Lagos Island and Eko Atlantic,1192333573
+W1198554569,,residential,false,0,7.5,false,false,false,0,253.0,Lagos Island and Eko Atlantic,1198554569
+W1198902773,,service,false,0,5.0,false,false,false,0,36.1,Lagos Island and Eko Atlantic,1198902773
+W1198902774,,service,false,0,5.0,false,false,false,0,113.1,Lagos Island and Eko Atlantic,1198902774
+W1201586601,,service,false,0,5.0,false,false,false,0,92.8,Lagos Island and Eko Atlantic,1201586601
+W1201586602,,service,false,0,5.0,false,false,false,0,75.5,Lagos Island and Eko Atlantic,1201586602
+W1201586603,,service,false,0,5.0,false,false,false,0,129.8,Lagos Island and Eko Atlantic,1201586603
+W1224688419,,service,false,0,5.0,false,false,false,0,11.6,Lagos Island and Eko Atlantic,1224688419
+W1224688420,,service,false,0,5.0,false,false,false,0,65.3,Lagos Island and Eko Atlantic,1224688420
+W1227945182,,residential,false,0,7.5,false,false,false,0,43.0,Lagos Island and Eko Atlantic,1227945182
+W1227945183,,residential,false,0,7.5,false,false,false,0,120.9,Lagos Island and Eko Atlantic,1227945183
+W1227964211,,service,false,0,5.0,false,false,false,0,578.3,Lagos Island and Eko Atlantic,1227964211
+W1227965265,,service,false,0,5.0,false,false,false,0,86.1,Lagos Island and Eko Atlantic,1227965265
+W1227968086,,service,false,0,5.0,false,false,false,0,18.2,Lagos Island and Eko Atlantic,1227968086
+W1227968087,,service,false,0,5.0,false,false,false,0,175.6,Lagos Island and Eko Atlantic,1227968087
+W1228782527,,residential,false,0,7.5,false,false,false,0,73.7,Lagos Island and Eko Atlantic,1228782527
+W1228974620,,residential,false,0,7.5,false,false,false,0,69.2,Lagos Island and Eko Atlantic,1228974620
+W1229195575,,service,false,0,5.0,false,false,false,0,153.2,Lagos Island and Eko Atlantic,1229195575
+W1229204926,,service,false,0,5.0,false,false,false,0,71.5,Lagos Island and Eko Atlantic,1229204926
+W1229223422,,service,false,0,5.0,false,false,false,0,50.7,Lagos Island and Eko Atlantic,1229223422
+W1229224846,,service,false,0,5.0,false,false,false,0,18.0,Lagos Island and Eko Atlantic,1229224846
+W1229224847,,service,false,0,5.0,false,false,false,0,107.3,Lagos Island and Eko Atlantic,1229224847
+W1229605446,,service,false,0,5.0,false,false,false,0,19.2,Lagos Island and Eko Atlantic,1229605446
+W1229605447,,service,false,0,5.0,false,false,false,0,91.1,Lagos Island and Eko Atlantic,1229605447
+W1229624918,,service,false,0,5.0,false,false,false,0,60.8,Lagos Island and Eko Atlantic,1229624918
+W1229625078,,service,false,0,5.0,false,false,false,0,43.6,Lagos Island and Eko Atlantic,1229625078
+W1230524193,,service,false,0,5.0,false,false,false,0,64.3,Lagos Island and Eko Atlantic,1230524193
+W1230739111,,service,false,0,5.0,false,false,false,0,7.2,Lagos Island and Eko Atlantic,1230739111
+W1250538456,,service,false,0,5.0,false,false,false,0,69.5,Lagos Island and Eko Atlantic,1250538456
+W1251228415,,service,false,0,5.0,false,false,false,0,59.4,Lagos Island and Eko Atlantic,1251228415
+W1251514541,,service,false,0,5.0,false,false,false,0,90.3,Lagos Island and Eko Atlantic,1251514541
+W1251524795,,service,false,0,5.0,false,false,false,0,49.8,Lagos Island and Eko Atlantic,1251524795
+W1251525611,,service,false,0,5.0,false,false,false,0,46.9,Lagos Island and Eko Atlantic,1251525611
+W1251525662,,service,false,0,5.0,false,false,false,0,68.4,Lagos Island and Eko Atlantic,1251525662
+W1251526299,,service,false,0,5.0,false,false,false,0,63.2,Lagos Island and Eko Atlantic,1251526299
+W1252020863,,service,false,0,5.0,false,false,false,0,73.4,Lagos Island and Eko Atlantic,1252020863
+W1252030515,,service,false,0,5.0,false,false,false,0,43.0,Lagos Island and Eko Atlantic,1252030515
+W1252030516,,service,false,0,5.0,false,false,false,0,35.8,Lagos Island and Eko Atlantic,1252030516
+W1252030517,,service,false,0,5.0,false,false,false,0,41.1,Lagos Island and Eko Atlantic,1252030517
+W1252031097,,service,false,0,5.0,false,false,false,0,122.4,Lagos Island and Eko Atlantic,1252031097
+W1258473804,,service,false,0,5.0,false,false,false,0,32.0,Lagos Island and Eko Atlantic,1258473804
+W1288242710,,service,false,0,5.0,false,false,false,0,100.8,Lagos Island and Eko Atlantic,1288242710
+W1288242711,,service,false,0,5.0,false,false,false,0,7.5,Lagos Island and Eko Atlantic,1288242711
+W1288242712,,service,false,0,5.0,false,false,false,0,12.2,Lagos Island and Eko Atlantic,1288242712
+W1288242713,,service,false,0,5.0,false,false,false,0,53.1,Lagos Island and Eko Atlantic,1288242713
+W1288242714,,service,false,0,5.0,false,false,false,0,67.4,Lagos Island and Eko Atlantic,1288242714
+W129534204,,residential,false,0,7.5,false,false,false,0,217.0,Lagos Island and Eko Atlantic,129534204
+W129535580,,residential,false,0,7.5,false,false,false,0,154.5,Lagos Island and Eko Atlantic,129535580
+W129556778,,residential,false,0,7.5,true,false,false,0,167.1,Lagos Island and Eko Atlantic,129556778
+W129556779,,residential,false,0,7.5,false,false,false,0,137.0,Lagos Island and Eko Atlantic,129556779
+W129586379,,residential,false,0,7.5,false,false,false,0,81.8,Lagos Island and Eko Atlantic,129586379
+W129586380,,residential,false,0,7.5,false,false,false,0,210.3,Lagos Island and Eko Atlantic,129586380
+W129586392,,unclassified,false,0,7.5,false,false,false,0,137.3,Lagos Island and Eko Atlantic,129586392
+W129586393,,unclassified,false,0,7.5,false,false,false,0,950.4,Lagos Island and Eko Atlantic,129586393
+W129586398,,residential,false,0,7.5,false,false,false,0,162.1,Lagos Island and Eko Atlantic,129586398
+W129586400,,residential,false,0,7.5,false,false,false,0,173.5,Lagos Island and Eko Atlantic,129586400
+W129586407,,residential,false,0,7.5,false,false,false,0,180.0,Lagos Island and Eko Atlantic,129586407
+W129586409,,service,false,0,5.0,false,false,false,0,147.0,Lagos Island and Eko Atlantic,129586409
+W129725805,,residential,false,0,7.5,false,false,false,0,201.8,Lagos Island and Eko Atlantic,129725805
+W129725806,,residential,false,0,7.5,false,false,false,0,360.7,Lagos Island and Eko Atlantic,129725806
+W129725810,,residential,false,0,7.5,false,false,false,0,551.7,Lagos Island and Eko Atlantic,129725810
+W129725811,,service,false,0,5.0,false,false,false,0,187.3,Lagos Island and Eko Atlantic,129725811
+W129725816,,residential,false,0,7.5,false,false,false,0,298.7,Lagos Island and Eko Atlantic,129725816
+W129725817,,service,false,0,5.0,false,false,false,0,288.6,Lagos Island and Eko Atlantic,129725817
+W129725825,,service,false,0,5.0,false,false,false,0,317.4,Lagos Island and Eko Atlantic,129725825
+W129725826,,service,false,0,5.0,false,false,false,0,247.0,Lagos Island and Eko Atlantic,129725826
+W129725827,,service,false,0,5.0,false,false,false,0,195.7,Lagos Island and Eko Atlantic,129725827
+W129725829,,service,false,0,5.0,false,false,false,0,91.3,Lagos Island and Eko Atlantic,129725829
+W129725830,,residential,false,0,7.5,false,false,false,0,252.4,Lagos Island and Eko Atlantic,129725830
+W129725831,,service,false,0,5.0,false,false,false,0,292.7,Lagos Island and Eko Atlantic,129725831
+W129725835,,residential,false,0,7.5,false,false,false,0,37.4,Lagos Island and Eko Atlantic,129725835
+W129725837,,service,false,0,5.0,false,false,false,0,286.5,Lagos Island and Eko Atlantic,129725837
+W129725838,,residential,false,0,7.5,false,false,false,0,230.8,Lagos Island and Eko Atlantic,129725838
+W129725840,,service,false,0,5.0,false,false,false,0,290.2,Lagos Island and Eko Atlantic,129725840
+W129725843,,service,false,0,5.0,false,false,false,0,182.1,Lagos Island and Eko Atlantic,129725843
+W129725845,,service,false,0,5.0,false,false,false,0,77.4,Lagos Island and Eko Atlantic,129725845
+W129725854,,service,false,0,5.0,false,false,false,0,281.5,Lagos Island and Eko Atlantic,129725854
+W129725858,,residential,false,0,7.5,false,false,false,0,201.9,Lagos Island and Eko Atlantic,129725858
+W129725864,,service,false,0,5.0,false,false,false,0,185.4,Lagos Island and Eko Atlantic,129725864
+W129725869,,service,false,0,5.0,false,false,false,0,166.0,Lagos Island and Eko Atlantic,129725869
+W129725870,,residential,false,0,7.5,false,false,false,0,138.3,Lagos Island and Eko Atlantic,129725870
+W129725872,,residential,false,0,7.5,false,false,false,0,86.5,Lagos Island and Eko Atlantic,129725872
+W129725873,,service,false,0,5.0,false,false,false,0,30.7,Lagos Island and Eko Atlantic,129725873
+W1314270806,,service,false,0,5.0,false,false,false,0,87.3,Lagos Island and Eko Atlantic,1314270806
+W1314270807,,residential,false,0,7.5,false,false,false,0,39.0,Lagos Island and Eko Atlantic,1314270807
+W1314270808,,residential,false,0,7.5,false,false,false,0,67.9,Lagos Island and Eko Atlantic,1314270808
+W1318596775,,service,false,0,5.0,false,false,false,0,69.3,Lagos Island and Eko Atlantic,1318596775
+W1318596776,,service,false,0,5.0,false,false,false,0,67.3,Lagos Island and Eko Atlantic,1318596776
+W1318596777,,service,false,0,5.0,false,false,false,0,52.5,Lagos Island and Eko Atlantic,1318596777
+W1318596778,,service,false,0,5.0,false,false,false,0,68.6,Lagos Island and Eko Atlantic,1318596778
+W1318596779,,service,false,0,5.0,false,false,false,0,28.3,Lagos Island and Eko Atlantic,1318596779
+W1318596780,,service,false,0,5.0,false,false,false,0,41.3,Lagos Island and Eko Atlantic,1318596780
+W1318596781,,service,false,0,5.0,false,false,false,0,69.3,Lagos Island and Eko Atlantic,1318596781
+W1318596782,,service,false,0,5.0,false,false,false,0,104.0,Lagos Island and Eko Atlantic,1318596782
+W1318596783,,service,false,0,5.0,false,false,false,0,70.9,Lagos Island and Eko Atlantic,1318596783
+W1318857834,,service,false,0,5.0,false,false,false,0,1.1,Lagos Island and Eko Atlantic,1318857834
+W1318857835,,service,false,0,5.0,false,false,false,0,0.6,Lagos Island and Eko Atlantic,1318857835
+W1318857836,,service,false,0,5.0,false,false,false,0,1.2,Lagos Island and Eko Atlantic,1318857836
+W1318857837,,service,false,0,5.0,false,false,false,0,0.6,Lagos Island and Eko Atlantic,1318857837
+W1318889189,,service,false,0,5.0,false,false,false,0,1.1,Lagos Island and Eko Atlantic,1318889189
+W1318889190,,service,false,0,5.0,false,false,false,0,0.5,Lagos Island and Eko Atlantic,1318889190
+W1318889191,,service,false,0,5.0,false,false,false,0,1.2,Lagos Island and Eko Atlantic,1318889191
+W1318889192,,service,false,0,5.0,false,false,false,0,0.5,Lagos Island and Eko Atlantic,1318889192
+W1330474023,,residential,false,0,7.5,false,false,false,0,45.3,Lagos Island and Eko Atlantic,1330474023
+W133749803,,trunk,true,0,7.5,true,false,false,0,149.4,Lagos Island and Eko Atlantic,133749803
+W133750714,,primary,true,0,7.5,true,false,false,0,102.7,Lagos Island and Eko Atlantic,133750714
+W133750721,,primary,true,0,7.5,true,false,false,0,141.3,Lagos Island and Eko Atlantic,133750721
+W133753444,,motorway,true,0,7.5,true,false,false,0,115.0,Lagos Island and Eko Atlantic,133753444
+W133753452,,motorway,true,0,7.5,true,true,false,0,265.2,Lagos Island and Eko Atlantic,133753452
+W133755471,,motorway,true,0,7.5,true,false,false,0,92.4,Lagos Island and Eko Atlantic,133755471
+W133755472,,motorway,true,0,7.5,true,false,false,0,89.0,Lagos Island and Eko Atlantic,133755472
+W133755473,,motorway,true,0,7.5,true,true,false,0,314.5,Lagos Island and Eko Atlantic,133755473
+W133755475,,motorway,true,0,7.5,true,true,false,0,285.0,Lagos Island and Eko Atlantic,133755475
+W133758771,,motorway,true,0,7.5,true,true,false,0,240.1,Lagos Island and Eko Atlantic,133758771
+W133758772,,primary,false,0,17.5,true,false,false,0,66.4,Lagos Island and Eko Atlantic,133758772
+W133761004,,motorway,true,0,7.5,true,true,false,0,298.3,Lagos Island and Eko Atlantic,133761004
+W133761005,,motorway,true,0,7.5,true,false,false,0,235.1,Lagos Island and Eko Atlantic,133761005
+W133761011,,motorway,true,0,7.5,true,false,false,0,76.5,Lagos Island and Eko Atlantic,133761011
+W133761013,,motorway,true,0,7.5,true,false,false,0,23.5,Lagos Island and Eko Atlantic,133761013
+W133761023,,motorway,true,0,7.5,true,false,false,0,148.3,Lagos Island and Eko Atlantic,133761023
+W133781036,,motorway,true,0,7.5,true,false,false,0,50.5,Lagos Island and Eko Atlantic,133781036
+W133781048,,motorway,true,0,7.5,true,true,false,0,201.6,Lagos Island and Eko Atlantic,133781048
+W133781054,,motorway,true,0,7.5,true,false,false,0,59.9,Lagos Island and Eko Atlantic,133781054
+W133781058,,motorway,true,0,7.5,true,true,false,0,223.5,Lagos Island and Eko Atlantic,133781058
+W133781060,,motorway,true,0,7.5,true,true,false,0,215.5,Lagos Island and Eko Atlantic,133781060
+W133781061,,motorway,true,0,7.5,true,false,false,0,96.6,Lagos Island and Eko Atlantic,133781061
+W133781062,,secondary,false,2,7.6,true,true,false,0,200.7,Lagos Island and Eko Atlantic,133781062
+W133781063,,motorway,true,0,7.5,true,true,false,0,194.8,Lagos Island and Eko Atlantic,133781063
+W133790490,,trunk,true,0,7.5,true,false,false,0,286.4,Lagos Island and Eko Atlantic,133790490
+W133790493,,trunk,false,0,11.5,true,false,true,0,137.6,Lagos Island and Eko Atlantic,133790493
+W133790494,,service,false,0,5.0,true,false,false,0,33.7,Lagos Island and Eko Atlantic,133790494
+W133790495,,trunk,true,0,7.5,true,false,false,0,285.6,Lagos Island and Eko Atlantic,133790495
+W133790496,,service,false,0,5.0,false,false,false,0,169.5,Lagos Island and Eko Atlantic,133790496
+W133790497,,trunk,true,0,7.5,true,false,false,0,294.2,Lagos Island and Eko Atlantic,133790497
+W133790501,,service,false,0,5.0,true,false,false,0,33.1,Lagos Island and Eko Atlantic,133790501
+W133790504,,trunk,true,0,7.5,true,false,false,0,268.2,Lagos Island and Eko Atlantic,133790504
+W133801685,,unclassified,false,0,7.5,true,false,false,0,925.1,Lagos Island and Eko Atlantic,133801685
+W133801689,,service,false,0,5.0,false,false,false,0,626.9,Lagos Island and Eko Atlantic,133801689
+W133801694,,unclassified,false,0,7.5,false,false,false,0,318.0,Lagos Island and Eko Atlantic,133801694
+W1343552412,,residential,false,0,7.5,true,false,false,0,86.7,Lagos Island and Eko Atlantic,1343552412
+W1343936056,,service,false,0,5.0,false,false,false,0,99.4,Lagos Island and Eko Atlantic,1343936056
+W1343936057,,service,false,0,5.0,false,false,false,0,7.0,Lagos Island and Eko Atlantic,1343936057
+W1343936058,,service,false,0,5.0,false,false,false,0,6.4,Lagos Island and Eko Atlantic,1343936058
+W1343936059,,service,false,0,5.0,false,false,false,0,17.9,Lagos Island and Eko Atlantic,1343936059
+W134684097,,service,false,0,5.0,true,false,false,0,149.5,Lagos Island and Eko Atlantic,134684097
+W134684098,,service,false,0,5.0,false,false,false,0,611.4,Lagos Island and Eko Atlantic,134684098
+W134684099,,service,false,0,5.0,false,false,false,0,156.7,Lagos Island and Eko Atlantic,134684099
+W134684100,,service,false,0,5.0,false,false,false,0,180.8,Lagos Island and Eko Atlantic,134684100
+W134684102,,service,false,0,5.0,false,false,false,0,789.7,Lagos Island and Eko Atlantic,134684102
+W134684104,,service,false,0,5.0,false,false,false,0,216.0,Lagos Island and Eko Atlantic,134684104
+W134684105,,service,false,0,5.0,false,false,false,0,111.5,Lagos Island and Eko Atlantic,134684105
+W134684106,,service,false,0,5.0,false,false,false,0,207.2,Lagos Island and Eko Atlantic,134684106
+W134684107,,service,false,0,5.0,true,false,false,0,134.9,Lagos Island and Eko Atlantic,134684107
+W134684108,,service,false,0,5.0,false,false,false,0,242.3,Lagos Island and Eko Atlantic,134684108
+W134684109,,service,false,0,5.0,false,false,false,0,247.9,Lagos Island and Eko Atlantic,134684109
+W1348856287,,service,false,0,5.0,false,false,false,0,69.6,Lagos Island and Eko Atlantic,1348856287
+W1348856288,,service,false,0,5.0,false,false,false,0,55.2,Lagos Island and Eko Atlantic,1348856288
+W1348856289,,service,false,0,5.0,false,false,false,0,66.1,Lagos Island and Eko Atlantic,1348856289
+W1351490932,,service,false,0,5.0,false,false,false,0,53.6,Lagos Island and Eko Atlantic,1351490932
+W136182535,,residential,false,0,7.5,false,false,false,0,242.5,Lagos Island and Eko Atlantic,136182535
+W136182578,,residential,false,0,7.5,false,false,false,0,435.6,Lagos Island and Eko Atlantic,136182578
+W1364220865,,service,false,0,5.0,false,false,false,0,72.4,Lagos Island and Eko Atlantic,1364220865
+W1364220866,,service,false,0,5.0,false,false,false,0,35.8,Lagos Island and Eko Atlantic,1364220866
+W1364220867,,service,false,0,5.0,true,false,false,0,66.0,Lagos Island and Eko Atlantic,1364220867
+W1364220868,,service,false,0,5.0,true,false,false,0,51.4,Lagos Island and Eko Atlantic,1364220868
+W1364404431,,service,false,0,5.0,false,false,false,0,28.7,Lagos Island and Eko Atlantic,1364404431
+W1364404432,,service,false,0,5.0,false,false,false,0,72.1,Lagos Island and Eko Atlantic,1364404432
+W1364404433,,service,false,0,5.0,false,false,false,0,40.3,Lagos Island and Eko Atlantic,1364404433
+W1364404434,,service,false,0,5.0,false,false,false,0,63.2,Lagos Island and Eko Atlantic,1364404434
+W1364410145,,service,false,0,5.0,false,false,false,0,58.7,Lagos Island and Eko Atlantic,1364410145
+W1364410146,,service,false,0,5.0,false,false,false,0,99.1,Lagos Island and Eko Atlantic,1364410146
+W1364410147,,service,false,0,5.0,false,false,false,0,26.0,Lagos Island and Eko Atlantic,1364410147
+W1364680261,,service,false,0,5.0,false,false,false,0,96.7,Lagos Island and Eko Atlantic,1364680261
+W1364913455,,service,false,0,5.0,false,false,false,0,42.2,Lagos Island and Eko Atlantic,1364913455
+W1364913456,,service,false,0,5.0,false,false,false,0,16.4,Lagos Island and Eko Atlantic,1364913456
+W1367090111,,service,false,0,5.0,false,false,false,0,38.3,Lagos Island and Eko Atlantic,1367090111
+W1367090112,,service,false,0,5.0,false,false,false,0,52.4,Lagos Island and Eko Atlantic,1367090112
+W1367090113,,service,false,0,5.0,false,false,false,0,37.0,Lagos Island and Eko Atlantic,1367090113
+W1367090114,,service,false,0,5.0,false,false,false,0,27.8,Lagos Island and Eko Atlantic,1367090114
+W1367090115,,service,false,0,5.0,false,false,false,0,52.7,Lagos Island and Eko Atlantic,1367090115
+W1369669830,,residential,false,0,7.5,false,false,false,0,121.7,Lagos Island and Eko Atlantic,1369669830
+W1369669831,,residential,false,0,7.5,true,false,false,0,31.0,Lagos Island and Eko Atlantic,1369669831
+W1369669834,,residential,false,0,7.5,true,false,false,0,26.8,Lagos Island and Eko Atlantic,1369669834
+W1369669835,,residential,false,0,7.5,false,false,false,0,15.2,Lagos Island and Eko Atlantic,1369669835
+W1369669836,,residential,false,0,7.5,false,false,false,0,16.1,Lagos Island and Eko Atlantic,1369669836
+W1369669837,,secondary,true,0,7.5,true,false,false,0,54.8,Lagos Island and Eko Atlantic,1369669837
+W1370779669,,service,false,0,5.0,false,false,false,0,181.0,Lagos Island and Eko Atlantic,1370779669
+W1370779670,,service,false,0,5.0,false,false,false,0,129.3,Lagos Island and Eko Atlantic,1370779670
+W1370779672,,service,false,0,5.0,false,false,false,0,103.9,Lagos Island and Eko Atlantic,1370779672
+W1370779673,,service,false,0,5.0,false,false,false,0,58.5,Lagos Island and Eko Atlantic,1370779673
+W1370779674,,service,false,0,5.0,false,false,false,0,79.7,Lagos Island and Eko Atlantic,1370779674
+W1370779675,,service,false,0,5.0,false,false,false,0,61.6,Lagos Island and Eko Atlantic,1370779675
+W1370779676,,service,false,0,5.0,false,false,false,0,25.1,Lagos Island and Eko Atlantic,1370779676
+W1372268931,,service,false,0,5.0,false,false,false,0,76.5,Lagos Island and Eko Atlantic,1372268931
+W1391961623,,residential,false,0,7.5,true,false,false,0,21.6,Lagos Island and Eko Atlantic,1391961623
+W1391961624,,residential,false,0,7.5,true,false,false,0,21.6,Lagos Island and Eko Atlantic,1391961624
+W1408856047,,service,false,0,5.0,false,false,false,0,18.9,Lagos Island and Eko Atlantic,1408856047
+W1408856048,,service,false,0,5.0,false,false,false,0,171.7,Lagos Island and Eko Atlantic,1408856048
+W1409397798,,service,false,0,5.0,false,false,false,0,93.9,Lagos Island and Eko Atlantic,1409397798
+W1409397799,,service,false,0,5.0,false,false,false,0,38.0,Lagos Island and Eko Atlantic,1409397799
+W1409397800,,service,false,0,5.0,false,false,false,0,15.2,Lagos Island and Eko Atlantic,1409397800
+W1409397801,,service,false,0,5.0,false,false,false,0,100.6,Lagos Island and Eko Atlantic,1409397801
+W1409397802,,service,false,0,5.0,false,false,false,0,101.2,Lagos Island and Eko Atlantic,1409397802
+W1409397803,,service,false,0,5.0,false,false,false,0,50.3,Lagos Island and Eko Atlantic,1409397803
+W1409397804,,service,false,0,5.0,false,false,false,0,67.7,Lagos Island and Eko Atlantic,1409397804
+W1409397805,,service,false,0,5.0,false,false,false,0,50.1,Lagos Island and Eko Atlantic,1409397805
+W1409397806,,service,false,0,5.0,false,false,false,0,207.8,Lagos Island and Eko Atlantic,1409397806
+W1409400620,,service,false,0,5.0,false,false,false,0,91.5,Lagos Island and Eko Atlantic,1409400620
+W1409400623,,service,false,0,5.0,false,false,false,0,42.3,Lagos Island and Eko Atlantic,1409400623
+W1409472266,,service,false,0,5.0,false,false,false,0,199.2,Lagos Island and Eko Atlantic,1409472266
+W1409472267,,residential,false,0,7.5,false,false,false,0,36.4,Lagos Island and Eko Atlantic,1409472267
+W1410855812,,service,false,0,5.0,false,false,false,0,11.8,Lagos Island and Eko Atlantic,1410855812
+W1411236109,,residential,false,0,7.5,false,false,false,0,9.2,Lagos Island and Eko Atlantic,1411236109
+W1411484972,,service,false,0,5.0,false,false,false,0,15.7,Lagos Island and Eko Atlantic,1411484972
+W1411484973,,service,false,0,5.0,false,false,false,0,9.2,Lagos Island and Eko Atlantic,1411484973
+W1411484974,,service,false,0,5.0,false,false,false,0,28.3,Lagos Island and Eko Atlantic,1411484974
+W1411484975,,service,false,0,5.0,false,false,false,0,10.1,Lagos Island and Eko Atlantic,1411484975
+W1411872909,,service,false,0,5.0,false,false,false,0,44.2,Lagos Island and Eko Atlantic,1411872909
+W1411872910,,service,false,0,5.0,false,false,false,0,15.0,Lagos Island and Eko Atlantic,1411872910
+W1411872911,,service,false,0,5.0,false,false,false,0,41.5,Lagos Island and Eko Atlantic,1411872911
+W1411932888,,service,false,0,5.0,true,false,false,0,143.7,Lagos Island and Eko Atlantic,1411932888
+W1411932889,,service,false,0,5.0,false,false,false,0,63.8,Lagos Island and Eko Atlantic,1411932889
+W1411932890,,service,false,0,5.0,false,false,false,0,128.1,Lagos Island and Eko Atlantic,1411932890
+W1411946450,,service,false,0,5.0,false,false,false,0,17.2,Lagos Island and Eko Atlantic,1411946450
+W1411946451,,residential,false,0,7.5,false,false,false,0,10.9,Lagos Island and Eko Atlantic,1411946451
+W1412285440,,service,false,0,5.0,false,false,false,0,39.0,Lagos Island and Eko Atlantic,1412285440
+W1412285441,,service,false,0,5.0,false,false,false,0,10.6,Lagos Island and Eko Atlantic,1412285441
+W1413227254,,service,false,0,5.0,false,false,false,0,42.1,Lagos Island and Eko Atlantic,1413227254
+W1413227255,,service,false,0,5.0,false,false,false,0,13.4,Lagos Island and Eko Atlantic,1413227255
+W1413619759,,secondary,true,0,7.5,true,false,false,0,19.3,Lagos Island and Eko Atlantic,1413619759
+W1414558453,,service,false,0,5.0,false,false,false,0,137.3,Lagos Island and Eko Atlantic,1414558453
+W1414558454,,service,false,0,5.0,false,false,false,0,20.0,Lagos Island and Eko Atlantic,1414558454
+W1418560366,,service,false,0,5.0,true,false,false,0,38.0,Lagos Island and Eko Atlantic,1418560366
+W1418560367,,service,false,0,5.0,true,false,false,0,27.4,Lagos Island and Eko Atlantic,1418560367
+W1418560368,,service,false,0,5.0,true,false,false,0,68.3,Lagos Island and Eko Atlantic,1418560368
+W1418560369,,service,false,0,5.0,false,false,false,0,87.6,Lagos Island and Eko Atlantic,1418560369
+W1418563858,,service,false,0,5.0,false,false,false,0,16.8,Lagos Island and Eko Atlantic,1418563858
+W1418563859,,service,false,0,5.0,false,false,false,0,40.8,Lagos Island and Eko Atlantic,1418563859
+W1418563860,,service,false,0,5.0,false,false,false,0,25.0,Lagos Island and Eko Atlantic,1418563860
+W1418563861,,service,false,0,5.0,false,false,false,0,259.0,Lagos Island and Eko Atlantic,1418563861
+W1418927734,,residential,false,0,7.5,true,false,false,0,112.5,Lagos Island and Eko Atlantic,1418927734
+W1420873100,,secondary,false,0,13.0,true,false,false,0,657.7,Lagos Island and Eko Atlantic,1420873100
+W1420873101,,tertiary,false,0,10.0,true,false,false,0,462.2,Lagos Island and Eko Atlantic,1420873101
+W1420873102,,tertiary,false,0,10.0,false,false,false,0,423.3,Lagos Island and Eko Atlantic,1420873102
+W1420873103,,residential,false,0,7.5,false,false,false,0,169.9,Lagos Island and Eko Atlantic,1420873103
+W1420873104,,secondary,false,0,13.0,true,false,false,0,739.4,Lagos Island and Eko Atlantic,1420873104
+W1420873105,,residential,false,0,7.5,false,false,false,0,353.5,Lagos Island and Eko Atlantic,1420873105
+W1420873106,,residential,false,0,7.5,false,false,false,0,426.0,Lagos Island and Eko Atlantic,1420873106
+W1420873108,,secondary,true,0,7.5,true,false,false,0,46.5,Lagos Island and Eko Atlantic,1420873108
+W1420873109,,secondary,false,0,13.0,true,false,false,0,45.2,Lagos Island and Eko Atlantic,1420873109
+W1420873110,,secondary,true,0,7.5,true,false,false,0,134.7,Lagos Island and Eko Atlantic,1420873110
+W1421786241,,service,false,0,5.0,false,false,false,0,6.9,Lagos Island and Eko Atlantic,1421786241
+W1421786242,,service,false,0,5.0,false,false,false,0,11.8,Lagos Island and Eko Atlantic,1421786242
+W1421786243,,service,false,0,5.0,false,false,false,0,26.9,Lagos Island and Eko Atlantic,1421786243
+W1421941805,,primary,false,0,17.5,true,false,false,0,146.9,Lagos Island and Eko Atlantic,1421941805
+W1421941808,,tertiary,false,0,10.0,true,false,false,0,195.0,Lagos Island and Eko Atlantic,1421941808
+W1421941809,,tertiary,false,0,10.0,true,false,false,0,188.9,Lagos Island and Eko Atlantic,1421941809
+W1421941812,,primary,true,0,7.5,true,false,false,0,104.8,Lagos Island and Eko Atlantic,1421941812
+W1421941813,,primary,true,0,7.5,true,false,false,0,104.3,Lagos Island and Eko Atlantic,1421941813
+W1421942563,,secondary,true,0,7.5,true,false,false,0,114.4,Lagos Island and Eko Atlantic,1421942563
+W1421943625,,residential,false,0,7.5,true,false,false,0,28.2,Lagos Island and Eko Atlantic,1421943625
+W1421943626,,residential,false,0,7.5,true,false,false,0,25.4,Lagos Island and Eko Atlantic,1421943626
+W1421943627,,residential,false,0,7.5,true,false,false,0,35.5,Lagos Island and Eko Atlantic,1421943627
+W1421943628,,residential,false,0,7.5,true,false,false,0,35.6,Lagos Island and Eko Atlantic,1421943628
+W1421943629,,residential,false,0,7.5,true,false,false,0,33.1,Lagos Island and Eko Atlantic,1421943629
+W1421943630,,residential,false,0,7.5,true,false,false,0,33.8,Lagos Island and Eko Atlantic,1421943630
+W1421943631,,residential,false,0,7.5,false,false,false,0,160.7,Lagos Island and Eko Atlantic,1421943631
+W1421943632,,residential,false,0,7.5,true,false,false,0,34.2,Lagos Island and Eko Atlantic,1421943632
+W1421943633,,residential,false,0,7.5,true,false,false,0,31.8,Lagos Island and Eko Atlantic,1421943633
+W1421943634,,residential,false,0,7.5,true,false,false,0,26.3,Lagos Island and Eko Atlantic,1421943634
+W1421943635,,residential,false,0,7.5,true,false,false,0,25.6,Lagos Island and Eko Atlantic,1421943635
+W1421943636,,residential,false,0,7.5,true,false,false,0,28.6,Lagos Island and Eko Atlantic,1421943636
+W1421943637,,residential,false,0,7.5,true,false,false,0,26.5,Lagos Island and Eko Atlantic,1421943637
+W1421945282,,secondary,true,0,7.5,true,false,false,0,73.1,Lagos Island and Eko Atlantic,1421945282
+W1424810718,,service,false,0,5.0,false,false,false,0,49.9,Lagos Island and Eko Atlantic,1424810718
+W1424810719,,service,false,0,5.0,false,true,false,0,6.3,Lagos Island and Eko Atlantic,1424810719
+W1424810720,,service,false,0,5.0,false,false,false,0,47.6,Lagos Island and Eko Atlantic,1424810720
+W1424810721,,service,false,0,5.0,false,false,false,0,6.7,Lagos Island and Eko Atlantic,1424810721
+W1426693844,,service,false,0,5.0,false,false,false,0,52.4,Lagos Island and Eko Atlantic,1426693844
+W1426693845,,service,false,0,5.0,false,false,false,0,22.4,Lagos Island and Eko Atlantic,1426693845
+W1426693846,,service,false,0,5.0,false,false,false,0,120.8,Lagos Island and Eko Atlantic,1426693846
+W1434319729,,residential,false,0,7.5,false,false,false,0,268.9,Lagos Island and Eko Atlantic,1434319729
+W1434321649,,residential,false,0,7.5,false,false,false,0,357.7,Lagos Island and Eko Atlantic,1434321649
+W1434321650,,residential,false,0,7.5,false,false,false,0,164.8,Lagos Island and Eko Atlantic,1434321650
+W1434321651,,residential,false,0,7.5,false,false,false,0,188.2,Lagos Island and Eko Atlantic,1434321651
+W1434321652,,residential,false,0,7.5,false,false,false,0,845.1,Lagos Island and Eko Atlantic,1434321652
+W1434321653,,residential,false,0,7.5,false,false,false,0,270.3,Lagos Island and Eko Atlantic,1434321653
+W1434388156,,residential,false,0,7.5,false,false,false,0,422.3,Lagos Island and Eko Atlantic,1434388156
+W1434388157,,residential,false,0,7.5,false,false,false,0,346.7,Lagos Island and Eko Atlantic,1434388157
+W1434388158,,residential,false,0,7.5,false,false,false,0,309.5,Lagos Island and Eko Atlantic,1434388158
+W1434388164,,service,false,0,5.0,false,false,false,0,152.8,Lagos Island and Eko Atlantic,1434388164
+W1434388166,,residential,false,0,7.5,false,false,false,0,197.1,Lagos Island and Eko Atlantic,1434388166
+W1450024370,,service,false,0,5.0,false,false,false,0,44.4,Lagos Island and Eko Atlantic,1450024370
+W1450667911,,service,false,0,5.0,false,false,false,0,10.0,Lagos Island and Eko Atlantic,1450667911
+W1450667912,,service,false,0,5.0,false,false,false,0,9.2,Lagos Island and Eko Atlantic,1450667912
+W1450667913,,service,false,0,5.0,false,false,false,0,30.2,Lagos Island and Eko Atlantic,1450667913
+W1459439004,,service,false,0,5.0,false,false,false,0,54.6,Lagos Island and Eko Atlantic,1459439004
+W1459447699,,service,false,0,5.0,false,false,false,0,120.1,Lagos Island and Eko Atlantic,1459447699
+W1459447700,,service,false,0,5.0,false,false,false,0,23.9,Lagos Island and Eko Atlantic,1459447700
+W1459447701,,service,false,0,5.0,false,false,false,0,9.8,Lagos Island and Eko Atlantic,1459447701
+W1459447702,,trunk,true,0,7.5,false,false,false,0,8.2,Lagos Island and Eko Atlantic,1459447702
+W1459447703,,residential,false,0,7.5,false,false,false,0,67.8,Lagos Island and Eko Atlantic,1459447703
+W1459447704,,service,false,0,5.0,false,false,false,0,81.8,Lagos Island and Eko Atlantic,1459447704
+W1459447705,,service,false,0,5.0,false,false,false,0,111.2,Lagos Island and Eko Atlantic,1459447705
+W1459447706,,service,false,0,5.0,false,false,false,0,51.0,Lagos Island and Eko Atlantic,1459447706
+W1459474592,,residential,false,0,7.5,false,false,false,0,61.9,Lagos Island and Eko Atlantic,1459474592
+W1459474593,,residential,false,0,7.5,false,false,false,0,13.2,Lagos Island and Eko Atlantic,1459474593
+W1459474594,,service,false,0,5.0,false,false,false,0,105.4,Lagos Island and Eko Atlantic,1459474594
+W1459474595,,service,false,0,5.0,false,false,false,0,41.3,Lagos Island and Eko Atlantic,1459474595
+W1459474596,,service,false,0,5.0,false,false,false,0,56.4,Lagos Island and Eko Atlantic,1459474596
+W1459474597,,service,false,0,5.0,false,false,false,0,49.7,Lagos Island and Eko Atlantic,1459474597
+W1459474598,,service,false,0,5.0,false,false,false,0,82.1,Lagos Island and Eko Atlantic,1459474598
+W1459474599,,service,false,0,5.0,false,false,false,0,67.5,Lagos Island and Eko Atlantic,1459474599
+W1459474600,,service,false,0,5.0,false,false,false,0,56.3,Lagos Island and Eko Atlantic,1459474600
+W1459477904,,service,false,0,5.0,false,false,false,0,76.9,Lagos Island and Eko Atlantic,1459477904
+W1459477905,,residential,false,0,7.5,false,false,false,0,55.4,Lagos Island and Eko Atlantic,1459477905
+W1459477906,,service,false,0,5.0,false,false,false,0,89.2,Lagos Island and Eko Atlantic,1459477906
+W1459477907,,service,false,0,5.0,false,false,false,0,62.9,Lagos Island and Eko Atlantic,1459477907
+W1459727353,,service,false,0,5.0,false,false,false,0,87.0,Lagos Island and Eko Atlantic,1459727353
+W1459727354,,service,false,0,5.0,false,false,false,0,11.0,Lagos Island and Eko Atlantic,1459727354
+W1459727355,,service,false,0,5.0,false,false,false,0,31.8,Lagos Island and Eko Atlantic,1459727355
+W1459727356,,service,false,0,5.0,false,false,false,0,25.3,Lagos Island and Eko Atlantic,1459727356
+W1459727357,,service,false,0,5.0,false,false,false,0,5.5,Lagos Island and Eko Atlantic,1459727357
+W1459727358,,service,false,0,5.0,false,false,false,0,78.6,Lagos Island and Eko Atlantic,1459727358
+W1459727359,,service,false,0,5.0,false,false,false,0,32.9,Lagos Island and Eko Atlantic,1459727359
+W1459727360,,service,false,0,5.0,false,false,false,0,81.3,Lagos Island and Eko Atlantic,1459727360
+W1459727361,,service,false,0,5.0,false,false,false,0,31.0,Lagos Island and Eko Atlantic,1459727361
+W1459727362,,service,false,0,5.0,false,false,false,0,74.6,Lagos Island and Eko Atlantic,1459727362
+W1459727363,,service,false,0,5.0,false,false,false,0,90.5,Lagos Island and Eko Atlantic,1459727363
+W1459727364,,service,false,0,5.0,false,false,false,0,414.3,Lagos Island and Eko Atlantic,1459727364
+W1459727365,,service,false,0,5.0,false,false,false,0,201.6,Lagos Island and Eko Atlantic,1459727365
+W1460668067,,service,false,0,5.0,false,false,false,0,25.0,Lagos Island and Eko Atlantic,1460668067
+W1460668068,,service,false,0,5.0,false,false,false,0,18.2,Lagos Island and Eko Atlantic,1460668068
+W1460668069,,service,false,0,5.0,false,false,false,0,23.1,Lagos Island and Eko Atlantic,1460668069
+W1462799301,,service,false,0,5.0,false,false,false,0,43.5,Lagos Island and Eko Atlantic,1462799301
+W1462799302,,service,false,0,5.0,false,false,false,0,13.7,Lagos Island and Eko Atlantic,1462799302
+W1462799303,,service,false,0,5.0,false,false,false,0,98.6,Lagos Island and Eko Atlantic,1462799303
+W1463122380,,service,false,0,5.0,false,false,false,0,25.1,Lagos Island and Eko Atlantic,1463122380
+W1463122381,,residential,false,0,7.5,false,false,false,0,109.8,Lagos Island and Eko Atlantic,1463122381
+W1463122382,,service,false,0,5.0,false,false,false,0,80.5,Lagos Island and Eko Atlantic,1463122382
+W1463122383,,service,false,0,5.0,false,false,false,0,68.5,Lagos Island and Eko Atlantic,1463122383
+W1464405772,,service,false,0,5.0,false,false,false,0,45.7,Lagos Island and Eko Atlantic,1464405772
+W1465131306,,service,false,0,5.0,false,false,false,0,18.3,Lagos Island and Eko Atlantic,1465131306
+W1465131307,,service,false,0,5.0,false,false,false,0,121.1,Lagos Island and Eko Atlantic,1465131307
+W1465131308,,service,false,0,5.0,false,false,false,0,50.8,Lagos Island and Eko Atlantic,1465131308
+W1465131309,,service,false,0,5.0,false,false,false,0,19.0,Lagos Island and Eko Atlantic,1465131309
+W1465131310,,service,false,0,5.0,false,false,false,0,8.3,Lagos Island and Eko Atlantic,1465131310
+W1465131311,,service,false,0,5.0,false,false,false,0,20.9,Lagos Island and Eko Atlantic,1465131311
+W1465338166,,service,false,0,5.0,false,false,false,0,26.9,Lagos Island and Eko Atlantic,1465338166
+W1465338167,,service,false,0,5.0,false,false,false,0,49.7,Lagos Island and Eko Atlantic,1465338167
+W1465338168,,service,false,0,5.0,false,false,false,0,36.1,Lagos Island and Eko Atlantic,1465338168
+W1465338169,,service,false,0,5.0,false,false,false,0,30.2,Lagos Island and Eko Atlantic,1465338169
+W1465338170,,service,false,0,5.0,false,false,false,0,38.5,Lagos Island and Eko Atlantic,1465338170
+W1465338171,,service,false,0,5.0,false,false,false,0,39.6,Lagos Island and Eko Atlantic,1465338171
+W1465338172,,service,false,0,5.0,false,false,false,0,58.9,Lagos Island and Eko Atlantic,1465338172
+W1465338173,,service,false,0,5.0,false,false,false,0,41.0,Lagos Island and Eko Atlantic,1465338173
+W1465338174,,service,false,0,5.0,false,false,false,0,48.0,Lagos Island and Eko Atlantic,1465338174
+W146604662,,unclassified,false,0,7.5,false,false,false,0,147.3,Lagos Island and Eko Atlantic,146604662
+W146604668,,residential,false,0,7.5,false,false,false,0,94.4,Lagos Island and Eko Atlantic,146604668
+W1466935912,,service,false,0,5.0,false,false,false,0,62.4,Lagos Island and Eko Atlantic,1466935912
+W1466935913,,service,false,0,5.0,false,false,false,0,84.6,Lagos Island and Eko Atlantic,1466935913
+W1488585144,,service,false,0,5.0,false,false,false,0,71.6,Lagos Island and Eko Atlantic,1488585144
+W1490969658,,service,false,0,5.0,false,false,false,0,17.5,Lagos Island and Eko Atlantic,1490969658
+W1490969659,,service,false,0,5.0,false,false,false,0,9.4,Lagos Island and Eko Atlantic,1490969659
+W1490969660,,service,false,0,5.0,false,false,false,0,51.3,Lagos Island and Eko Atlantic,1490969660
+W1490969661,,service,false,0,5.0,false,false,false,0,63.4,Lagos Island and Eko Atlantic,1490969661
+W1490969662,,service,false,0,5.0,false,false,false,0,50.9,Lagos Island and Eko Atlantic,1490969662
+W1495343795,,service,false,0,5.0,false,false,false,0,54.3,Lagos Island and Eko Atlantic,1495343795
+W1495343796,,residential,false,0,7.5,false,false,false,0,125.6,Lagos Island and Eko Atlantic,1495343796
+W1495343797,,residential,false,0,7.5,false,false,false,0,10.2,Lagos Island and Eko Atlantic,1495343797
+W1495343798,,service,false,0,5.0,false,false,false,0,42.4,Lagos Island and Eko Atlantic,1495343798
+W1495343799,,service,false,0,5.0,false,false,false,0,71.3,Lagos Island and Eko Atlantic,1495343799
+W1495343800,,service,false,0,5.0,false,false,false,0,151.3,Lagos Island and Eko Atlantic,1495343800
+W1499343192,,residential,false,0,7.5,false,false,false,0,137.4,Lagos Island and Eko Atlantic,1499343192
+W1499343193,,residential,false,0,7.5,false,false,false,0,13.7,Lagos Island and Eko Atlantic,1499343193
+W1499516829,,service,false,0,5.0,false,false,false,0,137.1,Lagos Island and Eko Atlantic,1499516829
+W1507037926,,primary,false,0,17.5,true,false,true,0,54.3,Lagos Island and Eko Atlantic,1507037926
+W1507037927,,secondary,false,0,13.0,true,false,true,0,59.5,Lagos Island and Eko Atlantic,1507037927
+W1507037928,,tertiary,false,0,10.0,true,false,false,0,83.0,Lagos Island and Eko Atlantic,1507037928
+W1510214529,,residential,false,0,7.5,false,false,false,0,8.7,Lagos Island and Eko Atlantic,1510214529
+W1510432813,,service,false,0,5.0,false,false,false,0,10.7,Lagos Island and Eko Atlantic,1510432813
+W1510432814,,service,false,0,5.0,false,false,false,0,2.6,Lagos Island and Eko Atlantic,1510432814
+W1510434968,,service,false,0,5.0,false,false,false,0,5.2,Lagos Island and Eko Atlantic,1510434968
+W1510434969,,service,false,0,5.0,false,false,false,0,129.6,Lagos Island and Eko Atlantic,1510434969
+W1510438137,,service,false,0,5.0,false,false,false,0,5.0,Lagos Island and Eko Atlantic,1510438137
+W1510447440,,service,false,0,5.0,false,false,false,0,59.7,Lagos Island and Eko Atlantic,1510447440
+W1510447441,,service,false,0,5.0,false,false,false,0,56.9,Lagos Island and Eko Atlantic,1510447441
+W1510447442,,service,false,0,5.0,false,false,false,0,4.0,Lagos Island and Eko Atlantic,1510447442
+W1510447443,,service,false,0,5.0,false,false,false,0,56.0,Lagos Island and Eko Atlantic,1510447443
+W1510447444,,service,false,0,5.0,false,false,false,0,6.3,Lagos Island and Eko Atlantic,1510447444
+W1511952027,,unclassified,false,0,7.5,false,true,false,0,51.9,Lagos Island and Eko Atlantic,1511952027
+W1511952028,,unclassified,false,0,7.5,false,false,false,0,30.6,Lagos Island and Eko Atlantic,1511952028
+W1511952029,,tertiary,true,0,7.5,true,false,false,0,63.0,Lagos Island and Eko Atlantic,1511952029
+W1511952030,,secondary,false,0,13.0,true,false,false,0,158.6,Lagos Island and Eko Atlantic,1511952030
+W1511952031,,secondary,false,0,13.0,true,false,false,0,242.1,Lagos Island and Eko Atlantic,1511952031
+W1511952032,,secondary,false,0,13.0,true,false,false,0,250.3,Lagos Island and Eko Atlantic,1511952032
+W1511952033,,service,false,0,5.0,false,false,false,0,304.0,Lagos Island and Eko Atlantic,1511952033
+W1512317156,,service,false,0,5.0,true,false,false,0,21.2,Lagos Island and Eko Atlantic,1512317156
+W1512317157,,service,false,0,5.0,true,false,false,0,21.6,Lagos Island and Eko Atlantic,1512317157
+W1512317158,,service,false,0,5.0,false,false,false,0,142.8,Lagos Island and Eko Atlantic,1512317158
+W1512317159,,service,false,0,5.0,true,false,false,0,10.3,Lagos Island and Eko Atlantic,1512317159
+W1512317160,,service,false,0,5.0,true,false,false,0,11.5,Lagos Island and Eko Atlantic,1512317160
+W1517057969,,service,false,0,5.0,true,false,false,0,5.1,Lagos Island and Eko Atlantic,1517057969
+W1517057970,,service,false,0,5.0,true,false,false,0,5.7,Lagos Island and Eko Atlantic,1517057970
+W1523271349,,residential,false,0,7.5,true,false,false,0,723.9,Lagos Island and Eko Atlantic,1523271349
+W1523271350,,residential,false,0,7.5,true,false,false,0,296.2,Lagos Island and Eko Atlantic,1523271350
+W1523271351,,secondary,false,0,13.0,true,false,false,0,22.7,Lagos Island and Eko Atlantic,1523271351
+W1525725617,,secondary,true,0,7.5,true,false,false,0,21.0,Lagos Island and Eko Atlantic,1525725617
+W1525725618,,secondary,true,0,7.5,true,false,false,0,28.1,Lagos Island and Eko Atlantic,1525725618
+W1527500910,,service,false,0,5.0,false,false,false,0,109.2,Lagos Island and Eko Atlantic,1527500910
+W1527500911,,service,false,0,5.0,false,false,false,0,142.7,Lagos Island and Eko Atlantic,1527500911
+W1528841859,,service,false,0,5.0,false,false,false,0,63.8,Lagos Island and Eko Atlantic,1528841859
+W1529905918,,residential,false,0,7.5,false,false,false,0,622.8,Lagos Island and Eko Atlantic,1529905918
+W1529905919,,residential,false,0,7.5,false,false,false,0,589.9,Lagos Island and Eko Atlantic,1529905919
+W1529911856,,tertiary,false,0,10.0,false,false,false,0,719.4,Lagos Island and Eko Atlantic,1529911856
+W1529911857,,service,false,0,5.0,false,false,false,0,219.3,Lagos Island and Eko Atlantic,1529911857
+W1529911858,,service,false,0,5.0,false,false,false,0,342.8,Lagos Island and Eko Atlantic,1529911858
+W1529911859,,service,false,0,5.0,false,false,false,0,286.6,Lagos Island and Eko Atlantic,1529911859
+W1529911860,,service,false,0,5.0,false,false,false,0,137.3,Lagos Island and Eko Atlantic,1529911860
+W1540039015,,service,false,0,5.0,false,false,false,0,59.0,Lagos Island and Eko Atlantic,1540039015
+W1540039016,,service,false,0,5.0,false,false,false,0,60.6,Lagos Island and Eko Atlantic,1540039016
+W1548511035,,service,false,0,5.0,false,false,false,0,8.4,Lagos Island and Eko Atlantic,1548511035
+W1548511036,,residential,false,0,7.5,false,false,false,0,12.6,Lagos Island and Eko Atlantic,1548511036
+W1548553619,,service,false,0,5.0,false,false,false,0,54.7,Lagos Island and Eko Atlantic,1548553619
+W1549579240,,service,false,0,5.0,false,false,false,0,59.3,Lagos Island and Eko Atlantic,1549579240
+W1549579241,,service,false,0,5.0,false,false,false,0,11.3,Lagos Island and Eko Atlantic,1549579241
+W1549579242,,service,false,0,5.0,false,false,false,0,125.4,Lagos Island and Eko Atlantic,1549579242
+W1559000418,,service,false,0,5.0,false,false,false,0,138.5,Lagos Island and Eko Atlantic,1559000418
+W1559000419,,service,false,0,5.0,false,false,false,0,112.6,Lagos Island and Eko Atlantic,1559000419
+W1559000420,,residential,false,0,7.5,true,false,false,0,641.8,Lagos Island and Eko Atlantic,1559000420
+W1559217166,,service,false,0,5.0,true,false,false,0,68.1,Lagos Island and Eko Atlantic,1559217166
+W1559217167,,service,false,0,5.0,true,false,false,0,50.5,Lagos Island and Eko Atlantic,1559217167
+W1559217168,,service,false,0,5.0,true,false,false,0,95.0,Lagos Island and Eko Atlantic,1559217168
+W1559217169,,service,false,0,5.0,true,false,false,0,75.4,Lagos Island and Eko Atlantic,1559217169
+W1559217170,,service,false,0,5.0,true,false,false,0,88.8,Lagos Island and Eko Atlantic,1559217170
+W1559239002,,service,false,0,5.0,false,false,false,0,260.5,Lagos Island and Eko Atlantic,1559239002
+W1560069209,,residential,false,0,7.5,true,false,false,0,20.8,Lagos Island and Eko Atlantic,1560069209
+W1560069210,,residential,false,0,7.5,true,false,false,0,22.0,Lagos Island and Eko Atlantic,1560069210
+W1560069211,,residential,false,0,7.5,true,false,false,0,23.0,Lagos Island and Eko Atlantic,1560069211
+W1560069212,,residential,false,0,7.5,true,false,false,0,21.5,Lagos Island and Eko Atlantic,1560069212
+W1560076658,,service,false,0,5.0,false,false,false,0,12.9,Lagos Island and Eko Atlantic,1560076658
+W1560076659,,service,false,0,5.0,false,false,false,0,68.9,Lagos Island and Eko Atlantic,1560076659
+W1561016450,,service,false,0,5.0,false,false,false,0,7.8,Lagos Island and Eko Atlantic,1561016450
+W1561019198,,service,false,0,5.0,false,false,false,0,31.5,Lagos Island and Eko Atlantic,1561019198
+W1561019199,,service,false,0,5.0,false,false,false,0,11.2,Lagos Island and Eko Atlantic,1561019199
+W1561052837,,service,false,0,5.0,false,false,false,0,7.8,Lagos Island and Eko Atlantic,1561052837
+W1561052838,,service,false,0,5.0,false,false,false,0,7.0,Lagos Island and Eko Atlantic,1561052838
+W1561052839,,service,false,0,5.0,false,false,false,0,8.1,Lagos Island and Eko Atlantic,1561052839
+W1564014504,,service,false,0,5.0,false,false,false,0,1538.8,Lagos Island and Eko Atlantic,1564014504
+W1564014507,,service,false,0,5.0,false,false,false,0,1038.6,Lagos Island and Eko Atlantic,1564014507
+W1564017935,,service,false,0,5.0,false,false,false,0,64.7,Lagos Island and Eko Atlantic,1564017935
+W1565047813,,service,false,0,5.0,false,false,false,0,5.8,Lagos Island and Eko Atlantic,1565047813
+W1565047814,,service,false,0,5.0,false,false,false,0,54.4,Lagos Island and Eko Atlantic,1565047814
+W1565047815,,unclassified,false,0,7.5,false,false,false,0,182.2,Lagos Island and Eko Atlantic,1565047815
+W1565047816,,service,false,0,5.0,false,false,false,0,116.7,Lagos Island and Eko Atlantic,1565047816
+W1565047817,,service,false,0,5.0,false,false,false,0,588.3,Lagos Island and Eko Atlantic,1565047817
+W1565047818,,service,false,0,5.0,false,false,false,0,686.8,Lagos Island and Eko Atlantic,1565047818
+W1565059110,,residential,false,0,7.5,false,false,false,0,155.8,Lagos Island and Eko Atlantic,1565059110
+W1565059111,,service,false,0,5.0,false,false,false,0,72.1,Lagos Island and Eko Atlantic,1565059111
+W1565059112,,service,false,0,5.0,false,false,false,0,68.0,Lagos Island and Eko Atlantic,1565059112
+W1565061579,,residential,false,0,7.5,false,false,false,0,85.0,Lagos Island and Eko Atlantic,1565061579
+W1565061580,,service,false,0,5.0,false,false,false,0,62.4,Lagos Island and Eko Atlantic,1565061580
+W1565063761,,residential,false,0,7.5,false,false,false,0,74.8,Lagos Island and Eko Atlantic,1565063761
+W1565066337,,residential,false,0,7.5,false,false,false,0,228.9,Lagos Island and Eko Atlantic,1565066337
+W1566733077,,service,false,0,5.0,false,false,false,0,11.2,Lagos Island and Eko Atlantic,1566733077
+W1566733078,,service,false,0,5.0,false,false,false,0,11.4,Lagos Island and Eko Atlantic,1566733078
+W1566733079,,service,false,0,5.0,false,false,false,0,9.7,Lagos Island and Eko Atlantic,1566733079
+W1566739359,,service,false,0,5.0,false,false,false,0,12.2,Lagos Island and Eko Atlantic,1566739359
+W1566739360,,service,false,0,5.0,false,false,false,0,73.6,Lagos Island and Eko Atlantic,1566739360
+W1566739361,,service,false,0,5.0,false,false,false,0,161.4,Lagos Island and Eko Atlantic,1566739361
+W1566739362,,service,false,0,5.0,false,false,false,0,45.0,Lagos Island and Eko Atlantic,1566739362
+W1566739363,,service,false,0,5.0,false,false,false,0,20.4,Lagos Island and Eko Atlantic,1566739363
+W1566739364,,service,false,0,5.0,false,false,false,0,67.2,Lagos Island and Eko Atlantic,1566739364
+W1566739365,,service,false,0,5.0,false,false,false,0,32.4,Lagos Island and Eko Atlantic,1566739365
+W1566739366,,service,false,0,5.0,false,false,false,0,156.2,Lagos Island and Eko Atlantic,1566739366
+W1566741937,,service,false,0,5.0,false,false,false,0,41.2,Lagos Island and Eko Atlantic,1566741937
+W1566985991,,service,false,0,5.0,false,false,false,0,4.3,Lagos Island and Eko Atlantic,1566985991
+W1566985992,,service,false,0,5.0,false,false,false,0,9.8,Lagos Island and Eko Atlantic,1566985992
+W1566985993,,service,false,0,5.0,false,false,false,0,5.4,Lagos Island and Eko Atlantic,1566985993
+W1566985994,,service,false,0,5.0,false,false,false,0,8.7,Lagos Island and Eko Atlantic,1566985994
+W1566985995,,service,false,0,5.0,false,false,false,0,7.7,Lagos Island and Eko Atlantic,1566985995
+W1566985996,,service,false,0,5.0,false,false,false,0,6.9,Lagos Island and Eko Atlantic,1566985996
+W1566985997,,service,false,0,5.0,false,false,false,0,6.4,Lagos Island and Eko Atlantic,1566985997
+W1566985998,,service,false,0,5.0,false,false,false,0,18.3,Lagos Island and Eko Atlantic,1566985998
+W1566985999,,service,false,0,5.0,false,false,false,0,30.5,Lagos Island and Eko Atlantic,1566985999
+W1566986000,,service,false,0,5.0,false,false,false,0,10.3,Lagos Island and Eko Atlantic,1566986000
+W1566986001,,service,false,0,5.0,false,false,false,0,5.7,Lagos Island and Eko Atlantic,1566986001
+W1566986002,,service,false,0,5.0,false,false,false,0,13.4,Lagos Island and Eko Atlantic,1566986002
+W1566986003,,service,false,0,5.0,false,false,false,0,8.2,Lagos Island and Eko Atlantic,1566986003
+W1566986004,,service,false,0,5.0,false,false,false,0,38.1,Lagos Island and Eko Atlantic,1566986004
+W1566986005,,service,false,0,5.0,false,false,false,0,230.4,Lagos Island and Eko Atlantic,1566986005
+W1566986006,,service,false,0,5.0,false,false,false,0,90.7,Lagos Island and Eko Atlantic,1566986006
+W1566986007,,service,false,0,5.0,false,false,false,0,36.7,Lagos Island and Eko Atlantic,1566986007
+W1566986008,,service,false,0,5.0,false,false,false,0,52.5,Lagos Island and Eko Atlantic,1566986008
+W1566990902,,service,false,0,5.0,false,false,false,0,9.7,Lagos Island and Eko Atlantic,1566990902
+W1566990903,,service,false,0,5.0,false,false,false,0,14.1,Lagos Island and Eko Atlantic,1566990903
+W1566993971,,service,false,0,5.0,false,false,false,0,3.3,Lagos Island and Eko Atlantic,1566993971
+W1566993972,,service,false,0,5.0,false,false,false,0,10.6,Lagos Island and Eko Atlantic,1566993972
+W1566993973,,service,false,0,5.0,false,false,false,0,52.1,Lagos Island and Eko Atlantic,1566993973
+W1566993975,,service,false,0,5.0,false,false,false,0,37.9,Lagos Island and Eko Atlantic,1566993975
+W1566993976,,service,false,0,5.0,false,false,false,0,9.5,Lagos Island and Eko Atlantic,1566993976
+W1566993977,,service,false,0,5.0,false,false,false,0,19.9,Lagos Island and Eko Atlantic,1566993977
+W1566993978,,service,false,0,5.0,false,false,false,0,6.7,Lagos Island and Eko Atlantic,1566993978
+W1566993979,,service,false,0,5.0,false,false,false,0,9.4,Lagos Island and Eko Atlantic,1566993979
+W1566993980,,service,false,0,5.0,false,false,false,0,45.8,Lagos Island and Eko Atlantic,1566993980
+W1566993981,,service,false,0,5.0,false,false,false,0,9.0,Lagos Island and Eko Atlantic,1566993981
+W1566993982,,service,false,0,5.0,false,false,false,0,8.8,Lagos Island and Eko Atlantic,1566993982
+W1566994279,,service,false,0,5.0,false,false,false,0,8.3,Lagos Island and Eko Atlantic,1566994279
+W1566994280,,service,false,0,5.0,false,false,false,0,12.2,Lagos Island and Eko Atlantic,1566994280
+W1566994281,,service,false,0,5.0,false,false,false,0,14.8,Lagos Island and Eko Atlantic,1566994281
+W1566994282,,service,false,0,5.0,false,false,false,0,14.9,Lagos Island and Eko Atlantic,1566994282
+W1566994283,,service,false,0,5.0,false,false,false,0,3.7,Lagos Island and Eko Atlantic,1566994283
+W1566994284,,service,false,0,5.0,false,false,false,0,5.0,Lagos Island and Eko Atlantic,1566994284
+W1566994285,,service,false,0,5.0,false,false,false,0,9.2,Lagos Island and Eko Atlantic,1566994285
+W1566994645,,service,false,0,5.0,false,false,false,0,10.0,Lagos Island and Eko Atlantic,1566994645
+W1566994646,,service,false,0,5.0,false,false,false,0,9.1,Lagos Island and Eko Atlantic,1566994646
+W1566994647,,service,false,0,5.0,false,false,false,0,11.3,Lagos Island and Eko Atlantic,1566994647
+W1566998932,,service,false,0,5.0,false,false,false,0,57.7,Lagos Island and Eko Atlantic,1566998932
+W1566998933,,service,false,0,5.0,false,false,false,0,14.3,Lagos Island and Eko Atlantic,1566998933
+W1566998934,,service,false,0,5.0,false,false,false,0,21.4,Lagos Island and Eko Atlantic,1566998934
+W1567002493,,service,false,0,5.0,false,false,false,0,11.8,Lagos Island and Eko Atlantic,1567002493
+W1567007074,,service,false,0,5.0,false,false,false,0,8.1,Lagos Island and Eko Atlantic,1567007074
+W1567007075,,service,false,0,5.0,false,false,false,0,6.8,Lagos Island and Eko Atlantic,1567007075
+W166721540,,service,false,0,5.0,false,false,false,0,223.0,Lagos Island and Eko Atlantic,166721540
+W166721552,,service,false,0,5.0,false,false,false,0,228.0,Lagos Island and Eko Atlantic,166721552
+W215113166,,motorway,true,0,7.5,true,false,false,0,129.3,Lagos Island and Eko Atlantic,215113166
+W215113170,,primary,true,0,7.5,true,false,false,0,54.6,Lagos Island and Eko Atlantic,215113170
+W215118919,,motorway,true,0,7.5,true,false,false,0,100.2,Lagos Island and Eko Atlantic,215118919
+W215135595,,secondary,true,2,7.6,true,false,false,0,141.1,Lagos Island and Eko Atlantic,215135595
+W215135598,,motorway,true,0,7.5,true,false,false,0,99.4,Lagos Island and Eko Atlantic,215135598
+W215135600,,secondary,false,0,13.0,true,false,true,0,183.2,Lagos Island and Eko Atlantic,215135600
+W215325612,,unclassified,false,0,7.5,false,false,false,0,933.1,Lagos Island and Eko Atlantic,215325612
+W215397529,,secondary,false,0,13.0,true,false,false,0,45.6,Lagos Island and Eko Atlantic,215397529
+W215397532,,secondary,false,0,13.0,true,false,false,0,140.2,Lagos Island and Eko Atlantic,215397532
+W215397536,,residential,false,0,7.5,false,false,false,0,28.1,Lagos Island and Eko Atlantic,215397536
+W215573633,,secondary,false,0,13.0,true,false,false,0,39.6,Lagos Island and Eko Atlantic,215573633
+W215573634,,unclassified,false,0,7.5,true,false,false,0,48.0,Lagos Island and Eko Atlantic,215573634
+W215573635,,secondary,false,0,13.0,true,false,false,0,34.0,Lagos Island and Eko Atlantic,215573635
+W215573637,,secondary,false,0,13.0,true,false,false,0,38.3,Lagos Island and Eko Atlantic,215573637
+W215573638,,secondary,false,0,13.0,true,false,false,0,42.6,Lagos Island and Eko Atlantic,215573638
+W215573639,,unclassified,false,0,7.5,true,false,false,0,29.5,Lagos Island and Eko Atlantic,215573639
+W215573640,,secondary,false,0,13.0,true,false,true,0,149.4,Lagos Island and Eko Atlantic,215573640
+W230393334,,service,false,0,5.0,false,false,false,0,8.7,Lagos Island and Eko Atlantic,230393334
+W234853304,,trunk,true,0,7.5,true,false,false,0,28.9,Lagos Island and Eko Atlantic,234853304
+W280346475,,unclassified,false,0,7.5,false,false,false,0,199.8,Lagos Island and Eko Atlantic,280346475
+W280346477,,residential,false,0,7.5,false,false,false,0,62.2,Lagos Island and Eko Atlantic,280346477
+W280347363,,residential,false,0,7.5,false,false,false,0,70.6,Lagos Island and Eko Atlantic,280347363
+W280347364,,residential,false,0,7.5,false,false,false,0,111.4,Lagos Island and Eko Atlantic,280347364
+W280347365,,secondary,false,0,13.0,true,false,false,0,44.9,Lagos Island and Eko Atlantic,280347365
+W280348107,,residential,false,0,7.5,false,false,false,0,179.9,Lagos Island and Eko Atlantic,280348107
+W292126951,,service,false,0,5.0,true,false,false,0,1687.9,Lagos Island and Eko Atlantic,292126951
+W399250119,,secondary,false,0,13.0,true,false,false,0,265.7,Lagos Island and Eko Atlantic,399250119
+W399250120,,secondary,false,0,13.0,true,false,true,0,191.8,Lagos Island and Eko Atlantic,399250120
+W399250123,,tertiary,false,0,10.0,true,false,false,0,507.7,Lagos Island and Eko Atlantic,399250123
+W399250124,,tertiary,false,0,10.0,true,false,false,0,510.8,Lagos Island and Eko Atlantic,399250124
+W399250126,,residential,false,0,7.5,false,false,false,0,453.1,Lagos Island and Eko Atlantic,399250126
+W399250127,,secondary,false,0,13.0,true,false,false,0,181.3,Lagos Island and Eko Atlantic,399250127
+W399250131,,tertiary,false,0,10.0,true,false,false,0,639.1,Lagos Island and Eko Atlantic,399250131
+W399250132,,tertiary,false,0,10.0,true,false,false,0,191.0,Lagos Island and Eko Atlantic,399250132
+W399250135,,residential,false,0,7.5,false,false,false,0,368.9,Lagos Island and Eko Atlantic,399250135
+W399250137,,residential,false,0,7.5,false,false,false,0,210.1,Lagos Island and Eko Atlantic,399250137
+W399254493,,tertiary,false,0,10.0,true,false,false,0,187.8,Lagos Island and Eko Atlantic,399254493
+W399254495,,tertiary,false,0,10.0,true,false,false,0,631.2,Lagos Island and Eko Atlantic,399254495
+W399254496,,secondary,false,0,13.0,true,false,true,0,190.8,Lagos Island and Eko Atlantic,399254496
+W399254497,,secondary,false,0,13.0,true,false,false,0,466.8,Lagos Island and Eko Atlantic,399254497
+W399254500,,residential,false,0,7.5,false,false,false,0,518.8,Lagos Island and Eko Atlantic,399254500
+W399257322,,secondary,false,0,13.0,true,false,false,0,375.7,Lagos Island and Eko Atlantic,399257322
+W399403541,,secondary,false,0,13.0,true,false,false,0,803.1,Lagos Island and Eko Atlantic,399403541
+W399403547,,secondary,false,0,13.0,true,false,false,0,284.2,Lagos Island and Eko Atlantic,399403547
+W399403560,,residential,false,0,7.5,false,false,false,0,169.4,Lagos Island and Eko Atlantic,399403560
+W409545396,,primary,false,0,17.5,true,false,true,0,116.9,Lagos Island and Eko Atlantic,409545396
+W411688711,,service,false,0,5.0,false,false,false,0,172.1,Lagos Island and Eko Atlantic,411688711
+W411688712,,service,false,0,5.0,true,false,false,0,54.2,Lagos Island and Eko Atlantic,411688712
+W411688713,,service,false,0,5.0,true,false,false,0,103.9,Lagos Island and Eko Atlantic,411688713
+W411688714,,service,false,0,5.0,true,false,false,0,20.7,Lagos Island and Eko Atlantic,411688714
+W411937276,,service,false,0,5.0,true,false,false,0,15.8,Lagos Island and Eko Atlantic,411937276
+W411937277,,service,false,0,5.0,true,false,false,0,67.7,Lagos Island and Eko Atlantic,411937277
+W414384542,,service,false,0,5.0,false,false,false,0,42.2,Lagos Island and Eko Atlantic,414384542
+W414384562,,service,false,0,5.0,false,false,false,0,45.3,Lagos Island and Eko Atlantic,414384562
+W415781959,,trunk,true,1,4.3,true,false,false,0,111.4,Lagos Island and Eko Atlantic,415781959
+W416084181,,trunk,true,0,7.5,true,false,false,0,203.4,Lagos Island and Eko Atlantic,416084181
+W443414774,,track,false,0,4.0,false,false,false,0,677.1,Lagos Island and Eko Atlantic,443414774
+W443414775,,residential,false,0,7.5,false,false,false,0,375.5,Lagos Island and Eko Atlantic,443414775
+W443414777,,unclassified,false,0,7.5,false,false,false,0,273.8,Lagos Island and Eko Atlantic,443414777
+W443414778,,service,false,0,5.0,false,false,false,0,846.0,Lagos Island and Eko Atlantic,443414778
+W443414779,,unclassified,false,0,7.5,false,false,false,0,1724.2,Lagos Island and Eko Atlantic,443414779
+W465174451,,service,false,0,5.0,false,false,false,0,215.0,Lagos Island and Eko Atlantic,465174451
+W482242691,,service,false,0,5.0,true,false,false,0,129.1,Lagos Island and Eko Atlantic,482242691
+W485889484,,trunk,true,1,4.3,true,false,false,0,99.0,Lagos Island and Eko Atlantic,485889484
+W505413825,,secondary,false,0,13.0,true,true,false,0,51.3,Lagos Island and Eko Atlantic,505413825
+W513426487,,secondary,false,0,13.0,true,false,false,0,348.2,Lagos Island and Eko Atlantic,513426487
+W513426488,,secondary,false,0,13.0,true,false,false,0,149.7,Lagos Island and Eko Atlantic,513426488
+W513426489,,secondary,false,0,13.0,true,false,false,0,104.6,Lagos Island and Eko Atlantic,513426489
+W513426492,,secondary,false,0,13.0,true,false,false,0,377.9,Lagos Island and Eko Atlantic,513426492
+W513426495,,secondary,false,0,13.0,true,false,false,0,403.9,Lagos Island and Eko Atlantic,513426495
+W513426506,,tertiary,true,0,7.5,true,false,false,0,95.3,Lagos Island and Eko Atlantic,513426506
+W513426512,,secondary,false,0,13.0,true,false,false,0,196.8,Lagos Island and Eko Atlantic,513426512
+W513426514,,secondary,false,0,13.0,true,false,false,0,195.4,Lagos Island and Eko Atlantic,513426514
+W513426517,,secondary,false,0,13.0,true,false,false,0,205.9,Lagos Island and Eko Atlantic,513426517
+W513426518,,secondary,false,0,13.0,true,false,false,0,253.2,Lagos Island and Eko Atlantic,513426518
+W513426530,,residential,false,0,7.5,false,false,false,0,333.5,Lagos Island and Eko Atlantic,513426530
+W513426533,,residential,false,0,7.5,false,false,false,0,144.9,Lagos Island and Eko Atlantic,513426533
+W513426535,,residential,false,0,7.5,false,false,false,0,342.7,Lagos Island and Eko Atlantic,513426535
+W525026802,,service,false,0,5.0,true,false,false,0,206.5,Lagos Island and Eko Atlantic,525026802
+W529247747,,service,false,0,5.0,true,false,false,0,142.5,Lagos Island and Eko Atlantic,529247747
+W530073341,,service,false,0,5.0,false,false,false,0,96.7,Lagos Island and Eko Atlantic,530073341
+W530073357,,service,false,0,5.0,false,false,false,0,50.5,Lagos Island and Eko Atlantic,530073357
+W530737594,,unclassified,false,0,7.5,false,false,false,0,84.1,Lagos Island and Eko Atlantic,530737594
+W536134425,,service,false,0,5.0,false,false,false,0,13.6,Lagos Island and Eko Atlantic,536134425
+W536134426,,service,false,0,5.0,false,false,false,0,52.7,Lagos Island and Eko Atlantic,536134426
+W538086576,,trunk,true,0,7.5,true,false,false,0,261.0,Lagos Island and Eko Atlantic,538086576
+W538086577,,motorway,true,0,7.5,true,false,false,0,62.4,Lagos Island and Eko Atlantic,538086577
+W542419712,,service,false,0,5.0,false,false,false,0,130.8,Lagos Island and Eko Atlantic,542419712
+W542661156,,service,false,0,5.0,false,false,false,0,8.8,Lagos Island and Eko Atlantic,542661156
+W542661161,,service,false,0,5.0,true,false,false,0,49.3,Lagos Island and Eko Atlantic,542661161
+W542661162,,service,false,0,5.0,false,false,false,0,86.2,Lagos Island and Eko Atlantic,542661162
+W544228973,,primary,true,0,7.5,true,false,false,0,64.7,Lagos Island and Eko Atlantic,544228973
+W544228974,,secondary,true,0,7.5,true,false,false,0,58.5,Lagos Island and Eko Atlantic,544228974
+W551350566,,service,false,0,5.0,false,false,false,0,16.8,Lagos Island and Eko Atlantic,551350566
+W558796888,,residential,false,0,7.5,true,false,false,0,86.1,Lagos Island and Eko Atlantic,558796888
+W558796891,,residential,false,0,7.5,false,false,false,0,9.7,Lagos Island and Eko Atlantic,558796891
+W558796895,,residential,false,0,7.5,false,false,false,0,231.4,Lagos Island and Eko Atlantic,558796895
+W558864240,,residential,false,0,7.5,false,false,false,0,76.6,Lagos Island and Eko Atlantic,558864240
+W558864243,,residential,false,0,7.5,false,false,false,0,173.7,Lagos Island and Eko Atlantic,558864243
+W558864245,,residential,false,0,7.5,false,false,false,0,146.2,Lagos Island and Eko Atlantic,558864245
+W558867032,,service,false,0,5.0,false,false,false,0,27.7,Lagos Island and Eko Atlantic,558867032
+W559069082,,residential,false,0,7.5,false,false,false,0,130.7,Lagos Island and Eko Atlantic,559069082
+W560577492,,service,false,0,5.0,false,false,false,0,130.7,Lagos Island and Eko Atlantic,560577492
+W560577493,,service,false,0,5.0,false,false,false,0,92.6,Lagos Island and Eko Atlantic,560577493
+W560577494,,service,false,0,5.0,false,false,false,0,223.5,Lagos Island and Eko Atlantic,560577494
+W567964438,,service,false,0,5.0,false,false,false,0,103.0,Lagos Island and Eko Atlantic,567964438
+W583985308,,service,false,0,5.0,false,false,false,0,95.5,Lagos Island and Eko Atlantic,583985308
+W584629397,,service,false,0,5.0,false,false,false,0,166.4,Lagos Island and Eko Atlantic,584629397
+W584681778,,service,false,0,5.0,false,false,false,0,256.2,Lagos Island and Eko Atlantic,584681778
+W584681779,,service,false,0,5.0,false,false,false,0,75.4,Lagos Island and Eko Atlantic,584681779
+W584681780,,service,false,0,5.0,false,false,false,0,166.4,Lagos Island and Eko Atlantic,584681780
+W584681781,,service,false,0,5.0,false,false,false,0,287.4,Lagos Island and Eko Atlantic,584681781
+W584681782,,service,false,0,5.0,false,false,false,0,249.8,Lagos Island and Eko Atlantic,584681782
+W584681783,,service,false,0,5.0,false,false,false,0,126.9,Lagos Island and Eko Atlantic,584681783
+W584681784,,service,false,0,5.0,false,false,false,0,48.7,Lagos Island and Eko Atlantic,584681784
+W584681785,,service,false,0,5.0,false,false,false,0,76.4,Lagos Island and Eko Atlantic,584681785
+W584681786,,service,false,0,5.0,false,false,false,0,150.3,Lagos Island and Eko Atlantic,584681786
+W584681787,,service,false,0,5.0,false,false,false,0,141.2,Lagos Island and Eko Atlantic,584681787
+W584706106,,service,false,0,5.0,false,false,false,0,108.4,Lagos Island and Eko Atlantic,584706106
+W584712684,,service,false,0,5.0,false,false,false,0,163.3,Lagos Island and Eko Atlantic,584712684
+W584712685,,service,false,0,5.0,false,false,false,0,131.5,Lagos Island and Eko Atlantic,584712685
+W584712686,,residential,false,0,7.5,false,false,false,0,11.3,Lagos Island and Eko Atlantic,584712686
+W584712687,,service,false,0,5.0,false,false,false,0,107.6,Lagos Island and Eko Atlantic,584712687
+W584726017,,service,false,0,5.0,false,false,false,0,194.7,Lagos Island and Eko Atlantic,584726017
+W584729586,,residential,false,0,7.5,false,false,false,0,67.6,Lagos Island and Eko Atlantic,584729586
+W584729587,,residential,false,0,7.5,false,false,false,0,114.3,Lagos Island and Eko Atlantic,584729587
+W584729588,,service,false,0,5.0,false,false,false,0,112.7,Lagos Island and Eko Atlantic,584729588
+W584729589,,service,false,0,5.0,false,false,false,0,146.4,Lagos Island and Eko Atlantic,584729589
+W584741024,,service,false,0,5.0,false,false,false,0,71.5,Lagos Island and Eko Atlantic,584741024
+W584741026,,service,false,0,5.0,false,false,false,0,61.9,Lagos Island and Eko Atlantic,584741026
+W584741028,,service,false,0,5.0,false,false,false,0,69.3,Lagos Island and Eko Atlantic,584741028
+W585655712,,service,false,0,5.0,false,false,false,0,99.3,Lagos Island and Eko Atlantic,585655712
+W585730752,,service,false,0,5.0,false,false,false,0,135.1,Lagos Island and Eko Atlantic,585730752
+W585730753,,service,false,0,5.0,false,false,false,0,170.6,Lagos Island and Eko Atlantic,585730753
+W585730754,,service,false,0,5.0,false,false,false,0,88.7,Lagos Island and Eko Atlantic,585730754
+W585730755,,service,false,0,5.0,false,false,false,0,52.6,Lagos Island and Eko Atlantic,585730755
+W585735988,,secondary,false,0,13.0,false,false,false,0,12.9,Lagos Island and Eko Atlantic,585735988
+W585735989,,service,false,0,5.0,false,false,false,0,139.9,Lagos Island and Eko Atlantic,585735989
+W585735990,,service,false,0,5.0,false,false,false,0,153.1,Lagos Island and Eko Atlantic,585735990
+W585735991,,residential,false,0,7.5,false,false,false,0,122.8,Lagos Island and Eko Atlantic,585735991
+W585735992,,residential,false,0,7.5,false,false,false,0,245.6,Lagos Island and Eko Atlantic,585735992
+W585735993,,residential,false,0,7.5,false,false,false,0,16.8,Lagos Island and Eko Atlantic,585735993
+W585735994,,residential,false,0,7.5,false,false,false,0,118.8,Lagos Island and Eko Atlantic,585735994
+W585735995,,residential,false,0,7.5,false,false,false,0,12.2,Lagos Island and Eko Atlantic,585735995
+W586290605,,residential,false,0,7.5,false,false,false,0,59.1,Lagos Island and Eko Atlantic,586290605
+W586290607,,residential,false,0,7.5,false,false,false,0,55.5,Lagos Island and Eko Atlantic,586290607
+W586290609,,residential,false,0,7.5,false,false,false,0,204.2,Lagos Island and Eko Atlantic,586290609
+W586290611,,residential,false,0,7.5,false,false,false,0,175.6,Lagos Island and Eko Atlantic,586290611
+W586290614,,residential,false,0,7.5,false,false,false,0,253.9,Lagos Island and Eko Atlantic,586290614
+W586290616,,residential,false,0,7.5,false,false,false,0,136.1,Lagos Island and Eko Atlantic,586290616
+W586290620,,service,false,0,5.0,false,false,false,0,82.4,Lagos Island and Eko Atlantic,586290620
+W586290622,,residential,false,0,7.5,false,false,false,0,38.1,Lagos Island and Eko Atlantic,586290622
+W586290624,,residential,false,0,7.5,false,false,false,0,31.5,Lagos Island and Eko Atlantic,586290624
+W586293949,,service,false,0,5.0,false,false,false,0,83.0,Lagos Island and Eko Atlantic,586293949
+W586293951,,service,false,0,5.0,false,false,false,0,52.7,Lagos Island and Eko Atlantic,586293951
+W586293952,,service,false,0,5.0,false,false,false,0,224.8,Lagos Island and Eko Atlantic,586293952
+W586338540,,residential,false,0,7.5,false,false,false,0,33.3,Lagos Island and Eko Atlantic,586338540
+W586373551,,service,false,0,5.0,false,false,false,0,53.0,Lagos Island and Eko Atlantic,586373551
+W586373552,,service,false,0,5.0,false,false,false,0,63.4,Lagos Island and Eko Atlantic,586373552
+W586373553,,service,false,0,5.0,false,false,false,0,111.3,Lagos Island and Eko Atlantic,586373553
+W586373554,,service,false,0,5.0,false,false,false,0,203.5,Lagos Island and Eko Atlantic,586373554
+W586373555,,service,false,0,5.0,false,false,false,0,346.7,Lagos Island and Eko Atlantic,586373555
+W586624070,,residential,false,0,7.5,false,false,false,0,64.8,Lagos Island and Eko Atlantic,586624070
+W586624071,,service,false,0,5.0,false,false,false,0,112.7,Lagos Island and Eko Atlantic,586624071
+W586645796,,residential,false,0,7.5,false,false,false,0,84.2,Lagos Island and Eko Atlantic,586645796
+W586645797,,service,false,0,5.0,false,false,false,0,165.2,Lagos Island and Eko Atlantic,586645797
+W586645798,,residential,false,0,7.5,false,false,false,0,107.8,Lagos Island and Eko Atlantic,586645798
+W586659408,,service,false,0,5.0,false,false,false,0,39.6,Lagos Island and Eko Atlantic,586659408
+W586659409,,service,false,0,5.0,false,false,false,0,23.6,Lagos Island and Eko Atlantic,586659409
+W586659410,,service,false,0,5.0,false,false,false,0,61.2,Lagos Island and Eko Atlantic,586659410
+W586659411,,service,false,0,5.0,false,false,false,0,105.6,Lagos Island and Eko Atlantic,586659411
+W586659412,,residential,false,0,7.5,false,false,false,0,76.0,Lagos Island and Eko Atlantic,586659412
+W586662956,,residential,false,0,7.5,false,false,false,0,10.4,Lagos Island and Eko Atlantic,586662956
+W586669621,,residential,false,0,7.5,false,false,false,0,40.8,Lagos Island and Eko Atlantic,586669621
+W586669622,,residential,false,0,7.5,false,false,false,0,132.1,Lagos Island and Eko Atlantic,586669622
+W587126783,,unclassified,false,0,7.5,true,false,false,0,10.3,Lagos Island and Eko Atlantic,587126783
+W587126784,,unclassified,false,0,7.5,false,false,false,0,9.0,Lagos Island and Eko Atlantic,587126784
+W587126786,,unclassified,false,0,7.5,false,false,false,0,83.4,Lagos Island and Eko Atlantic,587126786
+W587126787,,unclassified,false,0,7.5,true,false,false,0,11.2,Lagos Island and Eko Atlantic,587126787
+W587132624,,service,false,0,5.0,false,false,false,0,70.6,Lagos Island and Eko Atlantic,587132624
+W587132625,,service,false,0,5.0,false,false,false,0,251.9,Lagos Island and Eko Atlantic,587132625
+W587132626,,service,false,0,5.0,false,false,false,0,102.7,Lagos Island and Eko Atlantic,587132626
+W587132627,,service,false,0,5.0,false,false,false,0,51.6,Lagos Island and Eko Atlantic,587132627
+W587132628,,service,false,0,5.0,false,false,false,0,780.9,Lagos Island and Eko Atlantic,587132628
+W587132629,,service,false,0,5.0,false,false,false,0,750.4,Lagos Island and Eko Atlantic,587132629
+W587132630,,service,false,0,5.0,false,false,false,0,857.2,Lagos Island and Eko Atlantic,587132630
+W587132631,,service,false,0,5.0,false,false,false,0,189.4,Lagos Island and Eko Atlantic,587132631
+W587132632,,service,false,0,5.0,false,false,false,0,136.9,Lagos Island and Eko Atlantic,587132632
+W587132633,,service,false,0,5.0,false,false,false,0,260.4,Lagos Island and Eko Atlantic,587132633
+W587132634,,service,false,0,5.0,false,false,false,0,253.2,Lagos Island and Eko Atlantic,587132634
+W587132635,,service,false,0,5.0,false,false,false,0,144.2,Lagos Island and Eko Atlantic,587132635
+W587132637,,service,false,0,5.0,false,false,false,0,137.2,Lagos Island and Eko Atlantic,587132637
+W587143807,,service,false,0,5.0,false,false,false,0,69.1,Lagos Island and Eko Atlantic,587143807
+W587143808,,service,false,0,5.0,false,false,false,0,148.3,Lagos Island and Eko Atlantic,587143808
+W587143809,,service,false,0,5.0,false,false,false,0,104.4,Lagos Island and Eko Atlantic,587143809
+W587143810,,service,false,0,5.0,false,false,false,0,1002.5,Lagos Island and Eko Atlantic,587143810
+W587143811,,service,false,0,5.0,false,false,false,0,999.8,Lagos Island and Eko Atlantic,587143811
+W587143813,,service,false,0,5.0,false,false,false,0,142.5,Lagos Island and Eko Atlantic,587143813
+W587143814,,service,false,0,5.0,false,false,false,0,33.9,Lagos Island and Eko Atlantic,587143814
+W587143815,,service,false,0,5.0,false,false,false,0,38.8,Lagos Island and Eko Atlantic,587143815
+W587143816,,service,false,0,5.0,false,false,false,0,1037.8,Lagos Island and Eko Atlantic,587143816
+W587143817,,service,false,0,5.0,false,false,false,0,15.5,Lagos Island and Eko Atlantic,587143817
+W587143818,,service,false,0,5.0,false,false,false,0,920.8,Lagos Island and Eko Atlantic,587143818
+W587143819,,service,false,0,5.0,false,false,false,0,168.7,Lagos Island and Eko Atlantic,587143819
+W587143820,,service,false,0,5.0,false,false,false,0,229.1,Lagos Island and Eko Atlantic,587143820
+W587143821,,service,false,0,5.0,false,false,false,0,131.3,Lagos Island and Eko Atlantic,587143821
+W587143822,,service,false,0,5.0,false,false,false,0,125.2,Lagos Island and Eko Atlantic,587143822
+W587357932,,service,false,0,5.0,false,false,false,0,193.6,Lagos Island and Eko Atlantic,587357932
+W587357933,,service,false,0,5.0,false,false,false,0,111.9,Lagos Island and Eko Atlantic,587357933
+W587357934,,service,false,0,5.0,false,false,false,0,135.0,Lagos Island and Eko Atlantic,587357934
+W587357935,,service,false,0,5.0,false,false,false,0,320.2,Lagos Island and Eko Atlantic,587357935
+W587359855,,service,false,0,5.0,false,false,false,0,12.8,Lagos Island and Eko Atlantic,587359855
+W587359856,,service,false,0,5.0,false,false,false,0,68.1,Lagos Island and Eko Atlantic,587359856
+W587359859,,service,false,0,5.0,true,false,false,0,1704.9,Lagos Island and Eko Atlantic,587359859
+W587359860,,service,false,0,5.0,false,false,false,0,42.6,Lagos Island and Eko Atlantic,587359860
+W587361893,,service,false,0,5.0,false,false,false,0,91.3,Lagos Island and Eko Atlantic,587361893
+W587361894,,service,false,0,5.0,false,false,false,0,9.1,Lagos Island and Eko Atlantic,587361894
+W588736568,,service,false,0,5.0,false,false,false,0,77.4,Lagos Island and Eko Atlantic,588736568
+W588736571,,service,false,0,5.0,false,false,false,0,136.4,Lagos Island and Eko Atlantic,588736571
+W590776465,,residential,false,0,7.5,false,false,false,0,113.8,Lagos Island and Eko Atlantic,590776465
+W590776468,,residential,false,0,7.5,false,false,false,0,28.3,Lagos Island and Eko Atlantic,590776468
+W590776469,,residential,false,0,7.5,false,false,false,0,21.4,Lagos Island and Eko Atlantic,590776469
+W590778007,,residential,false,0,7.5,false,false,false,0,616.1,Lagos Island and Eko Atlantic,590778007
+W590810074,,residential,false,0,7.5,false,false,false,0,51.9,Lagos Island and Eko Atlantic,590810074
+W590810075,,residential,false,0,7.5,false,false,false,0,143.5,Lagos Island and Eko Atlantic,590810075
+W590810076,,residential,false,0,7.5,false,false,false,0,118.2,Lagos Island and Eko Atlantic,590810076
+W590810077,,residential,false,0,7.5,false,false,false,0,187.0,Lagos Island and Eko Atlantic,590810077
+W590810078,,residential,false,0,7.5,false,false,false,0,246.6,Lagos Island and Eko Atlantic,590810078
+W590810079,,residential,false,0,7.5,false,false,false,0,323.4,Lagos Island and Eko Atlantic,590810079
+W590810080,,residential,false,0,7.5,false,false,false,0,261.4,Lagos Island and Eko Atlantic,590810080
+W590810081,,residential,false,0,7.5,false,false,false,0,96.3,Lagos Island and Eko Atlantic,590810081
+W590810083,,residential,false,0,7.5,false,false,false,0,358.9,Lagos Island and Eko Atlantic,590810083
+W590814127,,unclassified,false,0,7.5,false,false,false,0,727.8,Lagos Island and Eko Atlantic,590814127
+W590814128,,residential,false,0,7.5,false,false,false,0,133.7,Lagos Island and Eko Atlantic,590814128
+W590814129,,residential,false,0,7.5,false,false,false,0,159.5,Lagos Island and Eko Atlantic,590814129
+W590814130,,residential,false,0,7.5,false,false,false,0,121.3,Lagos Island and Eko Atlantic,590814130
+W590814131,,residential,false,0,7.5,false,false,false,0,1064.3,Lagos Island and Eko Atlantic,590814131
+W590814132,,residential,false,0,7.5,false,false,false,0,62.9,Lagos Island and Eko Atlantic,590814132
+W590814133,,residential,false,0,7.5,false,false,false,0,212.2,Lagos Island and Eko Atlantic,590814133
+W590814134,,residential,false,0,7.5,false,false,false,0,129.3,Lagos Island and Eko Atlantic,590814134
+W590815396,,residential,false,0,7.5,false,false,false,0,358.7,Lagos Island and Eko Atlantic,590815396
+W590815397,,residential,false,0,7.5,false,false,false,0,538.8,Lagos Island and Eko Atlantic,590815397
+W590815400,,residential,false,0,7.5,false,false,false,0,75.2,Lagos Island and Eko Atlantic,590815400
+W590815401,,residential,false,0,7.5,false,false,false,0,459.7,Lagos Island and Eko Atlantic,590815401
+W590826566,,residential,false,0,7.5,false,false,false,0,140.2,Lagos Island and Eko Atlantic,590826566
+W590830009,,service,false,0,5.0,false,false,false,0,421.1,Lagos Island and Eko Atlantic,590830009
+W590830010,,residential,false,0,7.5,false,false,false,0,324.7,Lagos Island and Eko Atlantic,590830010
+W590830011,,residential,false,0,7.5,false,false,false,0,485.8,Lagos Island and Eko Atlantic,590830011
+W591626807,,service,false,0,5.0,false,false,false,0,19.2,Lagos Island and Eko Atlantic,591626807
+W591626808,,service,false,0,5.0,true,false,false,0,45.6,Lagos Island and Eko Atlantic,591626808
+W591805699,,service,false,0,5.0,false,false,false,0,200.6,Lagos Island and Eko Atlantic,591805699
+W592191543,,service,false,0,5.0,true,false,false,0,18.9,Lagos Island and Eko Atlantic,592191543
+W592191545,,service,false,0,5.0,false,false,false,0,13.5,Lagos Island and Eko Atlantic,592191545
+W593494009,,service,false,0,5.0,false,false,false,0,11.2,Lagos Island and Eko Atlantic,593494009
+W593494010,,service,false,0,5.0,false,false,false,0,64.8,Lagos Island and Eko Atlantic,593494010
+W594743320,,service,false,0,5.0,false,false,false,0,24.3,Lagos Island and Eko Atlantic,594743320
+W594743321,,service,false,0,5.0,false,false,false,0,73.4,Lagos Island and Eko Atlantic,594743321
+W594743329,,service,false,0,5.0,false,false,false,0,5.0,Lagos Island and Eko Atlantic,594743329
+W594743330,,service,false,0,5.0,false,true,false,0,7.5,Lagos Island and Eko Atlantic,594743330
+W594743341,,service,false,0,5.0,true,false,false,0,76.1,Lagos Island and Eko Atlantic,594743341
+W594743348,,service,false,0,5.0,true,false,false,0,60.8,Lagos Island and Eko Atlantic,594743348
+W594743359,,service,false,0,5.0,true,false,false,0,58.0,Lagos Island and Eko Atlantic,594743359
+W594743360,,service,false,0,5.0,true,false,false,0,23.6,Lagos Island and Eko Atlantic,594743360
+W595195326,,service,false,0,5.0,false,false,false,0,210.0,Lagos Island and Eko Atlantic,595195326
+W598656478,,service,false,0,5.0,false,false,false,0,181.5,Lagos Island and Eko Atlantic,598656478
+W599933123,,residential,false,0,7.5,false,false,false,0,126.0,Lagos Island and Eko Atlantic,599933123
+W604305963,,service,false,0,5.0,false,false,false,0,234.0,Lagos Island and Eko Atlantic,604305963
+W604305965,,service,false,0,5.0,false,false,false,0,299.4,Lagos Island and Eko Atlantic,604305965
+W607557252,,service,false,0,5.0,false,false,false,0,11.0,Lagos Island and Eko Atlantic,607557252
+W610029899,,service,false,0,5.0,true,false,false,0,10.9,Lagos Island and Eko Atlantic,610029899
+W610029900,,trunk,true,0,7.5,false,false,false,0,9.3,Lagos Island and Eko Atlantic,610029900
+W610896870,,primary,true,0,7.5,true,false,false,0,47.3,Lagos Island and Eko Atlantic,610896870
+W617703542,,residential,false,0,7.5,false,false,false,0,121.0,Lagos Island and Eko Atlantic,617703542
+W617703544,,residential,false,0,7.5,false,false,false,0,119.9,Lagos Island and Eko Atlantic,617703544
+W617703547,,residential,false,0,7.5,false,false,false,0,139.1,Lagos Island and Eko Atlantic,617703547
+W617703551,,residential,false,0,7.5,false,false,false,0,231.1,Lagos Island and Eko Atlantic,617703551
+W617703555,,residential,false,0,7.5,false,false,false,0,115.6,Lagos Island and Eko Atlantic,617703555
+W626035328,,secondary,false,0,13.0,true,false,false,0,220.5,Lagos Island and Eko Atlantic,626035328
+W626035330,,secondary,false,0,13.0,true,false,false,0,432.2,Lagos Island and Eko Atlantic,626035330
+W626035332,,residential,false,0,7.5,false,false,false,0,212.9,Lagos Island and Eko Atlantic,626035332
+W626035333,,residential,false,0,7.5,false,false,false,0,187.8,Lagos Island and Eko Atlantic,626035333
+W626035334,,residential,false,0,7.5,false,false,false,0,193.6,Lagos Island and Eko Atlantic,626035334
+W626035337,,secondary,false,0,13.0,true,false,false,0,658.9,Lagos Island and Eko Atlantic,626035337
+W626035338,,residential,false,0,7.5,false,false,false,0,408.8,Lagos Island and Eko Atlantic,626035338
+W626035339,,secondary,false,0,13.0,true,false,false,0,222.8,Lagos Island and Eko Atlantic,626035339
+W626035340,,secondary,false,0,13.0,true,false,false,0,432.0,Lagos Island and Eko Atlantic,626035340
+W626035341,,secondary,false,0,13.0,true,true,false,0,52.2,Lagos Island and Eko Atlantic,626035341
+W626035342,,secondary,false,0,13.0,true,false,false,0,370.9,Lagos Island and Eko Atlantic,626035342
+W626035343,,residential,false,0,7.5,false,false,false,0,170.4,Lagos Island and Eko Atlantic,626035343
+W626035344,,residential,false,0,7.5,false,false,false,0,195.4,Lagos Island and Eko Atlantic,626035344
+W626035345,,residential,false,0,7.5,false,false,false,0,451.9,Lagos Island and Eko Atlantic,626035345
+W626035346,,residential,false,0,7.5,false,false,false,0,454.2,Lagos Island and Eko Atlantic,626035346
+W626035347,,residential,false,0,7.5,false,false,false,0,165.7,Lagos Island and Eko Atlantic,626035347
+W626035348,,residential,false,0,7.5,false,false,false,0,450.2,Lagos Island and Eko Atlantic,626035348
+W626035349,,residential,false,0,7.5,false,false,false,0,141.3,Lagos Island and Eko Atlantic,626035349
+W626035350,,residential,false,0,7.5,false,false,false,0,130.9,Lagos Island and Eko Atlantic,626035350
+W626035351,,unclassified,false,0,7.5,false,false,false,0,825.6,Lagos Island and Eko Atlantic,626035351
+W626035352,,tertiary,false,0,10.0,true,false,false,0,625.5,Lagos Island and Eko Atlantic,626035352
+W626035353,,tertiary,false,0,10.0,true,false,false,0,417.5,Lagos Island and Eko Atlantic,626035353
+W626035356,,secondary,false,0,13.0,true,true,false,0,53.9,Lagos Island and Eko Atlantic,626035356
+W626035358,,secondary,false,0,13.0,true,false,false,0,74.0,Lagos Island and Eko Atlantic,626035358
+W626035359,,secondary,false,0,13.0,true,true,false,0,106.3,Lagos Island and Eko Atlantic,626035359
+W626035360,,residential,false,0,7.5,true,false,false,0,636.5,Lagos Island and Eko Atlantic,626035360
+W626035361,,tertiary,false,0,10.0,true,false,false,0,53.3,Lagos Island and Eko Atlantic,626035361
+W626035362,,tertiary,false,0,10.0,true,false,false,0,53.9,Lagos Island and Eko Atlantic,626035362
+W626035363,,tertiary,false,0,10.0,true,false,true,0,117.5,Lagos Island and Eko Atlantic,626035363
+W626035364,,tertiary,false,0,10.0,true,false,false,0,34.4,Lagos Island and Eko Atlantic,626035364
+W626035365,,tertiary,false,0,10.0,true,false,false,0,35.9,Lagos Island and Eko Atlantic,626035365
+W626035366,,tertiary,false,0,10.0,true,false,true,0,133.7,Lagos Island and Eko Atlantic,626035366
+W626035369,,tertiary,false,0,10.0,true,false,true,0,134.2,Lagos Island and Eko Atlantic,626035369
+W626035370,,tertiary,false,0,10.0,true,true,false,0,183.7,Lagos Island and Eko Atlantic,626035370
+W626035371,,tertiary,false,0,10.0,true,true,false,0,178.5,Lagos Island and Eko Atlantic,626035371
+W626035373,,residential,false,0,7.5,false,false,false,0,887.4,Lagos Island and Eko Atlantic,626035373
+W626035374,,residential,false,0,7.5,false,false,false,0,281.2,Lagos Island and Eko Atlantic,626035374
+W626035375,,residential,false,0,7.5,false,false,false,0,383.5,Lagos Island and Eko Atlantic,626035375
+W626035376,,secondary,false,0,13.0,true,false,false,0,499.9,Lagos Island and Eko Atlantic,626035376
+W626035377,,secondary,false,0,13.0,true,true,false,0,58.4,Lagos Island and Eko Atlantic,626035377
+W626035378,,secondary,false,0,13.0,true,false,false,0,492.9,Lagos Island and Eko Atlantic,626035378
+W626035379,,secondary,false,0,13.0,true,true,false,0,60.6,Lagos Island and Eko Atlantic,626035379
+W626035380,,secondary,false,0,13.0,true,false,false,0,333.0,Lagos Island and Eko Atlantic,626035380
+W626035381,,residential,false,0,7.5,false,false,false,0,49.7,Lagos Island and Eko Atlantic,626035381
+W626035382,,tertiary,false,0,10.0,true,false,false,0,538.0,Lagos Island and Eko Atlantic,626035382
+W626035383,,tertiary,false,0,10.0,true,false,false,0,519.2,Lagos Island and Eko Atlantic,626035383
+W626035384,,secondary,false,0,13.0,true,false,false,0,531.3,Lagos Island and Eko Atlantic,626035384
+W626035385,,secondary,false,0,13.0,true,false,false,0,397.1,Lagos Island and Eko Atlantic,626035385
+W626035386,,secondary,false,0,13.0,true,false,false,0,395.9,Lagos Island and Eko Atlantic,626035386
+W626035387,,tertiary,false,0,10.0,true,false,false,0,155.3,Lagos Island and Eko Atlantic,626035387
+W626035388,,tertiary,false,0,10.0,true,false,false,0,158.2,Lagos Island and Eko Atlantic,626035388
+W626035389,,tertiary,false,0,10.0,true,false,true,0,191.2,Lagos Island and Eko Atlantic,626035389
+W626035390,,secondary,false,0,13.0,true,false,true,0,114.3,Lagos Island and Eko Atlantic,626035390
+W626035391,,residential,false,0,7.5,false,false,false,0,412.5,Lagos Island and Eko Atlantic,626035391
+W639928393,,tertiary,false,0,10.0,true,false,false,0,622.9,Lagos Island and Eko Atlantic,639928393
+W671518073,,service,false,0,5.0,true,false,false,0,36.4,Lagos Island and Eko Atlantic,671518073
+W671518107,,service,false,0,5.0,false,false,false,0,196.6,Lagos Island and Eko Atlantic,671518107
+W671587369,,service,false,0,5.0,false,false,false,0,174.7,Lagos Island and Eko Atlantic,671587369
+W671991258,,service,false,0,5.0,true,false,false,0,213.4,Lagos Island and Eko Atlantic,671991258
+W671991282,,service,false,0,5.0,false,false,false,0,206.9,Lagos Island and Eko Atlantic,671991282
+W671991283,,service,false,0,5.0,true,false,false,0,190.9,Lagos Island and Eko Atlantic,671991283
+W672092121,,service,false,0,5.0,false,false,false,0,80.3,Lagos Island and Eko Atlantic,672092121
+W672092185,,service,false,0,5.0,false,false,false,0,79.9,Lagos Island and Eko Atlantic,672092185
+W672092188,,service,false,0,5.0,false,false,false,0,49.7,Lagos Island and Eko Atlantic,672092188
+W672092190,,service,false,0,5.0,false,false,false,0,95.8,Lagos Island and Eko Atlantic,672092190
+W706086637,,residential,false,0,7.5,false,false,false,0,79.6,Lagos Island and Eko Atlantic,706086637
+W706086638,,service,false,0,5.0,false,false,false,0,148.4,Lagos Island and Eko Atlantic,706086638
+W706086648,,service,false,0,5.0,false,false,false,0,25.2,Lagos Island and Eko Atlantic,706086648
+W707000522,,service,false,0,5.0,false,false,false,0,93.2,Lagos Island and Eko Atlantic,707000522
+W725318500,,service,false,0,5.0,false,false,false,0,130.8,Lagos Island and Eko Atlantic,725318500
+W725840253,,service,false,0,5.0,false,false,false,0,41.9,Lagos Island and Eko Atlantic,725840253
+W725840254,,service,false,0,5.0,false,false,false,0,30.9,Lagos Island and Eko Atlantic,725840254
+W726048574,,service,false,0,5.0,true,false,false,0,27.7,Lagos Island and Eko Atlantic,726048574
+W726048575,,service,false,0,5.0,true,false,false,0,39.7,Lagos Island and Eko Atlantic,726048575
+W726048576,,service,false,0,5.0,true,false,false,0,5.8,Lagos Island and Eko Atlantic,726048576
+W726058436,,service,false,0,5.0,false,false,false,0,71.5,Lagos Island and Eko Atlantic,726058436
+W726070201,,service,false,0,5.0,false,false,false,0,30.7,Lagos Island and Eko Atlantic,726070201
+W726070202,,service,false,0,5.0,false,false,false,0,86.1,Lagos Island and Eko Atlantic,726070202
+W726070203,,service,false,0,5.0,false,false,false,0,27.7,Lagos Island and Eko Atlantic,726070203
+W726093927,,service,false,0,5.0,false,false,false,0,50.7,Lagos Island and Eko Atlantic,726093927
+W726093928,,service,false,0,5.0,false,false,false,0,64.2,Lagos Island and Eko Atlantic,726093928
+W726093929,,service,false,0,5.0,false,false,false,0,64.4,Lagos Island and Eko Atlantic,726093929
+W726093930,,service,false,0,5.0,false,false,false,0,60.6,Lagos Island and Eko Atlantic,726093930
+W726093931,,service,false,0,5.0,false,false,false,0,57.8,Lagos Island and Eko Atlantic,726093931
+W726093932,,service,false,0,5.0,false,false,false,0,334.6,Lagos Island and Eko Atlantic,726093932
+W726098477,,service,false,0,5.0,false,false,false,0,100.4,Lagos Island and Eko Atlantic,726098477
+W726120354,,service,false,0,5.0,false,false,false,0,416.2,Lagos Island and Eko Atlantic,726120354
+W726603841,,service,false,0,5.0,false,false,false,0,38.6,Lagos Island and Eko Atlantic,726603841
+W726603842,,service,false,0,5.0,false,false,false,0,77.9,Lagos Island and Eko Atlantic,726603842
+W726626856,,service,false,0,5.0,false,false,false,0,86.5,Lagos Island and Eko Atlantic,726626856
+W726830910,,service,false,0,5.0,false,false,false,0,8.8,Lagos Island and Eko Atlantic,726830910
+W726830911,,service,false,0,5.0,false,false,false,0,99.4,Lagos Island and Eko Atlantic,726830911
+W726830912,,service,false,0,5.0,false,false,false,0,47.8,Lagos Island and Eko Atlantic,726830912
+W726830913,,service,false,0,5.0,false,false,false,0,86.9,Lagos Island and Eko Atlantic,726830913
+W726830914,,service,false,0,5.0,false,false,false,0,70.4,Lagos Island and Eko Atlantic,726830914
+W726830915,,service,false,0,5.0,false,false,false,0,182.4,Lagos Island and Eko Atlantic,726830915
+W726830916,,service,false,0,5.0,false,false,false,0,87.2,Lagos Island and Eko Atlantic,726830916
+W726830917,,service,false,0,5.0,false,false,false,0,14.1,Lagos Island and Eko Atlantic,726830917
+W726830918,,service,false,0,5.0,false,false,false,0,12.3,Lagos Island and Eko Atlantic,726830918
+W726835976,,residential,false,0,7.5,false,false,false,0,75.6,Lagos Island and Eko Atlantic,726835976
+W727640497,,service,false,0,5.0,false,false,false,0,31.2,Lagos Island and Eko Atlantic,727640497
+W727640498,,service,false,0,5.0,false,false,false,0,102.2,Lagos Island and Eko Atlantic,727640498
+W727640499,,service,false,0,5.0,false,false,false,0,93.6,Lagos Island and Eko Atlantic,727640499
+W727640500,,service,false,0,5.0,false,false,false,0,57.4,Lagos Island and Eko Atlantic,727640500
+W727640501,,service,false,0,5.0,false,false,false,0,286.6,Lagos Island and Eko Atlantic,727640501
+W727691925,,service,false,0,5.0,false,false,false,0,4.0,Lagos Island and Eko Atlantic,727691925
+W727691926,,service,false,0,5.0,false,false,false,0,4.5,Lagos Island and Eko Atlantic,727691926
+W727711925,,service,false,0,5.0,false,false,false,0,170.1,Lagos Island and Eko Atlantic,727711925
+W727740753,,service,false,0,5.0,true,false,false,0,81.5,Lagos Island and Eko Atlantic,727740753
+W738073128,,service,false,0,5.0,false,false,false,0,50.2,Lagos Island and Eko Atlantic,738073128
+W738073129,,service,false,0,5.0,false,false,false,0,149.6,Lagos Island and Eko Atlantic,738073129
+W738106734,,service,false,0,5.0,false,false,false,0,6.7,Lagos Island and Eko Atlantic,738106734
+W738106735,,service,false,0,5.0,false,false,false,0,38.4,Lagos Island and Eko Atlantic,738106735
+W738186624,,residential,false,0,7.5,false,false,false,0,112.0,Lagos Island and Eko Atlantic,738186624
+W738186684,,service,false,0,5.0,false,false,false,0,23.7,Lagos Island and Eko Atlantic,738186684
+W738186685,,service,false,0,5.0,true,false,false,0,48.1,Lagos Island and Eko Atlantic,738186685
+W738379652,,service,false,0,5.0,false,false,false,0,23.1,Lagos Island and Eko Atlantic,738379652
+W738379653,,service,false,0,5.0,false,false,false,0,25.2,Lagos Island and Eko Atlantic,738379653
+W738379654,,service,false,0,5.0,false,false,false,0,38.4,Lagos Island and Eko Atlantic,738379654
+W738389275,,service,false,0,5.0,false,false,false,0,38.2,Lagos Island and Eko Atlantic,738389275
+W738389276,,service,false,0,5.0,false,false,false,0,11.8,Lagos Island and Eko Atlantic,738389276
+W738389277,,service,false,0,5.0,false,false,false,0,72.0,Lagos Island and Eko Atlantic,738389277
+W738389278,,service,false,0,5.0,false,false,false,0,179.0,Lagos Island and Eko Atlantic,738389278
+W738425593,,service,false,0,5.0,false,false,false,0,56.2,Lagos Island and Eko Atlantic,738425593
+W738430952,,service,false,0,5.0,false,false,false,0,106.1,Lagos Island and Eko Atlantic,738430952
+W738430953,,service,false,0,5.0,false,false,false,0,152.9,Lagos Island and Eko Atlantic,738430953
+W738430954,,service,false,0,5.0,false,false,false,0,67.4,Lagos Island and Eko Atlantic,738430954
+W738430955,,service,false,0,5.0,false,false,false,0,68.4,Lagos Island and Eko Atlantic,738430955
+W738430956,,service,false,0,5.0,false,false,false,0,68.3,Lagos Island and Eko Atlantic,738430956
+W738430957,,service,false,0,5.0,false,false,false,0,225.2,Lagos Island and Eko Atlantic,738430957
+W738528611,,service,false,0,5.0,true,false,false,0,61.4,Lagos Island and Eko Atlantic,738528611
+W738901914,,unclassified,false,0,7.5,true,false,false,0,926.3,Lagos Island and Eko Atlantic,738901914
+W739545846,,residential,false,0,7.5,false,false,false,0,191.3,Lagos Island and Eko Atlantic,739545846
+W743474201,,secondary,false,0,13.0,true,false,false,0,54.1,Lagos Island and Eko Atlantic,743474201
+W743474202,,secondary,false,0,13.0,true,false,false,0,372.2,Lagos Island and Eko Atlantic,743474202
+W743474203,,residential,false,0,7.5,false,false,false,0,133.2,Lagos Island and Eko Atlantic,743474203
+W743474204,,secondary,false,0,13.0,true,false,false,0,258.7,Lagos Island and Eko Atlantic,743474204
+W743474205,,secondary,false,0,13.0,true,false,true,0,159.0,Lagos Island and Eko Atlantic,743474205
+W743474212,,secondary,false,0,13.0,true,false,false,0,213.5,Lagos Island and Eko Atlantic,743474212
+W743474213,,secondary,false,0,13.0,true,false,false,0,390.2,Lagos Island and Eko Atlantic,743474213
+W743474214,,secondary,true,0,7.5,true,true,false,0,25.0,Lagos Island and Eko Atlantic,743474214
+W743474215,,secondary,true,0,7.5,true,false,false,0,37.5,Lagos Island and Eko Atlantic,743474215
+W743474216,,secondary,false,0,13.0,true,false,false,0,450.5,Lagos Island and Eko Atlantic,743474216
+W743474217,,secondary,true,0,7.5,true,false,false,0,64.5,Lagos Island and Eko Atlantic,743474217
+W743474218,,secondary,false,0,13.0,true,false,false,0,191.4,Lagos Island and Eko Atlantic,743474218
+W743474219,,secondary,false,0,13.0,true,false,false,0,182.1,Lagos Island and Eko Atlantic,743474219
+W743474220,,secondary,false,0,13.0,true,false,false,0,473.2,Lagos Island and Eko Atlantic,743474220
+W743474222,,track,false,0,4.0,false,false,false,0,767.6,Lagos Island and Eko Atlantic,743474222
+W743474223,,residential,false,0,7.5,false,false,false,0,802.5,Lagos Island and Eko Atlantic,743474223
+W743474225,,residential,false,0,7.5,false,false,false,0,152.7,Lagos Island and Eko Atlantic,743474225
+W743474226,,residential,false,0,7.5,false,false,false,0,201.4,Lagos Island and Eko Atlantic,743474226
+W743474227,,residential,false,0,7.5,false,false,false,0,355.3,Lagos Island and Eko Atlantic,743474227
+W743474228,,residential,false,0,7.5,false,false,false,0,196.9,Lagos Island and Eko Atlantic,743474228
+W743474229,,residential,false,0,7.5,false,false,false,0,151.6,Lagos Island and Eko Atlantic,743474229
+W743474230,,residential,false,0,7.5,true,false,false,0,1475.6,Lagos Island and Eko Atlantic,743474230
+W743474231,,residential,false,0,7.5,true,false,false,0,22.0,Lagos Island and Eko Atlantic,743474231
+W743474232,,residential,false,0,7.5,true,true,false,0,56.9,Lagos Island and Eko Atlantic,743474232
+W743474233,,residential,false,0,7.5,false,false,false,0,207.2,Lagos Island and Eko Atlantic,743474233
+W743474234,,residential,false,0,7.5,false,false,false,0,229.6,Lagos Island and Eko Atlantic,743474234
+W743474235,,residential,false,0,7.5,false,false,false,0,741.0,Lagos Island and Eko Atlantic,743474235
+W746415951,,service,false,0,5.0,false,false,false,0,46.1,Lagos Island and Eko Atlantic,746415951
+W746415990,,service,false,0,5.0,false,false,false,0,87.4,Lagos Island and Eko Atlantic,746415990
+W748842487,,service,false,0,5.0,false,false,false,0,28.2,Lagos Island and Eko Atlantic,748842487
+W748842489,,residential,false,0,7.5,false,false,false,0,120.1,Lagos Island and Eko Atlantic,748842489
+W748842498,,residential,false,0,7.5,false,false,false,0,265.8,Lagos Island and Eko Atlantic,748842498
+W748842501,,residential,false,0,7.5,false,false,false,0,39.5,Lagos Island and Eko Atlantic,748842501
+W761372985,,residential,false,0,7.5,false,false,false,0,78.9,Lagos Island and Eko Atlantic,761372985
+W761624992,,service,false,0,5.0,false,false,false,0,53.0,Lagos Island and Eko Atlantic,761624992
+W761624993,,service,false,0,5.0,false,false,false,0,101.1,Lagos Island and Eko Atlantic,761624993
+W761646090,,service,false,0,5.0,false,false,false,0,28.2,Lagos Island and Eko Atlantic,761646090
+W761646091,,service,false,0,5.0,false,false,false,0,64.2,Lagos Island and Eko Atlantic,761646091
+W761655046,,service,false,0,5.0,false,false,false,0,41.6,Lagos Island and Eko Atlantic,761655046
+W761655047,,service,false,0,5.0,false,false,false,0,85.4,Lagos Island and Eko Atlantic,761655047
+W761869392,,service,false,0,5.0,false,false,false,0,133.1,Lagos Island and Eko Atlantic,761869392
+W761872267,,service,false,0,5.0,false,false,false,0,33.8,Lagos Island and Eko Atlantic,761872267
+W761872268,,service,false,0,5.0,false,false,false,0,593.3,Lagos Island and Eko Atlantic,761872268
+W766913858,,tertiary,true,0,7.5,true,false,false,0,68.5,Lagos Island and Eko Atlantic,766913858
+W766913859,,secondary,false,0,13.0,true,false,true,0,285.8,Lagos Island and Eko Atlantic,766913859
+W783790041,,service,false,0,5.0,false,false,false,0,138.2,Lagos Island and Eko Atlantic,783790041
+W783792438,,service,false,0,5.0,false,false,false,0,58.2,Lagos Island and Eko Atlantic,783792438
+W783792439,,service,false,0,5.0,false,false,false,0,108.0,Lagos Island and Eko Atlantic,783792439
+W783794710,,service,false,0,5.0,false,false,false,0,116.9,Lagos Island and Eko Atlantic,783794710
+W784113860,,service,false,0,5.0,false,false,false,0,44.4,Lagos Island and Eko Atlantic,784113860
+W784654998,,service,false,0,5.0,false,false,false,0,163.1,Lagos Island and Eko Atlantic,784654998
+W784655212,,service,false,0,5.0,false,false,false,0,51.8,Lagos Island and Eko Atlantic,784655212
+W784655213,,service,false,0,5.0,false,false,false,0,21.7,Lagos Island and Eko Atlantic,784655213
+W784655214,,service,false,0,5.0,false,false,false,0,51.0,Lagos Island and Eko Atlantic,784655214
+W784657189,,service,false,0,5.0,false,false,false,0,115.4,Lagos Island and Eko Atlantic,784657189
+W784688849,,residential,false,0,7.5,false,false,false,0,34.7,Lagos Island and Eko Atlantic,784688849
+W784689215,,residential,false,0,7.5,false,false,false,0,91.8,Lagos Island and Eko Atlantic,784689215
+W784690224,,service,false,0,5.0,false,false,false,0,70.8,Lagos Island and Eko Atlantic,784690224
+W784690341,,residential,false,0,7.5,false,false,false,0,55.1,Lagos Island and Eko Atlantic,784690341
+W784691573,,service,false,0,5.0,false,false,false,0,69.2,Lagos Island and Eko Atlantic,784691573
+W784694172,,service,false,0,5.0,false,false,false,0,70.8,Lagos Island and Eko Atlantic,784694172
+W784957249,,service,false,0,5.0,false,false,false,0,105.1,Lagos Island and Eko Atlantic,784957249
+W784958863,,residential,false,0,7.5,false,false,false,0,261.9,Lagos Island and Eko Atlantic,784958863
+W784960380,,service,false,0,5.0,false,false,false,0,61.6,Lagos Island and Eko Atlantic,784960380
+W784992305,,service,false,0,5.0,false,false,false,0,140.9,Lagos Island and Eko Atlantic,784992305
+W784993450,,service,false,0,5.0,false,false,false,0,238.0,Lagos Island and Eko Atlantic,784993450
+W785000758,,service,false,0,5.0,false,false,false,0,93.5,Lagos Island and Eko Atlantic,785000758
+W786970218,,residential,false,0,7.5,false,false,false,0,242.3,Lagos Island and Eko Atlantic,786970218
+W786977329,,service,false,0,5.0,false,false,false,0,62.2,Lagos Island and Eko Atlantic,786977329
+W789889069,,residential,false,0,7.5,false,false,false,0,168.8,Lagos Island and Eko Atlantic,789889069
+W789889070,,residential,false,0,7.5,false,false,false,0,169.4,Lagos Island and Eko Atlantic,789889070
+W792723606,,track,false,0,4.0,false,false,false,0,511.8,Lagos Island and Eko Atlantic,792723606
+W792723607,,track,false,0,4.0,false,false,false,0,466.0,Lagos Island and Eko Atlantic,792723607
+W794420721,,service,false,0,5.0,true,false,false,0,30.7,Lagos Island and Eko Atlantic,794420721
+W794420722,,service,false,0,5.0,true,false,false,0,6.7,Lagos Island and Eko Atlantic,794420722
+W806330696,,service,false,0,5.0,false,false,false,0,45.5,Lagos Island and Eko Atlantic,806330696
+W806330697,,service,false,0,5.0,false,false,false,0,43.0,Lagos Island and Eko Atlantic,806330697
+W806330698,,service,false,0,5.0,false,false,false,0,48.3,Lagos Island and Eko Atlantic,806330698
+W806330699,,service,false,0,5.0,false,false,false,0,49.3,Lagos Island and Eko Atlantic,806330699
+W806330700,,service,false,0,5.0,false,false,false,0,49.8,Lagos Island and Eko Atlantic,806330700
+W806330701,,service,false,0,5.0,false,false,false,0,51.0,Lagos Island and Eko Atlantic,806330701
+W806330702,,service,false,0,5.0,false,false,false,0,51.4,Lagos Island and Eko Atlantic,806330702
+W806330703,,service,false,0,5.0,false,false,false,0,107.2,Lagos Island and Eko Atlantic,806330703
+W828712758,,service,false,0,5.0,true,false,false,0,30.3,Lagos Island and Eko Atlantic,828712758
+W828734807,,service,false,0,5.0,false,false,false,0,236.8,Lagos Island and Eko Atlantic,828734807
+W828734808,,service,false,0,5.0,false,false,false,0,10.5,Lagos Island and Eko Atlantic,828734808
+W828769483,,service,false,0,5.0,false,false,false,0,51.3,Lagos Island and Eko Atlantic,828769483
+W828770825,,service,false,0,5.0,false,false,false,0,67.0,Lagos Island and Eko Atlantic,828770825
+W828775027,,service,false,0,5.0,true,false,false,0,42.8,Lagos Island and Eko Atlantic,828775027
+W828775028,,service,false,0,5.0,true,false,false,0,18.4,Lagos Island and Eko Atlantic,828775028
+W828775029,,service,false,0,5.0,false,false,false,0,63.7,Lagos Island and Eko Atlantic,828775029
+W828775030,,service,false,0,5.0,false,false,false,0,64.0,Lagos Island and Eko Atlantic,828775030
+W828775031,,service,false,0,5.0,false,false,false,0,18.3,Lagos Island and Eko Atlantic,828775031
+W828778192,,service,false,0,5.0,false,false,false,0,47.8,Lagos Island and Eko Atlantic,828778192
+W828778193,,service,false,0,5.0,false,false,false,0,91.1,Lagos Island and Eko Atlantic,828778193
+W828784155,,service,false,0,5.0,false,false,false,0,59.1,Lagos Island and Eko Atlantic,828784155
+W828784156,,service,false,0,5.0,false,false,false,0,95.4,Lagos Island and Eko Atlantic,828784156
+W828784157,,service,false,0,5.0,false,false,false,0,20.1,Lagos Island and Eko Atlantic,828784157
+W828790690,,service,false,0,5.0,false,false,false,0,76.9,Lagos Island and Eko Atlantic,828790690
+W828790691,,service,false,0,5.0,false,false,false,0,59.4,Lagos Island and Eko Atlantic,828790691
+W828790692,,service,false,0,5.0,false,false,false,0,51.4,Lagos Island and Eko Atlantic,828790692
+W828804910,,service,false,0,5.0,false,false,false,0,94.7,Lagos Island and Eko Atlantic,828804910
+W828805446,,service,false,0,5.0,false,false,false,0,77.7,Lagos Island and Eko Atlantic,828805446
+W828805447,,service,false,0,5.0,false,false,false,0,61.8,Lagos Island and Eko Atlantic,828805447
+W828805448,,service,false,0,5.0,false,false,false,0,29.5,Lagos Island and Eko Atlantic,828805448
+W829097812,,service,false,0,5.0,false,false,false,0,84.3,Lagos Island and Eko Atlantic,829097812
+W829098108,,service,false,0,5.0,false,false,false,0,55.2,Lagos Island and Eko Atlantic,829098108
+W829102276,,service,false,0,5.0,false,false,false,0,81.1,Lagos Island and Eko Atlantic,829102276
+W829102277,,service,false,0,5.0,false,false,false,0,37.1,Lagos Island and Eko Atlantic,829102277
+W829102278,,service,false,0,5.0,false,false,false,0,12.2,Lagos Island and Eko Atlantic,829102278
+W829102279,,service,false,0,5.0,false,false,false,0,12.2,Lagos Island and Eko Atlantic,829102279
+W829102280,,service,false,0,5.0,false,false,false,0,12.2,Lagos Island and Eko Atlantic,829102280
+W829102281,,service,false,0,5.0,false,false,false,0,12.1,Lagos Island and Eko Atlantic,829102281
+W838567467,,service,false,0,5.0,false,false,false,0,178.7,Lagos Island and Eko Atlantic,838567467
+W848006212,,service,false,0,5.0,false,false,false,0,195.1,Lagos Island and Eko Atlantic,848006212
+W848006213,,service,false,0,5.0,false,false,false,0,102.1,Lagos Island and Eko Atlantic,848006213
+W848006214,,service,false,0,5.0,false,false,false,0,190.4,Lagos Island and Eko Atlantic,848006214
+W848006215,,service,false,0,5.0,false,false,false,0,11.7,Lagos Island and Eko Atlantic,848006215
+W848006216,,service,false,0,5.0,false,false,false,0,133.1,Lagos Island and Eko Atlantic,848006216
+W848006217,,service,false,0,5.0,false,false,false,0,59.3,Lagos Island and Eko Atlantic,848006217
+W848278699,,service,false,0,5.0,false,false,false,0,98.4,Lagos Island and Eko Atlantic,848278699
+W848278700,,service,false,0,5.0,false,false,false,0,170.4,Lagos Island and Eko Atlantic,848278700
+W848278701,,service,false,0,5.0,false,false,false,0,71.6,Lagos Island and Eko Atlantic,848278701
+W848278702,,service,false,0,5.0,false,false,false,0,34.1,Lagos Island and Eko Atlantic,848278702
+W848278703,,service,false,0,5.0,false,false,false,0,153.7,Lagos Island and Eko Atlantic,848278703
+W848278704,,service,false,0,5.0,false,false,false,0,38.8,Lagos Island and Eko Atlantic,848278704
+W848278705,,service,false,0,5.0,false,false,false,0,138.0,Lagos Island and Eko Atlantic,848278705
+W848278706,,service,false,0,5.0,false,false,false,0,162.7,Lagos Island and Eko Atlantic,848278706
+W848278707,,service,false,0,5.0,false,false,false,0,55.8,Lagos Island and Eko Atlantic,848278707
+W848278708,,service,false,0,5.0,false,false,false,0,142.8,Lagos Island and Eko Atlantic,848278708
+W848278709,,service,false,0,5.0,false,false,false,0,244.8,Lagos Island and Eko Atlantic,848278709
+W848278710,,service,false,0,5.0,false,false,false,0,59.2,Lagos Island and Eko Atlantic,848278710
+W848278711,,service,false,0,5.0,false,false,false,0,59.0,Lagos Island and Eko Atlantic,848278711
+W848278712,,service,false,0,5.0,false,false,false,0,58.8,Lagos Island and Eko Atlantic,848278712
+W848445226,,service,false,0,5.0,false,false,false,0,216.7,Lagos Island and Eko Atlantic,848445226
+W848445227,,service,false,0,5.0,false,false,false,0,134.0,Lagos Island and Eko Atlantic,848445227
+W848445228,,service,false,0,5.0,false,false,false,0,126.0,Lagos Island and Eko Atlantic,848445228
+W848445229,,service,false,0,5.0,true,false,false,0,19.3,Lagos Island and Eko Atlantic,848445229
+W848445230,,service,false,0,5.0,false,false,false,0,40.6,Lagos Island and Eko Atlantic,848445230
+W848445231,,service,false,0,5.0,false,false,false,0,134.1,Lagos Island and Eko Atlantic,848445231
+W848445232,,service,false,0,5.0,true,false,false,0,17.4,Lagos Island and Eko Atlantic,848445232
+W848445234,,service,false,0,5.0,false,false,false,0,66.6,Lagos Island and Eko Atlantic,848445234
+W848445235,,service,false,0,5.0,false,false,false,0,31.9,Lagos Island and Eko Atlantic,848445235
+W848445236,,service,false,0,5.0,false,false,false,0,57.6,Lagos Island and Eko Atlantic,848445236
+W848829329,,service,false,0,5.0,false,false,false,0,53.4,Lagos Island and Eko Atlantic,848829329
+W848829330,,service,false,0,5.0,false,false,false,0,51.5,Lagos Island and Eko Atlantic,848829330
+W848841083,,service,false,0,5.0,false,false,false,0,35.2,Lagos Island and Eko Atlantic,848841083
+W848841084,,service,false,0,5.0,false,false,false,0,42.7,Lagos Island and Eko Atlantic,848841084
+W848841085,,service,false,0,5.0,false,false,false,0,62.0,Lagos Island and Eko Atlantic,848841085
+W848841086,,service,false,0,5.0,false,false,false,0,49.7,Lagos Island and Eko Atlantic,848841086
+W850016413,,service,false,0,5.0,false,false,false,0,108.1,Lagos Island and Eko Atlantic,850016413
+W850016414,,service,false,0,5.0,false,false,false,0,92.8,Lagos Island and Eko Atlantic,850016414
+W850016415,,service,false,0,5.0,false,false,false,0,542.6,Lagos Island and Eko Atlantic,850016415
+W850016417,,service,false,0,5.0,false,false,false,0,53.1,Lagos Island and Eko Atlantic,850016417
+W850016418,,service,false,0,5.0,false,false,false,0,54.4,Lagos Island and Eko Atlantic,850016418
+W850016419,,service,false,0,5.0,false,false,false,0,58.0,Lagos Island and Eko Atlantic,850016419
+W850016420,,service,false,0,5.0,false,false,false,0,60.3,Lagos Island and Eko Atlantic,850016420
+W850016421,,service,false,0,5.0,false,false,false,0,61.9,Lagos Island and Eko Atlantic,850016421
+W850016422,,service,false,0,5.0,false,false,false,0,62.8,Lagos Island and Eko Atlantic,850016422
+W850016423,,service,false,0,5.0,true,false,false,0,33.2,Lagos Island and Eko Atlantic,850016423
+W850016424,,service,false,0,5.0,false,false,false,0,40.6,Lagos Island and Eko Atlantic,850016424
+W850016425,,service,false,0,5.0,false,false,false,0,24.8,Lagos Island and Eko Atlantic,850016425
+W850016426,,service,false,0,5.0,false,false,false,0,27.6,Lagos Island and Eko Atlantic,850016426
+W850016427,,service,false,0,5.0,false,false,false,0,12.4,Lagos Island and Eko Atlantic,850016427
+W850016428,,service,false,0,5.0,false,false,false,0,181.5,Lagos Island and Eko Atlantic,850016428
+W850016429,,service,false,0,5.0,false,false,false,0,21.6,Lagos Island and Eko Atlantic,850016429
+W850016431,,service,false,0,5.0,false,false,false,0,46.6,Lagos Island and Eko Atlantic,850016431
+W850016432,,service,false,0,5.0,false,false,false,0,19.8,Lagos Island and Eko Atlantic,850016432
+W850016433,,service,false,0,5.0,false,false,false,0,67.7,Lagos Island and Eko Atlantic,850016433
+W850016434,,service,false,0,5.0,false,false,false,0,131.4,Lagos Island and Eko Atlantic,850016434
+W850016435,,service,false,0,5.0,false,false,false,0,74.2,Lagos Island and Eko Atlantic,850016435
+W850016436,,service,false,0,5.0,false,false,false,0,63.1,Lagos Island and Eko Atlantic,850016436
+W850016437,,service,false,0,5.0,false,false,false,0,90.6,Lagos Island and Eko Atlantic,850016437
+W850016438,,service,false,0,5.0,false,false,false,0,58.7,Lagos Island and Eko Atlantic,850016438
+W850016439,,service,false,0,5.0,false,false,false,0,142.2,Lagos Island and Eko Atlantic,850016439
+W850019005,,service,false,0,5.0,false,false,false,0,230.0,Lagos Island and Eko Atlantic,850019005
+W850019007,,service,false,0,5.0,false,false,false,0,68.8,Lagos Island and Eko Atlantic,850019007
+W850373309,,service,false,0,5.0,false,false,false,0,63.5,Lagos Island and Eko Atlantic,850373309
+W850373310,,service,false,0,5.0,false,false,false,0,139.4,Lagos Island and Eko Atlantic,850373310
+W850373311,,service,false,0,5.0,false,false,false,0,8.3,Lagos Island and Eko Atlantic,850373311
+W850387730,,service,false,0,5.0,false,false,false,0,11.2,Lagos Island and Eko Atlantic,850387730
+W850387731,,service,false,0,5.0,false,false,false,0,10.0,Lagos Island and Eko Atlantic,850387731
+W850387732,,service,false,0,5.0,false,false,false,0,23.2,Lagos Island and Eko Atlantic,850387732
+W850387733,,service,false,0,5.0,false,false,false,0,10.1,Lagos Island and Eko Atlantic,850387733
+W850387734,,service,false,0,5.0,false,false,false,0,26.2,Lagos Island and Eko Atlantic,850387734
+W850387735,,service,false,0,5.0,false,false,false,0,22.9,Lagos Island and Eko Atlantic,850387735
+W850387736,,service,false,0,5.0,false,false,false,0,29.2,Lagos Island and Eko Atlantic,850387736
+W850387737,,service,false,0,5.0,false,false,false,0,22.7,Lagos Island and Eko Atlantic,850387737
+W850387738,,service,false,0,5.0,false,false,false,0,4.9,Lagos Island and Eko Atlantic,850387738
+W850387739,,service,false,0,5.0,false,false,false,0,9.2,Lagos Island and Eko Atlantic,850387739
+W850387740,,service,false,0,5.0,false,false,false,0,11.3,Lagos Island and Eko Atlantic,850387740
+W850387741,,service,false,0,5.0,false,false,false,0,5.7,Lagos Island and Eko Atlantic,850387741
+W850387742,,service,false,0,5.0,false,false,false,0,9.2,Lagos Island and Eko Atlantic,850387742
+W850387744,,service,false,0,5.0,false,false,false,0,44.4,Lagos Island and Eko Atlantic,850387744
+W850387745,,service,false,0,5.0,false,false,false,0,88.1,Lagos Island and Eko Atlantic,850387745
+W850387746,,service,false,0,5.0,false,false,false,0,21.2,Lagos Island and Eko Atlantic,850387746
+W850387747,,service,false,0,5.0,false,false,false,0,19.0,Lagos Island and Eko Atlantic,850387747
+W850387748,,service,false,0,5.0,false,false,false,0,19.2,Lagos Island and Eko Atlantic,850387748
+W850387749,,service,false,0,5.0,false,false,false,0,52.9,Lagos Island and Eko Atlantic,850387749
+W850387750,,service,false,0,5.0,false,false,false,0,36.7,Lagos Island and Eko Atlantic,850387750
+W850387751,,service,false,0,5.0,false,false,false,0,71.6,Lagos Island and Eko Atlantic,850387751
+W850387752,,service,false,0,5.0,false,false,false,0,18.5,Lagos Island and Eko Atlantic,850387752
+W850387753,,service,false,0,5.0,false,false,false,0,17.2,Lagos Island and Eko Atlantic,850387753
+W850387754,,service,false,0,5.0,false,false,false,0,17.2,Lagos Island and Eko Atlantic,850387754
+W850387755,,service,false,0,5.0,false,false,false,0,65.1,Lagos Island and Eko Atlantic,850387755
+W850387756,,service,false,0,5.0,false,false,false,0,21.0,Lagos Island and Eko Atlantic,850387756
+W850387757,,service,false,0,5.0,false,false,false,0,14.9,Lagos Island and Eko Atlantic,850387757
+W850387758,,service,false,0,5.0,false,false,false,0,14.9,Lagos Island and Eko Atlantic,850387758
+W850387759,,service,false,0,5.0,false,false,false,0,31.5,Lagos Island and Eko Atlantic,850387759
+W850387760,,service,false,0,5.0,false,false,false,0,13.8,Lagos Island and Eko Atlantic,850387760
+W850387761,,service,false,0,5.0,false,false,false,0,34.5,Lagos Island and Eko Atlantic,850387761
+W850387762,,service,false,0,5.0,false,false,false,0,34.2,Lagos Island and Eko Atlantic,850387762
+W850387763,,service,false,0,5.0,false,false,false,0,34.1,Lagos Island and Eko Atlantic,850387763
+W850387764,,service,false,0,5.0,false,false,false,0,19.9,Lagos Island and Eko Atlantic,850387764
+W850387765,,service,false,0,5.0,false,false,false,0,83.9,Lagos Island and Eko Atlantic,850387765
+W850387766,,service,false,0,5.0,false,false,false,0,31.7,Lagos Island and Eko Atlantic,850387766
+W850387767,,service,false,0,5.0,false,false,false,0,14.0,Lagos Island and Eko Atlantic,850387767
+W850387768,,service,false,0,5.0,false,false,false,0,14.0,Lagos Island and Eko Atlantic,850387768
+W850387769,,service,false,0,5.0,false,false,false,0,37.9,Lagos Island and Eko Atlantic,850387769
+W850387770,,service,false,0,5.0,false,false,false,0,57.5,Lagos Island and Eko Atlantic,850387770
+W850387771,,service,false,0,5.0,false,false,false,0,57.9,Lagos Island and Eko Atlantic,850387771
+W850387772,,service,false,0,5.0,false,false,false,0,58.5,Lagos Island and Eko Atlantic,850387772
+W850387773,,service,false,0,5.0,false,false,false,0,27.4,Lagos Island and Eko Atlantic,850387773
+W850387774,,service,false,0,5.0,false,false,false,0,12.9,Lagos Island and Eko Atlantic,850387774
+W850387775,,service,false,0,5.0,false,false,false,0,34.3,Lagos Island and Eko Atlantic,850387775
+W850387776,,service,false,0,5.0,false,false,false,0,42.4,Lagos Island and Eko Atlantic,850387776
+W850387778,,service,false,0,5.0,false,false,false,0,8.4,Lagos Island and Eko Atlantic,850387778
+W850387780,,service,false,0,5.0,false,false,false,0,66.9,Lagos Island and Eko Atlantic,850387780
+W850387781,,service,false,0,5.0,false,false,false,0,22.9,Lagos Island and Eko Atlantic,850387781
+W850387782,,service,false,0,5.0,false,false,false,0,35.4,Lagos Island and Eko Atlantic,850387782
+W8512167,,motorway,true,0,7.5,true,false,false,0,173.1,Lagos Island and Eko Atlantic,8512167
+W870982940,,residential,false,0,7.5,false,false,false,0,70.1,Lagos Island and Eko Atlantic,870982940
+W870982941,,residential,false,0,7.5,false,false,false,0,155.4,Lagos Island and Eko Atlantic,870982941
+W88274575,,residential,false,0,7.5,false,false,false,0,115.3,Lagos Island and Eko Atlantic,88274575
+W88669639,,primary,false,0,17.5,true,false,false,0,324.2,Lagos Island and Eko Atlantic,88669639
+W88669663,,motorway,true,0,7.5,true,false,false,0,556.7,Lagos Island and Eko Atlantic,88669663
+W88669668,,motorway,true,0,7.5,true,false,false,0,473.5,Lagos Island and Eko Atlantic,88669668
+W893442162,,residential,false,0,7.5,false,false,false,0,112.5,Lagos Island and Eko Atlantic,893442162
+W91328843,,residential,false,0,7.5,false,false,false,0,150.7,Lagos Island and Eko Atlantic,91328843
+W91328846,,residential,false,0,7.5,false,false,false,0,295.4,Lagos Island and Eko Atlantic,91328846
+W91328855,,service,false,0,5.0,false,false,false,0,242.4,Lagos Island and Eko Atlantic,91328855
+W91328856,,unclassified,false,0,7.5,false,false,false,0,136.9,Lagos Island and Eko Atlantic,91328856
+W91328860,,residential,false,0,7.5,false,false,false,0,105.6,Lagos Island and Eko Atlantic,91328860
+W91328863,,residential,false,0,7.5,false,false,false,0,171.5,Lagos Island and Eko Atlantic,91328863
+W91328868,,service,false,0,5.0,false,false,false,0,140.2,Lagos Island and Eko Atlantic,91328868
+W91328870,,service,false,0,5.0,false,false,false,0,332.0,Lagos Island and Eko Atlantic,91328870
+W922935441,,service,false,0,5.0,false,false,false,0,16.5,Lagos Island and Eko Atlantic,922935441
+W922935452,,service,false,0,5.0,false,false,false,0,31.6,Lagos Island and Eko Atlantic,922935452
+W93145291,,service,false,0,5.0,false,false,false,0,176.7,Lagos Island and Eko Atlantic,93145291
+W93858644,,motorway,true,0,7.5,true,false,false,0,54.2,Lagos Island and Eko Atlantic,93858644
+W93858650,,motorway,true,0,7.5,true,false,false,0,81.3,Lagos Island and Eko Atlantic,93858650
+W93858657,,motorway,true,0,7.5,true,false,false,0,58.0,Lagos Island and Eko Atlantic,93858657
+W93858662,,motorway,true,0,7.5,true,true,false,0,235.4,Lagos Island and Eko Atlantic,93858662
+W961795093,,service,false,0,5.0,false,false,false,0,7.4,Lagos Island and Eko Atlantic,961795093
+W964568538,,service,false,0,5.0,false,false,false,0,222.3,Lagos Island and Eko Atlantic,964568538
+W964568539,,residential,false,0,7.5,false,false,false,0,647.8,Lagos Island and Eko Atlantic,964568539
+W964822199,,service,false,0,5.0,false,false,false,0,25.6,Lagos Island and Eko Atlantic,964822199
+W964822200,,service,false,0,5.0,false,false,false,0,73.3,Lagos Island and Eko Atlantic,964822200
+W964822717,,service,false,0,5.0,false,false,false,0,63.6,Lagos Island and Eko Atlantic,964822717
+W964830000,,service,false,0,5.0,false,false,false,0,274.9,Lagos Island and Eko Atlantic,964830000
+W964830001,,service,false,0,5.0,false,false,false,0,134.5,Lagos Island and Eko Atlantic,964830001
+W964830956,,service,false,0,5.0,false,false,false,0,46.9,Lagos Island and Eko Atlantic,964830956
+W964832217,,service,false,0,5.0,false,false,false,0,72.1,Lagos Island and Eko Atlantic,964832217
+W964832218,,service,false,0,5.0,false,false,false,0,44.2,Lagos Island and Eko Atlantic,964832218
+W964833348,,service,false,0,5.0,false,false,false,0,49.2,Lagos Island and Eko Atlantic,964833348
+W964833349,,service,false,0,5.0,false,false,false,0,88.7,Lagos Island and Eko Atlantic,964833349
+W964833728,,service,false,0,5.0,false,false,false,0,66.9,Lagos Island and Eko Atlantic,964833728
+W964834314,,service,false,0,5.0,false,false,false,0,114.9,Lagos Island and Eko Atlantic,964834314
+W964928198,,service,false,0,5.0,false,false,false,0,72.1,Lagos Island and Eko Atlantic,964928198
+W990240812,,residential,false,0,7.5,false,false,false,0,10.1,Lagos Island and Eko Atlantic,990240812
