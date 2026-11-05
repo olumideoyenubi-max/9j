@@ -159,3 +159,7 @@ All characters, brands, organisations, police units and apps are fictional, and 
 known real-world brand names (see `docs/GDD.md §9`). Place names in the Unreal game and the browser demo are
 real Lagos places and danfo stops: see [`docs/LAGOS_MAP.md`](docs/LAGOS_MAP.md). The archived Unity project
 still uses invented place names.
+
+## License
+
+Copyright © 2026 Olumide Oyenubi. All rights reserved. See [LICENSE](LICENSE).
