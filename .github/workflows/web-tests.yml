@@ -1,0 +1,104 @@
+name: Browser demo tests
+
+# The safety net for web/index.html. Runs no model, so it costs Actions minutes and nothing else.
+# Each suite is its own job so a failure names itself in the Actions tab without downloading logs.
+on:
+  push:
+    paths: ['web/**', '.github/workflows/web-tests.yml']
+  pull_request:
+    paths: ['web/**', '.github/workflows/web-tests.yml']
+  schedule:
+    - cron: '41 2 * * *'   # 03:41 Lagos — the slow suites, nightly
+  workflow_dispatch:
+
+concurrency:
+  group: web-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  suite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false          # one broken suite must not hide the others
+      matrix:
+        test:
+          - p1-onfoot
+          - p1-ui
+          - p2-conductor
+          - p3-first-day
+          - p4-inventory
+          - p5-live
+          - p6-look
+          - p7-hd
+          - regression
+        include:
+          - test: p1-collisions
+            slow: true
+          - test: p1-traffic
+            slow: true
+          - test: perf
+            slow: true
+    name: ${{ matrix.test }}
+    steps:
+      - name: Skip slow suites on ordinary pushes
+        id: gate
+        run: |
+          if [ "${{ matrix.slow }}" = "true" ] \
+             && [ "${{ github.event_name }}" != "schedule" ] \
+             && [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::${{ matrix.test }} runs nightly and on manual runs only."
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v6
+        if: steps.gate.outputs.run == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.run == 'true'
+        with:
+          node-version: '22'
+
+      - name: Cache the Three.js package
+        if: steps.gate.outputs.run == 'true'
+        id: three-cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/three-pkg
+          key: three-0.170.0
+
+      - name: Fetch Three.js
+        if: steps.gate.outputs.run == 'true' && steps.three-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p "$RUNNER_TEMP/three-pkg"
+          cd "$RUNNER_TEMP/three-pkg"
+          npm pack three@0.170.0
+          tar xzf three-0.170.0.tgz
+          # the harness serves examples/jsm from here too (p6-look imports GLTFExporter)
+          test -f package/build/three.module.js
+          test -f package/examples/jsm/exporters/GLTFExporter.js
+
+      - name: Install Playwright
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          npm install --no-save playwright@1.49.0
+          npx playwright install --with-deps chromium
+
+      - name: ${{ matrix.test }}
+        if: steps.gate.outputs.run == 'true'
+        working-directory: web/tests
+        env:
+          THREE_DIR: ${{ runner.temp }}/three-pkg/package
+          OUT: ${{ runner.temp }}/shots
+        run: node ${{ matrix.test }}.js
+
+      - name: Upload screenshots on failure
+        if: failure() && steps.gate.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.test }}-shots
+          path: ${{ runner.temp }}/shots
+          if-no-files-found: ignore
+          retention-days: 7
