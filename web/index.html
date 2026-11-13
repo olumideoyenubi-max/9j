@@ -246,6 +246,9 @@ html:not(.touch) .touch-only { display: none !important; }
   #cash { font-size: 19px; } #stars { font-size: 17px; } #cash-delta { height: 13px; font-size: 11px; } #unit { min-height: 13px; font-size: 11px; }
   #job { padding: 4px 8px; } #job .jl { font-size: 12.5px; } #clock { font-size: 12px; }
   .toast { padding: 4px 8px; font-size: 11px; }
+  /* the stats block beside the joystick must stay short enough that an expanded job card above it never reaches it */
+  .touch #hud-bl { gap: 2px; } .touch #hustle { font-size: 11px; line-height: 1.25; padding: 3px 8px; } .touch #speed { font-size: 22px; } .touch #veh { font-size: 10px; }
+  .touch .stat { font-size: 10.5px; gap: 5px; } .touch .bar { height: 5px; }
   #card { top: 56%; } #card h2 { font-size: 30px; } #card p { font-size: 14px; } #card .sub { font-size: 13px; }
   .touch #hud-bl { bottom: var(--bot); left: calc(var(--gutL) + var(--stick) + 16px); width: 160px; }
   .touch #prompt { bottom: var(--bot); left: calc(var(--gutL) + var(--stick) + 16px + 160px + 10px); right: calc(var(--gutR) + 3 * var(--btn) + 26px);
@@ -1189,11 +1192,11 @@ function aiTraffic(v, dt) {
     if (v.type === 'okada') { // okadas squeeze between the lanes past slow traffic, and merge back when there's a gap
       // 'split' follows where the bike actually is (not where it's steering), so it only stops treating the car ahead as
       // an obstacle once it is really beside it
-      const sc = laneScan(v, g), cur = (v.x - g.sx) * -g.uy + (v.y - g.sy) * g.ux; let lt = sc.slow && nose > 180 && !sc.oncoming ? -16.5 : 0; // mid-block only: never split into a junction queue
-      if (lt === 0 && cur < -6 && sc.beside) { lt = -16.5; target = Math.min(target, 20); }
+      const sc = laneScan(v, g), cur = (v.x - g.sx) * -g.uy + (v.y - g.sy) * g.ux; let lt = sc.slow && nose > 180 && !sc.oncoming ? SPLIT_LAT : 0; // mid-block only: never split into a junction queue
+      if (lt === 0 && cur < -6 && sc.beside) { lt = SPLIT_LAT; target = Math.min(target, 20); }
       if (cur < -6) target = Math.min(target, Math.max(0, (nose - 60) * 2), sc.oncoming ? 25 : 1e9);
       if ((lt < 0 || cur < -3) && cur > -14 && sc.slow) target = Math.min(target, 28); // swinging out or back in: slow, so the corner of the car ahead never gets clipped
-      v.lat = (v.lat || 0) + clamp(lt - (v.lat || 0), -26 * dt, 26 * dt); v.split = cur < -14;
+      v.lat = (v.lat || 0) + clamp(lt - (v.lat || 0), -26 * dt, 26 * dt); v.split = cur < -13;
       tx += -g.uy * v.lat; ty += g.ux * v.lat; }
     if (v.held === v.to) {
       target = Math.min(target, 85);
@@ -1277,13 +1280,17 @@ function honkAI(v) { // stuck behind someone: lean on the horn now and then
   if (dist(v, player.pos()) < 230 && floatCap()) floaters.push({ x: v.x, y: v.y - 20, text: pick(['PAAAP!', 'PIM PIM!', 'Oga move!', 'Na wa o!']), t: 1 }); }
 function conductorShout(v) { if (dist(v, player.pos()) > 260) return; if (floatCap()) floaters.push({ x: v.x, y: v.y - 26, text: pick(CONDUCTOR_CALLS), t: 1.8 }); sndVoice(v.x, v.y, { pitch: 1.1, syl: 5 }); }
 // vehicles in v's own lane (relative to the lane line g): something slow ahead within 90px, and anything alongside
+// How far off its lane an okada steers when it squeezes past slow traffic. Its steering lags and only reaches ~3/4 of the target, and it must get
+// past 'split' (13px, which clears the widest vehicle's 12px collision allowance) for the bike to count as between the lanes. The old -16.5 target peaked
+// around -12, so okadas almost never registered as split.
+const SPLIT_LAT = -18;
 function laneScan(v, g) {
   let slow = false, beside = false, oncoming = false; const nx = -g.uy, ny = g.ux;
   for (const o of vehicles) { if (o === v) continue; const dx = o.x - v.x, dy = o.y - v.y; if (Math.abs(dx) > 130 || Math.abs(dy) > 130) continue;
     const lo = (o.x - g.sx) * nx + (o.y - g.sy) * ny, al = dx * g.ux + dy * g.uy;
     if (lo < -6 && lo > -26 && al > -20 && al < 120 && Math.cos(o.a - v.a) < 0) oncoming = true; // something coming the other way down the middle
     if (Math.abs(lo) > 9) continue; const half = VT[o.type].len / 2 + 14;
-    if (al > -half && al < half) beside = true; if (al > 0 && al < 90 && (o.kerb > 0 || (o.v < v.v - 10 && o.why !== 'junction' && !(o.leader && o.leader.waitJ != null)))) slow = true; } // a danfo loading, or a crawl that isn't a junction queue
+    if (al > -half && al < half) beside = true; if (al > 0 && al < (o.kerb > 0 ? 140 : 90) && (o.kerb > 0 || (o.v < v.v - 10 && o.why !== 'junction' && !(o.leader && o.leader.waitJ != null)))) slow = true; } // a danfo loading, or a crawl that isn't a junction queue
   return { slow, beside, oncoming };
 }
 function honk(v) { if (performance.now() - lastHonk < 1500 || dist(v, player.pos()) > 300) return; lastHonk = performance.now(); sndHorn(v.x, v.y, v.type === 'truck' ? 'truck' : VT[v.type].bike ? 'bike' : 'car'); floaters.push({ x: v.x, y: v.y - 20, text: pick(['PAAAP!', 'Oga move!', 'Wetin be this?']), t: 1.2 }); }
